@@ -1,169 +1,128 @@
 import * as React from 'react';
-
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { SearchBox, ISearchBoxStyles } from 'office-ui-fabric-react/lib/SearchBox';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { CollapsibleSection } from '@uifabric/experiments';
 import {
-  CollapsibleSection,
-  CollapsibleSectionTitle,
-  ICollapsibleSectionTitleComponent,
-  ICollapsibleSectionTitleStyles,
-  ICollapsibleSectionTitleStylesReturnType
-} from '@uifabric/experiments';
-
-import { getPathMinusLastHash } from '../../utilities/pageroute';
-import * as stylesImport from './Nav.module.scss';
-const styles: any = stylesImport;
-import { INavProps, INavPage } from './Nav.types';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
-import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
+  css,
+  FocusZone,
+  IButtonStyles,
+  Icon,
+  IIconProps,
+  IconButton,
+  ISearchBoxStyles,
+  Link,
+  SearchBox,
+  getFocusStyle
+} from 'office-ui-fabric-react';
+import { isPageActive, hasActiveChild, INavPage, INavProps, NavSortType } from '@uifabric/example-app-base/lib/index2';
+import { theme } from '@uifabric/example-app-base/lib/styles/theme';
+import * as styles from './Nav.module.scss';
 
 export interface INavState {
   searchQuery: string;
-  defaultFilterState: boolean;
-  filterState: boolean;
+  defaultSortState: keyof typeof NavSortType;
+  sortState: keyof typeof NavSortType;
 }
 
-const searchBoxStyles: IStyleSet<ISearchBoxStyles> = {
-  root: {
-    marginBottom: '5px',
-    width: '152px',
-    backgroundColor: 'transparent'
-  },
-  iconContainer: {
-    display: 'none'
-  },
-  field: {
-    backgroundColor: 'transparent',
-    color: 'white'
-  },
-  clearButton: {
-    selectors: {
-      '.ms-Button': {
-        color: 'white'
-      }
-    }
-  }
-};
-
-const getTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (props, theme): ICollapsibleSectionTitleStylesReturnType => {
-  return {
-    root: [
-      {
-        color: theme.palette.neutralQuaternaryAlt,
-        marginBottom: '8px',
-        selectors: {
-          ':hover': {
-            background: theme.palette.neutralPrimary,
-            cursor: 'pointer'
-          }
-        }
-      }
-    ],
-    text: theme.fonts.medium
-  };
-};
+export interface INavLocalItems {
+  defaultSortState?: NavSortType;
+}
 
 export class Nav extends React.Component<INavProps, INavState> {
-  constructor(props: INavProps) {
+  private _localItems: INavLocalItems;
+
+  public constructor(props: INavProps) {
     super(props);
 
+    this._localItems = !!window.localStorage
+      ? {
+          defaultSortState: NavSortType[localStorage.getItem('defaultSortState') as keyof typeof NavSortType]
+        }
+      : {};
+
     this.state = {
+      defaultSortState: this._localItems.defaultSortState ? NavSortType[this._localItems.defaultSortState] : NavSortType.categories,
       searchQuery: '',
-      defaultFilterState: true,
-      filterState: true
+      sortState: this._localItems.defaultSortState ? NavSortType[this._localItems.defaultSortState] : NavSortType.categories
     };
   }
 
-  public render(): JSX.Element {
-    let { pages } = this.props;
+  public componentDidMount(): void {
+    !this._localItems.defaultSortState && localStorage.setItem('defaultSortState', this.state.defaultSortState);
+  }
 
+  public shouldComponentUpdate(nextProps: INavProps): boolean {
+    if (nextProps.pages !== this.props.pages) {
+      this.setState({
+        searchQuery: '',
+        sortState: this.state.defaultSortState
+      });
+    }
+    return true;
+  }
+
+  public render(): JSX.Element | null {
+    const { pages } = this.props;
     if (!pages) {
       return null;
     }
 
-    const links = pages ? this._renderLinkList(pages, false) : null;
-
-    return (
-      <FocusZone>
-        <nav className={styles.nav} role="navigation">
-          {links}
-        </nav>
-      </FocusZone>
-    );
+    return <div className={styles.navWrapper}>{this._renderPageNav(pages)}</div>;
   }
 
-  private _renderLinkList(pages: INavPage[], isSubMenu: boolean, title?: string): React.ReactElement<{}> {
-    const { filterState } = this.state;
-
-    const links = pages
-      // Don't render pages that are explicitly told not to, as well as top-level pages that aren't active.
-      .filter(page => (!page.hasOwnProperty('isHiddenFromMainNav') && !(page.isUhfLink && !_hasActiveChild(page))) || _isPageActive(page))
-      .map((page: INavPage) => {
-        if (page.isCategory && !filterState) {
-          return <>{page.pages.map(innerPage => this._renderLink(innerPage))}</>;
-        }
-        return page.isCategory && filterState ? this._renderCategory(page) : this._renderLink(page);
-      });
+  private _renderPageNav = (pages: INavPage[]): JSX.Element => {
+    const { searchablePageTitle } = this.props;
+    const { sortState } = this.state;
+    let list: JSX.Element;
+    if (sortState === NavSortType.alphabetized && searchablePageTitle) {
+      list = this._renderSortedLinks(pages);
+    } else {
+      list = this._renderLinkList(pages, false);
+    }
 
     return (
       <>
-        <ul className={css(styles.links, isSubMenu ? styles.isSubMenu : '')} aria-label="Main website navigation">
-          <li>{title === 'Components' ? this._getSearchBox() : ''}</li>
-          {links}
-        </ul>
+        {searchablePageTitle && this._renderSearchBox(searchablePageTitle)}
+        <FocusZone>
+          <nav className={styles.nav} role="navigation">
+            {list}
+          </nav>
+        </FocusZone>
       </>
     );
-  }
+  };
 
-  private _renderCategory(page: INavPage): React.ReactElement<{}> {
-    if (page.isCategory && page.pages) {
-      return (
-        <li key={page.title + '-heading'} className={css(styles.category, _hasActiveChild(page) && styles.hasActiveChild)}>
-          <CollapsibleSection
-            title={{ text: page.title, styles: getTitleStyles }}
-            styles={{ body: [{ marginLeft: '28px' }] }}
-            defaultCollapsed={!_hasActiveChild(page)}
-          >
-            <ul>{page.pages.map(innerPage => this._renderLink(innerPage))}</ul>
-          </CollapsibleSection>
-        </li>
-      );
-    }
-  }
+  private _renderLinkList = (pages: INavPage[], isSubMenu: boolean): JSX.Element => {
+    const { sortState } = this.state;
 
-  private _renderSortedLinks(pages: INavPage[], title: string): React.ReactElement<{}> {
-    const links: INavPage[] = [];
-    pages.map((page: INavPage) => page.pages.map((link: INavPage) => links.push(link)));
-    links.sort((l1, l2) => {
-      if (l1.title > l2.title) {
-        return 1;
-      } else if (l1.title < l2.title) {
-        return -1;
-      }
-      return 0;
-    });
+    const list = pages
+      .filter((page: INavPage) => !page.isHiddenFromMainNav)
+      .map((page: INavPage, linkIndex: number) => {
+        if (page.isCategory && page.isSearchable && sortState === NavSortType.alphabetized) {
+          return page.pages!.map((innerPage: INavPage, innerLinkIndex: number) => this._renderLink(innerPage, innerLinkIndex));
+        } else if (page.isCategory) {
+          return this._renderSection(page, linkIndex);
+        }
+        return this._renderLink(page, linkIndex);
+      });
 
-    return this._renderLinkList(links, true, title);
-  }
+    return (
+      <ul className={css(styles.links, isSubMenu && styles.isSubMenu)} aria-label="Main website navigation">
+        {list}
+      </ul>
+    );
+  };
 
-  private _renderLink(page: INavPage): React.ReactElement<{}> {
+  private _renderLink = (page: INavPage, linkIndex: number): JSX.Element => {
+    const { searchQuery } = this.state;
+    const childLinks = page.pages ? this._renderLinkList(page.pages, true) : null;
     const ariaLabel = page.pages ? 'Hit enter to open sub menu, tab to access sub menu items.' : '';
     const title = page.title === 'Fabric' ? 'Home page' : page.title;
-    const childLinks =
-      page.pages && title === 'Components' && !this.state.filterState
-        ? this._renderSortedLinks(page.pages, title)
-        : page.pages
-        ? this._renderLinkList(page.pages, true, title)
-        : null;
-    const { searchQuery } = this.state;
+    const searchRegEx = new RegExp(searchQuery, 'i');
     const text = page.title;
     let linkText = <>{text}</>;
-    let matchIndex;
 
     // Highlight search query within link.
-    if (!!searchQuery && page.isFilterable) {
-      matchIndex = text.toLowerCase().indexOf(searchQuery.toLowerCase());
+    if (!!searchQuery) {
+      const matchIndex = text.toLowerCase().indexOf(searchQuery.toLowerCase());
       if (matchIndex >= 0) {
         const before = text.slice(0, matchIndex);
         const match = text.slice(matchIndex, matchIndex + searchQuery.length);
@@ -183,54 +142,31 @@ export class Nav extends React.Component<INavProps, INavState> {
       <li
         className={css(
           styles.link,
-          _isPageActive(page) && searchQuery === '' ? styles.isActive : '',
-          _hasActiveChild(page) ? styles.hasActiveChild : '',
-          page.isHomePage ? styles.isHomePage : '',
-          page.className ? styles[page.className] : '',
-          page.isUhfLink ? styles.isUhfLink : ''
+          isPageActive(page.url) && styles.isActive,
+          hasActiveChild(page) && styles.hasActiveChild,
+          page.isHomePage && styles.isHomePage
         )}
-        key={page.url || title}
+        key={linkIndex + page.url}
       >
-        {!page.isUhfLink && (page.isFilterable && searchQuery !== '' ? matchIndex > -1 : true) && (
-          <a href={page.url} onClick={this._onLinkClick} title={title} aria-label={ariaLabel}>
+        {!(page.isUhfLink && location.hostname !== 'localhost') && searchRegEx.test(page.title) && (
+          <Link
+            href={page.url}
+            onClick={this._onLinkClick}
+            title={page.isExternal ? title + ' (External)' : title}
+            aria-label={page.isExternal ? ariaLabel + ' (External)' : ariaLabel}
+            target={page.isExternal && '_blank'}
+          >
             {linkText}
-          </a>
+            {page.isExternal && <Icon iconName="NavigateExternalInline" className={styles.externalIcon} />}
+          </Link>
         )}
+
         {childLinks}
       </li>
     );
-  }
+  };
 
-  private _getSearchBox() {
-    return (
-      <div className={styles.searchBox}>
-        <SearchBox placeholder="Filter components" underlined styles={searchBoxStyles} onChange={this._onChangeQuery} />
-        <IconButton
-          iconProps={{ iconName: 'filter' }}
-          style={{ color: 'white', marginLeft: '5px' }}
-          menuIconProps={{ iconName: '' }}
-          menuProps={{
-            items: [
-              {
-                key: 'categories',
-                text: 'Categories',
-                iconProps: { iconName: 'org' },
-                onClick: this._setCategories
-              },
-              {
-                key: 'alphabetized',
-                text: 'A to Z',
-                iconProps: { iconName: 'Ascending' },
-                onClick: this._setAlphabetized
-              }
-            ]
-          }}
-        />
-      </div>
-    );
-  }
-
-  private _onLinkClick = (ev: React.MouseEvent<{}>) => {
+  private _onLinkClick = (ev: React.MouseEvent<HTMLElement>) => {
     if (this.props.onLinkClick) {
       return this.props.onLinkClick(ev);
     }
@@ -239,74 +175,189 @@ export class Nav extends React.Component<INavProps, INavState> {
     });
   };
 
-  private _onChangeQuery = newValue => {
-    this.setState({
-      searchQuery: newValue,
-      filterState: false
-    });
-    if (newValue === '') {
-      this.setState({
-        filterState: this.state.defaultFilterState
-      });
+  private _renderSection = (page: INavPage, sectionIndex: number) => {
+    if (page.isCategory && page.pages && this._hasMatchChild(page)) {
+      const key = `${page.title}-${sectionIndex}`;
+      return (
+        <li key={key} className={css(styles.section, hasActiveChild(page) && styles.hasActiveChild)}>
+          <CollapsibleSection defaultCollapsed={!hasActiveChild(page)} title={page.title}>
+            {this._renderLinkList(page.pages, false)}
+          </CollapsibleSection>
+        </li>
+      );
     }
   };
 
-  private _setCategories = (): void => {
-    this.setState({
-      defaultFilterState: true,
-      filterState: true
+  private _renderSortedLinks(pages: INavPage[]): React.ReactElement<{}> {
+    const flatten = (pgs: INavPage[]): INavPage[] => {
+      let links: INavPage[] = [];
+      pgs.forEach((page: INavPage) => {
+        if (!page.isCategory) {
+          links.push(page);
+        }
+        if (page.pages) {
+          links = links.concat(flatten(page.pages));
+        }
+      });
+      return links;
+    };
+    const flatLinks = flatten(pages);
+    flatLinks.sort((a: INavPage, b: INavPage) => {
+      // Casing can affect sorting, so convert to lower case.
+      const titleA = a.title.toLocaleLowerCase();
+      const titleB = b.title.toLocaleLowerCase();
+      if (titleA > titleB) {
+        return 1;
+      }
+      if (titleA < titleB) {
+        return -1;
+      }
+      return 0;
     });
+
+    return this._renderLinkList(flatLinks, false);
+  }
+
+  private _renderSearchBox = (pageTitle: string) => {
+    const { searchQuery, defaultSortState } = this.state;
+
+    const searchBoxStyles: ISearchBoxStyles = {
+      iconContainer: {
+        marginRight: 8
+      }
+    };
+
+    const sortButtonStyles: IButtonStyles = {
+      root: {
+        ...getFocusStyle(theme, 1)
+      },
+      rootExpanded: {
+        background: theme.palette.neutralLighter
+      },
+      icon: {
+        position: 'absolute',
+        margin: 0
+      }
+    };
+
+    const menuIconProps: IIconProps = {
+      styles: {
+        root: { fontSize: 16 }
+      }
+    };
+
+    return (
+      <div className={styles.searchBoxWrapper}>
+        <SearchBox
+          className={styles.searchBox}
+          placeholder={`Search ${pageTitle}`}
+          value={searchQuery}
+          onChange={this._onSearchQueryChanged}
+          onClick={this._onSearchBoxClick}
+          underlined={true}
+          styles={searchBoxStyles}
+        />
+        <IconButton
+          className={styles.filterButton}
+          title="Sort list"
+          iconProps={{
+            iconName:
+              defaultSortState === NavSortType.alphabetized
+                ? 'Ascending'
+                : defaultSortState === NavSortType.categories
+                ? 'GroupedList'
+                : undefined
+          }}
+          styles={sortButtonStyles}
+          menuIconProps={{ iconName: '' }}
+          menuProps={{
+            items: [
+              {
+                key: 'categories',
+                text: 'Categories',
+                iconProps: { iconName: 'GroupedList', ...menuIconProps },
+                onClick: this._setSortTypeCategories
+              },
+              {
+                key: 'alphabetized',
+                text: 'Alphabetical',
+                iconProps: { iconName: 'Ascending', ...menuIconProps },
+                onClick: this._setSortTypeAlphabetized
+              }
+            ]
+          }}
+        />
+      </div>
+    );
   };
 
-  private _setAlphabetized = (): void => {
-    this.setState({
-      defaultFilterState: false,
-      filterState: false
-    });
+  private _onSearchBoxClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    if (this.props.onSearchBoxClick) {
+      this.props.onSearchBoxClick(ev);
+    }
   };
-}
 
-// A tag used for resolving links.
-const _urlResolver = document.createElement('a');
-
-function _isPageActive(page: INavPage): boolean {
-  if (!page.url) {
-    return false;
-  }
-  _urlResolver.href = page.url || '';
-  const target: string = _urlResolver.href;
-  let path = location.href;
-
-  if (location.protocol + '//' + location.host + location.pathname === target) {
-    return true;
-  }
-
-  const hashCount = path.split('#').length - 1;
-  if (hashCount > 1) {
-    path = getPathMinusLastHash(path);
-  }
-
-  if (path === target) {
-    return true;
-  }
-
-  return false;
-}
-
-function _hasActiveChild(page: INavPage): boolean {
-  let hasActiveChild = false;
-
-  if (page.pages) {
-    page.pages.forEach(childPage => {
-      if (_isPageActive(childPage)) {
-        hasActiveChild = true;
+  private _onSearchQueryChanged = (ev: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
+    this.setState(
+      {
+        searchQuery: newValue,
+        sortState: NavSortType.alphabetized
+      },
+      () => {
+        if (this.state.searchQuery === '') {
+          this.setState({
+            sortState: this.state.defaultSortState
+          });
+        }
       }
+    );
+  };
 
-      if (childPage.pages) {
-        _hasActiveChild(childPage) ? (hasActiveChild = true) : null;
+  private _hasMatchChild = (page: INavPage): boolean => {
+    const { searchQuery } = this.state;
+    const searchRegEx = new RegExp(searchQuery, 'i');
+    let hasMatchChild: boolean = searchRegEx.test(page.title);
+
+    if (page.pages) {
+      page.pages.forEach((childPage: INavPage) => {
+        if (searchRegEx.test(childPage.title)) {
+          hasMatchChild = true;
+        }
+
+        if (childPage.pages) {
+          childPage.pages.forEach((grandchildPage: INavPage) => {
+            if (searchRegEx.test(grandchildPage.title)) {
+              hasMatchChild = true;
+            }
+          });
+        }
+      });
+    }
+
+    return hasMatchChild;
+  };
+
+  private _setSortTypeCategories = (): void => {
+    this.setState(
+      {
+        defaultSortState: NavSortType.categories,
+        sortState: NavSortType.categories
+      },
+      () => {
+        localStorage.setItem('defaultSortState', NavSortType[NavSortType.categories]);
       }
-    });
-  }
+    );
+  };
 
-  return hasActiveChild;
+  private _setSortTypeAlphabetized = (): void => {
+    this.setState(
+      {
+        defaultSortState: NavSortType.alphabetized,
+        sortState: NavSortType.alphabetized
+      },
+      () => {
+        localStorage.setItem('defaultSortState', NavSortType[NavSortType.alphabetized]);
+      }
+    );
+  };
 }

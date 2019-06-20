@@ -1,26 +1,24 @@
 {
   "name": "@uifabric/build",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "private": true,
+  "main": "./index.js",
+  "bin": {
+    "just-scripts": "./just-scripts.js"
+  },
   "scripts": {
-    "clean": "",
     "build": "node -v",
-    "code-style": "node ./just.js code-style",
     "bundlesize": "bundlesize --debug",
+    "clean": "",
+    "code-style": "npx just-scripts code-style",
     "test": "jest"
   },
-  "bundlesize": [
-    {
-      "path": "../apps/test-bundles/dist/office-ui-fabric-react-Button.min.js",
-      "maxSize": "50.1 kB"
-    }
-  ],
   "devDependencies": {
-    "@microsoft/api-extractor": "7.0.34",
+    "@microsoft/api-extractor": "7.1.6",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
-    "@uifabric/codepen-loader": "^0.1.1",
-    "@uifabric/merge-styles": "^6.17.0",
+    "@uifabric/codepen-loader": "^7.0.2",
+    "@uifabric/prettier-rules": "^7.0.2",
     "async": "^2.6.1",
     "autoprefixer": "^7.1.5",
     "babylon": "^7.0.0-beta.47",
@@ -36,14 +34,13 @@
     "github": "^7.0.0",
     "glob": "^7.1.2",
     "gzip-size": "^3.0.0",
-    "jest": "^23.1.0",
-    "jest-cli": "^23.6.0",
-    "jest-environment-jsdom": "^23.4.0",
+    "jest": "24.1.0",
+    "jest-cli": "24.1.0",
+    "jest-environment-jsdom": "24.0.0",
     "jju": "^1.4.0",
     "jscodeshift": "^0.5.0",
     "json-loader": "^0.5.7",
-    "just-scripts": "~0.10.1",
-    "just-task": "~0.8.0",
+    "just-scripts": "~0.20.0",
     "lint-staged": "^7.0.5",
     "mustache": "^2.3.0",
     "ngrok": "^3.0.1",
@@ -62,16 +59,23 @@
     "sass-loader": "^6.0.6",
     "source-map-loader": "^0.2.1",
     "style-loader": "^0.21.0",
-    "ts-jest": "^22.4.6",
+    "ts-jest": "24.0.1",
     "ts-loader": "^4.1.0",
     "tslint": "^5.7.0",
     "tslint-microsoft-contrib": "^5.0.1",
-    "typescript": "2.8.4",
+    "ttest": "2.0.0",
+    "typescript": "3.5.1",
     "webpack": "4.29.5",
     "webpack-bundle-analyzer": "^3.0.4",
     "webpack-cli": "3.2.3",
     "webpack-dev-server": "3.1.14",
     "webpack-notifier": "^1.6.0",
     "yargs": "^6.5.0"
-  }
+  },
+  "bundlesize": [
+    {
+      "path": "../apps/test-bundles/dist/office-ui-fabric-react-Button.min.js",
+      "maxSize": "50.1 kB"
+    }
+  ]
 }

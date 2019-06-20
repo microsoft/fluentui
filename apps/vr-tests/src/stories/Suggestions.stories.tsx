@@ -2,7 +2,8 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, DevOnlyStoryHeader } from '../utilities';
+import { FabricDecorator } from '../utilities';
+import { DevOnlyStoryHeader } from '../utilities';
 import { Suggestions, ISuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 
@@ -48,6 +49,8 @@ const ProvinceSuggestionItem = ({ name, id }: Province) => (
   <div
     id={`province-${id}`}
     style={{
+      // Required for text truncation in IE11
+      overflow: 'hidden',
       minWidth: 0,
       flexShrink: 1
     }}

@@ -13,12 +13,9 @@ export const App = () => {
   const [count, setCount] = React.useState(100);
   const [iterations, setIterations] = React.useState(1);
 
-  React.useEffect(
-    () => {
-      setTimingsVisible(itemsVisible);
-    },
-    [itemsVisible]
-  );
+  React.useEffect(() => {
+    setTimingsVisible(itemsVisible);
+  }, [itemsVisible]);
 
   return (
     <div>
@@ -29,6 +26,7 @@ export const App = () => {
             className="scenario"
             options={Scenarios}
             selectedKey={scenario.key}
+            data-automationid="scenario"
             onChange={(ev, option) => {
               setItemsVisible(false);
               if (option) {

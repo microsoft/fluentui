@@ -19,11 +19,39 @@ describe('ColorPicker', () => {
     colorPicker = ref;
   };
 
+  let updatedColor: IColor | undefined;
+  const onChange = jest.fn((ev: any, color: IColor) => {
+    updatedColor = color;
+  });
+
+  interface IValidateChangeOptions {
+    calls: number;
+    prop: keyof IColor;
+    value: string | number;
+    input?: HTMLInputElement;
+    inputValue?: string;
+  }
+
+  function validateChange(opts: IValidateChangeOptions) {
+    const { calls, prop, value, input, inputValue = String(value) } = opts;
+    expect(onChange).toHaveBeenCalledTimes(calls);
+    if (calls > 0) {
+      expect(updatedColor![prop]).toBe(value);
+    }
+    expect(colorPicker!.color[prop]).toBe(value);
+    if (input) {
+      expect(input.value).toBe(inputValue);
+    }
+  }
+
   afterEach(() => {
     if (wrapper) {
       wrapper.unmount();
       wrapper = undefined;
     }
+    updatedColor = undefined;
+    // clear onChange calls
+    onChange.mockClear();
   });
 
   it('renders correctly', () => {
@@ -46,7 +74,6 @@ describe('ColorPicker', () => {
   });
 
   it('respects color prop change', () => {
-    const onChange = jest.fn();
     wrapper = mount(<ColorPicker color="#abcdef" onChange={onChange} componentRef={colorPickerRef} />);
 
     wrapper.setProps({ color: '#AEAEAE' });
@@ -56,7 +83,6 @@ describe('ColorPicker', () => {
   });
 
   it('ignores invalid updates to color prop', () => {
-    const onChange = jest.fn();
     wrapper = mount(<ColorPicker color="#abcdef" onChange={onChange} componentRef={colorPickerRef} />);
 
     wrapper.setProps({ color: 'foo' });
@@ -144,69 +170,264 @@ describe('ColorPicker', () => {
   });
 
   it('allows updating text fields', () => {
-    let updatedColor: string | undefined;
-    const onChange = jest.fn((ev: any, color: IColor) => {
-      updatedColor = color.str;
-    });
-
     wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
 
-    const inputs = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input');
+    const inputs = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input') as NodeListOf<HTMLInputElement>;
 
     const redInput = inputs[1];
     ReactTestUtils.Simulate.input(redInput, mockEvent('255'));
-    expect(onChange).toHaveBeenCalledTimes(1);
-    expect(updatedColor).toBe('#ff0000');
-    expect(colorPicker!.color.str).toBe('#ff0000');
+    validateChange({ calls: 1, prop: 'str', value: '#ff0000' });
+    validateChange({ calls: 1, prop: 'r', value: 255, input: redInput });
     // blur and make sure nothing changes
     ReactTestUtils.Simulate.blur(redInput);
-    expect(onChange).toHaveBeenCalledTimes(1);
-    expect(colorPicker!.color.str).toBe('#ff0000');
+    validateChange({ calls: 1, prop: 'str', value: '#ff0000' });
 
     const hexInput = inputs[0];
     ReactTestUtils.Simulate.input(hexInput, mockEvent('00ff00'));
-    expect(onChange).toHaveBeenCalledTimes(2);
-    expect(updatedColor).toBe('#00ff00');
-    expect(colorPicker!.color.str).toBe('#00ff00');
+    validateChange({ calls: 2, prop: 'str', value: '#00ff00' });
+    validateChange({ calls: 2, prop: 'hex', value: '00ff00', input: hexInput });
     ReactTestUtils.Simulate.blur(hexInput);
-    expect(onChange).toHaveBeenCalledTimes(2);
-    expect(colorPicker!.color.str).toBe('#00ff00');
+    validateChange({ calls: 2, prop: 'str', value: '#00ff00' });
 
     const alphaInput = inputs[4];
     ReactTestUtils.Simulate.input(alphaInput, mockEvent('50'));
     ReactTestUtils.Simulate.blur(alphaInput);
-    expect(onChange).toHaveBeenCalledTimes(3);
-    expect(updatedColor).toBe('rgba(0, 255, 0, 0.5)');
-    expect(colorPicker!.color.str).toBe('rgba(0, 255, 0, 0.5)');
+    validateChange({ calls: 3, prop: 'str', value: 'rgba(0, 255, 0, 0.5)' });
+    validateChange({ calls: 3, prop: 'a', value: 50 });
   });
 
+  // This has repeatedly broken in the past (really)
   it('allows updating text fields when alpha slider is hidden', () => {
-    let updatedColor: string | undefined;
-    const onChange = jest.fn((ev: any, color: IColor) => {
-      updatedColor = color.str;
-    });
-
     wrapper = mount(<ColorPicker onChange={onChange} color="#000000" alphaSliderHidden componentRef={colorPickerRef} />);
 
-    const inputs = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input');
+    const inputs = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input') as NodeListOf<HTMLInputElement>;
 
     const redInput = inputs[1];
     ReactTestUtils.Simulate.input(redInput, mockEvent('255'));
-    expect(onChange).toHaveBeenCalledTimes(1);
-    expect(updatedColor).toBe('#ff0000');
-    expect(colorPicker!.color.str).toBe('#ff0000');
+    validateChange({ calls: 1, prop: 'str', value: '#ff0000' });
+    validateChange({ calls: 1, prop: 'r', value: 255, input: redInput });
     // blur and make sure nothing changes
     ReactTestUtils.Simulate.blur(redInput);
-    expect(onChange).toHaveBeenCalledTimes(1);
-    expect(colorPicker!.color.str).toBe('#ff0000');
+    validateChange({ calls: 1, prop: 'str', value: '#ff0000' });
 
     const hexInput = inputs[0];
     ReactTestUtils.Simulate.input(hexInput, mockEvent('00ff00'));
-    expect(onChange).toHaveBeenCalledTimes(2);
-    expect(updatedColor).toBe('#00ff00');
-    expect(colorPicker!.color.str).toBe('#00ff00');
+    validateChange({ calls: 2, prop: 'str', value: '#00ff00' });
+    validateChange({ calls: 2, prop: 'hex', value: '00ff00', input: hexInput });
     ReactTestUtils.Simulate.blur(hexInput);
-    expect(onChange).toHaveBeenCalledTimes(2);
-    expect(colorPicker!.color.str).toBe('#00ff00');
+    validateChange({ calls: 2, prop: 'str', value: '#00ff00' });
+  });
+
+  it('ignores non-numeric RGBA input', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const redInput = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input')[1] as HTMLInputElement;
+
+    // valid value => accepted
+    ReactTestUtils.Simulate.input(redInput, mockEvent('12'));
+    validateChange({ calls: 1, prop: 'r', value: 12, input: redInput });
+
+    // decimal added to valid value => totally ignored
+    ReactTestUtils.Simulate.input(redInput, mockEvent('12.'));
+    validateChange({ calls: 1, prop: 'r', value: 12 });
+
+    // non-number added to valid value => totally ignored
+    ReactTestUtils.Simulate.input(redInput, mockEvent('12x'));
+    validateChange({ calls: 1, prop: 'r', value: 12 });
+
+    // empty value => color not updated, value preserved
+    ReactTestUtils.Simulate.input(redInput, mockEvent(''));
+    validateChange({ calls: 1, prop: 'r', value: 12, input: redInput, inputValue: '' });
+
+    // non-number in empty field => totally ignored
+    ReactTestUtils.Simulate.input(redInput, mockEvent('x'));
+    validateChange({ calls: 1, prop: 'r', value: 12, input: redInput, inputValue: '' });
+  });
+
+  it('reverts to previous valid RGBA value on blur if field is empty', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const redInput = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input')[1] as HTMLInputElement;
+
+    // valid value => accepted
+    ReactTestUtils.Simulate.input(redInput, mockEvent('123'));
+    validateChange({ calls: 1, prop: 'r', value: 123, input: redInput });
+
+    // empty value => color not updated, value preserved
+    ReactTestUtils.Simulate.input(redInput, mockEvent(''));
+    validateChange({ calls: 1, prop: 'r', value: 123, input: redInput, inputValue: '' });
+
+    // reverts to previous valid value on blur
+    ReactTestUtils.Simulate.blur(redInput);
+    validateChange({ calls: 1, prop: 'r', value: 123 });
+  });
+
+  it('clamps RGB input too large', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const redInput = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input')[1] as HTMLInputElement;
+
+    ReactTestUtils.Simulate.input(redInput, mockEvent('123'));
+    validateChange({ calls: 1, prop: 'r', value: 123, input: redInput });
+
+    // value too large => allowed in field but onChange not called
+    ReactTestUtils.Simulate.input(redInput, mockEvent('456'));
+    validateChange({ calls: 1, prop: 'r', value: 123, input: redInput, inputValue: '456' });
+
+    // blur => value clamped
+    ReactTestUtils.Simulate.blur(redInput);
+    validateChange({ calls: 2, prop: 'r', value: 255, input: redInput });
+  });
+
+  it('clamps alpha input too large', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const alphaInput = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input')[4] as HTMLInputElement;
+
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('50'));
+    validateChange({ calls: 1, prop: 'a', value: 50, input: alphaInput });
+
+    // value too large => allowed in field but onChange not called
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('123'));
+    validateChange({ calls: 1, prop: 'a', value: 50, input: alphaInput, inputValue: '123' });
+
+    // blur => value clamped
+    ReactTestUtils.Simulate.blur(alphaInput);
+    validateChange({ calls: 2, prop: 'a', value: 100, input: alphaInput });
+  });
+
+  it('handles RGBA input too long', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const redInput = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input')[1] as HTMLInputElement;
+
+    // valid value => accepted
+    ReactTestUtils.Simulate.input(redInput, mockEvent('123'));
+    validateChange({ calls: 1, prop: 'r', value: 123, input: redInput });
+
+    // extra char added => use existing substring
+    ReactTestUtils.Simulate.input(redInput, mockEvent('1234'));
+    validateChange({ calls: 1, prop: 'r', value: 123, input: redInput });
+
+    // new value too long "pasted" => use substring
+    ReactTestUtils.Simulate.input(redInput, mockEvent('1000'));
+    validateChange({ calls: 2, prop: 'r', value: 100, input: redInput });
+
+    // invalid new value too long "pasted" => use substring but don't call onChange
+    ReactTestUtils.Simulate.input(redInput, mockEvent('4567'));
+    validateChange({ calls: 2, prop: 'r', value: 100, input: redInput, inputValue: '456' });
+  });
+
+  it('handles 3-char hex value', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const hexInput = wrapper.getDOMNode().querySelector('.ms-ColorPicker-input input') as HTMLInputElement;
+
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('faf'));
+    expect(onChange).toHaveBeenCalledTimes(0);
+    expect(hexInput.value).toBe('faf');
+
+    ReactTestUtils.Simulate.blur(hexInput);
+    validateChange({ calls: 1, prop: 'hex', value: 'ffaaff', input: hexInput });
+    expect(colorPicker!.color.str).toBe('#faf');
+  });
+
+  it('handles incrementally typing a 6-char hex value', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const hexInput = wrapper.getDOMNode().querySelector('.ms-ColorPicker-input input') as HTMLInputElement;
+    const testHexValue = 'f1f2f3';
+
+    // The intermediate value should be preserved, not automatically converted to length 6
+    for (let i = 2; i <= 5; i++) {
+      const hexSubstr = testHexValue.substr(0, i);
+      ReactTestUtils.Simulate.input(hexInput, mockEvent(hexSubstr));
+      validateChange({ calls: 0, prop: 'hex', value: '000000', input: hexInput, inputValue: hexSubstr });
+    }
+
+    // Only the full-length value should trigger onChange
+    ReactTestUtils.Simulate.input(hexInput, mockEvent(testHexValue));
+    validateChange({ calls: 1, prop: 'hex', value: testHexValue, input: hexInput });
+  });
+
+  it('handles uppercase hex', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const hexInput = wrapper.getDOMNode().querySelector('.ms-ColorPicker-input input') as HTMLInputElement;
+    const testHexValue = 'F1F2F3';
+
+    ReactTestUtils.Simulate.input(hexInput, mockEvent(testHexValue));
+    validateChange({ calls: 1, prop: 'hex', value: testHexValue.toLowerCase(), input: hexInput });
+    validateChange({ calls: 1, prop: 'str', value: '#' + testHexValue });
+  });
+
+  it('ignores non-hexadecimal hex input', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const hexInput = wrapper.getDOMNode().querySelector('.ms-ColorPicker-input input') as HTMLInputElement;
+
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('hello'));
+    validateChange({ calls: 0, prop: 'hex', value: '000000', input: hexInput });
+
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('abc'));
+    validateChange({ calls: 0, prop: 'hex', value: '000000', input: hexInput, inputValue: 'abc' });
+
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('abch'));
+    validateChange({ calls: 0, prop: 'hex', value: '000000', input: hexInput, inputValue: 'abc' });
+
+    ReactTestUtils.Simulate.blur(hexInput);
+    validateChange({ calls: 1, prop: 'hex', value: 'aabbcc', input: hexInput });
+  });
+
+  it('reverts to previous valid hex value on blur if input is too short', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#abcdef" componentRef={colorPickerRef} />);
+
+    const hexInput = wrapper.getDOMNode().querySelector('.ms-ColorPicker-input input') as HTMLInputElement;
+
+    ReactTestUtils.Simulate.input(hexInput, mockEvent(''));
+    validateChange({ calls: 0, prop: 'hex', value: 'abcdef', input: hexInput, inputValue: '' });
+    ReactTestUtils.Simulate.blur(hexInput);
+    validateChange({ calls: 0, prop: 'hex', value: 'abcdef' });
+
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('12'));
+    validateChange({ calls: 0, prop: 'hex', value: 'abcdef', input: hexInput, inputValue: '12' });
+    ReactTestUtils.Simulate.blur(hexInput);
+    validateChange({ calls: 0, prop: 'hex', value: 'abcdef' });
+  });
+
+  it('handles hex value of length 4 or 5 on blur', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const hexInput = wrapper.getDOMNode().querySelector('.ms-ColorPicker-input input') as HTMLInputElement;
+
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('abcd'));
+    validateChange({ calls: 0, prop: 'hex', value: '000000', input: hexInput, inputValue: 'abcd' });
+    // interpret as 3-char hex on blur
+    ReactTestUtils.Simulate.blur(hexInput);
+    validateChange({ calls: 1, prop: 'hex', value: 'aabbcc' });
+
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('12345'));
+    validateChange({ calls: 1, prop: 'hex', value: 'aabbcc', input: hexInput, inputValue: '12345' });
+    ReactTestUtils.Simulate.blur(hexInput);
+    validateChange({ calls: 2, prop: 'hex', value: '112233' });
+  });
+
+  it('handles typing invalid value then going back to previous valid value', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#abcdef" componentRef={colorPickerRef} />);
+
+    const hexInput = wrapper.getDOMNode().querySelector('.ms-ColorPicker-input input') as HTMLInputElement;
+
+    // suppose they delete a character
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('abcde'));
+    validateChange({ calls: 0, prop: 'hex', value: 'abcdef', input: hexInput, inputValue: 'abcde' });
+    // then add it back
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('abcdef'));
+    validateChange({ calls: 0, prop: 'hex', value: 'abcdef', input: hexInput });
+    // verify the internal intermediate value is cleared
+    expect(colorPicker!.state.editingColor).toBeUndefined();
+
+    // original value is preserved on blur
+    ReactTestUtils.Simulate.blur(hexInput);
+    validateChange({ calls: 0, prop: 'hex', value: 'abcdef', input: hexInput });
   });
 });

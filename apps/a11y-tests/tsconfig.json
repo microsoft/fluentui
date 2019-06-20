@@ -15,7 +15,11 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": ["es2017", "dom"],
-    "types": ["jest"]
+    "types": ["jest"],
+    "jsx": "react",
+    "paths": {
+      "office-ui-fabric-react/lib/*": ["node_modules/office-ui-fabric-react/lib/*"]
+    }
   },
   "include": ["src"]
 }

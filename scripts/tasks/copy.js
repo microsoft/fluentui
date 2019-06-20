@@ -2,8 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { series, resolveCwd } = require('just-task');
-const { copyTask } = require('just-scripts');
+const { series, resolveCwd, copyTask } = require('just-scripts');
 
 function expandSourcePath(pattern) {
   if (!pattern) {

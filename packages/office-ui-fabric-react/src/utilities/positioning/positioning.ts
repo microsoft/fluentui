@@ -234,6 +234,11 @@ function _flipToFit(
   gap: number = 0
 ): IElementPosition {
   const directions: RectangleEdge[] = [RectangleEdge.left, RectangleEdge.right, RectangleEdge.bottom, RectangleEdge.top];
+  // In RTL page, RectangleEdge.right has a higher priority than RectangleEdge.left, therefore the order should be updated.
+  if (getRTL()) {
+    directions[0] *= -1;
+    directions[1] *= -1;
+  }
   let currentEstimate = rect;
   let currentEdge = positionData.targetEdge;
   let currentAlignment = positionData.alignmentEdge;
@@ -615,23 +620,23 @@ function _positionBeak(beakWidth: number, elementPosition: IElementPositionInfo)
     elementPosition.elementRectangle.height - beakWidth / 2
   );
 
-  let beakPositon: Rectangle = new Rectangle(0, beakWidth, 0, beakWidth);
+  let beakPosition: Rectangle = new Rectangle(0, beakWidth, 0, beakWidth);
 
-  beakPositon = _moveEdge(beakPositon, elementPosition.targetEdge * -1, -beakWidth / 2);
+  beakPosition = _moveEdge(beakPosition, elementPosition.targetEdge * -1, -beakWidth / 2);
 
-  beakPositon = _centerEdgeToPoint(
-    beakPositon,
+  beakPosition = _centerEdgeToPoint(
+    beakPosition,
     elementPosition.targetEdge * -1,
     beakTargetPoint - _getRelativeRectEdgeValue(positiveEdge, elementPosition.elementRectangle)
   );
 
-  if (!_isEdgeInBounds(beakPositon, elementBounds, positiveEdge)) {
-    beakPositon = _alignEdges(beakPositon, elementBounds, positiveEdge);
-  } else if (!_isEdgeInBounds(beakPositon, elementBounds, negativeEdge)) {
-    beakPositon = _alignEdges(beakPositon, elementBounds, negativeEdge);
+  if (!_isEdgeInBounds(beakPosition, elementBounds, positiveEdge)) {
+    beakPosition = _alignEdges(beakPosition, elementBounds, positiveEdge);
+  } else if (!_isEdgeInBounds(beakPosition, elementBounds, negativeEdge)) {
+    beakPosition = _alignEdges(beakPosition, elementBounds, negativeEdge);
   }
 
-  return beakPositon;
+  return beakPosition;
 }
 
 function _getRectangleFromElement(element: Element): Rectangle {

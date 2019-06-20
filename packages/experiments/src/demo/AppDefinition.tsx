@@ -1,6 +1,5 @@
 // tslint:disable:no-any
-import * as React from 'react';
-import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
+import { IAppDefinition } from '@uifabric/example-app-base';
 import { AppCustomizations } from './customizations';
 
 export const AppDefinition: IAppDefinition = {
@@ -45,6 +44,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'LayoutGroup',
           name: 'LayoutGroup',
           url: '#/examples/layoutgroup'
+        },
+        {
+          component: require<any>('../components/MicroFeedback/MicroFeedbackPage').MicroFeedbackPage,
+          key: 'MicroFeedback',
+          name: 'MicroFeedback',
+          url: '#/examples/microfeedback'
         },
         {
           component: require<any>('../components/Pagination/PaginationPage').PaginationPage,
@@ -101,12 +106,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/toggle'
         },
         {
-          component: require<any>('../components/Shimmer/ShimmerPage').ShimmerPage,
-          key: 'Shimmer',
-          name: 'Shimmer',
-          url: '#/examples/shimmer'
-        },
-        {
           component: require<any>('../components/VirtualizedList/VirtualizedListPage').VirtualizedListPage,
           key: 'VirtualizedList',
           name: 'VirtualizedList',
@@ -117,6 +116,13 @@ export const AppDefinition: IAppDefinition = {
           key: 'StaticList',
           name: 'StaticList',
           url: '#/examples/staticlist'
+        },
+        {
+          component: require<any>('../components/SelectedItemsList/SelectedPeopleList/SelectedPeopleListPage').SelectedPeopleListPage,
+          key: 'SelectedPeopleList',
+          name: 'SelectedPeopleList',
+          url: '#examples/selectedpeoplelist',
+          category: 'Data Collections'
         },
         {
           component: require<any>('../components/fluent/examplePages/FluentThemePage').FluentThemePage,
@@ -148,5 +154,3 @@ export const AppDefinition: IAppDefinition = {
     }
   ]
 };
-
-export const App = (props: IAppProps) => <AppBase appDefinition={AppDefinition} {...props} />;

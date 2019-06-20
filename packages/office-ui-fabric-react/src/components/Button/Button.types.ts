@@ -294,6 +294,11 @@ export interface IButtonProps
    * @deprecated Use `secondaryText` instead.
    */
   description?: IStyle;
+
+  /**
+   * yet unknown docs
+   */
+  defaultRender?: any;
 }
 
 /**
@@ -548,6 +553,12 @@ export interface IButtonStyles {
    * for a split button.
    */
   splitButtonDivider?: IStyle;
+
+  /**
+   * Style override for the divider element that appears between the button and menu button
+   * for a split button in a disabled state.
+   */
+  splitButtonDividerDisabled?: IStyle;
 
   /**
    * Style override for the SplitButton menu button

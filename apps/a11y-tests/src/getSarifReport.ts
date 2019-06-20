@@ -1,26 +1,41 @@
+import * as ReactDOMServer from 'react-dom/server';
 import { AxePuppeteer } from 'axe-puppeteer';
 import * as puppeteer from 'puppeteer';
-import { convertAxeToSarif } from 'axe-sarif-converter';
-import { SarifLog } from 'axe-sarif-converter/dist/sarif/sarif-log'; // TODO - merge with prev line when SarifLog is exported from index
+import { convertAxeToSarif, SarifLog } from 'axe-sarif-converter';
+import { Stylesheet, InjectionMode, resetIds } from 'office-ui-fabric-react';
+import * as path from 'path';
+import * as os from 'os';
 
-const TEST_URL_ROOT = process.env.BUILD_SOURCEBRANCH
-  ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/fabric-website-resources/dist/`
-  : 'http://localhost:4322';
+const disabledAxeRules = ['document-title', 'html-has-lang', 'landmark-one-main', 'page-has-heading-one', 'region', 'bypass'];
 
-export async function getSarifReport(subUrl: string): Promise<SarifLog> {
-  const browser = await puppeteer.launch();
+/* tslint:disable-next-line:no-any */
+function renderTestHtml(element: React.ReactElement<any>): string {
+  resetIds();
+  const stylesheet = Stylesheet.getInstance();
+  stylesheet.reset();
+  stylesheet.setConfig({ injectionMode: InjectionMode.none });
+
+  const htmlPart = ReactDOMServer.renderToStaticMarkup(element);
+  const cssPart = stylesheet.getRules();
+
+  return `<html>
+            <head><style type="text/css">${cssPart}</style></head>
+            <body>${htmlPart}</body>
+          </html>
+  `;
+}
+
+/* tslint:disable-next-line:no-any */
+export async function getSarifReport(element: React.ReactElement<any>): Promise<SarifLog> {
+  const browser = await puppeteer.launch({
+    userDataDir: path.resolve(os.tmpdir(), 'oufr-a11y-test-profile')
+  });
 
   const page = await browser.newPage();
-  await page.setBypassCSP(true);
+  const testHtml = renderTestHtml(element);
+  await page.setContent(testHtml);
 
-  try {
-    await page.goto(`${TEST_URL_ROOT}${subUrl}`, { waitUntil: 'load', timeout: 60000 });
-  } catch (e) {
-    browser.close();
-    throw e;
-  }
-
-  const axeReport = await new AxePuppeteer(page).include(['.ExampleCard-example']).analyze();
+  const axeReport = await new AxePuppeteer(page).disableRules(disabledAxeRules).analyze();
   const sarifReport = convertAxeToSarif(axeReport);
 
   await page.close();

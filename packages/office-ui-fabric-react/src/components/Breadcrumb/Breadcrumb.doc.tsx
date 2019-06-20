@@ -5,6 +5,7 @@ import { BreadcrumbStaticExample } from './examples/Breadcrumb.Static.Example';
 import { IDocPageProps } from '../../common/DocPage.types';
 
 const BreadcrumbBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx') as string;
+const BreadcrumbBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx') as string;
 const BreadcrumbStaticExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Static.Example.tsx') as string;
 const BreadcrumbStaticExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Static.Example.tsx') as string;
 export const BreadcrumbPageProps: IDocPageProps = {
@@ -15,6 +16,7 @@ export const BreadcrumbPageProps: IDocPageProps = {
     {
       title: 'Default Breadcrumb',
       code: BreadcrumbBasicExampleCode,
+      codepenJS: BreadcrumbBasicExampleCodepen,
       view: <BreadcrumbBasicExample />
     },
     {
@@ -24,7 +26,6 @@ export const BreadcrumbPageProps: IDocPageProps = {
       codepenJS: BreadcrumbStaticExampleCodepen
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/Breadcrumb.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/docs/BreadcrumbOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/docs/BreadcrumbDos.md'),

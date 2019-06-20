@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { Separator } from 'office-ui-fabric-react/lib/Separator';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
+
+const stackTokens: IStackTokens = { childrenGap: 12 };
 
 const HorizontalSeparatorStack = (props: { children: JSX.Element[] }) => (
   <>
     {React.Children.map(props.children, child => {
-      return <Stack gap={12}>{child}</Stack>;
+      return <Stack tokens={stackTokens}>{child}</Stack>;
     })}
   </>
 );
@@ -16,7 +18,7 @@ const VerticalSeparatorStack = (props: { children: JSX.Element[] }) => (
   <Stack horizontal horizontalAlign="space-evenly">
     {React.Children.map(props.children, child => {
       return (
-        <Stack gap={12} horizontalAlign="center">
+        <Stack horizontalAlign="center" tokens={stackTokens}>
           {child}
         </Stack>
       );
@@ -33,7 +35,7 @@ export class SeparatorBasicExample extends React.Component<{}, {}> {
     const content = 'Today';
 
     return (
-      <Stack gap={12}>
+      <Stack tokens={stackTokens}>
         <HorizontalSeparatorStack>
           <>
             <Text>Horizontal center aligned</Text>
@@ -76,7 +78,7 @@ export class SeparatorBasicExample extends React.Component<{}, {}> {
           <>
             <Text>Empty vertical</Text>
             <Stack.Item className={verticalStyle}>
-              <Separator vertical>{content}</Separator>
+              <Separator vertical />
             </Stack.Item>
           </>
         </VerticalSeparatorStack>

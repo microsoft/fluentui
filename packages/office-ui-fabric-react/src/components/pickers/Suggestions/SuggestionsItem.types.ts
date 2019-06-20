@@ -1,13 +1,18 @@
+import * as React from 'react';
 import { IStyle, ITheme } from '../../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 import { ISuggestionModel } from './Suggestions.types';
 
-/** SuggestionItem component. */
+/**
+ * SuggestionItem component.
+ * {@docCategory Pickers}
+ */
 export interface ISuggestionsItem {}
 
 /**
  * Suggestion item props. Refers to the each individual suggested items rendered within Suggestions callout.
  * Type T is the type of the item that is displayed.
+ * {@docCategory Pickers}
  */
 export interface ISuggestionItemProps<T> {
   /**
@@ -20,7 +25,7 @@ export interface ISuggestionItemProps<T> {
   suggestionModel: ISuggestionModel<T>;
 
   /** Optional renderer to override the default one for each type of picker. */
-  RenderSuggestion: (item: T, suggestionItemProps?: ISuggestionItemProps<T>) => JSX.Element;
+  RenderSuggestion: (item: T, suggestionItemProps: ISuggestionItemProps<T>) => JSX.Element;
 
   /** Callback for when the user clicks on the suggestion. */
   onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;
@@ -52,14 +57,20 @@ export interface ISuggestionItemProps<T> {
   theme?: ITheme;
 }
 
-/** The props needed to construct SuggestionItem styles. */
+/**
+ * The props needed to construct SuggestionItem styles.
+ * {@docCategory Pickers}
+ */
 export type ISuggestionsItemStyleProps = Required<Pick<ISuggestionItemProps<any>, 'theme'>> &
   Pick<ISuggestionItemProps<any>, 'className'> & {
     /** Whether the suggestion item is selected or not. */
     suggested?: boolean;
   };
 
-/** Represents the stylable areas of the SuggestionItem. */
+/**
+ * Represents the stylable areas of the SuggestionItem.
+ * {@docCategory Pickers}
+ */
 export interface ISuggestionsItemStyles {
   /** Root element of the suggested item. */
   root: IStyle;

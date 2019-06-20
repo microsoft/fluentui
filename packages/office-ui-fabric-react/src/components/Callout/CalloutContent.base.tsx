@@ -35,13 +35,18 @@ const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.right]: AnimationClassNames.slideRightIn10
 };
 
-const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>();
-const BORDER_WIDTH = 1;
+const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>({
+  disableCaching: true
+});
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 // Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
 // To help ensure that edge will respect the offscreen style opacity
 // filter needs to be added as an additional way to set opacity.
 const OFF_SCREEN_STYLE = { opacity: 0, filter: 'opacity(0)' };
+// role and role description go hand-in-hand. Both would be included by spreading getNativeProps for a basic element
+// This constant array can be used to filter these out of native props spread on callout root and apply them together on
+// calloutMain (the Popup component within the callout)
+const ARIA_ROLE_ATTRIBUTES = ['role', 'aria-roledescription'];
 
 export interface ICalloutState {
   positions?: ICalloutPositionedInfo;
@@ -74,6 +79,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   private _hasListeners = false;
   private _maxHeight: number | undefined;
   private _blockResetHeight: boolean;
+  private _isMouseDownOnPopup: boolean;
 
   private _async: Async;
   private _disposables: (() => void)[] = [];
@@ -172,7 +178,6 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     const {
       styles,
       style,
-      role,
       ariaLabel,
       ariaDescribedBy,
       ariaLabelledBy,
@@ -219,7 +224,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     const content = (
       <div ref={this._hostElement} className={this._classNames.container} style={visibilityStyle}>
         <div
-          {...getNativeProps(this.props, divProperties)}
+          {...getNativeProps(this.props, divProperties, ARIA_ROLE_ATTRIBUTES)}
           className={css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
           style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
           tabIndex={-1} // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
@@ -229,7 +234,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
           {beakVisible && <div className={this._classNames.beak} style={this._getBeakPosition()} />}
           {beakVisible && <div className={this._classNames.beakCurtain} />}
           <Popup
-            role={role}
+            {...getNativeProps(this.props, ARIA_ROLE_ATTRIBUTES)}
             ariaLabel={ariaLabel}
             ariaDescribedBy={ariaDescribedBy}
             ariaLabelledBy={ariaLabelledBy}
@@ -238,6 +243,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
             onScroll={onScroll}
             shouldRestoreFocus={true}
             style={overflowStyle}
+            onMouseDown={this._mouseDownOnPopup}
+            onMouseUp={this._mouseUpOnPopup}
           >
             {children}
           </Popup>
@@ -259,7 +266,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   protected _dismissOnScroll = (ev: Event) => {
     const { preventDismissOnScroll } = this.props;
     if (this.state.positions && !preventDismissOnScroll) {
-      this._dismissOnLostFocus(ev);
+      this._dismissOnClickOrScroll(ev);
     }
   };
 
@@ -271,19 +278,9 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   };
 
   protected _dismissOnLostFocus = (ev: Event) => {
-    const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
     const { preventDismissOnLostFocus } = this.props;
-
-    if (
-      !preventDismissOnLostFocus &&
-      ((!this._target && clickedOutsideCallout) ||
-        (ev.target !== this._targetWindow &&
-          clickedOutsideCallout &&
-          ((this._target as MouseEvent).stopPropagation ||
-            (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))))
-    ) {
-      this.dismiss(ev);
+    if (!preventDismissOnLostFocus) {
+      this._dismissOnClickOrScroll(ev);
     }
   };
 
@@ -305,6 +302,27 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     this._setHeightOffsetEveryFrame();
   };
 
+  private _dismissOnClickOrScroll(ev: Event) {
+    const target = ev.target as HTMLElement;
+    const isEventTargetOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
+
+    // If mouse is pressed down on callout but moved outside then released, don't dismiss the callout.
+    if (isEventTargetOutsideCallout && this._isMouseDownOnPopup) {
+      this._isMouseDownOnPopup = false;
+      return;
+    }
+
+    if (
+      (!this._target && isEventTargetOutsideCallout) ||
+      (ev.target !== this._targetWindow &&
+        isEventTargetOutsideCallout &&
+        ((this._target as MouseEvent).stopPropagation ||
+          (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target)))))
+    ) {
+      this.dismiss(ev);
+    }
+  }
+
   private _addListeners() {
     // This is added so the callout will dismiss when the window is scrolled
     // but not when something inside the callout is scrolled. The delay seems
@@ -314,8 +332,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       this._disposables.push(
         on(this._targetWindow, 'scroll', this._dismissOnScroll, true),
         on(this._targetWindow, 'resize', this._dismissOnResize, true),
-        on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true),
-        on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true)
+        on(this._targetWindow.document.documentElement as any, 'focus', this._dismissOnLostFocus, true), // FABRIC7TODO remove any
+        on(this._targetWindow.document.documentElement as any, 'click', this._dismissOnLostFocus, true) // FABRIC7TODO remove any
       );
       this._hasListeners = true;
     }, 0);
@@ -414,7 +432,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         const gapSpace = this.props.gapSpace ? this.props.gapSpace : 0;
         // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
         // overlap with the target.
-        const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
+        const totalGap = gapSpace + beakWidth!;
         this._async.requestAnimationFrame(() => {
           if (this._target) {
             this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds(), this.props.coverTarget);
@@ -423,7 +441,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
           }
         });
       } else {
-        this._maxHeight = this._getBounds().height! - BORDER_WIDTH * 2;
+        this._maxHeight = this._getBounds().height!;
       }
     }
     return this._maxHeight!;
@@ -508,4 +526,12 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     const { target } = props;
     return target!;
   }
+
+  private _mouseDownOnPopup = () => {
+    this._isMouseDownOnPopup = true;
+  };
+
+  private _mouseUpOnPopup = () => {
+    this._isMouseDownOnPopup = false;
+  };
 }

@@ -1,14 +1,24 @@
 import * as React from 'react';
-import { IStyleFunction, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { classNamesFunction, DefaultButton, IStyle, Overlay } from 'office-ui-fabric-react';
 
-import { Overlay } from '../Overlay';
-
-import { getStyles, IOverlayExampleStyles } from './Overlay.Example.styles';
-
-export interface IOverlayLightExampleProps {
-  getStyles?: IStyleFunction<{}, IOverlayExampleStyles>;
+interface IOverlayExampleStyles {
+  root: IStyle;
 }
+
+const exampleStyles: IOverlayExampleStyles = {
+  root: [
+    'OverlayExample-content',
+    {
+      background: 'blue',
+      bottom: '0',
+      color: 'white',
+      left: '0',
+      padding: '10px',
+      position: 'absolute',
+      right: '0'
+    }
+  ]
+};
 
 export class OverlayLightExample extends React.Component<
   {},
@@ -25,7 +35,7 @@ export class OverlayLightExample extends React.Component<
   public render(): JSX.Element {
     const { isOverlayVisible } = this.state;
     const getClassNames = classNamesFunction<{}, IOverlayExampleStyles>();
-    const classNames = getClassNames(getStyles, {});
+    const classNames = getClassNames(exampleStyles, {});
 
     return (
       <div>

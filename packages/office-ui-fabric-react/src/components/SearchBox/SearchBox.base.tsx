@@ -78,7 +78,14 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       disableAnimation
     });
 
-    const nativeProps = getNativeProps(this.props, inputProperties, ['id', 'className', 'placeholder', 'onFocus', 'onBlur', 'value']);
+    const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
+      'id',
+      'className',
+      'placeholder',
+      'onFocus',
+      'onBlur',
+      'value'
+    ]);
 
     return (
       <div ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
@@ -135,7 +142,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       this.setState({
         value: ''
       });
-      this._callOnChange('');
+      this._callOnChange(undefined, '');
       ev.stopPropagation();
       ev.preventDefault();
 
@@ -187,8 +194,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       case KeyCodes.enter:
         if (this.props.onSearch) {
           this.props.onSearch(this.state.value);
+          break;
         }
-        break;
+        // if we don't handle the enter press then we shouldn't prevent default
+        return;
 
       default:
         this.props.onKeyDown && this.props.onKeyDown(ev);
@@ -223,10 +232,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     this._latestValue = value;
 
     this.setState({ value });
-    this._callOnChange(value);
+    this._callOnChange(ev, value);
   };
 
-  private _callOnChange(newValue: string): void {
+  private _callOnChange(ev?: React.ChangeEvent<HTMLInputElement>, newValue?: string): void {
     const { onChange, onChanged } = this.props;
 
     // Call @deprecated method.
@@ -235,7 +244,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     }
 
     if (onChange) {
-      onChange(newValue);
+      onChange(ev, newValue);
     }
   }
 }

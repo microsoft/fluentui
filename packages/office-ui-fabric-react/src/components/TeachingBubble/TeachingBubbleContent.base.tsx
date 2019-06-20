@@ -60,7 +60,8 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       styles,
       theme,
       ariaDescribedBy,
-      ariaLabelledBy
+      ariaLabelledBy,
+      footerContent: customFooterContent
     } = this.props;
 
     let imageContent;
@@ -110,11 +111,12 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       );
     }
 
-    if (primaryButtonProps || secondaryButtonProps) {
+    if (primaryButtonProps || secondaryButtonProps || customFooterContent) {
       footerContent = (
         <div className={classNames.footer}>
           {primaryButtonProps && <PrimaryButton {...primaryButtonProps} className={classNames.primaryButton} />}
           {secondaryButtonProps && <DefaultButton {...secondaryButtonProps} className={classNames.secondaryButton} />}
+          {customFooterContent && <span>{customFooterContent}</span>}
         </div>
       );
     }

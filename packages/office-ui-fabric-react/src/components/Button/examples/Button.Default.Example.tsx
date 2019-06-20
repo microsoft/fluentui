@@ -1,15 +1,35 @@
 import * as React from 'react';
-import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getStyles, IButtonBasicExampleStyleProps, IButtonBasicExampleStyles } from './Button.Basic.Example.styles';
-import { DefaultButton, PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { css, classNamesFunction, DefaultButton, IButtonProps, IStyle, Label, PrimaryButton } from 'office-ui-fabric-react';
+
+type IButtonBasicExampleStyleProps = {};
+
+interface IButtonBasicExampleStyles {
+  twoup?: IStyle;
+}
+
+const exampleStyles: IButtonBasicExampleStyles = {
+  twoup: [
+    'ms-BasicButtonsTwoUp',
+    {
+      display: 'flex',
+      selectors: {
+        '& > *': {
+          flexGrow: 1
+        },
+        '.ms-Label': {
+          marginBottom: '10px'
+        }
+      }
+    }
+  ]
+};
+
+const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+const classNames = getClassNames(exampleStyles, {});
 
 export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
   public render(): JSX.Element {
     const { disabled, checked } = this.props;
-
-    const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
-    const classNames = getClassNames(getStyles, {});
 
     return (
       <div className={css(classNames.twoup)}>

@@ -1,16 +1,28 @@
 import * as React from 'react';
-import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { ActivityItem } from '../ActivityItem';
-import { IActivityItemProps } from '../ActivityItem.types';
-import { getStyles, IActivityItemExampleStyleProps, IActivityItemExampleStyles } from './ActivityItem.Example.styles';
+import { ActivityItem, css, classNamesFunction, IActivityItemProps, Icon, IStyle } from 'office-ui-fabric-react';
 import { TestImages } from '../../../common/TestImages';
-import { Icon } from '../../../Icon';
+
+type IActivityItemExampleStyleProps = {};
+
+interface IActivityItemExampleStyles {
+  exampleRoot?: IStyle;
+  nameText?: IStyle;
+}
+
+const exampleStyles: IActivityItemExampleStyles = {
+  exampleRoot: {
+    marginTop: '20px'
+  },
+  nameText: {
+    fontWeight: 'bold'
+  }
+};
+
+const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
+const classNames = getClassNames(exampleStyles, {});
 
 export class ActivityItemCompactExample extends React.Component<React.ClassAttributes<ActivityItemCompactExample>, {}> {
   public render(): JSX.Element {
-    const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
-    const classNames = getClassNames(getStyles, {});
-
     const activityItemExamples: Partial<IActivityItemProps & React.ClassAttributes<{}>>[] = [
       {
         key: 1,

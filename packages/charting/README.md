@@ -1,6 +1,6 @@
-# [Office UI Fabric React Charting](http://dev.microsoft.com/fabric)
+# Office UI Fabric React Charting
 
-##### Charting components for Office UI Fabric React
+**Charting components for [Office UI Fabric React](http://dev.microsoft.com/fabric)**
 
 These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
 

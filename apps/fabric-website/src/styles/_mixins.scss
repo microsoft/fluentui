@@ -13,68 +13,6 @@
   }
 }
 
-// Use negative margins to reach edge of a container that uses contentPadding()
-@mixin fullWidth() {
-  margin-left: -$contentPadding-sm;
-  margin-right: -$contentPadding-sm;
-
-  @media screen and (min-width: $uhf-screen-min-mobile) {
-    margin-left: -$contentPadding-lg;
-    margin-right: -$contentPadding-lg;
-  }
-
-  @media screen and (min-width: $ms-screen-min-xl) {
-    margin-left: -$contentPadding-xl;
-    margin-right: -$contentPadding-xl;
-  }
-}
-
-// Use negative margin to remove the bottom padding from the app's content area
-@mixin fullHeight() {
-  margin-bottom: -$contentPaddingBottom;
-}
-
-// Simulate a six degree angle on the bottom of a div, with
-// an optional six degree shadow running counter at the top.
-@mixin headerAngles($colorBelow:$ms-color-neutralLight, $hasShadow:true) {
-  position: relative;
-
-  &::after {
-    bottom: $svg-angle-bottom-alignment;
-    content: '';
-    height: 82px;
-    left: -10px;
-    pointer-events: none;
-    position: absolute;
-    right: -10px;
-
-    // Use http://pressbin.com/tools/urlencode_urldecode/ and encodeURIComponent() to base64-encode the SVGs
-
-    // SVG: <svg xmlns="http://www.w3.org/2000/svg" viewBox="5 0 395 42"><polygon fill="#COLOR" points="400 50 400 0 0 42 0 50"/></svg>
-    $colorBelowValue: str-slice('#{$colorBelow}', 2);
-    $bottomAngle: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%225%200%20395%2042%22%3E%3Cpolygon%20fill%3D%22%23#{$colorBelowValue}%22%20points%3D%22400%2050%20400%200%200%2042%200%2050%22%2F%3E%3C%2Fsvg%3E");
-
-    //SVG: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 42"><defs><linearGradient id="grad1" x1="0%" y1="20%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:rgb(0,0,0);stop-opacity:0"/><stop offset="100%" style="stop-color:rgb(0,0,0);stop-opacity:0.04"/></linearGradient></defs><polygon fill="url(#grad1)" points="0 0 400 42 400 0"/></svg>
-    $topShadow: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20400%2042%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22grad1%22%20x1%3D%220%25%22%20y1%3D%2220%25%22%20x2%3D%220%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20style%3D%22stop-color%3Argb(0%2C0%2C0)%3Bstop-opacity%3A0%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20style%3D%22stop-color%3Argb(0%2C0%2C0)%3Bstop-opacity%3A0.04%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpolygon%20fill%3D%22url(%23grad1)%22%20points%3D%220%200%20400%2042%20400%200%22%2F%3E%3C%2Fsvg%3E");
-
-    // Common styles, with or without the shadow
-    background-repeat: no-repeat;
-
-    // Set background properties depending on whether there is a shadow or not
-    @if $hasShadow {
-      background-position: center bottom, center top;
-      background-image: $bottomAngle, $topShadow;
-    } @else {
-      background-image: $bottomAngle;
-      background-position: center bottom;
-    }
-
-    @media screen and (min-width: $uhf-screen-min-mobile) {
-      height: 150px; // Make room for wider angle
-    }
-  }
-}
-
 // High contrast mode mixins
 // @todo: Shouldn't these, and the color variables, be in Fabric Core?
 @mixin high-contrast {
@@ -83,29 +21,11 @@
   }
 }
 
-@mixin high-contrast-black-on-white {
-  @media screen and (-ms-high-contrast: black-on-white) {
-    @content;
-  }
-}
-
-@mixin high-contrast-white-on-black {
-  @media screen and (-ms-high-contrast: white-on-black) {
-    @content;
-  }
-}
-
-// Ghost button style
-@mixin ghostButton($foregroundColor, $backgroundColor) {
-  border-radius: 3px;
-  border: 1px solid $foregroundColor;
-  color: $foregroundColor;
-  letter-spacing: 0.03em;
-  padding: 8px 20px 10px 20px;
-  transition: all $ms-animation-duration-2 $ms-animation-ease-1;
-
-  &:hover {
-    background-color: $foregroundColor;
-    color: $backgroundColor;
+// Overrides the browser's default focus outline style.
+@mixin focus-outline($inset: 0, $width: $ms-focus-border-width, $color: $ms-focus-border-color) {
+  // Only do this when it's a child of ms-Fabric in a focusVisible state.
+  :global(.ms-Fabric.is-focusVisible) &:focus {
+    outline: $width $ms-focus-border-style $color;
+    outline-offset: -$inset;
   }
 }

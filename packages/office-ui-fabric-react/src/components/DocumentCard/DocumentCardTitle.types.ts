@@ -1,9 +1,16 @@
+import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { DocumentCardTitleBase } from './DocumentCardTitle.base';
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardTitle {}
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitleBase> {
   /**
    * Gets the component ref.
@@ -44,6 +51,9 @@ export interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentC
   className?: string;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardTitleStyleProps {
   /**
    * Accept theme prop.
@@ -61,6 +71,9 @@ export interface IDocumentCardTitleStyleProps {
   showAsSecondaryTitle?: boolean;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardTitleStyles {
   root: IStyle;
 }

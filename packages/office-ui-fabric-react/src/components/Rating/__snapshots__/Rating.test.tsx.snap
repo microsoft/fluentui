@@ -15,7 +15,7 @@ exports[`Rating Renders Rating correctly 1`] = `
         font-weight: 400;
       }
       &:hover .ms-RatingStar-back {
-        color: #000000;
+        color: #323130;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-RatingStar-back {
         color: Highlight;
@@ -30,6 +30,9 @@ exports[`Rating Renders Rating correctly 1`] = `
         ms-FocusZone
         ms-Rating-focuszone
         ms-RatingStar-root--small
+        &:focus {
+          outline: none;
+        }
         {
           display: inline-block;
         }
@@ -72,7 +75,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             bottom: 1px;
             content: "";
             left: 1px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 1px;
             top: 1px;
@@ -85,13 +88,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             cursor: default;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-            color: #a6a6a6;
+            color: #a19f9d;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-            color: #a6a6a6;
+            color: #a19f9d;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
@@ -147,12 +150,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-back
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a6a6a6;
+                color: #a19f9d;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -166,12 +170,13 @@ exports[`Rating Renders Rating correctly 1`] = `
           
         </i>
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-front
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #000000;
+                color: #323130;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -228,7 +233,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             bottom: 1px;
             content: "";
             left: 1px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 1px;
             top: 1px;
@@ -241,13 +246,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             cursor: default;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-            color: #a6a6a6;
+            color: #a19f9d;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-            color: #a6a6a6;
+            color: #a19f9d;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
@@ -302,12 +307,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-back
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a6a6a6;
+                color: #a19f9d;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -321,12 +327,13 @@ exports[`Rating Renders Rating correctly 1`] = `
           
         </i>
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-front
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #000000;
+                color: #323130;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -383,7 +390,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             bottom: 1px;
             content: "";
             left: 1px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 1px;
             top: 1px;
@@ -396,13 +403,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             cursor: default;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-            color: #a6a6a6;
+            color: #a19f9d;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-            color: #a6a6a6;
+            color: #a19f9d;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
@@ -457,12 +464,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-back
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a6a6a6;
+                color: #a19f9d;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -476,12 +484,13 @@ exports[`Rating Renders Rating correctly 1`] = `
           
         </i>
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-front
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #000000;
+                color: #323130;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -538,7 +547,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             bottom: 1px;
             content: "";
             left: 1px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 1px;
             top: 1px;
@@ -551,13 +560,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             cursor: default;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-            color: #a6a6a6;
+            color: #a19f9d;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-            color: #a6a6a6;
+            color: #a19f9d;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
@@ -612,12 +621,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-back
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a6a6a6;
+                color: #a19f9d;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -631,12 +641,13 @@ exports[`Rating Renders Rating correctly 1`] = `
           
         </i>
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-front
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #000000;
+                color: #323130;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -693,7 +704,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             bottom: 1px;
             content: "";
             left: 1px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 1px;
             top: 1px;
@@ -706,13 +717,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             cursor: default;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-            color: #a6a6a6;
+            color: #a19f9d;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-            color: #a6a6a6;
+            color: #a19f9d;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
@@ -767,12 +778,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-back
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a6a6a6;
+                color: #a19f9d;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -786,12 +798,13 @@ exports[`Rating Renders Rating correctly 1`] = `
           
         </i>
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-front
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #000000;
+                color: #323130;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;

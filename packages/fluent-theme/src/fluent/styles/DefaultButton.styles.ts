@@ -13,7 +13,7 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
       borderRadius: effects.roundedCorner2,
       backgroundColor: palette.white,
       border: `1px solid ${palette.neutralSecondaryAlt}`,
-      ...getFocusStyle(theme, 1)
+      ...getFocusStyle(theme, { inset: 1 })
     },
     rootHovered: {
       backgroundColor: palette.neutralLighter,

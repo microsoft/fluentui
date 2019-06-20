@@ -14,6 +14,9 @@ const TRANSITION_ANIMATION_INTERVAL = 200; /* ms */
 
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 
+/**
+ * {@docCategory Shimmer}
+ */
 export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
   public static defaultProps: IShimmerProps = {
     isDataLoaded: false
@@ -76,12 +79,13 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
       shimmerWaveColor: shimmerColors && shimmerColors.shimmerWave
     });
 
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     return (
       <div {...divProps} className={this._classNames.root}>
         {!contentLoaded && (
           <div style={{ width: width ? width : '100%' }} className={this._classNames.shimmerWrapper}>
+            <div className={this._classNames.shimmerGradient} />
             {customElementsGroup ? (
               customElementsGroup
             ) : (

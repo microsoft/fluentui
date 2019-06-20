@@ -10,7 +10,7 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
 
   return {
     root: {
-      ...getFocusStyle(theme, 2),
+      ...getFocusStyle(theme, { inset: 2 }),
       backgroundColor: palette.white,
       border: `1px solid ${palette.neutralSecondaryAlt}`,
       borderRadius: effects.roundedCorner2,

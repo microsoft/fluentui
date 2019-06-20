@@ -4,6 +4,9 @@ import { BaseComponent, customizable, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.types';
 import { getStyles } from './CommandBarButton.styles';
 
+/**
+ * {@docCategory Button}
+ */
 @customizable('CommandBarButton', ['theme', 'styles'], true)
 export class CommandBarButton extends BaseComponent<IButtonProps, {}> {
   /**

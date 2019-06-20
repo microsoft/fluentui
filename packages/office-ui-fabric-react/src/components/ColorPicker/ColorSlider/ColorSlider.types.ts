@@ -1,9 +1,16 @@
+import * as React from 'react';
 import { ITheme, IStyle } from '../../../Styling';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export interface IColorSlider {}
 
-export interface IColorSliderProps extends IBaseProps<IColorSlider> {
+/**
+ * {@docCategory ColorPicker}
+ */
+export interface IColorSliderProps {
   /**
    * Gets the component ref.
    */
@@ -40,12 +47,6 @@ export interface IColorSliderProps extends IBaseProps<IColorSlider> {
   onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
 
   /**
-   * Deprecated, use `onChange` instead.
-   * @deprecated Use `onChange` instead.
-   */
-  onChanged?: (newValue: number) => void;
-
-  /**
    * If true, the slider represents an alpha slider.
    * Otherwise, the slider represents a hue slider.
    */
@@ -67,6 +68,9 @@ export interface IColorSliderProps extends IBaseProps<IColorSlider> {
   styles?: IStyleFunctionOrObject<IColorSliderStyleProps, IColorSliderStyles>;
 }
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export interface IColorSliderStyleProps {
   /**
    * Theme (provided through customization).
@@ -79,6 +83,9 @@ export interface IColorSliderStyleProps {
   className?: string;
 }
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export interface IColorSliderStyles {
   /**
    * Style set for the root element.

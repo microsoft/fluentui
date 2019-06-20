@@ -29,6 +29,16 @@ import { getFileTypeIconProps } from '@uifabric/file-type-icons';
 <Icon {...getFileTypeIconProps({extension: 'docx', size: 16}) />
 ```
 
+# Fluent file type icons
+
+You can use the new Fluent file type icons as they become available by passing the following path to `initializeFileTypeIcons`:
+
+```tsx
+initializeFileTypeIcons('https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/');
+```
+
+In Fabric 7, the new Fluent file type icons will be the default.
+
 # Notes
 
 See [Office UI Fabric React](http://github.com/OfficeDev/office-ui-fabric-react) for more details on the UI Fabric project and packages within.

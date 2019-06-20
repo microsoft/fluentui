@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { LabelBase } from './Label.base';
 import { getStyles } from './Label.styles';

@@ -44,11 +44,11 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -78,7 +78,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background: rgba(113, 175, 229, 0.2);
-              box-sizing: border-box;
               color: #00188f;
               display: flex;
               flex-direction: column;
@@ -98,7 +97,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               font-weight: 400;
             }
             @media screen and (-ms-high-contrast: active){& {
-              background: windowText;
+              background: WindowText;
               color: Window;
             }
       >
@@ -106,36 +105,29 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
           className=
               ms-MessageBar-content
               {
-                box-sizing: border-box;
                 display: flex;
-                flex-direction: row;
                 line-height: normal;
                 width: 100%;
               }
         >
           <div
+            aria-hidden={true}
             className=
                 ms-MessageBar-icon
                 {
-                  color: #666666;
                   display: flex;
                   flex-shrink: 0;
                   font-size: 16px;
-                  margin-bottom: 16px;
-                  margin-left: 16px;
-                  margin-right: 0px;
-                  margin-top: 16px;
+                  margin-bottom: 8px;
+                  margin-left: 12px;
+                  margin-right: 0;
+                  margin-top: 8px;
                   min-height: 16px;
                   min-width: 16px;
                 }
-                @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                  margin-bottom: 8px;
-                  margin-left: 8px;
-                  margin-right: 0px;
-                  margin-top: 8px;
-                }
           >
             <i
+              aria-hidden={true}
               className=
 
                   {
@@ -150,7 +142,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
-                    color: window;
+                    color: Window;
                   }
               data-icon-name="Info"
               role="presentation"
@@ -169,21 +161,14 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  margin-bottom: 16px;
-                  margin-left: 8px;
-                  margin-right: 16px;
-                  margin-top: 16px;
-                  min-width: 0px;
-                }
-                @media only screen and (min-width: 0px) and (max-width: 479px){& {
                   margin-bottom: 8px;
                   margin-left: 8px;
-                  margin-right: 8px;
+                  margin-right: 12px;
                   margin-top: 8px;
+                  min-width: 0px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;
-                  color: window;
                 }
             id="MessageBar0"
           >
@@ -194,7 +179,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   {
                     line-height: 16px;
                   }
-                  & a {
+                  & span a {
                     padding-left: 4px;
                   }
               role="status"
@@ -226,11 +211,11 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -261,9 +246,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background: rgba(232, 17, 35, .2);
-              box-sizing: border-box;
-              color: #333333;
+              background: rgba(245, 135, 145, .2);
+              color: #323130;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -281,11 +265,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               font-weight: 400;
             }
             @media screen and (-ms-high-contrast: active){& {
-              background: windowText;
+              background: WindowText;
               color: Window;
-            }
-            @media only screen and (min-width: 0px) and (max-width: 479px){& {
-              flex-direction: column;
             }
       >
         <div
@@ -293,44 +274,35 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               ms-MessageBar-content
               {
                 background: rgba(50, 20, 90, 0.2);
-                box-sizing: border-box;
                 display: flex;
                 line-height: normal;
                 width: 100%;
               }
-              @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                flex-direction: row;
-              }
         >
           <div
+            aria-hidden={true}
             className=
                 ms-MessageBar-icon
                 {
-                  color: #666666;
                   display: flex;
                   flex-shrink: 0;
                   font-size: 16px;
-                  margin-bottom: 16px;
-                  margin-left: 16px;
-                  margin-right: 0px;
-                  margin-top: 16px;
+                  margin-bottom: 8px;
+                  margin-left: 12px;
+                  margin-right: 0;
+                  margin-top: 8px;
                   min-height: 16px;
                   min-width: 16px;
                 }
-                @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                  margin-bottom: 8px;
-                  margin-left: 8px;
-                  margin-right: 0px;
-                  margin-top: 8px;
-                }
           >
             <i
+              aria-hidden={true}
               className=
 
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #a80000;
+                    color: #a4262c;
                     display: inline-block;
                     font-family: "FabricMDL2Icons-3";
                     font-style: normal;
@@ -339,7 +311,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
-                    color: window;
+                    color: Window;
                   }
               data-icon-name="ErrorBadge"
               role="presentation"
@@ -359,21 +331,14 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  margin-bottom: 16px;
-                  margin-left: 8px;
-                  margin-right: 8px;
-                  margin-top: 16px;
-                  min-width: 0px;
-                }
-                @media only screen and (min-width: 0px) and (max-width: 479px){& {
                   margin-bottom: 8px;
                   margin-left: 8px;
-                  margin-right: 0px;
+                  margin-right: 8px;
                   margin-top: 8px;
+                  min-width: 0px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;
-                  color: window;
                 }
             id="MessageBar1"
           >
@@ -387,7 +352,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     text-overflow: ellipsis;
                     white-space: nowrap;
                   }
-                  & a {
+                  & span a {
                     padding-left: 4px;
                   }
                   @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -400,19 +365,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
           <div
             className=
                 ms-MessageBar-dismissSingleLine
-                {
-                  display: flex;
-                }
-                & .ms-Button-icon {
-                  color: #333333;
-                  font-size: 12px;
-                  height: 12px;
-                  line-height: 12px;
-                }
-                @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
-                  -ms-high-contrast-adjust: none;
-                  color: window;
-                }
+
           >
             <button
               aria-label="Close"
@@ -424,10 +377,10 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
-                    border-radius: 0px;
+                    border-radius: 2px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #0078d4;
                     cursor: pointer;
                     display: inline-block;
                     flex-shrink: 0;
@@ -435,15 +388,11 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
-                    margin-bottom: 8px;
-                    margin-left: 0px;
-                    margin-right: 8px;
-                    margin-top: 8px;
                     outline: transparent;
-                    padding-bottom: 0;
-                    padding-left: 4px;
-                    padding-right: 4px;
-                    padding-top: 0;
+                    padding-bottom: 8px;
+                    padding-left: 12px;
+                    padding-right: 12px;
+                    padding-top: 8px;
                     position: relative;
                     text-align: center;
                     text-decoration: none;
@@ -455,14 +404,14 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #000000;
-                    bottom: 1px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 1px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 1px;
-                    top: 1px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -479,30 +428,26 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     top: 0px;
                   }
                   &:hover {
-                    color: #212121;
+                    background-color: transparent;
+                    color: #106ebe;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
                   &:active {
-                    color: #0078d4;
+                    background-color: transparent;
+                    color: #005a9e;
                   }
                   & .ms-Button-icon {
                     color: #107c10;
-                    font-size: 12px;
-                    height: 12px;
-                    line-height: 12px;
+                    font-size: 10px;
+                    height: 10px;
+                    line-height: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
                     -ms-high-contrast-adjust: none;
-                    color: window;
-                  }
-                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                    margin-bottom: 0px;
-                    margin-left: 8px;
-                    margin-right: 0px;
-                    margin-top: 0px;
+                    color: Window;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -525,6 +470,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Button-icon
                       {
@@ -580,11 +526,11 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -617,10 +563,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background: rgba(0, 178, 148, 0.2);
-              box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: flex;
-              flex-direction: column;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -637,66 +581,43 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               font-weight: 400;
             }
             @media screen and (-ms-high-contrast: active){& {
-              background: windowText;
+              background: WindowText;
               color: Window;
-            }
-            @media only screen and (min-width: 0px) and (max-width: 479px){& {
-              flex-direction: column;
-            }
-            & .ms-Button-icon {
-              color: #333333;
-              font-size: 12px;
-              height: 12px;
-              line-height: 12px;
-            }
-            @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
-              -ms-high-contrast-adjust: none;
-              color: window;
             }
       >
         <div
           className=
               ms-MessageBar-content
               {
-                box-sizing: border-box;
                 display: flex;
-                flex-direction: row;
                 line-height: normal;
                 width: 100%;
               }
-              @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                flex-direction: row;
-              }
         >
           <div
+            aria-hidden={true}
             className=
                 ms-MessageBar-icon
                 {
-                  color: #666666;
                   display: flex;
                   flex-shrink: 0;
                   font-size: 16px;
-                  margin-bottom: 16px;
-                  margin-left: 16px;
-                  margin-right: 0px;
-                  margin-top: 16px;
+                  margin-bottom: 8px;
+                  margin-left: 12px;
+                  margin-right: 0;
+                  margin-top: 8px;
                   min-height: 16px;
                   min-width: 16px;
                 }
-                @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                  margin-bottom: 8px;
-                  margin-left: 8px;
-                  margin-right: 0px;
-                  margin-top: 8px;
-                }
           >
             <i
+              aria-hidden={true}
               className=
 
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #a80000;
+                    color: #a4262c;
                     display: inline-block;
                     font-family: "FabricMDL2Icons-5";
                     font-style: normal;
@@ -705,7 +626,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
-                    color: window;
+                    color: Window;
                   }
               data-icon-name="Blocked2"
               role="presentation"
@@ -724,21 +645,14 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  margin-bottom: 16px;
-                  margin-left: 8px;
-                  margin-right: 8px;
-                  margin-top: 16px;
-                  min-width: 0px;
-                }
-                @media only screen and (min-width: 0px) and (max-width: 479px){& {
                   margin-bottom: 8px;
                   margin-left: 8px;
-                  margin-right: 0px;
+                  margin-right: 8px;
                   margin-top: 8px;
+                  min-width: 0px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;
-                  color: window;
                 }
             id="MessageBar5"
           >
@@ -753,7 +667,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     text-overflow: ellipsis;
                     white-space: nowrap;
                   }
-                  & a {
+                  & span a {
                     padding-left: 4px;
                   }
               role="status"
@@ -764,17 +678,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                 ms-MessageBar-expandSingleLine
                 {
                   border: 1px solid #e3008c;
-                  display: flex;
-                }
-                & .ms-Button-icon {
-                  color: #333333;
-                  font-size: 12px;
-                  height: 12px;
-                  line-height: 12px;
-                }
-                @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
-                  -ms-high-contrast-adjust: none;
-                  color: window;
                 }
           >
             <button
@@ -789,10 +692,10 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
-                    border-radius: 0px;
+                    border-radius: 2px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #0078d4;
                     cursor: pointer;
                     display: inline-block;
                     flex-shrink: 0;
@@ -800,15 +703,11 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
-                    margin-bottom: 8px;
-                    margin-left: 0px;
-                    margin-right: 8px;
-                    margin-top: 8px;
                     outline: transparent;
-                    padding-bottom: 0;
-                    padding-left: 4px;
-                    padding-right: 4px;
-                    padding-top: 0;
+                    padding-bottom: 8px;
+                    padding-left: 12px;
+                    padding-right: 12px;
+                    padding-top: 8px;
                     position: relative;
                     text-align: center;
                     text-decoration: none;
@@ -820,14 +719,14 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #000000;
-                    bottom: 1px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 1px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 1px;
-                    top: 1px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -844,30 +743,26 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     top: 0px;
                   }
                   &:hover {
-                    color: #212121;
+                    background-color: transparent;
+                    color: #106ebe;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
                   &:active {
-                    color: #0078d4;
+                    background-color: transparent;
+                    color: #005a9e;
                   }
                   & .ms-Button-icon {
                     color: #004b50;
-                    font-size: 12px;
-                    height: 12px;
-                    line-height: 12px;
+                    font-size: 10px;
+                    height: 10px;
+                    line-height: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
                     -ms-high-contrast-adjust: none;
-                    color: window;
-                  }
-                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                    margin-bottom: 0px;
-                    margin-left: 8px;
-                    margin-right: 0px;
-                    margin-top: 0px;
+                    color: Window;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -890,6 +785,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Button-icon
                       {
@@ -924,17 +820,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                 ms-MessageBar-dismissSingleLine
                 {
                   border: 1px solid #5c2d91;
-                  display: flex;
-                }
-                & .ms-Button-icon {
-                  color: #333333;
-                  font-size: 12px;
-                  height: 12px;
-                  line-height: 12px;
-                }
-                @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
-                  -ms-high-contrast-adjust: none;
-                  color: window;
                 }
           >
             <button
@@ -947,10 +832,10 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
-                    border-radius: 0px;
+                    border-radius: 2px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #0078d4;
                     cursor: pointer;
                     display: inline-block;
                     flex-shrink: 0;
@@ -958,15 +843,11 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
-                    margin-bottom: 8px;
-                    margin-left: 0px;
-                    margin-right: 8px;
-                    margin-top: 8px;
                     outline: transparent;
-                    padding-bottom: 0;
-                    padding-left: 4px;
-                    padding-right: 4px;
-                    padding-top: 0;
+                    padding-bottom: 8px;
+                    padding-left: 12px;
+                    padding-right: 12px;
+                    padding-top: 8px;
                     position: relative;
                     text-align: center;
                     text-decoration: none;
@@ -978,14 +859,14 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #000000;
-                    bottom: 1px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 1px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 1px;
-                    top: 1px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1002,30 +883,26 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     top: 0px;
                   }
                   &:hover {
-                    color: #212121;
+                    background-color: transparent;
+                    color: #106ebe;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
                   &:active {
-                    color: #0078d4;
+                    background-color: transparent;
+                    color: #005a9e;
                   }
                   & .ms-Button-icon {
                     color: #004b50;
-                    font-size: 12px;
-                    height: 12px;
-                    line-height: 12px;
+                    font-size: 10px;
+                    height: 10px;
+                    line-height: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
                     -ms-high-contrast-adjust: none;
-                    color: window;
-                  }
-                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                    margin-bottom: 0px;
-                    margin-left: 8px;
-                    margin-right: 0px;
-                    margin-top: 0px;
+                    color: Window;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -1048,6 +925,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Button-icon
                       {
@@ -1103,11 +981,11 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -1138,8 +1016,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background: rgba(227, 0, 140, 0.2);
-              box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: flex;
               flex-direction: column;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1158,7 +1035,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               font-weight: 400;
             }
             @media screen and (-ms-high-contrast: active){& {
-              background: windowText;
+              background: WindowText;
               color: Window;
             }
       >
@@ -1166,36 +1043,29 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
           className=
               ms-MessageBar-content
               {
-                box-sizing: border-box;
                 display: flex;
-                flex-direction: row;
                 line-height: normal;
                 width: 100%;
               }
         >
           <div
+            aria-hidden={true}
             className=
                 ms-MessageBar-icon
                 {
-                  color: #666666;
                   display: flex;
                   flex-shrink: 0;
                   font-size: 16px;
-                  margin-bottom: 16px;
-                  margin-left: 16px;
-                  margin-right: 0px;
-                  margin-top: 16px;
+                  margin-bottom: 8px;
+                  margin-left: 12px;
+                  margin-right: 0;
+                  margin-top: 8px;
                   min-height: 16px;
                   min-width: 16px;
                 }
-                @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                  margin-bottom: 8px;
-                  margin-left: 8px;
-                  margin-right: 0px;
-                  margin-top: 8px;
-                }
           >
             <i
+              aria-hidden={true}
               className=
 
                   {
@@ -1210,7 +1080,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
-                    color: window;
+                    color: Window;
                   }
               data-icon-name="Warning"
               role="presentation"
@@ -1231,19 +1101,12 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   font-weight: 400;
                   margin-bottom: 8px;
                   margin-left: 8px;
-                  margin-right: 16px;
-                  margin-top: 16px;
-                  min-width: 0px;
-                }
-                @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                  margin-bottom: 0px;
-                  margin-left: 8px;
-                  margin-right: 8px;
+                  margin-right: 12px;
                   margin-top: 8px;
+                  min-width: 0px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;
-                  color: window;
                 }
             id="MessageBar12"
           >
@@ -1254,7 +1117,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   {
                     line-height: 16px;
                   }
-                  & a {
+                  & span a {
                     padding-left: 4px;
                   }
               role="status"
@@ -1272,13 +1135,13 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                 flex-direction: row-reverse;
                 flex-grow: 0;
                 flex-shrink: 0;
-                margin-bottom: 12px;
-                margin-left: 0;
+                margin-bottom: 8px;
+                margin-left: 8px;
                 margin-right: 12px;
-                margin-top: 0px;
+                margin-top: 0;
               }
               & button:nth-child(n+2) {
-                margin-left: 12px;
+                margin-left: 8px;
               }
         >
           <div>
@@ -1289,9 +1152,10 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #dadada;
-                    border-radius: 0px;
-                    border: 1px solid transparent;
+                    background-color: #ffffff;
+                    border-color: #c8c6c4;
+                    border-radius: 2px;
+                    border: 1px solid #8a8886;
                     box-sizing: border-box;
                     color: #e3008c;
                     cursor: pointer;
@@ -1299,7 +1163,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
-                    height: 32px;
+                    height: 24px;
                     min-width: 80px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1311,19 +1175,20 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     text-decoration: none;
                     user-select: none;
                     vertical-align: top;
+                    width: 84px;
                   }
                   &::-moz-focus-inner {
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1340,16 +1205,16 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     top: 0px;
                   }
                   &:hover {
-                    background-color: #c8c8c8;
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #a6a6a6;
-                    color: #212121;
+                    background-color: #edebe9;
+                    color: #201f1e;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -1403,9 +1268,10 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #dadada;
-                    border-radius: 0px;
-                    border: 1px solid transparent;
+                    background-color: #ffffff;
+                    border-color: #c8c6c4;
+                    border-radius: 2px;
+                    border: 1px solid #8a8886;
                     box-sizing: border-box;
                     color: #e3008c;
                     cursor: pointer;
@@ -1413,7 +1279,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
-                    height: 32px;
+                    height: 24px;
                     min-width: 80px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1425,19 +1291,20 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     text-decoration: none;
                     user-select: none;
                     vertical-align: top;
+                    width: 84px;
                   }
                   &::-moz-focus-inner {
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1454,16 +1321,16 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     top: 0px;
                   }
                   &:hover {
-                    background-color: #c8c8c8;
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #a6a6a6;
-                    color: #212121;
+                    background-color: #edebe9;
+                    color: #201f1e;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -1537,11 +1404,11 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -1571,9 +1438,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background: rgba(186, 216, 10, .2);
-              box-sizing: border-box;
-              color: #333333;
+              background: rgba(95, 210, 85, .2);
+              color: #323130;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -1591,49 +1457,37 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               font-weight: 400;
             }
             @media screen and (-ms-high-contrast: active){& {
-              background: windowText;
+              background: WindowText;
               color: Window;
-            }
-            @media only screen and (min-width: 0px) and (max-width: 479px){& {
-              flex-direction: column;
             }
       >
         <div
           className=
               ms-MessageBar-content
               {
-                box-sizing: border-box;
                 display: flex;
                 line-height: normal;
                 width: 100%;
               }
-              @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                flex-direction: row;
-              }
         >
           <div
+            aria-hidden={true}
             className=
                 ms-MessageBar-icon
                 {
-                  color: #666666;
                   display: flex;
                   flex-shrink: 0;
                   font-size: 16px;
-                  margin-bottom: 16px;
-                  margin-left: 16px;
-                  margin-right: 0px;
-                  margin-top: 16px;
+                  margin-bottom: 8px;
+                  margin-left: 12px;
+                  margin-right: 0;
+                  margin-top: 8px;
                   min-height: 16px;
                   min-width: 16px;
                 }
-                @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                  margin-bottom: 8px;
-                  margin-left: 8px;
-                  margin-right: 0px;
-                  margin-top: 8px;
-                }
           >
             <i
+              aria-hidden={true}
               className=
 
                   {
@@ -1648,7 +1502,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
-                    color: window;
+                    color: Window;
                   }
               data-icon-name="Completed"
               role="presentation"
@@ -1667,21 +1521,14 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  margin-bottom: 16px;
+                  margin-bottom: 8px;
                   margin-left: 8px;
-                  margin-right: 16px;
-                  margin-top: 16px;
-                  min-width: 0px;
-                }
-                @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                  margin-bottom: 0px;
-                  margin-left: 8px;
-                  margin-right: 8px;
+                  margin-right: 12px;
                   margin-top: 8px;
+                  min-width: 0px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;
-                  color: window;
                 }
             id="MessageBar19"
           >
@@ -1695,7 +1542,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     text-overflow: ellipsis;
                     white-space: nowrap;
                   }
-                  & a {
+                  & span a {
                     padding-left: 4px;
                   }
                   @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -1717,10 +1564,10 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   flex-direction: row-reverse;
                   flex-grow: 0;
                   flex-shrink: 0;
-                  margin-bottom: 8px;
-                  margin-left: 0;
-                  margin-right: 8px;
-                  margin-top: 8px;
+                  margin-bottom: 0;
+                  margin-left: 8px;
+                  margin-right: 12px;
+                  margin-top: 0;
                 }
                 & button:nth-child(n+2) {
                   margin-left: 8px;
@@ -1734,17 +1581,18 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #dadada;
-                      border-radius: 0px;
-                      border: 1px solid transparent;
+                      background-color: #ffffff;
+                      border-color: #c8c6c4;
+                      border-radius: 2px;
+                      border: 1px solid #8a8886;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 24px;
                       min-width: 80px;
                       outline: transparent;
                       padding-bottom: 0;
@@ -1756,19 +1604,20 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                       text-decoration: none;
                       user-select: none;
                       vertical-align: top;
+                      width: 84px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 2px;
                       content: "";
-                      left: 0px;
-                      outline: 1px solid #666666;
+                      left: 2px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 2px;
+                      top: 2px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1785,16 +1634,16 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                       top: 0px;
                     }
                     &:hover {
-                      background-color: #c8c8c8;
-                      color: #212121;
+                      background-color: #f3f2f1;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #a6a6a6;
-                      color: #212121;
+                      background-color: #edebe9;
+                      color: #201f1e;
                     }
                 data-is-focusable={true}
                 onClick={[Function]}
@@ -1848,17 +1697,18 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #dadada;
-                      border-radius: 0px;
-                      border: 1px solid transparent;
+                      background-color: #ffffff;
+                      border-color: #c8c6c4;
+                      border-radius: 2px;
+                      border: 1px solid #8a8886;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 24px;
                       min-width: 80px;
                       outline: transparent;
                       padding-bottom: 0;
@@ -1870,19 +1720,20 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                       text-decoration: none;
                       user-select: none;
                       vertical-align: top;
+                      width: 84px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 2px;
                       content: "";
-                      left: 0px;
-                      outline: 1px solid #666666;
+                      left: 2px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 2px;
+                      top: 2px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1899,16 +1750,16 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                       top: 0px;
                     }
                     &:hover {
-                      background-color: #c8c8c8;
-                      color: #212121;
+                      background-color: #f3f2f1;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #a6a6a6;
-                      color: #212121;
+                      background-color: #edebe9;
+                      color: #201f1e;
                     }
                 data-is-focusable={true}
                 onClick={[Function]}
@@ -1983,11 +1834,11 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -2018,9 +1869,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background: rgba(255, 185, 0, .2);
-              box-sizing: border-box;
-              color: #333333;
+              background: rgba(255, 200, 10, .2);
+              color: #323130;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -2038,11 +1888,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               font-weight: 400;
             }
             @media screen and (-ms-high-contrast: active){& {
-              background: windowText;
+              background: WindowText;
               color: Window;
-            }
-            @media only screen and (min-width: 0px) and (max-width: 479px){& {
-              flex-direction: column;
             }
       >
         <div
@@ -2050,38 +1897,29 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               ms-MessageBar-content
               {
                 background: rgba(234, 67, 0, 0.2);
-                box-sizing: border-box;
                 display: flex;
                 line-height: normal;
                 width: 100%;
               }
-              @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                flex-direction: row;
-              }
         >
           <div
+            aria-hidden={true}
             className=
                 ms-MessageBar-icon
                 {
-                  color: #666666;
                   display: flex;
                   flex-shrink: 0;
                   font-size: 16px;
-                  margin-bottom: 16px;
-                  margin-left: 16px;
-                  margin-right: 0px;
-                  margin-top: 16px;
+                  margin-bottom: 8px;
+                  margin-left: 12px;
+                  margin-right: 0;
+                  margin-top: 8px;
                   min-height: 16px;
                   min-width: 16px;
                 }
-                @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                  margin-bottom: 8px;
-                  margin-left: 8px;
-                  margin-right: 0px;
-                  margin-top: 8px;
-                }
           >
             <i
+              aria-hidden={true}
               className=
 
                   {
@@ -2096,7 +1934,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
-                    color: window;
+                    color: Window;
                   }
               data-icon-name="Info"
               role="presentation"
@@ -2115,21 +1953,14 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  margin-bottom: 16px;
+                  margin-bottom: 8px;
                   margin-left: 8px;
                   margin-right: 8px;
-                  margin-top: 16px;
-                  min-width: 0px;
-                }
-                @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                  margin-bottom: 0px;
-                  margin-left: 8px;
-                  margin-right: 0px;
                   margin-top: 8px;
+                  min-width: 0px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;
-                  color: window;
                 }
             id="MessageBar26"
           >
@@ -2143,7 +1974,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     text-overflow: ellipsis;
                     white-space: nowrap;
                   }
-                  & a {
+                  & span a {
                     padding-left: 4px;
                   }
                   @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -2164,10 +1995,10 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   flex-direction: row-reverse;
                   flex-grow: 0;
                   flex-shrink: 0;
-                  margin-bottom: 8px;
-                  margin-left: 0;
-                  margin-right: 8px;
-                  margin-top: 8px;
+                  margin-bottom: 0;
+                  margin-left: 8px;
+                  margin-right: 0px;
+                  margin-top: 0;
                 }
                 & button:nth-child(n+2) {
                   margin-left: 8px;
@@ -2181,17 +2012,18 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #dadada;
-                      border-radius: 0px;
-                      border: 1px solid transparent;
+                      background-color: #ffffff;
+                      border-color: #c8c6c4;
+                      border-radius: 2px;
+                      border: 1px solid #8a8886;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 24px;
                       min-width: 80px;
                       outline: transparent;
                       padding-bottom: 0;
@@ -2203,19 +2035,20 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                       text-decoration: none;
                       user-select: none;
                       vertical-align: top;
+                      width: 84px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 2px;
                       content: "";
-                      left: 0px;
-                      outline: 1px solid #666666;
+                      left: 2px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 2px;
+                      top: 2px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2232,16 +2065,16 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                       top: 0px;
                     }
                     &:hover {
-                      background-color: #c8c8c8;
-                      color: #212121;
+                      background-color: #f3f2f1;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #a6a6a6;
-                      color: #212121;
+                      background-color: #edebe9;
+                      color: #201f1e;
                     }
                 data-is-focusable={true}
                 onClick={[Function]}
@@ -2295,17 +2128,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                 ms-MessageBar-dismissSingleLine
                 {
                   border: 1px solid #ea4300;
-                  display: flex;
-                }
-                & .ms-Button-icon {
-                  color: #333333;
-                  font-size: 12px;
-                  height: 12px;
-                  line-height: 12px;
-                }
-                @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
-                  -ms-high-contrast-adjust: none;
-                  color: window;
                 }
           >
             <button
@@ -2318,10 +2140,10 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
-                    border-radius: 0px;
+                    border-radius: 2px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #0078d4;
                     cursor: pointer;
                     display: inline-block;
                     flex-shrink: 0;
@@ -2329,15 +2151,11 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
-                    margin-bottom: 8px;
-                    margin-left: 0px;
-                    margin-right: 8px;
-                    margin-top: 8px;
                     outline: transparent;
-                    padding-bottom: 0;
-                    padding-left: 4px;
-                    padding-right: 4px;
-                    padding-top: 0;
+                    padding-bottom: 8px;
+                    padding-left: 12px;
+                    padding-right: 12px;
+                    padding-top: 8px;
                     position: relative;
                     text-align: center;
                     text-decoration: none;
@@ -2349,14 +2167,14 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #000000;
-                    bottom: 1px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 1px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 1px;
-                    top: 1px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2373,30 +2191,26 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     top: 0px;
                   }
                   &:hover {
-                    color: #212121;
+                    background-color: transparent;
+                    color: #106ebe;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
                   &:active {
-                    color: #0078d4;
+                    background-color: transparent;
+                    color: #005a9e;
                   }
                   & .ms-Button-icon {
-                    color: #333333;
-                    font-size: 12px;
-                    height: 12px;
-                    line-height: 12px;
+                    color: #323130;
+                    font-size: 10px;
+                    height: 10px;
+                    line-height: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
                     -ms-high-contrast-adjust: none;
-                    color: window;
-                  }
-                  @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                    margin-bottom: 0px;
-                    margin-left: 8px;
-                    margin-right: 0px;
-                    margin-top: 0px;
+                    color: Window;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -2419,6 +2233,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Button-icon
                       {
@@ -2474,11 +2289,11 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -2509,8 +2324,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background: rgba(0, 188, 242, 0.4);
-              box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: flex;
               flex-direction: column;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2529,7 +2343,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               font-weight: 400;
             }
             @media screen and (-ms-high-contrast: active){& {
-              background: windowText;
+              background: WindowText;
               color: Window;
             }
       >
@@ -2537,36 +2351,29 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
           className=
               ms-MessageBar-content
               {
-                box-sizing: border-box;
                 display: flex;
-                flex-direction: row;
                 line-height: normal;
                 width: 100%;
               }
         >
           <div
+            aria-hidden={true}
             className=
                 ms-MessageBar-icon
                 {
-                  color: #666666;
                   display: flex;
                   flex-shrink: 0;
                   font-size: 16px;
-                  margin-bottom: 16px;
-                  margin-left: 16px;
-                  margin-right: 0px;
-                  margin-top: 16px;
+                  margin-bottom: 8px;
+                  margin-left: 12px;
+                  margin-right: 0;
+                  margin-top: 8px;
                   min-height: 16px;
                   min-width: 16px;
                 }
-                @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                  margin-bottom: 8px;
-                  margin-left: 8px;
-                  margin-right: 0px;
-                  margin-top: 8px;
-                }
           >
             <i
+              aria-hidden={true}
               className=
 
                   {
@@ -2581,7 +2388,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     -ms-high-contrast-adjust: none;
-                    color: window;
+                    color: Window;
                   }
               data-icon-name="Info"
               role="presentation"
@@ -2603,18 +2410,11 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   margin-bottom: 8px;
                   margin-left: 8px;
                   margin-right: 8px;
-                  margin-top: 16px;
-                  min-width: 0px;
-                }
-                @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                  margin-bottom: 0px;
-                  margin-left: 8px;
-                  margin-right: 0px;
                   margin-top: 8px;
+                  min-width: 0px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   -ms-high-contrast-adjust: none;
-                  color: window;
                 }
             id="MessageBar33"
           >
@@ -2625,7 +2425,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   {
                     line-height: 16px;
                   }
-                  & a {
+                  & span a {
                     padding-left: 4px;
                   }
               role="status"
@@ -2641,10 +2441,10 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
-                  border-radius: 0px;
+                  border-radius: 2px;
                   border: 1px solid #00188f;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #0078d4;
                   cursor: pointer;
                   display: inline-block;
                   flex-shrink: 0;
@@ -2652,15 +2452,11 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   font-size: 14px;
                   font-weight: 400;
                   height: 32px;
-                  margin-bottom: 8px;
-                  margin-left: 0px;
-                  margin-right: 8px;
-                  margin-top: 8px;
                   outline: transparent;
-                  padding-bottom: 0;
-                  padding-left: 4px;
-                  padding-right: 4px;
-                  padding-top: 0;
+                  padding-bottom: 8px;
+                  padding-left: 12px;
+                  padding-right: 12px;
+                  padding-top: 8px;
                   position: relative;
                   text-align: center;
                   text-decoration: none;
@@ -2672,14 +2468,14 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #000000;
-                  bottom: 1px;
+                  border: 1px solid transparent;
+                  bottom: 2px;
                   content: "";
-                  left: 1px;
-                  outline: 1px solid #666666;
+                  left: 2px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 1px;
-                  top: 1px;
+                  right: 2px;
+                  top: 2px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2696,30 +2492,26 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   top: 0px;
                 }
                 &:hover {
-                  color: #212121;
+                  background-color: transparent;
+                  color: #106ebe;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
                 }
                 &:active {
-                  color: #0078d4;
+                  background-color: transparent;
+                  color: #005a9e;
                 }
                 & .ms-Button-icon {
-                  color: #333333;
-                  font-size: 12px;
-                  height: 12px;
-                  line-height: 12px;
+                  color: #323130;
+                  font-size: 10px;
+                  height: 10px;
+                  line-height: 10px;
                 }
                 @media screen and (-ms-high-contrast: active){& .ms-Button-icon {
                   -ms-high-contrast-adjust: none;
-                  color: window;
-                }
-                @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                  margin-bottom: 0px;
-                  margin-left: 8px;
-                  margin-right: 0px;
-                  margin-top: 0px;
+                  color: Window;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -2742,6 +2534,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -2782,13 +2575,13 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                 flex-direction: row;
                 flex-grow: 0;
                 flex-shrink: 0;
-                margin-bottom: 12px;
-                margin-left: 0;
+                margin-bottom: 8px;
+                margin-left: 8px;
                 margin-right: 12px;
-                margin-top: 0px;
+                margin-top: 0;
               }
               & button:nth-child(n+2) {
-                margin-left: 12px;
+                margin-left: 8px;
               }
         >
           <div>
@@ -2799,17 +2592,18 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #dadada;
-                    border-radius: 0px;
-                    border: 1px solid transparent;
+                    background-color: #ffffff;
+                    border-color: #c8c6c4;
+                    border-radius: 2px;
+                    border: 1px solid #8a8886;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
-                    height: 32px;
+                    height: 24px;
                     min-width: 80px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2821,19 +2615,20 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     text-decoration: none;
                     user-select: none;
                     vertical-align: top;
+                    width: 84px;
                   }
                   &::-moz-focus-inner {
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2850,16 +2645,16 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     top: 0px;
                   }
                   &:hover {
-                    background-color: #c8c8c8;
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #a6a6a6;
-                    color: #212121;
+                    background-color: #edebe9;
+                    color: #201f1e;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -2913,17 +2708,18 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #dadada;
-                    border-radius: 0px;
-                    border: 1px solid transparent;
+                    background-color: #ffffff;
+                    border-color: #c8c6c4;
+                    border-radius: 2px;
+                    border: 1px solid #8a8886;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
-                    height: 32px;
+                    height: 24px;
                     min-width: 80px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2935,19 +2731,20 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     text-decoration: none;
                     user-select: none;
                     vertical-align: top;
+                    width: 84px;
                   }
                   &::-moz-focus-inner {
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2964,16 +2761,16 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     top: 0px;
                   }
                   &:hover {
-                    background-color: #c8c8c8;
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #a6a6a6;
-                    color: #212121;
+                    background-color: #edebe9;
+                    color: #201f1e;
                   }
               data-is-focusable={true}
               onClick={[Function]}

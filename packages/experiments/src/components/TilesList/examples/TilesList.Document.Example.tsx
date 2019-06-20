@@ -42,6 +42,7 @@ export interface ITilesListDocumentExampleState {
   isModalSelection: boolean;
   isDataLoaded: boolean;
   cells: (ITilesGridItem<IExampleItem> | ITilesGridSegment<IExampleItem>)[];
+  isFluentStyling: boolean;
 }
 
 export interface ITilesListDocumentExampleProps {
@@ -64,6 +65,7 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
     this.state = {
       isModalSelection: this._selection.isModal(),
       isDataLoaded: false,
+      isFluentStyling: false,
       cells: getTileCells(SHIMMER_GROUPS, {
         onRenderCell: this._onRenderShimmerCell,
         onRenderHeader: this._onRenderShimmerHeader,
@@ -73,9 +75,9 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
     };
   }
 
-  public componentDidUpdate(previousProps: ITilesListDocumentExampleProps): void {
+  public componentDidUpdate(previousProps: ITilesListDocumentExampleProps, prevState: ITilesListDocumentExampleState): void {
     const { isDataLoaded } = this.state;
-    if (this.props.tileSize !== previousProps.tileSize) {
+    if (this.props.tileSize !== previousProps.tileSize || this.state.isFluentStyling !== prevState.isFluentStyling) {
       if (!isDataLoaded) {
         this.setState({
           cells: getTileCells(SHIMMER_GROUPS, {
@@ -114,6 +116,13 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
           onChange={this._onToggleIsDataLoaded}
           onText="Loaded"
           offText="Loading..."
+        />
+        <Toggle
+          label="Enable Fluent Styling"
+          checked={this.state.isFluentStyling}
+          onChange={this._onToggleIsFluentStyling}
+          onText="Fluent"
+          offText="Default"
         />
         <MarqueeSelection selection={this._selection}>
           <SelectionZone selection={this._selection} onItemInvoked={this._onItemInvoked} enterModalOnTouch={true}>
@@ -154,6 +163,17 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
     });
   };
 
+  private _onToggleIsFluentStyling = (event: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState(
+      {
+        isFluentStyling: checked
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
+  };
+
   private _onSelectionChange = (): void => {
     this.setState({
       isModalSelection: this._selection.isModal()
@@ -179,6 +199,7 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
         className={AnimationClassNames.fadeIn400}
         selection={this._selection}
         selectionIndex={item.index}
+        isFluentStyling={this.state.isFluentStyling}
         invokeSelection={true}
         foreground={
           <img

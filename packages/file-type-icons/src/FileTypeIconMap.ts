@@ -28,7 +28,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'mid',
       'mmf',
       'mp3',
-      'ogg',
       'oga',
       'ra',
       'rm',
@@ -214,7 +213,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'scss',
       'sgml',
       'sh',
-      'sh',
       'shtml',
       'sml',
       'svn-base',
@@ -292,6 +290,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'glb',
       'gltf',
       'holo',
+      'layer',
       'layout',
       'max',
       'mtl',
@@ -382,7 +381,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   sponews: {},
   spreadsheet: {
-    extensions: ['ods', 'gsheet', 'numbers']
+    extensions: ['odc', 'ods', 'gsheet', 'numbers']
   },
   rtf: {
     extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages']
@@ -406,9 +405,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'ithmb',
       'jar',
       'kb',
-      'kdc',
       'ldt',
       'lrprev',
+      'pkpass',
       'ppa',
       'ppam',
       'pdb',
@@ -418,6 +417,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'vsl',
       'xla',
       'xlam',
+      'xlb',
       'xll'
     ]
   },
@@ -429,12 +429,14 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   vector: {
     extensions: [
       'ai',
+      'cvs',
       'dgn',
       'gdraw',
       'pd',
       'emf',
       'eps',
       'fig',
+      'ind',
       'indd',
       'indt',
       'indb',
@@ -488,16 +490,16 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   video360: {},
   vsdx: {
-    extensions: ['vsd', 'vsdm', 'vsdx', 'vdw']
+    extensions: ['vdx', 'vsd', 'vsdm', 'vsdx', 'vsw', 'vdw']
   },
   vssx: {
     extensions: ['vss', 'vssm', 'vssx']
   },
   vstx: {
-    extensions: ['vst', 'vstm', 'vstx']
+    extensions: ['vst', 'vstm', 'vstx', 'vsx']
   },
   xlsx: {
-    extensions: ['xls', 'xlsb', 'xlsm', 'xlsx']
+    extensions: ['xlc', 'xls', 'xlsb', 'xlsm', 'xlsx']
   },
   xltx: {
     extensions: ['xlt', 'xltm', 'xltx']

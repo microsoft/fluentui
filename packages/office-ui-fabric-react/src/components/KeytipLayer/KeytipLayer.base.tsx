@@ -35,6 +35,7 @@ const getClassNames = classNamesFunction<IKeytipLayerStyleProps, IKeytipLayerSty
 
 /**
  * A layer that holds all keytip items
+ * {@docCategory Keytips}
  */
 export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLayerState> {
   public static defaultProps: IKeytipLayerProps = {

@@ -58,7 +58,7 @@ function runPrettier(files, configPath, runAsync) {
 function runPrettierForProject(projectPath) {
   init();
 
-  const sourcePath = path.join(projectPath, '**', '*.{ts,tsx,js,jsx,json,scss,html,yml,md}');
+  const sourcePath = path.join(projectPath, '**', '*.{ts,tsx,js,jsx,json,scss,html,md}');
   const configPath = projectsWithPrettierConfig.includes(projectPath) ? path.join(projectPath, prettierConfig) : prettierRulesConfig;
   return runPrettier([sourcePath], configPath, true);
 }

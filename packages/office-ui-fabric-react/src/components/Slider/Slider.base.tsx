@@ -9,14 +9,6 @@ export interface ISliderState {
   renderedValue?: number;
 }
 
-/**
- * @deprecated Unused.
- */
-export enum ValuePosition {
-  Previous = 0,
-  Next = 1
-}
-
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
@@ -26,7 +18,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     showValue: true,
     disabled: false,
     vertical: false,
-    buttonProps: {}
+    buttonProps: {},
+    originFromZero: false
   };
 
   private _sliderLine = React.createRef<HTMLDivElement>();
@@ -46,28 +39,30 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
     this.state = {
       value: value,
-      renderedValue: value
+      renderedValue: undefined
     };
   }
 
-  /**
-   * Invoked when a component is receiving new props. This method is not called for the initial render.
-   */
-  public componentWillReceiveProps(newProps: ISliderProps): void {
-    if (newProps.value !== undefined) {
-      const value = Math.max(newProps.min as number, Math.min(newProps.max as number, newProps.value));
-
-      this.setState({
-        value: value,
-        renderedValue: value
-      });
-    }
-  }
-
   public render(): React.ReactElement<{}> {
-    const { ariaLabel, className, disabled, label, max, min, showValue, buttonProps, vertical, valueFormat, styles, theme } = this.props;
-    const { value, renderedValue } = this.state;
+    const {
+      ariaLabel,
+      className,
+      disabled,
+      label,
+      max,
+      min,
+      showValue,
+      buttonProps,
+      vertical,
+      valueFormat,
+      styles,
+      theme,
+      originFromZero
+    } = this.props;
+    const value = this.value;
+    const renderedValue = this.renderedValue;
     const thumbOffsetPercent: number = min === max ? 0 : ((renderedValue! - min!) / (max! - min!)) * 100;
+    const zeroOffsetPercent: number = min! >= 0 ? 0 : (-min! / (max! - min!)) * 100;
     const lengthString = vertical ? 'height' : 'width';
     const onMouseDownProp: {} = disabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
     const onTouchStartProp: {} = disabled ? {} : { onTouchStart: this._onMouseDownOrTouchStart };
@@ -80,7 +75,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       showValue,
       theme: theme!
     });
-    const divButtonProps = buttonProps ? getNativeProps(buttonProps, divProperties) : undefined;
+    const divButtonProps = buttonProps ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties) : undefined;
 
     return (
       <div className={classNames.root}>
@@ -108,15 +103,37 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             data-is-focusable={!disabled}
           >
             <div ref={this._sliderLine} className={classNames.line}>
-              <span ref={this._thumb} className={classNames.thumb} style={this._getThumbStyle(vertical, thumbOffsetPercent)} />
-              <span
-                className={css(classNames.lineContainer, classNames.activeSection)}
-                style={{ [lengthString]: thumbOffsetPercent + '%' }}
-              />
-              <span
-                className={css(classNames.lineContainer, classNames.inactiveSection)}
-                style={{ [lengthString]: 100 - thumbOffsetPercent + '%' }}
-              />
+              {originFromZero && (
+                <span className={css(classNames.zeroTick)} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
+              )}
+              <span ref={this._thumb} className={classNames.thumb} style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)} />
+              {originFromZero ? (
+                <>
+                  <span
+                    className={css(classNames.lineContainer, classNames.inactiveSection)}
+                    style={{ [lengthString]: Math.min(thumbOffsetPercent, zeroOffsetPercent) + '%' }}
+                  />
+                  <span
+                    className={css(classNames.lineContainer, classNames.activeSection)}
+                    style={{ [lengthString]: Math.abs(zeroOffsetPercent - thumbOffsetPercent) + '%' }}
+                  />
+                  <span
+                    className={css(classNames.lineContainer, classNames.inactiveSection)}
+                    style={{ [lengthString]: Math.min(100 - thumbOffsetPercent, 100 - zeroOffsetPercent) + '%' }}
+                  />
+                </>
+              ) : (
+                <>
+                  <span
+                    className={css(classNames.lineContainer, classNames.activeSection)}
+                    style={{ [lengthString]: thumbOffsetPercent + '%' }}
+                  />
+                  <span
+                    className={css(classNames.lineContainer, classNames.inactiveSection)}
+                    style={{ [lengthString]: 100 - thumbOffsetPercent + '%' }}
+                  />
+                </>
+              )}
             </div>
           </div>
           {showValue && <Label className={classNames.valueLabel}>{valueFormat ? valueFormat(value!) : value}</Label>}
@@ -124,6 +141,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       </div>
     ) as React.ReactElement<{}>;
   }
+
   public focus(): void {
     if (this._thumb.current) {
       this._thumb.current.focus();
@@ -131,7 +149,18 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   public get value(): number | undefined {
-    return this.state.value;
+    const { value = this.state.value } = this.props;
+    if (this.props.min === undefined || this.props.max === undefined || value === undefined) {
+      return undefined;
+    } else {
+      return Math.max(this.props.min, Math.min(this.props.max, value));
+    }
+  }
+
+  private get renderedValue(): number | undefined {
+    // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`. Fall back to `value`.
+    const { renderedValue = this.value } = this.state;
+    return renderedValue;
   }
 
   private _getAriaValueText = (value: number | undefined): string | undefined => {
@@ -140,7 +169,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     }
   };
 
-  private _getThumbStyle(vertical: boolean | undefined, thumbOffsetPercent: number): any {
+  private _getStyleUsingOffsetPercent(vertical: boolean | undefined, thumbOffsetPercent: number): any {
     const direction: string = vertical ? 'bottom' : getRTL() ? 'right' : 'left';
     return {
       [direction]: thumbOffsetPercent + '%'
@@ -244,9 +273,9 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   private _onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
-    // Synchronize the renderedValue to the actual value.
+    // Disable renderedValue override.
     this.setState({
-      renderedValue: this.state.value
+      renderedValue: undefined
     });
 
     if (this.props.onChanged) {

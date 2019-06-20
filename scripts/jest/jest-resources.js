@@ -17,8 +17,10 @@ module.exports = {
         },
 
         transform: {
-          '.(ts|tsx)': resolve.sync('ts-jest/preprocessor.js')
+          '.(ts|tsx)': resolve.sync('ts-jest/dist')
         },
+
+        transformIgnorePatterns: ['/node_modules/', '/lib-commonjs/', '\\.js$'],
 
         reporters: [path.resolve(__dirname, './jest-reporter.js')],
 
@@ -31,7 +33,9 @@ module.exports = {
 
         globals: {
           'ts-jest': {
-            tsConfigFile: path.resolve(process.cwd(), 'tsconfig.json')
+            tsConfig: path.resolve(process.cwd(), 'tsconfig.json'),
+            packageJson: path.resolve(process.cwd(), 'package.json'),
+            diagnostics: false
           }
         },
 

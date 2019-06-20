@@ -167,7 +167,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 onClick={prevMonthInBounds ? this._onSelectPrevMonth : undefined}
                 onKeyDown={prevMonthInBounds ? this._onPrevMonthKeyDown : undefined}
                 aria-controls={dayPickerId}
-                aria-label={
+                title={
                   strings.prevMonthAriaLabel
                     ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()]
                     : undefined
@@ -186,7 +186,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 onClick={nextMonthInBounds ? this._onSelectNextMonth : undefined}
                 onKeyDown={nextMonthInBounds ? this._onNextMonthKeyDown : undefined}
                 aria-controls={dayPickerId}
-                aria-label={
+                title={
                   strings.nextMonthAriaLabel
                     ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()]
                     : undefined
@@ -201,7 +201,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   className={css('ms-DatePicker-closeButton js-closeButton', styles.closeButton)}
                   onClick={this._onClose}
                   onKeyDown={this._onCloseButtonKeyDown}
-                  aria-label={strings.closeButtonAriaLabel}
+                  title={strings.closeButtonAriaLabel}
                   role="button"
                   type="button"
                 >

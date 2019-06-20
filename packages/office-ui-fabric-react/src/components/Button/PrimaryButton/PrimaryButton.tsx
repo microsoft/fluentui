@@ -3,6 +3,9 @@ import { BaseComponent, customizable, nullRender } from '../../../Utilities';
 import { DefaultButton } from '../DefaultButton/DefaultButton';
 import { IButtonProps } from '../Button.types';
 
+/**
+ * {@docCategory Button}
+ */
 @customizable('PrimaryButton', ['theme', 'styles'], true)
 export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
   /**

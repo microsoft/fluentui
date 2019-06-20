@@ -1,9 +1,16 @@
+import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { DocumentCardDetailsBase } from './DocumentCardDetails.base';
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardDetails {}
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardDetailsProps extends React.Props<DocumentCardDetailsBase> {
   /**
    * Gets the component ref.
@@ -26,6 +33,9 @@ export interface IDocumentCardDetailsProps extends React.Props<DocumentCardDetai
   className?: string;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardDetailsStyleProps {
   /**
    * Accept theme prop.
@@ -38,6 +48,9 @@ export interface IDocumentCardDetailsStyleProps {
   className?: string;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardDetailsStyles {
   root: IStyle;
 }

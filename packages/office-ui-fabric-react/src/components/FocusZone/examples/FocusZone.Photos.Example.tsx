@@ -20,19 +20,17 @@ const classNames = mergeStyleSets({
     boxSizing: 'border-box',
     selectors: {
       '&:focus': {
-        outline: 'none',
-        selectors: {
-          '&:after': {
-            content: '',
-            position: 'absolute',
-            right: 4,
-            left: 4,
-            top: 4,
-            bottom: 4,
-            border: '1px solid ' + theme.palette.white,
-            outline: '2px solid ' + theme.palette.themePrimary
-          }
-        }
+        outline: 'none'
+      },
+      '&:focus:after': {
+        content: '""',
+        position: 'absolute',
+        right: 4,
+        left: 4,
+        top: 4,
+        bottom: 4,
+        border: '1px solid ' + theme.palette.white,
+        outline: '2px solid ' + theme.palette.themePrimary
       }
     }
   }

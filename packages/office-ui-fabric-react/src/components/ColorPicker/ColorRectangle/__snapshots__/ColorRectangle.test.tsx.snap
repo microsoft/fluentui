@@ -5,6 +5,8 @@ exports[`ColorRectangle renders correctly 1`] = `
   className=
       ms-ColorPicker-colorRect
       {
+        border-radius: 2px;
+        border: 1px solid #f3f2f1;
         margin-bottom: 10px;
         position: relative;
       }
@@ -50,12 +52,23 @@ exports[`ColorRectangle renders correctly 1`] = `
         {
           background: white;
           border-radius: 50%;
-          border: 1px solid rgba(255,255,255,.8);
-          box-shadow: 0 0 15px -5px black;
+          border: 1px solid #8a8886;
+          box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
           height: 20px;
           position: absolute;
           transform: translate(-50%, -50%);
           width: 20px;
+        }
+        &:before {
+          border-radius: 50%;
+          border: 2px solid #ffffff;
+          bottom: 0px;
+          box-sizing: border-box;
+          content: "";
+          left: 0px;
+          position: absolute;
+          right: 0px;
+          top: 0px;
         }
     style={
       Object {

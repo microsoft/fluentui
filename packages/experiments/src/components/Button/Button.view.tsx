@@ -1,25 +1,27 @@
 /** @jsx withSlots */
-import { Stack, Text } from 'office-ui-fabric-react';
+import { Stack, Text, KeytipData } from 'office-ui-fabric-react';
 import { withSlots, getSlots } from '../../Foundation';
-import { getNativeProps, buttonProperties } from '../../Utilities';
+import { getNativeProps, anchorProperties, buttonProperties } from '../../Utilities';
 import { Icon } from '../../utilities/factoryComponents';
 
-import { IButtonComponent, IButtonProps, IButtonSlots, IButtonViewProps } from './Button.types';
+import { IButtonComponent, IButtonProps, IButtonRootElements, IButtonSlots, IButtonViewProps } from './Button.types';
 
 export const ButtonView: IButtonComponent['view'] = props => {
-  const { icon, content, children, disabled, onClick, ariaLabel, buttonRef, ...rest } = props;
+  const { icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
+
+  const { slotType, htmlType, propertiesType } = _deriveRootType(props);
 
   // TODO: 'href' is anchor property... consider getNativeProps by root type
-  const buttonProps = { ...getNativeProps(rest, buttonProperties) };
+  const buttonProps = { ...getNativeProps(rest, propertiesType) };
 
   const Slots = getSlots<IButtonProps, IButtonSlots>(props, {
-    root: _deriveRootType(props),
+    root: slotType,
     stack: Stack,
     icon: Icon,
     content: Text
   });
 
-  const _onClick = (ev: React.MouseEvent<HTMLElement>) => {
+  const _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
     if (!disabled && onClick) {
       onClick(ev);
 
@@ -29,26 +31,44 @@ export const ButtonView: IButtonComponent['view'] = props => {
     }
   };
 
-  return (
+  const Button = (keytipAttributes?: any): JSX.Element => (
     <Slots.root
-      type="button" // stack doesn't take in native button props
+      type={htmlType}
       role="button"
       onClick={_onClick}
       {...buttonProps}
-      disabled={disabled}
+      {...keytipAttributes}
+      disabled={disabled && !allowDisabledFocus}
       aria-disabled={disabled}
+      tabIndex={!disabled || allowDisabledFocus ? 0 : undefined}
       aria-label={ariaLabel}
       ref={buttonRef}
     >
       <Slots.stack horizontal as="span" tokens={{ childrenGap: 8 }} verticalAlign="center" horizontalAlign="center" verticalFill>
-        {icon && <Slots.icon />}
-        {content && <Slots.content />}
+        <Slots.icon />
+        <Slots.content />
         {children}
       </Slots.stack>
     </Slots.root>
   );
+
+  return keytipProps ? (
+    <KeytipData keytipProps={keytipProps} disabled={disabled && !allowDisabledFocus}>
+      {(keytipAttributes: any): JSX.Element => Button(keytipAttributes)}
+    </KeytipData>
+  ) : (
+    Button()
+  );
 };
 
-function _deriveRootType(props: IButtonViewProps): keyof JSX.IntrinsicElements {
-  return !!props.href ? 'a' : 'button';
+interface IButtonRootType {
+  slotType: IButtonRootElements;
+  htmlType: 'link' | 'button';
+  propertiesType: string[];
+}
+
+function _deriveRootType(props: IButtonViewProps): IButtonRootType {
+  return !!props.href
+    ? { slotType: 'a', htmlType: 'link', propertiesType: anchorProperties }
+    : { slotType: 'button', htmlType: 'button', propertiesType: buttonProperties };
 }

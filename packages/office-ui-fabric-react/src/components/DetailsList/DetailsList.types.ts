@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DetailsListBase } from './DetailsList.base';
 import { ISelection, SelectionMode, ISelectionZoneProps } from '../../utilities/selection/index';
 import { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IDragDropEvents, IDragDropContext } from './../../utilities/dragdrop/index';
+import { IDragDropEvents, IDragDropContext, IDragDropHelper, IDragDropOptions } from './../../utilities/dragdrop/index';
 import { IGroup, IGroupRenderProps, IGroupDividerProps, IGroupedListProps } from '../GroupedList/index';
 import { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps, IDetailsHeaderBaseProps } from './DetailsHeader';
@@ -14,7 +14,18 @@ import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { IDetailsColumnProps } from './DetailsColumn';
 import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
 
-export { IDetailsHeaderProps, IDetailsRowBaseProps, IDetailsHeaderBaseProps, IDetailsFooterBaseProps };
+export {
+  IDetailsHeaderProps,
+  IDetailsRowBaseProps,
+  IDetailsHeaderBaseProps,
+  IDetailsFooterBaseProps,
+  IDragDropContext,
+  IDragDropEvents,
+  IDragDropHelper,
+  IDragDropOptions,
+  IViewport,
+  IWithViewportProps
+};
 
 /**
  * {@docCategory DetailsList}
@@ -74,6 +85,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
 
   /** The items to render. */
   items: any[];
+
+  /** Set this to true to indicate that the items being displayed is placeholder data. */
+  isPlaceholderData?: boolean;
 
   /** Optional properties to pass through to the list components being rendered. */
   listProps?: IListProps;
@@ -182,13 +196,6 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   onRenderMissingItem?: (index?: number, rowProps?: IDetailsRowProps) => React.ReactNode;
 
   /**
-   * If set to true and we provide an empty array, it will render 10 lines of whatever provided in onRenderMissingItem.
-   * @defaultvalue false
-   * @deprecated Use `ShimmeredDetailsList` pass-through component instead which supports this prop. Will be removed in Fabric 7.0
-   */
-  enableShimmer?: boolean;
-
-  /**
    * An override to render the details header.
    */
   onRenderDetailsHeader?: IRenderFunction<IDetailsHeaderProps>;
@@ -226,7 +233,10 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** Optional callback to get the aria-describedby IDs (space separated strings) of the elements that describe the item. */
   getRowAriaDescribedBy?: (item: any) => string;
 
-  /** Optional callback to get the item key, to be used in the selection and on render. */
+  /**
+   * Optional callback to get the item key, to be used in the selection and on render.
+   * Must be provided if sorting or filtering is enabled.
+   */
   getKey?: (item: any, index?: number) => string;
 
   /** A text summary of the table set via aria-label. */

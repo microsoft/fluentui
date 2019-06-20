@@ -41,7 +41,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
   const ratingStarUncheckedColor = palette.neutralTertiary;
   const ratingStarUncheckedHoverColor = palette.themePrimary;
   const ratingStarUncheckedHoverSelectedColor = palette.themeDark;
-  const ratingStarCheckedColor = semanticColors.bodyTextChecked;
+  const ratingStarCheckedColor = palette.neutralPrimary;
   const ratingStarDisabledColor = semanticColors.disabledBodySubtext;
 
   return {
@@ -103,7 +103,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
       _getColorWithHighContrast(ratingStarCheckedColor, 'Highlight')
     ],
     ratingButton: [
-      getFocusStyle(theme, 0),
+      getFocusStyle(theme),
       classNames.ratingButton,
       {
         backgroundColor: 'transparent',

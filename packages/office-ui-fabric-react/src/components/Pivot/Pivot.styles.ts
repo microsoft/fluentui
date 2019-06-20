@@ -1,14 +1,5 @@
 import { IPivotStyleProps, IPivotStyles } from './Pivot.types';
-import {
-  AnimationVariables,
-  getFocusStyle,
-  getGlobalClassNames,
-  HighContrastSelector,
-  IStyle,
-  normalize,
-  FontSizes,
-  FontWeights
-} from '../../Styling';
+import { AnimationVariables, getGlobalClassNames, HighContrastSelector, IStyle, normalize, FontSizes, FontWeights } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
 const globalClassNames = {
@@ -24,7 +15,7 @@ const globalClassNames = {
 };
 
 const linkStyles = (props: IPivotStyleProps): IStyle[] => {
-  const { rootIsLarge, rootIsTabs, theme } = props;
+  const { rootIsLarge, rootIsTabs } = props;
   const { palette, semanticColors } = props.theme;
   return [
     {
@@ -32,42 +23,54 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
       display: 'inline-block',
       fontSize: FontSizes.medium,
       fontWeight: FontWeights.regular,
-      lineHeight: '40px',
-      marginRight: '8px',
+      lineHeight: 44,
+      height: 44,
+      marginRight: 8,
       padding: '0 8px',
       textAlign: 'center',
       position: 'relative',
       backgroundColor: 'transparent',
       border: 0,
+      borderRadius: 0,
       selectors: {
         ':before': {
           backgroundColor: 'transparent',
           bottom: 0,
           content: '""',
-          height: '2px',
-          left: '8px',
+          height: 2,
+          left: 8,
           position: 'absolute',
-          right: '8px',
-          transition: `background-color ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2}`
+          right: 8,
+          transition: `left ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2},
+                      right ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2}`
         },
         ':after': {
           color: 'transparent',
-          content: 'attr(title)',
+          content: 'attr(data-content)',
           display: 'block',
           fontWeight: FontWeights.bold,
-          height: '1px',
+          height: 1,
           overflow: 'hidden',
           visibility: 'hidden'
         },
         ':hover': {
+          backgroundColor: palette.neutralLighter,
           color: semanticColors.actionLinkHovered,
           cursor: 'pointer'
+        },
+        ':active': {
+          backgroundColor: palette.neutralLight
         },
         ':focus': {
           outline: 'none'
         },
         [`.${IsFocusVisibleClassName} &:focus`]: {
           outline: `1px solid ${semanticColors.focusBorder}`
+        },
+        [`.${IsFocusVisibleClassName} &:focus:after`]: {
+          content: 'attr(data-content)',
+          position: 'relative',
+          border: 0
         }
       }
     },
@@ -75,11 +78,10 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
       fontSize: FontSizes.large
     },
     rootIsTabs && [
-      getFocusStyle(theme),
       {
         marginRight: 0,
-        height: '40px',
-        lineHeight: '40px',
+        height: 44,
+        lineHeight: 44,
         backgroundColor: palette.neutralLighter,
         padding: '0 10px',
         verticalAlign: 'top',
@@ -123,20 +125,13 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
     link: [
       classNames.link,
       ...linkStyles(props),
-      {
-        selectors: {
-          ':hover::before': {
-            boxSizing: 'border-box',
-            borderBottom: '2px solid transparent'
-          }
-        }
-      },
       rootIsTabs && {
         selectors: {
           '&:hover, &:focus': {
             color: palette.black
           },
-          ':active': {
+          '&:active, &:hover': {
+            color: palette.white,
             backgroundColor: palette.themePrimary
           }
         }
@@ -150,13 +145,16 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         fontWeight: FontWeights.semibold,
         selectors: {
           ':before': {
-            boxSizing: 'border-box',
-            borderBottom: `2px solid ${semanticColors.inputBackgroundChecked}`,
+            backgroundColor: semanticColors.inputBackgroundChecked,
             selectors: {
               [HighContrastSelector]: {
-                borderBottomColor: 'Highlight'
+                backgroundColor: 'Highlight'
               }
             }
+          },
+          ':hover::before': {
+            left: 0,
+            right: 0
           },
           [HighContrastSelector]: {
             color: 'Highlight'
@@ -166,7 +164,7 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
       rootIsTabs && {
         backgroundColor: palette.themePrimary,
         color: palette.white,
-        fontWeight: FontWeights.semilight,
+        fontWeight: FontWeights.regular,
         selectors: {
           ':before': {
             backgroundColor: 'transparent',
@@ -179,7 +177,12 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
             content: '""',
             height: 'auto'
           },
-          '&:active, &:hover': {
+          ':hover': {
+            backgroundColor: palette.themeDarkAlt,
+            color: palette.white
+          },
+          '&:active': {
+            backgroundColor: palette.themeDark,
             color: palette.white
           },
           [HighContrastSelector]: {

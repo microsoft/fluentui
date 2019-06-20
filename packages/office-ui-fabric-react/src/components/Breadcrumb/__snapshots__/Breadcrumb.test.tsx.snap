@@ -30,12 +30,16 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
               margin-bottom: 1px;
               margin-left: 0;
               margin-right: 0;
-              margin-top: 23px;
+              margin-top: 11px;
             }
         role="navigation"
       >
         <div
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
           data-focuszone-id="FocusZone1"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -76,17 +80,23 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                     padding-top: 0;
                     position: relative;
                   }
+                  &:last-child .ms-Breadcrumb-itemLink {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+                  &:last-child .ms-Breadcrumb-item {
+                    color: #323130;
+                    font-weight: 600;
+                  }
             >
               <span
                 className=
                     ms-Breadcrumb-item
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #333333;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 21px;
-                      font-weight: 100;
+                      color: #605e5c;
+                      font-size: 18px;
+                      font-weight: 400;
+                      line-height: 36px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -111,12 +121,13 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                 </div>
               </span>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #666666;
+                      color: #605e5c;
                       display: inline-block;
                       font-family: "FabricMDL2Icons";
                       font-size: 12px;
@@ -157,17 +168,23 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                     padding-top: 0;
                     position: relative;
                   }
+                  &:last-child .ms-Breadcrumb-itemLink {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+                  &:last-child .ms-Breadcrumb-item {
+                    color: #323130;
+                    font-weight: 600;
+                  }
             >
               <span
                 className=
                     ms-Breadcrumb-item
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #333333;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 21px;
-                      font-weight: 100;
+                      color: #605e5c;
+                      font-size: 18px;
+                      font-weight: 400;
+                      line-height: 36px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -192,12 +209,13 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                 </div>
               </span>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #666666;
+                      color: #605e5c;
                       display: inline-block;
                       font-family: "FabricMDL2Icons";
                       font-size: 12px;
@@ -238,17 +256,23 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                     padding-top: 0;
                     position: relative;
                   }
+                  &:last-child .ms-Breadcrumb-itemLink {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+                  &:last-child .ms-Breadcrumb-item {
+                    color: #323130;
+                    font-weight: 600;
+                  }
             >
               <span
                 className=
                     ms-Breadcrumb-item
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #333333;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 21px;
-                      font-weight: 100;
+                      color: #605e5c;
+                      font-size: 18px;
+                      font-weight: 400;
+                      line-height: 36px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -273,12 +297,13 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                 </div>
               </span>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #666666;
+                      color: #605e5c;
                       display: inline-block;
                       font-family: "FabricMDL2Icons";
                       font-size: 12px;
@@ -319,17 +344,23 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                     padding-top: 0;
                     position: relative;
                   }
+                  &:last-child .ms-Breadcrumb-itemLink {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+                  &:last-child .ms-Breadcrumb-item {
+                    color: #323130;
+                    font-weight: 600;
+                  }
             >
               <span
                 className=
                     ms-Breadcrumb-item
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #333333;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 21px;
-                      font-weight: 100;
+                      color: #605e5c;
+                      font-size: 18px;
+                      font-weight: 400;
+                      line-height: 36px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -392,12 +423,16 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
               margin-bottom: 1px;
               margin-left: 0;
               margin-right: 0;
-              margin-top: 23px;
+              margin-top: 11px;
             }
         role="navigation"
       >
         <div
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
           data-focuszone-id="FocusZone6"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -442,10 +477,10 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #605e5c;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -475,7 +510,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -495,19 +530,24 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       top: 0px;
                     }
                     &:hover {
-                      background-color: #f4f4f4;
-                      color: #212121;
+                      background-color: #f3f2f1;
+                      color: #323130;
+                      cursor: pointer;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #c8c8c8;
-                      color: #333333;
+                      background-color: #edebe9;
+                      color: #323130;
                     }
-                    &:hover:active {
-                      background-color: #d0d0d0;
+                    &:active:hover {
+                      background-color: #edebe9;
+                      color: #323130;
+                    }
+                    &:active, &:hover, &:active:hover {
+                      text-decoration: none;
                     }
                     @media only screen and (min-width: 0px) and (max-width: 479px){& {
                       padding-bottom: 4px;
@@ -516,7 +556,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       padding-top: 4px;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                      font-size: 15px;
+                      font-size: 16px;
                     }
                 data-is-focusable={true}
                 onClick={[Function]}
@@ -540,6 +580,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -569,12 +610,13 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                 </div>
               </button>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #666666;
+                      color: #605e5c;
                       display: inline-block;
                       font-family: "FabricMDL2Icons";
                       font-size: 12px;
@@ -615,17 +657,23 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     padding-top: 0;
                     position: relative;
                   }
+                  &:last-child .ms-Breadcrumb-itemLink {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+                  &:last-child .ms-Breadcrumb-item {
+                    color: #323130;
+                    font-weight: 600;
+                  }
             >
               <span
                 className=
                     ms-Breadcrumb-item
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #333333;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 21px;
-                      font-weight: 100;
+                      color: #605e5c;
+                      font-size: 18px;
+                      font-weight: 400;
+                      line-height: 36px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -650,12 +698,13 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                 </div>
               </span>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #666666;
+                      color: #605e5c;
                       display: inline-block;
                       font-family: "FabricMDL2Icons";
                       font-size: 12px;
@@ -696,17 +745,23 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     padding-top: 0;
                     position: relative;
                   }
+                  &:last-child .ms-Breadcrumb-itemLink {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+                  &:last-child .ms-Breadcrumb-item {
+                    color: #323130;
+                    font-weight: 600;
+                  }
             >
               <span
                 className=
                     ms-Breadcrumb-item
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #333333;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 21px;
-                      font-weight: 100;
+                      color: #605e5c;
+                      font-size: 18px;
+                      font-weight: 400;
+                      line-height: 36px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -769,12 +824,16 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
               margin-bottom: 1px;
               margin-left: 0;
               margin-right: 0;
-              margin-top: 23px;
+              margin-top: 11px;
             }
         role="navigation"
       >
         <div
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
           data-focuszone-id="FocusZone12"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -815,17 +874,23 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                     padding-top: 0;
                     position: relative;
                   }
+                  &:last-child .ms-Breadcrumb-itemLink {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+                  &:last-child .ms-Breadcrumb-item {
+                    color: #323130;
+                    font-weight: 600;
+                  }
             >
               <span
                 className=
                     ms-Breadcrumb-item
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #333333;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 21px;
-                      font-weight: 100;
+                      color: #605e5c;
+                      font-size: 18px;
+                      font-weight: 400;
+                      line-height: 36px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -870,17 +935,23 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                     padding-top: 0;
                     position: relative;
                   }
+                  &:last-child .ms-Breadcrumb-itemLink {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+                  &:last-child .ms-Breadcrumb-item {
+                    color: #323130;
+                    font-weight: 600;
+                  }
             >
               <span
                 className=
                     ms-Breadcrumb-item
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #333333;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 21px;
-                      font-weight: 100;
+                      color: #605e5c;
+                      font-size: 18px;
+                      font-weight: 400;
+                      line-height: 36px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -925,17 +996,23 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                     padding-top: 0;
                     position: relative;
                   }
+                  &:last-child .ms-Breadcrumb-itemLink {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+                  &:last-child .ms-Breadcrumb-item {
+                    color: #323130;
+                    font-weight: 600;
+                  }
             >
               <span
                 className=
                     ms-Breadcrumb-item
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #333333;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 21px;
-                      font-weight: 100;
+                      color: #605e5c;
+                      font-size: 18px;
+                      font-weight: 400;
+                      line-height: 36px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -980,17 +1057,23 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                     padding-top: 0;
                     position: relative;
                   }
+                  &:last-child .ms-Breadcrumb-itemLink {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+                  &:last-child .ms-Breadcrumb-item {
+                    color: #323130;
+                    font-weight: 600;
+                  }
             >
               <span
                 className=
                     ms-Breadcrumb-item
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #333333;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 21px;
-                      font-weight: 100;
+                      color: #605e5c;
+                      font-size: 18px;
+                      font-weight: 400;
+                      line-height: 36px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -1053,12 +1136,16 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
               margin-bottom: 1px;
               margin-left: 0;
               margin-right: 0;
-              margin-top: 23px;
+              margin-top: 11px;
             }
         role="navigation"
       >
         <div
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
           data-focuszone-id="FocusZone17"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -1099,17 +1186,23 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     padding-top: 0;
                     position: relative;
                   }
+                  &:last-child .ms-Breadcrumb-itemLink {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+                  &:last-child .ms-Breadcrumb-item {
+                    color: #323130;
+                    font-weight: 600;
+                  }
             >
               <span
                 className=
                     ms-Breadcrumb-item
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #333333;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 21px;
-                      font-weight: 100;
+                      color: #605e5c;
+                      font-size: 18px;
+                      font-weight: 400;
+                      line-height: 36px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -1134,12 +1227,13 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                 </div>
               </span>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #666666;
+                      color: #605e5c;
                       display: inline-block;
                       font-family: "FabricMDL2Icons";
                       font-size: 12px;
@@ -1184,10 +1278,10 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #605e5c;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1217,7 +1311,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -1237,19 +1331,24 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       top: 0px;
                     }
                     &:hover {
-                      background-color: #f4f4f4;
-                      color: #212121;
+                      background-color: #f3f2f1;
+                      color: #323130;
+                      cursor: pointer;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #c8c8c8;
-                      color: #333333;
+                      background-color: #edebe9;
+                      color: #323130;
                     }
-                    &:hover:active {
-                      background-color: #d0d0d0;
+                    &:active:hover {
+                      background-color: #edebe9;
+                      color: #323130;
+                    }
+                    &:active, &:hover, &:active:hover {
+                      text-decoration: none;
                     }
                     @media only screen and (min-width: 0px) and (max-width: 479px){& {
                       padding-bottom: 4px;
@@ -1258,7 +1357,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       padding-top: 4px;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                      font-size: 15px;
+                      font-size: 16px;
                     }
                 data-is-focusable={true}
                 onClick={[Function]}
@@ -1282,6 +1381,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -1311,12 +1411,13 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                 </div>
               </button>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #666666;
+                      color: #605e5c;
                       display: inline-block;
                       font-family: "FabricMDL2Icons";
                       font-size: 12px;
@@ -1357,17 +1458,23 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     padding-top: 0;
                     position: relative;
                   }
+                  &:last-child .ms-Breadcrumb-itemLink {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+                  &:last-child .ms-Breadcrumb-item {
+                    color: #323130;
+                    font-weight: 600;
+                  }
             >
               <span
                 className=
                     ms-Breadcrumb-item
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #333333;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 21px;
-                      font-weight: 100;
+                      color: #605e5c;
+                      font-size: 18px;
+                      font-weight: 400;
+                      line-height: 36px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -1430,12 +1537,16 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
               margin-bottom: 1px;
               margin-left: 0;
               margin-right: 0;
-              margin-top: 23px;
+              margin-top: 11px;
             }
         role="navigation"
       >
         <div
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
           data-focuszone-id="FocusZone23"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -1476,17 +1587,23 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                     padding-top: 0;
                     position: relative;
                   }
+                  &:last-child .ms-Breadcrumb-itemLink {
+                    color: #323130;
+                    font-weight: 600;
+                  }
+                  &:last-child .ms-Breadcrumb-item {
+                    color: #323130;
+                    font-weight: 600;
+                  }
             >
               <span
                 className=
                     ms-Breadcrumb-item
                     {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: #333333;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 21px;
-                      font-weight: 100;
+                      color: #605e5c;
+                      font-size: 18px;
+                      font-weight: 400;
+                      line-height: 36px;
                       padding-bottom: 0;
                       padding-left: 8px;
                       padding-right: 8px;
@@ -1511,12 +1628,13 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                 </div>
               </span>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #666666;
+                      color: #605e5c;
                       display: inline-block;
                       font-family: "FabricMDL2Icons";
                       font-size: 12px;
@@ -1561,10 +1679,10 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #605e5c;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1594,7 +1712,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -1614,19 +1732,24 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       top: 0px;
                     }
                     &:hover {
-                      background-color: #f4f4f4;
-                      color: #212121;
+                      background-color: #f3f2f1;
+                      color: #323130;
+                      cursor: pointer;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #c8c8c8;
-                      color: #333333;
+                      background-color: #edebe9;
+                      color: #323130;
                     }
-                    &:hover:active {
-                      background-color: #d0d0d0;
+                    &:active:hover {
+                      background-color: #edebe9;
+                      color: #323130;
+                    }
+                    &:active, &:hover, &:active:hover {
+                      text-decoration: none;
                     }
                     @media only screen and (min-width: 0px) and (max-width: 479px){& {
                       padding-bottom: 4px;
@@ -1635,7 +1758,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       padding-top: 4px;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                      font-size: 15px;
+                      font-size: 16px;
                     }
                 data-is-focusable={true}
                 onClick={[Function]}
@@ -1659,6 +1782,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -1726,12 +1850,16 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
               margin-bottom: 1px;
               margin-left: 0;
               margin-right: 0;
-              margin-top: 23px;
+              margin-top: 11px;
             }
         role="navigation"
       >
         <div
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
           data-focuszone-id="FocusZone28"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -1776,10 +1904,10 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #605e5c;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1809,7 +1937,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -1829,19 +1957,24 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                       top: 0px;
                     }
                     &:hover {
-                      background-color: #f4f4f4;
-                      color: #212121;
+                      background-color: #f3f2f1;
+                      color: #323130;
+                      cursor: pointer;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #c8c8c8;
-                      color: #333333;
+                      background-color: #edebe9;
+                      color: #323130;
                     }
-                    &:hover:active {
-                      background-color: #d0d0d0;
+                    &:active:hover {
+                      background-color: #edebe9;
+                      color: #323130;
+                    }
+                    &:active, &:hover, &:active:hover {
+                      text-decoration: none;
                     }
                     @media only screen and (min-width: 0px) and (max-width: 479px){& {
                       padding-bottom: 4px;
@@ -1850,7 +1983,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                       padding-top: 4px;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                      font-size: 15px;
+                      font-size: 16px;
                     }
                 data-is-focusable={true}
                 onClick={[Function]}
@@ -1874,6 +2007,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -1941,12 +2075,16 @@ exports[`Breadcrumb renders empty breadcrumb 1`] = `
               margin-bottom: 1px;
               margin-left: 0;
               margin-right: 0;
-              margin-top: 23px;
+              margin-top: 11px;
             }
         role="navigation"
       >
         <div
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
           data-focuszone-id="FocusZone0"
           onFocus={[Function]}
           onKeyDown={[Function]}

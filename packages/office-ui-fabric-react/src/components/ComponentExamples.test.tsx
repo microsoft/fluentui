@@ -94,6 +94,7 @@ declare const global: any;
  *       from the example, or add your component to the exclusion list above.
  *    2) If there is some other run-time issue you can either modify the example or add your component
  *       to the exclusion list above.
+ *    3) Only export functions that are React components from your example.
  *
  * In any case, adding your component to the exclusion list is discouraged as this will make regression
  *    harder to catch.
@@ -182,15 +183,21 @@ describe('Component Examples', () => {
       it('renders ' + componentFileName + ' correctly', () => {
         try {
           const ExampleFile = require(componentFile);
-          Object.keys(ExampleFile).forEach(key => {
-            // Resetting ids by each object creates predictability in generated ids.
-            resetIds();
-            const ComponentUnderTest: React.ComponentClass = ExampleFile[key];
-            const component = renderer.create(<ComponentUnderTest />);
-            const tree = component.toJSON();
-            (expect(tree) as any).toMatchSpecificSnapshot(componentFileName);
-          });
+          // This code assumes all exported example functions are React components and attempts to render them.
+          Object.keys(ExampleFile)
+            .filter(key => typeof ExampleFile[key] === 'function')
+            .forEach(key => {
+              // Resetting ids by each object creates predictability in generated ids.
+              resetIds();
+              const ComponentUnderTest: React.ComponentClass = ExampleFile[key];
+              const component = renderer.create(<ComponentUnderTest />);
+              const tree = component.toJSON();
+              (expect(tree) as any).toMatchSpecificSnapshot(componentFileName);
+            });
         } catch (e) {
+          // If you are getting this error with an example file make sure that the example file only
+          // exports example components. This test attempts to render all exports from an example file and will
+          // generate errors if those exports are functions that are not React components.
           console.warn(
             'ERROR: ' +
               e +
@@ -198,7 +205,8 @@ describe('Component Examples', () => {
               'TEST NOTE: Failure with ' +
               componentFile +
               '. ' +
-              'Have you recently added a component? If so, please see notes in ComponentExamples.test.tsx.'
+              'Have you recently added a component? If so, please see notes in ComponentExamples.test.tsx. ' +
+              'Make sure your example only exports React components and no other functions.'
           );
         }
       });

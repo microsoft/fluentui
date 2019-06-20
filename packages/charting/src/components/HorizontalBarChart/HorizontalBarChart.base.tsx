@@ -67,21 +67,18 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             },
             color: palette.neutralTertiaryAlt
           };
+
+          const chartDataText = this._getChartDataText(points!);
           const bars = this._createBars(points!, palette);
           const keyVal = this._uniqLineText + '_' + index;
           return (
             <div key={index} className={this._classNames.items}>
               <div className={this._classNames.items}>
                 <div className={this._classNames.chartTitle}>
-                  {points!.chartTitle && (
-                    <div>
-                      <strong>{points!.chartTitle}</strong>
-                    </div>
-                  )}
-                  <div>
-                    <strong>{points!.chartData![0].horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</strong>
-                  </div>
+                  {points!.chartTitle && <div className={this._classNames.chartDataText}>{points!.chartTitle}</div>}
+                  {chartDataText}
                 </div>
+                {points!.chartData![0].data && this._createBenchmark(points!)}
                 <svg className={this._classNames.chart}>
                   <g
                     id={keyVal}
@@ -89,6 +86,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                     ref={(e: SVGGElement) => {
                       this._refCallback(e, points!.chartData![0].legend);
                     }}
+                    className={this._classNames.barWrapper}
                     onMouseOver={this._hoverOn.bind(
                       this,
                       points!.chartData![0].horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
@@ -163,6 +161,41 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       color: this.state.lineColor
     });
   };
+
+  private _getChartDataText(data: IChartProps): JSX.Element {
+    const chartDataMode = this.props.chartDataMode || 'default';
+    const x = data!.chartData![0].horizontalBarChartdata!.x;
+    const y = data!.chartData![0].horizontalBarChartdata!.y;
+
+    switch (chartDataMode) {
+      case 'default':
+        return <div className={this._classNames.chartDataText}>{x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</div>;
+      case 'fraction':
+        return (
+          <div>
+            <span className={this._classNames.chartDataText}>{x}</span>
+            <span className={this._classNames.chartDataTextDenominator}>{'/' + y}</span>
+          </div>
+        );
+      case 'percentage':
+        const dataRatio = Math.round((x / y) * 100);
+        return <div className={this._classNames.chartDataText}>{dataRatio + '%'}</div>;
+    }
+  }
+
+  private _createBenchmark(data: IChartProps): JSX.Element {
+    const totalData = data.chartData![0].horizontalBarChartdata!.y;
+    const benchmarkData = data.chartData![0].data;
+    const benchmarkRatio = Math.round(((benchmarkData ? benchmarkData : 0) / totalData) * 100);
+
+    const benchmarkStyles = {
+      marginLeft: 'calc(' + benchmarkRatio + '% - 4px)',
+      marginRight: 'calc(' + (100 - benchmarkRatio) + '% - 4px)'
+    };
+
+    // tslint:disable-next-line:jsx-ban-props
+    return <div className={this._classNames.triangle} style={benchmarkStyles} />;
+  }
 
   private _createBars(data: IChartProps, palette: IPalette): JSX.Element[] {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];

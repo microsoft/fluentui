@@ -1,6 +1,140 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 23 Apr 2019 12:32:00 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+
+## 7.0.3
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 7.0.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Breaking changes
+
+- Remove deprecated `autobind` decorator.
+- createRef: removed (use React.createRef instead)
+
+### Minor changes
+
+- Add utility for checking controlled/uncontrolled prop usage
+
+### Patches
+
+- Update and dedupe React deps.
+
+## 6.41.0
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Minor changes
+
+- Updating `getNativeAttributes` element allow lists to be more refined, reducing unexpected attributes from being injected on primative elements. For example, `min` and `max` were being allowed to be injected for `div` elements. Now they are only injected for `input` elements.
+
+### Patches
+
+- Setting the styles props only when either of defaultProps or componentProps have it defined
+- upgrade to api-extractor 7.1.6
+
+## 6.40.1
+Thu, 06 Jun 2019 12:22:24 GMT
+
+### Patches
+
+- Fix ./index import from selection
+
+## 6.40.0
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Minor changes
+
+- Migrate Selection to Utilities
+
+## 6.39.3
+Wed, 29 May 2019 12:21:24 GMT
+
+### Patches
+
+- Revert styled and classNameFunctions perf improvements temporarily.
+
+## 6.39.2
+Fri, 24 May 2019 14:51:14 GMT
+
+### Patches
+
+- remove usage of process
+
+## 6.39.1
+Fri, 24 May 2019 12:21:33 GMT
+
+### Patches
+
+- Fix wrapped styled regression caused by nested style arrays.
+- Mutually exclusive warnings are not displayed if value of the prop is undefined
+
+## 6.39.0
+Wed, 22 May 2019 12:21:34 GMT
+
+### Minor changes
+
+- The `getClassNames` function now returns memoized classnames, resulting in improved performance in high repeat scenarios (like lists rendering checks.)
+
+## 6.38.3
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.38.2
+Tue, 14 May 2019 01:56:43 GMT
+
+### Patches
+
+- Removed a few more `typeof window` references to avoid memory leaks with IE11.
+
+## 6.38.1
+Thu, 02 May 2019 12:36:35 GMT
+
+### Patches
+
+- a new line is added to the end of the api-extractor.json file
+
+## 6.38.0
+Wed, 01 May 2019 12:34:24 GMT
+
+### Minor changes
+
+- Export Omit from utilities
+
+## 6.37.1
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Patches
+
+- Adds pointer events to baseElementProperties
+
+## 6.37.0
+Sat, 27 Apr 2019 00:04:47 GMT
+
+### Minor changes
+
+- The `styled` helper can now take in a pure flag to create pure components. Note that in a future release we'd like to match the `styled` contracts of other libraries which can take in a View and an options property bag, but for now to make this non-breaking we'll add another argument.
+
+## 6.36.0
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Minor changes
+
+- Make isFocusVisible toggleable by user.
 
 ## 6.35.7
 Tue, 23 Apr 2019 12:32:00 GMT

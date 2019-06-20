@@ -99,7 +99,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
 
   private _getIconSpan(): JSX.Element {
     return (
-      <div className={this._classNames.iconContainer}>
+      <div className={this._classNames.iconContainer} aria-hidden>
         <Icon iconName={this.ICON_MAP[this.props.messageBarType!]} className={this._classNames.icon} />
       </div>
     );
@@ -139,7 +139,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderInnerText(): JSX.Element {
-    const nativeProps = getNativeProps(this.props, htmlElementProperties, ['className']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(this.props, htmlElementProperties, ['className']);
 
     return (
       <div className={this._classNames.text} id={this.state.labelId}>

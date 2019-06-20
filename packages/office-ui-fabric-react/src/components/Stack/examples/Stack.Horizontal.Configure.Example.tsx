@@ -1,10 +1,16 @@
 import * as React from 'react';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack } from '../Stack';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import {
+  Checkbox,
+  DefaultPalette,
+  Dropdown,
+  IDropdownOption,
+  Slider,
+  Stack,
+  IStackStyles,
+  IStackItemStyles,
+  IStackTokens,
+  TextField
+} from 'office-ui-fabric-react';
 
 export type HorizontalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 export type VerticalAlignment = 'start' | 'center' | 'end';
@@ -71,49 +77,47 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       emptyChildren
     } = this.state;
 
-    const styles = mergeStyleSets({
+    // Styles definition
+    const stackStyles: IStackStyles = {
       root: [
         {
           background: DefaultPalette.themeTertiary,
-          minHeight: 100,
           marginLeft: 10,
           marginRight: 10,
+          minHeight: 100,
           width: `calc(${wrapperWidth}% - 20px)`
         },
         preventOverflow && {
           overflow: 'hidden' as 'hidden'
         }
       ],
-
-      item: {
-        width: 50,
-        height: 50,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: DefaultPalette.themePrimary,
-        color: DefaultPalette.white,
-        boxShadow: showBoxShadow ? `0px 0px 10px 5px ${DefaultPalette.themeDarker}` : ''
-      }
-    });
-
-    const stackStyles = {
       inner: {
         overflow: preventOverflow ? 'hidden' : ('visible' as 'hidden' | 'visible')
       }
     };
-
-    const tokens = {
-      sectionStack: {
-        childrenGap: 10
-      },
-      configureStack: {
-        childrenGap: 20
+    const stackItemStyles: IStackItemStyles = {
+      root: {
+        alignItems: 'center',
+        background: DefaultPalette.themePrimary,
+        boxShadow: showBoxShadow ? `0px 0px 10px 5px ${DefaultPalette.themeDarker}` : '',
+        color: DefaultPalette.white,
+        display: 'flex',
+        height: 50,
+        justifyContent: 'center',
+        width: 50
       }
     };
 
+    // Tokens definition
+    const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+    const configureStackTokens: IStackTokens = { childrenGap: 20 };
+    const exampleStackTokens: IStackTokens = {
+      childrenGap: rowGap + ' ' + columnGap,
+      padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`
+    };
+
     return (
-      <Stack tokens={tokens.sectionStack}>
+      <Stack tokens={sectionStackTokens}>
         <Stack horizontal disableShrink>
           <Stack.Item grow>
             <Stack>
@@ -133,7 +137,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
             </Stack>
           </Stack.Item>
           <Stack.Item grow>
-            <Stack horizontal disableShrink tokens={tokens.configureStack}>
+            <Stack horizontal disableShrink tokens={configureStackTokens}>
               <Stack>
                 <Checkbox label="Wrap items" onChange={this._onWrapChange} styles={{ root: { marginBottom: 10 } }} />
                 <Checkbox label="Shrink items" onChange={this._onShrinkChange} />
@@ -153,7 +157,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal disableShrink tokens={tokens.configureStack}>
+        <Stack horizontal disableShrink tokens={configureStackTokens}>
           <Stack.Item grow>
             <Stack>
               <Slider
@@ -222,7 +226,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal disableShrink tokens={tokens.configureStack} verticalAlign="end">
+        <Stack horizontal disableShrink verticalAlign="end" tokens={configureStackTokens}>
           <Stack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}
@@ -260,20 +264,22 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           horizontal
           wrap={wrap}
           disableShrink={disableShrink}
-          tokens={{ childrenGap: rowGap + ' ' + columnGap }}
-          padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
           horizontalAlign={horizontalAlignment}
           verticalAlign={verticalAlignment}
-          className={styles.root}
           styles={stackStyles}
+          tokens={exampleStackTokens}
         >
           {this._range(1, numItems).map((value: number, index: number) => {
             if (emptyChildren.indexOf(value.toString()) !== -1) {
-              return hideEmptyChildren ? <Stack.Item key={index} className={styles.item} /> : <span key={index} className={styles.item} />;
+              return hideEmptyChildren ? (
+                <Stack.Item key={index} styles={stackItemStyles} />
+              ) : (
+                <span key={index} style={stackItemStyles.root as React.CSSProperties} />
+              );
             }
 
             return (
-              <span key={index} className={styles.item}>
+              <span key={index} style={stackItemStyles.root as React.CSSProperties}>
                 {value}
               </span>
             );

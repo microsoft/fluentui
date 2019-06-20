@@ -1,9 +1,15 @@
 import * as React from 'react';
-import { Tile, getTileLayout, renderTileWithLayout } from '@uifabric/experiments/lib/Tile';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { css, ISize, fitContentToBounds } from '@uifabric/experiments/lib/Utilities';
-import { SignalField, Signal, NewSignal, SharedSignal, MentionSignal } from '../../signals/Signals';
+import { Checkbox, css, ISize, fitContentToBounds, Icon } from 'office-ui-fabric-react';
+import {
+  SignalField,
+  Signal,
+  NewSignal,
+  SharedSignal,
+  MentionSignal,
+  Tile,
+  getTileLayout,
+  renderTileWithLayout
+} from '@uifabric/experiments';
 import { lorem } from '@uifabric/example-app-base';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 

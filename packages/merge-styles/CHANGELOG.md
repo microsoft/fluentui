@@ -1,6 +1,69 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 15 Apr 2019 12:33:42 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 6.19.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Minor changes
+
+- Changin borderBottomLeftRadius, borderBottomRightRadius, borderTopLeftRadius and borderTopRightRadius to be of type ICSSPixelUnitRule, like borderRadius, instead of type string.
+
+## 6.18.1
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- upgrade to api-extractor 7.1.6
+
+## 6.18.0
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Minor changes
+
+- Fix TS 3.5 typing issues.
+
+## 6.17.4
+Tue, 21 May 2019 12:20:44 GMT
+
+### Patches
+
+- Use shared demo app bootstrapping code
+
+## 6.17.3
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.17.2
+Wed, 08 May 2019 12:37:40 GMT
+
+### Patches
+
+- merge-styles: Removing `typeof window` call in `getInstance` to remove an IE11 memory leak.
+
+## 6.17.1
+Thu, 02 May 2019 12:36:35 GMT
+
+### Patches
+
+- a new line is added to the end of the api-extractor.json file
 
 ## 6.17.0
 Mon, 15 Apr 2019 12:33:42 GMT

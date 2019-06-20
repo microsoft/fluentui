@@ -230,10 +230,6 @@ export const StackPageProps: IDocPageProps = {
       codepenJS: HorizontalStackConfigureExampleCodepen
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Stack/Stack.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Stack/StackItem/StackItem.types.ts')
-  ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Stack/docs/StackOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Stack/docs/StackDos.md'),

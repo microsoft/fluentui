@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Toggle } from '../index';
-import { IToggleComponent, IToggleTokenReturnType } from '../Toggle.types';
+import { IToggleComponent, IToggleTokenReturnType, Toggle } from '@uifabric/experiments';
 
 const toggleTokens: IToggleComponent['tokens'] = (props): IToggleTokenReturnType => {
   return {

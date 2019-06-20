@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { ICheckProps, ICheckStyleProps, ICheckStyles } from './Check.types';
 import { CheckBase } from './Check.base';
@@ -9,5 +10,6 @@ export const Check: React.StatelessComponent<ICheckProps> = styled<ICheckProps, 
   undefined,
   {
     scope: 'Check'
-  }
+  },
+  true
 );

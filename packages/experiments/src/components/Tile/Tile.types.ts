@@ -89,4 +89,9 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    * Link ref
    */
   linkRef?: (element: HTMLAnchorElement | HTMLButtonElement | null) => void;
+
+  /**
+   * Whether the component should render with Fluent styling or not
+   */
+  isFluentStyling?: boolean;
 }

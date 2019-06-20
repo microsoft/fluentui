@@ -3,6 +3,7 @@ import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
+import * as renderer from 'react-test-renderer';
 
 import { IContextualMenuProps, IContextualMenuStyles, IContextualMenu } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
@@ -509,16 +510,16 @@ describe('ContextualMenu', () => {
     expect(menuItems.length).toEqual(3);
 
     menuItems[0].focus();
-    expect(document.activeElement.textContent).toEqual('TestText 1');
-    expect(document.activeElement.className.split(' ')).not.toContain('is-disabled');
+    expect(document.activeElement!.textContent).toEqual('TestText 1');
+    expect(document.activeElement!.className.split(' ')).not.toContain('is-disabled');
 
     menuItems[1].focus();
-    expect(document.activeElement.textContent).toEqual('TestText 2');
-    expect(document.activeElement.className.split(' ')).toContain('is-disabled');
+    expect(document.activeElement!.textContent).toEqual('TestText 2');
+    expect(document.activeElement!.className.split(' ')).toContain('is-disabled');
 
     menuItems[2].focus();
-    expect(document.activeElement.textContent).toEqual('TestText 3');
-    expect(document.activeElement.className.split(' ')).toContain('is-disabled');
+    expect(document.activeElement!.textContent).toEqual('TestText 3');
+    expect(document.activeElement!.className.split(' ')).toContain('is-disabled');
   });
 
   it('cannot click on disabled items', () => {
@@ -918,6 +919,48 @@ describe('ContextualMenu', () => {
     expect(customRenderer).toHaveBeenCalledTimes(2);
   });
 
+  describe('ContextualMenu snapshot', () => {
+    it('ContextualMenu should be present in DOM when hidden (snapshot)', () => {
+      // Mock createPortal to capture its component hierarchy in snapshot output.
+      const ReactDOM = require('react-dom');
+      const createPortal = ReactDOM.createPortal;
+      ReactDOM.createPortal = jest.fn(element => {
+        return element;
+      });
+      const buttonRef = React.createRef<IButton>();
+      const component = renderer.create(
+        <DefaultButton
+          persistMenu={true}
+          componentRef={buttonRef}
+          menuProps={{
+            items: [
+              {
+                text: 'Test1',
+                key: 'Test1',
+                subMenuProps: {
+                  items: [
+                    {
+                      text: 'Test2',
+                      key: 'Test2',
+                      className: 'SubMenuClass'
+                    }
+                  ]
+                }
+              }
+            ],
+            hidden: false
+          }}
+        />
+      );
+      buttonRef.current!.openMenu();
+      buttonRef.current!.dismissMenu();
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+
+      ReactDOM.createPortal = createPortal;
+    });
+  });
+
   describe('ContextualMenu with hidden prop tests', () => {
     const contextualItem = React.createRef<IContextualMenuRenderItem>();
     const contextualMenu = React.createRef<IContextualMenu>();
@@ -959,6 +1002,8 @@ describe('ContextualMenu', () => {
     });
 
     it('ContextualMenu should be present in DOM when hidden', () => {
+      button.current!.openMenu();
+      button.current!.dismissMenu();
       expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
     });
 

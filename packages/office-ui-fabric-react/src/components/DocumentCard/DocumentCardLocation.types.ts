@@ -1,8 +1,16 @@
+import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { DocumentCardLocationBase } from './DocumentCardLocation.base';
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardLocation {}
+
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocationBase> {
   /**
    * Gets the component ref.
@@ -45,6 +53,9 @@ export interface IDocumentCardLocationProps extends React.ClassAttributes<Docume
   className?: string;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardLocationStyleProps {
   /**
    * Accept theme prop.
@@ -57,6 +68,9 @@ export interface IDocumentCardLocationStyleProps {
   className?: string;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardLocationStyles {
   root: IStyle;
 }

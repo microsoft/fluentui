@@ -22,8 +22,10 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
       className=
 
           {
+            align-items: center;
             display: inline-flex;
             float: left;
+            height: 32px;
             margin-right: 10px;
           }
     >
@@ -39,10 +41,10 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
               font-size: 20px;
               font-style: normal;
               font-weight: normal;
-              padding-bottom: 2px;
+              padding-bottom: 0;
               padding-left: 5px;
               padding-right: 5px;
-              padding-top: 2px;
+              padding-top: 0;
               speak: none;
             }
         data-icon-name="IncreaseIndentLegacy"
@@ -58,20 +60,21 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
+              line-height: 20px;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
               margin-top: 0px;
               overflow-wrap: break-word;
-              padding-bottom: 2px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 2px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
               pointer-events: none;
               word-wrap: break-word;
             }
@@ -85,21 +88,18 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
       className=
 
           {
-            border-color: #a6a6a6;
-            border-style: solid;
-            border-width: 1px;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-sizing: border-box;
             display: flex;
             height: 32px;
             min-width: 86px;
           }
           &:hover {
-            border-color: #333333;
-            outline: 2px dashed transparent;
+            border-color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
-            outline: none;
           }
     >
       <input
@@ -112,29 +112,30 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
         className=
             ms-spinButton-input
             {
+              border-radius: 2px 0 0 2px;
               border-style: none;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               cursor: text;
               display: block;
-              float: left;
+              flex: 1;
               font-size: 14px;
               height: 100%;
-              margin-bottom: 0;
-              margin-left: 0;
-              margin-right: 0;
-              margin-top: 0;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               min-width: 72px;
-              outline: 0;
+              outline: 0px;
               overflow: hidden;
               padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 12px;
+              padding-left: 8px;
+              padding-right: 8px;
               padding-top: 0;
               text-overflow: ellipsis;
               user-select: text;
-              width: calc(100% - 14px);
+              white-space: nowrap;
             }
             &::selection {
               background-color: #0078d4;
@@ -162,22 +163,13 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
         className=
 
             {
-              box-sizing: border-box;
               cursor: default;
               display: block;
-              float: left;
-              font-size: 12px;
               height: 100%;
-              outline: none;
-              padding-bottom: 0;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 0;
             }
       >
         <button
           aria-label="Increase value by 1"
-          checked={false}
           className=
               ms-Button
               ms-Button--icon
@@ -186,10 +178,10 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #605e5c;
                 cursor: default;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -197,29 +189,29 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 font-weight: 400;
                 height: 50%;
                 outline: none;
-                padding-bottom: 0;
-                padding-left: 0;
-                padding-right: 0;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
-                width: 14px;
+                width: 23px;
               }
               &::-moz-focus-inner {
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -235,17 +227,23 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 position: relative;
                 top: 0px;
               }
+              &.ms-DownButton {
+                border-radius: 0 0 2px 0;
+              }
+              &.ms-UpButton {
+                border-radius: 0 2px 0 0;
+              }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:active {
                 background-color: Highlight;
@@ -274,6 +272,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -282,15 +281,15 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons-2";
-                    font-size: 6px;
+                    font-size: 8px;
                     font-style: normal;
                     font-weight: normal;
                     height: 16px;
                     line-height: 16px;
-                    margin-bottom: 0;
-                    margin-left: 0;
-                    margin-right: 0;
-                    margin-top: 0;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     speak: none;
                     text-align: center;
                     vertical-align: middle;
@@ -304,7 +303,6 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
         </button>
         <button
           aria-label="Decrease value by 1"
-          checked={false}
           className=
               ms-Button
               ms-Button--icon
@@ -313,10 +311,10 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #605e5c;
                 cursor: default;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -324,29 +322,29 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 font-weight: 400;
                 height: 50%;
                 outline: none;
-                padding-bottom: 0;
-                padding-left: 0;
-                padding-right: 0;
-                padding-top: 0;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
                 position: relative;
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
                 vertical-align: top;
-                width: 14px;
+                width: 23px;
               }
               &::-moz-focus-inner {
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -362,17 +360,23 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 position: relative;
                 top: 0px;
               }
+              &.ms-DownButton {
+                border-radius: 0 0 2px 0;
+              }
+              &.ms-UpButton {
+                border-radius: 0 2px 0 0;
+              }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:active {
                 background-color: Highlight;
@@ -401,6 +405,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -409,15 +414,15 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons-2";
-                    font-size: 6px;
+                    font-size: 8px;
                     font-style: normal;
                     font-weight: normal;
                     height: 16px;
                     line-height: 16px;
-                    margin-bottom: 0;
-                    margin-left: 0;
-                    margin-right: 0;
-                    margin-top: 0;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     speak: none;
                     text-align: center;
                     vertical-align: middle;

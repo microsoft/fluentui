@@ -1,0 +1,326 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Image.CenterContain.Example.tsx correctly 1`] = `
+<div>
+  <p>
+    Setting the imageFit property to "centerContain" will cause the image to scale up or down proportionally. Images smaller than their frame will be rendered as "ImageFit.center", while images larger than both either frame's height or width will render as "ImageFit.contain".
+  </p>
+  <label
+    className=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #323130;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    The image is smaller than the frame, so it's centered and rendered at its natural size.
+  </label>
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+          position: relative;
+        }
+    style={
+      Object {
+        "height": 200,
+        "width": 200,
+      }
+    }
+  >
+    <img
+      alt="Example implementation of the property image fit using the centerContain value on an image smaller than the frame."
+      className=
+          ms-Image-image
+          ms-Image-image--centerContain
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            left: 50% /* @noflip */;
+            max-height: 100%;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%,-50%);
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="http://placehold.it/100x150"
+    />
+  </div>
+  <br />
+  <label
+    className=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #323130;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    The image has a wider width than the frame so it's contained.
+  </label>
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+          position: relative;
+        }
+    style={
+      Object {
+        "height": 200,
+        "width": 200,
+      }
+    }
+  >
+    <img
+      alt="Example implementation of the property image fit using the centerContain value on an image wider than the frame."
+      className=
+          ms-Image-image
+          ms-Image-image--centerContain
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            left: 50% /* @noflip */;
+            max-height: 100%;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%,-50%);
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="http://placehold.it/300x100"
+    />
+  </div>
+  <br />
+  <label
+    className=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #323130;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    The image is taller than the frame so it's contained.
+  </label>
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+          position: relative;
+        }
+    style={
+      Object {
+        "height": 200,
+        "width": 200,
+      }
+    }
+  >
+    <img
+      alt="Example implementation of the property image fit using the centerContain value on an image taller than the frame."
+      className=
+          ms-Image-image
+          ms-Image-image--centerContain
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            left: 50% /* @noflip */;
+            max-height: 100%;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%,-50%);
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="http://placehold.it/100x300"
+    />
+  </div>
+  <br />
+  <label
+    className=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #323130;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    These images are taller and wider than the frame and so they are contained.
+  </label>
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+          position: relative;
+        }
+    style={
+      Object {
+        "height": 200,
+        "width": 200,
+      }
+    }
+  >
+    <img
+      alt="Example implementation of the property image fit using the centerContain value on an image taller and wider than the frame."
+      className=
+          ms-Image-image
+          ms-Image-image--centerContain
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            left: 50% /* @noflip */;
+            max-height: 100%;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%,-50%);
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="http://placehold.it/400x500"
+    />
+  </div>
+  <br />
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+          position: relative;
+        }
+    style={
+      Object {
+        "height": 200,
+        "width": 200,
+      }
+    }
+  >
+    <img
+      alt="Example implementation of the property image fit using the centerContain value on an image taller and wider than the frame."
+      className=
+          ms-Image-image
+          ms-Image-image--centerContain
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            left: 50% /* @noflip */;
+            max-height: 100%;
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%,-50%);
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="http://placehold.it/500x400"
+    />
+  </div>
+</div>
+`;

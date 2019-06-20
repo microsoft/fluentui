@@ -39,14 +39,7 @@ exports[`Component Examples renders Stack.Horizontal.HorizontalAlign.Example.tsx
           width: auto;
         }
         & > * {
-          align-items: center;
-          background: #0078d4;
-          color: #ffffff;
-          display: flex;
-          height: 50px;
-          justify-content: center;
           text-overflow: ellipsis;
-          width: 50px;
         }
         & > *:not(:first-child) {
           margin-left: 0px;
@@ -55,13 +48,49 @@ exports[`Component Examples renders Stack.Horizontal.HorizontalAlign.Example.tsx
           flex-shrink: 1;
         }
   >
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       1
     </span>
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       2
     </span>
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       3
     </span>
   </div>
@@ -82,14 +111,7 @@ exports[`Component Examples renders Stack.Horizontal.HorizontalAlign.Example.tsx
           width: auto;
         }
         & > * {
-          align-items: center;
-          background: #0078d4;
-          color: #ffffff;
-          display: flex;
-          height: 50px;
-          justify-content: center;
           text-overflow: ellipsis;
-          width: 50px;
         }
         & > *:not(:first-child) {
           margin-left: 0px;
@@ -98,13 +120,49 @@ exports[`Component Examples renders Stack.Horizontal.HorizontalAlign.Example.tsx
           flex-shrink: 1;
         }
   >
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       1
     </span>
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       2
     </span>
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       3
     </span>
   </div>
@@ -125,14 +183,7 @@ exports[`Component Examples renders Stack.Horizontal.HorizontalAlign.Example.tsx
           width: auto;
         }
         & > * {
-          align-items: center;
-          background: #0078d4;
-          color: #ffffff;
-          display: flex;
-          height: 50px;
-          justify-content: center;
           text-overflow: ellipsis;
-          width: 50px;
         }
         & > *:not(:first-child) {
           margin-left: 0px;
@@ -141,13 +192,49 @@ exports[`Component Examples renders Stack.Horizontal.HorizontalAlign.Example.tsx
           flex-shrink: 1;
         }
   >
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       1
     </span>
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       2
     </span>
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       3
     </span>
   </div>
@@ -168,14 +255,7 @@ exports[`Component Examples renders Stack.Horizontal.HorizontalAlign.Example.tsx
           width: auto;
         }
         & > * {
-          align-items: center;
-          background: #0078d4;
-          color: #ffffff;
-          display: flex;
-          height: 50px;
-          justify-content: center;
           text-overflow: ellipsis;
-          width: 50px;
         }
         & > *:not(:first-child) {
           margin-left: 0px;
@@ -184,13 +264,49 @@ exports[`Component Examples renders Stack.Horizontal.HorizontalAlign.Example.tsx
           flex-shrink: 1;
         }
   >
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       1
     </span>
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       2
     </span>
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       3
     </span>
   </div>
@@ -211,14 +327,7 @@ exports[`Component Examples renders Stack.Horizontal.HorizontalAlign.Example.tsx
           width: auto;
         }
         & > * {
-          align-items: center;
-          background: #0078d4;
-          color: #ffffff;
-          display: flex;
-          height: 50px;
-          justify-content: center;
           text-overflow: ellipsis;
-          width: 50px;
         }
         & > *:not(:first-child) {
           margin-left: 0px;
@@ -227,13 +336,49 @@ exports[`Component Examples renders Stack.Horizontal.HorizontalAlign.Example.tsx
           flex-shrink: 1;
         }
   >
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       1
     </span>
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       2
     </span>
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       3
     </span>
   </div>
@@ -254,14 +399,7 @@ exports[`Component Examples renders Stack.Horizontal.HorizontalAlign.Example.tsx
           width: auto;
         }
         & > * {
-          align-items: center;
-          background: #0078d4;
-          color: #ffffff;
-          display: flex;
-          height: 50px;
-          justify-content: center;
           text-overflow: ellipsis;
-          width: 50px;
         }
         & > *:not(:first-child) {
           margin-left: 0px;
@@ -270,13 +408,49 @@ exports[`Component Examples renders Stack.Horizontal.HorizontalAlign.Example.tsx
           flex-shrink: 1;
         }
   >
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       1
     </span>
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       2
     </span>
-    <span>
+    <span
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
+    >
       3
     </span>
   </div>

@@ -2,8 +2,14 @@ import * as React from 'react';
 import { IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 
+/**
+ * {@docCategory Separator}
+ */
 export interface ISeparator {}
 
+/**
+ * {@docCategory Separator}
+ */
 export interface ISeparatorProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Theme (provided through customization.)
@@ -27,9 +33,15 @@ export interface ISeparatorProps extends React.HTMLAttributes<HTMLElement> {
   alignContent?: 'start' | 'center' | 'end';
 }
 
+/**
+ * {@docCategory Separator}
+ */
 export type ISeparatorStyleProps = Required<Pick<ISeparatorProps, 'theme'>> &
   Pick<ISeparatorProps, 'className' | 'alignContent' | 'vertical'>;
 
+/**
+ * {@docCategory Separator}
+ */
 export interface ISeparatorStyles {
   /**
    * Style for the root element

@@ -3,6 +3,7 @@ import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IExampleCardStyles, IExampleCardStyleProps } from './ExampleCard.types';
+import { NeutralColors } from '@uifabric/fluent-theme';
 
 const globalClassNames = {
   root: 'ExampleCard',
@@ -39,11 +40,14 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
   };
 
   const codeButtonActiveStyles: IRawStyle = {
-    backgroundColor: theme.palette.neutralDark,
-    borderColor: theme.palette.neutralDark,
+    backgroundColor: NeutralColors.gray20,
+    borderColor: NeutralColors.gray90,
     selectors: {
-      '.ms-Button-icon, .ms-Button-label': {
-        color: theme.palette.white
+      '.ms-Button-icon': {
+        color: theme.palette.themePrimary
+      },
+      '.ms-Button-label': {
+        color: NeutralColors.gray160
       }
     }
   };
@@ -73,20 +77,15 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
   const buttonStyles: Partial<IButtonStyles> = {
     root: [
       sharedToggleButtonStyles,
-      {
-        // This is meant to be a ratio, so it has to be in quotes so it's not interpreted as pixels
-        lineHeight: '1',
-        selectors: {
-          '&:hover': codeButtonActiveStyles
-        }
-      },
-      globalClassNames.codeButton,
-      isCodeVisible && [codeButtonActiveStyles, globalClassNames.isActive]
+      { lineHeight: '1' }, // quotes prevent interpretation as px
+      globalClassNames.codeButton
     ],
     label: {
       color: theme.palette.neutralDark,
       borderColor: theme.palette.neutralDark
-    }
+    },
+    rootHovered: codeButtonActiveStyles,
+    rootChecked: [codeButtonActiveStyles, globalClassNames.isActive]
   };
 
   return {
@@ -106,12 +105,12 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         position: 'relative'
       },
       isCodeVisible && {
-        borderColor: theme.palette.neutralDark
+        borderColor: NeutralColors.gray90
       },
       globalClassNames.header
     ],
     title: [
-      theme.fonts.large,
+      theme.fonts.medium,
       {
         marginBottom: 10,
         display: 'inline-block'
@@ -119,7 +118,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
       globalClassNames.title
     ],
     toggleButtons: [
-      theme.fonts.large,
+      theme.fonts.medium,
       {
         display: 'flex',
         float: 'right'
@@ -143,7 +142,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
     ],
     code: [
       {
-        backgroundColor: theme.palette.neutralDark,
+        backgroundColor: NeutralColors.gray20,
         overflow: 'hidden',
         selectors: {
           pre: [
@@ -153,11 +152,16 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
               transition: `all ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
             },
             // Collapse code blocks by default
-            isCodeVisible ? { maxHeight: 480, minHeight: 120 } : { maxHeight: 0 }
+            isCodeVisible ? { maxHeight: 480, minHeight: 120 } : { maxHeight: 0 },
+            isCodeVisible && {
+              border: '1px solid ' + NeutralColors.gray90,
+              borderTop: 0
+            }
           ],
           code: {
             display: 'block',
-            margin: 12
+            margin: 12,
+            fontSize: '14px'
           }
         }
       },
@@ -179,7 +183,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         display: 'inline-block',
         marginRight: 50,
         selectors: {
-          h4: [theme.fonts.large, { color: '#177d3e' }]
+          h4: [theme.fonts.medium, { color: '#177d3e' }]
         }
       },
       globalClassNames.dos
@@ -189,7 +193,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         width: 'calc(50%)',
         display: 'inline-block',
         selectors: {
-          h4: [theme.fonts.large, { color: '#a61e22' }]
+          h4: [theme.fonts.medium, { color: '#a61e22' }]
         }
       },
       globalClassNames.donts

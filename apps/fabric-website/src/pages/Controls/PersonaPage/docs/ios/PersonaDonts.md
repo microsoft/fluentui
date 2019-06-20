@@ -1,0 +1,3 @@
+- Alter the colors or the way a person's initials are displayed inside an avatar, otherwise they wont be consistent across platforms or apps.
+- Do not use different size avatars within a persona list, as visual consistency is key in a list view.
+- Do not create a custom size persona. The goal is to have all products and apps use the default array of sizes.

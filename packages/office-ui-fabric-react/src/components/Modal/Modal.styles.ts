@@ -23,9 +23,10 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     theme,
     topOffsetFixed,
     isModeless,
-    layerClassName
+    layerClassName,
+    isDefaultDragHandle
   } = props;
-  const { palette } = theme;
+  const { palette, effects } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
@@ -59,7 +60,8 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     main: [
       classNames.main,
       {
-        boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.4)',
+        boxShadow: effects.elevation64,
+        borderRadius: effects.roundedCorner2,
         backgroundColor: palette.white,
         boxSizing: 'border-box',
         position: 'relative',
@@ -73,6 +75,9 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         hasBeenOpened && {
           top: modalRectangleTop
         },
+      isDefaultDragHandle && {
+        cursor: 'move'
+      },
       containerClassName
     ],
     scrollableContent: [
@@ -97,6 +102,17 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         width: 'unset',
         height: 'unset'
       }
-    ]
+    ],
+    keyboardMoveIconContainer: {
+      position: 'absolute',
+      display: 'flex',
+      justifyContent: 'center',
+      width: '100%',
+      padding: '3px 0px'
+    },
+    keyboardMoveIcon: {
+      fontSize: '24px',
+      width: '24px'
+    }
   };
 };

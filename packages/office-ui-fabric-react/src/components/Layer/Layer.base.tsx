@@ -3,15 +3,7 @@ import * as ReactDOM from 'react-dom';
 
 import { Fabric } from '../../Fabric';
 import { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
-import {
-  classNamesFunction,
-  customizable,
-  getDocument,
-  createRef,
-  setPortalAttribute,
-  setVirtualParent,
-  warnDeprecations
-} from '../../Utilities';
+import { classNamesFunction, customizable, getDocument, setPortalAttribute, setVirtualParent, warnDeprecations } from '../../Utilities';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
 
 export type ILayerBaseState = {
@@ -29,7 +21,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
 
   private _host: Node;
   private _layerElement: HTMLElement | undefined;
-  private _rootElement = createRef<HTMLDivElement>();
+  private _rootElement: HTMLSpanElement | undefined;
 
   constructor(props: ILayerProps) {
     super(props);
@@ -38,7 +30,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
       hasMounted: false
     };
 
-    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
       warnDeprecations('Layer', props, {
         onLayerMounted: 'onLayerDidMount'
       });
@@ -148,8 +140,8 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
   /**
    * rootElement wrapper for setting virtual parent as soon as root element ref is available.
    */
-  private _handleRootElementRef = (ref: HTMLDivElement): void => {
-    this._rootElement(ref);
+  private _handleRootElementRef = (ref: HTMLSpanElement): void => {
+    this._rootElement = ref;
     if (ref) {
       // TODO: Calling _setVirtualParent in this ref wrapper SHOULD allow us to remove
       //    other calls to _setVirtualParent throughout this class. However,
@@ -182,8 +174,8 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
   }
 
   private _setVirtualParent() {
-    if (this._rootElement && this._rootElement.current && this._layerElement) {
-      setVirtualParent(this._layerElement, this._rootElement.current);
+    if (this._rootElement && this._layerElement) {
+      setVirtualParent(this._layerElement, this._rootElement);
     }
   }
 

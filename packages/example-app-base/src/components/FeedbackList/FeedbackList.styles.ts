@@ -30,14 +30,14 @@ export const getStyles: IStyleFunction<IFeedbackListStyleProps, IFeedbackListSty
         // Temporary workaround for https://github.com/OfficeDev/office-ui-fabric-react/issues/6782.
         selectors: {
           '&a:link, &a:hover, &a:focus, &a:visited': {
-            color: theme.palette.white
+            color: theme.palette.white + ' !important'
           }
         }
       },
       globalClassNames.button
     ],
     itemCell: [
-      getFocusStyle(theme, -1),
+      getFocusStyle(theme, { inset: -1 }),
       {
         minHeight: 54,
         padding: 10,
@@ -50,7 +50,7 @@ export const getStyles: IStyleFunction<IFeedbackListStyleProps, IFeedbackListSty
       }
     ],
     itemName: [
-      theme.fonts.xLarge,
+      theme.fonts.mediumPlus,
       {
         whiteSpace: 'nowrap',
         overflow: 'hidden',
@@ -59,12 +59,12 @@ export const getStyles: IStyleFunction<IFeedbackListStyleProps, IFeedbackListSty
     ],
     itemLabel: [
       {
-        fontSize: theme.fonts.medium.fontSize,
+        fontSize: theme.fonts.small.fontSize,
         fontWeight: FontWeights.bold
       },
       globalClassNames.listElement
     ],
-    timeStamp: [{ fontSize: theme.fonts.medium.fontSize }, globalClassNames.timeStamp],
+    timeStamp: [{ fontSize: theme.fonts.small.fontSize }, globalClassNames.timeStamp],
     subComponentStyles: {
       pivot: pivotStyles
     }
