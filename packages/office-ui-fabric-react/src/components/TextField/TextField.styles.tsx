@@ -94,6 +94,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
 
   // placeholder style constants
   const placeholderStyles: IStyle = [
+    theme.fonts.medium,
     {
       color: semanticColors.inputPlaceholderText,
       opacity: 1
@@ -282,6 +283,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       normalize,
       getPlaceholderStyles(placeholderStyles),
       {
+        fontSize: FontSizes.medium,
         borderRadius: 0,
         border: 'none',
         background: 'none',
