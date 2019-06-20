@@ -8,51 +8,15 @@ function appendItems(): void {
   APPEND_EXAMPLE_ITEMS = [...APPEND_EXAMPLE_ITEMS, ...new Array(10).fill(0)];
 }
 
-class PerfMark extends React.PureComponent<{ children?: React.ReactNode }> {
-  private _start: number;
-  private _type: Function | string;
-  private _key: string;
-
-  constructor(props: { children?: React.ReactNode }) {
-    super(props);
-
-    this._start = performance.now();
-    this._key = (this.props.children as { key: string }).key;
-    /* tslint:disable-next-line:no-any */
-    this._type = this._getComponentTypeAsString((this.props.children as any).type);
-  }
-
-  public componentDidMount(): void {
-    const end: number = performance.now();
-    const delta: number = end - this._start;
-
-    console.table(`Type: ${this._type} | Key: ${this._key} | Time to mount: ${delta} ms`);
-  }
-
-  public render(): React.ReactNode {
-    return this.props.children;
-  }
-
-  private _getComponentTypeAsString(componentType: Function | string): string {
-    return typeof componentType === 'function' ? componentType.name : componentType;
-  }
-}
-
 const StaticListExample = () => {
   return (
     <>
       <h1>Unordered-list (default)</h1>
-      <PerfMark>
-        <StaticList items={ITEMS}>
-          {(_item: number, index: number) => {
-            return (
-              <PerfMark>
-                <li key={index}>{`Item #${index}`}</li>
-              </PerfMark>
-            );
-          }}
-        </StaticList>
-      </PerfMark>
+      <StaticList items={ITEMS}>
+        {(_item: number, index: number) => {
+          return <li key={index}>{`Item #${index}`}</li>;
+        }}
+      </StaticList>
     </>
   );
 };
