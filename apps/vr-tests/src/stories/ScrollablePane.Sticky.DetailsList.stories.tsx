@@ -124,13 +124,13 @@ export class ScrollablePaneDetailsListExample extends React.Component<
           height: '80vh',
           position: 'relative',
           maxHeight: 'inherit',
-          width: '700px'
+          width: '900px'
         }}
       >
         <Fabric>
           <div className={classNames.wrapper}>
             <ScrollablePane
-              style={{ maxWidth: '700px', border: '1px solid #edebe9' }}
+              style={{ maxWidth: '900px', border: '1px solid #edebe9' }}
               scrollbarVisibility={ScrollbarVisibility.always}
               stickyAboveContainerBehavior={stickyAboveContainer}
               stickyBelowContainerBehavior={stickyBelowContainer}
