@@ -13,8 +13,9 @@ export interface IChicletXsmallStyles {
    */
   icon?: IStyle;
 
-  innerIcon?: IStyle;
-
+  /**
+   * Style for url.
+   */
   url?: IStyle;
 
   /**
@@ -22,9 +23,10 @@ export interface IChicletXsmallStyles {
    */
   info?: IStyle;
 
+  /**
+   * Style for file preview image.
+   */
   preview?: IStyle;
-
-  titleBox?: IStyle;
 
   /**
    * Style for the title of the file.
@@ -44,7 +46,7 @@ export interface IChicletXsmallStyleProps {
   footerProvided?: boolean;
 
   /**
-   * Accept custom classNames
+   * Accept custom classNames.
    */
   className?: string;
 }

@@ -110,9 +110,13 @@ export interface IChicletCardStyleProps {
   theme: ITheme;
 
   /**
-   * Accept image props.
+   * Whether image is provided
    */
   imageProvided?: boolean;
+
+  /**
+   * Whether imageAlt is provided
+   */
   imageAltProvided?: boolean;
 
   /**

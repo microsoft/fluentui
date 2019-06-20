@@ -21,6 +21,7 @@ const footerStyle = mergeStyles({
   height: 36,
   paddingLeft: 11
 });
+
 const activitiesStyle = mergeStyles({
   width: 184,
   height: 16,
@@ -35,11 +36,13 @@ const activitiesStyle = mergeStyles({
   paddingBottom: 12,
   marginTop: 0
 });
-const actions = mergeStyles({
+
+const actionsStyle = mergeStyles({
   paddingRight: 6,
   position: 'relative'
 });
-const action = mergeStyles({
+
+const actionStyle = mergeStyles({
   float: 'right',
   cursor: 'pointer',
   width: 32,
@@ -86,11 +89,11 @@ function _renderFooter(buttonProps: IButtonProps[], activities: string): React.R
   return (
     <div className={footerStyle}>
       <div className={activitiesStyle}>{activities ? activities : null}</div>
-      <div className={actions}>
+      <div className={actionsStyle}>
         {buttonProps &&
           buttonProps.map((buttonProp: IButtonProps, index: number) => {
             return (
-              <div className={action} key={index}>
+              <div className={actionStyle} key={index}>
                 <IconButton {...buttonProp} />
               </div>
             );

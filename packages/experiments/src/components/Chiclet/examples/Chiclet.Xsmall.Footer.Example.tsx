@@ -21,10 +21,11 @@ export interface IChicletXsmallFooterExampleState {
   textFieldValue: string;
 }
 
-const footerStyling = mergeStyles({
+const footerStyle = mergeStyles({
   display: 'flex'
 });
-const activities = mergeStyles({
+
+const activitiesStyle = mergeStyles({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-end',
@@ -33,14 +34,16 @@ const activities = mergeStyles({
   lineHeight: 1.83,
   letterSpacing: 'normal'
 });
-const attach = mergeStyles({
+
+const attachStyle = mergeStyles({
   width: 25,
   alignSelf: 'center',
   cursor: 'pointer',
   backgroundColor: 'white',
   color: '#0078d7'
 });
-const size = mergeStyles({
+
+const sizeStyle = mergeStyles({
   width: 25,
   fontSize: 12,
   alignSelf: 'center',
@@ -79,13 +82,12 @@ export interface IFooterComponent extends React.Props<FooterComponent> {
 
 function _renderFooter(buttonProps: IButtonProps[], attachProp: IButtonProps): React.ReactElement<HTMLDivElement> {
   return (
-    <div className={footerStyling}>
-      <div className={attach}>
+    <div className={footerStyle}>
+      <div className={attachStyle}>
         <IconButton {...attachProp} />
       </div>
-
-      <div className={size}>{'4MB'}</div>
-      <div className={activities}>
+      <div className={sizeStyle}>{'4MB'}</div>
+      <div className={activitiesStyle}>
         {buttonProps &&
           buttonProps.map((buttonProp: IButtonProps, index: number) => {
             return (

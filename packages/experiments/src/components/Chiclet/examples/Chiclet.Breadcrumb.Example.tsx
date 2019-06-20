@@ -10,6 +10,7 @@ const chevronStyle = mergeStyles({
   paddingLeft: 3,
   paddingRight: 3
 });
+
 const descriptionStyle = mergeStyles({
   fontSize: 12,
   fontWeight: 'normal',

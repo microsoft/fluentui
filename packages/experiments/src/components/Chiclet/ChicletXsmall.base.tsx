@@ -21,13 +21,15 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
     const role = onClick ? 'button' : 'link';
     const tabIndex = onClick ? 0 : undefined;
 
+    return htmlOut(this.props, this._classNames, imageProvided);
+
     return (
       <div tabIndex={tabIndex} role={role} onClick={this._onClick} className={this._classNames.root}>
         <div className={this._classNames.preview}>
           {renderPreview(image, imageHeight, imageWidth, imageAlt)}
           {renderIcon(itemType, this._classNames.icon, imageProvided)}
         </div>
-        <div className={this._classNames.titleBox}>
+        <div className={this._classNames.info}>
           <div className={this._classNames.title}>{title ? title : null}</div>
           <div className={this._classNames.url}>{url ? url : null}</div>
         </div>

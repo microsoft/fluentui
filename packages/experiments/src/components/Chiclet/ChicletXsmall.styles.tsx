@@ -4,9 +4,9 @@ import { IChicletXsmallStyleProps, IChicletXsmallStyles } from './ChicletXsmall.
 const GlobalClassNames = {
   root: 'ms-ChicletXsmall',
   icon: 'ms-ChicletXsmall-icon',
-  innerIcon: 'ms-Chiclet-innerIcon',
+  innerIcon: 'ms-ChicletXsmall-innerIcon',
   preview: 'ms-ChicletXsmall-preview',
-  titleBox: 'ms-ChicletXsmall-titleBox',
+  info: 'ms-ChicletXsmall-info',
   title: 'ms-ChicletXsmall-title'
 };
 
@@ -48,22 +48,14 @@ export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallS
         backgroundColor: theme.palette.neutralLight
       }
     ],
-    innerIcon: [
-      classNames.innerIcon,
-      {
-        position: 'absolute',
-        height: 10,
-        alignSelf: 'baseline'
-      }
-    ],
     preview: [
       classNames.preview,
       {
         flexBasis: '25%'
       }
     ],
-    titleBox: [
-      classNames.titleBox,
+    info: [
+      classNames.info,
       {
         display: 'flex',
         flexWrap: 'wrap',
