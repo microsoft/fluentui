@@ -11,11 +11,11 @@ function defaultRowRenderer<T>(item: T, index: number): JSX.Element {
 }
 
 class StaticList<T> extends React.PureComponent<IStaticListProps<T>> {
-  public render = () => {
+  public render(): JSX.Element {
     const { items = [], as: RootTag = 'ul', children = defaultRowRenderer } = this.props;
 
     return <RootTag>{items.map(children)}</RootTag>;
-  };
+  }
 }
 
 export { StaticList, IStaticListProps };
