@@ -21,7 +21,6 @@ function logProfilerRender(id: string, phase: string, actualTime: number, baseTi
 const StaticListExample = () => {
   return (
     <>
-      <h1>Unordered-list (default)</h1>
       <Profiler id={'StaticList-Basic'} onRender={logProfilerRender}>
         <StaticList items={ITEMS}>
           {(_item: number, index: number) => {
@@ -40,7 +39,6 @@ const StaticListExample = () => {
 const StaticOrderedListExample = () => {
   return (
     <>
-      <h1>Ordered-list</h1>
       <Profiler id={'StaticList-Ordered'} onRender={logProfilerRender}>
         <StaticList as={'ol'} items={ITEMS}>
           {(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}
@@ -53,7 +51,6 @@ const StaticOrderedListExample = () => {
 const StaticListTableExample = () => {
   return (
     <>
-      <h1>Table</h1>
       <Profiler id={'StaticList-Table'} onRender={logProfilerRender}>
         <table border="1">
           <thead>
