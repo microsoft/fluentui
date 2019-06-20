@@ -54,7 +54,6 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/azure-themes": "^7.0.2",
-    "@uifabric/charting": "^0.131.3",
     "@uifabric/file-type-icons": "^7.0.3",
     "@uifabric/fluent-theme": "^7.0.2",
     "@uifabric/foundation": "^7.0.1",
