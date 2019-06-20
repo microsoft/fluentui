@@ -7,7 +7,8 @@ import {
   assign,
   hasOverflow,
   portalContainsElement,
-  classNamesFunction
+  classNamesFunction,
+  KeyCodes
 } from '../../Utilities';
 import { ITooltipHostProps, TooltipOverflowMode, ITooltipHostStyles, ITooltipHostStyleProps, ITooltipHost } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
@@ -79,6 +80,7 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
         {...{ onBlurCapture: this._hideTooltip }}
         onMouseEnter={this._onTooltipMouseEnter}
         onMouseLeave={this._onTooltipMouseLeave}
+        onKeyDown={this._onTooltipKeyDown}
         aria-describedby={ariaDescribedBy}
       >
         {children}
@@ -178,6 +180,12 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
     }
     if (TooltipHostBase._currentVisibleTooltip === this) {
       TooltipHostBase._currentVisibleTooltip = undefined;
+    }
+  };
+
+  private _onTooltipKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    if (ev.which === KeyCodes.escape) {
+      this._hideTooltip();
     }
   };
 
