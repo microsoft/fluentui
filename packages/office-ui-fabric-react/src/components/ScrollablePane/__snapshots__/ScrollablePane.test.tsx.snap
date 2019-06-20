@@ -25,6 +25,7 @@ exports[`ScrollablePane renders correctly 1`] = `
           -webkit-overflow-scrolling: touch;
           bottom: 0px;
           left: 0px;
+          overflow-x: auto;
           overflow-y: auto;
           position: absolute;
           right: 0px;
@@ -36,7 +37,7 @@ exports[`ScrollablePane renders correctly 1`] = `
     className=
 
         {
-          pointer-events: auto;
+          pointer-events: none;
           position: absolute;
           top: 0px;
         }
@@ -57,7 +58,7 @@ exports[`ScrollablePane renders correctly 1`] = `
 
         {
           bottom: 0px;
-          pointer-events: auto;
+          pointer-events: none;
           position: absolute;
         }
         @media screen and (-ms-high-contrast: active){& {
@@ -77,7 +78,7 @@ exports[`ScrollablePane renders correctly 1`] = `
 
           {
             bottom: 0px;
-            pointer-events: auto;
+            pointer-events: none;
             position: absolute;
             width: 100%;
           }
