@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { StaticList } from './StaticList';
 
-/* tslint:disable-next-line:no-any */
-const Profiler = (React as any).unstable_Profiler;
+const Profiler = React.unstable_Profiler;
 
 const ITEMS = new Array(25).fill(0);
 let APPEND_EXAMPLE_ITEMS = [...ITEMS];
