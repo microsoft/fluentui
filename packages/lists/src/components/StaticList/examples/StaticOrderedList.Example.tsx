@@ -2,6 +2,16 @@ import * as React from 'react';
 import { StaticList } from '../StaticList';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
+function generateItems(count: number): number[] {
+  const itemsArray: number[] = [];
+  for (let i = 0; i < count; i++) {
+    itemsArray.push(i);
+  }
+  return itemsArray;
+}
+
+const ITEMS: ReadonlyArray<number> = generateItems(25);
+
 const listClassName = mergeStyles({
   listStyleType: 'none',
   margin: 0,
@@ -21,16 +31,6 @@ const listClassName = mergeStyles({
     }
   }
 });
-
-function generateItems(count: number): number[] {
-  const itemsArray: number[] = [];
-  for (let i = 0; i < count; i++) {
-    itemsArray.push(i);
-  }
-  return itemsArray;
-}
-
-const ITEMS: ReadonlyArray<number> = generateItems(25);
 
 const StaticOrderedListExample = () => {
   return (
