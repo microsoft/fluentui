@@ -40,6 +40,10 @@ function readPackage(packageJson, context) {
     packageJson.dependencies['typescript'] = '^2 || ^3';
   }
 
+  /**
+   * The below conditional is used to consolidate and ensure correct version of monaco-editor
+   *  to resolve a build error that arises.
+   */
   if (packageJson.name === 'monaco-editor-webpack-plugin') {
     packageJson.peerDependencies['monaco-editor'] = '*';
   }
