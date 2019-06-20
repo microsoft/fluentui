@@ -22,7 +22,7 @@
     "@types/es6-promise": "0.0.32",
     "@types/jest": "23.0.0",
     "@types/markdown-to-jsx": "6.9.0",
-    "@types/react": "16.8.12",
+    "@types/react": "16.8.11",
     "@types/react-dom": "16.8.4",
     "@types/react-custom-scrollbars": "^4.0.5",
     "@types/webpack-env": "1.13.9",
