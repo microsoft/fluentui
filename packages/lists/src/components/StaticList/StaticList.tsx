@@ -7,9 +7,9 @@ function defaultRowRenderer<T>(item: T, index: number): JSX.Element {
 
 class StaticList<T> extends React.PureComponent<IStaticListProps<T>> {
   public render(): JSX.Element {
-    const { items = [], as: RootTag = 'ul', children = defaultRowRenderer } = this.props;
+    const { items = [], as: RootTag = 'ul', className, children = defaultRowRenderer } = this.props;
 
-    return <RootTag>{items.map(children)}</RootTag>;
+    return <RootTag className={className}>{items.map(children)}</RootTag>;
   }
 }
 
