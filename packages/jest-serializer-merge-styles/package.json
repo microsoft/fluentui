@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@types/jest": "23.0.0",
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.12",
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@uifabric/prettier-rules": "^7.0.2",

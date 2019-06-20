@@ -28,7 +28,7 @@
     "@types/jest": "23.0.0",
     "@types/node": "^8.10.29",
     "@types/puppeteer": "1.12.3",
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.12",
     "@types/react-dom": "16.8.4",
     "@uifabric/build": "^7.0.0",
     "@uifabric/icons": "^7.0.2",

@@ -16,11 +16,10 @@
      * instead of the latest version.
      */
     // "some-package": "1.2.3"
-
     // Pinning a dependency here forces it to show up in the generated common/temp/package.json,
     // which reduces the chance of duplicates being added to the dependency tree and can help fix
     // issues with missing peer dependencies.
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.12",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.13.9",
     "css-loader": "^0.28.7",
