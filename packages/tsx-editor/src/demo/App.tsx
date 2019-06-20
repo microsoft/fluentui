@@ -43,7 +43,7 @@ export class App extends React.Component {
   public render() {
     const editor = (
       <Stack style={{ backgroundColor: 'lightgray' }} gap={4}>
-        {!this.state.editorHidden && this.state.editor}
+        {this.state.editor}
         {this.state.error !== undefined && <Label className={classNames.error}>`{this.state.error}`</Label>}
       </Stack>
     );
@@ -71,7 +71,7 @@ export class App extends React.Component {
                 <Label>Typescript + React editor</Label>
               </div>
               <React.Suspense fallback={<div>Loading...</div>}>
-                <Editor width={800} height={500} code="dfgxsfgfsgfgssfgs" language="typescript" onChange={this.onChange} />
+                <Editor width={800} height={500} code="console.log('hello world');" language="typescript" onChange={this.onChange} />
               </React.Suspense>
             </div>
           ),
