@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.50.0",
+      "tag": "@uifabric/styling_v6.50.0",
+      "date": "Thu, 20 Jun 2019 12:20:14 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Semantic Slots: adding successText and changing errorText, warningText.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "33d508673337b8ead911b216061205e21e916ba7"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.49.1",
       "tag": "@uifabric/styling_v6.49.1",
       "date": "Wed, 12 Jun 2019 22:15:55 GMT",
