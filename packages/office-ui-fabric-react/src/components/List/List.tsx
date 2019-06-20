@@ -128,7 +128,6 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
   private _scrollHeight: number;
   private _scrollTop: number;
   private _pageCache: IPageCache<T>;
-  private _scrollTopOffset: number | undefined;
 
   constructor(props: IListProps<T>) {
     super(props);
@@ -954,22 +953,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
         scrollHeight !== this._scrollHeight ||
         Math.abs(this._scrollTop - scrollTop) > this._estimatedPageHeight / 3)
     ) {
-      // Will only call getBoundingClientRect when refresh or first load; otherwise, will use scrollTop to calculate new values
-      if (!scrollHeight || !this._surfaceRect || scrollHeight !== this._scrollHeight || forceUpdate) {
-        const newSurfaceRect = _measureSurfaceRect(this._surface.current);
-        surfaceRect = this._surfaceRect = newSurfaceRect;
-        this._scrollTopOffset = newSurfaceRect.top + scrollTop;
-      } else {
-        const surfaceRectTop = -1 * scrollTop + this._scrollTopOffset!;
-        surfaceRect = this._surfaceRect = {
-          width: this._surfaceRect.width,
-          height: this._surfaceRect.height,
-          top: surfaceRectTop,
-          bottom: this._surfaceRect.height + surfaceRectTop,
-          left: this._surfaceRect.left,
-          right: this._surfaceRect.right
-        };
-      }
+      surfaceRect = this._surfaceRect = _measureSurfaceRect(this._surface.current);
       this._scrollTop = scrollTop;
     }
 
