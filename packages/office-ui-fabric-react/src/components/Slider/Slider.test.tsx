@@ -120,8 +120,13 @@ describe('Slider', () => {
     ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
     ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
     ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
+    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.up });
+    ReactTestUtils.Simulate.keyDown(sliderSlideBox, { which: KeyCodes.down });
 
     expect(sliderSlideBox.getAttribute('aria-valuenow')).toEqual('9');
+
+    // onChanged should only be called after a delay
+    expect(onChanged).toHaveBeenCalledTimes(0);
 
     setTimeout(() => {
       expect(onChanged).toHaveBeenCalledTimes(1);
