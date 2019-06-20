@@ -6760,7 +6760,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     max?: number;
     min?: number;
     onChange?: (value: number) => void;
-    onChanged?: (event: MouseEvent | TouchEvent, value: number) => void;
+    onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
     originFromZero?: boolean;
     showValue?: boolean;
     step?: number;
