@@ -43,7 +43,7 @@ export class App extends React.Component {
   public render() {
     const editor = (
       <Stack style={{ backgroundColor: 'lightgray' }} gap={4}>
-        {!this.state.editorHidden && this.state.editor}
+        {this.state.editor}
         {this.state.error !== undefined && <Label className={classNames.error}>`{this.state.error}`</Label>}
       </Stack>
     );
