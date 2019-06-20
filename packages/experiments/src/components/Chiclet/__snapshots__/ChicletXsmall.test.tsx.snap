@@ -47,11 +47,12 @@ exports[`Chiclet renders chiclet with title, icon, onClick, and url 1`] = `
           ms-ChicletXsmall-icon
           {
             background-color: #edebe9;
-            height: 30.32px;
+            height: 29px;
             padding-bottom: 17.44px;
             padding-left: 17.44px;
             padding-right: 17.44px;
             padding-top: 17.44px;
+            width: 29px;
           }
       src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_16x1_5.svg"
     />
@@ -62,7 +63,8 @@ exports[`Chiclet renders chiclet with title, icon, onClick, and url 1`] = `
         {
           display: flex;
           flex-wrap: wrap;
-          margin-left: 4px;
+          height: 63px;
+          margin-left: 10px;
           width: 170px;
         }
   >
@@ -88,7 +90,7 @@ exports[`Chiclet renders chiclet with title, icon, onClick, and url 1`] = `
 
           {
             font-size: 12px;
-            height: 17px;
+            height: 15px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -182,7 +184,8 @@ exports[`Chiclet renders chiclet with title, preview, onClick, and url 1`] = `
         {
           display: flex;
           flex-wrap: wrap;
-          margin-left: 4px;
+          height: 63px;
+          margin-left: 10px;
           width: 170px;
         }
   >
@@ -208,7 +211,7 @@ exports[`Chiclet renders chiclet with title, preview, onClick, and url 1`] = `
 
           {
             font-size: 12px;
-            height: 17px;
+            height: 15px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;

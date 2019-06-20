@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { IChicletCardStyles, IChicletCardStyleProps, IChicletCardProps } from './ChicletCard.types';
-import { renderIcon, renderPreview } from '../../utilities/chicletHelper';
+import { renderIcon, renderPreview, findIcon } from '../../utilities/chicletHelper';
 
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
 
@@ -17,21 +17,10 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
   private _classNames: { [key in keyof IChicletCardStyles]: string };
 
   public render(): JSX.Element {
-    const {
-      title,
-      itemType,
-      description,
-      image,
-      imageWidth,
-      imageHeight,
-      imageAlt,
-      url,
-      onClick,
-      className,
-      footer,
-      theme,
-      styles
-    } = this.props;
+    const { title, description, image, imageWidth, imageHeight, imageAlt, url, onClick, className, footer, theme, styles } = this.props;
+
+    let { itemType } = this.props;
+
     const actionable = onClick ? true : false;
 
     const imageProvided: boolean = image !== undefined;
@@ -42,6 +31,10 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
     // if this element is actionable it should have an aria role
     const role = actionable ? (onClick ? 'button' : 'link') : undefined;
     const tabIndex = actionable ? 0 : undefined;
+
+    if (!itemType && !!title) {
+      itemType = findIcon(title);
+    }
 
     return (
       <div tabIndex={tabIndex} role={role} onClick={actionable ? this._onClick : undefined} className={this._classNames.root}>

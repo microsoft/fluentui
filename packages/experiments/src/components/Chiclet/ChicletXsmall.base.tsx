@@ -2,7 +2,7 @@ import * as React from 'react';
 import { classNamesFunction } from '../../Utilities';
 import { IChicletXsmallStyles, IChicletXsmallStyleProps } from './ChicletXsmall.types';
 import { IChicletCardProps } from './ChicletCard.types';
-import { renderIcon, renderPreview } from '../../utilities/chicletHelper';
+import { renderIcon, renderPreview, findIcon } from '../../utilities/chicletHelper';
 
 const getClassNames = classNamesFunction<IChicletXsmallStyleProps, IChicletXsmallStyles>();
 
@@ -10,7 +10,8 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
   private _classNames: { [key in keyof IChicletXsmallStyles]: string };
 
   public render(): JSX.Element {
-    const { onClick, title, image, imageWidth, imageHeight, imageAlt, itemType, className, footer, theme, styles, url } = this.props;
+    const { onClick, title, image, imageWidth, imageHeight, imageAlt, className, footer, theme, styles, url } = this.props;
+    let { itemType } = this.props;
 
     const footerProvided: boolean = footer !== undefined;
     const imageProvided = !!image || !!imageAlt;
@@ -20,6 +21,10 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
     // if this element is actionable it should have an aria role
     const role = onClick ? 'button' : 'link';
     const tabIndex = onClick ? 0 : undefined;
+
+    if (!itemType && !!title) {
+      itemType = findIcon(title);
+    }
 
     return (
       <div tabIndex={tabIndex} role={role} onClick={this._onClick} className={this._classNames.root}>
