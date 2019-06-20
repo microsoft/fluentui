@@ -1,20 +1,18 @@
 import * as React from 'react';
-import { DemoPage } from '../DemoPage';
-import {
-  StaticListExample,
-  StaticOrderedListExample,
-  // StaticListAppendItemsExample,
-  StaticListTableExample
-} from '../../StaticList/StaticList.Example';
+import { ComponentPage } from '@uifabric/example-app-base';
 
-export const StaticListPage = (props: { isHeaderVisible: boolean }) => (
-  <DemoPage
+import { StaticListExample, StaticOrderedListExample, StaticListTableExample } from '../../StaticList/StaticList.Example';
+
+export const StaticListPage = () => (
+  <ComponentPage
     title="StaticList"
-    examples={[
-      { view: <StaticListExample /> },
-      { view: <StaticOrderedListExample /> },
-      { view: <StaticListTableExample /> }
-      // StaticListAppendItemsExample
-    ]}
+    componentName="StaticList examples"
+    exampleCards={
+      <>
+        <StaticListExample />,
+        <StaticOrderedListExample />,
+        <StaticListTableExample />
+      </>
+    }
   />
 );
