@@ -124,7 +124,7 @@ To build up to a specific project, use the `--to <package>` argument. For exampl
 
 ```bash
 rush build --to office-ui-fabric-react
-```
+``` 
 
 ## Licenses
 
