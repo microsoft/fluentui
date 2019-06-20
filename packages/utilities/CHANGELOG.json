@@ -2,6 +2,95 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.41.2",
+      "tag": "@uifabric/utilities_v6.41.2",
+      "date": "Fri, 14 Jun 2019 03:04:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "The `getClassNames` function now returns memoized classnames, resulting in improved performance in high repeat scenarios (like lists rendering checks.) Reintroduction of #8761.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "2591368b43ad42b1fe422ca8b12354abbf560c1e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.19.1` to `^6.19.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.41.1",
+      "tag": "@uifabric/utilities_v6.41.1",
+      "date": "Wed, 12 Jun 2019 22:15:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Package bump to resolve conflicts.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "840c5e171e41a53b1d87339f81bb16bbd73414ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.19.0` to `^6.19.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.10` to `^6.0.11`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/test-utilities\" from `^6.0.5` to `^6.0.6`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.41.0",
+      "tag": "@uifabric/utilities_v6.41.0",
+      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Setting the styles props only when either of defaultProps or componentProps have it defined",
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "a5b12787e8e69da02454582b30bb4464c1777dab"
+          },
+          {
+            "comment": "upgrade to api-extractor 7.1.6",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a5bbc76367eb01e993f20796955569f422a538b2"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Updating `getNativeAttributes` element allow lists to be more refined, reducing unexpected attributes from being injected on primative elements. For example, `min` and `max` were being allowed to be injected for `div` elements. Now they are only injected for `input` elements.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5a10a485dfa2f9d69b29c69e1ec1593c3a573ab8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.0` to `^6.18.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.40.1",
+      "tag": "@uifabric/utilities_v6.40.1",
+      "date": "Thu, 06 Jun 2019 12:22:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix ./index import from selection",
+            "author": "Thomas Michon <tmichon@microsoft.com>",
+            "commit": "7556082a0512910995750251df06f6fec7a34ca6"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.40.0",
       "tag": "@uifabric/utilities_v6.40.0",
       "date": "Wed, 05 Jun 2019 12:22:30 GMT",

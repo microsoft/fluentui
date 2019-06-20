@@ -146,7 +146,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
           }
     >
       <button
-        checked={false}
         className=
             ms-Button
             ms-Button--icon
@@ -247,6 +246,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -276,7 +276,6 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         </div>
       </button>
       <button
-        checked={false}
         className=
             ms-Button
             ms-Button--icon
@@ -377,6 +376,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -557,7 +557,6 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
           }
     >
       <button
-        checked={false}
         className=
             ms-Button
             ms-Button--icon
@@ -658,6 +657,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -687,7 +687,6 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
         </div>
       </button>
       <button
-        checked={false}
         className=
             ms-Button
             ms-Button--icon
@@ -788,6 +787,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {

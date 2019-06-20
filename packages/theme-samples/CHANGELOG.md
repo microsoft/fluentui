@@ -1,6 +1,13 @@
 # Change Log - @uifabric/theme-samples
 
-This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2019 22:15:55 GMT and should not be manually modified.
+
+## 0.1.8
+Wed, 12 Jun 2019 22:15:55 GMT
+
+### Patches
+
+- Package bump to resolve conflicts.
 
 ## 0.1.6
 Tue, 14 May 2019 07:50:30 GMT

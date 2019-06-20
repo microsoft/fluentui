@@ -279,6 +279,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Button-icon
                       {
@@ -353,7 +354,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     &:hover $primaryText {
                       color: #212121;
                     }
-                size={11}
               >
                 <div
                   className=
@@ -366,7 +366,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                         font-size: 14px;
                         font-weight: 400;
                       }
-                  size={11}
                 >
                   <div
                     className=
@@ -588,6 +587,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Button-icon
                       {

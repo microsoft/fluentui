@@ -290,15 +290,6 @@ exports[`Component Examples renders Stack.Vertical.Wrap.Example.tsx correctly 1`
           overflow: visible;
           width: auto;
         }
-        & span {
-          align-items: center;
-          background: #0078d4;
-          color: #ffffff;
-          display: flex;
-          height: 50px;
-          justify-content: center;
-          width: 50px;
-        }
   >
     <div
       className=
@@ -329,22 +320,94 @@ exports[`Component Examples renders Stack.Vertical.Wrap.Example.tsx correctly 1`
             flex-shrink: 1;
           }
     >
-      <span>
+      <span
+        className=
+
+            {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              width: 50px;
+            }
+      >
         1
       </span>
-      <span>
+      <span
+        className=
+
+            {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              width: 50px;
+            }
+      >
         2
       </span>
-      <span>
+      <span
+        className=
+
+            {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              width: 50px;
+            }
+      >
         3
       </span>
-      <span>
+      <span
+        className=
+
+            {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              width: 50px;
+            }
+      >
         4
       </span>
-      <span>
+      <span
+        className=
+
+            {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              width: 50px;
+            }
+      >
         5
       </span>
-      <span>
+      <span
+        className=
+
+            {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              width: 50px;
+            }
+      >
         6
       </span>
     </div>

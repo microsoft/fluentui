@@ -2,6 +2,173 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.79.0",
+      "tag": "@uifabric/experiments_v6.79.0",
+      "date": "Thu, 20 Jun 2019 12:20:14 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Removing charting from deps.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5a8ea6b9f8b119346c3fae396a524193d8238dde"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.49.1` to `^6.50.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.14.4` to `^6.15.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.190.0` to `^6.190.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.9",
+      "tag": "@uifabric/experiments_v6.78.9",
+      "date": "Fri, 14 Jun 2019 03:04:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button example updated.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "2591368b43ad42b1fe422ca8b12354abbf560c1e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.19.1` to `^6.19.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.1` to `^6.41.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.5` to `^6.190.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.2` to `^6.23.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.8",
+      "tag": "@uifabric/experiments_v6.78.8",
+      "date": "Wed, 12 Jun 2019 22:15:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Package bump to resolve conflicts.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "840c5e171e41a53b1d87339f81bb16bbd73414ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^6.0.2` to `^6.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.30.3` to `^0.30.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.5.1` to `^6.5.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.11` to `^0.16.12`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.8.0` to `^0.8.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^6.5.2` to `^6.5.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.19.0` to `^6.19.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.49.0` to `^6.49.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^0.1.7` to `^0.1.8`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.0` to `^6.41.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.14.3` to `^6.14.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^6.189.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.1` to `^6.23.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.10` to `^6.0.11`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.7",
+      "tag": "@uifabric/experiments_v6.78.7",
+      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots to conform with `getNativeAttributes` changes which should filter out unexpected attributes from primatives more accurately.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5a10a485dfa2f9d69b29c69e1ec1593c3a573ab8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.30.1` to `^0.30.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.5.0` to `^6.5.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.6` to `^0.7.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.0` to `^6.18.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.0` to `^6.48.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.40.1` to `^6.41.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.3` to `^6.189.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.6",
+      "tag": "@uifabric/experiments_v6.78.6",
+      "date": "Mon, 10 Jun 2019 12:23:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Snapshot updates to components for adding aria-hidden to icon component conditionally",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "8e4f91a21866140b041266f6840af828b491600c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.2` to `^6.189.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.78.5",
       "tag": "@uifabric/experiments_v6.78.5",
       "date": "Tue, 04 Jun 2019 12:22:17 GMT",

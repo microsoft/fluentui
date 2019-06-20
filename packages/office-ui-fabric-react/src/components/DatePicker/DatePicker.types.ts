@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks, ICalendarStrings } from '../Calendar/Calendar.types';

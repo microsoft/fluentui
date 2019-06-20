@@ -2,6 +2,31 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "version": "6.0.3",
+      "tag": "@uifabric/azure-themes_v6.0.3",
+      "date": "Wed, 12 Jun 2019 22:15:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Package bump to resolve conflicts.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "840c5e171e41a53b1d87339f81bb16bbd73414ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.19.0` to `^6.19.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^6.189.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.10` to `^6.0.11`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.1",
       "tag": "@uifabric/azure-themes_v6.0.1",
       "date": "Wed, 22 May 2019 12:21:34 GMT",

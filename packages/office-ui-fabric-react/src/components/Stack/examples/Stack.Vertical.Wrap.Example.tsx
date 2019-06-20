@@ -19,18 +19,17 @@ export class VerticalStackWrapExample extends React.Component<{}, IExampleState>
     const styles = mergeStyleSets({
       root: {
         background: DefaultPalette.themeTertiary,
-        height: stackHeight,
-        selectors: {
-          '& span': {
-            width: 50,
-            height: 50,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: DefaultPalette.themePrimary,
-            color: DefaultPalette.white
-          }
-        }
+        height: stackHeight
+      },
+
+      item: {
+        width: 50,
+        height: 50,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: DefaultPalette.themePrimary,
+        color: DefaultPalette.white
       }
     });
 
@@ -56,12 +55,12 @@ export class VerticalStackWrapExample extends React.Component<{}, IExampleState>
         />
 
         <Stack wrap tokens={tokens.wrapStack} className={styles.root}>
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span>4</span>
-          <span>5</span>
-          <span>6</span>
+          <span className={styles.item}>1</span>
+          <span className={styles.item}>2</span>
+          <span className={styles.item}>3</span>
+          <span className={styles.item}>4</span>
+          <span className={styles.item}>5</span>
+          <span className={styles.item}>6</span>
         </Stack>
       </Stack>
     );

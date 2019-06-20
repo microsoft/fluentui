@@ -1,6 +1,39 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 05 Jun 2019 12:22:30 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 03:04:18 GMT and should not be manually modified.
+
+## 6.41.2
+Fri, 14 Jun 2019 03:04:18 GMT
+
+### Patches
+
+- The `getClassNames` function now returns memoized classnames, resulting in improved performance in high repeat scenarios (like lists rendering checks.) Reintroduction of #8761.
+
+## 6.41.1
+Wed, 12 Jun 2019 22:15:55 GMT
+
+### Patches
+
+- Package bump to resolve conflicts.
+
+## 6.41.0
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Minor changes
+
+- Updating `getNativeAttributes` element allow lists to be more refined, reducing unexpected attributes from being injected on primative elements. For example, `min` and `max` were being allowed to be injected for `div` elements. Now they are only injected for `input` elements.
+
+### Patches
+
+- Setting the styles props only when either of defaultProps or componentProps have it defined
+- upgrade to api-extractor 7.1.6
+
+## 6.40.1
+Thu, 06 Jun 2019 12:22:24 GMT
+
+### Patches
+
+- Fix ./index import from selection
 
 ## 6.40.0
 Wed, 05 Jun 2019 12:22:30 GMT

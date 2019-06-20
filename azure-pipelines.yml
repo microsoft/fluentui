@@ -1,10 +1,10 @@
 pr:
   - master
-  - website-update
+  - 6.0
 
 trigger:
   - master
-  - website-update
+  - 6.0
 
 variables:
   - group: fabric-variables

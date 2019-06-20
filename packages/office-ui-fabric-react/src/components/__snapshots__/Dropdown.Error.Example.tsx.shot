@@ -324,7 +324,6 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      placeholder="Select an option"
       role="listbox"
       tabIndex={0}
     >
@@ -381,6 +380,7 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Dropdown-caretDown
               {

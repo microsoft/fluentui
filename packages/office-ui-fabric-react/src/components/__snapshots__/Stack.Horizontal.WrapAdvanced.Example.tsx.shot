@@ -758,7 +758,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
-          placeholder="Select Horizontal Alignment"
           role="listbox"
           tabIndex={0}
         >
@@ -815,6 +814,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Dropdown-caretDown
                   {
@@ -985,7 +985,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
-          placeholder="Select Vertical Alignment"
           role="listbox"
           tabIndex={0}
         >
@@ -1042,6 +1041,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Dropdown-caretDown
                   {
@@ -1212,7 +1212,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
-          placeholder="Select Overflow"
           role="listbox"
           tabIndex={0}
         >
@@ -1269,6 +1268,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Dropdown-caretDown
                   {
@@ -1313,15 +1313,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
             overflow: visible;
             width: 100%;
           }
-          & span {
-            align-items: center;
-            background: #0078d4;
-            color: #ffffff;
-            display: flex;
-            height: 50px;
-            justify-content: center;
-            width: 50px;
-          }
     >
       <div
         className=
@@ -1354,34 +1345,154 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
               flex-shrink: 1;
             }
       >
-        <span>
+        <span
+          className=
+
+              {
+                align-items: center;
+                background: #0078d4;
+                color: #ffffff;
+                display: flex;
+                height: 50px;
+                justify-content: center;
+                width: 50px;
+              }
+        >
           1
         </span>
-        <span>
+        <span
+          className=
+
+              {
+                align-items: center;
+                background: #0078d4;
+                color: #ffffff;
+                display: flex;
+                height: 50px;
+                justify-content: center;
+                width: 50px;
+              }
+        >
           2
         </span>
-        <span>
+        <span
+          className=
+
+              {
+                align-items: center;
+                background: #0078d4;
+                color: #ffffff;
+                display: flex;
+                height: 50px;
+                justify-content: center;
+                width: 50px;
+              }
+        >
           3
         </span>
-        <span>
+        <span
+          className=
+
+              {
+                align-items: center;
+                background: #0078d4;
+                color: #ffffff;
+                display: flex;
+                height: 50px;
+                justify-content: center;
+                width: 50px;
+              }
+        >
           4
         </span>
-        <span>
+        <span
+          className=
+
+              {
+                align-items: center;
+                background: #0078d4;
+                color: #ffffff;
+                display: flex;
+                height: 50px;
+                justify-content: center;
+                width: 50px;
+              }
+        >
           5
         </span>
-        <span>
+        <span
+          className=
+
+              {
+                align-items: center;
+                background: #0078d4;
+                color: #ffffff;
+                display: flex;
+                height: 50px;
+                justify-content: center;
+                width: 50px;
+              }
+        >
           6
         </span>
-        <span>
+        <span
+          className=
+
+              {
+                align-items: center;
+                background: #0078d4;
+                color: #ffffff;
+                display: flex;
+                height: 50px;
+                justify-content: center;
+                width: 50px;
+              }
+        >
           7
         </span>
-        <span>
+        <span
+          className=
+
+              {
+                align-items: center;
+                background: #0078d4;
+                color: #ffffff;
+                display: flex;
+                height: 50px;
+                justify-content: center;
+                width: 50px;
+              }
+        >
           8
         </span>
-        <span>
+        <span
+          className=
+
+              {
+                align-items: center;
+                background: #0078d4;
+                color: #ffffff;
+                display: flex;
+                height: 50px;
+                justify-content: center;
+                width: 50px;
+              }
+        >
           9
         </span>
-        <span>
+        <span
+          className=
+
+              {
+                align-items: center;
+                background: #0078d4;
+                color: #ffffff;
+                display: flex;
+                height: 50px;
+                justify-content: center;
+                width: 50px;
+              }
+        >
           10
         </span>
       </div>

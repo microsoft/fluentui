@@ -2,6 +2,47 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.23.3",
+      "tag": "@uifabric/example-app-base_v6.23.3",
+      "date": "Fri, 14 Jun 2019 03:04:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing a variety of problems related to style recalculations.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "2591368b43ad42b1fe422ca8b12354abbf560c1e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.5` to `^6.190.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.23.2",
+      "tag": "@uifabric/example-app-base_v6.23.2",
+      "date": "Wed, 12 Jun 2019 22:15:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Package bump to resolve conflicts.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "840c5e171e41a53b1d87339f81bb16bbd73414ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.11` to `^0.16.12`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^6.189.5`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.23.1",
       "tag": "@uifabric/example-app-base_v6.23.1",
       "date": "Wed, 29 May 2019 12:21:24 GMT",

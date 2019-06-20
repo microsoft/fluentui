@@ -291,10 +291,7 @@ const classNames = {
 };
 
 mergeStyleSets({
-  root: [
-    classNames.root,
-    { background: 'lightgreen' }
-  ],
+  root: [classNames.root, { background: 'lightgreen' }],
 
   child: [
     classNames.child,

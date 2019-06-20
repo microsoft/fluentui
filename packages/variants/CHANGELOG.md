@@ -1,6 +1,20 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jun 2019 12:20:14 GMT and should not be manually modified.
+
+## 6.15.0
+Thu, 20 Jun 2019 12:20:14 GMT
+
+### Minor changes
+
+- Semantic Slots: adding successText and changing errorText, warningText.
+
+## 6.14.4
+Wed, 12 Jun 2019 22:15:55 GMT
+
+### Patches
+
+- Package bump to resolve conflicts.
 
 ## 6.14.2
 Tue, 14 May 2019 07:50:30 GMT

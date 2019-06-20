@@ -2,6 +2,25 @@
   "name": "@uifabric/test-utilities",
   "entries": [
     {
+      "version": "6.0.6",
+      "tag": "@uifabric/test-utilities_v6.0.6",
+      "date": "Wed, 12 Jun 2019 22:15:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Package bump to resolve conflicts.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "840c5e171e41a53b1d87339f81bb16bbd73414ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.10` to `^6.0.11`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.4",
       "tag": "@uifabric/test-utilities_v6.0.4",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

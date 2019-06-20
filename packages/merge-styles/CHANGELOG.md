@@ -1,6 +1,27 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 05 Jun 2019 12:22:30 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 03:04:18 GMT and should not be manually modified.
+
+## 6.19.2
+Fri, 14 Jun 2019 03:04:18 GMT
+
+### Patches
+
+- Reducing runtime overhead on kebab parsing. Reducing some concatStyleSets overhead.
+
+## 6.19.1
+Wed, 12 Jun 2019 22:15:55 GMT
+
+### Patches
+
+- Package bump to resolve conflicts.
+
+## 6.18.1
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- upgrade to api-extractor 7.1.6
 
 ## 6.18.0
 Wed, 05 Jun 2019 12:22:30 GMT

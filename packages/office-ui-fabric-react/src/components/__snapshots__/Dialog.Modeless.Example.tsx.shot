@@ -102,6 +102,7 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Checkbox-checkmark
                 {

@@ -1,6 +1,27 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 05 Jun 2019 12:22:30 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jun 2019 12:20:14 GMT and should not be manually modified.
+
+## 6.50.0
+Thu, 20 Jun 2019 12:20:14 GMT
+
+### Minor changes
+
+- Semantic Slots: adding successText and changing errorText, warningText.
+
+## 6.49.1
+Wed, 12 Jun 2019 22:15:55 GMT
+
+### Patches
+
+- Package bump to resolve conflicts.
+
+## 6.48.1
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- upgrade to api-extractor 7.1.6
 
 ## 6.48.0
 Wed, 05 Jun 2019 12:22:30 GMT

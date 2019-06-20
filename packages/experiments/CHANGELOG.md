@@ -1,6 +1,41 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 04 Jun 2019 12:22:17 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jun 2019 12:20:14 GMT and should not be manually modified.
+
+## 6.79.0
+Thu, 20 Jun 2019 12:20:14 GMT
+
+### Minor changes
+
+- Removing charting from deps.
+
+## 6.78.9
+Fri, 14 Jun 2019 03:04:18 GMT
+
+### Patches
+
+- Button example updated.
+
+## 6.78.8
+Wed, 12 Jun 2019 22:15:55 GMT
+
+### Patches
+
+- Package bump to resolve conflicts.
+
+## 6.78.7
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- Updating snapshots to conform with `getNativeAttributes` changes which should filter out unexpected attributes from primatives more accurately.
+
+## 6.78.6
+Mon, 10 Jun 2019 12:23:59 GMT
+
+### Patches
+
+- Snapshot updates to components for adding aria-hidden to icon component conditionally
 
 ## 6.78.5
 Tue, 04 Jun 2019 12:22:17 GMT
