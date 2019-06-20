@@ -3,12 +3,20 @@ import { StaticList } from './StaticList';
 import { shallow } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 
+function generateItems(count: number): number[] {
+  const itemsArray: number[] = [];
+  for (let i = 0; i < count; i++) {
+    itemsArray.push(i);
+  }
+  return itemsArray;
+}
+
 const COUNT: number = 50;
-let items: number[] = [];
+let items: ReadonlyArray<number>;
 
 describe('StaticList', () => {
   beforeEach(() => {
-    items = new Array(COUNT).fill(0);
+    items = generateItems(COUNT);
   });
 
   it('renders empty list correctly', () => {

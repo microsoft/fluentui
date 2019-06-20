@@ -3,12 +3,15 @@ import { StaticList } from './StaticList';
 
 const Profiler = React.unstable_Profiler;
 
-const ITEMS: ReadonlyArray<number> = new Array(25).fill(0);
-let APPEND_EXAMPLE_ITEMS: ReadonlyArray<number> = [...ITEMS];
-
-function appendItems(): void {
-  APPEND_EXAMPLE_ITEMS = [...APPEND_EXAMPLE_ITEMS, ...new Array(10).fill(0)];
+function generateItems(count: number): number[] {
+  const itemsArray: number[] = [];
+  for (let i = 0; i < count; i++) {
+    itemsArray.push(i);
+  }
+  return itemsArray;
 }
+
+const ITEMS: ReadonlyArray<number> = generateItems(25);
 
 function logProfilerRender(id: string, phase: string, actualTime: number, baseTime: number, startTime: number, commitTime: number): void {
   console.table({ id, phase, actualTime, baseTime, startTime, commitTime });
@@ -78,16 +81,4 @@ const StaticListTableExample = () => {
   );
 };
 
-const StaticListAppendItemsExample = () => {
-  return (
-    <>
-      <h1>Append items example</h1>
-      <button value="Append" onClick={appendItems}>
-        Append item
-      </button>
-      <StaticList items={APPEND_EXAMPLE_ITEMS}>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>
-    </>
-  );
-};
-
-export { StaticListExample, StaticOrderedListExample, StaticListAppendItemsExample, StaticListTableExample };
+export { StaticListExample, StaticOrderedListExample, StaticListTableExample };
