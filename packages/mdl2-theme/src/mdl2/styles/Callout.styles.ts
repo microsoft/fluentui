@@ -2,12 +2,12 @@ import { ICalloutContentStyleProps, ICalloutContentStyles } from 'office-ui-fabr
 
 export const CalloutContentStyles = (props: ICalloutContentStyleProps): Partial<ICalloutContentStyles> => {
   const { theme } = props;
-  const { effects } = theme;
+  const { effects, palette } = theme;
 
   return {
     root: {
+      border: `1px solid ${palette.neutralLight}`,
       borderRadius: effects.roundedCorner2,
-      borderWidth: 0,
       boxShadow: effects.elevation16
     },
     beakCurtain: {
