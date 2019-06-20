@@ -1915,9 +1915,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Click handler for the autofill.
    */
   private _onAutofillClick = (): void => {
-    const { disabled } = this.props;
+    const { disabled, allowFreeform } = this.props;
 
-    if (this.props.allowFreeform && !disabled) {
+    if (allowFreeform && !disabled) {
       this.focus(this.state.isOpen || this._processingTouch);
     } else {
       this._onComboBoxClick();
