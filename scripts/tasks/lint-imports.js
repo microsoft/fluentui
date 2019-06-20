@@ -46,6 +46,7 @@ module.exports = function() {
     'Persona.CustomCoinRender.Example.tsx',
     'Persona.CustomRender.Example.tsx',
     'Persona.UnknownPersona.Example.tsx',
+    'Persona.Presence.Example.tsx',
     'Picker.CustomResult.Example.tsx',
     'Pivot.Fabric.Example.tsx',
     'SelectedPeopleList.Basic.Example.tsx',

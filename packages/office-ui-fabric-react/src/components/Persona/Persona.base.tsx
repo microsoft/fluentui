@@ -60,6 +60,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       imageShouldStartVisible,
       imageUrl,
       initialsColor,
+      isOutOfOffice,
       onPhotoLoadingStateChange,
       onRenderCoin,
       onRenderInitials,
@@ -86,6 +87,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       showInitialsUntilImageLoads,
       size,
       text: this._getText(),
+      isOutOfOffice,
       ...coinProps
     };
 
