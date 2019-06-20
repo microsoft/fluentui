@@ -141,7 +141,7 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
               {
                 -ms-high-contrast-adjust: none;
                 background-clip: content-box;
-                background-color: #8A8886;
+                background-color: #ffffff;
                 border-radius: 50%;
                 border: 2px solid #ffffff;
                 bottom: -2px;
@@ -157,6 +157,24 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
                 background-color: WindowText;
                 border-color: Window;
               }
+              &:before {
+                border-radius: 50%;
+                border: 2px solid #8A8886;
+                box-sizing: border-box;
+                content: "";
+                height: 100%;
+                left: 0px;
+                position: absolute;
+                top: 0px;
+                width: 100%;
+              }
+              @media screen and (-ms-high-contrast: active){&:before {
+                border-color: Window;
+                height: calc(100% - 2px);
+                left: 1px;
+                top: 1px;
+                width: calc(100% - 2px);
+              }
         >
           <i
             aria-hidden={true}
@@ -164,7 +182,8 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
                 ms-Icon-placeHolder
                 ms-Persona-presenceIcon
                 {
-                  color: #ffffff;
+                  border-color: #8A8886;
+                  color: #8A8886;
                   display: inline-block;
                   font-size: 12px;
                   line-height: 20px;
