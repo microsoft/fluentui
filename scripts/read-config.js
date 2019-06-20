@@ -1,3 +1,5 @@
+// @ts-check
+
 const fs = require('fs');
 const findConfig = require('./find-config');
 const jju = require('jju');
@@ -17,4 +19,26 @@ function readConfig(file) {
   }
 }
 
-module.exports = readConfig;
+/**
+ * Incomplete types for parts of rush.json
+ *
+ * @typedef {{
+ *   packageName: string;
+ *   projectFolder: string;
+ *   versionPolicyName?: string;
+ *   shouldPublish?: boolean;
+ * }} RushProject
+ *
+ * @typedef {{
+ *   projects: RushProject[];
+ * }} RushJson
+ */
+
+/**
+ * @returns {RushJson}
+ */
+function readRushJson() {
+  return readConfig('rush.json');
+}
+
+module.exports = { readConfig, readRushJson };
