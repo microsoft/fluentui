@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Make more examples exportable to codepen",
+      "comment": "Combobox: Fix styles so that RootChecked works",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com"
+  "email": "joschect@microsoft.com"
 }

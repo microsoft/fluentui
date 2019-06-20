@@ -2,6 +2,28 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "7.2.0",
+      "tag": "@uifabric/experiments_v7.2.0",
+      "date": "Thu, 20 Jun 2019 12:27:38 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Removing charting from dependencies.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a70b92d3df16686f776d948fe8796fad1ec432f4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.2` to `^7.4.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.0` to `^7.1.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.1",
       "tag": "@uifabric/experiments_v7.1.1",
       "date": "Tue, 18 Jun 2019 12:26:19 GMT",

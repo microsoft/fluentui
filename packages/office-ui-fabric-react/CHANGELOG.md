@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 18 Jun 2019 19:00:04 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jun 2019 12:27:38 GMT and should not be manually modified.
+
+## 7.4.3
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- DetailsList: add aria-hidden to checkbox labels
+
+## 7.4.2
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Patches
+
+- Make more examples exportable to codepen
 
 ## 7.4.1
 Tue, 18 Jun 2019 19:00:04 GMT
