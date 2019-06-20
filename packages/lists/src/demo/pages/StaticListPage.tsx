@@ -20,5 +20,6 @@ export const StaticListPage = () => (
         </ExampleCard>
       </>
     }
+    overview={<Markdown>{require<string>('!raw-loader!./docs/StaticListOverview.md')}</Markdown>}
   />
 );
