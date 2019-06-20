@@ -40,6 +40,10 @@ function readPackage(packageJson, context) {
     packageJson.dependencies['typescript'] = '^2 || ^3';
   }
 
+  if (packageJson.name === 'monaco-editor-webpack-plugin') {
+    packageJson.peerDependencies['monaco-editor'] = '*';
+  }
+
   // Example: Suppose the karma types have a missing dependency on typings from the log4js package.
   // if (packageJson.name === '@types/karma') {
   //   context.log('Fixed up dependencies for @types/karma');
