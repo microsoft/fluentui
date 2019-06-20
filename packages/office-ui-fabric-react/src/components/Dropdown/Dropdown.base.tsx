@@ -249,7 +249,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const labelStyles = this._classNames.subComponentStyles
       ? (this._classNames.subComponentStyles.label as IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>)
       : undefined;
-
     return (
       <div className={this._classNames.root}>
         {label && (
