@@ -31,7 +31,7 @@ export class StaticListPage extends React.PureComponent<{}, { enableProfiler: bo
         componentName="StaticList examples"
         exampleCards={
           <>
-            <Toggle onChange={this._onToggleProfiler} label={'Enable React profiler'} />
+            <Toggle onChange={this._onToggleProfiler} label={'Enable React profiler output to console'} />
             <ExampleCard title="StaticList example" code={StaticListExampleCode}>
               {enableProfiler ? (
                 <Profiler id="StaticListExample" onRender={this._onRender}>
