@@ -107,4 +107,16 @@ describe('StaticList', () => {
 
     expect(wrapper.children().length).toBe(100);
   });
+
+  it('re-renders when children mutate', () => {
+    const wrapper = shallow(
+      <StaticList items={items}>{(_item: number, index: number) => <li className="foo" key={index}>{`Item #${index}`}</li>}</StaticList>
+    );
+
+    expect(wrapper.find('.foo').length).toBe(COUNT);
+
+    wrapper.setProps({ children: (_item: number, index: number) => <li className="bar" key={index}>{`Item #${index}`}</li> });
+
+    expect(wrapper.find('.bar').length).toBe(COUNT);
+  });
 });
