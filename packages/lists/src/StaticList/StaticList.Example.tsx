@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { StaticList } from './StaticList';
 
-const Profiler = React.unstable_Profiler;
+/* tslint:disable-next-line:no-any */
+const Profiler = (React as any).unstable_Profiler;
 
 function generateItems(count: number): number[] {
   const itemsArray: number[] = [];
