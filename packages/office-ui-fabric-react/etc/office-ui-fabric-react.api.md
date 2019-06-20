@@ -8022,6 +8022,9 @@ export type OnChangeCallback = (evt?: React.FormEvent<HTMLElement | HTMLInputEle
 export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
 
 // @public (undocumented)
+export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
+
+// @public (undocumented)
 export enum OpenCardMode {
     hotKey = 1,
     hover = 0
