@@ -89,7 +89,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
     }
 
     this._columns = [];
-    for (let i = 1; i < 3; i++) {
+    for (let i = 1; i < 4; i++) {
       this._columns.push({
         key: 'column' + i,
         name: 'Test ' + i,
