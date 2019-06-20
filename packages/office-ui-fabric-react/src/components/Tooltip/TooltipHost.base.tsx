@@ -158,13 +158,14 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
       }
     }
 
+    this._clearDismissTimer();
+
     if (ev.target && portalContainsElement(ev.target as HTMLElement, this._getTargetElement())) {
       // Do not show tooltip when target is inside a portal relative to TooltipHost.
       return;
     }
 
     this._toggleTooltip(true);
-    this._clearDismissTimer();
   };
 
   // Hide Tooltip
