@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StaticList } from '../StaticList';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 function generateItems(count: number): number[] {
   const itemsArray: number[] = [];
@@ -11,9 +12,18 @@ function generateItems(count: number): number[] {
 
 const ITEMS: ReadonlyArray<number> = generateItems(25);
 
+const tableClassName = mergeStyles({
+  borderCollapse: 'collapse',
+  selectors: {
+    '&, th, td': {
+      border: '1px solid black'
+    }
+  }
+});
+
 const StaticListTableExample = () => {
   return (
-    <table border="1">
+    <table className={tableClassName}>
       <thead>
         <tr>
           <th>Type</th>
