@@ -3,8 +3,8 @@ import { StaticList } from './StaticList';
 
 const Profiler = React.unstable_Profiler;
 
-const ITEMS = new Array(25).fill(0);
-let APPEND_EXAMPLE_ITEMS = [...ITEMS];
+const ITEMS: ReadonlyArray<number> = new Array(25).fill(0);
+let APPEND_EXAMPLE_ITEMS: ReadonlyArray<number> = [...ITEMS];
 
 function appendItems(): void {
   APPEND_EXAMPLE_ITEMS = [...APPEND_EXAMPLE_ITEMS, ...new Array(10).fill(0)];
