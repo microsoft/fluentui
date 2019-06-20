@@ -108,6 +108,18 @@ describe('StaticList', () => {
     expect(wrapper.children().length).toBe(100);
   });
 
+  it('re-renders when "as" value mutates', () => {
+    const mockRenderFunction = jest.fn();
+
+    const wrapper = shallow(<StaticList items={items}>{mockRenderFunction}</StaticList>);
+
+    expect(wrapper.matchesElement(<ul />)).toBe(true);
+
+    wrapper.setProps<'as'>({ as: 'ol' });
+
+    expect(wrapper.matchesElement(<ol />)).toBe(true);
+  });
+
   it('re-renders when children mutate', () => {
     const wrapper = shallow(
       <StaticList items={items}>{(_item: number, index: number) => <li className="foo" key={index}>{`Item #${index}`}</li>}</StaticList>
