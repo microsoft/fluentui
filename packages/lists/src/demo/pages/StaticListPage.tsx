@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComponentPage, ExampleCard, Markdown } from '@uifabric/example-app-base';
 
-import { StaticListExample, StaticOrderedListExample, StaticListTableExample } from '../../StaticList/StaticList.Example';
+import { StaticListExample, StaticOrderedListExample, StaticListTableExample } from '../../components/StaticList/StaticList.Example';
 
 export const StaticListPage = () => (
   <ComponentPage
