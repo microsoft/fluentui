@@ -39,7 +39,7 @@ exports[`Chiclet renders chiclet with title, icon, onClick, and url 1`] = `
     className=
         ms-ChicletXsmall-preview
         {
-          flex-basis: 25%;
+          width: 60px;
         }
   >
     <img
@@ -61,9 +61,9 @@ exports[`Chiclet renders chiclet with title, icon, onClick, and url 1`] = `
         ms-ChicletXsmall-info
         {
           display: flex;
-          flex-basis: 70%;
           flex-wrap: wrap;
           margin-left: 4px;
+          width: 170px;
         }
   >
     <div
@@ -138,7 +138,7 @@ exports[`Chiclet renders chiclet with title, preview, onClick, and url 1`] = `
     className=
         ms-ChicletXsmall-preview
         {
-          flex-basis: 25%;
+          width: 60px;
         }
   >
     <div
@@ -181,9 +181,9 @@ exports[`Chiclet renders chiclet with title, preview, onClick, and url 1`] = `
         ms-ChicletXsmall-info
         {
           display: flex;
-          flex-basis: 70%;
           flex-wrap: wrap;
           margin-left: 4px;
+          width: 170px;
         }
   >
     <div
