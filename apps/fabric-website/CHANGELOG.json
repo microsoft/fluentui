@@ -2,6 +2,31 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "7.1.5",
+      "tag": "@uifabric/fabric-website_v7.1.5",
+      "date": "Thu, 20 Jun 2019 12:27:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Renamed instances of \"Microsoft UI Fabric\" to \"UI Fabric\"",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "c13e7dcffebfffdb65c6e35165b1ebecad1380ae"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.1.1` to `^7.2.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.2` to `^7.4.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.4",
       "tag": "@uifabric/fabric-website_v7.1.4",
       "date": "Wed, 19 Jun 2019 12:27:03 GMT",

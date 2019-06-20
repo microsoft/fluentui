@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "7.4.3",
+      "tag": "office-ui-fabric-react_v7.4.3",
+      "date": "Thu, 20 Jun 2019 12:27:38 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "ISelectableDroppableTextProps: surface API reference in website documentation.",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "e716eb14cba745960c0430249058d4a4ca400c66"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "DetailsList: add aria-hidden to checkbox labels",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "d4e05a01bc75ed3ce8d4522734e822810ba356bf"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.4.2",
       "tag": "office-ui-fabric-react_v7.4.2",
       "date": "Wed, 19 Jun 2019 12:27:03 GMT",
