@@ -13,7 +13,7 @@ export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyl
 
   const AboveAndBelowStyles: IStyle = {
     position: 'absolute',
-    pointerEvents: 'auto'
+    pointerEvents: 'none'
   };
 
   const positioningStyle: IStyle = {
@@ -30,7 +30,8 @@ export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyl
     contentContainer: [
       classNames.contentContainer,
       {
-        overflowY: props.scrollbarVisibility === 'always' ? 'scroll' : 'auto'
+        overflowY: props.scrollbarVisibility === 'always' ? 'scroll' : 'auto',
+        overflowX: props.scrollbarVisibility === 'always' ? 'scroll' : 'auto'
       },
       positioningStyle
     ],
