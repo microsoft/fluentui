@@ -10,7 +10,7 @@ export interface ISliderState {
 }
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
-const ONKEYDOWN_TIMEOUT_DURATION = 1000;
+export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
 export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
