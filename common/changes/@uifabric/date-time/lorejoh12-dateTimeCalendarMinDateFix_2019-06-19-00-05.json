@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/date-time",
+      "comment": "fixing min/max date being ignored",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/date-time",
+  "email": "jolore@microsoft.com"
+}

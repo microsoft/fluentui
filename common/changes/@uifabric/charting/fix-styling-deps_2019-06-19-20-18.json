@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/charting",
+      "comment": "Fixing peer deps.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "dzearing@microsoft.com"
+}

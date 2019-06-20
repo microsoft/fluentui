@@ -65,7 +65,6 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     hasIcon,
     resizable,
     hasErrorMessage,
-    iconClass,
     inputClassName,
     autoAdjustHeight
   } = props;
@@ -374,8 +373,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       },
       disabled && {
         color: semanticColors.disabledText
-      },
-      iconClass
+      }
     ],
     description: [
       classNames.description,

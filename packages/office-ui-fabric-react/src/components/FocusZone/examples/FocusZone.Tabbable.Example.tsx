@@ -17,7 +17,7 @@ export const FocusZoneTabbableExample: React.StatelessComponent = () => {
           <span>Circular Tabbable FocusZone: </span>
           <DefaultButton>Button 1</DefaultButton>
           <DefaultButton>Button 2</DefaultButton>
-          <TextField value="FocusZone TextField" styles={{ root: { width: 200 } }} />
+          <TextField defaultValue="FocusZone TextField" styles={{ root: { width: 200 } }} />
           <DefaultButton>Button 3</DefaultButton>
           <DefaultButton
             text="Create account"
@@ -46,7 +46,7 @@ export const FocusZoneTabbableExample: React.StatelessComponent = () => {
           <span>Input Only FocusZone: </span>
           <DefaultButton>Button 1</DefaultButton>
           <DefaultButton>Button 2</DefaultButton>
-          <TextField value="FocusZone TextField" styles={{ root: { width: 200 } }} />
+          <TextField defaultValue="FocusZone TextField" styles={{ root: { width: 200 } }} />
           <DefaultButton>Button 3</DefaultButton>
         </Stack>
       </FocusZone>

@@ -29,7 +29,6 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
       }
 >
   <div
-    autoComplete="on"
     className="ms-ComboBox-container "
   >
     <label
@@ -221,7 +220,6 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
       />
       <button
         aria-hidden={true}
-        checked={false}
         className=
             ms-Button
             ms-Button--icon
@@ -357,7 +355,6 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
     </div>
   </div>
   <div
-    autoComplete="on"
     className="ms-ComboBox-container "
   >
     <label
@@ -549,7 +546,6 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
       />
       <button
         aria-hidden={true}
-        checked={false}
         className=
             ms-Button
             ms-Button--icon

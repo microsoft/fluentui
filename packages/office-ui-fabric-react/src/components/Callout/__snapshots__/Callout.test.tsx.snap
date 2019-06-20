@@ -50,6 +50,8 @@ exports[`Callout renders Callout correctly 1`] = `
             position: relative;
           }
       onKeyDown={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       style={
         Object {
           "maxHeight": 752,

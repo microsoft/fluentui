@@ -154,6 +154,11 @@ exports[`Component Examples renders DocumentCard.Basic.Example.tsx correctly 1`]
           padding-top: 8px;
           word-wrap: break-word;
         }
+    style={
+      Object {
+        "whiteSpace": "nowrap",
+      }
+    }
     title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
   >
     Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx
@@ -211,7 +216,6 @@ exports[`Component Examples renders DocumentCard.Basic.Example.tsx correctly 1`]
                 font-weight: 400;
               }
           role="presentation"
-          size={11}
         >
           <div
             className=

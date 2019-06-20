@@ -1,12 +1,8 @@
 pr:
-  - fabric-7
   - master
-  - website-update
 
 trigger:
-  - fabric-7
   - master
-  - website-update
 
 variables:
   - group: fabric-variables
@@ -25,11 +21,15 @@ steps:
     displayName: rush install
 
   - script: |
+      npm run checkchange
+    displayName: check change
+
+  - script: |
       npm run buildci
     displayName: build ci
 
   - task: AzureUpload@1
-    displayName: AzureUpload
+    displayName: Upload PR deploy site
     inputs:
       SourcePath: 'apps/pr-deploy-site/dist'
       azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'

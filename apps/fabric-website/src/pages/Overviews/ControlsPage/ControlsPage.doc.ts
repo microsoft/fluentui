@@ -8,6 +8,11 @@ export const ControlsPageProps: TFabricPlatformPageProps = {
     componentUrl
   },
   ios: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/ios/ControlsOverview.md') as string,
+    componentUrl
+  },
+  android: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/android/ControlsOverview.md') as string,
     componentUrl
   }
 };

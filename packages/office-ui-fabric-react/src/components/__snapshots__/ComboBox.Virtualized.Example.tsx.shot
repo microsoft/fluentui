@@ -24,7 +24,6 @@ exports[`Component Examples renders ComboBox.Virtualized.Example.tsx correctly 1
       }
 >
   <div
-    autoComplete="on"
     className="ms-ComboBox-container "
   >
     <label
@@ -217,7 +216,6 @@ exports[`Component Examples renders ComboBox.Virtualized.Example.tsx correctly 1
       />
       <button
         aria-hidden={true}
-        checked={false}
         className=
             ms-Button
             ms-Button--icon

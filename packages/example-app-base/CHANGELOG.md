@@ -1,6 +1,53 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 29 May 2019 12:21:24 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Jun 2019 12:27:03 GMT and should not be manually modified.
+
+## 7.1.0
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Minor changes
+
+- Adds conditional logic to the render of specific regions on the page to enable use of the examples on docs.microsoft portal for OUFR.
+
+## 7.0.4
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- ColorPalette: fix missing react code breaking rendering
+
+## 7.0.3
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix export to codepen in fabric 7
+- Fix missing assets in production build.
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 7.0.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Breaking changes
+
+- Remove deprecated components; some styling fixes
+
+### Minor changes
+
+- Move Router to example-app-base
+
+### Patches
+
+- Revert example-app-base font changes
+- Update and dedupe React deps.
+- Remove use of deprecated @autobind decorator
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
 
 ## 6.23.1
 Wed, 29 May 2019 12:21:24 GMT

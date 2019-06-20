@@ -2,6 +2,150 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "7.0.3",
+      "tag": "@uifabric/utilities_v7.0.3",
+      "date": "Fri, 14 Jun 2019 12:26:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix missing assets in production build.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "e1bebe54dd798847060baaf4a52956c2f6dd866b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/test-utilities\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.1` to `^7.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.2",
+      "tag": "@uifabric/utilities_v7.0.2",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/test-utilities\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.0",
+      "tag": "@uifabric/utilities_v7.0.0",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove outdated *.api.ts generated files",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "23c112c024e7e6c3e2b99f9f9b5a32081f09f5b9"
+          }
+        ],
+        "major": [
+          {
+            "comment": "Remove deprecated `autobind` decorator.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "d7dd09998172855cfd005aa2ec901a575b838619"
+          },
+          {
+            "comment": "createRef: removed (use React.createRef instead)",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "d7dff286902cc947fceba7048150e76927143fdb"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add utility for checking controlled/uncontrolled prop usage",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "04983f31fedbf04c33f7cfd2395e58b5a9a7d03a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.1` to `^6.19.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.9` to `^6.0.10`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/test-utilities\" from `^6.0.4` to `^6.0.5`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.41.0",
+      "tag": "@uifabric/utilities_v6.41.0",
+      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Setting the styles props only when either of defaultProps or componentProps have it defined",
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "a5b12787e8e69da02454582b30bb4464c1777dab"
+          },
+          {
+            "comment": "upgrade to api-extractor 7.1.6",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a5bbc76367eb01e993f20796955569f422a538b2"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Updating `getNativeAttributes` element allow lists to be more refined, reducing unexpected attributes from being injected on primative elements. For example, `min` and `max` were being allowed to be injected for `div` elements. Now they are only injected for `input` elements.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5a10a485dfa2f9d69b29c69e1ec1593c3a573ab8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.0` to `^6.18.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.40.1",
       "tag": "@uifabric/utilities_v6.40.1",
       "date": "Thu, 06 Jun 2019 12:22:24 GMT",

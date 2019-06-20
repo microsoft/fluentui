@@ -25,9 +25,11 @@ export class KeytipData extends React.Component<IKeytipDataProps & IRenderCompon
     this.props.keytipProps && this._keytipManager.unregister(this._getKtpProps(), this._uniqueId);
   }
 
-  public componentDidUpdate() {
-    // Update Keytip in KeytipManager
-    this.props.keytipProps && this._keytipManager.update(this._getKtpProps(), this._uniqueId);
+  public componentDidUpdate(prevProps: IKeytipDataProps & IRenderComponent<{}>) {
+    if (prevProps.keytipProps !== this.props.keytipProps || prevProps.disabled !== this.props.disabled) {
+      // If keytipProps or disabled has changed update Keytip in KeytipManager
+      this.props.keytipProps && this._keytipManager.update(this._getKtpProps(), this._uniqueId);
+    }
   }
 
   public render(): JSX.Element {

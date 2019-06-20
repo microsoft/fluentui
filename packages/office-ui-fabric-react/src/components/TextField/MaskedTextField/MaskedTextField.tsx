@@ -119,10 +119,9 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
         onMouseDown={this._onMouseDown}
         onMouseUp={this._onMouseUp}
         onChange={this._onInputChange}
-        onBeforeChange={this._onBeforeChange}
         onKeyDown={this._onKeyDown}
         onPaste={this._onPaste}
-        value={this.state.displayValue}
+        value={this.state.displayValue || ''}
         componentRef={this._textField}
       />
     );
@@ -143,9 +142,6 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     return value;
   }
 
-  /**
-   *
-   */
   public setValue(newValue: string): void {
     let valueIndex = 0,
       charDataIndex = 0;
@@ -265,23 +261,15 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     }
   };
 
-  private _onBeforeChange = (value: string) => {
-    const { current } = this._textField;
-
-    if (this.props.onBeforeChange) {
-      this.props.onBeforeChange(value);
-    }
-
-    if (this._changeSelectionData === null && current) {
+  private _onInputChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string) => {
+    const textField = this._textField.current;
+    if (this._changeSelectionData === null && textField) {
       this._changeSelectionData = {
         changeType: 'default',
-        selectionStart: current.selectionStart !== null ? current.selectionStart : -1,
-        selectionEnd: current.selectionEnd !== null ? current.selectionEnd : -1
+        selectionStart: textField.selectionStart !== null ? textField.selectionStart : -1,
+        selectionEnd: textField.selectionEnd !== null ? textField.selectionEnd : -1
       };
     }
-  };
-
-  private _onInputChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, value: string) => {
     if (!this._changeSelectionData) {
       return;
     }
@@ -354,13 +342,9 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
       maskCursorPosition: cursorPos
     });
 
-    // Perform onChange/d after input has been processed. Return value is expected to be the displayed text
+    // Perform onChange after input has been processed. Return value is expected to be the displayed text
     if (this.props.onChange) {
       this.props.onChange(ev, newValue);
-    }
-
-    if (this.props.onChanged) {
-      this.props.onChanged(newValue);
     }
   };
 
