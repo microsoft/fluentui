@@ -2,25 +2,13 @@ import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib
 
 export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxStyles> => {
   const { disabled, checked, theme } = props;
-  const { semanticColors, palette, effects } = theme;
+  const { semanticColors, palette } = theme;
 
   return {
     checkbox: [
-      {
-        borderRadius: effects.roundedCorner2,
-        borderColor: palette.neutralPrimary
-      },
       !disabled &&
-        checked && {
-          borderColor: semanticColors.inputBackgroundChecked // using semanticColor because I am setting a new color above
-        },
-      disabled && {
-        borderColor: palette.neutralTertiaryAlt
-      },
-      checked &&
-        disabled && {
-          background: palette.neutralTertiaryAlt,
-          borderColor: palette.neutralTertiaryAlt
+        !checked && {
+          borderColor: semanticColors.smallInputBorder
         }
     ],
     checkmark: {
@@ -30,19 +18,19 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
       !disabled && [
         !checked && {
           selectors: {
-            ':hover .ms-Checkbox-text': { color: palette.neutralDark },
+            ':hover .ms-Checkbox-text': { color: palette.neutralDarkAlt },
             ':hover .ms-Checkbox-checkmark': { color: palette.neutralSecondary }
           }
         },
         checked && {
           selectors: {
             ':hover .ms-Checkbox-checkbox': {
-              background: palette.themeDark,
-              borderColor: palette.themeDark
+              background: palette.themeDarkAlt,
+              borderColor: palette.themeDarkAlt
             },
             ':focus .ms-Checkbox-checkbox': {
-              background: palette.themeDark,
-              borderColor: palette.themeDark
+              background: palette.themeDarkAlt,
+              borderColor: palette.themeDarkAlt
             }
           }
         }

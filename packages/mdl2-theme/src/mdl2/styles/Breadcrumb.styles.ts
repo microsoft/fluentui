@@ -9,46 +9,45 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcr
 
   const stateSelectors = {
     ':hover': {
-      color: palette.neutralPrimary,
+      backgroundColor: palette.neutralLighter,
       textDecoration: 'none'
     },
     ':active': {
-      backgroundColor: palette.neutralLight,
+      backgroundColor: palette.neutralTertiaryAlt,
       textDecoration: 'none'
     },
     '&:active:hover': {
-      color: palette.neutralPrimary,
-      backgroundColor: palette.neutralLight,
+      backgroundColor: palette.neutralQuaternary,
       textDecoration: 'none'
     }
   };
 
   const itemStyle = {
-    lineHeight: 36,
-    fontSize: FontSizes.size18,
+    lineHeight: 'normal',
+    fontSize: FontSizes.xLarge,
     outline: 'none',
-    fontWeight: FontWeights.regular,
-    color: palette.neutralSecondary,
+    fontWeight: FontWeights.light,
+    color: palette.neutralPrimary,
     selectors: {
       '.ms-Fabric--isFocusVisible &:focus': {
         // Necessary due to changes of Link component not using getFocusStyle.
         outline: 'none'
       },
       // Leaving this breakpoint selectors here as there might be some design discussions regarding scaling breadcrumb.
-      [MediumScreenSelector]: { fontSize: FontSizes.size18, fontWeight: FontWeights.regular, lineHeight: 36 },
-      [MinimumScreenSelector]: { fontSize: FontSizes.size18, lineHeight: 36 },
+      [MediumScreenSelector]: { fontSize: FontSizes.xLarge, fontWeight: FontWeights.regular, lineHeight: 'normal' },
+      [MinimumScreenSelector]: { fontSize: FontSizes.xLarge, fontWeight: FontWeights.regular, lineHeight: 'normal' },
       ...stateSelectors
     }
   };
 
   const lastChildItem = {
-    fontWeight: FontWeights.semibold,
+    fontWeight: FontWeights.light,
     color: palette.neutralPrimary
   };
 
   return {
     root: {
-      marginTop: 11
+      marginTop: 23
     },
     itemLink: itemStyle,
     item: itemStyle,
