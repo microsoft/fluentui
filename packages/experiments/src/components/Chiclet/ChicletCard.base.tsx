@@ -43,8 +43,6 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
     const role = actionable ? (onClick ? 'button' : 'link') : undefined;
     const tabIndex = actionable ? 0 : undefined;
 
-    return htmlOut(this.props, this._classNames, false);
-
     return (
       <div tabIndex={tabIndex} role={role} onClick={actionable ? this._onClick : undefined} className={this._classNames.root}>
         <div className={this._classNames.preview}>

@@ -48,23 +48,3 @@ export function renderIcon(
   }
   return icon;
 }
-
-export function htmlOut(
-  props?: Object,
-  classNames?: Object,
-  imageProvided?: boolean
-): React.ReactElement<React.HTMLAttributes<HTMLElement>> | undefined {
-  return (
-    <div tabIndex={tabIndex} role={role} onClick={this._onClick} className={this._classNames.root}>
-      <div className={this._classNames.preview}>
-        {renderPreview(image, imageHeight, imageWidth, imageAlt)}
-        {renderIcon(itemType, this._classNames.icon, imageProvided)}
-      </div>
-      <div className={this._classNames.info}>
-        <div className={this._classNames.title}>{title ? title : null}</div>
-        <div className={this._classNames.url}>{url ? url : null}</div>
-      </div>
-      {footer}
-    </div>
-  );
-}

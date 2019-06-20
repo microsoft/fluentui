@@ -51,7 +51,7 @@ export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallS
     preview: [
       classNames.preview,
       {
-        flexBasis: '25%'
+        width: 60
       }
     ],
     info: [
@@ -60,7 +60,7 @@ export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallS
         display: 'flex',
         flexWrap: 'wrap',
         marginLeft: 4,
-        flexBasis: '70%'
+        width: 170
       },
       footerProvided && {
         borderBottom: '1px solid gray'

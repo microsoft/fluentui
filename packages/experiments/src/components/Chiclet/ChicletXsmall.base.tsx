@@ -21,8 +21,6 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
     const role = onClick ? 'button' : 'link';
     const tabIndex = onClick ? 0 : undefined;
 
-    return htmlOut(this.props, this._classNames, imageProvided);
-
     return (
       <div tabIndex={tabIndex} role={role} onClick={this._onClick} className={this._classNames.root}>
         <div className={this._classNames.preview}>
