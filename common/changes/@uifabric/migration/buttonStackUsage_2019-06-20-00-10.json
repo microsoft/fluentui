@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/migration",
+      "comment": "Prettier changes.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/migration",
+  "email": "Humberto.Morimoto@microsoft.com"
+}
