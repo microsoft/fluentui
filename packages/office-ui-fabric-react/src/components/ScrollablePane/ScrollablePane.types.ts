@@ -123,6 +123,36 @@ export interface IStickyContainerBehavior {
    * If true, arranges Sticky component(s) based on Sticky's 'order' prop in ascending order.
    */
   arrangeStickiesBasedOnOrder: boolean;
+
+  /**
+   * Determies when sticky behavior kicks in for Sticky component(s).
+   * There are some calculations which determine if a Sticky component is sticky or non-sticky.
+   * These calculations can be expensive and affect page load time.
+   */
+  containerBehavior: StickyContainerBehaviorType;
+}
+
+/**
+ * {@docCategory ScrollablePane}
+ */
+export enum StickyContainerBehaviorType {
+  /**
+   * This is the default behavior. It can affect page load time.
+   */
+  Default = 0,
+
+  /**
+   * Sticky component(s) will become sticky or non-sticky based on scrolling.
+   * The calculation which determine if a Sticky component is sticky or non-sticky,
+   * are done after user interaction (scrolling) and don't affect page load time.
+   */
+  StickyOnScroll = 1,
+
+  /**
+   * Sticky component(s) will always be sticky independent of scrolling.
+   * There are no calculations done as the component(s) would always be sticky.
+   */
+  StickyAlways = 2
 }
 
 export type PlaceholderPosition = 'top' | 'bottom';
@@ -154,6 +184,11 @@ export interface IScrollablePaneContext {
     syncScrollSticky: (sticky: Sticky) => void;
     usePlaceholderForSticky: (placeholderPosition: PlaceholderPosition) => boolean;
     getScrollPosition: (horizontal?: boolean) => number;
+    verifyStickyContainerBehavior: (
+      stickyContainerPosition: StickyContainerPosition,
+      stickyContainerBehavior: StickyContainerBehaviorType
+    ) => boolean;
+    getUserInteractionStatus: () => boolean;
   };
 }
 

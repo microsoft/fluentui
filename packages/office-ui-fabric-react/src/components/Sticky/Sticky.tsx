@@ -1,7 +1,12 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { BaseComponent } from '../../Utilities';
-import { IScrollablePaneContext, ScrollablePaneContext, PlaceholderPosition } from '../ScrollablePane/ScrollablePane.types';
+import {
+  IScrollablePaneContext,
+  ScrollablePaneContext,
+  PlaceholderPosition,
+  StickyContainerBehaviorType
+} from '../ScrollablePane/ScrollablePane.types';
 import { IStickyProps, StickyPositionType } from './Sticky.types';
 
 export interface IStickyState {
@@ -266,8 +271,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _getNonStickyPlaceholderHeightAndWidth(): React.CSSProperties {
     const { isStickyTop, isStickyBottom } = this.state;
-    const usePlaceholderForStickyTop = this.context.scrollablePane.usePlaceholderForSticky('top');
-    const usePlaceholderForStickyBottom = this.context.scrollablePane.usePlaceholderForSticky('bottom');
+    const usePlaceholderForStickyTop = this.canStickyTop && this.context.scrollablePane.usePlaceholderForSticky('top');
+    const usePlaceholderForStickyBottom = this.canStickyBottom && this.context.scrollablePane.usePlaceholderForSticky('bottom');
     if ((isStickyTop && usePlaceholderForStickyTop) || (isStickyBottom && usePlaceholderForStickyBottom)) {
       let height = 0,
         width = 0;
@@ -304,7 +309,32 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   private _onScrollEvent = (container: HTMLElement, footerStickyContainer: HTMLElement): void => {
-    if (this.root && this.nonStickyContent) {
+    const { scrollablePane } = this.context;
+    if (!this.root || !this.nonStickyContent || !scrollablePane) {
+      return;
+    }
+    if (scrollablePane.verifyStickyContainerBehavior(this.canStickyTop ? 'above' : 'below', StickyContainerBehaviorType.StickyAlways)) {
+      // 1. ScrollablePane is mounted and has called notifySubscriber
+      // 2. stickyAlways has to re-render if mutation could 've affected it's offsetHeight.
+      this.setState({
+        isStickyTop: this.canStickyTop,
+        isStickyBottom: !this.canStickyTop,
+        distanceFromTop: 0 // must so that sorting happens.
+      });
+    } else if (
+      !scrollablePane.getUserInteractionStatus() &&
+      scrollablePane.verifyStickyContainerBehavior(this.canStickyTop ? 'above' : 'below', StickyContainerBehaviorType.StickyOnScroll)
+    ) {
+      // user interaction has not started
+      // 1. ScrollablePane is mounted and has called notifySubscriber, sort is required.
+      // 2. StickyOnScroll has to re-render if mutation could 've affected it's offsetHeight.
+      const { isStickyBottom, isStickyTop } = this.state;
+      scrollablePane.sortSticky(this, false);
+      this.setState({
+        isStickyBottom: isStickyBottom,
+        isStickyTop: isStickyTop
+      });
+    } else {
       const distanceFromTop = this._getNonStickyDistanceFromTop(container);
       let isStickyTop = false;
       let isStickyBottom = false;
