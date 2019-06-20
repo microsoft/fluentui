@@ -224,7 +224,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
           // root props has been deprecated and should get removed.
           // it needs to be marked as "any" since root props expects a div element, but really Tag can
           // be any native element so typescript rightly flags this as a problem.
-          ...rootProps as any
+          ...(rootProps as any)
         }
         // Once the getClassName correctly memoizes inputs this should
         // be replaced so that className is passed to getRootClass and is included there so
@@ -291,7 +291,8 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     }
 
     if (element) {
-      this._setActiveElement(element);
+      // when we Set focus to a specific child, we should recalculate the alignment depend on its position
+      this._setActiveElement(element, true);
       if (this._activeElement) {
         this._activeElement.focus();
       }
