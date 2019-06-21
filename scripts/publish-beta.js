@@ -1,17 +1,18 @@
+// @ts-check
+
 const path = require('path');
-const chalk = require('chalk');
+const chalk = require('chalk').default;
 const execSync = require('./exec-sync');
-const readConfig = require('./read-config');
+const { readRushJson } = require('./read-config');
 const process = require('process');
 
-let rushConfigPath = path.resolve(__dirname, '..', 'rush.json');
-const rushPackages = readConfig(rushConfigPath);
-if (!rushPackages) {
+const rushJson = readRushJson();
+if (!rushJson) {
   console.error('Could not find rush.json');
   process.exit(1);
 }
 
-const packages = rushPackages.projects.filter(project => project.shouldPublish || project.versionPolicyName);
+const packages = rushJson.projects.filter(project => project.shouldPublish || project.versionPolicyName);
 
 for (const package of packages) {
   const packagePath = path.resolve(__dirname, '..', package.projectFolder);
