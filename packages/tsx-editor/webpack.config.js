@@ -1,6 +1,5 @@
 const path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 const BUNDLE_NAME = 'tsx-editor';
@@ -30,8 +29,7 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
     new MonacoWebpackPlugin({
       // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
       languages: ['typescript']
-    }),
-    new BundleAnalyzerPlugin()
+    })
   ],
 
   resolve: {
