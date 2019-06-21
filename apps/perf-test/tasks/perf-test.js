@@ -3,17 +3,20 @@ const fs = require('fs');
 const path = require('path');
 const generateFlamegraph = require('./flamegraph/generateFlamegraph');
 
-const componentCount = 1000;
-const iterations = 100;
-const sampleSize = 50;
+// A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
+// TODO: change to 5000
+const iterations = 10;
 
+// Chrome command for running similarly configured instance of Chrome as puppeteer is configured here:
 // "C:\Program Files (x86)\Google\Chrome\Application\chrome" --no-sandbox --js-flags=" --logfile=C:\git\perf\output\chrome.log --prof --jitless --no-opt" --user-data-dir="C:\git\perf\user" http://localhost:4322
 
 // Current commands to run:
-//    npm i -g flamebearer
 //    rush build --to perf-test
-//    apps/perf-test: npm start
-//    npm run just perf-test
+//    From apps/perf-test directory:
+//      To build and run perf-test:
+//        npm run just perf-test
+//      To just run perf tests:
+//        npm run just run-perf-test
 
 // TODO:
 //  - Figure out what is causing huge log file size differences between Windows and Mac. (mac perf is pretty bad)
@@ -46,32 +49,24 @@ const sampleSize = 50;
 //      - https://mrale.ph/blog/2015/01/11/whats-up-with-monomorphism.html
 //      - https://dzone.com/articles/impact-of-polymorphism-on-component-based-framewor
 
-// TODO: tools?
-// ProfView
-//  https://github.com/v8/v8/tree/master/tools/profview
-// ProfViz
-//  https://thlorenz.com/v8-profiling/demos/profviz/profviz/profviz.html
-// FlameBearer
-//  https://github.com/mapbox/flamebearer
-//  node --prof-process --preprocess -j isolate*.log | flamebearer
-//  --preprocess: deliver JSON data
-//  -j: Include JS VM ticks only
-
 // TODO: other args?
 // https://github.com/v8/v8/blob/master/src/flags/flag-definitions.h
 //  --log-timer-events
 //  --log-source-code
 
-const urlFromDeployJob = process.env.BUILD_SOURCEBRANCH
-  ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/`
-  : 'file://' + path.resolve(__dirname, '../dist/index.html?scenario=');
+const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
+  ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test`
+  : 'file://' + path.resolve(__dirname, '../dist/');
 
-// const urlForMaster = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/';
-const urlForMaster = 'file:///C:/git/oufr-jg-issues/apps/pr-deploy-site/dist/perf-test/index.html';
+const urlForDeploy = urlForDeployPath + '/index.html';
 
-const resultsPath = path.join(__dirname, '../dist');
+// const urlForMaster = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/index.html';
+// const urlForMaster = 'file:///C:/git/oufr-jg/apps/pr-deploy-site/dist/perf-test/index.html';
+const urlForMaster = 'file:///C:/Users/Jason/src/oufr-jg/apps/pr-deploy-site/dist/perf-test/index.html';
+
 const logPath = path.join(__dirname, '../logfiles');
 const logFilePath = path.join(logPath, '/puppeteer.log');
+const resultsPath = path.join(__dirname, '../dist');
 
 module.exports = async function getPerfRegressions() {
   console.log('logFilePath: ' + logFilePath);
@@ -82,9 +77,8 @@ module.exports = async function getPerfRegressions() {
 
   const logfileContents = fs.readdirSync(logPath);
 
+  // TODO: cleaning should be done via a just-task?
   if (logfileContents.length > 0) {
-    // TODO: keep error?
-    // throw new Error(`Unexpected logfiles already present in ${logPath}`);
     console.log(`Unexpected logfiles already present in ${logPath}`);
     logfileContents.forEach(logFile => {
       const logFilePath = path.join(logPath, logFile);
@@ -98,7 +92,6 @@ module.exports = async function getPerfRegressions() {
     .filter(name => name.indexOf('scenarioList') < 0)
     .map(name => path.basename(name, '.tsx'));
 
-  // TODO: need to find a way to associate logs with tabs/scenarios.
   // const extraV8Flags = '--log-source-code --log-timer-events';
   // const extraV8Flags = '--log-source-code';
   const extraV8Flags = '';
@@ -107,23 +100,35 @@ module.exports = async function getPerfRegressions() {
     args: [
       '--flag-switches-begin',
       '--no-sandbox',
-      '--prof',
       '--js-flags=--logfile=' + logFilePath + ' --prof --jitless --no-opt ' + extraV8Flags,
       '--flag-switches-end'
     ]
   });
 
-  let nowPage = await browser.newPage();
+  // A log file is made for each new tab/page.
+  // Make an initial page here to force generation of initial system logs that we are not concerned with.
+  // This allows us to associate newly created log files with tests as we run each scenario in a new tab.
+  await browser.newPage();
 
-  // TODO: need to decide whether it's ok to run tests in parallel. Variance from results seems to indicate
+  // TODO: Need to decide whether it's ok to run tests in parallel. Variance from results seems to indicate
   // not, but then again other things outside of our control will also affect CPU load and results.
-  // Run tests sequentially for now, at least as a chance of getting consistent results when run locally.
+  // Run tests sequentially for now, at least as a chance of getting more consistent results when run locally.
   const testResults = [];
 
   for (const scenario of scenarios) {
-    const testResult = await runTest(browser, urlFromDeployJob, scenario, logPath);
-    console.log(`testResult: ${testResult}`);
-    testResults.push(testResult);
+    let logfileMaster = await runPerfTest(browser, urlForMaster, scenario, logPath);
+    let logfilePR = await runPerfTest(browser, urlForDeploy, scenario, logPath);
+
+    let outfileMaster = path.join(resultsPath, `${scenario}_master.html`);
+    let outfilePR = path.join(resultsPath, `${scenario}_pr.html`);
+
+    testResults.push({
+      scenario,
+      logfileMaster,
+      outfileMaster,
+      logfilePR,
+      outfilePR
+    });
   }
 
   console.log('testResults: ' + JSON.stringify(testResults));
@@ -131,16 +136,38 @@ module.exports = async function getPerfRegressions() {
   // Clean up
   await browser.close();
 
-  const logFiles = fs.readdirSync(logPath);
-
   // Serialize a bunch of async generation of flamegraphs
   for (const result of testResults) {
-    await generateFlamegraph(result);
+    await generateFlamegraph(result.logfileMaster, result.outfileMaster);
+    await generateFlamegraph(result.logfilePR, result.outfilePR);
   }
+
+  const comment = createTestSummary(testResults);
+
+  // TODO: determine status according to perf numbers
+  const status = 'success';
+
+  console.log(`Perf evaluation status: ${status}`);
+  console.log(`Writing comment to file:\n${comment}`);
+
+  // Write results to file
+  fs.writeFileSync(path.join(resultsPath, 'perfCounts.txt'), comment);
+  // TODO: delete
+  fs.writeFileSync(path.join(resultsPath, 'perfCounts.html'), comment);
+
+  console.log(`echo ##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.txt`);
+  console.log(`echo ##vso[task.setvariable variable=PerfCommentStatus;]${status}`);
 };
 
-async function runTest(browser, baseUrl, scenarioName, logPath) {
-  const testUrl = baseUrl + scenarioName;
+/**
+ *
+ * @param {*} browser Launched puppeteer instance
+ * @param {string} baseUrl Base URL supporting 'scenario' and 'terations' query parameters
+ * @param {string} scenarioName Name of scenario that will be used with baseUrl
+ * @param {string} logPath Absolute path to output log profiles.
+ */
+async function runPerfTest(browser, baseUrl, scenarioName, logPath) {
+  const testUrl = `${baseUrl}?scenario=${scenarioName}&iterations=${iterations}`;
   const logFilesBefore = fs.readdirSync(logPath);
 
   const page = await browser.newPage();
@@ -149,40 +176,87 @@ async function runTest(browser, baseUrl, scenarioName, logPath) {
 
   const testLogFile = arr_diff(logFilesBefore, logFilesAfter);
 
-  console.log('testUrl: ' + testUrl);
-  console.log('testLogFileName: ' + testLogFile);
-  console.log('logFilesBefore: ' + logFilesBefore);
-  console.log('logFilesAfter: ' + logFilesAfter);
-  console.log('diff: ' + testLogFile);
-
   if (testLogFile.length !== 1) {
-    // Is it safe to assume log file will always be present right after new page is created? throw error if not.
+    // We have to be able to identify log file associated with tab. Throw error if we can't.
     throw new Error(`Could not determine log file for ${baseUrl}. Log files detected: [ ${testLogFile} ]`);
   }
 
+  console.log(`Starting test for ${scenarioName} at ${testUrl}`);
+  console.log('testLogFile: ' + testLogFile[0]);
+
   await page.goto(testUrl);
+
+  console.log('Test finished, closing page...');
 
   await page.close();
 
-  return {
-    scenario: scenarioName,
-    logfile: path.join(logPath, testLogFile[0])
-  };
+  return path.join(logPath, testLogFile[0]);
 }
 
-function processLogFile(logFile, outFile, generateFlamegraph, options = []) {
-  console.log(`Processing ${logFile} -> ${outFile}`);
-
-  var output = fs.createWriteStream(outFile);
-
-  output.on('open', () => {
-    cp.spawnSync('node', ['--prof-process', ...options, logFile], {
-      cwd: path.dirname(logFile),
-      stdio: ['pipe', output, 'pipe']
-    });
+/**
+ * Create test summary based on test results.
+ */
+function createTestSummary(testResults) {
+  testResults.forEach(testResult => {
+    testResult.numTicksMaster = getTicks(testResult.outfileMaster);
+    testResult.numTicksPR = getTicks(testResult.outfilePR);
   });
+
+  console.log(process.env.BUILD_SOURCEBRANCH);
+
+  const result = `Component Perf Analysis:
+  <table>
+  <tr>
+    <th>Scenario</th>
+    <th>Master Samples</th>
+    <th>PR Samples</th>
+  </tr>`.concat(
+    testResults
+      .map(
+        testResult =>
+          `<tr>
+            <td>${testResult.scenario}</td>
+            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfileMaster)}">${testResult.numTicksMaster} *</href></td>
+            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfilePR)}">${testResult.numTicksPR} *</href></td>
+           </tr>`
+      )
+      .join('\n')
+      .concat(`</table>`)
+      .concat("* Sample counts can vary by up to 30% and shouldn't be used solely for determining regression.  ")
+      .concat('Flamegraph links are provided to give a hint on deltas introduced by PRs and potential bottlenecks.')
+  );
+
+  console.log('result: ' + result);
+
+  return result;
 }
 
+/**
+ * Get ticks from flamegraph file.
+ *
+ * @param {*} resultsFile
+ */
+function getTicks(resultsFile) {
+  const numTicks = fs
+    .readFileSync(resultsFile, 'utf8')
+    .toString()
+    .match(/numTicks\s?\=\s?([0-9]+)/);
+
+  if (numTicks && numTicks[1]) {
+    console.log('numTicks: ' + numTicks[1]);
+    return numTicks[1];
+  } else {
+    console.log('Could not read numTicks from ' + resultsFile);
+    return 'n/a';
+  }
+}
+
+/**
+ * Array diff utility that returns a list of elements that are not present in both arrays.
+ *
+ * @param {Array} a1 First array
+ * @param {Array} a2 Second array
+ */
 function arr_diff(a1, a2) {
   var a = [],
     diff = [];
@@ -204,4 +278,10 @@ function arr_diff(a1, a2) {
   }
 
   return diff;
+}
+
+if (require.main === module) {
+  // Can paste "testResults" console output here for testing.
+  const results = [];
+  createTestSummary(results);
 }

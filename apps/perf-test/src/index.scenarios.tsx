@@ -10,8 +10,9 @@ initializeIcons();
 const div = document.createElement('div');
 document.body.appendChild(div);
 
+// TODO: could default to displaying list of scenarios if param is not provided.
 const defaultScenarioName = Object.keys(scenarios)[0];
-const defaultIterations = 5000;
+const defaultIterations = 10;
 
 const queryParams = qs.parse(window.location.search.substring(1));
 const iterations = queryParams.iterations ? parseInt(queryParams.iterations as string, 10) : defaultIterations;

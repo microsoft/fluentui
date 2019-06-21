@@ -1,7 +1,5 @@
 // @ts-check
-
 const fs = require('fs');
-const path = require('path');
 
 // @ts-ignore
 const flamebearer = require('flamebearer');

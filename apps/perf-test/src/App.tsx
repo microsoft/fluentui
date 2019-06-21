@@ -16,6 +16,9 @@ export const App = () => {
   const [showIteration, setShowIteration] = React.useState(false);
   const [results, setResults] = React.useState<ITimings[]>([]);
 
+  // TODO: undo changes to this file
+  // TODO: move these app files into a directory that makes it obvious it's different from perf-test scripting
+
   React.useEffect(() => {
     if (itemsVisible) {
       if (iterationsCount < iterations) {

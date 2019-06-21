@@ -22,19 +22,16 @@ function jsonCleanUp() {
 /**
  * Takes in a v8 or node generated profile log and turn into flamegraph with flamebearer
  *
- * @param {{ scenario: string; logfile: string}} loginfo
+ * @param {string} logfile Log file input.
+ * @param {string} outfile Flamegraph output.
  */
-function generateFlamegraph(loginfo) {
-  const flamebearerBin = require.resolve('flamebearer/bin/flamebearer');
-
-  const { scenario, logfile } = loginfo;
+function generateFlamegraph(logfile, outfile) {
   const preprocessProc = cp.spawn(process.execPath, ['--prof-process', '--preprocess', '-j', logfile]);
 
   const flamebearerPromise = new Promise((resolve, reject) => {
     const concatStream = concat(preprocessed => {
       const src = flamebearer(preprocessed);
-      // TODO: write by scenario name or scenario dir? how will this be deployed?
-      fs.writeFileSync(path.join(path.dirname(logfile), loginfo.scenario + '.html'), src);
+      fs.writeFileSync(outfile, src);
       resolve();
     });
 
@@ -47,8 +44,5 @@ function generateFlamegraph(loginfo) {
 module.exports = generateFlamegraph;
 
 if (require.main === module) {
-  generateFlamegraph({
-    scenario: 'test',
-    logfile: path.join(__dirname, './fixtures/sample.log')
-  });
+  generateFlamegraph(path.join(__dirname, './fixtures/sample.log'), 'test.html');
 }
