@@ -39,6 +39,7 @@ steps:
 
   - script: |
       npm run perf-test
+    workingDirectory: apps/perf-test
     displayName: perf test
 
   - task: GithubPRComment@0
