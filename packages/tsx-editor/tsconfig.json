@@ -13,14 +13,14 @@
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "skipLibCheck": true,
     "moduleResolution": "node",
+    "esModuleInterop": true,
     "preserveConstEnums": true,
-    "lib": ["es2017"],
-    "types": [],
+    "lib": ["es5", "dom", "es2015.promise", "es2015.iterable"],
+    "types": ["jest", "webpack-env"],
     "paths": {
-      "@uifabric/test-utilities/lib/*": ["./src/*"],
-      "@uifabric/test-utilities": ["./src"]
+      "@uifabric/tsx-editor/lib/*": ["./src/*"],
+      "@uifabric/tsx-editor": ["./src"]
     }
   },
   "include": ["src"]
