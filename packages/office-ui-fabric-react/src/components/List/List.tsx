@@ -365,11 +365,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
    * Get the current height the list and it's pages.
    */
   public getTotalListHeight(): number {
-    let height = 0;
-    for (const curPage of this.state.pages!) {
-      height += curPage.height;
-    }
-    return height;
+    return this._surfaceRect!.height;
   }
 
   public render(): JSX.Element {

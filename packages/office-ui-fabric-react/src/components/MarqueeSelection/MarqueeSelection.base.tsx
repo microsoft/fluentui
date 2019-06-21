@@ -225,26 +225,26 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
           y: this._lastMouseEvent!.clientY - rootRect.top
         };
 
-        let rectLeft = Math.min(this._dragOrigin.x, constrainedPoint.x);
-        let rectTop = Math.min(this._dragOrigin.y, constrainedPoint.y);
+        let left = Math.min(this._dragOrigin.x, constrainedPoint.x);
+        let top = Math.min(this._dragOrigin.y, constrainedPoint.y);
 
-        let rectWidth = Math.abs(constrainedPoint.x - this._dragOrigin.x);
-        let rectHeight = Math.abs(constrainedPoint.y - this._dragOrigin.y);
+        let width = Math.abs(constrainedPoint.x - this._dragOrigin.x);
+        let height = Math.abs(constrainedPoint.y - this._dragOrigin.y);
 
-        if (rectLeft < 0) {
-          rectLeft = 0;
-          rectWidth = this._dragOrigin.x;
+        if (left < 0) {
+          left = 0;
+          width = this._dragOrigin.x;
         }
 
-        if (rectTop < 0) {
-          rectTop = 0;
-          rectHeight = this._dragOrigin.y;
+        if (top < 0) {
+          top = 0;
+          height = this._dragOrigin.y;
         }
 
         // constrain rect height to root rect height, if root rect height is valid.
         if (rootRect.width > 0) {
-          if (rectTop + rectHeight > rootRect.height) {
-            rectHeight = rootRect.height - rectTop;
+          if (top + height > rootRect.height) {
+            height = rootRect.height - top;
           }
         }
 
@@ -253,17 +253,12 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
           // since we don't have a width pass down to the element, we use the _scrollableSurface width
           // to constraint the marquee rect to not falls out the right boundary
           const viewportWidth = rootRect.width > 0 ? rootRect.width : this._scrollableSurface!.clientWidth;
-          if (rectLeft + rectWidth > viewportWidth) {
-            rectWidth = viewportWidth - rectLeft;
+          if (left + width > viewportWidth) {
+            width = viewportWidth - left;
           }
         }
 
-        const dragRect = {
-          left: rectLeft,
-          top: rectTop,
-          width: rectWidth,
-          height: rectHeight
-        };
+        const dragRect = { left, top, width, height };
 
         this._evaluateSelection(dragRect, rootRect);
 
@@ -391,7 +386,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
     const previousSelectedIndices = this._allSelectedIndices;
     this._allSelectedIndices = {};
 
-    // set all indices that is supposed to be selected in _allSelectedIndices
+    // set all indices that are supposed to be selected in _allSelectedIndices
     for (const index in this._selectedIndicies!) {
       if (this._selectedIndicies!.hasOwnProperty(index)) {
         this._allSelectedIndices![index] = true;
@@ -406,7 +401,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
 
     // check if needs to update selection, only when current _allSelectedIndices
     // is different than previousSelectedIndices
-    let needToUpdate = true;
+    let needToUpdate = false;
     for (const index in this._allSelectedIndices!) {
       if (this._allSelectedIndices![index] !== previousSelectedIndices![index]) {
         needToUpdate = true;
