@@ -1,14 +1,9 @@
-import {
-  IContextualMenuStyleProps,
-  IContextualMenuStyles,
-  IContextualMenuItemStyleProps,
-  IContextualMenuItemStyles
-} from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IContextualMenuStyleProps, IContextualMenuStyles } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { MinimumScreenSelector } from './styleConstants';
 
 export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<IContextualMenuStyles> => {
   const { theme } = props;
-  const { palette, effects } = theme;
+  const { effects } = theme;
 
   const CONTEXTUAL_MENU_ITEM_HEIGHT = 32;
 
@@ -37,33 +32,29 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
         },
         beakCurtain: { borderRadius: effects.roundedCorner2 }
       },
-      menuItem: (itemStyleProps: IContextualMenuItemStyleProps): Partial<IContextualMenuItemStyles> => {
-        const { disabled } = itemStyleProps;
-
-        return {
-          root: {
-            height: CONTEXTUAL_MENU_ITEM_HEIGHT,
-            lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT
-          },
-          splitPrimary: {
-            height: CONTEXTUAL_MENU_ITEM_HEIGHT,
-            lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT
-          },
-          splitMenu: {
-            height: CONTEXTUAL_MENU_ITEM_HEIGHT,
-            lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
-            width: CONTEXTUAL_MENU_ITEM_HEIGHT // to match the numbers from the default styles
-          },
-          icon: [{ ...iconStyles }, disabled && { color: palette.neutralTertiary }],
-          checkmarkIcon: { ...iconStyles },
-          splitContainer: {
-            height: CONTEXTUAL_MENU_ITEM_HEIGHT
-          },
-          subMenuIcon: {
-            height: CONTEXTUAL_MENU_ITEM_HEIGHT,
-            lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT
-          }
-        };
+      menuItem: {
+        root: {
+          height: CONTEXTUAL_MENU_ITEM_HEIGHT,
+          lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT
+        },
+        splitPrimary: {
+          height: CONTEXTUAL_MENU_ITEM_HEIGHT,
+          lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT
+        },
+        splitMenu: {
+          height: CONTEXTUAL_MENU_ITEM_HEIGHT,
+          lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
+          width: CONTEXTUAL_MENU_ITEM_HEIGHT // to match the numbers from the default styles
+        },
+        icon: { ...iconStyles },
+        checkmarkIcon: { ...iconStyles },
+        splitContainer: {
+          height: CONTEXTUAL_MENU_ITEM_HEIGHT
+        },
+        subMenuIcon: {
+          height: CONTEXTUAL_MENU_ITEM_HEIGHT,
+          lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT
+        }
       }
     }
   };

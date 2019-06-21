@@ -8,40 +8,32 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
   return {
     pill: [
       {
-        width: '40px',
-        height: '20px',
-        borderRadius: '10px',
-        padding: '0 3px'
+        width: '2.2em',
+        height: '1em',
+        borderRadius: '1em',
+        padding: '0 .2em'
       },
       !disabled && [
         checked && {
           selectors: {
             ':hover': [
               {
-                backgroundColor: palette.themeDark
+                backgroundColor: palette.themeDarkAlt
               }
             ]
-          }
-        },
-        !checked && {
-          selectors: {
-            ':hover .ms-Toggle-thumb': {
-              backgroundColor: palette.neutralDark
-            }
           }
         }
       ]
     ],
     thumb: [
       {
-        width: '12px',
-        height: '12px',
-        borderRadius: '12px',
-        borderColor: 'transparent'
+        width: '.5em',
+        height: '.5em',
+        borderRadius: '.5em'
       },
       !disabled &&
         !checked && {
-          backgroundColor: palette.neutralSecondary
+          backgroundColor: palette.neutralDark
         }
     ],
     text: {
