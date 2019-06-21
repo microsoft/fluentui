@@ -315,6 +315,7 @@ Array [
                     }
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
               >
@@ -812,6 +813,7 @@ Array [
                     }
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
               >

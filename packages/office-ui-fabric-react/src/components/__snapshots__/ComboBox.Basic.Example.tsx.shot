@@ -1718,12 +1718,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Checkbox:hover {
                           background-color: #f3f2f1;
                         }
-                        &.is-checked {
-                          background-color: transparent;
-                        }
-                        &.is-checked:hover {
-                          background-color: #f3f2f1;
-                        }
                         &:hover:active {
                           background-color: #edebe9;
                         }
@@ -1815,7 +1809,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          background-color: #f3f2f1;
+                          background-color: transparent;
                           border-color: transparent;
                           border-radius: 0px;
                           border-style: solid;
@@ -1885,14 +1879,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Checkbox:hover {
                           background-color: #f3f2f1;
                         }
-                        &.is-checked {
-                          background-color: transparent;
-                        }
-                        &.is-checked:hover {
-                          background-color: #f3f2f1;
-                        }
                         &:hover:active {
                           background-color: #edebe9;
+                        }
+                        &:hover {
+                          background-color: #f3f2f1;
                         }
                         .ms-Fabric--isFocusVisible &:after {
                           border: 1px solid #ffffff;
@@ -2037,12 +2028,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           display: flex;
                         }
                         &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
-                        &.is-checked {
-                          background-color: transparent;
-                        }
-                        &.is-checked:hover {
                           background-color: #f3f2f1;
                         }
                         &:hover:active {
@@ -2200,12 +2185,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           display: flex;
                         }
                         &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
-                        &.is-checked {
-                          background-color: transparent;
-                        }
-                        &.is-checked:hover {
                           background-color: #f3f2f1;
                         }
                         &:hover:active {
@@ -2414,12 +2393,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Checkbox:hover {
                           background-color: #f3f2f1;
                         }
-                        &.is-checked {
-                          background-color: transparent;
-                        }
-                        &.is-checked:hover {
-                          background-color: #f3f2f1;
-                        }
                         &:hover:active {
                           background-color: #edebe9;
                         }
@@ -2581,12 +2554,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Checkbox:hover {
                           background-color: #f3f2f1;
                         }
-                        &.is-checked {
-                          background-color: transparent;
-                        }
-                        &.is-checked:hover {
-                          background-color: #f3f2f1;
-                        }
                         &:hover:active {
                           background-color: #edebe9;
                         }
@@ -2729,12 +2696,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           display: flex;
                         }
                         &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
-                        &.is-checked {
-                          background-color: transparent;
-                        }
-                        &.is-checked:hover {
                           background-color: #f3f2f1;
                         }
                         &:hover:active {
@@ -2894,12 +2855,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Checkbox:hover {
                           background-color: #f3f2f1;
                         }
-                        &.is-checked {
-                          background-color: transparent;
-                        }
-                        &.is-checked:hover {
-                          background-color: #f3f2f1;
-                        }
                         &:hover:active {
                           background-color: #edebe9;
                         }
@@ -3057,12 +3012,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Checkbox:hover {
                           background-color: #f3f2f1;
                         }
-                        &.is-checked {
-                          background-color: transparent;
-                        }
-                        &.is-checked:hover {
-                          background-color: #f3f2f1;
-                        }
                         &:hover:active {
                           background-color: #edebe9;
                         }
@@ -3218,12 +3167,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           display: flex;
                         }
                         &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
-                        &.is-checked {
-                          background-color: transparent;
-                        }
-                        &.is-checked:hover {
                           background-color: #f3f2f1;
                         }
                         &:hover:active {
