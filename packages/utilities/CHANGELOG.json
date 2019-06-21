@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.41.3",
+      "tag": "@uifabric/utilities_v6.41.3",
+      "date": "Fri, 21 Jun 2019 03:41:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a null check in the case a stylesheet instance is not avaiable or old.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a40dcb2ff64a8b8a2543f3b583720d507a784b56"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.41.2",
       "tag": "@uifabric/utilities_v6.41.2",
       "date": "Fri, 14 Jun 2019 03:04:18 GMT",

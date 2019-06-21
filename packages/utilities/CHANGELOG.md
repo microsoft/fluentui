@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 14 Jun 2019 03:04:18 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jun 2019 03:41:09 GMT and should not be manually modified.
+
+## 6.41.3
+Fri, 21 Jun 2019 03:41:09 GMT
+
+### Patches
+
+- Adding a null check in the case a stylesheet instance is not avaiable or old.
 
 ## 6.41.2
 Fri, 14 Jun 2019 03:04:18 GMT
