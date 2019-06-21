@@ -2,19 +2,11 @@
 const { execSync } = require('child_process');
 const path = require('path');
 const { EOL, cpus } = require('os');
-const { runPrettierMultiProject } = require('./prettier/prettier-helpers');
+const { runPrettierMultiProject, runPrettierForProject, prettierExtensions } = require('./prettier/prettier-helpers');
+const { readRushJson } = require('./read-config');
+const { default: PQueue } = require('p-queue');
 
-const prettierIntroductionCommit = 'HEAD~1';
-const passedDiffTarget = process.argv.slice(2).length ? process.argv.slice(2)[0] : prettierIntroductionCommit;
-
-const projectPath = path.resolve(path.join(__dirname, '..'));
-const cmd = `git --no-pager diff ${passedDiffTarget} --diff-filter=AM --name-only --stat-name-width=0`;
-
-const gitDiffOutput = execSync(cmd, { cwd: projectPath });
-const filesChangedSinceLastRun = gitDiffOutput
-  .toString('utf8')
-  .split(EOL)
-  .filter(fileName => /\.(ts|tsx|js)$/.test(fileName));
+const runOnAllFiles = require('yargs').argv.all;
 
 /**
  * Run prettier for some files.
@@ -30,23 +22,40 @@ function runPrettierForFiles(filePaths) {
 }
 
 const numberOfCpus = cpus().length / 2;
-console.log(`Running prettier on changed files (on ${numberOfCpus} processes):`);
-const queues = new Array(numberOfCpus).fill(undefined).map(() => []);
+console.log(`Running prettier on ${runOnAllFiles ? 'changed' : 'all'} files (on ${numberOfCpus} processes):`);
 
-filesChangedSinceLastRun.forEach((fileName, index) => {
-  const queueNumber = index % numberOfCpus;
+const queue = new PQueue({ concurrency: numberOfCpus });
+if (runOnAllFiles) {
+  const rushJson = readRushJson();
+  queue.addAll(rushJson.projects.map(project => () => runPrettierForProject(project.projectFolder)));
+} else {
+  const prettierIntroductionCommit = 'HEAD~1';
+  const passedDiffTarget = process.argv.slice(2).length ? process.argv.slice(2)[0] : prettierIntroductionCommit;
 
-  queues[queueNumber].push(fileName);
-});
+  const projectPath = path.resolve(__dirname, '..');
+  const cmd = `git --no-pager diff ${passedDiffTarget} --diff-filter=AM --name-only --stat-name-width=0`;
 
-const allQueues = queues.map(queue => {
-  return runPrettierForFiles(queue);
-});
+  const gitDiffOutput = execSync(cmd, { cwd: projectPath });
+  const prettierExtRegex = new RegExp(`\\.(${prettierExtensions.join('|')})$`);
+  const files = gitDiffOutput
+    .toString('utf8')
+    .split(EOL)
+    .filter(fileName => prettierExtRegex.test(fileName));
 
-Promise.all(allQueues)
+  const fileGroups = [];
+  for (let chunkStart = 0; chunkStart < files.length; chunkStart += numberOfCpus) {
+    fileGroups.push(files.slice(chunkStart, chunkStart + numberOfCpus));
+  }
+
+  queue.addAll(fileGroups.map(group => () => runPrettierForFiles(group)));
+}
+
+queue
+  .onEmpty()
   .then(() => {
     console.log('🙌 All done! 🙌');
   })
   .catch(error => {
     console.error(error);
+    process.exit(1);
   });

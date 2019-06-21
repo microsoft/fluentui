@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 18 Jun 2019 12:26:19 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jun 2019 12:27:38 GMT and should not be manually modified.
+
+## 0.132.0
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Minor changes
+
+- Fixing peer deps.
 
 ## 0.131.3
 Tue, 18 Jun 2019 12:26:19 GMT

@@ -5863,12 +5863,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-export interface IPersonaPresenceStyleProps {
-    className?: string;
-    presence?: PersonaPresence;
-    size?: PersonaSize;
-    theme: ITheme;
-}
+export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> & Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size'> & Pick<IPersonaProps, 'className'>;
 
 // @public (undocumented)
 export interface IPersonaPresenceStyles {
@@ -5901,6 +5896,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     imageShouldStartVisible?: boolean;
     imageUrl?: string;
     initialsColor?: PersonaInitialsColor | string;
+    isOutOfOffice?: boolean;
     onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
     onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
     onRenderInitials?: IRenderFunction<IPersonaSharedProps>;
@@ -6760,7 +6756,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     max?: number;
     min?: number;
     onChange?: (value: number) => void;
-    onChanged?: (event: MouseEvent | TouchEvent, value: number) => void;
+    onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
     originFromZero?: boolean;
     showValue?: boolean;
     step?: number;
@@ -8022,6 +8018,9 @@ export type OnChangeCallback = (evt?: React.FormEvent<HTMLElement | HTMLInputEle
 export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
 
 // @public (undocumented)
+export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
+
+// @public (undocumented)
 export enum OpenCardMode {
     hotKey = 1,
     hover = 0
@@ -8213,7 +8212,7 @@ export namespace personaPresenceSize {
     size20 = "20px";
     const // (undocumented)
     size28 = "28px";
-    const // (undocumented)
+    const // @deprecated (undocumented)
     border = "2px";
 }
 

@@ -207,6 +207,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -234,6 +235,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -276,6 +278,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
