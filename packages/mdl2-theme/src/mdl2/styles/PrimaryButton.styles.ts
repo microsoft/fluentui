@@ -5,11 +5,10 @@ export const PrimaryButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
   if (!theme) {
     throw new Error('Theme is undefined or null.');
   }
-  const { palette, effects } = theme;
+  const { palette } = theme;
 
   return {
     root: {
-      borderRadius: effects.roundedCorner2,
       border: 'none',
       backgroundColor: palette.themePrimary,
       color: palette.white

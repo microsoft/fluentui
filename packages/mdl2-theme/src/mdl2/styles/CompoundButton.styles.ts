@@ -6,37 +6,51 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
   if (!theme) {
     throw new Error('Theme is undefined or null.');
   }
-  const { palette, effects } = theme;
+  const { palette } = theme;
 
   return {
     root: {
-      ...getFocusStyle(theme, { inset: 2 }),
-      backgroundColor: palette.white,
-      border: `1px solid ${palette.neutralSecondaryAlt}`,
-      borderRadius: effects.roundedCorner2,
-      padding: '16px 12px',
+      backgroundColor: palette.neutralLighter,
+      border: '1px solid transparent',
+      padding: '20px',
 
       // Primary styles require targeting a selector for now.
       // @todo: These selectors override the focus style above. Need to fix this.
       selectors: {
         '&.ms-Button--compoundPrimary': {
           backgroundColor: palette.themePrimary,
-          borderColor: palette.themePrimary
+          borderColor: palette.themePrimary,
+          ...getFocusStyle(theme, { inset: -1, borderColor: palette.white })
+        },
+        '&.ms-Button--compound': {
+          ...getFocusStyle(theme, { inset: -1, borderColor: palette.white })
+        }
+      }
+    },
+    rootHovered: {
+      backgroundColor: palette.neutralLight,
+
+      // Primary styles require targeting a selector for now.
+      selectors: {
+        '&.ms-Button--compoundPrimary:hover': {
+          backgroundColor: palette.themeDarkAlt,
+          borderColor: palette.themeDarkAlt
         }
       }
     },
     rootPressed: {
-      backgroundColor: palette.neutralQuaternaryAlt,
+      backgroundColor: palette.neutralTertiaryAlt,
 
       // Primary styles require targeting a selector for now.
       selectors: {
         '&.ms-Button--compoundPrimary:active': {
-          backgroundColor: palette.themeDark
+          backgroundColor: palette.themeDark,
+          borderColor: palette.themeDark
         }
       }
     },
     rootChecked: {
-      backgroundColor: palette.neutralQuaternaryAlt,
+      backgroundColor: palette.neutralTertiaryAlt,
 
       // Primary styles require targeting a selector for now.
       selectors: {
@@ -49,6 +63,7 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
     rootDisabled: {
       borderColor: palette.neutralLighter,
 
+      // Primary styles require targeting a selector for now.
       selectors: {
         '&.ms-Button--compoundPrimary': {
           backgroundColor: palette.neutralLighter,

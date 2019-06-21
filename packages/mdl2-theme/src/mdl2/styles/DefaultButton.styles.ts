@@ -6,17 +6,16 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
   if (!theme) {
     throw new Error('Theme is undefined or null.');
   }
-  const { palette, effects } = theme;
+  const { palette } = theme;
 
   return {
     root: {
-      borderRadius: effects.roundedCorner2,
-      backgroundColor: palette.white,
-      border: `1px solid ${palette.neutralSecondaryAlt}`,
-      ...getFocusStyle(theme, { inset: 1 })
+      backgroundColor: palette.neutralLighter,
+      border: '1px solid transparent',
+      ...getFocusStyle(theme, { inset: 0, borderColor: palette.white })
     },
     rootHovered: {
-      backgroundColor: palette.neutralLighter,
+      backgroundColor: palette.neutralLight,
       selectors: {
         '.ms-Button--primary': {
           backgroundColor: palette.themeDarkAlt
@@ -24,33 +23,25 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
       }
     },
     rootPressed: {
-      backgroundColor: palette.neutralLight
+      backgroundColor: palette.neutralTertiaryAlt
+    },
+    rootExpanded: {
+      backgroundColor: palette.neutralTertiaryAlt
     },
     rootChecked: {
-      backgroundColor: palette.neutralLight
+      backgroundColor: palette.neutralTertiaryAlt
     },
     rootDisabled: {
       backgroundColor: palette.neutralLighter,
-      borderColor: palette.neutralLighter
+      borderColor: 'transparent'
     },
     splitButtonMenuButton: {
-      background: 'transparent',
-      borderTopRightRadius: effects.roundedCorner2,
-      borderBottomRightRadius: effects.roundedCorner2,
-      border: `1px solid ${palette.neutralSecondaryAlt}`,
-      borderLeft: 'none'
+      backgroundColor: palette.neutralLighter,
+      border: '1px solid transparent'
     },
     splitButtonContainer: {
       selectors: {
-        '.ms-Button--default': {
-          borderRight: 'none',
-          borderTopRightRadius: '0',
-          borderBottomRightRadius: '0'
-        },
         '.ms-Button--primary': {
-          borderTopRightRadius: '0',
-          borderBottomRightRadius: '0',
-          border: 'none',
           backgroundColor: palette.themePrimary,
           selectors: {
             ':hover': {
@@ -60,7 +51,6 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
         },
         '.ms-Button--primary + .ms-Button': {
           backgroundColor: palette.themePrimary,
-          border: 'none',
           selectors: {
             ':hover': {
               background: palette.themeDarkAlt
