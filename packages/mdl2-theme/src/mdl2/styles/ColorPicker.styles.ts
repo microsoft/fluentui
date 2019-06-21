@@ -1,12 +1,3 @@
-import {
-  IColorPickerStyleProps,
-  IColorPickerStyles,
-  IColorRectangleStyleProps,
-  IColorRectangleStyles,
-  IColorSliderStyleProps,
-  IColorSliderStyles
-} from 'office-ui-fabric-react/lib/ColorPicker';
-
 export const ColorPickerStyles = {
   input: {
     selectors: {

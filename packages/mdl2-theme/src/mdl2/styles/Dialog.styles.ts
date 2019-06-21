@@ -5,36 +5,40 @@ import {
   IDialogFooterStyles
 } from 'office-ui-fabric-react/lib/Dialog';
 import { FontWeights } from '@uifabric/styling';
-import { FontSizes } from '../Mdl2Type';
 
 export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<IDialogContentStyles> => {
-  const { theme } = props;
-  const { palette, effects } = theme;
+  const { theme, isMultiline, isLargeHeader } = props;
+  const { palette, fonts } = theme;
 
   return {
-    title: {
-      fontSize: FontSizes.size20,
-      fontWeight: FontWeights.semibold,
-      padding: '16px 46px 24px 24px',
-      lineHeight: 'normal'
-    },
+    title: [
+      fonts.xLarge,
+      {
+        padding: '20px 36px 20px 28px'
+      },
+      isLargeHeader && [
+        fonts.xxLarge,
+        {
+          padding: '26px 28px 28px'
+        }
+      ]
+    ],
     topButton: {
-      padding: '14px 14px 0 0',
+      padding: '12px 12px 0 0',
       selectors: {
         '.ms-Dialog-button': {
           color: palette.neutralSecondary
         },
         '.ms-Dialog-button:hover': {
-          color: palette.neutralDark,
-          borderRadius: effects.roundedCorner2
+          color: palette.neutralDark
         }
       }
     },
     inner: {
-      padding: '0 24px 24px 24px'
+      padding: isMultiline ? '0 20px 20px' : '0 28px 20px'
     },
     subText: {
-      fontWeight: FontWeights.regular
+      fontWeight: FontWeights.semilight
     }
   };
 };
@@ -42,7 +46,7 @@ export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<ID
 export const DialogFooterStyles = (props: IDialogFooterStyleProps): Partial<IDialogFooterStyles> => {
   return {
     actions: {
-      margin: '16px 0 0'
+      margin: '20px 0 0'
     }
   };
 };

@@ -1,25 +1,26 @@
-import { FontSizes } from '../Mdl2Type';
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from 'office-ui-fabric-react/lib/TeachingBubble';
 
 export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<ITeachingBubbleStyles> => {
   const { hasCondensedHeadline, hasSmallHeadline, theme } = props;
-  const { effects, palette } = theme;
+  const { palette, fonts } = theme;
 
-  let headlineSize = FontSizes.size14;
+  let headlineSize = fonts.medium.fontSize;
+  let headlineWeight = FontWeights.semibold;
   if (!hasCondensedHeadline && !hasSmallHeadline) {
-    headlineSize = FontSizes.size20;
+    headlineSize = fonts.xxLarge.fontSize;
+    headlineWeight = FontWeights.light;
   }
 
   return {
     headline: {
       fontSize: headlineSize,
-      fontWeight: FontWeights.semibold
+      fontWeight: headlineWeight
     },
     footer: {
       selectors: {
         '.ms-Button:not(:first-child)': {
-          marginLeft: '16px'
+          marginLeft: 20
         }
       }
     },
@@ -27,18 +28,12 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
       backgroundColor: 'transparent',
       selectors: {
         '&:hover': {
+          backgroundColor: palette.themePrimary,
           color: palette.black
         },
         '&:active': {
           background: palette.themeDarkAlt,
           color: palette.black
-        }
-      }
-    },
-    subComponentStyles: {
-      callout: {
-        root: {
-          boxShadow: effects.elevation16
         }
       }
     }
