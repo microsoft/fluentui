@@ -109,10 +109,6 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
   return getClassNames;
 }
 
-function _derive(obj: any): any {
-  return typeof obj === 'function' ? obj(this) : obj;
-}
-
 function _traverseEdge(current: Map<any, any>, value: any): Map<any, any> {
   value = _normalizeValue(value);
 

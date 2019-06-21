@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { flatten } from './array';
-import { concatStyleSets, IStyleSet, IStyleFunctionOrObject, IConcatenatedStyleSet } from '@uifabric/merge-styles';
+import { concatStyleSets, IStyleSet, IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { Customizations } from './customizations/Customizations';
 import { CustomizerContext, ICustomizerContext } from './customizations/CustomizerContext';
 

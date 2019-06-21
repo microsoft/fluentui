@@ -317,10 +317,6 @@ describe('styled', () => {
   });
 
   it('can re-render when customized styles change', () => {
-    const userStyles = {
-      root: { background: 'red' }
-    };
-
     component = mount(<Test />);
 
     expect(_styleEval).toEqual(1);

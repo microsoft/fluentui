@@ -237,7 +237,7 @@ exports[`Button renders a Button inside a CommandBar correctly 1`] = `
 exports[`Button renders a default Button as an anchor correctly 1`] = `
 <a
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -307,16 +307,16 @@ exports[`Button renders a default Button as an anchor correctly 1`] = `
         border-color: Highlight;
         color: Highlight;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: Highlight;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -382,7 +382,7 @@ exports[`Button renders a default Button as an anchor correctly 1`] = `
 exports[`Button renders a default Button with content and an icon correctly 1`] = `
 <button
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -452,16 +452,16 @@ exports[`Button renders a default Button with content and an icon correctly 1`] 
         border-color: Highlight;
         color: Highlight;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: Highlight;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -502,7 +502,7 @@ exports[`Button renders a default Button with content and an icon correctly 1`] 
     <i
       aria-hidden={true}
       className=
-          ms-Button-icon
+          ms-Button-icon-47
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -545,7 +545,7 @@ exports[`Button renders a default Button with content and an icon correctly 1`] 
 exports[`Button renders a default Button with content correctly 1`] = `
 <button
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -615,16 +615,16 @@ exports[`Button renders a default Button with content correctly 1`] = `
         border-color: Highlight;
         color: Highlight;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: Highlight;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -687,7 +687,7 @@ exports[`Button renders a default Button with content correctly 1`] = `
 exports[`Button renders a default checked Button correctly 1`] = `
 <button
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -757,16 +757,16 @@ exports[`Button renders a default checked Button correctly 1`] = `
         border-color: Highlight;
         color: Highlight;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #000000;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: Highlight;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -829,7 +829,7 @@ exports[`Button renders a default checked Button correctly 1`] = `
 exports[`Button renders a default circular Button with an icon correctly 1`] = `
 <button
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -895,16 +895,16 @@ exports[`Button renders a default circular Button with an icon correctly 1`] = `
         border-color: Highlight;
         color: Highlight;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: Highlight;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: Highlight;
       }
   onClick={[Function]}
@@ -942,7 +942,7 @@ exports[`Button renders a default circular Button with an icon correctly 1`] = `
     <i
       aria-hidden={true}
       className=
-          ms-Button-icon
+          ms-Button-icon-47
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -967,7 +967,7 @@ exports[`Button renders a default circular Button with an icon correctly 1`] = `
 exports[`Button renders a default circular checked Button correctly 1`] = `
 <button
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -1033,16 +1033,16 @@ exports[`Button renders a default circular checked Button correctly 1`] = `
         border-color: Highlight;
         color: Highlight;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #000000;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: Highlight;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: Highlight;
       }
   onClick={[Function]}
@@ -1080,7 +1080,7 @@ exports[`Button renders a default circular checked Button correctly 1`] = `
     <i
       aria-hidden={true}
       className=
-          ms-Button-icon
+          ms-Button-icon-47
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -1106,7 +1106,7 @@ exports[`Button renders a default circular disabled checked Button correctly 1`]
 <button
   aria-disabled={true}
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -1177,16 +1177,16 @@ exports[`Button renders a default circular disabled checked Button correctly 1`]
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: GrayText;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: GrayText;
       }
   disabled={true}
@@ -1224,7 +1224,7 @@ exports[`Button renders a default circular disabled checked Button correctly 1`]
     <i
       aria-hidden={true}
       className=
-          ms-Button-icon
+          ms-Button-icon-47
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -1253,7 +1253,7 @@ exports[`Button renders a default disabled checked Button correctly 1`] = `
 <button
   aria-disabled={true}
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -1328,16 +1328,16 @@ exports[`Button renders a default disabled checked Button correctly 1`] = `
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: GrayText;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -1401,7 +1401,7 @@ exports[`Button renders a disabled default Button with content correctly 1`] = `
 <button
   aria-disabled={true}
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -1476,16 +1476,16 @@ exports[`Button renders a disabled default Button with content correctly 1`] = `
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: GrayText;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -1549,7 +1549,7 @@ exports[`Button renders a disabled default circular Button with an icon correctl
 <button
   aria-disabled={true}
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -1620,16 +1620,16 @@ exports[`Button renders a disabled default circular Button with an icon correctl
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: GrayText;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: GrayText;
       }
   disabled={true}
@@ -1667,7 +1667,7 @@ exports[`Button renders a disabled default circular Button with an icon correctl
     <i
       aria-hidden={true}
       className=
-          ms-Button-icon
+          ms-Button-icon-47
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -1696,7 +1696,7 @@ exports[`Button renders a disabled primary Button with content correctly 1`] = `
 <button
   aria-disabled={true}
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -1773,16 +1773,16 @@ exports[`Button renders a disabled primary Button with content correctly 1`] = `
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: GrayText;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -1847,7 +1847,7 @@ exports[`Button renders a disabled primary circular Button with an icon correctl
 <button
   aria-disabled={true}
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -1919,16 +1919,16 @@ exports[`Button renders a disabled primary circular Button with an icon correctl
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: GrayText;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: GrayText;
       }
   disabled={true}
@@ -1966,7 +1966,7 @@ exports[`Button renders a disabled primary circular Button with an icon correctl
     <i
       aria-hidden={true}
       className=
-          ms-Button-icon
+          ms-Button-icon-47
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -1994,7 +1994,7 @@ exports[`Button renders a disabled primary circular Button with an icon correctl
 exports[`Button renders a primary Button as an anchor correctly 1`] = `
 <a
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -2070,16 +2070,16 @@ exports[`Button renders a primary Button as an anchor correctly 1`] = `
         border-color: Highlight;
         color: Window;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: Window;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: Window;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -2146,7 +2146,7 @@ exports[`Button renders a primary Button as an anchor correctly 1`] = `
 exports[`Button renders a primary Button with content correctly 1`] = `
 <button
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -2222,16 +2222,16 @@ exports[`Button renders a primary Button with content correctly 1`] = `
         border-color: Highlight;
         color: Window;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: Window;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: Window;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -2295,7 +2295,7 @@ exports[`Button renders a primary Button with content correctly 1`] = `
 exports[`Button renders a primary Button with custom content and icon right-aligned correctly 1`] = `
 <button
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -2371,16 +2371,16 @@ exports[`Button renders a primary Button with custom content and icon right-alig
         border-color: Highlight;
         color: Window;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: Window;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: Window;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -2461,7 +2461,7 @@ exports[`Button renders a primary Button with custom content and icon right-alig
 exports[`Button renders a primary checked Button correctly 1`] = `
 <button
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -2537,16 +2537,16 @@ exports[`Button renders a primary checked Button correctly 1`] = `
         border-color: Highlight;
         color: Window;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: Window;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: Window;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -2610,7 +2610,7 @@ exports[`Button renders a primary checked Button correctly 1`] = `
 exports[`Button renders a primary circular Button with an icon correctly 1`] = `
 <button
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -2681,16 +2681,16 @@ exports[`Button renders a primary circular Button with an icon correctly 1`] = `
         border-color: Highlight;
         color: Window;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: Window;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: Window;
       }
   onClick={[Function]}
@@ -2728,7 +2728,7 @@ exports[`Button renders a primary circular Button with an icon correctly 1`] = `
     <i
       aria-hidden={true}
       className=
-          ms-Button-icon
+          ms-Button-icon-47
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -2756,7 +2756,7 @@ exports[`Button renders a primary circular Button with an icon correctly 1`] = `
 exports[`Button renders a primary circular checked Button correctly 1`] = `
 <button
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -2827,16 +2827,16 @@ exports[`Button renders a primary circular checked Button correctly 1`] = `
         border-color: Highlight;
         color: Window;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: Window;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: Window;
       }
   onClick={[Function]}
@@ -2874,7 +2874,7 @@ exports[`Button renders a primary circular checked Button correctly 1`] = `
     <i
       aria-hidden={true}
       className=
-          ms-Button-icon
+          ms-Button-icon-47
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -2903,7 +2903,7 @@ exports[`Button renders a primary circular disabled checked Button correctly 1`]
 <button
   aria-disabled={true}
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -2975,16 +2975,16 @@ exports[`Button renders a primary circular disabled checked Button correctly 1`]
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: GrayText;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: GrayText;
       }
   disabled={true}
@@ -3022,7 +3022,7 @@ exports[`Button renders a primary circular disabled checked Button correctly 1`]
     <i
       aria-hidden={true}
       className=
-          ms-Button-icon
+          ms-Button-icon-47
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -3051,7 +3051,7 @@ exports[`Button renders a primary disabled checked Button correctly 1`] = `
 <button
   aria-disabled={true}
   className=
-      ms-Button
+      ms-Button-46
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -3128,16 +3128,16 @@ exports[`Button renders a primary disabled checked Button correctly 1`] = `
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-icon {
+      &:hover .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
         color: GrayText;
       }
-      &:active .ms-Button-icon {
+      &:active .ms-Button-icon-47 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {

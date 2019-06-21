@@ -2,8 +2,6 @@ import { classNamesFunction } from './classNamesFunction';
 import { Stylesheet, IStyle } from '@uifabric/merge-styles';
 
 describe('classNamesFunction', () => {
-  let lastRule: string;
-
   beforeEach(() => {
     Stylesheet.getInstance().setConfig({
       onInsertRule: () => {
