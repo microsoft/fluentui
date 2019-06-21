@@ -16,6 +16,7 @@ const sampleSize = 50;
 //    npm run just perf-test
 
 // TODO:
+//  - Figure out what is causing huge log file size differences between Windows and Mac. (mac perf is pretty bad)
 //  - ITERATE
 //  - Verify results are repeatable and consistent
 //    - 1 tab vs. 100 tabs simulateneously
@@ -63,8 +64,8 @@ const sampleSize = 50;
 
 const urlFromDeployJob = process.env.BUILD_SOURCEBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/`
-  : // : 'http://localhost:4322/#/PrimaryButton';
-    'file://' + path.resolve(__dirname, '../dist/index.html?scenario=');
+  : 'file://' + path.resolve(__dirname, '../dist/index.html?scenario=');
+
 // const urlForMaster = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/';
 const urlForMaster = 'file:///C:/git/oufr-jg-issues/apps/pr-deploy-site/dist/perf-test/index.html';
 

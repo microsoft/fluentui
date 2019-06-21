@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { DetailsRow, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react';
 
-// const scenario = () => (
-//   <Button> I am a button</Button>
-// );
-
 // tslint:disable-next-line:typedef
 const Items = Array.from({ length: 10 }, (n, i) => ({
   key: `Item ${i}`,
@@ -24,8 +20,6 @@ const Columns: IColumn[] = [
   { key: 'c', name: 'Size', fieldName: 'size', minWidth: 300, maxWidth: 300 }
 ];
 
-const scenario = () => (
-  <DetailsRow itemIndex={0} item={Items[0]} columns={Columns} selection={selection} selectionMode={SelectionMode.single} />
-);
+const scenario = <DetailsRow itemIndex={0} item={Items[0]} columns={Columns} selection={selection} selectionMode={SelectionMode.single} />;
 
 export default scenario;
