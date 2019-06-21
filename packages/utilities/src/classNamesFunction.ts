@@ -4,7 +4,11 @@ import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 const MAX_CACHE_COUNT = 50;
 let _memoizedClassNames = 0;
 
-Stylesheet.getInstance().onReset(() => _memoizedClassNames++);
+const stylesheet = Stylesheet.getInstance();
+
+if (stylesheet && stylesheet.onReset) {
+  stylesheet.onReset(() => _memoizedClassNames++);
+}
 
 // Note that because of the caching nature within the classNames memoization,
 // I've disabled this rule to simply be able to work with any types.
