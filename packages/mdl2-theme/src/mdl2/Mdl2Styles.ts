@@ -21,7 +21,6 @@ import { FacepileStyles } from './styles/Facepile.styles';
 import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
-import { ModalStyles } from './styles/Modal.styles';
 import { PanelStyles } from './styles/Panel.styles';
 import { PeoplePickerItemStyles } from './styles/PeoplePicker.styles';
 import { PersonaStyles } from './styles/Persona.styles';
@@ -125,9 +124,6 @@ export const Mdl2Styles: any = {
   },
   ListPeoplePickerBase: {
     styles: BasePickerStyles
-  },
-  Modal: {
-    styles: ModalStyles
   },
   Panel: {
     styles: PanelStyles
