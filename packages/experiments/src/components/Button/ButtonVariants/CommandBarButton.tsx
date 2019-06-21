@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { Button } from './Button';
-import { IButtonComponent, IButtonTokenReturnType } from './Button.types';
-import { ButtonVariantsType } from './ButtonVariants.types';
+import { createComponent } from '@uifabric/foundation';
+import { useButtonState as state } from '../Button.state';
+import { ButtonStyles as styles } from '../Button.styles';
+import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from '../Button.types';
+import { ButtonView } from '../Button.view';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { palette, semanticColors } = theme;
@@ -44,13 +46,14 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
   };
 };
 
-export const CommandBarButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
+const CommandBarButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
   baseTokens,
   props.disabled && disabledTokens
 ];
 
-export const CommandBarButton: ButtonVariantsType = props => {
-  const { text, iconProps, ...rest } = props;
-
-  return <Button content={text} icon={iconProps} tokens={CommandBarButtonTokens} {...rest} />;
-};
+export const CommandBarButton: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
+  displayName: 'CommandBarButton',
+  state,
+  styles,
+  tokens: CommandBarButtonTokens
+});

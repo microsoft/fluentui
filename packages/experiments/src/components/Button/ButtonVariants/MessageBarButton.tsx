@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { Button } from './Button';
-import { IButtonComponent, IButtonTokenReturnType } from './Button.types';
-import { ButtonVariantsType } from './ButtonVariants.types';
+import { createComponent } from '@uifabric/foundation';
+import { useButtonState as state } from '../Button.state';
+import { ButtonStyles as styles } from '../Button.styles';
+import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from '../Button.types';
+import { ButtonView } from '../Button.view';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { palette } = theme;
@@ -33,8 +35,9 @@ export const MessageBarButtonTokens: IButtonComponent['tokens'] = (props, theme)
   props.disabled && disabledTokens
 ];
 
-export const MessageBarButton: ButtonVariantsType = props => {
-  const { text, iconProps, ...rest } = props;
-
-  return <Button content={text} icon={iconProps} tokens={MessageBarButtonTokens} {...rest} />;
-};
+export const MessageBarButton: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
+  displayName: 'MessageBarButton',
+  state,
+  styles,
+  tokens: MessageBarButtonTokens
+});

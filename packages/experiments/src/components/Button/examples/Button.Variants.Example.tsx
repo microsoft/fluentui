@@ -1,14 +1,5 @@
 import * as React from 'react';
-import {
-  ActionButton,
-  BaseButton,
-  CommandBarButton,
-  CompoundButton,
-  DefaultButton,
-  IconButton,
-  MessageBarButton,
-  PrimaryButton
-} from '../index';
+import { ActionButton, CommandBarButton, CompoundButton, DefaultButton, IconButton, MessageBarButton, PrimaryButton } from '../index';
 import { MenuButton } from '../MenuButton/index';
 import { SplitButton, ISplitButtonProps } from '../SplitButton/index';
 import { Stack, Text } from 'office-ui-fabric-react';
@@ -48,47 +39,43 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
       <Stack tokens={tokens.sectionStack}>
         <Stack tokens={tokens.buttonStack}>
           <ButtonStack>
-            <DefaultButton text="Default button" />
-            <DefaultButton text="Default button" icon="Upload" />
-            <DefaultButton disabled text="Disabled default button" />
-            <PrimaryButton text="Primary button" />
-            <PrimaryButton disabled text="Disabled primary button" />
+            <DefaultButton content="Default button" />
+            <DefaultButton disabled content="Disabled default button" />
+            <PrimaryButton content="Primary button" />
+            <PrimaryButton disabled content="Disabled primary button" />
           </ButtonStack>
           <ButtonStack>
-            <BaseButton text="Base Button" />
-            <BaseButton disabled text="Disabled Base Button" />
+            <ActionButton content="Action button" />
+            <ActionButton disabled content="Disabled action button" />
           </ButtonStack>
           <ButtonStack>
-            <ActionButton text="Action button" />
-            <ActionButton disabled text="Disabled action button" />
+            <CommandBarButton content="Command bar button" />
+            <CommandBarButton disabled content="Disabled command bar button" />
           </ButtonStack>
           <ButtonStack>
-            <CommandBarButton text="Command bar button" />
-            <CommandBarButton disabled text="Disabled command bar button" />
-          </ButtonStack>
-          <ButtonStack>
-            <CompoundButton text="Compound button" secondaryText="Enabled" />
-            <CompoundButton primary text="Compound button" secondaryText="Primary Enabled" />
-            <CompoundButton disabled text="Compound button" secondaryText="Disabled" />
-            <CompoundButton primary disabled text="Compound button" secondaryText="Primary Disabled" />
+            <CompoundButton content="Compound button" /*secondarycontent="Enabled"*/ />
+            <CompoundButton primary content="Compound button" /*secondarycontent="Primary Enabled"*/ />
+            <CompoundButton disabled content="Compound button" /*secondarycontent="Disabled"*/ />
+            <CompoundButton primary disabled content="Compound button" /*secondarycontent="Primary Disabled"*/ />
           </ButtonStack>
           <ButtonStack>
             <Stack horizontal verticalAlign="center">
               <Text>Icon Button:</Text>
-              <IconButton iconProps={{ iconName: 'Emoji2' }} />
-              <IconButton disabled iconProps={{ iconName: 'Emoji2' }} />
+              <IconButton icon={{ iconName: 'Emoji2' }} />
+              <IconButton disabled icon={{ iconName: 'Emoji2' }} />
             </Stack>
           </ButtonStack>
           <ButtonStack>
-            <MessageBarButton primary text="Primary" />
-            <MessageBarButton text="Default" />
-            <MessageBarButton primary disabled text="P Disabled" />
-            <MessageBarButton disabled text="Disabled" />
+            <MessageBarButton primary content="Primary" />
+            <MessageBarButton content="Default" />
+            <MessageBarButton primary disabled content="P Disabled" />
+            <MessageBarButton disabled content="Disabled" />
           </ButtonStack>
           <ButtonStack>
             <MenuButton content="Button" menu={menuProps} />
             <MenuButton primary content="Button" menu={menuProps} />
             <MenuButton disabled content="Button" menu={menuProps} />
+            <MenuButton primary disabled content="Button" menu={menuProps} />
           </ButtonStack>
           <ButtonStack>
             <SplitButton content="Button" menu={menuProps} />

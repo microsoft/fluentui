@@ -1,15 +1,25 @@
 import * as React from 'react';
-import { Button } from './Button';
-import { IButtonComponent, IButtonStylesReturnType, IButtonTokenReturnType } from './Button.types';
-import { IButtonVariantProps } from './ButtonVariants.types';
-import { HighContrastSelector } from '../../Styling';
-import { Text } from 'office-ui-fabric-react';
+import { createComponent, IStylesFunction, IComponentStyles } from '@uifabric/foundation';
+import { HighContrastSelector } from '../../../Styling';
+import { useButtonState as state } from '../Button.state';
+import { ButtonStyles } from '../Button.styles';
+import {
+  IButtonComponent,
+  IButtonProps,
+  IButtonSlots,
+  IButtonStylesReturnType,
+  IButtonTokenReturnType,
+  IButtonTokens,
+  IButtonViewProps
+} from '../Button.types';
+import { ButtonView } from '../Button.view';
 
-export interface ICompoundButtonProps extends IButtonVariantProps {
-  secondaryText?: string;
-}
+// TODO: Missing
+// export interface ICompoundButtonProps extends IButtonVariantProps {
+//   secondaryText?: string;
+// }
 
-export type CompoundButtonType = (props: ICompoundButtonProps) => JSX.Element;
+// export type CompoundButtonType = (props: ICompoundButtonProps) => JSX.Element;
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme) => {
   const { palette } = theme;
@@ -62,7 +72,14 @@ const CompoundButtonStyles: IButtonComponent['styles'] = (props, theme, tokens):
   const { disabled, primary } = props;
   const { semanticColors } = theme;
 
+  const regularStyles = (ButtonStyles as IStylesFunction<IButtonViewProps, IButtonTokens, IComponentStyles<IButtonSlots>>)(
+    props,
+    theme,
+    tokens
+  );
+
   return {
+    ...regularStyles,
     root: {
       lineHeight: '100%'
     },
@@ -91,28 +108,36 @@ const CompoundButtonStyles: IButtonComponent['styles'] = (props, theme, tokens):
   };
 };
 
-export const CompoundButton: CompoundButtonType = props => {
-  const { text, iconProps, secondaryText, ...rest } = props;
+export const CompoundButton: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
+  displayName: 'CompoundButton',
+  state,
+  styles: CompoundButtonStyles,
+  tokens: CompoundButtonTokens
+});
 
-  const stackTokens = { childrenGap: 5 };
-  const secondaryTextStyles = {
-    root: {
-      height: 12
-    }
-  };
+// TODO: Check how to get missing styling
+// export const CompoundButton: CompoundButtonType = props => {
+//   const { text, iconProps, secondaryText, ...rest } = props;
 
-  return (
-    <Button
-      stack={{ as: 'span', horizontal: false, horizontalAlign: 'start', tokens: stackTokens }}
-      content={text}
-      icon={iconProps}
-      styles={CompoundButtonStyles}
-      tokens={CompoundButtonTokens}
-      {...rest}
-    >
-      <Text variant="small" styles={secondaryTextStyles}>
-        {secondaryText}
-      </Text>
-    </Button>
-  );
-};
+//   const stackTokens = { childrenGap: 5 };
+//   const secondaryTextStyles = {
+//     root: {
+//       height: 12
+//     }
+//   };
+
+//   return (
+//     <Button
+//       stack={{ as: 'span', horizontal: false, horizontalAlign: 'start', tokens: stackTokens }}
+//       content={text}
+//       icon={iconProps}
+//       styles={CompoundButtonStyles}
+//       tokens={CompoundButtonTokens}
+//       {...rest}
+//     >
+//       <Text variant="small" styles={secondaryTextStyles}>
+//         {secondaryText}
+//       </Text>
+//     </Button>
+//   );
+// };

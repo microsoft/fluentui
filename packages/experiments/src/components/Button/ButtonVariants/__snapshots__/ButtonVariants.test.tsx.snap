@@ -8,13 +8,10 @@ exports[`Button Variants renders a CommandBarButton correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background-color: #ffffff;
-        border-color: #8a8886;
         border-radius: 0px;
-        border-style: solid;
         border-width: 0px;
         box-sizing: border-box;
         color: #323130;
-        cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -58,36 +55,23 @@ exports[`Button Variants renders a CommandBarButton correctly 1`] = `
       }
       &:hover {
         background-color: #f3f2f1;
-        border-color: #8a8886;
         color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: transparent;
-        color: Highlight;
       }
       &:active {
         background-color: #edebe9;
-        border-color: #8a8886;
         color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:active {
         border-color: transparent;
-        color: Highlight;
       }
       &:hover .ms-Button-icon {
         color: #106ebe;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: Highlight;
-      }
       &:active .ms-Button-icon {
         color: #005a9e;
-      }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: Highlight;
-      }
-      .ms-Fabric--isFocusVisible &:focus {
-        border-style: solid;
       }
   onClick={[Function]}
   role="button"
@@ -129,7 +113,7 @@ exports[`Button Variants renders a CommandBarButton correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: normal;
             moz-osx-font-smoothing: grayscale;
@@ -292,13 +276,13 @@ exports[`Button Variants renders a PrimaryButton correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background-color: #0078d4;
+        background-color: #ffffff;
         border-color: #8a8886;
         border-radius: 2px;
         border-style: solid;
-        border-width: 0px;
+        border-width: 1px;
         box-sizing: border-box;
-        color: #ffffff;
+        color: #323130;
         cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -311,7 +295,6 @@ exports[`Button Variants renders a PrimaryButton correctly 1`] = `
         margin-top: 0px;
         min-height: 32px;
         min-width: 100px;
-        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -332,53 +315,47 @@ exports[`Button Variants renders a PrimaryButton correctly 1`] = `
         bottom: 2px;
         content: "";
         left: 2px;
-        outline: 1px solid transparent;
+        outline: 1px solid #605e5c;
         position: absolute;
         right: 2px;
         top: 2px;
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){& {
-        -ms-high-contrast-adjust: none;
-        background-color: WindowText;
         border-width: 1px;
-        color: Window;
       }
       &:hover {
-        background-color: #106ebe;
+        background-color: #f3f2f1;
         border-color: #8a8886;
-        color: #ffffff;
+        color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
-        background-color: Highlight;
         border-color: Highlight;
-        color: Window;
+        color: Highlight;
       }
       &:active {
-        background-color: #005a9e;
+        background-color: #edebe9;
         border-color: #8a8886;
-        color: #ffffff;
+        color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:active {
-        background-color: Highlight;
         border-color: Highlight;
-        color: Window;
+        color: Highlight;
       }
       &:hover .ms-Button-icon {
-        color: #ffffff;
+        color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: Window;
+        color: Highlight;
       }
       &:active .ms-Button-icon {
-        color: #ffffff;
+        color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: Window;
+        color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {
         border-style: solid;
-        outline-color: transparent;
       }
   onClick={[Function]}
   role="button"
@@ -437,91 +414,9 @@ exports[`Button Variants renders a PrimaryButton correctly 1`] = `
 exports[`Button Variants renders a default CompoundButton correctly 1`] = `
 <button
   className=
-      ms-Button
+
       {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        background-color: #ffffff;
-        border-color: #8a8886;
-        border-radius: 2px;
-        border-style: solid;
-        border-width: 1px;
-        box-sizing: border-box;
-        color: #605e5c;
-        cursor: pointer;
-        display: inline-block;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        justify-content: center;
         line-height: 100%;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        min-height: 72px;
-        min-width: 100px;
-        outline: transparent;
-        overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-        text-align: center;
-        text-decoration: none;
-        user-select: none;
-        vertical-align: baseline;
-      }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: 2px;
-        content: "";
-        left: 2px;
-        outline: 1px solid #605e5c;
-        position: absolute;
-        right: 2px;
-        top: 2px;
-        z-index: 1;
-      }
-      @media screen and (-ms-high-contrast: active){& {
-        border-width: 1px;
-      }
-      &:hover {
-        background-color: #f3f2f1;
-        border-color: #8a8886;
-        color: #201f1e;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover {
-        border-color: Highlight;
-        color: Highlight;
-      }
-      &:active {
-        background-color: #edebe9;
-        border-color: #8a8886;
-        color: inherit;
-      }
-      @media screen and (-ms-high-contrast: active){&:active {
-        border-color: Highlight;
-        color: Highlight;
-      }
-      &:hover .ms-Button-icon {
-        color: #201f1e;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: Highlight;
-      }
-      &:active .ms-Button-icon {
-        color: inherit;
-      }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: Highlight;
-      }
-      .ms-Fabric--isFocusVisible &:focus {
-        border-style: solid;
       }
   onClick={[Function]}
   role="button"
@@ -532,10 +427,10 @@ exports[`Button Variants renders a default CompoundButton correctly 1`] = `
     className=
         ms-Stack
         {
-          align-items: flex-start;
+          align-items: center;
           box-sizing: border-box;
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
@@ -549,7 +444,7 @@ exports[`Button Variants renders a default CompoundButton correctly 1`] = `
           text-overflow: ellipsis;
         }
         & > *:not(:first-child) {
-          margin-top: 5px;
+          margin-left: 8px;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 1;
@@ -563,18 +458,11 @@ exports[`Button Variants renders a default CompoundButton correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: #323130;
             display: inline;
-            font-family: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
             moz-osx-font-smoothing: grayscale;
-            overflow: visible;
             webkit-font-smoothing: antialiased;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover {
-            color: Highlight;
-          }
-          @media screen and (-ms-high-contrast: active){&:active {
-            color: Highlight;
           }
     >
       Button
@@ -590,18 +478,12 @@ exports[`Button Variants renders a default MessageBarButton correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background-color: #ffffff;
         border-color: #c8c6c4;
-        border-radius: 2px;
-        border-style: solid;
-        border-width: 1px;
         box-sizing: border-box;
-        color: #323130;
-        cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 400;
         height: 24px;
         justify-content: center;
         margin-bottom: 0px;
@@ -641,37 +523,10 @@ exports[`Button Variants renders a default MessageBarButton correctly 1`] = `
         border-width: 1px;
       }
       &:hover {
-        background-color: #f3f2f1;
         border-color: #c8c6c4;
-        color: #201f1e;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover {
-        border-color: Highlight;
-        color: Highlight;
       }
       &:active {
-        background-color: #edebe9;
         border-color: #c8c6c4;
-        color: #201f1e;
-      }
-      @media screen and (-ms-high-contrast: active){&:active {
-        border-color: Highlight;
-        color: Highlight;
-      }
-      &:hover .ms-Button-icon {
-        color: #201f1e;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: Highlight;
-      }
-      &:active .ms-Button-icon {
-        color: #201f1e;
-      }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: Highlight;
-      }
-      .ms-Fabric--isFocusVisible &:focus {
-        border-style: solid;
       }
   onClick={[Function]}
   role="button"
@@ -713,9 +568,9 @@ exports[`Button Variants renders a default MessageBarButton correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
             moz-osx-font-smoothing: grayscale;
             overflow: visible;
             webkit-font-smoothing: antialiased;
@@ -731,96 +586,9 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
 <button
   aria-disabled={true}
   className=
-      ms-Button
+
       {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        background-color: #f3f2f1;
-        border-color: #f3f2f1;
-        border-radius: 2px;
-        border-style: solid;
-        border-width: 1px;
-        box-sizing: border-box;
-        color: #a19f9d;
-        cursor: default;
-        display: inline-block;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        justify-content: center;
         line-height: 100%;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        min-height: 72px;
-        min-width: 100px;
-        outline: transparent;
-        overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-        text-align: center;
-        text-decoration: none;
-        user-select: none;
-        vertical-align: baseline;
-      }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: 2px;
-        content: "";
-        left: 2px;
-        outline: 1px solid #605e5c;
-        position: absolute;
-        right: 2px;
-        top: 2px;
-        z-index: 1;
-      }
-      @media screen and (-ms-high-contrast: active){& {
-        background-color: Window;
-        border-color: GrayText;
-        border-width: 1px;
-        color: GrayText;
-      }
-      &:hover {
-        background-color: #f3f2f1;
-        border-color: #f3f2f1;
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover {
-        background-color: Window;
-        border-color: GrayText;
-        color: GrayText;
-      }
-      &:active {
-        background-color: #f3f2f1;
-        border-color: #f3f2f1;
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:active {
-        background-color: Window;
-        border-color: GrayText;
-        color: GrayText;
-      }
-      &:hover .ms-Button-icon {
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: GrayText;
-      }
-      &:active .ms-Button-icon {
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: GrayText;
-      }
-      .ms-Fabric--isFocusVisible &:focus {
-        border-style: solid;
       }
   disabled={true}
   onClick={[Function]}
@@ -831,10 +599,10 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
     className=
         ms-Stack
         {
-          align-items: flex-start;
+          align-items: center;
           box-sizing: border-box;
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
@@ -848,7 +616,7 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
           text-overflow: ellipsis;
         }
         & > *:not(:first-child) {
-          margin-top: 5px;
+          margin-left: 8px;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 1;
@@ -862,21 +630,11 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
             -webkit-font-smoothing: antialiased;
             color: #a19f9d;
             display: inline;
-            font-family: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
             moz-osx-font-smoothing: grayscale;
-            overflow: visible;
             webkit-font-smoothing: antialiased;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover {
-            color: GrayText;
-          }
-          @media screen and (-ms-high-contrast: active){&:active {
-            color: GrayText;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: GrayText;
           }
     >
       Button
@@ -893,18 +651,12 @@ exports[`Button Variants renders a default disabled MessageBarButton correctly 1
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background-color: #f3f2f1;
         border-color: #f3f2f1;
-        border-radius: 2px;
-        border-style: solid;
-        border-width: 1px;
         box-sizing: border-box;
-        color: #a19f9d;
-        cursor: default;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 400;
         height: 24px;
         justify-content: center;
         margin-bottom: 0px;
@@ -941,45 +693,13 @@ exports[`Button Variants renders a default disabled MessageBarButton correctly 1
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){& {
-        background-color: Window;
-        border-color: GrayText;
         border-width: 1px;
-        color: GrayText;
       }
       &:hover {
-        background-color: #f3f2f1;
         border-color: #f3f2f1;
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover {
-        background-color: Window;
-        border-color: GrayText;
-        color: GrayText;
       }
       &:active {
-        background-color: #f3f2f1;
         border-color: #f3f2f1;
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:active {
-        background-color: Window;
-        border-color: GrayText;
-        color: GrayText;
-      }
-      &:hover .ms-Button-icon {
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: GrayText;
-      }
-      &:active .ms-Button-icon {
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: GrayText;
-      }
-      .ms-Fabric--isFocusVisible &:focus {
-        border-style: solid;
       }
   disabled={true}
   onClick={[Function]}
@@ -1021,9 +741,9 @@ exports[`Button Variants renders a default disabled MessageBarButton correctly 1
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
             moz-osx-font-smoothing: grayscale;
             overflow: visible;
             webkit-font-smoothing: antialiased;
@@ -1045,12 +765,8 @@ exports[`Button Variants renders a disabled ActionButton correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
         border-color: transparent;
-        border-radius: 2px;
-        border-style: solid;
-        border-width: 1px;
         box-sizing: border-box;
         color: #a19f9d;
-        cursor: default;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -1061,8 +777,6 @@ exports[`Button Variants renders a disabled ActionButton correctly 1`] = `
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        min-height: 32px;
-        min-width: 100px;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -1090,45 +804,23 @@ exports[`Button Variants renders a disabled ActionButton correctly 1`] = `
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){& {
-        background-color: Window;
-        border-color: GrayText;
         border-width: 1px;
-        color: GrayText;
       }
       &:hover {
         background-color: transparent;
         border-color: transparent;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
-        background-color: Window;
-        border-color: GrayText;
-        color: GrayText;
-      }
       &:active {
         background-color: transparent;
         border-color: transparent;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
-        background-color: Window;
-        border-color: GrayText;
-        color: GrayText;
-      }
       &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: GrayText;
-      }
       &:active .ms-Button-icon {
         color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: GrayText;
-      }
-      .ms-Fabric--isFocusVisible &:focus {
-        border-style: solid;
       }
   disabled={true}
   onClick={[Function]}
@@ -1145,7 +837,7 @@ exports[`Button Variants renders a disabled ActionButton correctly 1`] = `
           flex-direction: row;
           flex-wrap: nowrap;
           height: 100%;
-          justify-content: flex-start;
+          justify-content: center;
           padding-bottom: 0px;
           padding-left: 8px;
           padding-right: 8px;
@@ -1170,7 +862,7 @@ exports[`Button Variants renders a disabled ActionButton correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             moz-osx-font-smoothing: grayscale;
@@ -1193,13 +885,10 @@ exports[`Button Variants renders a disabled CommandBarButton correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background-color: #ffffff;
-        border-color: #f3f2f1;
         border-radius: 0px;
-        border-style: solid;
         border-width: 0px;
         box-sizing: border-box;
         color: #a19f9d;
-        cursor: default;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -1238,45 +927,28 @@ exports[`Button Variants renders a disabled CommandBarButton correctly 1`] = `
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){& {
-        background-color: Window;
         border-color: transparent;
         border-width: 1px;
-        color: GrayText;
       }
       &:hover {
         background-color: #ffffff;
-        border-color: #f3f2f1;
         color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
-        background-color: Window;
         border-color: transparent;
-        color: GrayText;
       }
       &:active {
         background-color: #ffffff;
-        border-color: #f3f2f1;
         color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:active {
-        background-color: Window;
         border-color: transparent;
-        color: GrayText;
       }
       &:hover .ms-Button-icon {
         color: #c8c6c4;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: GrayText;
-      }
       &:active .ms-Button-icon {
         color: #c8c6c4;
-      }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: GrayText;
-      }
-      .ms-Fabric--isFocusVisible &:focus {
-        border-style: solid;
       }
   disabled={true}
   onClick={[Function]}
@@ -1318,7 +990,7 @@ exports[`Button Variants renders a disabled CommandBarButton correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: normal;
             moz-osx-font-smoothing: grayscale;
@@ -1490,82 +1162,69 @@ exports[`Button Variants renders a disabled IconButton correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         background-color: #ffffff;
         border-color: transparent;
-        border-radius: 50%;
-        border-style: solid;
-        border-width: 1px;
         box-sizing: border-box;
-        color: #a19f9d;
-        cursor: default;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 400;
         justify-content: center;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        min-height: 32px;
-        min-width: 32px;
-        outline-color: transparent;
+        outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 0px;
+        position: relative;
         text-align: center;
         text-decoration: none;
         user-select: none;
         vertical-align: baseline;
       }
-      .ms-Fabric--isFocusVisible &:focus {
-        background-clip: content-box;
-        border-color: #605e5c;
-        border-style: solid;
-        border-width: 1px;
-        outline-color: transparent;
-        padding-bottom: 1px;
-        padding-left: 1px;
-        padding-right: 1px;
-        padding-top: 1px;
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 2px;
+        content: "";
+        left: 2px;
+        outline: 1px solid #605e5c;
+        position: absolute;
+        right: 2px;
+        top: 2px;
+        z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){& {
-        background-color: Window;
         border-color: transparent;
         border-width: 1px;
-        color: GrayText;
       }
       &:hover {
         background-color: #ffffff;
         border-color: transparent;
-        color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
-        background-color: Window;
         border-color: transparent;
-        color: GrayText;
       }
       &:active {
         background-color: #ffffff;
         border-color: transparent;
-        color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:active {
-        background-color: Window;
         border-color: transparent;
-        color: GrayText;
       }
       &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: GrayText;
-      }
       &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: GrayText;
+      .ms-Fabric--isFocusVisible &:focus {
+        border-style: solid;
+        border-width: 1px;
       }
   disabled={true}
   onClick={[Function]}
@@ -1583,10 +1242,6 @@ exports[`Button Variants renders a disabled IconButton correctly 1`] = `
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
           width: auto;
         }
         & > * {
@@ -1607,9 +1262,9 @@ exports[`Button Variants renders a disabled IconButton correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
             moz-osx-font-smoothing: grayscale;
             overflow: visible;
             webkit-font-smoothing: antialiased;
@@ -1633,7 +1288,7 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
         border-color: #f3f2f1;
         border-radius: 2px;
         border-style: solid;
-        border-width: 0px;
+        border-width: 1px;
         box-sizing: border-box;
         color: #a19f9d;
         cursor: default;
@@ -1648,7 +1303,6 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
         margin-top: 0px;
         min-height: 32px;
         min-width: 100px;
-        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -1669,14 +1323,13 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
         bottom: 2px;
         content: "";
         left: 2px;
-        outline: 1px solid transparent;
+        outline: 1px solid #605e5c;
         position: absolute;
         right: 2px;
         top: 2px;
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){& {
-        -ms-high-contrast-adjust: none;
         background-color: Window;
         border-color: GrayText;
         border-width: 1px;
@@ -1716,7 +1369,6 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         border-style: solid;
-        outline-color: transparent;
       }
   disabled={true}
   onClick={[Function]}
@@ -1775,98 +1427,9 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
 exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
 <button
   className=
-      ms-Button
+
       {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        background-color: #0078d4;
-        border-color: #8a8886;
-        border-radius: 2px;
-        border-style: solid;
-        border-width: 0px;
-        box-sizing: border-box;
-        color: #ffffff;
-        cursor: pointer;
-        display: inline-block;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        justify-content: center;
         line-height: 100%;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        min-height: 72px;
-        min-width: 100px;
-        outline-color: transparent;
-        outline: transparent;
-        overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-        text-align: center;
-        text-decoration: none;
-        user-select: none;
-        vertical-align: baseline;
-      }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: 2px;
-        content: "";
-        left: 2px;
-        outline: 1px solid transparent;
-        position: absolute;
-        right: 2px;
-        top: 2px;
-        z-index: 1;
-      }
-      @media screen and (-ms-high-contrast: active){& {
-        -ms-high-contrast-adjust: none;
-        background-color: WindowText;
-        border-width: 1px;
-        color: Window;
-      }
-      &:hover {
-        background-color: #106ebe;
-        border-color: #8a8886;
-        color: #ffffff;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover {
-        background-color: Highlight;
-        border-color: Highlight;
-        color: Window;
-      }
-      &:active {
-        background-color: #005a9e;
-        border-color: #8a8886;
-        color: #ffffff;
-      }
-      @media screen and (-ms-high-contrast: active){&:active {
-        background-color: Highlight;
-        border-color: Highlight;
-        color: Window;
-      }
-      &:hover .ms-Button-icon {
-        color: #ffffff;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: Window;
-      }
-      &:active .ms-Button-icon {
-        color: #ffffff;
-      }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: Window;
-      }
-      .ms-Fabric--isFocusVisible &:focus {
-        border-style: solid;
-        outline-color: transparent;
       }
   onClick={[Function]}
   role="button"
@@ -1877,10 +1440,10 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
     className=
         ms-Stack
         {
-          align-items: flex-start;
+          align-items: center;
           box-sizing: border-box;
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
@@ -1894,7 +1457,7 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
           text-overflow: ellipsis;
         }
         & > *:not(:first-child) {
-          margin-top: 5px;
+          margin-left: 8px;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 1;
@@ -1908,21 +1471,11 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: #ffffff;
             display: inline;
-            font-family: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
             moz-osx-font-smoothing: grayscale;
-            overflow: visible;
             webkit-font-smoothing: antialiased;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover {
-            color: Window;
-          }
-          @media screen and (-ms-high-contrast: active){&:active {
-            color: Window;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: Window;
           }
     >
       Button
@@ -1938,18 +1491,12 @@ exports[`Button Variants renders a primary MessageBarButton correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background-color: #0078d4;
         border-color: #c8c6c4;
-        border-radius: 2px;
-        border-style: solid;
-        border-width: 0px;
         box-sizing: border-box;
-        color: #ffffff;
-        cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 400;
         height: 24px;
         justify-content: center;
         margin-bottom: 0px;
@@ -1958,7 +1505,6 @@ exports[`Button Variants renders a primary MessageBarButton correctly 1`] = `
         margin-top: 0px;
         min-height: 24px;
         min-width: 84px;
-        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -1980,53 +1526,20 @@ exports[`Button Variants renders a primary MessageBarButton correctly 1`] = `
         bottom: 2px;
         content: "";
         left: 2px;
-        outline: 1px solid transparent;
+        outline: 1px solid #605e5c;
         position: absolute;
         right: 2px;
         top: 2px;
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){& {
-        -ms-high-contrast-adjust: none;
-        background-color: WindowText;
         border-width: 1px;
-        color: Window;
       }
       &:hover {
-        background-color: #106ebe;
         border-color: #c8c6c4;
-        color: #ffffff;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover {
-        background-color: Highlight;
-        border-color: Highlight;
-        color: Window;
       }
       &:active {
-        background-color: #005a9e;
         border-color: #c8c6c4;
-        color: #ffffff;
-      }
-      @media screen and (-ms-high-contrast: active){&:active {
-        background-color: Highlight;
-        border-color: Highlight;
-        color: Window;
-      }
-      &:hover .ms-Button-icon {
-        color: #ffffff;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: Window;
-      }
-      &:active .ms-Button-icon {
-        color: #ffffff;
-      }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: Window;
-      }
-      .ms-Fabric--isFocusVisible &:focus {
-        border-style: solid;
-        outline-color: transparent;
       }
   onClick={[Function]}
   role="button"
@@ -2068,9 +1581,9 @@ exports[`Button Variants renders a primary MessageBarButton correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
             moz-osx-font-smoothing: grayscale;
             overflow: visible;
             webkit-font-smoothing: antialiased;
@@ -2086,99 +1599,9 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
 <button
   aria-disabled={true}
   className=
-      ms-Button
+
       {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        background-color: #f3f2f1;
-        border-color: #f3f2f1;
-        border-radius: 2px;
-        border-style: solid;
-        border-width: 0px;
-        box-sizing: border-box;
-        color: #a19f9d;
-        cursor: default;
-        display: inline-block;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        justify-content: center;
         line-height: 100%;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        min-height: 72px;
-        min-width: 100px;
-        outline-color: transparent;
-        outline: transparent;
-        overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
-        position: relative;
-        text-align: center;
-        text-decoration: none;
-        user-select: none;
-        vertical-align: baseline;
-      }
-      &::-moz-focus-inner {
-        border: 0;
-      }
-      .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #ffffff;
-        bottom: 2px;
-        content: "";
-        left: 2px;
-        outline: 1px solid transparent;
-        position: absolute;
-        right: 2px;
-        top: 2px;
-        z-index: 1;
-      }
-      @media screen and (-ms-high-contrast: active){& {
-        -ms-high-contrast-adjust: none;
-        background-color: Window;
-        border-color: GrayText;
-        border-width: 1px;
-        color: GrayText;
-      }
-      &:hover {
-        background-color: #f3f2f1;
-        border-color: #f3f2f1;
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover {
-        background-color: Window;
-        border-color: GrayText;
-        color: GrayText;
-      }
-      &:active {
-        background-color: #f3f2f1;
-        border-color: #f3f2f1;
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:active {
-        background-color: Window;
-        border-color: GrayText;
-        color: GrayText;
-      }
-      &:hover .ms-Button-icon {
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: GrayText;
-      }
-      &:active .ms-Button-icon {
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: GrayText;
-      }
-      .ms-Fabric--isFocusVisible &:focus {
-        border-style: solid;
-        outline-color: transparent;
       }
   disabled={true}
   onClick={[Function]}
@@ -2189,10 +1612,10 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
     className=
         ms-Stack
         {
-          align-items: flex-start;
+          align-items: center;
           box-sizing: border-box;
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
@@ -2206,7 +1629,7 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
           text-overflow: ellipsis;
         }
         & > *:not(:first-child) {
-          margin-top: 5px;
+          margin-left: 8px;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 1;
@@ -2220,21 +1643,11 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
             -webkit-font-smoothing: antialiased;
             color: #a19f9d;
             display: inline;
-            font-family: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
             moz-osx-font-smoothing: grayscale;
-            overflow: visible;
             webkit-font-smoothing: antialiased;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover {
-            color: GrayText;
-          }
-          @media screen and (-ms-high-contrast: active){&:active {
-            color: GrayText;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: GrayText;
           }
     >
       Button
@@ -2251,18 +1664,12 @@ exports[`Button Variants renders a primary disabled MessageBarButton correctly 1
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background-color: #f3f2f1;
         border-color: #f3f2f1;
-        border-radius: 2px;
-        border-style: solid;
-        border-width: 0px;
         box-sizing: border-box;
-        color: #a19f9d;
-        cursor: default;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 400;
         height: 24px;
         justify-content: center;
         margin-bottom: 0px;
@@ -2271,7 +1678,6 @@ exports[`Button Variants renders a primary disabled MessageBarButton correctly 1
         margin-top: 0px;
         min-height: 24px;
         min-width: 84px;
-        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -2293,54 +1699,20 @@ exports[`Button Variants renders a primary disabled MessageBarButton correctly 1
         bottom: 2px;
         content: "";
         left: 2px;
-        outline: 1px solid transparent;
+        outline: 1px solid #605e5c;
         position: absolute;
         right: 2px;
         top: 2px;
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){& {
-        -ms-high-contrast-adjust: none;
-        background-color: Window;
-        border-color: GrayText;
         border-width: 1px;
-        color: GrayText;
       }
       &:hover {
-        background-color: #f3f2f1;
         border-color: #f3f2f1;
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover {
-        background-color: Window;
-        border-color: GrayText;
-        color: GrayText;
       }
       &:active {
-        background-color: #f3f2f1;
         border-color: #f3f2f1;
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:active {
-        background-color: Window;
-        border-color: GrayText;
-        color: GrayText;
-      }
-      &:hover .ms-Button-icon {
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: GrayText;
-      }
-      &:active .ms-Button-icon {
-        color: #a19f9d;
-      }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: GrayText;
-      }
-      .ms-Fabric--isFocusVisible &:focus {
-        border-style: solid;
-        outline-color: transparent;
       }
   disabled={true}
   onClick={[Function]}
@@ -2382,9 +1754,9 @@ exports[`Button Variants renders a primary disabled MessageBarButton correctly 1
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
             moz-osx-font-smoothing: grayscale;
             overflow: visible;
             webkit-font-smoothing: antialiased;
@@ -2405,12 +1777,8 @@ exports[`Button Variants renders an ActionButton correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
         border-color: transparent;
-        border-radius: 2px;
-        border-style: solid;
-        border-width: 1px;
         box-sizing: border-box;
         color: #323130;
-        cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -2421,8 +1789,6 @@ exports[`Button Variants renders an ActionButton correctly 1`] = `
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        min-height: 32px;
-        min-width: 100px;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -2457,33 +1823,16 @@ exports[`Button Variants renders an ActionButton correctly 1`] = `
         border-color: transparent;
         color: #0078d4;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
-        border-color: Highlight;
-        color: Highlight;
-      }
       &:active {
         background-color: transparent;
         border-color: transparent;
         color: #000000;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
-        border-color: Highlight;
-        color: Highlight;
-      }
       &:hover .ms-Button-icon {
         color: #0078d4;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: Highlight;
-      }
       &:active .ms-Button-icon {
         color: #000000;
-      }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: Highlight;
-      }
-      .ms-Fabric--isFocusVisible &:focus {
-        border-style: solid;
       }
   onClick={[Function]}
   role="button"
@@ -2500,7 +1849,7 @@ exports[`Button Variants renders an ActionButton correctly 1`] = `
           flex-direction: row;
           flex-wrap: nowrap;
           height: 100%;
-          justify-content: flex-start;
+          justify-content: center;
           padding-bottom: 0px;
           padding-left: 8px;
           padding-right: 8px;
@@ -2525,7 +1874,7 @@ exports[`Button Variants renders an ActionButton correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             moz-osx-font-smoothing: grayscale;
@@ -2548,44 +1897,41 @@ exports[`Button Variants renders an IconButton correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
         border-color: transparent;
-        border-radius: 50%;
-        border-style: solid;
-        border-width: 1px;
         box-sizing: border-box;
-        color: #323130;
-        cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
-        font-weight: 600;
+        font-weight: 400;
         justify-content: center;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        min-height: 32px;
-        min-width: 32px;
-        outline-color: transparent;
+        outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
         padding-left: 0px;
         padding-right: 0px;
         padding-top: 0px;
+        position: relative;
         text-align: center;
         text-decoration: none;
         user-select: none;
         vertical-align: baseline;
       }
-      .ms-Fabric--isFocusVisible &:focus {
-        background-clip: content-box;
-        border-color: #605e5c;
-        border-style: solid;
-        border-width: 1px;
-        outline-color: transparent;
-        padding-bottom: 1px;
-        padding-left: 1px;
-        padding-right: 1px;
-        padding-top: 1px;
+      &::-moz-focus-inner {
+        border: 0;
+      }
+      .ms-Fabric--isFocusVisible &:focus:after {
+        border: 1px solid #ffffff;
+        bottom: 2px;
+        content: "";
+        left: 2px;
+        outline: 1px solid #605e5c;
+        position: absolute;
+        right: 2px;
+        top: 2px;
+        z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-color: transparent;
@@ -2594,32 +1940,26 @@ exports[`Button Variants renders an IconButton correctly 1`] = `
       &:hover {
         background-color: #f3f2f1;
         border-color: transparent;
-        color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: transparent;
-        color: Highlight;
       }
       &:active {
         background-color: #edebe9;
         border-color: transparent;
-        color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:active {
         border-color: transparent;
-        color: Highlight;
       }
       &:hover .ms-Button-icon {
         color: #106ebe;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: Highlight;
-      }
       &:active .ms-Button-icon {
         color: #005a9e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: Highlight;
+      .ms-Fabric--isFocusVisible &:focus {
+        border-style: solid;
+        border-width: 1px;
       }
   onClick={[Function]}
   role="button"
@@ -2637,10 +1977,6 @@ exports[`Button Variants renders an IconButton correctly 1`] = `
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
           width: auto;
         }
         & > * {
@@ -2661,9 +1997,9 @@ exports[`Button Variants renders an IconButton correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: inherit;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 600;
+            font-weight: 400;
             moz-osx-font-smoothing: grayscale;
             overflow: visible;
             webkit-font-smoothing: antialiased;

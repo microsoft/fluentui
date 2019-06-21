@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { Button } from './Button';
-import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from './Button.types';
-import { ButtonVariantsType } from './ButtonVariants.types';
-import { FontWeights } from '../../Styling';
+import { createComponent } from '@uifabric/foundation';
+import { FontWeights } from '../../../Styling';
+import { useButtonState as state } from '../Button.state';
+import { ButtonStyles as styles } from '../Button.styles';
+import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from '../Button.types';
+import { ButtonView } from '../Button.view';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { palette, semanticColors } = theme;
@@ -39,17 +41,19 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
   };
 };
 
-export const ActionButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
+const ActionButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
   baseTokens,
   props.disabled && disabledTokens
 ];
 
-const ActionButtonStackProps: IButtonProps['stack'] = {
-  horizontalAlign: 'start'
-};
+// TODO: Research how to fix this.
+// const ActionButtonStackProps: IButtonProps['stack'] = {
+//   horizontalAlign: 'start'
+// };
 
-export const ActionButton: ButtonVariantsType = props => {
-  const { text, iconProps, ...rest } = props;
-
-  return <Button stack={ActionButtonStackProps} content={text} icon={iconProps} tokens={ActionButtonTokens} {...rest} />;
-};
+export const ActionButton: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
+  displayName: 'ActionButton',
+  state,
+  styles,
+  tokens: ActionButtonTokens
+});

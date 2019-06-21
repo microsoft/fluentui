@@ -11,7 +11,6 @@ export const ButtonView: IButtonComponent['view'] = props => {
 
   const { slotType, htmlType, propertiesType } = _deriveRootType(props);
 
-  // TODO: 'href' is anchor property... consider getNativeProps by root type
   const buttonProps = { ...getNativeProps(rest, propertiesType) };
 
   const Slots = getSlots<IButtonProps, IButtonSlots>(props, {
