@@ -419,7 +419,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       if (updatedValue !== undefined) {
         this.setState({
-          suggestionsVisible: this.getShowSuggestions()
+          suggestionsVisible: this._getShowSuggestions()
         });
       } else {
         this.setState({
@@ -451,25 +451,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.setState(
       {
         suggestedDisplayValue: itemValue,
-        suggestionsVisible: this.getShowSuggestions()
+        suggestionsVisible: this._getShowSuggestions()
       },
       () => this.setState({ suggestionsLoading: false })
     );
-  }
-
-  /**
-   * Suggestions are normally shown after the user updates text and the text
-   * is non-empty, but also when the user clicks on the input element.
-   * @returns True if suggestions should be shown.
-   */
-  protected getShowSuggestions(): boolean {
-    const areSuggestionsVisible =
-      this.input.current !== undefined &&
-      this.input.current !== null &&
-      this.input.current.inputElement === document.activeElement &&
-      (this.input.current.value !== '' || this._requestSuggestionsOnClick);
-
-    return areSuggestionsVisible;
   }
 
   protected onChange(items?: T[]) {
@@ -847,6 +832,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       );
     }
   }
+
   /**
    * Takes in the current updated value and either resolves it with the new suggestions
    * or if updated value is undefined then it clears out currently suggested items
@@ -882,6 +868,21 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   private _onSelectedItemsUpdated(items?: T[], focusIndex?: number): void {
     this.resetFocus(focusIndex);
     this.onChange(items);
+  }
+
+  /**
+   * Suggestions are normally shown after the user updates text and the text
+   * is non-empty, but also when the user clicks on the input element.
+   * @returns True if suggestions should be shown.
+   */
+  private _getShowSuggestions(): boolean {
+    const areSuggestionsVisible =
+      this.input.current !== undefined &&
+      this.input.current !== null &&
+      this.input.current.inputElement === document.activeElement &&
+      (this.input.current.value !== '' || this._requestSuggestionsOnClick);
+
+    return areSuggestionsVisible;
   }
 
   private _onResolveSuggestions(updatedValue: string): void {

@@ -311,6 +311,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     protected onBlur: (ev: React.FocusEvent<HTMLElement | Autofill>) => void;
     // (undocumented)
     protected onChange(items?: T[]): void;
+    protected onClick: (ev: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
     // (undocumented)
     protected onEmptyInputFocus(): void;
     // (undocumented)
@@ -1654,7 +1655,9 @@ export interface IBasePickerProps<T> extends React.Props<any> {
     onBlur?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
     onChange?: (items?: T[]) => void;
     onDismiss?: (ev?: any, selectedItem?: T) => void;
+    // @deprecated
     onEmptyInputFocus?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
+    onEmptyResolveSuggestions?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onFocus?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
     onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onInputChange?: (input: string) => string;
