@@ -66,12 +66,12 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     super(props);
     this._subscribers = new Set<Function>();
     this._stickies = new Set<Sticky>();
-
+    const { scrollbarVisibility } = this.props;
     this.state = {
       stickyTopHeight: 0,
       stickyBottomHeight: 0,
-      scrollbarWidth: 0,
-      scrollbarHeight: 0
+      scrollbarWidth: scrollbarVisibility === ScrollbarVisibility.always ? this._getScrollbarHeightFromLocalStorage(true) : 0,
+      scrollbarHeight: scrollbarVisibility === ScrollbarVisibility.always ? this._getScrollbarHeightFromLocalStorage(true) : 0
     };
     this._scrollLeft = this._scrollTop = 0;
     this._notifyThrottled = this._async.throttle(this.notifySubscribers, 50);
@@ -117,7 +117,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     if (scrollbarVisibility === ScrollbarVisibility.always) {
       // after first render, scrollbars are visible
       // it is needed to position stickyContainers correctly
-      const scrollbarHeight = this._getScrollbarHeightFromLocalStorage();
+      const scrollbarHeight = this._getScrollbarHeightFromLocalStorage() || this._getScrollbarHeight();
       this.setState({
         scrollbarHeight: scrollbarHeight,
         scrollbarWidth: scrollbarHeight
@@ -551,18 +551,16 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     return contentContainer ? contentContainer.offsetHeight - contentContainer.clientHeight : 0;
   }
 
-  private _getScrollbarHeightFromLocalStorage(): number {
+  private _getScrollbarHeightFromLocalStorage(onlyRead?: boolean): number {
     let scrollbarHeight: number = 0;
     if ('localStorage' in window) {
       scrollbarHeight = Number(window.localStorage.getItem(ScrollablePaneBase._scrollbarHeightKey));
       if (!!scrollbarHeight && !isNaN(scrollbarHeight)) {
         return scrollbarHeight;
-      } else {
+      } else if (!onlyRead) {
         scrollbarHeight = this._getScrollbarHeight();
         window.localStorage.setItem(ScrollablePaneBase._scrollbarHeightKey, scrollbarHeight.toString());
       }
-    } else {
-      scrollbarHeight = this._getScrollbarHeight();
     }
     return scrollbarHeight;
   }
