@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/codepen-loader",
+      "comment": "Pin prettier version back to 1.17",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/codepen-loader",
+  "email": "elcraig@microsoft.com"
+}
