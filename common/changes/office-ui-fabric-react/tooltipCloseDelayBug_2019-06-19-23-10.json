@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ISelectableDroppableTextProps: surface API reference in website documentation.",
-      "type": "none"
+      "comment": "TooltipHost: fix the closeDelay Tooltip bug where a user could not interact with the Tooltip because it would close.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",

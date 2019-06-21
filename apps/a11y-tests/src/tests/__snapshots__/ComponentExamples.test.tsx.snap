@@ -5554,6 +5554,8 @@ exports[`a11y test checks accessibility of Persona (Persona.CustomRender.Example
 
 exports[`a11y test checks accessibility of Persona (Persona.Initials.Example) 1`] = `Array []`;
 
+exports[`a11y test checks accessibility of Persona (Persona.Presence.Example) 1`] = `Array []`;
+
 exports[`a11y test checks accessibility of Persona (Persona.UnknownPersona.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of Pivot (Pivot.Basic.Example) 1`] = `Array []`;

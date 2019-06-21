@@ -5863,12 +5863,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-export interface IPersonaPresenceStyleProps {
-    className?: string;
-    presence?: PersonaPresence;
-    size?: PersonaSize;
-    theme: ITheme;
-}
+export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> & Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size'> & Pick<IPersonaProps, 'className'>;
 
 // @public (undocumented)
 export interface IPersonaPresenceStyles {
@@ -5901,6 +5896,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     imageShouldStartVisible?: boolean;
     imageUrl?: string;
     initialsColor?: PersonaInitialsColor | string;
+    isOutOfOffice?: boolean;
     onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
     onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
     onRenderInitials?: IRenderFunction<IPersonaSharedProps>;
@@ -8213,7 +8209,7 @@ export namespace personaPresenceSize {
     size20 = "20px";
     const // (undocumented)
     size28 = "28px";
-    const // (undocumented)
+    const // @deprecated (undocumented)
     border = "2px";
 }
 
