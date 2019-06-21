@@ -139,6 +139,10 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       return;
     }
 
+    if (!ev.shiftKey) {
+      this.props.selection.setAllSelected(false);
+    }
+
     if (!this._isTouch && isEnabled && !this._isDragStartInSelection(ev) && (!onShouldStartSelection || onShouldStartSelection(ev))) {
       if (this._scrollableSurface && ev.button === 0 && this._root.current) {
         this._selectedIndicies = {};
@@ -219,46 +223,22 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
         }
 
         // We need to constrain the current point to the rootRect boundaries.
-        // and constrain dragRect within viewport
-        const constrainedPoint = {
-          x: this._lastMouseEvent!.clientX - rootRect.left,
-          y: this._lastMouseEvent!.clientY - rootRect.top
+        const constrainedPoint = this.props.isDraggingConstrainedToRoot
+          ? {
+              x: Math.max(0, Math.min(rootRect.width, this._lastMouseEvent!.clientX - rootRect.left)),
+              y: Math.max(0, Math.min(rootRect.height, this._lastMouseEvent!.clientY - rootRect.top))
+            }
+          : {
+              x: this._lastMouseEvent!.clientX - rootRect.left,
+              y: this._lastMouseEvent!.clientY - rootRect.top
+            };
+
+        const dragRect = {
+          left: Math.min(this._dragOrigin.x, constrainedPoint.x),
+          top: Math.min(this._dragOrigin.y, constrainedPoint.y),
+          width: Math.abs(constrainedPoint.x - this._dragOrigin.x),
+          height: Math.abs(constrainedPoint.y - this._dragOrigin.y)
         };
-
-        let left = Math.min(this._dragOrigin.x, constrainedPoint.x);
-        let top = Math.min(this._dragOrigin.y, constrainedPoint.y);
-
-        let width = Math.abs(constrainedPoint.x - this._dragOrigin.x);
-        let height = Math.abs(constrainedPoint.y - this._dragOrigin.y);
-
-        if (left < 0) {
-          left = 0;
-          width = this._dragOrigin.x;
-        }
-
-        if (top < 0) {
-          top = 0;
-          height = this._dragOrigin.y;
-        }
-
-        // constrain rect height to root rect height, if root rect height is valid.
-        if (rootRect.width > 0) {
-          if (top + height > rootRect.height) {
-            height = rootRect.height - top;
-          }
-        }
-
-        // constrain rect width to root rect width, if root rect width is valid.
-        if (rootRect.width > 0) {
-          // since we don't have a width pass down to the element, we use the _scrollableSurface width
-          // to constraint the marquee rect to not falls out the right boundary
-          const viewportWidth = rootRect.width > 0 ? rootRect.width : this._scrollableSurface!.clientWidth;
-          if (left + width > viewportWidth) {
-            width = viewportWidth - left;
-          }
-        }
-
-        const dragRect = { left, top, width, height };
 
         this._evaluateSelection(dragRect, rootRect);
 
