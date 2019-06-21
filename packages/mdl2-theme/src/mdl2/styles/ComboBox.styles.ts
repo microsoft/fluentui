@@ -9,56 +9,28 @@ export const ComboBoxStyles = (props: IComboBoxProps): Partial<IComboBoxStyles> 
 
   return {
     root: {
-      borderRadius: effects.roundedCorner2, // the bound input box
-      borderColor: palette.neutralSecondaryAlt,
-      paddingLeft: 8
-    },
-    rootHovered: {
-      selectors: {
-        '.ms-ComboBox-Input': {
-          color: palette.neutralDark
-        }
-      }
-    },
-    rootError: {
-      borderColor: palette.red // current structure of ComboBox does not allow to change the hover/focus color when has error
+      paddingLeft: 12
     },
     callout: {
       borderRadius: effects.roundedCorner2,
-      border: 'none',
-      boxShadow: effects.elevation8,
-      selectors: {
-        '.ms-Callout-main': { borderRadius: effects.roundedCorner2 }
-      }
+      border: `1px solid ${palette.neutralSecondaryAlt}`
     },
     header: {
-      padding: '0 8px'
+      padding: '0 16px',
+      height: 32,
+      lineHeight: 32
     },
     optionsContainer: {
       selectors: {
         '.ms-ComboBox-option': {
-          paddingLeft: 8,
-          paddingRight: 8,
-          selectors: {
-            ':hover:active': {
-              backgroundColor: palette.neutralLight
-            }
-          }
+          padding: '5px 16px',
+          minHeight: 32
         },
-        '.is-checked': {
-          backgroundColor: 'transparent',
-          selectors: {
-            ':hover': {
-              backgroundColor: palette.neutralLighter
-            }
-          }
+        '.ms-ComboBox-optionText': {
+          margin: 1
         },
-        '.ms-Checkbox': {
-          selectors: {
-            ':hover': {
-              backgroundColor: palette.neutralLighter
-            }
-          }
+        '.ms-Button-flexContainer > span': {
+          display: 'block'
         }
       }
     }
