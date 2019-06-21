@@ -378,6 +378,12 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             text-overflow: ellipsis;
                             width: 100%;
                           }
+                          &:active, &:focus, &:hover {
+                            outline: 0px;
+                          }
+                          &::-ms-clear {
+                            display: none;
+                          }
                           &::placeholder {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
@@ -404,12 +410,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-size: 14px;
                             font-weight: 400;
                             opacity: 1;
-                          }
-                          &:active, &:focus, &:hover {
-                            outline: 0px;
-                          }
-                          &::-ms-clear {
-                            display: none;
                           }
                       id="TextField0"
                       onBlur={[Function]}
@@ -535,6 +535,12 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             text-overflow: ellipsis;
                             width: 100%;
                           }
+                          &:active, &:focus, &:hover {
+                            outline: 0px;
+                          }
+                          &::-ms-clear {
+                            display: none;
+                          }
                           &::placeholder {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
@@ -561,12 +567,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-size: 14px;
                             font-weight: 400;
                             opacity: 1;
-                          }
-                          &:active, &:focus, &:hover {
-                            outline: 0px;
-                          }
-                          &::-ms-clear {
-                            display: none;
                           }
                       id="TextField3"
                       onBlur={[Function]}
@@ -692,6 +692,12 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             text-overflow: ellipsis;
                             width: 100%;
                           }
+                          &:active, &:focus, &:hover {
+                            outline: 0px;
+                          }
+                          &::-ms-clear {
+                            display: none;
+                          }
                           &::placeholder {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
@@ -718,12 +724,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-size: 14px;
                             font-weight: 400;
                             opacity: 1;
-                          }
-                          &:active, &:focus, &:hover {
-                            outline: 0px;
-                          }
-                          &::-ms-clear {
-                            display: none;
                           }
                       id="TextField6"
                       onBlur={[Function]}
@@ -849,6 +849,12 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             text-overflow: ellipsis;
                             width: 100%;
                           }
+                          &:active, &:focus, &:hover {
+                            outline: 0px;
+                          }
+                          &::-ms-clear {
+                            display: none;
+                          }
                           &::placeholder {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
@@ -875,12 +881,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-size: 14px;
                             font-weight: 400;
                             opacity: 1;
-                          }
-                          &:active, &:focus, &:hover {
-                            outline: 0px;
-                          }
-                          &::-ms-clear {
-                            display: none;
                           }
                       id="TextField9"
                       onBlur={[Function]}
@@ -1006,6 +1006,12 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             text-overflow: ellipsis;
                             width: 100%;
                           }
+                          &:active, &:focus, &:hover {
+                            outline: 0px;
+                          }
+                          &::-ms-clear {
+                            display: none;
+                          }
                           &::placeholder {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
@@ -1032,12 +1038,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-size: 14px;
                             font-weight: 400;
                             opacity: 1;
-                          }
-                          &:active, &:focus, &:hover {
-                            outline: 0px;
-                          }
-                          &::-ms-clear {
-                            display: none;
                           }
                       id="TextField12"
                       onBlur={[Function]}

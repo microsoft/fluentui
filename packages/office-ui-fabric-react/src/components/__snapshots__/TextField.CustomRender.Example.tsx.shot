@@ -262,6 +262,12 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 text-overflow: ellipsis;
                 width: 100%;
               }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::-ms-clear {
+                display: none;
+              }
               &::placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -288,12 +294,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-size: 14px;
                 font-weight: 400;
                 opacity: 1;
-              }
-              &:active, &:focus, &:hover {
-                outline: 0px;
-              }
-              &::-ms-clear {
-                display: none;
               }
           id="TextField2"
           onBlur={[Function]}
@@ -440,6 +440,12 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 text-overflow: ellipsis;
                 width: 100%;
               }
+              &:active, &:focus, &:hover {
+                outline: 0px;
+              }
+              &::-ms-clear {
+                display: none;
+              }
               &::placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -466,12 +472,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-size: 14px;
                 font-weight: 400;
                 opacity: 1;
-              }
-              &:active, &:focus, &:hover {
-                outline: 0px;
-              }
-              &::-ms-clear {
-                display: none;
               }
           id="TextField8"
           onBlur={[Function]}

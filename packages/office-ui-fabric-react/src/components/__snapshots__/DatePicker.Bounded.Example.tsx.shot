@@ -130,6 +130,12 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
                     text-overflow: ellipsis;
                     width: 100%;
                   }
+                  &:active, &:focus, &:hover {
+                    outline: 0px;
+                  }
+                  &::-ms-clear {
+                    display: none;
+                  }
                   &::placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
@@ -156,12 +162,6 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
                     font-size: 14px;
                     font-weight: 400;
                     opacity: 1;
-                  }
-                  &:active, &:focus, &:hover {
-                    outline: 0px;
-                  }
-                  &::-ms-clear {
-                    display: none;
                   }
               id="DatePicker0-label"
               onBlur={[Function]}

@@ -281,7 +281,6 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       theme.fonts.medium,
       classNames.field,
       normalize,
-      getPlaceholderStyles(placeholderStyles),
       {
         fontSize: FontSizes.medium,
         borderRadius: 0,
@@ -301,6 +300,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           }
         }
       },
+      getPlaceholderStyles(placeholderStyles),
       multiline &&
         !resizable && [
           classNames.unresizable,
