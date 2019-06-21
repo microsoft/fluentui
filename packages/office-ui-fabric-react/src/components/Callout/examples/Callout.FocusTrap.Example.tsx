@@ -54,6 +54,9 @@ export class CalloutFocusTrapExample extends React.Component<ICalloutFocusTrapEx
                   </p>
                 </div>
               </div>
+              <div className="ms-CalloutExample-divider-container">
+                <div className="ms-CalloutExample-divider" />
+              </div>
               <CommandBar items={this.props.items} />
             </FocusTrapCallout>
           </div>

@@ -2,7 +2,7 @@
 
 :global {
   .ms-CalloutExample-callout {
-      max-width: 300px;
+    max-width: 300px;
   }
 
   .ms-CalloutExample-configArea {
@@ -38,29 +38,24 @@
     text-align: center;
   }
 
-  .ms-CalloutExample-title {
-    font-size: x-large;
-  }
-
   .ms-CalloutExample-cmdBarHost {
     width: 350px;
     padding: 10px;
   }
 
   .ms-CalloutExample-inner {
-    height: 100%;
-    padding: 0 24px 20px;
+    padding: 0 28px 18px;
   }
 
   .ms-CalloutExample-header {
-    padding: 18px 24px 12px;
+    padding: 18px 28px 12px;
   }
 
   .ms-CalloutExample-title {
     margin: 0;
-    @include ms-font-xl;
+    font-size: 20px;
     color: $ms-color-neutralPrimary;
-    font-weight: $ms-font-weight-semilight;
+    font-weight: $ms-font-weight-semibold;
   }
 
   .ms-CalloutExample-subText {
@@ -68,6 +63,7 @@
     @include ms-font-s;
     color: $ms-color-neutralPrimary;
     font-weight: $ms-font-weight-semilight;
+    line-height: 22px;
   }
 
   .ms-CalloutExample-link {
@@ -83,5 +79,15 @@
   }
   .calloutExampleButton {
     width: 100%;
+  }
+  .ms-CalloutExample-divider-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ms-CalloutExample-divider {
+    width: 252px;
+    height: 1px;
+    background-color: #edebe9;
   }
 }

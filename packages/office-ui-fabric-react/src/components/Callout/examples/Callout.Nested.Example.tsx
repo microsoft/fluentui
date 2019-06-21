@@ -54,7 +54,10 @@ export class CalloutNestedExample extends React.Component<ICalloutNestedExampleP
                   </p>
                 </div>
               </div>
-              <CommandBar items={this.props.items} />
+              <div className="ms-CalloutExample-divider-container">
+                <div className="ms-CalloutExample-divider" />
+              </div>
+              <CommandBar className="ms-CalloutExample-commandBar" items={this.props.items} />
             </Callout>
           </div>
         ) : null}
