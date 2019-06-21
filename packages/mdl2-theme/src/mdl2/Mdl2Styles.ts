@@ -1,17 +1,14 @@
-import { BasePickerStyles } from './styles/BasePicker.styles';
 import { BreadcrumbStyles } from './styles/Breadcrumb.styles';
 import { CheckStyles, DetailsRowStyles } from './styles/DetailsList.styles';
 import { CalloutContentStyles } from './styles/Callout.styles';
 import { CheckboxStyles } from './styles/Checkbox.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOption.styles';
-import { ColorPickerGridCellStyles } from './styles/ColorPickerGridCell.styles';
 import { ColorPickerStyles, ColorRectangleStyles, ColorSliderStyles } from './styles/ColorPicker.styles';
 import { ComboBoxStyles } from './styles/ComboBox.styles';
 import { CommandBarStyles } from './styles/CommandBar.styles';
 import { CommandBarButtonStyles } from './styles/CommandBarButton.styles';
 import { CompoundButtonStyles } from './styles/CompoundButton.styles';
 import { ContextualMenuStyles } from './styles/ContextualMenu.styles';
-import { DatePickerStyles } from './styles/DatePicker.styles';
 import { DefaultButtonStyles } from './styles/DefaultButton.styles';
 import { DetailsColumnStyles } from './styles/DetailsColumn.styles';
 import { DialogContentStyles, DialogFooterStyles } from './styles/Dialog.styles';
@@ -22,15 +19,12 @@ import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
 import { PanelStyles } from './styles/Panel.styles';
-import { PeoplePickerItemStyles } from './styles/PeoplePicker.styles';
 import { PersonaStyles } from './styles/Persona.styles';
 import { PivotStyles } from './styles/Pivot.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { SearchBoxStyles } from './styles/SearchBox.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
-import { SuggestionItemStyles, SuggestionsStyles } from './styles/PickerSuggestions.styles';
-import { TagItemStyles } from './styles/TagPicker.styles';
 import { TeachingBubbleStyles } from './styles/TeachingBubble.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
@@ -74,20 +68,11 @@ export const Mdl2Styles: any = {
   ChoiceGroupOption: {
     styles: ChoiceGroupOptionStyles
   },
-  ColorPickerGridCell: {
-    styles: ColorPickerGridCellStyles
-  },
   ComboBox: {
     styles: ComboBoxStyles
   },
-  CompactPeoplePicker: {
-    styles: BasePickerStyles
-  },
   ContextualMenu: {
     styles: ContextualMenuStyles
-  },
-  DatePicker: {
-    styles: DatePickerStyles
   },
   DefaultButton: {
     styles: DefaultButtonStyles
@@ -122,17 +107,8 @@ export const Mdl2Styles: any = {
   Link: {
     styles: LinkStyles
   },
-  ListPeoplePickerBase: {
-    styles: BasePickerStyles
-  },
   Panel: {
     styles: PanelStyles
-  },
-  NormalPeoplePicker: {
-    styles: BasePickerStyles
-  },
-  PeoplePickerItem: {
-    styles: PeoplePickerItemStyles
   },
   Persona: {
     styles: PersonaStyles
@@ -154,18 +130,6 @@ export const Mdl2Styles: any = {
   },
   SpinButton: {
     styles: SpinButtonStyles
-  },
-  Suggestions: {
-    styles: SuggestionsStyles
-  },
-  SuggestionItem: {
-    styles: SuggestionItemStyles
-  },
-  TagItem: {
-    styles: TagItemStyles
-  },
-  TagPicker: {
-    styles: BasePickerStyles
   },
   TeachingBubble: {
     styles: TeachingBubbleStyles
