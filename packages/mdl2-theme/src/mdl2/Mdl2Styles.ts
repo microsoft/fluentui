@@ -27,7 +27,6 @@ import { PeoplePickerItemStyles } from './styles/PeoplePicker.styles';
 import { PersonaStyles } from './styles/Persona.styles';
 import { PivotStyles } from './styles/Pivot.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
-import { RatingStyles } from './styles/Rating.styles';
 import { SearchBoxStyles } from './styles/SearchBox.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
@@ -150,9 +149,6 @@ export const Mdl2Styles: any = {
   },
   PrimaryButton: {
     styles: PrimaryButtonStyles
-  },
-  Rating: {
-    styles: RatingStyles
   },
   SearchBox: {
     styles: SearchBoxStyles
