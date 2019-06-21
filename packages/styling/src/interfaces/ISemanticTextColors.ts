@@ -64,7 +64,7 @@ export interface ISemanticTextColors {
   //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
 
   /**
-   * The default color of text on bodyBackground.
+   * The default color of error text on bodyBackground.
    */
   errorText: string;
 
