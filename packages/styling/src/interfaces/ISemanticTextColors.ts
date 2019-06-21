@@ -69,12 +69,12 @@ export interface ISemanticTextColors {
   errorText: string;
 
   /**
-   * The default color of text on errorBackground, warningBackground, blockingBackground, or successBackground.
+   * The default color of warning text on errorBackground, warningBackground, blockingBackground, or successBackground.
    */
   warningText: string;
 
   /**
-   * The default color of text on successBackground.
+   * The default color of success text on successBackground.
    */
   successText: string;
 
