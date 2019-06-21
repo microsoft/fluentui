@@ -1,7 +1,7 @@
 {
   "changes": [
     {
-      "comment": "",
+      "comment": "Renamed instances of \"Microsoft UI Fabric\" to \"UI Fabric\"",
       "packageName": "@uifabric/fabric-website",
       "type": "none"
     }
