@@ -352,8 +352,6 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       panel: {
         root: [panelClassName],
         main: {
-          // Force drop shadow even under medium breakpoint
-          boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)',
           selectors: {
             // In case of extra small screen sizes
             [MinimumScreenSelector]: {
