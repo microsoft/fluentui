@@ -1,5 +1,7 @@
 import { ICalendarStyleProps, ICalendarStyles } from './Calendar.types';
-import { normalize, FontSizes, getFocusStyle } from '@uifabric/styling';
+import { normalize, FontSizes, getFocusStyle, getScreenSelector, ScreenWidthMinMedium } from '@uifabric/styling';
+
+const MinimumScreenSelector = getScreenSelector(0, ScreenWidthMinMedium);
 
 export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
   const { className, theme, isDayPickerVisible, isMonthPickerVisible, showWeekNumbers } = props;
@@ -25,12 +27,22 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
     divider: {
       top: 0,
       borderRight: '1px solid',
-      borderColor: palette.neutralLight
+      borderColor: palette.neutralLight,
+      selectors: {
+        [MinimumScreenSelector]: {
+          display: 'none'
+        }
+      }
     },
     monthPickerWrapper: [
       {
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        selectors: {
+          [MinimumScreenSelector]: {
+            display: 'none'
+          }
+        }
       }
     ],
     goTodayButton: [

@@ -729,6 +729,12 @@ $Calendar-dayPicker-margin: 10px;
   .yearComponents {
     margin-top: 2px;
   }
+  .divider {
+    display: none;
+  }
+  .goTodayInlineMonth {
+    top: initial;
+  }
 }
 
 .goToday {
