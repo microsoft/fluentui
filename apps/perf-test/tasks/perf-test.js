@@ -60,9 +60,7 @@ const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
 
 const urlForDeploy = urlForDeployPath + '/index.html';
 
-// const urlForMaster = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/index.html';
-// const urlForMaster = 'file:///C:/git/oufr-jg/apps/pr-deploy-site/dist/perf-test/index.html';
-const urlForMaster = 'file:///C:/Users/Jason/src/oufr-jg/apps/pr-deploy-site/dist/perf-test/index.html';
+const urlForMaster = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/index.html';
 
 const logPath = path.join(__dirname, '../logfiles');
 const logFilePath = path.join(logPath, '/puppeteer.log');
