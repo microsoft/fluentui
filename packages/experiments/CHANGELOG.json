@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "7.2.1",
+      "tag": "@uifabric/experiments_v7.2.1",
+      "date": "Fri, 21 Jun 2019 12:27:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots due to Tooltip bug fix",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "659b57cc432a37173324eb06f22ea7a918ecff36"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.3` to `^7.5.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.2.0",
       "tag": "@uifabric/experiments_v7.2.0",
       "date": "Thu, 20 Jun 2019 12:27:38 GMT",

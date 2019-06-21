@@ -1,11 +1,11 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "office-ui-fabric-react",
-      "comment": "Combobox: Fix styles so that RootChecked works",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com"
+  "email": "elcraig@microsoft.com"
 }

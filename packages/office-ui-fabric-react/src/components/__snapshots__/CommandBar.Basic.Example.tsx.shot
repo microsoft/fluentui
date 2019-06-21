@@ -1122,6 +1122,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     }
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
               >
@@ -1281,6 +1282,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     }
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
               >
