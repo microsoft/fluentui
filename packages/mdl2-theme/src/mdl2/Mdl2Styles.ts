@@ -20,7 +20,7 @@ import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
 import { PanelStyles } from './styles/Panel.styles';
-import { PersonaStyles } from './styles/Persona.styles';
+import { PersonaStyles, PersonaCoinStyles } from './styles/Persona.styles';
 import { PivotStyles } from './styles/Pivot.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { SearchBoxStyles } from './styles/SearchBox.styles';
@@ -122,6 +122,9 @@ export const Mdl2Styles: any = {
   },
   Persona: {
     styles: PersonaStyles
+  },
+  PersonaCoin: {
+    styles: PersonaCoinStyles
   },
   Pivot: {
     styles: PivotStyles
