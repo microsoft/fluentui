@@ -19,7 +19,7 @@ import { GroupHeaderStyles } from './styles/GroupedList.styles';
 import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
-import { MessageBarStyles } from './styles/Messagear.styles';
+import { MessageBarStyles } from './styles/MessageBar.styles';
 import { MessageBarButtonStyles } from './styles/MessageBarButton.styles';
 import { PanelStyles } from './styles/Panel.styles';
 import { PersonaStyles, PersonaCoinStyles } from './styles/Persona.styles';
