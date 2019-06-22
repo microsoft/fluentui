@@ -1,16 +1,18 @@
-import { FontSizes } from '../Mdl2Type';
-import { FontWeights } from '@uifabric/styling';
-import { IDetailsColumnStyles } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn.types';
+import { IDetailsColumnStyles, IDetailsColumnStyleProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn.types';
 
-export const DetailsColumnStyles = (): Partial<IDetailsColumnStyles> => {
+export const DetailsColumnStyles = (props: IDetailsColumnStyleProps): Partial<IDetailsColumnStyles> => {
+  const { theme } = props;
   return {
+    root: {
+      height: 32
+    },
     cellName: {
-      fontWeight: FontWeights.semibold,
-      fontSize: FontSizes.size14
+      fontWeight: theme.fonts.small.fontWeight,
+      fontSize: theme.fonts.small.fontSize
     },
     filterChevron: {
-      fontSize: FontSizes.size12,
-      paddingLeft: 6
+      fontSize: theme.fonts.small.fontSize,
+      paddingLeft: 4
     }
   };
 };

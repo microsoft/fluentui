@@ -1,5 +1,11 @@
 import { ICheckStyleProps, ICheckStyles } from 'office-ui-fabric-react/lib/Check';
-import { IDetailsRowStyleProps, IDetailsRowStyles } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  IDetailsRowStyleProps,
+  IDetailsRowStyles,
+  IDetailsRowCheckStyleProps,
+  IDetailsRowCheckStyles,
+  IDetailsHeaderStyles
+} from 'office-ui-fabric-react/lib/DetailsList';
 import { FontWeights } from '@uifabric/styling';
 
 export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
@@ -7,55 +13,45 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
   const { palette } = theme;
 
   return {
-    circle: [!checked && { color: palette.neutralSecondary }],
-    check: [!checked && { color: palette.neutralSecondary }]
+    circle: [!checked && { color: palette.neutralTertiaryAlt }],
+    check: [!checked && { color: palette.neutralTertiaryAlt }]
   };
 };
 
-export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetailsRowStyles> => {
-  const { theme, isSelected } = props;
-  const { palette } = theme;
-
-  const { neutralPrimary, neutralSecondary, neutralLight, neutralQuaternaryAlt } = palette;
+export const DetailsRowCheckStyles = (props: IDetailsRowCheckStyleProps): Partial<IDetailsRowCheckStyles> => {
+  const { isHeader, compact } = props;
+  const height = isHeader ? 32 : compact ? 32 : 42;
 
   return {
-    root: [
-      {
-        color: neutralSecondary
-      },
-      isSelected && {
-        color: neutralPrimary
-      },
-      {
-        selectors: {
-          ':focus $check': {
-            opacity: 1
-          }
-        }
-      },
-      isSelected && [
-        {
-          background: neutralLight,
-          selectors: {
-            ':hover': {
-              background: neutralQuaternaryAlt
-            },
-            ':focus': {
-              background: neutralLight
-            },
-            ':focus:hover': {
-              background: neutralQuaternaryAlt
-            }
-          }
-        }
-      ]
-    ],
+    check: {
+      height: height
+    }
+  };
+};
+
+export const DetailsHeaderStyles: Partial<IDetailsHeaderStyles> = {
+  root: {
+    height: 32,
+    lineHeight: '32px'
+  },
+  check: {
+    height: 32
+  },
+  cellIsCheck: {
+    height: 32
+  },
+  cellIsGroupExpander: {
+    height: 32
+  }
+};
+
+export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetailsRowStyles> => {
+  const { isSelected } = props;
+
+  return {
     isRowHeader: [
-      {
-        color: neutralPrimary
-      },
       isSelected && {
-        fontWeight: FontWeights.semibold
+        fontWeight: FontWeights.regular
       }
     ]
   };
