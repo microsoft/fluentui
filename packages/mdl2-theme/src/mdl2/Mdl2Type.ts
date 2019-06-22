@@ -13,16 +13,4 @@ export namespace FontSizes {
   export const xxLargePlus: string = '28px';
   export const superLarge: string = '42px';
   export const mega: string = '72px';
-  // remove after reconciling the styles
-  export const size10 = '10px';
-  export const size12 = '12px';
-  export const size14 = '14px';
-  export const size16 = '16px';
-  export const size18 = '18px';
-  export const size20 = '20px';
-  export const size24 = '24px';
-  export const size28 = '28px';
-  export const size32 = '32px';
-  export const size42 = '42px';
-  export const size68 = '68px';
 }

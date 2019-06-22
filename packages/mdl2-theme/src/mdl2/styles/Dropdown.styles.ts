@@ -1,4 +1,4 @@
-import { IStyle } from '@uifabric/styling';
+import { IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 const ITEM_HEIGHT = 32;
 

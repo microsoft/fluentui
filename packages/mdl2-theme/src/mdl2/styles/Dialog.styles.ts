@@ -1,10 +1,5 @@
-import {
-  IDialogContentStyleProps,
-  IDialogContentStyles,
-  IDialogFooterStyleProps,
-  IDialogFooterStyles
-} from 'office-ui-fabric-react/lib/Dialog';
-import { FontWeights } from '@uifabric/styling';
+import { IDialogContentStyleProps, IDialogContentStyles } from 'office-ui-fabric-react/lib/Dialog';
+import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
 export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<IDialogContentStyles> => {
   const { theme, isMultiline, isLargeHeader } = props;
@@ -43,10 +38,8 @@ export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<ID
   };
 };
 
-export const DialogFooterStyles = (props: IDialogFooterStyleProps): Partial<IDialogFooterStyles> => {
-  return {
-    actions: {
-      margin: '20px 0 0'
-    }
-  };
+export const DialogFooterStyles = {
+  actions: {
+    margin: '20px 0 0'
+  }
 };

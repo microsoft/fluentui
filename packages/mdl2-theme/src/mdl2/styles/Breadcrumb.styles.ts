@@ -1,11 +1,10 @@
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from 'office-ui-fabric-react/lib/Breadcrumb';
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { FontSizes } from '../Mdl2Type';
 import { MediumScreenSelector, MinimumScreenSelector } from './styleConstants';
 
 export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcrumbStyles> => {
   const { theme } = props;
-  const { palette } = theme;
+  const { palette, fonts } = theme;
 
   const stateSelectors = {
     ':hover': {
@@ -24,7 +23,7 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcr
 
   const itemStyle = {
     lineHeight: 'normal',
-    fontSize: FontSizes.xLarge,
+    fontSize: fonts.xLarge.fontSize,
     outline: 'none',
     fontWeight: FontWeights.light,
     color: palette.neutralPrimary,
@@ -34,8 +33,8 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcr
         outline: 'none'
       },
       // Leaving this breakpoint selectors here as there might be some design discussions regarding scaling breadcrumb.
-      [MediumScreenSelector]: { fontSize: FontSizes.xLarge, fontWeight: FontWeights.regular, lineHeight: 'normal' },
-      [MinimumScreenSelector]: { fontSize: FontSizes.xLarge, fontWeight: FontWeights.regular, lineHeight: 'normal' },
+      [MediumScreenSelector]: { fontSize: fonts.xLarge.fontSize, fontWeight: FontWeights.regular, lineHeight: 'normal' },
+      [MinimumScreenSelector]: { fontSize: fonts.xLarge.fontSize, fontWeight: FontWeights.regular, lineHeight: 'normal' },
       ...stateSelectors
     }
   };

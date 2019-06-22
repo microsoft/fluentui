@@ -19,13 +19,12 @@ import { GroupHeaderStyles } from './styles/GroupedList.styles';
 import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
-import { MessageBarStyles } from './styles/Messagebar.styles';
+import { MessageBarStyles } from './styles/MessageBar.styles';
 import { MessageBarButtonStyles } from './styles/MessageBarButton.styles';
 import { PanelStyles } from './styles/Panel.styles';
 import { PersonaStyles, PersonaCoinStyles } from './styles/Persona.styles';
 import { PivotStyles } from './styles/Pivot.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
-import { SearchBoxStyles } from './styles/SearchBox.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
 import { TeachingBubbleStyles } from './styles/TeachingBubble.styles';
@@ -34,10 +33,7 @@ import { ToggleStyles } from './styles/Toggle.styles';
 
 // Roll up all style overrides in a single "Fluent theme" object
 
-// TODO: "any" is used here to get around "is using xxx but cannot be named" TS error. Should be able to remove
-//        this 'any' once we upgrade to TS3.1+
-// tslint:disable-next-line:no-any
-export const Mdl2Styles: any = {
+export const Mdl2Styles = {
   Breadcrumb: {
     styles: BreadcrumbStyles
   },
@@ -142,9 +138,6 @@ export const Mdl2Styles: any = {
   },
   PrimaryButton: {
     styles: PrimaryButtonStyles
-  },
-  SearchBox: {
-    styles: SearchBoxStyles
   },
   Slider: {
     styles: SliderStyles

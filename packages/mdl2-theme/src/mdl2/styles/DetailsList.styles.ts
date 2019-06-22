@@ -6,7 +6,7 @@ import {
   IDetailsRowCheckStyles,
   IDetailsHeaderStyles
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { FontWeights } from '@uifabric/styling';
+import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
 export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
   const { theme, checked } = props;
