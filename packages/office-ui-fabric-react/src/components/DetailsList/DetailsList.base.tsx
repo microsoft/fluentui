@@ -458,7 +458,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   onItemInvoked={onItemInvoked}
                   onItemContextMenu={onItemContextMenu}
                   enterModalOnTouch={this.props.enterModalSelectionOnTouch}
-                  {...(selectionZoneProps || {})}
+                  {...selectionZoneProps || {}}
                 >
                   {list}
                 </SelectionZone>

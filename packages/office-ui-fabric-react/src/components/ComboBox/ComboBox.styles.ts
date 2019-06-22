@@ -93,14 +93,6 @@ export const getOptionStyles = memoizeFunction(
                 }
               }
             },
-            '&.is-checked': {
-              backgroundColor: 'transparent',
-              selectors: {
-                ':hover': {
-                  backgroundColor: palette.neutralLighter
-                }
-              }
-            },
             ':hover:active': {
               backgroundColor: palette.neutralLight
             }
@@ -116,7 +108,12 @@ export const getOptionStyles = memoizeFunction(
       },
       rootChecked: [
         {
-          backgroundColor: ComboBoxOptionBackgroundHovered,
+          backgroundColor: 'transparent',
+          selectors: {
+            ':hover': {
+              backgroundColor: palette.neutralLighter
+            }
+          },
           color: ComboBoxOptionTextColorSelected
         },
         getFocusStyle(theme, { inset: -1, isFocusedOnly: false }),

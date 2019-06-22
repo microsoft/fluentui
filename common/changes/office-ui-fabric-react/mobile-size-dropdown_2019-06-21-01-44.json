@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Make more examples exportable to codepen",
+      "comment": "Dropdown:Bring back breakpoint for small screen sizes",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com"
+  "email": "afhassan@microsoft.com"
 }

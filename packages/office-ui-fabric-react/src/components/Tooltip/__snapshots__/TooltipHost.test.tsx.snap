@@ -9,6 +9,7 @@ exports[`TooltipHost renders correctly 1`] = `
       }
   onBlurCapture={[Function]}
   onFocusCapture={[Function]}
+  onKeyDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 />
