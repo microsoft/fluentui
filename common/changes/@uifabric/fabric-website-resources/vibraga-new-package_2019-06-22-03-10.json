@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website-resources",
+      "comment": "Add a new theme package dependancy and surface it to the example pages theme dropdown.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "vibraga@microsoft.com"
+}
