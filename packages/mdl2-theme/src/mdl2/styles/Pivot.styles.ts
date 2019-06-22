@@ -8,37 +8,37 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
   return {
     link: [
       !rootIsTabs && {
-        height: 44,
-        lineHeight: 44,
+        height: 40,
+        lineHeight: 40,
         selectors: {
           ':hover': {
-            backgroundColor: palette.neutralLighter,
+            backgroundColor: 'transparent',
             color: palette.neutralDark
           },
           ':active': {
-            backgroundColor: palette.neutralLight
+            backgroundColor: 'transparent'
           }
         }
       }
     ],
     linkIsSelected: [
       !rootIsTabs && {
-        height: 44,
-        lineHeight: 44,
+        height: 40,
+        lineHeight: 40,
         selectors: {
           ':hover': {
-            backgroundColor: palette.neutralLighter
+            backgroundColor: 'transparent'
           },
           ':active': {
-            backgroundColor: palette.neutralLight
+            backgroundColor: 'transparent'
           },
           ':before': {
             transition: `left ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2},
                         right ${AnimationVariables.durationValue2} ${AnimationVariables.easeFunction2}`
           },
           ':hover::before': {
-            left: 0,
-            right: 0
+            left: 8,
+            right: 8
           }
         }
       }
