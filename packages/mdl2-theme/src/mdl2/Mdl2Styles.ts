@@ -19,6 +19,8 @@ import { GroupHeaderStyles } from './styles/GroupedList.styles';
 import { IconButtonStyles } from './styles/IconButton.styles';
 import { LabelStyles } from './styles/Label.styles';
 import { LinkStyles } from './styles/Link.styles';
+import { MessageBarStyles } from './styles/Messagebar.styles';
+import { MessageBarButtonStyles } from './styles/MessageBarButton.styles';
 import { PanelStyles } from './styles/Panel.styles';
 import { PersonaStyles, PersonaCoinStyles } from './styles/Persona.styles';
 import { PivotStyles } from './styles/Pivot.styles';
@@ -116,6 +118,12 @@ export const Mdl2Styles: any = {
   },
   Link: {
     styles: LinkStyles
+  },
+  MessageBar: {
+    styles: MessageBarStyles
+  },
+  MessageBarButton: {
+    styles: MessageBarButtonStyles
   },
   Panel: {
     styles: PanelStyles
