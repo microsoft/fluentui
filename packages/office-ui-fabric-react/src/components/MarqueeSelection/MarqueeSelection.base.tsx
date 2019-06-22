@@ -363,7 +363,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
     }
 
     // set previousSelectedIndices to be all of the selected indices from last time
-    const previousSelectedIndices = this._allSelectedIndices;
+    const previousSelectedIndices = this._allSelectedIndices || {};
     this._allSelectedIndices = {};
 
     // set all indices that are supposed to be selected in _allSelectedIndices
