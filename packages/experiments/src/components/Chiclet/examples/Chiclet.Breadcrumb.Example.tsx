@@ -47,7 +47,15 @@ export class ChicletBreadcrumbExample extends React.Component<{}, {}> {
       />
     );
 
-    return <Chiclet url={TEST_URL} size={ChicletSize.medium} description={breadcrumb} />;
+    return (
+      <Chiclet
+        url={TEST_URL}
+        title="Quarterly Results.docx"
+        image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg"
+        size={ChicletSize.medium}
+        description={breadcrumb}
+      />
+    );
   }
 
   private _onRenderItem(item: IBreadcrumbItem): JSX.Element {

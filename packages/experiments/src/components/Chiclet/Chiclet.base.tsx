@@ -2,7 +2,6 @@ import * as React from 'react';
 import { BaseComponent } from '../../Utilities';
 import { ChicletCard } from './ChicletCard';
 import { ChicletXsmall } from './ChicletXsmall';
-import { getOpenGraphProperties } from './OpenGraph';
 import { IChicletProps, ChicletSize } from './Chiclet.types';
 import { IChicletCardProps } from './ChicletCard.types';
 
@@ -14,13 +13,13 @@ export class ChicletBase extends BaseComponent<IChicletProps, IChicletState> {
   constructor(props: IChicletProps) {
     super(props);
 
-    const chicletCardProps = getOpenGraphProperties(this.props.url);
+    const chicletCardProps = this.props;
     this.state = { chicletCardProps: chicletCardProps };
   }
 
   public componentDidUpdate(prevProps: IChicletProps): void {
     if (this.props.url !== prevProps.url) {
-      const chicletCardProps = getOpenGraphProperties(this.props.url);
+      const chicletCardProps = this.props;
       this.setState({ chicletCardProps: chicletCardProps });
     }
   }
@@ -42,7 +41,7 @@ export class ChicletBase extends BaseComponent<IChicletProps, IChicletState> {
 
   public componentWillReceiveProps(nextProps: IChicletProps): void {
     if (this.props.url !== nextProps.url) {
-      this.setState({ chicletCardProps: getOpenGraphProperties(this.props.url) });
+      this.setState({ chicletCardProps: this.props });
     }
   }
 

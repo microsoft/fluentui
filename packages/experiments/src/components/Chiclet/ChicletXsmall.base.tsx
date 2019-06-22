@@ -10,8 +10,7 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
   private _classNames: { [key in keyof IChicletXsmallStyles]: string };
 
   public render(): JSX.Element {
-    const { onClick, title, image, imageWidth, imageHeight, imageAlt, className, footer, theme, styles, url } = this.props;
-    let { itemType } = this.props;
+    const { onClick, title, itemType, image, imageWidth, imageHeight, imageAlt, className, footer, theme, styles, url } = this.props;
 
     const footerProvided: boolean = footer !== undefined;
     const imageProvided = !!image || !!imageAlt;
@@ -22,15 +21,11 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
     const role = onClick ? 'button' : 'link';
     const tabIndex = onClick ? 0 : undefined;
 
-    if (!itemType && !!title) {
-      itemType = findIcon(title);
-    }
-
     return (
       <div tabIndex={tabIndex} role={role} onClick={this._onClick} className={this._classNames.root}>
         <div className={this._classNames.preview}>
           {renderPreview(image, imageHeight, imageWidth, imageAlt)}
-          {renderIcon(itemType, this._classNames.icon, imageProvided)}
+          {renderIcon(itemType || (title && findIcon(title, url)), this._classNames.icon, imageProvided)}
         </div>
         <div className={this._classNames.info}>
           <div className={this._classNames.title}>{title ? title : null}</div>

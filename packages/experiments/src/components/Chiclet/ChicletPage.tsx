@@ -23,17 +23,25 @@ export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Basic Medium-sized Chiclet" isOptIn={true} code={ChicletBasicExampleCode}>
               <ChicletBasicExample />
             </ExampleCard>
-            <ExampleCard title="Medium-sized Chiclet with Breadcrumb" isOptIn={true} code={ChicletBreadcrumbExampleCode}>
+            <ExampleCard
+              title="Medium-sized Chiclet with Breadcrumb, File Preview, and Icon Generated from Title"
+              isOptIn={true}
+              code={ChicletBreadcrumbExampleCode}
+            >
               <ChicletBreadcrumbExample />
             </ExampleCard>
-            <ExampleCard title="Medium-sized Chiclet with Footer" isOptIn={true} code={ChicletFooterExampleCode}>
+            <ExampleCard
+              title="Medium-sized Chiclet with Footer, Icon Generated from URL, and without File Preview"
+              isOptIn={true}
+              code={ChicletFooterExampleCode}
+            >
               <ChicletFooterExample />
             </ExampleCard>
-            <ExampleCard title="xSmall-sized Chiclet" isOptIn={true} code={ChicletXsmallExampleCode}>
-              <ChicletXsmallExample />
-            </ExampleCard>
-            <ExampleCard title="xSmall-sized Chiclet with Footer" isOptIn={true} code={ChicletXsmallFooterExampleCode}>
+            <ExampleCard title="xSmall-sized Chiclet with Footer and File Preview" isOptIn={true} code={ChicletXsmallFooterExampleCode}>
               <ChicletXsmallFooterExample />
+            </ExampleCard>
+            <ExampleCard title="xSmall-sized Chiclet wihtout Footer and File Preview" isOptIn={true} code={ChicletXsmallExampleCode}>
+              <ChicletXsmallExample />
             </ExampleCard>
           </div>
         }

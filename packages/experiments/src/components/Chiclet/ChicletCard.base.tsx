@@ -17,9 +17,21 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
   private _classNames: { [key in keyof IChicletCardStyles]: string };
 
   public render(): JSX.Element {
-    const { title, description, image, imageWidth, imageHeight, imageAlt, url, onClick, className, footer, theme, styles } = this.props;
-
-    let { itemType } = this.props;
+    const {
+      title,
+      description,
+      itemType,
+      image,
+      imageWidth,
+      imageHeight,
+      imageAlt,
+      url,
+      onClick,
+      className,
+      footer,
+      theme,
+      styles
+    } = this.props;
 
     const actionable = onClick ? true : false;
 
@@ -32,15 +44,11 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
     const role = actionable ? (onClick ? 'button' : 'link') : undefined;
     const tabIndex = actionable ? 0 : undefined;
 
-    if (!itemType && !!title) {
-      itemType = findIcon(title);
-    }
-
     return (
       <div tabIndex={tabIndex} role={role} onClick={actionable ? this._onClick : undefined} className={this._classNames.root}>
         <div className={this._classNames.preview}>
           {renderPreview(image, imageHeight, imageWidth, imageAlt)}
-          {renderIcon(itemType, this._classNames.icon, false)}
+          {renderIcon(itemType || (title && findIcon(title, url)), this._classNames.icon, false)}
         </div>
         <div className={this._classNames.info}>
           <div className={this._classNames.title}>{title ? title : null}</div>

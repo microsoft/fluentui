@@ -50,7 +50,7 @@ export function renderIcon(
   return icon;
 }
 
-export function findIcon(title: string): string | undefined {
+export function findIcon(title: string, url?: string): string | undefined {
   let extensionIndex;
   let pos;
 
@@ -64,6 +64,13 @@ export function findIcon(title: string): string | undefined {
     const possibleExtension = title.substring(extensionIndex + 1, title.length);
     if (possibleExtension === 'pptx' || possibleExtension === 'docx' || possibleExtension === 'xlsx') {
       return possibleExtension;
+    }
+  }
+
+  let extension;
+  if (url) {
+    if ((extension = url.match(/.pptx/) || url.match(/.docx/) || url.match(/.xlsx/))) {
+      return extension[0].substring(1);
     }
   }
 
