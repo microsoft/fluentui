@@ -24,6 +24,7 @@ dependencies:
   '@rush-temp/icons': 'file:projects/icons.tgz'
   '@rush-temp/jest-serializer-merge-styles': 'file:projects/jest-serializer-merge-styles.tgz'
   '@rush-temp/lists': 'file:projects/lists.tgz'
+  '@rush-temp/mdl2-theme': 'file:projects/mdl2-theme.tgz'
   '@rush-temp/merge-styles': 'file:projects/merge-styles.tgz'
   '@rush-temp/migration': 'file:projects/migration.tgz'
   '@rush-temp/office-ui-fabric-react': 'file:projects/office-ui-fabric-react.tgz'
@@ -15706,7 +15707,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website-resources'
     resolution:
-      integrity: sha512-14gXu6Kei9tLYYzbr6YR0GOMLpEGUWHxMhcP/ilCruiy0+4DuC+ehSGdMZXSlp5G5CdfJKpYy8VEDLXaZ9VPEA==
+      integrity: sha512-AJpDajVMQyzFkLRQytDcL4LbxmCM10Jy9unK+KhBZn1msUA400pYC79fgDn4gp/6Tpn7vb3L6bMEelc+4wiWHQ==
       tarball: 'file:projects/fabric-website-resources.tgz'
     version: 0.0.0
   'file:projects/fabric-website.tgz':
@@ -15854,6 +15855,15 @@ packages:
     resolution:
       integrity: sha512-Sic+vIuNboxBmnHtkdUPWpSVcLDpv3CeKFE5w78NMcPmySXNoy8ltBQwc49ocXs5yBJkZ8GjxzhITd1AGOJiwQ==
       tarball: 'file:projects/lists.tgz'
+    version: 0.0.0
+  'file:projects/mdl2-theme.tgz':
+    dependencies:
+      tslib: 1.10.0
+    dev: false
+    name: '@rush-temp/mdl2-theme'
+    resolution:
+      integrity: sha512-2EUAJZyVqMxHhPjojXJp4X5PQBm5DIt/w//fLw+PYwO0AbBOnIyBEEYflMGyRsBQt/pmzX84Le/SGvazuMJoLg==
+      tarball: 'file:projects/mdl2-theme.tgz'
     version: 0.0.0
   'file:projects/merge-styles.tgz':
     dependencies:
@@ -16277,6 +16287,7 @@ specifiers:
   '@rush-temp/icons': 'file:./projects/icons.tgz'
   '@rush-temp/jest-serializer-merge-styles': 'file:./projects/jest-serializer-merge-styles.tgz'
   '@rush-temp/lists': 'file:./projects/lists.tgz'
+  '@rush-temp/mdl2-theme': 'file:./projects/mdl2-theme.tgz'
   '@rush-temp/merge-styles': 'file:./projects/merge-styles.tgz'
   '@rush-temp/migration': 'file:./projects/migration.tgz'
   '@rush-temp/office-ui-fabric-react': 'file:./projects/office-ui-fabric-react.tgz'
