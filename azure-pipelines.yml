@@ -38,7 +38,7 @@ steps:
       BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
   - script: |
-      npm run perf-test
+      npm run just perf-test
     workingDirectory: apps/perf-test
     displayName: perf test
 
