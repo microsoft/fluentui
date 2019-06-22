@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { IChicletCardStyles, IChicletCardStyleProps, IChicletCardProps } from './ChicletCard.types';
-import { renderIcon, renderPreview } from '../../utilities/chicletHelper';
+import { renderIcon, renderPreview, findIcon } from '../../utilities/chicletHelper';
 
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
 
@@ -19,8 +19,8 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
   public render(): JSX.Element {
     const {
       title,
-      itemType,
       description,
+      itemType,
       image,
       imageWidth,
       imageHeight,
@@ -32,6 +32,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
       theme,
       styles
     } = this.props;
+
     const actionable = onClick ? true : false;
 
     const imageProvided: boolean = image !== undefined;
@@ -47,7 +48,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
       <div tabIndex={tabIndex} role={role} onClick={actionable ? this._onClick : undefined} className={this._classNames.root}>
         <div className={this._classNames.preview}>
           {renderPreview(image, imageHeight, imageWidth, imageAlt)}
-          {renderIcon(itemType, this._classNames.icon, false)}
+          {renderIcon(itemType || (title && findIcon(title, url)), this._classNames.icon, false)}
         </div>
         <div className={this._classNames.info}>
           <div className={this._classNames.title}>{title ? title : null}</div>

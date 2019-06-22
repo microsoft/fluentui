@@ -20,7 +20,12 @@ export class ChicletXsmallExample extends React.Component<{}, IChicletXsmallExam
   public render(): JSX.Element {
     return (
       <Stack tokens={{ childrenGap: 16 }}>
-        <Chiclet url={TEST_URL} size={ChicletSize.xSmall} />
+        <Chiclet
+          url={TEST_URL}
+          title={'WordTest with a long title that will wrap around to the second line but not the third line'}
+          itemType="docx"
+          size={ChicletSize.xSmall}
+        />
       </Stack>
     );
   }

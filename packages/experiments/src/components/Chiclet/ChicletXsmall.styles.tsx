@@ -42,7 +42,8 @@ export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallS
     icon: [
       classNames.icon,
       {
-        height: 30.32,
+        height: 29,
+        width: 29,
         padding: '17.44px',
         // revisit
         backgroundColor: theme.palette.neutralLight
@@ -59,8 +60,9 @@ export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallS
       {
         display: 'flex',
         flexWrap: 'wrap',
-        marginLeft: 4,
-        width: 170
+        marginLeft: 10,
+        width: 170,
+        height: 63
       },
       footerProvided && {
         borderBottom: '1px solid gray'
@@ -70,7 +72,7 @@ export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallS
       {
         fontSize: theme.fonts.small.fontSize,
         width: 170,
-        height: 17,
+        height: 15,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis'

@@ -23,9 +23,14 @@ export interface IChicletProps extends React.Props<ChicletBase> {
   className?: string;
 
   /**
-   * Sharing link
+   * Sharing link.
    */
   url: string;
+
+  /**
+   * File title to render for the component.
+   */
+  title: string;
 
   /**
    * Chiclet size to render
@@ -36,6 +41,36 @@ export interface IChicletProps extends React.Props<ChicletBase> {
    * Description to render for the component.
    */
   description?: React.ReactElement<JSX.Element>;
+
+  /**
+   * Image to render for the component.
+   */
+  image?: string;
+
+  /**
+   * Image Width to render for the component.
+   */
+  imageWidth?: string;
+
+  /**
+   * Image Height to render for the component.
+   */
+  imageHeight?: string;
+
+  /**
+   * Alternate image to render for the component.
+   */
+  imageAlt?: string;
+
+  /**
+   * Icon to render for the component.
+   */
+  itemType?: string;
+
+  /**
+   * OnClick to render for the component.
+   */
+  onClick?: React.MouseEvent<HTMLElement, MouseEvent>;
 
   /**
    * Footer to render for the component.

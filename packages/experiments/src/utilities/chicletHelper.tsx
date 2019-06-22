@@ -39,6 +39,7 @@ export function renderIcon(
         icon = <img className={style} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/powerpoint_16x1_5.svg`} />;
         break;
       case 'excel':
+      case 'xlsx':
         icon = <img className={style} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/excel_16x1_5.svg`} />;
         break;
       default:
@@ -47,4 +48,31 @@ export function renderIcon(
     }
   }
   return icon;
+}
+
+export function findIcon(title: string, url?: string): string | undefined {
+  let extensionIndex;
+  let pos;
+
+  const expr = /[.]/g;
+
+  while ((pos = expr.exec(title))) {
+    extensionIndex = pos.index;
+  }
+
+  if (extensionIndex) {
+    const possibleExtension = title.substring(extensionIndex + 1, title.length);
+    if (possibleExtension === 'pptx' || possibleExtension === 'docx' || possibleExtension === 'xlsx') {
+      return possibleExtension;
+    }
+  }
+
+  let extension;
+  if (url) {
+    if ((extension = url.match(/.pptx/) || url.match(/.docx/) || url.match(/.xlsx/))) {
+      return extension[0].substring(1);
+    }
+  }
+
+  return undefined;
 }
