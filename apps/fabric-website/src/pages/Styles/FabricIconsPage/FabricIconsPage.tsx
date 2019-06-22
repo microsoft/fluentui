@@ -5,6 +5,15 @@ import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { FabricIconsPageProps } from './FabricIconsPage.doc';
 import * as styles from './FabricIconsPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
+import * as IconNames from '@uifabric/icons/src/IconNames';
+
+const iconNames: { name: string }[] = [];
+// IconNames is a const enum, so use the following as a workaround to iterate over it.
+for (const iconName in (IconNames as any).IconNames) {
+  if (iconName) {
+    iconNames.push({ name: iconName });
+  }
+}
 
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/FabricIconsPage/docs';
 const iconData = require('office-ui-fabric-core/src/data/icons.json');
