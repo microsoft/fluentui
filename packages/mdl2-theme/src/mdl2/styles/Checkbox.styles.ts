@@ -18,7 +18,7 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
       !disabled && [
         !checked && {
           selectors: {
-            ':hover .ms-Checkbox-text': { color: palette.neutralDarkAlt },
+            ':hover .ms-Checkbox-text': { color: palette.neutralPrimary },
             ':hover .ms-Checkbox-checkmark': { color: palette.neutralSecondary }
           }
         },
