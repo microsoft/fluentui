@@ -36,7 +36,7 @@ const circularTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
     borderWidthFocused: 3,
     minWidth: 32,
     minHeight: 32,
-    contentPadding: '',
+    contentPadding: 0,
     borderColorFocused: semanticColors.focusBorder,
     outlineColor: 'transparent',
     contentPaddingFocused: 1,

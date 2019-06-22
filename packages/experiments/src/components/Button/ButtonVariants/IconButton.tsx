@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { createComponent } from '@uifabric/foundation';
+import { FontWeights } from '../../../Styling';
 import { useButtonState as state } from '../Button.state';
 import { ButtonStyles as styles } from '../Button.styles';
 import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from '../Button.types';
@@ -15,15 +16,24 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     borderColor: 'transparent',
     borderColorHovered: 'transparent',
     borderColorPressed: 'transparent',
-    borderStyleFocused: 'solid',
-    borderWidthFocused: 1,
+    borderRadius: '50%',
+    contentPadding: 0,
+    cursor: 'pointer',
     highContrastBorderColor: 'transparent',
     highContrastBorderColorHovered: 'transparent',
     highContrastBorderColorPressed: 'transparent',
     iconColor: palette.themePrimary,
     iconColorHovered: palette.themeDarkAlt,
     iconColorPressed: palette.themeDark,
-    iconSize: 16
+    iconSize: 16,
+    iconWeight: 14,
+    lineHeight: 1,
+    minHeight: 32,
+    minWidth: 32,
+    outlineColor: 'transparent',
+    textFamily: 'inherit',
+    textSize: 14,
+    textWeight: FontWeights.semibold
   };
 };
 

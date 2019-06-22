@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { createComponent, IStylesFunction, IComponentStyles } from '@uifabric/foundation';
+import { createComponent, IComponentStyles, IStylesFunction, ITokenFunction } from '@uifabric/foundation';
 import { HighContrastSelector } from '../../../Styling';
 import { useButtonState as state } from '../Button.state';
-import { ButtonStyles } from '../Button.styles';
+import { ButtonStyles, ButtonTokens } from '../Button.styles';
 import {
   IButtonComponent,
   IButtonProps,
@@ -36,37 +36,11 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme) => {
   };
 };
 
-const primaryTokens: IButtonComponent['tokens'] = (props, theme) => {
-  const { semanticColors } = theme;
+const CompoundButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const regularTokens = (ButtonTokens as ITokenFunction<IButtonViewProps, IButtonTokens>)(props, theme);
 
-  return {
-    color: semanticColors.primaryButtonText,
-    colorHovered: semanticColors.primaryButtonTextHovered,
-    colorPressed: semanticColors.primaryButtonTextPressed,
-    iconColor: semanticColors.primaryButtonText,
-    iconColorHovered: semanticColors.primaryButtonTextHovered,
-    iconColorPressed: semanticColors.primaryButtonTextPressed
-  };
+  return [regularTokens, baseTokens];
 };
-
-const disabledTokens: IButtonComponent['tokens'] = (props, theme) => {
-  const { semanticColors } = theme;
-
-  return {
-    color: semanticColors.buttonTextDisabled,
-    colorHovered: semanticColors.buttonTextDisabled,
-    colorPressed: semanticColors.buttonTextDisabled,
-    iconColor: semanticColors.buttonTextDisabled,
-    iconColorHovered: semanticColors.buttonTextDisabled,
-    iconColorPressed: semanticColors.buttonTextDisabled
-  };
-};
-
-const CompoundButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
-  baseTokens,
-  props.primary && primaryTokens,
-  props.disabled && disabledTokens
-];
 
 const CompoundButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
   const { disabled, primary } = props;
@@ -79,32 +53,39 @@ const CompoundButtonStyles: IButtonComponent['styles'] = (props, theme, tokens):
   );
 
   return {
-    ...regularStyles,
-    root: {
-      lineHeight: '100%'
-    },
-    content: {
-      color: disabled ? semanticColors.buttonTextDisabled : primary ? semanticColors.primaryButtonText : semanticColors.buttonText,
-      selectors: {
-        ':hover': {
-          selectors: {
-            [HighContrastSelector]: {
-              color: tokens.highContrastColorHovered
+    root: [
+      regularStyles.root,
+      {
+        lineHeight: '100%'
+      }
+    ],
+    content: [
+      regularStyles.content,
+      {
+        color: disabled ? semanticColors.buttonTextDisabled : primary ? semanticColors.primaryButtonText : semanticColors.buttonText,
+        selectors: {
+          ':hover': {
+            selectors: {
+              [HighContrastSelector]: {
+                color: tokens.highContrastColorHovered
+              }
             }
-          }
-        },
-        ':active': {
-          selectors: {
-            [HighContrastSelector]: {
-              color: tokens.highContrastColorPressed
+          },
+          ':active': {
+            selectors: {
+              [HighContrastSelector]: {
+                color: tokens.highContrastColorPressed
+              }
             }
+          },
+          [HighContrastSelector]: {
+            color: tokens.highContrastColor
           }
-        },
-        [HighContrastSelector]: {
-          color: tokens.highContrastColor
         }
       }
-    }
+    ],
+    stack: regularStyles.stack,
+    icon: regularStyles.icon
   };
 };
 

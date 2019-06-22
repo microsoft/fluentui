@@ -923,10 +923,10 @@ exports[`Button renders a default circular Button with an icon correctly 1`] = `
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
           width: auto;
         }
         & > * {
@@ -1061,10 +1061,10 @@ exports[`Button renders a default circular checked Button correctly 1`] = `
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
           width: auto;
         }
         & > * {
@@ -1205,10 +1205,10 @@ exports[`Button renders a default circular disabled checked Button correctly 1`]
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
           width: auto;
         }
         & > * {
@@ -1648,10 +1648,10 @@ exports[`Button renders a disabled default circular Button with an icon correctl
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
           width: auto;
         }
         & > * {
@@ -1947,10 +1947,10 @@ exports[`Button renders a disabled primary circular Button with an icon correctl
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
           width: auto;
         }
         & > * {
@@ -2709,10 +2709,10 @@ exports[`Button renders a primary circular Button with an icon correctly 1`] = `
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
           width: auto;
         }
         & > * {
@@ -2855,10 +2855,10 @@ exports[`Button renders a primary circular checked Button correctly 1`] = `
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
           width: auto;
         }
         & > * {
@@ -3003,10 +3003,10 @@ exports[`Button renders a primary circular disabled checked Button correctly 1`]
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
           width: auto;
         }
         & > * {
