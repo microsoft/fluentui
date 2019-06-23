@@ -12,6 +12,9 @@ export interface IViewportState {
   scrollOffset: number;
 }
 
+const DONE_SCROLLING_TIMEOUT_IN_MILLISECONDS = 500;
+const NO_PENDING_DONE_SCROLLING_TIMEOUT = -1;
+
 export const Viewport = (props: IViewportProps) => {
   const { height, width, children } = props;
 
@@ -32,11 +35,13 @@ export const Viewport = (props: IViewportProps) => {
     if (elRef.current) {
       const onScroll = (event: Event) => {
         const { scrollTop } = ((event as any) as React.UIEvent<HTMLDivElement>).currentTarget; // tslint:disable-line:no-any
-        console.log(scrollTop);
+
         setViewportState({
           isScrolling: true,
           scrollOffset: scrollTop
         });
+
+        scheduleDoneScrolling();
       };
 
       elRef.current.addEventListener<'scroll'>('scroll', onScroll);
@@ -47,6 +52,31 @@ export const Viewport = (props: IViewportProps) => {
         }
       };
     }
+  }, []);
+
+  const doneScrollingTimeoutId = useRef(-1);
+  const scheduleDoneScrolling = () => {
+    if (doneScrollingTimeoutId.current !== NO_PENDING_DONE_SCROLLING_TIMEOUT) {
+      window.clearTimeout(doneScrollingTimeoutId.current);
+    }
+
+    doneScrollingTimeoutId.current = window.setTimeout(() => {
+      setViewportState((prevViewportState: IViewportState) => {
+        return {
+          isScrolling: false,
+          scrollOffset: prevViewportState.scrollOffset
+        };
+      });
+
+      doneScrollingTimeoutId.current = NO_PENDING_DONE_SCROLLING_TIMEOUT;
+    }, DONE_SCROLLING_TIMEOUT_IN_MILLISECONDS);
+  };
+  useEffect(() => {
+    return () => {
+      if (doneScrollingTimeoutId.current !== NO_PENDING_DONE_SCROLLING_TIMEOUT) {
+        window.clearTimeout(doneScrollingTimeoutId.current);
+      }
+    };
   }, []);
 
   return (
