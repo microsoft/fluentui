@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/icons",
+      "comment": "Ship IconNames.ts in npm",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/icons",
+  "email": "v-jojanz@microsoft.com"
+}
