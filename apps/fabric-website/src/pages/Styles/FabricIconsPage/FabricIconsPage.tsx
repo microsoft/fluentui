@@ -10,6 +10,7 @@ import * as IconNames from '@uifabric/icons/src/IconNames';
 
 const allFabricIcons: { name: string }[] = [];
 // IconNames is a const enum, so use the following as a workaround to iterate over it.
+// tslint:ignore-next-line no-any
 for (const iconName in (IconNames as any).IconNames) {
   if (iconName) {
     allFabricIcons.push({ name: iconName });
