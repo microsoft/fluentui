@@ -12,7 +12,7 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
   public render(): JSX.Element {
     const { onClick, title, image, imageAlt, className, footer, theme, styles, url } = this.props;
 
-    const footerProvided: boolean = footer !== undefined;
+    const footerProvided = !!footer;
     const imageProvided = !!image || !!imageAlt;
 
     this._classNames = getClassNames(styles, { theme: theme!, className, footerProvided });

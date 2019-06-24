@@ -5,43 +5,6 @@ import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
 export interface IChicletCard {}
 
-export interface IChicletCardStyles {
-  /**
-   * Style for the root element.
-   */
-  root?: IStyle;
-
-  /**
-   * Style for the icon that overlays the file preview image.
-   */
-  icon?: IStyle;
-
-  /**
-   * Style for url.
-   */
-  url?: IStyle;
-
-  /**
-   * Style for the file preview image.
-   */
-  preview?: IStyle;
-
-  /**
-   * Style for preview information about the file, such as title and link.
-   */
-  info?: IStyle;
-
-  /**
-   * Style for the title of the file.
-   */
-  title?: IStyle;
-
-  /**
-   * Style for the dile description, which could be a link, description, etc.
-   */
-  description?: IStyle;
-}
-
 export interface IChicletCardProps extends React.Props<ChicletCardBase> {
   /**
    * Optional callback to access the IChicletCard interface. Use this instead of ref for accessing
@@ -101,6 +64,43 @@ export interface IChicletCardProps extends React.Props<ChicletCardBase> {
    * @default '122px'
    */
   imageHeight?: string;
+}
+
+export interface IChicletCardStyles {
+  /**
+   * Style for the root element.
+   */
+  root?: IStyle;
+
+  /**
+   * Style for the icon that overlays the file preview image.
+   */
+  icon?: IStyle;
+
+  /**
+   * Style for url.
+   */
+  url?: IStyle;
+
+  /**
+   * Style for the file preview image.
+   */
+  preview?: IStyle;
+
+  /**
+   * Style for preview information about the file, such as title and link.
+   */
+  info?: IStyle;
+
+  /**
+   * Style for the title of the file.
+   */
+  title?: IStyle;
+
+  /**
+   * Style for the dile description, which could be a link, description, etc.
+   */
+  description?: IStyle;
 }
 
 export interface IChicletCardStyleProps {
