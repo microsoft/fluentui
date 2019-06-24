@@ -33,6 +33,12 @@ describe('Button', () => {
     document.body.innerHTML = '';
   });
 
+  function render(content: JSX.Element): Element {
+    ReactDOM.render(content, container);
+
+    return container.firstChild as Element;
+  }
+
   it('renders DefaultButton correctly', () => {
     const component = renderer.create(<DefaultButton text="Button" />);
     const tree = component.toJSON();
@@ -94,110 +100,84 @@ describe('Button', () => {
 
   describe('DefaultButton', () => {
     it('can render without an onClick.', () => {
-      const buttonRef = React.createRef<DefaultButton>();
+      const button = render(<DefaultButton>Hello</DefaultButton>);
 
-      ReactDOM.render(<DefaultButton ref={buttonRef}>Hello</DefaultButton>, container);
-
-      const renderedDOM = ReactDOM.findDOMNode(buttonRef.current) as Element;
-
-      expect(renderedDOM.tagName).toEqual('BUTTON');
+      expect(button.tagName).toEqual('BUTTON');
     });
 
     it('can render with an onClick.', () => {
       const onClick: () => null = () => null;
-      const buttonRef = React.createRef<DefaultButton>();
-
-      ReactDOM.render(
-        <DefaultButton ref={buttonRef} onClick={onClick}>
-          Hello
-        </DefaultButton>,
-        container
-      );
-      const renderedDOM = ReactDOM.findDOMNode(buttonRef.current) as Element;
-      expect(renderedDOM.tagName).toEqual('BUTTON');
+      const button = render(<DefaultButton onClick={onClick}>Hello</DefaultButton>);
+      expect(button.tagName).toEqual('BUTTON');
     });
 
     it('can render with an href', () => {
-      const button = ReactDOM.render(
+      const button = render(
         <DefaultButton href="http://www.microsoft.com" target="_blank">
           Hello
-        </DefaultButton>,
-        container
+        </DefaultButton>
       );
-      const renderedDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
-      expect(renderedDOM.tagName).toEqual('A');
+      expect(button.tagName).toEqual('A');
     });
 
     describe('aria attributes', () => {
       it('does not apply aria attributes that are not passed in', () => {
-        const button: any = ReactDOM.render(
+        const button: any = render(
           <DefaultButton href="http://www.microsoft.com" target="_blank">
             Hello
-          </DefaultButton>,
-          container
+          </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
-        expect(renderedDOM.getAttribute('aria-label')).toBeNull();
-        expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
-        expect(renderedDOM.getAttribute('aria-describedby')).toBeNull();
-        expect(renderedDOM.getAttribute('aria-pressed')).toBeNull();
+        expect(button.getAttribute('aria-label')).toBeNull();
+        expect(button.getAttribute('aria-labelledby')).toBeNull();
+        expect(button.getAttribute('aria-describedby')).toBeNull();
+        expect(button.getAttribute('aria-pressed')).toBeNull();
       });
 
       it('overrides native aria-label with Button ariaLabel', () => {
-        const button: any = ReactDOM.render(
+        const button = render(
           <DefaultButton href="http://www.microsoft.com" target="_blank" aria-label="NativeLabel" ariaLabel="ButtonLabel">
             Hello
-          </DefaultButton>,
-          container
+          </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
-        expect(renderedDOM.getAttribute('aria-label')).toEqual('ButtonLabel');
-        expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
-        expect(renderedDOM.getAttribute('aria-describedby')).toBeNull();
+        expect(button.getAttribute('aria-label')).toEqual('ButtonLabel');
+        expect(button.getAttribute('aria-labelledby')).toBeNull();
+        expect(button.getAttribute('aria-describedby')).toBeNull();
       });
 
       it('applies aria-label', () => {
-        const button: any = ReactDOM.render(
+        const button = render(
           <DefaultButton href="http://www.microsoft.com" target="_blank" aria-label="MyLabel">
             Hello
-          </DefaultButton>,
-          container
+          </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
-        expect(renderedDOM.getAttribute('aria-label')).toEqual('MyLabel');
-        expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
-        expect(renderedDOM.getAttribute('aria-describedby')).toBeNull();
+        expect(button.getAttribute('aria-label')).toEqual('MyLabel');
+        expect(button.getAttribute('aria-labelledby')).toBeNull();
+        expect(button.getAttribute('aria-describedby')).toBeNull();
       });
 
       it('applies aria-labelledby', () => {
-        const button: any = ReactDOM.render(
+        const button = render(
           <DefaultButton href="http://www.microsoft.com" target="_blank" aria-labelledby="someid">
             Hello
-          </DefaultButton>,
-          container
+          </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
-        expect(renderedDOM.getAttribute('aria-labelledby')).toEqual('someid');
-        expect(renderedDOM.getAttribute('aria-describedby')).toBeNull();
+        expect(button.getAttribute('aria-labelledby')).toEqual('someid');
+        expect(button.getAttribute('aria-describedby')).toBeNull();
       });
 
       it('does not apply aria-labelledby to a button with no text', () => {
-        const button: any = ReactDOM.render(
-          <DefaultButton href="http://www.microsoft.com" target="_blank" aria-describedby="someid" />,
-          container
-        );
-        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
+        const button = render(<DefaultButton href="http://www.microsoft.com" target="_blank" aria-describedby="someid" />);
 
-        expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
-        expect(renderedDOM.getAttribute('aria-describedby')).toEqual('someid');
+        expect(button.getAttribute('aria-labelledby')).toBeNull();
+        expect(button.getAttribute('aria-describedby')).toEqual('someid');
       });
 
       it('applies aria-labelledby and aria-describedby', () => {
-        const button: any = ReactDOM.render(
+        const button = render(
           <DefaultButton
             href="http://www.microsoft.com"
             target="_blank"
@@ -205,99 +185,86 @@ describe('Button', () => {
             styles={{ screenReaderText: 'some-screenreader-class' }}
           >
             Hello
-          </DefaultButton>,
-          container
+          </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
-        expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+        expect(button.getAttribute('aria-label')).toBeNull();
 
-        expect(renderedDOM.getAttribute('aria-labelledby')).toEqual(renderedDOM.querySelector(`.ms-Button-label`).id);
-        expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
+        expect(button.getAttribute('aria-labelledby')).toEqual(button.querySelector(`.ms-Button-label`)!.id);
+        expect(button.getAttribute('aria-labelledby')).toBeDefined();
 
-        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(renderedDOM.querySelector('.some-screenreader-class').id);
-        expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
+        expect(button.getAttribute('aria-describedby')).toEqual(button.querySelector('.some-screenreader-class')!.id);
+        expect(button.getAttribute('aria-describedby')).toBeDefined();
       });
 
       it('applies aria-describedby to an IconButton', () => {
-        const button: any = ReactDOM.render(
+        const button = render(
           <IconButton
             iconProps={{ iconName: 'Emoji2' }}
             ariaDescription="Description on icon button"
             styles={{ screenReaderText: 'some-screenreader-class' }}
-          />,
-          container
+          />
         );
-        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
-        expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+        expect(button.getAttribute('aria-label')).toBeNull();
 
-        expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
-        expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
+        expect(button.getAttribute('aria-labelledby')).toBeNull();
+        expect(button.getAttribute('aria-labelledby')).toBeDefined();
 
-        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(renderedDOM.querySelector('.some-screenreader-class').id);
-        expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
+        expect(button.getAttribute('aria-describedby')).toEqual(button.querySelector('.some-screenreader-class')!.id);
+        expect(button.getAttribute('aria-describedby')).toBeDefined();
       });
 
       it('applies aria-labelledby and aria-describedby to a CompoundButton with ariaDescription', () => {
-        const button: any = ReactDOM.render(
+        const button = render(
           <CompoundButton
             secondaryText="Some awesome description"
             ariaDescription="Description on icon button"
             styles={{ screenReaderText: 'some-screenreader-class' }}
           >
             And this is the label
-          </CompoundButton>,
-          container
+          </CompoundButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
-        expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+        expect(button.getAttribute('aria-label')).toBeNull();
 
-        expect(renderedDOM.getAttribute('aria-labelledby')).toEqual(renderedDOM.querySelector('.ms-Button-label').id);
-        expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
+        expect(button.getAttribute('aria-labelledby')).toEqual(button.querySelector('.ms-Button-label')!.id);
+        expect(button.getAttribute('aria-labelledby')).toBeDefined();
 
-        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(renderedDOM.querySelector('.some-screenreader-class').id);
-        expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
+        expect(button.getAttribute('aria-describedby')).toEqual(button.querySelector('.some-screenreader-class')!.id);
+        expect(button.getAttribute('aria-describedby')).toBeDefined();
       });
 
       it('applies aria-labelledby and aria-describedby to a CompoundButton with secondaryText and no ariaDescription', () => {
-        const button: any = ReactDOM.render(
-          <CompoundButton secondaryText="Some awesome description">And this is the label</CompoundButton>,
-          container
-        );
-        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
+        const button = render(<CompoundButton secondaryText="Some awesome description">And this is the label</CompoundButton>);
 
-        expect(renderedDOM.getAttribute('aria-label')).toBeNull();
+        expect(button.getAttribute('aria-label')).toBeNull();
 
-        expect(renderedDOM.getAttribute('aria-labelledby')).toEqual(renderedDOM.querySelector('.ms-Button-label').id);
-        expect(renderedDOM.getAttribute('aria-labelledby')).toBeDefined();
+        expect(button.getAttribute('aria-labelledby')).toEqual(button.querySelector('.ms-Button-label')!.id);
+        expect(button.getAttribute('aria-labelledby')).toBeDefined();
 
-        expect(renderedDOM.getAttribute('aria-describedby')).toEqual(renderedDOM.querySelector('.ms-Button-description').id);
-        expect(renderedDOM.getAttribute('aria-describedby')).toBeDefined();
+        expect(button.getAttribute('aria-describedby')).toEqual(button.querySelector('.ms-Button-description')!.id);
+        expect(button.getAttribute('aria-describedby')).toBeDefined();
       });
 
       it('does not apply aria-pressed to an unchecked button', () => {
-        const button: any = ReactDOM.render(<DefaultButton toggle={true}>Hello</DefaultButton>, container);
-        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        const button: any = render(<DefaultButton toggle={true}>Hello</DefaultButton>);
 
-        expect(renderedDOM.getAttribute('aria-pressed')).toEqual('false');
+        expect(button.getAttribute('aria-pressed')).toEqual('false');
       });
 
       it('applies aria-pressed to a checked button', () => {
-        const button: any = ReactDOM.render(
+        const button: any = render(
           <DefaultButton toggle={true} checked={true}>
             Hello
-          </DefaultButton>,
-          container
+          </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
-        expect(renderedDOM.getAttribute('aria-pressed')).toEqual('true');
+        expect(button.getAttribute('aria-pressed')).toEqual('true');
       });
 
       it('does not apply aria-pressed to an unchecked split button', () => {
-        const button: any = ReactDOM.render(
+        const button: any = render(
           <DefaultButton
             toggle={true}
             split={true}
@@ -313,12 +280,10 @@ describe('Button', () => {
             }}
           >
             Hello
-          </DefaultButton>,
-          container
+          </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
-        expect(renderedDOM.getAttribute('aria-pressed')).toEqual('false');
+        expect(button.getAttribute('aria-pressed')).toEqual('false');
       });
 
       it('does not mutate menuprops hidden property', () => {
@@ -332,20 +297,18 @@ describe('Button', () => {
             }
           ]
         };
-        const button: any = ReactDOM.render(
+        const button: any = render(
           <DefaultButton toggle={true} split={true} onClick={alertClicked} persistMenu={true} menuProps={menuProps}>
             Hello
-          </DefaultButton>,
-          container
+          </DefaultButton>
         );
 
-        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
-        expect(renderedDOM).toBeTruthy();
+        expect(button).toBeTruthy();
         expect(menuProps.hidden).toEqual(false);
       });
 
       it('applies aria-pressed to a checked split button', () => {
-        const button: any = ReactDOM.render(
+        const button: any = render(
           <DefaultButton
             toggle={true}
             checked={true}
@@ -362,12 +325,10 @@ describe('Button', () => {
             }}
           >
             Hello
-          </DefaultButton>,
-          container
+          </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
-        expect(renderedDOM.getAttribute('aria-pressed')).toEqual('true');
+        expect(button.getAttribute('aria-pressed')).toEqual('true');
       });
     });
 
@@ -375,15 +336,7 @@ describe('Button', () => {
       let button: Element;
 
       beforeAll(() => {
-        const buttonRef = React.createRef<DefaultButton>();
-
-        ReactDOM.render(
-          <DefaultButton ref={buttonRef} menuProps={{ items: [{ key: 'item', text: 'Item' }] }}>
-            Hello
-          </DefaultButton>,
-          container
-        );
-        button = ReactDOM.findDOMNode(buttonRef.current) as Element;
+        button = render(<DefaultButton menuProps={{ items: [{ key: 'item', text: 'Item' }] }}>Hello</DefaultButton>);
       });
 
       it('contains aria-haspopup=true', () => {
@@ -395,10 +348,7 @@ describe('Button', () => {
       let button: Element;
 
       beforeAll(() => {
-        const buttonRef = React.createRef<DefaultButton>();
-
-        ReactDOM.render(<DefaultButton ref={buttonRef}>Hello</DefaultButton>, container);
-        button = ReactDOM.findDOMNode(buttonRef.current) as Element;
+        button = render(<DefaultButton>Hello</DefaultButton>);
       });
 
       it('does not contain aria-haspopup', () => {
@@ -410,15 +360,7 @@ describe('Button', () => {
       let button: Element;
 
       beforeAll(() => {
-        const buttonRef = React.createRef<DefaultButton>();
-
-        ReactDOM.render(
-          <DefaultButton ref={buttonRef} menuIconProps={{ iconName: 'fontColor' }}>
-            Hello
-          </DefaultButton>,
-          container
-        );
-        button = ReactDOM.findDOMNode(buttonRef.current) as Element;
+        button = render(<DefaultButton menuIconProps={{ iconName: 'fontColor' }}>Hello</DefaultButton>);
       });
 
       it('Contains the expected icon via menuIconProps', () => {
@@ -427,7 +369,7 @@ describe('Button', () => {
     });
 
     it('Providing onClick and menuProps does not render a SplitButton', () => {
-      const button = ReactDOM.render(
+      const button = render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -446,17 +388,15 @@ describe('Button', () => {
               }
             ]
           }}
-        />,
-        container
+        />
       );
-      const renderedDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
-      expect(renderedDOM.tagName).not.toEqual('DIV');
+      expect(button.tagName).not.toEqual('DIV');
     });
 
     it('Providing onKeyDown and menuProps still fires provided onKeyDown', () => {
       const keyDownSpy = jest.fn();
 
-      const button = ReactDOM.render(
+      const button = render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -475,13 +415,10 @@ describe('Button', () => {
               }
             ]
           }}
-        />,
-        container
+        />
       );
 
-      const menuButtonDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
-
-      ReactTestUtils.Simulate.keyDown(menuButtonDOM, { which: KeyCodes.enter });
+      ReactTestUtils.Simulate.keyDown(button, { which: KeyCodes.enter });
 
       expect(keyDownSpy).toHaveBeenCalled();
     });
@@ -489,7 +426,7 @@ describe('Button', () => {
     it('Providing onKeyDown, menuProps and setting splitButton to true fires provided onKeyDown on both buttons', () => {
       const keyDownSpy = jest.fn();
 
-      const button = ReactDOM.render(
+      const button = render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -510,11 +447,9 @@ describe('Button', () => {
               }
             ]
           }}
-        />,
-        container
+        />
       );
-      const renderedDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
-      const primaryButtonDOM: HTMLDivElement = renderedDOM.getElementsByTagName('div')[0] as HTMLDivElement;
+      const primaryButtonDOM: HTMLDivElement = button.getElementsByTagName('div')[0] as HTMLDivElement;
 
       ReactTestUtils.Simulate.keyDown(primaryButtonDOM, { which: KeyCodes.enter });
 
@@ -522,7 +457,7 @@ describe('Button', () => {
     });
 
     it('Providing onClick, menuProps and setting splitButton to true renders a SplitButton', () => {
-      const button = ReactDOM.render(
+      const button = render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -542,15 +477,13 @@ describe('Button', () => {
               }
             ]
           }}
-        />,
-        container
+        />
       );
-      const renderedDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
-      expect(renderedDOM.tagName).toEqual('DIV');
+      expect(button.tagName).toEqual('DIV');
     });
 
     it('Tapping menu button of SplitButton expands menu', () => {
-      const button = ReactDOM.render(
+      const button = render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -570,17 +503,15 @@ describe('Button', () => {
               }
             ]
           }}
-        />,
-        container
+        />
       );
-      const renderedDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
-      const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[1] as HTMLButtonElement;
+      const menuButtonDOM: HTMLButtonElement = button.getElementsByTagName('button')[1] as HTMLButtonElement;
       ReactTestUtils.Simulate.click(menuButtonDOM);
-      expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
+      expect(button.getAttribute('aria-expanded')).toEqual('true');
     });
 
     it('Touch Start on primary button of SplitButton expands menu', () => {
-      const button = ReactDOM.render(
+      const button = render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -600,22 +531,20 @@ describe('Button', () => {
               }
             ]
           }}
-        />,
-        container
+        />
       );
-      const renderedDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
-      const primaryButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[0] as HTMLButtonElement;
+      const primaryButtonDOM: HTMLButtonElement = button.getElementsByTagName('button')[0] as HTMLButtonElement;
 
       // in a normal scenario, when we do a touchstart we would also cause a
       // click event to fire. This doesn't happen in the simulator so we're
       // manually adding this in.
       ReactTestUtils.Simulate.touchStart(primaryButtonDOM);
       ReactTestUtils.Simulate.click(primaryButtonDOM);
-      expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
+      expect(button.getAttribute('aria-expanded')).toEqual('true');
     });
 
     it('If menu trigger is disabled, pressing down does not trigger menu', () => {
-      const button = ReactDOM.render(
+      const button = render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -634,19 +563,17 @@ describe('Button', () => {
               }
             ]
           }}
-        />,
-        container
+        />
       );
-      const menuButtonDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
 
-      ReactTestUtils.Simulate.keyDown(menuButtonDOM, {
+      ReactTestUtils.Simulate.keyDown(button, {
         which: KeyCodes.down
       });
-      expect(menuButtonDOM.getAttribute('aria-expanded')).toEqual('false');
+      expect(button.getAttribute('aria-expanded')).toEqual('false');
     });
 
     it('If menu trigger is specified, default key is overridden', () => {
-      const button = ReactDOM.render(
+      const button = render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -665,20 +592,18 @@ describe('Button', () => {
               }
             ]
           }}
-        />,
-        container
+        />
       );
-      const menuButtonDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
 
-      ReactTestUtils.Simulate.keyDown(menuButtonDOM, {
+      ReactTestUtils.Simulate.keyDown(button, {
         which: KeyCodes.down
       });
-      expect(menuButtonDOM.getAttribute('aria-expanded')).toEqual('false');
+      expect(button.getAttribute('aria-expanded')).toEqual('false');
 
-      ReactTestUtils.Simulate.keyDown(menuButtonDOM, {
+      ReactTestUtils.Simulate.keyDown(button, {
         which: KeyCodes.right
       });
-      expect(menuButtonDOM.getAttribute('aria-expanded')).toEqual('true');
+      expect(button.getAttribute('aria-expanded')).toEqual('true');
     });
 
     describe('Response to click event', () => {
@@ -692,7 +617,7 @@ describe('Button', () => {
       });
 
       function buildRenderButtonWithMenu(callbackMock?: jest.Mock<unknown>, persistMenu?: boolean): HTMLElement {
-        const renderedDOM: HTMLElement = renderIntoDocument(
+        const button: HTMLElement = renderIntoDocument(
           <DefaultButton
             data-automation-id="test"
             text="Create account"
@@ -716,58 +641,58 @@ describe('Button', () => {
             }}
           />
         );
-        return renderedDOM;
+        return button;
       }
 
       it('Clicking SplitButton button triggers action', () => {
-        const renderedDOM: HTMLElement = buildRenderButtonWithMenu();
-        const menuButtonDOM: HTMLButtonElement = renderedDOM.querySelectorAll('button')[0];
+        const button: HTMLElement = buildRenderButtonWithMenu();
+        const menuButtonDOM: HTMLButtonElement = button.querySelectorAll('button')[0];
 
         ReactTestUtils.Simulate.click(menuButtonDOM);
         expect(didClick).toEqual(true);
       });
 
       it('Pressing alt + down on SplitButton triggers menu', () => {
-        const renderedDOM: HTMLElement = buildRenderButtonWithMenu();
-        const menuButtonElement = renderedDOM.querySelectorAll('button')[1];
+        const button: HTMLElement = buildRenderButtonWithMenu();
+        const menuButtonElement = button.querySelectorAll('button')[1];
 
         ReactTestUtils.Simulate.keyDown(menuButtonElement, {
           which: KeyCodes.down,
           altKey: true
         });
-        expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
+        expect(button.getAttribute('aria-expanded')).toEqual('true');
       });
 
       it('Click on button opens the menu, a second click closes the menu and calls onAfterMenuDismiss', () => {
         const callbackMock = jest.fn();
 
-        const renderedDOM: HTMLElement = buildRenderButtonWithMenu(callbackMock);
-        const menuButtonElement = renderedDOM.querySelectorAll('button')[1];
+        const button: HTMLElement = buildRenderButtonWithMenu(callbackMock);
+        const menuButtonElement = button.querySelectorAll('button')[1];
 
         ReactTestUtils.Simulate.click(menuButtonElement);
-        expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
+        expect(button.getAttribute('aria-expanded')).toEqual('true');
 
         ReactTestUtils.Simulate.click(menuButtonElement);
-        expect(renderedDOM.getAttribute('aria-expanded')).toEqual('false');
+        expect(button.getAttribute('aria-expanded')).toEqual('false');
         expect(callbackMock.mock.calls.length).toBe(1);
       });
 
       it('[PersistedMenu] Click on button opens the menu, a second click closes the menu and calls onAfterMenuDismiss', () => {
         const callbackMock = jest.fn();
 
-        const renderedDOM: HTMLElement = buildRenderButtonWithMenu(callbackMock, true);
-        const menuButtonElement = renderedDOM.querySelectorAll('button')[1];
+        const button: HTMLElement = buildRenderButtonWithMenu(callbackMock, true);
+        const menuButtonElement = button.querySelectorAll('button')[1];
 
         ReactTestUtils.Simulate.click(menuButtonElement);
-        expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
+        expect(button.getAttribute('aria-expanded')).toEqual('true');
 
         ReactTestUtils.Simulate.click(menuButtonElement);
-        expect(renderedDOM.getAttribute('aria-expanded')).toEqual('false');
+        expect(button.getAttribute('aria-expanded')).toEqual('false');
         expect(callbackMock.mock.calls.length).toBe(1);
       });
 
       it('A disabled SplitButton does not respond to input events', () => {
-        const renderedDOM: HTMLElement = renderIntoDocument(
+        const button: HTMLElement = renderIntoDocument(
           <DefaultButton
             disabled={true}
             data-automation-id="test"
@@ -796,26 +721,26 @@ describe('Button', () => {
           />
         );
 
-        ReactTestUtils.Simulate.click(renderedDOM);
-        ReactTestUtils.Simulate.keyDown(renderedDOM, {
+        ReactTestUtils.Simulate.click(button);
+        ReactTestUtils.Simulate.keyDown(button, {
           which: KeyCodes.down,
           altKey: true
         });
-        ReactTestUtils.Simulate.keyUp(renderedDOM, {
+        ReactTestUtils.Simulate.keyUp(button, {
           which: KeyCodes.down,
           altKey: true
         });
-        ReactTestUtils.Simulate.keyPress(renderedDOM, {
+        ReactTestUtils.Simulate.keyPress(button, {
           which: KeyCodes.down,
           altKey: true
         });
-        ReactTestUtils.Simulate.mouseDown(renderedDOM, {
+        ReactTestUtils.Simulate.mouseDown(button, {
           type: 'mousedown',
           clientX: 0,
           clientY: 0
         });
 
-        ReactTestUtils.Simulate.mouseUp(renderedDOM, {
+        ReactTestUtils.Simulate.mouseUp(button, {
           type: 'mouseup',
           clientX: 0,
           clientY: 0
@@ -824,7 +749,7 @@ describe('Button', () => {
       });
 
       it('A disabled Button does not respond to input events', () => {
-        const renderedDOM: HTMLElement = renderIntoDocument(
+        const button: HTMLElement = renderIntoDocument(
           <DefaultButton
             disabled={true}
             data-automation-id="test"
@@ -839,26 +764,26 @@ describe('Button', () => {
           />
         );
 
-        ReactTestUtils.Simulate.click(renderedDOM);
-        ReactTestUtils.Simulate.keyDown(renderedDOM, {
+        ReactTestUtils.Simulate.click(button);
+        ReactTestUtils.Simulate.keyDown(button, {
           which: KeyCodes.down,
           altKey: true
         });
-        ReactTestUtils.Simulate.keyUp(renderedDOM, {
+        ReactTestUtils.Simulate.keyUp(button, {
           which: KeyCodes.down,
           altKey: true
         });
-        ReactTestUtils.Simulate.keyPress(renderedDOM, {
+        ReactTestUtils.Simulate.keyPress(button, {
           which: KeyCodes.down,
           altKey: true
         });
-        ReactTestUtils.Simulate.mouseDown(renderedDOM, {
+        ReactTestUtils.Simulate.mouseDown(button, {
           type: 'mousedown',
           clientX: 0,
           clientY: 0
         });
 
-        ReactTestUtils.Simulate.mouseUp(renderedDOM, {
+        ReactTestUtils.Simulate.mouseUp(button, {
           type: 'mouseup',
           clientX: 0,
           clientY: 0
@@ -866,7 +791,7 @@ describe('Button', () => {
         expect(didClick).toEqual(false);
       });
       it('A focusable disabled button does not respond to input events', () => {
-        const renderedDOM: HTMLElement = renderIntoDocument(
+        const button: HTMLElement = renderIntoDocument(
           <DefaultButton
             disabled={true}
             allowDisabledFocus={true}
@@ -882,26 +807,26 @@ describe('Button', () => {
           />
         );
 
-        ReactTestUtils.Simulate.click(renderedDOM);
-        ReactTestUtils.Simulate.keyDown(renderedDOM, {
+        ReactTestUtils.Simulate.click(button);
+        ReactTestUtils.Simulate.keyDown(button, {
           which: KeyCodes.down,
           altKey: true
         });
-        ReactTestUtils.Simulate.keyUp(renderedDOM, {
+        ReactTestUtils.Simulate.keyUp(button, {
           which: KeyCodes.down,
           altKey: true
         });
-        ReactTestUtils.Simulate.keyPress(renderedDOM, {
+        ReactTestUtils.Simulate.keyPress(button, {
           which: KeyCodes.down,
           altKey: true
         });
-        ReactTestUtils.Simulate.mouseDown(renderedDOM, {
+        ReactTestUtils.Simulate.mouseDown(button, {
           type: 'mousedown',
           clientX: 0,
           clientY: 0
         });
 
-        ReactTestUtils.Simulate.mouseUp(renderedDOM, {
+        ReactTestUtils.Simulate.mouseUp(button, {
           type: 'mouseup',
           clientX: 0,
           clientY: 0
@@ -909,7 +834,7 @@ describe('Button', () => {
         expect(didClick).toEqual(false);
       });
       it('A focusable disabled menu button does not respond to input events', () => {
-        const renderedDOM: HTMLElement = renderIntoDocument(
+        const button: HTMLElement = renderIntoDocument(
           <DefaultButton
             disabled={true}
             allowDisabledFocus={true}
@@ -939,26 +864,26 @@ describe('Button', () => {
           />
         );
 
-        ReactTestUtils.Simulate.click(renderedDOM);
-        ReactTestUtils.Simulate.keyDown(renderedDOM, {
+        ReactTestUtils.Simulate.click(button);
+        ReactTestUtils.Simulate.keyDown(button, {
           which: KeyCodes.down,
           altKey: true
         });
-        ReactTestUtils.Simulate.keyUp(renderedDOM, {
+        ReactTestUtils.Simulate.keyUp(button, {
           which: KeyCodes.down,
           altKey: true
         });
-        ReactTestUtils.Simulate.keyPress(renderedDOM, {
+        ReactTestUtils.Simulate.keyPress(button, {
           which: KeyCodes.down,
           altKey: true
         });
-        ReactTestUtils.Simulate.mouseDown(renderedDOM, {
+        ReactTestUtils.Simulate.mouseDown(button, {
           type: 'mousedown',
           clientX: 0,
           clientY: 0
         });
 
-        ReactTestUtils.Simulate.mouseUp(renderedDOM, {
+        ReactTestUtils.Simulate.mouseUp(button, {
           type: 'mouseup',
           clientX: 0,
           clientY: 0
@@ -980,19 +905,18 @@ describe('Button', () => {
           </DefaultButton>
         );
 
-        ReactDOM.render(element, container);
+        render(element);
 
-        const button = ReactDOM.render(element, container) as React.ReactInstance;
-        const renderedDOM = ReactDOM.findDOMNode(button) as HTMLElement;
+        const button = render(element);
 
-        expect(renderedDOM).toBeDefined();
-        ReactTestUtils.Simulate.click(renderedDOM);
+        expect(button).toBeDefined();
+        ReactTestUtils.Simulate.click(button);
 
         // get the menu id from the button's aria attribute
-        const menuId = renderedDOM.getAttribute('aria-owns');
+        const menuId = button.getAttribute('aria-owns');
         expect(menuId).toBeDefined();
 
-        const menuDOM = renderedDOM.ownerDocument!.getElementById(menuId as string);
+        const menuDOM = button.ownerDocument!.getElementById(menuId as string);
         expect(menuDOM).toBeDefined();
 
         return menuDOM as HTMLElement;
