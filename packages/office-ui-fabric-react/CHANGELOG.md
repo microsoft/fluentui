@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 17 Jan 2019 00:06:43 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Jun 2019 23:14:19 GMT and should not be manually modified.
+
+## 5.135.1
+Mon, 24 Jun 2019 23:14:19 GMT
+
+### Patches
+
+- Remove travis badge from readme
 
 ## 5.135.0
 Thu, 17 Jan 2019 00:06:43 GMT

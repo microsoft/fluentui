@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 05 Apr 2019 11:26:52 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Jun 2019 23:14:19 GMT and should not be manually modified.
+
+## 5.8.5
+Mon, 24 Jun 2019 23:14:19 GMT
+
+### Patches
+
+- Add Fabric 7 to website dropdown
 
 ## 5.8.4
 Fri, 05 Apr 2019 11:26:52 GMT

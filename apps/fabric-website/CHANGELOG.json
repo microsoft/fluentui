@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.8.5",
+      "tag": "@uifabric/fabric-website_v5.8.5",
+      "date": "Mon, 24 Jun 2019 23:14:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "15b039ac9c9b067b1036099c987756d50ed248cb",
+            "comment": "Add Fabric 7 to website dropdown"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=5.135.0 <6.0.0` to `>=5.135.1 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.8.4",
       "tag": "@uifabric/fabric-website_v5.8.4",
       "date": "Fri, 05 Apr 2019 11:26:52 GMT",
