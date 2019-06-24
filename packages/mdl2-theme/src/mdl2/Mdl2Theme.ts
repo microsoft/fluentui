@@ -1,5 +1,5 @@
 import { createTheme, ITheme, FontWeights } from '@uifabric/styling';
-import { FontSizes } from './Mdl2Type';
+import { FontSizes } from './MDL2Type';
 
 export const MDL2Theme: ITheme = createTheme({
   palette: {
