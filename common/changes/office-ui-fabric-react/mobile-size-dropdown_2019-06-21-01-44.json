@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Don't expand ComboBox flyout on touch when disabled.",
+      "comment": "Dropdown:Bring back breakpoint for small screen sizes",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "phtucker@microsoft.com"
+  "email": "afhassan@microsoft.com"
 }

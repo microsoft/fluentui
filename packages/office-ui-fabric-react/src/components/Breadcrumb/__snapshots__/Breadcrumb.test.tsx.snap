@@ -114,6 +114,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -202,6 +203,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -290,6 +292,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -378,6 +381,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -691,6 +695,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -779,6 +784,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -908,6 +914,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -969,6 +976,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -1030,6 +1038,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -1091,6 +1100,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -1220,6 +1230,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -1492,6 +1503,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -1621,6 +1633,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >

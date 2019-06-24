@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Combobox: Fix styles so that RootChecked works",
+      "comment": "Coachmark: fixes beacon color props not being passed to styles.",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com"
+  "email": "vibraga@microsoft.com"
 }

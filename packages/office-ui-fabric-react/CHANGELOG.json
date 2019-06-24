@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "7.5.0",
+      "tag": "office-ui-fabric-react_v7.5.0",
+      "date": "Fri, 21 Jun 2019 12:27:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tooltip: add onKeyDown handler to dismiss on escape",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "659b57cc432a37173324eb06f22ea7a918ecff36"
+          },
+          {
+            "comment": "Combobox: Fix styles so that RootChecked works",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "ccd867fce2c54bcf73cb7d89086a747686e84e1b"
+          },
+          {
+            "comment": "Don't expand ComboBox flyout on touch when disabled.",
+            "author": "phtucker <46788634+phtucker@users.noreply.github.com>",
+            "commit": "39998c6ff727579fa6e04f97f2ac787d6b958be7"
+          },
+          {
+            "comment": "TooltipHost: fix the closeDelay Tooltip bug where a user could not interact with the Tooltip because it would close.",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "c761a05177b59ce6e991d39235e9d0d672ed3ac7"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adds dual presence to PersonaPresence",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "7c63d63055b38cfaef0a811ed6b06a7e573e660b"
+          },
+          {
+            "comment": "Slider: onChanged is fired after a delay following keydown events.",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "5c7a5ddb46abfa58af8883082b8eea776c28f646"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.4.3",
       "tag": "office-ui-fabric-react_v7.4.3",
       "date": "Thu, 20 Jun 2019 12:27:38 GMT",

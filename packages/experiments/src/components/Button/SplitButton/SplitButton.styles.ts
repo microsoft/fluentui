@@ -1,4 +1,4 @@
-import { HighContrastSelector } from '../../../Styling';
+import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 import { ISplitButtonComponent, ISplitButtonStylesReturnType, ISplitButtonTokenReturnType } from './SplitButton.types';
 
 const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
@@ -58,28 +58,37 @@ export const SplitButtonTokens: ISplitButtonComponent['tokens'] = (props, theme)
   props.disabled && disabledTokens
 ];
 
+const GlobalClassNames = {
+  msSplitButton: 'ms-SplitButton'
+};
+
 export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme, tokens): ISplitButtonStylesReturnType => {
   const { semanticColors } = theme;
 
-  return {
-    root: {
-      borderRadius: tokens.borderRadius,
-      boxSizing: 'border-box',
-      display: 'inline-flex',
-      zIndex: 1,
+  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
-      selectors: {
-        [HighContrastSelector]: {
-          borderColor: 'transparent'
-        },
-        ':hover': {
-          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered
-        },
-        ':active': {
-          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed
+  return {
+    root: [
+      globalClassNames.msSplitButton,
+      {
+        borderRadius: tokens.borderRadius,
+        boxSizing: 'border-box',
+        display: 'inline-flex',
+        zIndex: 1,
+
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'transparent'
+          },
+          ':hover': {
+            borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered
+          },
+          ':active': {
+            borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed
+          }
         }
       }
-    },
+    ],
     button: {
       borderBottomLeftRadius: tokens.borderRadius,
       borderBottomRightRadius: '0px',

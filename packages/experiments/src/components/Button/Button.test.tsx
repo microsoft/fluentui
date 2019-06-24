@@ -1,8 +1,10 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
 import { CommandBar, Icon, Text } from 'office-ui-fabric-react';
 import { Button } from './Button';
+import { IButton } from './Button.types';
 
 describe('Button', () => {
   it('renders a default Button with content correctly', () => {
@@ -138,5 +140,31 @@ describe('Button', () => {
     const component = renderer.create(<Button primary circular disabled checked icon="Volume3" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('focuses correctly when focus is triggered via IButton interface', () => {
+    const button1 = React.createRef<IButton>();
+    const button2 = React.createRef<IButton>();
+    const button3 = React.createRef<IButton>();
+
+    const wrapper = mount(
+      <div>
+        <Button content="Button 1" componentRef={button1} />
+        <Button content="Button 2" componentRef={button2} />
+        <Button content="Button 3" componentRef={button3} />
+      </div>
+    );
+
+    const buttons = wrapper.getDOMNode().querySelectorAll('button.ms-Button') as NodeListOf<HTMLButtonElement>;
+    expect(buttons.length).toEqual(3);
+
+    button1.current!.focus();
+    expect(document.activeElement!).toBe(buttons[0]);
+
+    button2.current!.focus();
+    expect(document.activeElement!).toBe(buttons[1]);
+
+    button3.current!.focus();
+    expect(document.activeElement!).toBe(buttons[2]);
   });
 });

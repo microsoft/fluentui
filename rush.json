@@ -468,6 +468,11 @@
       "packageName": "@uifabric/lists",
       "projectFolder": "packages/lists",
       "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/tsx-editor",
+      "projectFolder": "packages/tsx-editor",
+      "shouldPublish": false
     }
   ]
 }
