@@ -1,6 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Mon, 17 Jun 2019 12:26:51 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jun 2019 12:27:38 GMT and should not be manually modified.
+
+## 7.1.1
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- fixing min/max date being ignored
 
 ## 7.1.0
 Mon, 17 Jun 2019 12:26:51 GMT
