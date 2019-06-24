@@ -33,7 +33,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.13.9",
-    "@uifabric/codepen-loader": "^7.0.2",
+    "@uifabric/codepen-loader": "^7.0.3",
     "@uifabric/example-app-base": "^7.1.1",
     "@uifabric/jest-serializer-merge-styles": "^7.0.2",
     "@uifabric/prettier-rules": "^7.0.2",
@@ -51,7 +51,7 @@
     "@uifabric/set-version": "^7.0.0",
     "@uifabric/styling": "^7.0.2",
     "@uifabric/utilities": "^7.0.3",
-    "office-ui-fabric-react": "^7.5.0",
+    "office-ui-fabric-react": "^7.5.1",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {

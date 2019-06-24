@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 21 Jun 2019 12:27:05 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Jun 2019 23:11:20 GMT and should not be manually modified.
+
+## 7.5.1
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- FocusZone: fixed keyboard navigation when checkForNoWrap prop enabled.
+- Dropdown:Bring back breakpoint for small screen sizes
+- Coachmark: fixes beacon color props not being passed to styles.
 
 ## 7.5.0
 Fri, 21 Jun 2019 12:27:05 GMT
