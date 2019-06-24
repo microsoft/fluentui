@@ -331,19 +331,19 @@ describe('TextField with error message', () => {
     return delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), errorMessage));
   });
 
-  it('should render error message when onGetErrorMessage returns a Promise<JSX.Element>', () => {
-    function validator(value: string): Promise<string | JSX.Element> {
-      return Promise.resolve(value.length > 3 ? errorMessageJSX : '');
-    }
+  // it('should render error message when onGetErrorMessage returns a Promise<JSX.Element>', () => {
+  //   function validator(value: string): Promise<string | JSX.Element> {
+  //     return Promise.resolve(value.length > 3 ? errorMessageJSX : '');
+  //   }
 
-    wrapper = mount(<TextField defaultValue="whatever value" onGetErrorMessage={validator} deferredValidationTime={5} />);
+  //   wrapper = mount(<TextField defaultValue="whatever value" onGetErrorMessage={validator} deferredValidationTime={5} />);
 
-    const inputDOM = wrapper.getDOMNode().querySelector('input');
-    ReactTestUtils.Simulate.change(inputDOM as Element, mockEvent('the input value'));
+  //   const inputDOM = wrapper.getDOMNode().querySelector('input');
+  //   ReactTestUtils.Simulate.change(inputDOM as Element, mockEvent('the input value'));
 
-    // TODO: make this work with fake timers not real timers
-    return delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), errorMessageJSX));
-  });
+  //   // TODO: make this work with fake timers not real timers
+  //   return delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), errorMessageJSX));
+  // });
 
   it('should render error message on first render when onGetErrorMessage returns a string', () => {
     jest.useFakeTimers();

@@ -1,6 +1,87 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 13 Jun 2019 12:20:34 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Jun 2019 12:27:05 GMT and should not be manually modified.
+
+## 7.5.0
+Fri, 21 Jun 2019 12:27:05 GMT
+
+### Minor changes
+
+- Adds dual presence to PersonaPresence
+- Slider: onChanged is fired after a delay following keydown events.
+
+### Patches
+
+- Tooltip: add onKeyDown handler to dismiss on escape
+- Combobox: Fix styles so that RootChecked works
+- Don't expand ComboBox flyout on touch when disabled.
+- TooltipHost: fix the closeDelay Tooltip bug where a user could not interact with the Tooltip because it would close.
+
+## 7.4.3
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- DetailsList: add aria-hidden to checkbox labels
+
+## 7.4.2
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Patches
+
+- Make more examples exportable to codepen
+
+## 7.4.1
+Tue, 18 Jun 2019 19:00:04 GMT
+
+### Patches
+
+- Facepile: Introducing OnRenderPersona and OnRenderPersonaCoin to override default implementation of Persona and PersonaCoin. 
+- Tooltip: reverts commit 210fbabee 
+
+## 7.4.0
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Minor changes
+
+- DetailsList accessibility now reports 0 rows while placeholder data is being displayed. Also added a prop to ShimmeredDetailsList to specify aria label (such as a "loading data" message) while shimmer is being displayed.
+
+### Patches
+
+- Prevent the callout from being dismissed when the mouse is pressed inside, but then moved outside (while keeping pressed) and released. 
+- Only run KeytipManager update when relevant keytip props have changed in KeytipData.
+
+## 7.3.0
+Mon, 17 Jun 2019 12:26:51 GMT
+
+### Minor changes
+
+- exposing datemath function to calculate beginning of week
+- ShimmeredDetailsList: fixes issue where fading overlay was not removed when real item passed.
+
+### Patches
+
+- Removing getClassNames method from SwatchColorPicker.base.tsx which improves perf. by about 10% because of memoization
+- Stack: Improving examples so that they have better performance and removing anti-patterns from them.
+- Tooltip: Improving performance by wrapping Callout inside with a DelayedRender so that nothing renders until after the delay's done and only if the mouse's still over the tooltip area."
+- Updates some documentation links.
+
+## 7.2.0
+Fri, 14 Jun 2019 15:54:00 GMT
+
+### Minor changes
+
+- Major bumping the foundation package.
+
+## 7.1.1
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Set context menu width when using a split button to calculation of total width minus the width of the split menu button
+- Coachmark: Bottom position coachmarks shouldn't be hidden/cut off by other elements on the page.
+- Updated DetailsList example code to provide getKey prop, needed to make seelction work correctly when sorting and filtering are enabled.
+- Fix missing assets in production build.
 
 ## 7.1.0
 Thu, 13 Jun 2019 12:20:34 GMT

@@ -8,6 +8,21 @@ export interface IExampleState {
   stackHeight: number;
 }
 
+// Non-mutating styles definition
+const itemStyles: React.CSSProperties = {
+  alignItems: 'center',
+  background: DefaultPalette.themePrimary,
+  color: DefaultPalette.white,
+  height: 50,
+  display: 'flex',
+  justifyContent: 'center',
+  width: 50
+};
+
+// Tokens definition
+const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+const wrapStackTokens: IStackTokens = { childrenGap: 20 };
+
 export class VerticalStackWrapExample extends React.Component<{}, IExampleState> {
   constructor(props: {}) {
     super(props);
@@ -19,26 +34,13 @@ export class VerticalStackWrapExample extends React.Component<{}, IExampleState>
   public render(): JSX.Element {
     const { stackHeight } = this.state;
 
+    // Mutating styles definition
     const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
-        height: stackHeight,
-        selectors: {
-          '& span': {
-            alignItems: 'center',
-            background: DefaultPalette.themePrimary,
-            color: DefaultPalette.white,
-            height: 50,
-            display: 'flex',
-            justifyContent: 'center',
-            width: 50
-          }
-        }
+        height: stackHeight
       }
     };
-
-    const sectionStackTokens: IStackTokens = { childrenGap: 10 };
-    const wrapStackTokens: IStackTokens = { childrenGap: 20 };
 
     return (
       <Stack tokens={sectionStackTokens}>
@@ -53,12 +55,12 @@ export class VerticalStackWrapExample extends React.Component<{}, IExampleState>
         />
 
         <Stack wrap styles={stackStyles} tokens={wrapStackTokens}>
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span>4</span>
-          <span>5</span>
-          <span>6</span>
+          <span style={itemStyles}>1</span>
+          <span style={itemStyles}>2</span>
+          <span style={itemStyles}>3</span>
+          <span style={itemStyles}>4</span>
+          <span style={itemStyles}>5</span>
+          <span style={itemStyles}>6</span>
         </Stack>
       </Stack>
     );

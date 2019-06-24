@@ -1,6 +1,13 @@
 # Change Log - @uifabric/test-utilities
 
-This log was last generated on Thu, 13 Jun 2019 00:24:48 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
 
 ## 7.0.1
 Thu, 13 Jun 2019 00:24:48 GMT

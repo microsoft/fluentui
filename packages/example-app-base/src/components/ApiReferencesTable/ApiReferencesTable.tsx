@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRenderFunction, getDocument } from 'office-ui-fabric-react/lib/Utilities';
+import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import {
   DetailsList,
   DetailsRow,
@@ -16,6 +16,7 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 import { ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { IApiInterfaceProperty, IApiEnumProperty, IMethod } from './ApiReferencesTableSet.types';
 import { Markdown } from '../Markdown/index';
+import { getCurrentUrl } from '../../utilities/getCurrentUrl';
 
 export interface IApiReferencesTableProps {
   title?: string;
@@ -126,8 +127,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       };
     }
 
-    const doc = getDocument();
-    this._baseUrl = doc ? document.location.href : '';
+    this._baseUrl = getCurrentUrl();
 
     this._defaultColumns = [
       {

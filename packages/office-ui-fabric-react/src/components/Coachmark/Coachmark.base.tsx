@@ -175,6 +175,8 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
 
   public render(): JSX.Element {
     const {
+      beaconColorOne,
+      beaconColorTwo,
       children,
       target,
       color,
@@ -212,6 +214,8 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
 
     const classNames = getClassNames(styles, {
       theme,
+      beaconColorOne,
+      beaconColorTwo,
       className,
       isCollapsed,
       isBeaconAnimating,

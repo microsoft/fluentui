@@ -32,6 +32,7 @@ import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IStyleSet } from '@uifabric/styling';
 import { ITheme } from '@uifabric/styling';
 import { KeyCodes } from '@uifabric/utilities';
+import { Omit } from '@uifabric/utilities';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { Selection } from '@uifabric/utilities';
@@ -3388,6 +3389,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     indentWidth?: number;
     initialFocusedIndex?: number;
     isHeaderVisible?: boolean;
+    isPlaceholderData?: boolean;
     items: any[];
     layoutMode?: DetailsListLayoutMode;
     listProps?: IListProps;
@@ -4434,6 +4436,8 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
     componentRef?: IRefObject<IFacepile>;
     getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;
     maxDisplayablePersonas?: number;
+    onRenderPersona?: IRenderFunction<IFacepilePersona>;
+    onRenderPersonaCoin?: IRenderFunction<IFacepilePersona>;
     overflowButtonProps?: IButtonProps;
     overflowButtonType?: OverflowButtonType;
     overflowPersonas?: IFacepilePersona[];
@@ -5859,12 +5863,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-export interface IPersonaPresenceStyleProps {
-    className?: string;
-    presence?: PersonaPresence;
-    size?: PersonaSize;
-    theme: ITheme;
-}
+export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> & Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size'> & Pick<IPersonaProps, 'className'>;
 
 // @public (undocumented)
 export interface IPersonaPresenceStyles {
@@ -5897,6 +5896,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     imageShouldStartVisible?: boolean;
     imageUrl?: string;
     initialsColor?: PersonaInitialsColor | string;
+    isOutOfOffice?: boolean;
     onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
     onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
     onRenderInitials?: IRenderFunction<IPersonaSharedProps>;
@@ -6584,12 +6584,16 @@ export interface IShimmerColors {
 }
 
 // @public
-export interface IShimmeredDetailsListProps extends IDetailsListProps {
+export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'styles'> {
+    ariaLabelForShimmer?: string;
+    detailsListStyles?: IDetailsListProps['styles'];
     enableShimmer?: boolean;
     onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React.ReactNode;
     removeFadingOverlay?: boolean;
     shimmerLines?: number;
+    // @deprecated
     shimmerOverlayStyles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
+    styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
 }
 
 // @public
@@ -6752,7 +6756,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     max?: number;
     min?: number;
     onChange?: (value: number) => void;
-    onChanged?: (event: MouseEvent | TouchEvent, value: number) => void;
+    onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
     originFromZero?: boolean;
     showValue?: boolean;
     step?: number;
@@ -7725,7 +7729,7 @@ export class KeytipData extends React.Component<IKeytipDataProps & IRenderCompon
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(): void;
+    componentDidUpdate(prevProps: IKeytipDataProps & IRenderComponent<{}>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
@@ -8014,6 +8018,9 @@ export type OnChangeCallback = (evt?: React.FormEvent<HTMLElement | HTMLInputEle
 export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
 
 // @public (undocumented)
+export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
+
+// @public (undocumented)
 export enum OpenCardMode {
     hotKey = 1,
     hover = 0
@@ -8205,7 +8212,7 @@ export namespace personaPresenceSize {
     size20 = "20px";
     const // (undocumented)
     size28 = "28px";
-    const // (undocumented)
+    const // @deprecated (undocumented)
     border = "2px";
 }
 

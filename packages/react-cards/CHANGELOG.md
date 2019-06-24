@@ -1,6 +1,27 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Thu, 13 Jun 2019 00:24:48 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Jun 2019 12:27:03 GMT and should not be manually modified.
+
+## 0.107.1
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Patches
+
+- Card: Making elevation themable by using the effects from theme instead of directly referencing Depths and removing @uifabric/fluent-theme from package.json.
+
+## 0.107.0
+Fri, 14 Jun 2019 15:54:00 GMT
+
+### Minor changes
+
+- Major bumping the foundation package.
+
+## 0.106.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
 
 ## 0.106.1
 Thu, 13 Jun 2019 00:24:48 GMT
