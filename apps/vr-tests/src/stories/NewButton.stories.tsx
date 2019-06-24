@@ -207,8 +207,8 @@ storiesOf('BaseButton', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <BaseButton>Button</BaseButton>)
-  .addStory('Disabled', () => <BaseButton disabled>Button</BaseButton>);
+  .addStory('Default', () => <BaseButton {...baseProps} />, { rtl: true })
+  .addStory('Disabled', () => <BaseButton disabled {...baseProps} />);
 
 storiesOf('CommandBarButton', module)
   .addDecorator(FabricDecorator)

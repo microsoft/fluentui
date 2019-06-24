@@ -1,14 +1,11 @@
 // Button
 export * from './Button';
 export * from './Button.types';
-export * from './ButtonVariants.types';
-
-// BaseButton
-export * from './BaseButton/BaseButton';
-export * from './BaseButton/BaseButton.types';
 
 // Button variants
+export * from './ButtonVariants.types';
 export * from './ActionButton';
+export * from './BaseButton';
 export * from './CommandBarButton';
 export * from './CompoundButton';
 export * from './DefaultButton';

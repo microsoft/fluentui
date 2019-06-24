@@ -1,6 +1,14 @@
 import * as React from 'react';
-import { ActionButton, CommandBarButton, CompoundButton, DefaultButton, IconButton, MessageBarButton, PrimaryButton } from '../index';
-import { BaseButton } from '../BaseButton/BaseButton';
+import {
+  ActionButton,
+  BaseButton,
+  CommandBarButton,
+  CompoundButton,
+  DefaultButton,
+  IconButton,
+  MessageBarButton,
+  PrimaryButton
+} from '../index';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { SplitButton } from '../SplitButton/SplitButton';
 import { ISplitButtonProps } from '../SplitButton/SplitButton.types';
@@ -48,8 +56,8 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
             <PrimaryButton disabled text="Disabled primary button" />
           </ButtonStack>
           <ButtonStack>
-            <BaseButton content="Base Button" />
-            <BaseButton disabled content="Disabled Base Button" />
+            <BaseButton text="Base Button" />
+            <BaseButton disabled text="Disabled Base Button" />
           </ButtonStack>
           <ButtonStack>
             <ActionButton text="Action button" />

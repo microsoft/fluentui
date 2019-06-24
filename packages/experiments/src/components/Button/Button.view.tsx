@@ -4,8 +4,7 @@ import { withSlots, getSlots } from '../../Foundation';
 import { getNativeProps, anchorProperties, buttonProperties } from '../../Utilities';
 import { Icon } from '../../utilities/factoryComponents';
 
-import { IButtonComponent, IButtonProps, IButtonSlots, IButtonViewProps } from './Button.types';
-import { IBaseButtonRootElements } from './BaseButton/BaseButton.types';
+import { IButtonComponent, IButtonProps, IButtonRootElements, IButtonSlots, IButtonViewProps } from './Button.types';
 
 export const ButtonView: IButtonComponent['view'] = props => {
   const { icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
@@ -60,7 +59,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
 };
 
 interface IButtonRootType {
-  slotType: IBaseButtonRootElements;
+  slotType: IButtonRootElements;
   htmlType: 'link' | 'button';
   propertiesType: string[];
 }
