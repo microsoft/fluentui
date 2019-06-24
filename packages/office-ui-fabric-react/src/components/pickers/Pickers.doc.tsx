@@ -5,7 +5,9 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { TagPickerBasicExample } from './examples/TagPicker.Basic.Example';
 
 const TagPickerExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/pickers/examples/TagPicker.Basic.Example.tsx') as string;
+const TagPickerExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/pickers/examples/TagPicker.Basic.Example.tsx') as string;
 const PickerCustomResultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/pickers/examples/Picker.CustomResult.Example.tsx') as string;
+const PickerCustomResultExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/pickers/examples/Picker.CustomResult.Example.tsx') as string;
 
 export const PickersPageProps: IDocPageProps = {
   title: 'Pickers',
@@ -15,11 +17,13 @@ export const PickersPageProps: IDocPageProps = {
     {
       title: 'Tag Picker',
       code: TagPickerExampleCode,
+      codepenJS: TagPickerExampleCodepen,
       view: <TagPickerBasicExample />
     },
     {
       title: 'Custom Picker (Document Picker)',
       code: PickerCustomResultExampleCode,
+      codepenJS: PickerCustomResultExampleCodepen,
       view: <PickerCustomResultExample />
     }
   ],

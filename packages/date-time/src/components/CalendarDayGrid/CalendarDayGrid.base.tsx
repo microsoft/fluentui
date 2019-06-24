@@ -161,6 +161,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
           !day.isInMonth && classNames.dayOutsideNavigatedMonth
         )}
         ref={(element: HTMLTableCellElement) => this._setDayCellRef(element, day, isNavigatedDate)}
+        onClick={day.isInBounds ? day.onSelected : undefined}
         onMouseOver={this.onMouseOverDay(day)}
         onMouseDown={this.onMouseDownDay(day)}
         onMouseUp={this.onMouseUpDay(day)}
@@ -170,7 +171,6 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
           key={day.key + 'button'}
           className={css(classNames.dayButton, day.isToday && classNames.dayIsToday)}
           onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
-          onClick={day.isInBounds ? day.onSelected : undefined}
           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
           id={isNavigatedDate ? activeDescendantId : undefined}
           aria-selected={day.isInBounds ? day.isSelected : undefined}
@@ -378,14 +378,16 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
   }
 
   private _getIsRestrictedDate(date: Date): boolean {
-    const { restrictedDates } = this.props;
-    if (!restrictedDates) {
+    const { restrictedDates, minDate, maxDate } = this.props;
+    if (!restrictedDates && !minDate && !maxDate) {
       return false;
     }
-    const inRestrictedDates = !!find(restrictedDates, (rd: Date) => {
-      return compareDates(rd, date);
-    });
-    return inRestrictedDates && !this._getIsBeforeMinDate(date) && !this._getIsAfterMaxDate(date);
+    const inRestrictedDates =
+      restrictedDates &&
+      !!find(restrictedDates, (rd: Date) => {
+        return compareDates(rd, date);
+      });
+    return inRestrictedDates || this._getIsBeforeMinDate(date) || this._getIsAfterMaxDate(date);
   }
 
   private _getIsBeforeMinDate(date: Date): boolean {

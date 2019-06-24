@@ -1035,6 +1035,21 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               background-color: WindowText;
               border-color: Window;
             }
+            &:after {
+              background-color: #C43148;
+              content: "";
+              height: 2px;
+              left: 0px;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%) rotate(-45deg);
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:after {
+              background-color: Window;
+              left: 2px;
+              width: calc(100% - 4px);
+            }
             &:before {
               border-radius: 50%;
               border: 2px solid #C43148;
@@ -1046,27 +1061,12 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               top: 0px;
               width: 100%;
             }
-            &:after {
-              background-color: #C43148;
-              content: "";
-              height: 2px;
-              left: 0px;
-              position: absolute;
-              top: 50%;
-              transform: translateY(-50%) rotate(-45deg);
-              width: 100%;
-            }
             @media screen and (-ms-high-contrast: active){&:before {
               border-color: Window;
               height: calc(100% - 2px);
               left: 1px;
               top: 1px;
               width: calc(100% - 2px);
-            }
-            @media screen and (-ms-high-contrast: active){&:after {
-              background-color: Window;
-              left: 2px;
-              width: calc(100% - 4px);
             }
       >
         <i
@@ -1354,6 +1354,21 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               background-color: WindowText;
               border-color: Window;
             }
+            &:after {
+              background-color: #C43148;
+              content: "";
+              height: 2px;
+              left: 0px;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%) rotate(-45deg);
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:after {
+              background-color: Window;
+              left: 2px;
+              width: calc(100% - 4px);
+            }
             &:before {
               border-radius: 50%;
               border: 2px solid #C43148;
@@ -1365,27 +1380,12 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               top: 0px;
               width: 100%;
             }
-            &:after {
-              background-color: #C43148;
-              content: "";
-              height: 2px;
-              left: 0px;
-              position: absolute;
-              top: 50%;
-              transform: translateY(-50%) rotate(-45deg);
-              width: 100%;
-            }
             @media screen and (-ms-high-contrast: active){&:before {
               border-color: Window;
               height: calc(100% - 2px);
               left: 1px;
               top: 1px;
               width: calc(100% - 2px);
-            }
-            @media screen and (-ms-high-contrast: active){&:after {
-              background-color: Window;
-              left: 2px;
-              width: calc(100% - 4px);
             }
       >
         <i

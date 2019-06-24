@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Pivot, PivotItem } from 'office-ui-fabric-react';
 import { IconGrid } from '../../../components/IconGrid/IconGrid';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
@@ -44,9 +45,14 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Available icons',
           content: (
-            <div className={styles.iconGrid}>
-              <IconGrid icons={iconData} />
-            </div>
+            <Pivot>
+              <PivotItem headerText="Fabric React" className={styles.iconGrid}>
+                <IconGrid icons={iconData} useFabricIcons={true} />
+              </PivotItem>
+              <PivotItem headerText="Fabric Core" className={styles.iconGrid}>
+                <IconGrid icons={iconData} />
+              </PivotItem>
+            </Pivot>
           )
         }
       ];

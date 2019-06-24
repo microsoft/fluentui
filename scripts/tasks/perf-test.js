@@ -75,9 +75,8 @@ async function runAvailableScenarios(page, componentCount, iterations, sampleSiz
 
   const perfNumbers = {};
 
-  // Iterate through scenarios available
-  const scenarioDropdown = await page.$('.scenario');
-  let scenarioName = (await page.$eval('.scenario', dropdown => dropdown.textContent)).replace(/[^a-zA-Z\s]/g, '');
+  const scenarioDropdown = await page.$('div[data-automationid="scenario"]');
+  let scenarioName = (await page.$eval('div[data-automationid="scenario"]', dropdown => dropdown.textContent)).replace(/[^a-zA-Z\s]/g, '');
   while (!perfNumbers[scenarioName]) {
     // get numbers
     perfNumbers[scenarioName] = await runScenarioNTimes(page, sampleSize);
@@ -85,7 +84,7 @@ async function runAvailableScenarios(page, componentCount, iterations, sampleSiz
     // go to next scenario
     await scenarioDropdown.focus();
     await page.keyboard.press('ArrowDown');
-    scenarioName = (await page.$eval('.scenario', dropdown => dropdown.textContent)).replace(/[^a-zA-Z\s]/g, '');
+    scenarioName = (await page.$eval('div[data-automationid="scenario"]', dropdown => dropdown.textContent)).replace(/[^a-zA-Z\s]/g, '');
   }
 
   return perfNumbers;
