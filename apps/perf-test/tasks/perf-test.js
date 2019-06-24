@@ -207,16 +207,16 @@ function createTestSummary(testResults) {
   <table>
   <tr>
     <th>Scenario</th>
-    <th>Master Samples</th>
-    <th>PR Samples</th>
+    <th>Master Samples *</th>
+    <th>PR Samples *</th>
   </tr>`.concat(
     testResults
       .map(
         testResult =>
           `<tr>
             <td>${testResult.scenario}</td>
-            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfileMaster)}">${testResult.numTicksMaster} *</href></td>
-            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfilePR)}">${testResult.numTicksPR} *</href></td>
+            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfileMaster)}">${testResult.numTicksMaster}</a></td>
+            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfilePR)}">${testResult.numTicksPR}</a></td>
            </tr>`
       )
       .join('\n')
