@@ -94,16 +94,26 @@ describe('Button', () => {
 
   describe('DefaultButton', () => {
     it('can render without an onClick.', () => {
-      const button = ReactDOM.render(<DefaultButton>Hello</DefaultButton>, container);
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+      const buttonRef = React.createRef<DefaultButton>();
+
+      ReactDOM.render(<DefaultButton ref={buttonRef}>Hello</DefaultButton>, container);
+
+      const renderedDOM = ReactDOM.findDOMNode(buttonRef.current) as Element;
+
       expect(renderedDOM.tagName).toEqual('BUTTON');
     });
 
     it('can render with an onClick.', () => {
       const onClick: () => null = () => null;
+      const buttonRef = React.createRef<DefaultButton>();
 
-      const button = ReactDOM.render(<DefaultButton onClick={onClick}>Hello</DefaultButton>, container);
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+      ReactDOM.render(
+        <DefaultButton ref={buttonRef} onClick={onClick}>
+          Hello
+        </DefaultButton>,
+        container
+      );
+      const renderedDOM = ReactDOM.findDOMNode(buttonRef.current) as Element;
       expect(renderedDOM.tagName).toEqual('BUTTON');
     });
 
@@ -365,11 +375,15 @@ describe('Button', () => {
       let button: Element;
 
       beforeAll(() => {
-        const wrapper = ReactDOM.render(
-          <DefaultButton menuProps={{ items: [{ key: 'item', text: 'Item' }] }}>Hello</DefaultButton>,
+        const buttonRef = React.createRef<DefaultButton>();
+
+        ReactDOM.render(
+          <DefaultButton ref={buttonRef} menuProps={{ items: [{ key: 'item', text: 'Item' }] }}>
+            Hello
+          </DefaultButton>,
           container
-        ) as DefaultButton;
-        button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
+        );
+        button = ReactDOM.findDOMNode(buttonRef.current) as Element;
       });
 
       it('contains aria-haspopup=true', () => {
@@ -381,8 +395,10 @@ describe('Button', () => {
       let button: Element;
 
       beforeAll(() => {
-        const wrapper = ReactDOM.render(<DefaultButton>Hello</DefaultButton>, container) as DefaultButton;
-        button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
+        const buttonRef = React.createRef<DefaultButton>();
+
+        ReactDOM.render(<DefaultButton ref={buttonRef}>Hello</DefaultButton>, container);
+        button = ReactDOM.findDOMNode(buttonRef.current) as Element;
       });
 
       it('does not contain aria-haspopup', () => {
@@ -394,11 +410,15 @@ describe('Button', () => {
       let button: Element;
 
       beforeAll(() => {
-        const wrapper = ReactDOM.render(
-          <DefaultButton menuIconProps={{ iconName: 'fontColor' }}>Hello</DefaultButton>,
+        const buttonRef = React.createRef<DefaultButton>();
+
+        ReactDOM.render(
+          <DefaultButton ref={buttonRef} menuIconProps={{ iconName: 'fontColor' }}>
+            Hello
+          </DefaultButton>,
           container
-        ) as DefaultButton;
-        button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
+        );
+        button = ReactDOM.findDOMNode(buttonRef.current) as Element;
       });
 
       it('Contains the expected icon via menuIconProps', () => {
