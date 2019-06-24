@@ -167,6 +167,10 @@ async function runPerfTest(browser, baseUrl, scenarioName, logPath) {
 
   const page = await browser.newPage();
 
+  // Default timeout is 30 seconds. This is good for most tests except for problematic components like DocumentCardTitle.
+  // Disable timeout for now and tweak to a maximum setting once server condtiions are better known.
+  page.setDefaultTimeout(0);
+
   const logFilesAfter = fs.readdirSync(logPath);
 
   const testLogFile = arr_diff(logFilesBefore, logFilesAfter);
