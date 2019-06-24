@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "7.2.2",
+      "tag": "@uifabric/experiments_v7.2.2",
+      "date": "Mon, 24 Jun 2019 23:11:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Adding focus tests for Button, MenuButton and SplitButton.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "7fb25fe44a8b5d35f08ffd2384921f006cbf170d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.5.0` to `^7.5.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.2.1",
       "tag": "@uifabric/experiments_v7.2.1",
       "date": "Fri, 21 Jun 2019 12:27:05 GMT",

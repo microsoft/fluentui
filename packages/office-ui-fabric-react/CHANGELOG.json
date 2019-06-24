@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "7.5.1",
+      "tag": "office-ui-fabric-react_v7.5.1",
+      "date": "Mon, 24 Jun 2019 23:11:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: fixed keyboard navigation when checkForNoWrap prop enabled.",
+            "author": "cvirendra <52016182+cvirendra@users.noreply.github.com>",
+            "commit": "cceec3b0ad44e2a5d47db0b55c6ca898c6413235"
+          },
+          {
+            "comment": "Dropdown:Bring back breakpoint for small screen sizes",
+            "author": "Aftab Hassan <afhassan@microsoft.com>",
+            "commit": "c7124e1b331a082abec3c154d8096bdc82f7196e"
+          },
+          {
+            "comment": "Coachmark: fixes beacon color props not being passed to styles.",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "7bfbdb545caaeb0ae914b39c23b7fe4656dfd563"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/codepen-loader\" from `^7.0.2` to `^7.0.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.5.0",
       "tag": "office-ui-fabric-react_v7.5.0",
       "date": "Fri, 21 Jun 2019 12:27:05 GMT",
