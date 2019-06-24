@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/mdl2-theme",
       "comment": "New theme package to be used on top of Fabric 7 to get Fabric 6 looks.",
-      "type": "minor"
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/mdl2-theme",
