@@ -1,2 +1,2 @@
-export * from './MDL2Customizations';
+export * from './MDLCustomizations';
 export * from './mdl2/index';
