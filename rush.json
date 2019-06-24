@@ -477,7 +477,7 @@
     {
       "packageName": "@uifabric/mdl2-theme",
       "projectFolder": "packages/mdl2-theme",
-      "shouldPublish": false
+      "shouldPublish": true
     }
   ]
 }

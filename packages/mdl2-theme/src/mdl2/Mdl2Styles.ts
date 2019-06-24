@@ -33,7 +33,7 @@ import { ToggleStyles } from './styles/Toggle.styles';
 
 // Roll up all style overrides in a single "Fluent theme" object
 
-export const Mdl2Styles = {
+export const MDL2Styles = {
   Breadcrumb: {
     styles: BreadcrumbStyles
   },

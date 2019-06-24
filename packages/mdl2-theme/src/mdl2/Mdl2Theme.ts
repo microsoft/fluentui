@@ -1,7 +1,7 @@
 import { createTheme, ITheme, FontWeights } from '@uifabric/styling';
 import { FontSizes } from './Mdl2Type';
 
-export const Mdl2Theme: ITheme = createTheme({
+export const MDL2Theme: ITheme = createTheme({
   palette: {
     neutralDark: '#212121',
     neutralPrimary: '#333333',
@@ -81,4 +81,4 @@ export const Mdl2Theme: ITheme = createTheme({
   }
 });
 
-export default Mdl2Theme;
+export default MDL2Theme;
