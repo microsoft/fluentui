@@ -8,11 +8,11 @@ import * as styles from './FabricIconsPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
 import * as IconNames from '@uifabric/icons/src/IconNames';
 
-const iconNames: { name: string }[] = [];
+const allFabricIcons: { name: string }[] = [];
 // IconNames is a const enum, so use the following as a workaround to iterate over it.
 for (const iconName in (IconNames as any).IconNames) {
   if (iconName) {
-    iconNames.push({ name: iconName });
+    allFabricIcons.push({ name: iconName });
   }
 }
 
@@ -47,7 +47,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Pivot>
               <PivotItem headerText="Fabric React" className={styles.iconGrid}>
-                <IconGrid icons={iconData} useFabricIcons={true} />
+                <IconGrid icons={allFabricIcons} useFabricIcons={true} />
               </PivotItem>
               <PivotItem headerText="Fabric Core" className={styles.iconGrid}>
                 <IconGrid icons={iconData} />
