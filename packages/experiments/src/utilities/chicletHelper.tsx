@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Image } from 'office-ui-fabric-react/lib/Image';
+import { IChicletCardProps } from '../components/Chiclet/ChicletCard.types';
 
 const ASSET_CDN_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/assets';
 
@@ -24,7 +25,7 @@ export function renderIcon(
   let src;
   let icon;
 
-  if (itemType !== null && !imageProvided) {
+  if (itemType && !imageProvided) {
     src = `${ASSET_CDN_BASE_URL}/brand-icons/product/svg/` + itemType + `_16x1_5.svg`;
     icon = <img className={style} src={src} />;
     switch (
@@ -50,7 +51,7 @@ export function renderIcon(
   return icon;
 }
 
-export function findIcon(title: string, url?: string): string | undefined {
+export function findIcon(title: string): string | undefined {
   let extensionIndex;
   let pos;
 
@@ -66,13 +67,19 @@ export function findIcon(title: string, url?: string): string | undefined {
       return possibleExtension;
     }
   }
-
-  let extension;
-  if (url) {
-    if ((extension = url.match(/.pptx/) || url.match(/.docx/) || url.match(/.xlsx/))) {
-      return extension[0].substring(1);
-    }
-  }
-
   return undefined;
+}
+
+export function generateCommonHTML(
+  props: IChicletCardProps,
+  imageProvided: boolean,
+  icon?: string,
+  preview?: string
+): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> | undefined {
+  return (
+    <div className={preview}>
+      {renderPreview(props.image, props.imageHeight, props.imageWidth, props.imageAlt)}
+      {renderIcon(props.itemType || (props.title && findIcon(props.title)), icon, imageProvided)}
+    </div>
+  );
 }

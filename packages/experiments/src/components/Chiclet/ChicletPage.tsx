@@ -31,7 +31,7 @@ export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
               <ChicletBreadcrumbExample />
             </ExampleCard>
             <ExampleCard
-              title="Medium-sized Chiclet with Footer, Icon Generated from URL, and without File Preview"
+              title="Medium-sized Chiclet with Footer, Icon Generated from Title, and without File Preview"
               isOptIn={true}
               code={ChicletFooterExampleCode}
             >
@@ -40,7 +40,7 @@ export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="xSmall-sized Chiclet with Footer and File Preview" isOptIn={true} code={ChicletXsmallFooterExampleCode}>
               <ChicletXsmallFooterExample />
             </ExampleCard>
-            <ExampleCard title="xSmall-sized Chiclet wihtout Footer and File Preview" isOptIn={true} code={ChicletXsmallExampleCode}>
+            <ExampleCard title="xSmall-sized Chiclet without Footer and File Preview" isOptIn={true} code={ChicletXsmallExampleCode}>
               <ChicletXsmallExample />
             </ExampleCard>
           </div>

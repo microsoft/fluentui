@@ -20,7 +20,7 @@ exports[`Chiclet renders chiclet with title, icon, onClick, and url 1`] = `
         margin-right: 0px;
         margin-top: 0px;
         overflow: hidden;
-        padding-bottom: 4px;
+        padding-bottom: 0px;
         padding-left: 4px;
         padding-right: 4px;
         padding-top: 4px;
@@ -121,7 +121,7 @@ exports[`Chiclet renders chiclet with title, preview, onClick, and url 1`] = `
         margin-right: 0px;
         margin-top: 0px;
         overflow: hidden;
-        padding-bottom: 4px;
+        padding-bottom: 0px;
         padding-left: 4px;
         padding-right: 4px;
         padding-top: 4px;

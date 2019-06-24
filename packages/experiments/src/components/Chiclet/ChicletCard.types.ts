@@ -17,6 +17,11 @@ export interface IChicletCardStyles {
   icon?: IStyle;
 
   /**
+   * Style for url.
+   */
+  url?: IStyle;
+
+  /**
    * Style for the file preview image.
    */
   preview?: IStyle;
@@ -35,11 +40,6 @@ export interface IChicletCardStyles {
    * Style for the dile description, which could be a link, description, etc.
    */
   description?: IStyle;
-
-  /**
-   * Style for the line
-   */
-  line?: IStyle;
 }
 
 export interface IChicletCardProps extends React.Props<ChicletCardBase> {
@@ -115,9 +115,9 @@ export interface IChicletCardStyleProps {
   imageProvided?: boolean;
 
   /**
-   * Whether imageAlt is provided
+   * Accept footer prop.
    */
-  imageAltProvided?: boolean;
+  footerProvided?: boolean;
 
   /**
    * Accept custom classNames

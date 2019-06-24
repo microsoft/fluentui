@@ -1,5 +1,5 @@
 import { normalize, getGlobalClassNames } from '../../Styling';
-import { IChicletXsmallStyleProps, IChicletXsmallStyles } from './ChicletXsmall.types';
+import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
 
 const GlobalClassNames = {
   root: 'ms-ChicletXsmall',
@@ -10,7 +10,7 @@ const GlobalClassNames = {
   title: 'ms-ChicletXsmall-title'
 };
 
-export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallStyles => {
+export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyles => {
   const { theme, className, footerProvided } = styleProps;
   const { palette } = theme;
 
@@ -27,6 +27,7 @@ export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallS
         backgroundColor: palette.white,
         boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.3)',
         padding: 4,
+        paddingBottom: 0,
         width: 250,
         userSelect: 'none',
         overflow: 'hidden',
