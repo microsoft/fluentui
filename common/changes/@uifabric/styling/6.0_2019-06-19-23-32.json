@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Updating comments of text colors.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": ""
+}
