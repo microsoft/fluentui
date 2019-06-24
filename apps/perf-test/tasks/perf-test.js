@@ -4,8 +4,7 @@ const path = require('path');
 const generateFlamegraph = require('./flamegraph/generateFlamegraph');
 
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
-// TODO: change to 5000
-const iterations = 10;
+const iterations = 5000;
 
 // Chrome command for running similarly configured instance of Chrome as puppeteer is configured here:
 // "C:\Program Files (x86)\Google\Chrome\Application\chrome" --no-sandbox --js-flags=" --logfile=C:\git\perf\output\chrome.log --prof --jitless --no-opt" --user-data-dir="C:\git\perf\user" http://localhost:4322
@@ -150,8 +149,6 @@ module.exports = async function getPerfRegressions() {
 
   // Write results to file
   fs.writeFileSync(path.join(resultsPath, 'perfCounts.txt'), comment);
-  // TODO: delete
-  fs.writeFileSync(path.join(resultsPath, 'perfCounts.html'), comment);
 
   console.log(`##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.txt`);
   console.log(`##vso[task.setvariable variable=PerfCommentStatus;]${status}`);
