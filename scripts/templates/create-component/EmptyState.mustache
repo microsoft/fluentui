@@ -2,6 +2,9 @@ import { useCallback, useState } from 'react';
 import { I{{componentName}}Component, I{{componentName}}Props, I{{componentName}}ViewProps } from './{{componentName}}.types';
 import { useControlledState } from '../../Foundation';
 
+/**
+* {@docCategory {{componentName}}}
+*/
 export const use{{componentName}}State: I{{componentName}}Component['state'] = (
   props: Readonly<I{{componentName}}Props>
 ): I{{componentName}}ViewProps => {
