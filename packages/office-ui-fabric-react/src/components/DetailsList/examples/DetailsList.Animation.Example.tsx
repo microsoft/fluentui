@@ -1,14 +1,6 @@
 import * as React from 'react';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { DetailsList, DetailsListLayoutMode, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-
-const exampleChildClass = mergeStyles({
-  display: 'block',
-  marginBottom: '10px'
-});
 
 export interface IDetailsListAnimationExampleItem {
   key: number;
@@ -58,7 +50,7 @@ export class DetailsListAnimationExample extends React.Component<{}, IDetailsLis
     }, 2000);
 
     this._columns = [
-      { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
+      { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true, getValueKey: this._getValueKey },
       { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true }
     ];
 
@@ -82,6 +74,7 @@ export class DetailsListAnimationExample extends React.Component<{}, IDetailsLis
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           onItemInvoked={this._onItemInvoked}
           enableUpdateAnimations={true}
+          getCellValueKey={this._getCellValueKey}
         />
       </Fabric>
     );
@@ -90,4 +83,14 @@ export class DetailsListAnimationExample extends React.Component<{}, IDetailsLis
   private _onItemInvoked = (item: IDetailsListAnimationExampleItem): void => {
     alert(`Item invoked: ${item.name}`);
   };
+
+  private _getValueKey(item: IDetailsListAnimationExampleItem, index: number, column: IColumn): string {
+    const key = item && column && column.fieldName ? item[column.fieldName as keyof IDetailsListAnimationExampleItem] : column.key + index;
+    return key.toString();
+  }
+
+  private _getCellValueKey(item: IDetailsListAnimationExampleItem, index: number, column: IColumn): string {
+    const key = item && column && column.fieldName ? item[column.fieldName as keyof IDetailsListAnimationExampleItem] : column.key + index;
+    return key.toString();
+  }
 }

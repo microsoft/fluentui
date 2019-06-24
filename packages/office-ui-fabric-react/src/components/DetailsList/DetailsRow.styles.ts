@@ -13,6 +13,7 @@ const GlobalClassNames = {
   root: 'ms-DetailsRow',
   compact: 'ms-DetailsList--Compact', // TODO: in Fabric 7.0 lowercase the 'Compact' for consistency across other components.
   cell: 'ms-DetailsRow-cell',
+  cellAnimation: 'ms-DetailsRow-cellAnimiation',
   cellCheck: 'ms-DetailsRow-cellCheck',
   cellMeasurer: 'ms-DetailsRow-cellMeasurer',
   listCellFirstChild: 'ms-List-cell:first-child',
@@ -334,8 +335,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       }
     ],
 
-    cell: [defaultCellStyles, enableUpdateAnimations && AnimationStyles.slideLeftIn40],
-
+    cell: [defaultCellStyles],
+    cellAnimation: [enableUpdateAnimations && AnimationStyles.slideLeftIn40],
     cellMeasurer: [
       classNames.cellMeasurer,
       {

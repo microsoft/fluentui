@@ -63,7 +63,10 @@ export interface IDetailsItemProps {
 /**
  * {@docCategory DetailsList}
  */
-export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
+export interface IDetailsRowBaseProps
+  extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'>,
+    IBaseProps<IDetailsRow>,
+    IDetailsItemProps {
   /**
    * Theme provided by styled() function
    */
@@ -258,6 +261,7 @@ export interface ICellStyleProps {
 export interface IDetailsRowStyles {
   root: IStyle;
   cell: IStyle;
+  cellAnimation: IStyle;
   cellUnpadded: IStyle;
   cellPadded: IStyle;
   checkCell: IStyle;

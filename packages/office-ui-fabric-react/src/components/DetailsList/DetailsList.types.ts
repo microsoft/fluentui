@@ -186,6 +186,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    */
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
 
+  /**
+   * If provided, will be the "default" item column cell value return. column getValueKey can override getCellValue.
+   */
+  getCellValueKey?: (item?: any, index?: number, column?: IColumn) => string;
+
   /** Map of callback functions related to row drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
 
@@ -424,6 +429,11 @@ export interface IColumn {
    * If provided uses this method to render custom cell content, rather than the default text rendering.
    */
   onRender?: (item?: any, index?: number, column?: IColumn) => any;
+
+  /**
+   * If provided uses this method to get the current cell value.
+   */
+  getValueKey?: (item?: any, index?: number, column?: IColumn) => string;
 
   /**
    * If provider, can be used to render a custom column header divider

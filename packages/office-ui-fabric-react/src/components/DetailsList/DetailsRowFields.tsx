@@ -3,7 +3,6 @@ import { IColumn } from './DetailsList.types';
 import { css } from '../../Utilities';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
-import { AnimationClassNames } from '../../Styling';
 
 const getCellText = (item: any, column: IColumn): string => {
   let value = item && column && column.fieldName ? item[column.fieldName] : '';
@@ -31,6 +30,7 @@ export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps
       item,
       itemIndex,
       onRenderItemColumn,
+      getCellValueKey,
       cellsByColumn
     } = this.props;
 
@@ -45,7 +45,7 @@ export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps
                 cellStyleProps.cellRightPadding +
                 (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0);
 
-          const { onRender = onRenderItemColumn } = column;
+          const { onRender = onRenderItemColumn, getValueKey = getCellValueKey } = column;
           const cellContentsRender =
             cellsByColumn && column.key in cellsByColumn
               ? cellsByColumn[column.key]
@@ -56,11 +56,10 @@ export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps
           // generate a key that auto-dirties when content changes, to force the container to re-render, to trigger animation
           let key: number | string;
           try {
-            const s = JSON.stringify(cellContentsRender);
-            key = s ? s + columnIndex : String(columnIndex);
+            key = getValueKey ? getValueKey(item, itemIndex, column) : getCellText(item, column) + column.key + itemIndex;
           } catch {
             // circular reference
-            key = columnIndex;
+            key = column.key + itemIndex;
           }
 
           return (
@@ -76,7 +75,7 @@ export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps
                 shimmer && rowClassNames.shimmer,
                 rowClassNames.cell,
                 column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded,
-                AnimationClassNames.slideLeftIn40
+                rowClassNames.cellAnimation
               )}
               style={{ width }}
               data-automationid="DetailsRowCell"

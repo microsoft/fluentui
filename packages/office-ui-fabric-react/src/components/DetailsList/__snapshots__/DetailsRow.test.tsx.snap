@@ -1999,12 +1999,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           {
             padding-right: 8px;
           }
-          {
-            animation-duration: 0.367s;
-            animation-fill-mode: both;
-            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-            animation-timing-function: cubic-bezier(.1,.9,.2,1);
-          }
+
       data-automation-key="key"
       data-automationid="DetailsRowCell"
       role="gridcell"
@@ -2076,12 +2071,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           {
             padding-right: 8px;
           }
-          {
-            animation-duration: 0.367s;
-            animation-fill-mode: both;
-            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-            animation-timing-function: cubic-bezier(.1,.9,.2,1);
-          }
+
       data-automation-key="name"
       data-automationid="DetailsRowCell"
       role="gridcell"
@@ -2153,12 +2143,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           {
             padding-right: 8px;
           }
-          {
-            animation-duration: 0.367s;
-            animation-fill-mode: both;
-            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-            animation-timing-function: cubic-bezier(.1,.9,.2,1);
-          }
+
       data-automation-key="value"
       data-automationid="DetailsRowCell"
       role="gridcell"
