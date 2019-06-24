@@ -153,8 +153,8 @@ module.exports = async function getPerfRegressions() {
   // TODO: delete
   fs.writeFileSync(path.join(resultsPath, 'perfCounts.html'), comment);
 
-  console.log(`echo ##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.txt`);
-  console.log(`echo ##vso[task.setvariable variable=PerfCommentStatus;]${status}`);
+  console.log(`##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.txt`);
+  console.log(`##vso[task.setvariable variable=PerfCommentStatus;]${status}`);
 };
 
 /**
@@ -180,11 +180,12 @@ async function runPerfTest(browser, baseUrl, scenarioName, logPath) {
   }
 
   console.log(`Starting test for ${scenarioName} at ${testUrl}`);
-  console.log('testLogFile: ' + testLogFile[0]);
 
+  console.time('Ran perf test in');
   await page.goto(testUrl);
+  console.timeEnd('Ran perf test in');
 
-  console.log('Test finished, closing page...');
+  console.log('testLogFile: ' + testLogFile[0]);
 
   await page.close();
 
