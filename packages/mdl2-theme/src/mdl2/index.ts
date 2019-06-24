@@ -1,3 +1,3 @@
-export * from './MDLStyles';
-export * from './MDLTheme';
-export * from './MDLType';
+export * from './MDL2Styles';
+export * from './MDL2Theme';
+export * from './MDL2Type';

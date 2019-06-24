@@ -1,5 +1,5 @@
-import { MDL2Theme } from './mdl2/MDLTheme';
-import { MDL2Styles } from './mdl2/MDLStyles';
+import { MDL2Theme } from './mdl2/MDL2Theme';
+import { MDL2Styles } from './mdl2/MDL2Styles';
 import { ICustomizations } from 'office-ui-fabric-react';
 import { addVariants } from '@uifabric/variants';
 
