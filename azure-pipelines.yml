@@ -1,0 +1,36 @@
+pr:
+  - 5.0
+
+trigger:
+  - 5.0
+
+variables:
+  - group: fabric-variables
+
+pool:
+  vmImage: 'Ubuntu 16.04'
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '8.x'
+    displayName: 'Install Node.js'
+
+  - script: |
+      npm install --ignore-scripts
+      node node_modules/@microsoft/rush/bin/rush install --bypass-policy
+    displayName: rush install
+
+  - script: |
+      npm run checkchange
+    displayName: check change
+
+  - script: |
+      npm run buildfast
+    displayName: build ci
+
+  - script: |
+      npm run vrtest
+    displayName: run VR Test
+    env:
+      SCREENER_API_KEY: $(screener.key)
