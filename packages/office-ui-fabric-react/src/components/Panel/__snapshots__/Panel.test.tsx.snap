@@ -165,7 +165,11 @@ exports[`Panel renders Panel correctly 1`] = `
           <div
             className=
                 ms-Panel-commands
-
+                {
+                  display: inline-flex;
+                  flex-flow: row-reverse;
+                  flex-wrap: wrap;
+                }
             data-is-visible={true}
           >
             <div
@@ -173,12 +177,13 @@ exports[`Panel renders Panel correctly 1`] = `
                   ms-Panel-navigation
                   {
                     display: flex;
+                    flex: 3;
                     height: 44px;
                     justify-content: flex-end;
                     padding-bottom: 0;
                     padding-left: 5px;
                     padding-right: 5px;
-                    padding-top: 0;
+                    padding-top: 1px;
                   }
             >
               <button
@@ -304,18 +309,6 @@ exports[`Panel renders Panel correctly 1`] = `
                 </div>
               </button>
             </div>
-          </div>
-          <div
-            className=
-                ms-Panel-contentInner
-                {
-                  display: flex;
-                  flex-direction: column;
-                  flex-grow: 1;
-                  max-height: 768px;
-                  overflow-y: hidden;
-                }
-          >
             <div
               className=
                   ms-Panel-header
@@ -329,15 +322,19 @@ exports[`Panel renders Panel correctly 1`] = `
                     padding-right: 16px;
                   }
                   @media screen and (min-width: 640px){& {
-                    padding-left: 32px;
-                    padding-right: 32px;
+                    padding-left: 15px;
+                    padding-right: 20px;
                   }
                   @media screen and (min-width: 1366px){& {
-                    padding-left: 40px;
-                    padding-right: 40px;
+                    padding-bottom: 15px;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    padding-top: 10px;
                   }
                   @media (min-width: 1024px){& {
-                    margin-top: 30px;
+                    display: flex;
+                    flex: 20;
+                    margin-top: 0;
                   }
             >
               <p
@@ -363,6 +360,19 @@ exports[`Panel renders Panel correctly 1`] = `
                 Test Panel
               </p>
             </div>
+          </div>
+          <div
+            className=
+                ms-Panel-contentInner
+                {
+                  display: flex;
+                  flex-direction: column;
+                  flex-grow: 1;
+                  flex: 3;
+                  max-height: 768px;
+                  overflow-y: hidden;
+                }
+          >
             <div
               className=
                   ms-Panel-scrollableContent
@@ -382,12 +392,14 @@ exports[`Panel renders Panel correctly 1`] = `
                       padding-right: 16px;
                     }
                     @media screen and (min-width: 640px){& {
-                      padding-left: 32px;
-                      padding-right: 32px;
+                      padding-left: 15px;
+                      padding-right: 20px;
                     }
                     @media screen and (min-width: 1366px){& {
-                      padding-left: 40px;
-                      padding-right: 40px;
+                      padding-bottom: 15px;
+                      padding-left: 15px;
+                      padding-right: 15px;
+                      padding-top: 10px;
                     }
               >
                 <span>
