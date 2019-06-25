@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 14 Jun 2019 03:04:18 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jun 2019 12:20:14 GMT and should not be manually modified.
+
+## 6.79.0
+Thu, 20 Jun 2019 12:20:14 GMT
+
+### Minor changes
+
+- Removing charting from deps.
 
 ## 6.78.9
 Fri, 14 Jun 2019 03:04:18 GMT

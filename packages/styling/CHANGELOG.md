@@ -1,6 +1,20 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 12 Jun 2019 22:15:55 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Jun 2019 23:08:57 GMT and should not be manually modified.
+
+## 6.50.1
+Mon, 24 Jun 2019 23:08:57 GMT
+
+### Patches
+
+- Updating comments of text colors.
+
+## 6.50.0
+Thu, 20 Jun 2019 12:20:14 GMT
+
+### Minor changes
+
+- Semantic Slots: adding successText and changing errorText, warningText.
 
 ## 6.49.1
 Wed, 12 Jun 2019 22:15:55 GMT

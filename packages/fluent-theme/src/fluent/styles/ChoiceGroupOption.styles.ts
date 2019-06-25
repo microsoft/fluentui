@@ -86,6 +86,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           borderColor: palette.neutralLighter
         }
     ],
+    innerField: { margin: 1 },
     choiceFieldWrapper: {
       selectors: {
         '&.is-inFocus': {

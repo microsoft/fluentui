@@ -2,6 +2,39 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.23.5",
+      "tag": "@uifabric/example-app-base_v6.23.5",
+      "date": "Mon, 24 Jun 2019 23:08:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Export to codepen should use fabric@6",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "8d4c7ee0024b0f981ee30cc21ac01ee7e5b16984"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.12` to `^0.16.13`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.23.4",
+      "tag": "@uifabric/example-app-base_v6.23.4",
+      "date": "Fri, 21 Jun 2019 03:41:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ColorPalette: fix missing react code breaking rendering",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "b4520d123577e3e1ca96a697667c424732be8b53"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.23.3",
       "tag": "@uifabric/example-app-base_v6.23.3",
       "date": "Fri, 14 Jun 2019 03:04:18 GMT",

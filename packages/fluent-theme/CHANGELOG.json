@@ -2,6 +2,25 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.13",
+      "tag": "@uifabric/fluent-theme_v0.16.13",
+      "date": "Mon, 24 Jun 2019 23:08:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated margin to match toolkit",
+            "author": "Maxwell Rediker <13246181+maxwellred@users.noreply.github.com>",
+            "commit": "c4063c292797b75755b23f6e1902fb2f2c0f98e4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.50.0` to `^6.50.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.12",
       "tag": "@uifabric/fluent-theme_v0.16.12",
       "date": "Wed, 12 Jun 2019 22:15:55 GMT",

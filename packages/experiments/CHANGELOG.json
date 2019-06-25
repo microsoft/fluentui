@@ -2,6 +2,31 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.79.0",
+      "tag": "@uifabric/experiments_v6.79.0",
+      "date": "Thu, 20 Jun 2019 12:20:14 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Removing charting from deps.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5a8ea6b9f8b119346c3fae396a524193d8238dde"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.49.1` to `^6.50.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.14.4` to `^6.15.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.190.0` to `^6.190.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.78.9",
       "tag": "@uifabric/experiments_v6.78.9",
       "date": "Fri, 14 Jun 2019 03:04:18 GMT",
