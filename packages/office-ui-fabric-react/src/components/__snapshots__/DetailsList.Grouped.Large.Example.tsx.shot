@@ -1595,6 +1595,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -1651,6 +1652,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2039,6 +2041,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2095,6 +2098,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2483,6 +2487,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2539,6 +2544,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2927,6 +2933,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2983,6 +2990,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -3371,6 +3379,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -3427,6 +3436,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -3815,6 +3825,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -3871,6 +3882,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -4259,6 +4271,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -4315,6 +4328,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -4703,6 +4717,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -4759,6 +4774,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -5147,6 +5163,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -5203,6 +5220,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -5591,6 +5609,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -5647,6 +5666,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"

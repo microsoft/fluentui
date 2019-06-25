@@ -4,7 +4,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
 <div
   className=
 
-      & .headerDivider-519:hover + .headerDividerBar-520 {
+      & .headerDivider-520:hover + .headerDividerBar-521 {
         display: inline;
       }
 >
@@ -1781,6 +1781,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="thumbnail"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -2160,6 +2161,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="thumbnail"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -2539,6 +2541,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="thumbnail"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -2918,6 +2921,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="thumbnail"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -3297,6 +3301,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="thumbnail"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -3676,6 +3681,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="thumbnail"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -4055,6 +4061,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="thumbnail"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -4434,6 +4441,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="thumbnail"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -4813,6 +4821,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="thumbnail"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -5192,6 +5201,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="thumbnail"
                             data-automationid="DetailsRowCell"
                             role="gridcell"

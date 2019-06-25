@@ -1485,6 +1485,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1559,6 +1560,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -1618,6 +1620,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1803,6 +1806,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1877,6 +1881,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -1936,6 +1941,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2121,6 +2127,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2195,6 +2202,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -2254,6 +2262,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2439,6 +2448,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2513,6 +2523,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -2572,6 +2583,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2757,6 +2769,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2831,6 +2844,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -2890,6 +2904,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3075,6 +3090,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3149,6 +3165,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -3208,6 +3225,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3393,6 +3411,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3467,6 +3486,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -3526,6 +3546,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3711,6 +3732,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3785,6 +3807,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -3844,6 +3867,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4029,6 +4053,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4103,6 +4128,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -4162,6 +4188,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4347,6 +4374,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4421,6 +4449,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -4480,6 +4509,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
