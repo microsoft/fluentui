@@ -21,5 +21,5 @@ export function useDebouncedTimeout(callback: () => void, timeoutInMilliseconds:
     }, timeoutInMilliseconds);
   }
 
-  return [scheduleTimeout, clearTimeout];
+  return [scheduleTimeout, clearTimeoutIfNecessary];
 }

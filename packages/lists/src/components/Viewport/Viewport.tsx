@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, useRef, useEffect } from 'react';
-import { useDebouncedTimeout } from './useDecouncedTimeout';
+import { useDebouncedTimeout } from './useDebouncedTimeout';
 import { usePreviousValue } from './usePreviousValue';
 
 export interface IViewportProps {
@@ -73,8 +73,14 @@ export const Viewport = React.memo(
           // tslint:disable-next-line:no-any
           const { scrollLeft: scrollX, scrollTop: scrollY } = ((event as any) as React.UIEvent<HTMLDivElement>).currentTarget;
 
-          const scrollDirectionX = getScrollDirection(scrollX, (prevViewportState && prevViewportState.scrollDistance[Coord.X]) || 0);
-          const scrollDirectionY = getScrollDirection(scrollY, (prevViewportState && prevViewportState.scrollDistance[Coord.Y]) || 0);
+          const scrollDirectionX = getScrollDirection(
+            scrollX,
+            (prevViewportState && prevViewportState.scrollDistance[Coord.X]) || SCROLL_DISTANCE_ORIGIN[Coord.X]
+          );
+          const scrollDirectionY = getScrollDirection(
+            scrollY,
+            (prevViewportState && prevViewportState.scrollDistance[Coord.Y]) || SCROLL_DISTANCE_ORIGIN[Coord.Y]
+          );
 
           setViewportState({
             isScrolling: true,
