@@ -49,32 +49,32 @@ exports[`Component Examples renders Stack.Vertical.HorizontalAlign.Example.tsx c
         }
   >
     <span
-      className=
-
-          {
-            align-items: center;
-            background: #0078d4;
-            color: #ffffff;
-            display: flex;
-            height: 50px;
-            justify-content: center;
-            width: 50px;
-          }
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
     >
       1
     </span>
     <span
-      className=
-
-          {
-            align-items: center;
-            background: #0078d4;
-            color: #ffffff;
-            display: flex;
-            height: 50px;
-            justify-content: center;
-            width: 50px;
-          }
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
     >
       2
     </span>
@@ -106,32 +106,32 @@ exports[`Component Examples renders Stack.Vertical.HorizontalAlign.Example.tsx c
         }
   >
     <span
-      className=
-
-          {
-            align-items: center;
-            background: #0078d4;
-            color: #ffffff;
-            display: flex;
-            height: 50px;
-            justify-content: center;
-            width: 50px;
-          }
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
     >
       1
     </span>
     <span
-      className=
-
-          {
-            align-items: center;
-            background: #0078d4;
-            color: #ffffff;
-            display: flex;
-            height: 50px;
-            justify-content: center;
-            width: 50px;
-          }
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
     >
       2
     </span>
@@ -163,32 +163,32 @@ exports[`Component Examples renders Stack.Vertical.HorizontalAlign.Example.tsx c
         }
   >
     <span
-      className=
-
-          {
-            align-items: center;
-            background: #0078d4;
-            color: #ffffff;
-            display: flex;
-            height: 50px;
-            justify-content: center;
-            width: 50px;
-          }
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
     >
       1
     </span>
     <span
-      className=
-
-          {
-            align-items: center;
-            background: #0078d4;
-            color: #ffffff;
-            display: flex;
-            height: 50px;
-            justify-content: center;
-            width: 50px;
-          }
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
     >
       2
     </span>

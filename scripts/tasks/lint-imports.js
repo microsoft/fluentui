@@ -1,19 +1,35 @@
+// @ts-check
+
 const importStatementGlobalRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/gm;
 const importStatementRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/;
 const pkgNameRegex = /^(@[a-z\-]+\/[a-z\-]+)\/|([a-z\-]+)\//;
 
+/**
+ * @typedef {{
+ *   count: number;
+ *   matches: { [key: string]: string }
+ * }} ImportErrorGroup
+ *
+ * @typedef {{
+ *   totalImportKeywords: number;
+ *   totalImportStatements: number;
+ *   pathNotFile: ImportErrorGroup;
+ *   pathRelative: ImportErrorGroup;
+ * }} ImportErrors
+ */
+
 module.exports = function() {
   const path = require('path');
   const fs = require('fs');
-  const chalk = require('chalk');
+  const chalk = require('chalk').default;
   const findConfig = require('../find-config');
-  const readConfig = require('../read-config');
+  const { readRushJson } = require('../read-config');
 
   const sourcePath = path.resolve(process.cwd(), 'src');
   const nodeModulesPath = path.resolve(process.cwd(), 'node_modules');
   const rushJsonPath = findConfig('rush.json');
   const rootFolder = path.dirname(rushJsonPath);
-  const rush = readConfig(rushJsonPath);
+  const rushJson = readRushJson();
 
   const allowRelativeImportExamples = [
     // These were added to reduce the initial ramifications of disabling relative imports across all examples,
@@ -21,6 +37,11 @@ module.exports = function() {
     // TODO: Ideally these would eventually be removed.
     'ActivityItem.Compact.Example.tsx',
     'ActivityItem.Persona.Example.tsx',
+    'Button.CustomSplit.Example.tsx',
+    'Button.Keytips.Example.tsx',
+    'Button.Toggle.Example.tsx',
+    'Button.Variants.Example.tsx',
+    'Chiclet.Basic.Example.tsx',
     'ChoiceGroup.Image.Example.tsx',
     'DocumentCard.Basic.Example.tsx',
     'DocumentCard.Compact.Example.tsx',
@@ -39,28 +60,59 @@ module.exports = function() {
     'Keytips.Button.Example.tsx',
     'Keytips.CommandBar.Example.tsx',
     'Keytips.Overflow.Example.tsx',
-    'PeoplePickerExampleData.ts',
+    'Nav.Basic.Example.tsx',
+    'Nav.CustomGroupHeaders.Example.tsx',
+    'Nav.FabricDemoApp.Example.tsx',
+    'Nav.Nested.Example.tsx',
     'PeoplePicker.Types.Example.tsx',
+    'PeoplePickerExampleData.ts',
     'Persona.Alternate.Example.tsx',
     'Persona.Basic.Example.tsx',
     'Persona.CustomCoinRender.Example.tsx',
     'Persona.CustomRender.Example.tsx',
     'Persona.UnknownPersona.Example.tsx',
+    'Persona.Presence.Example.tsx',
     'Picker.CustomResult.Example.tsx',
     'Pivot.Fabric.Example.tsx',
     'SelectedPeopleList.Basic.Example.tsx',
     'SelectedPeopleList.Controlled.Example.tsx',
+    'SelectedPeopleList.WithContextMenu.Example.tsx',
+    'SelectedPeopleList.WithEdit.Example.tsx',
+    'SelectedPeopleList.WithEditInContextMenu.Example.tsx',
+    'SelectedPeopleList.WithGroupExpand.Example.tsx',
+    'Stack.Horizontal.Basic.Example.tsx',
+    'Stack.Horizontal.Configure.Example.tsx',
+    'Stack.Horizontal.Grow.Example.tsx',
+    'Stack.Horizontal.HorizontalAlign.Example.tsx',
+    'Stack.Horizontal.Reversed.Example.tsx',
+    'Stack.Horizontal.Shrink.Example.tsx',
+    'Stack.Horizontal.Spacing.Example.tsx',
+    'Stack.Horizontal.VerticalAlign.Example.tsx',
+    'Stack.Horizontal.Wrap.Example.tsx',
+    'Stack.Horizontal.WrapAdvanced.Example.tsx',
+    'Stack.Horizontal.WrapNested.Example.tsx',
+    'Stack.Vertical.Basic.Example.tsx',
+    'Stack.Vertical.Configure.Example.tsx',
+    'Stack.Vertical.Grow.Example.tsx',
+    'Stack.Vertical.HorizontalAlign.Example.tsx',
+    'Stack.Vertical.Reversed.Example.tsx',
+    'Stack.Vertical.Shrink.Example.tsx',
+    'Stack.Vertical.Spacing.Example.tsx',
+    'Stack.Vertical.VerticalAlign.Example.tsx',
+    'Stack.Vertical.Wrap.Example.tsx',
+    'Stack.Vertical.WrapAdvanced.Example.tsx',
+    'Stack.Vertical.WrapNested.Example.tsx',
     'TilesList.Document.Example.tsx',
     'TilesList.Media.Example.tsx'
   ];
 
-  if (!rush) {
+  if (!rushJson) {
     throw new Error('lint-imports: unable to find rush.json');
   }
 
-  const rushPackages = rush.projects.map(project => project.packageName);
+  const rushPackages = rushJson.projects.map(project => project.packageName);
 
-  const currentRushPackage = rush.projects.find(project => {
+  const currentRushPackage = rushJson.projects.find(project => {
     return path.normalize(project.projectFolder) === path.normalize(path.relative(rootFolder, process.cwd()));
   }).packageName;
 
@@ -68,6 +120,7 @@ module.exports = function() {
 
   function lintSource() {
     const files = _getFiles(sourcePath, /\.(ts|tsx)$/i);
+    /** @type {ImportErrors} */
     const importErrors = {
       totalImportKeywords: 0,
       totalImportStatements: 0,
@@ -117,6 +170,7 @@ module.exports = function() {
    *
    * @param {string} dir - starting folder path.
    * @param {RegExp} extentionPattern - extension regex to match.
+   * @param {string[]} [fileList] - cumulative array of files
    * @returns array of matching files.
    */
   function _getFiles(dir, extentionPattern, fileList) {
@@ -139,6 +193,11 @@ module.exports = function() {
     return fileList;
   }
 
+  /**
+   * @param {string} filePath
+   * @param {ImportErrors} importErrors
+   * @param {boolean} allowRelativeImports
+   */
   function _evaluateFile(filePath, importErrors, allowRelativeImports) {
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
@@ -165,6 +224,12 @@ module.exports = function() {
     }
   }
 
+  /**
+   * @param {string} filePath
+   * @param {string} importPath
+   * @param {ImportErrors} importErrors
+   * @param {boolean} allowRelativeImports
+   */
   function _evaluateImport(filePath, importPath, importErrors, allowRelativeImports) {
     let fullImportPath;
     let pathIsRelative = false;
@@ -208,6 +273,10 @@ module.exports = function() {
     }
   }
 
+  /**
+   * @param {string} filePath
+   * @param {string} importPath
+   */
   function _evaluateImportPath(filePath, importPath) {
     const fullImportPath = path.resolve(filePath, importPath);
     const extensions = ['.ts', '.tsx', '.js', ''];
@@ -223,6 +292,10 @@ module.exports = function() {
     return undefined;
   }
 
+  /**
+   * @param {ImportErrorGroup} pathNotFile
+   * @param {ImportErrorGroup} pathRelative
+   */
   function reportFilePathErrors(pathNotFile, pathRelative) {
     if (pathNotFile.count) {
       console.error(
@@ -234,8 +307,6 @@ module.exports = function() {
       for (const filePath in pathNotFile.matches) {
         console.error(`  ${filePath}: ${chalk.inverse(pathNotFile.matches[filePath])}`);
       }
-
-      return true;
     }
 
     if (pathRelative.count) {
@@ -248,10 +319,8 @@ module.exports = function() {
       for (const filePath in pathRelative.matches) {
         console.error(`  ${filePath}: ${chalk.inverse(pathRelative.matches[filePath])}`);
       }
-
-      return true;
     }
 
-    return false;
+    return pathNotFile.count > 0 || pathRelative.count > 0;
   }
 };

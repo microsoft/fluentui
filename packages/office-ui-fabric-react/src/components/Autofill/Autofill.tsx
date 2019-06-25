@@ -111,7 +111,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   public render(): JSX.Element {
     const { displayValue } = this.state;
 
-    const nativeProps = getNativeProps(this.props, inputProperties);
+    const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
     return (
       <input
         {...nativeProps}

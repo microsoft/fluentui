@@ -2,6 +2,34 @@
   "name": "@uifabric/prettier-rules",
   "entries": [
     {
+      "version": "7.0.2",
+      "tag": "@uifabric/prettier-rules_v7.0.2",
+      "date": "Fri, 14 Jun 2019 12:26:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix missing assets in production build.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "e1bebe54dd798847060baaf4a52956c2f6dd866b"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.1",
+      "tag": "@uifabric/prettier-rules_v7.0.1",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.2",
       "tag": "@uifabric/prettier-rules_v1.0.2",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

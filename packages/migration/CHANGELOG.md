@@ -1,6 +1,40 @@
 # Change Log - @uifabric/migration
 
-This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+- Fixing file that caused tslint issue in pre-commit hook validation.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 0.3.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Minor changes
+
+- Non-destructive run by default, show affected files.
+- Add migration for removed ColorPicker props
+- Ignore files in node_modules directories
+
+### Patches
+
+- ComboBox: Migration to rename deprecated props to new props.
+- SearchBox: Alert for onChange props arguments change.
+- Remove createRef imports from OUFR
+- Nav: import from @uifabric/legacy
+- @autobind: Migration to warn about removal.
+- Remove migration for nav to legacy
+- Add migrations for removed TextField props
 
 ## 0.2.2
 Tue, 14 May 2019 07:50:30 GMT

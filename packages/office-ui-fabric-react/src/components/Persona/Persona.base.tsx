@@ -60,6 +60,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       imageShouldStartVisible,
       imageUrl,
       initialsColor,
+      isOutOfOffice,
       onPhotoLoadingStateChange,
       onRenderCoin,
       onRenderInitials,
@@ -86,6 +87,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       showInitialsUntilImageLoads,
       size,
       text: this._getText(),
+      isOutOfOffice,
       ...coinProps
     };
 
@@ -97,7 +99,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       size
     });
 
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
     const personaDetails = (
       <div className={classNames.details}>
         {this._renderElement(classNames.primaryText, onRenderPrimaryText, _onRenderPrimaryText)}
@@ -111,7 +113,8 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     return (
       <div {...divProps} className={classNames.root} style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}>
         <PersonaCoin {...personaCoinProps} />
-        {(!hidePersonaDetails || (size === PersonaSize.size10 || size === PersonaSize.tiny)) && personaDetails}
+        {(!hidePersonaDetails || (size === PersonaSize.size8 || size === PersonaSize.size10 || size === PersonaSize.tiny)) &&
+          personaDetails}
       </div>
     );
   }

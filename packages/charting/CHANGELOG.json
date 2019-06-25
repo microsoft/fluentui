@@ -2,6 +2,158 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.132.0",
+      "tag": "@uifabric/charting_v0.132.0",
+      "date": "Thu, 20 Jun 2019 12:27:38 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fixing peer deps.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "4d6519a7b0f0bc4056e9465f736b843936b9c0bd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.2` to `^7.4.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.0` to `^7.1.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.131.3",
+      "tag": "@uifabric/charting_v0.131.3",
+      "date": "Tue, 18 Jun 2019 12:26:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add data viz separator for HorizontalBarChart ",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "d164d2e534af19676ca6b846feb067dfd5e4fe6f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.3.0` to `^7.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.3` to `^7.0.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.131.2",
+      "tag": "@uifabric/charting_v0.131.2",
+      "date": "Fri, 14 Jun 2019 12:26:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Resolved the issue of the legends repeating even with same color and legend",
+            "author": "ndlganeshu <ndlganeswararao@gmail.com>",
+            "commit": "360b6e346e2813a1e7484cacd05d783e730c87a5"
+          },
+          {
+            "comment": "Fix missing assets in production build.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "e1bebe54dd798847060baaf4a52956c2f6dd866b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.1` to `^7.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.131.1",
+      "tag": "@uifabric/charting_v0.131.1",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          },
+          {
+            "comment": "Fix verticalBarChart x-axis description cut off issue",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "3915f2371c77664cff44ae93e551ef2d9963edc7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.30.3",
+      "tag": "@uifabric/charting_v0.30.3",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Render demo app with Markdown instead of PageMarkdown",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d7047fc795ab94f49a9e14649b2f5fc4ae082f43"
+          },
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.1` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.9` to `^6.0.10`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.2",
       "tag": "@uifabric/charting_v0.30.2",
       "date": "Tue, 11 Jun 2019 12:21:35 GMT",

@@ -5,7 +5,7 @@ import { FileTypeIconMap } from './FileTypeIconMap';
 const PNG_SUFFIX = '_png';
 const SVG_SUFFIX = '_svg';
 
-const DEFAULT_BASE_URL = 'https://spoprod-a.akamaihd.net/files/fabric/assets/item-types/';
+const DEFAULT_BASE_URL = 'https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/';
 const ICON_SIZES: number[] = [16, 20, 32, 40, 48, 64, 96];
 
 // Due to CDN cache, images updated in place may take up to a year to appear for some users

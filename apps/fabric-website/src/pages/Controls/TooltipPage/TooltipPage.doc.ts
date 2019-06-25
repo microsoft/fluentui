@@ -10,8 +10,12 @@ export const TooltipPageProps: TFabricPlatformPageProps = {
     related
   },
   android: {
-    title: 'Tooltip',
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TooltipPage/docs/android/TooltipOverview.md') as string,
+    related,
+    componentUrl
+  },
+  ios: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TooltipPage/docs/ios/TooltipOverview.md') as string,
     related,
     componentUrl
   }

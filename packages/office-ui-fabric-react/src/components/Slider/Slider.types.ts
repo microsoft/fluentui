@@ -81,7 +81,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
   /**
    * Callback on mouse up or touch end
    */
-  onChanged?: (event: MouseEvent | TouchEvent, value: number) => void;
+  onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
 
   /**
    * A description of the Slider for the benefit of screen readers.

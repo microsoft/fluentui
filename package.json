@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react-repo",
-  "version": "1.0.0",
+  "version": "7.0.0",
   "description": "Reusable React components for building experiences for Office 365.",
   "private": true,
   "repository": {
@@ -25,7 +25,7 @@
     "buildfast": "npm run _rushBuild",
     "code-style": "node common/scripts/install-run-rush.js code-style",
     "change": "node common/scripts/install-run-rush.js change",
-    "rush-update": "npm run _rushInstall && node common/scripts/install-run-rush.js update",
+    "rush-update": "node common/scripts/install-run-rush.js update",
     "generate": "npm run rush-update",
     "bundlesize": "cd scripts && npm run bundlesize",
     "bundlesizecollect": "cd scripts && npx just-scripts bundle-size-collect",
@@ -40,7 +40,6 @@
     "generate-version-files": "cd scripts && npx just-scripts generate-version-files",
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
     "precommit": "node scripts/node_modules/lint-staged/index.js",
-    "perf-test": "cd apps/perf-test && npx just-scripts perf-test",
     "dom-test": "cd apps/dom-tests && npx just-scripts jest-dom-with-webpack",
     "update-a11y": "cd apps/a11y-tests && npm run update-snapshots"
   },

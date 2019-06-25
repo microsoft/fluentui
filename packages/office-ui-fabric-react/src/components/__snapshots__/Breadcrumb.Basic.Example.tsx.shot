@@ -10,21 +10,24 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
+          font-weight: 600;
+          margin-bottom: 10px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
           overflow-wrap: break-word;
           padding-bottom: 5px;
           padding-left: 0;
           padding-right: 0;
           padding-top: 5px;
           word-wrap: break-word;
+        }
+        &:not(:first-child) {
+          margin-top: 24px;
         }
   >
     With no maxDisplayedItems
@@ -59,7 +62,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                 margin-bottom: 1px;
                 margin-left: 0;
                 margin-right: 0;
-                margin-top: 23px;
+                margin-top: 11px;
               }
           role="navigation"
         >
@@ -109,6 +112,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <button
                   className=
@@ -121,12 +132,13 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
@@ -139,13 +151,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         padding-top: 0;
                         position: relative;
                         text-align: left;
-                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -162,12 +173,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -177,37 +186,27 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: initial;
+                        background-color: #f3f2f1;
+                        color: #323130;
                         cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 17px;
-                        font-weight: 300;
-                      }
-                      @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                   onClick={[Function]}
                   type="button"
@@ -220,6 +219,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -233,7 +233,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -274,6 +274,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <button
                   className=
@@ -286,12 +294,13 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
@@ -304,13 +313,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         padding-top: 0;
                         position: relative;
                         text-align: left;
-                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -327,12 +335,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -342,37 +348,27 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: initial;
+                        background-color: #f3f2f1;
+                        color: #323130;
                         cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 17px;
-                        font-weight: 300;
-                      }
-                      @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                   onClick={[Function]}
                   type="button"
@@ -385,6 +381,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -398,7 +395,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -439,6 +436,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <button
                   className=
@@ -451,12 +456,13 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
@@ -469,13 +475,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         padding-top: 0;
                         position: relative;
                         text-align: left;
-                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -492,12 +497,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -507,37 +510,27 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: initial;
+                        background-color: #f3f2f1;
+                        color: #323130;
                         cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 17px;
-                        font-weight: 300;
-                      }
-                      @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                   onClick={[Function]}
                   type="button"
@@ -550,6 +543,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -563,7 +557,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -604,6 +598,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <button
                   className=
@@ -616,12 +618,13 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
@@ -634,13 +637,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         padding-top: 0;
                         position: relative;
                         text-align: left;
-                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -657,12 +659,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -672,37 +672,27 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: initial;
+                        background-color: #f3f2f1;
+                        color: #323130;
                         cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 17px;
-                        font-weight: 300;
-                      }
-                      @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                   onClick={[Function]}
                   type="button"
@@ -715,6 +705,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -728,7 +719,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -769,6 +760,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <button
                   className=
@@ -781,12 +780,13 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
@@ -799,13 +799,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         padding-top: 0;
                         position: relative;
                         text-align: left;
-                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -822,12 +821,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -837,37 +834,27 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: initial;
+                        background-color: #f3f2f1;
+                        color: #323130;
                         cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 17px;
-                        font-weight: 300;
-                      }
-                      @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                   onClick={[Function]}
                   type="button"
@@ -880,6 +867,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -893,7 +881,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -933,6 +921,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-right: 0;
                       padding-top: 0;
                       position: relative;
+                    }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
                     }
               >
                 <button
@@ -947,12 +943,13 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
@@ -965,13 +962,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         padding-top: 0;
                         position: relative;
                         text-align: left;
-                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -988,12 +984,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1003,37 +997,27 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: initial;
+                        background-color: #f3f2f1;
+                        color: #323130;
                         cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 17px;
-                        font-weight: 300;
-                      }
-                      @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                   onClick={[Function]}
                   type="button"
@@ -1046,6 +1030,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -1067,15 +1052,15 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
+          font-weight: 600;
+          margin-bottom: 10px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
           overflow-wrap: break-word;
           padding-bottom: 5px;
           padding-left: 0;
@@ -1083,11 +1068,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           padding-top: 5px;
           word-wrap: break-word;
         }
-    style={
-      Object {
-        "marginTop": "24px",
-      }
-    }
+        &:not(:first-child) {
+          margin-top: 24px;
+        }
   >
     With Custom Divider Icon
   </label>
@@ -1121,7 +1104,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                 margin-bottom: 1px;
                 margin-left: 0;
                 margin-right: 0;
-                margin-top: 23px;
+                margin-top: 11px;
               }
           role="navigation"
         >
@@ -1171,6 +1154,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <button
                   className=
@@ -1183,12 +1174,13 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
@@ -1201,13 +1193,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         padding-top: 0;
                         position: relative;
                         text-align: left;
-                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -1224,12 +1215,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1239,37 +1228,27 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: initial;
+                        background-color: #f3f2f1;
+                        color: #323130;
                         cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 17px;
-                        font-weight: 300;
-                      }
-                      @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                   onClick={[Function]}
                   type="button"
@@ -1282,6 +1261,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -1296,6 +1276,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -1328,6 +1309,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <button
                   className=
@@ -1340,12 +1329,13 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
@@ -1358,13 +1348,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         padding-top: 0;
                         position: relative;
                         text-align: left;
-                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -1381,12 +1370,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1396,37 +1383,27 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: initial;
+                        background-color: #f3f2f1;
+                        color: #323130;
                         cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 17px;
-                        font-weight: 300;
-                      }
-                      @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                   onClick={[Function]}
                   type="button"
@@ -1439,6 +1416,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -1453,6 +1431,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -1485,6 +1464,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <button
                   className=
@@ -1497,12 +1484,13 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
@@ -1515,13 +1503,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         padding-top: 0;
                         position: relative;
                         text-align: left;
-                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -1538,12 +1525,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1553,37 +1538,27 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: initial;
+                        background-color: #f3f2f1;
+                        color: #323130;
                         cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 17px;
-                        font-weight: 300;
-                      }
-                      @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                   onClick={[Function]}
                   type="button"
@@ -1596,6 +1571,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -1610,6 +1586,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -1642,6 +1619,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <button
                   className=
@@ -1654,12 +1639,13 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
@@ -1672,13 +1658,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         padding-top: 0;
                         position: relative;
                         text-align: left;
-                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -1695,12 +1680,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1710,37 +1693,27 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: initial;
+                        background-color: #f3f2f1;
+                        color: #323130;
                         cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 17px;
-                        font-weight: 300;
-                      }
-                      @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                   onClick={[Function]}
                   type="button"
@@ -1753,6 +1726,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -1767,6 +1741,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -1799,6 +1774,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <button
                   className=
@@ -1811,12 +1794,13 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
@@ -1829,13 +1813,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         padding-top: 0;
                         position: relative;
                         text-align: left;
-                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -1852,12 +1835,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -1867,37 +1848,27 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: initial;
+                        background-color: #f3f2f1;
+                        color: #323130;
                         cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 17px;
-                        font-weight: 300;
-                      }
-                      @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                   onClick={[Function]}
                   type="button"
@@ -1910,6 +1881,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -1924,6 +1896,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                   onBlurCapture={[Function]}
                   onFocusCapture={[Function]}
+                  onKeyDown={[Function]}
                   onMouseEnter={[Function]}
                   onMouseLeave={[Function]}
                 >
@@ -1956,6 +1929,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <button
                   aria-current="page"
@@ -1969,12 +1950,13 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background: none;
                         border-bottom: 1px solid transparent;
                         border: none;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
@@ -1987,13 +1969,12 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         padding-top: 0;
                         position: relative;
                         text-align: left;
-                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -2010,12 +1991,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2025,37 +2004,27 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: initial;
+                        background-color: #f3f2f1;
+                        color: #323130;
                         cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 17px;
-                        font-weight: 300;
-                      }
-                      @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                   onClick={[Function]}
                   type="button"
@@ -2068,6 +2037,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -2089,15 +2059,15 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
+          font-weight: 600;
+          margin-bottom: 10px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
           overflow-wrap: break-word;
           padding-bottom: 5px;
           padding-left: 0;
@@ -2105,11 +2075,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           padding-top: 5px;
           word-wrap: break-word;
         }
-    style={
-      Object {
-        "marginTop": "24px",
-      }
-    }
+        &:not(:first-child) {
+          margin-top: 24px;
+        }
   >
     With maxDisplayedItems set to three
   </label>
@@ -2143,7 +2111,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                 margin-bottom: 1px;
                 margin-left: 0;
                 margin-right: 0;
-                margin-top: 23px;
+                margin-top: 11px;
               }
           role="navigation"
         >
@@ -2198,20 +2166,16 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
                         background-color: transparent;
-                        border-radius: 0px;
+                        border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline-block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
-                        margin-bottom: 0px;
-                        margin-left: 0px;
-                        margin-right: 0px;
-                        margin-top: 0px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -2235,7 +2199,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
@@ -2255,19 +2219,24 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 0px;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: #212121;
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      &:hover:active {
-                        background-color: #d0d0d0;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
+                      }
+                      &:active, &:hover, &:active:hover {
+                        text-decoration: none;
                       }
                       @media only screen and (min-width: 0px) and (max-width: 479px){& {
                         padding-bottom: 4px;
@@ -2276,7 +2245,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         padding-top: 4px;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        font-size: 15px;
+                        font-size: 16px;
                       }
                   data-is-focusable={true}
                   onClick={[Function]}
@@ -2336,7 +2305,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -2377,6 +2346,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <a
                   className=
@@ -2385,10 +2362,11 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #333333;
+                        color: #605e5c;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -2401,7 +2379,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -2412,12 +2390,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2427,37 +2403,27 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: initial;
+                        background-color: #f3f2f1;
+                        color: #323130;
                         cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 17px;
-                        font-weight: 300;
-                      }
-                      @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                   href="#/examples/breadcrumb"
                   onClick={[Function]}
@@ -2470,6 +2436,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -2483,7 +2450,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -2524,6 +2491,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <a
                   className=
@@ -2532,10 +2507,11 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #333333;
+                        color: #605e5c;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -2548,7 +2524,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -2559,12 +2535,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2574,37 +2548,27 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: initial;
+                        background-color: #f3f2f1;
+                        color: #323130;
                         cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 17px;
-                        font-weight: 300;
-                      }
-                      @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                   href="#/examples/breadcrumb"
                   onClick={[Function]}
@@ -2617,6 +2581,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -2630,7 +2595,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -2671,6 +2636,14 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <a
                   aria-current="page"
@@ -2680,10 +2653,11 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #333333;
+                        color: #605e5c;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -2696,7 +2670,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
-                        box-shadow: 0 0 0 1px #666666 inset;
+                        box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
@@ -2707,12 +2681,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
-                      }
-                      @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                        text-decoration: underline;
+                        text-decoration: none;
                       }
                       &:focus {
-                        color: #212121;
+                        color: #201f1e;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2722,37 +2694,27 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
                         z-index: 1;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: initial;
+                        background-color: #f3f2f1;
+                        color: #323130;
                         cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 17px;
-                        font-weight: 300;
-                      }
-                      @media only screen and (min-width: 0px) and (max-width: 479px){& {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                   href="#/examples/breadcrumb"
                   onClick={[Function]}
@@ -2765,6 +2727,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -2786,15 +2749,15 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
+          font-weight: 600;
+          margin-bottom: 10px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
           overflow-wrap: break-word;
           padding-bottom: 5px;
           padding-left: 0;
@@ -2802,11 +2765,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           padding-top: 5px;
           word-wrap: break-word;
         }
-    style={
-      Object {
-        "marginTop": "24px",
-      }
-    }
+        &:not(:first-child) {
+          margin-top: 24px;
+        }
   >
     With maxDisplayedItems set to two and overflowIndex set to 1 (second element)
   </label>
@@ -2828,7 +2789,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
         }
       >
         <div
-          aria-label="Breadcrumb with maxDisplayedItems set to two and overflowIndex set to 1"
+          aria-label="Breadcrumb with maxDisplayedItems set to 2 and overflowIndex set to 1"
           className=
               ms-Breadcrumb
               {
@@ -2840,7 +2801,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                 margin-bottom: 1px;
                 margin-left: 0;
                 margin-right: 0;
-                margin-top: 23px;
+                margin-top: 11px;
               }
           role="navigation"
         >
@@ -2890,17 +2851,23 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <span
                   className=
                       ms-Breadcrumb-item
                       {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        color: #333333;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        color: #605e5c;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         padding-bottom: 0;
                         padding-left: 8px;
                         padding-right: 8px;
@@ -2918,6 +2885,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >
@@ -2931,7 +2899,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -2977,20 +2945,16 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
                         background-color: transparent;
-                        border-radius: 0px;
+                        border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline-block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
-                        margin-bottom: 0px;
-                        margin-left: 0px;
-                        margin-right: 0px;
-                        margin-top: 0px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -3014,7 +2978,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         bottom: 1px;
                         content: "";
                         left: 1px;
-                        outline: 1px solid #666666;
+                        outline: 1px solid #605e5c;
                         position: absolute;
                         right: 1px;
                         top: 1px;
@@ -3034,19 +2998,24 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 0px;
                       }
                       &:hover {
-                        background-color: #f4f4f4;
-                        color: #212121;
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #333333;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
-                      &:hover:active {
-                        background-color: #d0d0d0;
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
+                      }
+                      &:active, &:hover, &:active:hover {
+                        text-decoration: none;
                       }
                       @media only screen and (min-width: 0px) and (max-width: 479px){& {
                         padding-bottom: 4px;
@@ -3055,7 +3024,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         padding-top: 4px;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                        font-size: 15px;
+                        font-size: 16px;
                       }
                   data-is-focusable={true}
                   onClick={[Function]}
@@ -3115,7 +3084,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         font-family: "FabricMDL2Icons";
                         font-size: 12px;
@@ -3156,17 +3125,23 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       padding-top: 0;
                       position: relative;
                     }
+                    &:last-child .ms-Breadcrumb-itemLink {
+                      color: #323130;
+                      font-weight: 600;
+                    }
+                    &:last-child .ms-Breadcrumb-item {
+                      color: #323130;
+                      font-weight: 600;
+                    }
               >
                 <span
                   className=
                       ms-Breadcrumb-item
                       {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        color: #333333;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
+                        color: #605e5c;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 36px;
                         padding-bottom: 0;
                         padding-left: 8px;
                         padding-right: 8px;
@@ -3184,6 +3159,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         }
                     onBlurCapture={[Function]}
                     onFocusCapture={[Function]}
+                    onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
                   >

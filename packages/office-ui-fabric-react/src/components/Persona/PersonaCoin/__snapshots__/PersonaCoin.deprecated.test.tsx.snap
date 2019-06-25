@@ -29,11 +29,11 @@ exports[`PersonaCoin renders correctly 1`] = `
       className=
           ms-Persona-initials
           {
-            background-color: #2D89EF;
+            background-color: #0078D4;
             border-radius: 50%;
             color: #ffffff;
-            font-size: 17px;
-            font-weight: 400;
+            font-size: 16px;
+            font-weight: 600;
             height: 48px;
             line-height: 46px;
           }
@@ -43,6 +43,9 @@ exports[`PersonaCoin renders correctly 1`] = `
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+          }
+          & i {
+            font-weight: 600;
           }
     >
       <i
@@ -177,11 +180,11 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
       className=
           ms-Persona-initials
           {
-            background-color: #2D89EF;
+            background-color: #0078D4;
             border-radius: 50%;
             color: #ffffff;
-            font-size: 17px;
-            font-weight: 400;
+            font-size: 16px;
+            font-weight: 600;
             height: 48px;
             line-height: 46px;
           }
@@ -191,6 +194,9 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+          }
+          & i {
+            font-weight: 600;
           }
     >
       <span>
@@ -230,11 +236,11 @@ exports[`PersonaCoin renders correctly with text 1`] = `
       className=
           ms-Persona-initials
           {
-            background-color: #5E4B8B;
+            background-color: #498205;
             border-radius: 50%;
             color: #ffffff;
-            font-size: 17px;
-            font-weight: 400;
+            font-size: 16px;
+            font-weight: 600;
             height: 48px;
             line-height: 46px;
           }
@@ -244,6 +250,9 @@ exports[`PersonaCoin renders correctly with text 1`] = `
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+          }
+          & i {
+            font-weight: 600;
           }
     >
       <span>

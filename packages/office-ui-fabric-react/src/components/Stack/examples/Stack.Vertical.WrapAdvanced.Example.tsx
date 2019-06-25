@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { Dropdown, IDropdownOption, mergeStyleSets, DefaultPalette, Stack, Slider } from 'office-ui-fabric-react';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { Stack } from '../Stack';
+import { IStackStyles, IStackTokens } from '../Stack.types';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export type HorizontalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 export type VerticalAlignment = 'start' | 'center' | 'end';
@@ -12,6 +16,21 @@ export interface IExampleState {
   verticalAlignment: VerticalAlignment;
   overflow: Overflow;
 }
+
+// Non-mutating styles definition
+const itemStyles: React.CSSProperties = {
+  alignItems: 'center',
+  background: DefaultPalette.themePrimary,
+  color: DefaultPalette.white,
+  display: 'flex',
+  height: 50,
+  justifyContent: 'center',
+  width: 50
+};
+
+// Tokens definition
+const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+const wrapStackTokens: IStackTokens = { childrenGap: 20 };
 
 export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExampleState> {
   constructor(props: {}) {
@@ -28,39 +47,18 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
   public render(): JSX.Element {
     const { stackWidth, containerHeight, overflow, horizontalAlignment, verticalAlignment } = this.state;
 
-    const styles = mergeStyleSets({
+    // Mutating styles definition
+    const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
-        width: `${stackWidth}%`,
-        overflow
-      },
-
-      item: {
-        width: 50,
-        height: 50,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: DefaultPalette.themePrimary,
-        color: DefaultPalette.white
-      },
-
-      container: {
-        height: containerHeight
-      }
-    });
-
-    const tokens = {
-      sectionStack: {
-        childrenGap: 10
-      },
-      wrapStack: {
-        childrenGap: 20
+        overflow,
+        width: `${stackWidth}%`
       }
     };
+    const containerStyles: React.CSSProperties = { height: containerHeight };
 
     return (
-      <Stack tokens={tokens.sectionStack}>
+      <Stack tokens={sectionStackTokens}>
         <Stack horizontal>
           <Stack.Item grow>
             <Slider label="Stack height:" min={1} max={420} step={1} defaultValue={420} showValue={true} onChange={this._onHeightChange} />
@@ -78,7 +76,7 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal tokens={tokens.wrapStack}>
+        <Stack horizontal tokens={wrapStackTokens}>
           <Stack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}
@@ -115,19 +113,13 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
           </Stack.Item>
         </Stack>
 
-        <div className={styles.container}>
-          <Stack
-            wrap
-            tokens={tokens.wrapStack}
-            horizontalAlign={horizontalAlignment}
-            verticalAlign={verticalAlignment}
-            className={styles.root}
-          >
-            <span className={styles.item}>1</span>
-            <span className={styles.item}>2</span>
-            <span className={styles.item}>3</span>
-            <span className={styles.item}>4</span>
-            <span className={styles.item}>5</span>
+        <div style={containerStyles}>
+          <Stack wrap horizontalAlign={horizontalAlignment} verticalAlign={verticalAlignment} styles={stackStyles} tokens={wrapStackTokens}>
+            <span style={itemStyles}>1</span>
+            <span style={itemStyles}>2</span>
+            <span style={itemStyles}>3</span>
+            <span style={itemStyles}>4</span>
+            <span style={itemStyles}>5</span>
           </Stack>
         </div>
       </Stack>

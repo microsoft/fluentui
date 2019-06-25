@@ -1,7 +1,7 @@
 import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { ICalloutSlot, IListSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
-import { IButtonSlot } from '@uifabric/experiments';
+import { IButtonSlot } from '../Button/Button.types';
 import { IStackSlot, ITextSlot } from 'office-ui-fabric-react';
 
 export type IMicroFeedbackComponent = IComponent<IMicroFeedbackProps, IMicroFeedbackTokens, IMicroFeedbackStyles, IMicroFeedbackViewProps>;

@@ -270,21 +270,5 @@ export interface IDetailsRowStyles {
   fields: IStyle;
   cellMeasurer: IStyle;
   checkCover: IStyle;
-  /**
-   * @deprecated Will be removed in Fabric 7.0. Use `ShimmeredDetailsList` instead.
-   */
-  shimmer: IStyle;
-  /**
-   * @deprecated Will be removed in Fabric 7.0. Use `ShimmeredDetailsList` instead.
-   */
-  shimmerIconPlaceholder: IStyle;
-  /**
-   * @deprecated Will be removed in Fabric 7.0. Use `ShimmeredDetailsList` instead.
-   */
-  shimmerLeftBorder: IStyle;
-  /**
-   * @deprecated Will be removed in Fabric 7.0. Use `ShimmeredDetailsList` instead.
-   */
-  shimmerBottomBorder: IStyle;
   check: IStyle;
 }

@@ -2,6 +2,292 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "7.1.5",
+      "tag": "@uifabric/fabric-website_v7.1.5",
+      "date": "Thu, 20 Jun 2019 12:27:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Renamed instances of \"Microsoft UI Fabric\" to \"UI Fabric\"",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "c13e7dcffebfffdb65c6e35165b1ebecad1380ae"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.1.1` to `^7.2.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.2` to `^7.4.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.4",
+      "tag": "@uifabric/fabric-website_v7.1.4",
+      "date": "Wed, 19 Jun 2019 12:27:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Get rid of references to _exampleStyles.scss",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "8bd274ad2c5df42865bc0254b11ec7ab9df2a5b3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.4` to `^7.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.1` to `^7.4.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.3",
+      "tag": "@uifabric/fabric-website_v7.1.3",
+      "date": "Tue, 18 Jun 2019 19:00:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Mobile: Added source code links, removed generic library link.",
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "69b4f8dd2f2dc416d4b287bf7b140f34991ca1c3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.0` to `^7.4.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.2",
+      "tag": "@uifabric/fabric-website_v7.1.2",
+      "date": "Tue, 18 Jun 2019 12:26:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add overview and controls request sections to mobile pages.",
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "f5dee98562532e42770200076def7b25f923a047"
+          },
+          {
+            "comment": "Add theme slots page",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "92abe8370a935219acf554c2f9454ae4a8f7735d"
+          },
+          {
+            "comment": "Add links to documentation pages.",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "219b7fca507becd76c88d237c9b4271983797daf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.3` to `^7.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.3.0` to `^7.4.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.1",
+      "tag": "@uifabric/fabric-website_v7.1.1",
+      "date": "Fri, 14 Jun 2019 12:26:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add more mobile docs, update screenshots.",
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "f283e3ac2420b35f7783cf911969bae9e77c3fc9"
+          },
+          {
+            "comment": "Fix missing assets in production build.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "e1bebe54dd798847060baaf4a52956c2f6dd866b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.1` to `^7.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.0",
+      "tag": "@uifabric/fabric-website_v7.1.0",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Clean up Site component life-cycle",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "3a09a87c2d904ed636d32c0d0bced56626f48a75"
+          },
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Bundles react with the site to prevent version mismatch issues",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "8af04c0dfaf4cf2c3510b9af2bf3b1e5d98328c2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.19.0",
+      "tag": "@uifabric/fabric-website_v6.19.0",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Calendar and DatePicker import paths",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "5e4f160e47e77f4ccdb0457160b22d321b25d4fc"
+          },
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          },
+          {
+            "comment": "Support slots API changes.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "37a52465422d2622d52b7339ac2f9b2f234300da"
+          },
+          {
+            "comment": "Nav, Calendar, and DatePicker move into office-ui-fabric-react",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "1226e0857e0fc16a9884d7d011ce0e738cfeb04e"
+          },
+          {
+            "comment": "Update Router imports",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d908c018268568b386fdad27899dcb00c5f0806e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Changes to support slots API refactoring",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "14b1d77fc97fffb1c333a3601d62c3e30c4cf3b0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^1.1.3` to `^1.1.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.1` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.78.7` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.18.3` to `^6.18.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.5.1` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.10` to `^0.16.11`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^0.1.6` to `^0.1.7`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.11",
       "tag": "@uifabric/fabric-website_v6.18.11",
       "date": "Thu, 06 Jun 2019 12:22:24 GMT",

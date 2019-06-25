@@ -9,6 +9,12 @@ exports.jest = () =>
     ...(argv().u || argv().updateSnapshot ? { updateSnapshot: true } : undefined)
   });
 
+exports.jestDom = () =>
+  jestTask({
+    runInBand: true,
+    config: path.join(process.cwd(), 'jest.dom.config.js')
+  });
+
 exports.jestWatch = () => {
   const args = argv();
   return jestTask({

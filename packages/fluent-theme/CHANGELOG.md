@@ -1,6 +1,28 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Tue, 21 May 2019 12:20:44 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 0.16.11
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Patches
+
+- Update DatePicker import path
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
 
 ## 0.16.10
 Tue, 21 May 2019 12:20:44 GMT

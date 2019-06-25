@@ -1,9 +1,27 @@
 import * as React from 'react';
-import { mergeStyleSets, DefaultPalette, Slider, Stack } from 'office-ui-fabric-react';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { Stack } from '../Stack';
+import { IStackStyles, IStackTokens } from '../Stack.types';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
   stackHeight: number;
 }
+
+// Non-mutating styles definition
+const itemStyles: React.CSSProperties = {
+  alignItems: 'center',
+  background: DefaultPalette.themePrimary,
+  color: DefaultPalette.white,
+  height: 50,
+  display: 'flex',
+  justifyContent: 'center',
+  width: 50
+};
+
+// Tokens definition
+const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+const wrapStackTokens: IStackTokens = { childrenGap: 20 };
 
 export class VerticalStackWrapExample extends React.Component<{}, IExampleState> {
   constructor(props: {}) {
@@ -16,34 +34,16 @@ export class VerticalStackWrapExample extends React.Component<{}, IExampleState>
   public render(): JSX.Element {
     const { stackHeight } = this.state;
 
-    const styles = mergeStyleSets({
+    // Mutating styles definition
+    const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
         height: stackHeight
-      },
-
-      item: {
-        width: 50,
-        height: 50,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: DefaultPalette.themePrimary,
-        color: DefaultPalette.white
-      }
-    });
-
-    const tokens = {
-      sectionStack: {
-        childrenGap: 10
-      },
-      wrapStack: {
-        childrenGap: 20
       }
     };
 
     return (
-      <Stack tokens={tokens.sectionStack}>
+      <Stack tokens={sectionStackTokens}>
         <Slider
           label="Change the stack height to see how child items wrap onto multiple columns:"
           min={1}
@@ -54,13 +54,13 @@ export class VerticalStackWrapExample extends React.Component<{}, IExampleState>
           onChange={this._onHeightChange}
         />
 
-        <Stack wrap tokens={tokens.wrapStack} className={styles.root}>
-          <span className={styles.item}>1</span>
-          <span className={styles.item}>2</span>
-          <span className={styles.item}>3</span>
-          <span className={styles.item}>4</span>
-          <span className={styles.item}>5</span>
-          <span className={styles.item}>6</span>
+        <Stack wrap styles={stackStyles} tokens={wrapStackTokens}>
+          <span style={itemStyles}>1</span>
+          <span style={itemStyles}>2</span>
+          <span style={itemStyles}>3</span>
+          <span style={itemStyles}>4</span>
+          <span style={itemStyles}>5</span>
+          <span style={itemStyles}>6</span>
         </Stack>
       </Stack>
     );

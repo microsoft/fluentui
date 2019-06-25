@@ -11,7 +11,7 @@ exports[`Persona renders Persona children correctly 1`] = `
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -32,7 +32,7 @@ exports[`Persona renders Persona children correctly 1`] = `
         display: none;
       }
       &:hover $primaryText {
-        color: #212121;
+        color: #201f1e;
       }
 >
   <div
@@ -63,11 +63,11 @@ exports[`Persona renders Persona children correctly 1`] = `
         className=
             ms-Persona-initials
             {
-              background-color: #5E4B8B;
+              background-color: #498205;
               border-radius: 50%;
               color: #ffffff;
-              font-size: 17px;
-              font-weight: 400;
+              font-size: 16px;
+              font-weight: 600;
               height: 48px;
               line-height: 46px;
             }
@@ -77,6 +77,9 @@ exports[`Persona renders Persona children correctly 1`] = `
               border: 1px solid WindowText;
               box-sizing: border-box;
               color: WindowText;
+            }
+            & i {
+              font-weight: 600;
             }
       >
         <span>
@@ -94,8 +97,8 @@ exports[`Persona renders Persona children correctly 1`] = `
           justify-content: space-around;
           min-width: 0px;
           padding-bottom: 0;
-          padding-left: 16px;
-          padding-right: 24px;
+          padding-left: 12px;
+          padding-right: 12px;
           padding-top: 0;
           text-align: left;
           width: 100%;
@@ -105,8 +108,8 @@ exports[`Persona renders Persona children correctly 1`] = `
       className=
           ms-Persona-primaryText
           {
-            color: #333333;
-            font-size: 17px;
+            color: #323130;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -122,6 +125,7 @@ exports[`Persona renders Persona children correctly 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -132,7 +136,7 @@ exports[`Persona renders Persona children correctly 1`] = `
       className=
           ms-Persona-secondaryText
           {
-            color: #666666;
+            color: #605e5c;
             font-size: 12px;
             font-weight: 400;
             overflow: hidden;
@@ -145,9 +149,9 @@ exports[`Persona renders Persona children correctly 1`] = `
       className=
           ms-Persona-tertiaryText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -159,9 +163,9 @@ exports[`Persona renders Persona children correctly 1`] = `
       className=
           ms-Persona-optionalText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -187,7 +191,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -208,7 +212,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
         display: none;
       }
       &:hover $primaryText {
-        color: #212121;
+        color: #201f1e;
       }
 >
   <div
@@ -242,8 +246,8 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
               background-color: rgb(234, 234, 234);
               border-radius: 50%;
               color: rgb(168, 0, 0);
-              font-size: 17px;
-              font-weight: 400;
+              font-size: 16px;
+              font-weight: 600;
               height: 48px;
               line-height: 46px;
             }
@@ -253,6 +257,9 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
               border: 1px solid WindowText;
               box-sizing: border-box;
               color: WindowText;
+            }
+            & i {
+              font-weight: 600;
             }
       >
         <i
@@ -285,8 +292,8 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
           justify-content: space-around;
           min-width: 0px;
           padding-bottom: 0;
-          padding-left: 16px;
-          padding-right: 24px;
+          padding-left: 12px;
+          padding-right: 12px;
           padding-top: 0;
           text-align: left;
           width: 100%;
@@ -296,8 +303,8 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
       className=
           ms-Persona-primaryText
           {
-            color: #333333;
-            font-size: 17px;
+            color: #323130;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -313,6 +320,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -323,7 +331,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
       className=
           ms-Persona-secondaryText
           {
-            color: #666666;
+            color: #605e5c;
             font-size: 12px;
             font-weight: 400;
             overflow: hidden;
@@ -336,9 +344,9 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
       className=
           ms-Persona-tertiaryText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -350,9 +358,9 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
       className=
           ms-Persona-optionalText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -375,7 +383,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -396,7 +404,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
         display: none;
       }
       &:hover $primaryText {
-        color: #212121;
+        color: #201f1e;
       }
 >
   <div
@@ -485,8 +493,8 @@ exports[`Persona renders Persona correctly with image 1`] = `
           justify-content: space-around;
           min-width: 0px;
           padding-bottom: 0;
-          padding-left: 16px;
-          padding-right: 24px;
+          padding-left: 12px;
+          padding-right: 12px;
           padding-top: 0;
           text-align: left;
           width: 100%;
@@ -496,8 +504,8 @@ exports[`Persona renders Persona correctly with image 1`] = `
       className=
           ms-Persona-primaryText
           {
-            color: #333333;
-            font-size: 17px;
+            color: #323130;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -513,6 +521,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -523,7 +532,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
       className=
           ms-Persona-secondaryText
           {
-            color: #666666;
+            color: #605e5c;
             font-size: 12px;
             font-weight: 400;
             overflow: hidden;
@@ -536,9 +545,9 @@ exports[`Persona renders Persona correctly with image 1`] = `
       className=
           ms-Persona-tertiaryText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -550,9 +559,9 @@ exports[`Persona renders Persona correctly with image 1`] = `
       className=
           ms-Persona-optionalText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -575,7 +584,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -596,7 +605,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         display: none;
       }
       &:hover $primaryText {
-        color: #212121;
+        color: #201f1e;
       }
 >
   <div
@@ -627,11 +636,11 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         className=
             ms-Persona-initials
             {
-              background-color: #5E4B8B;
+              background-color: #498205;
               border-radius: 50%;
               color: #ffffff;
-              font-size: 17px;
-              font-weight: 400;
+              font-size: 16px;
+              font-weight: 600;
               height: 48px;
               line-height: 46px;
             }
@@ -641,6 +650,9 @@ exports[`Persona renders Persona correctly with initials 1`] = `
               border: 1px solid WindowText;
               box-sizing: border-box;
               color: WindowText;
+            }
+            & i {
+              font-weight: 600;
             }
       >
         <span>
@@ -658,8 +670,8 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           justify-content: space-around;
           min-width: 0px;
           padding-bottom: 0;
-          padding-left: 16px;
-          padding-right: 24px;
+          padding-left: 12px;
+          padding-right: 12px;
           padding-top: 0;
           text-align: left;
           width: 100%;
@@ -669,8 +681,8 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       className=
           ms-Persona-primaryText
           {
-            color: #333333;
-            font-size: 17px;
+            color: #323130;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -686,6 +698,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -696,7 +709,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       className=
           ms-Persona-secondaryText
           {
-            color: #666666;
+            color: #605e5c;
             font-size: 12px;
             font-weight: 400;
             overflow: hidden;
@@ -709,9 +722,9 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       className=
           ms-Persona-tertiaryText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -723,9 +736,9 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       className=
           ms-Persona-optionalText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -748,7 +761,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -769,7 +782,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
         display: none;
       }
       &:hover $primaryText {
-        color: #212121;
+        color: #201f1e;
       }
 >
   <div
@@ -800,11 +813,11 @@ exports[`Persona renders Persona correctly with no props 1`] = `
         className=
             ms-Persona-initials
             {
-              background-color: #2D89EF;
+              background-color: #0078D4;
               border-radius: 50%;
               color: #ffffff;
-              font-size: 17px;
-              font-weight: 400;
+              font-size: 16px;
+              font-weight: 600;
               height: 48px;
               line-height: 46px;
             }
@@ -814,6 +827,9 @@ exports[`Persona renders Persona correctly with no props 1`] = `
               border: 1px solid WindowText;
               box-sizing: border-box;
               color: WindowText;
+            }
+            & i {
+              font-weight: 600;
             }
       >
         <i
@@ -846,8 +862,8 @@ exports[`Persona renders Persona correctly with no props 1`] = `
           justify-content: space-around;
           min-width: 0px;
           padding-bottom: 0;
-          padding-left: 16px;
-          padding-right: 24px;
+          padding-left: 12px;
+          padding-right: 12px;
           padding-top: 0;
           text-align: left;
           width: 100%;
@@ -857,8 +873,8 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       className=
           ms-Persona-primaryText
           {
-            color: #333333;
-            font-size: 17px;
+            color: #323130;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -870,7 +886,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       className=
           ms-Persona-secondaryText
           {
-            color: #666666;
+            color: #605e5c;
             font-size: 12px;
             font-weight: 400;
             overflow: hidden;
@@ -883,9 +899,9 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       className=
           ms-Persona-tertiaryText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -897,9 +913,9 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       className=
           ms-Persona-optionalText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -923,7 +939,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -944,7 +960,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         display: none;
       }
       &:hover $primaryText {
-        color: #212121;
+        color: #201f1e;
       }
 >
   <div
@@ -975,11 +991,11 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         className=
             ms-Persona-initials
             {
-              background-color: #7E3878;
+              background-color: #8E562E;
               border-radius: 50%;
               color: #ffffff;
               font-size: 42px;
-              font-weight: 400;
+              font-weight: 600;
               height: 100px;
               line-height: 100px;
             }
@@ -989,6 +1005,9 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               border: 1px solid WindowText;
               box-sizing: border-box;
               color: WindowText;
+            }
+            & i {
+              font-weight: 600;
             }
       >
         <span>
@@ -1020,19 +1039,8 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               background-color: WindowText;
               border-color: Window;
             }
-            &:before {
-              border-radius: 50%;
-              border: 2px solid #D93B3B;
-              box-sizing: border-box;
-              content: "";
-              height: 100%;
-              left: 0px;
-              position: absolute;
-              top: 0px;
-              width: 100%;
-            }
             &:after {
-              background-color: #D93B3B;
+              background-color: #C43148;
               content: "";
               height: 2px;
               left: 0px;
@@ -1041,17 +1049,28 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               transform: translateY(-50%) rotate(-45deg);
               width: 100%;
             }
+            @media screen and (-ms-high-contrast: active){&:after {
+              background-color: Window;
+              left: 2px;
+              width: calc(100% - 4px);
+            }
+            &:before {
+              border-radius: 50%;
+              border: 2px solid #C43148;
+              box-sizing: border-box;
+              content: "";
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
             @media screen and (-ms-high-contrast: active){&:before {
               border-color: Window;
               height: calc(100% - 2px);
               left: 1px;
               top: 1px;
               width: calc(100% - 2px);
-            }
-            @media screen and (-ms-high-contrast: active){&:after {
-              background-color: Window;
-              left: 2px;
-              width: calc(100% - 4px);
             }
       >
         <i
@@ -1096,9 +1115,9 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       className=
           ms-Persona-primaryText
           {
-            color: #333333;
-            font-size: 21px;
-            font-weight: 300;
+            color: #323130;
+            font-size: 20px;
+            font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -1113,6 +1132,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1123,7 +1143,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       className=
           ms-Persona-secondaryText
           {
-            color: #666666;
+            color: #605e5c;
             font-size: 14px;
             font-weight: 400;
             overflow: hidden;
@@ -1140,6 +1160,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1150,9 +1171,9 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       className=
           ms-Persona-tertiaryText
           {
-            color: #666666;
+            color: #605e5c;
             display: block;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -1168,6 +1189,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1178,9 +1200,9 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       className=
           ms-Persona-optionalText
           {
-            color: #666666;
+            color: #605e5c;
             display: block;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -1196,6 +1218,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1218,7 +1241,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -1239,7 +1262,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         display: none;
       }
       &:hover $primaryText {
-        color: #212121;
+        color: #201f1e;
       }
 >
   <div
@@ -1339,19 +1362,8 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               background-color: WindowText;
               border-color: Window;
             }
-            &:before {
-              border-radius: 50%;
-              border: 2px solid #D93B3B;
-              box-sizing: border-box;
-              content: "";
-              height: 100%;
-              left: 0px;
-              position: absolute;
-              top: 0px;
-              width: 100%;
-            }
             &:after {
-              background-color: #D93B3B;
+              background-color: #C43148;
               content: "";
               height: 2px;
               left: 0px;
@@ -1360,17 +1372,28 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               transform: translateY(-50%) rotate(-45deg);
               width: 100%;
             }
+            @media screen and (-ms-high-contrast: active){&:after {
+              background-color: Window;
+              left: 2px;
+              width: calc(100% - 4px);
+            }
+            &:before {
+              border-radius: 50%;
+              border: 2px solid #C43148;
+              box-sizing: border-box;
+              content: "";
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
             @media screen and (-ms-high-contrast: active){&:before {
               border-color: Window;
               height: calc(100% - 2px);
               left: 1px;
               top: 1px;
               width: calc(100% - 2px);
-            }
-            @media screen and (-ms-high-contrast: active){&:after {
-              background-color: Window;
-              left: 2px;
-              width: calc(100% - 4px);
             }
       >
         <i
@@ -1415,9 +1438,9 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       className=
           ms-Persona-primaryText
           {
-            color: #333333;
-            font-size: 21px;
-            font-weight: 300;
+            color: #323130;
+            font-size: 20px;
+            font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -1432,6 +1455,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1442,7 +1466,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       className=
           ms-Persona-secondaryText
           {
-            color: #666666;
+            color: #605e5c;
             font-size: 14px;
             font-weight: 400;
             overflow: hidden;
@@ -1459,6 +1483,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1469,9 +1494,9 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       className=
           ms-Persona-tertiaryText
           {
-            color: #666666;
+            color: #605e5c;
             display: block;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -1487,6 +1512,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1497,9 +1523,9 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       className=
           ms-Persona-optionalText
           {
-            color: #666666;
+            color: #605e5c;
             display: block;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -1515,6 +1541,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1634,11 +1661,11 @@ exports[`PersonaCoin renders correctly 1`] = `
       className=
           ms-Persona-initials
           {
-            background-color: #2D89EF;
+            background-color: #0078D4;
             border-radius: 50%;
             color: #ffffff;
-            font-size: 17px;
-            font-weight: 400;
+            font-size: 16px;
+            font-weight: 600;
             height: 48px;
             line-height: 46px;
           }
@@ -1648,6 +1675,9 @@ exports[`PersonaCoin renders correctly 1`] = `
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+          }
+          & i {
+            font-weight: 600;
           }
     >
       <i
@@ -1782,11 +1812,11 @@ exports[`PersonaCoin renders correctly with onRender callback 1`] = `
       className=
           ms-Persona-initials
           {
-            background-color: #7E3878;
+            background-color: #8E562E;
             border-radius: 50%;
             color: #ffffff;
             font-size: 42px;
-            font-weight: 400;
+            font-weight: 600;
             height: 100px;
             line-height: 100px;
           }
@@ -1796,6 +1826,9 @@ exports[`PersonaCoin renders correctly with onRender callback 1`] = `
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+          }
+          & i {
+            font-weight: 600;
           }
     >
       <span>
@@ -1835,11 +1868,11 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
       className=
           ms-Persona-initials
           {
-            background-color: #2D89EF;
+            background-color: #0078D4;
             border-radius: 50%;
             color: #ffffff;
-            font-size: 17px;
-            font-weight: 400;
+            font-size: 16px;
+            font-weight: 600;
             height: 48px;
             line-height: 46px;
           }
@@ -1849,6 +1882,9 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+          }
+          & i {
+            font-weight: 600;
           }
     >
       <span>
@@ -1888,11 +1924,11 @@ exports[`PersonaCoin renders correctly with text 1`] = `
       className=
           ms-Persona-initials
           {
-            background-color: #5E4B8B;
+            background-color: #498205;
             border-radius: 50%;
             color: #ffffff;
-            font-size: 17px;
-            font-weight: 400;
+            font-size: 16px;
+            font-weight: 600;
             height: 48px;
             line-height: 46px;
           }
@@ -1902,6 +1938,9 @@ exports[`PersonaCoin renders correctly with text 1`] = `
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+          }
+          & i {
+            font-weight: 600;
           }
     >
       <span>
@@ -1941,11 +1980,11 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
       className=
           ms-Persona-initials
           {
-            background-color: #5E4B8B;
+            background-color: #498205;
             border-radius: 50%;
             color: #ffffff;
-            font-size: 17px;
-            font-weight: 400;
+            font-size: 16px;
+            font-weight: 600;
             height: 48px;
             line-height: 46px;
           }
@@ -1955,6 +1994,9 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+          }
+          & i {
+            font-weight: 600;
           }
     >
       <span>

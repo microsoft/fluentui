@@ -389,6 +389,10 @@ export const divProperties = htmlElementProperties;
  * @returns The filtered props
  */
 export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T {
+  // It'd be great to properly type this while allowing 'aria-` and 'data-' attributes like TypeScript does for JSX attributes,
+  // but that ability is hardcoded into the TS compiler with no analog in TypeScript typings.
+  // Then we'd be able to enforce props extends native props (including aria- and data- attributes), and then return native props.
+  // We should be able to do this once this PR is merged: https://github.com/microsoft/TypeScript/pull/26797
   return filteredAssign(
     (propName: string) => {
       return (

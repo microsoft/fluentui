@@ -29,9 +29,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
           background: #ffffff;
-          border-bottom: 1px solid #f4f4f4;
+          border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -53,7 +53,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #666666;
+          border: 1px solid #605e5c;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -63,13 +63,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
-          background: #f4f4f4;
+          background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -121,7 +128,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -140,21 +147,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -193,7 +185,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -212,21 +204,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -255,7 +232,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 text-decoration: none;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -265,8 +242,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
               }
               &:focus {
@@ -300,7 +275,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -319,21 +294,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -355,21 +315,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -386,14 +342,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -410,16 +366,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -500,9 +456,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
           background: #ffffff;
-          border-bottom: 1px solid #f4f4f4;
+          border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -524,7 +480,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #666666;
+          border: 1px solid #605e5c;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -534,13 +490,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
-          background: #f4f4f4;
+          background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -592,7 +555,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -611,21 +574,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -664,7 +612,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -683,21 +631,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -726,7 +659,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 text-decoration: none;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -736,8 +669,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
               }
               &:focus {
@@ -771,7 +702,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -790,21 +721,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -826,21 +742,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -857,14 +769,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -881,16 +793,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -971,9 +883,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
           background: #ffffff;
-          border-bottom: 1px solid #f4f4f4;
+          border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -995,7 +907,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #666666;
+          border: 1px solid #605e5c;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -1005,13 +917,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
-          background: #f4f4f4;
+          background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -1063,7 +982,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -1082,21 +1001,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -1135,7 +1039,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -1154,21 +1058,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -1197,7 +1086,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 text-decoration: none;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -1207,8 +1096,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
               }
               &:focus {
@@ -1242,7 +1129,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -1261,21 +1148,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -1297,21 +1169,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -1328,14 +1196,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1352,16 +1220,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -1442,9 +1310,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
           background: #ffffff;
-          border-bottom: 1px solid #f4f4f4;
+          border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -1466,7 +1334,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #666666;
+          border: 1px solid #605e5c;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -1476,13 +1344,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
-          background: #f4f4f4;
+          background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -1534,7 +1409,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -1553,21 +1428,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -1606,7 +1466,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -1625,21 +1485,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -1668,7 +1513,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 text-decoration: none;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -1678,8 +1523,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
               }
               &:focus {
@@ -1713,7 +1556,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -1732,21 +1575,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -1768,21 +1596,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -1799,14 +1623,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1823,16 +1647,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -1913,9 +1737,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
           background: #ffffff;
-          border-bottom: 1px solid #f4f4f4;
+          border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -1937,7 +1761,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #666666;
+          border: 1px solid #605e5c;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -1947,13 +1771,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
-          background: #f4f4f4;
+          background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -2005,7 +1836,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -2024,21 +1855,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -2077,7 +1893,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -2096,21 +1912,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -2139,7 +1940,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 text-decoration: none;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -2149,8 +1950,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
               }
               &:focus {
@@ -2184,7 +1983,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -2203,21 +2002,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -2239,21 +2023,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -2270,14 +2050,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2294,16 +2074,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2384,9 +2164,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
           background: #ffffff;
-          border-bottom: 1px solid #f4f4f4;
+          border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -2408,7 +2188,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #666666;
+          border: 1px solid #605e5c;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -2418,13 +2198,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
-          background: #f4f4f4;
+          background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -2476,7 +2263,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -2495,21 +2282,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -2548,7 +2320,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -2567,21 +2339,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -2610,7 +2367,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 text-decoration: none;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -2620,8 +2377,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
               }
               &:focus {
@@ -2655,7 +2410,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -2674,21 +2429,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -2710,21 +2450,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -2741,14 +2477,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2765,16 +2501,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -2855,9 +2591,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
           background: #ffffff;
-          border-bottom: 1px solid #f4f4f4;
+          border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -2879,7 +2615,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #666666;
+          border: 1px solid #605e5c;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -2889,13 +2625,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
-          background: #f4f4f4;
+          background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -2947,7 +2690,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -2966,21 +2709,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -3019,7 +2747,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -3038,21 +2766,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -3081,7 +2794,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 text-decoration: none;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -3091,8 +2804,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
               }
               &:focus {
@@ -3126,7 +2837,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -3145,21 +2856,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -3181,21 +2877,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -3212,14 +2904,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -3236,16 +2928,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -3326,9 +3018,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
           background: #ffffff;
-          border-bottom: 1px solid #f4f4f4;
+          border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -3350,7 +3042,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #666666;
+          border: 1px solid #605e5c;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -3360,13 +3052,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
-          background: #f4f4f4;
+          background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -3418,7 +3117,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -3437,21 +3136,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -3490,7 +3174,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -3509,21 +3193,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -3552,7 +3221,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 text-decoration: none;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -3562,8 +3231,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
               }
               &:focus {
@@ -3597,7 +3264,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -3616,21 +3283,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -3652,21 +3304,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -3683,14 +3331,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -3707,16 +3355,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -3797,9 +3445,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
           background: #ffffff;
-          border-bottom: 1px solid #f4f4f4;
+          border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -3821,7 +3469,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #666666;
+          border: 1px solid #605e5c;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -3831,13 +3479,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
-          background: #f4f4f4;
+          background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -3889,7 +3544,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -3908,21 +3563,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -3961,7 +3601,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -3980,21 +3620,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -4023,7 +3648,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 text-decoration: none;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -4033,8 +3658,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
               }
               &:focus {
@@ -4068,7 +3691,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -4087,21 +3710,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -4123,21 +3731,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -4154,14 +3758,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -4178,16 +3782,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -4268,9 +3872,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           animation-name: keyframes from{opacity:0;}to{opacity:1;};
           animation-timing-function: cubic-bezier(.1,.25,.75,.9);
           background: #ffffff;
-          border-bottom: 1px solid #f4f4f4;
+          border-bottom: 1px solid #f3f2f1;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -4292,7 +3896,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #666666;
+          border: 1px solid #605e5c;
           bottom: 1px;
           content: "";
           left: 1px;
@@ -4302,13 +3906,20 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
-        ms-List-cell:first-child &:before {
+        .ms-List-cell:first-child &:before {
           display: none;
         }
         &:hover {
-          background: #f4f4f4;
+          background: #f3f2f1;
+          color: #323130;
+        }
+        &:hover .is-row-header {
+          color: #201f1e;
         }
         &:hover $check {
+          opacity: 1;
+        }
+        .ms-Fabric--isFocusVisible &:focus $check {
           opacity: 1;
         }
     data-automationid="DetailsRow"
@@ -4360,7 +3971,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -4379,21 +3990,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -4432,7 +4028,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -4451,21 +4047,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -4494,7 +4075,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 text-decoration: none;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                box-shadow: 0 0 0 1px #666666 inset;
+                box-shadow: 0 0 0 1px #605e5c inset;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
@@ -4504,8 +4085,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               }
               &:active, &:hover, &:active:hover {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                 text-decoration: underline;
               }
               &:focus {
@@ -4539,7 +4118,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #666666;
+              border: 1px solid #605e5c;
               bottom: 0px;
               content: "";
               left: 0px;
@@ -4558,21 +4137,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             & [data-is-focusable='true']::-moz-focus-inner {
               border: 0;
-            }
-            &$shimmer {
-              border-bottom: 17.5px solid #ffffff;
-              border-left: 12px solid #ffffff;
-              border-right: 32px solid #ffffff;
-              border-top: 17.5px solid #ffffff;
-              padding-bottom: 0px;
-              padding-left: 0px;
-              padding-right: 0px;
-              padding-top: 0px;
-            }
-            &$shimmerIconPlaceholder {
-              border-bottom: 13px solid #ffffff;
-              border-right: 8px solid #ffffff;
-              border-top: 13px solid #ffffff;
             }
             {
               padding-right: 8px;
@@ -4594,21 +4158,17 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
+                background-color: #ffffff;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -4625,14 +4185,14 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -4649,16 +4209,16 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                background-color: #c8c8c8;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={true}
           onClick={[Function]}

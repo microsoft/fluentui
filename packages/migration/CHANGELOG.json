@@ -2,6 +2,123 @@
   "name": "@uifabric/migration",
   "entries": [
     {
+      "version": "7.0.2",
+      "tag": "@uifabric/migration_v7.0.2",
+      "date": "Fri, 14 Jun 2019 12:26:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix missing assets in production build.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "e1bebe54dd798847060baaf4a52956c2f6dd866b"
+          },
+          {
+            "comment": "Fixing file that caused tslint issue in pre-commit hook validation.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "f5738f8e4a71ebb1621fa684ff06a2566478ade0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.1` to `^7.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.1",
+      "tag": "@uifabric/migration_v7.0.1",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.3.0",
+      "tag": "@uifabric/migration_v0.3.0",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Non-destructive run by default, show affected files.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "9dd16b5d5317ca28df279ef7c5fbfa0392370291"
+          },
+          {
+            "comment": "Add migration for removed ColorPicker props",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "5f1923d49028686b99f98cbf59d04545ad85a843"
+          },
+          {
+            "comment": "Ignore files in node_modules directories",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "422b15b5b28a334c93545b5717dfa47af7c44c97"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ComboBox: Migration to rename deprecated props to new props.",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "403f82d28188dbe2a2ebe63a66f669f2c13caa3e"
+          },
+          {
+            "comment": "SearchBox: Alert for onChange props arguments change.",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "403f82d28188dbe2a2ebe63a66f669f2c13caa3e"
+          },
+          {
+            "comment": "Remove createRef imports from OUFR",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "56bd533c896e1df7ef755c8de64a32b1f63cde00"
+          },
+          {
+            "comment": "Nav: import from @uifabric/legacy",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "70c46b34ff5d127c0268cd2c4eebc739e397126f"
+          },
+          {
+            "comment": "@autobind: Migration to warn about removal.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "d7dd09998172855cfd005aa2ec901a575b838619"
+          },
+          {
+            "comment": "Remove migration for nav to legacy",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "1226e0857e0fc16a9884d7d011ce0e738cfeb04e"
+          },
+          {
+            "comment": "Add migrations for removed TextField props",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "04983f31fedbf04c33f7cfd2395e58b5a9a7d03a"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Add code mod for removal of DetailsRowCheck.isSelected in favor of 'selected'",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "1b578736ac4b80058d6b8b60d8b81f16109aed20"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.2",
       "tag": "@uifabric/migration_v0.2.2",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

@@ -1,6 +1,71 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 06 Jun 2019 12:22:24 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jun 2019 12:27:38 GMT and should not be manually modified.
+
+## 7.1.5
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- Renamed instances of "Microsoft UI Fabric" to "UI Fabric"
+
+## 7.1.4
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Patches
+
+- Get rid of references to _exampleStyles.scss
+
+## 7.1.3
+Tue, 18 Jun 2019 19:00:04 GMT
+
+### Patches
+
+- Mobile: Added source code links, removed generic library link.
+
+## 7.1.2
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- Add overview and controls request sections to mobile pages.
+- Add theme slots page
+- Add links to documentation pages.
+
+## 7.1.1
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Add more mobile docs, update screenshots.
+- Fix missing assets in production build.
+
+## 7.1.0
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Minor changes
+
+- Bundles react with the site to prevent version mismatch issues
+
+### Patches
+
+- Clean up Site component life-cycle
+- Initial release of Fabric 7
+
+## 6.19.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Minor changes
+
+- Changes to support slots API refactoring
+
+### Patches
+
+- Update Calendar and DatePicker import paths
+- Update and dedupe React deps.
+- Support slots API changes.
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
+- Update Router imports
 
 ## 6.18.11
 Thu, 06 Jun 2019 12:22:24 GMT

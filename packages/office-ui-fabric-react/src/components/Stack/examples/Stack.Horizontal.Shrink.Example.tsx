@@ -1,9 +1,41 @@
 import * as React from 'react';
-import { mergeStyleSets, DefaultPalette, IStackTokens, Slider, Stack } from 'office-ui-fabric-react';
+import { DefaultPalette, Slider, Stack, IStackStyles, IStackTokens, IStackItemStyles } from 'office-ui-fabric-react';
 
 export interface IExampleState {
   stackWidth: number;
 }
+
+// Non-mutating styles definition
+const stackItemStyles: IStackItemStyles = {
+  root: {
+    alignItems: 'center',
+    background: DefaultPalette.themePrimary,
+    color: DefaultPalette.white,
+    display: 'flex',
+    height: 50,
+    justifyContent: 'center',
+    overflow: 'hidden'
+  }
+};
+const nonShrinkingStackItemStyles: IStackItemStyles = {
+  root: {
+    alignItems: 'center',
+    background: DefaultPalette.themePrimary,
+    color: DefaultPalette.white,
+    display: 'flex',
+    height: 50,
+    justifyContent: 'center',
+    overflow: 'hidden',
+    width: 500
+  }
+};
+
+// Tokens definition
+const outerStackTokens: IStackTokens = { childrenGap: 5 };
+const innerStackTokens: IStackTokens = {
+  childrenGap: 5,
+  padding: 10
+};
 
 export class HorizontalStackShrinkExample extends React.Component<{}, IExampleState> {
   constructor(props: {}) {
@@ -14,28 +46,17 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
   }
 
   public render(): JSX.Element {
-    const styles = mergeStyleSets({
+    // Mutating styles definition
+    const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
-        width: `${this.state.stackWidth}%`,
-        overflow: 'hidden'
-      },
-
-      item: {
-        height: 50,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        color: DefaultPalette.white,
-        background: DefaultPalette.themePrimary,
-        overflow: 'hidden'
+        overflow: 'hidden',
+        width: `${this.state.stackWidth}%`
       }
-    });
-
-    const stackTokens: IStackTokens = { childrenGap: 5 };
+    };
 
     return (
-      <Stack tokens={stackTokens}>
+      <Stack tokens={outerStackTokens}>
         <Slider
           label="Change the stack width to see how child items shrink:"
           min={1}
@@ -45,17 +66,17 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
           showValue={true}
           onChange={this._onWidthChange}
         />
-        <Stack horizontal tokens={stackTokens} padding={10} className={styles.root}>
-          <Stack.Item grow className={styles.item}>
+        <Stack horizontal styles={stackStyles} tokens={innerStackTokens}>
+          <Stack.Item grow styles={stackItemStyles}>
             I shrink
           </Stack.Item>
-          <Stack.Item grow className={styles.item}>
+          <Stack.Item grow styles={stackItemStyles}>
             I shrink
           </Stack.Item>
-          <Stack.Item grow disableShrink className={styles.item} styles={{ root: { width: 500 } }}>
+          <Stack.Item grow disableShrink styles={nonShrinkingStackItemStyles}>
             I don't shrink
           </Stack.Item>
-          <Stack.Item grow className={styles.item}>
+          <Stack.Item grow styles={stackItemStyles}>
             I shrink
           </Stack.Item>
         </Stack>

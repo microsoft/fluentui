@@ -13,7 +13,6 @@ import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
-import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 
 const _items: IAnnouncedQuickActionsExampleItem[] = [];
 
@@ -39,8 +38,8 @@ const _names: string[] = [
   'Makenzie Sharett'
 ];
 
-function generateRandomDate(): string {
-  return new Date(new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())).toDateString();
+function getMockDateString(): string {
+  return 'Thu Jan 05 2017‌';
 }
 
 export interface IAnnouncedQuickActionsExampleItem {
@@ -61,8 +60,8 @@ export interface IAnnouncedQuickActionsExampleState {
 
 export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnouncedQuickActionsExampleState> {
   private _selection: Selection;
-  private _detailsList = createRef<IDetailsList>();
-  private _textField = createRef<ITextField>();
+  private _detailsList = React.createRef<IDetailsList>();
+  private _textField = React.createRef<ITextField>();
 
   constructor(props: {}) {
     super(props);
@@ -73,7 +72,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
         _items.push({
           key: i,
           name: 'Item ' + i,
-          modified: generateRandomDate(),
+          modified: getMockDateString(),
           modifiedby: _names[Math.floor(Math.random() * _names.length)],
           filesize: Math.floor(Math.random() * 30).toString() + ' MB'
         });
@@ -181,7 +180,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
       renameDialogOpen: true,
       dialogContent: (
         <>
-          <TextField componentRef={this._textField} label="Rename" value={item.name} />
+          <TextField componentRef={this._textField} label="Rename" defaultValue={item.name} />
           <DialogFooter>
             <PrimaryButton onClick={this._updateItemName.bind(this, index)} text="Save" />
           </DialogFooter>
