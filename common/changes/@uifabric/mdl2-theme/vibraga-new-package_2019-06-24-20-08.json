@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/mdl2-theme",
+      "comment": "New theme package to be used on top of Fabric 7 to get Fabric 6 looks.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/mdl2-theme",
+  "email": "vibraga@microsoft.com"
+}
