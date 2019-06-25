@@ -55,7 +55,8 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     { from: '#/styles/typography', to: '#/styles/web/typography' },
     { from: '#/styles/utilities', to: '#/styles/web' },
     { from: '#/controls/web/fluent-theme', to: '#/styles/web/fluent-theme' },
-    { from: '#/examples', to: '#/controls/web' }
+    { from: '#/examples', to: '#/controls/web' },
+    { from: '#mainContent', to: '#/get-started' } // Universal header accessibility tab stop
   ],
   messageBars: [
     {
