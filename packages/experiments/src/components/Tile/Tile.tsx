@@ -5,7 +5,7 @@ import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
 import { ISize, css, BaseComponent, getId, getNativeProps, divProperties } from '../../Utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signal.scss';
-import * as CheckStylesModule from 'office-ui-fabric-react/lib/components/Check/Check.scss';
+import * as CheckStylesModule from './Check.scss';
 
 // tslint:disable:no-any
 const TileStyles: any = TileStylesModule;
@@ -37,7 +37,7 @@ export const TileLayoutSizes: {
     nameplateMargin: number;
     nameplateActivityHeight: number;
     foregroundMargin: number;
-  }
+  };
 } = {
   small: {
     nameplatePadding: TileLayoutValues.nameplatePadding,
