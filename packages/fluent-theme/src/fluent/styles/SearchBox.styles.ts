@@ -25,7 +25,7 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
               backgroundColor: 'transparent'
             },
             '.ms-Button-icon': {
-              color: palette.black
+              color: palette.neutralPrimary
             }
           }
         },
