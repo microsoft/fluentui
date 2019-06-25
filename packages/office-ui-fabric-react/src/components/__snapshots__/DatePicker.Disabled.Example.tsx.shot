@@ -139,6 +139,15 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     color: #a6a6a6;
                     opacity: 1;
                   }
+                  &::-ms-input-placeholder {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a19f9d;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    opacity: 1;
+                  }
               disabled={true}
               id="DatePicker0-label"
               onBlur={[Function]}
@@ -351,6 +360,15 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   }
                   &:-ms-input-placeholder {
                     color: #a6a6a6;
+                    opacity: 1;
+                  }
+                  &::-ms-input-placeholder {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a19f9d;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     opacity: 1;
                   }
               disabled={true}

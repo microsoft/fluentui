@@ -202,6 +202,15 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   color: #666666;
                   opacity: 1;
                 }
+                &::-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
             id="TextField0"
             onBlur={[Function]}
             onChange={[Function]}
@@ -376,6 +385,15 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   color: #a6a6a6;
                   opacity: 1;
                 }
+                &::-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #a19f9d;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
             disabled={true}
             id="TextField3"
             onBlur={[Function]}
@@ -540,6 +558,15 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 }
                 &:-ms-input-placeholder {
                   color: #666666;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField6"
@@ -737,6 +764,15 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 }
                 &:-ms-input-placeholder {
                   color: #666666;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField9"
