@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Coachmark: fixes beacon color props not being passed to styles.",
+      "comment": "TextField: Add condition for Edge browser to detect placeholder styles",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "vibraga@microsoft.com"
+  "email": "afhassan@microsoft.com"
 }

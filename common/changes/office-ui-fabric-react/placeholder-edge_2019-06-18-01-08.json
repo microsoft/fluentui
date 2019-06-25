@@ -1,9 +1,9 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown:Bring back breakpoint for small screen sizes",
-      "type": "patch"
+      "type": "none"
     }
   ],
   "packageName": "office-ui-fabric-react",
