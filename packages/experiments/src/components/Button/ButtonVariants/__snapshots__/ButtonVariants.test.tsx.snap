@@ -277,13 +277,12 @@ exports[`Button Variants renders a PrimaryButton correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background-color: #ffffff;
-        border-color: #8a8886;
+        background-color: #0078d4;
         border-radius: 2px;
         border-style: solid;
-        border-width: 1px;
+        border-width: 0px;
         box-sizing: border-box;
-        color: #323130;
+        color: #ffffff;
         cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -296,6 +295,7 @@ exports[`Button Variants renders a PrimaryButton correctly 1`] = `
         margin-top: 0px;
         min-height: 32px;
         min-width: 100px;
+        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -316,47 +316,49 @@ exports[`Button Variants renders a PrimaryButton correctly 1`] = `
         bottom: 2px;
         content: "";
         left: 2px;
-        outline: 1px solid #605e5c;
+        outline: 1px solid transparent;
         position: absolute;
         right: 2px;
         top: 2px;
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){& {
+        -ms-high-contrast-adjust: none;
+        background-color: WindowText;
         border-width: 1px;
+        color: Window;
       }
       &:hover {
-        background-color: #f3f2f1;
-        border-color: #8a8886;
-        color: #201f1e;
+        background-color: #106ebe;
+        color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
-        border-color: Highlight;
-        color: Highlight;
+        background-color: Highlight;
+        color: Window;
       }
       &:active {
-        background-color: #edebe9;
-        border-color: #8a8886;
-        color: #201f1e;
+        background-color: #005a9e;
+        color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active){&:active {
-        border-color: Highlight;
-        color: Highlight;
+        background-color: Highlight;
+        color: Window;
       }
       &:hover .ms-Button-icon {
-        color: #201f1e;
+        color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
-        color: Highlight;
+        color: Window;
       }
       &:active .ms-Button-icon {
-        color: #201f1e;
+        color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
-        color: Highlight;
+        color: Window;
       }
       .ms-Fabric--isFocusVisible &:focus {
         border-style: solid;
+        outline-color: transparent;
       }
   onClick={[Function]}
   role="button"
@@ -510,10 +512,10 @@ exports[`Button Variants renders a default CompoundButton correctly 1`] = `
     className=
         ms-Stack
         {
-          align-items: center;
+          align-items: flex-start;
           box-sizing: border-box;
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
@@ -809,10 +811,10 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
     className=
         ms-Stack
         {
-          align-items: center;
+          align-items: flex-start;
           box-sizing: border-box;
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
@@ -1036,6 +1038,7 @@ exports[`Button Variants renders a disabled ActionButton correctly 1`] = `
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
+        min-width: 100px;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -1096,7 +1099,7 @@ exports[`Button Variants renders a disabled ActionButton correctly 1`] = `
           flex-direction: row;
           flex-wrap: nowrap;
           height: 100%;
-          justify-content: center;
+          justify-content: flex-start;
           padding-bottom: 0px;
           padding-left: 8px;
           padding-right: 8px;
@@ -1797,10 +1800,10 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
     className=
         ms-Stack
         {
-          align-items: center;
+          align-items: flex-start;
           box-sizing: border-box;
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
@@ -2109,10 +2112,10 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
     className=
         ms-Stack
         {
-          align-items: center;
+          align-items: flex-start;
           box-sizing: border-box;
           display: flex;
-          flex-direction: row;
+          flex-direction: column;
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
@@ -2338,6 +2341,7 @@ exports[`Button Variants renders an ActionButton correctly 1`] = `
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
+        min-width: 100px;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -2398,7 +2402,7 @@ exports[`Button Variants renders an ActionButton correctly 1`] = `
           flex-direction: row;
           flex-wrap: nowrap;
           height: 100%;
-          justify-content: center;
+          justify-content: flex-start;
           padding-bottom: 0px;
           padding-left: 8px;
           padding-right: 8px;

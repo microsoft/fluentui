@@ -84,7 +84,13 @@ const CompoundButtonStyles: IButtonComponent['styles'] = (props, theme, tokens):
         }
       }
     ],
-    stack: regularStyles.stack,
+    stack: [
+      regularStyles.stack,
+      {
+        alignItems: 'flex-start',
+        flexDirection: 'column'
+      }
+    ],
     icon: regularStyles.icon
   };
 };

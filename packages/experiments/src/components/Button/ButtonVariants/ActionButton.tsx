@@ -1,9 +1,17 @@
 import * as React from 'react';
-import { createComponent } from '@uifabric/foundation';
+import { createComponent, IComponentStyles, IStylesFunction } from '@uifabric/foundation';
 import { FontWeights } from '../../../Styling';
 import { useButtonState as state } from '../Button.state';
-import { ButtonStyles as styles } from '../Button.styles';
-import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from '../Button.types';
+import { ButtonStyles } from '../Button.styles';
+import {
+  IButtonComponent,
+  IButtonProps,
+  IButtonSlots,
+  IButtonStylesReturnType,
+  IButtonTokenReturnType,
+  IButtonTokens,
+  IButtonViewProps
+} from '../Button.types';
 import { ButtonView } from '../Button.view';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
@@ -25,6 +33,7 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     iconColor: semanticColors.buttonText,
     iconColorHovered: palette.themePrimary,
     iconColorPressed: palette.black,
+    minWidth: 100,
     textWeight: FontWeights.regular
   };
 };
@@ -47,6 +56,26 @@ const ActionButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTo
   props.disabled && disabledTokens
 ];
 
+const ActionButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
+  const regularStyles = (ButtonStyles as IStylesFunction<IButtonViewProps, IButtonTokens, IComponentStyles<IButtonSlots>>)(
+    props,
+    theme,
+    tokens
+  );
+
+  return {
+    root: regularStyles.root,
+    content: regularStyles.content,
+    stack: [
+      regularStyles.stack,
+      {
+        justifyContent: 'flex-start'
+      }
+    ],
+    icon: regularStyles.icon
+  };
+};
+
 // TODO: Research how to fix this.
 // const ActionButtonStackProps: IButtonProps['stack'] = {
 //   horizontalAlign: 'start'
@@ -55,6 +84,6 @@ const ActionButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTo
 export const ActionButton: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
   displayName: 'ActionButton',
   state,
-  styles,
+  styles: ActionButtonStyles,
   tokens: ActionButtonTokens
 });
