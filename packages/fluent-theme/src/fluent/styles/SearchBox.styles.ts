@@ -19,15 +19,11 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
     },
     clearButton: {
       selectors: {
-        '&:hover': {
-          selectors: {
-            '.ms-Button': {
-              backgroundColor: 'transparent'
-            },
-            '.ms-Button-icon': {
-              color: palette.neutralPrimary
-            }
-          }
+        '&:hover .ms-Button': {
+          backgroundColor: 'transparent'
+        },
+        '&:hover .ms-Button-icon': {
+          color: palette.neutralPrimary
         },
         '.ms-Button-icon': {
           color: palette.neutralSecondary
