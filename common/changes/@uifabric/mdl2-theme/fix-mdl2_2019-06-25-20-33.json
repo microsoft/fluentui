@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/mdl2-theme",
+      "comment": "Bump OUFR dependency",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/mdl2-theme",
+  "email": "mgodbolt@microsoft.com"
+}
