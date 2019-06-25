@@ -61,6 +61,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       coinSize,
       styles,
       imageUrl,
+      isOutOfOffice,
       onRenderCoin = this._onRenderCoin,
       onRenderInitials = this._onRenderInitials,
       presence,
@@ -76,6 +77,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
     const personaPresenceProps: IPersonaPresenceProps = {
       coinSize,
+      isOutOfOffice,
       presence,
       size,
       theme
