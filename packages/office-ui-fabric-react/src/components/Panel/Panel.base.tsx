@@ -194,9 +194,9 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
             >
               <div className={_classNames.commands} data-is-visible={true}>
                 {onRenderNavigation(this.props, this._onRenderNavigation)}
+                {header}
               </div>
               <div className={_classNames.contentInner}>
-                {header}
                 <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent} data-is-scrollable={true}>
                   {onRenderBody(this.props, this._onRenderBody)}
                 </div>

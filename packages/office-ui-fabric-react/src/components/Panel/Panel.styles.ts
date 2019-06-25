@@ -160,12 +160,11 @@ const sharedPaddingStyles = {
   paddingRight: '16px',
   selectors: {
     [`@media screen and (min-width: ${ScreenWidthMinLarge}px)`]: {
-      paddingLeft: '32px',
-      paddingRight: '32px'
+      paddingLeft: '15px',
+      paddingRight: '20px'
     },
     [`@media screen and (min-width: ${ScreenWidthMinXXLarge}px)`]: {
-      paddingLeft: '40px',
-      paddingRight: '40px'
+      padding: '10px 15px 15px 15px'
     }
   }
 };
@@ -291,13 +290,21 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
       focusTrapZoneClassName
     ],
-    commands: [classNames.commands],
+    commands: [
+      classNames.commands,
+      {
+        display: 'inline-flex',
+        flexFlow: 'row-reverse',
+        flexWrap: 'wrap'
+      }
+    ],
     navigation: [
       classNames.navigation,
       {
-        padding: '0 5px',
+        padding: '1px 5px 0 5px',
         height: commandBarHeight,
         display: 'flex',
+        flex: 3,
         justifyContent: 'flex-end'
       }
     ],
@@ -308,6 +315,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         display: 'flex',
         flexDirection: 'column',
         flexGrow: 1,
+        flex: 3,
         maxHeight: windowHeight,
         overflowY: 'hidden'
       },
@@ -324,7 +332,16 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         flexGrow: 0,
         selectors: {
           [`@media (min-width: ${ScreenWidthMinXLarge}px)`]: {
-            marginTop: '30px'
+            marginTop: '0',
+            flex: 20,
+            display: 'flex'
+          }
+        }
+      },
+      !hasCloseButton && {
+        selectors: {
+          [`@media (min-width: ${ScreenWidthMinXLarge}px)`]: {
+            marginTop: '25px'
           }
         }
       }
@@ -374,7 +391,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       sharedPaddingStyles,
       {
         paddingBottom: 16,
-        paddingTop: 16
+        paddingTop: 16,
+        textAlign: 'right'
       }
     ]
     // subComponentStyles: {
