@@ -206,7 +206,7 @@ const GlobalClassNames = {
 
 export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
   const { className, circular } = props;
-  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme, true);
+  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: [
