@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useState, useRef, useEffect } from 'react';
+import { useDebouncedTimeout } from './useDecouncedTimeout';
+import { usePreviousValue } from './usePreviousValue';
 
 export interface IViewportProps {
   height: number;
@@ -7,118 +9,109 @@ export interface IViewportProps {
   children: (viewportState: IViewportState) => JSX.Element[] | JSX.Element;
 }
 
+export type CoordinateTuple<T> = [T, T];
+
 export enum ScrollDirection {
   none,
   backward,
   forward
 }
 
-export enum ScrollType {
-  none,
-  user,
-  programmatic
-}
-
 export interface IViewportState {
   isScrolling: boolean;
-  scrollDistance: number;
-  scrollDirection: ScrollDirection;
-  scrollType: ScrollType;
+  scrollDistance: CoordinateTuple<number>;
+  scrollDirection: CoordinateTuple<ScrollDirection>;
 }
 
-const SCROLLING_TIMEOUT_IN_MILLISECONDS = 500;
-const NO_PENDING_SCROLLING_TIMEOUT = -1;
+export enum Coord {
+  X = 0,
+  Y = 1
+}
 
-export const Viewport = (props: IViewportProps) => {
-  const { height, width, children } = props;
+const SCROLL_DISTANCE_ORIGIN: CoordinateTuple<Coord> = [0, 0];
+const NO_SCROLL_DIRECTION: CoordinateTuple<ScrollDirection> = [ScrollDirection.none, ScrollDirection.none];
 
-  const elRef = useRef<HTMLDivElement>(null);
-  const doneScrollingTimeoutId = useRef(-1);
+const RESET_SCROLLING_TIMEOUT_IN_MILLISECONDS = 500;
 
-  const [viewportState, setViewportState] = useState<IViewportState>({
-    isScrolling: false,
-    scrollDistance: 0,
-    scrollDirection: ScrollDirection.none,
-    scrollType: ScrollType.none
-  });
+function getScrollDirection(scrollDistance: number, prevScrollDistance: number): ScrollDirection {
+  let scrollDirection = ScrollDirection.none;
+  if (scrollDistance > prevScrollDistance) {
+    scrollDirection = ScrollDirection.forward;
+  } else if (scrollDistance < prevScrollDistance) {
+    scrollDirection = ScrollDirection.backward;
+  }
 
-  const scheduleDoneScrolling = () => {
-    if (doneScrollingTimeoutId.current !== NO_PENDING_SCROLLING_TIMEOUT) {
-      window.clearTimeout(doneScrollingTimeoutId.current);
-    }
+  return scrollDirection;
+}
 
-    doneScrollingTimeoutId.current = window.setTimeout(() => {
-      setViewportState((prevViewportState: IViewportState) => {
+export const Viewport = React.memo(
+  (props: IViewportProps): JSX.Element => {
+    const { height, width, children } = props;
+
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+    const [viewportState, setViewportState] = useState<IViewportState>({
+      isScrolling: false,
+      scrollDistance: SCROLL_DISTANCE_ORIGIN,
+      scrollDirection: NO_SCROLL_DIRECTION
+    });
+    const prevViewportState = usePreviousValue(viewportState);
+
+    const [scheduleResetScrollingTimeout, clearResetScrollingTimeout] = useDebouncedTimeout(() => {
+      setViewportState((currentViewportState: IViewportState) => {
         return {
           isScrolling: false,
-          scrollDistance: prevViewportState.scrollDistance,
-          scrollDirection: ScrollDirection.none,
-          scrollType: ScrollType.none
+          scrollDistance: currentViewportState.scrollDistance,
+          scrollDirection: NO_SCROLL_DIRECTION
         };
       });
+    }, RESET_SCROLLING_TIMEOUT_IN_MILLISECONDS);
 
-      doneScrollingTimeoutId.current = NO_PENDING_SCROLLING_TIMEOUT;
-    }, SCROLLING_TIMEOUT_IN_MILLISECONDS);
-  };
+    useEffect(() => {
+      if (scrollContainerRef.current) {
+        const onScroll = (event: Event) => {
+          // tslint:disable-next-line:no-any
+          const { scrollLeft: scrollX, scrollTop: scrollY } = ((event as any) as React.UIEvent<HTMLDivElement>).currentTarget;
 
-  useEffect(() => {
-    if (elRef.current) {
-      const onScroll = (event: Event) => {
-        const { scrollTop } = ((event as any) as React.UIEvent<HTMLDivElement>).currentTarget; // tslint:disable-line:no-any
+          const scrollDirectionX = getScrollDirection(scrollX, (prevViewportState && prevViewportState.scrollDistance[Coord.X]) || 0);
+          const scrollDirectionY = getScrollDirection(scrollY, (prevViewportState && prevViewportState.scrollDistance[Coord.Y]) || 0);
 
-        setViewportState({
-          isScrolling: true,
-          scrollDistance: scrollTop,
-          scrollDirection: ScrollDirection.none,
-          scrollType: ScrollType.none
-        });
+          setViewportState({
+            isScrolling: true,
+            scrollDistance: [scrollX, scrollY],
+            scrollDirection: [scrollDirectionX, scrollDirectionY]
+          });
 
-        scheduleDoneScrolling();
-      };
+          scheduleResetScrollingTimeout();
+        };
 
-      elRef.current.addEventListener<'scroll'>('scroll', onScroll);
+        scrollContainerRef.current.addEventListener<'scroll'>('scroll', onScroll);
 
-      return () => {
-        if (elRef.current) {
-          elRef.current.removeEventListener('scroll', onScroll);
-        }
-      };
-    }
-  }, []);
+        return () => {
+          if (scrollContainerRef.current) {
+            scrollContainerRef.current.removeEventListener('scroll', onScroll);
+          }
 
-  useEffect(() => {
-    return () => {
-      if (doneScrollingTimeoutId.current !== NO_PENDING_SCROLLING_TIMEOUT) {
-        window.clearTimeout(doneScrollingTimeoutId.current);
+          clearResetScrollingTimeout();
+        };
       }
-    };
-  }, []);
+    }, []);
 
-  return (
-    <div
-      ref={elRef}
-      // tslint:disable-next-line:jsx-ban-props
-      style={{
-        position: 'relative',
-        height,
-        width
-      }}
-    >
+    return (
       <div
+        ref={scrollContainerRef}
         data-is-scrollable={true} // some Fabric components need this to detect their parent scroll container more efficiently
         // tslint:disable-next-line:jsx-ban-props
         style={{
-          position: 'absolute',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0,
+          position: 'relative',
+          height,
+          width,
           willChange: 'scroll-position', // paints the scroll container on its own layer
           overflow: 'auto'
         }}
       >
         {children(viewportState)}
       </div>
-    </div>
-  );
-};
+    );
+  }
+);
