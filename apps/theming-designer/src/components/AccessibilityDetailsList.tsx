@@ -22,6 +22,7 @@ interface IAccessibilityDetailsList {
   key: string;
   contrastRatio: String;
   slotPair: String;
+  colorPair: String;
 }
 
 export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDetailsListProps> = (
@@ -84,7 +85,8 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
     items.push({
       key: i.toString(),
       contrastRatio: allContrastRatioPairs[i].contrastRatioValue,
-      slotPair: allContrastRatioPairs[i].contrastRatioPair
+      slotPair: allContrastRatioPairs[i].contrastRatioPair,
+      colorPair: allContrastRatioPairs[i].colorPair
     });
   }
 
@@ -100,6 +102,7 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
 
   columns = [
     { key: 'contrastRatio', name: 'Contrast ratio: AA', fieldName: 'contrastRatio', minWidth: 100, maxWidth: 200, isResizable: true },
+    { key: 'colorPair', name: 'Color pair', fieldName: 'colorPair', minWidth: 100, maxWidth: 200 },
     { key: 'slotPair', name: 'Slot pair', fieldName: 'slotPair', minWidth: 100, maxWidth: 200 }
   ];
 

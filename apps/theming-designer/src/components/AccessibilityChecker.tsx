@@ -15,13 +15,14 @@ export interface IAccessibilityCheckerProps {
 export interface IContrastRatioPair {
   contrastRatioValue: string;
   contrastRatioPair: string;
+  colorPair: string;
 }
 
 export const AccessibilityChecker: React.StatelessComponent<IAccessibilityCheckerProps> = (props: IAccessibilityCheckerProps) => {
   let nonAccessiblePairs: IContrastRatioPair[] = [];
   let accessiblePairs: IContrastRatioPair[] = [];
 
-  const calculateContrastRatio = (foreground: FabricSlots, background: FabricSlots) => {
+  const calculateContrastRatio = (foreground: FabricSlots, background: FabricSlots, colorPairString: string) => {
     if (props.themeRules) {
       const bgc: IColor = props.themeRules[FabricSlots[background]].color!;
       const fgc: IColor = props.themeRules[FabricSlots[foreground]].color!;
@@ -32,29 +33,24 @@ export const AccessibilityChecker: React.StatelessComponent<IAccessibilityChecke
       const currContrastRatioPair = FabricSlots[foreground] + ' on ' + FabricSlots[background];
 
       if (currContrastRatio < 4.5) {
-        nonAccessiblePairs.push({ contrastRatioValue: contrastRatioString, contrastRatioPair: currContrastRatioPair });
+        nonAccessiblePairs.push({
+          contrastRatioValue: contrastRatioString,
+          contrastRatioPair: currContrastRatioPair,
+          colorPair: colorPairString
+        });
       } else {
-        accessiblePairs.push({ contrastRatioValue: contrastRatioString, contrastRatioPair: currContrastRatioPair });
+        accessiblePairs.push({
+          contrastRatioValue: contrastRatioString,
+          contrastRatioPair: currContrastRatioPair,
+          colorPair: colorPairString
+        });
       }
     }
   };
 
   const loadAllContrastRatioPairsList = () => {
-    calculateContrastRatio(FabricSlots.neutralPrimary, FabricSlots.white); // default
-    // primary color also needs to be accessible, this is also strong variant default
-    calculateContrastRatio(FabricSlots.white, FabricSlots.themePrimary);
-    calculateContrastRatio(FabricSlots.neutralPrimary, FabricSlots.neutralLighter); // neutral variant default
-    calculateContrastRatio(FabricSlots.themeDarkAlt, FabricSlots.neutralLighter);
-    // these are the text and primary colors on top of the soft variant, whose bg depends on invertedness of original theme
-    if (!isDark(props.themeRules![BaseSlots[BaseSlots.backgroundColor]].color!)) {
-      // is not inverted
-      calculateContrastRatio(FabricSlots.neutralPrimary, FabricSlots.themeLighterAlt);
-      calculateContrastRatio(FabricSlots.themeDarkAlt, FabricSlots.themeLighterAlt);
-    } else {
-      // is inverted
-      calculateContrastRatio(FabricSlots.neutralPrimary, FabricSlots.themeLight);
-      calculateContrastRatio(FabricSlots.themeDarkAlt, FabricSlots.themeLight);
-    }
+    calculateContrastRatio(FabricSlots.themePrimary, FabricSlots.white, 'Primary color on Background color');
+    calculateContrastRatio(FabricSlots.neutralPrimary, FabricSlots.white, 'Text color on Background color');
   };
 
   loadAllContrastRatioPairsList();
