@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "7.5.2",
+      "tag": "office-ui-fabric-react_v7.5.2",
+      "date": "Tue, 25 Jun 2019 12:26:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updates to tileslist, list and marquee selection",
+            "author": "wiolsen <36865486+wiolsen@users.noreply.github.com>",
+            "commit": "c758198a95328be804d8837a3517ed051161ec83"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.5.1",
       "tag": "office-ui-fabric-react_v7.5.1",
       "date": "Mon, 24 Jun 2019 23:11:20 GMT",
