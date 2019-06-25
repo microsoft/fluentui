@@ -64,6 +64,7 @@
     "@uifabric/example-app-base": "^7.1.1",
     "@uifabric/fluent-theme": "^7.0.2",
     "@uifabric/icons": "^7.0.2",
+    "@uifabric/mdl2-theme": "^0.1.0",
     "@uifabric/merge-styles": "^7.0.2",
     "@uifabric/set-version": "^7.0.0",
     "@uifabric/styling": "^7.0.2",
