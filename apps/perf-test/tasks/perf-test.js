@@ -59,7 +59,9 @@ const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
 
 const urlForDeploy = urlForDeployPath + '/index.html';
 
-const urlForMaster = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/index.html';
+const urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
+  ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/index.html`
+  : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/index.html';
 
 const logPath = path.join(__dirname, '../logfiles');
 const logFilePath = path.join(logPath, '/puppeteer.log');
