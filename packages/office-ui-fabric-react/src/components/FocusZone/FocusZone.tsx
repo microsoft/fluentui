@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone, IFocusZoneProps } from './FocusZone.types';
+import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone, IFocusZoneProps, IFocusZoneStates } from './FocusZone.types';
 import {
   KeyCodes,
   css,
@@ -69,7 +69,7 @@ const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url'
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
-export class FocusZone extends React.Component<IFocusZoneProps, {}> implements IFocusZone {
+export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneStates> implements IFocusZone {
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional
@@ -110,6 +110,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   constructor(props: IFocusZoneProps) {
     super(props);
 
+    this.state = {
+      forceAlignemnt: false
+    };
     // Manage componentRef resolution.
     initializeComponentRef(this);
 
@@ -292,7 +295,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
     if (element) {
       // when we Set focus to a specific child, we should recalculate the alignment depend on its position
-      this._setActiveElement(element, true);
+      this._setActiveElement(element, this.state.forceAlignemnt);
       if (this._activeElement) {
         this._activeElement.focus();
       }
@@ -301,6 +304,14 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     }
 
     return false;
+  }
+  /**
+   *  update the forceAlignemnt state with true/false value.
+   *  @param forceAlignemntState - if true ,focus Alignemnt will be recalculated depending on the currenet active element position.
+   *  @param callback - optional callback function to be executed after updating the forceAlignemntState
+   */
+  public setForceAlignmentState(forceAlignemntState: boolean, callback?: () => void) {
+    this.setState({ forceAlignemnt: forceAlignemntState }, callback);
   }
 
   private _evaluateFocusBeforeRender(): void {

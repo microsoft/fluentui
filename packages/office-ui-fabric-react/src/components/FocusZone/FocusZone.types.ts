@@ -23,6 +23,12 @@ export interface IFocusZone {
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   focusElement(childElement?: HTMLElement): boolean;
+  /**
+   *  update the forceAlignemnt state with true/false value.
+   *  @param forceAlignemntState - if true ,focus Alignemnt will be recalculated depending on the currenet active element position.
+   *  @param callback - optional callback function to be executed after updating the forceAlignemntState
+   */
+  setForceAlignmentState(forceAlignemntState: boolean, callback?: () => void): void;
 }
 
 /**
@@ -156,7 +162,13 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    */
   onFocusNotification?: () => void;
 }
-
+/**
+ * State for the focusZone component
+ */
+export interface IFocusZoneStates {
+  /**if true ,focus Alignemnt will be recalculated depending on the current active element position. */
+  forceAlignemnt: boolean;
+}
 /**
  * {@docCategory FocusZone}
  */

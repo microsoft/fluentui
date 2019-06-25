@@ -1238,7 +1238,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     }
 
 // @public (undocumented)
-export class FocusZone extends React.Component<IFocusZoneProps, {}> implements IFocusZone {
+export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneStates> implements IFocusZone {
     constructor(props: IFocusZoneProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1253,6 +1253,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     static getOuterZones(): number;
     // (undocumented)
     render(): JSX.Element;
+    setForceAlignmentState(forceAlignemntState: boolean, callback?: (() => void)): void;
     }
 
 // @public (undocumented)
@@ -4520,6 +4521,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
 export interface IFocusZone {
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
+    setForceAlignmentState(forceAlignemntState: boolean, callback?: (() => void)): void;
 }
 
 // @public
@@ -4550,6 +4552,11 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     // @deprecated
     rootProps?: React.HTMLAttributes<HTMLDivElement>;
     shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
+}
+
+// @public
+export interface IFocusZoneStates {
+    forceAlignemnt: boolean;
 }
 
 // @public
