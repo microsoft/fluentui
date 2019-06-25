@@ -554,6 +554,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected onClick = (ev: React.MouseEvent<HTMLInputElement>): void => {
     const input = this.input.current ? this.input.current.value : '';
 
+    if (this.props.inputProps !== undefined && this.props.inputProps.onClick !== undefined) {
+      this.props.inputProps.onClick(ev);
+    }
+
     // Only primary (left) clicks show suggestions.
     if (ev.button === 0 && !this.state.suggestionsVisible) {
       const emptyResolveSuggestions = this.props.onEmptyResolveSuggestions
