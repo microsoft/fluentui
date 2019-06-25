@@ -51,6 +51,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     }
   }
 
+  public get inputElement(): HTMLInputElement | null {
+    return this._inputElement.current;
+  }
+
   public render() {
     const {
       ariaLabel,

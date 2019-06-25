@@ -9,6 +9,11 @@ import { IIconProps } from '../../Icon';
  */
 export interface ISearchBox {
   /**
+   * The current input element.
+   */
+  inputElement: HTMLInputElement | null;
+
+  /**
    * Sets focus inside the search input box.
    */
   focus(): void;
