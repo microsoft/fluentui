@@ -43,16 +43,17 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
     icon: [
       classNames.icon,
       {
+        // @todo: change values for height, width, and padding according to redline
         height: 29,
         width: 29,
         padding: '17.44px',
-        // revisit
         backgroundColor: theme.palette.neutralLight
       }
     ],
     preview: [
       classNames.preview,
       {
+        // @todo: change value for width according to redline
         width: 60
       }
     ],
@@ -62,6 +63,7 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         display: 'flex',
         flexWrap: 'wrap',
         marginLeft: 10,
+        // @todo: change values for height and width according to redline
         width: 170,
         height: 63
       },
@@ -72,6 +74,7 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
     url: [
       {
         fontSize: theme.fonts.small.fontSize,
+        // @todo: change values for height and width according to redline
         width: 170,
         height: 15,
         overflow: 'hidden',
