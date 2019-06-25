@@ -1,70 +1,9 @@
-import * as React from 'react';
-import { ChicletCardBase } from './ChicletCard.base';
 import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
+import { IChicletProps } from './Chiclet.types';
 
 export interface IChicletCard {}
 
-export interface IChicletCardProps extends React.Props<ChicletCardBase> {
-  /**
-   * Optional callback to access the IChicletCard interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: IRefObject<IChicletCard>;
-
-  /**
-   * Call to provide customized styling that will layer on top of the variant rules.
-   */
-  styles?: IStyleFunctionOrObject<IChicletCardStyleProps, IChicletCardStyles>;
-
-  /**
-   * Optional class for ChicletCard.
-   */
-  className?: string;
-
-  /**
-   * Function to call when the card is clicked.
-   */
-  onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
-
-  /**
-   * Description to render for the component.
-   */
-  description?: React.ReactElement<JSX.Element>;
-
-  /**
-   * Footer to render for the component.
-   */
-  footer?: React.ReactElement<JSX.Element>;
-
-  /**
-   * Theme for the component.
-   */
-  theme?: ITheme;
-
-  /**
-   * Item metadata.
-   */
-  title?: string;
-  itemType?: string;
-  image?: string;
-  imageSecureUrl?: string;
-  imageType?: string;
-  imageAlt?: string;
-  url?: string;
-
-  /**
-   * The width of the preview image.
-   * @default '198px'
-   */
-  imageWidth?: string;
-
-  /**
-   * The height of the preview image.
-   * @default '122px'
-   */
-  imageHeight?: string;
-}
+export interface IChicletCardProps extends IChicletProps {}
 
 export interface IChicletCardStyles {
   /**
