@@ -69,7 +69,12 @@ export class ThemeDesignerColorPicker extends React.Component<IThemeDesignerColo
               style={{ backgroundColor: this.props.color.str }}
               onClick={this._updateColorPickerVisible}
             />
-            <TextField id="textfield" className={textBoxClassName} value={this.props.color.str} onChange={this._onTextFieldValueChange} />
+            <TextField
+              id="textfield"
+              className={textBoxClassName}
+              defaultValue={this.props.color.str}
+              onChange={this._onTextFieldValueChange}
+            />
           </Stack>
         </Stack>
         {this.state.isColorPickerVisible && (
