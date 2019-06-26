@@ -3380,8 +3380,6 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     constrainMode?: ConstrainMode;
     disableSelectionZone?: boolean;
     dragDropEvents?: IDragDropEvents;
-    // @deprecated
-    enableShimmer?: boolean;
     enableUpdateAnimations?: boolean;
     enterModalSelectionOnTouch?: boolean;
     getCellValueKey?: (item?: any, index?: number, column?: IColumn) => string;
@@ -3502,8 +3500,6 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onWillUnmount?: (row?: DetailsRowBase) => void;
     rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
-    // @deprecated
-    shimmer?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
     useReducedRowRenderer?: boolean;
