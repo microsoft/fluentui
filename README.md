@@ -1,7 +1,7 @@
 # [Office UI Fabric React](http://dev.office.com/fabric)
 
 **The React-based front-end framework for building experiences for Office and Office 365.**
-
+ 
 **Fabric 7** Summary, breaking changes, and more details available in [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-7).
 
 [![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
