@@ -125,7 +125,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 z-index: 1;
               }
               &:hover {
-                border-color: #323130;
+                border-color: #201f1e;
               }
               &:hover .ms-Toggle-thumb {
                 background-color: #201f1e;
@@ -298,7 +298,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 z-index: 1;
               }
               &:hover {
-                border-color: #323130;
+                border-color: #201f1e;
               }
               &:hover .ms-Toggle-thumb {
                 background-color: #201f1e;

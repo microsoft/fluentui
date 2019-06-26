@@ -135,7 +135,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                 z-index: 1;
               }
               &:hover {
-                border-color: #323130;
+                border-color: #201f1e;
               }
               &:hover .ms-Toggle-thumb {
                 background-color: #201f1e;

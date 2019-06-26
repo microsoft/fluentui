@@ -61,7 +61,7 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
             z-index: 1;
           }
           &:hover {
-            border-color: #323130;
+            border-color: #201f1e;
           }
           &:hover .ms-Toggle-thumb {
             background-color: #201f1e;
@@ -191,7 +191,7 @@ exports[`Toggle renders toggle correctly 1`] = `
             z-index: 1;
           }
           &:hover {
-            border-color: #323130;
+            border-color: #201f1e;
           }
           &:hover .ms-Toggle-thumb {
             background-color: #201f1e;
@@ -325,7 +325,7 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
             z-index: 1;
           }
           &:hover {
-            border-color: #323130;
+            border-color: #201f1e;
           }
           &:hover .ms-Toggle-thumb {
             background-color: #201f1e;
@@ -457,7 +457,7 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
             z-index: 1;
           }
           &:hover {
-            border-color: #323130;
+            border-color: #201f1e;
           }
           &:hover .ms-Toggle-thumb {
             background-color: #201f1e;
@@ -588,7 +588,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
             z-index: 1;
           }
           &:hover {
-            border-color: #323130;
+            border-color: #201f1e;
           }
           &:hover .ms-Toggle-thumb {
             background-color: #201f1e;
