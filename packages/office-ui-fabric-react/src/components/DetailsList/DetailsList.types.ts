@@ -420,7 +420,7 @@ export interface IColumn {
   isResizable?: boolean;
 
   /**
-   * Determines if the column can render multi-line text.
+   * Determines if the column can render multi-line text.c
    */
   isMultiline?: boolean;
 
@@ -430,7 +430,7 @@ export interface IColumn {
   onRender?: (item?: any, index?: number, column?: IColumn) => any;
 
   /**
-   * If provided uses this method to get the current cell value.
+   * If set, parent getCellValueKey will return this value.
    */
   getValueKey?: (item?: any, index?: number, column?: IColumn) => string;
 
