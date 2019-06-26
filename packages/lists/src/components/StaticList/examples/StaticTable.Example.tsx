@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StaticList } from '@uifabric/lists/lib/components/StaticList/StaticList';
+import { StaticList } from '../StaticList';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 function generateItems(count: number): number[] {
