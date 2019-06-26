@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Mon, 24 Jun 2019 23:11:20 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Jun 2019 12:23:41 GMT and should not be manually modified.
+
+## 7.1.0
+Wed, 26 Jun 2019 12:23:41 GMT
+
+### Minor changes
+
+- Add a new theme package dependancy and surface it to the example pages theme dropdown.
 
 ## 7.0.4
 Mon, 24 Jun 2019 23:11:20 GMT
