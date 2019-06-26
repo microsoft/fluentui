@@ -184,7 +184,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
-    const isDraggable = Boolean(dragDropEvents && dragDropEvents.canDrag && dragDropEvents.canDrag(item));
+    const isDraggable = dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrag(item)) : undefined;
     const droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
     const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : undefined;
     const ariaDescribedBy = getRowAriaDescribedBy ? getRowAriaDescribedBy(item) : undefined;
@@ -239,6 +239,12 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     return (
       <FocusZone
         {...getNativeProps(this.props, divProperties)}
+        {...(typeof isDraggable === 'boolean'
+          ? {
+              'data-is-draggable': isDraggable, // This data attribute is used by some host applications.
+              draggable: isDraggable
+            }
+          : {})}
         direction={FocusZoneDirection.horizontal}
         ref={this._onRootRef}
         componentRef={this._focusZone}
@@ -250,8 +256,6 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
         data-selection-index={itemIndex}
         data-item-index={itemIndex}
         aria-rowindex={itemIndex + 1}
-        data-is-draggable={isDraggable}
-        draggable={isDraggable}
         data-automationid="DetailsRow"
         style={{ minWidth: viewport ? viewport.width : 0 }}
         aria-selected={ariaSelected}
