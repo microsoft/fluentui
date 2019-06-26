@@ -1253,7 +1253,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneStates
     static getOuterZones(): number;
     // (undocumented)
     render(): JSX.Element;
-    setForceAlignmentState(forceAlignemntState: boolean, callback?: (() => void)): void;
+    setForceAlignmentState(forceAlignemntState: boolean, callback?: () => void): void;
     }
 
 // @public (undocumented)
@@ -4521,7 +4521,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
 export interface IFocusZone {
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
-    setForceAlignmentState(forceAlignemntState: boolean, callback?: (() => void)): void;
+    setForceAlignmentState(forceAlignemntState: boolean, callback?: () => void): void;
 }
 
 // @public
