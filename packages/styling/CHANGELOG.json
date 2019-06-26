@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "7.0.3",
+      "tag": "@uifabric/styling_v7.0.3",
+      "date": "Wed, 26 Jun 2019 12:23:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add getPlaceholderStyles to return style object based on browser used",
+            "author": "Aftab Hassan <afhassan@microsoft.com>",
+            "commit": "f9fda8aacd9edf109370ebd191e1b5085f954e22"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.0.2",
       "tag": "@uifabric/styling_v7.0.2",
       "date": "Fri, 14 Jun 2019 12:26:30 GMT",

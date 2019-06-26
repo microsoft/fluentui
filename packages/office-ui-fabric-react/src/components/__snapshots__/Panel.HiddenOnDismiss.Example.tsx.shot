@@ -215,7 +215,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                   display: flex;
                   flex-direction: column;
                   left: auto;
-                  max-height: 768px;
                   overflow-x: hidden;
                   overflow-y: auto;
                   pointer-events: auto;
@@ -234,7 +233,11 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
             onBlur={[Function]}
             onFocus={[Function]}
             onFocusCapture={[Function]}
-            style={Object {}}
+            style={
+              Object {
+                "maxHeight": 768,
+              }
+            }
           >
             <div
               data-is-visible={true}
@@ -397,9 +400,13 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                     display: flex;
                     flex-direction: column;
                     flex-grow: 1;
-                    max-height: 768px;
                     overflow-y: hidden;
                   }
+              style={
+                Object {
+                  "maxHeight": 768,
+                }
+              }
             >
               <div
                 className=
@@ -452,10 +459,14 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                 className=
                     ms-Panel-scrollableContent
                     {
-                      height: 768px;
                       overflow-y: auto;
                     }
                 data-is-scrollable={true}
+                style={
+                  Object {
+                    "maxHeight": 768,
+                  }
+                }
               >
                 <div
                   className=

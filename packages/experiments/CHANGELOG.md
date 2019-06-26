@@ -1,6 +1,27 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 20 Jun 2019 12:27:38 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jun 2019 12:26:09 GMT and should not be manually modified.
+
+## 7.2.3
+Tue, 25 Jun 2019 12:26:09 GMT
+
+### Patches
+
+- Updates to tileslist, list and marquee selection
+
+## 7.2.2
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- Button: Adding focus tests for Button, MenuButton and SplitButton.
+
+## 7.2.1
+Fri, 21 Jun 2019 12:27:05 GMT
+
+### Patches
+
+- update snapshots due to Tooltip bug fix
 
 ## 7.2.0
 Thu, 20 Jun 2019 12:27:38 GMT

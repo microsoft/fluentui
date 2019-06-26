@@ -44,7 +44,7 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.0",
-    "@uifabric/styling": "^7.0.2",
+    "@uifabric/styling": "^7.0.3",
     "@uifabric/utilities": "^7.0.3",
     "tslib": "^1.7.1"
   },

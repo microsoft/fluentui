@@ -1,6 +1,45 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 20 Jun 2019 12:27:38 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Jun 2019 12:23:41 GMT and should not be manually modified.
+
+## 7.5.3
+Wed, 26 Jun 2019 12:23:41 GMT
+
+### Patches
+
+- Panel: move windowHeight from classNames into inline styles to prevent unnecessary className recalculations, respect isFooterAtBottom prop
+- TextField: Add condition for Edge browser to detect placeholder styles
+
+## 7.5.2
+Tue, 25 Jun 2019 12:26:09 GMT
+
+### Patches
+
+- Updates to tileslist, list and marquee selection
+
+## 7.5.1
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- FocusZone: fixed keyboard navigation when checkForNoWrap prop enabled.
+- Dropdown:Bring back breakpoint for small screen sizes
+- Coachmark: fixes beacon color props not being passed to styles.
+
+## 7.5.0
+Fri, 21 Jun 2019 12:27:05 GMT
+
+### Minor changes
+
+- Adds dual presence to PersonaPresence
+- Slider: onChanged is fired after a delay following keydown events.
+
+### Patches
+
+- Tooltip: add onKeyDown handler to dismiss on escape
+- Combobox: Fix styles so that RootChecked works
+- Don't expand ComboBox flyout on touch when disabled.
+- TooltipHost: fix the closeDelay Tooltip bug where a user could not interact with the Tooltip because it would close.
 
 ## 7.4.3
 Thu, 20 Jun 2019 12:27:38 GMT
