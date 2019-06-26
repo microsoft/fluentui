@@ -268,7 +268,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                       padding-bottom: 0;
                       padding-left: 5px;
                       padding-right: 5px;
-                      padding-top: 1px;
+                      padding-top: 15px;
                     }
               >
                 <button
@@ -403,18 +403,18 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                       margin-left: 0;
                       margin-right: 0;
                       margin-top: 14px;
-                      padding-left: 16px;
+                      padding-left: 20px;
                       padding-right: 16px;
                     }
                     @media screen and (min-width: 640px){& {
-                      padding-left: 15px;
+                      padding-left: 20px;
                       padding-right: 20px;
                     }
                     @media screen and (min-width: 1366px){& {
                       padding-bottom: 15px;
-                      padding-left: 15px;
+                      padding-left: 20px;
                       padding-right: 15px;
-                      padding-top: 10px;
+                      padding-top: 20px;
                     }
                     @media (min-width: 1024px){& {
                       display: flex;
@@ -473,18 +473,18 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                       {
                         margin-bottom: 0px;
                         padding-bottom: 20px;
-                        padding-left: 16px;
+                        padding-left: 20px;
                         padding-right: 16px;
                       }
                       @media screen and (min-width: 640px){& {
-                        padding-left: 15px;
+                        padding-left: 20px;
                         padding-right: 20px;
                       }
                       @media screen and (min-width: 1366px){& {
                         padding-bottom: 15px;
-                        padding-left: 15px;
+                        padding-left: 20px;
                         padding-right: 15px;
-                        padding-top: 10px;
+                        padding-top: 20px;
                       }
                 >
                   <span>

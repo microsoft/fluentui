@@ -156,15 +156,15 @@ const getPanelBreakpoints = (type: PanelType): { [x: string]: IStyle } | undefin
 const commandBarHeight = '44px';
 
 const sharedPaddingStyles = {
-  paddingLeft: '16px',
+  paddingLeft: '20px',
   paddingRight: '16px',
   selectors: {
     [`@media screen and (min-width: ${ScreenWidthMinLarge}px)`]: {
-      paddingLeft: '15px',
+      paddingLeft: '20px',
       paddingRight: '20px'
     },
     [`@media screen and (min-width: ${ScreenWidthMinXXLarge}px)`]: {
-      padding: '10px 15px 15px 15px'
+      padding: '20px 15px 15px 20px'
     }
   }
 };
@@ -301,7 +301,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     navigation: [
       classNames.navigation,
       {
-        padding: '1px 5px 0 5px',
+        padding: '15px 5px 0 5px',
         height: commandBarHeight,
         display: 'flex',
         flex: 3,
