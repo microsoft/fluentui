@@ -59,7 +59,8 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
           cursor: 'pointer'
         },
         ':active': {
-          backgroundColor: palette.neutralLight
+          backgroundColor: palette.neutralLight,
+          color: palette.neutralDark
         },
         ':focus': {
           outline: 'none'
