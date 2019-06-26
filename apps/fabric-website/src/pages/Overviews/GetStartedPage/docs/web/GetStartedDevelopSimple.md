@@ -27,10 +27,10 @@ This scaffold uses the [Just](https://github.com/microsoft/just) build library. 
 
 UI Fabric also provides a starter using [Create React App](https://facebook.github.io/create-react-app/), a popular development stack maintained by the creators of React.
 
-Open a terminal, go to an appropriate folder, and clone the [starter repo](https://github.com/kenotron/create-react-app-uifabric):
+Open a terminal, go to an appropriate folder, and clone the [starter repo](https://github.com/microsoft/create-react-app-uifabric):
 
 ```shell
-git clone https://github.com/kenotron/create-react-app-uifabric.git my-app
+git clone https://github.com/microsoft/create-react-app-uifabric.git my-app
 cd my-app
 ```
 
@@ -57,4 +57,4 @@ cd gatsby-site
 gatsby develop
 ```
 
-This app be deployed to the cloud in one click—[learn more here](https://github.com/kenotron/gatsby-starter-uifabric#-deploy).
+This app be deployed to the cloud in one click—[learn more here](https://github.com/microsoft/gatsby-starter-uifabric#-deploy).
