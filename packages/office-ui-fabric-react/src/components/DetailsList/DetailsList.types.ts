@@ -420,7 +420,7 @@ export interface IColumn {
   isResizable?: boolean;
 
   /**
-   * Determines if the column can render multi-line text.c
+   * Determines if the column can render multi-line text.
    */
   isMultiline?: boolean;
 

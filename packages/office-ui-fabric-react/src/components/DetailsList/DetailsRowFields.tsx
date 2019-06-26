@@ -55,7 +55,7 @@ export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps
           // generate a key that auto-dirties when content changes, to force the container to re-render, to trigger animation
           let key: number | string;
           try {
-            key = getValueKey ? getValueKey(item, itemIndex, column) : getCellText(item, column) + column.key + itemIndex;
+            key = getValueKey ? getValueKey(item, itemIndex, column) : column.key + itemIndex;
           } catch {
             // circular reference
             key = column.key + itemIndex;
