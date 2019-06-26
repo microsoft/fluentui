@@ -1,49 +1,35 @@
-import React from 'react';
 import { PrimaryButton, Stack, Label, mergeStyleSets } from 'office-ui-fabric-react';
-// import { ITranspileOutput } from '../transpiler/transpile.types';
+import { ITranspiledOutput } from '../transpiler/transpile.types';
+import React from 'react';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
+import { ITextModel } from '../components/Editor.types';
+initializeIcons();
 
 const classNames = mergeStyleSets({
-  code: {
-    fontFamily: 'monospace',
-    fontSize: 13,
-    lineHeight: '1.5'
-  },
-  renderSection: {
-    backgroundColor: 'red'
-  },
   error: {
     backgroundColor: '#FEF0F0',
     color: '#FF5E79'
   },
-  editor: {
-    width: 800,
-    height: 500
+  component: {
+    backgroundColor: 'lightgray'
   }
 });
 
 interface IAppState {
-  code: string;
-  JScode: string;
   error?: string;
-  fontSize?: string;
   editorHidden?: boolean;
-  editor?: JSX.Element;
-  currentTime: number;
+  editor?: HTMLElement;
 }
 
 export class App extends React.Component {
   public state: IAppState = {
-    code: '',
-    JScode: '',
-    editor: undefined,
-    currentTime: 0,
     editorHidden: true
   };
 
   public render() {
     const editor = (
-      <Stack style={{ backgroundColor: 'lightgray' }} gap={4}>
-        {this.state.editor}
+      <Stack className={classNames.component} gap={4}>
+        {!this.state.editorHidden && this.state.editor}
         {this.state.error !== undefined && <Label className={classNames.error}>`{this.state.error}`</Label>}
       </Stack>
     );
@@ -52,12 +38,34 @@ export class App extends React.Component {
       <div>
         <PrimaryButton onClick={this.buttonClicked} />
         {!this.state.editorHidden && editor}
+        <div id="output" />
       </div>
     );
   }
 
-  private onChange = (newVal: string) => {
-    console.log('on change test', newVal);
+  private onChange = (editor: ITextModel) => {
+    require.ensure([], require => {
+      const transpile = require('../transpiler/transpile').transpile;
+      const _evalCode = require('../transpiler/transpile')._evalCode;
+      transpile(editor).then((output: ITranspiledOutput) => {
+        if (output.outputString) {
+          const evaledCode = _evalCode(output.outputString);
+          if (evaledCode.error) {
+            this.setState({
+              error: evaledCode.error
+            });
+          } else {
+            this.setState({
+              error: undefined
+            });
+          }
+        } else {
+          this.setState({
+            error: output.error
+          });
+        }
+      });
+    });
   };
 
   private buttonClicked = (): void => {
@@ -71,7 +79,7 @@ export class App extends React.Component {
                 <Label>Typescript + React editor</Label>
               </div>
               <React.Suspense fallback={<div>Loading...</div>}>
-                <Editor width={800} height={500} code="console.log('hello world');" language="typescript" onChange={this.onChange} />
+                <Editor width={800} height={500} code="" language="typescript" onChange={this.onChange} />
               </React.Suspense>
             </div>
           ),
