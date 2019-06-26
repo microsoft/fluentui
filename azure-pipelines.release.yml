@@ -3,7 +3,7 @@ trigger: none
 
 # Customize build number to include major version
 # Example: v7_20190626.1
-name: 'v7_$(Rev:.r)'
+name: 'v7_$(Date:yyyyMMdd)$(Rev:.r)'
 
 variables:
   - group: 'Github and NPM secrets'
