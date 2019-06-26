@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "Updates to tileslist, list and marquee selection",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
