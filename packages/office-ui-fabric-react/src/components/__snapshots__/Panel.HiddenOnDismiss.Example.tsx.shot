@@ -443,11 +443,15 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 20px;
                         font-weight: 600;
+                        hyphens: auto;
                         line-height: 27px;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
+                        overflow-wrap: break-word;
+                        word-break: break-word;
+                        word-wrap: break-word;
                       }
                   id="Panel3-headerText"
                   role="heading"
