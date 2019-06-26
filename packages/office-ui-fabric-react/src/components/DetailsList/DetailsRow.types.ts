@@ -167,12 +167,6 @@ export interface IDetailsRowBaseProps
    */
   className?: string;
 
-  /**
-   * Whether to render shimmer
-   * @deprecated Use `ShimmeredDetailsList` instead: https://developer.microsoft.com/en-us/fabric#/components/detailslist/shimmer
-   */
-  shimmer?: boolean;
-
   /** Whether to animate updates */
   enableUpdateAnimations?: boolean;
 
