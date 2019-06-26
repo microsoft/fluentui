@@ -5219,6 +5219,7 @@ export interface ILinkStyles {
 export interface IList {
     forceUpdate: () => void;
     getStartItemIndexInView: () => number;
+    getTotalListHeight?: () => number;
     scrollToIndex: (index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
 }
 
@@ -5228,7 +5229,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
     componentRef?: IRefObject<IList>;
     getItemCountForPage?: (itemIndex?: number, visibleRect?: IRectangle) => number;
     getKey?: (item: T, index?: number) => string;
-    getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle) => number;
+    getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle, itemCount?: number) => number;
     getPageSpecification?: (itemIndex?: number, visibleRect?: IRectangle) => IPageSpecification;
     getPageStyle?: (page: IPage<T>) => any;
     items?: T[];
@@ -5644,6 +5645,8 @@ export interface IPage<T = any> {
     height: number;
     // (undocumented)
     isSpacer?: boolean;
+    // (undocumented)
+    isVisible?: boolean;
     // (undocumented)
     itemCount: number;
     // (undocumented)
@@ -7847,6 +7850,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     forceUpdate(): void;
     // (undocumented)
     getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number;
+    getTotalListHeight(): number;
     // (undocumented)
     refs: {
         [key: string]: React.ReactInstance;

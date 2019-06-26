@@ -2,6 +2,31 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "7.1.6",
+      "tag": "@uifabric/fabric-website_v7.1.6",
+      "date": "Mon, 24 Jun 2019 23:11:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update website for Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "c0916cf97138fc6dbd2c05a5772f1472908778c7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.2.1` to `^7.2.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^7.0.3` to `^7.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.5.0` to `^7.5.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.5",
       "tag": "@uifabric/fabric-website_v7.1.5",
       "date": "Thu, 20 Jun 2019 12:27:38 GMT",

@@ -22,7 +22,6 @@ import {
   SiteMessageBar
 } from '@uifabric/example-app-base/lib/index2';
 import { Nav } from '../Nav/index';
-import { AppCustomizations } from './customizations';
 import { AppCustomizationsContext, extractAnchorLink } from '@uifabric/example-app-base/lib/index';
 import * as styles from './Site.module.scss';
 import { appMaximumWidthLg } from '../../styles/constants';
@@ -161,15 +160,13 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
 
     return (
       <PlatformContext.Provider value={platform}>
-        <AppCustomizationsContext.Provider value={AppCustomizations}>
-          {customizations ? (
-            <Customizer {...customizations}>
-              <SiteContent />
-            </Customizer>
-          ) : (
+        {customizations ? (
+          <Customizer {...customizations}>
             <SiteContent />
-          )}
-        </AppCustomizationsContext.Provider>
+          </Customizer>
+        ) : (
+          <SiteContent />
+        )}
       </PlatformContext.Provider>
     );
   }
