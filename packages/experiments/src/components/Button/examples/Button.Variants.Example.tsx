@@ -53,10 +53,10 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
             <CommandBarButton disabled content="Disabled command bar button" />
           </ButtonStack>
           <ButtonStack>
-            <CompoundButton content="Compound button" /*secondarycontent="Enabled"*/ />
-            <CompoundButton primary content="Compound button" /*secondarycontent="Primary Enabled"*/ />
-            <CompoundButton disabled content="Compound button" /*secondarycontent="Disabled"*/ />
-            <CompoundButton primary disabled content="Compound button" /*secondarycontent="Primary Disabled"*/ />
+            <CompoundButton content="Compound button" secondaryText="Enabled" />
+            <CompoundButton primary content="Compound button" secondaryText="Primary Enabled" />
+            <CompoundButton disabled content="Compound button" secondaryText="Disabled" />
+            <CompoundButton primary disabled content="Compound button" secondaryText="Primary Disabled" />
           </ButtonStack>
           <ButtonStack>
             <Stack horizontal verticalAlign="center">

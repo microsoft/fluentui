@@ -537,7 +537,7 @@ exports[`Button Variants renders a default CompoundButton correctly 1`] = `
           text-overflow: ellipsis;
         }
         & > *:not(:first-child) {
-          margin-left: 8px;
+          margin-top: 5px;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 1;
@@ -558,8 +558,14 @@ exports[`Button Variants renders a default CompoundButton correctly 1`] = `
             overflow: visible;
             webkit-font-smoothing: antialiased;
           }
+          &:hover {
+            color: #201f1e;
+          }
           @media screen and (-ms-high-contrast: active){&:hover {
             color: Highlight;
+          }
+          &:active {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             color: Highlight;
@@ -729,7 +735,7 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
         border-style: solid;
         border-width: 1px;
         box-sizing: border-box;
-        color: #605e5c;
+        color: #a19f9d;
         cursor: default;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -778,7 +784,7 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
       &:hover {
         background-color: #f3f2f1;
         border-color: #f3f2f1;
-        color: #201f1e;
+        color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         background-color: Window;
@@ -788,7 +794,7 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
       &:active {
         background-color: #f3f2f1;
         border-color: #f3f2f1;
-        color: inherit;
+        color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:active {
         background-color: Window;
@@ -796,13 +802,13 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
         color: GrayText;
       }
       &:hover .ms-Button-icon {
-        color: #201f1e;
+        color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
       &:active .ms-Button-icon {
-        color: inherit;
+        color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: GrayText;
@@ -836,7 +842,7 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
           text-overflow: ellipsis;
         }
         & > *:not(:first-child) {
-          margin-left: 8px;
+          margin-top: 5px;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 1;
@@ -857,8 +863,14 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
             overflow: visible;
             webkit-font-smoothing: antialiased;
           }
+          &:hover {
+            color: #a19f9d;
+          }
           @media screen and (-ms-high-contrast: active){&:hover {
             color: GrayText;
+          }
+          &:active {
+            color: #a19f9d;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             color: GrayText;
@@ -1757,7 +1769,7 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
         border-style: solid;
         border-width: 0px;
         box-sizing: border-box;
-        color: #605e5c;
+        color: #ffffff;
         cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1807,7 +1819,7 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
       &:hover {
         background-color: #106ebe;
         border-color: #8a8886;
-        color: #201f1e;
+        color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         background-color: Highlight;
@@ -1817,7 +1829,7 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
       &:active {
         background-color: #005a9e;
         border-color: #8a8886;
-        color: inherit;
+        color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active){&:active {
         background-color: Highlight;
@@ -1825,13 +1837,13 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
         color: Window;
       }
       &:hover .ms-Button-icon {
-        color: #201f1e;
+        color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: Window;
       }
       &:active .ms-Button-icon {
-        color: inherit;
+        color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: Window;
@@ -1866,7 +1878,7 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
           text-overflow: ellipsis;
         }
         & > *:not(:first-child) {
-          margin-left: 8px;
+          margin-top: 5px;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 1;
@@ -1887,8 +1899,14 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
             overflow: visible;
             webkit-font-smoothing: antialiased;
           }
+          &:hover {
+            color: #ffffff;
+          }
           @media screen and (-ms-high-contrast: active){&:hover {
             color: Window;
+          }
+          &:active {
+            color: #ffffff;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             color: Window;
@@ -2068,7 +2086,7 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
         border-style: solid;
         border-width: 0px;
         box-sizing: border-box;
-        color: #605e5c;
+        color: #a19f9d;
         cursor: default;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2119,7 +2137,7 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
       &:hover {
         background-color: #f3f2f1;
         border-color: #f3f2f1;
-        color: #201f1e;
+        color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         background-color: Window;
@@ -2129,7 +2147,7 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
       &:active {
         background-color: #f3f2f1;
         border-color: #f3f2f1;
-        color: inherit;
+        color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:active {
         background-color: Window;
@@ -2137,13 +2155,13 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
         color: GrayText;
       }
       &:hover .ms-Button-icon {
-        color: #201f1e;
+        color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
       &:active .ms-Button-icon {
-        color: inherit;
+        color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: GrayText;
@@ -2178,7 +2196,7 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
           text-overflow: ellipsis;
         }
         & > *:not(:first-child) {
-          margin-left: 8px;
+          margin-top: 5px;
         }
         & > *:not(.ms-StackItem) {
           flex-shrink: 1;
@@ -2199,8 +2217,14 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
             overflow: visible;
             webkit-font-smoothing: antialiased;
           }
+          &:hover {
+            color: #a19f9d;
+          }
           @media screen and (-ms-high-contrast: active){&:hover {
             color: GrayText;
+          }
+          &:active {
+            color: #a19f9d;
           }
           @media screen and (-ms-high-contrast: active){&:active {
             color: GrayText;

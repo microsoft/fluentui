@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { createComponent, IComponentStyles, IStylesFunction, ITokenFunction } from '@uifabric/foundation';
+import { createComponent, IComponent, IComponentStyles, IStylesFunction, ITokenFunction } from '@uifabric/foundation';
+import { IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
 import { HighContrastSelector } from '../../../Styling';
 import { useButtonState as state } from '../Button.state';
 import { ButtonStyles, ButtonTokens } from '../Button.styles';
 import {
-  IButtonComponent,
   IButtonProps,
   IButtonSlots,
+  IButtonStyles,
   IButtonStylesReturnType,
   IButtonTokenReturnType,
   IButtonTokens,
@@ -14,38 +15,68 @@ import {
 } from '../Button.types';
 import { ButtonView } from '../Button.view';
 
-// TODO: Missing
-// export interface ICompoundButtonProps extends IButtonVariantProps {
-//   secondaryText?: string;
-// }
+export interface ICompoundButtonProps extends IButtonProps {
+  secondaryText?: string;
+}
 
-// export type CompoundButtonType = (props: ICompoundButtonProps) => JSX.Element;
+export interface ICompoundButtonViewProps extends ICompoundButtonProps {}
 
-const baseTokens: IButtonComponent['tokens'] = (props, theme) => {
+export interface ICompountButtonTokens extends IButtonTokens {
+  secondaryColor?: string;
+  secondaryColorHovered?: string;
+  secondaryColorPressed?: string;
+}
+
+export type ICompoundButtonComponent = IComponent<ICompoundButtonProps, ICompountButtonTokens, IButtonStyles, ICompoundButtonViewProps>;
+
+const baseTokens: ICompoundButtonComponent['tokens'] = (props, theme) => {
   const { palette } = theme;
 
   return {
-    color: palette.neutralSecondary,
-    colorHovered: palette.neutralDark,
-    colorPressed: 'inherit',
     contentPadding: '16px 12px',
     iconColor: palette.neutralSecondary,
     iconColorHovered: palette.neutralDark,
     iconColorPressed: 'inherit',
-    minHeight: 72
+    minHeight: 72,
+    secondaryColor: palette.neutralSecondary,
+    secondaryColorHovered: palette.neutralDark,
+    secondaryColorPressed: 'inherit'
   };
 };
 
-const CompoundButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
-  const regularTokens = (ButtonTokens as ITokenFunction<IButtonViewProps, IButtonTokens>)(props, theme);
-
-  return [regularTokens, baseTokens];
-};
-
-const CompoundButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
-  const { disabled, primary } = props;
+const primaryTokens: ICompoundButtonComponent['tokens'] = (props, theme) => {
   const { semanticColors } = theme;
 
+  return {
+    iconColor: semanticColors.primaryButtonText,
+    iconColorHovered: semanticColors.primaryButtonTextHovered,
+    iconColorPressed: semanticColors.primaryButtonTextPressed,
+    secondaryColor: semanticColors.primaryButtonText,
+    secondaryColorHovered: semanticColors.primaryButtonTextHovered,
+    secondaryColorPressed: semanticColors.primaryButtonTextPressed
+  };
+};
+
+const disabledTokens: ICompoundButtonComponent['tokens'] = (props, theme) => {
+  const { semanticColors } = theme;
+
+  return {
+    iconColor: semanticColors.buttonTextDisabled,
+    iconColorHovered: semanticColors.buttonTextDisabled,
+    iconColorPressed: semanticColors.buttonTextDisabled,
+    secondaryColor: semanticColors.buttonTextDisabled,
+    secondaryColorHovered: semanticColors.buttonTextDisabled,
+    secondaryColorPressed: semanticColors.buttonTextDisabled
+  };
+};
+
+const CompoundButtonTokens: ICompoundButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const regularTokens = (ButtonTokens as ITokenFunction<IButtonViewProps, IButtonTokens>)(props, theme);
+
+  return [regularTokens, baseTokens, props.primary && primaryTokens, props.disabled && disabledTokens];
+};
+
+const CompoundButtonStyles: ICompoundButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
   const regularStyles = (ButtonStyles as IStylesFunction<IButtonViewProps, IButtonTokens, IComponentStyles<IButtonSlots>>)(
     props,
     theme,
@@ -56,15 +87,13 @@ const CompoundButtonStyles: IButtonComponent['styles'] = (props, theme, tokens):
     root: [
       regularStyles.root,
       {
-        lineHeight: '100%'
-      }
-    ],
-    content: [
-      regularStyles.content,
-      {
-        color: disabled ? semanticColors.buttonTextDisabled : primary ? semanticColors.primaryButtonText : semanticColors.buttonText,
+        color: tokens.secondaryColor,
+        lineHeight: '100%',
+
         selectors: {
           ':hover': {
+            color: tokens.secondaryColorHovered,
+
             selectors: {
               [HighContrastSelector]: {
                 color: tokens.highContrastColorHovered
@@ -72,6 +101,8 @@ const CompoundButtonStyles: IButtonComponent['styles'] = (props, theme, tokens):
             }
           },
           ':active': {
+            color: tokens.secondaryColorPressed,
+
             selectors: {
               [HighContrastSelector]: {
                 color: tokens.highContrastColorPressed
@@ -84,18 +115,61 @@ const CompoundButtonStyles: IButtonComponent['styles'] = (props, theme, tokens):
         }
       }
     ],
-    stack: [
-      regularStyles.stack,
+    content: [
+      regularStyles.content,
       {
-        alignItems: 'flex-start',
-        flexDirection: 'column'
+        color: tokens.color,
+        selectors: {
+          ':hover': {
+            color: tokens.colorHovered,
+
+            selectors: {
+              [HighContrastSelector]: {
+                color: tokens.highContrastColorHovered
+              }
+            }
+          },
+          ':active': {
+            color: tokens.colorPressed,
+
+            selectors: {
+              [HighContrastSelector]: {
+                color: tokens.highContrastColorPressed
+              }
+            }
+          },
+          [HighContrastSelector]: {
+            color: tokens.highContrastColor
+          }
+        }
       }
     ],
+    stack: regularStyles.stack,
     icon: regularStyles.icon
   };
 };
 
-export const CompoundButton: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
+const secondaryTextStyles: ITextStyles = {
+  root: {
+    height: 12
+  }
+};
+
+const stackTokens: IStackTokens = { childrenGap: 5 };
+
+const CompoundButtonView: ICompoundButtonComponent['view'] = props => {
+  const { secondaryText, ...rest } = props;
+
+  return (
+    <ButtonView stack={{ as: 'span', horizontal: false, horizontalAlign: 'start', tokens: stackTokens }} {...rest}>
+      <Text variant="small" styles={secondaryTextStyles}>
+        {secondaryText}
+      </Text>
+    </ButtonView>
+  );
+};
+
+export const CompoundButton: React.StatelessComponent<ICompoundButtonProps> = createComponent(CompoundButtonView, {
   displayName: 'CompoundButton',
   state,
   styles: CompoundButtonStyles,

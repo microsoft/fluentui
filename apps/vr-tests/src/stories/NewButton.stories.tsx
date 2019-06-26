@@ -243,21 +243,15 @@ storiesOf('CompoundButton', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <CompoundButton content="Button" /*secondaryText="Caption"*/ />, {
+  .addStory('Default', () => <CompoundButton content="Button" secondaryText="Caption" />, {
     rtl: true
   })
-  .addStory('Disabled', () => (
-    <CompoundButton disabled content="Button" /*secondaryText="Caption"*/ />
-  ))
-  .addStory(
-    'Primary',
-    () => <CompoundButton primary content="Button" /*secondaryText="Caption"*/ />,
-    {
-      rtl: true
-    }
-  )
+  .addStory('Disabled', () => <CompoundButton disabled content="Button" secondaryText="Caption" />)
+  .addStory('Primary', () => <CompoundButton primary content="Button" secondaryText="Caption" />, {
+    rtl: true
+  })
   .addStory('Primary Disabled', () => (
-    <CompoundButton primary disabled content="Button" /*secondaryText="Caption"*/ />
+    <CompoundButton primary disabled content="Button" secondaryText="Caption" />
   ));
 
 storiesOf('IconButton', module)
