@@ -21,7 +21,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
   const thumbDisabledBackground = semanticColors.disabledBodySubtext;
   const thumbCheckedDisabledBackground = semanticColors.disabledBackground;
   const pillBorderColor = semanticColors.smallInputBorder;
-  const pillBorderHoveredColor = semanticColors.inputBorderHovered;
+  const pillBorderHoveredColor = palette.neutralDark;
   const pillBorderDisabledColor = semanticColors.disabledBodySubtext;
   const textDisabledColor = semanticColors.disabledText;
 
