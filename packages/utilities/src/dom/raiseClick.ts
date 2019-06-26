@@ -7,8 +7,8 @@ export function raiseClick(target: Element): void {
 
 function createNewEvent(eventName: string): Event {
   let event;
-  // Chrome, Opera, Firefox
   if (typeof Event === 'function') {
+    // Chrome, Opera, Firefox
     event = new Event(eventName);
   } else {
     // IE
