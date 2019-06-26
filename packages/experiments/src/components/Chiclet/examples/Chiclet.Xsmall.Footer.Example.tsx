@@ -6,10 +6,6 @@ import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
 const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
 
 export class FooterComponent extends React.Component<IFooterComponent, {}> {
-  constructor(props: IFooterComponent) {
-    super(props);
-  }
-
   public render(): JSX.Element {
     const { buttonProps, attachProp } = this.props;
 

@@ -6,8 +6,8 @@ const ASSET_CDN_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/as
 
 export function renderPreview(
   imageUrl?: string,
-  imageHeight?: string,
-  imageWidth?: string,
+  imageHeight?: string | number,
+  imageWidth?: string | number,
   imageAlt?: string
 ): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> | undefined {
   let image;
@@ -26,7 +26,7 @@ export function renderIcon(
   let icon;
 
   if (itemType && !imageProvided) {
-    src = `${ASSET_CDN_BASE_URL}/brand-icons/product/svg/` + itemType + `_16x1_5.svg`;
+    src = `${ASSET_CDN_BASE_URL}/brand-icons/product/svg/${itemType}_16x1_5.svg`;
     icon = <img className={style} src={src} />;
     switch (
       itemType // for "hero" apps, we'll use the app icons

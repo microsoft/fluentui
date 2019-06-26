@@ -31,4 +31,16 @@ describe('Chiclet', () => {
 
     expect(tree).toMatchSnapshot();
   });
+
+  it('renders the correct icon from a file extension', () => {
+    const chicletCardProps: IChicletCardProps = {
+      title: 'My Daily Notes.xlsx',
+      onClick: () => alert('test')
+    };
+    const component = renderer.create(<ChicletXsmall {...chicletCardProps} />);
+
+    const tree = component.toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

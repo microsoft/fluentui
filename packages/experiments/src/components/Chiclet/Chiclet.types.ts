@@ -49,12 +49,12 @@ export interface IChicletProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Image Width to render for the component.
    */
-  imageWidth?: string;
+  imageWidth?: number | string;
 
   /**
    * Image Height to render for the component.
    */
-  imageHeight?: string;
+  imageHeight?: number | string;
 
   /**
    * Alternate image to render for the component.
@@ -64,7 +64,7 @@ export interface IChicletProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Icon to render for the component.
    */
-  itemType?: string;
+  itemType?: 'word' | 'docx' | 'powerpoint' | 'pptx' | 'excel' | 'xlsx';
 
   /**
    * Function to call when the card is clicked.
