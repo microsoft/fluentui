@@ -2,6 +2,28 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "version": "7.1.2",
+      "tag": "@uifabric/date-time_v7.1.2",
+      "date": "Wed, 26 Jun 2019 12:23:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots",
+            "author": "Aftab Hassan <afhassan@microsoft.com>",
+            "commit": "f9fda8aacd9edf109370ebd191e1b5085f954e22"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.5.2` to `^7.5.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.1",
       "tag": "@uifabric/date-time_v7.1.1",
       "date": "Thu, 20 Jun 2019 12:27:38 GMT",

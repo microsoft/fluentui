@@ -2,6 +2,31 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "7.1.0",
+      "tag": "@uifabric/fabric-website-resources_v7.1.0",
+      "date": "Wed, 26 Jun 2019 12:23:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add a new theme package dependancy and surface it to the example pages theme dropdown.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "fa2da96d590194ebde8a3c61531922bd9e5723f0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/mdl2-theme\" from `^0.1.0` to `^0.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.5.2` to `^7.5.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.0.4",
       "tag": "@uifabric/fabric-website-resources_v7.0.4",
       "date": "Mon, 24 Jun 2019 23:11:20 GMT",

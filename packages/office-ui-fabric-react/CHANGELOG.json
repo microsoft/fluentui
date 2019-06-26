@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "7.5.3",
+      "tag": "office-ui-fabric-react_v7.5.3",
+      "date": "Wed, 26 Jun 2019 12:23:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Panel: move windowHeight from classNames into inline styles to prevent unnecessary className recalculations, respect isFooterAtBottom prop",
+            "author": "kkjeer <kakje@microsoft.com>",
+            "commit": "0a64c582e5ec261114c01c0340e6fff5084669a8"
+          },
+          {
+            "comment": "TextField: Add condition for Edge browser to detect placeholder styles",
+            "author": "Aftab Hassan <afhassan@microsoft.com>",
+            "commit": "f9fda8aacd9edf109370ebd191e1b5085f954e22"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Auto prettier format",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "fa2da96d590194ebde8a3c61531922bd9e5723f0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.2` to `^7.0.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.5.2",
       "tag": "office-ui-fabric-react_v7.5.2",
       "date": "Tue, 25 Jun 2019 12:26:09 GMT",
