@@ -77,6 +77,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected _ariaMap: IPickerAriaIds;
   private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
   private _id: string;
+  private _requestSuggestionsOnClick = false;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -185,6 +186,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     } else {
       selectItemFunction();
     }
+
+    this._requestSuggestionsOnClick = false;
     this.setState({ suggestionsVisible: false });
   };
 
@@ -257,9 +260,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
               {this.canAddItems() && (
                 <Autofill
                   spellCheck={false}
-                  {...inputProps as any}
+                  {...(inputProps as any)}
                   className={classNames.input}
                   componentRef={this.input}
+                  onClick={this.onClick}
                   onFocus={this.onInputFocus}
                   onBlur={this.onInputBlur}
                   onInputValueChange={this.onInputChange}
@@ -385,8 +389,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected onEmptyInputFocus() {
-    const onEmptyInputFocus = this.props.onEmptyInputFocus as (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
-    const suggestions: T[] | PromiseLike<T[]> = onEmptyInputFocus(this.state.items);
+    const emptyResolveSuggestions = this.props.onEmptyResolveSuggestions
+      ? this.props.onEmptyResolveSuggestions
+      : this.props.onEmptyInputFocus;
+
+    const suggestions = emptyResolveSuggestions!(this.state.items);
     this.updateSuggestionsList(suggestions);
   }
 
@@ -412,13 +419,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       if (updatedValue !== undefined) {
         this.setState({
-          suggestionsVisible: this.input.current
-            ? this.input.current.value !== '' && this.input.current.inputElement === document.activeElement
-            : false
+          suggestionsVisible: this._getShowSuggestions()
         });
       } else {
         this.setState({
-          suggestionsVisible: this.input.current ? this.input.current.inputElement === document.activeElement : false
+          suggestionsVisible: this.input.current! && this.input.current!.inputElement === document.activeElement
         });
       }
 
@@ -446,9 +451,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.setState(
       {
         suggestedDisplayValue: itemValue,
-        suggestionsVisible: this.input.current
-          ? this.input.current.value !== '' && this.input.current.inputElement === document.activeElement
-          : false
+        suggestionsVisible: this._getShowSuggestions()
       },
       () => this.setState({ suggestionsLoading: false })
     );
@@ -470,6 +473,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected onSuggestionClick = (ev: React.MouseEvent<HTMLElement>, item: any, index: number): void => {
     this.addItemByIndex(index);
+    this._requestSuggestionsOnClick = false;
     this.setState({ suggestionsVisible: false });
   };
 
@@ -487,14 +491,20 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (!this.state.isFocused) {
       this.setState({ isFocused: true });
       this.selection.setAllSelected(false);
-      if (this.input.current && this.input.current.value === '' && this.props.onEmptyInputFocus) {
+
+      if (
+        this.input.current &&
+        this.input.current.value === '' &&
+        (this.props.onEmptyResolveSuggestions || this.props.onEmptyInputFocus) &&
+        !this._requestSuggestionsOnClick
+      ) {
         this.onEmptyInputFocus();
         this.setState({
           isMostRecentlyUsedVisible: true,
           moreSuggestionsAvailable: false,
           suggestionsVisible: true
         });
-      } else if (this.input.current && this.input.current.value) {
+      } else if (this.input.current && this.input.current.value && !this._requestSuggestionsOnClick) {
         this.setState({
           isMostRecentlyUsedVisible: false,
           suggestionsVisible: true
@@ -537,11 +547,40 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   };
 
+  /**
+   * Reveals suggestions any time the user clicks on the input element
+   * without shifting focus.
+   */
+  protected onClick = (ev: React.MouseEvent<HTMLInputElement>): void => {
+    const input = this.input.current ? this.input.current.value : '';
+
+    if (this.props.inputProps !== undefined && this.props.inputProps.onClick !== undefined) {
+      this.props.inputProps.onClick(ev);
+    }
+
+    // Only primary (left) clicks show suggestions.
+    if (ev.button === 0 && !this.state.suggestionsVisible) {
+      const emptyResolveSuggestions = this.props.onEmptyResolveSuggestions
+        ? this.props.onEmptyResolveSuggestions
+        : this.props.onEmptyInputFocus;
+
+      if (input === '' && emptyResolveSuggestions) {
+        this.setState({ suggestionsVisible: true });
+        const suggestions = emptyResolveSuggestions!(this.state.items);
+        this.updateSuggestionsList(suggestions);
+      } else {
+        this._requestSuggestionsOnClick = true;
+        this._onResolveSuggestions(input);
+      }
+    }
+  };
+
   protected onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     const keyCode = ev.which;
     switch (keyCode) {
       case KeyCodes.escape:
         if (this.state.suggestionsVisible) {
+          this._requestSuggestionsOnClick = false;
           this.setState({ suggestionsVisible: false });
           ev.preventDefault();
           ev.stopPropagation();
@@ -797,6 +836,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       );
     }
   }
+
   /**
    * Takes in the current updated value and either resolves it with the new suggestions
    * or if updated value is undefined then it clears out currently suggested items
@@ -832,6 +872,21 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   private _onSelectedItemsUpdated(items?: T[], focusIndex?: number): void {
     this.resetFocus(focusIndex);
     this.onChange(items);
+  }
+
+  /**
+   * Suggestions are normally shown after the user updates text and the text
+   * is non-empty, but also when the user clicks on the input element.
+   * @returns True if suggestions should be shown.
+   */
+  private _getShowSuggestions(): boolean {
+    const areSuggestionsVisible =
+      this.input.current !== undefined &&
+      this.input.current !== null &&
+      this.input.current.inputElement === document.activeElement &&
+      (this.input.current.value !== '' || this._requestSuggestionsOnClick);
+
+    return areSuggestionsVisible;
   }
 
   private _onResolveSuggestions(updatedValue: string): void {
@@ -903,11 +958,12 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           {this.getSuggestionsAlert(classNames.screenReaderText)}
           <div className={classNames.text}>
             <Autofill
-              {...inputProps as any}
+              {...(inputProps as any)}
               className={classNames.input}
               componentRef={this.input}
               onFocus={this.onInputFocus}
               onBlur={this.onInputBlur}
+              onClick={this.onClick}
               onInputValueChange={this.onInputChange}
               suggestedDisplayValue={suggestedDisplayValue}
               aria-activedescendant={this.getActiveDescendant()}
