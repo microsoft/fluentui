@@ -122,7 +122,6 @@ exports[`Panel renders Panel correctly 1`] = `
                 display: flex;
                 flex-direction: column;
                 left: auto;
-                max-height: 768px;
                 overflow-x: hidden;
                 overflow-y: auto;
                 pointer-events: auto;
@@ -141,7 +140,11 @@ exports[`Panel renders Panel correctly 1`] = `
           onBlur={[Function]}
           onFocus={[Function]}
           onFocusCapture={[Function]}
-          style={Object {}}
+          style={
+            Object {
+              "maxHeight": 768,
+            }
+          }
         >
           <div
             data-is-visible={true}
@@ -306,9 +309,13 @@ exports[`Panel renders Panel correctly 1`] = `
                   display: flex;
                   flex-direction: column;
                   flex-grow: 1;
-                  max-height: 768px;
                   overflow-y: hidden;
                 }
+            style={
+              Object {
+                "maxHeight": 768,
+              }
+            }
           >
             <div
               className=
@@ -361,10 +368,14 @@ exports[`Panel renders Panel correctly 1`] = `
               className=
                   ms-Panel-scrollableContent
                   {
-                    height: 768px;
                     overflow-y: auto;
                   }
               data-is-scrollable={true}
+              style={
+                Object {
+                  "maxHeight": 768,
+                }
+              }
             >
               <div
                 className=

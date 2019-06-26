@@ -12,7 +12,6 @@ import {
   ScreenWidthMinUhfMobile,
   IStyle
 } from '../../Styling';
-import { getWindow } from '../../Utilities';
 
 // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
 // import { IStyleFunctionOrObject } from '../../Utilities';
@@ -192,7 +191,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     hasCloseButton,
     headerClassName,
     isAnimating,
-    isFooterAtBottom,
     isFooterSticky,
     isOnRightSide,
     isOpen,
@@ -203,8 +201,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
   const isCustomPanel = type === PanelType.custom || type === PanelType.customNear;
-  const win = getWindow();
-  const windowHeight = typeof win !== 'undefined' ? win.innerHeight : '100%';
 
   return {
     root: [
@@ -251,7 +247,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         overflowX: 'hidden',
         overflowY: 'auto',
         WebkitOverflowScrolling: 'touch',
-        maxHeight: windowHeight,
         bottom: 0,
         top: 0,
         // (left, right, width) - Properties to be overridden depending on the type of the Panel and the screen breakpoint.
@@ -281,9 +276,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       isCustomPanel && {
         maxWidth: '100vw'
       },
-      isFooterAtBottom && {
-        height: windowHeight
-      },
       isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideRightIn40,
       isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideLeftIn40,
       !isOpen && isAnimating && !isOnRightSide && AnimationClassNames.slideLeftOut40,
@@ -307,11 +299,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         display: 'flex',
         flexDirection: 'column',
         flexGrow: 1,
-        maxHeight: windowHeight,
         overflowY: 'hidden'
-      },
-      isFooterAtBottom && {
-        height: windowHeight
       }
     ],
     header: [
@@ -341,8 +329,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     scrollableContent: [
       classNames.scrollableContent,
       {
-        overflowY: 'auto',
-        height: windowHeight
+        overflowY: 'auto'
       }
     ],
     content: [
