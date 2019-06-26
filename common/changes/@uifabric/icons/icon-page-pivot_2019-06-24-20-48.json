@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/icons",
-      "comment": "Ship IconNames.ts in npm",
+      "comment": "Add AllIconNames.json",
       "type": "patch"
     }
   ],
