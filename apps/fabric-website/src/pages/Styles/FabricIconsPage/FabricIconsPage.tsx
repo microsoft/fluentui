@@ -6,19 +6,10 @@ import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { FabricIconsPageProps } from './FabricIconsPage.doc';
 import * as styles from './FabricIconsPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
-import * as IconNames from '@uifabric/icons/src/IconNames';
-
-const allFabricIcons: { name: string }[] = [];
-// IconNames is a const enum, so use the following as a workaround to iterate over it.
-// tslint:ignore-next-line no-any
-for (const iconName in (IconNames as any).IconNames) {
-  if (iconName) {
-    allFabricIcons.push({ name: iconName });
-  }
-}
 
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/FabricIconsPage/docs';
-const iconData = require('office-ui-fabric-core/src/data/icons.json');
+const fabricCoreIcons = require('office-ui-fabric-core/src/data/icons.json');
+const fabricReactIcons = require('@uifabric/icons/lib/data/AllIconNames.json');
 // en dashes look like regular dashes in a monospace font
 const enDash = '–';
 
@@ -48,10 +39,10 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Pivot>
               <PivotItem headerText="Fabric React" className={styles.iconGrid}>
-                <IconGrid icons={allFabricIcons} useFabricIcons={true} />
+                <IconGrid icons={fabricReactIcons} useFabricIcons={true} />
               </PivotItem>
               <PivotItem headerText="Fabric Core" className={styles.iconGrid}>
-                <IconGrid icons={iconData} />
+                <IconGrid icons={fabricCoreIcons} />
               </PivotItem>
             </Pivot>
           )
