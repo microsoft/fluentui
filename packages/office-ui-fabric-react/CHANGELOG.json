@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "7.6.0",
+      "tag": "office-ui-fabric-react_v7.6.0",
+      "date": "Wed, 26 Jun 2019 21:48:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "BasePicker would only reveal suggestions on type or click, shifting focus. Now shows for click, not shifting focus as well.",
+            "author": "Joshua Lamusga <joshlamusga@gmail.com>",
+            "commit": "5877d7455ef30881738b64e1b1815e102c90088c"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.5.3",
       "tag": "office-ui-fabric-react_v7.5.3",
       "date": "Wed, 26 Jun 2019 12:23:41 GMT",
