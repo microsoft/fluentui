@@ -26,7 +26,7 @@ export interface IFocusZone {
   /**
    *  update the forceAlignemnt state with true/false value.
    *  @param forceAlignemntState - if true ,focus Alignemnt will be recalculated depending on the currenet active element position.
-   *  @param callback - optional callback function to be executed after updating the forceAlignemntState
+   *  @param callback - optional callback function to be executed after updating the forceAlignemntState.
    */
   setForceAlignmentState(forceAlignemntState: boolean, callback?: () => void): void;
 }
