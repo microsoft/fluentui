@@ -3,7 +3,7 @@
 exports[`Button Variants renders a CommandBarButton correctly 1`] = `
 <button
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -74,16 +74,16 @@ exports[`Button Variants renders a CommandBarButton correctly 1`] = `
         border-color: transparent;
         color: Highlight;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #106ebe;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: Highlight;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #005a9e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -146,7 +146,7 @@ exports[`Button Variants renders a CommandBarButton correctly 1`] = `
 exports[`Button Variants renders a DefaultButton correctly 1`] = `
 <button
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -216,16 +216,16 @@ exports[`Button Variants renders a DefaultButton correctly 1`] = `
         border-color: Highlight;
         color: Highlight;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: Highlight;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -288,7 +288,7 @@ exports[`Button Variants renders a DefaultButton correctly 1`] = `
 exports[`Button Variants renders a PrimaryButton correctly 1`] = `
 <button
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -364,16 +364,16 @@ exports[`Button Variants renders a PrimaryButton correctly 1`] = `
         border-color: Highlight;
         color: Window;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: Window;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: Window;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -437,7 +437,7 @@ exports[`Button Variants renders a PrimaryButton correctly 1`] = `
 exports[`Button Variants renders a default CompoundButton correctly 1`] = `
 <button
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -508,16 +508,16 @@ exports[`Button Variants renders a default CompoundButton correctly 1`] = `
         border-color: Highlight;
         color: Highlight;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: Highlight;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: inherit;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -586,7 +586,7 @@ exports[`Button Variants renders a default CompoundButton correctly 1`] = `
 exports[`Button Variants renders a default MessageBarButton correctly 1`] = `
 <button
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -658,16 +658,16 @@ exports[`Button Variants renders a default MessageBarButton correctly 1`] = `
         border-color: Highlight;
         color: Highlight;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: Highlight;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -731,7 +731,7 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
 <button
   aria-disabled={true}
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -807,16 +807,16 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -889,7 +889,7 @@ exports[`Button Variants renders a default disabled MessageBarButton correctly 1
 <button
   aria-disabled={true}
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -966,16 +966,16 @@ exports[`Button Variants renders a default disabled MessageBarButton correctly 1
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -1039,7 +1039,7 @@ exports[`Button Variants renders a disabled ActionButton correctly 1`] = `
 <button
   aria-disabled={true}
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -1115,16 +1115,16 @@ exports[`Button Variants renders a disabled ActionButton correctly 1`] = `
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -1188,7 +1188,7 @@ exports[`Button Variants renders a disabled CommandBarButton correctly 1`] = `
 <button
   aria-disabled={true}
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -1263,16 +1263,16 @@ exports[`Button Variants renders a disabled CommandBarButton correctly 1`] = `
         border-color: transparent;
         color: GrayText;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #c8c6c4;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #c8c6c4;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -1336,7 +1336,7 @@ exports[`Button Variants renders a disabled DefaultButton correctly 1`] = `
 <button
   aria-disabled={true}
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -1411,16 +1411,16 @@ exports[`Button Variants renders a disabled DefaultButton correctly 1`] = `
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -1484,7 +1484,7 @@ exports[`Button Variants renders a disabled IconButton correctly 1`] = `
 <button
   aria-disabled={true}
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -1555,16 +1555,16 @@ exports[`Button Variants renders a disabled IconButton correctly 1`] = `
         border-color: transparent;
         color: GrayText;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: GrayText;
       }
   disabled={true}
@@ -1625,7 +1625,7 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
 <button
   aria-disabled={true}
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -1702,16 +1702,16 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -1775,7 +1775,7 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
 exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
 <button
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -1852,16 +1852,16 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
         border-color: Highlight;
         color: Window;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: Window;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: Window;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -1934,7 +1934,7 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
 exports[`Button Variants renders a primary MessageBarButton correctly 1`] = `
 <button
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -2012,16 +2012,16 @@ exports[`Button Variants renders a primary MessageBarButton correctly 1`] = `
         border-color: Highlight;
         color: Window;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: Window;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: Window;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -2086,7 +2086,7 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
 <button
   aria-disabled={true}
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -2164,16 +2164,16 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -2247,7 +2247,7 @@ exports[`Button Variants renders a primary disabled MessageBarButton correctly 1
 <button
   aria-disabled={true}
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -2326,16 +2326,16 @@ exports[`Button Variants renders a primary disabled MessageBarButton correctly 1
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -2399,7 +2399,7 @@ exports[`Button Variants renders a primary disabled MessageBarButton correctly 1
 exports[`Button Variants renders an ActionButton correctly 1`] = `
 <button
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -2470,16 +2470,16 @@ exports[`Button Variants renders an ActionButton correctly 1`] = `
         border-color: Highlight;
         color: Highlight;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #0078d4;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: Highlight;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #000000;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -2542,7 +2542,7 @@ exports[`Button Variants renders an ActionButton correctly 1`] = `
 exports[`Button Variants renders an IconButton correctly 1`] = `
 <button
   className=
-      ms-Button-46
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -2609,16 +2609,16 @@ exports[`Button Variants renders an IconButton correctly 1`] = `
         border-color: transparent;
         color: Highlight;
       }
-      &:hover .ms-Button-icon-47 {
+      &:hover .ms-Button-icon {
         color: #106ebe;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: Highlight;
       }
-      &:active .ms-Button-icon-47 {
+      &:active .ms-Button-icon {
         color: #005a9e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: Highlight;
       }
   onClick={[Function]}
