@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Mon, 24 Jun 2019 23:08:57 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Jun 2019 12:23:39 GMT and should not be manually modified.
+
+## 0.16.14
+Wed, 26 Jun 2019 12:23:39 GMT
+
+### Patches
+
+- Spinner: updated margin size
 
 ## 0.16.13
 Mon, 24 Jun 2019 23:08:57 GMT

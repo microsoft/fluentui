@@ -2,6 +2,25 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.14",
+      "tag": "@uifabric/fluent-theme_v0.16.14",
+      "date": "Wed, 26 Jun 2019 12:23:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Spinner: updated margin size",
+            "author": "Maxwell Rediker <13246181+maxwellred@users.noreply.github.com>",
+            "commit": "40f2f1983a9fb775eb5d9d23ae275cf379817fc6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.190.1` to `^6.191.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.13",
       "tag": "@uifabric/fluent-theme_v0.16.13",
       "date": "Mon, 24 Jun 2019 23:08:57 GMT",

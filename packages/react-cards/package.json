@@ -49,13 +49,13 @@
     "@uifabric/azure-themes": "^6.0.3",
     "@uifabric/experiments": "^6.79.0",
     "@uifabric/file-type-icons": "^6.5.2",
-    "@uifabric/fluent-theme": "^0.16.13",
+    "@uifabric/fluent-theme": "^0.16.14",
     "@uifabric/foundation": "^0.8.1",
     "@uifabric/set-version": "^1.1.3",
     "@uifabric/styling": "^6.50.1",
     "@uifabric/theme-samples": "^0.1.8",
     "@uifabric/utilities": "^6.41.3",
-    "office-ui-fabric-react": "^6.190.1",
+    "office-ui-fabric-react": "^6.191.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
