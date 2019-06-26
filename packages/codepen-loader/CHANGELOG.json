@@ -2,6 +2,20 @@
   "name": "@uifabric/codepen-loader",
   "entries": [
     {
+      "version": "7.0.3",
+      "tag": "@uifabric/codepen-loader_v7.0.3",
+      "date": "Mon, 24 Jun 2019 23:11:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pin prettier version back to 1.17",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "e18c895f03ee39ff1a3b964bc9a20ec42f64d53b"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.0.2",
       "tag": "@uifabric/codepen-loader_v7.0.2",
       "date": "Fri, 14 Jun 2019 12:26:30 GMT",
