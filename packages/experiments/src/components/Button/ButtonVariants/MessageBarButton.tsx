@@ -27,7 +27,8 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
   return {
     borderColor: semanticColors.buttonBorderDisabled,
     borderColorHovered: semanticColors.buttonBorderDisabled,
-    borderColorPressed: semanticColors.buttonBorderDisabled
+    borderColorPressed: semanticColors.buttonBorderDisabled,
+    cursor: 'default'
   };
 };
 

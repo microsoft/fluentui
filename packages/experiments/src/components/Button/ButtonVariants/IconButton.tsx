@@ -19,9 +19,15 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     borderRadius: '50%',
     contentPadding: 0,
     cursor: 'pointer',
+    highContrastBackgroundColor: 'WindowText',
+    highContrastBackgroundColorHovered: 'Highlight',
+    highContrastBackgroundColorPressed: 'Highlight',
     highContrastBorderColor: 'transparent',
     highContrastBorderColorHovered: 'transparent',
     highContrastBorderColorPressed: 'transparent',
+    highContrastIconColor: 'Window',
+    highContrastIconColorHovered: 'Window',
+    highContrastIconColorPressed: 'Window',
     iconColor: palette.themePrimary,
     iconColorHovered: palette.themeDarkAlt,
     iconColorPressed: palette.themeDark,
@@ -30,6 +36,7 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     lineHeight: 1,
     minHeight: 32,
     minWidth: 32,
+    msHighContrastAdjust: 'none',
     outlineColor: 'transparent',
     textFamily: 'inherit',
     textSize: 14,
@@ -44,6 +51,13 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
     backgroundColor: semanticColors.inputBackground,
     backgroundColorHovered: semanticColors.inputBackground,
     backgroundColorPressed: semanticColors.inputBackground,
+    cursor: 'default',
+    highContrastBackgroundColor: 'Window',
+    highContrastBackgroundColorHovered: 'Window',
+    highContrastBackgroundColorPressed: 'Window',
+    highContrastIconColor: 'GrayText',
+    highContrastIconColorHovered: 'GrayText',
+    highContrastIconColorPressed: 'GrayText',
     iconColor: semanticColors.disabledText,
     iconColorHovered: semanticColors.disabledText,
     iconColorPressed: semanticColors.disabledText
@@ -55,7 +69,6 @@ const IconButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonToke
   props.disabled && disabledTokens
 ];
 
-// TODO: Make this button circular by default
 export const IconButton: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
   displayName: 'IconButton',
   state,

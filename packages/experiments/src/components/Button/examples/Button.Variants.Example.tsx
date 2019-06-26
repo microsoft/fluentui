@@ -66,10 +66,10 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
             </Stack>
           </ButtonStack>
           <ButtonStack>
-            <MessageBarButton primary content="Primary" />
             <MessageBarButton content="Default" />
-            <MessageBarButton primary disabled content="P Disabled" />
+            <MessageBarButton primary content="Primary" />
             <MessageBarButton disabled content="Disabled" />
+            <MessageBarButton primary disabled content="P Disabled" />
           </ButtonStack>
           <ButtonStack>
             <MenuButton content="Button" menu={menuProps} />
@@ -81,7 +81,7 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
             <SplitButton content="Button" menu={menuProps} />
             <SplitButton disabled content="Button" menu={menuProps} />
             <SplitButton primary content="Button" menu={menuProps} />
-            <SplitButton disabled primary icon="Add" content="Button" menu={menuProps} />
+            <SplitButton disabled primary content="Button" menu={menuProps} />
             <SplitButton primaryActionDisabled content="Button" menu={menuProps} />
             <SplitButton primaryActionDisabled primary content="Button" menu={menuProps} />
           </ButtonStack>
