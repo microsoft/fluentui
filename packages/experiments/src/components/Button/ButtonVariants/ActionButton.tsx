@@ -15,7 +15,7 @@ import {
 import { ButtonView } from '../Button.view';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
-  const { palette, semanticColors } = theme;
+  const { effects, palette, semanticColors } = theme;
 
   return {
     backgroundColor: 'transparent',
@@ -24,6 +24,9 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     borderColor: 'transparent',
     borderColorHovered: 'transparent',
     borderColorPressed: 'transparent',
+    borderRadius: effects.roundedCorner2,
+    borderStyle: 'solid',
+    borderWidth: 1,
     color: semanticColors.buttonText,
     colorHovered: palette.themePrimary,
     colorPressed: palette.black,
@@ -40,6 +43,7 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     iconColor: semanticColors.buttonText,
     iconColorHovered: palette.themePrimary,
     iconColorPressed: palette.black,
+    iconSize: 16,
     minWidth: 100,
     textWeight: FontWeights.regular
   };

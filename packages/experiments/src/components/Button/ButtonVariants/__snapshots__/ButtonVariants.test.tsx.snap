@@ -1033,6 +1033,9 @@ exports[`Button Variants renders a disabled ActionButton correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
         border-color: transparent;
+        border-radius: 2px;
+        border-style: solid;
+        border-width: 1px;
         box-sizing: border-box;
         color: #a19f9d;
         cursor: default;
@@ -1602,7 +1605,7 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
         border-color: #f3f2f1;
         border-radius: 2px;
         border-style: solid;
-        border-width: 1px;
+        border-width: 0px;
         box-sizing: border-box;
         color: #a19f9d;
         cursor: default;
@@ -1617,6 +1620,7 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
         margin-top: 0px;
         min-height: 32px;
         min-width: 100px;
+        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -1637,13 +1641,14 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
         bottom: 2px;
         content: "";
         left: 2px;
-        outline: 1px solid #605e5c;
+        outline: 1px solid transparent;
         position: absolute;
         right: 2px;
         top: 2px;
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){& {
+        -ms-high-contrast-adjust: none;
         background-color: Window;
         border-color: GrayText;
         border-width: 1px;
@@ -1683,6 +1688,7 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus {
         border-style: solid;
+        outline-color: transparent;
       }
   disabled={true}
   onClick={[Function]}
@@ -2371,6 +2377,9 @@ exports[`Button Variants renders an ActionButton correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
         border-color: transparent;
+        border-radius: 2px;
+        border-style: solid;
+        border-width: 1px;
         box-sizing: border-box;
         color: #323130;
         cursor: pointer;

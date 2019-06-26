@@ -17,7 +17,7 @@ import { ButtonView } from '../Button.view';
 export const PrimaryButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
   baseTokens,
   !!props.href && hrefTokens,
-  !props.disabled && primaryEnabledTokens,
+  primaryEnabledTokens,
   props.circular && circularTokens,
   props.circular && primaryCircularTokens,
   props.checked && primaryCheckedTokens,
