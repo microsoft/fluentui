@@ -36,6 +36,7 @@ azure-pipelines.yml @ecraig12345 @kenotron
 # component-demo/
 fabric-website/ @jordandrako @ecraig12345 @Jahnp
 fabric-website-resources/ @ecraig12345
+perf-test/ @JasonGore
 # ssr-tests/
 # test-bundle-button/ @dzearing
 # todo-app/
