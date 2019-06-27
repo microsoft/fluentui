@@ -7,6 +7,7 @@ import { IGroup } from './GroupedList.types';
 import { IColumn } from '../DetailsList/DetailsList.types';
 import { List } from '../List/List';
 import { GroupShowAll } from './GroupShowAll';
+import { Link } from '../Link/Link';
 
 describe('GroupedList', () => {
   it("sets inner List page key to IGroup's key attribute for uniqueness", () => {
@@ -248,10 +249,10 @@ describe('GroupedList', () => {
 
     const groupShowAllElement = wrapper.find(GroupShowAll);
 
-    groupShowAllElement.simulate('click');
+    groupShowAllElement.find(Link).simulate('click');
 
     listRows = wrapper.find(DetailsRow);
-    expect(listRows).toHaveLength(1);
+    expect(listRows).toHaveLength(3);
 
     wrapper.unmount();
   });
