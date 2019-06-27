@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "create new function in the focuszone which control the alignment state to decide if we want to keep the previous alignment or we need to update it depends on the position of the new active element",
+      "comment": "FocusZone: add setForceAlignmentState method to determine whether to keep the previous alignment or update it based on the position of the new active element",
       "type": "patch"
     }
   ],

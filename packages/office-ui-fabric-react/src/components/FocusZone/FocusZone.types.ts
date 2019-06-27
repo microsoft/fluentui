@@ -24,11 +24,11 @@ export interface IFocusZone {
    */
   focusElement(childElement?: HTMLElement): boolean;
   /**
-   *  update the forceAlignemnt state with true/false value.
-   *  @param forceAlignemntState - if true ,focus Alignemnt will be recalculated depending on the currenet active element position.
-   *  @param callback - optional callback function to be executed after updating the forceAlignemntState.
+   *  update the forceAlignment state with true/false value.
+   *  @param forceAlignmentState - if true ,focus Alignment will be recalculated depending on the currenet active element position.
+   *  @param callback - optional callback function to be executed after updating the forceAlignmentState.
    */
-  setForceAlignmentState(forceAlignemntState: boolean, callback?: () => void): void;
+  setForceAlignmentState(forceAlignmentState: boolean, callback?: () => void): void;
 }
 
 /**
@@ -165,9 +165,9 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 /**
  * State for the focusZone component
  */
-export interface IFocusZoneStates {
-  /**if true ,focus Alignemnt will be recalculated depending on the current active element position. */
-  forceAlignemnt: boolean;
+export interface IFocusZoneState {
+  /**if true ,focus Alignment will be recalculated depending on the current active element position. */
+  forceAlignment: boolean;
 }
 /**
  * {@docCategory FocusZone}

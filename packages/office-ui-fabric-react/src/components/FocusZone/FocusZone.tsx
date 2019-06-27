@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone, IFocusZoneProps, IFocusZoneStates } from './FocusZone.types';
+import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone, IFocusZoneProps, IFocusZoneState } from './FocusZone.types';
 import {
   KeyCodes,
   css,
@@ -69,7 +69,7 @@ const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url'
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
-export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneStates> implements IFocusZone {
+export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneState> implements IFocusZone {
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional
@@ -111,7 +111,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneStates
     super(props);
 
     this.state = {
-      forceAlignemnt: false
+      forceAlignment: false
     };
     // Manage componentRef resolution.
     initializeComponentRef(this);
@@ -295,7 +295,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneStates
 
     if (element) {
       // when we Set focus to a specific child, we should recalculate the alignment depend on its position
-      this._setActiveElement(element, this.state.forceAlignemnt);
+      this._setActiveElement(element, this.state.forceAlignment);
       if (this._activeElement) {
         this._activeElement.focus();
       }
@@ -306,12 +306,12 @@ export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneStates
     return false;
   }
   /**
-   *  update the forceAlignemnt state with true/false value.
-   *  @param forceAlignemntState - if true ,focus Alignemnt will be recalculated depending on the currenet active element position.
-   *  @param callback - optional callback function to be executed after updating the forceAlignemntState
+   *  update the forceAlignment state with true/false value.
+   *  @param forceAlignmentState - if true ,focus Alignment will be recalculated depending on the currenet active element position.
+   *  @param callback - optional callback function to be executed after updating the forceAlignmentState
    */
-  public setForceAlignmentState(forceAlignemntState: boolean, callback?: () => void) {
-    this.setState({ forceAlignemnt: forceAlignemntState }, callback);
+  public setForceAlignmentState(forceAlignmentState: boolean, callback?: () => void) {
+    this.setState({ forceAlignment: forceAlignmentState }, callback);
   }
 
   private _evaluateFocusBeforeRender(): void {
@@ -461,7 +461,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneStates
     }
   };
 
-  private _setActiveElement(element: HTMLElement, forceAlignemnt?: boolean): void {
+  private _setActiveElement(element: HTMLElement, forceAlignment?: boolean): void {
     const previousActiveElement = this._activeElement;
 
     this._activeElement = element;
@@ -475,7 +475,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneStates
     }
 
     if (this._activeElement) {
-      if (!this._focusAlignment || forceAlignemnt) {
+      if (!this._focusAlignment || forceAlignment) {
         this._setFocusAlignment(element, true, true);
       }
 
