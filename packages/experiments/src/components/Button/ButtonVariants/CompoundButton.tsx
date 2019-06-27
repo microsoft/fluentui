@@ -187,30 +187,3 @@ export const CompoundButton: React.StatelessComponent<ICompoundButtonProps> = cr
   styles: CompoundButtonStyles,
   tokens: CompoundButtonTokens
 });
-
-// TODO: Check how to get missing styling
-// export const CompoundButton: CompoundButtonType = props => {
-//   const { text, iconProps, secondaryText, ...rest } = props;
-
-//   const stackTokens = { childrenGap: 5 };
-//   const secondaryTextStyles = {
-//     root: {
-//       height: 12
-//     }
-//   };
-
-//   return (
-//     <Button
-//       stack={{ as: 'span', horizontal: false, horizontalAlign: 'start', tokens: stackTokens }}
-//       content={text}
-//       icon={iconProps}
-//       styles={CompoundButtonStyles}
-//       tokens={CompoundButtonTokens}
-//       {...rest}
-//     >
-//       <Text variant="small" styles={secondaryTextStyles}>
-//         {secondaryText}
-//       </Text>
-//     </Button>
-//   );
-// };
