@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "7.2.1",
+      "tag": "@uifabric/fabric-website_v7.2.1",
+      "date": "Thu, 27 Jun 2019 22:14:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add fabric 7 to website version selector",
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "6cfd57a8561f8e228d1e09058abe6c2f1f4a9b33"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.2.0",
       "tag": "@uifabric/fabric-website_v7.2.0",
       "date": "Thu, 27 Jun 2019 18:25:04 GMT",

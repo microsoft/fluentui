@@ -69,7 +69,7 @@
     "@uifabric/set-version": "^7.0.0",
     "@uifabric/styling": "^7.1.0",
     "@uifabric/theme-samples": "^7.0.2",
-    "@uifabric/utilities": "^7.0.4",
+    "@uifabric/utilities": "^7.0.5",
     "@uifabric/variants": "^7.0.2",
     "expect-puppeteer": "4.1.0",
     "jest-environment-node": "24.5.0",
