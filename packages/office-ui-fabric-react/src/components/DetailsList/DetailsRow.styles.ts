@@ -15,7 +15,7 @@ const GlobalClassNames = {
   root: 'ms-DetailsRow',
   compact: 'ms-DetailsList--Compact', // TODO: in Fabric 7.0 lowercase the 'Compact' for consistency across other components.
   cell: 'ms-DetailsRow-cell',
-  cellAnimation: 'ms-DetailsRow-cellAnimiation',
+  cellAnimation: 'ms-DetailsRow-cellAnimation',
   cellCheck: 'ms-DetailsRow-cellCheck',
   cellMeasurer: 'ms-DetailsRow-cellMeasurer',
   listCellFirstChild: 'ms-List-cell:first-child',

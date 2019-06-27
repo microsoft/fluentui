@@ -85,12 +85,12 @@ export class DetailsListAnimationExample extends React.Component<{}, IDetailsLis
   };
 
   private _getValueKey(item: IDetailsListAnimationExampleItem, index: number, column: IColumn): string {
-    const key = item && column && column.fieldName ? item[column.fieldName as keyof IDetailsListAnimationExampleItem] : column.key + index;
+    const key = item && column && column.fieldName ? item[column.fieldName as keyof IDetailsListAnimationExampleItem] : index;
     return key.toString();
   }
 
   private _getCellValueKey(item: IDetailsListAnimationExampleItem, index: number, column: IColumn): string {
-    const key = item && column && column.fieldName ? item[column.fieldName as keyof IDetailsListAnimationExampleItem] : column.key + index;
+    const key = item && column && column.fieldName ? item[column.fieldName as keyof IDetailsListAnimationExampleItem] : index;
     return key.toString();
   }
 }
