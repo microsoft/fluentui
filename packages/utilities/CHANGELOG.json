@@ -2,6 +2,35 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "7.0.4",
+      "tag": "@uifabric/utilities_v7.0.4",
+      "date": "Thu, 27 Jun 2019 18:25:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding a null check in the case a stylesheet instance is not avaiable or old.",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          },
+          {
+            "comment": "The `getClassNames` function now returns memoized classnames, resulting in improved performance in high repeat scenarios (like lists rendering checks.) Reintroduction of #8761.",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          },
+          {
+            "comment": "Add placeholder as TextArea property",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.0.2` to `^7.1.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.0.3",
       "tag": "@uifabric/utilities_v7.0.3",
       "date": "Fri, 14 Jun 2019 12:26:30 GMT",
