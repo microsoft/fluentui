@@ -133,6 +133,9 @@ export function getIcon(name?: string): IIconRecord | undefined;
 // @public
 export function getIconClassName(name: string): string;
 
+// @public
+export function getPlaceholderStyles(styles: IStyle): IStyle;
+
 // @public (undocumented)
 export function getScreenSelector(min: number, max: number): string;
 

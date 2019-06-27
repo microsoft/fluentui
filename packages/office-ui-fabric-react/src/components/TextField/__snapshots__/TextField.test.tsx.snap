@@ -145,6 +145,15 @@ exports[`TextField snapshots renders correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
+            &::-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
         id="TextField0"
         onBlur={[Function]}
         onChange={[Function]}
@@ -343,6 +352,15 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
               opacity: 1;
             }
             &:-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            &::-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               color: #605e5c;
@@ -591,6 +609,15 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               font-weight: 400;
               opacity: 1;
             }
+            &::-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
         id="TextField0"
         onBlur={[Function]}
         onChange={[Function]}
@@ -786,6 +813,15 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
+            &::-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
         id="TextField0"
         onBlur={[Function]}
         onChange={[Function]}
@@ -940,6 +976,15 @@ exports[`TextField snapshots renders multiline unresizable correctly 1`] = `
               opacity: 1;
             }
             &:-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            &::-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               color: #605e5c;
@@ -1147,6 +1192,15 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
               opacity: 1;
             }
             &:-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            &::-ms-input-placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               color: #605e5c;

@@ -143,11 +143,6 @@ export const PanelPageProps: IDocPageProps = {
       title: 'Panel - Scrolling Content Sample',
       code: PanelScrollExampleCode,
       view: <PanelScrollExample />
-    },
-    {
-      title: 'Panel - Scrolling Content Sample',
-      code: PanelScrollExampleCode,
-      view: <PanelScrollExample />
     }
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelOverview.md'),

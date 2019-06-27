@@ -27,6 +27,7 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     borderRadius: effects.roundedCorner2,
     borderStyle: 'solid',
     borderWidth: 1,
+    childrenGap: 8,
     color: semanticColors.buttonText,
     colorHovered: palette.themePrimary,
     colorPressed: palette.black,
@@ -82,22 +83,16 @@ const ActionButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): I
   );
 
   return {
-    root: regularStyles.root,
-    content: regularStyles.content,
-    stack: [
-      regularStyles.stack,
+    root: [
+      regularStyles.root,
       {
         justifyContent: 'flex-start'
       }
     ],
+    content: regularStyles.content,
     icon: regularStyles.icon
   };
 };
-
-// TODO: Research how to fix this.
-// const ActionButtonStackProps: IButtonProps['stack'] = {
-//   horizontalAlign: 'start'
-// };
 
 export const ActionButton: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
   displayName: 'ActionButton',

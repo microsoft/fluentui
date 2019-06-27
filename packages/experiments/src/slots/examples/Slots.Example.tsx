@@ -25,8 +25,6 @@ export class SlotsExample extends React.Component<{}, {}> {
               component: Spinner as any
             }
           }}
-          // Subcomponent props usage
-          stack={{ styles: { root: { background: 'lightblue' } } }}
           // Shorthand prop usage
           icon="share"
         >

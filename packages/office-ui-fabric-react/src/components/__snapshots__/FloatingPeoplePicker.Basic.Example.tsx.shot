@@ -118,15 +118,20 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
               padding-top: 0px;
               text-overflow: ellipsis;
             }
-            &::-ms-clear {
-              display: none;
-            }
             &::placeholder {
               color: #605e5c;
               opacity: 1;
             }
             &:-ms-input-placeholder {
               color: #605e5c;
+              opacity: 1;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
+            &::-ms-clear {
+              display: none;
             }
         id="SearchBox0"
         onChange={[Function]}

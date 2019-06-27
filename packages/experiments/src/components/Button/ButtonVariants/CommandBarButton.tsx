@@ -14,6 +14,7 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     backgroundColorPressed: semanticColors.buttonBackgroundPressed,
     borderRadius: 0,
     borderWidth: 0,
+    childrenGap: 8,
     contentPadding: '0px 8px',
     color: semanticColors.buttonText,
     colorHovered: semanticColors.buttonTextHovered,

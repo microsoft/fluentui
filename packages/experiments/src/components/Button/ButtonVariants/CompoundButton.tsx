@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createComponent, IComponent, IComponentStyles, IStylesFunction, ITokenFunction } from '@uifabric/foundation';
-import { IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
+import { Text, ITextStyles } from 'office-ui-fabric-react';
+import { parseGap } from 'office-ui-fabric-react/lib/components/Stack/StackUtils';
 import { HighContrastSelector } from '../../../Styling';
 import { useButtonState as state } from '../Button.state';
 import { ButtonStyles, ButtonTokens } from '../Button.styles';
@@ -33,6 +34,7 @@ const baseTokens: ICompoundButtonComponent['tokens'] = (props, theme) => {
   const { palette } = theme;
 
   return {
+    childrenGap: 5,
     contentPadding: '16px 12px',
     iconColor: palette.neutralSecondary,
     iconColorHovered: palette.neutralDark,
@@ -77,6 +79,8 @@ const CompoundButtonTokens: ICompoundButtonComponent['tokens'] = (props, theme):
 };
 
 const CompoundButtonStyles: ICompoundButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
+  const { rowGap, columnGap } = parseGap(tokens.childrenGap, theme);
+
   const regularStyles = (ButtonStyles as IStylesFunction<IButtonViewProps, IButtonTokens, IComponentStyles<IButtonSlots>>)(
     props,
     theme,
@@ -87,10 +91,21 @@ const CompoundButtonStyles: ICompoundButtonComponent['styles'] = (props, theme, 
     root: [
       regularStyles.root,
       {
+        alignItems: 'flex-start',
         color: tokens.secondaryColor,
+        flexDirection: 'column',
         lineHeight: '100%',
 
         selectors: {
+          '> *': {
+            marginLeft: 0,
+            marginTop: `${0.5 * rowGap.value}${rowGap.unit} ${0.5 * columnGap.value}${columnGap.unit}`,
+            textOverflow: 'ellipsis'
+          },
+          '> *:not(:first-child)': {
+            marginLeft: 0,
+            marginTop: `${columnGap.value}${columnGap.unit}`
+          },
           ':hover': {
             color: tokens.secondaryColorHovered,
 
@@ -144,7 +159,6 @@ const CompoundButtonStyles: ICompoundButtonComponent['styles'] = (props, theme, 
         }
       }
     ],
-    stack: regularStyles.stack,
     icon: regularStyles.icon
   };
 };
@@ -155,13 +169,11 @@ const secondaryTextStyles: ITextStyles = {
   }
 };
 
-const stackTokens: IStackTokens = { childrenGap: 5 };
-
 const CompoundButtonView: ICompoundButtonComponent['view'] = props => {
   const { secondaryText, ...rest } = props;
 
   return (
-    <ButtonView stack={{ as: 'span', horizontal: false, horizontalAlign: 'start', tokens: stackTokens }} {...rest}>
+    <ButtonView {...rest}>
       <Text variant="small" styles={secondaryTextStyles}>
         {secondaryText}
       </Text>

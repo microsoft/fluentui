@@ -136,11 +136,10 @@ export const stylesPagesWeb: INavPage[] = [
       require.ensure([], require => cb(require<any>('../../../pages/Styles/LocalizationPage/LocalizationPage').LocalizationPage))
   },
   {
-    title: 'Fluent Theme',
-    url: '#/styles/web/fluent-theme',
-    component: () => <LoadingComponent title="Fluent Theme" />,
-    getComponent: cb =>
-      require.ensure([], require => cb(require<any>('../../../pages/Styles/FluentThemePage/FluentThemePage').FluentThemePage))
+    title: 'Fabric 7 Updates',
+    url: '#/styles/web/fabric-7',
+    component: () => <LoadingComponent title="Fabric 7 Updates" />,
+    getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Styles/Fabric7Page/Fabric7Page').Fabric7Page))
   },
   {
     title: 'Theme Designer',
