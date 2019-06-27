@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/utilities",
-  "version": "7.0.3",
+  "version": "7.0.4",
   "description": "Office UI Fabric utilities for building React components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -45,7 +45,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/merge-styles": "^7.0.2",
+    "@uifabric/merge-styles": "^7.1.0",
     "@uifabric/set-version": "^7.0.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"

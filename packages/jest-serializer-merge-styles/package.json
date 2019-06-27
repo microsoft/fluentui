@@ -34,6 +34,6 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.0",
-    "@uifabric/merge-styles": "^7.0.2"
+    "@uifabric/merge-styles": "^7.1.0"
   }
 }

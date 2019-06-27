@@ -11,9 +11,9 @@
   "dependencies": {
     "@uifabric/charting": "^0.132.0",
     "@uifabric/date-time": "^7.1.2",
-    "@uifabric/experiments": "^7.2.3",
+    "@uifabric/experiments": "^7.3.0",
     "@uifabric/fabric-website-resources": "^7.1.0",
-    "@uifabric/fabric-website": "^7.1.6",
+    "@uifabric/fabric-website": "^7.2.0",
     "@uifabric/foundation-scenarios": "^0.102.0",
     "perf-test": "^7.0.0",
     "test-bundles": "^7.0.0",

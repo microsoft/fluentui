@@ -13,11 +13,11 @@
   "devDependencies": {
     "just-scripts": "~0.20.0",
     "@types/node": "^8.10.29",
-    "@uifabric/merge-styles": "^7.0.2",
-    "@uifabric/styling": "^7.0.3",
+    "@uifabric/merge-styles": "^7.1.0",
+    "@uifabric/styling": "^7.1.0",
     "@uifabric/tslint-rules": "^7.0.2",
-    "@uifabric/utilities": "^7.0.3",
-    "office-ui-fabric-react": "^7.6.0"
+    "@uifabric/utilities": "^7.0.4",
+    "office-ui-fabric-react": "^7.6.1"
   },
   "dependencies": {
     "@microsoft/tsdoc": "0.12.9",

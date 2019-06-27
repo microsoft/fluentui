@@ -2,6 +2,37 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "version": "0.107.2",
+      "tag": "@uifabric/react-cards_v0.107.2",
+      "date": "Thu, 27 Jun 2019 18:25:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots after Button changes.",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.2.3` to `^7.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.3` to `^7.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.3` to `^7.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.0` to `^7.6.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.1` to `^7.1.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.107.1",
       "tag": "@uifabric/react-cards_v0.107.1",
       "date": "Wed, 19 Jun 2019 12:27:03 GMT",
