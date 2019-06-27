@@ -6,8 +6,7 @@ import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { List, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import * as styles from './List.Scrolling.Example.scss';
-import { ITheme, getTheme, mergeStyleSets, FontSizes } from '@uifabric/styling';
+import { ITheme, getTheme, mergeStyleSets, FontSizes, normalize } from '@uifabric/styling';
 
 export type IExampleItem = { name: string };
 
@@ -21,9 +20,33 @@ export interface IListScrollingExampleState {
   showItemIndexInView: boolean;
 }
 
+interface IListScrollingExampleClassObject {
+  root: string;
+  container: string;
+  itemContent: string;
+  itemContentOdd: string;
+  itemContentEven: string;
+  selected: string;
+}
+
 const theme: ITheme = getTheme();
 const borderColour: string = '3px solid ' + theme.palette.themePrimary;
-const classNames = mergeStyleSets({
+const classNames: IListScrollingExampleClassObject = mergeStyleSets({
+  root: [
+    normalize,
+    {
+      selectors: {
+        '&::before, &::after': {
+          display: 'table',
+          content: '',
+          lineHeight: 0
+        },
+        '&::after': {
+          clear: 'both'
+        }
+      }
+    }
+  ],
   container: {
     overflow: 'auto',
     maxHeight: 500,
@@ -154,7 +177,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
   private _onRenderCell = (item: IExampleItem, index: number): JSX.Element => {
     return (
       <div data-is-focusable={true}>
-        <div className={css(styles.itemContent, index % 2 === 0 ? classNames.itemContentEven : classNames.itemContentOdd)}>
+        <div className={css(classNames.itemContent, index % 2 === 0 ? classNames.itemContentEven : classNames.itemContentOdd)}>
           {index} &nbsp; {item.name}
         </div>
       </div>
