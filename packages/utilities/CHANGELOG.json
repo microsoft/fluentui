@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "7.0.5",
+      "tag": "@uifabric/utilities_v7.0.5",
+      "date": "Thu, 27 Jun 2019 22:14:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Utilities: Update implementation for raising a click event to support IE",
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "6cfd57a8561f8e228d1e09058abe6c2f1f4a9b33"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.0.4",
       "tag": "@uifabric/utilities_v7.0.4",
       "date": "Thu, 27 Jun 2019 18:25:04 GMT",
