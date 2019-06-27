@@ -45,6 +45,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
   private _selectedIndicies: { [key: string]: boolean } | undefined;
   private _preservedIndicies: number[] | undefined;
   private _itemRectCache: { [key: string]: IRectangle } | undefined;
+  private _allSelectedIndices: { [key: string]: boolean } | undefined;
   private _scrollableParent: HTMLElement;
   private _scrollableSurface: HTMLElement;
   private _scrollTop: number;
@@ -138,6 +139,10 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       return;
     }
 
+    if (!ev.shiftKey) {
+      this.props.selection.setAllSelected(false);
+    }
+
     if (!this._isTouch && isEnabled && !this._isDragStartInSelection(ev) && (!onShouldStartSelection || onShouldStartSelection(ev))) {
       if (this._scrollableSurface && ev.button === 0 && this._root.current) {
         this._selectedIndicies = {};
@@ -216,6 +221,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
 
           this._preservedIndicies = selection && selection.getSelectedIndices && selection.getSelectedIndices();
         }
+
         // We need to constrain the current point to the rootRect boundaries.
         const constrainedPoint = this.props.isDraggingConstrainedToRoot
           ? {
@@ -319,10 +325,6 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       this._itemRectCache = {};
     }
 
-    // Stop change events, clear selection to re-populate.
-    selection.setChangeEvents(false);
-    selection.setAllSelected(false);
-
     for (let i = 0; i < allElements.length; i++) {
       const element = allElements[i];
       const index = element.getAttribute('data-selection-index') as string;
@@ -360,18 +362,53 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       }
     }
 
+    // set previousSelectedIndices to be all of the selected indices from last time
+    const previousSelectedIndices = this._allSelectedIndices || {};
+    this._allSelectedIndices = {};
+
+    // set all indices that are supposed to be selected in _allSelectedIndices
     for (const index in this._selectedIndicies!) {
       if (this._selectedIndicies!.hasOwnProperty(index)) {
-        selection.setIndexSelected(Number(index), true, false);
+        this._allSelectedIndices![index] = true;
       }
     }
 
     if (this._preservedIndicies) {
-      for (const index of this._preservedIndicies) {
-        selection.setIndexSelected(index, true, false);
+      for (const index of this._preservedIndicies!) {
+        this._allSelectedIndices![index] = true;
       }
     }
 
-    selection.setChangeEvents(true);
+    // check if needs to update selection, only when current _allSelectedIndices
+    // is different than previousSelectedIndices
+    let needToUpdate = false;
+    for (const index in this._allSelectedIndices!) {
+      if (this._allSelectedIndices![index] !== previousSelectedIndices![index]) {
+        needToUpdate = true;
+        break;
+      }
+    }
+
+    if (!needToUpdate) {
+      for (const index in previousSelectedIndices!) {
+        if (this._allSelectedIndices![index] !== previousSelectedIndices![index]) {
+          needToUpdate = true;
+          break;
+        }
+      }
+    }
+
+    // only update selection when needed
+    if (needToUpdate) {
+      // Stop change events, clear selection to re-populate.
+      selection.setChangeEvents(false);
+      selection.setAllSelected(false);
+
+      for (const index of Object.keys(this._allSelectedIndices!)) {
+        selection.setIndexSelected(Number(index), true, false);
+      }
+
+      selection.setChangeEvents(true);
+    }
   }
 }
