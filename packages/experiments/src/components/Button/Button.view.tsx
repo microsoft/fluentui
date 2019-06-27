@@ -1,5 +1,5 @@
 /** @jsx withSlots */
-import { Stack, Text, KeytipData } from 'office-ui-fabric-react';
+import { Text, KeytipData } from 'office-ui-fabric-react';
 import { withSlots, getSlots } from '../../Foundation';
 import { getNativeProps, anchorProperties, buttonProperties } from '../../Utilities';
 import { Icon } from '../../utilities/factoryComponents';
@@ -16,7 +16,6 @@ export const ButtonView: IButtonComponent['view'] = props => {
 
   const Slots = getSlots<IButtonProps, IButtonSlots>(props, {
     root: slotType,
-    stack: Stack,
     icon: Icon,
     content: Text
   });
@@ -44,11 +43,9 @@ export const ButtonView: IButtonComponent['view'] = props => {
       aria-label={ariaLabel}
       ref={buttonRef}
     >
-      <Slots.stack horizontal as="span" tokens={{ childrenGap: 8 }} verticalAlign="center" horizontalAlign="center" verticalFill>
-        <Slots.icon />
-        <Slots.content />
-        {children}
-      </Slots.stack>
+      <Slots.icon />
+      <Slots.content />
+      {children}
     </Slots.root>
   );
 

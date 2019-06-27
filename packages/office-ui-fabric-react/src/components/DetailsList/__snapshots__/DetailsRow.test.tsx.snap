@@ -1715,11 +1715,9 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       }
   data-automationid="DetailsRow"
   data-focuszone-id="FocusZone12"
-  data-is-draggable={false}
   data-is-focusable={true}
   data-item-index={0}
   data-selection-index={0}
-  draggable={false}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
