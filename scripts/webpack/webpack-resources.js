@@ -115,7 +115,11 @@ module.exports = {
     }
 
     for (let config of configs) {
-      config.entry = prependEntryWithPolyfill(config.entry);
+      // Skip prepending in case of UMD or VAR output.libraryTarget because those meant for distribution
+      // apps should provide their own polyfill
+      if (config.output && config.output.libraryTarget !== 'umd' && config.output.libraryTarget !== 'var') {
+        config.entry = prependEntryWithPolyfill(config.entry);
+      }
     }
 
     return configs;
