@@ -28,7 +28,7 @@ export interface IFixedListProps {
   viewportWidth: number;
 
   /**
-   * The height of the viewport this list is mounted in.
+   * The distance of the top of the viewport surface to the top of the list surface.
    */
   surfaceTop: number;
 
