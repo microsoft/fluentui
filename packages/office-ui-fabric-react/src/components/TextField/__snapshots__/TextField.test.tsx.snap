@@ -1167,6 +1167,7 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
         onChange={[Function]}
         onFocus={[Function]}
         onInput={[Function]}
+        placeholder="test placeholder"
         value=""
       />
     </div>
