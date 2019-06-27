@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/example-app-base",
-  "version": "7.1.1",
+  "version": "7.1.2",
   "description": "Office UI Fabric example app base utilities for building example sites.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -46,7 +46,7 @@
     "color-check": "0.0.2",
     "markdown-to-jsx": "6.6.1",
     "office-ui-fabric-core": "^10.0.0",
-    "office-ui-fabric-react": "^7.6.0",
+    "office-ui-fabric-react": "^7.6.1",
     "react-custom-scrollbars": "^4.2.1",
     "react-syntax-highlighter": "^10.1.3",
     "tslib": "^1.7.1"

@@ -20,16 +20,16 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/react-cards": "^0.107.1",
-    "@uifabric/merge-styles": "^7.0.2",
-    "@uifabric/example-app-base": "^7.1.1",
+    "@uifabric/react-cards": "^0.107.2",
+    "@uifabric/merge-styles": "^7.1.0",
+    "@uifabric/example-app-base": "^7.1.2",
     "@uifabric/variants": "^7.0.2",
     "@uifabric/set-version": "^7.0.0",
     "@uifabric/icons": "^7.0.2",
     "@microsoft/load-themed-styles": "^1.7.13",
     "es6-promise": "^4.1.0",
     "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^7.6.0",
+    "office-ui-fabric-react": "^7.6.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "tslib": "^1.7.1"

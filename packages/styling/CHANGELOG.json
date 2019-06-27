@@ -2,6 +2,33 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "7.1.0",
+      "tag": "@uifabric/styling_v7.1.0",
+      "date": "Thu, 27 Jun 2019 18:25:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Semantic Slots: added successText.",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          },
+          {
+            "comment": "Add `font-display: 'swap'` when registering font face'",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.0.2` to `^7.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.3` to `^7.0.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.0.3",
       "tag": "@uifabric/styling_v7.0.3",
       "date": "Wed, 26 Jun 2019 12:23:41 GMT",

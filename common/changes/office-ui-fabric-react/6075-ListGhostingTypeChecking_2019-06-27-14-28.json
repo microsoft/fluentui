@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Addressing a variety of problems related to style recalculations.",
+      "comment": "Added interfaces for List Ghosting Example",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jagore@microsoft.com"
+  "email": "pandasa123@gmail.com"
 }

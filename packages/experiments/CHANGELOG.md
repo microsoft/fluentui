@@ -1,6 +1,18 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 25 Jun 2019 12:26:09 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Jun 2019 18:25:04 GMT and should not be manually modified.
+
+## 7.3.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+-  Button: Removing Stack usage from vanilla Button's slots and view to improve perf.
+- Chiclet: Add x-small variant
+
+### Patches
+
+- Button example updated.
 
 ## 7.2.3
 Tue, 25 Jun 2019 12:26:09 GMT

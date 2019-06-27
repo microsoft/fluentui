@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add placeholder as TextArea property, allows placeholder in multiline TextField",
+      "comment": "GroupedList: Fix \"Show All\" not rendering all items in a group",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "rcasto92@gmail.com"
+  "email": "KevinTCoughlin@users.noreply.github.com"
 }

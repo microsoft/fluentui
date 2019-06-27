@@ -27,9 +27,9 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/merge-styles": "^7.0.2",
+    "@uifabric/merge-styles": "^7.1.0",
     "@uifabric/set-version": "^7.0.0",
-    "office-ui-fabric-react": "^7.6.0",
+    "office-ui-fabric-react": "^7.6.1",
     "tslib": "^1.7.1"
   }
 }
