@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 26 Jun 2019 12:23:41 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Jun 2019 21:48:30 GMT and should not be manually modified.
+
+## 7.6.0
+Wed, 26 Jun 2019 21:48:30 GMT
+
+### Minor changes
+
+- BasePicker would only reveal suggestions on type or click, shifting focus. Now shows for click, not shifting focus as well.
 
 ## 7.5.3
 Wed, 26 Jun 2019 12:23:41 GMT
