@@ -7,6 +7,7 @@ import { List, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import * as styles from './List.Scrolling.Example.scss';
+import { ITheme, getTheme, mergeStyleSets, FontSizes } from '@uifabric/styling';
 
 export type IExampleItem = { name: string };
 
@@ -19,6 +20,35 @@ export interface IListScrollingExampleState {
   scrollToMode: ScrollToMode;
   showItemIndexInView: boolean;
 }
+
+const theme: ITheme = getTheme();
+const borderColour: string = '3px solid ' + theme.palette.themePrimary;
+const classNames = mergeStyleSets({
+  container: {
+    overflow: 'auto',
+    maxHeight: 500,
+    marginTop: 20
+  },
+  itemContent: {
+    position: 'relative',
+    display: 'block',
+    fontSize: FontSizes.medium,
+    paddingLeft: 27,
+    borderLeft: borderColour
+  },
+  itemContentOdd: {
+    height: 50,
+    lineHeight: 50,
+    background: theme.palette.neutralLighter
+  },
+  itemContentEven: {
+    height: 25,
+    lineHeight: 25
+  },
+  selected: {
+    background: 'lightblue'
+  }
+});
 
 const evenItemHeight = 25;
 const oddItemHeight = 50;
@@ -72,7 +102,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
             onChange={this._onShowItemIndexInViewChanged}
           />
         </div>
-        <div className={styles.container} data-is-scrollable={true}>
+        <div className={classNames.container} data-is-scrollable={true}>
           <List ref={this._resolveList} items={items} getPageHeight={this._getPageHeight} onRenderCell={this._onRenderCell} />
         </div>
       </FocusZone>
@@ -124,7 +154,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
   private _onRenderCell = (item: IExampleItem, index: number): JSX.Element => {
     return (
       <div data-is-focusable={true}>
-        <div className={css(styles.itemContent, index % 2 === 0 ? styles.itemContentEven : styles.itemContentOdd)}>
+        <div className={css(styles.itemContent, index % 2 === 0 ? classNames.itemContentEven : classNames.itemContentOdd)}>
           {index} &nbsp; {item.name}
         </div>
       </div>
