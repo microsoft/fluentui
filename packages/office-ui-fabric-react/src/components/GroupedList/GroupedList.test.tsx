@@ -7,7 +7,6 @@ import { IGroup } from './GroupedList.types';
 import { IColumn } from '../DetailsList/DetailsList.types';
 import { List } from '../List/List';
 import { GroupShowAll } from './GroupShowAll';
-import { Link } from 'office-ui-fabric-react/lib/Link';
 
 describe('GroupedList', () => {
   it("sets inner List page key to IGroup's key attribute for uniqueness", () => {
