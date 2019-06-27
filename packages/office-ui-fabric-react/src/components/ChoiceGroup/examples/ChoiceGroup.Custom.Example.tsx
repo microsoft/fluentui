@@ -2,9 +2,23 @@ import * as React from 'react';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { mergeStyleSets } from '@uifabric/styling';
 
-import * as stylesImport from './ChoiceGroup.Custom.Example.scss';
-const styles: any = stylesImport;
+interface IChoiceGroupClassObject {
+  root: string;
+  dropdown: string;
+}
+
+const classNames: IChoiceGroupClassObject = mergeStyleSets({
+  root: {
+    display: 'flex',
+    alignItems: 'baseline'
+  },
+  dropdown: {
+    marginBottom: 0,
+    marginLeft: 5
+  }
+});
 
 export class ChoiceGroupCustomExample extends React.Component {
   public render() {
@@ -19,10 +33,10 @@ export class ChoiceGroupCustomExample extends React.Component {
               ariaLabel: 'Mark displayed items as read after - Press tab for further action',
               onRenderField: (props, render) => {
                 return (
-                  <div className={css(styles.root)}>
+                  <div className={css(classNames.root)}>
                     {render!(props)}
                     <Dropdown
-                      className={css(styles.dropdown)}
+                      className={css(classNames.dropdown)}
                       defaultSelectedKey="A"
                       options={[{ key: 'A', text: '5 seconds' }, { key: 'B', text: '10 seconds' }, { key: 'C', text: '20 seconds' }]}
                       disabled={props ? !props.checked : false}
