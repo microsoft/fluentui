@@ -2,6 +2,30 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.15",
+      "tag": "@uifabric/fluent-theme_v0.16.15",
+      "date": "Wed, 26 Jun 2019 21:46:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ColorPicker: Updates ColorPicker component to match fluent toolkit",
+            "author": "Maxwell Rediker <13246181+maxwellred@users.noreply.github.com>",
+            "commit": "1e1f4252a6278e2d4368fd1f3c84faebd2e09091"
+          },
+          {
+            "comment": "Updated ContextualMenu styles to match fluent toolkit",
+            "author": "Maxwell Rediker <13246181+maxwellred@users.noreply.github.com>",
+            "commit": "0f9ca3eb68af2b96b6adf97a99c87f93321d1ced"
+          },
+          {
+            "comment": "Tooltip: Updates box shadow to match toolkit",
+            "author": "Maxwell Rediker <13246181+maxwellred@users.noreply.github.com>",
+            "commit": "77af2fc02e602d1c29e9f32dd524217051212b6c"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.14",
       "tag": "@uifabric/fluent-theme_v0.16.14",
       "date": "Wed, 26 Jun 2019 12:23:39 GMT",
