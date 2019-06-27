@@ -56,7 +56,7 @@ export interface IItemRange {
 
 export type GetMaterializedRangesCallback = (defaultMaterializedRanges: IItemRange[]) => IItemRange[];
 
-const TRAILING_OVERSCAN_COUNT_WHEN_SCROLLING = 1;
+const TRAILING_OVERSCAN_COUNT_WHILE_SCROLLING = 1;
 
 /**
  * Calculates the currently visible range of items based on the viewport state.
@@ -81,7 +81,7 @@ function getVisibleItemRange(props: IFixedListProps): IItemRange {
  * @param props The FixedList props
  */
 function getMaterializedItemRanges(props: IFixedListProps): IItemRange[] {
-  const { viewportState, overscanHeight, onGetMaterializedRanges: getMaterializedRangesCallback, itemHeight, itemCount } = props;
+  const { viewportState, overscanHeight, onGetMaterializedRanges, itemHeight, itemCount } = props;
 
   const { isScrolling, scrollDirection } = viewportState;
 
@@ -93,19 +93,19 @@ function getMaterializedItemRanges(props: IFixedListProps): IItemRange[] {
   visibleRange.startIndex = Math.max(
     0,
     visibleRange.startIndex -
-      (!isScrolling || scrollDirection[Axis.Y] === ScrollDirection.backward ? overscanCount : TRAILING_OVERSCAN_COUNT_WHEN_SCROLLING)
+      (!isScrolling || scrollDirection[Axis.Y] === ScrollDirection.backward ? overscanCount : TRAILING_OVERSCAN_COUNT_WHILE_SCROLLING)
   );
   visibleRange.endIndex = Math.min(
     itemCount - 1,
     visibleRange.endIndex +
-      (!isScrolling || scrollDirection[Axis.Y] === ScrollDirection.forward ? overscanCount : TRAILING_OVERSCAN_COUNT_WHEN_SCROLLING)
+      (!isScrolling || scrollDirection[Axis.Y] === ScrollDirection.forward ? overscanCount : TRAILING_OVERSCAN_COUNT_WHILE_SCROLLING)
   );
 
   let materializedRanges = [visibleRange];
 
   // Add custom materialized ranges (e.g. for currently focused item that is out of view)
-  if (getMaterializedRangesCallback) {
-    materializedRanges = getMaterializedRangesCallback(materializedRanges);
+  if (onGetMaterializedRanges) {
+    materializedRanges = onGetMaterializedRanges(materializedRanges);
   }
 
   return materializedRanges;
