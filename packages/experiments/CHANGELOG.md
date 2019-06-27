@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 20 Jun 2019 12:20:14 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Jun 2019 17:53:08 GMT and should not be manually modified.
+
+## 6.79.1
+Thu, 27 Jun 2019 17:53:08 GMT
+
+### Patches
+
+- Updates to tileslist, list and marquee selection
 
 ## 6.79.0
 Thu, 20 Jun 2019 12:20:14 GMT

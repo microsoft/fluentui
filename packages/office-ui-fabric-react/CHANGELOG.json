@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.192.0",
+      "tag": "office-ui-fabric-react_v6.192.0",
+      "date": "Thu, 27 Jun 2019 17:53:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updates to tileslist, list and marquee selection",
+            "author": "wiolsen <36865486+wiolsen@users.noreply.github.com>",
+            "commit": "f470c0a84602e1bcde38a34a793eee552524986e"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.191.0",
       "tag": "office-ui-fabric-react_v6.191.0",
       "date": "Wed, 26 Jun 2019 12:23:39 GMT",
