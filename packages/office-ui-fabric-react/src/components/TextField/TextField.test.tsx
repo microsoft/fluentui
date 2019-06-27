@@ -76,6 +76,12 @@ describe('TextField snapshots', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders multiline with placeholder correctly', () => {
+    const component = renderer.create(<TextField label="Label" multiline={true} placeholder="test placeholder" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders multiline correctly with props affecting styling', () => {
     const component = renderer.create(
       <TextField label="Label" errorMessage="test message" underlined={true} prefix="test prefix" suffix="test suffix" />

@@ -7,6 +7,10 @@ import { ChicletBreadcrumbExample } from './examples/Chiclet.Breadcrumb.Example'
 const ChicletBreadcrumbExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Chiclet/examples/Chiclet.Breadcrumb.Example.tsx') as string;
 import { ChicletFooterExample } from './examples/Chiclet.Footer.Example';
 const ChicletFooterExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Chiclet/examples/Chiclet.Footer.Example.tsx') as string;
+import { ChicletXsmallExample } from './examples/Chiclet.Xsmall.Example';
+const ChicletXsmallExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Chiclet/examples/Chiclet.Xsmall.Example.tsx') as string;
+import { ChicletXsmallFooterExample } from './examples/Chiclet.Xsmall.Footer.Example';
+const ChicletXsmallFooterExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Chiclet/examples/Chiclet.Xsmall.Footer.Example.tsx') as string;
 
 export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -19,11 +23,25 @@ export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Basic Medium-sized Chiclet" isOptIn={true} code={ChicletBasicExampleCode}>
               <ChicletBasicExample />
             </ExampleCard>
-            <ExampleCard title="Medium-sized Chiclet with Breadcrumb" isOptIn={true} code={ChicletBreadcrumbExampleCode}>
+            <ExampleCard
+              title="Medium-sized Chiclet with Breadcrumb, File Preview, and Icon Generated from Title"
+              isOptIn={true}
+              code={ChicletBreadcrumbExampleCode}
+            >
               <ChicletBreadcrumbExample />
             </ExampleCard>
-            <ExampleCard title="Medium-sized Chiclet with Footer" isOptIn={true} code={ChicletFooterExampleCode}>
+            <ExampleCard
+              title="Medium-sized Chiclet with Footer, Icon Generated from Title, and without File Preview"
+              isOptIn={true}
+              code={ChicletFooterExampleCode}
+            >
               <ChicletFooterExample />
+            </ExampleCard>
+            <ExampleCard title="xSmall-sized Chiclet with Footer and File Preview" isOptIn={true} code={ChicletXsmallFooterExampleCode}>
+              <ChicletXsmallFooterExample />
+            </ExampleCard>
+            <ExampleCard title="xSmall-sized Chiclet without Footer and File Preview" isOptIn={true} code={ChicletXsmallExampleCode}>
+              <ChicletXsmallExample />
             </ExampleCard>
           </div>
         }

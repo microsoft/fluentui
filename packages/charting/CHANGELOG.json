@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.133.0",
+      "tag": "@uifabric/charting_v0.133.0",
+      "date": "Thu, 27 Jun 2019 22:14:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Bisected the height to the chart and legends",
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "6cfd57a8561f8e228d1e09058abe6c2f1f4a9b33"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.132.0",
       "tag": "@uifabric/charting_v0.132.0",
       "date": "Thu, 20 Jun 2019 12:27:38 GMT",
