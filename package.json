@@ -24,7 +24,7 @@
     "buildci": "npm run _rushRebuildCi",
     "buildfast": "npm run _rushBuild",
     "code-style": "node common/scripts/install-run-rush.js code-style",
-    "change": "node common/scripts/install-run-rush.js change",
+    "change": "node ./scripts/node_modules/beachball/bin/beachball.js change",
     "rush-update": "node common/scripts/install-run-rush.js update",
     "generate": "npm run rush-update",
     "bundlesize": "cd scripts && npm run bundlesize",
