@@ -10,7 +10,7 @@ export interface IListGhostingExampleProps {
   items: IExampleItem[];
 }
 
-export interface IListGhostingExampleClassObject {
+interface IListGhostingExampleClassObject {
   container: string;
   itemCell: string;
   itemImage: string;
