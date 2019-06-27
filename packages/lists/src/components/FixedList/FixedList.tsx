@@ -1,36 +1,72 @@
 import * as React from 'react';
-import { IViewportState, ScrollDirection, Coord } from '../Viewport/Viewport';
-
-const TRAILING_OVERSCAN_COUNT_WHEN_SCROLLING = 1;
+import { IViewportState, ScrollDirection, Axis } from '../Viewport/Viewport';
 
 export interface IFixedListProps {
+  /**
+   * The total number of items contained in the list.
+   */
   itemCount: number;
+
+  /**
+   * The fixed height of each item in the list.
+   */
   itemHeight: number;
 
+  /**
+   * The current viewport state.
+   */
   viewportState: IViewportState;
+
+  /**
+   * The height of the viewport this list is mounted in.
+   */
   viewportHeight: number;
+
+  /**
+   * The width of the viewport this list is mounted in.
+   */
   viewportWidth: number;
 
+  /**
+   * The height of the viewport this list is mounted in.
+   */
   surfaceTop: number;
 
+  /**
+   * The height of item overscan before and after the visible area of the viewport.
+   */
   overscanHeight: number;
 
-  getMaterializedRangesCallback?: GetMaterializedRangesCallback;
-
+  /**
+   * Callback used to render an item with the given index.
+   */
   onRenderItem: (itemIndex: number, style: React.CSSProperties) => JSX.Element | null;
+
+  /**
+   * Callback used to add and modify the list's calculated materialized range, for example in order to always render
+   * a focused item, no matter whether it is currently in view or not.
+   */
+  onGetMaterializedRanges?: GetMaterializedRangesCallback;
 }
 
-export interface IRange {
+export interface IItemRange {
   startIndex: number;
   endIndex: number;
 }
 
-export type GetMaterializedRangesCallback = (defaultMaterializedRanges: IRange[]) => IRange[];
+export type GetMaterializedRangesCallback = (defaultMaterializedRanges: IItemRange[]) => IItemRange[];
 
-function getVisibleRange(props: IFixedListProps): IRange {
+const TRAILING_OVERSCAN_COUNT_WHEN_SCROLLING = 1;
+
+/**
+ * Calculates the currently visible range of items based on the viewport state.
+ * @param props The FixedList props
+ * @return
+ */
+function getVisibleItemRange(props: IFixedListProps): IItemRange {
   const { surfaceTop, itemHeight, viewportState, viewportHeight, itemCount } = props;
 
-  const scrollTop = viewportState.scrollDistance[Coord.Y] - surfaceTop;
+  const scrollTop = viewportState.scrollDistance[Axis.Y] - surfaceTop;
 
   const startIndex = Math.max(0, Math.floor(scrollTop / itemHeight));
   const endIndex = Math.min(itemCount - 1, Math.ceil((scrollTop + viewportHeight) / itemHeight));
@@ -38,27 +74,31 @@ function getVisibleRange(props: IFixedListProps): IRange {
   return { startIndex, endIndex };
 }
 
-function getMaterializedRanges(props: IFixedListProps): IRange[] {
-  const { viewportState, overscanHeight, getMaterializedRangesCallback, itemHeight, itemCount } = props;
+/**
+ * Calculates the materialized range of items based on the visible range. Consumers of FixedList can provide
+ * a callback to add and modify the calculated materialized range, for example in order to always render
+ * a focused item, no matter whether it is currently in view or not.
+ * @param props The FixedList props
+ */
+function getMaterializedItemRanges(props: IFixedListProps): IItemRange[] {
+  const { viewportState, overscanHeight, onGetMaterializedRanges: getMaterializedRangesCallback, itemHeight, itemCount } = props;
 
   const { isScrolling, scrollDirection } = viewportState;
 
-  const visibleRange = getVisibleRange(props);
+  const visibleRange = getVisibleItemRange(props);
 
   // Add overscan
+  const overscanCount = Math.ceil(overscanHeight / itemHeight);
+
   visibleRange.startIndex = Math.max(
     0,
     visibleRange.startIndex -
-      (!isScrolling || scrollDirection[Coord.Y] === ScrollDirection.backward
-        ? Math.ceil(overscanHeight / itemHeight)
-        : TRAILING_OVERSCAN_COUNT_WHEN_SCROLLING)
+      (!isScrolling || scrollDirection[Axis.Y] === ScrollDirection.backward ? overscanCount : TRAILING_OVERSCAN_COUNT_WHEN_SCROLLING)
   );
   visibleRange.endIndex = Math.min(
     itemCount - 1,
     visibleRange.endIndex +
-      (!isScrolling || scrollDirection[Coord.Y] === ScrollDirection.forward
-        ? Math.ceil(overscanHeight / itemHeight)
-        : TRAILING_OVERSCAN_COUNT_WHEN_SCROLLING)
+      (!isScrolling || scrollDirection[Axis.Y] === ScrollDirection.forward ? overscanCount : TRAILING_OVERSCAN_COUNT_WHEN_SCROLLING)
   );
 
   let materializedRanges = [visibleRange];
@@ -71,7 +111,12 @@ function getMaterializedRanges(props: IFixedListProps): IRange[] {
   return materializedRanges;
 }
 
-function getMaterializedItemsCount(materializedRanges: IRange[]): number {
+/**
+ * Calculates the number of materialized items given the array of materialized ranges.
+ * Used to create an array of the correct size when rendering the materialized items.
+ * @param props The FixedList props
+ */
+function getMaterializedItemsCount(materializedRanges: IItemRange[]): number {
   let materializedItemsCount = 0;
 
   for (const materializedRange of materializedRanges) {
@@ -83,16 +128,14 @@ function getMaterializedItemsCount(materializedRanges: IRange[]): number {
   return materializedItemsCount;
 }
 
+/**
+ * A simple virtualized List component which assumes that all its items have the same height.
+ */
 export const FixedList = React.memo((props: IFixedListProps) => {
   const { itemCount, itemHeight, onRenderItem } = props;
 
-  const materializedRanges = getMaterializedRanges(props);
+  const materializedRanges = getMaterializedItemRanges(props);
   const materializedItemsCount = getMaterializedItemsCount(materializedRanges);
-
-  const style: React.CSSProperties = {
-    position: 'relative',
-    height: `${itemCount * itemHeight}px`
-  };
 
   const children = new Array(materializedItemsCount);
 
@@ -111,6 +154,11 @@ export const FixedList = React.memo((props: IFixedListProps) => {
       childIndex++;
     }
   }
+
+  const style: React.CSSProperties = {
+    position: 'relative',
+    height: `${itemCount * itemHeight}px`
+  };
 
   return <div style={style}>{children}</div>; // tslint:disable-line:jsx-ban-props
 });
