@@ -9,8 +9,9 @@ import {
   MessageBarButton,
   PrimaryButton
 } from '../index';
-import { MenuButton } from '../MenuButton/index';
-import { SplitButton, ISplitButtonProps } from '../SplitButton/index';
+import { MenuButton } from '../MenuButton/MenuButton';
+import { SplitButton } from '../SplitButton/SplitButton';
+import { ISplitButtonProps } from '../SplitButton/SplitButton.types';
 import { Stack, Text } from 'office-ui-fabric-react';
 
 const tokens = {
