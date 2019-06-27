@@ -40,6 +40,7 @@ import { IProcessedStyleSet, mergeStyleSets } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 
 import { getItemStyles } from './ContextualMenu.classNames';
+import { IButtonProps } from '../Button';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>({
   disableCaching: true
@@ -1029,6 +1030,10 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       this._executeItemClick(item, ev);
     } else {
       if (item.key !== this.state.expandedMenuItemKey) {
+        if (item.onMenuClick) {
+          item.onMenuClick(ev, item as IButtonProps);
+        }
+
         // This has a collapsed sub menu. Expand it.
         this.setState({
           // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing

@@ -4,7 +4,7 @@ import { IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
 import { ICalloutProps, ICalloutContentStyleProps, Target } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
-import { IButtonStyles } from '../../Button';
+import { IButtonStyles, IButtonProps } from '../../Button';
 import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
@@ -358,6 +358,11 @@ export interface IContextualMenuItem {
    * Returning true will dismiss the menu even if ev.preventDefault() was called.
    */
   onClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
+
+  /**
+   * Callback invoked when the sub-menu is opened.
+   */
+  onMenuClick?: IButtonProps['onMenuClick'];
 
   /**
    * An optional URL to navigate to upon selection
