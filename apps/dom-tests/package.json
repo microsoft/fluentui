@@ -13,11 +13,11 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "@uifabric/experiments": "^7.2.3",
+    "@uifabric/experiments": "^7.3.0",
     "@uifabric/set-version": "^7.0.0",
     "es6-promise": "^4.1.0",
     "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^7.6.0",
+    "office-ui-fabric-react": "^7.6.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "tslib": "^1.7.1"
@@ -30,7 +30,7 @@
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.13.9",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.1.1",
+    "@uifabric/example-app-base": "^7.1.2",
     "@uifabric/prettier-rules": "^7.0.2",
     "@uifabric/tslint-rules": "^7.0.2",
     "expect-puppeteer": "4.1.0",

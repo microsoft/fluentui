@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "Adding a null check in the case a stylesheet instance is not avaiable or old.",
+      "comment": "Utilities: Update implementation for raising a click event to support IE",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/utilities",
-  "email": "dzearing@microsoft.com"
+  "email": "afhassan@microsoft.com"
 }

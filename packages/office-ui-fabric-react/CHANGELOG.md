@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 26 Jun 2019 21:48:30 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Jun 2019 18:25:04 GMT and should not be manually modified.
+
+## 7.6.1
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Patches
+
+- Prettier changes.
+- Avoid marking DetailsRow as non-draggable unless backed by DragDropEvents
+- Addressing a variety of problems related to style recalculations.
+- Panel: Overflowing header text should word break and wrap by default
+- Add placeholder as TextArea property, allows placeholder in multiline TextField
 
 ## 7.6.0
 Wed, 26 Jun 2019 21:48:30 GMT

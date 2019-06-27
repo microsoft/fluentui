@@ -2,6 +2,31 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "7.2.0",
+      "tag": "@uifabric/fabric-website_v7.2.0",
+      "date": "Thu, 27 Jun 2019 18:25:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "making all getting started links point to microsoft rather than kenotron",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.1` to `^7.1.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.2.3` to `^7.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.0` to `^7.6.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.6",
       "tag": "@uifabric/fabric-website_v7.1.6",
       "date": "Mon, 24 Jun 2019 23:11:20 GMT",

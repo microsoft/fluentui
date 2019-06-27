@@ -30,10 +30,10 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/experiments": "^7.2.3",
+    "@uifabric/experiments": "^7.3.0",
     "@uifabric/set-version": "^7.0.0",
-    "@uifabric/styling": "^7.0.3",
-    "office-ui-fabric-react": "^7.6.0",
+    "@uifabric/styling": "^7.1.0",
+    "office-ui-fabric-react": "^7.6.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "tslib": "^1.7.1"
