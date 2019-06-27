@@ -119,7 +119,7 @@ export interface ISemanticColors extends ISemanticTextColors {
    */
   defaultStateBackground: string;
 
-  //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
+  //// Invariants - slots that rarely change color theme-to-theme because the color has meaning. Exclusive to List items.
   /**
    * The background for errors, if necessary, or highlighting the section of the page where the error is present.
    */
@@ -140,6 +140,28 @@ export interface ISemanticColors extends ISemanticTextColors {
    * Background for success
    */
   successBackground: string;
+
+  //// MessageBar slots
+  /**
+   * Background for an error message bar
+   */
+  messageErrorBackground: string;
+  /**
+   * Background for a blocking message bar
+   */
+  messageBlockingBackground: string;
+  /**
+   * Background for a severe warning message bar
+   */
+  messageSevereWarningBackground: string;
+  /**
+   * Background for a warning message bar
+   */
+  messageWarningBackground: string;
+  /**
+   * Background for a success message bar
+   */
+  messageSuccessBackground: string;
 
   //// Input controls slots (text fields, checkboxes, radios...)
 

@@ -205,6 +205,12 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     warningHighlight: !isInverted ? '#ffb900' : '#fff100',
     successBackground: !isInverted ? 'rgba(95, 210, 85, .2)' : 'rgba(186, 216, 10, .4)',
 
+    messageErrorBackground: isInverted ? '#fde7e9' : '#442726',
+    messageBlockingBackground: isInverted ? '#fde7e9' : '#442726',
+    messageSevereWarningBackground: isInverted ? '#fed9cc' : '#452915',
+    messageWarningBackground: isInverted ? '#fff4ce' : '#433519',
+    messageSuccessBackground: isInverted ? '#dff6dd' : '393d18',
+
     inputBorder: p.neutralSecondaryAlt,
     inputBorderHovered: p.neutralPrimary,
     inputBackground: p.white,
