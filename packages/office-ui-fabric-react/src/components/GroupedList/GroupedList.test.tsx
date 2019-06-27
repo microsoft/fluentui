@@ -101,7 +101,7 @@ describe('GroupedList', () => {
     const wrapper = mount(<GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />);
 
     const listRows = wrapper.find(DetailsRow);
-    expect(listRows.length).toBe(3);
+    expect(listRows).toHaveLength(3);
 
     wrapper.unmount();
   });
@@ -149,7 +149,7 @@ describe('GroupedList', () => {
     const wrapper = mount(<GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />);
 
     const listRows = wrapper.find(DetailsRow);
-    expect(listRows.length).toBe(1);
+    expect(listRows).toHaveLength(1);
 
     wrapper.unmount();
   });
@@ -197,7 +197,7 @@ describe('GroupedList', () => {
     const wrapper = mount(<GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />);
 
     const listRows = wrapper.find(DetailsRow);
-    expect(listRows.length).toBe(0);
+    expect(listRows).toHaveLength(0);
 
     wrapper.unmount();
   });
@@ -244,14 +244,14 @@ describe('GroupedList', () => {
     const wrapper = mount(<GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />);
 
     let listRows = wrapper.find(DetailsRow);
-    expect(listRows.length).toBe(1);
+    expect(listRows).toHaveLength(1);
 
     const groupShowAllElement = wrapper.find(GroupShowAll);
 
     groupShowAllElement.simulate('click');
 
     listRows = wrapper.find(DetailsRow);
-    expect(listRows.length).toBe(1);
+    expect(listRows).toHaveLength(1);
 
     wrapper.unmount();
   });
