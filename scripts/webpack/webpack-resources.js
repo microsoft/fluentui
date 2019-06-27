@@ -13,7 +13,7 @@ let isValidEnv = false;
 function validateEnv() {
   if (!isValidEnv) {
     try {
-      const resolvedPolyfill = resolve.sync('react-app-polyfill/ie11');
+      const resolvedPolyfill = resolve.sync('react-app-polyfill/ie11', { basedir: process.cwd() });
       isValidEnv = !!resolvedPolyfill;
     } catch (e) {
       console.error('Please make sure the package "react-app-polyfill" is in the package.json dependencies');
@@ -38,10 +38,11 @@ function prependEntryWithPolyfill(entry) {
     } else if (Array.isArray(entry)) {
       return [polyfill, ...entry];
     } else if (typeof entry === 'object') {
-      const newEntry = [...entry];
+      const newEntry = { ...entry };
       Object.keys(entry).forEach(entryPoint => {
-        entry[entryPoint] = prependEntryWithPolyfill(entryPoint);
+        newEntry[entryPoint] = prependEntryWithPolyfill(entry[entryPoint]);
       });
+
       return newEntry;
     }
   }
