@@ -18,7 +18,7 @@ export interface IListBasicExampleState {
   items?: IExampleItem[];
 }
 
-export interface IListBasicExampleClassObject {
+interface IListBasicExampleClassObject {
   itemCell: string;
   itemImage: string;
   itemContent: string;
