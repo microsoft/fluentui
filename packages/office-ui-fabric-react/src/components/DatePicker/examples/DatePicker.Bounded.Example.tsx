@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 import { addMonths, addYears } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import './DatePicker.Examples.scss';
+import { mergeStyleSets } from '@uifabric/styling';
 
 const today: Date = new Date(Date.now());
 const minDate: Date = addMonths(today, -1);
@@ -37,6 +37,29 @@ export interface IDatePickerRequiredExampleState {
   firstDayOfWeek?: DayOfWeek;
 }
 
+export interface IDatePickerExampleState {
+  firstDayOfWeek?: DayOfWeek;
+}
+
+interface IDatePickerExampleObject {
+  datePickerExample: string;
+}
+
+const classNames: IDatePickerExampleObject = mergeStyleSets({
+  datePickerExample: {
+    selectors: {
+      '&.ms-DatePicker': {
+        margin: '0 0 15px 0',
+        maxWidth: 300
+      },
+      '&.ms-Dropdown': {
+        margin: '0 0 15px 0',
+        maxWidth: 300
+      }
+    }
+  }
+});
+
 export class DatePickerBoundedExample extends React.Component<{}, IDatePickerRequiredExampleState> {
   constructor(props: {}) {
     super(props);
@@ -50,7 +73,7 @@ export class DatePickerBoundedExample extends React.Component<{}, IDatePickerReq
     const { firstDayOfWeek } = this.state;
 
     return (
-      <div className="docs-DatePickerExample">
+      <div className={classNames.datePickerExample}>
         <p>{description}</p>
         <DatePicker
           isRequired={false}

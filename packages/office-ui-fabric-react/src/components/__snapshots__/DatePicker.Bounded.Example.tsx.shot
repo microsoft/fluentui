@@ -2,7 +2,22 @@
 
 exports[`Component Examples renders DatePicker.Bounded.Example.tsx correctly 1`] = `
 <div
-  className="docs-DatePickerExample"
+  className=
+
+      &.ms-DatePicker {
+        margin-bottom: 15px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        max-width: 300px;
+      }
+      &.ms-Dropdown {
+        margin-bottom: 15px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
+        max-width: 300px;
+      }
 >
   <p>
     When date boundaries are set (via minDate and maxDate props) the DatePicker will not allow

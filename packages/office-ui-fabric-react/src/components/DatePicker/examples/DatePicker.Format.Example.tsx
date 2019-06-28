@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-import './DatePicker.Examples.scss';
+import { mergeStyleSets } from '@uifabric/styling';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -28,6 +28,29 @@ export interface IDatePickerFormatExampleState {
   firstDayOfWeek?: DayOfWeek;
   value?: Date | null;
 }
+
+export interface IDatePickerExampleState {
+  firstDayOfWeek?: DayOfWeek;
+}
+
+interface IDatePickerExampleObject {
+  datePickerExample: string;
+}
+
+const classNames: IDatePickerExampleObject = mergeStyleSets({
+  datePickerExample: {
+    selectors: {
+      '&.ms-DatePicker': {
+        margin: '0 0 15px 0',
+        maxWidth: 300
+      },
+      '&.ms-Dropdown': {
+        margin: '0 0 15px 0',
+        maxWidth: 300
+      }
+    }
+  }
+});
 
 export class DatePickerFormatExample extends React.Component<{}, IDatePickerFormatExampleState> {
   public constructor(props: {}) {

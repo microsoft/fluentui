@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
-import './DatePicker.Examples.scss';
+import { mergeStyleSets } from '@uifabric/styling';
 
 const DayPickerStrings: IDatePickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -29,6 +29,29 @@ export interface IDatePickerInputExampleState {
   value?: Date | null;
 }
 
+export interface IDatePickerExampleState {
+  firstDayOfWeek?: DayOfWeek;
+}
+
+interface IDatePickerExampleObject {
+  datePickerExample: string;
+}
+
+const classNames: IDatePickerExampleObject = mergeStyleSets({
+  datePickerExample: {
+    selectors: {
+      '&.ms-DatePicker': {
+        margin: '0 0 15px 0',
+        maxWidth: 300
+      },
+      '&.ms-Dropdown': {
+        margin: '0 0 15px 0',
+        maxWidth: 300
+      }
+    }
+  }
+});
+
 export class DatePickerInputExample extends React.Component<{}, IDatePickerInputExampleState> {
   constructor(props: {}) {
     super(props);
@@ -43,7 +66,7 @@ export class DatePickerInputExample extends React.Component<{}, IDatePickerInput
     const { firstDayOfWeek, value } = this.state;
     const desc = 'This field is required. One of the support input formats is year dash month dash day.';
     return (
-      <div className="docs-DatePickerExample">
+      <div className={classNames.datePickerExample}>
         <p>
           Text input allowed by default when use keyboard navigation. Mouse click the TextField will popup DatePicker, click the TextField
           again will dismiss the DatePicker and allow text input.
