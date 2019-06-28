@@ -9,38 +9,38 @@
         "patch": [
           {
             "comment": "Replaced SCSS in favour of CSS in JS in List Basic Example",
-            "author": "Brian Zhao <rezha@microsoft.com>",
-            "commit": "c32b8bc9f2c440638c9b402e0af3eb2f6e6421f5"
+            "author": "Sanket Panda <pandasa123@gmail.com>",
+            "commit": "43699b823f5b3845992cc8d4e99d0526991051bd"
           },
           {
             "comment": "Added interfaces for List Ghosting Example",
-            "author": "Brian Zhao <rezha@microsoft.com>",
-            "commit": "c32b8bc9f2c440638c9b402e0af3eb2f6e6421f5"
+            "author": "Sanket Panda <pandasa123@gmail.com>",
+            "commit": "309434088155ef38362bed0ffe105210b325808f"
           },
           {
             "comment": "GroupedList: Fix \"Show All\" not rendering all items in a group",
-            "author": "Brian Zhao <rezha@microsoft.com>",
-            "commit": "c32b8bc9f2c440638c9b402e0af3eb2f6e6421f5"
+            "author": "Kevin Coughlin <KevinTCoughlin@users.noreply.github.com>",
+            "commit": "47be913d6c29fa5755e6593bdc752ded367da424"
           },
           {
             "comment": "Removed scss usage from List example.",
-            "author": "Brian Zhao <rezha@microsoft.com>",
-            "commit": "c32b8bc9f2c440638c9b402e0af3eb2f6e6421f5"
+            "author": "Sanket Panda <pandasa123@gmail.com>",
+            "commit": "2cb2cabf7ea51ce6bf11b14748d139e94e8ee919"
           },
           {
             "comment": "GroupedList: Updated header text color on hover and updated snapshots.",
-            "author": "Brian Zhao <rezha@microsoft.com>",
-            "commit": "c32b8bc9f2c440638c9b402e0af3eb2f6e6421f5"
+            "author": "Mary <marygans@microsoft.com>",
+            "commit": "fcaa9a7fc891076b99560712f9184683d1d4cb93"
           },
           {
             "comment": "Layer: remove the usage of viewport width and height to fix layout issues on mobile browsers",
-            "author": "Brian Zhao <rezha@microsoft.com>",
-            "commit": "c32b8bc9f2c440638c9b402e0af3eb2f6e6421f5"
+            "author": "Katherine Kjeer <kakje@microsoft.com>",
+            "commit": "c3be8bc3aba78ae432b13fe53c930d92c664d801"
           },
           {
             "comment": "Removed used Rating SCSS file",
-            "author": "Brian Zhao <rezha@microsoft.com>",
-            "commit": "c32b8bc9f2c440638c9b402e0af3eb2f6e6421f5"
+            "author": "Sanket Panda <pandasa123@gmail.com>",
+            "commit": "d93fc0de42aa2b6d12faca51572f3e3b99e1532e"
           }
         ]
       }
@@ -53,28 +53,28 @@
         "patch": [
           {
             "comment": "Prettier changes.",
-            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
-            "commit": "880264578d390878abde534f400849931dc4816b"
+            "author": "Makoto Morimoto <humbertomakotomorimoto@gmail.com>",
+            "commit": "7f0190527755b5e649cb0a3022039eca51588fd7"
           },
           {
             "comment": "Avoid marking DetailsRow as non-draggable unless backed by DragDropEvents",
-            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
-            "commit": "880264578d390878abde534f400849931dc4816b"
+            "author": "Thomas Michon <tmichon@microsoft.com>",
+            "commit": "fc6fdfccfe2512fea7b7b077cb28d7a9593b2563"
           },
           {
             "comment": "Addressing a variety of problems related to style recalculations.",
-            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
-            "commit": "880264578d390878abde534f400849931dc4816b"
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "e1983e85a07f94c02b069b13f198ff536c19aa35"
           },
           {
             "comment": "Panel: Overflowing header text should word break and wrap by default",
-            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
-            "commit": "880264578d390878abde534f400849931dc4816b"
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "e0aa46b174ef769be8c3d20e4618c6407270f274"
           },
           {
             "comment": "Add placeholder as TextArea property, allows placeholder in multiline TextField",
-            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
-            "commit": "880264578d390878abde534f400849931dc4816b"
+            "author": "Richie <rcasto9292@gmail.com>",
+            "commit": "cea0f894926deb97f35fb9778ed8347332e85e10"
           }
         ],
         "dependency": [
