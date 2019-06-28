@@ -18,7 +18,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
       isHomePage: true,
       isUhfLink: true,
       isContentFullBleed: true,
-      component: () => <LoadingComponent title="Welcome to Microsoft UI Fabric" />,
+      component: () => <LoadingComponent title="Welcome to UI Fabric" />,
       getComponent: cb => require.ensure([], require => cb(require<any>('../pages/HomePage/HomePage').HomePage))
     },
     GetStartedPages,
