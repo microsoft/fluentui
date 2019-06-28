@@ -1,7 +1,11 @@
 import React from 'react';
 import { PrimaryButton, Stack, Label, mergeStyleSets } from 'office-ui-fabric-react';
-import { ITranspiledOutput } from '../transpiler/transpile.types';
 import { ITextModel } from '../components/Editor.types';
+
+interface ITranspiledOutput {
+  outputString?: string;
+  error?: string;
+}
 
 const classNames = mergeStyleSets({
   error: {
