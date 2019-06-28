@@ -66,7 +66,7 @@ export class DatePickerFormatExample extends React.Component<{}, IDatePickerForm
     const { firstDayOfWeek, value } = this.state;
     const desc = 'This field is required. One of the support input formats is year dash month dash day.';
     return (
-      <div className="docs-DatePickerExample">
+      <div className={classNames.datePickerExample}>
         <p>
           Applications can customize how dates are formatted and parsed. Formatted dates can be ambiguous, so the control will avoid parsing
           the formatted strings of dates selected using the UI when text input is allowed. In this example, we are formatting and parsing

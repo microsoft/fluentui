@@ -20,7 +20,7 @@ const DayPickerStrings: IDatePickerStrings = {
   closeButtonAriaLabel: 'Close date picker'
 };
 
-export interface IDatePickerExampleState {
+export interface IDatePickerBasicExampleState {
   firstDayOfWeek?: DayOfWeek;
 }
 
