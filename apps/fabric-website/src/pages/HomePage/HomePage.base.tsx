@@ -50,9 +50,13 @@ const fabricUsageIcons = [
 
 const fabricVersionOptions: IContextualMenuItem[] = [
   {
-    key: '6',
-    text: 'Fabric 6',
+    key: '7',
+    text: 'Fabric 7',
     checked: true
+  },
+  {
+    key: '6',
+    text: 'Fabric 6'
   },
   {
     key: '5',

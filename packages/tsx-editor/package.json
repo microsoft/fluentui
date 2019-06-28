@@ -40,6 +40,7 @@
     "enzyme-adapter-react-16": "^1.2.0",
     "es6-weak-map": "^2.0.2",
     "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-test-renderer": "^16.3.0",
     "webpack-bundle-analyzer": "^3.0.4"
@@ -50,7 +51,7 @@
     "@uifabric/fluent-theme": "^7.0.2",
     "monaco-editor": "^0.17.0",
     "monaco-editor-webpack-plugin": "^1.7.0",
-    "office-ui-fabric-react": "^7.5.3",
+    "office-ui-fabric-react": "^7.6.2",
     "react-monaco-editor": "^0.26.2",
     "tslib": "^1.7.1"
   },

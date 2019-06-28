@@ -35,13 +35,13 @@
     "checkchange": "node common/scripts/install-run-rush.js change -v",
     "update-api": "cd packages/office-ui-fabric-react && npm run update-api",
     "update-snapshots": "cd packages/office-ui-fabric-react && npm run update-snapshots",
+    "update-a11y": "cd apps/a11y-tests && npm run update-snapshots",
     "check-for-changed-files": "cd scripts && npx just-scripts check-for-modified-files",
     "prettier": "node scripts/prettier.js",
     "generate-version-files": "cd scripts && npx just-scripts generate-version-files",
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
     "precommit": "node scripts/node_modules/lint-staged/index.js",
-    "dom-test": "cd apps/dom-tests && npx just-scripts jest-dom-with-webpack",
-    "update-a11y": "cd apps/a11y-tests && npm run update-snapshots"
+    "dom-test": "cd apps/dom-tests && npx just-scripts jest-dom-with-webpack"
   },
   "license": "MIT",
   "lint-staged": {
