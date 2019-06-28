@@ -190,6 +190,10 @@
       "unicode": "E74E"
     },
     {
+      "name": "ReturnKey",
+      "unicode": "E751"
+    },
+    {
       "name": "Cloud",
       "unicode": "E753"
     },
@@ -250,6 +254,10 @@
       "unicode": "E769"
     },
     {
+      "name": "InkingTool",
+      "unicode": "E76D"
+    },
+    {
       "name": "Emoji2",
       "unicode": "E76E"
     },
@@ -292,6 +300,10 @@
     {
       "name": "Memo",
       "unicode": "E77C"
+    },
+    {
+      "name": "IncomingCall",
+      "unicode": "E77E"
     },
     {
       "name": "Paste",
@@ -396,18 +408,6 @@
     {
       "name": "Warning",
       "unicode": "E7BA"
-    },
-    {
-      "name": "Financial",
-      "unicode": "E7BB"
-    },
-    {
-      "name": "Education",
-      "unicode": "E7BE"
-    },
-    {
-      "name": "ShoppingCart",
-      "unicode": "E7BF"
     }
   ]
 }
