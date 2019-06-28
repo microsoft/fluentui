@@ -24,7 +24,7 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
         hasInput && {
           selectors: {
             '.ms-SearchBox-iconContainer': {
-              width: 0
+              width: 4
             },
             '.ms-SearchBox-icon': {
               opacity: 0
