@@ -119,7 +119,7 @@ export interface ISemanticColors extends ISemanticTextColors {
    */
   defaultStateBackground: string;
 
-  //// Invariants - slots that rarely change color theme-to-theme because the color has meaning.
+  //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
   /**
    * The background for errors, if necessary, or highlighting the section of the page where the error is present.
    */
