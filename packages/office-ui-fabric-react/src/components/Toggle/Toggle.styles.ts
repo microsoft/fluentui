@@ -7,21 +7,21 @@ const DEFAULT_THUMB_SIZE = 12;
 
 export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
   const { theme, className, disabled, checked, inlineLabel, onOffMissing } = props;
-  const { semanticColors, palette } = theme;
+  const { semanticColors } = theme;
 
   // Tokens
   const pillUncheckedBackground = semanticColors.bodyBackground;
   const pillCheckedBackground = semanticColors.inputBackgroundChecked;
   // TODO: after updating the semanticColors slots mapping this needs to be semanticColors.inputBackgroundCheckedHovered
-  const pillCheckedHoveredBackground = palette.themeDark;
-  const thumbUncheckedHoveredBackground = palette.neutralDark;
+  const pillCheckedHoveredBackground = semanticColors.primaryButtonBackgroundPressed;
+  const thumbUncheckedHoveredBackground = semanticColors.actionLinkHovered;
   const pillCheckedDisabledBackground = semanticColors.disabledBodySubtext;
   const thumbBackground = semanticColors.smallInputBorder;
   const thumbCheckedBackground = semanticColors.inputForegroundChecked;
   const thumbDisabledBackground = semanticColors.disabledBodySubtext;
   const thumbCheckedDisabledBackground = semanticColors.disabledBackground;
   const pillBorderColor = semanticColors.smallInputBorder;
-  const pillBorderHoveredColor = palette.neutralDark;
+  const pillBorderHoveredColor = semanticColors.actionLinkHovered;
   const pillBorderDisabledColor = semanticColors.disabledBodySubtext;
   const textDisabledColor = semanticColors.disabledText;
 
