@@ -180,9 +180,9 @@ storiesOf('Actionable', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-Button')
+        .hover('.ms-Actionable')
         .snapshot('hovered', { cropTo: '.testWrapper' })
-        .mouseDown('.ms-Button')
+        .mouseDown('.ms-Actionable')
         .snapshot('pressed', { cropTo: '.testWrapper' })
         .end()}
     >

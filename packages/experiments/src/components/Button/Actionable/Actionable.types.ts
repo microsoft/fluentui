@@ -1,4 +1,4 @@
-import { IFontWeight, IKeytipProps, IStackSlot } from 'office-ui-fabric-react';
+import { IFontWeight, IKeytipProps } from 'office-ui-fabric-react';
 import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
 import { IBaseProps } from '../../../Utilities';
 
@@ -37,11 +37,6 @@ export interface IActionableSlots {
    * Defines the root slot of the component.
    */
   root?: IHTMLElementSlot<IActionableRootElements>;
-
-  /**
-   * Defines the horizontal stack used for specifying the inner layout of the Button.
-   */
-  stack?: IStackSlot;
 }
 
 /**
@@ -159,6 +154,11 @@ export interface IActionableTokens {
    * Defines the border width of the Button.
    */
   borderWidth?: number | string;
+
+  /*
+   * Defines the spacing between Button children.
+   */
+  childrenGap?: number | string;
 
   /**
    * Defines the text color of elements inside the Button.

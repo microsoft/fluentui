@@ -1,6 +1,48 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 18 Jun 2019 12:26:19 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Jun 2019 22:14:22 GMT and should not be manually modified.
+
+## 7.2.1
+Thu, 27 Jun 2019 22:14:22 GMT
+
+### Patches
+
+- Add fabric 7 to website version selector
+
+## 7.2.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+- making all getting started links point to microsoft rather than kenotron
+
+## 7.1.6
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- Update website for Fabric 7
+
+## 7.1.5
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- Renamed instances of "Microsoft UI Fabric" to "UI Fabric"
+
+## 7.1.4
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Patches
+
+- Get rid of references to _exampleStyles.scss
+
+## 7.1.3
+Tue, 18 Jun 2019 19:00:04 GMT
+
+### Patches
+
+- Mobile: Added source code links, removed generic library link.
 
 ## 7.1.2
 Tue, 18 Jun 2019 12:26:19 GMT

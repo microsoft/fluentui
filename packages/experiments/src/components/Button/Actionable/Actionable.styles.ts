@@ -1,3 +1,4 @@
+import { parseGap } from 'office-ui-fabric-react/lib/components/Stack/StackUtils';
 import { getFocusStyle, getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 import { IActionableComponent, IActionableStylesReturnType, IActionableTokenReturnType } from './Actionable.types';
 
@@ -51,6 +52,8 @@ const GlobalClassNames = {
 export const ActionableStyles: IActionableComponent['styles'] = (props, theme, tokens): IActionableStylesReturnType => {
   const { className } = props;
 
+  const { rowGap, columnGap } = parseGap(tokens.childrenGap, theme);
+
   const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
@@ -59,6 +62,7 @@ export const ActionableStyles: IActionableComponent['styles'] = (props, theme, t
       getFocusStyle(theme, { inset: 1, outlineColor: tokens.outlineColor }),
       theme.fonts.medium,
       {
+        alignItems: 'center',
         backgroundColor: tokens.backgroundColor,
         borderColor: tokens.borderColor,
         borderRadius: tokens.borderRadius,
@@ -67,7 +71,8 @@ export const ActionableStyles: IActionableComponent['styles'] = (props, theme, t
         boxSizing: 'border-box',
         color: tokens.color,
         cursor: tokens.cursor,
-        display: 'inline-block',
+        display: 'inline-flex',
+        flexDirection: 'row',
         fontSize: tokens.textSize,
         fontWeight: tokens.textWeight,
         height: tokens.height,
@@ -77,7 +82,7 @@ export const ActionableStyles: IActionableComponent['styles'] = (props, theme, t
         minHeight: tokens.minHeight,
         outlineColor: tokens.outlineColor,
         overflow: 'hidden',
-        padding: 0,
+        padding: tokens.contentPadding,
         textAlign: 'center',
         textDecoration: 'none',
         userSelect: 'none',
@@ -85,6 +90,13 @@ export const ActionableStyles: IActionableComponent['styles'] = (props, theme, t
         width: tokens.width,
 
         selectors: {
+          '> *': {
+            marginLeft: `${0.5 * rowGap.value}${rowGap.unit} ${0.5 * columnGap.value}${columnGap.unit}`,
+            textOverflow: 'ellipsis'
+          },
+          '> *:not(:first-child)': {
+            marginLeft: `${columnGap.value}${columnGap.unit}`
+          },
           [HighContrastSelector]: {
             backgroundColor: tokens.highContrastBackgroundColor,
             borderColor: tokens.highContrastBorderColor,
@@ -121,10 +133,6 @@ export const ActionableStyles: IActionableComponent['styles'] = (props, theme, t
         }
       },
       className
-    ],
-    stack: {
-      height: '100%',
-      padding: tokens.contentPadding
-    }
+    ]
   };
 };

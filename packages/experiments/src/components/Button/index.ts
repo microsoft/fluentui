@@ -5,9 +5,9 @@ export * from './Actionable/Actionable.types';
 // Button
 export * from './Button';
 export * from './Button.types';
-export * from './ButtonVariants.types';
 
 // Button variants
+export * from './ButtonVariants.types';
 export * from './ActionButton';
 export * from './CommandBarButton';
 export * from './CompoundButton';

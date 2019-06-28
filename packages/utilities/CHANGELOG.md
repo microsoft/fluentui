@@ -1,6 +1,22 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Jun 2019 22:14:22 GMT and should not be manually modified.
+
+## 7.0.5
+Thu, 27 Jun 2019 22:14:22 GMT
+
+### Patches
+
+- Utilities: Update implementation for raising a click event to support IE
+
+## 7.0.4
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Patches
+
+- Adding a null check in the case a stylesheet instance is not avaiable or old.
+- The `getClassNames` function now returns memoized classnames, resulting in improved performance in high repeat scenarios (like lists rendering checks.) Reintroduction of #8761.
+- Add placeholder as TextArea property
 
 ## 7.0.3
 Fri, 14 Jun 2019 12:26:30 GMT

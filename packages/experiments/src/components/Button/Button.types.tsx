@@ -2,7 +2,7 @@ import { IRawFontStyle, IRawStyleBase } from '@uifabric/merge-styles/lib/IRawSty
 import { ITextSlot } from 'office-ui-fabric-react';
 import { IComponent, IComponentStyles, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
-import { IBaseProps, Omit } from '../../Utilities';
+import { IBaseProps } from '../../Utilities';
 import { IActionable, IActionableProps, IActionableSlots, IActionableTokens, IActionableViewProps } from './Actionable/Actionable.types';
 
 /**

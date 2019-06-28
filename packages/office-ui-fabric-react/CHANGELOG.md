@@ -1,6 +1,98 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 18 Jun 2019 12:26:19 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Jun 2019 12:27:34 GMT and should not be manually modified.
+
+## 7.6.2
+Fri, 28 Jun 2019 12:27:34 GMT
+
+### Patches
+
+- Replaced SCSS in favour of CSS in JS in List Basic Example
+- Added interfaces for List Ghosting Example
+- GroupedList: Fix "Show All" not rendering all items in a group
+- Removed scss usage from List example.
+- GroupedList: Updated header text color on hover and updated snapshots.
+- Layer: remove the usage of viewport width and height to fix layout issues on mobile browsers
+- Removed used Rating SCSS file
+
+## 7.6.1
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Patches
+
+- Prettier changes.
+- Avoid marking DetailsRow as non-draggable unless backed by DragDropEvents
+- Addressing a variety of problems related to style recalculations.
+- Panel: Overflowing header text should word break and wrap by default
+- Add placeholder as TextArea property, allows placeholder in multiline TextField
+
+## 7.6.0
+Wed, 26 Jun 2019 21:48:30 GMT
+
+### Minor changes
+
+- BasePicker would only reveal suggestions on type or click, shifting focus. Now shows for click, not shifting focus as well.
+
+## 7.5.3
+Wed, 26 Jun 2019 12:23:41 GMT
+
+### Patches
+
+- Panel: move windowHeight from classNames into inline styles to prevent unnecessary className recalculations, respect isFooterAtBottom prop
+- TextField: Add condition for Edge browser to detect placeholder styles
+
+## 7.5.2
+Tue, 25 Jun 2019 12:26:09 GMT
+
+### Patches
+
+- Updates to tileslist, list and marquee selection
+
+## 7.5.1
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- FocusZone: fixed keyboard navigation when checkForNoWrap prop enabled.
+- Dropdown:Bring back breakpoint for small screen sizes
+- Coachmark: fixes beacon color props not being passed to styles.
+
+## 7.5.0
+Fri, 21 Jun 2019 12:27:05 GMT
+
+### Minor changes
+
+- Adds dual presence to PersonaPresence
+- Slider: onChanged is fired after a delay following keydown events.
+
+### Patches
+
+- Tooltip: add onKeyDown handler to dismiss on escape
+- Combobox: Fix styles so that RootChecked works
+- Don't expand ComboBox flyout on touch when disabled.
+- TooltipHost: fix the closeDelay Tooltip bug where a user could not interact with the Tooltip because it would close.
+
+## 7.4.3
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- DetailsList: add aria-hidden to checkbox labels
+
+## 7.4.2
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Patches
+
+- Make more examples exportable to codepen
+
+## 7.4.1
+Tue, 18 Jun 2019 19:00:04 GMT
+
+### Patches
+
+- Facepile: Introducing OnRenderPersona and OnRenderPersonaCoin to override default implementation of Persona and PersonaCoin. 
+- Tooltip: reverts commit 210fbabee 
 
 ## 7.4.0
 Tue, 18 Jun 2019 12:26:19 GMT

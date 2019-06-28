@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/foundation",
+      "comment": "adds react-app-polyfill",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/foundation",
+  "email": "kchau@microsoft.com"
+}

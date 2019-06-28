@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website",
-  "version": "7.1.2",
+  "version": "7.2.1",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,6 +37,7 @@
     "highlight.js": "^9.12.0",
     "office-ui-fabric-core": "^10.0.0",
     "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-highlight": "0.10.0",
     "write-file-webpack-plugin": "^4.1.0",
@@ -45,17 +46,16 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/api-docs": "^7.0.2",
-    "@uifabric/example-app-base": "^7.0.4",
-    "@uifabric/experiments": "^7.1.1",
-    "@uifabric/fabric-website-resources": "^7.0.2",
+    "@uifabric/example-app-base": "^7.1.2",
+    "@uifabric/experiments": "^7.3.0",
+    "@uifabric/fabric-website-resources": "^7.1.0",
     "@uifabric/file-type-icons": "^7.0.3",
     "@uifabric/fluent-theme": "^7.0.2",
     "@uifabric/icons": "^7.0.2",
     "@uifabric/set-version": "^7.0.0",
     "@uifabric/theme-samples": "^7.0.2",
-    "react-app-polyfill": "~1.0.1",
     "json-loader": "^0.5.7",
-    "office-ui-fabric-react": "^7.4.0",
+    "office-ui-fabric-react": "^7.6.2",
     "tslib": "^1.7.1",
     "whatwg-fetch": "2.0.4"
   }

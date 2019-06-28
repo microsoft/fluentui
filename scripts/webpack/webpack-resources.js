@@ -1,10 +1,54 @@
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('fs');
+const resolve = require('resolve');
 const merge = require('../tasks/merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const webpackVersion = require('webpack/package.json').version;
 console.log(`Webpack version: ${webpackVersion}`);
+
+let isValidEnv = false;
+
+function validateEnv() {
+  if (!isValidEnv) {
+    try {
+      const resolvedPolyfill = resolve.sync('react-app-polyfill/ie11', { basedir: process.cwd() });
+      isValidEnv = !!resolvedPolyfill;
+    } catch (e) {
+      console.error('Please make sure the package "react-app-polyfill" is in the package.json dependencies');
+      process.exit(1);
+    }
+  }
+}
+
+/**
+ * Prepends the entry points with a react 16 compatible polyfill but only for sites that have react as a dependency
+ */
+function prependEntryWithPolyfill(entry) {
+  const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
+  if (
+    (packageJson.dependencies && Object.keys(packageJson.dependencies).includes('react')) ||
+    (packageJson.devDependencies && Object.keys(packageJson.devDependencies).includes('react'))
+  ) {
+    validateEnv();
+    const polyfill = 'react-app-polyfill/ie11';
+    if (typeof entry === 'string') {
+      return [polyfill, entry];
+    } else if (Array.isArray(entry)) {
+      return [polyfill, ...entry];
+    } else if (typeof entry === 'object') {
+      const newEntry = { ...entry };
+      Object.keys(entry).forEach(entryPoint => {
+        newEntry[entryPoint] = prependEntryWithPolyfill(entry[entryPoint]);
+      });
+
+      return newEntry;
+    }
+  }
+
+  return entry;
+}
 
 module.exports = {
   webpack,
@@ -70,11 +114,19 @@ module.exports = {
       );
     }
 
+    for (let config of configs) {
+      // Skip prepending in case of UMD or VAR output.libraryTarget because those meant for distribution
+      // apps should provide their own polyfill
+      if (config.output && config.output.libraryTarget !== 'umd' && config.output.libraryTarget !== 'var') {
+        config.entry = prependEntryWithPolyfill(config.entry);
+      }
+    }
+
     return configs;
   },
 
   createServeConfig(customConfig) {
-    return merge(
+    const config = merge(
       {
         devServer: {
           inline: true,
@@ -150,6 +202,10 @@ module.exports = {
       },
       customConfig
     );
+
+    config.entry = prependEntryWithPolyfill(config.entry);
+
+    return config;
   }
 };
 

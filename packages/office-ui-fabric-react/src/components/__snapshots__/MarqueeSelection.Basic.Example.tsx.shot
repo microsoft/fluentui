@@ -16,6 +16,10 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
         is-enabled
         {
           display: flex;
+          margin-bottom: 10px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
           position: relative;
         }
         &:hover .ms-Checkbox-checkbox {

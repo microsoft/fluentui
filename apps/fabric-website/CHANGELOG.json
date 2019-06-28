@@ -2,6 +2,139 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "7.2.1",
+      "tag": "@uifabric/fabric-website_v7.2.1",
+      "date": "Thu, 27 Jun 2019 22:14:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add fabric 7 to website version selector",
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "6cfd57a8561f8e228d1e09058abe6c2f1f4a9b33"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.2.0",
+      "tag": "@uifabric/fabric-website_v7.2.0",
+      "date": "Thu, 27 Jun 2019 18:25:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "making all getting started links point to microsoft rather than kenotron",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.1` to `^7.1.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.2.3` to `^7.3.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.0` to `^7.6.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.6",
+      "tag": "@uifabric/fabric-website_v7.1.6",
+      "date": "Mon, 24 Jun 2019 23:11:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update website for Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "c0916cf97138fc6dbd2c05a5772f1472908778c7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.2.1` to `^7.2.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^7.0.3` to `^7.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.5.0` to `^7.5.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.5",
+      "tag": "@uifabric/fabric-website_v7.1.5",
+      "date": "Thu, 20 Jun 2019 12:27:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Renamed instances of \"Microsoft UI Fabric\" to \"UI Fabric\"",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "c13e7dcffebfffdb65c6e35165b1ebecad1380ae"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.1.1` to `^7.2.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.2` to `^7.4.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.4",
+      "tag": "@uifabric/fabric-website_v7.1.4",
+      "date": "Wed, 19 Jun 2019 12:27:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Get rid of references to _exampleStyles.scss",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "8bd274ad2c5df42865bc0254b11ec7ab9df2a5b3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.4` to `^7.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.1` to `^7.4.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.3",
+      "tag": "@uifabric/fabric-website_v7.1.3",
+      "date": "Tue, 18 Jun 2019 19:00:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Mobile: Added source code links, removed generic library link.",
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "69b4f8dd2f2dc416d4b287bf7b140f34991ca1c3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.0` to `^7.4.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.2",
       "tag": "@uifabric/fabric-website_v7.1.2",
       "date": "Tue, 18 Jun 2019 12:26:19 GMT",
