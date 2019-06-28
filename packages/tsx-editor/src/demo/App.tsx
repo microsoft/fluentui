@@ -42,13 +42,12 @@ export class App extends React.Component {
   }
 
   private onChange = (editor: ITextModel) => {
-    require.ensure([], require => {
-      const transpile = require('../transpiler/transpile').transpile;
-      const _evalCode = require('../transpiler/transpile')._evalCode;
+    require.ensure(['../transpiler/transpiler'], require => {
+      const { evalCode, transpile } = require('../transpiler/transpile');
       transpile(editor).then((output: ITranspiledOutput) => {
         if (output.outputString) {
-          const evaledCode = _evalCode(output.outputString);
-          if (evaledCode.error) {
+          const evaledCode = evalCode(output.outputString);
+          if (evaledCode) {
             this.setState({
               error: evaledCode.error
             });
@@ -77,7 +76,7 @@ export class App extends React.Component {
                 <Label>Typescript + React editor</Label>
               </div>
               <React.Suspense fallback={<div>Loading...</div>}>
-                <Editor width={800} height={500} code="" language="typescript" onChange={this.onChange} />
+                <Editor width={800} height={500} code="console.log('hello world');" language="typescript" onChange={this.onChange} />
               </React.Suspense>
             </div>
           ),

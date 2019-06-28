@@ -1,8 +1,8 @@
-import * as monaco from 'monaco-editor';
+import { Uri } from 'monaco-editor';
 
 export interface ITextModel {
   id: string;
-  uri: monaco.Uri;
+  uri: Uri;
 }
 
 export interface IEditorProps {
