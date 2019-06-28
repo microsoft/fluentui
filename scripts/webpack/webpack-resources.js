@@ -36,8 +36,10 @@ function shouldPrepend(config) {
  * Prepends the entry points with a react 16 compatible polyfill but only for sites that have react as a dependency
  */
 function createEntryWithPolyfill(config) {
-  if (shouldPrepend(config)) {
+  const { entry } = config;
+  if (shouldPrepend(config) && entry) {
     validateEnv();
+
     const polyfill = 'react-app-polyfill/ie11';
     if (typeof entry === 'string') {
       return [polyfill, entry];
