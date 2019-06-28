@@ -24,8 +24,8 @@ function validateEnv() {
 
 function shouldPrepend(config) {
   const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
-  const excludedProjects = ['perf-test'];
-  const exportedAsBundle = config.output.libraryTarget === 'umd' || config.output.libraryTarget === 'var';
+  const excludedProjects = ['perf-test', 'test-bundles'];
+  const exportedAsBundle = config.output && (config.output.libraryTarget === 'umd' || config.output.libraryTarget === 'var');
   const hasReactAsDependency =
     (packageJson.dependencies && Object.keys(packageJson.dependencies).includes('react')) ||
     (packageJson.devDependencies && Object.keys(packageJson.devDependencies).includes('react'));
@@ -35,8 +35,7 @@ function shouldPrepend(config) {
 /**
  * Prepends the entry points with a react 16 compatible polyfill but only for sites that have react as a dependency
  */
-function createEntryWithPolyfill(config) {
-  const { entry } = config;
+function createEntryWithPolyfill(entry, config) {
   if (shouldPrepend(config) && entry) {
     validateEnv();
 
@@ -47,8 +46,9 @@ function createEntryWithPolyfill(config) {
       return [polyfill, ...entry];
     } else if (typeof entry === 'object') {
       const newEntry = { ...entry };
+
       Object.keys(entry).forEach(entryPoint => {
-        newEntry[entryPoint] = createEntryWithPolyfill(entry[entryPoint]);
+        newEntry[entryPoint] = createEntryWithPolyfill(entry[entryPoint], config);
       });
 
       return newEntry;
@@ -123,7 +123,7 @@ module.exports = {
     }
 
     for (let config of configs) {
-      config.entry = createEntryWithPolyfill(config);
+      config.entry = createEntryWithPolyfill(config.entry, config);
     }
 
     return configs;
@@ -207,7 +207,7 @@ module.exports = {
       customConfig
     );
 
-    config.entry = createEntryWithPolyfill(config);
+    config.entry = createEntryWithPolyfill(config.entry, config);
 
     return config;
   }
