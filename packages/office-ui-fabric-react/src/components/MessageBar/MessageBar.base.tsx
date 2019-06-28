@@ -3,7 +3,7 @@ import { BaseComponent, DelayedRender, getId, classNamesFunction, getNativeProps
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
-import { getTheme } from '../../../../styling/lib';
+import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<IMessageBarStyleProps, IMessageBarStyles>();
 
