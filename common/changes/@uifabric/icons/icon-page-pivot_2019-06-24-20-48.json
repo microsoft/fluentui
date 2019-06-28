@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/icons",
       "comment": "Update MDL2 icons. Add AllIconNames.json",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/icons",
