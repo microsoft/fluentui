@@ -28,6 +28,7 @@
     "office-ui-fabric-react": "^7.6.2",
     "raw-loader": "^0.5.1",
     "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "webpack": "4.29.5",
     "@uifabric/build": "^7.0.0"

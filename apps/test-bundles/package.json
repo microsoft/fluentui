@@ -35,6 +35,7 @@
     "@uifabric/styling": "^7.1.0",
     "office-ui-fabric-react": "^7.6.2",
     "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "tslib": "^1.7.1"
   }
