@@ -325,7 +325,11 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         fontSize: 20, // TODO: after the type ramp gets reevaluated this needs to be changed
         fontWeight: FontWeights.semibold,
         lineHeight: '27px',
-        margin: 0
+        margin: 0,
+        overflowWrap: 'break-word',
+        wordWrap: 'break-word',
+        wordBreak: 'break-word',
+        hyphens: 'auto'
       },
       headerClassName
     ],

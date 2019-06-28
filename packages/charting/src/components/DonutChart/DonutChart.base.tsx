@@ -53,9 +53,13 @@ export class DonutChartBase extends React.Component<
         .substring(7);
   }
   public componentDidMount(): void {
+    /* 80% Height to the Chart
+       20% Height to the Legends
+    */
+    const reducedHeight = this._rootElem!.offsetHeight / 5;
     this.setState({
       _width: this._rootElem!.offsetWidth,
-      _height: this._rootElem!.offsetHeight
+      _height: this._rootElem!.offsetHeight - reducedHeight
     });
   }
   public render(): JSX.Element {

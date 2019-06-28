@@ -31,7 +31,6 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
   const Slots = getSlots<IMenuButtonProps, IMenuButtonSlots>(props, {
     root: 'div',
     button: Button,
-    stack: Stack,
     icon: Icon,
     content: Text,
     menu: ContextualMenu,

@@ -4,7 +4,7 @@
   "private": true,
   "description": "A11y Tests for Office UI Fabric React",
   "scripts": {
-    "build": "npx just-scripts build",
+    "build": "npx just-scripts build && npx just-scripts jest",
     "just": "npx just-scripts",
     "test": "npx just-scripts jest",
     "code-style": "npx just-scripts code-style",
@@ -17,10 +17,11 @@
     "axe-sarif-converter": "^1.0.0",
     "glob": "^7.1.2",
     "mkdirp": "^0.5.1",
-    "office-ui-fabric-react": "^7.5.3",
+    "office-ui-fabric-react": "^7.6.2",
     "puppeteer": "^1.13.0",
     "tslib": "^1.7.1",
     "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },
   "devDependencies": {
