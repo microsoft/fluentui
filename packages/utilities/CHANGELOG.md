@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 21 Jun 2019 03:41:09 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Jun 2019 12:22:28 GMT and should not be manually modified.
+
+## 6.41.4
+Fri, 28 Jun 2019 12:22:28 GMT
+
+### Patches
+
+- Add placeholder as TextArea property
 
 ## 6.41.3
 Fri, 21 Jun 2019 03:41:09 GMT

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 24 Jun 2019 23:08:57 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Jun 2019 12:22:28 GMT and should not be manually modified.
+
+## 6.23.6
+Fri, 28 Jun 2019 12:22:28 GMT
+
+### Patches
+
+- Renamed instances of "Microsoft UI Fabric" to "UI Fabric"
 
 ## 6.23.5
 Mon, 24 Jun 2019 23:08:57 GMT

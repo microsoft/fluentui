@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.41.4",
+      "tag": "@uifabric/utilities_v6.41.4",
+      "date": "Fri, 28 Jun 2019 12:22:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add placeholder as TextArea property",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "e6ac320c1eed6eaf82b79d9e67c39ff2fe364904"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.41.3",
       "tag": "@uifabric/utilities_v6.41.3",
       "date": "Fri, 21 Jun 2019 03:41:09 GMT",
