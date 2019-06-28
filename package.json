@@ -7,26 +7,22 @@
     "type": "git",
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
+  "devDependencies": {
+    "lerna": "^3.15.0"
+  },
   "scripts": {
-    "_rushInstall": "node common/scripts/install-run-rush.js install --purge",
-    "_rushBuild": "node common/scripts/install-run-rush.js build",
-    "_rushBuildToFabricResources": "node common/scripts/install-run-rush.js build --to @uifabric/fabric-website-resources",
-    "_rushRebuild": "node common/scripts/install-run-rush.js rebuild --production --verbose --lint",
-    "_rushRebuildCi": "node common/scripts/install-run-rush.js rebuild --verbose --lint",
-    "_rushRebuildFast": "node common/scripts/install-run-rush.js rebuild",
-    "postinstall": "npm run _rushInstall && npm run _rushBuildToFabricResources -- --npm-install-mode",
     "test": "npm run _rushBuild",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
     "start": "cd apps && cd fabric-website-resources && npm start",
     "start-exp": "cd packages && cd experiments && npm start",
-    "build": "npm run _rushRebuild",
-    "buildci": "npm run _rushRebuildCi",
-    "buildfast": "npm run _rushBuild",
-    "code-style": "node common/scripts/install-run-rush.js code-style",
+    "build": "lerna run build --stream",
+    "buildci": "lerna run rebuild --stream",
+    "buildfast": "lerna run build --min",
+    "code-style": "lerna run code-style --stream",
     "change": "node ./scripts/node_modules/beachball/bin/beachball.js change",
-    "rush-update": "node common/scripts/install-run-rush.js update",
-    "generate": "npm run rush-update",
+    "rush-update": "yarn",
+    "generate": "yarn",
     "bundlesize": "cd scripts && npm run bundlesize",
     "bundlesizecollect": "cd scripts && npx just-scripts bundle-size-collect",
     "create-component": "node scripts/create-component.js",
@@ -63,6 +59,13 @@
       "**/CHANGELOG.*",
       "**/*.api.md",
       "**/_*.scss"
+    ]
+  },
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*",
+      "scripts"
     ]
   }
 }
