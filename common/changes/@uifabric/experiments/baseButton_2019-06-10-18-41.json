@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": " Button: Removing Stack usage from vanilla Button's slots and view to improve perf.",
+      "comment": "Button: Renaming BaseButton to Actionable, extending Button from Actionable and removing content and icon from Actionable types.",
       "type": "minor"
     }
   ],

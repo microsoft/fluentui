@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { ActionButton, CommandBarButton, CompoundButton, DefaultButton, IconButton, MessageBarButton, PrimaryButton } from '../index';
-import { MenuButton } from '../MenuButton/index';
-import { SplitButton, ISplitButtonProps } from '../SplitButton/index';
 import { Stack, Text } from 'office-ui-fabric-react';
+import { ActionButton, CommandBarButton, CompoundButton, DefaultButton, IconButton, MessageBarButton, PrimaryButton } from '../index';
+import { Actionable } from '../Actionable/Actionable';
+import { MenuButton } from '../MenuButton/MenuButton';
+import { SplitButton } from '../SplitButton/SplitButton';
+import { ISplitButtonProps } from '../SplitButton/SplitButton.types';
 
 const tokens = {
   sectionStack: {
@@ -38,6 +40,10 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
     return (
       <Stack tokens={tokens.sectionStack}>
         <Stack tokens={tokens.buttonStack}>
+          <ButtonStack>
+            <Actionable content="Actionable" />
+            <Actionable disabled content="Disabled Actionable" />
+          </ButtonStack>
           <ButtonStack>
             <DefaultButton content="Default button" />
             <DefaultButton disabled content="Disabled default button" />

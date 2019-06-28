@@ -27,3 +27,10 @@ Once the Lists component graduates to a production release, the component will b
 ```js
 import { ComponentName } from 'office-ui-fabric-react';
 ```
+
+## Profiling
+
+Below are resources on using the React profiler and `<Profiler/>` component:
+
+- https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html
+- https://gist.github.com/bvaughn/60a883af01716a03a1b3285a1029be0c

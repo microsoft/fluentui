@@ -3,4 +3,5 @@ export * from './Chiclet';
 export * from './Chiclet.types';
 export * from './ChicletCard.base';
 export * from './ChicletCard';
-export * from './OpenGraph';
+export * from './ChicletXsmall.base';
+export * from './ChicletXsmall';

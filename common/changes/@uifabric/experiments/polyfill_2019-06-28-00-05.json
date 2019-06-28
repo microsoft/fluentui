@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/experiments",
-      "type": "none"
+      "comment": "adds react-app-polyfill",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "afhassan@microsoft.com"
+  "email": "kchau@microsoft.com"
 }

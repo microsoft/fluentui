@@ -60,7 +60,8 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
         userSelect: 'none',
         selectors: {
           ':hover': {
-            background: semanticColors.listItemBackgroundHovered
+            background: semanticColors.listItemBackgroundHovered,
+            color: semanticColors.actionLinkHovered
           },
           ':hover $check': {
             opacity: 1

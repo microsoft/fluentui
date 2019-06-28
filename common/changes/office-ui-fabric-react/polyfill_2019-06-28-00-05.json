@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Prettier changes.",
+      "comment": "adds react-app-polyfill",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com"
+  "email": "kchau@microsoft.com"
 }

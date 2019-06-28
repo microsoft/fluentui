@@ -1289,6 +1289,8 @@ exports[`Button Variants renders a disabled IconButton correctly 1`] = `
         background-color: #ffffff;
         border-color: transparent;
         border-radius: 50%;
+        border-style: solid;
+        border-width: 1px;
         box-sizing: border-box;
         cursor: default;
         display: inline-flex;
@@ -2228,6 +2230,8 @@ exports[`Button Variants renders an IconButton correctly 1`] = `
         background-color: transparent;
         border-color: transparent;
         border-radius: 50%;
+        border-style: solid;
+        border-width: 1px;
         box-sizing: border-box;
         cursor: pointer;
         display: inline-flex;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { mergeStyleSets, getTheme, DefaultFontStyles, FontSizes, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme, mergeStyleSets, getTheme, DefaultFontStyles, FontSizes, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 
 export type IExampleItem = { name: string; thumbnail: string };
 
@@ -10,8 +10,18 @@ export interface IListGhostingExampleProps {
   items: IExampleItem[];
 }
 
-const theme = getTheme();
-const classNames = mergeStyleSets({
+interface IListGhostingExampleClassObject {
+  container: string;
+  itemCell: string;
+  itemImage: string;
+  itemContent: string;
+  itemName: string;
+  itemIndex: string;
+  chevron: string;
+}
+
+const theme: ITheme = getTheme();
+const classNames: IListGhostingExampleClassObject = mergeStyleSets({
   container: {
     overflow: 'auto',
     maxHeight: 500
