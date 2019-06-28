@@ -138,6 +138,11 @@ export interface IMessageBarStyles {
   root?: IStyle;
 
   /**
+   * Style for the overlay element.
+   */
+  overlay: IStyle;
+
+  /**
    * Style set for the element containing the icon, text, and optional dismiss button.
    */
   content?: IStyle;

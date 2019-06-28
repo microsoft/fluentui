@@ -110,12 +110,14 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
     return (
       <div style={{ background: theme!.semanticColors.bodyBackground }}>
         <div className={this._classNames.root}>
-          <div className={this._classNames.content}>
-            {this._getIconSpan()}
-            {this._renderInnerText()}
-            {this._getDismissDiv()}
+          <div className={this._classNames.overlay}>
+            <div className={this._classNames.content}>
+              {this._getIconSpan()}
+              {this._renderInnerText()}
+              {this._getDismissDiv()}
+            </div>
+            {this._getActionsDiv()}
           </div>
-          {this._getActionsDiv()}
         </div>
       </div>
     );
@@ -126,12 +128,14 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
     return (
       <div style={{ background: theme!.semanticColors.bodyBackground }}>
         <div className={this._classNames.root}>
-          <div className={this._classNames.content}>
-            {this._getIconSpan()}
-            {this._renderInnerText()}
-            {this._getExpandSingleLine()}
-            {this._getActionsDiv()}
-            {this._getDismissSingleLine()}
+          <div className={this._classNames.overlay}>
+            <div className={this._classNames.content}>
+              {this._getIconSpan()}
+              {this._renderInnerText()}
+              {this._getExpandSingleLine()}
+              {this._getActionsDiv()}
+              {this._getDismissSingleLine()}
+            </div>
           </div>
         </div>
       </div>

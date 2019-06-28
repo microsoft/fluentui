@@ -33,7 +33,7 @@ const GlobalClassNames = {
 };
 
 // Returns the background color of the MessageBar root element based on the type of MessageBar.
-const getRootBackground = (messageBarType: MessageBarType | undefined, palette: IPalette, semanticColors: ISemanticColors): string => {
+const getOverlay = (messageBarType: MessageBarType | undefined, palette: IPalette, semanticColors: ISemanticColors): string => {
   switch (messageBarType) {
     case MessageBarType.error:
     case MessageBarType.blocked:
@@ -113,7 +113,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       !isMultiline && onDismiss && classNames.dismissalSingleLine,
       !isMultiline && truncated && classNames.expandingSingleLine,
       {
-        background: getRootBackground(messageBarType, palette, semanticColors),
+        background: semanticColors.bodyBackground,
         color: palette.neutralPrimary,
         minHeight: 32,
         width: '100%',
@@ -134,6 +134,11 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         flexDirection: 'column'
       },
       className
+    ],
+    overlay: [
+      {
+        background: getOverlay(messageBarType, palette, semanticColors)
+      }
     ],
     content: [
       classNames.content,
