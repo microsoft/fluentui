@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Removed SCSS in favour of CSS-in-JS",
+      "comment": "Removed scss usage from List example.",
       "type": "patch"
     }
   ],
