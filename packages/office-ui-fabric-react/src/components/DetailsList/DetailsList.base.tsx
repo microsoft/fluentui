@@ -439,7 +439,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   cellStyleProps: cellStyleProps,
                   checkboxVisibility,
                   indentWidth,
-                  onRenderDetailsCheckbox: onRenderCheckbox
+                  onRenderDetailsCheckbox: onRenderCheckbox,
+                  rowWidth: this._sumColumnWidths()
                 },
                 this._onRenderDetailsHeader
               )}
@@ -511,6 +512,14 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     };
   };
 
+  private _sumColumnWidths = () => {
+    let totalWidth: number = 0;
+
+    this.state.adjustedColumns.forEach((column: IColumn) => (totalWidth += column.calculatedWidth || column.minWidth));
+
+    return totalWidth;
+  };
+
   private _onRenderCell(nestingDepth: number, item: any, index: number): React.ReactNode {
     const {
       compact,
@@ -561,7 +570,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       useReducedRowRenderer: useReducedRowRenderer,
       indentWidth,
       cellStyleProps: cellStyleProps,
-      onRenderDetailsCheckbox: onRenderCheckbox
+      onRenderDetailsCheckbox: onRenderCheckbox,
+      rowWidth: this._sumColumnWidths()
     };
 
     if (!item) {
@@ -859,6 +869,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       column.calculatedWidth = (column.calculatedWidth as number) + increment;
       totalWidth += increment;
     }
+
+    console.log('getJustifiedColumns', adjustedColumns);
 
     return adjustedColumns;
   }

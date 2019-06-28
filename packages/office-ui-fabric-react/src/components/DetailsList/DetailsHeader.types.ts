@@ -89,6 +89,13 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
 
   /** If provided, can be used to render a custom checkbox */
   onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
+
+  /**
+   * Minimum width of the header.
+   *
+   * @defaultvalue 0
+   */
+  rowWidth?: number;
 }
 
 /**

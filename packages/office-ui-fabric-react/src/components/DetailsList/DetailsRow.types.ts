@@ -46,6 +46,8 @@ export interface IDetailsItemProps {
 
   /**
    * View port of the virtualized list
+   *
+   * @deprecated unused
    */
   viewport?: IViewport | undefined;
 
@@ -181,6 +183,13 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
   cellsByColumn?: {
     [columnKey: string]: React.ReactNode;
   };
+
+  /**
+   * Minimum width of the row.
+   *
+   * @defaultvalue 0
+   */
+  rowWidth?: number;
 }
 
 /**
