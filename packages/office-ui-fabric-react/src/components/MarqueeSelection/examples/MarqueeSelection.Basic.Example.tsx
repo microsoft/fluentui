@@ -3,7 +3,47 @@ import * as React from 'react';
 import { css, createArray } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { MarqueeSelection, Selection, IObjectWithKey } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import * as styles from './MarqueeSelection.Basic.Example.scss';
+import { ITheme, getTheme, mergeStyleSets } from '@uifabric/styling';
+
+interface IMarqueeSelectionBasicExampleClassObject {
+  photoList: string;
+  photoCell: string;
+}
+
+const theme: ITheme = getTheme();
+const classNames: IMarqueeSelectionBasicExampleClassObject = mergeStyleSets({
+  photoList: {
+    display: 'inline-block',
+    border: '1px solid ' + theme.palette.neutralTertiary,
+    margin: 0,
+    padding: 10,
+    overflow: 'hidden',
+    userSelect: 'none'
+  },
+  photoCell: {
+    position: 'relative',
+    display: 'inline-block',
+    margin: 2,
+    boxSizing: 'border-box',
+    background: theme.palette.neutralLighter,
+    lineHeight: 100,
+    verticalAlign: 'middle',
+    textAlign: 'center',
+    selectors: {
+      '&.is-selected': {
+        background: theme.palette.themeLighter,
+        selectors: {
+          '&:after': {
+            content: '',
+            position: 'absolute',
+            margin: 0,
+            border: '1px solid ' + theme.palette.themePrimary
+          }
+        }
+      }
+    }
+  }
+});
 
 interface IPhoto extends IObjectWithKey {
   url: string;
@@ -57,11 +97,11 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
       <MarqueeSelection selection={this._selection} isEnabled={this.state.isMarqueeEnabled}>
         <Checkbox styles={{ root: { margin: '10px 0' } }} label="Is marquee enabled" defaultChecked={true} onChange={this._onChange} />
         <p>Drag a rectangle around the items below to select them:</p>
-        <ul className={styles.photoList}>
+        <ul className={classNames.photoList}>
           {PHOTOS.map((photo, index) => (
             <div
               key={index}
-              className={css(styles.photoCell, this._selection.isIndexSelected(index) && 'is-selected')}
+              className={css(classNames.photoCell, this._selection.isIndexSelected(index) && 'is-selected')}
               data-is-focusable={true}
               data-selection-index={index}
               onClick={this._log('clicked')}
