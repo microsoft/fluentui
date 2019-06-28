@@ -19,7 +19,8 @@ function _registerFontFace(fontFamily: string, url: string, fontWeight?: IFontWe
     fontFamily,
     src: localFontSrc + `url('${url}.woff2') format('woff2'),` + `url('${url}.woff') format('woff')`,
     fontWeight,
-    fontStyle: 'normal'
+    fontStyle: 'normal',
+    fontDisplay: 'swap'
   });
 }
 

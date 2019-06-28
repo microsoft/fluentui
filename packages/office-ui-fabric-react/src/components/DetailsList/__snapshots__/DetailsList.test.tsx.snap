@@ -5017,6 +5017,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               }
                               &:hover {
                                 background: #f3f2f1;
+                                color: #201f1e;
                               }
                               &:hover $check {
                                 opacity: 1;
@@ -5630,6 +5631,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               }
                               &:hover {
                                 background: #f3f2f1;
+                                color: #201f1e;
                               }
                               &:hover $check {
                                 opacity: 1;

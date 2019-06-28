@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/jest-serializer-merge-styles",
+      "comment": "adds react-app-polyfill",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/jest-serializer-merge-styles",
+  "email": "kchau@microsoft.com"
+}

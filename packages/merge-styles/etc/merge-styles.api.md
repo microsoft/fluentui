@@ -50,6 +50,7 @@ export type ICSSRule = 'initial' | 'inherit' | 'unset';
 
 // @public
 export interface IFontFace extends IRawFontStyle {
+    fontDisplay?: 'auto' | 'block' | 'swap' | 'fallback' | 'optional';
     fontFeatureSettings?: string;
     src?: string;
     unicodeRange?: ICSSRule | string;

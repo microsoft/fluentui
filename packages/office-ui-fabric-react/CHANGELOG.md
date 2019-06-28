@@ -1,6 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 26 Jun 2019 21:48:30 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Jun 2019 12:27:34 GMT and should not be manually modified.
+
+## 7.6.2
+Fri, 28 Jun 2019 12:27:34 GMT
+
+### Patches
+
+- Replaced SCSS in favour of CSS in JS in List Basic Example
+- Added interfaces for List Ghosting Example
+- GroupedList: Fix "Show All" not rendering all items in a group
+- Removed scss usage from List example.
+- GroupedList: Updated header text color on hover and updated snapshots.
+- Layer: remove the usage of viewport width and height to fix layout issues on mobile browsers
+- Removed used Rating SCSS file
+
+## 7.6.1
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Patches
+
+- Prettier changes.
+- Avoid marking DetailsRow as non-draggable unless backed by DragDropEvents
+- Addressing a variety of problems related to style recalculations.
+- Panel: Overflowing header text should word break and wrap by default
+- Add placeholder as TextArea property, allows placeholder in multiline TextField
 
 ## 7.6.0
 Wed, 26 Jun 2019 21:48:30 GMT

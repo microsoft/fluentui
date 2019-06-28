@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "making all getting started links point to microsoft rather than kenotron",
-      "type": "minor"
+      "comment": "adds react-app-polyfill",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/fabric-website",

@@ -259,6 +259,12 @@ export interface IFontFace extends IRawFontStyle {
   unicodeRange?: ICSSRule | string;
 
   /**
+   * Determines how a font face is displayed based on whether and when it is downloaded
+   * and ready to use.
+   */
+  fontDisplay?: 'auto' | 'block' | 'swap' | 'fallback' | 'optional';
+
+  /**
    * Feature settings for the font.
    */
   fontFeatureSettings?: string;

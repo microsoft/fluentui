@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "Semantic Slots: added successText.",
-      "type": "minor"
+      "comment": "adds react-app-polyfill",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/styling",
-  "email": "aneeshak@microsoft.com"
+  "email": "kchau@microsoft.com"
 }
