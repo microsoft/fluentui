@@ -1,7 +1,11 @@
 import * as monaco from 'monaco-editor';
-import { ITranspiledOutput } from './transpile.types';
 import { TypeScriptWorker, EmitOutput } from './monacoTypescriptWorker';
 import { ITextModel } from '../components/Editor.types';
+
+interface ITranspiledOutput {
+  outputString?: string;
+  error?: string;
+}
 
 export async function transpile(model: ITextModel): Promise<ITranspiledOutput> {
   const makeWorker = await monaco.languages.typescript.getTypeScriptWorker();
