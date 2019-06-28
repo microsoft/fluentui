@@ -22,15 +22,21 @@ function validateEnv() {
   }
 }
 
+function shouldPrepend(config) {
+  const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
+  const excludedProjects = ['perf-test'];
+  const exportedAsBundle = config.output.libraryTarget === 'umd' || config.output.libraryTarget === 'var';
+  const hasReactAsDependency =
+    (packageJson.dependencies && Object.keys(packageJson.dependencies).includes('react')) ||
+    (packageJson.devDependencies && Object.keys(packageJson.devDependencies).includes('react'));
+  return !exportedAsBundle && hasReactAsDependency && !excludedProjects.includes(packageJson.name);
+}
+
 /**
  * Prepends the entry points with a react 16 compatible polyfill but only for sites that have react as a dependency
  */
-function prependEntryWithPolyfill(entry) {
-  const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
-  if (
-    (packageJson.dependencies && Object.keys(packageJson.dependencies).includes('react')) ||
-    (packageJson.devDependencies && Object.keys(packageJson.devDependencies).includes('react'))
-  ) {
+function createEntryWithPolyfill(config) {
+  if (shouldPrepend(config)) {
     validateEnv();
     const polyfill = 'react-app-polyfill/ie11';
     if (typeof entry === 'string') {
@@ -40,7 +46,7 @@ function prependEntryWithPolyfill(entry) {
     } else if (typeof entry === 'object') {
       const newEntry = { ...entry };
       Object.keys(entry).forEach(entryPoint => {
-        newEntry[entryPoint] = prependEntryWithPolyfill(entry[entryPoint]);
+        newEntry[entryPoint] = createEntryWithPolyfill(entry[entryPoint]);
       });
 
       return newEntry;
@@ -115,11 +121,7 @@ module.exports = {
     }
 
     for (let config of configs) {
-      // Skip prepending in case of UMD or VAR output.libraryTarget because those meant for distribution
-      // apps should provide their own polyfill
-      if (config.output && config.output.libraryTarget !== 'umd' && config.output.libraryTarget !== 'var') {
-        config.entry = prependEntryWithPolyfill(config.entry);
-      }
+      config.entry = createEntryWithPolyfill(config);
     }
 
     return configs;
@@ -203,7 +205,7 @@ module.exports = {
       customConfig
     );
 
-    config.entry = prependEntryWithPolyfill(config.entry);
+    config.entry = createEntryWithPolyfill(config);
 
     return config;
   }
