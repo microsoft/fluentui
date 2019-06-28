@@ -2,6 +2,7 @@ import { getGlobalClassNames, getFocusStyle } from '../../Styling';
 import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
 import { DEFAULT_ROW_HEIGHTS } from './DetailsRow.styles';
 import { HEADER_HEIGHT } from './DetailsHeader.styles';
+import { CHECK_HOST_HOVER_STYLE } from '../Check/Check.styles';
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow-check',
@@ -28,6 +29,7 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
       isHeader && classNames.isHeader,
       getFocusStyle(theme),
       theme.fonts.small,
+      CHECK_HOST_HOVER_STYLE,
       {
         display: 'flex',
         alignItems: 'center',
@@ -42,12 +44,7 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
         height: height,
         width: CHECK_CELL_WIDTH,
         padding: 0,
-        margin: 0,
-        selectors: {
-          '&:hover': {
-            opacity: 1
-          }
-        }
+        margin: 0
       },
 
       isCheckVisible && {

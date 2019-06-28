@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import {
-  BaseComponent,
+  initializeComponentRef,
+  Async,
   KeyCodes,
   elementContains,
   getRTLSafeKeyCode,
@@ -60,7 +61,7 @@ const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
 
 @withViewport
-export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
+export class DetailsListBase extends React.Component<IDetailsListProps, IDetailsListState> implements IDetailsList {
   public static defaultProps = {
     layoutMode: DetailsListLayoutMode.justified,
     selectionMode: SelectionMode.multiple,
@@ -71,6 +72,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   };
 
   // References
+  private _async: Async;
   private _root = React.createRef<HTMLDivElement>();
   private _header = React.createRef<IDetailsHeader>();
   private _groupedList = React.createRef<IGroupedList>();
@@ -98,6 +100,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   constructor(props: IDetailsListProps) {
     super(props);
+
+    initializeComponentRef(this);
+    this._async = new Async(this);
 
     this._activeRows = {};
     this._columnOverrides = {};
@@ -177,6 +182,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       // TODO If the DragDropHelper was passed via props, this will dispose it, which is incorrect behavior.
       this._dragDropHelper.dispose();
     }
+    this._async.dispose();
   }
 
   public componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState) {
@@ -330,7 +336,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       styles,
       theme,
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
-      onRenderCheckbox
+      onRenderCheckbox,
+      useFastIcons
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -452,7 +459,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   checkboxVisibility,
                   indentWidth,
                   onRenderDetailsCheckbox: onRenderCheckbox,
-                  rowWidth: this._sumColumnWidths(this.state.adjustedColumns)
+                  rowWidth: this._sumColumnWidths(this.state.adjustedColumns),
+                  useFastIcons
                 },
                 this._onRenderDetailsHeader
               )}
@@ -545,7 +553,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       indentWidth,
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
       onRenderCheckbox,
-      enableUpdateAnimations
+      enableUpdateAnimations,
+      useFastIcons
     } = this.props;
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
@@ -579,7 +588,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       cellStyleProps: cellStyleProps,
       onRenderDetailsCheckbox: onRenderCheckbox,
       enableUpdateAnimations,
-      rowWidth: this._sumColumnWidths(columns)
+      rowWidth: this._sumColumnWidths(columns),
+      useFastIcons
     };
 
     if (!item) {

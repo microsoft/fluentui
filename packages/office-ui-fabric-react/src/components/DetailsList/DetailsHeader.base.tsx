@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import { BaseComponent, css, getRTL, getId, KeyCodes, IRenderFunction, IClassNames } from '../../Utilities';
+import { initializeComponentRef, EventGroup, IDisposable, css, getRTL, getId, KeyCodes, IClassNames } from '../../Utilities';
 import {
   IColumn,
   IDetailsHeaderBaseProps,
@@ -22,6 +22,7 @@ import { DetailsColumn, IDetailsColumnProps } from '../../components/DetailsList
 import { SelectAllVisibility, IDropHintDetails, IColumnReorderHeaderProps, IDetailsHeaderState } from './DetailsHeader.types';
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles, IDetailsHeader } from './DetailsHeader.types';
 import { classNamesFunction } from '../../Utilities';
+import { FontIcon } from '../Icon';
 
 const getClassNames = classNamesFunction<IDetailsHeaderStyleProps, IDetailsHeaderStyles>();
 
@@ -30,7 +31,7 @@ const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.butt
 
 const NO_COLUMNS: IColumn[] = [];
 
-export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {
+export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {
   public static defaultProps = {
     selectAllVisibility: SelectAllVisibility.visible,
     collapseAllVisibility: CollapseAllVisibility.visible
@@ -38,16 +39,14 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
 
   private _classNames: IClassNames<IDetailsHeaderStyles>;
   private _rootElement: HTMLElement | undefined;
+  private _events: EventGroup;
   private _rootComponent = React.createRef<IFocusZone>();
   private _id: string;
   private _draggedColumnIndex = -1;
   private _dropHintDetails: { [key: number]: IDropHintDetails } = {};
   private _dragDropHelper: DragDropHelper | null;
   private _currentDropHintIndex: number;
-  private _subscriptionObject: {
-    key: string;
-    dispose(): void;
-  };
+  private _subscriptionObject: IDisposable;
   private _onDropIndexInfo: {
     sourceIndex: number;
     targetIndex: number;
@@ -69,6 +68,10 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
 
   constructor(props: IDetailsHeaderBaseProps) {
     super(props);
+
+    initializeComponentRef(this);
+    this._events = new EventGroup(this);
+
     const columnReorderProps: IColumnReorderHeaderProps | undefined =
       props.columnReorderProps || (props.columnReorderOptions && getLegacyColumnReorderProps(props.columnReorderOptions));
     this.state = {
@@ -79,19 +82,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       isAllSelected: !!this.props.selection && this.props.selection.isAllSelected()
     };
 
-    this._onToggleCollapseAll = this._onToggleCollapseAll.bind(this);
-    this._onSelectAllClicked = this._onSelectAllClicked.bind(this);
-    this._updateDragInfo = this._updateDragInfo.bind(this);
-    this._onDragOver = this._onDragOver.bind(this);
-    this._onDrop = this._onDrop.bind(this);
-    this._getHeaderDragDropOptions = this._getHeaderDragDropOptions.bind(this);
-    this._updateDroppingState = this._updateDroppingState.bind(this);
-    this._getDropHintPositions = this._getDropHintPositions.bind(this);
-    this._computeDropHintToBeShown = this._computeDropHintToBeShown.bind(this);
-    this._resetDropHints = this._resetDropHints.bind(this);
-    this._isValidCurrentDropHintIndex = this._isValidCurrentDropHintIndex.bind(this);
-    this._onRootRef = this._onRootRef.bind(this);
-    this._isEventOnHeader = this._isEventOnHeader.bind(this);
     this._onDropIndexInfo = {
       sourceIndex: -1,
       targetIndex: -1
@@ -111,20 +101,18 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
 
     this._events.on(this._rootElement!, 'keydown', this._onRootKeyDown);
 
-    if (columnReorderProps && this._dragDropHelper) {
-      this._subscriptionObject = this._dragDropHelper.subscribe(this._rootElement!, this._events, this._getHeaderDragDropOptions());
+    if (columnReorderProps) {
+      this._ensureDragDropHandling();
     }
   }
 
   public componentDidUpdate(prevProps: IDetailsHeaderBaseProps): void {
     const { columnReorderProps } = this.state;
-    if (!columnReorderProps) {
-      if (this._subscriptionObject) {
-        this._subscriptionObject.dispose();
-        delete this._subscriptionObject;
-      }
-    } else if (!this._subscriptionObject && this._dragDropHelper) {
-      this._subscriptionObject = this._dragDropHelper.subscribe(this._rootElement!, this._events, this._getHeaderDragDropOptions());
+    if (columnReorderProps) {
+      this._ensureDragDropHandling();
+    } else if (this._subscriptionObject) {
+      this._subscriptionObject.dispose();
+      delete this._subscriptionObject;
     }
 
     if (this.props !== prevProps && this._onDropIndexInfo.sourceIndex >= 0 && this._onDropIndexInfo.targetIndex >= 0) {
@@ -148,6 +136,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     if (this._dragDropHelper) {
       this._dragDropHelper.dispose();
     }
+
+    this._events.dispose();
   }
 
   public render(): JSX.Element {
@@ -165,24 +155,13 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip,
       styles,
       theme,
-      onRenderDetailsCheckbox
+      onRenderDetailsCheckbox,
+      useFastIcons
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed, columnReorderProps } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
     const isCheckboxHidden = selectAllVisibility === SelectAllVisibility.hidden;
 
-    if (!this._dragDropHelper && columnReorderProps) {
-      // TODO Do not assign local fields during render.
-      // This behavior needs to be moved to the appropriate React lifecycle methods.
-      this._dragDropHelper = new DragDropHelper({
-        selection: {
-          getSelection: () => {
-            return;
-          }
-        } as ISelection,
-        minimumPixelsForDrag: this.props.minimumPixelsForDrag
-      });
-    }
     const frozenColumnCountFromStart =
       columnReorderProps && columnReorderProps.frozenColumnCountFromStart ? columnReorderProps.frozenColumnCountFromStart : 0;
     const frozenColumnCountFromEnd =
@@ -199,6 +178,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     });
 
     const classNames = this._classNames;
+    const IconComponent = useFastIcons ? FontIcon : Icon;
 
     const isRTL = getRTL();
     return (
@@ -249,6 +229,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                         canSelect={!isCheckboxHidden}
                         className={classNames.check}
                         onRenderDetailsCheckbox={onRenderDetailsCheckbox}
+                        useFastIcons={useFastIcons}
                       />
                     )
                   },
@@ -276,7 +257,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
             aria-label={ariaLabelForToggleAllGroupsButton}
             aria-expanded={!isAllCollapsed}
           >
-            <Icon className={classNames.collapseButton} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
+            <IconComponent className={classNames.collapseButton} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
           </div>
         ) : null}
         <GroupSpacer indentWidth={indentWidth} count={groupNestingDepth! - 1} />
@@ -302,6 +283,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
               onRenderColumnHeaderTooltip={this.props.onRenderColumnHeaderTooltip}
               isDropped={this._onDropIndexInfo.targetIndex === columnIndex}
               cellStyleProps={this.props.cellStyleProps}
+              useFastIcons={useFastIcons}
             />,
             this._renderColumnDivider(columnIndex)
           ];
@@ -321,7 +303,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     return Boolean(this._rootComponent.current && this._rootComponent.current.focus());
   }
 
-  private _getHeaderDragDropOptions(): IDragDropOptions {
+  private _getHeaderDragDropOptions = (): IDragDropOptions => {
     const options = {
       selectionIndex: 1,
       context: { data: this, index: 0 },
@@ -334,28 +316,28 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       onDragOver: this._onDragOver
     };
     return options;
-  }
+  };
 
-  private _updateDroppingState(newValue: boolean, event: DragEvent): void {
+  private _updateDroppingState = (newValue: boolean, event: DragEvent): void => {
     if (this._draggedColumnIndex >= 0 && event.type !== 'drop') {
       if (!newValue) {
         this._resetDropHints();
       }
     }
-  }
+  };
 
-  private _isValidCurrentDropHintIndex() {
+  private _isValidCurrentDropHintIndex = () => {
     return this._currentDropHintIndex >= 0;
-  }
+  };
 
-  private _onDragOver(item: any, event: DragEvent): void {
+  private _onDragOver = (item: any, event: DragEvent): void => {
     if (this._draggedColumnIndex >= 0) {
       event.stopPropagation();
       this._computeDropHintToBeShown(event.clientX);
     }
-  }
+  };
 
-  private _onDrop(item?: any, event?: DragEvent): void {
+  private _onDrop = (item?: any, event?: DragEvent): void => {
     const { columnReorderProps } = this.state;
 
     // Target index will not get changed if draggeditem is after target item.
@@ -383,7 +365,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     this._resetDropHints();
     this._dropHintDetails = {};
     this._draggedColumnIndex = -1;
-  }
+  };
 
   /**
    * @returns whether or not the "Select All" checkbox column is hidden.
@@ -394,7 +376,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     return selectionMode === SelectionMode.none || checkboxVisibility === CheckboxVisibility.hidden;
   }
 
-  private _updateDragInfo(props: { itemIndex: number }, event?: MouseEvent) {
+  private _updateDragInfo = (props: { itemIndex: number }, event?: MouseEvent) => {
     const { columnReorderProps } = this.state;
     const itemIndex = props.itemIndex;
     if (itemIndex >= 0) {
@@ -413,14 +395,14 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
         columnReorderProps.onColumnDragEnd({ dropLocation: columnDragEndLocation }, event);
       }
     }
-  }
+  };
 
-  private _resetDropHints(): void {
+  private _resetDropHints = (): void => {
     if (this._currentDropHintIndex >= 0) {
       this._updateDropHintElement(this._dropHintDetails[this._currentDropHintIndex].dropHintElementRef, 'none');
       this._currentDropHintIndex = -1;
     }
-  }
+  };
 
   private _updateDropHintElement(element: HTMLElement, displayProperty: string) {
     (element.childNodes[1] as HTMLElement).style.display = displayProperty;
@@ -567,7 +549,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     }
   };
 
-  private _isEventOnHeader(event: MouseEvent): ColumnDragEndLocation | undefined {
+  private _isEventOnHeader = (event: MouseEvent): ColumnDragEndLocation | undefined => {
     if (this._rootElement) {
       const clientRect = this._rootElement.getBoundingClientRect();
       if (
@@ -579,7 +561,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
         return ColumnDragEndLocation.header;
       }
     }
-  }
+  };
 
   private _renderColumnSizer = ({ columnIndex }: IDetailsColumnProps): JSX.Element | null => {
     const { columns = NO_COLUMNS } = this.props;
@@ -615,9 +597,10 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
 
   private _renderDropHint(dropHintIndex: number): JSX.Element {
     const classNames = this._classNames;
+    const IconComponent = this.props.useFastIcons ? FontIcon : Icon;
     return (
       <div key={'dropHintKey'} className={classNames.dropHintStyle} id={`columnDropHint_${dropHintIndex}`}>
-        <Icon
+        <IconComponent
           key={`dropHintCaretKey`}
           aria-hidden={true}
           data-is-focusable={false}
@@ -635,10 +618,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       </div>
     );
   }
-  private _onRenderColumnHeaderTooltip = (
-    tooltipHostProps: ITooltipHostProps,
-    defaultRender?: IRenderFunction<ITooltipHostProps>
-  ): JSX.Element => {
+  private _onRenderColumnHeaderTooltip = (tooltipHostProps: ITooltipHostProps): JSX.Element => {
     return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;
   };
 
@@ -852,7 +832,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     }
   }
 
-  private _onToggleCollapseAll(): void {
+  private _onToggleCollapseAll = (): void => {
     const { onToggleCollapseAll } = this.props;
     const newCollapsed = !this.state.isAllCollapsed;
     this.setState({
@@ -860,6 +840,22 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     });
     if (onToggleCollapseAll) {
       onToggleCollapseAll(newCollapsed);
+    }
+  };
+
+  private _ensureDragDropHandling() {
+    if (!this._dragDropHelper) {
+      this._dragDropHelper = new DragDropHelper({
+        selection: {
+          getSelection: () => {
+            return;
+          }
+        } as ISelection,
+        minimumPixelsForDrag: this.props.minimumPixelsForDrag
+      });
+    }
+    if (!this._subscriptionObject) {
+      this._subscriptionObject = this._dragDropHelper.subscribe(this._rootElement!, this._events, this._getHeaderDragDropOptions());
     }
   }
 }

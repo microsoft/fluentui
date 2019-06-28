@@ -60,6 +60,12 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
    * If provided, can be used to render a custom checkbox
    */
   onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
+
+  /**
+   * Whether to use fast icon and check components. The icons can't be targeted by customization
+   * but are still customizable via class names.
+   */
+  useFastIcons?: boolean;
 }
 
 /**
@@ -76,6 +82,7 @@ export type IDetailsRowCheckStyleProps = Required<Pick<IDetailsRowCheckProps, 't
  */
 export interface IDetailsRowCheckStyles {
   root: IStyle;
+  /** @deprecated Use `root` (they're applied to the same element) */
   check: IStyle;
   isDisabled: IStyle;
 }

@@ -24,7 +24,7 @@ export interface ICheckProps extends React.ClassAttributes<CheckBase> {
   styles?: IStyleFunctionOrObject<ICheckStyleProps, ICheckStyles>;
 
   /**
-   * Flag to always show the check icon. Not currently working.
+   * @deprecated Not used
    */
   alwaysShowCheck?: boolean;
 
@@ -35,7 +35,6 @@ export interface ICheckProps extends React.ClassAttributes<CheckBase> {
 
   /**
    * Additional css class to apply to the Check
-   * @defaultvalue undefined
    */
   className?: string;
 }
@@ -43,25 +42,21 @@ export interface ICheckProps extends React.ClassAttributes<CheckBase> {
 /**
  * {@docCategory Check}
  */
-export interface ICheckStyleProps {
-  /**
-   * Accept theme prop.
-   */
-  theme: ITheme;
+export type ICheckStyleProps = Required<Pick<ICheckProps, 'theme'>> &
+  Pick<ICheckProps, 'className' | 'checked'> & {
+    /**
+     * Custom height/width for the checkbox.
+     * @defaultvalue '18px'
+     */
+    height?: string;
 
-  /**
-   * Accept custom classNames
-   */
-  className?: string;
-
-  /**
-   * Accept custom checkBox size in pixels.
-   * @defaultvalue '18px'
-   */
-  checkBoxHeight?: string;
-
-  checked?: boolean;
-}
+    /**
+     * Custom height/width for the checkbox.
+     * @defaultvalue '18px'
+     * @deprecated Use `height`
+     */
+    checkBoxHeight?: string;
+  };
 
 /**
  * {@docCategory Check}
@@ -84,6 +79,15 @@ export interface ICheckStyles {
 
   /**
    * Check host style
+   * @deprecated Not used directly within the component. Instead, apply `CHECK_HOST_HOVER_STYLE`
+   * from `Check.styles.ts` to the parent element of the check.
    */
   checkHost: IStyle;
 }
+
+/**
+ * Props for a faster check component. Still in development, so props are subject to change.
+ * @beta
+ * {@docCategory Check}
+ */
+export type IFastCheckProps = Pick<ICheckProps, 'checked' | 'className' | 'styles' | 'theme'>;
