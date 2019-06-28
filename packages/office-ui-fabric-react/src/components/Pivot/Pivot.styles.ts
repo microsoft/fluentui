@@ -55,12 +55,12 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
         },
         ':hover': {
           backgroundColor: semanticColors.buttonBackground,
-          color: semanticColors.actionLinkHovered,
+          color: semanticColors.buttonTextHovered,
           cursor: 'pointer'
         },
         ':active': {
           backgroundColor: semanticColors.buttonBackgroundPressed,
-          color: semanticColors.actionLinkHovered
+          color: semanticColors.buttonTextHovered
         },
         ':focus': {
           outline: 'none'
