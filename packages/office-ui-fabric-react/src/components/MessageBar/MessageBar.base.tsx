@@ -3,6 +3,7 @@ import { BaseComponent, DelayedRender, getId, classNamesFunction, getNativeProps
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
+import { getTheme } from '../../../../styling/lib';
 
 const getClassNames = classNamesFunction<IMessageBarStyleProps, IMessageBarStyles>();
 
@@ -106,9 +107,8 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderMultiLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const { theme } = this.props;
     return (
-      <div style={{ background: theme!.semanticColors.bodyBackground }}>
+      <div style={{ background: getTheme().semanticColors.bodyBackground }}>
         <div className={this._classNames.root}>
           <div className={this._classNames.overlay}>
             <div className={this._classNames.content}>
@@ -124,9 +124,8 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderSingleLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const { theme } = this.props;
     return (
-      <div style={{ background: theme!.semanticColors.bodyBackground }}>
+      <div style={{ background: getTheme().semanticColors.bodyBackground }}>
         <div className={this._classNames.root}>
           <div className={this._classNames.overlay}>
             <div className={this._classNames.content}>
