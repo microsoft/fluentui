@@ -3,7 +3,7 @@ import { IFacepileProps, Facepile, OverflowButtonType } from 'office-ui-fabric-r
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { facepilePersonas } from './FacepileExampleData';
-import './Facepile.Examples.scss';
+import { mergeStyleSets } from '@uifabric/styling';
 
 const facepileProps: IFacepileProps = {
   personas: facepilePersonas,
@@ -21,6 +21,20 @@ export interface IFacepileOverflowExampleState {
   overflowButtonType: OverflowButtonType;
 }
 
+interface IFacepileExampleClassObject {
+  facepileExample: string;
+  control: string;
+}
+
+const classNames: IFacepileExampleClassObject = mergeStyleSets({
+  facepileExample: {
+    maxWidth: 300
+  },
+  control: {
+    paddingTop: 20
+  }
+});
+
 export class FacepileOverflowExample extends React.Component<{}, IFacepileOverflowExampleState> {
   constructor(props: {}) {
     super(props);
@@ -37,9 +51,9 @@ export class FacepileOverflowExample extends React.Component<{}, IFacepileOverfl
     facepileProps.overflowButtonType = overflowButtonType;
 
     return (
-      <div className={'ms-FacepileExample'}>
+      <div className={classNames.facepileExample}>
         <Facepile {...facepileProps} />
-        <div className={'control'}>
+        <div className={classNames.control}>
           <Slider
             label="Number of Personas:"
             min={1}
