@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Button: Renaming BaseButton to Actionable, extending Button from Actionable and removing content and icon from Actionable types.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "Humberto.Morimoto@microsoft.com"
+}
