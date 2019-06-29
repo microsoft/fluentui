@@ -878,8 +878,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       totalWidth += increment;
     }
 
-    console.log('getJustifiedColumns', adjustedColumns);
-
     return adjustedColumns;
   }
 
