@@ -9,6 +9,7 @@ import { createListItems } from '../../utilities/exampleData';
 const ListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Basic.Example.tsx') as string;
 const ListGridExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Grid.Example.tsx') as string;
 const ListScrollingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Scrolling.Example.tsx') as string;
+const ListScrollingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/List/examples/List.Scrolling.Example.tsx') as string;
 const ListGhostingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Ghosting.Example.tsx') as string;
 const ListGhostingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/List/examples/List.Ghosting.Example.tsx') as string;
 
@@ -32,6 +33,7 @@ export const ListPageProps: IDocPageProps = {
     {
       title: 'Scrolling items into view',
       code: ListScrollingExampleCode,
+      codepenJS: ListScrollingExampleCodepen,
       view: <ListScrollingExample items={_cachedItems} />
     },
     {
