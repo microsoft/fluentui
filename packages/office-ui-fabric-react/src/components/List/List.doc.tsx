@@ -7,7 +7,9 @@ import { ListGhostingExample } from './examples/List.Ghosting.Example';
 import { createListItems } from '../../utilities/exampleData';
 
 const ListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Basic.Example.tsx') as string;
+const ListBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/List/examples/List.Basic.Example.tsx') as string;
 const ListGridExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Grid.Example.tsx') as string;
+const ListGridExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/List/examples/List.Grid.Example.tsx') as string;
 const ListScrollingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Scrolling.Example.tsx') as string;
 const ListScrollingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/List/examples/List.Scrolling.Example.tsx') as string;
 const ListGhostingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Ghosting.Example.tsx') as string;
@@ -23,11 +25,13 @@ export const ListPageProps: IDocPageProps = {
     {
       title: 'List of 5000 grid items',
       code: ListGridExampleCode,
+      codepenJS: ListGridExampleCodepen,
       view: <ListGridExample items={_cachedItems} />
     },
     {
       title: 'List of 5000 variable height items',
       code: ListBasicExampleCode,
+      codepenJS: ListBasicExampleCodepen,
       view: <ListBasicExample items={_cachedItems} />
     },
     {
