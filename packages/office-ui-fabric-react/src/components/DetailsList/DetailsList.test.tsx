@@ -390,26 +390,19 @@ describe('DetailsList', () => {
     jest.runOnlyPendingTimers();
   });
 
-  xit('invokes optional onColumnResize callback per IColumn if defined when columns are adjusted', () => {
-    const detailsList = mount(
-      <DetailsList
-        items={mockData(2)}
-        skipViewportMeasures={true}
-        // tslint:disable-next-line:jsx-no-lambda
-        onShouldVirtualize={() => false}
-      />
-    );
-
+  it('invokes optional onColumnResize callback per IColumn if defined when columns are adjusted', () => {
     const columns: IColumn[] = mockData(2, true);
     columns[0].onColumnResize = jest.fn();
     columns[1].onColumnResize = jest.fn();
 
-    // componentWillReceiveProps not executed on initial render in test
-    // so we need to force one via setProps and update.
-    const newProps = { columns };
-
-    detailsList.setProps(newProps);
-    detailsList.update();
+    mount(
+      <DetailsList
+        items={mockData(2)}
+        columns={columns}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+      />
+    );
 
     expect(columns[0].onColumnResize).toHaveBeenCalledTimes(1);
     expect(columns[1].onColumnResize).toHaveBeenCalledTimes(1);
