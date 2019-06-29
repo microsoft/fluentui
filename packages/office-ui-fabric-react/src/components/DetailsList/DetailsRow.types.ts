@@ -47,7 +47,7 @@ export interface IDetailsItemProps {
   /**
    * View port of the virtualized list
    *
-   * @deprecated unused
+   * @deprecated use rowWidth instead
    */
   viewport?: IViewport | undefined;
 
@@ -60,6 +60,13 @@ export interface IDetailsItemProps {
    * Rules for rendering column cells.
    */
   cellStyleProps?: ICellStyleProps;
+
+  /**
+   * Minimum width of the row.
+   *
+   * @defaultvalue 0
+   */
+  rowWidth?: number;
 }
 
 /**
@@ -183,13 +190,6 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
   cellsByColumn?: {
     [columnKey: string]: React.ReactNode;
   };
-
-  /**
-   * Minimum width of the row.
-   *
-   * @defaultvalue 0
-   */
-  rowWidth?: number;
 }
 
 /**

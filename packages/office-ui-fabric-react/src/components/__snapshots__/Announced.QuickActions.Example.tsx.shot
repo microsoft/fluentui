@@ -99,7 +99,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
             role="row"
             style={
               Object {
-                "minWidth": 0,
+                "minWidth": 800,
               }
             }
           >
@@ -1226,7 +1226,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -1976,7 +1976,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -2726,7 +2726,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -3476,7 +3476,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -4226,7 +4226,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -4976,7 +4976,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -5726,7 +5726,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -6476,7 +6476,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -7226,7 +7226,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -7976,7 +7976,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >

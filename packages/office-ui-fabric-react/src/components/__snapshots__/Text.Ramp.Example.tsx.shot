@@ -91,7 +91,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 1750,
             }
           }
         >
@@ -600,7 +600,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -870,7 +870,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -1140,7 +1140,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -1410,7 +1410,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -1680,7 +1680,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -1950,7 +1950,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -2220,7 +2220,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -2490,7 +2490,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -2760,7 +2760,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -3030,7 +3030,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >

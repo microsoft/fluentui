@@ -274,7 +274,7 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
               role="row"
               style={
                 Object {
-                  "minWidth": 0,
+                  "minWidth": 400,
                 }
               }
             >
@@ -1025,7 +1025,7 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 400,
                             }
                           }
                         >
@@ -1498,7 +1498,7 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 400,
                             }
                           }
                         >
@@ -1971,7 +1971,7 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 400,
                             }
                           }
                         >
@@ -2444,7 +2444,7 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 400,
                             }
                           }
                         >
@@ -2917,7 +2917,7 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 400,
                             }
                           }
                         >
@@ -3390,7 +3390,7 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 400,
                             }
                           }
                         >
@@ -3863,7 +3863,7 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 400,
                             }
                           }
                         >
@@ -4336,7 +4336,7 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 400,
                             }
                           }
                         >
@@ -4809,7 +4809,7 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 400,
                             }
                           }
                         >
@@ -5282,7 +5282,7 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 400,
                             }
                           }
                         >

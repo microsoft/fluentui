@@ -390,7 +390,7 @@ describe('DetailsList', () => {
     jest.runOnlyPendingTimers();
   });
 
-  it('invokes optional onColumnResize callback per IColumn if defined when columns are adjusted', () => {
+  xit('invokes optional onColumnResize callback per IColumn if defined when columns are adjusted', () => {
     const detailsList = mount(
       <DetailsList
         items={mockData(2)}
