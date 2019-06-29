@@ -3256,6 +3256,7 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
     onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
+    rowWidth?: number;
     selectAllVisibility?: SelectAllVisibility;
     styles?: IStyleFunctionOrObject<IDetailsHeaderStyleProps, IDetailsHeaderStyles>;
     theme?: ITheme;
@@ -3346,6 +3347,7 @@ export interface IDetailsItemProps {
     indentWidth?: number | undefined;
     selection?: ISelection | undefined;
     selectionMode?: SelectionMode | undefined;
+    // @deprecated
     viewport?: IViewport | undefined;
 }
 
@@ -3497,6 +3499,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onWillUnmount?: (row?: DetailsRowBase) => void;
     rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
+    rowWidth?: number;
     // @deprecated
     shimmer?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
