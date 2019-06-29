@@ -6,7 +6,7 @@ import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { List, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ITheme, getTheme, mergeStyleSets, FontSizes, normalize } from '@uifabric/styling';
+import { ITheme, getTheme, mergeStyleSets, FontSizes, normalize } from 'office-ui-fabric-react/lib/';
 
 export type IExampleItem = { name: string };
 
@@ -20,7 +20,7 @@ export interface IListScrollingExampleState {
   showItemIndexInView: boolean;
 }
 
-interface IListScrollingExampleClassObject {
+interface IListScrollingExampleClassNames {
   root: string;
   container: string;
   itemContent: string;
@@ -31,7 +31,7 @@ interface IListScrollingExampleClassObject {
 
 const theme: ITheme = getTheme();
 const borderColour: string = '3px solid ' + theme.palette.themePrimary;
-const classNames: IListScrollingExampleClassObject = mergeStyleSets({
+const classNames: IListScrollingExampleClassNames = mergeStyleSets({
   root: [
     normalize,
     {
