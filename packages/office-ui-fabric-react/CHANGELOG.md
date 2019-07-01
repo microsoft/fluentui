@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 28 Jun 2019 12:27:34 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2019 18:51:43 GMT and should not be manually modified.
+
+## 7.6.3
+Mon, 01 Jul 2019 18:51:43 GMT
+
+### Patches
+
+- Prettier change
+- adds react-app-polyfill
+- Fix tests for BasePicker + remove redundant state
 
 ## 7.6.2
 Fri, 28 Jun 2019 12:27:34 GMT
