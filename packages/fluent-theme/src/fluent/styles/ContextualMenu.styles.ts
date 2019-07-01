@@ -81,7 +81,17 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
           splitPrimary: [
             {
               height: CONTEXTUAL_MENU_ITEM_HEIGHT,
-              lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT
+              lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
+              selectors: {
+                ':hover': {
+                  backgroundColor: palette.neutralLighter,
+                  selectors: {
+                    '~$splitMenu': {
+                      backgroundColor: palette.white
+                    }
+                  }
+                }
+              }
             },
             !(disabled || primaryDisabled) &&
               !checked && {

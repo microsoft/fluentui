@@ -2,6 +2,58 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.192.1",
+      "tag": "office-ui-fabric-react_v6.192.1",
+      "date": "Fri, 28 Jun 2019 12:22:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "GroupedList: Fix \"Show All\" not rendering all items in a group",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "e6ac320c1eed6eaf82b79d9e67c39ff2fe364904"
+          },
+          {
+            "comment": "Add placeholder as TextArea property, allows placeholder in multiline TextField",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "e6ac320c1eed6eaf82b79d9e67c39ff2fe364904"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.3` to `^6.41.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.192.0",
+      "tag": "office-ui-fabric-react_v6.192.0",
+      "date": "Thu, 27 Jun 2019 17:53:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updates to tileslist, list and marquee selection",
+            "author": "wiolsen <36865486+wiolsen@users.noreply.github.com>",
+            "commit": "f470c0a84602e1bcde38a34a793eee552524986e"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.191.0",
+      "tag": "office-ui-fabric-react_v6.191.0",
+      "date": "Wed, 26 Jun 2019 12:23:39 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adds dual presence to PersonaPresence",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "5b81a11e4c8f828f6b4eb4fc73d08a87eb08d8bf"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.190.1",
       "tag": "office-ui-fabric-react_v6.190.1",
       "date": "Thu, 20 Jun 2019 12:20:14 GMT",

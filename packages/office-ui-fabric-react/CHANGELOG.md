@@ -1,6 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 20 Jun 2019 12:20:14 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Jun 2019 12:22:28 GMT and should not be manually modified.
+
+## 6.192.1
+Fri, 28 Jun 2019 12:22:28 GMT
+
+### Patches
+
+- GroupedList: Fix "Show All" not rendering all items in a group
+- Add placeholder as TextArea property, allows placeholder in multiline TextField
+
+## 6.192.0
+Thu, 27 Jun 2019 17:53:08 GMT
+
+### Minor changes
+
+- Updates to tileslist, list and marquee selection
+
+## 6.191.0
+Wed, 26 Jun 2019 12:23:39 GMT
+
+### Minor changes
+
+- Adds dual presence to PersonaPresence
 
 ## 6.190.1
 Thu, 20 Jun 2019 12:20:14 GMT

@@ -8,7 +8,12 @@ export const CalloutContentStyles = (props: ICalloutContentStyleProps): Partial<
     root: {
       borderRadius: effects.roundedCorner2,
       borderWidth: 0,
-      boxShadow: effects.elevation16
+      boxShadow: effects.elevation16,
+      selectors: {
+        '&.ms-Tooltip': {
+          boxShadow: effects.elevation8
+        }
+      }
     },
     beakCurtain: {
       borderRadius: effects.roundedCorner2

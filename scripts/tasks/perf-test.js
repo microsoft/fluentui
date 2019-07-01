@@ -9,7 +9,7 @@ const sampleSize = 50;
 const urlFromDeployJob = process.env.BUILD_SOURCEBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/`
   : 'http://localhost:4322';
-const urlForMaster = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/';
+const urlForMaster = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/6.0/perf-test/';
 
 const outputPath = path.join(__dirname, '../../apps/perf-test/dist');
 

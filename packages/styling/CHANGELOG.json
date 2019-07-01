@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.50.1",
+      "tag": "@uifabric/styling_v6.50.1",
+      "date": "Mon, 24 Jun 2019 23:08:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating comments of text colors.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "315f288235ccbbd7b7488cfa5842fafd0bedf2ff"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.50.0",
       "tag": "@uifabric/styling_v6.50.0",
       "date": "Thu, 20 Jun 2019 12:20:14 GMT",

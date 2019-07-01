@@ -494,7 +494,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 }
 
 // Warning: (ae-forgotten-export) The symbol "ICalloutState" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     // (undocumented)
@@ -657,7 +657,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     static defaultProps: IComboBoxProps;
     dismissMenu: () => void;
     // Warning: (ae-unresolved-inheritdoc-base) The @inheritDoc tag needs a TSDoc declaration reference; signature matching is not supported yet
-    // 
+    //
     // (undocumented)
     focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
     // (undocumented)
@@ -2839,7 +2839,7 @@ export interface IContextualMenuItem {
     data?: any;
     disabled?: boolean;
     // Warning: (ae-forgotten-export) The symbol "IMenuItemClassNames" needs to be exported by the entry point index.d.ts
-    // 
+    //
     // @deprecated
     getItemClassNames?: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string, dividerClassName?: string, iconClassName?: string, subMenuClassName?: string, primaryDisabled?: boolean) => IMenuItemClassNames;
     getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
@@ -2939,7 +2939,7 @@ export interface IContextualMenuListProps {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IWithResponsiveModeState" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public
 export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
     alignTargetEdge?: boolean;
@@ -2959,7 +2959,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
     // Warning: (ae-forgotten-export) The symbol "IContextualMenuClassNames" needs to be exported by the entry point index.d.ts
-    // 
+    //
     // @deprecated
     getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
     hidden?: boolean;
@@ -3728,7 +3728,7 @@ export interface IDialogFooterStyles {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IAccessiblePopupProps" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
     // @deprecated
@@ -3831,7 +3831,7 @@ export interface IDocumentCardActions {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardActionsBase" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActionsBase> {
     actions: IButtonProps[];
@@ -3874,7 +3874,7 @@ export interface IDocumentCardActivityPerson {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardActivityBase" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivityBase> {
     activity: string;
@@ -3913,7 +3913,7 @@ export interface IDocumentCardDetails {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardDetailsBase" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export interface IDocumentCardDetailsProps extends React.Props<DocumentCardDetailsBase> {
     className?: string;
@@ -3972,7 +3972,7 @@ export interface IDocumentCardLocation {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardLocationBase" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocationBase> {
     ariaLabel?: string;
@@ -4002,7 +4002,7 @@ export interface IDocumentCardLogo {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardLogoBase" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogoBase> {
     className?: string;
@@ -4102,7 +4102,7 @@ export interface IDocumentCardStatus {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardStatusBase" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export interface IDocumentCardStatusProps extends React.Props<DocumentCardStatusBase> {
     className?: string;
@@ -4144,7 +4144,7 @@ export interface IDocumentCardTitle {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardTitleBase" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitleBase> {
     className?: string;
@@ -4346,7 +4346,7 @@ export interface IExpandingCard {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IBaseCardProps" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public
 export interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExpandingCardStyles, IExpandingCardStyleProps> {
     compactCardHeight?: number;
@@ -4365,7 +4365,7 @@ export interface IExpandingCardState {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IBaseCardStyleProps" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export interface IExpandingCardStyleProps extends IBaseCardStyleProps {
     compactCardHeight?: number;
@@ -4375,7 +4375,7 @@ export interface IExpandingCardStyleProps extends IBaseCardStyleProps {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IBaseCardStyles" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export interface IExpandingCardStyles extends IBaseCardStyles {
     compactCard?: IStyle;
@@ -5226,6 +5226,7 @@ export interface ILinkStyles {
 export interface IList {
     forceUpdate: () => void;
     getStartItemIndexInView: () => number;
+    getTotalListHeight?: () => number;
     scrollToIndex: (index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
 }
 
@@ -5235,7 +5236,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
     componentRef?: IRefObject<IList>;
     getItemCountForPage?: (itemIndex?: number, visibleRect?: IRectangle) => number;
     getKey?: (item: T, index?: number) => string;
-    getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle) => number;
+    getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle, itemCount?: number) => number;
     getPageSpecification?: (itemIndex?: number, visibleRect?: IRectangle) => IPageSpecification;
     getPageStyle?: (page: IPage<T>) => any;
     items?: T[];
@@ -5662,6 +5663,8 @@ export interface IPage<T = any> {
     // (undocumented)
     isSpacer?: boolean;
     // (undocumented)
+    isVisible?: boolean;
+    // (undocumented)
     itemCount: number;
     // (undocumented)
     items: T[] | undefined;
@@ -5702,7 +5705,7 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
 }
 
 // Warning: (ae-forgotten-export) The symbol "PanelBase" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     className?: string;
@@ -5892,12 +5895,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-export interface IPersonaPresenceStyleProps {
-    className?: string;
-    presence?: PersonaPresence;
-    size?: PersonaSize;
-    theme: ITheme;
-}
+export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> & Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size'> & Pick<IPersonaProps, 'className'>;
 
 // @public (undocumented)
 export interface IPersonaPresenceStyles {
@@ -5930,6 +5928,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     imageShouldStartVisible?: boolean;
     imageUrl?: string;
     initialsColor?: PersonaInitialsColor | string;
+    isOutOfOffice?: boolean;
     onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
     onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
     onRenderInitials?: IRenderFunction<IPersonaSharedProps>;
@@ -6871,7 +6870,7 @@ export interface ISpinButtonProps {
     keytipProps?: IKeytipProps;
     label?: string;
     // Warning: (ae-forgotten-export) The symbol "Position" needs to be exported by the entry point index.d.ts
-    // 
+    //
     // (undocumented)
     labelPosition?: Position;
     max?: number;
@@ -7761,7 +7760,7 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IKeytipDataProps" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public
 export class KeytipData extends React.Component<IKeytipDataProps & IRenderComponent<{}>, {}> {
     // (undocumented)
@@ -7789,7 +7788,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     // (undocumented)
     getCurrentSequence(): string;
     // Warning: (ae-forgotten-export) The symbol "KeytipTree" needs to be exported by the entry point index.d.ts
-    // 
+    //
     // (undocumented)
     getKeytipTree(): KeytipTree;
     processInput(key: string, ev?: React.KeyboardEvent<HTMLElement>): void;
@@ -7831,7 +7830,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     }
 
 // Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export class LayerHost extends React.Component<ILayerHostProps> {
     // (undocumented)
@@ -7873,6 +7872,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     forceUpdate(): void;
     // (undocumented)
     getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number;
+    getTotalListHeight(): number;
     // (undocumented)
     refs: {
         [key: string]: React.ReactInstance;
@@ -8211,7 +8211,7 @@ export namespace personaPresenceSize {
     size20 = "20px";
     const // (undocumented)
     size28 = "28px";
-    const // (undocumented)
+    const // @deprecated (undocumented)
     border = "2px";
 }
 

@@ -1,0 +1,762 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonaPresence renders available + out of office 1`] = `
+<div
+  className=
+      ms-Persona-presence
+      {
+        -ms-high-contrast-adjust: none;
+        background-clip: content-box;
+        background-color: #ffffff;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        bottom: -2px;
+        box-sizing: content-box;
+        height: 12px;
+        position: absolute;
+        right: -2px;
+        text-align: center;
+        top: auto;
+        width: 12px;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        background-color: WindowText;
+        border-color: Window;
+      }
+      &:before {
+        border-radius: 50%;
+        border: 1px solid #7FBA00;
+        box-sizing: border-box;
+        content: "";
+        height: 100%;
+        left: 0px;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+      }
+      @media screen and (-ms-high-contrast: active){&:before {
+        border-color: Window;
+        height: calc(100% - 2px);
+        left: 1px;
+        top: 1px;
+        width: calc(100% - 2px);
+      }
+>
+  <i
+    aria-hidden={true}
+    className=
+        ms-Persona-presenceIcon
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          border-color: #7FBA00;
+          color: #7FBA00;
+          display: inline-block;
+          font-family: "FabricMDL2Icons";
+          font-size: 6px;
+          font-style: normal;
+          font-weight: normal;
+          line-height: 12px;
+          speak: none;
+          vertical-align: top;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: Window;
+        }
+    data-icon-name="SkypeCheck"
+    role="presentation"
+  >
+    
+  </i>
+</div>
+`;
+
+exports[`PersonaPresence renders available 1`] = `
+<div
+  className=
+      ms-Persona-presence
+      {
+        -ms-high-contrast-adjust: none;
+        background-clip: content-box;
+        background-color: #7FBA00;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        bottom: -2px;
+        box-sizing: content-box;
+        height: 12px;
+        position: absolute;
+        right: -2px;
+        text-align: center;
+        top: auto;
+        width: 12px;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        background-color: Highlight;
+        border-color: Window;
+      }
+>
+  <i
+    aria-hidden={true}
+    className=
+        ms-Persona-presenceIcon
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #ffffff;
+          display: inline-block;
+          font-family: "FabricMDL2Icons";
+          font-size: 6px;
+          font-style: normal;
+          font-weight: normal;
+          line-height: 12px;
+          speak: none;
+          vertical-align: top;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: Window;
+        }
+    data-icon-name="SkypeCheck"
+    role="presentation"
+  >
+    
+  </i>
+</div>
+`;
+
+exports[`PersonaPresence renders away + out of office 1`] = `
+<div
+  className=
+      ms-Persona-presence
+      {
+        -ms-high-contrast-adjust: none;
+        background-clip: content-box;
+        background-color: #ffffff;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        bottom: -2px;
+        box-sizing: content-box;
+        height: 12px;
+        position: absolute;
+        right: -2px;
+        text-align: center;
+        top: auto;
+        width: 12px;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        background-color: WindowText;
+        border-color: Window;
+      }
+      &:before {
+        border-radius: 50%;
+        border: 1px solid #B4009E;
+        box-sizing: border-box;
+        content: "";
+        height: 100%;
+        left: 0px;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+      }
+      @media screen and (-ms-high-contrast: active){&:before {
+        border-color: Window;
+        height: calc(100% - 2px);
+        left: 1px;
+        top: 1px;
+        width: calc(100% - 2px);
+      }
+>
+  <i
+    aria-hidden={true}
+    className=
+        ms-Persona-presenceIcon
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          border-color: #B4009E;
+          color: #B4009E;
+          display: inline-block;
+          font-family: "FabricMDL2Icons-15";
+          font-size: 6px;
+          font-style: normal;
+          font-weight: normal;
+          line-height: 12px;
+          position: relative;
+          speak: none;
+          vertical-align: top;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: Window;
+        }
+    data-icon-name="SkypeArrow"
+    role="presentation"
+  >
+    
+  </i>
+</div>
+`;
+
+exports[`PersonaPresence renders away 1`] = `
+<div
+  className=
+      ms-Persona-presence
+      {
+        -ms-high-contrast-adjust: none;
+        background-clip: content-box;
+        background-color: #FCD116;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        bottom: -2px;
+        box-sizing: content-box;
+        height: 12px;
+        position: absolute;
+        right: -2px;
+        text-align: center;
+        top: auto;
+        width: 12px;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        background-color: WindowText;
+        border-color: Window;
+      }
+>
+  <i
+    aria-hidden={true}
+    className=
+        ms-Persona-presenceIcon
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #ffffff;
+          display: inline-block;
+          font-family: "FabricMDL2Icons";
+          font-size: 6px;
+          font-style: normal;
+          font-weight: normal;
+          left: 1px;
+          line-height: 12px;
+          position: relative;
+          speak: none;
+          vertical-align: top;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: Window;
+        }
+    data-icon-name="SkypeClock"
+    role="presentation"
+  >
+    
+  </i>
+</div>
+`;
+
+exports[`PersonaPresence renders blocked + out of office 1`] = `
+<div
+  className=
+      ms-Persona-presence
+      {
+        -ms-high-contrast-adjust: none;
+        background-clip: content-box;
+        background-color: #ffffff;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        bottom: -2px;
+        box-sizing: content-box;
+        height: 12px;
+        position: absolute;
+        right: -2px;
+        text-align: center;
+        top: auto;
+        width: 12px;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        background-color: WindowText;
+        border-color: Window;
+      }
+      @media screen and (-ms-high-contrast: active){&:after {
+        background-color: Window;
+        left: 2px;
+        width: calc(100% - 4px);
+      }
+      &:before {
+        border-radius: 50%;
+        border: 1px solid #D93B3B;
+        box-sizing: border-box;
+        content: "";
+        height: 100%;
+        left: 0px;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+      }
+      @media screen and (-ms-high-contrast: active){&:before {
+        border-color: Window;
+        height: calc(100% - 2px);
+        left: 1px;
+        top: 1px;
+        width: calc(100% - 2px);
+      }
+>
+  <i
+    aria-hidden={true}
+    className=
+        ms-Icon-placeHolder
+        ms-Persona-presenceIcon
+        {
+          color: #ffffff;
+          display: inline-block;
+          font-size: 6px;
+          line-height: 12px;
+          vertical-align: top;
+          width: 1em;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: Window;
+        }
+    data-icon-name=""
+    role="presentation"
+  />
+</div>
+`;
+
+exports[`PersonaPresence renders blocked 1`] = `
+<div
+  className=
+      ms-Persona-presence
+      {
+        -ms-high-contrast-adjust: none;
+        background-clip: content-box;
+        background-color: #ffffff;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        bottom: -2px;
+        box-sizing: content-box;
+        height: 12px;
+        position: absolute;
+        right: -2px;
+        text-align: center;
+        top: auto;
+        width: 12px;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        background-color: WindowText;
+        border-color: Window;
+      }
+      @media screen and (-ms-high-contrast: active){&:after {
+        background-color: Window;
+        left: 2px;
+        width: calc(100% - 4px);
+      }
+      &:before {
+        border-radius: 50%;
+        border: 1px solid #D93B3B;
+        box-sizing: border-box;
+        content: "";
+        height: 100%;
+        left: 0px;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+      }
+      @media screen and (-ms-high-contrast: active){&:before {
+        border-color: Window;
+        height: calc(100% - 2px);
+        left: 1px;
+        top: 1px;
+        width: calc(100% - 2px);
+      }
+>
+  <i
+    aria-hidden={true}
+    className=
+        ms-Icon-placeHolder
+        ms-Persona-presenceIcon
+        {
+          color: #ffffff;
+          display: inline-block;
+          font-size: 6px;
+          line-height: 12px;
+          vertical-align: top;
+          width: 1em;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: Window;
+        }
+    data-icon-name=""
+    role="presentation"
+  />
+</div>
+`;
+
+exports[`PersonaPresence renders busy + out of office 1`] = `
+<div
+  className=
+      ms-Persona-presence
+      {
+        -ms-high-contrast-adjust: none;
+        background-clip: content-box;
+        background-color: #ffffff;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        bottom: -2px;
+        box-sizing: content-box;
+        height: 12px;
+        position: absolute;
+        right: -2px;
+        text-align: center;
+        top: auto;
+        width: 12px;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        background-color: WindowText;
+        border-color: Window;
+      }
+      &:before {
+        border-radius: 50%;
+        border: 1px solid #D93B3B;
+        box-sizing: border-box;
+        content: "";
+        height: 100%;
+        left: 0px;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+      }
+      @media screen and (-ms-high-contrast: active){&:before {
+        border-color: Window;
+        height: calc(100% - 2px);
+        left: 1px;
+        top: 1px;
+        width: calc(100% - 2px);
+      }
+>
+  <i
+    aria-hidden={true}
+    className=
+        ms-Icon-placeHolder
+        ms-Persona-presenceIcon
+        {
+          border-color: #D93B3B;
+          color: #D93B3B;
+          display: inline-block;
+          font-size: 6px;
+          line-height: 12px;
+          vertical-align: top;
+          width: 1em;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: Window;
+        }
+    data-icon-name=""
+    role="presentation"
+  />
+</div>
+`;
+
+exports[`PersonaPresence renders busy 1`] = `
+<div
+  className=
+      ms-Persona-presence
+      {
+        -ms-high-contrast-adjust: none;
+        background-clip: content-box;
+        background-color: #D93B3B;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        bottom: -2px;
+        box-sizing: content-box;
+        height: 12px;
+        position: absolute;
+        right: -2px;
+        text-align: center;
+        top: auto;
+        width: 12px;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        background-color: WindowText;
+        border-color: Window;
+      }
+>
+  <i
+    aria-hidden={true}
+    className=
+        ms-Icon-placeHolder
+        ms-Persona-presenceIcon
+        {
+          color: #ffffff;
+          display: inline-block;
+          font-size: 6px;
+          line-height: 12px;
+          vertical-align: top;
+          width: 1em;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: Window;
+        }
+    data-icon-name=""
+    role="presentation"
+  />
+</div>
+`;
+
+exports[`PersonaPresence renders do not disturb + out of office 1`] = `
+<div
+  className=
+      ms-Persona-presence
+      {
+        -ms-high-contrast-adjust: none;
+        background-clip: content-box;
+        background-color: #ffffff;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        bottom: -2px;
+        box-sizing: content-box;
+        height: 12px;
+        position: absolute;
+        right: -2px;
+        text-align: center;
+        top: auto;
+        width: 12px;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        background-color: WindowText;
+        border-color: Window;
+      }
+      &:before {
+        border-radius: 50%;
+        border: 1px solid #E81123;
+        box-sizing: border-box;
+        content: "";
+        height: 100%;
+        left: 0px;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+      }
+      @media screen and (-ms-high-contrast: active){&:before {
+        border-color: Window;
+        height: calc(100% - 2px);
+        left: 1px;
+        top: 1px;
+        width: calc(100% - 2px);
+      }
+>
+  <i
+    aria-hidden={true}
+    className=
+        ms-Persona-presenceIcon
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          border-color: #E81123;
+          color: #E81123;
+          display: inline-block;
+          font-family: "FabricMDL2Icons";
+          font-size: 6px;
+          font-style: normal;
+          font-weight: normal;
+          line-height: 12px;
+          speak: none;
+          vertical-align: top;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: Window;
+        }
+    data-icon-name="SkypeMinus"
+    role="presentation"
+  >
+    
+  </i>
+</div>
+`;
+
+exports[`PersonaPresence renders do not disturb 1`] = `
+<div
+  className=
+      ms-Persona-presence
+      {
+        -ms-high-contrast-adjust: none;
+        background-clip: content-box;
+        background-color: #E81123;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        bottom: -2px;
+        box-sizing: content-box;
+        height: 12px;
+        position: absolute;
+        right: -2px;
+        text-align: center;
+        top: auto;
+        width: 12px;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        background-color: WindowText;
+        border-color: Window;
+      }
+>
+  <i
+    aria-hidden={true}
+    className=
+        ms-Persona-presenceIcon
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #ffffff;
+          display: inline-block;
+          font-family: "FabricMDL2Icons";
+          font-size: 6px;
+          font-style: normal;
+          font-weight: normal;
+          line-height: 12px;
+          speak: none;
+          vertical-align: top;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: Window;
+        }
+    data-icon-name="SkypeMinus"
+    role="presentation"
+  >
+    
+  </i>
+</div>
+`;
+
+exports[`PersonaPresence renders none + out of office 1`] = `null`;
+
+exports[`PersonaPresence renders none 1`] = `null`;
+
+exports[`PersonaPresence renders offline + out of office 1`] = `
+<div
+  className=
+      ms-Persona-presence
+      {
+        -ms-high-contrast-adjust: none;
+        background-clip: content-box;
+        background-color: #ffffff;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        bottom: -2px;
+        box-sizing: content-box;
+        height: 12px;
+        position: absolute;
+        right: -2px;
+        text-align: center;
+        top: auto;
+        width: 12px;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        background-color: WindowText;
+        border-color: Window;
+      }
+      &:before {
+        border-radius: 50%;
+        border: 1px solid #B4009E;
+        box-sizing: border-box;
+        content: "";
+        height: 100%;
+        left: 0px;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+      }
+      @media screen and (-ms-high-contrast: active){&:before {
+        border-color: Window;
+        height: calc(100% - 2px);
+        left: 1px;
+        top: 1px;
+        width: calc(100% - 2px);
+      }
+>
+  <i
+    aria-hidden={true}
+    className=
+        ms-Persona-presenceIcon
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          border-color: #B4009E;
+          color: #B4009E;
+          display: inline-block;
+          font-family: "FabricMDL2Icons-15";
+          font-size: 6px;
+          font-style: normal;
+          font-weight: normal;
+          line-height: 12px;
+          speak: none;
+          vertical-align: top;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: Window;
+        }
+    data-icon-name="SkypeArrow"
+    role="presentation"
+  >
+    
+  </i>
+</div>
+`;
+
+exports[`PersonaPresence renders offline 1`] = `
+<div
+  className=
+      ms-Persona-presence
+      {
+        -ms-high-contrast-adjust: none;
+        background-clip: content-box;
+        background-color: #ffffff;
+        border-radius: 50%;
+        border: 2px solid #ffffff;
+        bottom: -2px;
+        box-sizing: content-box;
+        height: 12px;
+        position: absolute;
+        right: -2px;
+        text-align: center;
+        top: auto;
+        width: 12px;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        background-color: WindowText;
+        border-color: Window;
+      }
+      &:before {
+        border-radius: 50%;
+        border: 1px solid #93ABBD;
+        box-sizing: border-box;
+        content: "";
+        height: 100%;
+        left: 0px;
+        position: absolute;
+        top: 0px;
+        width: 100%;
+      }
+      @media screen and (-ms-high-contrast: active){&:before {
+        border-color: Window;
+        height: calc(100% - 2px);
+        left: 1px;
+        top: 1px;
+        width: calc(100% - 2px);
+      }
+>
+  <i
+    aria-hidden={true}
+    className=
+        ms-Icon-placeHolder
+        ms-Persona-presenceIcon
+        {
+          border-color: #93ABBD;
+          color: #93ABBD;
+          display: inline-block;
+          font-size: 6px;
+          line-height: 12px;
+          vertical-align: top;
+          width: 1em;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          color: Window;
+        }
+    data-icon-name=""
+    role="presentation"
+  />
+</div>
+`;
