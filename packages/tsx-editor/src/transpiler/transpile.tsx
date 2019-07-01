@@ -15,7 +15,7 @@ export async function transpile(model: ITextModel): Promise<ITranspiledOutput> {
   if (output.outputFiles[0]) {
     transpiledOutput.outputString = output.outputFiles[0].text;
   } else {
-    throw new Error('Could not transpile code');
+    transpiledOutput.error = 'Could not transpile code';
   }
   return transpiledOutput;
 }

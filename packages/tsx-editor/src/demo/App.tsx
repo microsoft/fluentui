@@ -31,8 +31,8 @@ export class App extends React.Component {
   public render() {
     const editor = (
       <Stack className={classNames.component} gap={4}>
-        {!this.state.editorHidden && this.state.editor}
-        {this.state.error !== undefined && <Label className={classNames.error}>`{this.state.error}`</Label>}
+        {this.state.editor}
+        {this.state.error !== undefined && <Label className={classNames.error}>{this.state.error}</Label>}
       </Stack>
     );
 
@@ -50,10 +50,10 @@ export class App extends React.Component {
       const { evalCode, transpile } = require('../transpiler/transpile');
       transpile(editor).then((output: ITranspiledOutput) => {
         if (output.outputString) {
-          const evaledCode = evalCode(output.outputString);
-          if (evaledCode) {
+          const evalCodeError = evalCode(output.outputString);
+          if (evalCodeError) {
             this.setState({
-              error: evaledCode.error
+              error: evalCodeError.error
             });
           } else {
             this.setState({

@@ -61,7 +61,6 @@ export interface EmitOutput {
   emitSkipped: boolean;
 }
 
-// tslint:disable:interface-name
 interface OutputFile {
   name: string;
   writeByteOrderMark: boolean;
