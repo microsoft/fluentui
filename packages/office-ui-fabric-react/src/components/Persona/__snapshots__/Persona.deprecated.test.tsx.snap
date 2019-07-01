@@ -31,7 +31,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
       & .contextualHost {
         display: none;
       }
-      &:hover $primaryText {
+      & .ms-Persona-primaryText {
         color: #201f1e;
       }
 >
@@ -232,7 +232,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       & .contextualHost {
         display: none;
       }
-      &:hover $primaryText {
+      & .ms-Persona-primaryText {
         color: #201f1e;
       }
 >
@@ -409,7 +409,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       & .contextualHost {
         display: none;
       }
-      &:hover $primaryText {
+      & .ms-Persona-primaryText {
         color: #201f1e;
       }
 >

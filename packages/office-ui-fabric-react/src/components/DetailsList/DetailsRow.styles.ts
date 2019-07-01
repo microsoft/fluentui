@@ -15,6 +15,7 @@ const GlobalClassNames = {
   compact: 'ms-DetailsList--Compact', // TODO: in Fabric 7.0 lowercase the 'Compact' for consistency across other components.
   cell: 'ms-DetailsRow-cell',
   cellCheck: 'ms-DetailsRow-cellCheck',
+  check: 'ms-DetailsRow-check',
   cellMeasurer: 'ms-DetailsRow-cellMeasurer',
   listCellFirstChild: 'ms-List-cell:first-child',
   isFocusable: "[data-is-focusable='true']",
@@ -300,11 +301,11 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
             }
           },
 
-          '&:hover $check': {
+          [`&:hover .${classNames.check}`]: {
             opacity: 1
           },
 
-          [`.${IsFocusVisibleClassName} &:focus $check`]: {
+          [`.${IsFocusVisibleClassName} &:focus .${classNames.check}`]: {
             opacity: 1
           }
         }
@@ -323,7 +324,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       {
         paddingRight: `${cellStyleProps.cellExtraRightPadding + cellStyleProps.cellRightPadding}px`,
         selectors: {
-          '&.$checkCell': {
+          [`&.${classNames.cellCheck}`]: {
             paddingRight: 0
           }
         }
@@ -398,6 +399,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         textOverflow: 'clip'
       }
     ],
-    check: []
+    check: [classNames.check]
   };
 };

@@ -69,7 +69,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
 
           ':hover': {
             selectors: {
-              $primaryText: {
+              [`& .${classNames.primaryText}`]: {
                 color: palette.neutralDark
               }
             }

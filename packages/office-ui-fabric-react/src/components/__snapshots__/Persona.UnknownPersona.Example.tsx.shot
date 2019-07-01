@@ -52,7 +52,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
+        & .ms-Persona-primaryText {
           color: #201f1e;
         }
   >
@@ -256,7 +256,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
+        & .ms-Persona-primaryText {
           color: #201f1e;
         }
   >

@@ -5,7 +5,8 @@ import { getRTL } from '../../Utilities';
 const GlobalClassNames = {
   root: 'ms-Check',
   circle: 'ms-Check-circle',
-  check: 'ms-Check-check'
+  check: 'ms-Check-check',
+  checkHost: 'ms-Check-checkHost'
 };
 
 export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
@@ -57,7 +58,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
            * TODO: Come back to this once .checkHost has been
            * converted to mergeStyles
            */
-          '$checkHost:hover &, $checkHost:focus &, &:hover, &:focus': {
+          [`.${classNames.checkHost}:hover &,` + `.${classNames.checkHost}:focus &,` + `&:hover,` + `&:focus`]: {
             opacity: 1
           }
         }
@@ -136,6 +137,6 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
       }
     ],
 
-    checkHost: [{}]
+    checkHost: classNames.checkHost
   };
 };

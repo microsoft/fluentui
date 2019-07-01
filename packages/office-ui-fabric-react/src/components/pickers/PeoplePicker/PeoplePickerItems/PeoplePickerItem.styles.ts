@@ -34,7 +34,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
       color: palette.redDark,
       borderBottom: `2px dotted ${palette.redDark}`,
       selectors: {
-        '$root:hover &': {
+        [`.${classNames.root}:hover &`]: {
           // override Persona root:hover selector
           color: palette.redDark
         }

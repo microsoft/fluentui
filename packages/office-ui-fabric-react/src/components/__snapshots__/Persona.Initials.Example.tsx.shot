@@ -52,7 +52,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
+        & .ms-Persona-primaryText {
           color: #201f1e;
         }
   >
@@ -272,7 +272,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
+        & .ms-Persona-primaryText {
           color: #201f1e;
         }
   >
@@ -492,7 +492,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
+        & .ms-Persona-primaryText {
           color: #201f1e;
         }
   >
@@ -712,7 +712,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
+        & .ms-Persona-primaryText {
           color: #201f1e;
         }
   >
@@ -932,7 +932,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
+        & .ms-Persona-primaryText {
           color: #201f1e;
         }
   >
@@ -1151,7 +1151,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
+        & .ms-Persona-primaryText {
           color: #201f1e;
         }
   >
@@ -1385,7 +1385,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
+        & .ms-Persona-primaryText {
           color: #201f1e;
         }
   >
@@ -1604,7 +1604,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
+        & .ms-Persona-primaryText {
           color: #201f1e;
         }
   >
@@ -1838,7 +1838,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
+        & .ms-Persona-primaryText {
           color: #201f1e;
         }
   >
@@ -2072,7 +2072,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
+        & .ms-Persona-primaryText {
           color: #201f1e;
         }
   >
@@ -2306,7 +2306,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
+        & .ms-Persona-primaryText {
           color: #201f1e;
         }
   >
@@ -2525,7 +2525,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
+        & .ms-Persona-primaryText {
           color: #201f1e;
         }
   >
@@ -2744,7 +2744,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
+        & .ms-Persona-primaryText {
           color: #201f1e;
         }
     style={

@@ -28,7 +28,7 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
       },
       {
         selectors: {
-          ':focus $check': {
+          [`:focus .${classNames.check}`]: {
             opacity: 1
           }
         }

@@ -176,7 +176,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       },
       isIconOnly && {
         selectors: {
-          $nearIcon: {
+          [`.${classNames.nearIcon}`]: {
             paddingLeft: 0
           }
         }

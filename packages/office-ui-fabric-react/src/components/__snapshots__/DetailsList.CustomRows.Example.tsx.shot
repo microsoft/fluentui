@@ -75,10 +75,10 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover $check {
+              &:hover .ms-DetailsHeader-cellIsCheck {
                 opacity: 1;
               }
-              & ms-TooltipHost $checkTooltip {
+              & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                 display: block;
               }
           data-automationid="DetailsHeader"
@@ -142,7 +142,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
           >
             <span
               className=
-
+                  ms-DetailsHeader-checkTooltip
 
             >
               <div
@@ -150,6 +150,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
                       height: 42px;
                     }
@@ -236,7 +237,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
@@ -480,7 +481,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                   opacity: 1;
                   transition: opacity 0.3s linear;
                 }
-                &$cellIsResizing:after {
+                &.is-resizing:after {
                   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                   opacity: 1;
                   transition: opacity 0.3s linear;
@@ -620,10 +621,10 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -694,6 +695,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           aria-checked={false}
                           className=
                               ms-DetailsRow-check
+                              ms-Check-checkHost
 
                               {
                                 -moz-osx-font-smoothing: grayscale;
@@ -773,7 +775,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   right: 1px;
                                   top: 1px;
                                 }
-                                $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -997,10 +999,10 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -1071,6 +1073,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           aria-checked={false}
                           className=
                               ms-DetailsRow-check
+                              ms-Check-checkHost
 
                               {
                                 -moz-osx-font-smoothing: grayscale;
@@ -1150,7 +1153,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   right: 1px;
                                   top: 1px;
                                 }
-                                $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -1375,10 +1378,10 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -1449,6 +1452,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           aria-checked={false}
                           className=
                               ms-DetailsRow-check
+                              ms-Check-checkHost
 
                               {
                                 -moz-osx-font-smoothing: grayscale;
@@ -1528,7 +1532,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   right: 1px;
                                   top: 1px;
                                 }
-                                $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -1752,10 +1756,10 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -1826,6 +1830,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           aria-checked={false}
                           className=
                               ms-DetailsRow-check
+                              ms-Check-checkHost
 
                               {
                                 -moz-osx-font-smoothing: grayscale;
@@ -1905,7 +1910,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   right: 1px;
                                   top: 1px;
                                 }
-                                $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -2130,10 +2135,10 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -2204,6 +2209,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           aria-checked={false}
                           className=
                               ms-DetailsRow-check
+                              ms-Check-checkHost
 
                               {
                                 -moz-osx-font-smoothing: grayscale;
@@ -2283,7 +2289,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   right: 1px;
                                   top: 1px;
                                 }
-                                $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -2507,10 +2513,10 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -2581,6 +2587,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           aria-checked={false}
                           className=
                               ms-DetailsRow-check
+                              ms-Check-checkHost
 
                               {
                                 -moz-osx-font-smoothing: grayscale;
@@ -2660,7 +2667,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   right: 1px;
                                   top: 1px;
                                 }
-                                $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -2885,10 +2892,10 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -2959,6 +2966,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           aria-checked={false}
                           className=
                               ms-DetailsRow-check
+                              ms-Check-checkHost
 
                               {
                                 -moz-osx-font-smoothing: grayscale;
@@ -3038,7 +3046,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   right: 1px;
                                   top: 1px;
                                 }
-                                $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -3262,10 +3270,10 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -3336,6 +3344,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           aria-checked={false}
                           className=
                               ms-DetailsRow-check
+                              ms-Check-checkHost
 
                               {
                                 -moz-osx-font-smoothing: grayscale;
@@ -3415,7 +3424,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   right: 1px;
                                   top: 1px;
                                 }
-                                $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -3640,10 +3649,10 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -3714,6 +3723,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           aria-checked={false}
                           className=
                               ms-DetailsRow-check
+                              ms-Check-checkHost
 
                               {
                                 -moz-osx-font-smoothing: grayscale;
@@ -3793,7 +3803,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   right: 1px;
                                   top: 1px;
                                 }
-                                $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -4017,10 +4027,10 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -4091,6 +4101,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                           aria-checked={false}
                           className=
                               ms-DetailsRow-check
+                              ms-Check-checkHost
 
                               {
                                 -moz-osx-font-smoothing: grayscale;
@@ -4170,7 +4181,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                                   right: 1px;
                                   top: 1px;
                                 }
-                                $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                   opacity: 1;
                                 }
                           >
