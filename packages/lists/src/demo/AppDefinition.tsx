@@ -7,7 +7,13 @@ export const AppDefinition: IAppDefinition = {
   testPages: [],
   examplePages: [
     {
-      links: []
+      links: [
+        {
+          component: require<any>('./pages/StaticListPage').StaticListPage,
+          name: 'StaticList',
+          url: '#/StaticList'
+        }
+      ]
     }
   ],
   headerLinks: [

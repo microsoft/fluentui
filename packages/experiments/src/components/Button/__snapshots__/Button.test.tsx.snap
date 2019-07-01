@@ -241,6 +241,7 @@ exports[`Button renders a default Button as an anchor correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #ffffff;
         border-color: #8a8886;
         border-radius: 2px;
@@ -249,7 +250,8 @@ exports[`Button renders a default Button as an anchor correctly 1`] = `
         box-sizing: border-box;
         color: #323130;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -262,10 +264,10 @@ exports[`Button renders a default Button as an anchor correctly 1`] = `
         min-width: 100px;
         outline: transparent;
         overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
+        padding-bottom: 8px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 8px;
         position: relative;
         text-align: center;
         text-decoration: none;
@@ -285,6 +287,13 @@ exports[`Button renders a default Button as an anchor correctly 1`] = `
         right: 2px;
         top: 2px;
         z-index: 1;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-width: 1px;
@@ -332,49 +341,21 @@ exports[`Button renders a default Button as an anchor correctly 1`] = `
 >
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          padding-top: 8px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          overflow: visible;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Button as an anchor: Go to Bing
-    </span>
+    Button as an anchor: Go to Bing
   </span>
 </a>
 `;
@@ -386,6 +367,7 @@ exports[`Button renders a default Button with content and an icon correctly 1`] 
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #ffffff;
         border-color: #8a8886;
         border-radius: 2px;
@@ -394,7 +376,8 @@ exports[`Button renders a default Button with content and an icon correctly 1`] 
         box-sizing: border-box;
         color: #323130;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -408,8 +391,8 @@ exports[`Button renders a default Button with content and an icon correctly 1`] 
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
         padding-top: 0px;
         position: relative;
         text-align: center;
@@ -430,6 +413,13 @@ exports[`Button renders a default Button with content and an icon correctly 1`] 
         right: 2px;
         top: 2px;
         z-index: 1;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-width: 1px;
@@ -472,72 +462,44 @@ exports[`Button renders a default Button with content and an icon correctly 1`] 
   tabIndex={0}
   type="button"
 >
+  <i
+    aria-hidden={true}
+    className=
+        ms-Button-icon
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #323130;
+          display: flex;
+          fill: #323130;
+          font-family: "FabricMDL2Icons";
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          speak: none;
+        }
+    data-icon-name="Upload"
+    role="presentation"
+  >
+    
+  </i>
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          overflow: visible;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <i
-      aria-hidden={true}
-      className=
-          ms-Button-icon
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #323130;
-            display: flex;
-            fill: #323130;
-            font-family: "FabricMDL2Icons";
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            speak: none;
-          }
-      data-icon-name="Upload"
-      role="presentation"
-    >
-      
-    </i>
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Button with string icon
-    </span>
+    Button with string icon
   </span>
 </button>
 `;
@@ -549,6 +511,7 @@ exports[`Button renders a default Button with content correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #ffffff;
         border-color: #8a8886;
         border-radius: 2px;
@@ -557,7 +520,8 @@ exports[`Button renders a default Button with content correctly 1`] = `
         box-sizing: border-box;
         color: #323130;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -571,8 +535,8 @@ exports[`Button renders a default Button with content correctly 1`] = `
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
         padding-top: 0px;
         position: relative;
         text-align: center;
@@ -593,6 +557,13 @@ exports[`Button renders a default Button with content correctly 1`] = `
         right: 2px;
         top: 2px;
         z-index: 1;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-width: 1px;
@@ -637,49 +608,21 @@ exports[`Button renders a default Button with content correctly 1`] = `
 >
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          overflow: visible;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Default button
-    </span>
+    Default button
   </span>
 </button>
 `;
@@ -691,6 +634,7 @@ exports[`Button renders a default checked Button correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #c8c6c4;
         border-color: #8a8886;
         border-radius: 2px;
@@ -699,7 +643,8 @@ exports[`Button renders a default checked Button correctly 1`] = `
         box-sizing: border-box;
         color: #201f1e;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -713,8 +658,8 @@ exports[`Button renders a default checked Button correctly 1`] = `
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
         padding-top: 0px;
         position: relative;
         text-align: center;
@@ -735,6 +680,13 @@ exports[`Button renders a default checked Button correctly 1`] = `
         right: 2px;
         top: 2px;
         z-index: 1;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-width: 1px;
@@ -779,49 +731,21 @@ exports[`Button renders a default checked Button correctly 1`] = `
 >
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          overflow: visible;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Button
-    </span>
+    Button
   </span>
 </button>
 `;
@@ -833,6 +757,7 @@ exports[`Button renders a default circular Button with an icon correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #ffffff;
         border-color: #8a8886;
         border-radius: 50%;
@@ -841,7 +766,8 @@ exports[`Button renders a default circular Button with an icon correctly 1`] = `
         box-sizing: border-box;
         color: #323130;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -854,10 +780,10 @@ exports[`Button renders a default circular Button with an icon correctly 1`] = `
         min-width: 32px;
         outline-color: transparent;
         overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
+        padding-bottom: ;
+        padding-left: ;
+        padding-right: ;
+        padding-top: ;
         text-align: center;
         text-decoration: none;
         user-select: none;
@@ -873,6 +799,13 @@ exports[`Button renders a default circular Button with an icon correctly 1`] = `
         padding-left: 1px;
         padding-right: 1px;
         padding-top: 1px;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-width: 1px;
@@ -912,55 +845,27 @@ exports[`Button renders a default circular Button with an icon correctly 1`] = `
   tabIndex={0}
   type="button"
 >
-  <span
+  <i
+    aria-hidden={true}
     className=
-        ms-Stack
+        ms-Button-icon
         {
-          align-items: center;
-          box-sizing: border-box;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #323130;
           display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
-          width: auto;
+          fill: #323130;
+          font-family: "FabricMDL2Icons-3";
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          speak: none;
         }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
-        }
+    data-icon-name="PeopleAdd"
+    role="presentation"
   >
-    <i
-      aria-hidden={true}
-      className=
-          ms-Button-icon
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #323130;
-            display: flex;
-            fill: #323130;
-            font-family: "FabricMDL2Icons-3";
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            speak: none;
-          }
-      data-icon-name="PeopleAdd"
-      role="presentation"
-    >
-      
-    </i>
-  </span>
+    
+  </i>
 </button>
 `;
 
@@ -971,6 +876,7 @@ exports[`Button renders a default circular checked Button correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #c8c6c4;
         border-color: #8a8886;
         border-radius: 50%;
@@ -979,7 +885,8 @@ exports[`Button renders a default circular checked Button correctly 1`] = `
         box-sizing: border-box;
         color: #201f1e;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -992,10 +899,10 @@ exports[`Button renders a default circular checked Button correctly 1`] = `
         min-width: 32px;
         outline-color: transparent;
         overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
+        padding-bottom: ;
+        padding-left: ;
+        padding-right: ;
+        padding-top: ;
         text-align: center;
         text-decoration: none;
         user-select: none;
@@ -1011,6 +918,13 @@ exports[`Button renders a default circular checked Button correctly 1`] = `
         padding-left: 1px;
         padding-right: 1px;
         padding-top: 1px;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-width: 1px;
@@ -1050,55 +964,27 @@ exports[`Button renders a default circular checked Button correctly 1`] = `
   tabIndex={0}
   type="button"
 >
-  <span
+  <i
+    aria-hidden={true}
     className=
-        ms-Stack
+        ms-Button-icon
         {
-          align-items: center;
-          box-sizing: border-box;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #201f1e;
           display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
-          width: auto;
+          fill: #201f1e;
+          font-family: "FabricMDL2Icons-2";
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          speak: none;
         }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
-        }
+    data-icon-name="Volume3"
+    role="presentation"
   >
-    <i
-      aria-hidden={true}
-      className=
-          ms-Button-icon
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #201f1e;
-            display: flex;
-            fill: #201f1e;
-            font-family: "FabricMDL2Icons-2";
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            speak: none;
-          }
-      data-icon-name="Volume3"
-      role="presentation"
-    >
-      
-    </i>
-  </span>
+    
+  </i>
 </button>
 `;
 
@@ -1110,6 +996,7 @@ exports[`Button renders a default circular disabled checked Button correctly 1`]
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #f3f2f1;
         border-color: #f3f2f1;
         border-radius: 50%;
@@ -1118,7 +1005,8 @@ exports[`Button renders a default circular disabled checked Button correctly 1`]
         box-sizing: border-box;
         color: #a19f9d;
         cursor: default;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -1131,10 +1019,10 @@ exports[`Button renders a default circular disabled checked Button correctly 1`]
         min-width: 32px;
         outline-color: transparent;
         overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
+        padding-bottom: ;
+        padding-left: ;
+        padding-right: ;
+        padding-top: ;
         text-align: center;
         text-decoration: none;
         user-select: none;
@@ -1150,6 +1038,13 @@ exports[`Button renders a default circular disabled checked Button correctly 1`]
         padding-left: 1px;
         padding-right: 1px;
         padding-top: 1px;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         background-color: Window;
@@ -1194,58 +1089,30 @@ exports[`Button renders a default circular disabled checked Button correctly 1`]
   role="button"
   type="button"
 >
-  <span
+  <i
+    aria-hidden={true}
     className=
-        ms-Stack
+        ms-Button-icon
         {
-          align-items: center;
-          box-sizing: border-box;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #a19f9d;
           display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
-          width: auto;
+          fill: #a19f9d;
+          font-family: "FabricMDL2Icons-2";
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          speak: none;
         }
-        & > * {
-          text-overflow: ellipsis;
+        @media screen and (-ms-high-contrast: active){& {
+          color: GrayText;
         }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
-        }
+    data-icon-name="Volume3"
+    role="presentation"
   >
-    <i
-      aria-hidden={true}
-      className=
-          ms-Button-icon
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #a19f9d;
-            display: flex;
-            fill: #a19f9d;
-            font-family: "FabricMDL2Icons-2";
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            speak: none;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: GrayText;
-          }
-      data-icon-name="Volume3"
-      role="presentation"
-    >
-      
-    </i>
-  </span>
+    
+  </i>
 </button>
 `;
 
@@ -1257,6 +1124,7 @@ exports[`Button renders a default disabled checked Button correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #f3f2f1;
         border-color: #f3f2f1;
         border-radius: 2px;
@@ -1265,7 +1133,8 @@ exports[`Button renders a default disabled checked Button correctly 1`] = `
         box-sizing: border-box;
         color: #a19f9d;
         cursor: default;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -1279,8 +1148,8 @@ exports[`Button renders a default disabled checked Button correctly 1`] = `
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
         padding-top: 0px;
         position: relative;
         text-align: center;
@@ -1302,6 +1171,13 @@ exports[`Button renders a default disabled checked Button correctly 1`] = `
         top: 2px;
         z-index: 1;
       }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
+      }
       @media screen and (-ms-high-contrast: active){& {
         background-color: Window;
         border-color: GrayText;
@@ -1350,49 +1226,21 @@ exports[`Button renders a default disabled checked Button correctly 1`] = `
 >
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          overflow: visible;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Button
-    </span>
+    Button
   </span>
 </button>
 `;
@@ -1405,6 +1253,7 @@ exports[`Button renders a disabled default Button with content correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #f3f2f1;
         border-color: #f3f2f1;
         border-radius: 2px;
@@ -1413,7 +1262,8 @@ exports[`Button renders a disabled default Button with content correctly 1`] = `
         box-sizing: border-box;
         color: #a19f9d;
         cursor: default;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -1427,8 +1277,8 @@ exports[`Button renders a disabled default Button with content correctly 1`] = `
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
         padding-top: 0px;
         position: relative;
         text-align: center;
@@ -1450,6 +1300,13 @@ exports[`Button renders a disabled default Button with content correctly 1`] = `
         top: 2px;
         z-index: 1;
       }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
+      }
       @media screen and (-ms-high-contrast: active){& {
         background-color: Window;
         border-color: GrayText;
@@ -1498,49 +1355,21 @@ exports[`Button renders a disabled default Button with content correctly 1`] = `
 >
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          overflow: visible;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Disabled default button
-    </span>
+    Disabled default button
   </span>
 </button>
 `;
@@ -1553,6 +1382,7 @@ exports[`Button renders a disabled default circular Button with an icon correctl
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #f3f2f1;
         border-color: #f3f2f1;
         border-radius: 50%;
@@ -1561,7 +1391,8 @@ exports[`Button renders a disabled default circular Button with an icon correctl
         box-sizing: border-box;
         color: #a19f9d;
         cursor: default;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -1574,10 +1405,10 @@ exports[`Button renders a disabled default circular Button with an icon correctl
         min-width: 32px;
         outline-color: transparent;
         overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
+        padding-bottom: ;
+        padding-left: ;
+        padding-right: ;
+        padding-top: ;
         text-align: center;
         text-decoration: none;
         user-select: none;
@@ -1594,6 +1425,13 @@ exports[`Button renders a disabled default circular Button with an icon correctl
         padding-right: 1px;
         padding-top: 1px;
       }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
+      }
       @media screen and (-ms-high-contrast: active){& {
         background-color: Window;
         border-color: GrayText;
@@ -1637,58 +1475,30 @@ exports[`Button renders a disabled default circular Button with an icon correctl
   role="button"
   type="button"
 >
-  <span
+  <i
+    aria-hidden={true}
     className=
-        ms-Stack
+        ms-Button-icon
         {
-          align-items: center;
-          box-sizing: border-box;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #a19f9d;
           display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
-          width: auto;
+          fill: #a19f9d;
+          font-family: "FabricMDL2Icons-0";
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          speak: none;
         }
-        & > * {
-          text-overflow: ellipsis;
+        @media screen and (-ms-high-contrast: active){& {
+          color: GrayText;
         }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
-        }
+    data-icon-name="Phone"
+    role="presentation"
   >
-    <i
-      aria-hidden={true}
-      className=
-          ms-Button-icon
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #a19f9d;
-            display: flex;
-            fill: #a19f9d;
-            font-family: "FabricMDL2Icons-0";
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            speak: none;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: GrayText;
-          }
-      data-icon-name="Phone"
-      role="presentation"
-    >
-      
-    </i>
-  </span>
+    
+  </i>
 </button>
 `;
 
@@ -1700,6 +1510,7 @@ exports[`Button renders a disabled primary Button with content correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #f3f2f1;
         border-color: #f3f2f1;
         border-radius: 2px;
@@ -1708,7 +1519,8 @@ exports[`Button renders a disabled primary Button with content correctly 1`] = `
         box-sizing: border-box;
         color: #a19f9d;
         cursor: default;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -1723,8 +1535,8 @@ exports[`Button renders a disabled primary Button with content correctly 1`] = `
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
         padding-top: 0px;
         position: relative;
         text-align: center;
@@ -1745,6 +1557,13 @@ exports[`Button renders a disabled primary Button with content correctly 1`] = `
         right: 2px;
         top: 2px;
         z-index: 1;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
@@ -1796,49 +1615,21 @@ exports[`Button renders a disabled primary Button with content correctly 1`] = `
 >
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          overflow: visible;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Disabled primary button
-    </span>
+    Disabled primary button
   </span>
 </button>
 `;
@@ -1851,6 +1642,7 @@ exports[`Button renders a disabled primary circular Button with an icon correctl
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #f3f2f1;
         border-color: #f3f2f1;
         border-radius: 50%;
@@ -1859,7 +1651,8 @@ exports[`Button renders a disabled primary circular Button with an icon correctl
         box-sizing: border-box;
         color: #a19f9d;
         cursor: default;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -1872,10 +1665,10 @@ exports[`Button renders a disabled primary circular Button with an icon correctl
         min-width: 32px;
         outline-color: transparent;
         overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
+        padding-bottom: ;
+        padding-left: ;
+        padding-right: ;
+        padding-top: ;
         text-align: center;
         text-decoration: none;
         user-select: none;
@@ -1892,6 +1685,13 @@ exports[`Button renders a disabled primary circular Button with an icon correctl
         padding-right: 1px;
         padding-top: 1px;
       }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
+      }
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
         background-color: Window;
@@ -1936,58 +1736,30 @@ exports[`Button renders a disabled primary circular Button with an icon correctl
   role="button"
   type="button"
 >
-  <span
+  <i
+    aria-hidden={true}
     className=
-        ms-Stack
+        ms-Button-icon
         {
-          align-items: center;
-          box-sizing: border-box;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #a19f9d;
           display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
-          width: auto;
+          fill: #a19f9d;
+          font-family: "FabricMDL2Icons-0";
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          speak: none;
         }
-        & > * {
-          text-overflow: ellipsis;
+        @media screen and (-ms-high-contrast: active){& {
+          color: GrayText;
         }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
-        }
+    data-icon-name="Attach"
+    role="presentation"
   >
-    <i
-      aria-hidden={true}
-      className=
-          ms-Button-icon
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #a19f9d;
-            display: flex;
-            fill: #a19f9d;
-            font-family: "FabricMDL2Icons-0";
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            speak: none;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: GrayText;
-          }
-      data-icon-name="Attach"
-      role="presentation"
-    >
-      
-    </i>
-  </span>
+    
+  </i>
 </button>
 `;
 
@@ -1998,6 +1770,7 @@ exports[`Button renders a primary Button as an anchor correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #0078d4;
         border-color: #8a8886;
         border-radius: 2px;
@@ -2006,7 +1779,8 @@ exports[`Button renders a primary Button as an anchor correctly 1`] = `
         box-sizing: border-box;
         color: #ffffff;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -2020,10 +1794,10 @@ exports[`Button renders a primary Button as an anchor correctly 1`] = `
         outline-color: transparent;
         outline: transparent;
         overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
+        padding-bottom: 8px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 8px;
         position: relative;
         text-align: center;
         text-decoration: none;
@@ -2043,6 +1817,13 @@ exports[`Button renders a primary Button as an anchor correctly 1`] = `
         right: 2px;
         top: 2px;
         z-index: 1;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
@@ -2096,49 +1877,21 @@ exports[`Button renders a primary Button as an anchor correctly 1`] = `
 >
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 8px;
-          padding-left: 16px;
-          padding-right: 16px;
-          padding-top: 8px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          overflow: visible;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Button as an anchor: Go to Bing
-    </span>
+    Button as an anchor: Go to Bing
   </span>
 </a>
 `;
@@ -2150,6 +1903,7 @@ exports[`Button renders a primary Button with content correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #0078d4;
         border-color: #8a8886;
         border-radius: 2px;
@@ -2158,7 +1912,8 @@ exports[`Button renders a primary Button with content correctly 1`] = `
         box-sizing: border-box;
         color: #ffffff;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -2173,8 +1928,8 @@ exports[`Button renders a primary Button with content correctly 1`] = `
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
         padding-top: 0px;
         position: relative;
         text-align: center;
@@ -2195,6 +1950,13 @@ exports[`Button renders a primary Button with content correctly 1`] = `
         right: 2px;
         top: 2px;
         z-index: 1;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
@@ -2245,49 +2007,21 @@ exports[`Button renders a primary Button with content correctly 1`] = `
 >
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          overflow: visible;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Primary button
-    </span>
+    Primary button
   </span>
 </button>
 `;
@@ -2299,6 +2033,7 @@ exports[`Button renders a primary Button with custom content and icon right-alig
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #0078d4;
         border-color: #8a8886;
         border-radius: 2px;
@@ -2307,7 +2042,8 @@ exports[`Button renders a primary Button with custom content and icon right-alig
         box-sizing: border-box;
         color: #ffffff;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -2322,8 +2058,8 @@ exports[`Button renders a primary Button with custom content and icon right-alig
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
         padding-top: 0px;
         position: relative;
         text-align: center;
@@ -2344,6 +2080,13 @@ exports[`Button renders a primary Button with custom content and icon right-alig
         right: 2px;
         top: 2px;
         z-index: 1;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
@@ -2394,67 +2137,39 @@ exports[`Button renders a primary Button with custom content and icon right-alig
 >
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            moz-osx-font-smoothing: grayscale;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      With custom text/icon right aligned
-    </span>
-    <i
-      aria-hidden={true}
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            display: inline-block;
-            font-family: "FabricMDL2Icons";
-            font-style: normal;
-            font-weight: normal;
-            speak: none;
-          }
-      data-icon-name="Upload"
-      role="presentation"
-    >
-      
-    </i>
+    With custom text/icon right aligned
   </span>
+  <i
+    aria-hidden={true}
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: inline-block;
+          font-family: "FabricMDL2Icons";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+    data-icon-name="Upload"
+    role="presentation"
+  >
+    
+  </i>
 </button>
 `;
 
@@ -2465,6 +2180,7 @@ exports[`Button renders a primary checked Button correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #005a9e;
         border-color: #8a8886;
         border-radius: 2px;
@@ -2473,7 +2189,8 @@ exports[`Button renders a primary checked Button correctly 1`] = `
         box-sizing: border-box;
         color: #ffffff;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -2488,8 +2205,8 @@ exports[`Button renders a primary checked Button correctly 1`] = `
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
         padding-top: 0px;
         position: relative;
         text-align: center;
@@ -2510,6 +2227,13 @@ exports[`Button renders a primary checked Button correctly 1`] = `
         right: 2px;
         top: 2px;
         z-index: 1;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
@@ -2560,49 +2284,21 @@ exports[`Button renders a primary checked Button correctly 1`] = `
 >
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          overflow: visible;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Button
-    </span>
+    Button
   </span>
 </button>
 `;
@@ -2614,6 +2310,7 @@ exports[`Button renders a primary circular Button with an icon correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #0078d4;
         border-color: #8a8886;
         border-radius: 50%;
@@ -2622,7 +2319,8 @@ exports[`Button renders a primary circular Button with an icon correctly 1`] = `
         box-sizing: border-box;
         color: #ffffff;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -2635,10 +2333,10 @@ exports[`Button renders a primary circular Button with an icon correctly 1`] = `
         min-width: 32px;
         outline-color: transparent;
         overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
+        padding-bottom: ;
+        padding-left: ;
+        padding-right: ;
+        padding-top: ;
         text-align: center;
         text-decoration: none;
         user-select: none;
@@ -2654,6 +2352,13 @@ exports[`Button renders a primary circular Button with an icon correctly 1`] = `
         padding-left: 1px;
         padding-right: 1px;
         padding-top: 1px;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
@@ -2698,58 +2403,30 @@ exports[`Button renders a primary circular Button with an icon correctly 1`] = `
   tabIndex={0}
   type="button"
 >
-  <span
+  <i
+    aria-hidden={true}
     className=
-        ms-Stack
+        ms-Button-icon
         {
-          align-items: center;
-          box-sizing: border-box;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #ffffff;
           display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
-          width: auto;
+          fill: #ffffff;
+          font-family: "FabricMDL2Icons-2";
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          speak: none;
         }
-        & > * {
-          text-overflow: ellipsis;
+        @media screen and (-ms-high-contrast: active){& {
+          color: Window;
         }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
-        }
+    data-icon-name="FontSize"
+    role="presentation"
   >
-    <i
-      aria-hidden={true}
-      className=
-          ms-Button-icon
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #ffffff;
-            display: flex;
-            fill: #ffffff;
-            font-family: "FabricMDL2Icons-2";
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            speak: none;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: Window;
-          }
-      data-icon-name="FontSize"
-      role="presentation"
-    >
-      
-    </i>
-  </span>
+    
+  </i>
 </button>
 `;
 
@@ -2760,6 +2437,7 @@ exports[`Button renders a primary circular checked Button correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #005a9e;
         border-color: #8a8886;
         border-radius: 50%;
@@ -2768,7 +2446,8 @@ exports[`Button renders a primary circular checked Button correctly 1`] = `
         box-sizing: border-box;
         color: #ffffff;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -2781,10 +2460,10 @@ exports[`Button renders a primary circular checked Button correctly 1`] = `
         min-width: 32px;
         outline-color: transparent;
         overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
+        padding-bottom: ;
+        padding-left: ;
+        padding-right: ;
+        padding-top: ;
         text-align: center;
         text-decoration: none;
         user-select: none;
@@ -2800,6 +2479,13 @@ exports[`Button renders a primary circular checked Button correctly 1`] = `
         padding-left: 1px;
         padding-right: 1px;
         padding-top: 1px;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
@@ -2844,58 +2530,30 @@ exports[`Button renders a primary circular checked Button correctly 1`] = `
   tabIndex={0}
   type="button"
 >
-  <span
+  <i
+    aria-hidden={true}
     className=
-        ms-Stack
+        ms-Button-icon
         {
-          align-items: center;
-          box-sizing: border-box;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #ffffff;
           display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
-          width: auto;
+          fill: #ffffff;
+          font-family: "FabricMDL2Icons-2";
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          speak: none;
         }
-        & > * {
-          text-overflow: ellipsis;
+        @media screen and (-ms-high-contrast: active){& {
+          color: Window;
         }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
-        }
+    data-icon-name="Volume3"
+    role="presentation"
   >
-    <i
-      aria-hidden={true}
-      className=
-          ms-Button-icon
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #ffffff;
-            display: flex;
-            fill: #ffffff;
-            font-family: "FabricMDL2Icons-2";
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            speak: none;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: Window;
-          }
-      data-icon-name="Volume3"
-      role="presentation"
-    >
-      
-    </i>
-  </span>
+    
+  </i>
 </button>
 `;
 
@@ -2907,6 +2565,7 @@ exports[`Button renders a primary circular disabled checked Button correctly 1`]
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #f3f2f1;
         border-color: #f3f2f1;
         border-radius: 50%;
@@ -2915,7 +2574,8 @@ exports[`Button renders a primary circular disabled checked Button correctly 1`]
         box-sizing: border-box;
         color: #a19f9d;
         cursor: default;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -2928,10 +2588,10 @@ exports[`Button renders a primary circular disabled checked Button correctly 1`]
         min-width: 32px;
         outline-color: transparent;
         overflow: hidden;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-top: 0px;
+        padding-bottom: ;
+        padding-left: ;
+        padding-right: ;
+        padding-top: ;
         text-align: center;
         text-decoration: none;
         user-select: none;
@@ -2947,6 +2607,13 @@ exports[`Button renders a primary circular disabled checked Button correctly 1`]
         padding-left: 1px;
         padding-right: 1px;
         padding-top: 1px;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
@@ -2992,58 +2659,30 @@ exports[`Button renders a primary circular disabled checked Button correctly 1`]
   role="button"
   type="button"
 >
-  <span
+  <i
+    aria-hidden={true}
     className=
-        ms-Stack
+        ms-Button-icon
         {
-          align-items: center;
-          box-sizing: border-box;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #a19f9d;
           display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: ;
-          padding-left: ;
-          padding-right: ;
-          padding-top: ;
-          width: auto;
+          fill: #a19f9d;
+          font-family: "FabricMDL2Icons-2";
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          speak: none;
         }
-        & > * {
-          text-overflow: ellipsis;
+        @media screen and (-ms-high-contrast: active){& {
+          color: GrayText;
         }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
-        }
+    data-icon-name="Volume3"
+    role="presentation"
   >
-    <i
-      aria-hidden={true}
-      className=
-          ms-Button-icon
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #a19f9d;
-            display: flex;
-            fill: #a19f9d;
-            font-family: "FabricMDL2Icons-2";
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            speak: none;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: GrayText;
-          }
-      data-icon-name="Volume3"
-      role="presentation"
-    >
-      
-    </i>
-  </span>
+    
+  </i>
 </button>
 `;
 
@@ -3055,6 +2694,7 @@ exports[`Button renders a primary disabled checked Button correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #f3f2f1;
         border-color: #f3f2f1;
         border-radius: 2px;
@@ -3063,7 +2703,8 @@ exports[`Button renders a primary disabled checked Button correctly 1`] = `
         box-sizing: border-box;
         color: #a19f9d;
         cursor: default;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -3078,8 +2719,8 @@ exports[`Button renders a primary disabled checked Button correctly 1`] = `
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
         padding-top: 0px;
         position: relative;
         text-align: center;
@@ -3101,6 +2742,13 @@ exports[`Button renders a primary disabled checked Button correctly 1`] = `
         top: 2px;
         z-index: 1;
       }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
+      }
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
         background-color: Window;
@@ -3151,49 +2799,21 @@ exports[`Button renders a primary disabled checked Button correctly 1`] = `
 >
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          overflow: visible;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Button
-    </span>
+    Button
   </span>
 </button>
 `;

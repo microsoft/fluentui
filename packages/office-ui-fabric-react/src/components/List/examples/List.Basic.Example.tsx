@@ -5,7 +5,7 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { List } from 'office-ui-fabric-react/lib/List';
-import * as styles from './List.Basic.Example.scss';
+import { ITheme, mergeStyleSets, getTheme, getFocusStyle, DefaultFontStyles, FontSizes } from '@uifabric/styling';
 
 export type IExampleItem = { name: string; thumbnail: string; description: string };
 
@@ -18,10 +18,64 @@ export interface IListBasicExampleState {
   items?: IExampleItem[];
 }
 
+interface IListBasicExampleClassObject {
+  itemCell: string;
+  itemImage: string;
+  itemContent: string;
+  itemName: string;
+  itemIndex: string;
+  chevron: string;
+}
+
+const theme: ITheme = getTheme();
+
+const classNames: IListBasicExampleClassObject = mergeStyleSets({
+  itemCell: [
+    getFocusStyle(theme, { inset: -1 }),
+    {
+      minHeight: 54,
+      padding: 10,
+      boxSizing: 'border-box',
+      borderBottom: `1px solid ${theme.semanticColors.bodyDivider}`,
+      display: 'flex',
+      selectors: {
+        '&:hover': { background: theme.palette.neutralLight }
+      }
+    }
+  ],
+  itemImage: {
+    flexShrink: 0
+  },
+  itemContent: {
+    marginLeft: 10,
+    overflow: 'hidden',
+    flexGrow: 1
+  },
+  itemName: [
+    DefaultFontStyles.xLarge,
+    {
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
+    }
+  ],
+  itemIndex: {
+    fontSize: FontSizes.small,
+    color: theme.palette.neutralTertiary,
+    marginBottom: 10
+  },
+  chevron: {
+    alignSelf: 'center',
+    marginLeft: 10,
+    color: theme.palette.neutralTertiary,
+    fontSize: FontSizes.large,
+    flexShrink: 0
+  }
+});
+
 export class ListBasicExample extends React.Component<IListBasicExampleProps, IListBasicExampleState> {
   constructor(props: IListBasicExampleProps) {
     super(props);
-
     this._onFilterChanged = this._onFilterChanged.bind(this);
 
     this.state = {
@@ -54,14 +108,14 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, IL
 
   private _onRenderCell(item: IExampleItem, index: number | undefined): JSX.Element {
     return (
-      <div className={styles.itemCell} data-is-focusable={true}>
-        <Image className={styles.itemImage} src={item.thumbnail} width={50} height={50} imageFit={ImageFit.cover} />
-        <div className={styles.itemContent}>
-          <div className={styles.itemName}>{item.name}</div>
-          <div className={styles.itemIndex}>{`Item ${index}`}</div>
+      <div className={classNames.itemCell} data-is-focusable={true}>
+        <Image className={classNames.itemImage} src={item.thumbnail} width={50} height={50} imageFit={ImageFit.cover} />
+        <div className={classNames.itemContent}>
+          <div className={classNames.itemName}>{item.name}</div>
+          <div className={classNames.itemIndex}>{`Item ${index}`}</div>
           <div>{item.description}</div>
         </div>
-        <Icon className={styles.chevron} iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} />
+        <Icon className={classNames.chevron} iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} />
       </div>
     );
   }

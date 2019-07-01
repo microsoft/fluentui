@@ -2,9 +2,11 @@ const cp = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const generateFlamegraph = require('./flamegraph/generateFlamegraph');
+const { argv } = require('@uifabric/build').just;
 
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
-const iterations = 5000;
+// Wiki: https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing
+const iterationsDefault = 5000;
 
 // Chrome command for running similarly configured instance of Chrome as puppeteer is configured here:
 // "C:\Program Files (x86)\Google\Chrome\Application\chrome" --no-sandbox --js-flags=" --logfile=C:\git\perf\output\chrome.log --prof --jitless --no-opt" --user-data-dir="C:\git\perf\user" http://localhost:4322
@@ -16,10 +18,20 @@ const iterations = 5000;
 //        npm run just perf-test
 //      To just run perf tests:
 //        npm run just run-perf-test
+// Arguments:
+//    scenarios: comma separated list of scenario names to execute
+//    iterations: number of iterations to run for each scenario
+// Example:
+//    npm run just perf-test -- --scenarios SplitButton,SplitButtonNew --iterations 1000
 
 // TODO:
+//  - Compare results with and without V8 flags. Make sure things that appear to be bottlenecks are consistent regardless of flags.
+//  - Watch mode for flamegraphs.
+//    - Would require going back to webserve config mode?
+//  - Explore impact of:
+//    - https://github.com/OfficeDev/office-ui-fabric-react/pull/9580
+//    - https://github.com/OfficeDev/office-ui-fabric-react/pull/9432
 //  - Figure out what is causing huge log file size differences between Windows and Mac. (mac perf is pretty bad)
-//  - ITERATE
 //  - Verify results are repeatable and consistent
 //    - 1 tab vs. 100 tabs simulateneously
 //    - Eliminate or account for variance!
@@ -29,17 +41,16 @@ const iterations = 5000;
 //      - Use same version of V8 in Puppeteer to process ticks, somehow
 //        - If not, need to remove "Testing v8 version different from logging version" from processed logs
 //  - How will pass/fail be determined?
-//  - What will be presented to PRs?
-//    - Figure out tools to use for analysis (below)
-//    - FlameBearer
-//      - At least provide means to generate results locally
-//      - Way to translate DLL calls to JS calls (kebabRules replace() for example)
-//      - Unminify stack, at least OUFR portion.
-//      - How to pipe log files to Flamebearer in Node?
-//        - Do dependencies get installed in a way they can run on commandline on server?
+//    - What role should React measurements play in results?
 //  - Use debug version of React to make results more readable? (Where time in React is being spent?)
-//  - How will reference be run? Will have to host scenarios in deploy site somehow to run
-//  - What role should React measurements play in results?
+//  - Scaling issues:
+//    - Is already taking 10 minutes on CI. If users add scenarios it could get out of control.
+//    - Options:
+//      - Don't test master, just use posted results.
+//        - If master has a "bad" variance, this result will be frozen. May be ok since it can happen on PRs too.
+//      - Reduce default number iterations
+//      - Allow varying iterations by scenario (for "problem" components like DocumentCardTitle)
+//        - This may not be good if these components don't "stand out" as much with high samples.
 //  - Further ideas:
 //    - Resizing page to determine reflow
 //    - React cascading updates on initial component render.
@@ -68,15 +79,13 @@ const logFilePath = path.join(logPath, '/puppeteer.log');
 const resultsPath = path.join(__dirname, '../dist');
 
 module.exports = async function getPerfRegressions() {
-  console.log('logFilePath: ' + logFilePath);
   if (!fs.existsSync(logPath)) {
-    console.log('Making logfile directory...');
+    console.log(`Making logfile directory ${logFilePath}...`);
     fs.mkdirSync(logPath);
   }
 
   const logfileContents = fs.readdirSync(logPath);
 
-  // TODO: cleaning should be done via a just-task?
   if (logfileContents.length > 0) {
     console.log(`Unexpected logfiles already present in ${logPath}`);
     logfileContents.forEach(logFile => {
@@ -86,10 +95,26 @@ module.exports = async function getPerfRegressions() {
     });
   }
 
-  const scenarios = fs
+  const iterationsArg = Number.isInteger(argv().iterations) && argv().iterations;
+  const iterations = iterationsArg || iterationsDefault;
+
+  const scenariosAvailable = fs
     .readdirSync(path.join(__dirname, '../src/scenarios'))
     .filter(name => name.indexOf('scenarioList') < 0)
     .map(name => path.basename(name, '.tsx'));
+
+  const scenariosArg = (argv().scenarios && argv().scenarios.split && argv().scenarios.split(',')) || [];
+  scenariosArg.forEach(scenario => {
+    if (!scenariosAvailable.includes(scenario)) {
+      throw new Error(`Invalid scenario: ${scenario}.`);
+    }
+  });
+
+  const scenarioNames = require('../src/scenarioNames');
+
+  const scenarios = scenariosArg.length > 0 ? scenariosArg : scenariosAvailable;
+
+  console.log(`\nRunning ${iterations} iterations for each of these scenarios: ${scenarios}\n`);
 
   // const extraV8Flags = '--log-source-code --log-timer-events';
   // const extraV8Flags = '--log-source-code';
@@ -115,14 +140,14 @@ module.exports = async function getPerfRegressions() {
   const testResults = [];
 
   for (const scenario of scenarios) {
-    let logfileMaster = await runPerfTest(browser, urlForMaster, scenario, logPath);
-    let logfilePR = await runPerfTest(browser, urlForDeploy, scenario, logPath);
+    let logfileMaster = await runPerfTest(browser, urlForMaster, scenario, iterations, logPath);
+    let logfilePR = await runPerfTest(browser, urlForDeploy, scenario, iterations, logPath);
 
     let outfileMaster = path.join(resultsPath, `${scenario}_master.html`);
     let outfilePR = path.join(resultsPath, `${scenario}_pr.html`);
 
     testResults.push({
-      scenario,
+      scenario: scenarioNames[scenario] || scenario,
       logfileMaster,
       outfileMaster,
       logfilePR,
@@ -150,20 +175,21 @@ module.exports = async function getPerfRegressions() {
   console.log(`Writing comment to file:\n${comment}`);
 
   // Write results to file
-  fs.writeFileSync(path.join(resultsPath, 'perfCounts.txt'), comment);
+  fs.writeFileSync(path.join(resultsPath, 'perfCounts.html'), comment);
 
-  console.log(`##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.txt`);
+  console.log(`##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.html`);
   console.log(`##vso[task.setvariable variable=PerfCommentStatus;]${status}`);
 };
 
 /**
  *
- * @param {*} browser Launched puppeteer instance
- * @param {string} baseUrl Base URL supporting 'scenario' and 'terations' query parameters
- * @param {string} scenarioName Name of scenario that will be used with baseUrl
+ * @param {*} browser Launched puppeteer instance.
+ * @param {string} baseUrl Base URL supporting 'scenario' and 'iterations' query parameters.
+ * @param {string} scenarioName Name of scenario that will be used with baseUrl.
+ * @param {number} iterations Number of iterations to run.
  * @param {string} logPath Absolute path to output log profiles.
  */
-async function runPerfTest(browser, baseUrl, scenarioName, logPath) {
+async function runPerfTest(browser, baseUrl, scenarioName, iterations, logPath) {
   const testUrl = `${baseUrl}?scenario=${scenarioName}&iterations=${iterations}`;
   const logFilesBefore = fs.readdirSync(logPath);
 
@@ -204,8 +230,6 @@ function createTestSummary(testResults) {
     testResult.numTicksPR = getTicks(testResult.outfilePR);
   });
 
-  console.log(process.env.BUILD_SOURCEBRANCH);
-
   const result = `Component Perf Analysis:
   <table>
   <tr>
@@ -225,7 +249,8 @@ function createTestSummary(testResults) {
       .join('\n')
       .concat(`</table>`)
       .concat("* Sample counts can vary by up to 30% and shouldn't be used solely for determining regression.  ")
-      .concat('Flamegraph links are provided to give a hint on deltas introduced by PRs and potential bottlenecks.')
+      .concat('For more information please see the ')
+      .concat('<a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing">Perf Testing wiki</a>.')
   );
 
   console.log('result: ' + result);
