@@ -6,7 +6,7 @@ import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { List, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ITheme, getTheme, mergeStyleSets, FontSizes, normalize } from 'office-ui-fabric-react/lib/';
+import { ITheme, getTheme, mergeStyleSets, FontSizes, normalize } from 'office-ui-fabric-react/lib/Styling';
 
 export type IExampleItem = { name: string };
 
