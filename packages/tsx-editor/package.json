@@ -52,12 +52,11 @@
     "monaco-editor": "^0.17.0",
     "monaco-editor-webpack-plugin": "^1.7.0",
     "office-ui-fabric-react": "^7.6.3",
-    "react-monaco-editor": "^0.26.2",
     "tslib": "^1.7.1",
     "typescript": "3.5.1"
   },
   "peerDependencies": {
-    "react": "16.8.6",
-    "react-dom": "16.8.6"
+    "react": ">=16.8.0 <17.0.0",
+    "react-dom": ">=16.8.0 <17.0.0"
   }
 }
