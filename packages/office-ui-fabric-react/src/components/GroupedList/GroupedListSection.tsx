@@ -298,7 +298,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
   private _onRenderGroup(renderCount: number): JSX.Element {
     const { group, items, onRenderCell, listProps, groupNestingDepth, onShouldVirtualize } = this.props;
-    const count = group ? group.count : items.length;
+    const count = group && !group.isShowingAll ? group.count : items.length;
     const startIndex = group ? group.startIndex : 0;
 
     return (

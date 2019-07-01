@@ -1,6 +1,13 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Thu, 27 Jun 2019 18:25:04 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2019 18:51:42 GMT and should not be manually modified.
+
+## 0.107.3
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
 
 ## 0.107.2
 Thu, 27 Jun 2019 18:25:04 GMT

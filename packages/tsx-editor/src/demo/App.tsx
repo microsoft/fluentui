@@ -1,50 +1,38 @@
 import React from 'react';
 import { PrimaryButton, Stack, Label, mergeStyleSets } from 'office-ui-fabric-react';
-// import { ITranspileOutput } from '../transpiler/transpile.types';
+import { ITextModel } from '../components/Editor.types';
+
+interface ITranspiledOutput {
+  outputString?: string;
+  error?: string;
+}
 
 const classNames = mergeStyleSets({
-  code: {
-    fontFamily: 'monospace',
-    fontSize: 13,
-    lineHeight: '1.5'
-  },
-  renderSection: {
-    backgroundColor: 'red'
-  },
   error: {
     backgroundColor: '#FEF0F0',
     color: '#FF5E79'
   },
-  editor: {
-    width: 800,
-    height: 500
+  component: {
+    backgroundColor: 'lightgray'
   }
 });
 
 interface IAppState {
-  code: string;
-  JScode: string;
   error?: string;
-  fontSize?: string;
   editorHidden?: boolean;
-  editor?: JSX.Element;
-  currentTime: number;
+  editor?: HTMLElement;
 }
 
 export class App extends React.Component {
   public state: IAppState = {
-    code: '',
-    JScode: '',
-    editor: undefined,
-    currentTime: 0,
     editorHidden: true
   };
 
   public render() {
     const editor = (
-      <Stack style={{ backgroundColor: 'lightgray' }} gap={4}>
+      <Stack className={classNames.component} gap={4}>
         {this.state.editor}
-        {this.state.error !== undefined && <Label className={classNames.error}>`{this.state.error}`</Label>}
+        {this.state.error !== undefined && <Label className={classNames.error}>{this.state.error}</Label>}
       </Stack>
     );
 
@@ -52,12 +40,33 @@ export class App extends React.Component {
       <div>
         <PrimaryButton onClick={this.buttonClicked} />
         {!this.state.editorHidden && editor}
+        <div id="output" />
       </div>
     );
   }
 
-  private onChange = (newVal: string) => {
-    console.log('on change test', newVal);
+  private onChange = (editor: ITextModel) => {
+    require.ensure(['../transpiler/transpiler'], require => {
+      const { evalCode, transpile } = require('../transpiler/transpile');
+      transpile(editor).then((output: ITranspiledOutput) => {
+        if (output.outputString) {
+          const evalCodeError = evalCode(output.outputString);
+          if (evalCodeError) {
+            this.setState({
+              error: evalCodeError.error
+            });
+          } else {
+            this.setState({
+              error: undefined
+            });
+          }
+        } else {
+          this.setState({
+            error: output.error
+          });
+        }
+      });
+    });
   };
 
   private buttonClicked = (): void => {
