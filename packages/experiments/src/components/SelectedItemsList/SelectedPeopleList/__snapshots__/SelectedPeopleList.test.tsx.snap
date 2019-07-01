@@ -218,7 +218,7 @@ Array [
               & .contextualHost {
                 display: none;
               }
-              &:hover $primaryText {
+              & .ms-Persona-primaryText {
                 color: #201f1e;
               }
         >
@@ -716,7 +716,7 @@ Array [
               & .contextualHost {
                 display: none;
               }
-              &:hover $primaryText {
+              & .ms-Persona-primaryText {
                 color: #201f1e;
               }
         >
