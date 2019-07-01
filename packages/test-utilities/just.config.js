@@ -3,4 +3,4 @@ const { task, series } = just;
 
 preset();
 
-task('build', series('clean', 'ts'));
+task('build', series('clean', 'ts')).cached();

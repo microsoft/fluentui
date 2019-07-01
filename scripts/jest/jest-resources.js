@@ -3,6 +3,7 @@ const merge = require('../tasks/merge');
 const resolve = require('resolve');
 
 module.exports = {
+  mergeStylesSerializer: path.dirname(require.resolve('@uifabric/jest-serializer-merge-styles/package.json')),
   createRawConfig: () => ({
     rootDir: 'lib',
     testRegex: '(/__tests__/.*|\\.(test|spec))\\.js$'

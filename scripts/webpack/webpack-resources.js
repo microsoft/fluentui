@@ -10,10 +10,6 @@ module.exports = {
   webpack,
 
   createConfig(packageName, isProduction, customConfig, onlyProduction, excludeSourceMaps) {
-    const resolveLoader = {
-      modules: [path.resolve(__dirname, '../node_modules'), path.resolve(process.cwd(), 'node_modules')]
-    };
-
     const module = {
       noParse: [/autoit.js/],
       rules: excludeSourceMaps
@@ -40,7 +36,6 @@ module.exports = {
               path: path.resolve(process.cwd(), 'dist'),
               pathinfo: false
             },
-            resolveLoader,
             module,
             devtool,
             plugins: getPlugins(packageName, false)
@@ -60,7 +55,6 @@ module.exports = {
               path: path.resolve(process.cwd(), 'dist')
             },
 
-            resolveLoader,
             module,
             devtool: excludeSourceMaps ? undefined : devtool,
             plugins: getPlugins(packageName, true)
@@ -84,9 +78,6 @@ module.exports = {
 
         mode: 'development',
 
-        resolveLoader: {
-          modules: [path.resolve(__dirname, '../node_modules'), path.resolve(process.cwd(), 'node_modules')]
-        },
         resolve: {
           extensions: ['.ts', '.tsx', '.js']
         },

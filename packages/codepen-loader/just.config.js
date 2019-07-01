@@ -16,4 +16,4 @@ task(
   )
 );
 
-task('build', series('clean', 'copy', parallel('jest', 'ts')));
+task('build', series('clean', 'copy', parallel('jest', 'ts'))).cached();
