@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fluent-theme",
+      "comment": "Updating snpashots and styles which use $ syntax.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fluent-theme",
+  "email": "dzearing@microsoft.com"
+}
