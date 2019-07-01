@@ -1,6 +1,24 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2019 18:51:42 GMT and should not be manually modified.
+
+## 7.1.1
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- Re-use style nodes in IE11 to prevent unpredictable cascading
+
+## 7.1.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+- Add `fontDisplay` to `IFontFace`
+
+### Patches
+
+- Reducing runtime overhead on kebab parsing. Reducing some concatStyleSets overhead.
 
 ## 7.0.2
 Fri, 14 Jun 2019 12:26:30 GMT

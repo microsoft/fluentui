@@ -705,11 +705,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"June 2020\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jan</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"May 2020\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jan</button>",
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"June\\\\ 2020\\"][role=\\"gridcell\\"]:nth-child(1)",
+        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"May\\\\ 2020\\"][role=\\"gridcell\\"]:nth-child(1)",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -723,7 +723,7 @@ Array [
       "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"June\\\\ 2020\\"][role=\\"gridcell\\"]:nth-child(1)",
+      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"May\\\\ 2020\\"][role=\\"gridcell\\"]:nth-child(1)",
       "ruleId": "aria-allowed-role",
     },
     "properties": Object {
@@ -740,11 +740,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"February 2020\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Feb</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"December 2019\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Feb</button>",
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"February\\\\ 2020\\"][role=\\"gridcell\\"]:nth-child(2)",
+        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"December\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(2)",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -758,7 +758,7 @@ Array [
       "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"February\\\\ 2020\\"][role=\\"gridcell\\"]:nth-child(2)",
+      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"December\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(2)",
       "ruleId": "aria-allowed-role",
     },
     "properties": Object {
@@ -775,11 +775,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"November 2019\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Mar</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"August 2019\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Mar</button>",
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"November\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(3)",
+        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"August\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(3)",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -793,7 +793,7 @@ Array [
       "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"November\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(3)",
+      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"August\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(3)",
       "ruleId": "aria-allowed-role",
     },
     "properties": Object {
@@ -810,11 +810,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"September 2019\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Apr</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"May 2019\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Apr</button>",
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"September\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(4)",
+        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"May\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(4)",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -828,7 +828,7 @@ Array [
       "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"September\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(4)",
+      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"May\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(4)",
       "ruleId": "aria-allowed-role",
     },
     "properties": Object {
@@ -845,11 +845,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"August 2019\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">May</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"March 2019\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">May</button>",
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"August\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(5)",
+        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"March\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(5)",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -863,7 +863,7 @@ Array [
       "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"August\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(5)",
+      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"March\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(5)",
       "ruleId": "aria-allowed-role",
     },
     "properties": Object {
@@ -880,11 +880,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"August 2019\\" aria-selected=\\"true\\" data-is-focusable=\\"true\\" type=\\"button\\">Jun</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"February 2019\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jun</button>",
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"August\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(6)",
+        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"February\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(6)",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -898,7 +898,7 @@ Array [
       "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"August\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(6)",
+      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"February\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(6)",
       "ruleId": "aria-allowed-role",
     },
     "properties": Object {
@@ -915,11 +915,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"September 2019\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jul</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"February 2019\\" aria-selected=\\"true\\" data-is-focusable=\\"true\\" type=\\"button\\">Jul</button>",
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"September\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(7)",
+        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"February\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(7)",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -933,7 +933,7 @@ Array [
       "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"September\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(7)",
+      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"February\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(7)",
       "ruleId": "aria-allowed-role",
     },
     "properties": Object {
@@ -950,11 +950,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"November 2019\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Aug</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"March 2019\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Aug</button>",
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"November\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(8)",
+        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"March\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(8)",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -968,7 +968,7 @@ Array [
       "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"November\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(8)",
+      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"March\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(8)",
       "ruleId": "aria-allowed-role",
     },
     "properties": Object {
@@ -985,11 +985,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"February 2020\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Sep</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"May 2019\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Sep</button>",
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"February\\\\ 2020\\"][role=\\"gridcell\\"]:nth-child(9)",
+        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"May\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(9)",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -1003,7 +1003,7 @@ Array [
       "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"February\\\\ 2020\\"][role=\\"gridcell\\"]:nth-child(9)",
+      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"May\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(9)",
       "ruleId": "aria-allowed-role",
     },
     "properties": Object {
@@ -1020,11 +1020,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"June 2020\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Oct</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"August 2019\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Oct</button>",
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"June\\\\ 2020\\"][role=\\"gridcell\\"]:nth-child(10)",
+        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"August\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(10)",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -1038,7 +1038,7 @@ Array [
       "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"June\\\\ 2020\\"][role=\\"gridcell\\"]:nth-child(10)",
+      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"August\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(10)",
       "ruleId": "aria-allowed-role",
     },
     "properties": Object {
@@ -1055,11 +1055,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"November 2020\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Nov</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"December 2019\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Nov</button>",
             },
           },
         ],
-        "fullyQualifiedLogicalName": "button[aria-label=\\"November\\\\ 2020\\"]",
+        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"December\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(11)",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -1073,7 +1073,7 @@ Array [
       "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": "button[aria-label=\\"November\\\\ 2020\\"]",
+      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"December\\\\ 2019\\"][role=\\"gridcell\\"]:nth-child(11)",
       "ruleId": "aria-allowed-role",
     },
     "properties": Object {
@@ -1090,11 +1090,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"May 2021\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Dec</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"May 2020\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Dec</button>",
             },
           },
         ],
-        "fullyQualifiedLogicalName": "button[aria-label=\\"May\\\\ 2021\\"]",
+        "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"May\\\\ 2020\\"][role=\\"gridcell\\"]:nth-child(12)",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -1108,7 +1108,7 @@ Array [
       "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": "button[aria-label=\\"May\\\\ 2021\\"]",
+      "fullyQualifiedLogicalName": ".ms-DatePicker-monthOption[aria-label=\\"May\\\\ 2020\\"][role=\\"gridcell\\"]:nth-child(12)",
       "ruleId": "aria-allowed-role",
     },
     "properties": Object {
