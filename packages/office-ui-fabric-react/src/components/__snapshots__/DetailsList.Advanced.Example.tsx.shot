@@ -1230,7 +1230,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                           overflow: hidden;
                           text-overflow: ellipsis;
                         }
-                        & .undefined {
+                        & .ms-DetailsColumn-nearIcon {
                           padding-left: 0px;
                         }
                     id="header13-thumbnail-name"
