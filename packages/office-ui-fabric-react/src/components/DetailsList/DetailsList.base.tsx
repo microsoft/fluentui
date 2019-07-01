@@ -1,6 +1,14 @@
 import * as React from 'react';
 
-import { BaseComponent, KeyCodes, elementContains, getRTLSafeKeyCode, IRenderFunction, classNamesFunction } from '../../Utilities';
+import {
+  BaseComponent,
+  KeyCodes,
+  elementContains,
+  getRTLSafeKeyCode,
+  IRenderFunction,
+  classNamesFunction,
+  memoizeFunction
+} from '../../Utilities';
 import {
   CheckboxVisibility,
   ColumnActionsMode,
@@ -83,6 +91,14 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   private _columnOverrides: {
     [key: string]: IColumn;
   };
+
+  private _sumColumnWidths = memoizeFunction((columns: IColumn[]) => {
+    let totalWidth: number = 0;
+
+    columns.forEach((column: IColumn) => (totalWidth += column.calculatedWidth || column.minWidth));
+
+    return totalWidth;
+  });
 
   constructor(props: IDetailsListProps) {
     super(props);
@@ -439,7 +455,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   cellStyleProps: cellStyleProps,
                   checkboxVisibility,
                   indentWidth,
-                  onRenderDetailsCheckbox: onRenderCheckbox
+                  onRenderDetailsCheckbox: onRenderCheckbox,
+                  rowWidth: this._sumColumnWidths(this.state.adjustedColumns)
                 },
                 this._onRenderDetailsHeader
               )}
@@ -561,7 +578,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       useReducedRowRenderer: useReducedRowRenderer,
       indentWidth,
       cellStyleProps: cellStyleProps,
-      onRenderDetailsCheckbox: onRenderCheckbox
+      onRenderDetailsCheckbox: onRenderCheckbox,
+      rowWidth: this._sumColumnWidths(columns)
     };
 
     if (!item) {

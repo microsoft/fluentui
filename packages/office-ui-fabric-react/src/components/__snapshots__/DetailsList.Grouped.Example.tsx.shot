@@ -482,7 +482,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
             role="row"
             style={
               Object {
-                "minWidth": 0,
+                "minWidth": 200,
               }
             }
           >
@@ -1649,7 +1649,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     role="row"
                                     style={
                                       Object {
-                                        "minWidth": 0,
+                                        "minWidth": 200,
                                       }
                                     }
                                   >
@@ -2139,7 +2139,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     role="row"
                                     style={
                                       Object {
-                                        "minWidth": 0,
+                                        "minWidth": 200,
                                       }
                                     }
                                   >
@@ -3399,7 +3399,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     role="row"
                                     style={
                                       Object {
-                                        "minWidth": 0,
+                                        "minWidth": 200,
                                       }
                                     }
                                   >
@@ -3889,7 +3889,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     role="row"
                                     style={
                                       Object {
-                                        "minWidth": 0,
+                                        "minWidth": 200,
                                       }
                                     }
                                   >
@@ -4379,7 +4379,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     role="row"
                                     style={
                                       Object {
-                                        "minWidth": 0,
+                                        "minWidth": 200,
                                       }
                                     }
                                   >

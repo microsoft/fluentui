@@ -167,7 +167,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
       onRenderDetailsCheckbox,
       onRenderItemColumn,
       selectionMode,
-      viewport,
+      rowWidth = 0,
       checkboxVisibility,
       getRowAriaLabel,
       getRowAriaDescribedBy,
@@ -266,7 +266,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
         data-is-draggable={isDraggable}
         draggable={isDraggable}
         data-automationid="DetailsRow"
-        style={{ minWidth: viewport ? viewport.width : 0 }}
+        style={{ minWidth: rowWidth }}
         aria-selected={ariaSelected}
         allowFocusRoot={true}
       >
