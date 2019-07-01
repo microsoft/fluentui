@@ -252,7 +252,7 @@ export function applyRegistration(registration: IRegistration): void {
         let selector = rulesToInsert[i];
 
         // Fix selector using map.
-        selector = selector.replace(/(&)/g, '.' + registration.className);
+        selector = selector.replace(/&/g, '.' + registration.className);
 
         // Insert. Note if a media query, we must close the query with a final bracket.
         const processedRule = `${selector}{${rules}}${selector.indexOf('@') === 0 ? '}' : ''}`;
