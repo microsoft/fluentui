@@ -9,6 +9,7 @@ import {
   IDetailsRowProps,
   DetailsRow
 } from 'office-ui-fabric-react/lib/DetailsList';
+import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
@@ -62,9 +63,12 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
   private _selection: Selection;
   private _detailsList = React.createRef<IDetailsList>();
   private _textField = React.createRef<ITextField>();
+  private _async: Async;
 
   constructor(props: {}) {
     super(props);
+
+    this._async = new Async(this);
 
     // Populate with items for demos.
     if (_items.length === 0) {
@@ -90,6 +94,16 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
       dialogContent: undefined,
       announced: undefined
     };
+  }
+
+  public componentDidUpdate(prevState: IAnnouncedQuickActionsExampleState) {
+    this._async.setInterval(() => {
+      if (prevState.announced !== this.state.announced && this.state.announced !== undefined) {
+        this.setState({
+          announced: undefined
+        });
+      }
+    }, 1000);
   }
 
   public render(): JSX.Element {
