@@ -3,6 +3,9 @@ import { FabricSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenera
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { Stack, Text } from 'office-ui-fabric-react';
+import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
+
+// have to change themerules.fabric slots so have to keep them in state too
 
 export interface IFabricPaletteProps {
   themeRules?: IThemeRules;
@@ -51,11 +54,17 @@ export const FabricPalette: React.StatelessComponent<IFabricPaletteProps> = (pro
     return (
       <div key={slotRule.name} className={slotClassName}>
         <Stack horizontal gap={5}>
-          <div key={slotRule.name} className={fabricPaletteColorBox} style={{ backgroundColor: slotRule.color!.str }} />
+          {/* <div key={slotRule.name} className={fabricPaletteColorBox} style={{ backgroundColor: slotRule.color!.str }} /> */}
+          <ThemeDesignerColorPicker color={slotRule.color} onColorChange={_onCurrentColorPickerChange} label={slotRule.name} />
           <div>{slotRule.name}</div>
         </Stack>
       </div>
     );
+  };
+
+  const _onCurrentColorPickerChange = (newColor: IColor | undefined) => {
+    // change fabric slot rule
+    console.log('changing');
   };
 
   return (
