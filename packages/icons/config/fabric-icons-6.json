@@ -10,6 +10,46 @@
   },
   "glyphs": [
     {
+      "name": "VoicemailReply",
+      "unicode": "ED88"
+    },
+    {
+      "name": "Waffle",
+      "unicode": "ED89"
+    },
+    {
+      "name": "RemoveEvent",
+      "unicode": "ED8A"
+    },
+    {
+      "name": "EventInfo",
+      "unicode": "ED8B"
+    },
+    {
+      "name": "ForwardEvent",
+      "unicode": "ED8C"
+    },
+    {
+      "name": "WipePhone",
+      "unicode": "ED8D"
+    },
+    {
+      "name": "AddOnlineMeeting",
+      "unicode": "ED8E"
+    },
+    {
+      "name": "JoinOnlineMeeting",
+      "unicode": "ED8F"
+    },
+    {
+      "name": "RemoveLink",
+      "unicode": "ED90"
+    },
+    {
+      "name": "PeopleBlock",
+      "unicode": "ED91"
+    },
+    {
       "name": "PeopleRepeat",
       "unicode": "ED92"
     },
@@ -366,48 +406,8 @@
       "unicode": "EE9A"
     },
     {
-      "name": "AddEvent",
-      "unicode": "EEB5"
-    },
-    {
-      "name": "AssetLibrary",
-      "unicode": "EEB6"
-    },
-    {
-      "name": "DataConnectionLibrary",
-      "unicode": "EEB7"
-    },
-    {
-      "name": "DocLibrary",
-      "unicode": "EEB8"
-    },
-    {
-      "name": "FormLibrary",
-      "unicode": "EEB9"
-    },
-    {
-      "name": "FormLibraryMirrored",
-      "unicode": "EEBA"
-    },
-    {
-      "name": "ReportLibrary",
-      "unicode": "EEBB"
-    },
-    {
-      "name": "ReportLibraryMirrored",
-      "unicode": "EEBC"
-    },
-    {
-      "name": "ContactCard",
-      "unicode": "EEBD"
-    },
-    {
-      "name": "CustomList",
-      "unicode": "EEBE"
-    },
-    {
-      "name": "CustomListMirrored",
-      "unicode": "EEBF"
+      "name": "ConnectVirtualMachine",
+      "unicode": "EE9D"
     }
   ]
 }
