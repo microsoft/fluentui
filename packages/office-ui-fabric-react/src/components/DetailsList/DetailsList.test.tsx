@@ -313,10 +313,7 @@ describe('DetailsList', () => {
     };
 
     const getCellValueKey = (item: any, index: number, column: IColumn) => {
-      let valueKey = item && column && column.fieldName ? item[column.fieldName] : '';
-      if (valueKey === null || valueKey === undefined) {
-        valueKey = column.key + index;
-      }
+      const valueKey = item && column && column.fieldName ? item[column.fieldName] : column.key + index;
       return valueKey;
     };
 

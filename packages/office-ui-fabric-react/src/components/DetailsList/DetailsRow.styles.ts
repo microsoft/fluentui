@@ -333,8 +333,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       }
     ],
 
-    cell: [defaultCellStyles],
-    cellAnimation: [enableUpdateAnimations && AnimationStyles.slideLeftIn40],
+    cell: defaultCellStyles,
+    cellAnimation: enableUpdateAnimations && AnimationStyles.slideLeftIn40,
     cellMeasurer: [
       classNames.cellMeasurer,
       {

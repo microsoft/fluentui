@@ -15,6 +15,7 @@ export interface IDetailsListAnimationExampleState {
 export class DetailsListAnimationExample extends React.Component<{}, IDetailsListAnimationExampleState> {
   private _allItems: IDetailsListAnimationExampleItem[];
   private _columns: IColumn[];
+  private _updateTimer: any;
 
   constructor(props: {}) {
     super(props);
@@ -29,6 +30,17 @@ export class DetailsListAnimationExample extends React.Component<{}, IDetailsLis
       });
     }
 
+    this._columns = [
+      { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true, getValueKey: this._getValueKey },
+      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true }
+    ];
+
+    this.state = {
+      items: this._allItems
+    };
+  }
+
+  public componentDidMount(): void {
     const LOREM_IPSUM = (
       'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut ' +
       'labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut ' +
@@ -41,22 +53,18 @@ export class DetailsListAnimationExample extends React.Component<{}, IDetailsLis
       loremIndex = startIndex + wordCount;
       return LOREM_IPSUM.slice(startIndex, loremIndex).join(' ');
     }
-    setInterval(() => {
+    const updateTimerFunc = () => {
       const newItems = this.state.items.slice();
       const i = Math.floor(Math.random() * 10);
       newItems[i] = { ...newItems[i], ...{ value: Math.floor(Math.random() * 2), name: _lorem(1) } };
       this.setState({ items: newItems });
       this.forceUpdate();
-    }, 2000);
-
-    this._columns = [
-      { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true, getValueKey: this._getValueKey },
-      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true }
-    ];
-
-    this.state = {
-      items: this._allItems
     };
+    this._updateTimer = setInterval(updateTimerFunc, 2000);
+  }
+
+  public componentWillUnmount(): void {
+    clearInterval(this._updateTimer);
   }
 
   public render(): JSX.Element {
