@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "User should use onRenderPersonaCoin for custom rendering. When this is set, this custom rendering will be used. We still keep the onRenderCoin, but it will be eventually deprecated at some point in the future",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "eltsimig@microsoft.com"
+}
