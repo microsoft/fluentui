@@ -3345,8 +3345,10 @@ export interface IDetailsItemProps {
     columns?: IColumn[];
     groupNestingDepth?: number;
     indentWidth?: number | undefined;
+    rowWidth?: number;
     selection?: ISelection | undefined;
     selectionMode?: SelectionMode | undefined;
+    // @deprecated
     viewport?: IViewport | undefined;
 }
 

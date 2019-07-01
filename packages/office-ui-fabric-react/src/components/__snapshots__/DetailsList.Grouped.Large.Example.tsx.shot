@@ -90,7 +90,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 200,
             }
           }
         >
@@ -1323,7 +1323,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -1765,7 +1765,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -2207,7 +2207,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -2649,7 +2649,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -3091,7 +3091,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -3533,7 +3533,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -3975,7 +3975,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -4417,7 +4417,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -4859,7 +4859,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -5301,7 +5301,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
