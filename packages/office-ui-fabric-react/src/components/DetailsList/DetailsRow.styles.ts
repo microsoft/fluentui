@@ -10,7 +10,7 @@ import {
 } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
-const GlobalClassNames = {
+export const DetailsRowGlobalClassNames = {
   root: 'ms-DetailsRow',
   compact: 'ms-DetailsList--Compact', // TODO: in Fabric 7.0 lowercase the 'Compact' for consistency across other components.
   cell: 'ms-DetailsRow-cell',
@@ -62,7 +62,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   const { neutralPrimary, white, neutralSecondary, neutralLighter, neutralLight, neutralDark, neutralQuaternaryAlt } = theme.palette;
   const { focusBorder } = theme.semanticColors;
 
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const classNames = getGlobalClassNames(DetailsRowGlobalClassNames, theme);
 
   const colors = {
     // Default
