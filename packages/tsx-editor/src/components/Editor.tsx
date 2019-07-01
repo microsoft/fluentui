@@ -7,6 +7,18 @@ export class Editor extends React.Component<IEditorProps> {
   private editorRef = React.createRef<HTMLDivElement>();
 
   public componentDidMount() {
+    monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+      allowNonTsExtensions: true,
+      target: monaco.languages.typescript.ScriptTarget.ES5,
+      jsx: monaco.languages.typescript.JsxEmit.React,
+      alwaysStrict: true,
+      jsxFactory: 'React.createElement',
+      experimentalDecorators: true,
+      preserveConstEnums: true,
+      outDir: 'lib',
+      module: monaco.languages.typescript.ModuleKind.CommonJS,
+      lib: ['es5', 'dom']
+    });
     this._createEditor();
   }
 
@@ -27,6 +39,7 @@ export class Editor extends React.Component<IEditorProps> {
 
   private _createEditor() {
     this.editor = monaco.editor.create(this.editorRef.current!, {
+      model: monaco.editor.createModel(this.props.code, 'typescript', monaco.Uri.parse('file:///main.tsx')),
       value: this.props.code,
       language: this.props.language
     });
