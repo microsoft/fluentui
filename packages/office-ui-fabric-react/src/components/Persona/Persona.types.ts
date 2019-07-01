@@ -28,7 +28,8 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
 
   /**
    * Optional custom renderer for the coin
-   *This will be @deprecated Use onRenderPersonaCoin for custom rendering instead
+   *Will be @deprecated
+   *Use onRenderPersonaCoin for custom rendering instead
    */
   onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
 
