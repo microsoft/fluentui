@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/styling",
-      "comment": "for Segoe UI Web",
+      "comment": "Adding Georgian and Armenian font for Segoe UI Web",
       "type": "minor"
     }
   ],
