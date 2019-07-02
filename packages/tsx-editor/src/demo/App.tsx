@@ -46,7 +46,7 @@ export class App extends React.Component {
   }
 
   private onChange = (editor: ITextModel) => {
-    require.ensure(['../transpiler/transpiler'], require => {
+    require.ensure(['../transpiler/transpile'], require => {
       const { evalCode, transpile } = require('../transpiler/transpile');
       transpile(editor).then((output: ITranspiledOutput) => {
         if (output.outputString) {
