@@ -98,14 +98,16 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
 
   public componentDidUpdate(prevState: IAnnouncedQuickActionsExampleState) {
     if (prevState.announced !== this.state.announced && this.state.announced !== undefined) {
-      const interval1 = this._async.setInterval(() => {
+      this._async.setTimeout(() => {
         this.setState({
           announced: undefined
         });
-
-        this._async.clearInterval(interval1);
       }, 2000);
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   public render(): JSX.Element {
