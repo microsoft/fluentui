@@ -1,12 +1,19 @@
 import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { people, groupOne, groupTwo } from './PeopleExampleData';
-import { SelectedPeopleList, ISelectedPeopleList } from '../SelectedPeopleList';
+import {
+  people,
+  groupOne,
+  groupTwo
+} from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/examples/PeopleExampleData';
+import {
+  SelectedPeopleList,
+  IUncontrolledSelectedPeopleList
+} from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { SelectedPersona } from '../Items/SelectedPersona';
-import { ISelectedItemProps } from '../../SelectedItemsList.types';
+import { SelectedPersona } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/Items/SelectedPersona';
+import { ISelectedItemProps } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedItemsList.types';
 
 export interface IPeopleSelectedItemsListExampleState {
   currentSelectedItems: IPersonaProps[];
@@ -14,7 +21,7 @@ export interface IPeopleSelectedItemsListExampleState {
 }
 
 export class SelectedPeopleListWithGroupExpandExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
-  private _selectionList: ISelectedPeopleList;
+  private _selectionList: IUncontrolledSelectedPeopleList;
   private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
   public render(): JSX.Element {
@@ -30,7 +37,7 @@ export class SelectedPeopleListWithGroupExpandExample extends React.Component<{}
 
   /**
    * Build a custom selected item capable of being edited with a dropdown and
-   * capable of eidting
+   * capable of editing
    */
   private SelectedItem = (props: ISelectedItemProps<IPersonaProps>) => (
     <SelectedPersona canExpand={this._canExpandItem} getExpandedItems={this._getExpandedGroupItems} {...props} />
@@ -40,6 +47,7 @@ export class SelectedPeopleListWithGroupExpandExample extends React.Component<{}
     return (
       <div>
         <SelectedPeopleList
+          isControlled={false}
           key={'normal'}
           removeButtonAriaLabel={'Remove'}
           defaultSelectedItems={[people[40]]}
@@ -51,7 +59,7 @@ export class SelectedPeopleListWithGroupExpandExample extends React.Component<{}
     );
   }
 
-  private _setComponentRef = (component: ISelectedPeopleList): void => {
+  private _setComponentRef = (component: IUncontrolledSelectedPeopleList): void => {
     this._selectionList = component;
   };
 

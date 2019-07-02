@@ -41,11 +41,12 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
     return this.suggestionStore.suggestions;
   }
 
-  public forceResolveSuggestion(): void {
+  public tryForceResolveSuggestion(): boolean {
     if (this.suggestionsControl.current && this.suggestionsControl.current.hasSuggestionSelected()) {
       this.onCurrentlySelectedSuggestionChosen();
+      return true;
     } else {
-      this._validateAndInsertCurrentQueryString();
+      return this._validateAndInsertCurrentQueryString();
     }
   }
 
@@ -309,17 +310,18 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
     }
   }
 
-  private _validateAndInsertCurrentQueryString = (): void => {
+  private _validateAndInsertCurrentQueryString = (): boolean => {
     if (this.state.queryString && this.props.isQueryForceResolveable && this.props.createForceResolvedItem) {
       const isForceResolvable: boolean = this.props.isQueryForceResolveable(this.state.queryString);
       if (!isForceResolvable) {
-        return;
+        return false;
       }
 
       const itemToConvert: ISuggestionModel<TItem> = this.props.createForceResolvedItem(this.state.queryString);
       const convertedItems = this.suggestionStore.convertSuggestionsToSuggestionItems([itemToConvert]);
       this._onChange(convertedItems[0].item);
     }
+    return true;
   };
 
   private _updateSuggestionsVisible(shouldShow: boolean): void {

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
+import { MaybeControlled } from './MaybeControlled';
 
 /**
  * Ref type of the UncontrolledSelectedItemList
  */
-export interface ISelectedItemsList<T> {
+export interface IUncontrolledSelectedItemsList<T> {
   /**
    * Current value of the input
    */
@@ -13,7 +14,7 @@ export interface ISelectedItemsList<T> {
   /**
    * The items that are in the selection -- either the one passed in
    * via props, or the internal selection maintained by the component
-   * when no seleciton is provided in the props
+   * when no selection is provided in the props
    */
   itemsInSelection: T[] | undefined;
   /*
@@ -23,7 +24,7 @@ export interface ISelectedItemsList<T> {
   /*
    * Removes all items from the selection.
    * If called with a selection passed in, this will mutate the
-   * seelection in props. Prefer to update the selection yourself.
+   * selection in props. Prefer to update the selection yourself.
    */
   unselectAll: () => void;
   /**
@@ -71,7 +72,7 @@ export interface ICommonSelectedItemListProps<T> {
   onRenderItem: React.ComponentType<ISelectedItemProps<T>>;
   /**
    * Aria label for the 'X' button in the selected item component.
-   * @defaultvalue ''
+   * @defaultValue ''
    */
   removeButtonAriaLabel?: string;
 
@@ -82,7 +83,7 @@ export interface ICommonSelectedItemListProps<T> {
 }
 
 /**
- * Legal props for the selecte items list hwen used as a controlled (managed) component.
+ * Legal props for the selected items list when used as a controlled (managed) component.
  */
 export interface IControlledSelectedItemListProps<T> extends ICommonSelectedItemListProps<T> {
   componentRef?: React.Ref<IControlledSelectedItemsList>;
@@ -93,6 +94,7 @@ export interface IControlledSelectedItemListProps<T> extends ICommonSelectedItem
   /**
    * The items that the base picker should currently display as selected.
    * controlled component.
+   *
    */
   selectedItems: T[];
   /**
@@ -109,7 +111,7 @@ export interface IControlledSelectedItemListProps<T> extends ICommonSelectedItem
  * Legal props for the selected items list when used as an uncontrolled (self-managing) component
  */
 export interface IUncontrolledSelectedItemListProps<T> extends ICommonSelectedItemListProps<T> {
-  componentRef?: React.Ref<ISelectedItemsList<T>>;
+  componentRef?: React.Ref<IUncontrolledSelectedItemsList<T>>;
   /**
    * The selection
    */
@@ -124,4 +126,4 @@ export interface IUncontrolledSelectedItemListProps<T> extends ICommonSelectedIt
   onChange?: (items?: T[]) => void;
 }
 
-export type ISelectedItemsListProps<T> = IUncontrolledSelectedItemListProps<T> | IControlledSelectedItemListProps<T>;
+export type ISelectedItemsListProps<T> = MaybeControlled<IControlledSelectedItemListProps<T>, IUncontrolledSelectedItemListProps<T>>;

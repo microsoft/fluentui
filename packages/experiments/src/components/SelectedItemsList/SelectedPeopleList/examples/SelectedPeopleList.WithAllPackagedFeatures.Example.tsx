@@ -2,7 +2,11 @@ import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { people } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/examples/PeopleExampleData';
+import {
+  people,
+  groupOne,
+  groupTwo
+} from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/examples/PeopleExampleData';
 import {
   SelectedPeopleList,
   IUncontrolledSelectedPeopleList
@@ -27,7 +31,7 @@ export interface IPeopleSelectedItemsListExampleState {
   controlledComponent: boolean;
 }
 
-export class SelectedPeopleListWithEditInContextMenuExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
+export class SelectedPeopleListWithAllPackagedFeaturesExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
   private _selectionList: IUncontrolledSelectedPeopleList;
   private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
@@ -36,9 +40,9 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
   private suggestionsStore = new SuggestionsStore<IPersonaProps>();
 
   /**
-   * Build a custom selected item capable of being edited with a dropdown and capable of editing
+   * Build a custom selected item capable of being edited with a dropdown and capable of editing, with group expansion
    */
-  private EditableItemWithContextMenu = EditableItem({
+  private EditableExpandableItemWithContextMenuAndGroupExpand = EditableItem({
     editingItemComponent: DefaultEditingItem({
       onRemoveItem: persona => this._selectionList.removeItems([persona]),
       getEditingItemText: (persona: IPersonaProps) => persona.text || '',
@@ -70,7 +74,9 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
           onClick: () => onTrigger && onTrigger()
         }
       ],
-      itemComponent: TriggerOnContextMenu(SelectedPersona)
+      itemComponent: TriggerOnContextMenu(props => (
+        <SelectedPersona {...props} canExpand={this._canExpandItem} getExpandedItems={this._getExpandedGroupItems} />
+      ))
     })
   });
 
@@ -94,7 +100,7 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
           defaultSelectedItems={[people[40]]}
           componentRef={this._setComponentRef}
           selection={this.selection}
-          onRenderItem={this.EditableItemWithContextMenu}
+          onRenderItem={this.EditableExpandableItemWithContextMenuAndGroupExpand}
         />
       </div>
     );
@@ -124,5 +130,20 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
     });
 
     return copyText;
+  }
+
+  private _getExpandedGroupItems(item: IPersonaProps): IPersonaProps[] {
+    switch (item.text) {
+      case 'Group One':
+        return groupOne;
+      case 'Group Two':
+        return groupTwo;
+      default:
+        return [];
+    }
+  }
+
+  private _canExpandItem(item: IPersonaProps): boolean {
+    return item.text !== undefined && item.text.indexOf('Group') !== -1;
   }
 }

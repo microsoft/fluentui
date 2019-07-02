@@ -1,3 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SelectedItemsList SelectedItemsList renders SelectedItemsList correctly 1`] = `null`;
+exports[`SelectedItemsList snapshots renders correctly when empty 1`] = `null`;
+
+exports[`SelectedItemsList snapshots renders correctly with children 1`] = `
+Array [
+  <div>
+     
+    Joey Wheeler
+     
+  </div>,
+  <div>
+     
+    Tristan Taylor
+     
+  </div>,
+]
+`;

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { act, create } from 'react-test-renderer';
 
-import { SelectedPeopleList, ISelectedPeopleList } from './SelectedPeopleList';
+import { SelectedPeopleList, IUncontrolledSelectedPeopleList } from '../SelectedPeopleList';
 
 describe('SelectedPeopleList', () => {
   it('renders personas that are passed in', () => {
-    const pickerRef: React.RefObject<ISelectedPeopleList> = React.createRef();
-    const rendered = create(<SelectedPeopleList componentRef={pickerRef} />);
+    const pickerRef: React.RefObject<IUncontrolledSelectedPeopleList> = React.createRef();
+    const rendered = create(<SelectedPeopleList isControlled={false} componentRef={pickerRef} />);
     act(() => {
       pickerRef.current &&
         pickerRef.current.addItems([

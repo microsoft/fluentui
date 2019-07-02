@@ -1,18 +1,24 @@
 import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { people } from './PeopleExampleData';
-import { SelectedPeopleList, ISelectedPeopleList } from '../SelectedPeopleList';
+import { people } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/examples/PeopleExampleData';
+import {
+  SelectedPeopleList,
+  IUncontrolledSelectedPeopleList
+} from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { SelectedPersona } from '../Items/SelectedPersona';
-import { EditableItem } from '../../Items/EditableItem';
-import { DefaultEditingItem } from '../../Items/subcomponents/DefaultEditingItem';
-import { FloatingPeopleSuggestions } from '../../../FloatingSuggestions/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
-import { SuggestionsStore } from '../../../FloatingSuggestions/Suggestions/SuggestionsStore';
-import { EditingItemInnerFloatingSuggestionsProps } from '../../Items/subcomponents/DefaultEditingItem';
-import { ExampleSuggestionsModel } from './ExampleSuggestionsModel';
-import { TriggerOnContextMenu } from '../../Items/TriggerOnContextMenu';
+import { SelectedPersona } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/Items/SelectedPersona';
+import { EditableItem } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/EditableItem';
+import { DefaultEditingItem } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/subcomponents/DefaultEditingItem';
+// tslint:disable-next-line:max-line-length : move FloatingPeopleSuggestions up a level
+import { FloatingPeopleSuggestions } from '@uifabric/experiments/lib/components/FloatingSuggestions/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
+import { SuggestionsStore } from '@uifabric/experiments/lib/components/FloatingSuggestions/Suggestions/SuggestionsStore';
+// tslint:disable-next-line:max-line-length : move FloatingPeopleSuggestions up a level
+import { EditingItemInnerFloatingSuggestionsProps } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/subcomponents/DefaultEditingItem';
+// tslint:disable-next-line:max-line-length : move people example data up the tree
+import { ExampleSuggestionsModel } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/examples/ExampleSuggestionsModel';
+import { TriggerOnContextMenu } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/TriggerOnContextMenu';
 
 export interface IPeopleSelectedItemsListExampleState {
   currentSelectedItems: IPersonaProps[];
@@ -20,7 +26,7 @@ export interface IPeopleSelectedItemsListExampleState {
 }
 
 export class SelectedPeopleListWithEditExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
-  private _selectionList: ISelectedPeopleList;
+  private _selectionList: IUncontrolledSelectedPeopleList;
   private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
   // Used to resolve suggestions on the editableItem
@@ -60,6 +66,7 @@ export class SelectedPeopleListWithEditExample extends React.Component<{}, IPeop
     return (
       <div>
         <SelectedPeopleList
+          isControlled={false}
           key={'normal'}
           componentRef={this._setComponentRef}
           removeButtonAriaLabel={'Remove'}
@@ -71,7 +78,7 @@ export class SelectedPeopleListWithEditExample extends React.Component<{}, IPeop
     );
   }
 
-  private _setComponentRef = (component: ISelectedPeopleList): void => {
+  private _setComponentRef = (component: IUncontrolledSelectedPeopleList): void => {
     this._selectionList = component;
   };
 

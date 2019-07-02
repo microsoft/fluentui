@@ -25,6 +25,12 @@ export interface IFloatingSuggestions<TItem> {
 
   /** Gets the input text */
   inputText: string;
+
+  /**
+   * Try to force resolve the current suggestion based on a query string
+   * @returns if the force resolve was successful.
+   **/
+  tryForceResolveSuggestion: () => boolean;
 }
 
 // Type T is the type of the item that is displayed
