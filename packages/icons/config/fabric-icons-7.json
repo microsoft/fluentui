@@ -10,6 +10,50 @@
   },
   "glyphs": [
     {
+      "name": "AddEvent",
+      "unicode": "EEB5"
+    },
+    {
+      "name": "AssetLibrary",
+      "unicode": "EEB6"
+    },
+    {
+      "name": "DataConnectionLibrary",
+      "unicode": "EEB7"
+    },
+    {
+      "name": "DocLibrary",
+      "unicode": "EEB8"
+    },
+    {
+      "name": "FormLibrary",
+      "unicode": "EEB9"
+    },
+    {
+      "name": "FormLibraryMirrored",
+      "unicode": "EEBA"
+    },
+    {
+      "name": "ReportLibrary",
+      "unicode": "EEBB"
+    },
+    {
+      "name": "ReportLibraryMirrored",
+      "unicode": "EEBC"
+    },
+    {
+      "name": "ContactCard",
+      "unicode": "EEBD"
+    },
+    {
+      "name": "CustomList",
+      "unicode": "EEBE"
+    },
+    {
+      "name": "CustomListMirrored",
+      "unicode": "EEBF"
+    },
+    {
       "name": "IssueTracking",
       "unicode": "EEC0"
     },
@@ -120,6 +164,10 @@
     {
       "name": "Header4",
       "unicode": "EF38"
+    },
+    {
+      "name": "RingerSolid",
+      "unicode": "EF3A"
     },
     {
       "name": "Eyedropper",
@@ -360,54 +408,6 @@
     {
       "name": "CRMProcesses",
       "unicode": "EFB1"
-    },
-    {
-      "name": "PageEdit",
-      "unicode": "EFB6"
-    },
-    {
-      "name": "PageArrowRight",
-      "unicode": "EFB8"
-    },
-    {
-      "name": "PageRemove",
-      "unicode": "EFBA"
-    },
-    {
-      "name": "Database",
-      "unicode": "EFC7"
-    },
-    {
-      "name": "CRMServices",
-      "unicode": "EFD2"
-    },
-    {
-      "name": "EditContact",
-      "unicode": "EFD3"
-    },
-    {
-      "name": "ConnectContacts",
-      "unicode": "EFD4"
-    },
-    {
-      "name": "AppIconDefaultAdd",
-      "unicode": "EFDA"
-    },
-    {
-      "name": "AppIconDefaultList",
-      "unicode": "EFDE"
-    },
-    {
-      "name": "ActivateOrders",
-      "unicode": "EFE0"
-    },
-    {
-      "name": "DeactivateOrders",
-      "unicode": "EFE1"
-    },
-    {
-      "name": "DocumentManagement",
-      "unicode": "EFFC"
     }
   ]
 }
