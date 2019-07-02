@@ -5609,8 +5609,9 @@ export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IOverlay>;
     isDarkThemed?: boolean;
-    // (undocumented)
     onClick?: () => void;
+    onOverlayDidMount?: () => void;
+    onOverlayWillUnmount?: () => void;
     styles?: IStyleFunctionOrObject<IOverlayStyleProps, IOverlayStyles>;
     theme?: ITheme;
 }
