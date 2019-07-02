@@ -9,12 +9,26 @@ export const Editor = (props: IEditorProps) => {
 
   React.useEffect(() => {
     const editor = monaco.editor.create(ref.current!, {
+      model: monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('file:///main.tsx')),
       value: code,
       language
     });
 
+    monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+      allowNonTsExtensions: true,
+      target: monaco.languages.typescript.ScriptTarget.ES5,
+      jsx: monaco.languages.typescript.JsxEmit.React,
+      alwaysStrict: true,
+      jsxFactory: 'React.createElement',
+      experimentalDecorators: true,
+      preserveConstEnums: true,
+      outDir: 'lib',
+      module: monaco.languages.typescript.ModuleKind.CommonJS,
+      lib: ['es5', 'dom']
+    });
+
     editor.onDidChangeModelContent(() => {
-      onChange(editor.getValue());
+      onChange(editor.getModel()!);
     });
 
     return () => {
