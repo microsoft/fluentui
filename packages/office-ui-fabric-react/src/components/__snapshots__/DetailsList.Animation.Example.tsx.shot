@@ -112,7 +112,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
             role="row"
             style={
               Object {
-                "minWidth": 0,
+                "minWidth": 400,
               }
             }
           >
@@ -873,7 +873,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 400,
                           }
                         }
                       >
@@ -1318,7 +1318,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 400,
                           }
                         }
                       >
@@ -1763,7 +1763,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 400,
                           }
                         }
                       >
@@ -2208,7 +2208,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 400,
                           }
                         }
                       >
@@ -2653,7 +2653,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 400,
                           }
                         }
                       >
@@ -3098,7 +3098,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 400,
                           }
                         }
                       >
@@ -3543,7 +3543,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 400,
                           }
                         }
                       >
@@ -3988,7 +3988,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 400,
                           }
                         }
                       >
@@ -4433,7 +4433,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 400,
                           }
                         }
                       >
@@ -4878,7 +4878,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 400,
                           }
                         }
                       >
