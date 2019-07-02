@@ -13,8 +13,8 @@ if (legacyChangeFile && fs.existsSync(legacyChangeFile)) {
   convertChangeFiles();
   spawnSync('git', ['add', 'change', 'common/changes'], { stdio: 'inherit' });
 
-  console.warn(chalk.green('Changes are completed for you! Please run git commit again!'));
-  console.warn(chalk.cyan('Please use "npm run change" to generate change files instead of "rush change"'));
+  console.warn(chalk.green('Changes are completed for you. Please run git commit again!'));
+  console.warn(chalk.cyan('In the future, please use "npm run change" to generate change files instead of "rush change"'));
 
   process.exit(1);
 }
