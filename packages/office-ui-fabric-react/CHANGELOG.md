@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 28 Jun 2019 12:22:28 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Jul 2019 12:21:32 GMT and should not be manually modified.
+
+## 6.193.0
+Tue, 02 Jul 2019 12:21:32 GMT
+
+### Minor changes
+
+- withViewport: Recalculate viewport dimensions if skipViewportMeasures has become falsey to avoid truncated lists
+
+### Patches
+
+- Avoid marking DetailsRow as non-draggable unless backed by DragDropEvents
 
 ## 6.192.1
 Fri, 28 Jun 2019 12:22:28 GMT
