@@ -120,14 +120,6 @@ describe('SearchBox', () => {
     expect(onFocus.mock.calls.length).toBe(1);
   });
 
-  it('generates id internally and cannot be set via props', () => {
-    wrapper = mount(<SearchBox id={'foo'} />);
-    const inputEl = wrapper.find('input').getDOMNode();
-    const idVal = inputEl.getAttribute('id');
-
-    expect(idVal).toBe('SearchBox12');
-  });
-
   it('can be disabled via props', () => {
     wrapper = mount(<SearchBox disabled />);
     const inputEl = wrapper.find('input').getDOMNode();
