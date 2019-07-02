@@ -90,7 +90,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >
@@ -913,7 +913,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >
@@ -2218,7 +2218,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >
@@ -3041,7 +3041,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >

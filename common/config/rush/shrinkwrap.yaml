@@ -94,6 +94,7 @@ dependencies:
   babel-core: 6.26.3
   babel-loader: 7.1.5
   babylon: 7.0.0-beta.47
+  beachball: 1.9.2
   bundlesize: 0.15.3
   chalk: 2.4.2
   codecov: 3.5.0
@@ -3308,6 +3309,18 @@ packages:
     dev: false
     resolution:
       integrity: sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
+  /beachball/1.9.2:
+    dependencies:
+      fs-extra: 8.1.0
+      git-url-parse: 11.1.2
+      glob: 7.1.4
+      prompts: 2.1.0
+      semver: 6.2.0
+      yargs-parser: 13.1.1
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-wOvfOhtP7vcdVOGKKXwVmmbmrznF00nOCnudlZ8L8cQBva/wDZNPOZ3Fx1623HKbtDu+dlvvZAdeipYdEt5kDQ==
   /bfj/6.1.1:
     dependencies:
       bluebird: 3.5.5
@@ -6375,6 +6388,16 @@ packages:
       node: '>=6 <7 || >=8'
     resolution:
       integrity: sha512-YJDaCJZEnBmcbw13fvdAM9AwNOJwOzrE4pqMqBq5nFiEqXUqHwlK4B+3pUw6JNvfSPtX05xFHtYy/1ni01eGCw==
+  /fs-extra/8.1.0:
+    dependencies:
+      graceful-fs: 4.2.0
+      jsonfile: 4.0.0
+      universalify: 0.1.2
+    dev: false
+    engines:
+      node: '>=6 <7 || >=8'
+    resolution:
+      integrity: sha512-yhlQgA6mnOJUKOsRUFsgJdQCvkKhcz8tlZG5HBQfReYZy46OwLcY+Zia0mtdHsOo9y/hP+CxMN0TU9QxoOtG4g==
   /fs-minipass/1.2.6:
     dependencies:
       minipass: 2.3.5
@@ -6514,6 +6537,19 @@ packages:
     dev: false
     resolution:
       integrity: sha1-Xv+OPmhNVprkyysSgmBOi6YhSfo=
+  /git-up/4.0.1:
+    dependencies:
+      is-ssh: 1.3.1
+      parse-url: 5.0.1
+    dev: false
+    resolution:
+      integrity: sha512-LFTZZrBlrCrGCG07/dm1aCjjpL1z9L3+5aEeI9SBhAqSc+kiA9Or1bgZhQFNppJX6h/f5McrvJt1mQXTFm6Qrw==
+  /git-url-parse/11.1.2:
+    dependencies:
+      git-up: 4.0.1
+    dev: false
+    resolution:
+      integrity: sha512-gZeLVGY8QVKMIkckncX+iCq2/L8PlwncvDFKiWkBn9EtCfYDbliRTTp6qzyQ1VMdITUfq7293zDzfpjdiGASSQ==
   /github-build/1.2.0:
     dependencies:
       axios: 0.15.3
@@ -6713,6 +6749,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-6uHUhOPEBgQ24HM+r6b/QwWfZq+yiFcipKFrOFiBEnWdy5sdzYoi+pJeQaPI5qOLRFqWmAXUPQNsielzdLoecA==
+  /graceful-fs/4.2.0:
+    dev: false
+    resolution:
+      integrity: sha512-jpSvDPV4Cq/bgtpndIWbI5hmYxhQGHPC4d4cqBPb4DLniCfhJokdXhwhaDuLBGLQdvvRum/UiX6ECVIPvDXqdg==
   /graceful-readlink/1.0.1:
     dev: false
     resolution:
@@ -7763,6 +7803,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-B7bCM7w5TNnQK6FclmvWZg1jQtU=
+  /is-ssh/1.3.1:
+    dependencies:
+      protocols: 1.4.7
+    dev: false
+    resolution:
+      integrity: sha512-0eRIASHZt1E68/ixClI8bp2YK2wmBPVWEismTs6M+M099jKgrzl/3E976zIbImSIob48N2/XGe9y7ZiYdImSlg==
   /is-stream/1.1.0:
     dev: false
     engines:
@@ -8717,7 +8763,7 @@ packages:
   /jsonfile/4.0.0:
     dev: false
     optionalDependencies:
-      graceful-fs: 4.1.15
+      graceful-fs: 4.2.0
     resolution:
       integrity: sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=
   /jsonify/0.0.0:
@@ -10129,6 +10175,12 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-LMDWazHqIwNkWENuNiDYWVTGbDw=
+  /normalize-url/3.3.0:
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
   /now-and-later/2.0.1:
     dependencies:
       once: 1.4.0
@@ -10700,6 +10752,22 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-bVuTSkVpk7I9N/QKOC1vFmao5cY=
+  /parse-path/4.0.1:
+    dependencies:
+      is-ssh: 1.3.1
+      protocols: 1.4.7
+    dev: false
+    resolution:
+      integrity: sha512-d7yhga0Oc+PwNXDvQ0Jv1BuWkLVPXcAoQ/WREgd6vNNoKYaW52KI+RdOFjI63wjkmps9yUE8VS4veP+AgpQ/hA==
+  /parse-url/5.0.1:
+    dependencies:
+      is-ssh: 1.3.1
+      normalize-url: 3.3.0
+      parse-path: 4.0.1
+      protocols: 1.4.7
+    dev: false
+    resolution:
+      integrity: sha512-flNUPP27r3vJpROi0/R3/2efgKkyXqnXwyP1KQ2U0SfFRgdizOdWfvrrvJg1LuOoxs7GQhmxJlq23IpQ/BkByg==
   /parse5/3.0.3:
     dependencies:
       '@types/node': 8.10.49
@@ -11370,6 +11438,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-tODH6R3+SwTkAQckSp2S9xyYX8dEKYkeXw+4TmJzTxnNzd6mQPu1OD4f9zPrvw/Rm4wpPgI+Zp63mNSGNzUgHg==
+  /protocols/1.4.7:
+    dev: false
+    resolution:
+      integrity: sha512-Fx65lf9/YDn3hUX08XUc0J8rSux36rEsyiv21ZGUC1mOyeM3lTRpZLcrm8aAolzS4itwVfm7TAPyxC2E5zd6xg==
   /proxy-addr/2.0.5:
     dependencies:
       forwarded: 0.1.2
@@ -12924,6 +12996,11 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-rWYq2e5iYW+fFe/oPPtYJxYgjBm8sC4rmoGdUOgBB7VnwKt6HrL793l2voH1UlsyYZpJ4g0wfjnTEO1s1NP2eQ==
+  /semver/6.2.0:
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-jdFC1VdUGT/2Scgbimf7FSx9iJLXoqfglSF+gJeuNWVpiE37OIbc1jywR/GJyFdz3mnkz2/id0L0J/cr0izR5A==
   /send/0.17.1:
     dependencies:
       debug: 2.6.9
@@ -15287,6 +15364,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-C6kB/WJDiaxONLJQnF8ccx9SEeoTTLek8RVbaOIsrAUS8VrBEXfmeSnCZxygc+XC2sNMBIwOOnfcxiynjHsVSQ==
+  /yargs-parser/13.1.1:
+    dependencies:
+      camelcase: 5.3.1
+      decamelize: 1.2.0
+    dev: false
+    resolution:
+      integrity: sha512-oVAVsHz6uFrg3XQheFII8ESO2ssAf9luWuAd6Wexsu4F3OtIW0o8IribPXYrD4WC24LWtPrJlGy87y5udK+dxQ==
   /yargs-parser/4.2.1:
     dependencies:
       camelcase: 3.0.0
@@ -15434,12 +15518,13 @@ packages:
       mkdirp: 0.5.1
       puppeteer: 1.17.0
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       tslib: 1.10.0
     dev: false
     name: '@rush-temp/a11y-tests'
     resolution:
-      integrity: sha512-2nk3M5MwbyrxLijYuClFqaYqchpNOudgj1ZKm6gTYlk/K9EnOhwH70HgRfIrHS1gSOvNfrUcfC1HmObnxACxqw==
+      integrity: sha512-/lO+2sUOWLG8WvXi8E4gzPX6oioFaEj4e6Z5QqFry6jVgzSJhmzR36LG1kB0cS8/V9Pbzk0cQ2xTD12di38MuQ==
       tarball: 'file:projects/a11y-tests.tgz'
     version: 0.0.0
   'file:projects/api-docs.tgz':
@@ -15452,7 +15537,7 @@ packages:
     dev: false
     name: '@rush-temp/api-docs'
     resolution:
-      integrity: sha512-/hFj3IpJTe66SzGawBNfO2CWKQlfPpbn48jpbTBbSp9nNr6bK2vK7G9s29hXE4N+Ff4ioruCr94pBhp3VzSe+w==
+      integrity: sha512-+nVGovHs7TuNqlcW4H+CQPxpX+lef9RMgW+J1+QtXavFuyno7h/h0nIawRe97yKcOXska45gqtQwwFamk31yhg==
       tarball: 'file:projects/api-docs.tgz'
     version: 0.0.0
   'file:projects/azure-themes.tgz':
@@ -15462,7 +15547,7 @@ packages:
     dev: false
     name: '@rush-temp/azure-themes'
     resolution:
-      integrity: sha512-kx9RyI3+aXahVMk/QBPvwB6esD0BF6zVCqR6Rr7fifUmP6dmAWEP89VXDvzF7Wqg3ev3evA/e7BZRX7oNnXdtw==
+      integrity: sha512-bqDCvNlYTsQu0n73i62hCX28BlBIyTgKU2bCqSUkpL+U90hh4uyIFGMsYcYoUMrq629DbCrjNAO4Hdje5Fukgw==
       tarball: 'file:projects/azure-themes.tgz'
     version: 0.0.0
   'file:projects/build.tgz':
@@ -15473,6 +15558,7 @@ packages:
       async: 2.6.2
       autoprefixer: 7.2.6
       babylon: 7.0.0-beta.47
+      beachball: 1.9.2
       bundlesize: 0.15.3
       chalk: 2.4.2
       codecov: 3.5.0
@@ -15526,7 +15612,7 @@ packages:
     dev: false
     name: '@rush-temp/build'
     resolution:
-      integrity: sha512-lYL+tj4+ySRka4aNRRY7P8yqcHpE4rM782UPgjsR417byujvcI9rSORmrqHzg0k1eUzKaJeGN6touDQlVBHpKA==
+      integrity: sha512-vIGq4nVWonsB9QqBG9+crM2S25zReronzs5ApthHVrCV33KWSaXHwu8SgRNoz5yQPzRPg/WHoTmKOJoQkXoQ/g==
       tarball: 'file:projects/build.tgz'
     version: 0.0.0
   'file:projects/charting.tgz':
@@ -15561,6 +15647,7 @@ packages:
       es6-weak-map: 2.0.3
       prop-types: 15.7.2
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-highlight: 0.10.0
       react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
@@ -15569,7 +15656,7 @@ packages:
     dev: false
     name: '@rush-temp/charting'
     resolution:
-      integrity: sha512-d1dYB2E89omKQrLGANKuqyQo2vRUtVA3DKygfxqGlOq08D8SPbaXtSu+4/S0x0mwB7OM2pm5PjGjb6PXi9TiOg==
+      integrity: sha512-B1vSt3iGCT2PQ/SoztAujriexVWaMFp+AGBQ4HFN4FjzWNkMc3SsjliIYGE+nLZHFGXz6KeZlA2xFWJC5XtOww==
       tarball: 'file:projects/charting.tgz'
     version: 0.0.0
   'file:projects/codepen-loader.tgz':
@@ -15591,7 +15678,7 @@ packages:
     dev: false
     name: '@rush-temp/codepen-loader'
     resolution:
-      integrity: sha512-6dZZroQsWpdd/a8PmE/CZIAdJjOk+8iaGq8eIFOd27/8lnR63aBpWc6vILBKPoqTT6QvMoJ6k6nn0uxwYr4G0A==
+      integrity: sha512-sL2AkJYFb9ZI24S4QbqkjdEwQk764jLIeIswKa//qYBnHuS64IpU5sPrICrZ7+/1oOnITw6yuMReEvdaj4B/eg==
       tarball: 'file:projects/codepen-loader.tgz'
     version: 0.0.0
   'file:projects/date-time.tgz':
@@ -15610,13 +15697,14 @@ packages:
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.14.0/ee2efeb9ba09e3479f87e6d53c5a2c00
       es6-weak-map: 2.0.3
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
       tslib: 1.10.0
     dev: false
     name: '@rush-temp/date-time'
     resolution:
-      integrity: sha512-s7NWPGy6A/4wQgkKmt5jNk+nNqscJ3FMi0iIcOYX1FGJlg5yvv5MW+GjyXKkNFEsZ94e/K8bm7nW0vDBVD4J7A==
+      integrity: sha512-lMpd7TqxbpihVMKpnHsNntrxlumE0oOxceLSV4tmNCnQTfqUgWj+ZdOv37SsPv14q+5II+KfDXfGvtxCc6B/tw==
       tarball: 'file:projects/date-time.tgz'
     version: 0.0.0
   'file:projects/dom-tests.tgz':
@@ -15636,12 +15724,13 @@ packages:
       jest-puppeteer: /jest-puppeteer/4.2.0/puppeteer@1.17.0
       puppeteer: 1.17.0
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       tslib: 1.10.0
     dev: false
     name: '@rush-temp/dom-tests'
     resolution:
-      integrity: sha512-eAnhA/0II8jTf8z1WEtanfu2EdFDkzuHP11XHKNHUvvtouVksRU9MRFgTUfU0WdEaezNGrz5NMwhbuG9KrlPwA==
+      integrity: sha512-u5RwCI+yVy6fQuLqG6ntSkCRu/2+JYV85/WukRHXxbSHQQl3inr9QYS8vjZqcqJW6dF/SXCQa1dSeHVMJkoTMw==
       tarball: 'file:projects/dom-tests.tgz'
     version: 0.0.0
   'file:projects/example-app-base.tgz':
@@ -15662,6 +15751,7 @@ packages:
       markdown-to-jsx: /markdown-to-jsx/6.6.1/react@16.8.6
       office-ui-fabric-core: 10.1.0
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-custom-scrollbars: /react-custom-scrollbars/4.2.1/react-dom@16.8.6+react@16.8.6
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-syntax-highlighter: /react-syntax-highlighter/10.3.0/react@16.8.6
@@ -15669,7 +15759,7 @@ packages:
     dev: false
     name: '@rush-temp/example-app-base'
     resolution:
-      integrity: sha512-r/9O4/3npEIkRszMFMNgXmUj5kicAtabxK5XKCjs+JJfyu5ih+E5JeLitjwJfXjISaFrbk1gisDO82ABK25e7Q==
+      integrity: sha512-SDeaQY1gG+iQSpz7tCGqMLw6n8d7xDXq1ymtyw61tfawojA+zjPbXA46WMB/ZekEQvky7oSO34vK2JYBaSxJJQ==
       tarball: 'file:projects/example-app-base.tgz'
     version: 0.0.0
   'file:projects/experiments.tgz':
@@ -15694,6 +15784,7 @@ packages:
       es6-weak-map: 2.0.3
       prop-types: 15.7.2
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-highlight: 0.10.0
       react-hooks-testing-library: /react-hooks-testing-library/0.5.1/4ca4b340b5593909f11580174eacf0b7
@@ -15703,7 +15794,7 @@ packages:
     dev: false
     name: '@rush-temp/experiments'
     resolution:
-      integrity: sha512-TDoCAu92BC3b+A/zqJuFybc01DcwjvOAY6QyQIJBzSrTtCftwnPi+BjBdUd3YfWOcxIFNGE0qsrB7yTKCK/efw==
+      integrity: sha512-JWaxetPKNH+dKCgV0+O0Ee9ZY/GpAhfvgSC/0jgGg6uchm2Jeyet7sYBPlgTNR095fiinZXyZdW2k/PQhsZPDA==
       tarball: 'file:projects/experiments.tgz'
     version: 0.0.0
   'file:projects/fabric-website-resources.tgz':
@@ -15736,6 +15827,7 @@ packages:
       prop-types: 15.7.2
       puppeteer: 1.17.0
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-highlight: 0.10.0
       react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
@@ -15745,7 +15837,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website-resources'
     resolution:
-      integrity: sha512-erqtK833fkwBzytOfsKDgV6Zn2b/yTM6EVsYEl+dRmLaHd5EaLWs9c9+YjP38+2SfofzjSsT6p4ZSgRXORanMg==
+      integrity: sha512-bDlNQ7UhJB24xl/9jss5oGvMYTb8tTDkNhTyuSZQlr4Vi901SYpXx4tBpjeLIysxRqBUNGHs/S1r64xvVYfPWQ==
       tarball: 'file:projects/fabric-website-resources.tgz'
     version: 0.0.0
   'file:projects/fabric-website.tgz':
@@ -15772,7 +15864,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website'
     resolution:
-      integrity: sha512-xQPAf7pH9MkJAQx2ivnpN2l0L0XKeQ1TiPqJR/Aq0MscRI6lOUm3RFXQfdnOOTJ4otgvrfZyx9tC4c4lu0L8ZA==
+      integrity: sha512-H8b1HU2yuLtmRuhDUUv2d0V1JfDCmj4nD0+MI1KU0Do/i2DTkyZxdbsh5tJk1fZ7THJoX7rrn7pNSY5kT3h6Zw==
       tarball: 'file:projects/fabric-website.tgz'
     version: 0.0.0
   'file:projects/file-type-icons.tgz':
@@ -15781,12 +15873,13 @@ packages:
       '@types/react-dom': 16.8.4
       '@types/webpack-env': 1.13.9
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       tslib: 1.10.0
     dev: false
     name: '@rush-temp/file-type-icons'
     resolution:
-      integrity: sha512-KkBI35Sdpls6aWhdn5qAbxG6XDJj5xH/oS8JC90t5s81W/TPvcgTyOqbcOLy81t4LYbEW2FlBAQIFt6cXIkYqw==
+      integrity: sha512-94Wr/0q11McmZd2bO+KFO19iCQsZxbK8gDucdWkNEg3ogyGuQq6SWSYuyM2lT3QqRmS3K5qCzJPxOnRu3lTBBQ==
       tarball: 'file:projects/file-type-icons.tgz'
     version: 0.0.0
   'file:projects/fluent-theme.tgz':
@@ -15796,7 +15889,7 @@ packages:
     dev: false
     name: '@rush-temp/fluent-theme'
     resolution:
-      integrity: sha512-5F0nefJokcG9n22ELN6we35LmPU+faXM6b4pVvH2fanpwaBWLAZWsPUJjMct1tFy2NiEfwYxvRyPRfOQMGb8NQ==
+      integrity: sha512-WbLEcXB5hP+ed653nBmcCcBqn2jGR/PsBmfE5vbJmCHVBPpYAxDecO5zrNiDgzGYQEkAdl3FMtjfXWatywPvgA==
       tarball: 'file:projects/fluent-theme.tgz'
     version: 0.0.0
   'file:projects/foundation-scenarios.tgz':
@@ -15814,13 +15907,14 @@ packages:
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.14.0/ee2efeb9ba09e3479f87e6d53c5a2c00
       es6-weak-map: 2.0.3
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
       tslib: 1.10.0
     dev: false
     name: '@rush-temp/foundation-scenarios'
     resolution:
-      integrity: sha512-sG9nlreGOj4RRBalYsHwWNOhuOsmIJlGeh57JHpIv/bocwaUBWtOa08J5J7+luer7wA2OexrLO2odNrFF5ETSQ==
+      integrity: sha512-qed1GHXSl97GqGYULduFpsZ5Jcus150LdbPrmWqJ42DPsXWcZp+QLUHEaQqYx8fIJqApiZ5Rkz14OXYsu5WejQ==
       tarball: 'file:projects/foundation-scenarios.tgz'
     version: 0.0.0
   'file:projects/foundation.tgz':
@@ -15835,6 +15929,7 @@ packages:
       enzyme: 3.9.0
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.14.0/ee2efeb9ba09e3479f87e6d53c5a2c00
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-hooks-testing-library: /react-hooks-testing-library/0.5.1/4ca4b340b5593909f11580174eacf0b7
       react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
@@ -15843,7 +15938,7 @@ packages:
     dev: false
     name: '@rush-temp/foundation'
     resolution:
-      integrity: sha512-P6L03O1xLSQZ7THJ9iPrwFyctMKNd63/tKmS7Y3e+3d16qBnGZYb+d5nkTLhO/lMi9eTIU1Er8qKooPZTUnrMQ==
+      integrity: sha512-zZXKyCdM+4FFbzK5EFUwwvp/KfmOYmB3QR1/bvNcIkwxyxVTsanr8GQ6TnamPaJDu0AnIbRGhs8Q76IOvc/jEA==
       tarball: 'file:projects/foundation.tgz'
     version: 0.0.0
   'file:projects/icons.tgz':
@@ -15852,7 +15947,7 @@ packages:
     dev: false
     name: '@rush-temp/icons'
     resolution:
-      integrity: sha512-u5DFPWgpoIt8t4K+ml9iWlShb9dsHgKLtUk0e+HvGUJ8N5TMgPHIrJLFnaR5z/85QatcYx6Y6s7WYkASoYJi3w==
+      integrity: sha512-J8hKcVA3wWYxnUKltUUtPfEek/gE2b8IRcDVT/I/YasamPGkUtGZvqIMNwiLrMF/K14Jnzx3N17YDkI6b5wc9Q==
       tarball: 'file:projects/icons.tgz'
     version: 0.0.0
   'file:projects/jest-serializer-merge-styles.tgz':
@@ -15862,12 +15957,13 @@ packages:
       '@types/react-dom': 16.8.4
       '@types/react-test-renderer': 16.8.1
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
     dev: false
     name: '@rush-temp/jest-serializer-merge-styles'
     resolution:
-      integrity: sha512-jvqtNoDmeRJTmdJSkr6/rK5J6Koljw/Pv+uNKiux9eMQuTc5eoghXASyZOf1QP1N4H/6HUgXmc3QgTfXOH7LiQ==
+      integrity: sha512-rrbtnRcWOjXDew6rPjKiYq6J/S7+ziM7/63OjwoxvcjJToDWYvx1wbSyZgLYTHMJmTeyOnpSSZL31SE/CVzKvQ==
       tarball: 'file:projects/jest-serializer-merge-styles.tgz'
     version: 0.0.0
   'file:projects/lists.tgz':
@@ -15885,13 +15981,14 @@ packages:
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.14.0/ee2efeb9ba09e3479f87e6d53c5a2c00
       es6-weak-map: 2.0.3
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
       tslib: 1.10.0
     dev: false
     name: '@rush-temp/lists'
     resolution:
-      integrity: sha512-OvBM5UsZ+VVSB5pk6xs25BUIRe8SjwpY9fRGDzjf6hjdX2M/52EI64kEIA7TacEH6vPPdm3I55rNtfea/4f1dw==
+      integrity: sha512-8NFSFaAPazr9QAcPxF0u0rB0785XHBHzJHVDjH18NVz3N5bFCNanXq4Dy30byPFD3a/4FCkyWaXecwimV4YNRg==
       tarball: 'file:projects/lists.tgz'
     version: 0.0.0
   'file:projects/mdl2-theme.tgz':
@@ -15900,7 +15997,7 @@ packages:
     dev: false
     name: '@rush-temp/mdl2-theme'
     resolution:
-      integrity: sha512-6tLKsiwBoPbA3vcqLYk06aUISqxc7gKul5Ny3ZWLaG1lzZYwRWjuR4Z04T/SR2mPJZax/O/gKdpzq8Eavib4vQ==
+      integrity: sha512-f2d5A3y1UvQLIUNdw0Sua4rivXqbtnmw/IVfFRPjB6l+NnqCZbiIXaIoMFsjFBjiGV3SWiDnDS44T97NfoFMCw==
       tarball: 'file:projects/mdl2-theme.tgz'
     version: 0.0.0
   'file:projects/merge-styles.tgz':
@@ -15910,7 +16007,7 @@ packages:
     dev: false
     name: '@rush-temp/merge-styles'
     resolution:
-      integrity: sha512-cFZU0De1ITC+l6P/UsFNHCdqdT2RLE4zNbwnvl6yB3pALGYD0ewsyZ8BM07VP2iNgn28aMEn5/yl6JFg2p/Fbw==
+      integrity: sha512-tgy3v5LbVRF1HIR0gLHk/Osa+gV/WoNz82fxI3jTl2KRgCtsIlz9FEtTyusuNr7ZT+exCh0uUDyC1pilDCwyhw==
       tarball: 'file:projects/merge-styles.tgz'
     version: 0.0.0
   'file:projects/migration.tgz':
@@ -15929,7 +16026,7 @@ packages:
     dev: false
     name: '@rush-temp/migration'
     resolution:
-      integrity: sha512-iZyIEUJQ21lgA3kdf+90Rp3UQ6xhnNv8ZUSaO1wH9rkSjf7im1kvI7znMKLINjA/OV5uoJ4tRJ9DeqxyMGHLaQ==
+      integrity: sha512-fqRqjL+WzpTyQMbAqvxgJ+TK5Zr/hXWKvUTUscaAG6uaHktFqj4DR6QGi1NyIjSAUHYTGaONc7aDhmeWziXlIg==
       tarball: 'file:projects/migration.tgz'
     version: 0.0.0
   'file:projects/office-ui-fabric-react.tgz':
@@ -15960,6 +16057,7 @@ packages:
       office-ui-fabric-core: 10.1.0
       prop-types: 15.7.2
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-highlight: 0.10.0
       react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
@@ -15969,7 +16067,7 @@ packages:
     dev: false
     name: '@rush-temp/office-ui-fabric-react'
     resolution:
-      integrity: sha512-pyxvOXb7eDpwZ77gY/2iDvsYxJGk+t6/SlceZNUXlAvi0f53Cco1TEq9ASGlgOpiji/mpi1ApIHcXUJjoVFoIA==
+      integrity: sha512-sjOyf8GjpTp23r5ttmbe8k0kvLWdl67ootb7XbXZMw4SRv3Oaq36e3JzGPIKR1DTqZFcrwyrx4irSWyiwNsonA==
       tarball: 'file:projects/office-ui-fabric-react.tgz'
     version: 0.0.0
   'file:projects/perf-test.tgz':
@@ -15987,26 +16085,27 @@ packages:
       puppeteer: 1.17.0
       querystring: 0.2.0
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       tslib: 1.10.0
     dev: false
     name: '@rush-temp/perf-test'
     resolution:
-      integrity: sha512-U4Y4Aepb5TBqMOywUgCmOZKKJXQ+JHlrfPyWp6qdJ6r/xE7k601b1oy9OLgHD7unXURFL4vMPPho6e5Fd3nn/Q==
+      integrity: sha512-9AFFaY9EukwE1AFCbdRBM7wGFgHPhAzIerwlHMwkP0ySzwxt+PPpkCKspjDCHYd6qlliaOmWE2db+ThjwU08gg==
       tarball: 'file:projects/perf-test.tgz'
     version: 0.0.0
   'file:projects/pr-deploy-site.tgz':
     dev: false
     name: '@rush-temp/pr-deploy-site'
     resolution:
-      integrity: sha512-05zeiI6WvFMLU80Un7dY0d1BsbyxMrlcHEF42xAOt3NVF6/ej0mOJf/urNygJGFpiIq0YNoj8LV7CkTgW+81/Q==
+      integrity: sha512-O4qRc1cUpxnstJLr+6OXDDqLuWvM3F1Ufk0P+p/re4T2RMYmJq4zd6EprE14WYCcl//9DOPd1haHR6p2riOTwQ==
       tarball: 'file:projects/pr-deploy-site.tgz'
     version: 0.0.0
   'file:projects/prettier-rules.tgz':
     dev: false
     name: '@rush-temp/prettier-rules'
     resolution:
-      integrity: sha512-jWWVmeywKZJiB8xv4ZdJ77AkTUoIgzr9ZNB2lGWp57zq/NqAGn6JVhkrf8Kp4GUPUyszGKn2NIVPx510n1eT7Q==
+      integrity: sha512-7r4uNiMS8+omI76CKiVw7nJn2G0vs6Cd+CEAmTGmXDRT/FaMbDSIlsOpg+jzuO/fzg/zDB5GT7kwYff1IQWMiw==
       tarball: 'file:projects/prettier-rules.tgz'
     version: 0.0.0
   'file:projects/react-cards.tgz':
@@ -16025,13 +16124,14 @@ packages:
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.14.0/ee2efeb9ba09e3479f87e6d53c5a2c00
       es6-weak-map: 2.0.3
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
       tslib: 1.10.0
     dev: false
     name: '@rush-temp/react-cards'
     resolution:
-      integrity: sha512-Da8LQ4ss1yPdoVvWRM5Z2kKT3FWBR3+LKompAK+iydHVhQ2vXZOrL/6SeDB6v6SWOOfstmCVLgRMnzqy24fLlQ==
+      integrity: sha512-ooxuX35z0eEkKKO3RTJdiQ2Pfmo/AN0N402Py8LHffG0XU5Y+NsFpeplazh9ZPcPZ9ItYlqipR+Iw2Dl6fk6cg==
       tarball: 'file:projects/react-cards.tgz'
     version: 0.0.0
   'file:projects/server-rendered-app.tgz':
@@ -16045,12 +16145,13 @@ packages:
       es6-promise: 4.2.8
       express: 4.17.1
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       tslib: 1.10.0
     dev: false
     name: '@rush-temp/server-rendered-app'
     resolution:
-      integrity: sha512-1t+xLCbR/HmYgt448dqq09h85zXKCf/KBBXhM6TcoQt+KqdrwqRhGuleHCcXgpCeDc4xFupUONYH/UYPFoNYow==
+      integrity: sha512-jY+esupdxRxtdeNm18xaPBk2pPOOGbA1L143qgR9L5AY5rRxUyHImUjsHbamLaesL6XOC0cOOHGnWhyeer1rFA==
       tarball: 'file:projects/server-rendered-app.tgz'
     version: 0.0.0
   'file:projects/set-version.tgz':
@@ -16060,7 +16161,7 @@ packages:
     dev: false
     name: '@rush-temp/set-version'
     resolution:
-      integrity: sha512-SHqbdGaU6e42PCUxMezocsjm1cBrN2oiDdpF4ukFfOUFVwBdkVW9nhIto81mXF3To3Io2+w7miCS+GWh+ju5dQ==
+      integrity: sha512-G4Q01oYkqUzTOM/5sxh8/8DTowYHlp0TgnzgTP6Ze1rN0qFnvO/b50eLspFO+E9ZRCRu04bgEGkMOA12Dc0v2Q==
       tarball: 'file:projects/set-version.tgz'
     version: 0.0.0
   'file:projects/ssr-tests.tgz':
@@ -16073,13 +16174,14 @@ packages:
       mocha: 3.5.3
       raw-loader: 0.5.1
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       tslib: 1.10.0
       webpack: 4.29.5
     dev: false
     name: '@rush-temp/ssr-tests'
     resolution:
-      integrity: sha512-SpsOc8GocD4/LKtPoTd3eNSwtgr2Sqg7wR9p0maeoGOrqDEInPNA7jQrkfoHDXzqjKPA1/Rlc6EuqdbSaKsoPQ==
+      integrity: sha512-p7W3PDgN3inncdj0a19L8sRUAruLlV43I0+nmdM2aPX2xJzZ/LLG3LZ5PbEYmy8Vvhn/OFo1WEBMt+vDwLBs7g==
       tarball: 'file:projects/ssr-tests.tgz'
     version: 0.0.0
   'file:projects/styling.tgz':
@@ -16091,12 +16193,13 @@ packages:
       es6-map: 0.1.5
       es6-weak-map: 2.0.3
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       tslib: 1.10.0
     dev: false
     name: '@rush-temp/styling'
     resolution:
-      integrity: sha512-vIMLdd+EQ4gojSdiGe6pwnjy+3yQMNwN70ydgjH7sQZA7rSaH3i0g0b8/o9/K64oEyoj53mgprCDcaCPuZ0qkQ==
+      integrity: sha512-8K8ZhSL5P0tNlrOLGsKPZ7IhufZy6ErneFxrybVdRrlFNQEJWGIYA0a5mk7JRWGdLUtI/3TY/F5QISC3vxDaLA==
       tarball: 'file:projects/styling.tgz'
     version: 0.0.0
   'file:projects/test-bundles.tgz':
@@ -16105,12 +16208,13 @@ packages:
       '@types/react-dom': 16.8.4
       '@types/webpack-env': 1.13.9
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       tslib: 1.10.0
     dev: false
     name: '@rush-temp/test-bundles'
     resolution:
-      integrity: sha512-xpaS2y43JlnGLQKnrr8AOgKNOYo0TTVqHv4gE09XLtsug2rFP0cHbK+zrIkfJTXm6KR/yDHoHRgBs1LIABwAeQ==
+      integrity: sha512-3WzMPXbnDuHNCNgoBLJLqyi7Cz+vo2bkFRS5WyoMIi9jBjRaIG9NkX6+JvqHzxp018rl2qKFoCCvERsPqqN8dQ==
       tarball: 'file:projects/test-bundles.tgz'
     version: 0.0.0
   'file:projects/test-utilities.tgz':
@@ -16127,12 +16231,13 @@ packages:
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.14.0/ee2efeb9ba09e3479f87e6d53c5a2c00
       es6-weak-map: 2.0.3
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
     dev: false
     name: '@rush-temp/test-utilities'
     resolution:
-      integrity: sha512-Fvwq7zS7etdmRqWcqj5N09aiGlZDaux6Dh1C+kA8zvR0qd1vd92ygT1qxoeji4eA3ZdWX9Pwajv82vJSR75QDQ==
+      integrity: sha512-pIjJUgIvZ2zsvQJvobz5BgXDJsXHOpCkPGqIOHz6MCI2vtA5DLB7PJ/UrgB8FLGcYD8XsCQfpk78ifWKabltJg==
       tarball: 'file:projects/test-utilities.tgz'
     version: 0.0.0
   'file:projects/theme-samples.tgz':
@@ -16142,7 +16247,7 @@ packages:
     dev: false
     name: '@rush-temp/theme-samples'
     resolution:
-      integrity: sha512-2gxpu1sNZTqR7ZDn72mI7uWcseqHjHdIBVtmokxy+g5yqi0zsdNjX++MpQmo8cemzXX0O1akf6URUuSmzuoTRg==
+      integrity: sha512-+ET+Z4ZZJz6fONAhh4g4TVM598Nr3VG+J30W+r7lbcGFZz1ec71RDIr3ssr/YN0lA1xJbXC3m1/5En0U3JSkKg==
       tarball: 'file:projects/theme-samples.tgz'
     version: 0.0.0
   'file:projects/theming-designer.tgz':
@@ -16155,12 +16260,13 @@ packages:
       es6-promise: 4.2.8
       immutability-helper: 2.8.1
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       tslib: 1.10.0
     dev: false
     name: '@rush-temp/theming-designer'
     resolution:
-      integrity: sha512-DWQm+z+b3aO5LwdMM6d0ggfWUuSf2EAmdq99QF9EqpLuWiMO3rUh3R0a2OLegVtFeG17xdYzOMNHP42t41pQfg==
+      integrity: sha512-TB1xphW1mtrJqpKJ/a5qjuO/fzwnZ8gmmJBfdCApGP8XgxY6dx5OOwMkdSI8vkGYjIfVNKwWPeWGAS3hH87zVQ==
       tarball: 'file:projects/theming-designer.tgz'
     version: 0.0.0
   'file:projects/todo-app.tgz':
@@ -16173,13 +16279,14 @@ packages:
       es6-promise: 4.2.8
       immutability-helper: 2.8.1
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       tslib: 1.10.0
       typescript: 3.5.1
     dev: false
     name: '@rush-temp/todo-app'
     resolution:
-      integrity: sha512-l7ZW8hdOjY8uGUVEqqUGK9KroQoAHxGq0Tpld94bcu2Nz3+Gs48DeFuvZGcjJhVJwTYQcZ2irA1fxB0yeb0jJA==
+      integrity: sha512-9iLEjyoksdNzessZO8l+vIP+xCeG8Nyie1zmXOTBaXV4SyE65ykX93Wa9c71N4MBF7xmgS3GRX26zPJbk7KoMA==
       tarball: 'file:projects/todo-app.tgz'
     version: 0.0.0
   'file:projects/tslint-rules.tgz':
@@ -16188,7 +16295,7 @@ packages:
     dev: false
     name: '@rush-temp/tslint-rules'
     resolution:
-      integrity: sha512-h1+u9ClRusHyMiB0xMD6YrGIbRjN4EBNo4I9smahoftL1OjGB1rctcU889XPhxDYI+AkLF783mdhiF1DpFsMSQ==
+      integrity: sha512-PvAjozxdNhd6l1j9qXTXSARvp69gU4RaH+7+ZEzJLXSQAS8NL5ZId6T+ssLv+jM7e7sHLf1u5bS4WBbG4illlQ==
       tarball: 'file:projects/tslint-rules.tgz'
     version: 0.0.0
   'file:projects/tsx-editor.tgz':
@@ -16208,15 +16315,17 @@ packages:
       monaco-editor: 0.17.1
       monaco-editor-webpack-plugin: /monaco-editor-webpack-plugin/1.7.0/monaco-editor@0.17.1
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-monaco-editor: /react-monaco-editor/0.26.2/react@16.8.6
       react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
       tslib: 1.10.0
+      typescript: 3.5.1
       webpack-bundle-analyzer: 3.3.2
     dev: false
     name: '@rush-temp/tsx-editor'
     resolution:
-      integrity: sha512-qna9088KnUgqtuqRYLnI7BuHuvGcsethwk3+Hpm1j+TYbiDADc/pfXxwzPCUmbJ++TMH4dZy6+Et1zacrdv7tA==
+      integrity: sha512-HIXpQVvrQbT/Y4/uDg0gL5jWDk64u53qp1/JCR0SeksxzsQ5pkXu3GL9dspArgJ5VGL9ci2VWPHYu3rZ4HA5qg==
       tarball: 'file:projects/tsx-editor.tgz'
     version: 0.0.0
   'file:projects/utilities.tgz':
@@ -16234,6 +16343,7 @@ packages:
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.14.0/ee2efeb9ba09e3479f87e6d53c5a2c00
       prop-types: 15.7.2
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
       sinon: 4.5.0
@@ -16241,7 +16351,7 @@ packages:
     dev: false
     name: '@rush-temp/utilities'
     resolution:
-      integrity: sha512-mbUjPvyIKQwmR/Kn2WxrYkRXXTAgm9M6QDa9CAd10r+yvu/qkW5jY21w1gQEr6jntIm1/YBBqAJnBCcXdL2f5Q==
+      integrity: sha512-6Fzbi/WJz6rUpVdYaqfxNJvpP93N6PxMod77woTohqh+8V3oY0KifGWV9RZ0ObXAQ5SsyfIUCUMTiaS5J+F2Yg==
       tarball: 'file:projects/utilities.tgz'
     version: 0.0.0
   'file:projects/variants.tgz':
@@ -16251,7 +16361,7 @@ packages:
     dev: false
     name: '@rush-temp/variants'
     resolution:
-      integrity: sha512-6HypZN4ggYfhSX9EaQ6zlCSrUVEjbBzbQ6HfYxoL90CXCn07dS22FtzZSNahQ6YAFJgpwrl0tmNG+ijTrmV1aQ==
+      integrity: sha512-rJhyQdNBTjxD43vsywaIqJ4t/5JaD1kcSLk4a5gAENXf+J1qXPE1QHHv20R0ucVpHOhGVZBEpiFtoZ+93yuenQ==
       tarball: 'file:projects/variants.tgz'
     version: 0.0.0
   'file:projects/vr-tests.tgz':
@@ -16273,6 +16383,7 @@ packages:
       postcss-loader: 2.1.6
       raw-loader: 0.5.1
       react: 16.8.6
+      react-app-polyfill: 1.0.1
       react-dom: /react-dom/16.8.6/react@16.8.6
       screener-runner: 0.10.37
       screener-storybook: 0.16.12
@@ -16283,7 +16394,7 @@ packages:
     dev: false
     name: '@rush-temp/vr-tests'
     resolution:
-      integrity: sha512-yiXP5UodLZ5cNNBzfldsAXph0cU7NPjDlDN6uzxfrFDUADzsiQZ97WZKnGdV2gg65CqG2rildkUydwzJNT5RvQ==
+      integrity: sha512-HD2/PnHBxzYsbwW8Qr6sj7dhmebFsHJTURzehYo56RVCJ2kbl8lHaC6Hvwa0r0NmTz0DKJ6u1+ZmGwIQb1lfNw==
       tarball: 'file:projects/vr-tests.tgz'
     version: 0.0.0
   'file:projects/webpack-utils.tgz':
@@ -16298,7 +16409,7 @@ packages:
     dev: false
     name: '@rush-temp/webpack-utils'
     resolution:
-      integrity: sha512-PS6VN/QcljUhaVq4j0KRK4i0FWJ2896jeb5+QvB3OenFZbt/C1dNJBasARn83Cfum5EKSHz5DoHK/7lp0C8dew==
+      integrity: sha512-iM1VarU+ux+5wgYvqPbHcwcybEGK0sxkh8zPBQ2Isol9pVVeTT3J4t9prNY+vrXngIlfdGrRGOIpKxj3r64lXA==
       tarball: 'file:projects/webpack-utils.tgz'
     version: 0.0.0
 registry: 'https://registry.npmjs.org/'
@@ -16400,6 +16511,7 @@ specifiers:
   babel-core: ^6.26.3
   babel-loader: ^7.1.5
   babylon: ^7.0.0-beta.47
+  beachball: ^1.9.2
   bundlesize: ^0.15.2
   chalk: ^2.1.0
   codecov: ^3.1.0
