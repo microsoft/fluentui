@@ -572,7 +572,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined, keytipAttributes: any): JSX.Element {
-    const { allowDisabledFocus, checked, disabled } = this.props;
+    const { allowDisabledFocus, checked, disabled, splitButtonMenuProps } = this.props;
     let menuIconProps = this.props.menuIconProps;
 
     const { splitButtonAriaLabel } = this.props;
@@ -584,6 +584,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     const splitButtonProps = {
+      ...splitButtonMenuProps,
       styles: classNames,
       checked: checked,
       disabled: disabled,
