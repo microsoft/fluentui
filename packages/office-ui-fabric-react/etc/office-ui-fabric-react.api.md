@@ -9114,7 +9114,7 @@ export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
 }
 
 // @public (undocumented)
-export type Target = Element | string | MouseEvent | IPoint | null;
+export type Target = Element | string | MouseEvent | IPoint | null | React.RefObject<Element>;
 
 // @public (undocumented)
 export const TeachingBubble: React.StatelessComponent<ITeachingBubbleProps>;
