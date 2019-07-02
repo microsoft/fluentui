@@ -312,6 +312,11 @@ describe('DetailsList', () => {
       );
     };
 
+    const getCellValueKey = (item: any, index: number, column: IColumn) => {
+      const valueKey = item && column && column.fieldName ? item[column.fieldName] : column.key + index;
+      return valueKey;
+    };
+
     jest.useFakeTimers();
 
     let component: any;
@@ -324,6 +329,7 @@ describe('DetailsList', () => {
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
         onRenderItemColumn={onRenderColumn}
+        getCellValueKey={getCellValueKey}
       />
     );
 

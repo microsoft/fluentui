@@ -535,6 +535,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       rowElementEventMap: eventsToRegister,
       onRenderMissingItem,
       onRenderItemColumn,
+      getCellValueKey,
       onRenderRow = this._onRenderRow,
       selectionMode = this._selection.mode,
       viewport,
@@ -547,7 +548,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       useReducedRowRenderer,
       indentWidth,
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
-      onRenderCheckbox
+      onRenderCheckbox,
+      enableUpdateAnimations
     } = this.props;
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
@@ -565,6 +567,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       onDidMount: this._onRowDidMount,
       onWillUnmount: this._onRowWillUnmount,
       onRenderItemColumn: onRenderItemColumn,
+      getCellValueKey: getCellValueKey,
       eventsToRegister: eventsToRegister,
       dragDropEvents: dragDropEvents,
       dragDropHelper: dragDropHelper,
@@ -579,6 +582,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       indentWidth,
       cellStyleProps: cellStyleProps,
       onRenderDetailsCheckbox: onRenderCheckbox,
+      enableUpdateAnimations,
       rowWidth: this._sumColumnWidths(columns)
     };
 

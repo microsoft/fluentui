@@ -166,6 +166,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
       onRenderCheck = this._onRenderCheck,
       onRenderDetailsCheckbox,
       onRenderItemColumn,
+      getCellValueKey,
       selectionMode,
       rowWidth = 0,
       checkboxVisibility,
@@ -178,6 +179,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
       selection,
       indentWidth,
       shimmer,
+      enableUpdateAnimations,
       compact,
       theme,
       styles,
@@ -204,7 +206,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
         checkboxCellClassName,
         droppingClassName,
         className,
-        compact
+        compact,
+        enableUpdateAnimations
       })
     };
 
@@ -214,6 +217,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
       shimmerIconPlaceholder: this._classNames.shimmerIconPlaceholder,
       shimmer: this._classNames.shimmer,
       cell: this._classNames.cell,
+      cellAnimation: this._classNames.cellAnimation,
       cellPadded: this._classNames.cellPadded,
       cellUnpadded: this._classNames.cellUnpadded,
       fields: this._classNames.fields
@@ -237,6 +241,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
         columnStartIndex={showCheckbox ? 1 : 0}
         onRenderItemColumn={onRenderItemColumn}
         shimmer={shimmer}
+        getCellValueKey={getCellValueKey}
       />
     );
 
@@ -305,6 +310,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
               itemIndex={itemIndex}
               columnStartIndex={(showCheckbox ? 1 : 0) + columns.length}
               onRenderItemColumn={onRenderItemColumn}
+              getCellValueKey={getCellValueKey}
             />
           </span>
         )}
