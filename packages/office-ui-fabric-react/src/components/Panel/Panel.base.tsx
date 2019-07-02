@@ -12,8 +12,7 @@ import {
   elementContains,
   getId,
   getNativeProps,
-  getRTL,
-  getWindow
+  getRTL
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
@@ -143,9 +142,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
     const isOpen = this.isActive;
     const isAnimating = visibility === PanelVisibilityState.animatingClosed || visibility === PanelVisibilityState.animatingOpen;
-    const win = getWindow();
-    const windowHeight = typeof win !== 'undefined' ? win.innerHeight : '100%';
-    const maxWindowHeightStyles = { maxHeight: windowHeight };
 
     if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
       return null;
@@ -159,6 +155,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       headerClassName,
       isAnimating,
       isFooterSticky,
+      isFooterAtBottom,
       isOnRightSide,
       isOpen,
       isHiddenOnDismiss,
@@ -192,20 +189,15 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
               isClickableOutsideFocusTrap={true}
               {...focusTrapZoneProps}
               className={_classNames.main}
-              style={{ ...customWidthStyles, ...maxWindowHeightStyles }}
+              style={customWidthStyles}
               elementToFocusOnDismiss={elementToFocusOnDismiss}
             >
               <div className={_classNames.commands} data-is-visible={true}>
                 {onRenderNavigation(this.props, this._onRenderNavigation)}
               </div>
-              <div className={_classNames.contentInner} style={maxWindowHeightStyles}>
+              <div className={_classNames.contentInner}>
                 {header}
-                <div
-                  ref={this._allowScrollOnPanel}
-                  className={_classNames.scrollableContent}
-                  style={{ [isFooterAtBottom ? 'height' : 'maxHeight']: windowHeight }}
-                  data-is-scrollable={true}
-                >
+                <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent} data-is-scrollable={true}>
                   {onRenderBody(this.props, this._onRenderBody)}
                 </div>
                 {onRenderFooter(this.props, this._onRenderFooter)}
