@@ -1,0 +1,8 @@
+{
+  "comment": "Overlay: Adding onOverlayDidMount and onOverlayWillUnmount callbacks to IOverlayProps.",
+  "type": "minor",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "16337542d4132442bab2e70676fe0ae068677ba8",
+  "date": "2019-07-02T22:08:22.316Z"
+}
