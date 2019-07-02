@@ -104,6 +104,10 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
           this._registerResizeObserver();
         }
       }
+
+      if (!!newSkipViewportMeasures) {
+        this._updateViewport();
+      }
     }
 
     public componentWillUnmount(): void {
