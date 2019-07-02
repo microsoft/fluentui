@@ -28,7 +28,8 @@ export class DocumentCardCompactExample extends React.PureComponent {
         {
           name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://bing.com',
+            target: '_blank'
           },
           previewImageSrc: TestImages.documentPreview,
           iconSrc: TestImages.iconPpt,
@@ -37,7 +38,8 @@ export class DocumentCardCompactExample extends React.PureComponent {
         {
           name: 'New Contoso Collaboration for Conference Presentation Draft',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://bing.com',
+            target: '_blank'
           },
           previewImageSrc: TestImages.documentPreviewTwo,
           iconSrc: TestImages.iconPpt,
@@ -46,7 +48,8 @@ export class DocumentCardCompactExample extends React.PureComponent {
         {
           name: 'Spec Sheet for design',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://bing.com',
+            target: '_blank'
           },
           previewImageSrc: TestImages.documentPreviewThree,
           iconSrc: TestImages.iconPpt,
@@ -55,7 +58,8 @@ export class DocumentCardCompactExample extends React.PureComponent {
         {
           name: 'Contoso Marketing Presentation',
           linkProps: {
-            href: 'http://bing.com'
+            href: 'http://bing.com',
+            target: '_blank'
           },
           previewImageSrc: TestImages.documentPreview,
           iconSrc: TestImages.iconPpt,

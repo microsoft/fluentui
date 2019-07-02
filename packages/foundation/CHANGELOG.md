@@ -1,6 +1,57 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2019 18:51:42 GMT and should not be manually modified.
+
+## 7.0.2
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.0.1
+Fri, 14 Jun 2019 15:54:00 GMT
+
+### Patches
+
+- Major bumping the foundation package. (Though the tooling will report this as a patch.)
+
+## 0.109.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 0.109.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 0.8.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Minor changes
+
+- Updating IComponent typings for ease of use in tests.
+- Evolve create component API to separate out view and make options bag optional.
+- Enable API verification and export legacy styled.
+- Foundation: Convert state components to hooks.
+- Slots: Move slot options from individual props to new slots prop object.
+- Slots: Refactor API and add slot options object.
+
+### Patches
+
+- Update and dedupe React deps.
+
+## 0.7.7
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- upgrade to api-extractor 7.1.6
 
 ## 0.7.6
 Tue, 14 May 2019 07:50:30 GMT

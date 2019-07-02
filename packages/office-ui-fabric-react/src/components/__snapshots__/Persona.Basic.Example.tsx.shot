@@ -1,161 +1,180 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
-<div>
-  <div>
-    <div
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 10px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
+  <div
+    className=
+        ms-Checkbox
+        is-checked
+        is-enabled
+        {
+          display: flex;
+          position: relative;
+        }
+        &:hover .ms-Checkbox-checkbox {
+          background: #005a9e;
+          border-color: #005a9e;
+        }
+        &:focus .ms-Checkbox-checkbox {
+          background: #005a9e;
+          border-color: #005a9e;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          background: Window;
+          border-color: Highlight;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
+          background: Highlight;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
+          background: Highlight;
+        }
+        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
+          color: Window;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          color: Highlight;
+        }
+        &:hover .ms-Checkbox-text {
+          color: #201f1e;
+        }
+        &:focus .ms-Checkbox-text {
+          color: #201f1e;
+        }
+  >
+    <input
+      checked={true}
       className=
-          ms-Checkbox
-          is-checked
-          is-enabled
-          {
-            display: flex;
-            position: relative;
-          }
-          &:hover .ms-Checkbox-checkbox {
-            background: #005a9e;
-            border-color: #005a9e;
-          }
-          &:focus .ms-Checkbox-checkbox {
-            background: #005a9e;
-            border-color: #005a9e;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            background: Window;
-            border-color: Highlight;
-          }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
-            background: Highlight;
-          }
-          @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
-            background: Highlight;
-          }
-          @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
-            color: Window;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
-          }
-          &:hover .ms-Checkbox-text {
-            color: #201f1e;
-          }
-          &:focus .ms-Checkbox-text {
-            color: #201f1e;
-          }
-    >
-      <input
-        checked={true}
-        className=
 
-            {
-              background: none;
-              opacity: 0;
-              position: absolute;
-            }
-            .ms-Fabric--isFocusVisible &:focus + label::before {
-              outline-offset: 2px;
-              outline: 1px solid #605e5c;
-            }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-              outline: 1px solid ActiveBorder;
-            }
-        id="checkbox-0"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        type="checkbox"
-      />
-      <label
+          {
+            background: none;
+            opacity: 0;
+            position: absolute;
+          }
+          .ms-Fabric--isFocusVisible &:focus + label::before {
+            outline-offset: 2px;
+            outline: 1px solid #605e5c;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            outline: 1px solid ActiveBorder;
+          }
+      id="checkbox-0"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="checkbox"
+    />
+    <label
+      className=
+          ms-Checkbox-label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: flex-start;
+            cursor: pointer;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            position: relative;
+            text-align: left;
+            user-select: none;
+          }
+          &::before {
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+          }
+      htmlFor="checkbox-0"
+    >
+      <div
         className=
-            ms-Checkbox-label
+            ms-Checkbox-checkbox
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              align-items: flex-start;
-              cursor: pointer;
+              align-items: center;
+              background: #0078d4;
+              border-color: #0078d4;
+              border-radius: 2px;
+              border: 1px solid #323130;
+              box-sizing: border-box;
               display: flex;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              position: relative;
-              text-align: left;
-              user-select: none;
+              flex-shrink: 0;
+              height: 20px;
+              justify-content: center;
+              margin-right: 4px;
+              overflow: hidden;
+              transition-duration: 200ms;
+              transition-property: background, border, border-color;
+              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+              width: 20px;
             }
-            &::before {
-              bottom: 0px;
-              content: "";
-              left: 0px;
-              pointer-events: none;
-              position: absolute;
-              right: 0px;
-              top: 0px;
+            @media screen and (-ms-high-contrast: active){& {
+              background: Highlight;
+              border-color: Highlight;
             }
-        htmlFor="checkbox-0"
       >
-        <div
+        <i
+          aria-hidden={true}
           className=
-              ms-Checkbox-checkbox
+              ms-Checkbox-checkmark
               {
-                align-items: center;
-                background: #0078d4;
-                border-color: #0078d4;
-                border-radius: 2px;
-                border: 1px solid #323130;
-                box-sizing: border-box;
-                display: flex;
-                flex-shrink: 0;
-                height: 20px;
-                justify-content: center;
-                margin-right: 4px;
-                overflow: hidden;
-                transition-duration: 200ms;
-                transition-property: background, border, border-color;
-                transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                width: 20px;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #ffffff;
+                display: inline-block;
+                font-family: "FabricMDL2Icons";
+                font-style: normal;
+                font-weight: normal;
+                opacity: 1;
+                speak: none;
               }
               @media screen and (-ms-high-contrast: active){& {
-                background: Highlight;
-                border-color: Highlight;
+                -ms-high-contrast-adjust: none;
+                color: Window;
               }
+          data-icon-name="CheckMark"
+          role="presentation"
         >
-          <i
-            className=
-                ms-Checkbox-checkmark
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  color: #ffffff;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  opacity: 1;
-                  speak: none;
-                }
-                @media screen and (-ms-high-contrast: active){& {
-                  -ms-high-contrast-adjust: none;
-                  color: Window;
-                }
-            data-icon-name="CheckMark"
-            role="presentation"
-          >
-            
-          </i>
-        </div>
-        <span
-          className=
-              ms-Checkbox-text
-              {
-                color: #323130;
-                font-size: 14px;
-                line-height: 20px;
-                margin-left: 4px;
-              }
-        >
-          Include persona details
-        </span>
-      </label>
-    </div>
+          
+        </i>
+      </div>
+      <span
+        className=
+            ms-Checkbox-text
+            {
+              color: #323130;
+              font-size: 14px;
+              line-height: 20px;
+              margin-left: 4px;
+            }
+      >
+        Include persona details
+      </span>
+    </label>
   </div>
   <label
     className=
@@ -217,7 +236,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={17}
   >
     <div
       className=
@@ -230,9 +248,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
           }
-      size={17}
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -293,6 +311,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -321,6 +340,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -349,6 +369,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -377,6 +398,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -446,7 +468,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={17}
   >
     <div
       className=
@@ -459,7 +480,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
           }
-      size={17}
     >
       <div
         className=
@@ -467,7 +487,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             {
               -ms-high-contrast-adjust: none;
               background-clip: content-box;
-              background-color: #8A8886;
+              background-color: #ffffff;
               border-radius: 50%;
               border: 0px;
               bottom: -2px;
@@ -485,6 +505,24 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               border-color: Window;
               border: 1px solid WindowText;
               top: 9px;
+            }
+            &:before {
+              border-radius: 50%;
+              border: 1px solid #8A8886;
+              box-sizing: border-box;
+              content: "";
+              height: 100%;
+              left: 0px;
+              position: absolute;
+              top: 0px;
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:before {
+              border-color: Window;
+              height: calc(100% - 2px);
+              left: 1px;
+              top: 1px;
+              width: calc(100% - 2px);
             }
       />
     </div>
@@ -526,6 +564,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -554,6 +593,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -582,6 +622,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -610,6 +651,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -679,7 +721,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={10}
   >
     <div
       className=
@@ -692,7 +733,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
           }
-      size={10}
     >
       <div
         className=
@@ -819,6 +859,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -847,6 +888,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -875,6 +917,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -903,6 +946,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -972,7 +1016,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={11}
   >
     <div
       className=
@@ -985,7 +1028,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
           }
-      size={11}
     >
       <div
         className=
@@ -1112,6 +1154,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -1140,6 +1183,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -1168,6 +1212,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -1196,6 +1241,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -1265,7 +1311,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={12}
   >
     <div
       className=
@@ -1278,7 +1323,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
           }
-      size={12}
     >
       <div
         className=
@@ -1367,6 +1411,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Persona-presenceIcon
                 {
@@ -1432,6 +1477,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -1459,6 +1505,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -1487,6 +1534,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -1515,6 +1563,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -1584,7 +1633,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={13}
   >
     <div
       className=
@@ -1597,7 +1645,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
           }
-      size={13}
     >
       <div
         className=
@@ -1686,6 +1733,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Icon-placeHolder
                 ms-Persona-presenceIcon
@@ -1743,6 +1791,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -1770,6 +1819,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -1798,6 +1848,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -1826,6 +1877,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -1895,7 +1947,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={16}
   >
     <div
       className=
@@ -1908,7 +1959,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
           }
-      size={16}
     >
       <div
         className=
@@ -1997,6 +2047,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Persona-presenceIcon
                 {
@@ -2060,6 +2111,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -2087,6 +2139,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -2115,6 +2168,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -2143,6 +2197,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -2212,7 +2267,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={14}
   >
     <div
       className=
@@ -2225,7 +2279,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
           }
-      size={14}
     >
       <div
         className=
@@ -2314,6 +2367,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Persona-presenceIcon
                 {
@@ -2377,6 +2431,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -2404,6 +2459,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -2432,6 +2488,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -2460,6 +2517,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -2529,7 +2587,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={15}
   >
     <div
       className=
@@ -2542,7 +2599,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
           }
-      size={15}
     >
       <div
         className=
@@ -2629,6 +2685,21 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 background-color: WindowText;
                 border-color: Window;
               }
+              &:after {
+                background-color: #C43148;
+                content: "";
+                height: 2px;
+                left: 0px;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%) rotate(-45deg);
+                width: 100%;
+              }
+              @media screen and (-ms-high-contrast: active){&:after {
+                background-color: Window;
+                left: 2px;
+                width: calc(100% - 4px);
+              }
               &:before {
                 border-radius: 50%;
                 border: 2px solid #C43148;
@@ -2640,16 +2711,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 top: 0px;
                 width: 100%;
               }
-              &:after {
-                background-color: #C43148;
-                content: "";
-                height: 2px;
-                left: 0px;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%) rotate(-45deg);
-                width: 100%;
-              }
               @media screen and (-ms-high-contrast: active){&:before {
                 border-color: Window;
                 height: calc(100% - 2px);
@@ -2657,13 +2718,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 top: 1px;
                 width: calc(100% - 2px);
               }
-              @media screen and (-ms-high-contrast: active){&:after {
-                background-color: Window;
-                left: 2px;
-                width: calc(100% - 4px);
-              }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Icon-placeHolder
                 ms-Persona-presenceIcon
@@ -2721,6 +2778,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -2748,6 +2806,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -2776,6 +2835,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -2804,6 +2864,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >

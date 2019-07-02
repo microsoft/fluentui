@@ -2,6 +2,186 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "7.0.2",
+      "tag": "@uifabric/foundation_v7.0.2",
+      "date": "Mon, 01 Jul 2019 18:51:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adds react-app-polyfill",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "40245650abdfb17e9f1cd6472f3671380237bcc2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.5` to `^7.0.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.2` to `^7.0.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.1",
+      "tag": "@uifabric/foundation_v7.0.1",
+      "date": "Fri, 14 Jun 2019 15:54:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Major bumping the foundation package. (Though the tooling will report this as a patch.)",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ef4b1d9bc7a63a9479cbf3d846a35d45627d7209"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.109.2",
+      "tag": "@uifabric/foundation_v0.109.2",
+      "date": "Fri, 14 Jun 2019 12:26:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix missing assets in production build.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "e1bebe54dd798847060baaf4a52956c2f6dd866b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.1` to `^7.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.109.1",
+      "tag": "@uifabric/foundation_v0.109.1",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.8.0",
+      "tag": "@uifabric/foundation_v0.8.0",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating IComponent typings for ease of use in tests.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "f97b56f0a62e4c99e4ed26b8df588e5fc8d5e9bb"
+          },
+          {
+            "comment": "Evolve create component API to separate out view and make options bag optional.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "20b09cc417500b205e6007538cb6f04ffee208eb"
+          },
+          {
+            "comment": "Enable API verification and export legacy styled.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "5cfbccb1d6a8f130b4c40c5ceeb20d2e7490a201"
+          },
+          {
+            "comment": "Foundation: Convert state components to hooks.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "5f4051fd8cad5ebd5f5b88c418093b879efbec9a"
+          },
+          {
+            "comment": "Slots: Move slot options from individual props to new slots prop object.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "37a52465422d2622d52b7339ac2f9b2f234300da"
+          },
+          {
+            "comment": "Slots: Refactor API and add slot options object.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "14b1d77fc97fffb1c333a3601d62c3e30c4cf3b0"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.1` to `^6.49.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.0` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.9` to `^6.0.10`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.7",
+      "tag": "@uifabric/foundation_v0.7.7",
+      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "upgrade to api-extractor 7.1.6",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a5bbc76367eb01e993f20796955569f422a538b2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.0` to `^6.48.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.40.1` to `^6.41.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.7.6",
       "tag": "@uifabric/foundation_v0.7.6",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

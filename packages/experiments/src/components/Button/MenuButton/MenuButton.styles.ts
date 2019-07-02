@@ -1,5 +1,5 @@
-import { IMenuButtonComponent, IMenuButtonStylesReturnType, IMenuButtonTokenReturnType } from './MenuButton.types';
 import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
+import { IMenuButtonComponent, IMenuButtonStylesReturnType, IMenuButtonTokenReturnType } from './MenuButton.types';
 
 const baseTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButtonTokenReturnType => {
   return {
@@ -60,15 +60,14 @@ export const MenuButtonTokens: IMenuButtonComponent['tokens'] = (props, theme): 
   props.primary && props.expanded && primaryExpandedTokens
 ];
 
+const GlobalClassNames = {
+  msMenuButton: 'ms-MenuButton'
+};
+
 export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, tokens): IMenuButtonStylesReturnType => {
   const { className } = props;
 
-  const globalClassNames = getGlobalClassNames(
-    {
-      msMenuButton: 'ms-MenuButton'
-    },
-    theme
-  );
+  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: {

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { IDetailsListProps, IDetailsListStyleProps, IDetailsListStyles } from './DetailsList.types';
 import { DetailsListBase } from './DetailsList.base';

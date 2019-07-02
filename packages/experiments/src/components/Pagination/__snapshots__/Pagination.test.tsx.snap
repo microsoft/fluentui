@@ -106,6 +106,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Button-icon
               {
@@ -229,6 +230,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Button-icon
               {
@@ -879,6 +881,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Button-icon
               {
@@ -916,6 +919,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           }
       onBlurCapture={[Function]}
       onFocusCapture={[Function]}
+      onKeyDown={[Function]}
       onMouseEnter={[Function]}
       onMouseLeave={[Function]}
     >
@@ -1010,6 +1014,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -1154,6 +1159,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           }
     >
       <i
+        aria-hidden={true}
         className=
             ms-Button-icon
             {
@@ -1277,6 +1283,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           }
     >
       <i
+        aria-hidden={true}
         className=
             ms-Button-icon
             {
@@ -1307,7 +1314,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
     </div>
   </button>
   <div
-    autoComplete="on"
     className=
         ms-ComboBox-container
         {
@@ -1352,15 +1358,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             display: inline-block;
             margin-bottom: 8px;
           }
-          & input::-ms-clear {
-            display: none;
-          }
-          & input::placeholder {
-            color: #605e5c;
-          }
-          & input:-ms-input-placeholder {
-            color: #605e5c;
-          }
           &.is-open {
             border-color: #0078d4;
           }
@@ -1388,6 +1385,9 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             color: #323130;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
+            color: #323130;
+          }
+          &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
@@ -1454,6 +1454,18 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               text-overflow: ellipsis;
               width: 100%;
             }
+            &::placeholder {
+              color: #605e5c;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+            }
+            &::-ms-clear {
+              display: none;
+            }
         data-is-interactable={true}
         data-lpignore={true}
         id="ComboBox6-input"
@@ -1475,7 +1487,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
       />
       <button
         aria-hidden={true}
-        checked={false}
         className=
             ms-Button
             ms-Button--icon
@@ -1579,6 +1590,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -1700,6 +1712,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           }
     >
       <i
+        aria-hidden={true}
         className=
             ms-Button-icon
             {
@@ -1819,6 +1832,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           }
     >
       <i
+        aria-hidden={true}
         className=
             ms-Button-icon
             {

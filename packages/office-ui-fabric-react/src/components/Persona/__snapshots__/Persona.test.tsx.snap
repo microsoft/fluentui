@@ -34,7 +34,6 @@ exports[`Persona renders Persona children correctly 1`] = `
       &:hover $primaryText {
         color: #201f1e;
       }
-  size={13}
 >
   <div
     className=
@@ -47,7 +46,6 @@ exports[`Persona renders Persona children correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
-    size={13}
   >
     <div
       className=
@@ -127,6 +125,7 @@ exports[`Persona renders Persona children correctly 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -215,7 +214,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
       &:hover $primaryText {
         color: #201f1e;
       }
-  size={13}
 >
   <div
     className=
@@ -228,7 +226,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
-    size={13}
   >
     <div
       className=
@@ -266,6 +263,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
 
               {
@@ -322,6 +320,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -407,7 +406,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
       &:hover $primaryText {
         color: #201f1e;
       }
-  size={13}
 >
   <div
     className=
@@ -420,7 +418,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
-    size={13}
   >
     <div
       className=
@@ -524,6 +521,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -609,7 +607,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       &:hover $primaryText {
         color: #201f1e;
       }
-  size={13}
 >
   <div
     className=
@@ -622,7 +619,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
-    size={13}
   >
     <div
       className=
@@ -702,6 +698,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -787,7 +784,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       &:hover $primaryText {
         color: #201f1e;
       }
-  size={13}
 >
   <div
     className=
@@ -800,7 +796,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
-    size={13}
   >
     <div
       className=
@@ -838,6 +833,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
 
               {
@@ -966,7 +962,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       &:hover $primaryText {
         color: #201f1e;
       }
-  size={15}
 >
   <div
     className=
@@ -979,7 +974,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           font-size: 14px;
           font-weight: 400;
         }
-    size={15}
   >
     <div
       className=
@@ -1045,6 +1039,21 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               background-color: WindowText;
               border-color: Window;
             }
+            &:after {
+              background-color: #C43148;
+              content: "";
+              height: 2px;
+              left: 0px;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%) rotate(-45deg);
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:after {
+              background-color: Window;
+              left: 2px;
+              width: calc(100% - 4px);
+            }
             &:before {
               border-radius: 50%;
               border: 2px solid #C43148;
@@ -1056,16 +1065,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               top: 0px;
               width: 100%;
             }
-            &:after {
-              background-color: #C43148;
-              content: "";
-              height: 2px;
-              left: 0px;
-              position: absolute;
-              top: 50%;
-              transform: translateY(-50%) rotate(-45deg);
-              width: 100%;
-            }
             @media screen and (-ms-high-contrast: active){&:before {
               border-color: Window;
               height: calc(100% - 2px);
@@ -1073,13 +1072,9 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               top: 1px;
               width: calc(100% - 2px);
             }
-            @media screen and (-ms-high-contrast: active){&:after {
-              background-color: Window;
-              left: 2px;
-              width: calc(100% - 4px);
-            }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Icon-placeHolder
               ms-Persona-presenceIcon
@@ -1137,6 +1132,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1164,6 +1160,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1192,6 +1189,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1220,6 +1218,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1265,7 +1264,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       &:hover $primaryText {
         color: #201f1e;
       }
-  size={15}
 >
   <div
     className=
@@ -1278,7 +1276,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
-    size={15}
   >
     <div
       className=
@@ -1365,6 +1362,21 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               background-color: WindowText;
               border-color: Window;
             }
+            &:after {
+              background-color: #C43148;
+              content: "";
+              height: 2px;
+              left: 0px;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%) rotate(-45deg);
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:after {
+              background-color: Window;
+              left: 2px;
+              width: calc(100% - 4px);
+            }
             &:before {
               border-radius: 50%;
               border: 2px solid #C43148;
@@ -1376,16 +1388,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               top: 0px;
               width: 100%;
             }
-            &:after {
-              background-color: #C43148;
-              content: "";
-              height: 2px;
-              left: 0px;
-              position: absolute;
-              top: 50%;
-              transform: translateY(-50%) rotate(-45deg);
-              width: 100%;
-            }
             @media screen and (-ms-high-contrast: active){&:before {
               border-color: Window;
               height: calc(100% - 2px);
@@ -1393,13 +1395,9 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               top: 1px;
               width: calc(100% - 2px);
             }
-            @media screen and (-ms-high-contrast: active){&:after {
-              background-color: Window;
-              left: 2px;
-              width: calc(100% - 4px);
-            }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Icon-placeHolder
               ms-Persona-presenceIcon
@@ -1457,6 +1455,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1484,6 +1483,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1512,6 +1512,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1540,6 +1541,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >

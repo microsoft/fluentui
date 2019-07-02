@@ -1,6 +1,5 @@
 import { ScreenWidthMinUhfMobile, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { FontSizes } from '@uifabric/fluent-theme';
 import { IComponentPageStyleProps, IComponentPageStyles } from './ComponentPage.types';
 
 const globalClassNames = {
@@ -54,8 +53,8 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       globalClassNames.header
     ],
     headerLink: [
+      theme.fonts.medium,
       {
-        fontSize: FontSizes.size14,
         color: theme.palette.white,
         textDecoration: 'none',
         selectors: { '&:hover': { color: theme.palette.neutralLight } }
@@ -63,6 +62,7 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       globalClassNames.headerLink
     ],
     title: [
+      theme.fonts.xLarge,
       {
         fontSize: 82,
         lineHeight: 94,
@@ -83,7 +83,7 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
         marginBottom: 24,
         selectors: {
           // Set font here to be more specific
-          h2: { fontSize: 36, margin: 0 }
+          h2: [theme.fonts.xLarge, { fontSize: 36, margin: 0 }]
         }
       },
       globalClassNames.subHeading
@@ -99,7 +99,7 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
     ],
     overviewText: [
       {
-        fontSize: FontSizes.size12,
+        fontSize: theme.fonts.small.fontSize,
         // This is meant to be a ratio, so it has to be in quotes so it's not interpreted as pixels
         lineHeight: '1.5',
         marginBottom: -6, // Trim padding off last paragraph
@@ -109,10 +109,12 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
             padding: '16px 0'
           },
           ul: { paddingLeft: ulLeftPadding },
-          li: {
-            fontSize: FontSizes.size12,
-            marginBottom: 16
-          },
+          li: [
+            theme.fonts.small,
+            {
+              marginBottom: 16
+            }
+          ],
           'ul li': { listStyle: 'disc' }
         }
       },
@@ -188,7 +190,7 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
     dosDontsHeading: [
       {
         selectors: {
-          h3: { fontSize: '15px', margin: 0 }
+          h3: [theme.fonts.mediumPlus, { margin: 0 }]
         }
       },
       globalClassNames.dosDontsHeading

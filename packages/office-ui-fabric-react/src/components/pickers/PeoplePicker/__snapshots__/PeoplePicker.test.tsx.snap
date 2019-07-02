@@ -242,7 +242,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     &:hover $primaryText {
                       color: #201f1e;
                     }
-                size={10}
               >
                 <div
                   className=
@@ -255,7 +254,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                         font-size: 14px;
                         font-weight: 400;
                       }
-                  size={10}
                 >
                   <div
                     className=
@@ -382,6 +380,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           }
                       onBlurCapture={[Function]}
                       onFocusCapture={[Function]}
+                      onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
                     >
@@ -410,6 +409,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           }
                       onBlurCapture={[Function]}
                       onFocusCapture={[Function]}
+                      onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
                     >
@@ -438,6 +438,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           }
                       onBlurCapture={[Function]}
                       onFocusCapture={[Function]}
+                      onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
                     >
@@ -466,6 +467,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           }
                       onBlurCapture={[Function]}
                       onFocusCapture={[Function]}
+                      onKeyDown={[Function]}
                       onMouseEnter={[Function]}
                       onMouseLeave={[Function]}
                     >
@@ -569,6 +571,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Button-icon
                       {

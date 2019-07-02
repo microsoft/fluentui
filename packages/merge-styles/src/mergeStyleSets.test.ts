@@ -294,15 +294,6 @@ describe('mergeStyleSets', () => {
         // this test primarily tests that the lines above do not result in a Typescript error.
         expect.assertions(0);
       });
-
-      it('IStyleSet/IProcessedStyleSet should work with legacy sub components that only take IStyleFunctions', () => {
-        const classNames = mergeStyleSets<IStylesWithStyleObjectAsSubCommponent>(getStyles2());
-
-        LegacySubComponent({ styles: classNames.subComponentStyles.button({ isCollapsed: false }) });
-
-        // this test primarily tests that the lines above do not result in a Typescript error.
-        expect.assertions(0);
-      });
     });
   });
 });

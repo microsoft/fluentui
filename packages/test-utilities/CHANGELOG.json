@@ -2,6 +2,94 @@
   "name": "@uifabric/test-utilities",
   "entries": [
     {
+      "version": "7.0.3",
+      "tag": "@uifabric/test-utilities_v7.0.3",
+      "date": "Mon, 01 Jul 2019 18:51:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adds react-app-polyfill",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "40245650abdfb17e9f1cd6472f3671380237bcc2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.2` to `^7.0.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.2",
+      "tag": "@uifabric/test-utilities_v7.0.2",
+      "date": "Fri, 14 Jun 2019 12:26:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix missing assets in production build.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "e1bebe54dd798847060baaf4a52956c2f6dd866b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.1` to `^7.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.1",
+      "tag": "@uifabric/test-utilities_v7.0.1",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.5",
+      "tag": "@uifabric/test-utilities_v6.0.5",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.9` to `^6.0.10`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.4",
       "tag": "@uifabric/test-utilities_v6.0.4",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

@@ -159,7 +159,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       selectAllVisibility,
       ariaLabelForSelectionColumn,
       indentWidth,
-      viewport,
+      rowWidth = 0,
       onColumnClick,
       onColumnContextMenu,
       onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip,
@@ -210,7 +210,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
         ref={this._onRootRef}
         onMouseMove={this._onRootMouseMove}
         data-automationid="DetailsHeader"
-        style={{ minWidth: viewport ? viewport.width : 0 }}
+        style={{ minWidth: rowWidth }}
         direction={FocusZoneDirection.horizontal}
       >
         {showCheckbox
@@ -257,11 +257,11 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
               </div>,
               !this.props.onRenderColumnHeaderTooltip ? (
                 ariaLabelForSelectAllCheckbox && !isCheckboxHidden ? (
-                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel}>
+                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel} aria-hidden={true}>
                     {ariaLabelForSelectAllCheckbox}
                   </label>
                 ) : ariaLabelForSelectionColumn && isCheckboxHidden ? (
-                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel}>
+                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel} aria-hidden={true}>
                     {ariaLabelForSelectionColumn}
                   </label>
                 ) : null

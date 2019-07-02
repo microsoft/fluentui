@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { ButtonPageProps } from 'office-ui-fabric-react/lib/components/Button/Button.doc';
 import { DemoPage } from '../DemoPage';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
-const exampleStyles: any = exampleStylesImport;
+import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
+import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
+
+const checkboxStyles: Partial<IStyleSet<ICheckboxStyles>> = {
+  root: { margin: '10px 0' }
+};
 
 export interface IButtonDemoPageState {
   areButtonsDisabled: boolean;
@@ -39,18 +42,8 @@ export class ButtonPage extends React.Component<IButtonDemoPageProps, IButtonDem
     const { areButtonsDisabled, areButtonsChecked } = this.state;
     return (
       <>
-        <Checkbox
-          className={exampleStyles.exampleCheckbox}
-          label="Disable buttons"
-          checked={areButtonsDisabled}
-          onChange={this._onDisabledChanged}
-        />
-        <Checkbox
-          className={exampleStyles.exampleCheckbox}
-          label="Mark as checked"
-          checked={areButtonsChecked}
-          onChange={this._onToggledChanged}
-        />
+        <Checkbox styles={checkboxStyles} label="Disable buttons" checked={areButtonsDisabled} onChange={this._onDisabledChanged} />
+        <Checkbox styles={checkboxStyles} label="Mark as checked" checked={areButtonsChecked} onChange={this._onToggledChanged} />
       </>
     );
   }

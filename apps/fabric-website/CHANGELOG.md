@@ -1,6 +1,114 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 31 May 2019 12:21:27 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Jul 2019 12:29:06 GMT and should not be manually modified.
+
+## 7.2.3
+Tue, 02 Jul 2019 12:29:06 GMT
+
+### Patches
+
+- Add pivot for Fabric Icons page
+
+## 7.2.2
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.2.1
+Thu, 27 Jun 2019 22:14:22 GMT
+
+### Patches
+
+- Add fabric 7 to website version selector
+
+## 7.2.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+- making all getting started links point to microsoft rather than kenotron
+
+## 7.1.6
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- Update website for Fabric 7
+
+## 7.1.5
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- Renamed instances of "Microsoft UI Fabric" to "UI Fabric"
+
+## 7.1.4
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Patches
+
+- Get rid of references to _exampleStyles.scss
+
+## 7.1.3
+Tue, 18 Jun 2019 19:00:04 GMT
+
+### Patches
+
+- Mobile: Added source code links, removed generic library link.
+
+## 7.1.2
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- Add overview and controls request sections to mobile pages.
+- Add theme slots page
+- Add links to documentation pages.
+
+## 7.1.1
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Add more mobile docs, update screenshots.
+- Fix missing assets in production build.
+
+## 7.1.0
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Minor changes
+
+- Bundles react with the site to prevent version mismatch issues
+
+### Patches
+
+- Clean up Site component life-cycle
+- Initial release of Fabric 7
+
+## 6.19.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Minor changes
+
+- Changes to support slots API refactoring
+
+### Patches
+
+- Update Calendar and DatePicker import paths
+- Update and dedupe React deps.
+- Support slots API changes.
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
+- Update Router imports
+
+## 6.18.11
+Thu, 06 Jun 2019 12:22:24 GMT
+
+### Patches
+
+- Add redirects to new website
+- Fix uhf style override className.
 
 ## 6.18.10
 Fri, 31 May 2019 12:21:27 GMT

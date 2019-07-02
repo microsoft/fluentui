@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, css, format, getId } from '../../Utilities';
+import { BaseComponent, classNamesFunction, css, format, getId, divProperties, getNativeProps } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -76,7 +76,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
       unselectedIcon = 'FavoriteStar'
     } = this.props;
     const rating = this._getRating();
-
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
     this._classNames = getClassNames(styles!, {
       disabled,
       readOnly,
@@ -126,6 +126,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
         })}
         aria-label={getAriaLabel ? getAriaLabel(rating ? rating : 0, this.props.max as number) : ''}
         id={id}
+        {...divProps}
       >
         <FocusZone
           direction={FocusZoneDirection.horizontal}

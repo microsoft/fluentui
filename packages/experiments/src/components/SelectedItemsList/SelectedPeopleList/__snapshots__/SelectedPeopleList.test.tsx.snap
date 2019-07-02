@@ -131,6 +131,7 @@ Array [
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -220,7 +221,6 @@ Array [
               &:hover $primaryText {
                 color: #201f1e;
               }
-          size={11}
         >
           <div
             className=
@@ -233,7 +233,6 @@ Array [
                   font-size: 14px;
                   font-weight: 400;
                 }
-            size={11}
           >
             <div
               className=
@@ -316,6 +315,7 @@ Array [
                     }
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
               >
@@ -460,6 +460,7 @@ Array [
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -628,6 +629,7 @@ Array [
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -717,7 +719,6 @@ Array [
               &:hover $primaryText {
                 color: #201f1e;
               }
-          size={11}
         >
           <div
             className=
@@ -730,7 +731,6 @@ Array [
                   font-size: 14px;
                   font-weight: 400;
                 }
-            size={11}
           >
             <div
               className=
@@ -813,6 +813,7 @@ Array [
                     }
                 onBlurCapture={[Function]}
                 onFocusCapture={[Function]}
+                onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
               >
@@ -957,6 +958,7 @@ Array [
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {

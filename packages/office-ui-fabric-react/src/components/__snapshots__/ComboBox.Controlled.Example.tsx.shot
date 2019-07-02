@@ -29,7 +29,6 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
       }
 >
   <div
-    autoComplete="on"
     className="ms-ComboBox-container "
   >
     <label
@@ -97,15 +96,6 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
             display: inline-block;
             margin-bottom: 8px;
           }
-          & input::-ms-clear {
-            display: none;
-          }
-          & input::placeholder {
-            color: #605e5c;
-          }
-          & input:-ms-input-placeholder {
-            color: #605e5c;
-          }
           &.is-open {
             border-color: #0078d4;
           }
@@ -133,6 +123,9 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
             color: #323130;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
+            color: #323130;
+          }
+          &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
@@ -200,6 +193,18 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
               text-overflow: ellipsis;
               width: 100%;
             }
+            &::placeholder {
+              color: #605e5c;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+            }
+            &::-ms-clear {
+              display: none;
+            }
         data-is-interactable={true}
         data-lpignore={true}
         id="ComboBox0-input"
@@ -221,7 +226,6 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
       />
       <button
         aria-hidden={true}
-        checked={false}
         className=
             ms-Button
             ms-Button--icon
@@ -325,6 +329,7 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -356,7 +361,6 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
     </div>
   </div>
   <div
-    autoComplete="on"
     className="ms-ComboBox-container "
   >
     <label
@@ -424,15 +428,6 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
             display: inline-block;
             margin-bottom: 8px;
           }
-          & input::-ms-clear {
-            display: none;
-          }
-          & input::placeholder {
-            color: #605e5c;
-          }
-          & input:-ms-input-placeholder {
-            color: #605e5c;
-          }
           &.is-open {
             border-color: #0078d4;
           }
@@ -460,6 +455,9 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
             color: #323130;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
+            color: #323130;
+          }
+          &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
@@ -527,6 +525,18 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
               text-overflow: ellipsis;
               width: 100%;
             }
+            &::placeholder {
+              color: #605e5c;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+            }
+            &::-ms-clear {
+              display: none;
+            }
         data-is-interactable={true}
         data-lpignore={true}
         id="ComboBox4-input"
@@ -548,7 +558,6 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
       />
       <button
         aria-hidden={true}
-        checked={false}
         className=
             ms-Button
             ms-Button--icon
@@ -652,6 +661,7 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {

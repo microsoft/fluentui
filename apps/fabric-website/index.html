@@ -120,7 +120,7 @@
         loadAppScripts(appPath);
       } else if (!isLocal) {
         // Update as new fabric versions and its documentation are supported
-        var fabricVersions = [5, 6];
+        var fabricVersions = [5, 6, 7];
 
         // Get fabricVer from URL param, session value, or latest version in array
         var fabricVersion = Number(
@@ -185,8 +185,8 @@
 
       function loadAppScripts(appPath) {
         var version = isLocal ? '.development.js' : '.production.min.js';
-        var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.8.3/umd/react' + version;
-        var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.3/umd/react-dom' + version;
+        var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react' + version;
+        var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom' + version;
 
         var scripts = [reactPath, reactDomPath, appPath + entryPointFilename + '.min.js'];
 

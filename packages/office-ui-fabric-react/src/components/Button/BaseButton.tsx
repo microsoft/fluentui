@@ -19,6 +19,8 @@ import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { KeytipData } from '../../KeytipData';
+import { memoizeFunction } from '@uifabric/utilities';
+import { IKeytipProps } from '../Keytip/Keytip.types';
 
 /**
  * {@docCategory Button}
@@ -65,6 +67,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _processingTouch: boolean;
   private _lastTouchTimeoutId: number | undefined;
   private _renderedPersistentMenu: boolean = false;
+
+  private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
+    return {
+      ...keytipProps,
+      hasMenu: true
+    };
+  });
 
   constructor(props: IBaseButtonProps, rootClassName: string) {
     super(props);
@@ -265,10 +274,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     } = props;
     let { keytipProps } = props;
     if (keytipProps && menuProps) {
-      keytipProps = {
-        ...keytipProps,
-        hasMenu: true
-      };
+      keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
     const Button = (keytipAttributes?: any): JSX.Element => (
@@ -491,10 +497,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const ariaDescribedBy = buttonProps.ariaDescription;
 
     if (keytipProps && menuProps) {
-      keytipProps = {
-        ...keytipProps,
-        hasMenu: true
-      };
+      keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
     const containerProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, [], ['disabled']);
@@ -563,13 +566,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
   private _onRenderSplitButtonDivider(classNames: ISplitButtonClassNames | undefined): JSX.Element | null {
     if (classNames && classNames.divider) {
-      return <span className={classNames.divider} />;
+      return <span className={classNames.divider} aria-hidden={true} />;
     }
     return null;
   }
 
   private _onRenderSplitButtonMenuButton(classNames: ISplitButtonClassNames | undefined, keytipAttributes: any): JSX.Element {
-    const { allowDisabledFocus, checked, disabled } = this.props;
+    const { allowDisabledFocus, checked, disabled, splitButtonMenuProps } = this.props;
     let menuIconProps = this.props.menuIconProps;
 
     const { splitButtonAriaLabel } = this.props;
@@ -581,6 +584,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     const splitButtonProps = {
+      ...splitButtonMenuProps,
       styles: classNames,
       checked: checked,
       disabled: disabled,

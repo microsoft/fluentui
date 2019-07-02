@@ -94,7 +94,7 @@
    * version. In those cases, you will need to add an entry to the "allowedAlternateVersions"
    * section of the common-versions.json.
    */
-  "ensureConsistentVersions": false,
+  "ensureConsistentVersions": true,
   /**
    * Large monorepos can become intimidating for newcomers if project folder paths don't follow
    * a consistent and recognizable pattern.  When the system allows nested folder trees,
@@ -468,6 +468,16 @@
       "packageName": "@uifabric/lists",
       "projectFolder": "packages/lists",
       "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/tsx-editor",
+      "projectFolder": "packages/tsx-editor",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/mdl2-theme",
+      "projectFolder": "packages/mdl2-theme",
+      "shouldPublish": true
     }
   ]
 }

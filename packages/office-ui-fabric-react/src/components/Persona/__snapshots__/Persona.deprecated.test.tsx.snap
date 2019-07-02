@@ -34,7 +34,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
       &:hover $primaryText {
         color: #201f1e;
       }
-  size={13}
 >
   <div
     className=
@@ -47,7 +46,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
-    size={13}
   >
     <div
       className=
@@ -151,6 +149,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -236,7 +235,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       &:hover $primaryText {
         color: #201f1e;
       }
-  size={13}
 >
   <div
     className=
@@ -249,7 +247,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
-    size={13}
   >
     <div
       className=
@@ -329,6 +326,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -414,7 +412,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       &:hover $primaryText {
         color: #201f1e;
       }
-  size={13}
 >
   <div
     className=
@@ -427,7 +424,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
-    size={13}
   >
     <div
       className=
@@ -465,6 +461,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
 
               {

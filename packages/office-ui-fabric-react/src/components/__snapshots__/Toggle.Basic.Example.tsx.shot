@@ -947,6 +947,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
               }
           href="https://bing.com"
           onClick={[Function]}
+          target="_blank"
         >
           Learn More
         </a>
@@ -958,10 +959,12 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
           <i
+            aria-hidden={true}
             className=
 
                 {
@@ -1500,6 +1503,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
               }
           href="https://bing.com"
           onClick={[Function]}
+          target="_blank"
         >
           Learn More
         </a>
@@ -1511,10 +1515,12 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
           <i
+            aria-hidden={true}
             className=
 
                 {

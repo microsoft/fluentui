@@ -2,6 +2,64 @@
   "name": "@uifabric/codepen-loader",
   "entries": [
     {
+      "version": "7.0.3",
+      "tag": "@uifabric/codepen-loader_v7.0.3",
+      "date": "Mon, 24 Jun 2019 23:11:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pin prettier version back to 1.17",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "e18c895f03ee39ff1a3b964bc9a20ec42f64d53b"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.2",
+      "tag": "@uifabric/codepen-loader_v7.0.2",
+      "date": "Fri, 14 Jun 2019 12:26:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix missing assets in production build.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "e1bebe54dd798847060baaf4a52956c2f6dd866b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.1` to `^7.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.1",
+      "tag": "@uifabric/codepen-loader_v7.0.1",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update just-scripts",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.2",
       "tag": "@uifabric/codepen-loader_v0.1.2",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

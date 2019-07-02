@@ -2,10 +2,10 @@
 import * as React from 'react';
 import { withSlots, createComponent, getSlots } from '../../Foundation';
 import { getNativeProps, htmlElementProperties, warnDeprecations } from '../../Utilities';
-import StackItem from './StackItem/StackItem';
-import { IStackItemProps } from './StackItem/StackItem.types';
 import { styles } from './Stack.styles';
 import { IStackComponent, IStackProps, IStackSlots } from './Stack.types';
+import { StackItem } from './StackItem/StackItem';
+import { IStackItemProps } from './StackItem/StackItem.types';
 
 const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps>).type;
 

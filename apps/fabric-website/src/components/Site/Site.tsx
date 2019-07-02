@@ -22,7 +22,6 @@ import {
   SiteMessageBar
 } from '@uifabric/example-app-base/lib/index2';
 import { Nav } from '../Nav/index';
-import { AppCustomizations } from './customizations';
 import { AppCustomizationsContext, extractAnchorLink } from '@uifabric/example-app-base/lib/index';
 import * as styles from './Site.module.scss';
 import { appMaximumWidthLg } from '../../styles/constants';
@@ -34,13 +33,6 @@ export interface ISiteProps<TPlatforms extends string = string> {
 }
 
 export interface ISiteState<TPlatforms extends string = string> {
-  /**
-   * Whether this is the initial mount/render of the component. If true, nothing will render.
-   * This is a simpler workaround until state initialization can be moved from componentDidMount
-   * to the constructor (almost none of the initialization logic requires the component to be
-   * mounted, but moving it around turned out to be a bit complicated).
-   */
-  initialRender: boolean;
   platform: TPlatforms;
   searchablePageTitle?: string;
   isContentFullBleed?: boolean;
@@ -87,10 +79,24 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       });
     }
 
+    const navData = this._getNavData(activePlatforms);
+    let platform = 'default' as TPlatforms;
+
+    // If current page doesn't have pages for the active platform, switch to its first platform.
+    if (Object.keys(navData.pagePlatforms).length > 0 && navData.activePages.length === 0) {
+      const firstPlatform = getPageFirstPlatform(getSiteArea(siteDefinition.pages), siteDefinition);
+      const currentPage = getSiteArea(siteDefinition.pages);
+      platform = firstPlatform;
+      activePlatforms = {
+        ...activePlatforms,
+        [currentPage]: firstPlatform
+      };
+    }
+
     this.state = {
-      initialRender: true,
-      activePlatforms: activePlatforms,
-      platform: 'default' as TPlatforms
+      activePlatforms,
+      platform,
+      ...navData
     };
   }
 
@@ -109,14 +115,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
 
   public componentWillReceiveProps(nextProps: ISiteProps): void {
     if (nextProps && nextProps.children !== this.props.children) {
-      // TODO: decide which version to use
-      // from Jordan:
       document.body.scrollTop = document.documentElement.scrollTop = 0;
-      // from Natalie:
-      // when loading a new component page, we want to scroll to the top
-      // if (hash.indexOf('/components') !== -1) {
-      //   window.scrollTo(0, 0);
-      // }
     }
 
     this.setState(this._getNavData() as ISiteState<TPlatforms>);
@@ -126,13 +125,18 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     if (prevState.pagePath !== this.state.pagePath) {
       this._jumpToAnchor(extractAnchorLink(location.hash));
     }
+
+    const { activePages, pagePlatforms } = this.state;
+    const { siteDefinition } = this.props;
+
+    // If current page doesn't have pages for the active platform, switch to its first platform.
+    if (Object.keys(pagePlatforms).length > 0 && activePages.length === 0) {
+      const firstPlatform = getPageFirstPlatform(getSiteArea(siteDefinition.pages), siteDefinition);
+      this._onPlatformChanged(firstPlatform);
+    }
   }
 
   public render() {
-    if (this.state.initialRender) {
-      return null;
-    }
-
     const { platform, isContentFullBleed } = this.state;
     const { children, siteDefinition } = this.props;
     const { customizations } = siteDefinition;
@@ -156,27 +160,25 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
 
     return (
       <PlatformContext.Provider value={platform}>
-        <AppCustomizationsContext.Provider value={AppCustomizations}>
-          {customizations ? (
-            <Customizer {...customizations}>
-              <SiteContent />
-            </Customizer>
-          ) : (
+        {customizations ? (
+          <Customizer {...customizations}>
             <SiteContent />
-          )}
-        </AppCustomizationsContext.Provider>
+          </Customizer>
+        ) : (
+          <SiteContent />
+        )}
       </PlatformContext.Provider>
     );
   }
 
-  private _getNavData(): Partial<ISiteState<TPlatforms>> {
+  private _getNavData(activePlatforms?: ISiteState<TPlatforms>['activePlatforms']): Partial<ISiteState<TPlatforms>> {
     const { siteDefinition } = this.props;
     const pages = siteDefinition.pages;
     if (!pages) {
       return {};
     }
 
-    const platform = this._getPlatform();
+    const platform = this._getPlatform(activePlatforms);
     let searchablePageTitle: string | undefined;
     let isContentFullBleed = false;
     let hasPlatformPicker = false;
@@ -251,16 +253,9 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
   }
 
   private _renderPageNav(): JSX.Element | null {
-    const { activePages, searchablePageTitle, isContentFullBleed, pagePlatforms } = this.state;
-    const { siteDefinition } = this.props;
+    const { activePages, searchablePageTitle, isContentFullBleed } = this.state;
 
     if (!isContentFullBleed && activePages) {
-      // If current page doesn't have pages for the active platform, switch to its first platform.
-      if (Object.keys(pagePlatforms).length > 0 && activePages.length === 0) {
-        const firstPlatform = getPageFirstPlatform(getSiteArea(siteDefinition.pages), siteDefinition);
-        this._onPlatformChanged(firstPlatform);
-      }
-
       return (
         <div className={styles.siteNavScrollWrapper}>
           <ScrollBars>
@@ -283,11 +278,10 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
   /**
    * Determines the current page's platform.
    */
-  private _getPlatform = (): TPlatforms => {
+  private _getPlatform = (activePlatforms: ISiteState<TPlatforms>['activePlatforms'] = this.state.activePlatforms): TPlatforms => {
     const currentPage = getSiteArea(this.props.siteDefinition.pages);
-    const { activePlatforms } = this.state;
 
-    if (activePlatforms[currentPage]) {
+    if (activePlatforms && activePlatforms[currentPage]) {
       return activePlatforms[currentPage];
     }
 
@@ -449,7 +443,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     const { platforms } = siteDefinition;
 
     const newPagePath = removeAnchorLink(location.hash);
-    if (prevPagePath === newPagePath && !this.state.initialRender) {
+    if (prevPagePath === newPagePath) {
       // Must have been a change to the anchor only (not the route).
       // Don't do a full update, just jump to the anchor.
       this._jumpToAnchor(extractAnchorLink(location.hash));
@@ -483,7 +477,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     });
 
     // @TODO: investigate using history to save a re-render.
-    this.setState({ pagePath: newPagePath, initialRender: false });
+    this.setState({ pagePath: newPagePath });
   };
 
   private _jumpToAnchor(anchor: string): void {

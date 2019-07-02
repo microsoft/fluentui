@@ -1,6 +1,247 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 05 Jun 2019 12:22:30 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2019 18:51:43 GMT and should not be manually modified.
+
+## 7.6.3
+Mon, 01 Jul 2019 18:51:43 GMT
+
+### Patches
+
+- Prettier change
+- adds react-app-polyfill
+- Fix tests for BasePicker + remove redundant state
+
+## 7.6.2
+Fri, 28 Jun 2019 12:27:34 GMT
+
+### Patches
+
+- Replaced SCSS in favour of CSS in JS in List Basic Example
+- Added interfaces for List Ghosting Example
+- GroupedList: Fix "Show All" not rendering all items in a group
+- Removed scss usage from List example.
+- GroupedList: Updated header text color on hover and updated snapshots.
+- Layer: remove the usage of viewport width and height to fix layout issues on mobile browsers
+- Removed used Rating SCSS file
+
+## 7.6.1
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Patches
+
+- Prettier changes.
+- Avoid marking DetailsRow as non-draggable unless backed by DragDropEvents
+- Addressing a variety of problems related to style recalculations.
+- Panel: Overflowing header text should word break and wrap by default
+- Add placeholder as TextArea property, allows placeholder in multiline TextField
+
+## 7.6.0
+Wed, 26 Jun 2019 21:48:30 GMT
+
+### Minor changes
+
+- BasePicker would only reveal suggestions on type or click, shifting focus. Now shows for click, not shifting focus as well.
+
+## 7.5.3
+Wed, 26 Jun 2019 12:23:41 GMT
+
+### Patches
+
+- Panel: move windowHeight from classNames into inline styles to prevent unnecessary className recalculations, respect isFooterAtBottom prop
+- TextField: Add condition for Edge browser to detect placeholder styles
+
+## 7.5.2
+Tue, 25 Jun 2019 12:26:09 GMT
+
+### Patches
+
+- Updates to tileslist, list and marquee selection
+
+## 7.5.1
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- FocusZone: fixed keyboard navigation when checkForNoWrap prop enabled.
+- Dropdown:Bring back breakpoint for small screen sizes
+- Coachmark: fixes beacon color props not being passed to styles.
+
+## 7.5.0
+Fri, 21 Jun 2019 12:27:05 GMT
+
+### Minor changes
+
+- Adds dual presence to PersonaPresence
+- Slider: onChanged is fired after a delay following keydown events.
+
+### Patches
+
+- Tooltip: add onKeyDown handler to dismiss on escape
+- Combobox: Fix styles so that RootChecked works
+- Don't expand ComboBox flyout on touch when disabled.
+- TooltipHost: fix the closeDelay Tooltip bug where a user could not interact with the Tooltip because it would close.
+
+## 7.4.3
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- DetailsList: add aria-hidden to checkbox labels
+
+## 7.4.2
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Patches
+
+- Make more examples exportable to codepen
+
+## 7.4.1
+Tue, 18 Jun 2019 19:00:04 GMT
+
+### Patches
+
+- Facepile: Introducing OnRenderPersona and OnRenderPersonaCoin to override default implementation of Persona and PersonaCoin. 
+- Tooltip: reverts commit 210fbabee 
+
+## 7.4.0
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Minor changes
+
+- DetailsList accessibility now reports 0 rows while placeholder data is being displayed. Also added a prop to ShimmeredDetailsList to specify aria label (such as a "loading data" message) while shimmer is being displayed.
+
+### Patches
+
+- Prevent the callout from being dismissed when the mouse is pressed inside, but then moved outside (while keeping pressed) and released. 
+- Only run KeytipManager update when relevant keytip props have changed in KeytipData.
+
+## 7.3.0
+Mon, 17 Jun 2019 12:26:51 GMT
+
+### Minor changes
+
+- exposing datemath function to calculate beginning of week
+- ShimmeredDetailsList: fixes issue where fading overlay was not removed when real item passed.
+
+### Patches
+
+- Removing getClassNames method from SwatchColorPicker.base.tsx which improves perf. by about 10% because of memoization
+- Stack: Improving examples so that they have better performance and removing anti-patterns from them.
+- Tooltip: Improving performance by wrapping Callout inside with a DelayedRender so that nothing renders until after the delay's done and only if the mouse's still over the tooltip area."
+- Updates some documentation links.
+
+## 7.2.0
+Fri, 14 Jun 2019 15:54:00 GMT
+
+### Minor changes
+
+- Major bumping the foundation package.
+
+## 7.1.1
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Set context menu width when using a split button to calculation of total width minus the width of the split menu button
+- Coachmark: Bottom position coachmarks shouldn't be hidden/cut off by other elements on the page.
+- Updated DetailsList example code to provide getKey prop, needed to make seelction work correctly when sorting and filtering are enabled.
+- Fix missing assets in production build.
+
+## 7.1.0
+Thu, 13 Jun 2019 12:20:34 GMT
+
+### Minor changes
+
+- HoverCard: Handle target being null in the case of unset ref
+
+### Patches
+
+- withViewport: Render composed component regardless of viewport height and width
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 7.0.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Breaking changes
+
+- Move Calendar and DatePicker to legacy package
+- ColorPicker: remove deprecated props, better error handling, fix TextField usage
+- ComboBox: *Breaking Change* deprecated props `value` and `onChanged` removed
+- Dropdown className should be applied to the root
+- Remove deprecated doc page props
+- SearchBox: pass event to onChange
+- Rating: *Breaking change* is `rating` prop is passed, control will reflect value always.
+- Remove use of deprecated @autobind decorator
+- DetailsList, DetailsRow, DetailsRowFields: remove deprecated props, logic and styles related to `Shimmer`.
+- Move Router to example-app-base
+- ShimmerDetailsList: remove deprecated props and style props.
+- TextField: remove deprecated props, fix controlled/uncontrolled behavior
+
+### Minor changes
+
+- Stack: Adding relevant Stack and StackItem tokens.
+- Do not export Foundation package.
+- Support slots API changes.
+- Changes to support slots API refactoring.
+- Persona: remap existing persona initial colors to new fluent values and add some new ones.
+
+### Patches
+
+- Fixing the order of switching sides in RTL context, so the order has to start with the right then left. Issue sample #9029
+- Button: Conditionally rendering KeytipData.
+- ColorPicker: remove decimals from alpha value
+- Update CommandBar/CommandBarButton styles
+- Update Layer examples to use modern context API
+- Improved CSS in Stack sample code for performance.
+- Update and dedupe React deps.
+- Support changes to createComponent API.
+- Remove unused and not exported ListPage prototype component
+- SelectionZone: Document exported interfaces, remove any type usage, consolidate ev.target access
+- Rating: Added getNativeProps to component for event usage
+- Update instances of `getFocusStyle` to use named parameters.
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
+- Stack: Adding documentation to tokens.
+- Suggestions: add itemProps type of onRenderSuggestedItem
+
+## 6.189.4
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- Updating snapshots to conform with `getNativeAttributes` changes which should filter out unexpected attributes from primatives more accurately.
+- Improve performance of documentcardtitle
+- upgrade to api-extractor 7.1.6
+
+## 6.189.3
+Mon, 10 Jun 2019 12:24:00 GMT
+
+### Patches
+
+- Icon: Set aria-hidden if imageProps.alt or imageProps.aria-labelledby is undefined
+- DatePicker: Check out of bounds on initial render
+- Fixes issue when the menu icon in the second button of the `SplitButton` gets disabled styles when only the primary action is disabled.
+
+## 6.189.2
+Fri, 07 Jun 2019 12:21:48 GMT
+
+### Patches
+
+- Panel: use windowHeight for all devices rather than only for iOS
+- Improved Calendar A11Y
+
+## 6.189.1
+Thu, 06 Jun 2019 12:22:24 GMT
+
+### Patches
+
+- Update documentation to add target _blank to external links
+- Fixing some bugs for the persisted ContextualMenu
 
 ## 6.189.0
 Wed, 05 Jun 2019 12:22:30 GMT

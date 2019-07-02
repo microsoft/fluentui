@@ -1,12 +1,8 @@
 pr:
-  - fabric-7
   - master
-  - website-update
 
 trigger:
-  - fabric-7
   - master
-  - website-update
 
 variables:
   - group: fabric-variables
@@ -25,11 +21,15 @@ steps:
     displayName: rush install
 
   - script: |
+      npm run checkchange
+    displayName: check change
+
+  - script: |
       npm run buildci
     displayName: build ci
 
   - task: AzureUpload@1
-    displayName: AzureUpload
+    displayName: Upload PR deploy site
     inputs:
       SourcePath: 'apps/pr-deploy-site/dist'
       azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
@@ -38,8 +38,18 @@ steps:
       BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
   - script: |
-      npm run perf-test
-    displayName: perf test
+      npm run just perf-test
+    workingDirectory: apps/perf-test
+    displayName: Perf Test
+
+  - task: AzureUpload@1
+    displayName: Upload Perf Test Result to PR deploy site
+    inputs:
+      SourcePath: 'apps/perf-test/dist'
+      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+      storage: fabricweb
+      ContainerName: '$web'
+      BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)/perf-test'
 
   - task: GithubPRComment@0
     displayName: 'Post Perf Results to Github Pull Request'
@@ -58,10 +68,6 @@ steps:
       githubContext: 'Pull Request Deployed Site'
       githubDescription: 'Click "Details" to go to the Deployed Site'
       githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
-
-  - script: |
-      npm run a11ytest
-    displayName: run a11y tests
 
   - task: PublishBuildArtifacts@1
     inputs:

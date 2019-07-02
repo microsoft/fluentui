@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { IStyle, ITheme } from '../../Styling';

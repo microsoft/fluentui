@@ -4,34 +4,36 @@ import { IStackStyles, IStackTokens } from '../Stack.types';
 import { IStackItemStyles } from '../StackItem/StackItem.types';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
+// Styles definition
+const stackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.themeTertiary
+  }
+};
+const stackItemStyles: IStackItemStyles = {
+  root: {
+    background: DefaultPalette.themePrimary,
+    color: DefaultPalette.white,
+    padding: 5
+  }
+};
+
+// Tokens definition
+const containerStackTokens: IStackTokens = { childrenGap: 5 };
+const verticalGapStackTokens: IStackTokens = {
+  childrenGap: 10,
+  padding: 10
+};
+const itemAlignmentsStackTokens: IStackTokens = {
+  childrenGap: 5,
+  padding: 10
+};
+const clickableStackTokens: IStackTokens = {
+  padding: 10
+};
+
 export class VerticalStackBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const stackStyles: IStackStyles = {
-      root: {
-        background: DefaultPalette.themeTertiary
-      }
-    };
-    const stackItemStyles: IStackItemStyles = {
-      root: {
-        background: DefaultPalette.themePrimary,
-        color: DefaultPalette.white,
-        padding: 5
-      }
-    };
-
-    const containerStackTokens: IStackTokens = { childrenGap: 5 };
-    const verticalGapStackTokens: IStackTokens = {
-      childrenGap: 10,
-      padding: 10
-    };
-    const itemAlignmentStackTokens: IStackTokens = {
-      childrenGap: 5,
-      padding: 10
-    };
-    const clickableStackTokens: IStackTokens = {
-      padding: 10
-    };
-
     return (
       <Stack tokens={containerStackTokens}>
         <span>Default vertical stack</span>
@@ -62,7 +64,7 @@ export class VerticalStackBasicExample extends React.Component<{}, {}> {
         </Stack>
 
         <span>Item alignments</span>
-        <Stack styles={stackStyles} tokens={itemAlignmentStackTokens}>
+        <Stack styles={stackStyles} tokens={itemAlignmentsStackTokens}>
           <Stack.Item align="auto" styles={stackItemStyles}>
             <span>Auto-aligned item</span>
           </Stack.Item>

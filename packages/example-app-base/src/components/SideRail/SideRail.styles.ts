@@ -1,7 +1,6 @@
 import { FontWeights, getFocusOutlineStyle, IStyleFunction } from 'office-ui-fabric-react/lib/index';
 import { appPaddingSm } from '../../styles/constants';
 import { ISideRailStyleProps, ISideRailStyles } from './SideRail.types';
-import { FontSizes } from '@uifabric/fluent-theme';
 
 export const sideRailClassNames = {
   isActive: 'SideRail-isActive'
@@ -20,7 +19,7 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
       }
     },
     sectionTitle: {
-      fontSize: '15px',
+      fontSize: theme.fonts.mediumPlus.fontSize,
       fontWeight: FontWeights.semibold,
       color: theme.palette.neutralSecondary,
       marginTop: 0,
@@ -32,7 +31,7 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
     },
     linkWrapper: {
       display: 'flex',
-      fontSize: FontSizes.size14,
+      fontSize: theme.fonts.medium.fontSize,
       selectors: {
         a: [
           {
@@ -51,7 +50,7 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
       selectors: {
         'ul li': [
           {
-            fontSize: FontSizes.size14,
+            fontSize: theme.fonts.medium.fontSize,
             padding: '4px 8px',
             selectors: {
               '&:hover': { background: theme.palette.neutralLight }

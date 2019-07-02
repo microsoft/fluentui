@@ -24,7 +24,6 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
           padding-right: 0px;
           padding-top: 0px;
         }
-    placeholder="Select a date..."
   >
     <div
       aria-expanded={false}
@@ -151,6 +150,15 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     font-weight: 400;
                     opacity: 1;
                   }
+                  &::-ms-input-placeholder {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a19f9d;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    opacity: 1;
+                  }
               disabled={true}
               id="DatePicker0-label"
               onBlur={[Function]}
@@ -166,6 +174,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
               value=""
             />
             <i
+              aria-hidden={true}
               className=
                   ms-DatePicker-event--without-label
                   {
@@ -216,7 +225,6 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
           padding-right: 0px;
           padding-top: 0px;
         }
-    placeholder="Select a date..."
   >
     <div
       aria-expanded={false}
@@ -284,9 +292,8 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                 @media screen and (-ms-high-contrast: active){& {
                   color: GrayText;
                 }
-            htmlFor="DatePicker4-label"
-            id="TextFieldLabel7"
-            required={false}
+            htmlFor="DatePicker5-label"
+            id="TextFieldLabel9"
           >
             Disabled (with label)
           </label>
@@ -323,7 +330,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
             <input
               aria-invalid={false}
               aria-label="Select a date"
-              aria-labelledby="TextFieldLabel7"
+              aria-labelledby="TextFieldLabel9"
               className=
                   ms-TextField-field
                   {
@@ -377,8 +384,17 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     font-weight: 400;
                     opacity: 1;
                   }
+                  &::-ms-input-placeholder {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a19f9d;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    opacity: 1;
+                  }
               disabled={true}
-              id="DatePicker4-label"
+              id="DatePicker5-label"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -392,6 +408,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
               value=""
             />
             <i
+              aria-hidden={true}
               className=
                   ms-DatePicker-event--with-label
                   {

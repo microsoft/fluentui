@@ -46,6 +46,7 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
         padding: '0 4px',
         alignSelf: 'flex-end',
         marginRight: 16,
+        marginTop: 3,
         fontSize: FontSizes.small,
         selectors: {
           '& div': {

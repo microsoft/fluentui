@@ -2,7 +2,25 @@
 
 exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly 1`] = `
 <div
-  className="ms-PersonaExample"
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 10px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
 >
   <div
     className=
@@ -37,7 +55,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={12}
   >
     <div
       className=
@@ -50,7 +67,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
             font-size: 14px;
             font-weight: 400;
           }
-      size={12}
     >
       <div
         className=
@@ -88,6 +104,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
         >
           <i
+            aria-hidden={true}
             className=
 
                 {
@@ -144,6 +161,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -171,6 +189,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -240,7 +259,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={14}
   >
     <div
       className=
@@ -253,7 +271,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
             font-size: 14px;
             font-weight: 400;
           }
-      size={14}
     >
       <div
         className=
@@ -291,6 +308,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
         >
           <i
+            aria-hidden={true}
             className=
 
                 {
@@ -347,6 +365,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -374,6 +393,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
@@ -402,6 +422,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
+          onKeyDown={[Function]}
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >

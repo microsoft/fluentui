@@ -158,7 +158,7 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
         <div className={classNames.gridContainer} role="grid">
           {cells.map((cellRow: React.ReactNode[], index: number) => {
             return (
-              <div key={'yearPickerRow_' + index} role="row">
+              <div key={'yearPickerRow_' + index} role="row" className={classNames.buttonRow}>
                 {...cellRow}
               </div>
             );

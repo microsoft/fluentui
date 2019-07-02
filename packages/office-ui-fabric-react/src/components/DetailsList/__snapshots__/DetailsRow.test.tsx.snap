@@ -90,7 +90,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >
@@ -241,6 +241,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -270,6 +271,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                     
                   </i>
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -911,7 +913,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >
@@ -1062,6 +1064,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -1091,6 +1094,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                     
                   </i>
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -1711,11 +1715,9 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       }
   data-automationid="DetailsRow"
   data-focuszone-id="FocusZone12"
-  data-is-draggable={false}
   data-is-focusable={true}
   data-item-index={0}
   data-selection-index={0}
-  draggable={false}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -1863,6 +1865,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Check-circle
               {
@@ -1892,6 +1895,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           
         </i>
         <i
+          aria-hidden={true}
           className=
               ms-Check-check
               {
@@ -2214,7 +2218,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >
@@ -2365,6 +2369,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -2394,6 +2399,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                     
                   </i>
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -3035,7 +3041,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >
@@ -3186,6 +3192,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -3215,6 +3222,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                     
                   </i>
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {

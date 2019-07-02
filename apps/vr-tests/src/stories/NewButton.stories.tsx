@@ -4,19 +4,19 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import {
+  Actionable,
+  ActionButton,
   Button,
   IButtonProps,
-  MenuButton,
-  IMenuButtonProps,
-  SplitButton,
-  DefaultButton,
-  PrimaryButton,
-  ActionButton,
-  BaseButton,
   CommandBarButton,
   CompoundButton,
+  DefaultButton,
   IconButton,
-  MessageBarButton
+  MenuButton,
+  IMenuButtonProps,
+  MessageBarButton,
+  PrimaryButton,
+  SplitButton
 } from '@uifabric/experiments';
 import { Stack, Text } from 'office-ui-fabric-react';
 
@@ -174,6 +174,24 @@ storiesOf('PrimaryButton', module)
   .addStory('Default', () => <PrimaryButton {...baseProps} />, { rtl: true })
   .addStory('Disabled', () => <PrimaryButton disabled {...baseProps} />);
 
+storiesOf('Actionable', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('.ms-Actionable')
+        .snapshot('hovered', { cropTo: '.testWrapper' })
+        .mouseDown('.ms-Actionable')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => <Actionable>Button</Actionable>)
+  .addStory('Disabled', () => <Actionable disabled>Button</Actionable>);
+
 storiesOf('ActionButton', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
@@ -191,24 +209,6 @@ storiesOf('ActionButton', module)
   ))
   .addStory('Default', () => <ActionButton {...baseProps} />, { rtl: true })
   .addStory('Disabled', () => <ActionButton disabled {...baseProps} />);
-
-storiesOf('BaseButton', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-Button')
-        .snapshot('hovered', { cropTo: '.testWrapper' })
-        .mouseDown('.ms-Button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addStory('Default', () => <BaseButton {...baseProps} />, { rtl: true })
-  .addStory('Disabled', () => <BaseButton disabled {...baseProps} />);
 
 storiesOf('CommandBarButton', module)
   .addDecorator(FabricDecorator)

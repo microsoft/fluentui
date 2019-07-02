@@ -3,7 +3,7 @@ import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack } from '../Stack';
 import { IStackStyles, IStackTokens } from '../Stack.types';
-import { mergeStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export type HorizontalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 export type VerticalAlignment = 'start' | 'center' | 'end';
@@ -16,6 +16,21 @@ export interface IExampleState {
   verticalAlignment: VerticalAlignment;
   overflow: Overflow;
 }
+
+// Non-mutating styles definition
+const itemStyles: React.CSSProperties = {
+  alignItems: 'center',
+  background: DefaultPalette.themePrimary,
+  color: DefaultPalette.white,
+  display: 'flex',
+  height: 50,
+  justifyContent: 'center',
+  width: 50
+};
+
+// Tokens definition
+const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+const wrapStackTokens: IStackTokens = { childrenGap: 20 };
 
 export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExampleState> {
   constructor(props: {}) {
@@ -32,28 +47,15 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
   public render(): JSX.Element {
     const { stackWidth, containerHeight, overflow, horizontalAlignment, verticalAlignment } = this.state;
 
+    // Mutating styles definition
     const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
         overflow,
-        width: `${stackWidth}%`,
-        selectors: {
-          '& span': {
-            alignItems: 'center',
-            background: DefaultPalette.themePrimary,
-            color: DefaultPalette.white,
-            display: 'flex',
-            height: 50,
-            justifyContent: 'center',
-            width: 50
-          }
-        }
+        width: `${stackWidth}%`
       }
     };
-    const containerStyles = mergeStyles({ height: containerHeight });
-
-    const sectionStackTokens: IStackTokens = { childrenGap: 10 };
-    const wrapStackTokens: IStackTokens = { childrenGap: 20 };
+    const containerStyles: React.CSSProperties = { height: containerHeight };
 
     return (
       <Stack tokens={sectionStackTokens}>
@@ -111,13 +113,13 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
           </Stack.Item>
         </Stack>
 
-        <div className={containerStyles}>
+        <div style={containerStyles}>
           <Stack wrap horizontalAlign={horizontalAlignment} verticalAlign={verticalAlignment} styles={stackStyles} tokens={wrapStackTokens}>
-            <span>1</span>
-            <span>2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
+            <span style={itemStyles}>1</span>
+            <span style={itemStyles}>2</span>
+            <span style={itemStyles}>3</span>
+            <span style={itemStyles}>4</span>
+            <span style={itemStyles}>5</span>
           </Stack>
         </div>
       </Stack>

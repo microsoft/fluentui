@@ -53,7 +53,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={11}
         >
           <div
             className=
@@ -288,7 +287,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:first-child {
                 align-self: flex-end;
               }
-          size={8}
         >
           <div
             className=
@@ -347,7 +345,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               &:first-child {
                 align-self: flex-end;
               }
-          size={8}
         >
           <div
             className=
@@ -678,7 +675,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={8}
         >
           <div
             className=
@@ -734,7 +730,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={8}
         >
           <div
             className=
@@ -814,7 +809,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={8}
         >
           <div
             className=
@@ -1088,7 +1082,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={8}
         >
           <div
             className=
@@ -1144,7 +1137,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={8}
         >
           <div
             className=
@@ -1224,7 +1216,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={8}
         >
           <div
             className=
@@ -1280,7 +1271,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={8}
         >
           <div
             className=

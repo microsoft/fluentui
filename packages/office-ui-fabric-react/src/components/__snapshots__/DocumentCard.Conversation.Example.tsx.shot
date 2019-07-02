@@ -56,6 +56,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -88,9 +89,9 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               -webkit-font-smoothing: antialiased;
               color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -100,6 +101,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="Conversation about annual report: it has a very very long name which should be truncated."
       >
         Conversation about annual report: it has a very very long name which should be truncated.
@@ -124,6 +130,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="This is the email content preview which is very very long. The email also has some more content. The content continues. This is the last."
       >
         This is the email content preview which is very very long. The email also has some more content. The content continues. This is the last.
@@ -147,6 +158,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
             }
       >
         <i
+          aria-hidden={true}
           className=
 
               {
@@ -227,7 +239,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                   font-weight: 400;
                 }
             role="presentation"
-            size={11}
           >
             <div
               className=
@@ -308,7 +319,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                   font-weight: 400;
                 }
             role="presentation"
-            size={11}
           >
             <div
               className=
@@ -478,6 +488,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -510,9 +521,9 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               -webkit-font-smoothing: antialiased;
               color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -569,6 +580,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
             }
       >
         <i
+          aria-hidden={true}
           className=
 
               {
@@ -649,7 +661,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                   font-weight: 400;
                 }
             role="presentation"
-            size={11}
           >
             <div
               className=
@@ -754,7 +765,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                   font-weight: 400;
                 }
             role="presentation"
-            size={11}
           >
             <div
               className=
@@ -900,6 +910,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -932,9 +943,9 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               -webkit-font-smoothing: antialiased;
               color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -944,6 +955,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="Conversation about annual report"
       >
         Conversation about annual report
@@ -968,6 +984,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="This is the email content preview. It has a second line."
       >
         This is the email content preview. It has a second line.
@@ -1030,7 +1051,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                   font-weight: 400;
                 }
             role="presentation"
-            size={11}
           >
             <div
               className=
@@ -1135,7 +1155,6 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                   font-weight: 400;
                 }
             role="presentation"
-            size={11}
           >
             <div
               className=

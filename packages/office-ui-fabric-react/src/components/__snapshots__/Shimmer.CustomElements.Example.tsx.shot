@@ -45,7 +45,6 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
           height: auto;
           position: relative;
         }
-    width={350}
   >
     <div
       className=
@@ -511,7 +510,6 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
           height: auto;
           position: relative;
         }
-    width={550}
   >
     <div
       className=
@@ -923,7 +921,6 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
           height: auto;
           position: relative;
         }
-    width="90%"
   >
     <div
       className=

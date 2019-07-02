@@ -1,0 +1,470 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StaticList renders default unordered-list correctly 1`] = `
+<ul>
+  <li>
+    0
+  </li>
+  <li>
+    1
+  </li>
+  <li>
+    2
+  </li>
+  <li>
+    3
+  </li>
+  <li>
+    4
+  </li>
+  <li>
+    5
+  </li>
+  <li>
+    6
+  </li>
+  <li>
+    7
+  </li>
+  <li>
+    8
+  </li>
+  <li>
+    9
+  </li>
+  <li>
+    10
+  </li>
+  <li>
+    11
+  </li>
+  <li>
+    12
+  </li>
+  <li>
+    13
+  </li>
+  <li>
+    14
+  </li>
+  <li>
+    15
+  </li>
+  <li>
+    16
+  </li>
+  <li>
+    17
+  </li>
+  <li>
+    18
+  </li>
+  <li>
+    19
+  </li>
+  <li>
+    20
+  </li>
+  <li>
+    21
+  </li>
+  <li>
+    22
+  </li>
+  <li>
+    23
+  </li>
+  <li>
+    24
+  </li>
+  <li>
+    25
+  </li>
+  <li>
+    26
+  </li>
+  <li>
+    27
+  </li>
+  <li>
+    28
+  </li>
+  <li>
+    29
+  </li>
+  <li>
+    30
+  </li>
+  <li>
+    31
+  </li>
+  <li>
+    32
+  </li>
+  <li>
+    33
+  </li>
+  <li>
+    34
+  </li>
+  <li>
+    35
+  </li>
+  <li>
+    36
+  </li>
+  <li>
+    37
+  </li>
+  <li>
+    38
+  </li>
+  <li>
+    39
+  </li>
+  <li>
+    40
+  </li>
+  <li>
+    41
+  </li>
+  <li>
+    42
+  </li>
+  <li>
+    43
+  </li>
+  <li>
+    44
+  </li>
+  <li>
+    45
+  </li>
+  <li>
+    46
+  </li>
+  <li>
+    47
+  </li>
+  <li>
+    48
+  </li>
+  <li>
+    49
+  </li>
+</ul>
+`;
+
+exports[`StaticList renders empty list correctly 1`] = `<ul />`;
+
+exports[`StaticList renders empty list with custom root tag correctly 1`] = `<ol />`;
+
+exports[`StaticList renders ordered-list correctly 1`] = `
+<ol>
+  <li>
+    Item #0
+  </li>
+  <li>
+    Item #1
+  </li>
+  <li>
+    Item #2
+  </li>
+  <li>
+    Item #3
+  </li>
+  <li>
+    Item #4
+  </li>
+  <li>
+    Item #5
+  </li>
+  <li>
+    Item #6
+  </li>
+  <li>
+    Item #7
+  </li>
+  <li>
+    Item #8
+  </li>
+  <li>
+    Item #9
+  </li>
+  <li>
+    Item #10
+  </li>
+  <li>
+    Item #11
+  </li>
+  <li>
+    Item #12
+  </li>
+  <li>
+    Item #13
+  </li>
+  <li>
+    Item #14
+  </li>
+  <li>
+    Item #15
+  </li>
+  <li>
+    Item #16
+  </li>
+  <li>
+    Item #17
+  </li>
+  <li>
+    Item #18
+  </li>
+  <li>
+    Item #19
+  </li>
+  <li>
+    Item #20
+  </li>
+  <li>
+    Item #21
+  </li>
+  <li>
+    Item #22
+  </li>
+  <li>
+    Item #23
+  </li>
+  <li>
+    Item #24
+  </li>
+  <li>
+    Item #25
+  </li>
+  <li>
+    Item #26
+  </li>
+  <li>
+    Item #27
+  </li>
+  <li>
+    Item #28
+  </li>
+  <li>
+    Item #29
+  </li>
+  <li>
+    Item #30
+  </li>
+  <li>
+    Item #31
+  </li>
+  <li>
+    Item #32
+  </li>
+  <li>
+    Item #33
+  </li>
+  <li>
+    Item #34
+  </li>
+  <li>
+    Item #35
+  </li>
+  <li>
+    Item #36
+  </li>
+  <li>
+    Item #37
+  </li>
+  <li>
+    Item #38
+  </li>
+  <li>
+    Item #39
+  </li>
+  <li>
+    Item #40
+  </li>
+  <li>
+    Item #41
+  </li>
+  <li>
+    Item #42
+  </li>
+  <li>
+    Item #43
+  </li>
+  <li>
+    Item #44
+  </li>
+  <li>
+    Item #45
+  </li>
+  <li>
+    Item #46
+  </li>
+  <li>
+    Item #47
+  </li>
+  <li>
+    Item #48
+  </li>
+  <li>
+    Item #49
+  </li>
+</ol>
+`;
+
+exports[`StaticList renders unordered-list with child render function correctly 1`] = `
+<ul>
+  <li>
+    Item #0
+  </li>
+  <li>
+    Item #1
+  </li>
+  <li>
+    Item #2
+  </li>
+  <li>
+    Item #3
+  </li>
+  <li>
+    Item #4
+  </li>
+  <li>
+    Item #5
+  </li>
+  <li>
+    Item #6
+  </li>
+  <li>
+    Item #7
+  </li>
+  <li>
+    Item #8
+  </li>
+  <li>
+    Item #9
+  </li>
+  <li>
+    Item #10
+  </li>
+  <li>
+    Item #11
+  </li>
+  <li>
+    Item #12
+  </li>
+  <li>
+    Item #13
+  </li>
+  <li>
+    Item #14
+  </li>
+  <li>
+    Item #15
+  </li>
+  <li>
+    Item #16
+  </li>
+  <li>
+    Item #17
+  </li>
+  <li>
+    Item #18
+  </li>
+  <li>
+    Item #19
+  </li>
+  <li>
+    Item #20
+  </li>
+  <li>
+    Item #21
+  </li>
+  <li>
+    Item #22
+  </li>
+  <li>
+    Item #23
+  </li>
+  <li>
+    Item #24
+  </li>
+  <li>
+    Item #25
+  </li>
+  <li>
+    Item #26
+  </li>
+  <li>
+    Item #27
+  </li>
+  <li>
+    Item #28
+  </li>
+  <li>
+    Item #29
+  </li>
+  <li>
+    Item #30
+  </li>
+  <li>
+    Item #31
+  </li>
+  <li>
+    Item #32
+  </li>
+  <li>
+    Item #33
+  </li>
+  <li>
+    Item #34
+  </li>
+  <li>
+    Item #35
+  </li>
+  <li>
+    Item #36
+  </li>
+  <li>
+    Item #37
+  </li>
+  <li>
+    Item #38
+  </li>
+  <li>
+    Item #39
+  </li>
+  <li>
+    Item #40
+  </li>
+  <li>
+    Item #41
+  </li>
+  <li>
+    Item #42
+  </li>
+  <li>
+    Item #43
+  </li>
+  <li>
+    Item #44
+  </li>
+  <li>
+    Item #45
+  </li>
+  <li>
+    Item #46
+  </li>
+  <li>
+    Item #47
+  </li>
+  <li>
+    Item #48
+  </li>
+  <li>
+    Item #49
+  </li>
+</ul>
+`;
