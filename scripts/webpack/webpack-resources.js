@@ -1,10 +1,62 @@
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('fs');
+const resolve = require('resolve');
 const merge = require('../tasks/merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const webpackVersion = require('webpack/package.json').version;
 console.log(`Webpack version: ${webpackVersion}`);
+
+let isValidEnv = false;
+
+function validateEnv() {
+  if (!isValidEnv) {
+    try {
+      const resolvedPolyfill = resolve.sync('react-app-polyfill/ie11', { basedir: process.cwd() });
+      isValidEnv = !!resolvedPolyfill;
+    } catch (e) {
+      console.error('Please make sure the package "react-app-polyfill" is in the package.json dependencies');
+      process.exit(1);
+    }
+  }
+}
+
+function shouldPrepend(config) {
+  const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
+  const excludedProjects = ['perf-test', 'test-bundles'];
+  const exportedAsBundle = config.output && (config.output.libraryTarget === 'umd' || config.output.libraryTarget === 'var');
+  const hasReactAsDependency =
+    (packageJson.dependencies && Object.keys(packageJson.dependencies).includes('react')) ||
+    (packageJson.devDependencies && Object.keys(packageJson.devDependencies).includes('react'));
+  return !exportedAsBundle && hasReactAsDependency && !excludedProjects.includes(packageJson.name);
+}
+
+/**
+ * Prepends the entry points with a react 16 compatible polyfill but only for sites that have react as a dependency
+ */
+function createEntryWithPolyfill(entry, config) {
+  if (shouldPrepend(config) && entry) {
+    validateEnv();
+
+    const polyfill = 'react-app-polyfill/ie11';
+    if (typeof entry === 'string') {
+      return [polyfill, entry];
+    } else if (Array.isArray(entry)) {
+      return [polyfill, ...entry];
+    } else if (typeof entry === 'object') {
+      const newEntry = { ...entry };
+
+      Object.keys(entry).forEach(entryPoint => {
+        newEntry[entryPoint] = createEntryWithPolyfill(entry[entryPoint], config);
+      });
+
+      return newEntry;
+    }
+  }
+
+  return entry;
+}
 
 module.exports = {
   webpack,
@@ -70,11 +122,15 @@ module.exports = {
       );
     }
 
+    for (let config of configs) {
+      config.entry = createEntryWithPolyfill(config.entry, config);
+    }
+
     return configs;
   },
 
   createServeConfig(customConfig) {
-    return merge(
+    const config = merge(
       {
         devServer: {
           inline: true,
@@ -150,6 +206,10 @@ module.exports = {
       },
       customConfig
     );
+
+    config.entry = createEntryWithPolyfill(config.entry, config);
+
+    return config;
   }
 };
 

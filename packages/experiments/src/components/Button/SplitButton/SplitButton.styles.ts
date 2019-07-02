@@ -2,10 +2,10 @@ import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 import { ISplitButtonComponent, ISplitButtonStylesReturnType, ISplitButtonTokenReturnType } from './SplitButton.types';
 
 const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
-  const { effects, palette, semanticColors } = theme;
+  const { effects, semanticColors } = theme;
   return {
-    backgroundColor: palette.white,
-    backgroundColorHovered: palette.neutralLighter,
+    backgroundColor: semanticColors.buttonBackground,
+    backgroundColorHovered: semanticColors.buttonBackgroundHovered,
     backgroundColorPressed: semanticColors.buttonBackgroundPressed,
     borderColor: semanticColors.buttonBorder,
     borderColorHovered: semanticColors.buttonBorder,
@@ -22,14 +22,14 @@ const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButton
 };
 
 const primaryTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
-  const { palette, semanticColors } = theme;
+  const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.primaryButtonBackground,
     backgroundColorHovered: semanticColors.primaryButtonBackgroundHovered,
     backgroundColorPressed: semanticColors.primaryButtonBackgroundPressed,
     borderWidth: 0,
     color: semanticColors.primaryButtonText,
-    dividerColor: palette.white,
+    dividerColor: semanticColors.primaryButtonText,
     highContrastBackgroundColor: 'WindowText',
     highContrastBackgroundColorHovered: 'Highlight',
     highContrastBackgroundColorPressed: 'Highlight',
@@ -74,6 +74,8 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
         borderRadius: tokens.borderRadius,
         boxSizing: 'border-box',
         display: 'inline-flex',
+        flexDirection: 'row',
+        justifyContent: 'stretch',
         zIndex: 1,
 
         selectors: {
@@ -146,6 +148,8 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       borderRightWidth: 0,
       borderTopWidth: props.primaryActionDisabled ? 0 : tokens.borderWidth,
       boxSizing: 'border-box',
+      display: 'inline-flex',
+      flexDirection: 'column',
       height: 'auto',
       width: 'auto',
 

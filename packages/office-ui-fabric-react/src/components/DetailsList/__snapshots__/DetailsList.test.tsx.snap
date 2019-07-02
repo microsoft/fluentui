@@ -90,7 +90,7 @@ exports[`DetailsList renders List correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 100,
             }
           }
         >
@@ -681,7 +681,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 500,
             }
           }
         >
@@ -1868,7 +1868,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 100,
             }
           }
         >
@@ -2460,7 +2460,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 900,
             }
           }
         >
@@ -3431,7 +3431,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 500,
             }
           }
         >
@@ -4632,7 +4632,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 100,
             }
           }
         >
@@ -5017,6 +5017,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               }
                               &:hover {
                                 background: #f3f2f1;
+                                color: #201f1e;
                               }
                               &:hover $check {
                                 opacity: 1;
@@ -5284,18 +5285,16 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                   data-automationid="DetailsRow"
                                   data-focuszone-id="FocusZone22"
-                                  data-is-draggable={false}
                                   data-is-focusable={true}
                                   data-item-index={0}
                                   data-selection-index={0}
-                                  draggable={false}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -5469,18 +5468,16 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                   data-automationid="DetailsRow"
                                   data-focuszone-id="FocusZone23"
-                                  data-is-draggable={false}
                                   data-is-focusable={true}
                                   data-item-index={1}
                                   data-selection-index={1}
-                                  draggable={false}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -5634,6 +5631,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               }
                               &:hover {
                                 background: #f3f2f1;
+                                color: #201f1e;
                               }
                               &:hover $check {
                                 opacity: 1;
@@ -5901,18 +5899,16 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                   data-automationid="DetailsRow"
                                   data-focuszone-id="FocusZone24"
-                                  data-is-draggable={false}
                                   data-is-focusable={true}
                                   data-item-index={2}
                                   data-selection-index={2}
-                                  draggable={false}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -6086,18 +6082,16 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                   data-automationid="DetailsRow"
                                   data-focuszone-id="FocusZone25"
-                                  data-is-draggable={false}
                                   data-is-focusable={true}
                                   data-item-index={3}
                                   data-selection-index={3}
-                                  draggable={false}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -6271,18 +6265,16 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                   data-automationid="DetailsRow"
                                   data-focuszone-id="FocusZone26"
-                                  data-is-draggable={false}
                                   data-is-focusable={true}
                                   data-item-index={4}
                                   data-selection-index={4}
-                                  draggable={false}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >

@@ -91,7 +91,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 1750,
             }
           }
         >
@@ -600,18 +600,16 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone3"
-                      data-is-draggable={false}
                       data-is-focusable={true}
                       data-item-index={0}
                       data-selection-index={0}
-                      draggable={false}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -847,18 +845,16 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone4"
-                      data-is-draggable={false}
                       data-is-focusable={true}
                       data-item-index={1}
                       data-selection-index={1}
-                      draggable={false}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -1094,18 +1090,16 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone5"
-                      data-is-draggable={false}
                       data-is-focusable={true}
                       data-item-index={2}
                       data-selection-index={2}
-                      draggable={false}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -1341,18 +1335,16 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone6"
-                      data-is-draggable={false}
                       data-is-focusable={true}
                       data-item-index={3}
                       data-selection-index={3}
-                      draggable={false}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -1588,18 +1580,16 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone7"
-                      data-is-draggable={false}
                       data-is-focusable={true}
                       data-item-index={4}
                       data-selection-index={4}
-                      draggable={false}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -1835,18 +1825,16 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone8"
-                      data-is-draggable={false}
                       data-is-focusable={true}
                       data-item-index={5}
                       data-selection-index={5}
-                      draggable={false}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -2082,18 +2070,16 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone9"
-                      data-is-draggable={false}
                       data-is-focusable={true}
                       data-item-index={6}
                       data-selection-index={6}
-                      draggable={false}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -2329,18 +2315,16 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone10"
-                      data-is-draggable={false}
                       data-is-focusable={true}
                       data-item-index={7}
                       data-selection-index={7}
-                      draggable={false}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -2576,18 +2560,16 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone11"
-                      data-is-draggable={false}
                       data-is-focusable={true}
                       data-item-index={8}
                       data-selection-index={8}
-                      draggable={false}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
@@ -2823,18 +2805,16 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                           }
                       data-automationid="DetailsRow"
                       data-focuszone-id="FocusZone12"
-                      data-is-draggable={false}
                       data-is-focusable={true}
                       data-item-index={9}
                       data-selection-index={9}
-                      draggable={false}
                       onFocus={[Function]}
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 1750,
                         }
                       }
                     >
