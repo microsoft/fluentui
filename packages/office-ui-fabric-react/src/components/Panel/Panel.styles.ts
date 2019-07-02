@@ -192,6 +192,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     headerClassName,
     isAnimating,
     isFooterSticky,
+    isFooterAtBottom,
     isOnRightSide,
     isOpen,
     isHiddenOnDismiss,
@@ -330,6 +331,9 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.scrollableContent,
       {
         overflowY: 'auto'
+      },
+      isFooterAtBottom && {
+        flexGrow: 1
       }
     ],
     content: [
