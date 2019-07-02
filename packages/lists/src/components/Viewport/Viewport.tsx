@@ -79,7 +79,9 @@ export const Viewport = (props: IViewportProps): JSX.Element => {
         scheduleStoppedScrollingTimeout();
       };
 
-      scrollContainerRef.current.addEventListener<'scroll'>('scroll', onScroll);
+      scrollContainerRef.current.addEventListener<'scroll'>('scroll', onScroll, {
+        passive: true // https://developers.google.com/web/updates/2016/06/passive-event-listeners
+      });
 
       return () => {
         if (scrollContainerRef.current) {
