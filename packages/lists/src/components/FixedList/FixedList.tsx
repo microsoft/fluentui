@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScrollDirection, Axis } from '../Viewport/Viewport.types';
-import { IFixedListProps, IItemRange } from './FixedList.types';
+import { IFixedListProps, ItemRange, ItemRangeIndex } from './FixedList.types';
 
 const MIN_OVERSCAN_COUNT = 1;
 const TRAILING_OVERSCAN_COUNT_WHILE_SCROLLING = 1;
@@ -10,7 +10,7 @@ const TRAILING_OVERSCAN_COUNT_WHILE_SCROLLING = 1;
  * @param props The FixedList props
  * @return The currently visible range of items
  */
-function getVisibleItemRange(props: IFixedListProps): IItemRange {
+function getVisibleItemRange(props: IFixedListProps): ItemRange {
   const { surfaceTop, itemHeight, viewportState, viewportHeight, itemCount } = props;
 
   const scrollTop = viewportState.scrollDistance[Axis.Y] - surfaceTop;
@@ -18,7 +18,7 @@ function getVisibleItemRange(props: IFixedListProps): IItemRange {
   const startIndex = Math.max(0, Math.floor(scrollTop / itemHeight));
   const endIndex = Math.min(itemCount - 1, Math.ceil((scrollTop + viewportHeight) / itemHeight));
 
-  return { startIndex, endIndex };
+  return [startIndex, endIndex];
 }
 
 /**
@@ -28,12 +28,12 @@ function getVisibleItemRange(props: IFixedListProps): IItemRange {
  * @param props The FixedList props
  * @return The currently visible range of items plus overscan
  */
-function getMaterializedItemRanges(props: IFixedListProps): IItemRange[] {
-  const { viewportState, overscanHeight, onGetMaterializedRanges, itemHeight, itemCount } = props;
+function getMaterializedItemRanges(props: IFixedListProps): ItemRange[] {
+  const { viewportState, overscanHeight, onModifyMaterializedRanges, itemHeight, itemCount } = props;
 
   const { isScrolling, scrollDirection } = viewportState;
 
-  const visibleRange = getVisibleItemRange(props);
+  const itemRange = getVisibleItemRange(props);
 
   // Add item overscan. Inspired by react-window, we overscan in a given direction only when the user is not scrolling or
   // when the overscan direction equals the scroll direction.
@@ -44,14 +44,16 @@ function getMaterializedItemRanges(props: IFixedListProps): IItemRange[] {
   const overscanAhead =
     !isScrolling || scrollDirection[Axis.Y] === ScrollDirection.forward ? overscanCount : TRAILING_OVERSCAN_COUNT_WHILE_SCROLLING;
 
-  visibleRange.startIndex = Math.max(0, visibleRange.startIndex - overscanBehind);
-  visibleRange.endIndex = Math.min(itemCount - 1, visibleRange.endIndex + overscanAhead);
+  const [startIndex, endIndex] = itemRange;
+  itemRange[ItemRangeIndex.startIndex] = Math.max(0, startIndex - overscanBehind);
+  itemRange[ItemRangeIndex.endIndex] = Math.min(itemCount - 1, endIndex + overscanAhead);
 
-  let materializedRanges = [visibleRange];
+  // Construct final materialized ranges
+  const materializedRanges = [itemRange];
 
-  // Add custom materialized ranges (e.g. for currently focused item that is out of view)
-  if (onGetMaterializedRanges) {
-    materializedRanges = onGetMaterializedRanges(materializedRanges);
+  // Modify materialized ranges (e.g. for currently focused item that is out of view)
+  if (onModifyMaterializedRanges) {
+    onModifyMaterializedRanges(materializedRanges);
   }
 
   return materializedRanges;
@@ -62,11 +64,11 @@ function getMaterializedItemRanges(props: IFixedListProps): IItemRange[] {
  * Used to create an array of the correct size when rendering the materialized items.
  * @param props The FixedList props
  */
-function getMaterializedItemsCount(materializedRanges: IItemRange[]): number {
+function getMaterializedItemsCount(materializedRanges: ItemRange[]): number {
   let materializedItemsCount = 0;
 
   for (const materializedRange of materializedRanges) {
-    const { startIndex, endIndex } = materializedRange;
+    const [startIndex, endIndex] = materializedRange;
 
     materializedItemsCount += endIndex - startIndex + 1;
   }
@@ -87,7 +89,7 @@ export const FixedList = React.memo((props: IFixedListProps) => {
 
   let childIndex = 0;
   for (const materializedRange of materializedRanges) {
-    const { startIndex, endIndex } = materializedRange;
+    const [startIndex, endIndex] = materializedRange;
 
     for (let i = startIndex; i <= endIndex; i++) {
       children[childIndex] = onRenderItem(i, {

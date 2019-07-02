@@ -1,11 +1,12 @@
 import { IViewportState } from '../Viewport/Viewport.types';
 
-export interface IItemRange {
-  startIndex: number;
-  endIndex: number;
+export type ItemRange = [number, number];
+export enum ItemRangeIndex {
+  startIndex = 0,
+  endIndex = 1
 }
 
-export type GetMaterializedRangesCallback = (defaultMaterializedRanges: IItemRange[]) => IItemRange[];
+export type ModifyMaterializedRangesCallback = (materializedRanges: ItemRange[]) => void;
 
 export interface IFixedListProps {
   /**
@@ -49,8 +50,8 @@ export interface IFixedListProps {
   onRenderItem: (itemIndex: number, style: React.CSSProperties) => JSX.Element | null;
 
   /**
-   * Callback used to add and modify the list's calculated materialized range, for example in order to always render
+   * Callback used to modify the list's calculated materialized range, for example in order to always render
    * a focused item, no matter whether it is currently in view or not.
    */
-  onGetMaterializedRanges?: GetMaterializedRangesCallback;
+  onModifyMaterializedRanges?: ModifyMaterializedRangesCallback;
 }
