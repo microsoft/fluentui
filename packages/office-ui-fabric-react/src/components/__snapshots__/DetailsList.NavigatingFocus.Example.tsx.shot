@@ -90,7 +90,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 200,
             }
           }
         >
@@ -739,7 +739,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -1230,7 +1230,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -1721,7 +1721,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -2212,7 +2212,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -2703,7 +2703,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -3194,7 +3194,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -3685,7 +3685,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -4176,7 +4176,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -4667,7 +4667,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >

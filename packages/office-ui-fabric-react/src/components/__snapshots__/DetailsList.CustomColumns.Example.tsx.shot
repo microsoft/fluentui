@@ -90,7 +90,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 100,
             }
           }
         >
@@ -607,7 +607,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -1026,7 +1026,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -1445,7 +1445,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -1864,7 +1864,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -2283,7 +2283,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -2702,7 +2702,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -3121,7 +3121,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -3540,7 +3540,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -3959,7 +3959,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -4378,7 +4378,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >

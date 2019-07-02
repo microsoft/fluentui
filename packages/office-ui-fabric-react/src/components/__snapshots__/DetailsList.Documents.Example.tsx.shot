@@ -646,7 +646,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               role="row"
               style={
                 Object {
-                  "minWidth": 0,
+                  "minWidth": 296,
                 }
               }
             >
@@ -1422,7 +1422,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 296,
                             }
                           }
                         >
@@ -1741,7 +1741,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 296,
                             }
                           }
                         >
@@ -2060,7 +2060,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 296,
                             }
                           }
                         >
@@ -2379,7 +2379,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 296,
                             }
                           }
                         >
@@ -2698,7 +2698,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 296,
                             }
                           }
                         >
@@ -3017,7 +3017,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 296,
                             }
                           }
                         >
@@ -3336,7 +3336,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 296,
                             }
                           }
                         >
@@ -3655,7 +3655,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 296,
                             }
                           }
                         >
@@ -3974,7 +3974,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 296,
                             }
                           }
                         >
@@ -4293,7 +4293,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 296,
                             }
                           }
                         >

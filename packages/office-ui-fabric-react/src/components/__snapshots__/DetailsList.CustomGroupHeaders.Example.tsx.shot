@@ -90,7 +90,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 100,
             }
           }
         >
@@ -944,7 +944,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -1331,7 +1331,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -1718,7 +1718,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -2105,7 +2105,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -2492,7 +2492,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -2879,7 +2879,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -3266,7 +3266,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -3653,7 +3653,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -4040,7 +4040,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -4427,7 +4427,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
