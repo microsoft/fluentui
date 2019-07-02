@@ -6,10 +6,12 @@ const getClassNames = classNamesFunction<IOverlayStyleProps, IOverlayStyles>();
 
 export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
   public componentDidMount(): void {
+    this.props.onOverlayDidMount && this.props.onOverlayDidMount();
     disableBodyScroll();
   }
 
   public componentWillUnmount(): void {
+    this.props.onOverlayWillUnmount && this.props.onOverlayWillUnmount();
     enableBodyScroll();
   }
 

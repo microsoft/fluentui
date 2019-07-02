@@ -38,7 +38,20 @@ export interface IOverlayProps extends React.HTMLAttributes<HTMLElement> {
    */
   isDarkThemed?: boolean;
 
+  /**
+   * Defines a callback that triggers when the Overlayed is clicked.
+   */
   onClick?: () => void;
+
+  /**
+   * Defines a callback that is called on componentDidMount.
+   */
+  onOverlayDidMount?: () => void;
+
+  /**
+   * Defines a callback that is called on componentWillUnmount.
+   */
+  onOverlayWillUnmount?: () => void;
 }
 
 /**
