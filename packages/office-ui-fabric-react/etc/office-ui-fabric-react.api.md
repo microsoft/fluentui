@@ -6399,8 +6399,6 @@ export interface ISearchBoxState {
     // (undocumented)
     hasFocus?: boolean;
     // (undocumented)
-    id?: string;
-    // (undocumented)
     value?: string;
 }
 
@@ -8547,8 +8545,10 @@ export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
 export const SearchBox: React.StatelessComponent<ISearchBoxProps>;
 
 // @public (undocumented)
-export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
+export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
     constructor(props: ISearchBoxProps);
+    // (undocumented)
+    componentWillMount(): void;
     // (undocumented)
     componentWillReceiveProps(newProps: ISearchBoxProps): void;
     // (undocumented)

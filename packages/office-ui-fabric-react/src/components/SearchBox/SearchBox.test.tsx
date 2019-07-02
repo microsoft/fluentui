@@ -102,6 +102,16 @@ describe('SearchBox', () => {
     expect(placeholderVal).toBe(placeholder);
   });
 
+  it('supports setting id on input', () => {
+    wrapper = mount(<SearchBox id="foo" />);
+    expect(wrapper.find('input').prop('id')).toBe('foo');
+  });
+
+  it('generates id for input if none passed in', () => {
+    wrapper = mount(<SearchBox />);
+    expect(wrapper.find('input').prop('id')).toBeTruthy();
+  });
+
   it('only invokes onFocus callback once per focus event', () => {
     const onFocus = jest.fn();
     wrapper = mount(<SearchBox onFocus={onFocus} />);

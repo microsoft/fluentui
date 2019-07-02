@@ -1,19 +1,28 @@
 import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
-import { BaseComponent, getId, KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
+import {
+  initializeComponentRef,
+  warnDeprecations,
+  EventGroup,
+  getId,
+  KeyCodes,
+  classNamesFunction,
+  getNativeProps,
+  inputProperties
+} from '../../Utilities';
 
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 
 const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>();
+const COMPONENT_NAME = 'SearchBox';
 
 export interface ISearchBoxState {
   value?: string;
   hasFocus?: boolean;
-  id?: string;
 }
 
-export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
+export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
   public static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'> = {
     disableAnimation: false,
     clearButtonProps: { ariaLabel: 'Clear text' }
@@ -22,21 +31,25 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   private _rootElement = React.createRef<HTMLDivElement>();
   private _inputElement = React.createRef<HTMLInputElement>();
   private _latestValue: string;
+  private _fallbackId: string;
+  private _events: EventGroup | undefined;
 
   public constructor(props: ISearchBoxProps) {
     super(props);
 
-    this._warnDeprecations({
+    initializeComponentRef(this);
+
+    warnDeprecations(COMPONENT_NAME, props, {
       labelText: 'placeholder',
       defaultValue: 'value'
     });
 
     this._latestValue = props.value || '';
+    this._fallbackId = getId(COMPONENT_NAME);
 
     this.state = {
       value: this._latestValue,
-      hasFocus: false,
-      id: getId('SearchBox')
+      hasFocus: false
     };
   }
 
@@ -48,6 +61,12 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       this.setState({
         value: newProps.value || ''
       });
+    }
+  }
+
+  public componentWillMount() {
+    if (this._events) {
+      this._events.dispose();
     }
   }
 
@@ -63,9 +82,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       theme,
       clearButtonProps,
       disableAnimation,
-      iconProps
+      iconProps,
+      id = this._fallbackId
     } = this.props;
-    const { value, hasFocus, id } = this.state;
+    const { value, hasFocus } = this.state;
     const placeholderValue = labelText === undefined ? placeholder : labelText;
 
     const classNames = getClassNames(styles!, {
@@ -79,7 +99,6 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     });
 
     const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
-      'id',
       'className',
       'placeholder',
       'onFocus',
@@ -163,6 +182,9 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       hasFocus: true
     });
 
+    if (!this._events) {
+      this._events = new EventGroup(this);
+    }
     this._events.on(ev.currentTarget, 'blur', this._onBlur, true);
 
     if (this.props.onFocus) {
@@ -213,7 +235,9 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   };
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
-    this._events.off(this._rootElement.current, 'blur');
+    if (this._events) {
+      this._events.off();
+    }
     this.setState({
       hasFocus: false
     });
