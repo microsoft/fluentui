@@ -38,10 +38,6 @@ module.exports = function convertChangeFiles() {
 
     fs.removeSync(legacy);
   });
-
-  console.log(chalk.green('git status:'));
-  spawnSync('git', ['status'], { stdio: 'inherit' });
-  console.log(chalk.cyan('Conversion successful! Be sure to git add & git commit & git push this!!'));
 };
 
 function getCommitByFile(file) {
@@ -70,4 +66,8 @@ function getTimeStamp(date) {
 
 if (require.main === module) {
   convertChangeFiles();
+
+  console.log(chalk.green('git status:'));
+  spawnSync('git', ['status'], { stdio: 'inherit' });
+  console.log(chalk.cyan('Conversion successful! Be sure to git add & git commit & git push this!!'));
 }
