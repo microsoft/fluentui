@@ -4,7 +4,7 @@ const path = require('path');
 const glob = require('glob');
 const chalk = require('chalk');
 
-module.exports = function convertChangeFiles() {
+function convertChangeFiles() {
   const root = path.resolve(__dirname, '../');
   const changePath = path.join(root, 'change');
 
@@ -38,7 +38,7 @@ module.exports = function convertChangeFiles() {
 
     fs.removeSync(legacy);
   });
-};
+}
 
 function getCommitByFile(file) {
   const results = spawnSync('git', ['log', '-n', '1', '--pretty=format:%H', '--', file]);
@@ -64,9 +64,10 @@ function getTimeStamp(date) {
   ].join('-');
 }
 
+module.exports = convertChangeFiles;
+
 if (require.main === module) {
   convertChangeFiles();
-
   console.log(chalk.green('git status:'));
   spawnSync('git', ['status'], { stdio: 'inherit' });
   console.log(chalk.cyan('Conversion successful! Be sure to git add & git commit & git push this!!'));
