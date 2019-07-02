@@ -1,67 +1,14 @@
 import * as React from 'react';
-import { IViewportState, ScrollDirection, Axis } from '../Viewport/Viewport';
+import { ScrollDirection, Axis } from '../Viewport/Viewport.types';
+import { IFixedListProps, IItemRange } from './FixedList.types';
 
-export interface IFixedListProps {
-  /**
-   * The total number of items contained in the list.
-   */
-  itemCount: number;
-
-  /**
-   * The fixed height of each item in the list.
-   */
-  itemHeight: number;
-
-  /**
-   * The current viewport state.
-   */
-  viewportState: IViewportState;
-
-  /**
-   * The height of the viewport this list is mounted in.
-   */
-  viewportHeight: number;
-
-  /**
-   * The width of the viewport this list is mounted in.
-   */
-  viewportWidth: number;
-
-  /**
-   * The distance of the top of the viewport surface to the top of the list surface.
-   */
-  surfaceTop: number;
-
-  /**
-   * The height of item overscan before and after the visible area of the viewport.
-   */
-  overscanHeight: number;
-
-  /**
-   * Callback used to render an item with the given index.
-   */
-  onRenderItem: (itemIndex: number, style: React.CSSProperties) => JSX.Element | null;
-
-  /**
-   * Callback used to add and modify the list's calculated materialized range, for example in order to always render
-   * a focused item, no matter whether it is currently in view or not.
-   */
-  onGetMaterializedRanges?: GetMaterializedRangesCallback;
-}
-
-export interface IItemRange {
-  startIndex: number;
-  endIndex: number;
-}
-
-export type GetMaterializedRangesCallback = (defaultMaterializedRanges: IItemRange[]) => IItemRange[];
-
+const MIN_OVERSCAN_COUNT = 1;
 const TRAILING_OVERSCAN_COUNT_WHILE_SCROLLING = 1;
 
 /**
  * Calculates the currently visible range of items based on the viewport state.
  * @param props The FixedList props
- * @return
+ * @return The currently visible range of items
  */
 function getVisibleItemRange(props: IFixedListProps): IItemRange {
   const { surfaceTop, itemHeight, viewportState, viewportHeight, itemCount } = props;
@@ -79,6 +26,7 @@ function getVisibleItemRange(props: IFixedListProps): IItemRange {
  * a callback to add and modify the calculated materialized range, for example in order to always render
  * a focused item, no matter whether it is currently in view or not.
  * @param props The FixedList props
+ * @return The currently visible range of items plus overscan
  */
 function getMaterializedItemRanges(props: IFixedListProps): IItemRange[] {
   const { viewportState, overscanHeight, onGetMaterializedRanges, itemHeight, itemCount } = props;
@@ -88,7 +36,7 @@ function getMaterializedItemRanges(props: IFixedListProps): IItemRange[] {
   const visibleRange = getVisibleItemRange(props);
 
   // Add overscan
-  const overscanCount = Math.ceil(overscanHeight / itemHeight);
+  const overscanCount = Math.min(Math.ceil(overscanHeight / itemHeight), MIN_OVERSCAN_COUNT);
 
   visibleRange.startIndex = Math.max(
     0,
