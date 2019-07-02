@@ -76,7 +76,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover .ms-DetailsHeader-cellIsCheck {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
               & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
@@ -152,6 +152,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                 aria-label="Toggle selection"
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
                     ms-Check-checkHost
                     {

@@ -75,7 +75,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover .ms-DetailsHeader-cellIsCheck {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
               & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
@@ -149,6 +149,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
                     ms-Check-checkHost
                     {
@@ -899,7 +900,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover .ms-DetailsHeader-cellIsCheck {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
               & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
@@ -973,6 +974,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
                     ms-Check-checkHost
                     {
@@ -2206,7 +2208,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover .ms-DetailsHeader-cellIsCheck {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
               & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
@@ -2280,6 +2282,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
                     ms-Check-checkHost
                     {
@@ -3030,7 +3033,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover .ms-DetailsHeader-cellIsCheck {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
               & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
@@ -3104,6 +3107,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
                     ms-Check-checkHost
                     {

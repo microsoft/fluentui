@@ -75,7 +75,7 @@ exports[`DetailsList renders List correctly 1`] = `
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover .ms-DetailsHeader-cellIsCheck {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
               & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
@@ -149,6 +149,7 @@ exports[`DetailsList renders List correctly 1`] = `
                 aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
                     ms-Check-checkHost
                     {
@@ -667,7 +668,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover .ms-DetailsHeader-cellIsCheck {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
               & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
@@ -741,6 +742,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
                     ms-Check-checkHost
                     {
@@ -1855,7 +1857,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover .ms-DetailsHeader-cellIsCheck {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
               & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
@@ -1929,6 +1931,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
                     ms-Check-checkHost
                     {
@@ -2448,7 +2451,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover .ms-DetailsHeader-cellIsCheck {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
               & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
@@ -2522,6 +2525,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
                     ms-Check-checkHost
                     {
@@ -3420,7 +3424,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover .ms-DetailsHeader-cellIsCheck {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
               & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
@@ -3494,6 +3498,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
                     ms-Check-checkHost
                     {
@@ -4622,7 +4627,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover .ms-DetailsHeader-cellIsCheck {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
               & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {

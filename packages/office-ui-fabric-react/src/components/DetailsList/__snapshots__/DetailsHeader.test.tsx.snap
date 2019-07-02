@@ -29,7 +29,7 @@ exports[`DetailsHeader can render 1`] = `
         vertical-align: top;
         white-space: nowrap;
       }
-      &:hover .ms-DetailsHeader-cellIsCheck {
+      &:hover .ms-DetailsHeader-check {
         opacity: 1;
       }
       & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
@@ -103,6 +103,7 @@ exports[`DetailsHeader can render 1`] = `
         aria-checked={false}
         className=
             ms-DetailsRow-check
+            ms-DetailsHeader-check
             ms-DetailsRow-check--isHeader
             ms-Check-checkHost
             {
@@ -912,7 +913,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         vertical-align: top;
         white-space: nowrap;
       }
-      &:hover .ms-DetailsHeader-cellIsCheck {
+      &:hover .ms-DetailsHeader-check {
         opacity: 1;
       }
       & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
@@ -987,6 +988,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
       <div
         className=
             ms-DetailsRow-check
+            ms-DetailsHeader-check
             ms-DetailsRow-check--isDisabled
             ms-DetailsRow-check--isHeader
             {
@@ -1694,7 +1696,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         vertical-align: top;
         white-space: nowrap;
       }
-      &:hover .ms-DetailsHeader-cellIsCheck {
+      &:hover .ms-DetailsHeader-check {
         opacity: 1;
       }
       & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
@@ -1768,6 +1770,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         aria-checked={false}
         className=
             ms-DetailsRow-check
+            ms-DetailsHeader-check
             ms-DetailsRow-check--isHeader
             ms-Check-checkHost
             {
