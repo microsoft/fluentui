@@ -95,7 +95,6 @@ export const Viewport = (props: IViewportProps): JSX.Element => {
     position: 'relative',
     height,
     width,
-    willChange: 'scroll-position', // paints the scroll container on its own layer
     overflow: 'auto'
   };
 
