@@ -97,13 +97,15 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
   }
 
   public componentDidUpdate(prevState: IAnnouncedQuickActionsExampleState) {
-    this._async.setInterval(() => {
-      if (prevState.announced !== this.state.announced && this.state.announced !== undefined) {
+    if (prevState.announced !== this.state.announced && this.state.announced !== undefined) {
+      const interval1 = this._async.setInterval(() => {
         this.setState({
           announced: undefined
         });
-      }
-    }, 1000);
+
+        this._async.clearInterval(interval1);
+      }, 2000);
+    }
   }
 
   public render(): JSX.Element {
@@ -184,7 +186,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
 
     this.setState({
       items: [...items],
-      announced: <Announced message="Item deleted" />
+      announced: <Announced message="Item deleted" aria-live="assertive" />
     });
     return;
   };
@@ -211,7 +213,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
       this.setState({
         renameDialogOpen: false,
         items: [...items],
-        announced: <Announced message="Item renamed" />
+        announced: <Announced message="Item renamed" aria-live="assertive" />
       });
     } else {
       return;
