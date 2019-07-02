@@ -34,7 +34,8 @@ const GlobalClassNames = {
   cellName: 'ms-DetailsHeader-cellName',
   filterChevron: 'ms-DetailsHeader-filterChevron',
   gripperBarVertical: 'ms-DetailsColumn-gripperBarVertical',
-  checkTooltip: 'ms-DetailsHeader-checkTooltip'
+  checkTooltip: 'ms-DetailsHeader-checkTooltip',
+  check: 'ms-DetailsHeader-check'
 };
 
 export const HEADER_HEIGHT = 42;
@@ -114,7 +115,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         cursor: 'default',
         userSelect: 'none',
         selectors: {
-          [`&:hover .${classNames.cellIsCheck}`]: {
+          [`&:hover .${classNames.check}`]: {
             opacity: 1
           },
           [`& .${classNames.tooltipHost} .${classNames.checkTooltip}`]: {
@@ -135,6 +136,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     ],
 
     check: [
+      classNames.check,
       {
         height: HEADER_HEIGHT
       },
