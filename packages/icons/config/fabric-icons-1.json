@@ -10,18 +10,6 @@
   },
   "glyphs": [
     {
-      "name": "Financial",
-      "unicode": "E7BB"
-    },
-    {
-      "name": "Education",
-      "unicode": "E7BE"
-    },
-    {
-      "name": "ShoppingCart",
-      "unicode": "E7BF"
-    },
-    {
       "name": "Train",
       "unicode": "E7C0"
     },
@@ -196,10 +184,6 @@
     {
       "name": "RevToggleKey",
       "unicode": "E845"
-    },
-    {
-      "name": "USB",
-      "unicode": "E88E"
     },
     {
       "name": "Previous",
@@ -406,8 +390,24 @@
       "unicode": "E8E5"
     },
     {
-      "name": "ClearSelection",
-      "unicode": "E8E6"
+      "name": "FontDecrease",
+      "unicode": "E8E7"
+    },
+    {
+      "name": "FontIncrease",
+      "unicode": "E8E8"
+    },
+    {
+      "name": "FontSize",
+      "unicode": "E8E9"
+    },
+    {
+      "name": "CellPhone",
+      "unicode": "E8EA"
+    },
+    {
+      "name": "RepeatAll",
+      "unicode": "E8EE"
     }
   ]
 }
