@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AccessibilityChecker } from './AccessibilityChecker';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { BaseSlots, IThemeRules, ThemeGenerator, themeRulesStandardCreator } from 'office-ui-fabric-react/lib/ThemeGenerator';
+import { BaseSlots, IThemeRules, FabricSlots, ThemeGenerator, themeRulesStandardCreator } from 'office-ui-fabric-react/lib/ThemeGenerator';
 import { createTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { ThemeSlots } from './ThemeSlots';
 import { getColorFromString, IColor } from 'office-ui-fabric-react/lib/Color';
@@ -111,12 +111,22 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
               <Samples backgroundColor={this.state.backgroundColor.str} textColor={this.state.textColor.str} />
             </ThemeProvider>
             <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
-            <ThemeSlots theme={this.state.theme} themeRules={this.state.themeRules} />
+            <ThemeSlots
+              theme={this.state.theme}
+              themeRules={this.state.themeRules}
+              onFabricPaletteColorChange={this._onFabricPaletteColorChange}
+            />
           </Main>
         </Content>
       </Page>
     );
   }
+
+  private _onFabricPaletteColorChange = (newColor: IColor | undefined, fabricSlot: FabricSlots) => {
+    // change fabric slot rule
+    console.log('changing');
+    this.state.themeRules![FabricSlots[fabricSlot]].color = newColor;
+  };
 
   private _onPrimaryColorPickerChange = (newColor: IColor | undefined) => {
     this._onColorChange(this.state.primaryColor, BaseSlots.primaryColor, newColor);
