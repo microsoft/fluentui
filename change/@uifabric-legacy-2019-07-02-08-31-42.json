@@ -1,8 +1,0 @@
-{
-  "comment": "Delete unneeded Nav.checklist.ts",
-  "type": "patch",
-  "packageName": "@uifabric/legacy",
-  "email": "elcraig@microsoft.com",
-  "commit": "d7047fc795ab94f49a9e14649b2f5fc4ae082f43",
-  "date": "2019-07-02T15:31:42.667Z"
-}
