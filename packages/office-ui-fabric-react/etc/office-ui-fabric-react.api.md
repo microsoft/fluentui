@@ -197,7 +197,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(prevProps: P, prevState: IBaseFloatingPickerState): void;
+    componentDidUpdate(): void;
     // (undocumented)
     componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void;
     // (undocumented)
@@ -1576,6 +1576,8 @@ export interface IBaseExtendedPickerProps<T> {
 export interface IBaseExtendedPickerState<T> {
     // (undocumented)
     queryString: string | null;
+    // (undocumented)
+    selectedItems: T[] | null;
     // (undocumented)
     suggestionItems: T[] | null;
 }
