@@ -1107,6 +1107,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         calloutWidth={useComboBoxAsMenuWidth && this._comboBoxWrapper.current ? comboBoxMenuWidth && comboBoxMenuWidth : dropdownWidth}
         calloutMaxWidth={dropdownMaxWidth ? dropdownMaxWidth : comboBoxMenuWidth}
         hidden={persistMenu ? !isOpen : undefined}
+        popupShouldNotRestoreFocus={this.props.menuShouldNotRestoreFocus}
       >
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
           {(onRenderList as any)({ ...props }, this._onRenderList)}
@@ -1392,6 +1393,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Handles dismissing (cancelling) the menu
    */
   private _onDismiss = (): void => {
+    const { onMenuDismiss } = this.props;
+    if (onMenuDismiss) {
+      onMenuDismiss();
+    }
+
     // In persistMode we need to simulate callout layer mount
     // since that only happens once. We do it on dismiss since
     // it works either way.

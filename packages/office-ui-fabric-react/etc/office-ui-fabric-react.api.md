@@ -2075,6 +2075,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     onLayerMounted?: () => void;
     onPositioned?: (positions?: ICalloutPositionedInfo) => void;
     onScroll?: () => void;
+    popupShouldNotRestoreFocus?: boolean;
     preventDismissOnLostFocus?: boolean;
     preventDismissOnResize?: boolean;
     preventDismissOnScroll?: boolean;
@@ -2691,9 +2692,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
     isButtonAriaHidden?: boolean;
     keytipProps?: IKeytipProps;
+    menuShouldNotRestoreFocus?: boolean;
     multiSelect?: boolean;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
+    onMenuDismiss?: () => void;
     onMenuDismissed?: () => void;
     onMenuOpen?: () => void;
     onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
