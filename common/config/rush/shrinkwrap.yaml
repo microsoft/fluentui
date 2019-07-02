@@ -94,7 +94,7 @@ dependencies:
   babel-core: 6.26.3
   babel-loader: 7.1.5
   babylon: 7.0.0-beta.47
-  beachball: 1.9.1
+  beachball: 1.9.2
   bundlesize: 0.15.3
   chalk: 2.4.2
   codecov: 3.5.0
@@ -3309,7 +3309,7 @@ packages:
     dev: false
     resolution:
       integrity: sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
-  /beachball/1.9.1:
+  /beachball/1.9.2:
     dependencies:
       fs-extra: 8.1.0
       git-url-parse: 11.1.2
@@ -3320,7 +3320,7 @@ packages:
     dev: false
     hasBin: true
     resolution:
-      integrity: sha512-LWnY0t65gsb5gmRhSkHJE0jcPgy619N7LVxjUwVHsg85TDS7V8mQxv6nQNMuXeS2kAOgoLUpa9J5+CZ4cfS0Bg==
+      integrity: sha512-wOvfOhtP7vcdVOGKKXwVmmbmrznF00nOCnudlZ8L8cQBva/wDZNPOZ3Fx1623HKbtDu+dlvvZAdeipYdEt5kDQ==
   /bfj/6.1.1:
     dependencies:
       bluebird: 3.5.5
@@ -8763,7 +8763,7 @@ packages:
   /jsonfile/4.0.0:
     dev: false
     optionalDependencies:
-      graceful-fs: 4.1.15
+      graceful-fs: 4.2.0
     resolution:
       integrity: sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=
   /jsonify/0.0.0:
@@ -15558,7 +15558,7 @@ packages:
       async: 2.6.2
       autoprefixer: 7.2.6
       babylon: 7.0.0-beta.47
-      beachball: 1.9.1
+      beachball: 1.9.2
       bundlesize: 0.15.3
       chalk: 2.4.2
       codecov: 3.5.0
@@ -15612,7 +15612,7 @@ packages:
     dev: false
     name: '@rush-temp/build'
     resolution:
-      integrity: sha512-rAmeZeDcA3Jcm2v1A+8VhyNksSwsqd4Qn1k82JDJTTDtCetEYq7fex2LAoqsKGtrEbuMaPHsHUaQA2xjXFCNAg==
+      integrity: sha512-vIGq4nVWonsB9QqBG9+crM2S25zReronzs5ApthHVrCV33KWSaXHwu8SgRNoz5yQPzRPg/WHoTmKOJoQkXoQ/g==
       tarball: 'file:projects/build.tgz'
     version: 0.0.0
   'file:projects/charting.tgz':
@@ -16511,7 +16511,7 @@ specifiers:
   babel-core: ^6.26.3
   babel-loader: ^7.1.5
   babylon: ^7.0.0-beta.47
-  beachball: ^1.9.1
+  beachball: ^1.9.2
   bundlesize: ^0.15.2
   chalk: ^2.1.0
   codecov: ^3.1.0
