@@ -147,7 +147,6 @@ describe('Pickers', () => {
       create(
         <BaseExtendedPickerWithType
           ref={pickerRef}
-          defaultSelectedItems={[]}
           floatingPickerProps={floatingPickerProps}
           selectedItemsListProps={selectedItemsListProps}
           onRenderSelectedItems={basicRenderSelectedItemsList}
@@ -163,12 +162,37 @@ describe('Pickers', () => {
         ReactTestUtils.Simulate.input(picker.inputElement);
       }
 
+      ReactDOM.render(
+        <BaseExtendedPickerWithType
+          ref={pickerRef}
+          defaultSelectedItems={[]}
+          floatingPickerProps={floatingPickerProps}
+          selectedItemsListProps={selectedItemsListProps}
+          onRenderSelectedItems={basicRenderSelectedItemsList}
+          onRenderFloatingPicker={basicRenderFloatingPicker}
+        />,
+        hostNode
+      );
+
       expect(picker.state.queryString).toBe('bl');
       expect(picker.floatingPicker.current && picker.floatingPicker.current.suggestions.length).toBe(2);
       expect(picker.floatingPicker.current && picker.floatingPicker.current.suggestions[0].item.name).toBe('black');
 
       // Force resolve to the first suggestions
       picker.floatingPicker.current && picker.floatingPicker.current.forceResolveSuggestion();
+
+      ReactDOM.render(
+        <BaseExtendedPickerWithType
+          ref={pickerRef}
+          defaultSelectedItems={[]}
+          floatingPickerProps={floatingPickerProps}
+          selectedItemsListProps={selectedItemsListProps}
+          onRenderSelectedItems={basicRenderSelectedItemsList}
+          onRenderFloatingPicker={basicRenderFloatingPicker}
+        />,
+        hostNode
+      );
+
       expect(picker.items.length).toBe(1);
       expect(picker.items[0].name).toBe('black');
     });
@@ -178,7 +202,6 @@ describe('Pickers', () => {
       create(
         <BaseExtendedPickerWithType
           ref={pickerRef}
-          defaultSelectedItems={[]}
           floatingPickerProps={floatingPickerProps}
           selectedItemsListProps={selectedItemsListProps}
           onRenderSelectedItems={basicRenderSelectedItemsList}
@@ -206,7 +229,6 @@ describe('Pickers', () => {
       create(
         <BaseExtendedPickerWithType
           ref={pickerRef}
-          defaultSelectedItems={[]}
           floatingPickerProps={floatingPickerProps}
           selectedItemsListProps={selectedItemsListProps}
           onRenderSelectedItems={basicRenderSelectedItemsList}
