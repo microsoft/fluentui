@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "7.2.3",
+      "tag": "@uifabric/fabric-website_v7.2.3",
+      "date": "Tue, 02 Jul 2019 12:29:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add pivot for Fabric Icons page",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "cbad6b35d1744956cb9d9a9428cc89efa534e936"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^7.0.2` to `^7.1.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.2.2",
       "tag": "@uifabric/fabric-website_v7.2.2",
       "date": "Mon, 01 Jul 2019 18:51:42 GMT",
