@@ -94,7 +94,7 @@ dependencies:
   babel-core: 6.26.3
   babel-loader: 7.1.5
   babylon: 7.0.0-beta.47
-  beachball: 1.9.0
+  beachball: 1.9.1
   bundlesize: 0.15.3
   chalk: 2.4.2
   codecov: 3.5.0
@@ -3309,18 +3309,18 @@ packages:
     dev: false
     resolution:
       integrity: sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
-  /beachball/1.9.0:
+  /beachball/1.9.1:
     dependencies:
       fs-extra: 8.1.0
       git-url-parse: 11.1.2
       glob: 7.1.4
       prompts: 2.1.0
-      semver: 6.1.3
+      semver: 6.2.0
       yargs-parser: 13.1.1
     dev: false
     hasBin: true
     resolution:
-      integrity: sha512-Aycg6LmKpeSZjBTsm1X+IJ5bSPE5R1n+CTavjCxgzpE+3n8pI32HbGOKbJz/lGJW0NI07j40xgePX6tUM0K5Yw==
+      integrity: sha512-LWnY0t65gsb5gmRhSkHJE0jcPgy619N7LVxjUwVHsg85TDS7V8mQxv6nQNMuXeS2kAOgoLUpa9J5+CZ4cfS0Bg==
   /bfj/6.1.1:
     dependencies:
       bluebird: 3.5.5
@@ -12996,11 +12996,11 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-rWYq2e5iYW+fFe/oPPtYJxYgjBm8sC4rmoGdUOgBB7VnwKt6HrL793l2voH1UlsyYZpJ4g0wfjnTEO1s1NP2eQ==
-  /semver/6.1.3:
+  /semver/6.2.0:
     dev: false
     hasBin: true
     resolution:
-      integrity: sha512-aymF+56WJJMyXQHcd4hlK4N75rwj5RQpfW8ePlQnJsTYOBLlLbcIErR/G1s9SkIvKBqOudR3KAx4wEqP+F1hNQ==
+      integrity: sha512-jdFC1VdUGT/2Scgbimf7FSx9iJLXoqfglSF+gJeuNWVpiE37OIbc1jywR/GJyFdz3mnkz2/id0L0J/cr0izR5A==
   /send/0.17.1:
     dependencies:
       debug: 2.6.9
@@ -15524,7 +15524,7 @@ packages:
     dev: false
     name: '@rush-temp/a11y-tests'
     resolution:
-      integrity: sha512-VzXx0cWGqiNogGDqYQtS+qV3w8sWjVocWJ9HgpezqXj//DEVT5m+/TqOEZO9I2VlVTQleD02rR5gRwrX34a7eQ==
+      integrity: sha512-/lO+2sUOWLG8WvXi8E4gzPX6oioFaEj4e6Z5QqFry6jVgzSJhmzR36LG1kB0cS8/V9Pbzk0cQ2xTD12di38MuQ==
       tarball: 'file:projects/a11y-tests.tgz'
     version: 0.0.0
   'file:projects/api-docs.tgz':
@@ -15558,7 +15558,7 @@ packages:
       async: 2.6.2
       autoprefixer: 7.2.6
       babylon: 7.0.0-beta.47
-      beachball: 1.9.0
+      beachball: 1.9.1
       bundlesize: 0.15.3
       chalk: 2.4.2
       codecov: 3.5.0
@@ -15612,7 +15612,7 @@ packages:
     dev: false
     name: '@rush-temp/build'
     resolution:
-      integrity: sha512-wZ/whtyriYMeqqmurXA4er6FFI7NDEFThYpfmPCEcSE7BweAbfSkgL2MRoOzUay9m8El34HxOiij1RyC2Ih7og==
+      integrity: sha512-rAmeZeDcA3Jcm2v1A+8VhyNksSwsqd4Qn1k82JDJTTDtCetEYq7fex2LAoqsKGtrEbuMaPHsHUaQA2xjXFCNAg==
       tarball: 'file:projects/build.tgz'
     version: 0.0.0
   'file:projects/charting.tgz':
@@ -15656,7 +15656,7 @@ packages:
     dev: false
     name: '@rush-temp/charting'
     resolution:
-      integrity: sha512-hTsQY3BUvHfwslAnw6f/wmmhN7NCLsjdSJsOvwq6awrZXtPUz8nuVXob9fQPUKheIaNkSek8zknNdNDH8Ksz0w==
+      integrity: sha512-B1vSt3iGCT2PQ/SoztAujriexVWaMFp+AGBQ4HFN4FjzWNkMc3SsjliIYGE+nLZHFGXz6KeZlA2xFWJC5XtOww==
       tarball: 'file:projects/charting.tgz'
     version: 0.0.0
   'file:projects/codepen-loader.tgz':
@@ -15794,7 +15794,7 @@ packages:
     dev: false
     name: '@rush-temp/experiments'
     resolution:
-      integrity: sha512-u5voTi9pr7bPGVVA91GvtxK+zC6/YcJQBpm7asnUCyjpjsrgq1jGlFFo9+bER/+z5nzX7CFdsXIzjVT2Gncibw==
+      integrity: sha512-JWaxetPKNH+dKCgV0+O0Ee9ZY/GpAhfvgSC/0jgGg6uchm2Jeyet7sYBPlgTNR095fiinZXyZdW2k/PQhsZPDA==
       tarball: 'file:projects/experiments.tgz'
     version: 0.0.0
   'file:projects/fabric-website-resources.tgz':
@@ -15837,7 +15837,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website-resources'
     resolution:
-      integrity: sha512-VH7m5NH88LfDzBtbaq9r50pBazRDRyBWW37eMlwpXg1eK+uUcEPAGgyYm2LoWrOoe78shszD+yYJPNZNAc+KmA==
+      integrity: sha512-bDlNQ7UhJB24xl/9jss5oGvMYTb8tTDkNhTyuSZQlr4Vi901SYpXx4tBpjeLIysxRqBUNGHs/S1r64xvVYfPWQ==
       tarball: 'file:projects/fabric-website-resources.tgz'
     version: 0.0.0
   'file:projects/fabric-website.tgz':
@@ -15864,7 +15864,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website'
     resolution:
-      integrity: sha512-109E2SvS9pN5rd9Yq7jx2K+Wam2s1ajgg4+51StHdmedIXzPqvqISKJj9BUeqx54PBf9bdk9J3c/CI0TFm4eOQ==
+      integrity: sha512-H8b1HU2yuLtmRuhDUUv2d0V1JfDCmj4nD0+MI1KU0Do/i2DTkyZxdbsh5tJk1fZ7THJoX7rrn7pNSY5kT3h6Zw==
       tarball: 'file:projects/fabric-website.tgz'
     version: 0.0.0
   'file:projects/file-type-icons.tgz':
@@ -16067,7 +16067,7 @@ packages:
     dev: false
     name: '@rush-temp/office-ui-fabric-react'
     resolution:
-      integrity: sha512-PUpWepfTW5BzB0g5vlIdriuDpPBel9Ac12Dq3EqFOjjsmz8apiyWyWJ54u2Sp6j6Jtmxk152G8/vCgRZVxsxoA==
+      integrity: sha512-sjOyf8GjpTp23r5ttmbe8k0kvLWdl67ootb7XbXZMw4SRv3Oaq36e3JzGPIKR1DTqZFcrwyrx4irSWyiwNsonA==
       tarball: 'file:projects/office-ui-fabric-react.tgz'
     version: 0.0.0
   'file:projects/perf-test.tgz':
@@ -16098,7 +16098,7 @@ packages:
     dev: false
     name: '@rush-temp/pr-deploy-site'
     resolution:
-      integrity: sha512-J8Ld22mwWXnncNu5SWrwle2hf/YejJk5e/W9/ekiPOkoickjogu6FA7297tnraHzfTPN+kjLyVm0m/vCaaI6uQ==
+      integrity: sha512-O4qRc1cUpxnstJLr+6OXDDqLuWvM3F1Ufk0P+p/re4T2RMYmJq4zd6EprE14WYCcl//9DOPd1haHR6p2riOTwQ==
       tarball: 'file:projects/pr-deploy-site.tgz'
     version: 0.0.0
   'file:projects/prettier-rules.tgz':
@@ -16151,7 +16151,7 @@ packages:
     dev: false
     name: '@rush-temp/server-rendered-app'
     resolution:
-      integrity: sha512-/vtOVblJPuQHVtRXWJzzERY+T/wQPDYRftZbo2ZJwvS8P1Q5p8qGgGSJj3YG/Sj8/tOFBmJyT0xt5QoeMtRwHg==
+      integrity: sha512-jY+esupdxRxtdeNm18xaPBk2pPOOGbA1L143qgR9L5AY5rRxUyHImUjsHbamLaesL6XOC0cOOHGnWhyeer1rFA==
       tarball: 'file:projects/server-rendered-app.tgz'
     version: 0.0.0
   'file:projects/set-version.tgz':
@@ -16266,7 +16266,7 @@ packages:
     dev: false
     name: '@rush-temp/theming-designer'
     resolution:
-      integrity: sha512-jto5IYH25uCB+6YzI5uDWTp8ya+GkzhiYge1QCdCxiDo04xhGiEAH3//aKyo8iIm3vJuhpf7H+5YkjXfH5txGg==
+      integrity: sha512-TB1xphW1mtrJqpKJ/a5qjuO/fzwnZ8gmmJBfdCApGP8XgxY6dx5OOwMkdSI8vkGYjIfVNKwWPeWGAS3hH87zVQ==
       tarball: 'file:projects/theming-designer.tgz'
     version: 0.0.0
   'file:projects/todo-app.tgz':
@@ -16511,7 +16511,7 @@ specifiers:
   babel-core: ^6.26.3
   babel-loader: ^7.1.5
   babylon: ^7.0.0-beta.47
-  beachball: ^1.9.0
+  beachball: ^1.9.1
   bundlesize: ^0.15.2
   chalk: ^2.1.0
   codecov: ^3.1.0
