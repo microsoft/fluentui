@@ -121,7 +121,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
             role="row"
             style={
               Object {
-                "minWidth": 0,
+                "minWidth": 100,
               }
             }
           >
@@ -611,7 +611,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -988,7 +988,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -1365,7 +1365,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -1742,7 +1742,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -2119,7 +2119,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -2496,7 +2496,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -2873,7 +2873,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -3250,7 +3250,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -3627,7 +3627,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -4004,7 +4004,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
