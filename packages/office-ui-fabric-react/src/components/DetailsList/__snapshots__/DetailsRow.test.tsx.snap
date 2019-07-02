@@ -1986,6 +1986,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           {
             padding-right: 8px;
           }
+
       data-automation-key="key"
       data-automationid="DetailsRowCell"
       role="gridcell"
@@ -2042,6 +2043,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           {
             padding-right: 8px;
           }
+
       data-automation-key="name"
       data-automationid="DetailsRowCell"
       role="gridcell"
@@ -2098,6 +2100,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           {
             padding-right: 8px;
           }
+
       data-automation-key="value"
       data-automationid="DetailsRowCell"
       role="gridcell"
