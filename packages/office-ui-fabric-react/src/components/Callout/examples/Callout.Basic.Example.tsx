@@ -75,7 +75,7 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
           ariaDescribedBy={this._descriptionId}
           role="alertdialog"
           gapSpace={0}
-          target={this._menuButtonElement.current}
+          target={this._menuButtonElement}
           onDismiss={this._onCalloutDismiss}
           setInitialFocus={true}
           hidden={!this.state.isCalloutVisible}
