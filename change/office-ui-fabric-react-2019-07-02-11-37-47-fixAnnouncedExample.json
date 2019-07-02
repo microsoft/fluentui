@@ -1,0 +1,8 @@
+{
+  "comment": "Announced: fix QuickActions example to reset Announced message",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "naethell@microsoft.com",
+  "commit": "7be3c03db4bf36248942f01007e30f06243bae0f",
+  "date": "2019-07-02T18:37:47.167Z"
+}
