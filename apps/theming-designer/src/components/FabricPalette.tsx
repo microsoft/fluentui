@@ -2,10 +2,9 @@ import * as React from 'react';
 import { FabricSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
 import { mergeStyles } from '@uifabric/merge-styles';
-import { Stack, Text } from 'office-ui-fabric-react';
-import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { Text } from 'office-ui-fabric-react';
 import { IColor } from 'office-ui-fabric-react/lib/Color';
+import { FabricSlotWidget } from './FabricSlotWidget';
 
 export interface IFabricPaletteProps {
   themeRules?: IThemeRules;
@@ -33,62 +32,6 @@ const tableClassName = mergeStyles({
   }
 });
 
-const slotClassName = mergeStyles({
-  display: 'flex',
-  alignItems: 'center',
-  overflow: 'auto'
-});
-
-const fabricPaletteColorBox = mergeStyles({
-  width: 15,
-  height: 15,
-  display: 'inline-block',
-  left: 5,
-  top: 5,
-  border: '1px solid black',
-  flexShrink: 0
-});
-
-interface IFabricSlotWidgetProps {
-  slot: FabricSlots;
-  onFabricPaletteColorChange: (newColor: IColor | undefined, fabricSlot: FabricSlots) => void;
-  themeRules?: IThemeRules;
-}
-
-const FabricSlotWidget: React.FunctionComponent<IFabricSlotWidgetProps> = (props: FabricSlotWidgetProps) => {
-  const [isColorPickerVisible, setIsPickerOpen] = React.useState(false);
-  const colorPickerRef = React.createRef<HTMLDivElement>();
-  const slotRule = props.themeRules![FabricSlots[props.slot]];
-  return (
-    <div key={slotRule.name} className={slotClassName}>
-      <Text as="td">
-        <Stack horizontal gap={5}>
-          <div
-            ref={colorPickerRef}
-            key={slotRule.name}
-            className={fabricPaletteColorBox}
-            style={{ backgroundColor: slotRule.color!.str }}
-            onClick={() => setIsPickerOpen(true)}
-          />
-          {isColorPickerVisible && (
-            <div>
-              <Callout gapSpace={10} target={colorPickerRef.current} setInitialFocus={true} onDismiss={() => setIsPickerOpen(false)}>
-                <ColorPicker
-                  color={slotRule.color}
-                  onChange={(ev, newColor) => props.onFabricPaletteColorChange(newColor, props.slot)}
-                  alphaSliderHidden={true}
-                />
-              </Callout>
-            </div>
-          )}
-          <div>{slotRule.name}</div>
-        </Stack>
-      </Text>
-      <Text as="td">{slotRule.color!.str}</Text>
-    </div>
-  );
-};
-
 export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
   constructor(props: IFabricPaletteProps) {
     super(props);
@@ -101,11 +44,8 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
           <thead>
             <tr>
               <Text as="th"> Primary</Text>
-              {/* <Text as="th"> Hex</Text> */}
               <Text as="th"> Foreground</Text>
-              {/* <Text as="th"> Hex</Text> */}
               <Text as="th"> Background</Text>
-              {/* <Text as="th"> Hex</Text> */}
             </tr>
           </thead>
           <tbody>

@@ -127,7 +127,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     if (fabricPaletteColorChangeTimeout) {
       clearTimeout(fabricPaletteColorChangeTimeout);
     }
-    console.log({ newColor, fabricSlot });
+    console.log(newColor, fabricSlot);
     if (!this.state.themeRules) {
       return;
     }
