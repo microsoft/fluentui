@@ -80,7 +80,8 @@ function getMaterializedItemsCount(materializedRanges: ItemRange[]): number {
  * A simple virtualized List component which assumes that all its items have the same height.
  */
 export const FixedList = React.memo((props: IFixedListProps) => {
-  const { itemCount, itemHeight, onRenderItem } = props;
+  const { itemCount, itemHeight, onRenderItem, viewportState } = props;
+  const { isScrolling } = viewportState;
 
   const materializedRanges = getMaterializedItemRanges(props);
   const materializedItemsCount = getMaterializedItemsCount(materializedRanges);
@@ -105,7 +106,10 @@ export const FixedList = React.memo((props: IFixedListProps) => {
 
   const style: React.CSSProperties = {
     position: 'relative',
-    height: `${itemCount * itemHeight}px`
+    height: `${itemCount * itemHeight}px`,
+
+    // Similar to react-window, we disable pointer events while scrolling to improve perf
+    pointerEvents: isScrolling ? 'none' : undefined
   };
 
   return <div style={style}>{children}</div>; // tslint:disable-line:jsx-ban-props
