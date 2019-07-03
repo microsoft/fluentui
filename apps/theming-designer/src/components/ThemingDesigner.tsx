@@ -69,6 +69,7 @@ const Main = (props: IStackProps) => (
 );
 
 let colorChangeTimeout: number;
+let fabricPaletteColorChangeTimeout: number;
 
 export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
   constructor(props: any) {
@@ -123,9 +124,25 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
   }
 
   private _onFabricPaletteColorChange = (newColor: IColor | undefined, fabricSlot: FabricSlots) => {
-    // change fabric slot rule
-    console.log('changing');
-    this.state.themeRules![FabricSlots[fabricSlot]].color = newColor;
+    if (fabricPaletteColorChangeTimeout) {
+      clearTimeout(fabricPaletteColorChangeTimeout);
+    }
+    console.log({ newColor, fabricSlot });
+    if (!this.state.themeRules) {
+      return;
+    }
+    colorChangeTimeout = this._async.setTimeout(() => {
+      this.setState(
+        {
+          ...this.state,
+          themeRules: {
+            ...this.state.themeRules,
+            [FabricSlots[fabricSlot]]: { ...this.state.themeRules[FabricSlots[fabricSlot]], color: newColor }
+          }
+        },
+        this._makeNewTheme
+      );
+    }, 20);
   };
 
   private _onPrimaryColorPickerChange = (newColor: IColor | undefined) => {
