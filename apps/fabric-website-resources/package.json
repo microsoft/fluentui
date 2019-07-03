@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website-resources",
-  "version": "7.1.1",
+  "version": "7.2.0",
   "description": "Office UI Fabric React website resources project",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -48,7 +48,7 @@
     "es6-weak-map": "^2.0.2",
     "highlight.js": "^9.12.0",
     "office-ui-fabric-core": "^10.0.0",
-    "office-ui-fabric-react": "^7.6.3",
+    "office-ui-fabric-react": "^7.7.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

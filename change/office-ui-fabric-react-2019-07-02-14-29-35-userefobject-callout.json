@@ -1,8 +1,0 @@
-{
-  "comment": "Callout: add support for RefObject as target",
-  "type": "minor",
-  "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com",
-  "commit": "7284f222a60150b69c67c49920cfd0a1eebd463c",
-  "date": "2019-07-02T21:29:35.658Z"
-}
