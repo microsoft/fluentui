@@ -138,7 +138,7 @@ export class ScrollablePaneStickyOptimizedDetailsList extends React.Component<{}
               items={items}
               columns={this._columns}
               setKey="set"
-              layoutMode={DetailsListLayoutMode.fixedColumns}
+              layoutMode={DetailsListLayoutMode.justified}
               constrainMode={ConstrainMode.unconstrained}
               onRenderDetailsHeader={onRenderDetailsHeader}
               onRenderDetailsFooter={onRenderDetailsFooter}

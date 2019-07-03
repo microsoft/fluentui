@@ -52,14 +52,14 @@ const _footerItem: IScrollablePaneDetailsListExampleItem = {
   test3: 'Footer 3'
 };
 
-interface IScrollablePaneDetailsListExampleItem {
+export interface IScrollablePaneDetailsListExampleItem {
   key: number | string;
   test1: string;
   test2: string;
   test3: string;
 }
 
-interface IScrollablePaneDetailsListExampleState {
+export interface IScrollablePaneDetailsListExampleState {
   items: IScrollablePaneDetailsListExampleItem[];
 }
 
@@ -158,7 +158,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
                   items={items}
                   columns={this._columns}
                   setKey="set"
-                  layoutMode={DetailsListLayoutMode.fixedColumns}
+                  layoutMode={DetailsListLayoutMode.justified}
                   constrainMode={ConstrainMode.unconstrained}
                   onRenderDetailsHeader={onRenderDetailsHeader}
                   onRenderDetailsFooter={onRenderDetailsFooter}

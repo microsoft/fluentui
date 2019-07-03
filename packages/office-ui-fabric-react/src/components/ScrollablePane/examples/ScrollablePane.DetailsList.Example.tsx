@@ -116,7 +116,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, IScrol
               items={items}
               columns={this._columns}
               setKey="set"
-              layoutMode={DetailsListLayoutMode.fixedColumns}
+              layoutMode={DetailsListLayoutMode.justified}
               constrainMode={ConstrainMode.unconstrained}
               onRenderDetailsHeader={onRenderDetailsHeader}
               onRenderDetailsFooter={onRenderDetailsFooter}
