@@ -1,5 +1,9 @@
 import { IViewportState } from '../Viewport/Viewport.types';
 
+/**
+ * Type representing an item range, where the first element is the start index (inclusive)
+ * and the second element is the end index (exclusive).
+ */
 export type ItemRange = [number, number];
 export enum ItemRangeIndex {
   startIndex = 0,

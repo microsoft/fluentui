@@ -16,7 +16,7 @@ function getVisibleItemRange(props: IFixedListProps): ItemRange {
   const scrollTop = viewportState.scrollDistance[Axis.Y] - surfaceTop;
 
   const startIndex = Math.max(0, Math.floor(scrollTop / itemHeight));
-  const endIndex = Math.min(itemCount - 1, Math.ceil((scrollTop + viewportHeight) / itemHeight));
+  const endIndex = Math.min(itemCount, Math.ceil((scrollTop + viewportHeight) / itemHeight) + 1);
 
   return [startIndex, endIndex];
 }
@@ -46,7 +46,7 @@ function getMaterializedItemRanges(props: IFixedListProps): ItemRange[] {
 
   const [startIndex, endIndex] = itemRange;
   itemRange[ItemRangeIndex.startIndex] = Math.max(0, startIndex - overscanBehind);
-  itemRange[ItemRangeIndex.endIndex] = Math.min(itemCount - 1, endIndex + overscanAhead);
+  itemRange[ItemRangeIndex.endIndex] = Math.min(itemCount, endIndex + overscanAhead);
 
   // Construct final materialized ranges
   const materializedRanges = [itemRange];
@@ -70,7 +70,7 @@ function getMaterializedItemsCount(materializedRanges: ItemRange[]): number {
   for (const materializedRange of materializedRanges) {
     const [startIndex, endIndex] = materializedRange;
 
-    materializedItemsCount += endIndex - startIndex + 1;
+    materializedItemsCount += endIndex - startIndex;
   }
 
   return materializedItemsCount;
