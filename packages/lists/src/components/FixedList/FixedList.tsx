@@ -97,6 +97,9 @@ export const FixedList = React.memo((props: IFixedListProps) => {
         position: 'absolute',
         width: '100%',
         height: `${itemHeight}px`,
+
+        // Use a 'translate' transformation instead of positioning via 'top' in order to use GPU accelleration and to
+        // enable smooth transitions if an element's position changes
         transform: `translate(0, ${i * itemHeight}px)`
       });
 
