@@ -235,10 +235,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
 
   /**
    * When specified, determines whether the callout (the menu which drops down) should
-   * restore the focus after being dismissed or not.  If false, then the menu will try
+   * restore the focus after being dismissed or not.  If false, then the menu will not try
    * to set focus to whichever element had focus before the menu was opened.
+   * Defaults to true.
    */
-  menuShouldNotRestoreFocus?: boolean;
+  shouldRestoreFocus?: boolean;
 }
 
 /**

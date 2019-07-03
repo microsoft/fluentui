@@ -2079,12 +2079,12 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     onLayerMounted?: () => void;
     onPositioned?: (positions?: ICalloutPositionedInfo) => void;
     onScroll?: () => void;
-    popupShouldNotRestoreFocus?: boolean;
     preventDismissOnLostFocus?: boolean;
     preventDismissOnResize?: boolean;
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
+    shouldRestoreFocus?: boolean;
     style?: React.CSSProperties;
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
@@ -2696,7 +2696,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
     isButtonAriaHidden?: boolean;
     keytipProps?: IKeytipProps;
-    menuShouldNotRestoreFocus?: boolean;
     multiSelect?: boolean;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
@@ -2710,6 +2709,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     options: IComboBoxOption[];
     persistMenu?: boolean;
     scrollSelectedToTop?: boolean;
+    shouldRestoreFocus?: boolean;
     styles?: Partial<IComboBoxStyles>;
     text?: string;
     theme?: ITheme;

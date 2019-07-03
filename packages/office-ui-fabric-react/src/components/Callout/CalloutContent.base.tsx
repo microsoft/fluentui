@@ -241,7 +241,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
             className={this._classNames.calloutMain}
             onDismiss={this.dismiss}
             onScroll={onScroll}
-            shouldRestoreFocus={!this.props.popupShouldNotRestoreFocus}
+            shouldRestoreFocus={this.props.shouldRestoreFocus !== undefined ? this.props.shouldRestoreFocus : true}
             style={overflowStyle}
             onMouseDown={this._mouseDownOnPopup}
             onMouseUp={this._mouseUpOnPopup}

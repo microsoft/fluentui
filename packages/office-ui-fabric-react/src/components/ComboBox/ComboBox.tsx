@@ -1107,7 +1107,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         calloutWidth={useComboBoxAsMenuWidth && this._comboBoxWrapper.current ? comboBoxMenuWidth && comboBoxMenuWidth : dropdownWidth}
         calloutMaxWidth={dropdownMaxWidth ? dropdownMaxWidth : comboBoxMenuWidth}
         hidden={persistMenu ? !isOpen : undefined}
-        popupShouldNotRestoreFocus={this.props.menuShouldNotRestoreFocus}
+        shouldRestoreFocus={this.props.shouldRestoreFocus}
       >
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
           {(onRenderList as any)({ ...props }, this._onRenderList)}
