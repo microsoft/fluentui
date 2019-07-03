@@ -1,0 +1,8 @@
+{
+  "comment": "Button: Making Button variants themable by using createComponent instead of wrappers.",
+  "type": "patch",
+  "packageName": "@uifabric/experiments",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "26e11f6c58861799d22dfb6f4f73f31451aef10f",
+  "date": "2019-07-03T19:39:27.654Z"
+}
