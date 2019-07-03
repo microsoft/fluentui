@@ -63,7 +63,7 @@ exports[`Persona renders Persona children correctly 1`] = `
         className=
             ms-Persona-initials
             {
-              background-color: #498205;
+              background-color: #8764B8;
               border-radius: 50%;
               color: #ffffff;
               font-size: 16px;
@@ -636,7 +636,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         className=
             ms-Persona-initials
             {
-              background-color: #498205;
+              background-color: #8764B8;
               border-radius: 50%;
               color: #ffffff;
               font-size: 16px;
@@ -991,7 +991,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         className=
             ms-Persona-initials
             {
-              background-color: #8E562E;
+              background-color: #881798;
               border-radius: 50%;
               color: #ffffff;
               font-size: 42px;

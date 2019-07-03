@@ -264,7 +264,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         className=
             ms-Persona-initials
             {
-              background-color: #498205;
+              background-color: #8764B8;
               border-radius: 50%;
               color: #ffffff;
               font-size: 16px;
