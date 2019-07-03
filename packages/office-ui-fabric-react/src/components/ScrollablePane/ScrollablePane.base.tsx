@@ -530,7 +530,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   private _getScrollbarHeightFromLocalStorage(onlyRead?: boolean): number {
     let scrollbarHeight: number = 0;
-    if ('localStorage' in window) {
+    if (typeof window !== 'undefined' && 'localStorage' in window) {
       scrollbarHeight = Number(window.localStorage.getItem(ScrollablePaneBase._scrollbarHeightKey));
       if (!!scrollbarHeight && !isNaN(scrollbarHeight)) {
         return scrollbarHeight;
