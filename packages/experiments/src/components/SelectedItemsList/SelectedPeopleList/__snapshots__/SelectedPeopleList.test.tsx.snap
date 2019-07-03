@@ -250,7 +250,7 @@ Array [
                 className=
                     ms-Persona-initials
                     {
-                      background-color: #69797E;
+                      background-color: #A4262C;
                       border-radius: 50%;
                       color: #ffffff;
                       font-size: 14px;
@@ -748,7 +748,7 @@ Array [
                 className=
                     ms-Persona-initials
                     {
-                      background-color: #CA5010;
+                      background-color: #0078D4;
                       border-radius: 50%;
                       color: #ffffff;
                       font-size: 14px;
