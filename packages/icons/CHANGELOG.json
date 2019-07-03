@@ -2,6 +2,20 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "version": "7.1.0",
+      "tag": "@uifabric/icons_v7.1.0",
+      "date": "Tue, 02 Jul 2019 12:29:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update MDL2 icons. Add AllIconNames.json",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "cbad6b35d1744956cb9d9a9428cc89efa534e936"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.0.2",
       "tag": "@uifabric/icons_v7.0.2",
       "date": "Fri, 14 Jun 2019 12:26:30 GMT",

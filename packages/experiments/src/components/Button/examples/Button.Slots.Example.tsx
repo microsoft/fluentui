@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Stack, IStackProps, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { IMenuButtonProps, MenuButton } from '@uifabric/experiments/lib/MenuButton';
-import { ISplitButtonProps, SplitButton } from '@uifabric/experiments/lib/SplitButton';
+import { IMenuButtonProps, IMenuButtonStyles, IMenuButtonTokens, MenuButton } from '@uifabric/experiments/lib/MenuButton';
+import { ISplitButtonProps, ISplitButtonTokens, SplitButton } from '@uifabric/experiments/lib/SplitButton';
 
 export interface IRibbonMenuButtonProps extends IMenuButtonProps {
   vertical?: boolean;
@@ -25,16 +25,17 @@ const menuProps: ISplitButtonProps['menu'] = {
   ]
 };
 
-const RibbonMenuButtonTokens = {
+const RibbonMenuButtonTokens: IMenuButtonTokens = {
   backgroundColorExpanded: '#C8C6C4',
   backgroundColorHovered: '#C8C6C4',
   backgroundColorExpandedHovered: '#C8C6C4',
   backgroundColorPressed: '#C8C6C4',
   backgroundColorExpandedPressed: '#C8C6C4',
+  childrenGap: 0,
   height: '100%'
 };
 
-const RibbonMenuButtonVerticalTokens = {
+const RibbonMenuButtonVerticalTokens: IMenuButtonTokens = {
   ...RibbonMenuButtonTokens,
   contentPadding: '2px 4px 0px',
   iconSize: '32px',
@@ -42,7 +43,10 @@ const RibbonMenuButtonVerticalTokens = {
   minHeight: 0
 };
 
-const RibbonMenuButtonVerticalStyles = {
+const RibbonMenuButtonVerticalStyles: IMenuButtonStyles = {
+  root: {
+    flexDirection: 'column'
+  },
   icon: {
     marginBottom: 4,
     padding: 4
@@ -56,16 +60,9 @@ const RibbonMenuButtonVerticalStyles = {
 };
 
 export const RibbonMenuButton: React.SFC<IRibbonMenuButtonProps> = props => {
-  const stackProps: IStackProps = {
-    horizontal: false,
-    tokens: { childrenGap: 0 },
-    verticalFill: true
-  };
-
   const mergedProps: IMenuButtonProps = props.vertical
     ? {
         ...props,
-        stack: stackProps,
         menuIcon: 'ChevronDownSmall',
         styles: RibbonMenuButtonVerticalStyles,
         tokens: RibbonMenuButtonVerticalTokens
@@ -75,7 +72,7 @@ export const RibbonMenuButton: React.SFC<IRibbonMenuButtonProps> = props => {
   return <MenuButton {...mergedProps} />;
 };
 
-const SplitMenuButtonVerticalTokens = {
+const SplitMenuButtonVerticalTokens: ISplitButtonTokens = {
   ...RibbonMenuButtonTokens,
   contentPadding: 4,
   secondaryPadding: '0px 4px',

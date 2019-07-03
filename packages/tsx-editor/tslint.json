@@ -1,0 +1,4 @@
+{
+  "extends": ["@uifabric/tslint-rules"],
+  "rules": { "typedef": false, "jsx-ban-props": false }
+}

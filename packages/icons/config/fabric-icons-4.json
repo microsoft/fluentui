@@ -10,6 +10,38 @@
   },
   "glyphs": [
     {
+      "name": "Broom",
+      "unicode": "EA99"
+    },
+    {
+      "name": "Cocktails",
+      "unicode": "EA9D"
+    },
+    {
+      "name": "Wines",
+      "unicode": "EABF"
+    },
+    {
+      "name": "Articles",
+      "unicode": "EAC1"
+    },
+    {
+      "name": "Cycling",
+      "unicode": "EAC7"
+    },
+    {
+      "name": "DietPlanNotebook",
+      "unicode": "EAC8"
+    },
+    {
+      "name": "Pill",
+      "unicode": "EACB"
+    },
+    {
+      "name": "ExerciseTracker",
+      "unicode": "EACC"
+    },
+    {
       "name": "HandsFree",
       "unicode": "EAD0"
     },
@@ -376,38 +408,6 @@
     {
       "name": "Badge",
       "unicode": "EC1B"
-    },
-    {
-      "name": "Giftbox",
-      "unicode": "EC1F"
-    },
-    {
-      "name": "VisualStudioLogo",
-      "unicode": "EC22"
-    },
-    {
-      "name": "HomeGroup",
-      "unicode": "EC26"
-    },
-    {
-      "name": "ExcelLogoInverse",
-      "unicode": "EC28"
-    },
-    {
-      "name": "WordLogoInverse",
-      "unicode": "EC29"
-    },
-    {
-      "name": "PowerPointLogoInverse",
-      "unicode": "EC2A"
-    },
-    {
-      "name": "Cafe",
-      "unicode": "EC32"
-    },
-    {
-      "name": "SpeedHigh",
-      "unicode": "EC4A"
     }
   ]
 }

@@ -222,7 +222,7 @@ export const inputProperties = buttonProperties.concat([
   'min', // input, meter
   'multiple', // input, select
   'pattern', // input
-  'placeholder', // input
+  'placeholder', // input, textarea
   'readOnly', // input, textarea
   'required', // input, select, textarea
   'src', // audio, embed, iframe, img, input, script, source, track, video
@@ -243,6 +243,7 @@ export const textAreaProperties = buttonProperties.concat([
   'dirname', // input, textarea
   'form', // button, fieldset, input, label, meter, object, output, select, textarea
   'maxLength', // input, textarea
+  'placeholder', // input, textarea
   'readOnly', // input, textarea
   'required', // input, select, textarea
   'rows', // textarea
