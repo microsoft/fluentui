@@ -97,7 +97,14 @@ export const Viewport = (props: IViewportProps): JSX.Element => {
     position: 'relative',
     height,
     width,
-    overflow: 'auto'
+    overflow: 'auto',
+
+    // Enable momentum-based scrolling for iOS browsers
+    WebkitOverflowScrolling: 'touch',
+
+    // Make Chromium only paint new/changed items instead of repainting the full viewport by promoting it to an own layer
+    // https://github.com/Microsoft/monaco-editor/issues/426#issuecomment-308395469
+    willChange: 'transform'
   };
 
   return (
