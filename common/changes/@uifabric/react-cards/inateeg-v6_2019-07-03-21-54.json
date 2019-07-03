@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/react-cards",
+      "comment": "add DetailsRow animation on cell content update",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/react-cards",
+  "email": "inateeg@microsoft.com"
+}

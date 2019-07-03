@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/migration",
+      "comment": "add detailsRow animation support",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/migration",
+  "email": "inateeg@microsoft.com"
+}
