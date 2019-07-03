@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 02 Jul 2019 12:21:32 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jul 2019 23:18:43 GMT and should not be manually modified.
+
+## 6.193.1
+Wed, 03 Jul 2019 23:18:43 GMT
+
+### Patches
+
+- Layer: remove the usage of viewport width and height to fix layout issues on mobile browsers
 
 ## 6.193.0
 Tue, 02 Jul 2019 12:21:32 GMT
