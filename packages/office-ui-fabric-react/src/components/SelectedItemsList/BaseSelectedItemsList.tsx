@@ -147,7 +147,6 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
   }
 
   public componentDidMount(): void {
-    super.componentDidMount();
     this.selection.setItems(this.state.items);
   }
 

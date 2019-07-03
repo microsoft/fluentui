@@ -1,6 +1,27 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 27 Jun 2019 22:14:22 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jul 2019 12:30:55 GMT and should not be manually modified.
+
+## 7.2.4
+Wed, 03 Jul 2019 12:30:55 GMT
+
+### Patches
+
+- DetailsList cell update animation (inateeg@microsoft.com)
+
+## 7.2.3
+Tue, 02 Jul 2019 12:29:06 GMT
+
+### Patches
+
+- Add pivot for Fabric Icons page
+
+## 7.2.2
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
 
 ## 7.2.1
 Thu, 27 Jun 2019 22:14:22 GMT

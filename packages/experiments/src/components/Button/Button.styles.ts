@@ -47,10 +47,10 @@ export const circularTokens: IButtonComponent['tokens'] = (props, theme): IButto
 };
 
 export const enabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
-  const { palette, semanticColors } = theme;
+  const { semanticColors } = theme;
   return {
-    backgroundColor: palette.white,
-    backgroundColorHovered: palette.neutralLighter,
+    backgroundColor: semanticColors.buttonBackground,
+    backgroundColorHovered: semanticColors.buttonBackgroundHovered,
     backgroundColorPressed: semanticColors.buttonBackgroundPressed,
 
     borderColor: semanticColors.buttonBorder,

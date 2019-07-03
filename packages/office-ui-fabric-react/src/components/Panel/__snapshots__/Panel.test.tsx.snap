@@ -148,11 +148,7 @@ exports[`Panel renders Panel correctly 1`] = `
           onBlur={[Function]}
           onFocus={[Function]}
           onFocusCapture={[Function]}
-          style={
-            Object {
-              "maxHeight": 768,
-            }
-          }
+          style={Object {}}
         >
           <div
             data-is-visible={true}
@@ -317,11 +313,6 @@ exports[`Panel renders Panel correctly 1`] = `
                   flex-grow: 1;
                   overflow-y: hidden;
                 }
-            style={
-              Object {
-                "maxHeight": 768,
-              }
-            }
           >
             <div
               className=
@@ -381,11 +372,6 @@ exports[`Panel renders Panel correctly 1`] = `
                     overflow-y: auto;
                   }
               data-is-scrollable={true}
-              style={
-                Object {
-                  "maxHeight": 768,
-                }
-              }
             >
               <div
                 className=

@@ -139,6 +139,12 @@ export const AppDefinition: IAppDefinition = {
               url: '#/examples/detailslist/variablerowheights'
             },
             {
+              component: require<any>('./components/pages/DetailsList/DetailsListAnimationPage').DetailsListAnimationPage,
+              key: 'DetailsList - Animation',
+              name: 'DetailsList - Animation',
+              url: '#/examples/detailslist/animation'
+            },
+            {
               component: require<any>('./components/pages/DetailsList/DetailsListCompactPage').DetailsListCompactPage,
               key: 'DetailsList - Compact',
               name: 'DetailsList - Compact',

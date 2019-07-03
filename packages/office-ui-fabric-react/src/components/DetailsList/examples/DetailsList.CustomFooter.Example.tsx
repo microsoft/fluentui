@@ -44,7 +44,7 @@ export class DetailsListCustomFooterExample extends React.Component<{}, {}> {
         items={this._items}
         columns={this._columns}
         setKey="set"
-        layoutMode={DetailsListLayoutMode.fixedColumns}
+        layoutMode={DetailsListLayoutMode.justified}
         selectionPreservedOnEmptyClick={true}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"

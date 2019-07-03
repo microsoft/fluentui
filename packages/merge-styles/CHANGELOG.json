@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "7.1.1",
+      "tag": "@uifabric/merge-styles_v7.1.1",
+      "date": "Mon, 01 Jul 2019 18:51:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Re-use style nodes in IE11 to prevent unpredictable cascading",
+            "author": "Michael Loughry <miclo@microsoft.com>",
+            "commit": "60b64fb95f20170720afdb33bbc33860aef547d5"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.0",
       "tag": "@uifabric/merge-styles_v7.1.0",
       "date": "Thu, 27 Jun 2019 18:25:04 GMT",
