@@ -1,0 +1,8 @@
+{
+  "comment": "Modal: Adding overlayProps as a prop.",
+  "type": "minor",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "7f27de8dd01f9bb3d3888c7d3e006a5411c8143b",
+  "date": "2019-07-03T19:24:12.151Z"
+}
