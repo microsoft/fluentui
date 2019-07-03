@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website",
+      "comment": "Add DetailsRow animiation example page",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website",
+  "email": "inateeg@microsoft.com"
+}
