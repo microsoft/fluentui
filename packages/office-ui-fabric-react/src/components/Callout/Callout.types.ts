@@ -8,7 +8,7 @@ import { ILayerProps } from '../../Layer';
 /**
  * {@docCategory Callout}
  */
-export type Target = Element | string | MouseEvent | IPoint | null;
+export type Target = Element | string | MouseEvent | IPoint | null | React.RefObject<Element>;
 
 /**
  * {@docCategory Callout}

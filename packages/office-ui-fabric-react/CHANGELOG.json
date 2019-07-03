@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 03 Jul 2019 12:30:55 GMT",
+      "tag": "office-ui-fabric-react_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "SplitButton: add in props to control splitbutton menu button",
+            "author": "joschect@microsoft.com",
+            "commit": "3860973708bfb101b35059337e33d53691536b56"
+          },
+          {
+            "comment": "Callout: add support for RefObject as target",
+            "author": "joschect@microsoft.com",
+            "commit": "7284f222a60150b69c67c49920cfd0a1eebd463c"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Revert \"BaseFloatingItem: fix tests + remove redundant state  (#9500)\"",
+            "author": "miclo@microsoft.com",
+            "commit": "d6fbb563e83b0f606bc4ca685ab60302aabaa334"
+          },
+          {
+            "comment": "Announced: fix QuickActions example to reset Announced message",
+            "author": "naethell@microsoft.com",
+            "commit": "7be3c03db4bf36248942f01007e30f06243bae0f"
+          },
+          {
+            "comment": "update snapshots and update extended picker tests",
+            "author": "joschect@microsoft.com",
+            "commit": "b5ed95fbdbc5ea8449d4dc95bdc6729786d0a9cb"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.6.3",
       "tag": "office-ui-fabric-react_v7.6.3",
       "date": "Mon, 01 Jul 2019 18:51:43 GMT",

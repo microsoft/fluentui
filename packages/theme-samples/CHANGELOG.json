@@ -2,6 +2,20 @@
   "name": "@uifabric/theme-samples",
   "entries": [
     {
+      "date": "Wed, 03 Jul 2019 12:30:55 GMT",
+      "tag": "@uifabric/theme-samples_v7.0.2",
+      "version": "7.0.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "No comment",
+            "author": "nishikaza@berkeley.edu",
+            "commit": "9716916a8b30fa006c4261f714899949ecddce29"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.0.2",
       "tag": "@uifabric/theme-samples_v7.0.2",
       "date": "Fri, 14 Jun 2019 12:26:30 GMT",

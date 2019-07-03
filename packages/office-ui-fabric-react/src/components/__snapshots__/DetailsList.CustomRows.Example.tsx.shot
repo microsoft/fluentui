@@ -90,7 +90,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 100,
             }
           }
         >
@@ -637,7 +637,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -899,6 +899,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -1014,7 +1015,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -1276,6 +1277,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -1392,7 +1394,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -1654,6 +1656,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -1769,7 +1772,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -2031,6 +2034,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -2147,7 +2151,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -2409,6 +2413,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -2524,7 +2529,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -2786,6 +2791,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -2902,7 +2908,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -3164,6 +3170,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -3279,7 +3286,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -3541,6 +3548,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -3657,7 +3665,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -3919,6 +3927,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -4034,7 +4043,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 100,
                         }
                       }
                     >
@@ -4296,6 +4305,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
