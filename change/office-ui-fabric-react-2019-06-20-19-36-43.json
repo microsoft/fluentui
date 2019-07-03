@@ -1,0 +1,8 @@
+{
+  "comment": "Adding new props for Sticky and ScrollablePane",
+  "type": "minor",
+  "packageName": "office-ui-fabric-react",
+  "email": "hatrived@microsoft.com",
+  "commit": "8b82da30eba90baa19c8075ba2b3f730987840c7",
+  "date": "2019-06-20T14:06:43.573Z"
+}
