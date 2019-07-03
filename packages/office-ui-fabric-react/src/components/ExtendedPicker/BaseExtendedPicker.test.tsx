@@ -1,8 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-/* tslint:enable:no-unused-variable */
+import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 
 import { IBaseExtendedPickerProps } from './BaseExtendedPicker.types';
@@ -44,11 +43,11 @@ const BaseSelectedItemsListWithType = BaseSelectedItemsList as new (props: IBase
 >;
 
 const basicSuggestionRenderer = (props: ISimple) => {
-  return <div> {props.name} </div>;
+  return <div key={props.key}> {props.name} </div>;
 };
 
 const basicItemRenderer = (props: ISelectedItemProps<ISimple>) => {
-  return <div> {props.name} </div>;
+  return <div key={props.key}> {props.name} </div>;
 };
 
 const basicRenderFloatingPicker = (props: IBaseFloatingPickerProps<ISimple>) => {
@@ -56,7 +55,7 @@ const basicRenderFloatingPicker = (props: IBaseFloatingPickerProps<ISimple>) => 
 };
 
 const basicRenderSelectedItemsList = (props: IBaseSelectedItemsListProps<ISimple>) => {
-  return <BaseSelectedItemsListWithType />;
+  return <BaseSelectedItemsListWithType {...props} />;
 };
 
 const floatingPickerProps = {
@@ -82,8 +81,26 @@ describe('Pickers', () => {
       ISimple,
       IBaseExtendedPickerProps<ISimple>
     >;
+    // Our functional tests need to run against actual DOM for callouts to work,
+    // since callout mount a new react root with ReactDOM.
+    //
+    // see https://github.com/facebook/react/pull/12895
+    let hostNode: HTMLDivElement | null = null;
+    const create = (elem: React.ReactElement) => {
+      hostNode = document.createElement('div');
+      document.body.appendChild(hostNode);
+      ReactDOM.render(elem, hostNode);
+    };
 
-    it('renders BaseExtendedPicker correctly', () => {
+    afterEach(() => {
+      if (hostNode) {
+        ReactDOM.unmountComponentAtNode(hostNode);
+        document.body.removeChild(hostNode);
+        hostNode = null;
+      }
+    });
+
+    it('renders BaseExtendedPicker correctly with no items', () => {
       const component = renderer.create(
         <BaseExtendedPickerWithType
           floatingPickerProps={floatingPickerProps}
@@ -96,51 +113,108 @@ describe('Pickers', () => {
       expect(tree).toMatchSnapshot();
     });
 
-    it('force resolves to the first suggestion', () => {
-      const root = document.createElement('div');
-      document.body.appendChild(root);
-
-      const picker: TypedBaseExtendedPicker = (ReactDOM.render(
+    it('renders BaseExtendedPicker correctly with selected and suggested items', () => {
+      const component = renderer.create(
         <BaseExtendedPickerWithType
           floatingPickerProps={floatingPickerProps}
           selectedItemsListProps={selectedItemsListProps}
           onRenderSelectedItems={basicRenderSelectedItemsList}
           onRenderFloatingPicker={basicRenderFloatingPicker}
-        />,
-        root
-      ) as unknown) as TypedBaseExtendedPicker;
+          suggestionItems={[
+            {
+              name: 'yellow',
+              key: 'yellow'
+            }
+          ]}
+          selectedItems={[
+            {
+              name: 'red',
+              key: 'red'
+            },
+            {
+              name: 'green',
+              key: 'green'
+            }
+          ]}
+        />
+      );
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+    });
+
+    it('force resolves to the first suggestion', () => {
+      const pickerRef: React.RefObject<TypedBaseExtendedPicker> = React.createRef();
+      create(
+        <BaseExtendedPickerWithType
+          ref={pickerRef}
+          floatingPickerProps={floatingPickerProps}
+          selectedItemsListProps={selectedItemsListProps}
+          onRenderSelectedItems={basicRenderSelectedItemsList}
+          onRenderFloatingPicker={basicRenderFloatingPicker}
+        />
+      );
+
+      expect(pickerRef.current).not.toBeFalsy();
+      const picker = pickerRef.current!;
 
       if (picker.inputElement) {
         picker.inputElement.value = 'bl';
+        ReactTestUtils.Simulate.input(picker.inputElement);
       }
 
+      ReactDOM.render(
+        <BaseExtendedPickerWithType
+          ref={pickerRef}
+          defaultSelectedItems={[]}
+          floatingPickerProps={floatingPickerProps}
+          selectedItemsListProps={selectedItemsListProps}
+          onRenderSelectedItems={basicRenderSelectedItemsList}
+          onRenderFloatingPicker={basicRenderFloatingPicker}
+        />,
+        hostNode
+      );
+
+      expect(picker.state.queryString).toBe('bl');
       expect(picker.floatingPicker.current && picker.floatingPicker.current.suggestions.length).toBe(2);
-      expect(picker.floatingPicker.current && picker.floatingPicker.current.suggestions[0].name).toBe('black');
+      expect(picker.floatingPicker.current && picker.floatingPicker.current.suggestions[0].item.name).toBe('black');
 
       // Force resolve to the first suggestions
       picker.floatingPicker.current && picker.floatingPicker.current.forceResolveSuggestion();
-      expect(picker.items.length).toBe(1);
-      expect(picker.items[0].name).toBe('black');
 
-      ReactDOM.unmountComponentAtNode(root);
-    });
-
-    it('Can hide and show picker', () => {
-      const root = document.createElement('div');
-      document.body.appendChild(root);
-
-      const picker: TypedBaseExtendedPicker = (ReactDOM.render(
+      ReactDOM.render(
         <BaseExtendedPickerWithType
+          ref={pickerRef}
+          defaultSelectedItems={[]}
           floatingPickerProps={floatingPickerProps}
           selectedItemsListProps={selectedItemsListProps}
           onRenderSelectedItems={basicRenderSelectedItemsList}
           onRenderFloatingPicker={basicRenderFloatingPicker}
         />,
-        root
-      ) as unknown) as TypedBaseExtendedPicker;
+        hostNode
+      );
+
+      expect(picker.items.length).toBe(1);
+      expect(picker.items[0].name).toBe('black');
+    });
+
+    it('Can hide and show picker', () => {
+      const pickerRef: React.RefObject<TypedBaseExtendedPicker> = React.createRef();
+      create(
+        <BaseExtendedPickerWithType
+          ref={pickerRef}
+          floatingPickerProps={floatingPickerProps}
+          selectedItemsListProps={selectedItemsListProps}
+          onRenderSelectedItems={basicRenderSelectedItemsList}
+          onRenderFloatingPicker={basicRenderFloatingPicker}
+        />
+      );
+
+      expect(pickerRef.current).not.toBeFalsy();
+      const picker = pickerRef.current!;
 
       if (picker.inputElement) {
         picker.inputElement.value = 'bl';
+        ReactTestUtils.Simulate.input(picker.inputElement);
       }
 
       expect(picker.floatingPicker.current && picker.floatingPicker.current.isSuggestionsShown).toBeTruthy();
@@ -148,34 +222,57 @@ describe('Pickers', () => {
       expect(picker.floatingPicker.current && picker.floatingPicker.current.isSuggestionsShown).toBeFalsy();
       picker.floatingPicker.current && picker.floatingPicker.current.showPicker();
       expect(picker.floatingPicker.current && picker.floatingPicker.current.isSuggestionsShown).toBeTruthy();
-
-      ReactDOM.unmountComponentAtNode(root);
     });
 
     it('Completes the suggestion', () => {
-      const root = document.createElement('div');
-      document.body.appendChild(root);
-
-      const picker: TypedBaseExtendedPicker = (ReactDOM.render(
+      const pickerRef: React.RefObject<TypedBaseExtendedPicker> = React.createRef();
+      create(
         <BaseExtendedPickerWithType
+          ref={pickerRef}
           floatingPickerProps={floatingPickerProps}
           selectedItemsListProps={selectedItemsListProps}
           onRenderSelectedItems={basicRenderSelectedItemsList}
           onRenderFloatingPicker={basicRenderFloatingPicker}
-        />,
-        root
-      ) as unknown) as TypedBaseExtendedPicker;
+        />
+      );
 
+      expect(pickerRef.current).not.toBeFalsy();
+      const picker = pickerRef.current!;
+
+      // setup
       if (picker.inputElement) {
         picker.inputElement.value = 'bl';
+        ReactTestUtils.Simulate.input(picker.inputElement);
         ReactTestUtils.Simulate.keyDown(picker.inputElement, { which: KeyCodes.down });
       }
 
-      picker.floatingPicker.current && picker.floatingPicker.current.completeSuggestion();
-      expect(picker.selectedItemsList.current && picker.selectedItemsList.current.items.length).toBe(1);
-      expect(picker.selectedItemsList.current && picker.selectedItemsList.current.items[0].name).toBe('blue');
+      // precondition check
+      expect(picker.floatingPicker.current).toBeTruthy();
+      expect(picker.floatingPicker.current!.suggestions).toEqual([
+        jasmine.objectContaining({
+          item: jasmine.objectContaining({
+            name: 'black',
+            key: 'black'
+          })
+        }),
+        jasmine.objectContaining({
+          item: jasmine.objectContaining({
+            name: 'blue',
+            key: 'blue'
+          })
+        })
+      ]);
 
-      ReactDOM.unmountComponentAtNode(root);
+      // act
+      picker.floatingPicker.current && picker.floatingPicker.current.completeSuggestion();
+
+      // assert
+      expect(picker.items).toEqual([
+        jasmine.objectContaining({
+          name: 'black',
+          key: 'black'
+        })
+      ]);
     });
   });
 });
