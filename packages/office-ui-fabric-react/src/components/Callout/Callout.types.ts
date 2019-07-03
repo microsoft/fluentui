@@ -232,7 +232,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
    * If specified, determines whether the underlying "Popup" component should try to restore
    * focus when it is dismissed.  When set to false, the Popup won't try to restore focus to
    * the last focused element.
-   * Defaults to true when undefined.
+   * @defaultvalue true;
    */
   shouldRestoreFocus?: boolean;
 }
