@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 27 Jun 2019 17:53:08 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jul 2019 12:21:43 GMT and should not be manually modified.
+
+## 6.79.2
+Wed, 03 Jul 2019 12:21:43 GMT
+
+### Patches
+
+- Filter out disallowed props from Tile root element
 
 ## 6.79.1
 Thu, 27 Jun 2019 17:53:08 GMT

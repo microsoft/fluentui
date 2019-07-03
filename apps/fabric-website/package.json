@@ -46,7 +46,7 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/api-docs": "^1.1.5",
     "@uifabric/example-app-base": "^6.23.6",
-    "@uifabric/experiments": "^6.79.1",
+    "@uifabric/experiments": "^6.79.2",
     "@uifabric/fabric-website-resources": "^6.18.5",
     "@uifabric/file-type-icons": "^6.5.2",
     "@uifabric/fluent-theme": "^0.16.15",

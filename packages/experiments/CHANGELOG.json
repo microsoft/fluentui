@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.79.2",
+      "tag": "@uifabric/experiments_v6.79.2",
+      "date": "Wed, 03 Jul 2019 12:21:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Filter out disallowed props from Tile root element",
+            "author": "Thomas Michon <tmichon@microsoft.com>",
+            "commit": "d32ed2055aba03efe71448c7523ca363b1f7dee1"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.79.1",
       "tag": "@uifabric/experiments_v6.79.1",
       "date": "Thu, 27 Jun 2019 17:53:08 GMT",
