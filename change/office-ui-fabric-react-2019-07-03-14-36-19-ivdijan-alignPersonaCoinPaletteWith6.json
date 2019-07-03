@@ -1,0 +1,8 @@
+{
+  "comment": "Update persona initial colors to be aligned with those in Fabric 6 branch",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "ivdijan@microsoft.com",
+  "commit": "2174ca63be82604ced1b9b6d2d54018e65769460",
+  "date": "2019-07-03T12:36:19.467Z"
+}
