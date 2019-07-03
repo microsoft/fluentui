@@ -55,12 +55,12 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
   /**
    * Determies the behavior of Sticky component(s) having stickyPosition StickyPosition.Header
    */
-  stickyAboveContainerBehavior?: IStickyContainerBehavior;
+  stickyHeaderContainerBehavior?: IStickyContainerBehavior;
 
   /**
    * Determies the behavior of Sticky component(s) having stickyPosition StickyPosition.Footer
    */
-  stickyBelowContainerBehavior?: IStickyContainerBehavior;
+  stickyFooterContainerBehavior?: IStickyContainerBehavior;
 }
 
 /**

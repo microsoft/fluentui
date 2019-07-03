@@ -73,7 +73,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   public syncScroll = (container: HTMLElement): void => {
-    const { nonStickyContent } = this;
+    const { nonStickyContent, stickyContentTop, stickyContentBottom } = this;
     const { isStickyBottom, isStickyTop } = this.state;
     const { scrollablePane } = this.context;
     // scroll sync is needed only if current state is sticky
@@ -81,10 +81,22 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       return;
     }
     const containerScrollLeft = scrollablePane.getScrollPosition(true /** horizontal */);
-    if (isStickyTop && !scrollablePane.usePlaceholderForSticky('top' /** StickyContentTop */) && this.stickyContentTop) {
-      this.stickyContentTop.children[0].scrollLeft = containerScrollLeft;
-    } else if (isStickyBottom && !scrollablePane.usePlaceholderForSticky('bottom' /** StickyContentBottom */) && this.stickyContentBottom) {
-      this.stickyContentBottom.children[0].scrollLeft = containerScrollLeft;
+    if (
+      isStickyTop &&
+      !scrollablePane.usePlaceholderForSticky('top' /** StickyContentTop */) &&
+      stickyContentTop &&
+      stickyContentTop.children &&
+      stickyContentTop.children.length > 0
+    ) {
+      stickyContentTop.children[0].scrollLeft = containerScrollLeft;
+    } else if (
+      isStickyBottom &&
+      !scrollablePane.usePlaceholderForSticky('bottom' /** StickyContentBottom */) &&
+      stickyContentBottom &&
+      stickyContentBottom.children &&
+      stickyContentBottom.children.length > 0
+    ) {
+      stickyContentBottom.children[0].scrollLeft = containerScrollLeft;
     } else if (nonStickyContent) {
       nonStickyContent.scrollLeft = containerScrollLeft;
     }

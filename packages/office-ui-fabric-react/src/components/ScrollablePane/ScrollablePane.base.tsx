@@ -329,10 +329,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   public usePlaceholderForSticky = (placeholderPosition: PlaceholderPosition): boolean => {
-    const { stickyBelowContainerBehavior, stickyAboveContainerBehavior } = this.props;
+    const { stickyHeaderContainerBehavior, stickyFooterContainerBehavior } = this.props;
     // if stickyContainerBehavior is not defined, use placeholder (default behavior)
-    const usePlaceholderForStickyTop: boolean = !stickyAboveContainerBehavior || !stickyAboveContainerBehavior.notUsePlaceHolder;
-    const usePlaceholderForStickyBottom: boolean = !stickyBelowContainerBehavior || !stickyBelowContainerBehavior.notUsePlaceHolder;
+    const usePlaceholderForStickyTop: boolean = !stickyHeaderContainerBehavior || !stickyHeaderContainerBehavior.notUsePlaceHolder;
+    const usePlaceholderForStickyBottom: boolean = !stickyFooterContainerBehavior || !stickyFooterContainerBehavior.notUsePlaceHolder;
 
     return placeholderPosition === 'top' ? usePlaceholderForStickyTop : usePlaceholderForStickyBottom;
   };
@@ -351,10 +351,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   private _getStickyConatinerBehavior(stickyContainerPosition: StickyContainerPosition): StickyContainerBehaviorType | undefined {
-    const { stickyBelowContainerBehavior, stickyAboveContainerBehavior } = this.props;
+    const { stickyFooterContainerBehavior, stickyHeaderContainerBehavior } = this.props;
     return stickyContainerPosition === 'above'
-      ? stickyAboveContainerBehavior && stickyAboveContainerBehavior.containerBehavior
-      : stickyBelowContainerBehavior && stickyBelowContainerBehavior.containerBehavior;
+      ? stickyHeaderContainerBehavior && stickyHeaderContainerBehavior.containerBehavior
+      : stickyFooterContainerBehavior && stickyFooterContainerBehavior.containerBehavior;
   }
 
   private _getScrollablePaneContext = (): IScrollablePaneContext => {
@@ -563,7 +563,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   private _sortBasedOnOrder(stickyContainerPosition: StickyContainerPosition): boolean {
     const stickyContainerBehavior =
-      stickyContainerPosition === 'above' ? this.props.stickyAboveContainerBehavior : this.props.stickyBelowContainerBehavior;
+      stickyContainerPosition === 'above' ? this.props.stickyHeaderContainerBehavior : this.props.stickyFooterContainerBehavior;
     return !!stickyContainerBehavior && stickyContainerBehavior.arrangeStickiesBasedOnOrder;
   }
 

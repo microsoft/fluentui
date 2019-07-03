@@ -34,7 +34,7 @@ export const ScrollablePanePageProps: IDocPageProps = {
       isScrollable: false
     },
     {
-      title: 'Details List Locked Header & Footer (Optimized for PLT)',
+      title: 'Details List Locked Header & Footer (Optimized for Performance)',
       code: ScrollablePaneStickyOptimizedDetailsListCode,
       codepenJS: ScrollablePaneStickyOptimizedDetailsListCodepen,
       view: <ScrollablePaneStickyOptimizedDetailsList />,
