@@ -9,26 +9,20 @@ import { PersonaInitialsColor, IPersonaProps } from './Persona.types';
  *   its primary use is for Facepile overflow buttons.
  */
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
+  PersonaInitialsColor.lightGreen,
   PersonaInitialsColor.lightBlue,
-  PersonaInitialsColor.blue,
-  PersonaInitialsColor.darkBlue,
-  PersonaInitialsColor.teal,
+  PersonaInitialsColor.lightPink,
   PersonaInitialsColor.green,
   PersonaInitialsColor.darkGreen,
-  PersonaInitialsColor.lightPink,
   PersonaInitialsColor.pink,
   PersonaInitialsColor.magenta,
   PersonaInitialsColor.purple,
-  PersonaInitialsColor.orange,
-  PersonaInitialsColor.lightRed,
-  PersonaInitialsColor.darkRed,
   PersonaInitialsColor.violet,
-  PersonaInitialsColor.gold,
-  PersonaInitialsColor.burgundy,
-  PersonaInitialsColor.warmGray,
-  PersonaInitialsColor.cyan,
-  PersonaInitialsColor.rust,
-  PersonaInitialsColor.coolGray
+  PersonaInitialsColor.teal,
+  PersonaInitialsColor.blue,
+  PersonaInitialsColor.darkBlue,
+  PersonaInitialsColor.orange,
+  PersonaInitialsColor.darkRed
 ];
 
 const COLOR_SWATCHES_NUM_ENTRIES = COLOR_SWATCHES_LOOKUP.length;
