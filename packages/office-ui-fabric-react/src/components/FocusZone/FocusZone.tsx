@@ -300,7 +300,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   }
 
   /**
-   * forces horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on
+   * Forces horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on
    * the last horizontal motion.
    * @param point - the new reference point.
    */
