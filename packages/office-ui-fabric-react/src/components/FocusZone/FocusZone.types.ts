@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FocusZone } from './FocusZone';
-import { IRefObject } from '../../Utilities';
+import { IRefObject, IPoint } from '../../Utilities';
 
 /**
  * FocusZone component class interface.
@@ -23,12 +23,13 @@ export interface IFocusZone {
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   focusElement(childElement?: HTMLElement): boolean;
+
   /**
-   *  update the forceAlignment state with true/false value.
-   *  @param forceAlignmentState - if true ,focus Alignment will be recalculated depending on the currenet active element position.
-   *  @param callback - optional callback function to be executed after updating the forceAlignmentState.
+   * Forces horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on
+   * the last horizontal motion.
+   * @param point - the new reference point.
    */
-  setForceAlignmentState(forceAlignmentState: boolean, callback?: () => void): void;
+  setFocusAlignment(point: IPoint): void;
 }
 
 /**
@@ -161,13 +162,6 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Callback to notify creators that focus has been set on the FocusZone
    */
   onFocusNotification?: () => void;
-}
-/**
- * State for the focusZone component
- */
-export interface IFocusZoneState {
-  /**if true ,focus Alignment will be recalculated depending on the current active element position. */
-  forceAlignment: boolean;
 }
 /**
  * {@docCategory FocusZone}

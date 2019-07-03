@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "FocusZone: add setForceAlignmentState method to determine whether to keep the previous alignment or update it based on the position of the new active element",
+      "comment": "FocusZone: Add setFocusAlignment public method to Force horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on the last horizontal motion.",
       "type": "patch"
     }
   ],

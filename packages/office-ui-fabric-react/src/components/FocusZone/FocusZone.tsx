@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone, IFocusZoneProps, IFocusZoneState } from './FocusZone.types';
+import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone, IFocusZoneProps } from './FocusZone.types';
 import {
   KeyCodes,
   css,
@@ -22,7 +22,8 @@ import {
   raiseClick,
   shouldWrapFocus,
   warnDeprecations,
-  portalContainsElement
+  portalContainsElement,
+  IPoint
 } from '../../Utilities';
 import { mergeStyles } from '@uifabric/merge-styles';
 
@@ -61,15 +62,11 @@ const _allInstances: {
 } = {};
 const _outerZones: Set<FocusZone> = new Set();
 
-interface IPoint {
-  left: number;
-  top: number;
-}
 const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
-export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneState> implements IFocusZone {
+export class FocusZone extends React.Component<IFocusZoneProps> implements IFocusZone {
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional
@@ -109,10 +106,6 @@ export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneState>
 
   constructor(props: IFocusZoneProps) {
     super(props);
-
-    this.state = {
-      forceAlignment: false
-    };
     // Manage componentRef resolution.
     initializeComponentRef(this);
 
@@ -129,8 +122,8 @@ export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneState>
     this._id = getId('FocusZone');
 
     this._focusAlignment = {
-      left: 0,
-      top: 0
+      x: 0,
+      y: 0
     };
 
     this._processingTabKey = false;
@@ -295,7 +288,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneState>
 
     if (element) {
       // when we Set focus to a specific child, we should recalculate the alignment depend on its position
-      this._setActiveElement(element, this.state.forceAlignment);
+      this._setActiveElement(element);
       if (this._activeElement) {
         this._activeElement.focus();
       }
@@ -305,13 +298,14 @@ export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneState>
 
     return false;
   }
+
   /**
-   *  update the forceAlignment state with true/false value.
-   *  @param forceAlignmentState - if true ,focus Alignment will be recalculated depending on the currenet active element position.
-   *  @param callback - optional callback function to be executed after updating the forceAlignmentState
+   * Forces horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on
+   * the last horizontal motion.
+   * @param point - the new reference point.
    */
-  public setForceAlignmentState(forceAlignmentState: boolean, callback?: () => void) {
-    this.setState({ forceAlignment: forceAlignmentState }, callback);
+  public setFocusAlignment(point: IPoint): void {
+    this._focusAlignment = point;
   }
 
   private _evaluateFocusBeforeRender(): void {
@@ -767,7 +761,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneState>
 
   private _moveFocusDown(): boolean {
     let targetTop = -1;
-    const leftAlignment = this._focusAlignment.left;
+    const leftAlignment = this._focusAlignment.x;
 
     if (
       this._moveFocus(true, (activeRect: ClientRect, targetRect: ClientRect) => {
@@ -808,7 +802,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneState>
 
   private _moveFocusUp(): boolean {
     let targetTop = -1;
-    const leftAlignment = this._focusAlignment.left;
+    const leftAlignment = this._focusAlignment.x;
 
     if (
       this._moveFocus(false, (activeRect: ClientRect, targetRect: ClientRect) => {
@@ -932,15 +926,18 @@ export class FocusZone extends React.Component<IFocusZoneProps, IFocusZoneState>
       const top = rect.top + rect.height / 2;
 
       if (!this._focusAlignment) {
-        this._focusAlignment = { left, top };
+        this._focusAlignment = {
+          x: left,
+          y: top
+        };
       }
 
       if (isHorizontal) {
-        this._focusAlignment.left = left;
+        this._focusAlignment.x = left;
       }
 
       if (isVertical) {
-        this._focusAlignment.top = top;
+        this._focusAlignment.y = top;
       }
     }
   }
