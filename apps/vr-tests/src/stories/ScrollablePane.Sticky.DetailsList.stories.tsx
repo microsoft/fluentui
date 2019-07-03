@@ -132,8 +132,8 @@ export class ScrollablePaneDetailsListExample extends React.Component<
             <ScrollablePane
               style={{ maxWidth: '900px', border: '1px solid #edebe9' }}
               scrollbarVisibility={ScrollbarVisibility.always}
-              stickyAboveContainerBehavior={stickyAboveContainer}
-              stickyBelowContainerBehavior={stickyBelowContainer}
+              stickyHeaderContainerBehavior={stickyAboveContainer}
+              stickyFooterContainerBehavior={stickyBelowContainer}
             >
               <Sticky
                 stickyPosition={StickyPositionType.Header}

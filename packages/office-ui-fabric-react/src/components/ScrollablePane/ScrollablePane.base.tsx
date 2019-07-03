@@ -196,7 +196,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         this._sortBasedOnOrder('above') !== this._sortBasedOnOrder('below') ||
         this._getStickyConatinerBehavior('above') !== this._getStickyConatinerBehavior('below'))
     ) {
-      throw `If a Sticky component has stickyPosition 'Both', stickyAboveContainerBehavior & stickyBelowContainerBehavior must be same`;
+      throw `If a Sticky component has stickyPosition 'Both', stickyHeaderContainerBehavior & stickyFooterContainerBehavior must be same`;
     }
     if (order === undefined && stickyPosition && this._sortBasedOnOrder(stickyPosition === StickyPositionType.Header ? 'above' : 'below')) {
       throw `Sticky order prop is not defined but corresponding stickyContainerBehavior is arrangeStickiesBasedOnOrder`;
@@ -206,8 +206,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       (!this.verifyStickyContainerBehavior('above', StickyContainerBehaviorType.Default) ||
         !this.verifyStickyContainerBehavior('below', StickyContainerBehaviorType.Default))
     ) {
-      throw `Sticky cannot have StickyPositionType.Both if ScrollablePane has stickyAboveContainerBehavior
-      or stickyBelowContainerBehavior containerBehavior as StickyOnScroll or StickyAlways`;
+      throw `Sticky cannot have StickyPositionType.Both if ScrollablePane has stickyHeaderContainerBehavior
+      or stickyFooterContainerBehavior containerBehavior as StickyOnScroll or StickyAlways`;
     }
     this._stickies.add(sticky);
 
