@@ -1784,6 +1784,7 @@ export interface IBreadcrumbItem {
 // @public (undocumented)
 export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     ariaLabel?: string;
+    calloutProps?: ICalloutProps;
     className?: string;
     componentRef?: IRefObject<IBreadcrumb>;
     dividerAs?: IComponentAs<IDividerAsProps>;
