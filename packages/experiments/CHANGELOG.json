@@ -2,6 +2,167 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 03 Jul 2019 12:30:55 GMT",
+      "tag": "@uifabric/experiments_v7.4.1",
+      "version": "7.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Filter out disallowed props from Tile root element",
+            "author": "tmichon@microsoft.com",
+            "commit": "e2b722f766eb822063fcf5f6176884dda48dede5"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.4.0",
+      "tag": "@uifabric/experiments_v7.4.0",
+      "date": "Mon, 01 Jul 2019 18:51:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Renaming BaseButton to Actionable, extending Button from Actionable and removing content and icon from Actionable types.",
+            "author": "Makoto Morimoto <humbertomakotomorimoto@gmail.com>",
+            "commit": "9848e9abde2762c98af424ed030fa683bd72628c"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "adds react-app-polyfill",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "40245650abdfb17e9f1cd6472f3671380237bcc2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^7.0.3` to `^7.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.5` to `^7.0.6`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.2` to `^7.6.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.2` to `^7.1.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.2` to `^7.0.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.3.0",
+      "tag": "@uifabric/experiments_v7.3.0",
+      "date": "Thu, 27 Jun 2019 18:25:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": " Button: Removing Stack usage from vanilla Button's slots and view to improve perf.",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          },
+          {
+            "comment": "Chiclet: Add x-small variant",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button example updated.",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.0.2` to `^7.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.3` to `^7.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.3` to `^7.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.0` to `^7.6.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.1` to `^7.1.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.2.3",
+      "tag": "@uifabric/experiments_v7.2.3",
+      "date": "Tue, 25 Jun 2019 12:26:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updates to tileslist, list and marquee selection",
+            "author": "wiolsen <36865486+wiolsen@users.noreply.github.com>",
+            "commit": "c758198a95328be804d8837a3517ed051161ec83"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.5.1` to `^7.5.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.2.2",
+      "tag": "@uifabric/experiments_v7.2.2",
+      "date": "Mon, 24 Jun 2019 23:11:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Adding focus tests for Button, MenuButton and SplitButton.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "7fb25fe44a8b5d35f08ffd2384921f006cbf170d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.5.0` to `^7.5.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.2.1",
+      "tag": "@uifabric/experiments_v7.2.1",
+      "date": "Fri, 21 Jun 2019 12:27:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots due to Tooltip bug fix",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "659b57cc432a37173324eb06f22ea7a918ecff36"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.3` to `^7.5.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.2.0",
       "tag": "@uifabric/experiments_v7.2.0",
       "date": "Thu, 20 Jun 2019 12:27:38 GMT",

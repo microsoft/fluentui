@@ -1,19 +1,21 @@
+// @ts-check
+
 const mustache = require('mustache');
 const argv = require('yargs').argv;
 const fs = require('fs');
 const exec = require('./exec-sync');
-const readConfig = require('./read-config');
+const { readRushJson } = require('./read-config');
 const writeConfig = require('./write-config');
 const path = require('path');
 
 // The package name can be given as a named or positional argument
-const newPackageName = argv.name || argv._[0];
+const newPackageName = /** @type {string} */ (argv.name || argv._[0]);
 const newPackageNpmName = '@uifabric/' + newPackageName;
 const generate = argv.generate !== false;
 
 if (!newPackageName) {
   console.error('Please specify a name for the new package.');
-  return;
+  process.exit(1);
 }
 
 // Convert any package names given in dash-case (e.g. my-new-package) to PascalCase (e.g. MyNewPackage)
@@ -31,14 +33,14 @@ const packagePath = path.join(process.cwd(), 'packages', newPackageName);
 const templateFolderPath = path.join(process.cwd(), 'scripts', 'templates', 'create-package');
 if (fs.existsSync(packagePath)) {
   console.error(`New package path ${packagePath} already exists.`);
-  return;
+  process.exit(1);
 }
 
 // rush.json contents
-const rushJson = readConfig('rush.json');
+const rushJson = readRushJson();
 if (!rushJson) {
   console.error('Could not find rush.json.');
-  return;
+  process.exit(1);
 }
 
 // @uifabric/experiments package.json contents
@@ -46,7 +48,7 @@ if (!rushJson) {
 const experimentsPackagePath = path.join(process.cwd(), 'packages/experiments/package.json');
 if (!fs.existsSync(experimentsPackagePath)) {
   console.error('Could not find @uifabric/experiments package.json (needed to get current dependency versions)');
-  return;
+  process.exit(1);
 }
 const experimentsPackageJson = JSON.parse(fs.readFileSync(experimentsPackagePath, 'utf8'));
 

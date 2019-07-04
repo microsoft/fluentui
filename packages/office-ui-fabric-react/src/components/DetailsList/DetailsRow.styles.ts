@@ -1,6 +1,7 @@
 import { IDetailsRowStyleProps, IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
 import {
   AnimationClassNames,
+  AnimationStyles,
   FontSizes,
   HighContrastSelector,
   IStyle,
@@ -14,6 +15,7 @@ const GlobalClassNames = {
   root: 'ms-DetailsRow',
   compact: 'ms-DetailsList--Compact', // TODO: in Fabric 7.0 lowercase the 'Compact' for consistency across other components.
   cell: 'ms-DetailsRow-cell',
+  cellAnimation: 'ms-DetailsRow-cellAnimation',
   cellCheck: 'ms-DetailsRow-cellCheck',
   cellMeasurer: 'ms-DetailsRow-cellMeasurer',
   listCellFirstChild: 'ms-List-cell:first-child',
@@ -55,7 +57,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     checkboxCellClassName,
     compact,
     className,
-    cellStyleProps = DEFAULT_CELL_STYLE_PROPS
+    cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+    enableUpdateAnimations
   } = props;
 
   const { neutralPrimary, white, neutralSecondary, neutralLighter, neutralLight, neutralDark, neutralQuaternaryAlt } = theme.palette;
@@ -331,7 +334,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     ],
 
     cell: defaultCellStyles,
-
+    cellAnimation: enableUpdateAnimations && AnimationStyles.slideLeftIn40,
     cellMeasurer: [
       classNames.cellMeasurer,
       {

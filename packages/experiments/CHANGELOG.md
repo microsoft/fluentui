@@ -1,6 +1,57 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 20 Jun 2019 12:27:38 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jul 2019 12:30:55 GMT and should not be manually modified.
+
+## 7.4.1
+Wed, 03 Jul 2019 12:30:55 GMT
+
+### Patches
+
+- Filter out disallowed props from Tile root element (tmichon@microsoft.com)
+
+## 7.4.0
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Minor changes
+
+- Button: Renaming BaseButton to Actionable, extending Button from Actionable and removing content and icon from Actionable types.
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.3.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+-  Button: Removing Stack usage from vanilla Button's slots and view to improve perf.
+- Chiclet: Add x-small variant
+
+### Patches
+
+- Button example updated.
+
+## 7.2.3
+Tue, 25 Jun 2019 12:26:09 GMT
+
+### Patches
+
+- Updates to tileslist, list and marquee selection
+
+## 7.2.2
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- Button: Adding focus tests for Button, MenuButton and SplitButton.
+
+## 7.2.1
+Fri, 21 Jun 2019 12:27:05 GMT
+
+### Patches
+
+- update snapshots due to Tooltip bug fix
 
 ## 7.2.0
 Thu, 20 Jun 2019 12:27:38 GMT

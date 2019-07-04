@@ -1,0 +1,32 @@
+{
+  "name": "@uifabric/mdl2-theme",
+  "entries": [
+    {
+      "version": "0.1.1",
+      "tag": "@uifabric/mdl2-theme_v0.1.1",
+      "date": "Wed, 26 Jun 2019 12:23:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump OUFR dependency",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "e99af7f488bafb906dd34b79b2d9aeb5fb0accef"
+          },
+          {
+            "comment": "New theme package to be used on top of Fabric 7 to get Fabric 6 looks.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "fa2da96d590194ebde8a3c61531922bd9e5723f0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.5.2` to `^7.5.3`"
+          }
+        ]
+      }
+    }
+  ]
+}

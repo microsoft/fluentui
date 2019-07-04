@@ -198,6 +198,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
 
     errorText: !isInverted ? p.redDark : '#ff5f5f',
     warningText: !isInverted ? '#333333' : '#ffffff',
+    successText: !isInverted ? '#107C10' : '#92c353',
     errorBackground: !isInverted ? 'rgba(245, 135, 145, .2)' : 'rgba(232, 17, 35, .5)',
     blockingBackground: !isInverted ? 'rgba(250, 65, 0, .2)' : 'rgba(234, 67, 0, .5)',
     warningBackground: !isInverted ? 'rgba(255, 200, 10, .2)' : 'rgba(255, 251, 0, .6)',
@@ -216,9 +217,9 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     inputTextHovered: p.neutralDark,
     inputPlaceholderText: p.neutralSecondary,
 
-    buttonBackground: p.neutralLighter,
+    buttonBackground: p.white,
     buttonBackgroundChecked: p.neutralTertiaryAlt,
-    buttonBackgroundHovered: p.neutralLight,
+    buttonBackgroundHovered: p.neutralLighter,
     buttonBackgroundCheckedHovered: p.neutralLight,
     buttonBackgroundPressed: p.neutralLight,
     buttonBackgroundDisabled: p.neutralLighter,

@@ -311,6 +311,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     protected onBlur: (ev: React.FocusEvent<HTMLElement | Autofill>) => void;
     // (undocumented)
     protected onChange(items?: T[]): void;
+    protected onClick: (ev: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
     // (undocumented)
     protected onEmptyInputFocus(): void;
     // (undocumented)
@@ -1654,7 +1655,9 @@ export interface IBasePickerProps<T> extends React.Props<any> {
     onBlur?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
     onChange?: (items?: T[]) => void;
     onDismiss?: (ev?: any, selectedItem?: T) => void;
+    // @deprecated
     onEmptyInputFocus?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
+    onEmptyResolveSuggestions?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onFocus?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
     onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onInputChange?: (input: string) => string;
@@ -1877,6 +1880,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     secondaryText?: string;
     split?: boolean;
     splitButtonAriaLabel?: string;
+    splitButtonMenuProps?: IButtonProps;
     styles?: IButtonStyles;
     text?: string;
     theme?: ITheme;
@@ -2592,6 +2596,7 @@ export interface IColumn {
     data?: any;
     fieldName?: string;
     filterAriaLabel?: string;
+    getValueKey?: (item?: any, index?: number, column?: IColumn) => string;
     groupAriaLabel?: string;
     headerClassName?: string;
     iconClassName?: string;
@@ -3344,8 +3349,10 @@ export interface IDetailsItemProps {
     columns?: IColumn[];
     groupNestingDepth?: number;
     indentWidth?: number | undefined;
+    rowWidth?: number;
     selection?: ISelection | undefined;
     selectionMode?: SelectionMode | undefined;
+    // @deprecated
     viewport?: IViewport | undefined;
 }
 
@@ -3379,7 +3386,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     constrainMode?: ConstrainMode;
     disableSelectionZone?: boolean;
     dragDropEvents?: IDragDropEvents;
+    enableUpdateAnimations?: boolean;
     enterModalSelectionOnTouch?: boolean;
+    getCellValueKey?: (item?: any, index?: number, column?: IColumn) => string;
     getGroupHeight?: IGroupedListProps['getGroupHeight'];
     getKey?: (item: any, index?: number) => string;
     getRowAriaDescribedBy?: (item: any) => string;
@@ -3471,7 +3480,7 @@ export interface IDetailsRow {
 }
 
 // @public (undocumented)
-export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
+export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
     cellsByColumn?: {
         [columnKey: string]: React.ReactNode;
     };
@@ -3483,6 +3492,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     componentRef?: IRefObject<IDetailsRow>;
     dragDropEvents?: IDragDropEvents;
     dragDropHelper?: IDragDropHelper;
+    enableUpdateAnimations?: boolean;
     eventsToRegister?: {
         eventName: string;
         callback: (item?: any, index?: number, event?: any) => void;
@@ -3543,6 +3553,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
         isMultiline: string;
         isRowHeader: string;
         cell: string;
+        cellAnimation: string;
         cellPadded: string;
         cellUnpadded: string;
         fields: string;
@@ -3592,12 +3603,15 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
     className?: string;
     compact?: boolean;
     cellStyleProps?: ICellStyleProps;
+    enableUpdateAnimations?: boolean;
 };
 
 // @public (undocumented)
 export interface IDetailsRowStyles {
     // (undocumented)
     cell: IStyle;
+    // (undocumented)
+    cellAnimation: IStyle;
     // (undocumented)
     cellMeasurer: IStyle;
     // (undocumented)
@@ -5207,6 +5221,7 @@ export interface ILinkStyles {
 export interface IList {
     forceUpdate: () => void;
     getStartItemIndexInView: () => number;
+    getTotalListHeight?: () => number;
     scrollToIndex: (index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
 }
 
@@ -5216,7 +5231,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
     componentRef?: IRefObject<IList>;
     getItemCountForPage?: (itemIndex?: number, visibleRect?: IRectangle) => number;
     getKey?: (item: T, index?: number) => string;
-    getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle) => number;
+    getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle, itemCount?: number) => number;
     getPageSpecification?: (itemIndex?: number, visibleRect?: IRectangle) => IPageSpecification;
     getPageStyle?: (page: IPage<T>) => any;
     items?: T[];
@@ -5622,7 +5637,7 @@ export interface IOverlayStyles {
 }
 
 // @public
-export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
+export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
 
 // @public (undocumented)
 export interface IPage<T = any> {
@@ -5632,6 +5647,8 @@ export interface IPage<T = any> {
     height: number;
     // (undocumented)
     isSpacer?: boolean;
+    // (undocumented)
+    isVisible?: boolean;
     // (undocumented)
     itemCount: number;
     // (undocumented)
@@ -6393,8 +6410,6 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
 export interface ISearchBoxState {
     // (undocumented)
     hasFocus?: boolean;
-    // (undocumented)
-    id?: string;
     // (undocumented)
     value?: string;
 }
@@ -7837,6 +7852,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     forceUpdate(): void;
     // (undocumented)
     getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number;
+    getTotalListHeight(): number;
     // (undocumented)
     refs: {
         [key: string]: React.ReactInstance;
@@ -8541,8 +8557,10 @@ export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
 export const SearchBox: React.StatelessComponent<ISearchBoxProps>;
 
 // @public (undocumented)
-export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
+export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
     constructor(props: ISearchBoxProps);
+    // (undocumented)
+    componentWillMount(): void;
     // (undocumented)
     componentWillReceiveProps(newProps: ISearchBoxProps): void;
     // (undocumented)
@@ -9106,7 +9124,7 @@ export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
 }
 
 // @public (undocumented)
-export type Target = Element | string | MouseEvent | IPoint | null;
+export type Target = Element | string | MouseEvent | IPoint | null | React.RefObject<Element>;
 
 // @public (undocumented)
 export const TeachingBubble: React.StatelessComponent<ITeachingBubbleProps>;

@@ -1,6 +1,20 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 20 Jun 2019 12:27:38 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2019 18:51:42 GMT and should not be manually modified.
+
+## 7.1.3
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.1.2
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Patches
+
+- Addressing a variety of problems related to style recalculations.
 
 ## 7.1.1
 Thu, 20 Jun 2019 12:27:38 GMT

@@ -40,7 +40,7 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
             allowDisabledFocus={true}
             disabled={disabled}
             checked={checked}
-            text="Button"
+            text="Standard Button"
             onClick={this._alertClicked}
           />
         </div>
@@ -50,7 +50,7 @@ export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
             data-automation-id="test"
             disabled={disabled}
             checked={checked}
-            text="Button"
+            text="Primary Button"
             onClick={this._alertClicked}
             allowDisabledFocus={true}
           />

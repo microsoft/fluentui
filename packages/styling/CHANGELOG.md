@@ -1,6 +1,28 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2019 18:51:42 GMT and should not be manually modified.
+
+## 7.1.1
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.1.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+- Semantic Slots: added successText.
+- Add `font-display: 'swap'` when registering font face'
+
+## 7.0.3
+Wed, 26 Jun 2019 12:23:41 GMT
+
+### Patches
+
+- Add getPlaceholderStyles to return style object based on browser used
 
 ## 7.0.2
 Fri, 14 Jun 2019 12:26:30 GMT

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IRefObject, IBaseProps, ISize } from 'office-ui-fabric-react/lib/Utilities';
 import { TilesList } from './TilesList';
 import { IFocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { IListProps } from 'office-ui-fabric-react/lib/List';
 
 export interface ITilesGridItem<TItem> {
   /**
@@ -123,4 +124,8 @@ export interface ITilesListProps<TItem> extends IBaseProps, React.Props<TilesLis
    * Callback for when the active element within the list's FocusZone changes.
    */
   onActiveElementChanged?: (element: HTMLElement) => void;
+  /**
+   * props to pass through to the underlying List
+   */
+  listProps?: Partial<IListProps>;
 }

@@ -1,8 +1,8 @@
-import { IStackSlot } from 'office-ui-fabric-react';
 import { IComponent, IComponentStyles, IHTMLSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
 import { IBaseProps } from '../../../Utilities';
 import { INativeButtonProps } from '../Button.types';
 import {
+  IMenuButton,
   IMenuButtonProps,
   IMenuButtonSlot,
   IMenuButtonSlots,
@@ -40,7 +40,7 @@ export interface ISplitButtonSlots extends IMenuButtonSlots {
   /**
    * Defines the root slot of the component.
    */
-  root?: IStackSlot;
+  root?: IHTMLSlot;
 
   /**
    * Menu button that is going to be rendered.
@@ -50,7 +50,7 @@ export interface ISplitButtonSlots extends IMenuButtonSlots {
   /**
    * Defines the container for the divider that is used for styling purposes.
    */
-  splitDividerContainer?: IStackSlot;
+  splitDividerContainer?: IHTMLSlot;
 
   /**
    * Defines the divider that separates the left and right parts of a SplitButton.
@@ -61,12 +61,7 @@ export interface ISplitButtonSlots extends IMenuButtonSlots {
 /**
  * {@docCategory Button}
  */
-export interface ISplitButton {
-  /**
-   * Sets focus to the first focus stop of the SplitButton.
-   */
-  focus: () => void;
-}
+export interface ISplitButton extends IMenuButton {}
 
 /**
  * {@docCategory Button}
@@ -84,6 +79,7 @@ export interface ISplitButtonProps
       | 'allowDisabledFocus'
       | 'ariaLabel'
       | 'keytipProps'
+      | 'uniqueId'
       | 'defaultExpanded'
       | 'expanded'
       | 'onMenuDismiss'
