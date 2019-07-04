@@ -1,8 +1,0 @@
-{
-  "comment": "Button: Updating example to make it less confusing to screen readers.",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "da7410efb76f689bf8a87db7658ed4cb19058194",
-  "date": "2019-07-03T19:34:04.100Z"
-}

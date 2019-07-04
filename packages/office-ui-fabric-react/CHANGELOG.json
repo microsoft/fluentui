@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 04 Jul 2019 12:29:39 GMT",
+      "tag": "office-ui-fabric-react_v7.7.1",
+      "version": "7.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: allow passing in id for input",
+            "author": "elcraig@microsoft.com",
+            "commit": "c8ea3dd79fc6a2508dacdab123d1226dfbb70f7f"
+          },
+          {
+            "comment": "Breadcrumb: Adding overflowAriaLabel to examples.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "623b6e19cf9f0935facb8ae53d6092e6c4e8f450"
+          },
+          {
+            "comment": "Button: Updating example to make it less confusing to screen readers.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "da7410efb76f689bf8a87db7658ed4cb19058194"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Jul 2019 12:30:55 GMT",
       "tag": "office-ui-fabric-react_v7.7.0",
       "version": "7.7.0",
