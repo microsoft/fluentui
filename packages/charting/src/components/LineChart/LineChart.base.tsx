@@ -143,7 +143,8 @@ export class LineChartBase extends React.Component<
     if (this.props.parentRef) {
       setTimeout(() => {
         const currentContainerWidth = this.props.parentRef!.getBoundingClientRect().width;
-        const currentContainerHeight = this.props.parentRef!.getBoundingClientRect().height;
+        const currentContainerHeight =
+          this.props.parentRef!.getBoundingClientRect().height > 26 ? this.props.parentRef!.getBoundingClientRect().height : 350;
         const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - 26;
         if (shouldResize) {
           this.setState({
@@ -155,7 +156,8 @@ export class LineChartBase extends React.Component<
     } else {
       setTimeout(() => {
         const currentContainerWidth = this.chartContainer.getBoundingClientRect().width;
-        const currentContainerHeight = this.chartContainer.getBoundingClientRect().height;
+        const currentContainerHeight =
+          this.chartContainer.getBoundingClientRect().height > 26 ? this.chartContainer.getBoundingClientRect().height : 350;
         const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - 26;
         if (shouldResize) {
           this.setState({
