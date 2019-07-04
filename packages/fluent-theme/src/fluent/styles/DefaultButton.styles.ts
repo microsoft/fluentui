@@ -1,4 +1,4 @@
-import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
+import { getFocusStyle, HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
 import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
@@ -31,7 +31,15 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
     },
     rootDisabled: {
       backgroundColor: palette.neutralLighter,
-      borderColor: palette.neutralLighter
+      borderColor: palette.neutralLighter,
+
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText',
+          borderColor: 'GrayText',
+          backgroundColor: 'Window'
+        }
+      }
     },
     splitButtonMenuButton: {
       background: 'transparent',

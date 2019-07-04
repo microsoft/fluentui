@@ -51,6 +51,16 @@ export function standardStyles(theme: ITheme): IButtonStyles {
       color: buttonTextCheckedHovered
     },
 
+    rootDisabled: {
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText',
+          borderColor: 'GrayText',
+          backgroundColor: 'Window'
+        }
+      }
+    },
+
     // Split button styles
     splitButtonContainer: {
       selectors: {
