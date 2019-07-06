@@ -1,8 +1,0 @@
-{
-  "comment": "Button: Fixing CompoundButton and SplitButton high contrast mode styling.",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "8ee0021b6ecd97a5f1e8a44ec7969c108583e350",
-  "date": "2019-07-06T01:07:49.839Z"
-}
