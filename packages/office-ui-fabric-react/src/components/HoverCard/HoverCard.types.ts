@@ -127,6 +127,13 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   target?: HTMLElement | string | null;
 
   /**
+   * Optional target element to set event listener.
+   * This props is to separate the target to anchor hover card from the target to attach event listener.
+   * When no `eventListenerTarget` given, HoverCard will use `target`props or its root to set event listener.
+   */
+  eventListenerTarget?: HTMLElement;
+
+  /**
    * Theme provided by higher order component.
    */
   theme?: ITheme;

@@ -251,8 +251,8 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
   };
 
   private _setEventListeners = (): void => {
-    const { trapFocus, instantOpenOnClick } = this.props;
-    const target = this._getTargetElement();
+    const { trapFocus, instantOpenOnClick, eventListenerTarget } = this.props;
+    const target = eventListenerTarget || this._getTargetElement();
     const nativeEventDismiss = this._nativeDismissEvent;
 
     // target can be undefined if ref isn't available, only assign
