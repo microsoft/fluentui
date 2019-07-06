@@ -1,8 +1,0 @@
-{
-  "comment": "fix date conversion for weeklydaypicker",
-  "type": "patch",
-  "packageName": "@uifabric/date-time",
-  "email": "jolore@microsoft.com",
-  "commit": "f1273794e8c4402a86656689185bc7deb01151e4",
-  "date": "2019-07-02T23:20:40.492Z"
-}
