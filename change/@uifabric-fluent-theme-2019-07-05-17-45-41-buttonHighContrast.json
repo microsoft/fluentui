@@ -1,8 +1,0 @@
-{
-  "comment": "Button: Fixing CompoundButton and SplitButton high contrast mode styling.",
-  "type": "patch",
-  "packageName": "@uifabric/fluent-theme",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "7876fc5c18099a3518fbce14e52b2e0674bd0574",
-  "date": "2019-07-06T00:45:41.936Z"
-}
