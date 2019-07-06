@@ -61,6 +61,15 @@ export const getStyles = memoizeFunction(
                 backgroundColor: 'Highlight'
               }
             }
+          },
+          '.ms-Button.is-disabled': {
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'GrayText',
+                borderColor: 'GrayText',
+                backgroundColor: 'Window'
+              }
+            }
           }
         }
       },
@@ -151,14 +160,10 @@ export const getStyles = memoizeFunction(
         border: 'none',
 
         selectors: {
-          '.ms-Button--primary': {
-            selectors: {
-              [HighContrastSelector]: {
-                color: 'GrayText',
-                borderColor: 'GrayText',
-                backgroundColor: 'Window'
-              }
-            }
+          [HighContrastSelector]: {
+            color: 'GrayText',
+            borderColor: 'GrayText',
+            backgroundColor: 'Window'
           }
         }
       }

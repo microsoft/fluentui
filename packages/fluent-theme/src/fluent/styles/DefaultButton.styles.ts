@@ -71,16 +71,43 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
           border: 'none',
           selectors: {
             ':hover': {
-              background: palette.themeDarkAlt
+              background: palette.themeDarkAlt,
+
+              selectors: {
+                [HighContrastSelector]: {
+                  color: 'Window',
+                  backgroundColor: 'Highlight',
+                  MsHighContrastAdjust: 'none'
+                }
+              }
+            },
+            [HighContrastSelector]: {
+              color: 'Window',
+              backgroundColor: 'WindowText',
+              MsHighContrastAdjust: 'none'
             }
           }
         },
         '.ms-Button.is-disabled': {
-          backgroundColor: palette.neutralLighter
+          backgroundColor: palette.neutralLighter,
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'GrayText',
+              borderColor: 'GrayText',
+              backgroundColor: 'Window'
+            }
+          }
         },
         '.ms-Button.is-disabled + .ms-Button.is-disabled': {
           backgroundColor: palette.neutralLighter,
-          border: 'none'
+          border: 'none',
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'GrayText',
+              borderColor: 'GrayText',
+              backgroundColor: 'Window'
+            }
+          }
         }
       }
     }

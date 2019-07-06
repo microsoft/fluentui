@@ -259,11 +259,23 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonMenuIcon: {
-      color: s.primaryButtonText
+      color: s.primaryButtonText,
+
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'Window'
+        }
+      }
     },
 
     splitButtonMenuIconDisabled: {
-      color: p.neutralTertiary
+      color: p.neutralTertiary,
+
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText'
+        }
+      }
     }
   };
 }

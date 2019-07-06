@@ -21,7 +21,7 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
       selectors: {
         '&.ms-Button--compoundPrimary': {
           backgroundColor: palette.themePrimary,
-          borderColor: palette.themePrimary,
+          border: 'none',
 
           selectors: {
             [HighContrastSelector]: {
