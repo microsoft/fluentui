@@ -1,30 +1,19 @@
-/* tslint:disable */
 import * as React from 'react';
-import styles = require('./Icon.scss')
-/* tslint:enable */
-import { IIconProps, IconType } from './Icon.Props';
-import { Image } from '../Image/Image';
-import {
-  css,
-  getNativeProps,
-  htmlElementProperties
-} from '../../Utilities';
+import { styled } from '../../Utilities';
+import { IIconProps, IIconStyleProps, IIconStyles } from './Icon.types';
+import { IconBase } from './Icon.base';
+import { getStyles } from './Icon.styles';
 
-export const Icon: (props: IIconProps) => JSX.Element = (props: IIconProps) => {
-  let customIcon = props.iconName === 'None';
-  let iconClassName = props.iconName ? ('ms-Icon--' + props.iconName) : '';
-
-  if (props.iconType === IconType.image || props.iconType === IconType.Image) {
-    let containerClassName = css('ms-Icon', 'ms-Icon-imageContainer', styles.imageContainer, props.className);
-
-    return (
-      <div className={ containerClassName } >
-        <Image { ...props.imageProps as any } />
-      </div>
-    );
-  } else {
-    let className = css('ms-Icon', customIcon ? '' : iconClassName, props.className);
-
-    return <i { ...getNativeProps(props, htmlElementProperties) } className={ className } />;
-  }
-};
+/**
+ * Icons are used for rendering an individual's avatar, presence and details.
+ * They are used within the PeoplePicker components.
+ */
+export const Icon: React.StatelessComponent<IIconProps> = styled<IIconProps, IIconStyleProps, IIconStyles>(
+  IconBase,
+  getStyles,
+  undefined,
+  {
+    scope: 'Icon'
+  },
+  true
+);

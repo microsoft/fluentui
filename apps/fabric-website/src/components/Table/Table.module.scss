@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '~office-ui-fabric-react/src/common/common';
 
 .table {
   color: $ms-color-neutralPrimary;
@@ -23,16 +24,12 @@
     font-size: $ms-font-size-m;
 
     td {
-      line-height:  normal;
+      line-height: normal;
 
-      &.animCell {
-        width: 260px; 
-      }
-      
       &:first-child {
         width: 1%;
         white-space: nowrap;
-        @include padding-right(20px);
+        @include ms-padding-right(20px);
       }
     }
   }
@@ -41,7 +38,8 @@
     border-bottom: 1px solid $ms-color-neutralTertiaryAlt;
   }
 
-  th, td {
+  th,
+  td {
     padding: 8px;
     vertical-align: top;
   }
@@ -57,7 +55,7 @@
       td:first-child {
         color: $ms-color-neutralSecondary;
         padding: 8px auto 8px 8px;
-        @include padding-right(35px);
+        @include ms-padding-right(35px);
       }
     }
   }

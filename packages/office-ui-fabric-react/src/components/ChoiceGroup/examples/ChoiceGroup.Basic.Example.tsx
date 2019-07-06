@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 
 /**
  * Interface for ChoiceGroupBasicExample state.
@@ -9,9 +8,9 @@ export interface IChoiceGroupBasicExampleState {
   imageKey: string;
 }
 
-export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBasicExampleState> {
-  constructor() {
-    super();
+export class ChoiceGroupBasicExample extends React.Component<{}, IChoiceGroupBasicExampleState> {
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       imageKey: ''
@@ -20,37 +19,40 @@ export class ChoiceGroupBasicExample extends React.Component<any, IChoiceGroupBa
 
   public render() {
     return (
-      <ChoiceGroup
-        defaultSelectedKey='B'
-        options={ [
-          {
-            key: 'A',
-            text: 'Option A'
-          },
-          {
-            key: 'B',
-            text: 'Option B',
-          },
-          {
-            key: 'C',
-            text: 'Option C',
-            disabled: true
-          },
-          {
-            key: 'D',
-            text: 'Option D',
-            disabled: true
-          }
-        ] }
-        onChange={ this._onChange }
-        label='Pick one'
-        required={ true }
-      />
+      <div>
+        <ChoiceGroup
+          className="defaultChoiceGroup"
+          defaultSelectedKey="B"
+          options={[
+            {
+              key: 'A',
+              text: 'Option A',
+              'data-automation-id': 'auto1'
+            } as IChoiceGroupOption,
+            {
+              key: 'B',
+              text: 'Option B'
+            },
+            {
+              key: 'C',
+              text: 'Option C',
+              disabled: true
+            },
+            {
+              key: 'D',
+              text: 'Option D',
+              disabled: true
+            }
+          ]}
+          onChange={this._onChange}
+          label="Pick one"
+          required={true}
+        />
+      </div>
     );
   }
 
-  @autobind
-  private _onChange(ev: React.FormEvent<HTMLInputElement>, option: any) {
+  private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: any): void => {
     console.dir(option);
-  }
+  };
 }

@@ -1,51 +1,38 @@
 import * as React from 'react';
-import {
-  autobind,
-  css
-} from 'office-ui-fabric-react/lib/Utilities';
-import {
-  IPersonaProps,
-  Persona,
-  PersonaSize,
-  PersonaPresence
-} from 'office-ui-fabric-react/lib/Persona';
+import { IPersonaProps, IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import './PersonaExample.scss';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { TestImages } from '../../../common/TestImages';
 
-const examplePersona = {
-  imageUrl: './images/persona-female.png',
-  imageInitials: 'AL',
-  primaryText: 'Annie Lindqvist',
-  secondaryText: 'Software Engineer',
-  tertiaryText: 'In a meeting',
-  optionalText: 'Available at 4:00pm'
+export const PersonaCustomRenderExample: React.FunctionComponent = () => {
+  const examplePersona: IPersonaSharedProps = {
+    imageUrl: TestImages.personaFemale,
+    imageInitials: 'AL',
+    text: 'Annie Lindqvist',
+    secondaryText: 'Software Engineer',
+    tertiaryText: 'In a meeting',
+    optionalText: 'Available at 4:00pm'
+  };
+
+  return (
+    <Stack tokens={{ childrenGap: 10 }}>
+      <div>Custom icon in secondary text</div>
+      <Persona
+        {...examplePersona}
+        size={PersonaSize.size72}
+        presence={PersonaPresence.offline}
+        onRenderSecondaryText={_onRenderSecondaryText}
+        styles={{ root: { margin: '0 0 10px 0' } }}
+      />
+    </Stack>
+  );
 };
 
-export class PersonaCustomRenderExample extends React.Component<React.Props<PersonaCustomRenderExample>, any> {
-  constructor() {
-    super();
-  }
-
-  public render() {
-    return (
-      <div>
-        <Persona
-          { ...examplePersona }
-          size={ PersonaSize.large }
-          presence={ PersonaPresence.offline }
-          onRenderSecondaryText={ this._onRenderSecondaryText }
-        />
-      </div>
-    );
-  }
-
-  @autobind
-  private _onRenderSecondaryText(props: IPersonaProps): JSX.Element {
-    return (
-      <div>
-        <Icon iconName={ 'Suitcase' } className={ 'ms-JobIconExample' } />
-        { props.secondaryText }
-      </div>
-    );
-  }
+function _onRenderSecondaryText(props: IPersonaProps): JSX.Element {
+  return (
+    <div>
+      <Icon iconName="Suitcase" styles={{ root: { marginRight: 5 } }} />
+      {props.secondaryText}
+    </div>
+  );
 }

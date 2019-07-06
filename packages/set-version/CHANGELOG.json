@@ -1,0 +1,61 @@
+{
+  "name": "@uifabric/set-version",
+  "entries": [
+    {
+      "version": "1.1.3",
+      "tag": "@uifabric/set-version_v1.1.3",
+      "date": "Tue, 09 Oct 2018 12:26:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding package boilerplate files.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1b96a2a460f6bab2a95f1abbeceb57d448b8d12a"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.1.2",
+      "tag": "@uifabric/set-version_v1.1.2",
+      "date": "Mon, 08 Oct 2018 12:24:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving tslint/prettier dependencies ",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "8ba9e22a7a8a2a1e7facda5aa7d91423c7af43ed"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.1.1",
+      "tag": "@uifabric/set-version_v1.1.1",
+      "date": "Fri, 28 Sep 2018 12:27:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "version files now expose a call that can be called by apps that don't do index import",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "8409a5b61b896b79a4d020a785a698a798d34a28"
+          }
+        ]
+      }
+    },
+    {
+      "version": "1.1.0",
+      "tag": "@uifabric/set-version_v1.1.0",
+      "date": "Fri, 21 Sep 2018 14:25:46 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding a set-version package to manage duplicated version code",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "11c18bce52dba131548610c5eea0c1ab7fa4d1ca"
+          }
+        ]
+      }
+    }
+  ]
+}

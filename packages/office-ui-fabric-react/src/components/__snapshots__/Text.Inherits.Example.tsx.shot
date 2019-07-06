@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Text.Inherits.Example.tsx correctly 1`] = `
+<span
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        color: inherit;
+        display: inline;
+        font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 17px;
+        font-weight: 300;
+        moz-osx-font-smoothing: grayscale;
+        webkit-font-smoothing: antialiased;
+      }
+>
+  The following text inherits its font styling from its parent: 
+  <span
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: inherit;
+          font-weight: inherit;
+        }
+  >
+    text
+  </span>
+  .
+</span>
+`;

@@ -1,23 +1,18 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-
-import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-addons-test-utils';
-
-let { expect } = chai;
+import { mount } from 'enzyme';
+import * as renderer from 'react-test-renderer';
 
 import { Label } from './Label';
 
 describe('Label', () => {
-
   it('renders a label', () => {
-    let component = ReactTestUtils.renderIntoDocument(
-      <Label>test</Label>
-    );
-    let renderedDOM = ReactDOM.findDOMNode(component as React.ReactInstance);
-
-    expect(renderedDOM.textContent).to.equal('test');
+    const label = mount(<Label>test</Label>);
+    expect(label.text()).toEqual('test');
   });
 
+  it('renders label correctly', () => {
+    const component = renderer.create(<Label>test</Label>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

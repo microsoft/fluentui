@@ -1,0 +1,6 @@
+{
+  "extends": ["@uifabric/tslint-rules"],
+  "rules": {
+    "prefer-const": false
+  }
+}

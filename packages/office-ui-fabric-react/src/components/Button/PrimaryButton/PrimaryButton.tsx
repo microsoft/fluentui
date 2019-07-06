@@ -1,35 +1,19 @@
 import * as React from 'react';
-import { BaseComponent, nullRender } from '../../../Utilities';
-import { BaseButton, IButtonClassNames } from '../BaseButton';
-import { IButtonProps } from '../Button.Props';
+import { BaseComponent, customizable, nullRender } from '../../../Utilities';
+import { DefaultButton } from '../DefaultButton/DefaultButton';
+import { IButtonProps } from '../Button.types';
 
-import * as stylesImport from './PrimaryButton.scss';
-const styles: any = stylesImport;
-
-const CLASS_NAMES: IButtonClassNames = {
-  base: 'ms-Button',
-  variant: 'ms-Button--primary',
-  icon: styles.icon,
-  menuIcon: styles.icon,
-  isDisabled: styles.isDisabled,
-  isEnabled: styles.isEnabled,
-  label: styles.label,
-  root: styles.root
-};
-
+/**
+ * {@docCategory Button}
+ */
+@customizable('PrimaryButton', ['theme', 'styles'], true)
 export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
   /**
-   * Set this BaseComponent._resolveComponentRef to false, bypassing resolution of componentRef.
+   * Set this BaseComponent._skipComponentRefResolution to true, bypassing resolution of componentRef.
    */
-  protected _shouldUpdateComponentRef = false;
+  protected _skipComponentRefResolution = true;
 
-  public render() {
-    return (
-      <BaseButton
-        classNames={ CLASS_NAMES }
-        onRenderDescription={ nullRender }
-        { ...this.props }
-      />
-    );
+  public render(): JSX.Element {
+    return <DefaultButton {...this.props} primary={true} onRenderDescription={nullRender} />;
   }
 }

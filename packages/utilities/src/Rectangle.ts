@@ -1,3 +1,9 @@
+/**
+ * Rectangle helper class.
+ *
+ * @public
+ * {@docCategory Rectangle}
+ */
 export class Rectangle {
   public top: number;
   public bottom: number;

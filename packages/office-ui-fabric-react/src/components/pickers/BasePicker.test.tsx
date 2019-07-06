@@ -1,17 +1,14 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-addons-test-utils';
-/* tslint:enable:no-unused-variable */
+import * as ReactTestUtils from 'react-dom/test-utils';
+import * as renderer from 'react-test-renderer';
 
-let { expect } = chai;
-
-import { TagPicker, ITag } from './TagPicker/TagPicker';
-import { IBasePickerProps } from './BasePicker.Props';
+import { IBasePickerProps, IBasePicker } from './BasePicker.types';
 import { BasePicker } from './BasePicker';
-import { IPickerItemProps } from './PickerItem.Props';
+import { IPickerItemProps } from './PickerItem.types';
+import { resetIds } from '@uifabric/utilities';
 
-function onResolveSuggestions(text: string): ITag[] {
+function onResolveSuggestions(text: string): ISimple[] {
   return [
     'black',
     'blue',
@@ -28,90 +25,206 @@ function onResolveSuggestions(text: string): ITag[] {
     'violet',
     'white',
     'yellow'
-  ].filter(tag => tag.toLowerCase().indexOf(text.toLowerCase()) === 0).map(item => ({ key: item, name: item }));
+  ]
+    .filter(tag => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
+    .map(item => ({ key: item, name: item }));
 }
-
-const basicRenderer = (props) => {
-  return <div> { props.item.name } </div>;
-};
-
-const basicSuggestionRenderer = (props) => {
-  return <div> { props.name } </div>;
-};
 
 export interface ISimple {
   key: string;
   name: string;
 }
 
-export type TypedBasePicker = BasePicker<ISimple, IBasePickerProps<ISimple>>;
+const basicRenderer = (props: IPickerItemProps<ISimple>) => {
+  return <div> {props.item.name} </div>;
+};
 
-describe('Pickers', () => {
-  describe('BasePicker', () => {
-    const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<ISimple, IBasePickerProps<ISimple>>;
-    it('can provide custom renderers', () => {
-      let root = document.createElement('div');
-      document.body.appendChild(root);
-      let picker: TypedBasePicker = ReactDOM.render(
-        <BasePickerWithType
-          onResolveSuggestions={ onResolveSuggestions }
-          onRenderItem={ (props: IPickerItemProps<{ key: string, name: string }>) => <div key={ props.item.name }>{ basicRenderer(props) }</div> }
-          onRenderSuggestionsItem={ basicSuggestionRenderer }
-        />,
-        root
-      ) as TypedBasePicker;
-      let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-      input.focus();
-      input.value = 'bl';
+const basicSuggestionRenderer = (props: ISimple) => {
+  return <div> {props.name} </div>;
+};
 
-      ReactTestUtils.Simulate.change(input);
+describe('BasePicker', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+  const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<ISimple, IBasePickerProps<ISimple>>;
+  const onRenderItem = (props: IPickerItemProps<ISimple>): JSX.Element => <div key={props.item.name}>{basicRenderer(props)}</div>;
 
-      let suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
-
-      expect(suggestions).to.exist;
-      let suggestionOptions = document.querySelectorAll('.ms-Suggestions-item');
-
-      expect(suggestionOptions.length).to.be.equal(2, 'There were not 2 suggestions');
-      ReactTestUtils.Simulate.click(suggestionOptions[0]);
-
-      expect(picker.items.length).to.be.equal(1, 'There was not only 1 item selected');
-      expect(picker.items[0].name).to.be.equal('black', 'The selected item did not have the correct text');
-
-      ReactDOM.unmountComponentAtNode(root);
-
-    });
-
+  it('renders correctly', () => {
+    const component = renderer.create(
+      <BasePickerWithType
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
-  describe('TagPicker', () => {
+  it('renders with inputProps supply classnames correctly', () => {
+    const component = renderer.create(
+      <BasePickerWithType
+        inputProps={{
+          placeholder: 'Bitte einen Benutzer angeben...',
+          id: 'pckSelectedUser',
+          className: 'testclass '
+        }}
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 
-    it('can search for and select tags', () => {
-      let root = document.createElement('div');
-      document.body.appendChild(root);
-      let picker: TagPicker = ReactDOM.render(
-        <TagPicker
-          onResolveSuggestions={ onResolveSuggestions }
-        />,
-        root
-      ) as TagPicker;
-      let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
-      input.focus();
-      input.value = 'bl';
+  it('can provide custom renderers', () => {
+    const root = document.createElement('div');
+    document.body.appendChild(root);
 
-      ReactTestUtils.Simulate.change(input);
+    const picker = React.createRef<IBasePicker<ISimple>>();
 
-      let suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
+    ReactDOM.render(
+      <BasePickerWithType
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        componentRef={picker}
+      />,
+      root
+    );
 
-      expect(suggestions).to.exist;
-      let suggestionOptions = document.querySelectorAll('.ms-Suggestions-item');
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+    input.value = 'bl';
+    ReactTestUtils.Simulate.input(input);
 
-      expect(suggestionOptions.length).to.be.equal(2, 'There were not 2 suggestions');
-      ReactTestUtils.Simulate.click(suggestionOptions[0]);
+    const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
+    expect(suggestions).toBeDefined();
 
-      expect(picker.items.length).to.be.equal(1, 'There was not only 1 item selected');
-      expect(picker.items[0].name).to.be.equal('black', 'The selected item did not have the correct text');
-      ReactDOM.unmountComponentAtNode(root);
+    const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
+    expect(suggestionOptions.length).toEqual(2);
+    ReactTestUtils.Simulate.click(suggestionOptions[0]);
 
-    });
+    const currentPicker = picker.current!.items;
+    expect(currentPicker).toHaveLength(1);
+    expect(currentPicker![0].name).toEqual('black');
+
+    ReactDOM.unmountComponentAtNode(root);
+  });
+
+  it('can will not render input when items reach itemLimit', () => {
+    const root = document.createElement('div');
+    document.body.appendChild(root);
+
+    const picker = React.createRef<IBasePicker<ISimple>>();
+
+    ReactDOM.render(
+      <BasePickerWithType
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        itemLimit={1}
+        componentRef={picker}
+      />,
+      root
+    );
+
+    let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+    input.value = 'bl';
+    ReactTestUtils.Simulate.input(input);
+
+    const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
+    ReactTestUtils.Simulate.click(suggestionOptions[0]);
+
+    const currentPicker = picker.current!.items;
+    expect(currentPicker).toHaveLength(1);
+
+    input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    expect(input).toBeNull();
+
+    ReactDOM.unmountComponentAtNode(root);
+  });
+
+  it('will still render with itemLimit set to 0', () => {
+    const root = document.createElement('div');
+    document.body.appendChild(root);
+
+    ReactDOM.render(
+      <BasePickerWithType
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        itemLimit={0}
+      />,
+      root
+    );
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    expect(input).toBeNull();
+
+    ReactDOM.unmountComponentAtNode(root);
+  });
+
+  it('can be set with selectedItems and a lower itemLimit', () => {
+    const root = document.createElement('div');
+    document.body.appendChild(root);
+
+    const picker = React.createRef<IBasePicker<ISimple>>();
+
+    ReactDOM.render(
+      <BasePickerWithType
+        selectedItems={[{ key: '1', name: 'blue' }, { key: '2', name: 'black' }]}
+        onResolveSuggestions={onResolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        itemLimit={0}
+        componentRef={picker}
+      />,
+      root
+    );
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    expect(input).toBeNull();
+
+    const currentPicker = picker.current!.items;
+    expect(currentPicker).toHaveLength(2);
+
+    ReactDOM.unmountComponentAtNode(root);
+  });
+
+  it('can render MRU when input is focused', () => {
+    const root = document.createElement('div');
+    const resolveSuggestions = () => onResolveSuggestions('');
+    document.body.appendChild(root);
+
+    const picker = React.createRef<IBasePicker<ISimple>>();
+
+    ReactDOM.render(
+      <BasePickerWithType
+        onResolveSuggestions={onResolveSuggestions}
+        onEmptyInputFocus={resolveSuggestions}
+        onRenderItem={onRenderItem}
+        onRenderSuggestionsItem={basicSuggestionRenderer}
+        componentRef={picker}
+      />,
+      root
+    );
+
+    const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
+    input.focus();
+
+    const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
+    expect(suggestions).toBeDefined();
+
+    const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
+    expect(suggestionOptions.length).toEqual(15);
+
+    const currentPicker = picker.current!.items;
+    expect(currentPicker).toHaveLength(0);
+
+    ReactDOM.unmountComponentAtNode(root);
   });
 });

@@ -1,33 +1,38 @@
-import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import * as React from 'react';
 
-export class PanelExtraLargeExample extends React.Component<any, any> {
+export interface IPanelExtraLargeExampleState {
+  showPanel: boolean;
+}
 
-  constructor() {
-    super();
-    this.state = { showPanel: false };
-  }
+export class PanelExtraLargeExample extends React.Component<{}, IPanelExtraLargeExampleState> {
+  public state = {
+    showPanel: false
+  };
 
   public render() {
     return (
       <div>
-        <DefaultButton
-          description='Opens the Sample Panel'
-          onClick={ () => this.setState({ showPanel: true }) }
-          text='Open Panel'
-        />
+        <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
         <Panel
-          isOpen={ this.state.showPanel }
-          onDismiss={ () => this.setState({ showPanel: false }) }
-          type={ PanelType.extraLarge }
-          headerText='Extra Large Panel'
-          closeButtonAriaLabel='Close'
+          isOpen={this.state.showPanel}
+          onDismiss={this._hidePanel}
+          type={PanelType.extraLarge}
+          headerText="Extra Large Panel"
+          closeButtonAriaLabel="Close"
         >
-          <span className='ms-font-m'>Content goes here.</span>
+          <span>Content goes here.</span>
         </Panel>
       </div>
     );
   }
 
+  private _showPanel = (): void => {
+    this.setState({ showPanel: true });
+  };
+
+  private _hidePanel = (): void => {
+    this.setState({ showPanel: false });
+  };
 }

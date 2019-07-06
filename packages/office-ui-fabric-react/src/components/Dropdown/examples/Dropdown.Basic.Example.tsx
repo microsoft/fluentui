@@ -1,92 +1,47 @@
 import * as React from 'react';
-import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
-import './Dropdown.Basic.Example.scss';
-import { DropdownMenuItemType } from './../Dropdown.Props';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Dropdown, DropdownMenuItemType, IDropdownStyles, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 
-export class DropdownBasicExample extends React.Component<any, any> {
-  constructor() {
-    super();
-    this.state = {
-      selectedItem: null
-    };
-  }
+const dropdownStyles: Partial<IDropdownStyles> = {
+  dropdown: { width: 300 }
+};
 
-  public render() {
-    let { selectedItem } = this.state;
+const options: IDropdownOption[] = [
+  { key: 'fruitsHeader', text: 'Fruits', itemType: DropdownMenuItemType.Header },
+  { key: 'apple', text: 'Apple' },
+  { key: 'banana', text: 'Banana' },
+  { key: 'orange', text: 'Orange', disabled: true },
+  { key: 'grape', text: 'Grape' },
+  { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
+  { key: 'vegetablesHeader', text: 'Vegetables', itemType: DropdownMenuItemType.Header },
+  { key: 'broccoli', text: 'Broccoli' },
+  { key: 'carrot', text: 'Carrot' },
+  { key: 'lettuce', text: 'Lettuce' }
+];
 
-    return (
-      <div className='ms-DropdownBasicExample'>
+const stackTokens: IStackTokens = { childrenGap: 20 };
 
-        <Dropdown
-          label='Basic uncontrolled example:'
-          id='Basicdrop1'
-          ariaLabel='Basic dropdown example'
-          options={
-            [
-              { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
-              { key: 'A', text: 'Option a' },
-              { key: 'B', text: 'Option b' },
-              { key: 'C', text: 'Option c' },
-              { key: 'D', text: 'Option d' },
-              { key: 'E', text: 'Option e' },
-              { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
-              { key: 'Header', text: 'People', itemType: DropdownMenuItemType.Header },
-              { key: 'F', text: 'Option f' },
-              { key: 'G', text: 'Option g' },
-              { key: 'H', text: 'Option h' },
-              { key: 'I', text: 'Option i' },
-              { key: 'J', text: 'Option j' },
-            ]
-          }
-        />
+export const DropdownBasicExample: React.StatelessComponent = () => {
+  return (
+    <Stack tokens={stackTokens}>
+      <Dropdown placeholder="Select an option" label="Basic uncontrolled example" options={options} styles={dropdownStyles} />
 
-        <Dropdown
-          label='Disabled uncontrolled example with defaultSelectedKey:'
-          defaultSelectedKey='D'
-          options={
-            [
-              { key: 'A', text: 'Option a' },
-              { key: 'B', text: 'Option b' },
-              { key: 'C', text: 'Option c' },
-              { key: 'D', text: 'Option d' },
-              { key: 'E', text: 'Option e' },
-              { key: 'F', text: 'Option f' },
-              { key: 'G', text: 'Option g' },
-            ]
-          }
-          disabled={ true }
-        />
+      <Dropdown
+        label="Disabled example with defaultSelectedKey"
+        defaultSelectedKey="broccoli"
+        options={options}
+        disabled={true}
+        styles={dropdownStyles}
+      />
 
-        <Dropdown
-          label='Controlled example:'
-          selectedKey={ selectedItem && selectedItem.key }
-          onChanged={ (item) => this.setState({ selectedItem: item }) }
-          options={
-            [
-              { key: 'A', text: 'Option a' },
-              { key: 'B', text: 'Option b' },
-              { key: 'C', text: 'Option c' },
-              { key: 'D', text: 'Option d' },
-              { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
-              { key: 'E', text: 'Option e' },
-              { key: 'F', text: 'Option f' },
-              { key: 'G', text: 'Option g' },
-            ]
-          }
-        />
-
-      </div>
-
-    );
-  }
-
-  public makeList(items) {
-    let list = [];
-    for (let i = 0; i < items; i++) {
-      list.push({ key: i, text: 'Option ' + i });
-    }
-
-    return list;
-  }
-
-}
+      <Dropdown
+        placeholder="Select options"
+        label="Multi-select uncontrolled example"
+        defaultSelectedKeys={['apple', 'banana', 'grape']}
+        multiSelect
+        options={options}
+        styles={dropdownStyles}
+      />
+    </Stack>
+  );
+};

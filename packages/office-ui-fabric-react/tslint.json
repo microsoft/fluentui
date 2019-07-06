@@ -1,15 +1,9 @@
 {
+  "extends": ["@uifabric/tslint-rules"],
   "rules": {
-    "max-line-length": [
-      false,
-      140
-    ],
+    "deprecation": false,
+    "jsx-ban-props": false,
     "no-any": false,
-    "variable-name": false,
-    "no-internal-module": false,
-    "prefer-const": false,
-    "typedef": [
-      false
-    ]
+    "typedef": [false]
   }
 }

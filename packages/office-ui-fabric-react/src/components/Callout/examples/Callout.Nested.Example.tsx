@@ -1,71 +1,70 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import './CalloutExample.scss';
 
-import { items } from '../../CommandBar/examples/data';
-
-export interface ICalloutBaiscExampleState {
-  isCalloutVisible?: boolean;
+export interface ICalloutNestedExampleProps {
+  items: ICommandBarItemProps[];
 }
 
-export class CalloutNestedExample extends React.Component<any, ICalloutBaiscExampleState> {
-  private _menuButtonElement: HTMLElement;
+export interface ICalloutNestedExampleState {
+  isCalloutVisible: boolean;
+}
 
-  public constructor() {
-    super();
+export class CalloutNestedExample extends React.Component<ICalloutNestedExampleProps, ICalloutNestedExampleState> {
+  public state: ICalloutNestedExampleState = {
+    isCalloutVisible: false
+  };
 
-    this._onDismiss = this._onDismiss.bind(this);
+  private _menuButtonElement: HTMLElement | null;
+  // Use getId() to ensure that the callout title ID is unique on the page.
+  // (It's also okay to use a plain string without getId() and manually ensure its uniqueness.)
+  private _titleId: string = getId('callout-label');
 
-    this.state = {
-      isCalloutVisible: false,
-    };
-  }
-
-  public render() {
-    let { isCalloutVisible } = this.state;
+  public render(): JSX.Element {
+    const { isCalloutVisible } = this.state;
 
     return (
-      <div className='ms-CalloutExample'>
-        <div className='ms-CalloutBasicExample-buttonArea' ref={ (menuButton) => this._menuButtonElement = menuButton }>
-          <DefaultButton
-            onClick={ this._onDismiss }
-            text={ isCalloutVisible ? 'Hide callout' : 'Show callout' }
-          />
+      <div className="ms-CalloutExample">
+        <div className="ms-CalloutBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton)}>
+          <DefaultButton onClick={this._onDismiss} text={isCalloutVisible ? 'Hide callout' : 'Show callout'} />
         </div>
-        { isCalloutVisible ? (
+        {isCalloutVisible ? (
           <div>
             <Callout
-              className='ms-CalloutExample-callout'
-              gapSpace={ 0 }
-              targetElement={ this._menuButtonElement }
-              onDismiss={ (ev: any) => { this._onDismiss(ev); } }
-              setInitialFocus={ true }
+              role="alertdialog"
+              ariaLabelledBy={this._titleId}
+              className="ms-CalloutExample-callout"
+              gapSpace={0}
+              target={this._menuButtonElement}
+              onDismiss={this._onDismiss}
+              setInitialFocus={true}
             >
-              <div className='ms-CalloutExample-header'>
-                <p className='ms-CalloutExample-title'>
+              <div className="ms-CalloutExample-header">
+                <p className="ms-CalloutExample-title" id={this._titleId}>
                   Callout title here
                 </p>
               </div>
-              <div className='ms-CalloutExample-inner'>
-                <div className='ms-CalloutExample-content'>
-                  <p className='ms-CalloutExample-subText'>
+              <div className="ms-CalloutExample-inner">
+                <div className="ms-CalloutExample-content">
+                  <p className="ms-CalloutExample-subText">
                     Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
                   </p>
                 </div>
               </div>
-              <CommandBar items={ this.props.items } />
+              <CommandBar items={this.props.items} />
             </Callout>
           </div>
-        ) : (null) }
+        ) : null}
       </div>
     );
   }
 
-  private _onDismiss(ev: any) {
+  private _onDismiss = () => {
     this.setState({
       isCalloutVisible: !this.state.isCalloutVisible
     });
-  }
+  };
 }

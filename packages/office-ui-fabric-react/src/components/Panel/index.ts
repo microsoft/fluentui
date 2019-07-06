@@ -1,2 +1,2 @@
 export * from './Panel';
-export * from './Panel.Props';
+export * from './Panel.types';

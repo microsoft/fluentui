@@ -2,22 +2,34 @@ const REACT_LIFECYCLE_EXCLUSIONS = [
   'setState',
   'render',
   'componentWillMount',
+  'UNSAFE_componentWillMount',
   'componentDidMount',
   'componentWillReceiveProps',
+  'UNSAFE_componentWillReceiveProps',
   'shouldComponentUpdate',
   'componentWillUpdate',
+  'getSnapshotBeforeUpdate',
+  'UNSAFE_componentWillUpdate',
   'componentDidUpdate',
   'componentWillUnmount'
 ];
 
 /**
  * Allows you to hoist methods, except those in an exclusion set from a source object into a destination object.
- * @param destination The instance of the object to hoist the methods onto.
- * @param source The instance of the object where the methods are hoisted from.
- * @param exclusions (Optional) What methods to exclude from being hoisted.
- * @returns {string[]} An array of names of methods that were hoisted.
+ *
+ * @public
+ * @param destination - The instance of the object to hoist the methods onto.
+ * @param source - The instance of the object where the methods are hoisted from.
+ * @param exclusions - (Optional) What methods to exclude from being hoisted.
+ * @returns An array of names of methods that were hoisted.
  */
-export function hoistMethods(destination, source, exclusions: string[] = REACT_LIFECYCLE_EXCLUSIONS): string[] {
+export function hoistMethods(
+  // tslint:disable-next-line:no-any
+  destination: any,
+  // tslint:disable-next-line:no-any
+  source: any,
+  exclusions: string[] = REACT_LIFECYCLE_EXCLUSIONS
+): string[] {
   let hoisted: string[] = [];
   for (let methodName in source) {
     if (
@@ -27,7 +39,9 @@ export function hoistMethods(destination, source, exclusions: string[] = REACT_L
     ) {
       hoisted.push(methodName);
       /* tslint:disable:no-function-expression */
-      destination[methodName] = function () { source[methodName].apply(source, arguments); };
+      destination[methodName] = function(): void {
+        source[methodName].apply(source, arguments);
+      };
       /* tslint:enable */
     }
   }
@@ -37,10 +51,12 @@ export function hoistMethods(destination, source, exclusions: string[] = REACT_L
 
 /**
  * Provides a method for convenience to unhoist hoisted methods.
- * @param {any} source The source object upon which methods were hoisted.
- * @param {string[]} methodNames An array of method names to unhoist.
+ *
+ * @public
+ * @param source - The source object upon which methods were hoisted.
+ * @param methodNames - An array of method names to unhoist.
  */
+// tslint:disable-next-line:no-any
 export function unhoistMethods(source: any, methodNames: string[]): void {
-  methodNames
-    .forEach((methodName) => delete source[methodName]);
+  methodNames.forEach((methodName: string) => delete source[methodName]);
 }

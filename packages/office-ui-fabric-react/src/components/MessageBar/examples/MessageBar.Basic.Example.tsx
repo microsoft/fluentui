@@ -1,71 +1,138 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { MessageBarButton } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Label } from 'office-ui-fabric-react/lib/Label';
+import { Stack, StackItem } from 'office-ui-fabric-react/lib/Stack';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import './MessageBar.Basic.Example.scss';
 
-export const MessageBarBasicExample = () => (
-  <div className='ms-BasicMessageBarsExample'>
-    <Label>Info/Default MessageBar</Label>
-    <MessageBar>Info - lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website</Link></MessageBar>
+const log = (text: string): (() => void) => (): void => console.log(text);
 
-    <Label>Error MessageBar - only dismiss</Label>
-    <MessageBar
-      messageBarType={ MessageBarType.error }
-      onDismiss={ () => { console.log('test'); } }>
-      Error - lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit. <Link href='www.bing.com'>Visit our website</Link></MessageBar>
-    <p>
-      Add a close box when the user can safely dismiss the message. They’ll want to do this to reclaim space or if they feel too disrupted.
-          </p>
+export const MessageBarBasicExample: React.StatelessComponent = () => (
+  <Stack tokens={{ childrenGap: 20 }}>
+    <StackItem>
+      <Label>Info/Default MessageBar</Label>
+      <MessageBar>
+        Info lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
+      </MessageBar>
+    </StackItem>
 
-    <Label>Blocked MessageBar - single line</Label>
-    <MessageBar messageBarType={ MessageBarType.blocked }
-      onDismiss={ () => { console.log('test'); } }
-      isMultiline={ false }
-      actions={ <div><DefaultButton>Yes</DefaultButton><DefaultButton>No</DefaultButton></div> }>
-      Blocked - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris. <Link href='www.bing.com'>Visit our website</Link></MessageBar>
+    <StackItem>
+      <Label>Error MessageBar - single line, with dismiss button</Label>
+      <MessageBar messageBarType={MessageBarType.error} isMultiline={false} onDismiss={log('test')} dismissButtonAriaLabel="Close">
+        Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
+      </MessageBar>
+    </StackItem>
 
-    <Label>SevereWarning MessageBar - multiline (default)</Label>
-    <MessageBar
-      messageBarType={ MessageBarType.severeWarning }
-      actions={
-        <div>
-          <DefaultButton>Yes</DefaultButton>
-          <DefaultButton>No</DefaultButton>
-        </div>
-      }>
-      <span>SevereWarning - lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.</span>
-      <Link href='www.bing.com'>Visit our website</Link>
-    </MessageBar>
+    <StackItem>
+      <Label>
+        Blocked MessageBar - single line, with dismiss button and truncated text. Truncation is not available if you use action buttons or
+        multiline and should be used sparingly.
+      </Label>
+      <MessageBar
+        messageBarType={MessageBarType.blocked}
+        isMultiline={false}
+        onDismiss={log('test')}
+        dismissButtonAriaLabel="Close"
+        truncated={true}
+        overflowButtonAriaLabel="See more"
+      >
+        Blocked lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio augue pharetra
+        metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci nec quam condimentum
+        porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo
+        odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce
+        massa lorem, ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
+      </MessageBar>
+    </StackItem>
 
-    <Label>Success MessageBar - single line, long text with buttons</Label>
-    <MessageBar
-      actions={
-        <div>
-          <DefaultButton>Yes</DefaultButton>
-          <DefaultButton>No</DefaultButton>
-        </div>
-      }
-      messageBarType={ MessageBarType.success }
-      isMultiline={ false }>
-      Success - Lorem ipsum dolor sit amet <Link href='www.bing.com'>Visit our website</Link>
-    </MessageBar>
+    <StackItem>
+      <Label>SevereWarning MessageBar - defaults to multiline, with action buttons</Label>
+      <MessageBar
+        messageBarType={MessageBarType.severeWarning}
+        actions={
+          <div>
+            <MessageBarButton>Yes</MessageBarButton>
+            <MessageBarButton>No</MessageBarButton>
+          </div>
+        }
+      >
+        Severe warning lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
+      </MessageBar>
+    </StackItem>
 
-    <Label>Warning MessageBar</Label>
-    <MessageBar
-      onDismiss={ () => { console.log('test'); } }
-      messageBarType={ MessageBarType.warning }
-      ariaLabel='Aria help text here'
-      actions={
-        <div>
-          <DefaultButton>Yes</DefaultButton>
-          <DefaultButton>No</DefaultButton>
-        </div>
-      }>
-      Warning - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio augue pharetra metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci nec quam condimentum porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.<Link href='www.bing.com'>Visit our website</Link>
-    </MessageBar>
-  </div>
+    <StackItem>
+      <Label>Success MessageBar - single line, with action buttons</Label>
+      <MessageBar
+        actions={
+          <div>
+            <MessageBarButton>Yes</MessageBarButton>
+            <MessageBarButton>No</MessageBarButton>
+          </div>
+        }
+        messageBarType={MessageBarType.success}
+        isMultiline={false}
+      >
+        Success lorem ipsum dolor sit amet.{' '}
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
+      </MessageBar>
+    </StackItem>
+
+    <StackItem>
+      <Label>Warning MessageBar - single line, with dismiss and action buttons</Label>
+      <MessageBar
+        messageBarType={MessageBarType.warning}
+        isMultiline={false}
+        onDismiss={log('test')}
+        dismissButtonAriaLabel="Close"
+        actions={
+          <div>
+            <MessageBarButton>Action</MessageBarButton>
+          </div>
+        }
+      >
+        Warning lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
+      </MessageBar>
+    </StackItem>
+
+    <StackItem>
+      <Label>Warning MessageBar - defaults to multiline, with dismiss and action buttons</Label>
+      <MessageBar
+        onDismiss={log('test')}
+        dismissButtonAriaLabel="Close"
+        messageBarType={MessageBarType.warning}
+        ariaLabel="Aria help text here"
+        actions={
+          <div>
+            <MessageBarButton>Yes</MessageBarButton>
+            <MessageBarButton>No</MessageBarButton>
+          </div>
+        }
+      >
+        Warning lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus, purus a lobortis tristique, odio augue pharetra
+        metus, ac placerat nunc mi nec dui. Vestibulum aliquam et nunc semper scelerisque. Curabitur vitae orci nec quam condimentum
+        porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo
+        odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce
+        massa lorem, ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
+      </MessageBar>
+    </StackItem>
+  </Stack>
 );

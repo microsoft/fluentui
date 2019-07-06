@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { TestImages } from '../../../common/TestImages';
 
 /**
  * Interface for ChoiceGroupImageExample state.
@@ -9,9 +9,9 @@ export interface IChoiceGroupImageExampleState {
   selectedKey: string;
 }
 
-export class ChoiceGroupImageExample extends React.Component<any, IChoiceGroupImageExampleState> {
-  constructor() {
-    super();
+export class ChoiceGroupImageExample extends React.Component<{}, IChoiceGroupImageExampleState> {
+  constructor(props: {}) {
+    super(props);
 
     this.state = {
       selectedKey: 'bar'
@@ -20,37 +20,38 @@ export class ChoiceGroupImageExample extends React.Component<any, IChoiceGroupIm
     this._onImageChoiceGroupChange = this._onImageChoiceGroupChange.bind(this);
   }
 
-  public render() {
-    let { selectedKey } = this.state;
+  public render(): JSX.Element {
+    const { selectedKey } = this.state;
 
     return (
       <div>
         <ChoiceGroup
-          label='Pick one image'
-          selectedKey={ selectedKey }
-          options={ [
+          label="Pick one image"
+          selectedKey={selectedKey}
+          options={[
             {
               key: 'bar',
-              imageSrc: './images/choicegroup-bar-unselected.png',
-              selectedImageSrc: './images/choicegroup-bar-selected.png',
+              imageSrc: TestImages.choiceGroupBarUnselected,
+              imageAlt: 'Bar chart icon',
+              selectedImageSrc: TestImages.choiceGroupBarSelected,
               imageSize: { width: 32, height: 32 },
-              text: 'Bar chart'
+              text: 'Clustered bar chart' // This text is long to show text wrapping.
             },
             {
               key: 'pie',
-              imageSrc: './images/choicegroup-pie-unselected.png',
-              selectedImageSrc: './images/choicegroup-pie-selected.png',
+              imageSrc: TestImages.choiceGroupBarUnselected,
+              selectedImageSrc: TestImages.choiceGroupBarSelected,
               imageSize: { width: 32, height: 32 },
               text: 'Pie chart'
             }
-          ] }
-          onChange={ this._onImageChoiceGroupChange }
+          ]}
+          onChange={this._onImageChoiceGroupChange}
         />
       </div>
     );
   }
 
-  private _onImageChoiceGroupChange(ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption) {
+  private _onImageChoiceGroupChange(ev: React.SyntheticEvent<HTMLElement>, option: IChoiceGroupOption): void {
     this.setState({
       selectedKey: option.key
     });

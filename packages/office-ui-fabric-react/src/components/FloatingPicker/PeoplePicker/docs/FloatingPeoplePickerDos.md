@@ -1,0 +1,1 @@
+- Use the FloatingPeoplePicker to quickly search for a few people

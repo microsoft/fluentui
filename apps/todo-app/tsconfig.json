@@ -1,22 +1,19 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "outDir": "lib",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
-    "types": [
-      "chai",
-      "mocha",
-      "webpack-env"
-    ]
+    "preserveConstEnums": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "lib": ["es5", "dom"],
+    "types": ["webpack-env"]
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "lib",
-    "lib-amd"
-  ]
+  "include": ["src"]
 }

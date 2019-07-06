@@ -1,62 +1,141 @@
 import * as React from 'react';
-import { assign } from 'office-ui-fabric-react/lib/Utilities';
+
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
-export class CommandBarBasicExample extends React.Component<any, any> {
-
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      isSearchBoxVisible: true,
-      areNamesVisible: true,
-      areIconsVisible: true
-    };
-  }
-
-  public render() {
-    let { items, farItems } = this.props;
-    let { isSearchBoxVisible: searchBoxVisible, areIconsVisible: iconsVisible, areNamesVisible: namesVisible } = this.state;
-
-    let filteredItems = items.map(item => assign({}, item, {
-      name: namesVisible ? item.name : '',
-      icon: iconsVisible ? item.icon : ''
-    }));
-
-    let filteredFarItems = farItems.map(item => assign({}, item, {
-      name: namesVisible ? item.name : '',
-      icon: iconsVisible ? item.icon : ''
-    }));
-
+export class CommandBarBasicExample extends React.Component<{}, {}> {
+  public render(): JSX.Element {
     return (
       <div>
-        <Toggle
-          label='Show search box'
-          checked={ searchBoxVisible }
-          onChanged={ isSearchBoxVisible => this.setState({ isSearchBoxVisible }) }
-          onText='Visible'
-          offText='Hidden'
-        />
-        <Toggle
-          label='Show names'
-          checked={ namesVisible }
-          onChanged={ areNamesVisible => this.setState({ areNamesVisible }) }
-          onText='Visible'
-          offText='Hidden' />
-        <Toggle
-          label='Show icons'
-          checked={ iconsVisible }
-          onChanged={ areIconsVisible => this.setState({ areIconsVisible }) }
-          onText='Visible'
-          offText='Hidden' />
         <CommandBar
-          isSearchBoxVisible={ searchBoxVisible }
-          searchPlaceholderText='Search...'
-          elipisisAriaLabel='More options'
-          items={ filteredItems }
-          farItems={ filteredFarItems }
+          items={this.getItems()}
+          overflowItems={this.getOverlflowItems()}
+          overflowButtonProps={{ ariaLabel: 'More commands' }}
+          farItems={this.getFarItems()}
+          ariaLabel={'Use left and right arrow keys to navigate between commands'}
         />
       </div>
     );
   }
+
+  // Data for CommandBar
+  private getItems = () => {
+    return [
+      {
+        key: 'newItem',
+        name: 'New',
+        cacheKey: 'myCacheKey', // changing this key will invalidate this items cache
+        iconProps: {
+          iconName: 'Add'
+        },
+        ariaLabel: 'New',
+        subMenuProps: {
+          items: [
+            {
+              key: 'emailMessage',
+              name: 'Email message',
+              iconProps: {
+                iconName: 'Mail'
+              },
+              ['data-automation-id']: 'newEmailButton'
+            },
+            {
+              key: 'calendarEvent',
+              name: 'Calendar event',
+              iconProps: {
+                iconName: 'Calendar'
+              }
+            }
+          ]
+        }
+      },
+      {
+        key: 'upload',
+        name: 'Upload',
+        iconProps: {
+          iconName: 'Upload'
+        },
+        href: 'https://dev.office.com/fabric',
+        ['data-automation-id']: 'uploadButton'
+      },
+      {
+        key: 'share',
+        name: 'Share',
+        iconProps: {
+          iconName: 'Share'
+        },
+        onClick: () => console.log('Share')
+      },
+      {
+        key: 'download',
+        name: 'Download',
+        iconProps: {
+          iconName: 'Download'
+        },
+        onClick: () => console.log('Download')
+      }
+    ];
+  };
+
+  private getOverlflowItems = () => {
+    return [
+      {
+        key: 'move',
+        name: 'Move to...',
+        onClick: () => console.log('Move to'),
+        iconProps: {
+          iconName: 'MoveToFolder'
+        }
+      },
+      {
+        key: 'copy',
+        name: 'Copy to...',
+        onClick: () => console.log('Copy to'),
+        iconProps: {
+          iconName: 'Copy'
+        }
+      },
+      {
+        key: 'rename',
+        name: 'Rename...',
+        onClick: () => console.log('Rename'),
+        iconProps: {
+          iconName: 'Edit'
+        }
+      }
+    ];
+  };
+
+  private getFarItems = () => {
+    return [
+      {
+        key: 'sort',
+        name: 'Sort',
+        ariaLabel: 'Sort',
+        iconProps: {
+          iconName: 'SortLines'
+        },
+        onClick: () => console.log('Sort')
+      },
+      {
+        key: 'tile',
+        name: 'Grid view',
+        ariaLabel: 'Grid view',
+        iconProps: {
+          iconName: 'Tiles'
+        },
+        iconOnly: true,
+        onClick: () => console.log('Tiles')
+      },
+      {
+        key: 'info',
+        name: 'Info',
+        ariaLabel: 'Info',
+        iconProps: {
+          iconName: 'Info'
+        },
+        iconOnly: true,
+        onClick: () => console.log('Info')
+      }
+    ];
+  };
 }

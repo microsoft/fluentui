@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon renders Icon correctly 1`] = `
+<i
+  aria-label="asdf"
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-family: "FabricMDL2Icons-2";
+        font-style: normal;
+        font-weight: normal;
+        speak: none;
+      }
+  data-icon-name="CompassNW"
+>
+  
+</i>
+`;
+
+exports[`Icon renders Icon correctly using iconName 1`] = `
+<i
+  aria-hidden={true}
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-family: "FabricMDL2Icons";
+        font-style: normal;
+        font-weight: normal;
+        speak: none;
+      }
+  data-icon-name="Upload"
+  role="presentation"
+>
+  
+</i>
+`;
+
+exports[`Icon renders Icon with custom styles 1`] = `
+<i
+  aria-hidden={true}
+  className=
+      root
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-family: "FabricMDL2Icons";
+        font-style: normal;
+        font-weight: normal;
+        speak: none;
+      }
+  data-icon-name="Upload"
+  role="presentation"
+>
+  
+</i>
+`;
+
+exports[`Icon renders Icon with getStyles 1`] = `
+<i
+  aria-hidden={true}
+  className=
+      className
+      root
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-family: "FabricMDL2Icons";
+        font-style: normal;
+        font-weight: normal;
+        speak: none;
+      }
+  data-icon-name="Upload"
+  role="presentation"
+>
+  
+</i>
+`;

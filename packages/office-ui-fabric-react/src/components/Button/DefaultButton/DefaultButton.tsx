@@ -1,34 +1,29 @@
 import * as React from 'react';
-import { BaseButton, IButtonClassNames } from '../BaseButton';
-import { BaseComponent, nullRender } from '../../../Utilities';
-import { IButtonProps } from '../Button.Props';
+import { BaseButton } from '../BaseButton';
+import { BaseComponent, customizable, nullRender } from '../../../Utilities';
+import { IButtonProps } from '../Button.types';
+import { getStyles } from './DefaultButton.styles';
 
-import * as stylesImport from './DefaultButton.scss';
-const styles: any = stylesImport;
-
-export const CLASS_NAMES: IButtonClassNames = {
-  base: 'ms-Button',
-  variant: 'ms-Button--default',
-  icon: styles.icon,
-  menuIcon: styles.icon,
-  isDisabled: styles.isDisabled,
-  isEnabled: styles.isEnabled,
-  label: styles.label,
-  root: styles.root
-};
-
+/**
+ * {@docCategory Button}
+ */
+@customizable('DefaultButton', ['theme', 'styles'], true)
 export class DefaultButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
    */
-  protected _shouldUpdateComponentRef = false;
+  protected _skipComponentRefResolution = true;
 
-  public render() {
+  public render(): JSX.Element {
+    const { primary = false, styles, theme } = this.props;
+
     return (
       <BaseButton
-        classNames={ CLASS_NAMES }
-        onRenderDescription={ nullRender }
-        { ...this.props } />
+        {...this.props}
+        variantClassName={primary ? 'ms-Button--primary' : 'ms-Button--default'}
+        styles={getStyles(theme!, styles, primary)}
+        onRenderDescription={nullRender}
+      />
     );
   }
 }

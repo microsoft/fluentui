@@ -1,23 +1,38 @@
 import * as React from 'react';
-import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { css, classNamesFunction, IconButton, IButtonProps, IStyle } from 'office-ui-fabric-react';
 
-export class ButtonIconExample extends React.Component<IButtonProps, {}> {
-  public constructor() {
-    super();
-  }
+type IButtonBasicExampleStyleProps = {};
 
-  public render() {
-    let { disabled } = this.props;
+interface IButtonBasicExampleStyles {
+  example?: IStyle;
+}
+
+const exampleStyles: IButtonBasicExampleStyles = {
+  example: [
+    'ms-BasicButtonsExample',
+    {
+      selectors: {
+        '.ms-Button': {
+          margin: '10px 0'
+        }
+      }
+    }
+  ]
+};
+
+const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+const classNames = getClassNames(exampleStyles, {});
+
+export class ButtonIconExample extends React.Component<IButtonProps> {
+  public render(): JSX.Element {
+    const { disabled, checked } = this.props;
 
     return (
-      <div className='ms-BasicButtonsExample'>
-        <Label>Icon button</Label>
-        <IconButton
-          disabled={ disabled }
-          iconProps={ { iconName: 'Emoji2' } }
-          title='Emoji'
-          ariaLabel='Emoji' />
+      <div className={css(classNames.example)}>
+        <IconButton disabled={disabled} checked={checked} iconProps={{ iconName: 'Emoji2' }} title="Emoji" ariaLabel="Emoji" />
+        <p>
+          For a list of Icons, visit our <a href="https://developer.microsoft.com/en-us/fabric#/styles/icons">Icon documentation</a>.
+        </p>
       </div>
     );
   }

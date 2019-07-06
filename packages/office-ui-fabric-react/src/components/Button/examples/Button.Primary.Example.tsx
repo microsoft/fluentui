@@ -1,23 +1,41 @@
 import * as React from 'react';
-import { PrimaryButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { css, classNamesFunction, IButtonProps, IStyle, PrimaryButton } from 'office-ui-fabric-react';
 
-export class ButtonPrimaryExample extends React.Component<IButtonProps, {}> {
-  public constructor() {
-    super();
-  }
+type IButtonBasicExampleStyleProps = {};
 
-  public render() {
-    let { disabled } = this.props;
+interface IButtonBasicExampleStyles {
+  example?: IStyle;
+}
+
+const exampleStyles: IButtonBasicExampleStyles = {
+  example: [
+    'ms-BasicButtonsExample',
+    {
+      selectors: {
+        '.ms-Button': {
+          margin: '10px 0'
+        }
+      }
+    }
+  ]
+};
+
+const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+const classNames = getClassNames(exampleStyles, {});
+
+export class ButtonPrimaryExample extends React.Component<IButtonProps> {
+  public render(): JSX.Element {
+    const { disabled, checked } = this.props;
 
     return (
-      <div className='ms-BasicButtonsExample'>
-        <Label>Primary button</Label>
+      <div className={css(classNames.example)}>
         <PrimaryButton
-          data-automation-id='test'
-          disabled={ disabled }
-          text='Create account'
-          onClick={ () => alert('Clicked') }
+          data-automation-id="test"
+          disabled={disabled}
+          checked={checked}
+          text="Create account"
+          // tslint:disable-next-line:jsx-no-lambda
+          onClick={() => alert('Clicked')}
         />
       </div>
     );

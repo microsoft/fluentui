@@ -1,34 +1,26 @@
 import * as React from 'react';
-import { BaseButton, IButtonClassNames } from '../BaseButton';
-import { BaseComponent } from '../../../Utilities';
-import { IButtonProps } from '../Button.Props';
+import { BaseButton } from '../BaseButton';
+import { BaseComponent, customizable } from '../../../Utilities';
+import { IButtonProps } from '../Button.types';
+import { getStyles } from './CompoundButton.styles';
 
-import * as stylesImport from './CompoundButton.scss';
-const styles: any = stylesImport;
-
-const CLASS_NAMES: IButtonClassNames = {
-  base: 'ms-Button',
-  variant: 'ms-Button--compound',
-  description: styles.description,
-  flexContainer: styles.flexContainer,
-  icon: null,
-  isDisabled: styles.isDisabled,
-  isEnabled: styles.isEnabled,
-  label: styles.label,
-  root: styles.root
-};
-
+/**
+ * {@docCategory Button}
+ */
+@customizable('CompoundButton', ['theme', 'styles'], true)
 export class CompoundButton extends BaseComponent<IButtonProps, {}> {
   /**
    * Tell BaseComponent to bypass resolution of componentRef.
    */
-  protected _shouldUpdateComponentRef = false;
+  protected _skipComponentRefResolution = true;
 
-  public render() {
+  public render(): JSX.Element {
+    const { primary = false, styles, theme } = this.props;
     return (
       <BaseButton
-        classNames={ CLASS_NAMES }
-        { ...this.props }
+        {...this.props}
+        variantClassName={primary ? 'ms-Button--compoundPrimary' : 'ms-Button--compound'}
+        styles={getStyles(theme!, styles, primary)}
       />
     );
   }

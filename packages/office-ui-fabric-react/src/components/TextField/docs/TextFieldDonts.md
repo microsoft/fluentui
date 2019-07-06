@@ -1,0 +1,5 @@
+- Don’t use a TextField to render basic copy as part of a body element of a page.
+- Don’t provide an unlabeled TextField and expect that users will know what to do with it.
+- Don’t place a TextField inline with body copy.
+- Don’t be overly verbose with helper text.
+- Don’t occlude the entry or allow entry when the active content is not visible.

@@ -1,10 +1,10 @@
 import { ITodoItem } from './index';
+import { Promise } from 'es6-promise';
 
 /**
  * The data provider interface implemented by MockTodoDataProvider and TodoDataProvider.
  */
 export interface IDataProvider {
-
   isLoading: boolean;
 
   items: ITodoItem[];

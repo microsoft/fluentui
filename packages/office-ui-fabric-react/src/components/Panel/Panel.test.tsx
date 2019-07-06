@@ -1,52 +1,103 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
+import * as renderer from 'react-test-renderer';
 
-import * as ReactDOM from 'react-dom';
-
-let { expect } = chai;
-
+import { PanelBase } from './Panel.base';
 import { Panel } from './Panel';
+let div: HTMLElement;
+
+const ReactDOM = require('react-dom');
 
 describe('Panel', () => {
   afterEach(() => {
-    [].forEach.call(document.querySelectorAll('body > div'), div => div.parentNode.removeChild(div));
-
-    expect(document.querySelector('.ms-Panel')).to.be.null;
+    jest.useRealTimers();
   });
 
-  it('Fires the correct events when closing', () => {
-    let dismissedCalled = false;
-    let dismissCalled = false;
+  it('renders Panel correctly', () => {
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    ReactDOM.createPortal = jest.fn(element => {
+      return element;
+    });
 
-    const handleDismissed = () => {
-      dismissedCalled = true;
-    };
+    const component = renderer.create(
+      <Panel isOpen={true} headerText="Test Panel">
+        <span>Content goes here</span>
+      </Panel>
+    );
 
-    const div = document.createElement('div');
+    expect(component.toJSON()).toMatchSnapshot();
 
-    let panel: Panel = ReactDOM.render(
-      <Panel
-        isOpen={ true }
-        onDismiss={ () => { dismissCalled = true; } }
-        onDismissed={ handleDismissed } />,
-      div) as any;
+    ReactDOM.createPortal.mockClear();
+  });
 
-    panel.dismiss();
+  describe('open', () => {
+    beforeEach(() => {
+      div = document.createElement('div');
+    });
 
-    expect(dismissCalled).equals(true, 'onDismiss was not called');
-    expect(dismissedCalled).equals(false, 'onDismissed was called prematurely');
+    afterEach(() => {
+      ReactDOM.unmountComponentAtNode(div);
+    });
 
-    // Generate animation event to simulate animation completing.
-    const event = document.createEvent('CustomEvent'); // AnimationEvent is not supported by PhantomJS
-    event.initCustomEvent('animationend', true, true, {});
-    (event as any).animationName = 'fadeOut';
+    it('fires the correct events', () => {
+      let openedCalled = false;
+      let openCalled = false;
+      let dismissedCalled = false;
+      let dismissCalled = false;
+      let dismissCount = 0;
 
-    const panelElement = document.querySelector('.ms-Panel');
-    expect(panel).not.to.be.null;
+      const setOpenTrue = (): void => {
+        openCalled = true;
+      };
+      const setOpenedTrue = (): void => {
+        openedCalled = true;
+      };
+      const setDismissTrue = (): void => {
+        dismissCalled = true;
+        dismissCount++;
+      };
+      const setDismissedTrue = (): void => {
+        dismissedCalled = true;
+      };
+      jest.useFakeTimers();
 
-    panelElement.dispatchEvent(event);
+      const panel: PanelBase = ReactDOM.render(
+        <PanelBase onOpen={setOpenTrue} onOpened={setOpenedTrue} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
+        div
+      ) as any;
 
-    expect(dismissedCalled).equals(true, 'onDismissed was not called');
+      panel.open();
+
+      expect(openCalled).toEqual(true);
+      expect(openedCalled).toEqual(false);
+
+      jest.runOnlyPendingTimers();
+
+      expect(openedCalled).toEqual(true);
+
+      expect(dismissCalled).toEqual(false);
+      expect(dismissedCalled).toEqual(false);
+
+      panel.dismiss();
+
+      expect(dismissCalled).toEqual(true);
+      expect(dismissedCalled).toEqual(false);
+
+      // Dismiss should only be called once per dismiss.
+      expect(dismissCount).toEqual(1);
+
+      jest.runOnlyPendingTimers();
+
+      expect(dismissedCalled).toEqual(true);
+    });
+  });
+
+  describe('onClose', () => {
+    beforeEach(() => {
+      div = document.createElement('div');
+    });
+
+    afterEach(() => {
+      ReactDOM.unmountComponentAtNode(div);
+    });
   });
 });

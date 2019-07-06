@@ -2,7 +2,7 @@
 
 :global {
   .ms-CalloutExample-callout {
-      max-width: 300px;
+    max-width: 300px;
   }
 
   .ms-CalloutExample-configArea {
@@ -80,5 +80,8 @@
     margin-top: 20px;
     width: 100%;
     white-space: nowrap;
+  }
+  .calloutExampleButton {
+    width: 100%;
   }
 }

@@ -1,32 +1,45 @@
 import * as React from 'react';
-import {
-  IButtonProps,
-  PrimaryButton
-} from 'office-ui-fabric-react/lib/Button';
-import {
-  Label
-} from 'office-ui-fabric-react/lib/Label';
+import { css, classNamesFunction, DefaultButton, IButtonProps, IStyle } from 'office-ui-fabric-react';
 
-export class ButtonAnchorExample extends React.Component<IButtonProps, {}> {
-  public constructor() {
-    super();
-  }
+type IButtonBasicExampleStyleProps = {};
 
-  public render() {
-    let { disabled } = this.props;
+interface IButtonBasicExampleStyles {
+  example?: IStyle;
+}
+
+const exampleStyles: IButtonBasicExampleStyles = {
+  example: [
+    'ms-BasicButtonsExample',
+    {
+      selectors: {
+        '.ms-Button': {
+          margin: '10px 0'
+        }
+      }
+    }
+  ]
+};
+
+const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+const classNames = getClassNames(exampleStyles, {});
+
+export class ButtonAnchorExample extends React.Component<IButtonProps> {
+  public render(): JSX.Element {
+    const { disabled, checked } = this.props;
 
     return (
-      <div className='ms-BasicButtonsExample'>
-        <Label>Button like anchor</Label>
-        <PrimaryButton
-          data-automation-id='test'
-          disabled={ disabled }
-          href='http://bing.com'
-          target='_blank'
-          title='Let us bing!'>
+      <div className={css(classNames.example)}>
+        <DefaultButton
+          data-automation-id="test"
+          disabled={disabled}
+          checked={checked}
+          href="http://bing.com"
+          target="_blank"
+          title="let us bing!"
+        >
           Bing
-        </PrimaryButton>
-      </div >
+        </DefaultButton>
+      </div>
     );
   }
 }
