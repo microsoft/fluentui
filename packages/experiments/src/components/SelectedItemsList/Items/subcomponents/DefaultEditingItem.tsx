@@ -99,7 +99,7 @@ export class DefaultEditingItemInner<TItem> extends React.PureComponent<IDefault
     return (
       <FloatingPicker
         componentRef={this._editingFloatingPicker}
-        onChange={this._onSuggestionSelected}
+        onSuggestionSelected={this._onSuggestionSelected}
         inputElement={this._editingInput}
         onRemoveSuggestion={this.props.onRemoveItem}
         onSuggestionsHidden={this.props.onDismiss}
