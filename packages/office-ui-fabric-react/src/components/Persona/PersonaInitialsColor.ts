@@ -49,38 +49,36 @@ function getInitialsColorFromName(displayName: string | undefined): PersonaIniti
 function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColor): string {
   switch (personaInitialsColor) {
     case PersonaInitialsColor.lightBlue:
-      return '#4F6BED';
+      return '#6BA5E7';
     case PersonaInitialsColor.blue:
-      return '#0078D4';
+      return '#2D89EF';
     case PersonaInitialsColor.darkBlue:
-      return '#004E8C';
+      return '#2B5797';
     case PersonaInitialsColor.teal:
-      return '#038387';
+      return '#00ABA9';
     case PersonaInitialsColor.lightGreen:
     case PersonaInitialsColor.green:
-      return '#498205';
+      return '#00A300';
     case PersonaInitialsColor.darkGreen:
-      return '#0B6A0B';
+      return '#1E7145';
     case PersonaInitialsColor.lightPink:
-      return '#C239B3';
+      return '#E773BD';
     case PersonaInitialsColor.pink:
-      return '#E3008C';
+      return '#FF0097';
     case PersonaInitialsColor.magenta:
-      return '#881798';
+      return '#7E3878';
     case PersonaInitialsColor.purple:
-      return '#5C2E91';
+      return '#603CBA';
     case PersonaInitialsColor.orange:
-      return '#CA5010';
+      return '#DA532C';
     case PersonaInitialsColor.red:
-      return '#EE1111';
-    case PersonaInitialsColor.lightRed:
       return '#D13438';
     case PersonaInitialsColor.darkRed:
-      return '#A4262C';
+      return '#B91D47';
     case PersonaInitialsColor.transparent:
       return 'transparent';
     case PersonaInitialsColor.violet:
-      return '#8764B8';
+      return '#5E4B8B';
     case PersonaInitialsColor.gold:
       return '#986F0B';
     case PersonaInitialsColor.burgundy:
