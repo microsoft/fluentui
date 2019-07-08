@@ -1,5 +1,5 @@
 {
-  "comment": "DetailsList: Adding aria-hidden to header labels.",
+  "comment": "DetailsList: Adding aria-hidden to column labels.",
   "type": "patch",
   "packageName": "office-ui-fabric-react",
   "email": "Humberto.Morimoto@microsoft.com",
