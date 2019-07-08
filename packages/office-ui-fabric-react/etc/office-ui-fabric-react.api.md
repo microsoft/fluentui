@@ -1798,6 +1798,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
     // (undocumented)
     theme?: ITheme;
+    tooltipHostProps?: ITooltipHostProps;
 }
 
 // @public (undocumented)

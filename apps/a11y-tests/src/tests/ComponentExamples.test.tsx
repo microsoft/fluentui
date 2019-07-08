@@ -42,6 +42,7 @@ const excludedExampleFiles: string[] = ['Keytips.Basic.Example', 'List.Basic.Exa
 declare const global: any;
 
 describe('a11y test', () => {
+  const RealDate = Date;
   const constantDate = new Date(Date.UTC(2017, 0, 6, 4, 41, 20));
 
   beforeAll(() => {
@@ -62,11 +63,11 @@ describe('a11y test', () => {
     // Prevent random and time elements from failing repeated tests.
     global.Date = class {
       public static now() {
-        return constantDate;
+        return new RealDate(constantDate);
       }
 
       constructor() {
-        return constantDate;
+        return new RealDate(constantDate);
       }
     };
 

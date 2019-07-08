@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 03 Jul 2019 12:30:55 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jul 2019 12:27:04 GMT and should not be manually modified.
+
+## 7.7.2
+Mon, 08 Jul 2019 12:27:04 GMT
+
+### Patches
+
+- Fix mock Date class (rezha@microsoft.com)
+
+## 7.7.1
+Thu, 04 Jul 2019 12:29:39 GMT
+
+### Patches
+
+- SearchBox: allow passing in id for input (elcraig@microsoft.com)
+,- Breadcrumb: Adding overflowAriaLabel to examples. (Humberto.Morimoto@microsoft.com)
+,- Button: Updating example to make it less confusing to screen readers. (Humberto.Morimoto@microsoft.com)
 
 ## 7.7.0
 Wed, 03 Jul 2019 12:30:55 GMT
