@@ -129,7 +129,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       isDarkOverlay,
       onDismiss,
       layerProps,
-      overlayProps,
+      overlay,
       responsiveMode,
       titleAriaId,
       styles,
@@ -226,9 +226,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
             onDismiss={onDismiss}
           >
             <div className={classNames.root}>
-              {!isModeless && (
-                <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} {...overlayProps} />
-              )}
+              {!isModeless && <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} {...overlay} />}
               {dragOptions ? (
                 <DraggableZone
                   handleSelector={dragOptions.dragHandleSelector || `.${classNames.main.split(' ')[0]}`}

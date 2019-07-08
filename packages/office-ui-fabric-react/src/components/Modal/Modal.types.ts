@@ -97,7 +97,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
   /**
    * Defines an optional set of props to be passed through to Overlay
    */
-  overlayProps?: IOverlayProps;
+  overlay?: IOverlayProps;
 
   /**
    * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
