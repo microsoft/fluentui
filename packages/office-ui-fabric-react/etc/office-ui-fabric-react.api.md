@@ -5919,8 +5919,10 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     initialsColor?: PersonaInitialsColor | string;
     isOutOfOffice?: boolean;
     onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
+    // @deprecated
     onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
     onRenderInitials?: IRenderFunction<IPersonaSharedProps>;
+    onRenderPersonaCoin?: IRenderFunction<IPersonaSharedProps>;
     optionalText?: string;
     presence?: PersonaPresence;
     // @deprecated
