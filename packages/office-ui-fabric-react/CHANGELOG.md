@@ -1,6 +1,24 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 02 Jul 2019 12:21:32 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jul 2019 20:48:15 GMT and should not be manually modified.
+
+## 6.194.0
+Mon, 08 Jul 2019 20:48:15 GMT
+
+### Minor changes
+
+- Adding toopltipHostProps as a prop to the Breadcrumb component.
+
+### Patches
+
+- Tooltip: fix closeDelay bug
+
+## 6.193.1
+Wed, 03 Jul 2019 23:18:43 GMT
+
+### Patches
+
+- Layer: remove the usage of viewport width and height to fix layout issues on mobile browsers
 
 ## 6.193.0
 Tue, 02 Jul 2019 12:21:32 GMT

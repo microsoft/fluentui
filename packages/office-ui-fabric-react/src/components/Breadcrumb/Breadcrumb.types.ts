@@ -3,6 +3,7 @@ import { IIconProps } from '../../Icon';
 import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { ITheme, IStyle } from '../../Styling';
 import { IFocusZoneProps } from '../../FocusZone';
+import { ITooltipHostProps } from '../../Tooltip';
 
 /**
  * {@docCategory Breadcrumb}
@@ -86,6 +87,11 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
    * Focuszone props that will get passed through to the root focus zone.
    */
   focusZoneProps?: IFocusZoneProps;
+
+  /**
+   * TooltipHost props that will get passed through to overflow tooltips.
+   */
+  tooltipHostProps?: ITooltipHostProps;
 }
 
 /**

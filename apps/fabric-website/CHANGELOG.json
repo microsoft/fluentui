@@ -2,6 +2,35 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.19.4",
+      "tag": "@uifabric/fabric-website_v6.19.4",
+      "date": "Mon, 08 Jul 2019 20:48:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix version selector some more",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "42dd9382734b4dcf2cf52d848698f558f6e0db88"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Renamed instances of \"Microsoft UI Fabric\" to \"UI Fabric\"",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "497548870abab43d0d81b31c4cae584fac209fd5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.15` to `^0.16.16`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.193.1` to `^6.194.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.19.3",
       "tag": "@uifabric/fabric-website_v6.19.3",
       "date": "Mon, 24 Jun 2019 23:08:57 GMT",
