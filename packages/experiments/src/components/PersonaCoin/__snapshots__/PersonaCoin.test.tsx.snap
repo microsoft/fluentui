@@ -6,7 +6,7 @@ exports[`PersonaCoin renders a coin with a contact icon 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #0078D4;
+        background-color: #2D89EF;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -44,7 +44,7 @@ exports[`PersonaCoin renders a coin with a contact icon for a Chinese name 1`] =
       test-cn-root
       {
         align-items: center;
-        background-color: #498205;
+        background-color: #00A300;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -82,7 +82,7 @@ exports[`PersonaCoin renders a coin with the initials JB 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #0078D4;
+        background-color: #2D89EF;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -118,7 +118,7 @@ exports[`PersonaCoin renders a correct persona 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #8764B8;
+        background-color: #5E4B8B;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -190,7 +190,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
       test-cn-root
       {
         align-items: center;
-        background-color: #498205;
+        background-color: #00A300;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -289,7 +289,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #498205;
+        background-color: #00A300;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -388,7 +388,7 @@ exports[`PersonaCoin renders the coin with the provided image 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #498205;
+        background-color: #00A300;
         border-radius: 50%;
         color: white;
         display: flex;
