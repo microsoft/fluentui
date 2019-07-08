@@ -2,21 +2,21 @@ import { ISearchBoxStyleProps, ISearchBoxStyles } from 'office-ui-fabric-react/l
 
 export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBoxStyles> => {
   const { theme, hasFocus, hasInput, underlined } = props;
-  const { effects, palette } = theme;
+  const { effects, semanticColors } = theme;
 
   return {
     root: [
       {
         borderRadius: effects.roundedCorner2,
-        borderColor: palette.neutralTertiary,
+        borderColor: semanticColors.inputBorder,
         paddingTop: 0,
         paddingBottom: 0,
         selectors: {
           ':hover ': {
-            borderColor: palette.neutralPrimary
+            borderColor: semanticColors.inputBorderHovered
           },
           ':active': {
-            borderColor: palette.themePrimary
+            borderColor: semanticColors.inputFocusBorderAlt
           }
         }
       },
@@ -32,17 +32,17 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
           }
         },
       hasInput && {
-        borderColor: palette.neutralSecondary
+        borderColor: semanticColors.smallInputBorder
       },
       hasFocus && {
-        borderColor: palette.themePrimary
+        borderColor: semanticColors.inputFocusBorderAlt
       },
       underlined && {
         borderRadius: 0
       }
     ],
     iconContainer: {
-      color: palette.themeDarkAlt
+      color: semanticColors.inputBackgroundCheckedHovered
     },
     field: {
       paddingLeft: 6
@@ -51,13 +51,13 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
       padding: 0,
       selectors: {
         '&:hover .ms-Button': {
-          backgroundColor: palette.neutralLighter
+          backgroundColor: semanticColors.buttonBackground
         },
         '&:hover .ms-Button-icon': {
-          color: palette.neutralPrimary
+          color: semanticColors.buttonText
         },
         '.ms-Button-icon': {
-          color: palette.neutralSecondary
+          color: semanticColors.inputPlaceholderText
         }
       }
     }
