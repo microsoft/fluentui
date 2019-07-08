@@ -121,7 +121,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
 
   public onCurrentlySelectedSuggestionChosen = (): void => {
     if (this.suggestionsControl.current && this.suggestionsControl.current.hasSuggestionSelected()) {
-      this._onInsertItem(this.suggestionsControl.current.currentSuggestion!.item);
+      this._onSuggestionSelected(this.suggestionsControl.current.currentSuggestion!.item);
     }
   };
 
@@ -210,14 +210,14 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
     ) : null;
   }
 
-  private _onInsertItem(item: TItem): void {
+  private _onSuggestionSelected(item: TItem): void {
     if (this.props.onSuggestionSelected) {
       this.props.onSuggestionSelected(item);
     }
   }
 
   private _onSuggestionClick = (ev: React.MouseEvent<HTMLElement>, item: TItem, index: number): void => {
-    this._onInsertItem(item);
+    this._onSuggestionSelected(item);
     this._updateSuggestionsVisible(false /*shouldShow*/);
   };
 
@@ -318,7 +318,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
 
       const itemToConvert: ISuggestionModel<TItem> = this.props.createForceResolvedItem(this.state.queryString);
       const convertedItems = this.suggestionStore.convertSuggestionsToSuggestionItems([itemToConvert]);
-      this._onInsertItem(convertedItems[0].item);
+      this._onSuggestionSelected(convertedItems[0].item);
     }
   };
 

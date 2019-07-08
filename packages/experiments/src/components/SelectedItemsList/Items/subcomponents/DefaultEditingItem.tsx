@@ -45,7 +45,7 @@ export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttribut
 
 export type EditingItemInnerFloatingPickerProps<T> = Pick<
   IFloatingSuggestionsProps<T>,
-  'componentRef' | 'onChange' | 'inputElement' | 'onRemoveSuggestion' | 'onSuggestionsHidden'
+  'componentRef' | 'onSuggestionSelected' | 'inputElement' | 'onRemoveSuggestion' | 'onSuggestionsHidden'
 >;
 
 /**
