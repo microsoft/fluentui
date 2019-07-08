@@ -1,8 +1,0 @@
-{
-  "comment": "Fix mock Date class",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "rezha@microsoft.com",
-  "commit": "ffeec1a5e02aa849b7927442b1cfb554d4c8bc9d",
-  "date": "2019-07-05T21:14:29.496Z"
-}

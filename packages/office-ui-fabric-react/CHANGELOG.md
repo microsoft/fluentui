@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 04 Jul 2019 12:29:39 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jul 2019 12:27:04 GMT and should not be manually modified.
+
+## 7.7.2
+Mon, 08 Jul 2019 12:27:04 GMT
+
+### Patches
+
+- Fix mock Date class (rezha@microsoft.com)
 
 ## 7.7.1
 Thu, 04 Jul 2019 12:29:39 GMT
