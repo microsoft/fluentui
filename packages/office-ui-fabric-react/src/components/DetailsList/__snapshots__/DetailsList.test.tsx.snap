@@ -1035,6 +1035,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             </span>
           </div>
           <label
+            aria-hidden={true}
             className=
 
                 {
@@ -1192,6 +1193,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             </span>
           </div>
           <label
+            aria-hidden={true}
             className=
 
                 {
@@ -1349,6 +1351,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             </span>
           </div>
           <label
+            aria-hidden={true}
             className=
 
                 {
@@ -1506,6 +1509,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             </span>
           </div>
           <label
+            aria-hidden={true}
             className=
 
                 {
@@ -1663,6 +1667,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             </span>
           </div>
           <label
+            aria-hidden={true}
             className=
 
                 {
@@ -3785,6 +3790,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             </span>
           </div>
           <label
+            aria-hidden={true}
             className=
 
                 {
@@ -3945,6 +3951,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             </span>
           </div>
           <label
+            aria-hidden={true}
             className=
 
                 {
@@ -4105,6 +4112,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             </span>
           </div>
           <label
+            aria-hidden={true}
             className=
 
                 {
@@ -4265,6 +4273,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             </span>
           </div>
           <label
+            aria-hidden={true}
             className=
 
                 {
@@ -4425,6 +4434,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             </span>
           </div>
           <label
+            aria-hidden={true}
             className=
 
                 {

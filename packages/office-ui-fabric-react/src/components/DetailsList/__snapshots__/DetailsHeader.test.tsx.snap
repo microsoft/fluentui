@@ -2276,6 +2276,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     </span>
   </div>
   <label
+    aria-hidden={true}
     className=
 
         {
@@ -2556,6 +2557,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     </span>
   </div>
   <label
+    aria-hidden={true}
     className=
 
         {

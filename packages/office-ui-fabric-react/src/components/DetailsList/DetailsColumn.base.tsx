@@ -242,7 +242,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     const classNames = this._classNames;
 
     return this._hasAccessibleLabel() && !this.props.onRenderColumnHeaderTooltip ? (
-      <label key={`${column.key}_label`} id={`${parentId}-${column.key}-tooltip`} className={classNames.accessibleLabel}>
+      <label key={`${column.key}_label`} id={`${parentId}-${column.key}-tooltip`} className={classNames.accessibleLabel} aria-hidden={true}>
         {column.ariaLabel}
         {(column.isFiltered && column.filterAriaLabel) || null}
         {(column.isSorted && (column.isSortedDescending ? column.sortDescendingAriaLabel : column.sortAscendingAriaLabel)) || null}
