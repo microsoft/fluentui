@@ -127,21 +127,20 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     if (fabricPaletteColorChangeTimeout) {
       clearTimeout(fabricPaletteColorChangeTimeout);
     }
-    console.log(newColor, fabricSlot);
     if (!this.state.themeRules) {
       return;
     }
     colorChangeTimeout = this._async.setTimeout(() => {
-      this.setState(
-        {
-          ...this.state,
-          themeRules: {
-            ...this.state.themeRules,
-            [FabricSlots[fabricSlot]]: { ...this.state.themeRules[FabricSlots[fabricSlot]], color: newColor }
-          }
-        },
-        this._makeNewTheme
-      );
+      const themeRules = this.state.themeRules;
+      if (themeRules) {
+        const currentIsDark = isDark(themeRules[FabricSlots[fabricSlot]].color!);
+        ThemeGenerator.setSlot(themeRules[FabricSlots[fabricSlot]], newColor, currentIsDark, true, true);
+        if (currentIsDark !== isDark(themeRules[FabricSlots[fabricSlot]].color!)) {
+          // isInverted got swapped, so need to refresh slots with new shading rules
+          ThemeGenerator.insureSlots(themeRules, currentIsDark);
+        }
+      }
+      this.setState({ themeRules: themeRules }, this._makeNewTheme);
     }, 20);
   };
 
