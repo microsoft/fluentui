@@ -163,7 +163,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
           aria-current={item.isCurrentItem ? 'page' : undefined}
           onClick={this._onBreadcrumbClicked.bind(this, item)}
         >
-          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent}>
+          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
             {item.text}
           </TooltipHost>
         </Link>
@@ -171,7 +171,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     } else {
       return (
         <span className={this._classNames.item}>
-          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent}>
+          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
             {item.text}
           </TooltipHost>
         </span>
