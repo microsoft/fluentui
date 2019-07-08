@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Wed, 03 Jul 2019 12:30:55 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add DetailsList animation example page",
+            "author": "inateeg@microsoft.com",
+            "commit": "a3a32acde358ce34984ebc130a7f5684caf204bf"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.1",
       "tag": "@uifabric/fabric-website-resources_v7.1.1",
       "date": "Mon, 01 Jul 2019 18:51:42 GMT",

@@ -13,7 +13,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
   <div
     className=
         ms-DetailsList
-        is-fixed
         is-horizontalConstrained
         {
           -moz-osx-font-smoothing: grayscale;
@@ -91,7 +90,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 200,
             }
           }
         >
@@ -397,7 +396,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             role="columnheader"
             style={
               Object {
-                "width": 220,
+                "width": 120,
               }
             }
           >
@@ -587,7 +586,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             role="columnheader"
             style={
               Object {
-                "width": 220,
+                "width": 120,
               }
             }
           >
@@ -852,7 +851,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -1114,12 +1113,13 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -1170,12 +1170,13 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -1285,7 +1286,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -1547,12 +1548,13 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -1603,12 +1605,13 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -1718,7 +1721,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -1980,12 +1983,13 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -2036,12 +2040,13 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -2151,7 +2156,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -2413,12 +2418,13 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -2469,12 +2475,13 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -2584,7 +2591,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -2846,12 +2853,13 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -2902,12 +2910,13 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
+
                           data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -3177,12 +3186,13 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                 {
                   padding-right: 8px;
                 }
+
             data-automation-key="column1"
             data-automationid="DetailsRowCell"
             role="gridcell"
             style={
               Object {
-                "width": 220,
+                "width": 120,
               }
             }
           >
@@ -3237,12 +3247,13 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                 {
                   padding-right: 8px;
                 }
+
             data-automation-key="column2"
             data-automationid="DetailsRowCell"
             role="gridcell"
             style={
               Object {
-                "width": 220,
+                "width": 120,
               }
             }
           >

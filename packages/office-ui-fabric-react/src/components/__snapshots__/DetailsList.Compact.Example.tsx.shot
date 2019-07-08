@@ -216,7 +216,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
       <div
         className=
             ms-DetailsList
-            is-fixed
             ms-DetailsList--Compact
             is-horizontalConstrained
             {
@@ -295,7 +294,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
               role="row"
               style={
                 Object {
-                  "minWidth": 0,
+                  "minWidth": 200,
                 }
               }
             >
@@ -601,7 +600,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                 role="columnheader"
                 style={
                   Object {
-                    "width": 220,
+                    "width": 120,
                   }
                 }
               >
@@ -791,7 +790,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                 role="columnheader"
                 style={
                   Object {
-                    "width": 220,
+                    "width": 120,
                   }
                 }
               >
@@ -1057,7 +1056,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 200,
                             }
                           }
                         >
@@ -1319,12 +1318,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -1375,12 +1375,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -1491,7 +1492,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 200,
                             }
                           }
                         >
@@ -1753,12 +1754,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -1809,12 +1811,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -1925,7 +1928,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 200,
                             }
                           }
                         >
@@ -2187,12 +2190,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -2243,12 +2247,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -2359,7 +2364,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 200,
                             }
                           }
                         >
@@ -2621,12 +2626,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -2677,12 +2683,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -2793,7 +2800,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 200,
                             }
                           }
                         >
@@ -3055,12 +3062,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -3111,12 +3119,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -3227,7 +3236,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 200,
                             }
                           }
                         >
@@ -3489,12 +3498,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -3545,12 +3555,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -3661,7 +3672,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 200,
                             }
                           }
                         >
@@ -3923,12 +3934,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -3979,12 +3991,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -4095,7 +4108,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 200,
                             }
                           }
                         >
@@ -4357,12 +4370,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -4413,12 +4427,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -4529,7 +4544,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 200,
                             }
                           }
                         >
@@ -4791,12 +4806,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -4847,12 +4863,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -4963,7 +4980,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 200,
                             }
                           }
                         >
@@ -5225,12 +5242,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >
@@ -5281,12 +5299,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
                               style={
                                 Object {
-                                  "width": 220,
+                                  "width": 120,
                                 }
                               }
                             >

@@ -5,9 +5,9 @@ import { IsFocusVisibleClassName } from '../../Utilities';
 export function standardStyles(theme: ITheme): IButtonStyles {
   const { semanticColors: s, palette: p } = theme;
 
-  const buttonBackground = p.white;
+  const buttonBackground = s.buttonBackground;
   const buttonBackgroundPressed = s.buttonBackgroundPressed;
-  const buttonBackgroundHovered = p.neutralLighter;
+  const buttonBackgroundHovered = s.buttonBackgroundHovered;
 
   const buttonText = s.buttonText;
   const buttonTextHovered = s.buttonTextHovered;
@@ -76,10 +76,10 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonMenuButtonDisabled: {
-      backgroundColor: p.neutralLighter,
+      backgroundColor: s.buttonBackgroundDisabled,
       selectors: {
         ':hover': {
-          backgroundColor: p.neutralLighter
+          backgroundColor: s.buttonBackgroundDisabled
         }
       }
     },
@@ -111,22 +111,22 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonMenuIcon: {
-      color: p.neutralPrimary
+      color: s.buttonText
     },
 
     splitButtonMenuIconDisabled: {
-      color: p.neutralTertiary
+      color: s.buttonTextDisabled
     }
   };
 }
 
 export function primaryStyles(theme: ITheme): IButtonStyles {
-  const { palette: p } = theme;
+  const { palette: p, semanticColors: s } = theme;
 
   return {
     root: {
-      backgroundColor: p.themePrimary,
-      color: p.white,
+      backgroundColor: s.primaryButtonBackground,
+      color: s.primaryButtonText,
       border: 'none',
       selectors: {
         [HighContrastSelector]: {
@@ -146,8 +146,8 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     rootHovered: {
-      backgroundColor: p.themeDarkAlt,
-      color: p.white,
+      backgroundColor: s.primaryButtonBackgroundHovered,
+      color: s.primaryButtonTextHovered,
       selectors: {
         [HighContrastSelector]: {
           color: 'Window',
@@ -157,8 +157,8 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     rootPressed: {
-      backgroundColor: p.themeDark,
-      color: p.white,
+      backgroundColor: s.primaryButtonBackgroundPressed,
+      color: s.primaryButtonTextPressed,
       selectors: {
         [HighContrastSelector]: {
           color: 'Window',
@@ -169,18 +169,18 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     rootExpanded: {
-      backgroundColor: p.themeDark,
-      color: p.white
+      backgroundColor: s.primaryButtonBackgroundPressed,
+      color: s.primaryButtonTextPressed
     },
 
     rootChecked: {
-      backgroundColor: p.themeDark,
-      color: p.white
+      backgroundColor: s.primaryButtonBackgroundPressed,
+      color: s.primaryButtonTextPressed
     },
 
     rootCheckedHovered: {
-      backgroundColor: p.themeDark,
-      color: p.white
+      backgroundColor: s.primaryButtonBackgroundPressed,
+      color: s.primaryButtonTextPressed
     },
 
     rootDisabled: {
@@ -207,11 +207,11 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonMenuButton: {
-      backgroundColor: p.themePrimary,
-      color: p.white,
+      backgroundColor: s.primaryButtonBackground,
+      color: s.primaryButtonText,
       selectors: {
         ':hover': {
-          backgroundColor: p.themeDarkAlt,
+          backgroundColor: s.primaryButtonBackgroundHovered,
           selectors: {
             [HighContrastSelector]: {
               color: 'Highlight'
@@ -222,34 +222,34 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonMenuButtonDisabled: {
-      backgroundColor: p.neutralLighter,
+      backgroundColor: s.primaryButtonBackgroundDisabled,
       selectors: {
         ':hover': {
-          backgroundColor: p.neutralLighter
+          backgroundColor: s.primaryButtonBackgroundDisabled
         }
       }
     },
 
     splitButtonMenuButtonChecked: {
-      backgroundColor: p.themeDark,
+      backgroundColor: s.primaryButtonBackgroundPressed,
       selectors: {
         ':hover': {
-          backgroundColor: p.themeDark
+          backgroundColor: s.primaryButtonBackgroundPressed
         }
       }
     },
 
     splitButtonMenuButtonExpanded: {
-      backgroundColor: p.themeDark,
+      backgroundColor: s.primaryButtonBackgroundPressed,
       selectors: {
         ':hover': {
-          backgroundColor: p.themeDark
+          backgroundColor: s.primaryButtonBackgroundPressed
         }
       }
     },
 
     splitButtonMenuIcon: {
-      color: p.white
+      color: s.primaryButtonText
     },
 
     splitButtonMenuIconDisabled: {

@@ -1,0 +1,8 @@
+{
+  "comment": "User should use onRenderPersonaCoin for custom rendering. When this is set, this custom rendering will be used.",
+  "type": "minor",
+  "packageName": "office-ui-fabric-react",
+  "email": "22574161+gingeroun@users.noreply.github.com",
+  "commit": "78c7a9ed3b47e0b43f5ab434a55e6ff874ddbfad",
+  "date": "2019-07-07T21:57:56.443Z"
+}

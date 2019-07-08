@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Button: Updating Button styles to use corresponding semanticColors instead of palette.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "Humberto.Morimoto@microsoft.com"
+}

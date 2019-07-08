@@ -217,9 +217,9 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     inputTextHovered: p.neutralDark,
     inputPlaceholderText: p.neutralSecondary,
 
-    buttonBackground: p.neutralLighter,
+    buttonBackground: p.white,
     buttonBackgroundChecked: p.neutralTertiaryAlt,
-    buttonBackgroundHovered: p.neutralLight,
+    buttonBackgroundHovered: p.neutralLighter,
     buttonBackgroundCheckedHovered: p.neutralLight,
     buttonBackgroundPressed: p.neutralLight,
     buttonBackgroundDisabled: p.neutralLighter,
