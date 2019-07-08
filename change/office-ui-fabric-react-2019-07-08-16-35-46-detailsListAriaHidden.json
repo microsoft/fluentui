@@ -1,0 +1,8 @@
+{
+  "comment": "DetailsList: Adding aria-hidden to header labels.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "c27bfbb4c48213ec575f6080e9d4dcaadf320e17",
+  "date": "2019-07-08T23:35:46.153Z"
+}
