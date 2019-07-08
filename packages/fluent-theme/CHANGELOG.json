@@ -2,6 +2,25 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.16",
+      "tag": "@uifabric/fluent-theme_v0.16.16",
+      "date": "Mon, 08 Jul 2019 20:48:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: Updates border, icon, and background color states per fluent toolkit",
+            "author": "Maxwell Rediker <13246181+maxwellred@users.noreply.github.com>",
+            "commit": "c169eb2fea2edf8c8f404e83a8866215ec7bfee2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.193.1` to `^6.194.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.15",
       "tag": "@uifabric/fluent-theme_v0.16.15",
       "date": "Wed, 26 Jun 2019 21:46:08 GMT",

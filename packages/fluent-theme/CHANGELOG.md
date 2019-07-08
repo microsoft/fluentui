@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Wed, 26 Jun 2019 21:46:08 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jul 2019 20:48:15 GMT and should not be manually modified.
+
+## 0.16.16
+Mon, 08 Jul 2019 20:48:15 GMT
+
+### Patches
+
+- SearchBox: Updates border, icon, and background color states per fluent toolkit
 
 ## 0.16.15
 Wed, 26 Jun 2019 21:46:08 GMT
