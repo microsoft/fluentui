@@ -5731,6 +5731,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     onRenderHeader?: IPanelHeaderRenderer;
     onRenderNavigation?: IRenderFunction<IPanelProps>;
     onRenderNavigationContent?: IRenderFunction<IPanelProps>;
+    overlayProps?: IOverlayProps;
     styles?: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
     theme?: ITheme;
     type?: PanelType;
