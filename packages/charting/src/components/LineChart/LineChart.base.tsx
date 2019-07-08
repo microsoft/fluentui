@@ -141,7 +141,7 @@ export class LineChartBase extends React.Component<
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
     if (this.props.parentRef) {
-      setTimeout(() => {
+      requestAnimationFrame(() => {
         const currentContainerWidth = this.props.parentRef!.getBoundingClientRect().width;
         const currentContainerHeight =
           this.props.parentRef!.getBoundingClientRect().height > 26 ? this.props.parentRef!.getBoundingClientRect().height : 350;
@@ -152,9 +152,9 @@ export class LineChartBase extends React.Component<
             containerHeight: currentContainerHeight - 26
           });
         }
-      }, 100);
+      });
     } else {
-      setTimeout(() => {
+      requestAnimationFrame(() => {
         const currentContainerWidth = this.chartContainer.getBoundingClientRect().width;
         const currentContainerHeight =
           this.chartContainer.getBoundingClientRect().height > 26 ? this.chartContainer.getBoundingClientRect().height : 350;
@@ -165,7 +165,7 @@ export class LineChartBase extends React.Component<
             containerHeight: currentContainerHeight - 26
           });
         }
-      }, 100);
+      });
     }
   }
 
