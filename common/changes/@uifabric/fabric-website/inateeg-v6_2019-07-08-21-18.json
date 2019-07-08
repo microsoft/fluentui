@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Add DetailsRow animiation example page",
-      "type": "minor"
+      "comment": "DetailsList cell update animation",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/fabric-website",

@@ -1,9 +1,9 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/fabric-website-resources",
-      "type": "none"
+      "comment": "Add DetailsList animation example page",
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/fabric-website-resources",

@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add DetailsRow sliding animation on cell content update",
+      "comment": "Add optional DetailsRow sliding animation on cell content update",
       "type": "minor"
     }
   ],
