@@ -5436,6 +5436,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
     onDismissed?: () => any;
     // @deprecated
     onLayerDidMount?: () => void;
+    overlay?: IOverlayProps;
     scrollableContentClassName?: string;
     styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
     subtitleAriaId?: string;
