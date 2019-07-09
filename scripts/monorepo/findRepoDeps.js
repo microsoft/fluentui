@@ -14,7 +14,7 @@ function getAllPackageInfo() {
     .map(line => line.trim())
     .filter(line => line.endsWith('package.json'))
     .forEach(packageJsonFile => {
-      const packageJson = JSON.parse(fs.readFileSync(path.join(gitRoot, packageJsonFile), 'utf-8'));
+      const packageJson = readConfig(path.join(gitRoot, packageJsonFile));
       packageInfo[packageJson.name] = {
         packagePath: path.dirname(packageJsonFile),
         packageJson
@@ -32,6 +32,10 @@ function getDeps(packageJson) {
   return Object.keys({ ...(packageJson.dependencies || {}), ...(packageJson.devDependencies || {}) });
 }
 
+/**
+ * Find all the dependencies (and their dependencies) within the repo for a specific package (in the CWD when this was called)
+ * @returns {{ packagePath: string; packageJson: any }[]}
+ */
 function findRepoDeps() {
   const packageInfo = getAllPackageInfo();
   let cwd = process.cwd();
