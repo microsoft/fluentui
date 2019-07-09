@@ -31,6 +31,7 @@ export class LineChartBase extends React.Component<
 > {
   private _points: ILineChartPoints[];
   private _classNames: IProcessedStyleSet<ILineChartStyles>;
+  private _reqID: number;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
   // tslint:disable-next-line:no-any
@@ -68,6 +69,10 @@ export class LineChartBase extends React.Component<
   public componentDidMount(): void {
     this._fitParentContainer();
     window.addEventListener('resize', this._fitParentContainer);
+  }
+
+  public componentWillUnmount(): void {
+    cancelAnimationFrame(this._reqID);
   }
 
   public render(): JSX.Element {
@@ -141,7 +146,7 @@ export class LineChartBase extends React.Component<
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
     if (this.props.parentRef) {
-      requestAnimationFrame(() => {
+      this._reqID = requestAnimationFrame(() => {
         const currentContainerWidth = this.props.parentRef!.getBoundingClientRect().width;
         const currentContainerHeight =
           this.props.parentRef!.getBoundingClientRect().height > 26 ? this.props.parentRef!.getBoundingClientRect().height : 350;
@@ -154,7 +159,7 @@ export class LineChartBase extends React.Component<
         }
       });
     } else {
-      requestAnimationFrame(() => {
+      this._reqID = requestAnimationFrame(() => {
         const currentContainerWidth = this.chartContainer.getBoundingClientRect().width;
         const currentContainerHeight =
           this.chartContainer.getBoundingClientRect().height > 26 ? this.chartContainer.getBoundingClientRect().height : 350;
