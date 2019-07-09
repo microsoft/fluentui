@@ -2589,6 +2589,7 @@ export interface IColumn {
     data?: any;
     fieldName?: string;
     filterAriaLabel?: string;
+    getValueKey?: (item?: any, index?: number, column?: IColumn) => string;
     groupAriaLabel?: string;
     headerClassName?: string;
     iconClassName?: string;
@@ -3384,7 +3385,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     dragDropEvents?: IDragDropEvents;
     // @deprecated
     enableShimmer?: boolean;
+    enableUpdateAnimations?: boolean;
     enterModalSelectionOnTouch?: boolean;
+    getCellValueKey?: (item?: any, index?: number, column?: IColumn) => string;
     getGroupHeight?: IGroupedListProps['getGroupHeight'];
     getKey?: (item: any, index?: number) => string;
     getRowAriaDescribedBy?: (item: any) => string;
@@ -3475,7 +3478,7 @@ export interface IDetailsRow {
 }
 
 // @public (undocumented)
-export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
+export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
     cellsByColumn?: {
         [columnKey: string]: React.ReactNode;
     };
@@ -3487,6 +3490,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     componentRef?: IRefObject<IDetailsRow>;
     dragDropEvents?: IDragDropEvents;
     dragDropHelper?: IDragDropHelper;
+    enableUpdateAnimations?: boolean;
     eventsToRegister?: {
         eventName: string;
         callback: (item?: any, index?: number, event?: any) => void;
@@ -3553,6 +3557,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
         shimmerIconPlaceholder: string;
         shimmer: string;
         cell: string;
+        cellAnimation: string;
         cellPadded: string;
         cellUnpadded: string;
         fields: string;
@@ -3604,12 +3609,15 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
     className?: string;
     compact?: boolean;
     cellStyleProps?: ICellStyleProps;
+    enableUpdateAnimations?: boolean;
 };
 
 // @public (undocumented)
 export interface IDetailsRowStyles {
     // (undocumented)
     cell: IStyle;
+    // (undocumented)
+    cellAnimation: IStyle;
     // (undocumented)
     cellMeasurer: IStyle;
     // (undocumented)
@@ -5653,7 +5661,7 @@ export interface IOverlayStyles {
 }
 
 // @public
-export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
+export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
 
 // @public (undocumented)
 export interface IPage<T = any> {

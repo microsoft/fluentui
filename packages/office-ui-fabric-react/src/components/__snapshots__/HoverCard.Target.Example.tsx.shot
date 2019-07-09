@@ -895,6 +895,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -1314,6 +1315,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -1733,6 +1735,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -2152,6 +2155,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -2571,6 +2575,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -2990,6 +2995,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -3409,6 +3415,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -3828,6 +3835,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -4247,6 +4255,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -4666,6 +4675,7 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
+
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"

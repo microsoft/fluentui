@@ -1948,6 +1948,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                             {
                                               padding-right: 8px;
                                             }
+
                                         data-automation-key="name"
                                         data-automationid="DetailsRowCell"
                                         role="gridcell"
@@ -2023,6 +2024,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                             {
                                               padding-right: 8px;
                                             }
+
                                         data-automation-key="color"
                                         data-automationid="DetailsRowCell"
                                         role="gridcell"
@@ -2436,6 +2438,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                             {
                                               padding-right: 8px;
                                             }
+
                                         data-automation-key="name"
                                         data-automationid="DetailsRowCell"
                                         role="gridcell"
@@ -2511,6 +2514,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                             {
                                               padding-right: 8px;
                                             }
+
                                         data-automation-key="color"
                                         data-automationid="DetailsRowCell"
                                         role="gridcell"
@@ -3694,6 +3698,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                             {
                                               padding-right: 8px;
                                             }
+
                                         data-automation-key="name"
                                         data-automationid="DetailsRowCell"
                                         role="gridcell"
@@ -3769,6 +3774,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                             {
                                               padding-right: 8px;
                                             }
+
                                         data-automation-key="color"
                                         data-automationid="DetailsRowCell"
                                         role="gridcell"
@@ -4182,6 +4188,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                             {
                                               padding-right: 8px;
                                             }
+
                                         data-automation-key="name"
                                         data-automationid="DetailsRowCell"
                                         role="gridcell"
@@ -4257,6 +4264,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                             {
                                               padding-right: 8px;
                                             }
+
                                         data-automation-key="color"
                                         data-automationid="DetailsRowCell"
                                         role="gridcell"
@@ -4670,6 +4678,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                             {
                                               padding-right: 8px;
                                             }
+
                                         data-automation-key="name"
                                         data-automationid="DetailsRowCell"
                                         role="gridcell"
@@ -4745,6 +4754,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                             {
                                               padding-right: 8px;
                                             }
+
                                         data-automation-key="color"
                                         data-automationid="DetailsRowCell"
                                         role="gridcell"
