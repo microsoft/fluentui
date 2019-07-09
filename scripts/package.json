@@ -7,9 +7,7 @@
     "just-scripts": "./just-scripts.js"
   },
   "scripts": {
-    "build": "node -v",
     "bundlesize": "bundlesize --debug",
-    "clean": "",
     "code-style": "npx just-scripts code-style",
     "test": "jest"
   },
@@ -22,7 +20,6 @@
     "async": "^2.6.1",
     "autoprefixer": "^7.1.5",
     "babylon": "^7.0.0-beta.47",
-    "beachball": "^1.9.0",
     "bundlesize": "^0.15.2",
     "chalk": "^2.1.0",
     "codecov": "^3.1.0",

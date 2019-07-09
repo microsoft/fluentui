@@ -3,10 +3,6 @@
   "version": "7.0.2",
   "description": "Shared TSLint rules for UI Fabric projects",
   "main": "tslint.json",
-  "scripts": {
-    "clean": "",
-    "build": "node -v"
-  },
   "dependencies": {
     "tslint-react": "^3.2.0"
   },
