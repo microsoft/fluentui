@@ -1,8 +1,0 @@
-{
-  "comment": "Revert \"BaseFloatingItem: fix tests + remove redundant state  (#9500)\"",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "miclo@microsoft.com",
-  "commit": "d6fbb563e83b0f606bc4ca685ab60302aabaa334",
-  "date": "2019-07-02T18:09:28.832Z"
-}

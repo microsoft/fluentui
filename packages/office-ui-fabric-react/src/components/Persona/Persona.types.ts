@@ -28,8 +28,14 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
 
   /**
    * Optional custom renderer for the coin
+   * @deprecated Use `onRenderPersonaCoin` for custom rendering instead
    */
   onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
+
+  /**
+   * Optional custom renderer for the coin
+   */
+  onRenderPersonaCoin?: IRenderFunction<IPersonaSharedProps>;
 
   /**
    * If true, adds the css class 'is-fadeIn' to the image.
