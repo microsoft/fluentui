@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
+import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles, Target } from './Callout.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Async,
@@ -473,7 +473,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     return true;
   }
 
-  private _setTargetWindowAndElement(target: Element | string | MouseEvent | IPoint | null): void {
+  private _setTargetWindowAndElement(target: Target): void {
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
@@ -481,15 +481,18 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
-        this._target = target;
+        this._target = target as MouseEvent;
       } else if ((target as Element).getBoundingClientRect) {
         const targetElement: Element = target as Element;
         this._targetWindow = getWindow(targetElement)!;
-        this._target = target;
+        this._target = target as Element;
+      } else if ((target as React.RefObject<Element>).current !== undefined) {
+        this._target = (target as React.RefObject<Element>).current;
+        this._targetWindow = getWindow(this._target)!;
         // HTMLImgElements can have x and y values. The check for it being a point must go last.
       } else {
         this._targetWindow = getWindow()!;
-        this._target = target;
+        this._target = target as IPoint;
       }
     } else {
       this._targetWindow = getWindow()!;
@@ -522,7 +525,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     }
   }
 
-  private _getTarget(props: ICalloutProps = this.props): Element | string | MouseEvent | IPoint | null {
+  private _getTarget(props: ICalloutProps = this.props): Target {
     const { target } = props;
     return target!;
   }

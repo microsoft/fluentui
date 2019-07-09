@@ -59,10 +59,12 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   }
 
   public componentDidMount(): void {
+    super.componentDidMount();
     this._resetSelectedItem();
   }
 
-  public componentDidUpdate(): void {
+  public componentDidUpdate(prevProps: ISuggestionsControlProps<T>, prevState: ISuggestionsControlState<T>): void {
+    super.componentDidUpdate(prevProps, prevState);
     this.scrollSelected();
   }
 

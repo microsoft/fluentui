@@ -63,6 +63,11 @@ export interface IStyleSheetConfig {
 }
 
 const STYLESHEET_SETTING = '__stylesheet__';
+/**
+ * MSIE 11 doesn't cascade styles based on DOM ordering, but rather on the order that each style node
+ * is created. As such, to maintain consistent priority, IE11 should reuse a single style node.
+ */
+const REUSE_STYLE_NODE = typeof navigator !== 'undefined' && /rv:11.0/.test(navigator.userAgent);
 
 // tslint:disable-next-line:no-any
 let _global: { [key: string]: any } = {};
@@ -265,10 +270,12 @@ export class Stylesheet {
     if (!this._styleElement && typeof document !== 'undefined') {
       this._styleElement = this._createStyleElement();
 
-      // Reset the style element on the next frame.
-      window.requestAnimationFrame(() => {
-        this._styleElement = undefined;
-      });
+      if (!REUSE_STYLE_NODE) {
+        // Reset the style element on the next frame.
+        window.requestAnimationFrame(() => {
+          this._styleElement = undefined;
+        });
+      }
     }
     return this._styleElement;
   }

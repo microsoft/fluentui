@@ -46,6 +46,8 @@ export interface IDetailsItemProps {
 
   /**
    * View port of the virtualized list
+   *
+   * @deprecated use rowWidth instead
    */
   viewport?: IViewport | undefined;
 
@@ -58,12 +60,22 @@ export interface IDetailsItemProps {
    * Rules for rendering column cells.
    */
   cellStyleProps?: ICellStyleProps;
+
+  /**
+   * Minimum width of the row.
+   *
+   * @defaultvalue 0
+   */
+  rowWidth?: number;
 }
 
 /**
  * {@docCategory DetailsList}
  */
-export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
+export interface IDetailsRowBaseProps
+  extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'>,
+    IBaseProps<IDetailsRow>,
+    IDetailsItemProps {
   /**
    * Theme provided by styled() function
    */
@@ -164,6 +176,9 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
    */
   className?: string;
 
+  /** Whether to animate updates */
+  enableUpdateAnimations?: boolean;
+
   /**
    * Rerender DetailsRow only when props changed. Might cause regression when depending on external updates.
    * @defaultvalue false
@@ -229,6 +244,9 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
   compact?: boolean;
 
   cellStyleProps?: ICellStyleProps;
+
+  /** Whether to animate updates */
+  enableUpdateAnimations?: boolean;
 };
 
 /**
@@ -246,6 +264,7 @@ export interface ICellStyleProps {
 export interface IDetailsRowStyles {
   root: IStyle;
   cell: IStyle;
+  cellAnimation: IStyle;
   cellUnpadded: IStyle;
   cellPadded: IStyle;
   checkCell: IStyle;

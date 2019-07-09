@@ -2,6 +2,98 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 09 Jul 2019 17:34:38 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.5",
+      "version": "7.2.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix website version selection and delete stray Animate file",
+            "author": "elcraig@microsoft.com",
+            "commit": "9ea03099ee878a1d9c3f79e8212a142b5fe55bc6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Jul 2019 12:30:55 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.4",
+      "version": "7.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList cell update animation",
+            "author": "inateeg@microsoft.com",
+            "commit": "a3a32acde358ce34984ebc130a7f5684caf204bf"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.2.3",
+      "tag": "@uifabric/fabric-website_v7.2.3",
+      "date": "Tue, 02 Jul 2019 12:29:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add pivot for Fabric Icons page",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "cbad6b35d1744956cb9d9a9428cc89efa534e936"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^7.0.2` to `^7.1.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.2.2",
+      "tag": "@uifabric/fabric-website_v7.2.2",
+      "date": "Mon, 01 Jul 2019 18:51:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adds react-app-polyfill",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "40245650abdfb17e9f1cd6472f3671380237bcc2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.2` to `^7.1.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.3.0` to `^7.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^7.0.3` to `^7.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.2` to `^7.6.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.2.1",
+      "tag": "@uifabric/fabric-website_v7.2.1",
+      "date": "Thu, 27 Jun 2019 22:14:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add fabric 7 to website version selector",
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "6cfd57a8561f8e228d1e09058abe6c2f1f4a9b33"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.2.0",
       "tag": "@uifabric/fabric-website_v7.2.0",
       "date": "Thu, 27 Jun 2019 18:25:04 GMT",

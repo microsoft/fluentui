@@ -1,6 +1,20 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 26 Jun 2019 12:23:41 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jul 2019 12:29:39 GMT and should not be manually modified.
+
+## 7.1.4
+Thu, 04 Jul 2019 12:29:39 GMT
+
+### Patches
+
+- fix date conversion for weeklydaypicker (jolore@microsoft.com)
+
+## 7.1.3
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
 
 ## 7.1.2
 Wed, 26 Jun 2019 12:23:41 GMT

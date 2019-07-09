@@ -10,6 +10,98 @@
   },
   "glyphs": [
     {
+      "name": "BranchShelveset",
+      "unicode": "F298"
+    },
+    {
+      "name": "RawSource",
+      "unicode": "F299"
+    },
+    {
+      "name": "MergeDuplicate",
+      "unicode": "F29A"
+    },
+    {
+      "name": "RowsGroup",
+      "unicode": "F29B"
+    },
+    {
+      "name": "RowsChild",
+      "unicode": "F29C"
+    },
+    {
+      "name": "Deploy",
+      "unicode": "F29D"
+    },
+    {
+      "name": "Redeploy",
+      "unicode": "F29E"
+    },
+    {
+      "name": "ServerEnviroment",
+      "unicode": "F29F"
+    },
+    {
+      "name": "VisioDiagram",
+      "unicode": "F2A0"
+    },
+    {
+      "name": "HighlightMappedShapes",
+      "unicode": "F2A1"
+    },
+    {
+      "name": "TextCallout",
+      "unicode": "F2A2"
+    },
+    {
+      "name": "IconSetsFlag",
+      "unicode": "F2A4"
+    },
+    {
+      "name": "VisioLogo",
+      "unicode": "F2A7"
+    },
+    {
+      "name": "VisioLogoFill",
+      "unicode": "F2A8"
+    },
+    {
+      "name": "VisioDocument",
+      "unicode": "F2A9"
+    },
+    {
+      "name": "TimelineProgress",
+      "unicode": "F2AA"
+    },
+    {
+      "name": "TimelineDelivery",
+      "unicode": "F2AB"
+    },
+    {
+      "name": "Backlog",
+      "unicode": "F2AC"
+    },
+    {
+      "name": "TeamFavorite",
+      "unicode": "F2AD"
+    },
+    {
+      "name": "TaskGroup",
+      "unicode": "F2AE"
+    },
+    {
+      "name": "TaskGroupMirrored",
+      "unicode": "F2AF"
+    },
+    {
+      "name": "ScopeTemplate",
+      "unicode": "F2B0"
+    },
+    {
+      "name": "AssessmentGroupTemplate",
+      "unicode": "F2B1"
+    },
+    {
       "name": "NewTeamProject",
       "unicode": "F2B2"
     },
@@ -316,98 +408,6 @@
     {
       "name": "PlugSolid",
       "unicode": "F301"
-    },
-    {
-      "name": "PlugConnected",
-      "unicode": "F302"
-    },
-    {
-      "name": "PlugDisconnected",
-      "unicode": "F303"
-    },
-    {
-      "name": "UnlockSolid",
-      "unicode": "F304"
-    },
-    {
-      "name": "Variable",
-      "unicode": "F305"
-    },
-    {
-      "name": "Parameter",
-      "unicode": "F306"
-    },
-    {
-      "name": "CommentUrgent",
-      "unicode": "F307"
-    },
-    {
-      "name": "Storyboard",
-      "unicode": "F308"
-    },
-    {
-      "name": "DiffInline",
-      "unicode": "F309"
-    },
-    {
-      "name": "DiffSideBySide",
-      "unicode": "F30A"
-    },
-    {
-      "name": "ImageDiff",
-      "unicode": "F30B"
-    },
-    {
-      "name": "ImagePixel",
-      "unicode": "F30C"
-    },
-    {
-      "name": "FileBug",
-      "unicode": "F30D"
-    },
-    {
-      "name": "FileCode",
-      "unicode": "F30E"
-    },
-    {
-      "name": "FileComment",
-      "unicode": "F30F"
-    },
-    {
-      "name": "BusinessHoursSign",
-      "unicode": "F310"
-    },
-    {
-      "name": "FileImage",
-      "unicode": "F311"
-    },
-    {
-      "name": "FileSymlink",
-      "unicode": "F312"
-    },
-    {
-      "name": "AutoFillTemplate",
-      "unicode": "F313"
-    },
-    {
-      "name": "WorkItem",
-      "unicode": "F314"
-    },
-    {
-      "name": "WorkItemBug",
-      "unicode": "F315"
-    },
-    {
-      "name": "LogRemove",
-      "unicode": "F316"
-    },
-    {
-      "name": "ColumnOptions",
-      "unicode": "F317"
-    },
-    {
-      "name": "Packages",
-      "unicode": "F318"
     }
   ]
 }
