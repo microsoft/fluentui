@@ -1,0 +1,8 @@
+{
+  "comment": "Pickers: replace empty string with undefined.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "vibraga@microsoft.com",
+  "commit": "0a9842224b57e55472a222757c252e3d14b43537",
+  "date": "2019-07-09T01:27:16.168Z"
+}
