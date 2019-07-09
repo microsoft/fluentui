@@ -63,11 +63,7 @@ export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IF
             {isColorPickerVisible && (
               <div>
                 <Callout gapSpace={10} target={colorPickerElement} setInitialFocus={true} onDismiss={this._onCalloutDismiss}>
-                  <ColorPicker
-                    color={slotRule.color}
-                    onChange={(ev, newColor) => this.props.onFabricPaletteColorChange(newColor, this.props.slot)}
-                    alphaSliderHidden={true}
-                  />
+                  <ColorPicker color={slotRule.color} onChange={this._onColorPickerChange} alphaSliderHidden={true} />
                 </Callout>
               </div>
             )}
@@ -78,6 +74,10 @@ export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IF
       </div>
     );
   }
+
+  private _onColorPickerChange = (ev: React.MouseEvent<HTMLElement>, newColor: IColor) => {
+    this.props.onFabricPaletteColorChange(newColor, this.props.slot);
+  };
 
   private _onColorBoxClick(ev: React.MouseEvent<HTMLElement>) {
     this.setState({
