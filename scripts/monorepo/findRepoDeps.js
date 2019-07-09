@@ -29,7 +29,7 @@ function getDeps(packageJson) {
     return [];
   }
 
-  return [...Object.keys(packageJson.dependencies || {}), ...Object.keys(packageJson.devDependencies || {})];
+  return Object.keys({ ...(packageJson.dependencies || {}), ...(packageJson.devDependencies || {}) });
 }
 
 function findRepoDeps() {
