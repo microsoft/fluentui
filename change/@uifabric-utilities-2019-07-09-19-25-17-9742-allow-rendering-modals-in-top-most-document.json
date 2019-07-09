@@ -1,5 +1,5 @@
 {
-  "comment": "add option to render layer in top-most document",
+  "comment": "Adding utility function to get the top-most document in the window.",
   "type": "minor",
   "packageName": "@uifabric/utilities",
   "email": "thomas.gassmann@hotmail.com",
