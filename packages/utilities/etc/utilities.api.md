@@ -332,6 +332,9 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
 export function getResourceUrl(url: string): string;
 
 // @public
+export function getRootDocument(): Document | undefined;
+
+// @public
 export function getRTL(): boolean;
 
 // @public
@@ -339,9 +342,6 @@ export function getRTLSafeKeyCode(key: number): number;
 
 // @public
 export function getScrollbarWidth(): number;
-
-// @public
-export function getTopMostDocument(): Document | undefined;
 
 // @public
 export function getVirtualParent(child: HTMLElement): HTMLElement | undefined;

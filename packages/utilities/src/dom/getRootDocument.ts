@@ -3,7 +3,7 @@
  *
  * @public
  */
-export function getTopMostDocument(): Document | undefined {
+export function getRootDocument(): Document | undefined {
   let current = window;
   while (current.parent !== current) {
     current = current.parent;

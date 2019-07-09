@@ -4,7 +4,7 @@ export * from './dom/elementContainsAttribute';
 export * from './dom/findElementRecursive';
 export * from './dom/getChildren';
 export * from './dom/getDocument';
-export * from './dom/getTopMostDocument';
+export * from './dom/getRootDocument';
 export * from './dom/getParent';
 export * from './dom/getRect';
 export * from './dom/getVirtualParent';

@@ -7,7 +7,7 @@ import {
   classNamesFunction,
   customizable,
   getDocument,
-  getTopMostDocument,
+  getRootDocument,
   setPortalAttribute,
   setVirtualParent,
   warnDeprecations
@@ -200,7 +200,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
       this._host = host;
 
       if (!this._layerElement) {
-        const doc = this.props.topMostDocument ? getTopMostDocument() : getDocument();
+        const doc = this.props.renderAtRoot ? getRootDocument() : getDocument();
         if (!doc) {
           return;
         }
@@ -229,9 +229,9 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
   }
 
   private _getHost(): Node | undefined {
-    const { hostId, topMostDocument } = this.props;
+    const { hostId, renderAtRoot } = this.props;
 
-    const doc = topMostDocument ? getTopMostDocument() : getDocument();
+    const doc = renderAtRoot ? getRootDocument() : getDocument();
     if (!doc) {
       return undefined;
     }

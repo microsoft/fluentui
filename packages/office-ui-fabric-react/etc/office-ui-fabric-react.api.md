@@ -5124,9 +5124,9 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer
     onLayerDidMount?: () => void;
     onLayerMounted?: () => void;
     onLayerWillUnmount?: () => void;
+    renderAtRoot?: boolean;
     styles?: IStyleFunctionOrObject<ILayerStyleProps, ILayerStyles>;
     theme?: ITheme;
-    topMostDocument?: boolean;
 }
 
 // @public (undocumented)
