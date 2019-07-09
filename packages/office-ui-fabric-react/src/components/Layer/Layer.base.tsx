@@ -192,7 +192,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
       this._host = host;
 
       if (!this._layerElement) {
-        const doc = getDocument();
+        const doc = this.props.topMostDocument ? getTopMostDocument() : getDocument();
         if (!doc) {
           return;
         }
@@ -221,9 +221,9 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
   }
 
   private _getHost(): Node | undefined {
-    const { hostId } = this.props;
+    const { hostId, topMostDocument } = this.props;
 
-    const doc = getDocument();
+    const doc = topMostDocument ? getTopMostDocument() : getDocument();
     if (!doc) {
       return undefined;
     }
