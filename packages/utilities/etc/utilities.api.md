@@ -341,6 +341,9 @@ export function getRTLSafeKeyCode(key: number): number;
 export function getScrollbarWidth(): number;
 
 // @public
+export function getTopMostDocument(): Document | undefined;
+
+// @public
 export function getVirtualParent(child: HTMLElement): HTMLElement | undefined;
 
 // @public
