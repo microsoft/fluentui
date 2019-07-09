@@ -7,8 +7,12 @@ import { getWindow } from './getWindow';
  */
 export function getRootDocument(): Document | undefined {
   let current = getWindow();
-  while (current!.parent !== current) {
-    current = current!.parent;
+  if (!current) {
+    return undefined;
+  }
+
+  while (current.parent !== current) {
+    current = current.parent;
   }
 
   return current.document;
