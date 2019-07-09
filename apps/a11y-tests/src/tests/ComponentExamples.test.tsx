@@ -3,8 +3,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as glob from 'glob';
 import { getSarifReport } from '../getSarifReport';
-import { SarifLog } from 'axe-sarif-converter/dist/sarif/sarif-log';
-import { Result } from 'axe-sarif-converter/dist/sarif/sarif-2.0.0';
+import { SarifLog } from 'axe-sarif-converter';
+import { Result } from 'sarif';
 
 const ReactDOM = require('react-dom');
 
