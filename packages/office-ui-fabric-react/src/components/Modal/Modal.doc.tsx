@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { ModalBasicExample } from './examples/Modal.Basic.Example';
 import { ModalModelessExample } from './examples/Modal.Modeless.Example';
+import { ModalTopMostExample } from './examples/Modal.TopMost.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
 
 const ModalBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Modal/examples/Modal.Basic.Example.tsx') as string;
 const ModalModelessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Modal/examples/Modal.Modeless.Example.tsx') as string;
+const ModalTopMostCode = require('!raw-loader!office-ui-fabric-react/src/components/Modal/examples/Modal.TopMost.Example.tsx') as string;
 
 export const ModalPageProps: IDocPageProps = {
   title: 'Modal',
@@ -21,6 +23,11 @@ export const ModalPageProps: IDocPageProps = {
       title: 'Modeless Modal',
       code: ModalModelessExampleCode,
       view: <ModalModelessExample />
+    },
+    {
+      title: 'Modal in top-most document',
+      code: ModalTopMostCode,
+      view: <ModalTopMostExample />
     }
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalOverview.md'),

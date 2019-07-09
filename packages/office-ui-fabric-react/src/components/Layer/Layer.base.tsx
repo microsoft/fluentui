@@ -3,7 +3,15 @@ import * as ReactDOM from 'react-dom';
 
 import { Fabric } from '../../Fabric';
 import { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
-import { classNamesFunction, customizable, getDocument, setPortalAttribute, setVirtualParent, warnDeprecations } from '../../Utilities';
+import {
+  classNamesFunction,
+  customizable,
+  getDocument,
+  getTopMostDocument,
+  setPortalAttribute,
+  setVirtualParent,
+  warnDeprecations
+} from '../../Utilities';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
 
 export type ILayerBaseState = {
