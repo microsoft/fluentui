@@ -1,0 +1,8 @@
+{
+  "comment": "Updating master branch broken state due to stale PR 9595",
+  "type": "none",
+  "packageName": "office-ui-fabric-react",
+  "email": "marygans@microsoft.com",
+  "commit": "9028b83c5690b3f8a8987b66e7fe845538c3da81",
+  "date": "2019-07-08T21:24:41.401Z"
+}

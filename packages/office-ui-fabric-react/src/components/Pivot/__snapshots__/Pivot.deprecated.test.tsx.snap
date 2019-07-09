@@ -102,7 +102,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -261,7 +261,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
