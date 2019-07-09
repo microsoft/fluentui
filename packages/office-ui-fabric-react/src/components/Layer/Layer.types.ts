@@ -68,6 +68,12 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement | Layer
    * By default, the layer will be appended at the end to the host
    */
   insertFirst?: boolean;
+
+  /**
+   * Whether to render the layer in the top-most DOM document. If true, top-most will be used,
+   * if false, the current document will be used.
+   */
+  topMostDocument?: boolean;
 }
 
 /**
