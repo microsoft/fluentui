@@ -1,5 +1,5 @@
 const { spawnSync } = require('child_process');
-const fs = require('fs');
+const { readConfig } = require('../read-config');
 const path = require('path');
 const findGitRoot = require('./findGitRoot');
 
@@ -39,7 +39,7 @@ function getDeps(packageJson) {
 function findRepoDeps() {
   const packageInfo = getAllPackageInfo();
   let cwd = process.cwd();
-  const packageJson = JSON.parse(fs.readFileSync(path.join(cwd, 'package.json'), 'utf-8'));
+  const packageJson = readConfig(path.join(cwd, 'package.json'));
   const packageDeps = getDeps(packageJson);
   const result = new Set();
 
