@@ -7,6 +7,7 @@
     "just-scripts": "./just-scripts.js"
   },
   "scripts": {
+    "build": "just-scripts no-op",
     "bundlesize": "bundlesize --debug",
     "code-style": "npx just-scripts code-style",
     "test": "jest"
