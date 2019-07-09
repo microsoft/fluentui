@@ -110,12 +110,12 @@ export class ScrollablePaneDetailsListExample extends React.Component<
     const stickyAboveContainer: IStickyContainerBehavior = {
       arrangeStickiesBasedOnOrder: true,
       containerBehavior: StickyContainerBehaviorType.StickyOnScroll,
-      notUsePlaceHolder: true
+      disablePlaceHolder: true
     };
     const stickyBelowContainer: IStickyContainerBehavior = {
       arrangeStickiesBasedOnOrder: true,
       containerBehavior: StickyContainerBehaviorType.StickyAlways,
-      notUsePlaceHolder: true
+      disablePlaceHolder: true
     };
     const stickyBackgroundColor = getTheme().palette.white;
     return (

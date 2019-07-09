@@ -47,8 +47,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     this.state = {
       stickyTopHeight: 0,
       stickyBottomHeight: 0,
-      scrollbarWidth: scrollbarVisibility === ScrollbarVisibility.always ? this._getScrollbarHeightFromLocalStorage(true) : 0,
-      scrollbarHeight: scrollbarVisibility === ScrollbarVisibility.always ? this._getScrollbarHeightFromLocalStorage(true) : 0
+      scrollbarWidth: scrollbarVisibility === ScrollbarVisibility.always ? this._getScrollbarHeightFromLocalStorage() || 0 : 0,
+      scrollbarHeight: scrollbarVisibility === ScrollbarVisibility.always ? this._getScrollbarHeightFromLocalStorage() || 0 : 0
     };
     this._scrollLeft = this._scrollTop = 0;
     this._notifyThrottled = this._async.throttle(this.notifySubscribers, 50);
@@ -75,7 +75,12 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     if (scrollbarVisibility === ScrollbarVisibility.always) {
       // after first render, scrollbars are visible
       // it is needed to position stickyContainers correctly
-      const scrollbarHeight = this._getScrollbarHeightFromLocalStorage() || this._getScrollbarHeight();
+      let scrollbarHeight: number | undefined = this._getScrollbarHeightFromLocalStorage();
+      if (!scrollbarHeight) {
+        scrollbarHeight = this._getScrollbarHeight();
+        this._storeScrollbarHeightInLocalStorage(scrollbarHeight);
+      }
+
       this.setState({
         scrollbarHeight: scrollbarHeight,
         scrollbarWidth: scrollbarHeight
@@ -331,8 +336,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   public usePlaceholderForSticky = (placeholderPosition: PlaceholderPosition): boolean => {
     const { stickyHeaderContainerBehavior, stickyFooterContainerBehavior } = this.props;
     // if stickyContainerBehavior is not defined, use placeholder (default behavior)
-    const usePlaceholderForStickyTop: boolean = !stickyHeaderContainerBehavior || !stickyHeaderContainerBehavior.notUsePlaceHolder;
-    const usePlaceholderForStickyBottom: boolean = !stickyFooterContainerBehavior || !stickyFooterContainerBehavior.notUsePlaceHolder;
+    const usePlaceholderForStickyTop: boolean = !stickyHeaderContainerBehavior || !stickyHeaderContainerBehavior.disablePlaceHolder;
+    const usePlaceholderForStickyBottom: boolean = !stickyFooterContainerBehavior || !stickyFooterContainerBehavior.disablePlaceHolder;
 
     return placeholderPosition === 'top' ? usePlaceholderForStickyTop : usePlaceholderForStickyBottom;
   };
@@ -528,18 +533,20 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     return contentContainer ? contentContainer.offsetHeight - contentContainer.clientHeight : 0;
   }
 
-  private _getScrollbarHeightFromLocalStorage(onlyRead?: boolean): number {
-    let scrollbarHeight: number = 0;
+  private _getScrollbarHeightFromLocalStorage(): number | undefined {
     if (typeof window !== 'undefined' && 'localStorage' in window) {
-      scrollbarHeight = Number(window.localStorage.getItem(ScrollablePaneBase._scrollbarHeightKey));
+      const scrollbarHeight = Number(window.localStorage.getItem(ScrollablePaneBase._scrollbarHeightKey));
       if (!!scrollbarHeight && !isNaN(scrollbarHeight)) {
         return scrollbarHeight;
-      } else if (!onlyRead) {
-        scrollbarHeight = this._getScrollbarHeight();
-        window.localStorage.setItem(ScrollablePaneBase._scrollbarHeightKey, scrollbarHeight.toString());
       }
     }
-    return scrollbarHeight;
+    return undefined;
+  }
+
+  private _storeScrollbarHeightInLocalStorage(scrollbarHeight: number) {
+    if (typeof window !== 'undefined' && 'localStorage' in window) {
+      window.localStorage.setItem(ScrollablePaneBase._scrollbarHeightKey, scrollbarHeight.toString());
+    }
   }
 
   private _onScroll = () => {

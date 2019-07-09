@@ -112,12 +112,12 @@ export class ScrollablePaneStickyOptimizedDetailsList extends React.Component<{}
       arrangeStickiesBasedOnOrder: true,
       // use 'StickyOnScroll', 'StickyAlways' or 'Default' as per need.
       containerBehavior: StickyContainerBehaviorType.StickyOnScroll,
-      notUsePlaceHolder: true
+      disablePlaceHolder: true
     };
     const stickyBelowContainer: IStickyContainerBehavior = {
       arrangeStickiesBasedOnOrder: true,
       containerBehavior: StickyContainerBehaviorType.StickyAlways,
-      notUsePlaceHolder: true
+      disablePlaceHolder: true
     };
     const stickyBackgroundColor = getTheme().palette.white;
     return (

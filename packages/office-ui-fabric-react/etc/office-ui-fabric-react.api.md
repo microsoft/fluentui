@@ -7029,7 +7029,7 @@ export interface IStackTokens {
 export interface IStickyContainerBehavior {
     arrangeStickiesBasedOnOrder: boolean;
     containerBehavior: StickyContainerBehaviorType;
-    notUsePlaceHolder: boolean;
+    disablePlaceHolder: boolean;
 }
 
 // @public (undocumented)

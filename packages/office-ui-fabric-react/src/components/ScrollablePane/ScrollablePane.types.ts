@@ -117,7 +117,7 @@ export interface IStickyContainerBehavior {
    * Calculating placeholder height & width could be an expensive operation.
    * It's a trade off- cost of replicating the element vs. cost of calculating placeholder height & width.
    */
-  notUsePlaceHolder: boolean;
+  disablePlaceHolder: boolean;
 
   /**
    * If true, arranges Sticky component(s) based on Sticky's 'order' prop in ascending order.
