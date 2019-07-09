@@ -1,5 +1,5 @@
 {
-  "comment": "ChoiceGroup: pass disabled state to the top label.",
+  "comment": "Pass disabled state to labels in ChoiceGroup, Dropdown, Slider and SpinButton.",
   "type": "patch",
   "packageName": "office-ui-fabric-react",
   "email": "vibraga@microsoft.com",
