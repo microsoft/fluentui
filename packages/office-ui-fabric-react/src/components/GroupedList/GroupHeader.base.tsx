@@ -118,6 +118,8 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
             type="button"
             className={this._classNames.expand}
             onClick={this._onToggleCollapse}
+            aria-role={group.isCollapsed ? 'expand' : 'close'}
+            aria-name="button to expand or close"
             aria-expanded={group ? !group.isCollapsed : undefined}
             aria-controls={group && !group.isCollapsed ? groupedListId : undefined}
             {...expandButtonProps}
