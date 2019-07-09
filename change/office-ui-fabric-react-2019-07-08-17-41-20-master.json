@@ -1,0 +1,8 @@
+{
+  "comment": "Nav: fixes focus border in High Contrast mode.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "vibraga@microsoft.com",
+  "commit": "50bab982367b015dcdbb41e2c958e4f67309c290",
+  "date": "2019-07-09T00:41:20.811Z"
+}
