@@ -1,8 +1,0 @@
-{
-  "comment": "Fix website version selection and delete stray Animate file",
-  "type": "patch",
-  "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com",
-  "commit": "9ea03099ee878a1d9c3f79e8212a142b5fe55bc6",
-  "date": "2019-07-03T00:50:27.627Z"
-}

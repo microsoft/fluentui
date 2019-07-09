@@ -1,8 +1,0 @@
-{
-  "comment": "\"FocusZone: Add setFocusAlignment public method to Force horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on the last horizontal motion.\"",
-  "type": "minor",
-  "packageName": "office-ui-fabric-react",
-  "email": "nasabek@microsoft.com",
-  "commit": "0ed9f55c26856af8bbef7356f222570a1c40c114",
-  "date": "2019-07-04T20:34:32.089Z"
-}
