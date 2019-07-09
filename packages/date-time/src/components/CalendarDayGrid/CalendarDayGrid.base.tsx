@@ -316,7 +316,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     let date;
     if (weeksToShow && weeksToShow <= 4) {
       // if showing less than a full month, just use date == navigatedDate
-      date = new Date(navigatedDate.toDateString());
+      date = new Date(navigatedDate.toString());
     } else {
       date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
     }

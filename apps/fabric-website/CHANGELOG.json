@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Wed, 03 Jul 2019 12:30:55 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.4",
+      "version": "7.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList cell update animation",
+            "author": "inateeg@microsoft.com",
+            "commit": "a3a32acde358ce34984ebc130a7f5684caf204bf"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.2.3",
       "tag": "@uifabric/fabric-website_v7.2.3",
       "date": "Tue, 02 Jul 2019 12:29:06 GMT",

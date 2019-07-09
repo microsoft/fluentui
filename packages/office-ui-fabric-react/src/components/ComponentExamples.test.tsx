@@ -130,11 +130,11 @@ describe('Component Examples', () => {
     // Prevent random and time elements from failing repeated tests.
     global.Date = class {
       public static now() {
-        return constantDate;
+        return new realDate(constantDate);
       }
 
       constructor() {
-        return constantDate;
+        return new realDate(constantDate);
       }
     };
 

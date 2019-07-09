@@ -21,6 +21,8 @@ const RepresentativeText = (props: { style: React.CSSProperties }) => (
       <p id="vi">Hãy khám phá một số tính năng mới.</p>
       <p id="zh-Hans">让我们来探索一些新功能。</p>
       <p id="zh-Hant">讓我們探索一些新的功能。</p>
+      <p id="hy">Եկեք ուսումնասիրենք մի քանի նոր առանձնահատկություններ:</p>
+      <p id="ka">მოდით შეისწავლონ ახალი ფუნქციები.</p>
     </div>
   </div>
 );
@@ -53,4 +55,6 @@ storiesOf('Fonts', module)
   .addStory('Korean', () => <RepresentativeText style={getStyle('ko')} />)
   .addStory('Thai', () => <RepresentativeText style={getStyle('th')} />)
   .addStory('Vietnamese', () => <RepresentativeText style={getStyle('vi')} />)
-  .addStory('West European', () => <RepresentativeText style={getStyle('en')} />);
+  .addStory('West European', () => <RepresentativeText style={getStyle('en')} />)
+  .addStory('Armenian', () => <RepresentativeText style={getStyle('hy')} />)
+  .addStory('Georgian', () => <RepresentativeText style={getStyle('ka')} />);

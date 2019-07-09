@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Thu, 04 Jul 2019 12:29:39 GMT",
+      "tag": "@uifabric/date-time_v7.1.4",
+      "version": "7.1.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix date conversion for weeklydaypicker",
+            "author": "jolore@microsoft.com",
+            "commit": "f1273794e8c4402a86656689185bc7deb01151e4"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.3",
       "tag": "@uifabric/date-time_v7.1.3",
       "date": "Mon, 01 Jul 2019 18:51:42 GMT",

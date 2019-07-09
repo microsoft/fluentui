@@ -1238,7 +1238,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     }
 
 // @public (undocumented)
-export class FocusZone extends React.Component<IFocusZoneProps, {}> implements IFocusZone {
+export class FocusZone extends React.Component<IFocusZoneProps> implements IFocusZone {
     constructor(props: IFocusZoneProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1253,6 +1253,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     static getOuterZones(): number;
     // (undocumented)
     render(): JSX.Element;
+    setFocusAlignment(point: IPoint): void;
     }
 
 // @public (undocumented)
@@ -1798,6 +1799,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
     // (undocumented)
     theme?: ITheme;
+    tooltipHostProps?: ITooltipHostProps;
 }
 
 // @public (undocumented)
@@ -4520,6 +4522,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
 export interface IFocusZone {
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
+    setFocusAlignment(point: IPoint): void;
 }
 
 // @public
@@ -5433,6 +5436,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
     onDismissed?: () => any;
     // @deprecated
     onLayerDidMount?: () => void;
+    overlay?: IOverlayProps;
     scrollableContentClassName?: string;
     styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
     subtitleAriaId?: string;
@@ -5728,6 +5732,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     onRenderHeader?: IPanelHeaderRenderer;
     onRenderNavigation?: IRenderFunction<IPanelProps>;
     onRenderNavigationContent?: IRenderFunction<IPanelProps>;
+    overlayProps?: IOverlayProps;
     styles?: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
     theme?: ITheme;
     type?: PanelType;
@@ -5915,8 +5920,10 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     initialsColor?: PersonaInitialsColor | string;
     isOutOfOffice?: boolean;
     onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
+    // @deprecated
     onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
     onRenderInitials?: IRenderFunction<IPersonaSharedProps>;
+    onRenderPersonaCoin?: IRenderFunction<IPersonaSharedProps>;
     optionalText?: string;
     presence?: PersonaPresence;
     // @deprecated
@@ -6413,8 +6420,6 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
 export interface ISearchBoxState {
     // (undocumented)
     hasFocus?: boolean;
-    // (undocumented)
-    id?: string;
     // (undocumented)
     value?: string;
 }
@@ -8579,8 +8584,10 @@ export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
 export const SearchBox: React.StatelessComponent<ISearchBoxProps>;
 
 // @public (undocumented)
-export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
+export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
     constructor(props: ISearchBoxProps);
+    // (undocumented)
+    componentWillMount(): void;
     // (undocumented)
     componentWillReceiveProps(newProps: ISearchBoxProps): void;
     // (undocumented)

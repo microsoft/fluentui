@@ -38,7 +38,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
   const ratingVerticalPadding = 8;
   const ratingHorizontalPadding = 2;
 
-  const ratingStarUncheckedColor = palette.neutralTertiary;
+  const ratingStarUncheckedColor = palette.neutralSecondary;
   const ratingStarUncheckedHoverColor = palette.themePrimary;
   const ratingStarUncheckedHoverSelectedColor = palette.themeDark;
   const ratingStarCheckedColor = palette.neutralPrimary;
