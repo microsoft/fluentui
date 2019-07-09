@@ -44,8 +44,8 @@ export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IF
       slotRule: props.themeRules![FabricSlots[this.props.slot]]
     };
 
-    this.onColorBoxClick = this.onColorBoxClick.bind(this);
-    this.onCalloutDismiss = this.onCalloutDismiss.bind(this);
+    this._onColorBoxClick = this._onColorBoxClick.bind(this);
+    this._onCalloutDismiss = this._onCalloutDismiss.bind(this);
   }
 
   public render() {
@@ -58,11 +58,11 @@ export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IF
               key={slotRule.name}
               className={fabricPaletteColorBox}
               style={{ backgroundColor: slotRule.color!.str }}
-              onClick={this.onColorBoxClick}
+              onClick={this._onColorBoxClick}
             />
             {isColorPickerVisible && (
               <div>
-                <Callout gapSpace={10} target={colorPickerElement} setInitialFocus={true} onDismiss={this.onCalloutDismiss}>
+                <Callout gapSpace={10} target={colorPickerElement} setInitialFocus={true} onDismiss={this._onCalloutDismiss}>
                   <ColorPicker
                     color={slotRule.color}
                     onChange={(ev, newColor) => this.props.onFabricPaletteColorChange(newColor, this.props.slot)}
@@ -79,15 +79,14 @@ export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IF
     );
   }
 
-  private onColorBoxClick(ev: React.MouseEvent<HTMLElement>) {
+  private _onColorBoxClick(ev: React.MouseEvent<HTMLElement>) {
     this.setState({
       isColorPickerVisible: true,
       colorPickerElement: ev.target as HTMLElement
     });
-    console.log(this.state.colorPickerElement);
   }
 
-  private onCalloutDismiss() {
+  private _onCalloutDismiss() {
     this.setState({
       isColorPickerVisible: false
     });
