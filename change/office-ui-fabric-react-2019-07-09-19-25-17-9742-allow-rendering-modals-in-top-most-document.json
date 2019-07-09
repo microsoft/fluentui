@@ -1,0 +1,8 @@
+{
+  "comment": "add option to render layer in top-most document",
+  "type": "minor",
+  "packageName": "office-ui-fabric-react",
+  "email": "thomas.gassmann@hotmail.com",
+  "commit": "cfbb539afa520948081c495a7a00c1f1c73f54f0",
+  "date": "2019-07-09T17:24:51.667Z"
+}
