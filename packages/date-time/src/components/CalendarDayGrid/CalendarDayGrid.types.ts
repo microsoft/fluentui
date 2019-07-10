@@ -175,6 +175,11 @@ export interface ICalendarDayGridStyleProps {
    * Whether to show days outside the selected month with lighter styles
    */
   lightenDaysOutsideNavigatedMonth?: boolean;
+
+  /**
+   * Whether grid entering animation should be forwards or backwards
+   */
+  animateBackwards?: boolean;
 }
 
 export interface ICalendarDayGridStyles {
@@ -192,6 +197,11 @@ export interface ICalendarDayGridStyles {
    * The style to apply to grid cells for days in the selected range
    */
   daySelected?: IStyle;
+
+  /**
+   * The style to apply to row around weeks
+   */
+  weekRow?: IStyle;
 
   /**
    * The style to apply to grid cells for week numbers

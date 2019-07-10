@@ -36,6 +36,7 @@ export interface IDayInfo {
 export interface ICalendarDayGridState {
   activeDescendantId?: string;
   weeks?: IDayInfo[][];
+  animateBackwards?: boolean;
 }
 
 export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, ICalendarDayGridState> {
@@ -54,13 +55,27 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
   }
 
   public componentWillReceiveProps(nextProps: ICalendarDayGridProps): void {
+    const weeks = this._getWeeks(nextProps);
+    let isBackwards = undefined;
+
+    if (this.state.weeks) {
+      const previousDate = this.state.weeks[0][0].originalDate;
+      const nextDate = weeks[0][0].originalDate;
+      if (previousDate < nextDate) {
+        isBackwards = false;
+      } else if (previousDate > nextDate) {
+        isBackwards = true;
+      }
+    }
+
     this.setState({
-      weeks: this._getWeeks(nextProps)
+      weeks: weeks,
+      animateBackwards: isBackwards
     });
   }
 
   public render(): JSX.Element {
-    const { activeDescendantId, weeks } = this.state;
+    const { activeDescendantId, weeks, animateBackwards } = this.state;
     const { styles, theme, className, dateRangeType, showWeekNumbers, labelledBy, lightenDaysOutsideNavigatedMonth } = this.props;
 
     const classNames = getClassNames(styles, {
@@ -68,7 +83,8 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       className: className,
       dateRangeType: dateRangeType,
       showWeekNumbers: showWeekNumbers,
-      lightenDaysOutsideNavigatedMonth: lightenDaysOutsideNavigatedMonth === undefined ? true : lightenDaysOutsideNavigatedMonth
+      lightenDaysOutsideNavigatedMonth: lightenDaysOutsideNavigatedMonth === undefined ? true : lightenDaysOutsideNavigatedMonth,
+      animateBackwards: animateBackwards
     });
 
     return (
@@ -126,7 +142,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     const titleString = weekNumbers ? strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex]) : '';
 
     return (
-      <tr key={weekNumbers ? weekNumbers[weekIndex] : weekIndex}>
+      <tr className={classNames.weekRow} key={weekNumbers ? weekNumbers[weekIndex] : weekIndex + '_' + week[0].key}>
         {showWeekNumbers && weekNumbers && (
           <th className={classNames.weekNumberCell} key={weekIndex} title={titleString} aria-label={titleString} scope="row">
             <span>{weekNumbers[weekIndex]}</span>

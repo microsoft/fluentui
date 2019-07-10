@@ -1,5 +1,5 @@
 import { ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
-import { FontSizes, FontWeights, getFocusStyle, getGlobalClassNames } from '@uifabric/styling';
+import { FontSizes, FontWeights, getFocusStyle, getGlobalClassNames, AnimationStyles } from '@uifabric/styling';
 import { DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 
 const GlobalClassNames = {
@@ -8,7 +8,7 @@ const GlobalClassNames = {
 };
 
 export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyles => {
-  const { theme, dateRangeType, showWeekNumbers, lightenDaysOutsideNavigatedMonth } = props;
+  const { theme, dateRangeType, showWeekNumbers, lightenDaysOutsideNavigatedMonth, animateBackwards } = props;
   const { palette } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -69,6 +69,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         }
       }
     ],
+    weekRow: animateBackwards === undefined ? [] : animateBackwards ? AnimationStyles.slideRightIn20 : AnimationStyles.slideLeftIn20,
     weekNumberCell: {
       margin: 0,
       padding: 0,
