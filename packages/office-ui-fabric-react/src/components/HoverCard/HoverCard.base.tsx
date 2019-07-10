@@ -161,6 +161,21 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     }
   }
 
+  private _getEventListenerElement(): HTMLElement | undefined {
+    const { eventListenerTarget } = this.props;
+
+    switch (typeof eventListenerTarget) {
+      case 'string':
+        return getDocument()!.querySelector(eventListenerTarget as string) as HTMLElement;
+
+      case 'object':
+        return eventListenerTarget as HTMLElement;
+
+      default:
+        return this._getTargetElement();
+    }
+  }
+
   private _shouldBlockHoverCard(): boolean {
     return !!(this.props.shouldBlockHoverCard && this.props.shouldBlockHoverCard());
   }
@@ -251,8 +266,8 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
   };
 
   private _setEventListeners = (): void => {
-    const { trapFocus, instantOpenOnClick, eventListenerTarget } = this.props;
-    const target = eventListenerTarget || this._getTargetElement();
+    const { trapFocus, instantOpenOnClick } = this.props;
+    const target = this._getEventListenerElement();
     const nativeEventDismiss = this._nativeDismissEvent;
 
     // target can be undefined if ref isn't available, only assign
