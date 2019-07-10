@@ -3,8 +3,6 @@ import { Chiclet, ChicletSize } from '@uifabric/experiments';
 import { IButtonProps, IconButton, Stack } from 'office-ui-fabric-react';
 import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
 
-const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
-
 export class FooterComponent extends React.Component<IFooterComponent, {}> {
   public render(): JSX.Element {
     const { buttonProps, activities } = this.props;
@@ -47,17 +45,9 @@ const actionStyle = mergeStyles({
   color: '#0078d7'
 });
 
-export interface IChicletFooterExampleState {
-  textFieldValue: string;
-}
-
-export class ChicletFooterExample extends React.Component<{}, IChicletFooterExampleState> {
+export class ChicletFooterExample extends React.Component<{}, {}> {
   constructor(props: {}) {
     super(props);
-
-    this.state = {
-      textFieldValue: 'http://localhost:4322'
-    };
   }
 
   public render(): JSX.Element {
@@ -70,7 +60,7 @@ export class ChicletFooterExample extends React.Component<{}, IChicletFooterExam
 
     return (
       <Stack tokens={{ childrenGap: 16 }}>
-        <Chiclet url={TEST_URL} title="Quarterly Results.docx" size={ChicletSize.medium} footer={footer} />
+        <Chiclet url={'https://microsoft.sharepoint.com'} title="Quarterly Results.docx" size={ChicletSize.medium} footer={footer} />
       </Stack>
     );
   }

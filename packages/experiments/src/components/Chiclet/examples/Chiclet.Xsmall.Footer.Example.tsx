@@ -13,10 +13,6 @@ export class FooterComponent extends React.Component<IFooterComponent, {}> {
   }
 }
 
-export interface IChicletXsmallFooterExampleState {
-  textFieldValue: string;
-}
-
 const footerStyle = mergeStyles({
   display: 'flex'
 });
@@ -47,13 +43,9 @@ const sizeStyle = mergeStyles({
   letterSpacing: 'normal'
 });
 
-export class ChicletXsmallFooterExample extends React.Component<{}, IChicletXsmallFooterExampleState> {
+export class ChicletXsmallFooterExample extends React.Component<{}, {}> {
   constructor(props: {}) {
     super(props);
-
-    this.state = {
-      textFieldValue: 'http://localhost:4322'
-    };
   }
 
   public render(): JSX.Element {
@@ -66,7 +58,7 @@ export class ChicletXsmallFooterExample extends React.Component<{}, IChicletXsma
     return (
       <Stack tokens={{ childrenGap: 16 }}>
         <Chiclet
-          url={TEST_URL}
+          url={'https://microsoft.sharepoint.com'}
           title="Quarterly Results"
           image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg"
           size={ChicletSize.xSmall}
