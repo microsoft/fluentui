@@ -1,0 +1,8 @@
+{
+  "comment": "Removing exports of 'utilities/selection' from DetailsList and MarqueeSelection and updating imports where used.",
+  "type": "minor",
+  "packageName": "office-ui-fabric-react",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "commit": "8a22d83102415aff23f9aba888adb70c3c9b8aaa",
+  "date": "2019-07-10T00:40:18.085Z"
+}
