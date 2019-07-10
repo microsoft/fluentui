@@ -1,0 +1,8 @@
+{
+  "comment": "Disable unreliable TextField tests",
+  "type": "none",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "7e7d86e0b755d16cc9a52d78ede02164a06da891",
+  "date": "2019-07-10T01:22:25.645Z"
+}
