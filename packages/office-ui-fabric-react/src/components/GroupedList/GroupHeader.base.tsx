@@ -16,10 +16,6 @@ export interface IGroupHeaderState {
 }
 
 export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHeaderState> {
-  public static defaultProps: IGroupHeaderProps = {
-    expandButtonProps: { 'aria-label': 'expand collapse group' }
-  };
-
   private _classNames: IClassNames<IGroupHeaderStyles>;
 
   constructor(props: IGroupHeaderProps) {
@@ -56,7 +52,6 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       indentWidth,
       onRenderTitle = this._onRenderTitle,
       isCollapsedGroupSelectVisible = true,
-      expandButtonProps,
       selectAllButtonProps,
       theme,
       styles,
@@ -64,6 +59,8 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       groupedListId,
       compact
     } = this.props;
+
+    let { expandButtonProps } = this.props;
 
     const { isCollapsed, isLoadingVisible } = this.state;
 
@@ -84,6 +81,15 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     if (!group) {
       return null;
     }
+
+    if (!expandButtonProps) {
+      expandButtonProps = {};
+    }
+    // set default aria label if expandButtonProps['aria-label'] is not defined.
+    if (!expandButtonProps['aria-label']) {
+      expandButtonProps['aria-label'] = group.isCollapsed ? 'expand list' : 'collapse list';
+    }
+
     return (
       <div
         className={this._classNames.root}
@@ -110,7 +116,6 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
           )}
 
           <GroupSpacer indentWidth={indentWidth} count={groupLevel!} />
-
           <div className={this._classNames.dropIcon}>
             <Icon iconName="Tag" />
           </div>
@@ -120,7 +125,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
             onClick={this._onToggleCollapse}
             aria-expanded={group ? !group.isCollapsed : undefined}
             aria-controls={group && !group.isCollapsed ? groupedListId : undefined}
-            aria-label={group.isCollapsed ? 'expand list' : 'collapse list'}
+            {...expandButtonProps}
           >
             <Icon className={this._classNames.expandIsCollapsed} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
           </button>
