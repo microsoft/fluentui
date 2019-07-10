@@ -74,7 +74,7 @@ exports[`Chiclet renders chiclet with title, icon, onClick, and url 1`] = `
           {
             color: #323130;
             font-size: 14px;
-            height: 37px;
+            height: 35px;
             letter-spacing: normal;
             line-height: 1.25;
             overflow: hidden;
@@ -195,7 +195,7 @@ exports[`Chiclet renders chiclet with title, preview, onClick, and url 1`] = `
           {
             color: #323130;
             font-size: 14px;
-            height: 37px;
+            height: 35px;
             letter-spacing: normal;
             line-height: 1.25;
             overflow: hidden;
@@ -296,7 +296,7 @@ exports[`Chiclet renders the correct icon from a file extension 1`] = `
           {
             color: #323130;
             font-size: 14px;
-            height: 37px;
+            height: 35px;
             letter-spacing: normal;
             line-height: 1.25;
             overflow: hidden;
