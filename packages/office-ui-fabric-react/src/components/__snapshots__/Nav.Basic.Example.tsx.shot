@@ -174,6 +174,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 </i>
               </button>
               <a
+                aria-label="undefined, "
                 className=
                     ms-Button
                     ms-Button--action
@@ -331,6 +332,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   name="Activity"
                 >
                   <a
+                    aria-label="undefined, "
                     className=
                         ms-Button
                         ms-Button--action
@@ -480,6 +482,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 >
                   <button
                     aria-disabled={true}
+                    aria-label="undefined, "
                     className=
                         ms-Button
                         ms-Button--action
@@ -624,6 +627,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
               name="Documents"
             >
               <a
+                aria-label="undefined, Selected"
                 className=
                     ms-Button
                     ms-Button--action
@@ -781,6 +785,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
               name="Pages"
             >
               <a
+                aria-label="undefined, "
                 className=
                     ms-Button
                     ms-Button--action
@@ -930,6 +935,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
             >
               <button
                 aria-disabled={true}
+                aria-label="undefined, "
                 className=
                     ms-Button
                     ms-Button--action
@@ -1070,6 +1076,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
               name="Communication and Media"
             >
               <a
+                aria-label="undefined, "
                 className=
                     ms-Button
                     ms-Button--action
@@ -1217,6 +1224,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
               name="News"
             >
               <a
+                aria-label="undefined, "
                 className=
                     ms-Button
                     ms-Button--action
