@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 03 Jul 2019 12:30:55 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jul 2019 17:34:38 GMT and should not be manually modified.
+
+## 7.2.5
+Tue, 09 Jul 2019 17:34:38 GMT
+
+### Patches
+
+- Fix website version selection and delete stray Animate file (elcraig@microsoft.com)
 
 ## 7.2.4
 Wed, 03 Jul 2019 12:30:55 GMT

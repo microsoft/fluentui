@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 08 Jul 2019 12:27:04 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jul 2019 17:34:38 GMT and should not be manually modified.
+
+## 7.8.0
+Tue, 09 Jul 2019 17:34:38 GMT
+
+### Minor changes
+
+- Panel: Adding Overlay props. (Humberto.Morimoto@microsoft.com)
+,- Modal: Adding overlayProps as a prop. (Humberto.Morimoto@microsoft.com)
+,- Adding tooltipHostProps as a prop to the Breadcrumb component. (Heather.HoaglundBiron@microsoft.com)
+,- "FocusZone: Add setFocusAlignment public method to Force horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on the last horizontal motion." (nasabek@microsoft.com)
+,- User should use onRenderPersonaCoin for custom rendering. When this is set, this custom rendering will be used. (22574161+gingeroun@users.noreply.github.com)
 
 ## 7.7.2
 Mon, 08 Jul 2019 12:27:04 GMT

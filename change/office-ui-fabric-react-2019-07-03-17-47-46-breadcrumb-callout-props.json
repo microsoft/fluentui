@@ -1,8 +1,0 @@
-{
-  "comment": "Adding tooltipHostProps as a prop to the Breadcrumb component.",
-  "type": "minor",
-  "packageName": "office-ui-fabric-react",
-  "email": "Heather.HoaglundBiron@microsoft.com",
-  "commit": "0e7737eb466ec78bea0f7174049499aa792fbddb",
-  "date": "2019-07-04T00:47:46.188Z"
-}

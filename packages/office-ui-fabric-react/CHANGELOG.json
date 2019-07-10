@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 09 Jul 2019 17:34:38 GMT",
+      "tag": "office-ui-fabric-react_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Panel: Adding Overlay props.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "86fd6e06921c0cdf7723610c98e38114e1ec4053"
+          },
+          {
+            "comment": "Modal: Adding overlayProps as a prop.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "7f27de8dd01f9bb3d3888c7d3e006a5411c8143b"
+          },
+          {
+            "comment": "Adding tooltipHostProps as a prop to the Breadcrumb component.",
+            "author": "Heather.HoaglundBiron@microsoft.com",
+            "commit": "0e7737eb466ec78bea0f7174049499aa792fbddb"
+          },
+          {
+            "comment": "\"FocusZone: Add setFocusAlignment public method to Force horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on the last horizontal motion.\"",
+            "author": "nasabek@microsoft.com",
+            "commit": "0ed9f55c26856af8bbef7356f222570a1c40c114"
+          },
+          {
+            "comment": "User should use onRenderPersonaCoin for custom rendering. When this is set, this custom rendering will be used.",
+            "author": "22574161+gingeroun@users.noreply.github.com",
+            "commit": "78c7a9ed3b47e0b43f5ab434a55e6ff874ddbfad"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Updating master branch broken state due to stale PR 9595",
+            "author": "marygans@microsoft.com",
+            "commit": "9028b83c5690b3f8a8987b66e7fe845538c3da81"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Jul 2019 12:27:04 GMT",
       "tag": "office-ui-fabric-react_v7.7.2",
       "version": "7.7.2",
