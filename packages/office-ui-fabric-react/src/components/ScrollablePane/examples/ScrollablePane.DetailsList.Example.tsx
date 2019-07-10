@@ -1,22 +1,22 @@
 import * as React from 'react';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {
   DetailsList,
   DetailsListLayoutMode,
   IDetailsHeaderProps,
-  Selection,
   IColumn,
   ConstrainMode,
   IDetailsFooterProps,
   DetailsRow
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
-import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
-import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
+import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
+import { Selection } from 'office-ui-fabric-react/lib/Selection';
+import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
+import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
 
 const classNames = mergeStyleSets({
   wrapper: {

@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { Announced } from 'office-ui-fabric-react/lib/Announced';
+import { IconButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import {
   DetailsList,
   DetailsListLayoutMode,
-  Selection,
   IColumn,
   IDetailsList,
   IDetailsRowProps,
   DetailsRow
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { IconButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
+import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
+import { Async } from 'office-ui-fabric-react/lib/Utilities';
 
 const _items: IAnnouncedQuickActionsExampleItem[] = [];
 

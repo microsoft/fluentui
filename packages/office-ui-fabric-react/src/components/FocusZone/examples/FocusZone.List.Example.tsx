@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { KeyCodes, createArray, getRTLSafeKeyCode } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Link } from 'office-ui-fabric-react/lib/Link';
+import { DetailsRow, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { DetailsRow, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Selection, SelectionMode } from 'office-ui-fabric-react/lib/Selection';
+import { KeyCodes, createArray, getRTLSafeKeyCode } from 'office-ui-fabric-react/lib/Utilities';
 
 const ITEMS = createArray(10, index => ({
   key: index.toString(),

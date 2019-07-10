@@ -1,14 +1,8 @@
-import { Text } from 'office-ui-fabric-react/lib/Text';
-import { IFontStyles } from 'office-ui-fabric-react/lib/Styling';
-import {
-  DetailsList,
-  IColumn,
-  DetailsListLayoutMode,
-  SelectionMode,
-  DetailsRow,
-  IDetailsRowProps
-} from 'office-ui-fabric-react/lib/DetailsList';
 import * as React from 'react';
+import { DetailsList, IColumn, DetailsListLayoutMode, DetailsRow, IDetailsRowProps } from 'office-ui-fabric-react/lib/DetailsList';
+import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
+import { IFontStyles } from 'office-ui-fabric-react/lib/Styling';
+import { Text } from 'office-ui-fabric-react/lib/Text';
 
 const TestText = 'The quick brown fox jumped over the lazy dog.';
 

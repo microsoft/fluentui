@@ -1,14 +1,7 @@
 import * as React from 'react';
-import {
-  DetailsList,
-  DetailsRow,
-  IDetailsRowStyles,
-  IDetailsRowProps,
-  IColumn,
-  IGroup,
-  SelectionMode
-} from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, DetailsRow, IDetailsRowStyles, IDetailsRowProps, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IContrastRatioPair } from './AccessibilityChecker';
 

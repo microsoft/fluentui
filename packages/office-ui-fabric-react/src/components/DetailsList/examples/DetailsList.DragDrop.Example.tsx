@@ -1,12 +1,13 @@
 import * as React from 'react';
+import { DetailsList, IColumn, buildColumns, IColumnReorderOptions } from 'office-ui-fabric-react/lib/DetailsList';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { DetailsList, Selection, IColumn, buildColumns, IColumnReorderOptions } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
-import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { Selection } from 'office-ui-fabric-react/lib/Selection';
+import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
+import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 
 const theme = getTheme();
 const margin = '0 30px 20px 0';

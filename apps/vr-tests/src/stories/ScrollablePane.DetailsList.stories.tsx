@@ -7,7 +7,6 @@ import {
   DetailsList,
   DetailsListLayoutMode,
   IDetailsHeaderProps,
-  Selection,
   IColumn,
   ConstrainMode,
   IDetailsFooterProps,
@@ -18,7 +17,7 @@ import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Toolt
 import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
+import { Selection, SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 

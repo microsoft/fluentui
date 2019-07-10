@@ -5,10 +5,10 @@ import {
   IColumn,
   IDetailsFooterProps,
   DetailsRow,
-  SelectionMode,
   IDetailsRowCheckProps,
   DetailsRowCheck
 } from 'office-ui-fabric-react/lib/DetailsList';
+import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 
 export interface IDetailsListCustomFooterExampleItem {
   key: number;

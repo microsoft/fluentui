@@ -1,8 +1,9 @@
 import * as React from 'react';
 
-import { css, createArray } from 'office-ui-fabric-react/lib/Utilities';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { MarqueeSelection, Selection, IObjectWithKey } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
+import { Selection, IObjectWithKey } from 'office-ui-fabric-react/lib/Selection';
+import { css, createArray } from 'office-ui-fabric-react/lib/Utilities';
 import * as styles from './MarqueeSelection.Basic.Example.scss';
 
 interface IPhoto extends IObjectWithKey {

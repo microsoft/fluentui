@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { IContextualMenuProps, IContextualMenuItem, DirectionalHint, ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 import {
@@ -10,15 +8,16 @@ import {
   DetailsList,
   DetailsListLayoutMode,
   IColumn,
+  IDetailsColumnProps,
   IGroup,
-  Selection,
-  SelectionMode,
   buildColumns
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems, isGroupable, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
-import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Selection, SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { getTheme, mergeStyles, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { createListItems, isGroupable, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 
 const theme = getTheme();
 const classNames = mergeStyleSets({
