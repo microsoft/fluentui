@@ -1163,7 +1163,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
                               role="checkbox"
-                              title="Row checkbox"
                             >
                               <div
                                 className=
@@ -1600,7 +1599,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
                               role="checkbox"
-                              title="Row checkbox"
                             >
                               <div
                                 className=
@@ -2037,7 +2035,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
                               role="checkbox"
-                              title="Row checkbox"
                             >
                               <div
                                 className=
@@ -2474,7 +2471,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
                               role="checkbox"
-                              title="Row checkbox"
                             >
                               <div
                                 className=
@@ -2911,7 +2907,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
                               role="checkbox"
-                              title="Row checkbox"
                             >
                               <div
                                 className=
@@ -3348,7 +3343,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
                               role="checkbox"
-                              title="Row checkbox"
                             >
                               <div
                                 className=
@@ -3785,7 +3779,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
                               role="checkbox"
-                              title="Row checkbox"
                             >
                               <div
                                 className=
@@ -4222,7 +4215,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
                               role="checkbox"
-                              title="Row checkbox"
                             >
                               <div
                                 className=
@@ -4659,7 +4651,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
                               role="checkbox"
-                              title="Row checkbox"
                             >
                               <div
                                 className=
@@ -5096,7 +5087,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
                               data-automationid="DetailsRowCheck"
                               data-selection-toggle={true}
                               role="checkbox"
-                              title="Row checkbox"
                             >
                               <div
                                 className=
