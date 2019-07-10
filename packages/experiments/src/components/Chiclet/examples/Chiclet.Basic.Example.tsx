@@ -11,7 +11,7 @@ export class ChicletBasicExample extends React.Component<{}, {}> {
     return (
       <Chiclet
         url={'https://microsoft.sharepoint.com'}
-        title={'WordTest with a really long title that will wrap around to the second line but not the third line.docx'}
+        title={'WordTest with a really long title that will wrap around to the second line.docx'}
         image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg"
         itemType="docx"
         size={ChicletSize.medium}
