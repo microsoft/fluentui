@@ -14,18 +14,18 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       language
     });
 
-    monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
-      allowNonTsExtensions: true,
-      target: monaco.languages.typescript.ScriptTarget.ES5,
-      jsx: monaco.languages.typescript.JsxEmit.React,
-      alwaysStrict: true,
-      jsxFactory: 'React.createElement',
-      experimentalDecorators: true,
-      preserveConstEnums: true,
-      outDir: 'lib',
-      module: monaco.languages.typescript.ModuleKind.CommonJS,
-      lib: ['es5', 'dom']
-    });
+    // monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+    //   allowNonTsExtensions: true,
+    //   target: monaco.languages.typescript.ScriptTarget.ES5,
+    //   jsx: monaco.languages.typescript.JsxEmit.React,
+    //   alwaysStrict: true,
+    //   jsxFactory: 'React.createElement',
+    //   experimentalDecorators: true,
+    //   preserveConstEnums: true,
+    //   outDir: 'lib',
+    //   module: monaco.languages.typescript.ModuleKind.CommonJS,
+    //   lib: ['es5', 'dom']
+    // });
 
     editor.onDidChangeModelContent(() => {
       onChange(editor.getModel()!);
@@ -37,4 +37,8 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
   }, []);
 
   return <div ref={ref} style={style} />;
+};
+
+export const checkMonaco = () => {
+  return monaco.languages.typescript === undefined;
 };
