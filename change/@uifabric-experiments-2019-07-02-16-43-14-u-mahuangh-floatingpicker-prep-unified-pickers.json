@@ -1,8 +1,0 @@
-{
-  "comment": "Update names in floatingSuggestons + expose needed functionality for UnifiedPicker t",
-  "type": "patch",
-  "packageName": "@uifabric/experiments",
-  "email": "mhuan13@gmail.com",
-  "commit": "c6b2d2909cec0a169e9ec3d69dd68bbb621081f8",
-  "date": "2019-07-02T23:43:14.594Z"
-}

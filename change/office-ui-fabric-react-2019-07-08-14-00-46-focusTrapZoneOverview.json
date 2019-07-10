@@ -1,8 +1,0 @@
-{
-  "comment": "FocusTrapZone: Updating overview description to indicate restriction of website interaction.",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "a56fc9fb319b8d938d6c92af516c015d4b4c00a3",
-  "date": "2019-07-08T21:00:46.779Z"
-}

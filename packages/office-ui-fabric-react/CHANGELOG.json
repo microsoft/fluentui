@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 10 Jul 2019 12:28:00 GMT",
+      "tag": "office-ui-fabric-react_v7.8.1",
+      "version": "7.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: set aria-hidden to true on the ChevronDown icon so that it is not picked up by the screen reader",
+            "author": "natalie.ethell@microsoft.com",
+            "commit": "aed04bd39cec455176e1f8d20b6638cb9d2515c3"
+          },
+          {
+            "comment": "Button: Fixing CompoundButton and SplitButton high contrast mode styling.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "c0c16b62a94e508a551b84dd03fce418b1c07c69"
+          },
+          {
+            "comment": "FocusTrapZone: Updating overview description to indicate restriction of website interaction.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a56fc9fb319b8d938d6c92af516c015d4b4c00a3"
+          },
+          {
+            "comment": "Nav: fixes focus border in High Contrast mode.",
+            "author": "vibraga@microsoft.com",
+            "commit": "50bab982367b015dcdbb41e2c958e4f67309c290"
+          },
+          {
+            "comment": "Pickers: replace empty string with undefined.",
+            "author": "vibraga@microsoft.com",
+            "commit": "0a9842224b57e55472a222757c252e3d14b43537"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Disable unreliable TextField tests",
+            "author": "elcraig@microsoft.com",
+            "commit": "7e7d86e0b755d16cc9a52d78ede02164a06da891"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jul 2019 17:34:38 GMT",
       "tag": "office-ui-fabric-react_v7.8.0",
       "version": "7.8.0",
