@@ -84,6 +84,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               name="Activity"
             >
               <a
+                aria-label="undefined, "
                 className=
                     ms-Button
                     ms-Button--action
@@ -235,6 +236,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               name="News"
             >
               <a
+                aria-label="undefined, "
                 className=
                     ms-Button
                     ms-Button--action
@@ -422,6 +424,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               name="Settings"
             >
               <a
+                aria-label="undefined, "
                 className=
                     ms-Button
                     ms-Button--action
@@ -573,6 +576,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               name="Notes"
             >
               <a
+                aria-label="undefined, "
                 className=
                     ms-Button
                     ms-Button--action
