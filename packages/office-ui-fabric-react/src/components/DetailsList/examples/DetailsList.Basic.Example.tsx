@@ -68,6 +68,7 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
         />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
+            checkButtonAriaLabel="Row checkbox"
             items={items}
             columns={this._columns}
             setKey="set"

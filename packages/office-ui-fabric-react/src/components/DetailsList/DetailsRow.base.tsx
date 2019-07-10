@@ -336,7 +336,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
   }
 
   protected _onRenderCheck(props: IDetailsRowCheckProps) {
-    return <DetailsRowCheck {...props} />;
+    return <DetailsRowCheck {...props} aria-label={props.title} />;
   }
 
   private _getSelectionState(props: IDetailsRowBaseProps): IDetailsRowSelectionState {
