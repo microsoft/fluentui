@@ -502,7 +502,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   /** Render Caret Down Icon */
   private _onRenderCaretDown = (props: IDropdownProps): JSX.Element => {
-    return <Icon className={this._classNames.caretDown} iconName="ChevronDown" />;
+    return <Icon className={this._classNames.caretDown} iconName="ChevronDown" aria-hidden={true} />;
   };
 
   /** Wrap item list in a FocusZone */

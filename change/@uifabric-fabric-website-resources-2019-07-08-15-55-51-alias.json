@@ -1,0 +1,8 @@
+{
+  "comment": "automatically generate webpack alias for npm start - part 1",
+  "type": "none",
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "kchau@microsoft.com",
+  "commit": "b103de0cb556f6cf4dfe2648b990c07b37d6b988",
+  "date": "2019-07-08T22:55:51.178Z"
+}

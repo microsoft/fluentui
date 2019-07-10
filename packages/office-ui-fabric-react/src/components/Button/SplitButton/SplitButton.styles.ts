@@ -1,5 +1,5 @@
 import { IButtonStyles } from '../Button.types';
-import { ITheme, concatStyleSets, getFocusStyle, IStyle } from '../../../Styling';
+import { HighContrastSelector, ITheme, concatStyleSets, getFocusStyle, IStyle } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 
 export const getStyles = memoizeFunction(
@@ -36,7 +36,15 @@ export const getStyles = memoizeFunction(
             '.ms-Button--primary': {
               borderTopRightRadius: '0',
               borderBottomRightRadius: '0',
-              border: 'none'
+              border: 'none',
+
+              selectors: {
+                [HighContrastSelector]: {
+                  color: 'Window',
+                  backgroundColor: 'WindowText',
+                  MsHighContrastAdjust: 'none'
+                }
+              }
             },
             '.ms-Button--primary + .ms-Button': {
               border: 'none'
@@ -44,6 +52,53 @@ export const getStyles = memoizeFunction(
           }
         }
       ],
+      splitButtonContainerHovered: {
+        selectors: {
+          '.ms-Button--primary': {
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'Window',
+                backgroundColor: 'Highlight'
+              }
+            }
+          },
+          '.ms-Button.is-disabled': {
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'GrayText',
+                borderColor: 'GrayText',
+                backgroundColor: 'Window'
+              }
+            }
+          }
+        }
+      },
+      splitButtonContainerChecked: {
+        selectors: {
+          '.ms-Button--primary': {
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'Window',
+                backgroundColor: 'WindowText',
+                MsHighContrastAdjust: 'none'
+              }
+            }
+          }
+        }
+      },
+      splitButtonContainerCheckedHovered: {
+        selectors: {
+          '.ms-Button--primary': {
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'Window',
+                backgroundColor: 'WindowText',
+                MsHighContrastAdjust: 'none'
+              }
+            }
+          }
+        }
+      },
       splitButtonContainerFocused: {
         outline: 'none!important'
       },
@@ -78,6 +133,16 @@ export const getStyles = memoizeFunction(
         selectors: {
           ':hover': {
             cursor: 'default'
+          },
+
+          '.ms-Button--primary': {
+            selectors: {
+              [HighContrastSelector]: {
+                color: 'GrayText',
+                borderColor: 'GrayText',
+                backgroundColor: 'Window'
+              }
+            }
           }
         }
       },
@@ -92,7 +157,15 @@ export const getStyles = memoizeFunction(
 
       splitButtonContainerDisabled: {
         outline: 'none',
-        border: 'none'
+        border: 'none',
+
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+            borderColor: 'GrayText',
+            backgroundColor: 'Window'
+          }
+        }
       }
     };
 

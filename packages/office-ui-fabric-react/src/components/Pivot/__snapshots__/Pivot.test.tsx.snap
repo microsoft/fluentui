@@ -102,7 +102,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -118,7 +118,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             }
             &:active {
               background-color: #edebe9;
-              color: #000000;
+              color: #201f1e;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -261,7 +261,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -277,7 +277,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             }
             &:active {
               background-color: #edebe9;
-              color: #000000;
+              color: #201f1e;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -476,7 +476,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -492,7 +492,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             }
             &:active {
               background-color: #edebe9;
-              color: #000000;
+              color: #201f1e;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -635,7 +635,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -651,7 +651,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             }
             &:active {
               background-color: #edebe9;
-              color: #000000;
+              color: #201f1e;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -837,7 +837,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -853,7 +853,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             }
             &:active {
               background-color: #edebe9;
-              color: #000000;
+              color: #201f1e;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -997,7 +997,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -1013,7 +1013,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             }
             &:active {
               background-color: #edebe9;
-              color: #000000;
+              color: #201f1e;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -1159,7 +1159,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -1175,7 +1175,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             }
             &:active {
               background-color: #edebe9;
-              color: #000000;
+              color: #201f1e;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -1386,7 +1386,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -1402,7 +1402,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             }
             &:active {
               background-color: #edebe9;
-              color: #000000;
+              color: #201f1e;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -1545,7 +1545,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -1561,7 +1561,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             }
             &:active {
               background-color: #edebe9;
-              color: #000000;
+              color: #201f1e;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -1863,7 +1863,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               border-radius: 0px;
               border: 0px;
               box-sizing: border-box;
@@ -1915,7 +1915,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -1932,7 +1932,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             }
             &:active {
               background-color: #edebe9;
-              color: #000000;
+              color: #201f1e;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -2128,7 +2128,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -2144,7 +2144,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             }
             &:active {
               background-color: #edebe9;
-              color: #000000;
+              color: #201f1e;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -2287,7 +2287,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -2303,7 +2303,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             }
             &:active {
               background-color: #edebe9;
-              color: #000000;
+              color: #201f1e;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -2604,7 +2604,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               border-radius: 0px;
               border: 0px;
               box-sizing: border-box;
@@ -2656,7 +2656,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -2673,7 +2673,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             }
             &:active {
               background-color: #edebe9;
-              color: #000000;
+              color: #201f1e;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -2868,7 +2868,7 @@ exports[`Pivot supports JSX expressions 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -2884,7 +2884,7 @@ exports[`Pivot supports JSX expressions 1`] = `
             }
             &:active {
               background-color: #edebe9;
-              color: #000000;
+              color: #201f1e;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -3018,7 +3018,7 @@ exports[`Pivot supports JSX expressions 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #ffffff;
               color: #201f1e;
               cursor: pointer;
             }
@@ -3034,7 +3034,7 @@ exports[`Pivot supports JSX expressions 1`] = `
             }
             &:active {
               background-color: #edebe9;
-              color: #000000;
+              color: #201f1e;
             }
             &:active .ms-Button-icon {
               color: #004578;
