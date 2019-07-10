@@ -87,8 +87,22 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             border-top-right-radius: 0;
             border: none;
           }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+            -ms-high-contrast-adjust: none;
+            background-color: WindowText;
+            color: Window;
+          }
           & .ms-Button--primary + .ms-Button {
             border: none;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
+            background-color: Highlight;
+            color: Window;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
+            background-color: Window;
+            border-color: GrayText;
+            color: GrayText;
           }
           &:focus {
             outline: none!important;
@@ -411,8 +425,22 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             border-top-right-radius: 0;
             border: none;
           }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+            -ms-high-contrast-adjust: none;
+            background-color: WindowText;
+            color: Window;
+          }
           & .ms-Button--primary + .ms-Button {
             border: none;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
+            background-color: Highlight;
+            color: Window;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
+            background-color: Window;
+            border-color: GrayText;
+            color: GrayText;
           }
           &:focus {
             outline: none!important;
@@ -649,6 +677,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                     text-align: center;
                     vertical-align: middle;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: Window;
+                  }
               data-icon-name="ChevronDown"
               role="presentation"
             >
@@ -745,8 +776,22 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             border-top-right-radius: 0;
             border: none;
           }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+            -ms-high-contrast-adjust: none;
+            background-color: WindowText;
+            color: Window;
+          }
           & .ms-Button--primary + .ms-Button {
             border: none;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
+            background-color: Highlight;
+            color: Window;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
+            background-color: Window;
+            border-color: GrayText;
+            color: GrayText;
           }
           &:focus {
             outline: none!important;
@@ -977,6 +1022,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                     text-align: center;
                     vertical-align: middle;
                   }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: Window;
+                  }
               data-icon-name="ChevronDown"
               role="presentation"
             >
@@ -1042,7 +1090,10 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             position: relative;
           }
           @media screen and (-ms-high-contrast: active){& {
+            background-color: Window;
+            border-color: GrayText;
             border: none;
+            color: GrayText;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -1074,6 +1125,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             border-bottom-right-radius: 0;
             border-top-right-radius: 0;
             border: none;
+          }
+          @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+            -ms-high-contrast-adjust: none;
+            background-color: WindowText;
+            color: Window;
           }
           & .ms-Button--primary + .ms-Button {
             border: none;
@@ -1262,6 +1318,11 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 color: Highlight;
               }
+              @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+                background-color: Window;
+                border-color: GrayText;
+                color: GrayText;
+              }
           data-is-focusable={false}
           disabled={false}
           onClick={[Function]}
@@ -1308,6 +1369,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                     speak: none;
                     text-align: center;
                     vertical-align: middle;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: GrayText;
                   }
               data-icon-name="ChevronDown"
               role="presentation"
@@ -1406,11 +1470,25 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
           border-top-right-radius: 0;
           border: none;
         }
+        @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+          -ms-high-contrast-adjust: none;
+          background-color: WindowText;
+          color: Window;
+        }
         & .ms-Button--primary + .ms-Button {
           border: none;
         }
         @media screen and (-ms-high-contrast: active){& {
           border: none;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
+          background-color: Highlight;
+          color: Window;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
+          background-color: Window;
+          border-color: GrayText;
+          color: GrayText;
         }
         &:focus {
           outline: none!important;

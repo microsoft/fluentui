@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 10 Jul 2019 12:28:00 GMT",
+      "tag": "@uifabric/charting_v0.133.2",
+      "version": "0.133.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FIx linechart issue when consumer didn't sent height and width for the chart",
+            "author": "v-ragor@microsoft.com",
+            "commit": "49b6b2bdee4a960b7890d0f54dba31685bf98fb9"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.133.1",
       "tag": "@uifabric/charting_v0.133.1",
       "date": "Mon, 01 Jul 2019 18:51:42 GMT",

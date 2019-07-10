@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jul 2019 12:28:00 GMT and should not be manually modified.
+
+## 7.0.3
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- Button: Fixing CompoundButton and SplitButton high contrast mode styling. (humbertomakotomorimoto@gmail.com)
 
 ## 7.0.2
 Fri, 14 Jun 2019 12:26:30 GMT
