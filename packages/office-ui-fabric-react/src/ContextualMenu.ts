@@ -1,1 +1,1 @@
-export * from './components/ContextualMenu/index';
+export * from './packages/react-contextual-menu/ContextualMenu';

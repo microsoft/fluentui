@@ -1,1 +1,1 @@
-export * from './utilities/selectableOption/index';
+export * from './packages/react-inputs/SelectableOption';

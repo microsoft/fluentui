@@ -1,1 +1,1 @@
-export * from './components/Overlay/index';
+export * from './packages/react-surfaces/Overlay';

@@ -1,1 +1,1 @@
-export * from './utilities/grid/index';
+export * from './packages/react-primitives/Grid';

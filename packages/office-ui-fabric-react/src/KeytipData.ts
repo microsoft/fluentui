@@ -1,1 +1,1 @@
-export * from './components/KeytipData/index';
+export * from './packages/react-primitives/KeytipData';

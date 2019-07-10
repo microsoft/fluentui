@@ -14,6 +14,7 @@ const { tslint } = require('./tasks/tslint');
 const { webpack, webpackDevServer } = require('./tasks/webpack');
 const { verifyApiExtractor, updateApiExtractor } = require('./tasks/api-extractor');
 const lintImports = require('./tasks/lint-imports');
+const { validateGoodFences } = require('./tasks/validate-good-fences');
 const prettier = require('./tasks/prettier');
 const bundleSizeCollect = require('./tasks/bundle-size-collect');
 const checkForModifiedFiles = require('./tasks/check-for-modified-files');
@@ -52,6 +53,7 @@ module.exports = function preset() {
   task('bundle-size-collect', bundleSizeCollect);
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
+  task('validate-good-fences', validateGoodFences);
   task('ts', () => {
     return argv().commonjs
       ? 'ts:commonjs-only'

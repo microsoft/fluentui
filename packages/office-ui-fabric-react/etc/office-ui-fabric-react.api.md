@@ -461,6 +461,18 @@ export class Button extends BaseComponent<IButtonProps, {}> {
 }
 
 // @public (undocumented)
+export const ButtonGlobalClassNames: {
+    msButton: string;
+    msButtonIcon: string;
+    msButtonMenuIcon: string;
+    msButtonLabel: string;
+    msButtonDescription: string;
+    msButtonScreenReaderText: string;
+    msButtonFlexContainer: string;
+    msButtonTextContainer: string;
+};
+
+// @public (undocumented)
 export enum ButtonType {
     // (undocumented)
     command = 4,
@@ -1279,6 +1291,9 @@ export function getAllSelectedOptions(options: ISelectableOption[], selectedIndi
 // @public (undocumented)
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
+// @public (undocumented)
+export const getBaseButtonClassNames: (theme: ITheme, styles: IButtonStyles, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, isSplit: boolean | undefined) => IButtonClassNames;
+
 // @public
 export function getColorFromHSV(hsv: IHSV, a?: number): IColor;
 
@@ -1290,6 +1305,9 @@ export function getColorFromString(inputColor: string): IColor | undefined;
 
 // @public (undocumented)
 export function getContrastRatio(color1: IColor, color2: IColor): number;
+
+// @public @deprecated (undocumented)
+export const getDividerClassNames: (theme: ITheme) => IVerticalDividerClassNames;
 
 // @public
 export function getFullColorString(color: IColor): string;
@@ -1838,6 +1856,26 @@ export interface IButton {
 }
 
 // @public (undocumented)
+export interface IButtonClassNames {
+    // (undocumented)
+    description?: string;
+    // (undocumented)
+    flexContainer?: string;
+    // (undocumented)
+    icon?: string;
+    // (undocumented)
+    label?: string;
+    // (undocumented)
+    menuIcon?: string;
+    // (undocumented)
+    root?: string;
+    // (undocumented)
+    screenReaderText?: string;
+    // (undocumented)
+    textContainer?: string;
+}
+
+// @public (undocumented)
 export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button> {
     allowDisabledFocus?: boolean;
     ariaDescription?: string;
@@ -1853,7 +1891,6 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     // @deprecated
     description?: IStyle;
     disabled?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "IButtonClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, isSplit: boolean | undefined, allowDisabledFocus: boolean) => IButtonClassNames;
     // Warning: (ae-forgotten-export) The symbol "ISplitButtonClassNames" needs to be exported by the entry point index.d.ts
     getSplitButtonClassNames?: (disabled: boolean, expanded: boolean, checked: boolean, allowDisabledFocus: boolean) => ISplitButtonClassNames;
@@ -5008,6 +5045,17 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
 }
 
 // @public (undocumented)
+export interface IKeytip {
+}
+
+// @public (undocumented)
+export interface IKeytipDataProps extends IBaseProps<IKeytip> {
+    ariaDescribedBy?: string;
+    disabled?: boolean;
+    keytipProps?: IKeytipProps;
+}
+
+// @public (undocumented)
 export interface IKeytipLayer {
 }
 
@@ -7744,8 +7792,6 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
     render(): JSX.Element;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IKeytipDataProps" needs to be exported by the entry point index.d.ts
-// 
 // @public
 export class KeytipData extends React.Component<IKeytipDataProps & IRenderComponent<{}>, {}> {
     // (undocumented)
@@ -9348,7 +9394,7 @@ export * from "@uifabric/utilities";
 
 // Warnings were encountered during analysis:
 // 
-// lib/components/ColorPicker/ColorPicker.base.d.ts:8:9 - (ae-forgotten-export) The symbol "IRGBHex" needs to be exported by the entry point index.d.ts
+// lib/packages/react-pickers/components/ColorPicker/ColorPicker.base.d.ts:8:9 - (ae-forgotten-export) The symbol "IRGBHex" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

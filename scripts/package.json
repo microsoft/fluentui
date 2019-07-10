@@ -34,6 +34,7 @@
     "fs-extra": "^7.0.1",
     "github": "^7.0.0",
     "glob": "^7.1.2",
+    "good-fences": "0.5.1",
     "gzip-size": "^3.0.0",
     "jest": "24.1.0",
     "jest-cli": "24.1.0",

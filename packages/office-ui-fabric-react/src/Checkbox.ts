@@ -1,1 +1,1 @@
-export * from './components/Checkbox/index';
+export * from './packages/react-inputs/Checkbox';

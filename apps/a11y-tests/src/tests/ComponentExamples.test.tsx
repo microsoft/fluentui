@@ -78,10 +78,9 @@ describe('a11y test', () => {
 
   const files: string[] = [];
   const exampleFiles: string[] = glob.sync(
-    path.resolve(process.cwd(), `node_modules/office-ui-fabric-react/lib-commonjs/components/**/examples/*Example*.js`)
+    path.resolve(process.cwd(), `node_modules/office-ui-fabric-react/lib-commonjs/packages/**/components/**/examples/*Example*.js`)
   );
   files.push(...exampleFiles);
-
   files
     .filter((componentFile: string) => {
       return !excludedExampleFiles.some(excludedFile => componentFile.indexOf('/' + excludedFile) !== -1);

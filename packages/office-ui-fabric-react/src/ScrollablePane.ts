@@ -1,1 +1,1 @@
-export * from './components/ScrollablePane/index';
+export * from './packages/react-surfaces/ScrollablePane';
