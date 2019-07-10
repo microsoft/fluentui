@@ -1,0 +1,8 @@
+{
+  "comment": "FIx linechart issue when consumer didn't sent height and width for the chart",
+  "type": "patch",
+  "packageName": "@uifabric/charting",
+  "email": "v-ragor@microsoft.com",
+  "commit": "49b6b2bdee4a960b7890d0f54dba31685bf98fb9",
+  "date": "2019-07-04T09:40:57.528Z"
+}
