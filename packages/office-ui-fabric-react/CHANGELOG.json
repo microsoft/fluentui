@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.195.0",
+      "tag": "office-ui-fabric-react_v6.195.0",
+      "date": "Wed, 10 Jul 2019 00:26:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: set aria-hidden to true on the ChevronDown icon so that it is not picked up by the screen reader",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "b211677ea2e88e47359680f5385c1c69b3c72790"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add optional DetailsRow sliding animation on cell content update",
+            "author": "inateeg <inateeg@microsoft.com>",
+            "commit": "8d4164cbf6ce9566e00c3362b907f90ba89df04e"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.194.0",
       "tag": "office-ui-fabric-react_v6.194.0",
       "date": "Mon, 08 Jul 2019 20:48:15 GMT",

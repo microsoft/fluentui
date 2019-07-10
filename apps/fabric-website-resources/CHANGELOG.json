@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.19.0",
+      "tag": "@uifabric/fabric-website-resources_v6.19.0",
+      "date": "Wed, 10 Jul 2019 00:26:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add DetailsList animation example page",
+            "author": "inateeg <inateeg@microsoft.com>",
+            "commit": "8d4164cbf6ce9566e00c3362b907f90ba89df04e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.194.0` to `^6.195.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.5",
       "tag": "@uifabric/fabric-website-resources_v6.18.5",
       "date": "Wed, 12 Jun 2019 22:15:55 GMT",

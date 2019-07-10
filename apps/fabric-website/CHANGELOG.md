@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 08 Jul 2019 20:48:15 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jul 2019 00:26:15 GMT and should not be manually modified.
+
+## 6.19.5
+Wed, 10 Jul 2019 00:26:15 GMT
+
+### Patches
+
+- DetailsList cell update animation
 
 ## 6.19.4
 Mon, 08 Jul 2019 20:48:15 GMT

@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 08 Jul 2019 20:48:15 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jul 2019 00:26:15 GMT and should not be manually modified.
+
+## 6.195.0
+Wed, 10 Jul 2019 00:26:15 GMT
+
+### Minor changes
+
+- Add optional DetailsRow sliding animation on cell content update
+
+### Patches
+
+- Dropdown: set aria-hidden to true on the ChevronDown icon so that it is not picked up by the screen reader
 
 ## 6.194.0
 Mon, 08 Jul 2019 20:48:15 GMT
