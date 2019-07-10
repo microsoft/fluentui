@@ -23,10 +23,12 @@ module.exports = function() {
   const fs = require('fs');
   const chalk = require('chalk').default;
   const findConfig = require('../find-config');
+  const findGitRoot = require('../monorepo/findGitRoot');
   const { readRushJson } = require('../read-config');
 
+  const gitRoot = findGitRoot();
   const sourcePath = path.resolve(process.cwd(), 'src');
-  const nodeModulesPath = path.resolve(process.cwd(), 'node_modules');
+  const nodeModulesPath = path.resolve(gitRoot, 'node_modules');
   const rushJsonPath = findConfig('rush.json');
   const rootFolder = path.dirname(rushJsonPath);
   const rushJson = readRushJson();
@@ -298,6 +300,7 @@ module.exports = function() {
    */
   function reportFilePathErrors(pathNotFile, pathRelative) {
     if (pathNotFile.count) {
+      debugger;
       console.error(
         `${chalk.red('ERROR')}: ${
           pathNotFile.count

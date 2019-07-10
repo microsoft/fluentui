@@ -38,7 +38,7 @@ module.exports = function(env) {
           'office-ui-fabric-react$': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
           'office-ui-fabric-react/src': path.join(__dirname, '../../packages/office-ui-fabric-react/src'),
           'office-ui-fabric-react/lib': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
-          '@uifabric/api-docs/lib': path.join(__dirname, '../../packages/@uifabric/api-docs/lib')
+          '@uifabric/api-docs/lib': path.join(__dirname, '../../packages/api-docs/lib')
         }
       }
     },

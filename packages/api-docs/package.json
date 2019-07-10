@@ -6,7 +6,7 @@
   "typings": "lib/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build && node ./lib-commonjs/generatePageJsonFiles.js",
+    "build": "npx just-scripts build",
     "just": "npx just-scripts",
     "clean": "npx just-scripts clean"
   },

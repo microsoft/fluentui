@@ -4,7 +4,7 @@
   "private": true,
   "description": "A11y Tests for Office UI Fabric React",
   "scripts": {
-    "build": "npx just-scripts build && npx just-scripts jest",
+    "build": "npx just-scripts build",
     "just": "npx just-scripts",
     "test": "npx just-scripts jest",
     "code-style": "npx just-scripts code-style",

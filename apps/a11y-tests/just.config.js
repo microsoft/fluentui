@@ -3,4 +3,4 @@ const { task, series, parallel, condition, argv } = just;
 
 preset();
 
-task('build', series('clean', 'ts:commonjs-only')).cached();
+task('build', series('clean', 'ts:commonjs-only', 'jest')).cached();

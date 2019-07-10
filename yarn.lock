@@ -1550,15 +1550,10 @@
   dependencies:
     "@types/d3-time" "*"
 
-"@types/d3-selection@*":
+"@types/d3-selection@*", "@types/d3-selection@1.4.1":
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/@types/d3-selection/-/d3-selection-1.4.1.tgz#fa1f8710a6b5d7cfe5c6caa61d161be7cae4a022"
   integrity sha512-bv8IfFYo/xG6dxri9OwDnK3yCagYPeRIjTlrcdYJSx+FDWlCeBDepIHUpqROmhPtZ53jyna0aUajZRk0I3rXNA==
-
-"@types/d3-selection@1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@types/d3-selection/-/d3-selection-1.3.0.tgz#acede3d22c18ec085cc401d4fdab9f040e1a73c7"
-  integrity sha512-1SJhi3kTk/SHHIE6XkHuHU2REYkbSOjkQuo3HT71FOTs8/tjeGcvtXMsX4N3kU1UE1nVG+A5pg7TSjuJ4zUN3A==
 
 "@types/d3-shape@^1.2.3":
   version "1.3.1"
@@ -1780,6 +1775,11 @@
   version "1.3.28"
   resolved "https://registry.yarnpkg.com/@types/resemblejs/-/resemblejs-1.3.28.tgz#2e0db3b5fdb0f2f3d454f5d72e13241209ea97ad"
   integrity sha1-Lg2ztf2w8vPUVPXXLhMkEgnql60=
+
+"@types/sarif@2.1.1", "@types/sarif@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@types/sarif/-/sarif-2.1.1.tgz#d398d201eade0a88958dffdd13ca88f7a37546df"
+  integrity sha512-OI9w+yqOhvT3Z9tF/4d+YVFbdYojotHMRfuKrVtAzeKu3L0kBiK6CnHADkNrfSeVOgkIMeg8OqIQFfcsm7HgCg==
 
 "@types/semver@^5.5.0":
   version "5.5.0"
@@ -2706,11 +2706,12 @@ axe-puppeteer@^1.0.0:
   dependencies:
     axe-core "^3.1.2"
 
-axe-sarif-converter@^1.0.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-1.4.0.tgz#137d767daf350c6105da32d19fc26eb4133378d9"
-  integrity sha512-te2SXGX5+Yl0OcG/518WGxRYaesAwUB0ww1c6h5mlcCKxWWSItHNbjd6BX511CH7eus4ItnHe7xgilQSXokRSw==
+axe-sarif-converter@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-2.0.1.tgz#747c7ebdc8fcb2a7b66545bbc6db1b4fa7467856"
+  integrity sha512-Fd0wNxEc68K28B40KaCqSJiCnHfYRx0gmPn5aNgGaInRJQQWY9G0IRZcCF7cweHqc+1zDC1ZrkFWAQcOecVBaQ==
   dependencies:
+    "@types/sarif" "2.1.1"
     axe-core "^3.2.2"
 
 axios@0.19.0:
@@ -12817,15 +12818,6 @@ react-modal@^3.3.2:
     prop-types "^15.5.10"
     react-lifecycles-compat "^3.0.0"
     warning "^3.0.0"
-
-react-monaco-editor@^0.26.2:
-  version "0.26.2"
-  resolved "https://registry.yarnpkg.com/react-monaco-editor/-/react-monaco-editor-0.26.2.tgz#a12b188529cb9ca4859a9d688ad35701c7d9c933"
-  integrity sha512-a7/w6l8873ankpa5cdAwXSRnwEis8V/2YVeQA0JdTh0edFhQ/2TKlgm8bOFYmGX3taBk+EVp9OMNQvYH1O73iA==
-  dependencies:
-    "@types/react" "*"
-    monaco-editor "^0.17.0"
-    prop-types "^15.7.2"
 
 react-split-pane@^0.1.77:
   version "0.1.87"
