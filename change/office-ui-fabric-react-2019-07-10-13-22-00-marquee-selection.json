@@ -1,0 +1,8 @@
+{
+  "comment": "Only clear selection in MarqueeSelection when starting a new marquee",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "tmichon@microsoft.com",
+  "commit": "ed153240bd10909f2879139cfc2b58822730140b",
+  "date": "2019-07-10T20:22:00.499Z"
+}
