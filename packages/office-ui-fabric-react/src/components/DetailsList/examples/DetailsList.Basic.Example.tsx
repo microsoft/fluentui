@@ -68,7 +68,6 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
         />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
-            checkButtonAriaLabel="Row checkbox"
             items={items}
             columns={this._columns}
             setKey="set"
@@ -77,6 +76,7 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
             selectionPreservedOnEmptyClick={true}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+            checkButtonAriaLabel="Row checkbox"
             onItemInvoked={this._onItemInvoked}
           />
         </MarqueeSelection>

@@ -179,6 +179,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           ariaLabelForListHeader="Column headers. Click to sort."
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
+          checkButtonAriaLabel="Row checkbox"
           onRenderMissingItem={this._onRenderMissingItem}
         />
 
