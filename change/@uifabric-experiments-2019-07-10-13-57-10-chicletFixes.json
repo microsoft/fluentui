@@ -1,0 +1,8 @@
+{
+  "comment": "Chiclet: adjust xsmall chiclet title height",
+  "type": "patch",
+  "packageName": "@uifabric/experiments",
+  "email": "natalie.ethell@microsoft.com",
+  "commit": "04958abbb3a8d0ff556770fc0c4fb0abdb9dbca4",
+  "date": "2019-07-10T20:57:10.924Z"
+}
