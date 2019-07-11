@@ -14,13 +14,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style",
-    "start": "npx just-scripts dev",
-    "start-test": "npx just-scripts jest-watch",
-    "update-snapshots": "npx just-scripts jest -u"
+    "build": "just-scripts build",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start": "just-scripts dev",
+    "start-test": "just-scripts jest-watch",
+    "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
     "@types/deep-assign": "^0.1.1",

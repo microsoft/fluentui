@@ -11,15 +11,15 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build --commonjs",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style",
-    "just": "npx just-scripts",
-    "start-test": "npx just-scripts jest-watch",
-    "update-snapshots": "npx just-scripts jest -u"
+    "build": "just-scripts build --commonjs",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "start-test": "just-scripts jest-watch",
+    "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "just-scripts": "~0.24.0",
+    "just-scripts": "~0.25.2",
     "@types/babylon": "^6.16.5",
     "@types/jest": "23.0.0",
     "@types/loader-utils": "1.1.3",

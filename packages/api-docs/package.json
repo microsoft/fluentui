@@ -6,12 +6,12 @@
   "typings": "lib/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts",
-    "clean": "npx just-scripts clean"
+    "build": "just-scripts build",
+    "just": "just-scripts",
+    "clean": "just-scripts clean"
   },
   "devDependencies": {
-    "just-scripts": "~0.24.0",
+    "just-scripts": "~0.25.2",
     "@types/node": "^8.10.29",
     "@uifabric/merge-styles": "^7.1.1",
     "@uifabric/styling": "^7.1.1",
