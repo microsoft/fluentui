@@ -310,7 +310,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       {
         margin: '14px 0',
         // Ensure that title doesn't shrink if screen is too small
-        flexGrow: 0,
+        flexGrow: 1,
+        flexShrink: 0,
         selectors: {
           [`@media (min-width: ${ScreenWidthMinXLarge}px)`]: {
             marginTop: '30px'
