@@ -6,7 +6,7 @@ import { IGroupShowAllProps } from './GroupShowAll.types';
 
 import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
 
-import { BaseComponent, IRenderFunction, IDisposable, IClassNames } from '../../Utilities';
+import { initializeComponentRef, IRenderFunction, IDisposable, IClassNames } from '../../Utilities';
 
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/index';
 
@@ -19,6 +19,7 @@ import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { css, getId } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { IListProps } from '../List/index';
+import { EventGroup } from '@uifabric/utilities';
 
 export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedListSection> {
   /** GroupedList resolved class names */
@@ -111,10 +112,11 @@ export interface IGroupedListSectionState {
 
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 
-export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, IGroupedListSectionState> {
+export class GroupedListSection extends React.Component<IGroupedListSectionProps, IGroupedListSectionState> {
   private _root = React.createRef<HTMLDivElement>();
   private _list = React.createRef<List>();
   private _id: string;
+  private _events: EventGroup;
 
   private _dragDropSubscription: IDisposable;
 
@@ -123,12 +125,16 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
     const { selection, group } = props;
 
+    initializeComponentRef(this);
+
     this._id = getId('GroupedListSection');
 
     this.state = {
       isDropping: false,
       isSelected: selection && group ? selection.isRangeSelected(group.startIndex, group.count) : false
     };
+
+    this._events = new EventGroup(this);
   }
 
   public componentDidMount(): void {
