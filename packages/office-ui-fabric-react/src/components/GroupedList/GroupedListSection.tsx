@@ -16,10 +16,9 @@ import { GroupFooter } from './GroupFooter';
 
 import { List } from '../../List';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
-import { css, getId } from '../../Utilities';
+import { css, getId, EventGroup } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { IListProps } from '../List/index';
-import { EventGroup } from '@uifabric/utilities';
 
 export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedListSection> {
   /** GroupedList resolved class names */
