@@ -87,7 +87,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     }
     // set default aria label if expandButtonProps['aria-label'] is not defined.
     if (!expandButtonProps['aria-label']) {
-      expandButtonProps['aria-label'] = group.isCollapsed ? 'expand list' : 'collapse list';
+      expandButtonProps['aria-label'] = group.isCollapsed ? 'expand group' : 'collapse group';
     }
 
     return (
