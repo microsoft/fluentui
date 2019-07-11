@@ -1,0 +1,8 @@
+{
+  "comment": "Dropdown: adds an `onRenderLabel` custom renderer prop.",
+  "type": "minor",
+  "packageName": "office-ui-fabric-react",
+  "email": "vibraga@microsoft.com",
+  "commit": "5c848eb0915176ae13977801c9574dd9fc9f8895",
+  "date": "2019-07-11T01:58:24.774Z"
+}
