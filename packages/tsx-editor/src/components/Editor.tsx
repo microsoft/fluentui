@@ -1,15 +1,15 @@
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
+import * as monaco from 'monaco-editor';
 import * as React from 'react';
 import { IEditorProps } from './Editor.types';
 
-export const Editor = (props: IEditorProps) => {
+export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProps) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const { width, height, onChange, code, language } = props;
   const style = { width, height };
 
   React.useEffect(() => {
     const editor = monaco.editor.create(ref.current!, {
-      model: monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('file:///main.tsx')),
+      model: monaco.editor.createModel(code, 'typescript'),
       value: code,
       language
     });
