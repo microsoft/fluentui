@@ -1,8 +1,0 @@
-{
-  "comment": "Pivot: updating white hover background color(#9595)",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "marygans@microsoft.com",
-  "commit": "1305e42be11877daef8e6716305763d47679a8f9",
-  "date": "2019-07-09T18:41:53.467Z"
-}

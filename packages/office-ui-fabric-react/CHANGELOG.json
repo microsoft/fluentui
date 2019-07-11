@@ -2,6 +2,45 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 11 Jul 2019 12:29:51 GMT",
+      "tag": "office-ui-fabric-react_v7.8.2",
+      "version": "7.8.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pivot: updating white hover background color(#9595)",
+            "author": "marygans@microsoft.com",
+            "commit": "1305e42be11877daef8e6716305763d47679a8f9"
+          },
+          {
+            "comment": "Pass disabled state to labels in ChoiceGroup, Dropdown, Slider and SpinButton.",
+            "author": "vibraga@microsoft.com",
+            "commit": "61660371b5c45486aef4a7014bbc3494d3ff8cb3"
+          },
+          {
+            "comment": "Tooltip: Fixing 'persist on scroll' issues.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "eca43a063b66456426959e89bc1c32df7de9fc67"
+          },
+          {
+            "comment": "DetailsRow: pass aria-label attribute to each row's checkbox.",
+            "author": "vibraga@microsoft.com",
+            "commit": "6717d7c71de202760f4d0ecbe061f40acbb0ec9a"
+          },
+          {
+            "comment": "Only clear selection in MarqueeSelection when starting a new marquee",
+            "author": "tmichon@microsoft.com",
+            "commit": "ed153240bd10909f2879139cfc2b58822730140b"
+          },
+          {
+            "comment": "Utilities: reuse an exisiting clamp function.",
+            "author": "vibraga@microsoft.com",
+            "commit": "383a6ee5f2ebde57fbff43a34b4cfe7f07c3d48d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Jul 2019 12:28:00 GMT",
       "tag": "office-ui-fabric-react_v7.8.1",
       "version": "7.8.1",
