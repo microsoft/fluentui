@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Chiclet, ChicletSize } from '@uifabric/experiments';
-import { Breadcrumb, getRTL, IBreadcrumbItem, Icon, TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react';
+import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react/lib/Tooltip';
+import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';

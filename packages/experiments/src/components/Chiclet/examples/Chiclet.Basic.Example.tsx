@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Chiclet } from '../Chiclet';
-import { ChicletSize } from '../Chiclet.types';
+import { Chiclet, ChicletSize } from '@uifabric/experiments/lib/Chiclet';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 

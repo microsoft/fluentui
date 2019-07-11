@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Chiclet, ChicletSize } from '@uifabric/experiments';
-import { IButtonProps, IconButton, Stack } from 'office-ui-fabric-react';
+import { IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
+import { Text } from 'office-ui-fabric-react/lib/Text';
 import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
@@ -20,13 +21,7 @@ const footerStyle = mergeStyles({
 
 const activitiesStyle = mergeStyles({
   width: 184,
-  height: 16,
-  fontSize: 12,
-  fontWeight: 'normal',
-  fontStyle: 'normal',
-  fontStretch: 'normal',
   lineHeight: 1.83,
-  letterSpacing: 'normal',
   float: 'left',
   paddingTop: 18,
   paddingBottom: 12,
@@ -60,11 +55,7 @@ export class ChicletFooterExample extends React.Component<{}, {}> {
     ];
     const footer = <FooterComponent buttonProps={footerButtonProps} activities="10 Comments  16 Shares  87 Views" />;
 
-    return (
-      <Stack tokens={{ childrenGap: 16 }}>
-        <Chiclet url={SAMPLE_URL} title="Quarterly Results.docx" size={ChicletSize.medium} footer={footer} />
-      </Stack>
-    );
+    return <Chiclet url={SAMPLE_URL} title="Quarterly Results.docx" size={ChicletSize.medium} footer={footer} />;
   }
 }
 
@@ -76,7 +67,9 @@ export interface IFooterComponent extends React.Props<FooterComponent> {
 function _renderFooter(buttonProps: IButtonProps[], activities: string): React.ReactElement<HTMLDivElement> {
   return (
     <div className={footerStyle}>
-      <div className={activitiesStyle}>{activities ? activities : null}</div>
+      <Text variant="small" className={activitiesStyle}>
+        {activities}
+      </Text>
       <div className={actionsStyle}>
         {buttonProps &&
           buttonProps.map((buttonProp: IButtonProps, index: number) => {
