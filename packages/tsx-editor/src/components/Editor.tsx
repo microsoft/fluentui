@@ -23,7 +23,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       experimentalDecorators: true,
       preserveConstEnums: true,
       outDir: 'lib',
-      module: monaco.languages.typescript.ModuleKind.CommonJS,
+      module: monaco.languages.typescript.ModuleKind.ESNext,
       lib: ['es5', 'dom']
     });
 

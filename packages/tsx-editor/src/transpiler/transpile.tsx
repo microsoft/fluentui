@@ -1,8 +1,9 @@
 import * as monaco from 'monaco-editor';
 import { TypeScriptWorker, EmitOutput } from './monacoTypescriptWorker.d';
 import { ITextModel } from '../components/Editor.types';
+import { transformExample } from './exampleTransform';
 
-interface ITranspiledOutput {
+export interface ITranspiledOutput {
   outputString?: string;
   error?: string;
 }
@@ -20,10 +21,10 @@ export async function transpile(model: ITextModel): Promise<ITranspiledOutput> {
   return transpiledOutput;
 }
 
-export function evalCode(code: string): string | undefined {
+export function evalCode(code: string, id: string): string | undefined {
   try {
     // tslint:disable:no-eval
-    eval(code);
+    eval(transformExample(code, id));
   } catch (ex) {
     return ex.message;
   }
