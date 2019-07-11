@@ -253,7 +253,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     return currentPosition;
   }
   private _updateValue(value: number, renderedValue: number): void {
-    const { step } = this.props;
+    const { step, snaps } = this.props;
 
     let numDec = 0;
     if (isFinite(step!)) {
@@ -265,6 +265,10 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     // Make sure value has correct number of decimal places based on number of decimals in step
     const roundedValue = parseFloat(value.toFixed(numDec));
     const valueChanged = roundedValue !== this.state.value;
+
+    if (snaps) {
+      renderedValue = roundedValue;
+    }
 
     this.setState(
       {
