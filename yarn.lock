@@ -9607,15 +9607,23 @@ just-scripts@~0.24.0:
     chalk "^2.4.1"
     yargs "^12.0.5"
 
+"just-task-logger@>=0.3.0 <1.0.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/just-task-logger/-/just-task-logger-0.3.0.tgz#48f33a928a7acd6cf2d769bc00dc9cde4c1d871b"
+  integrity sha512-IA5M26L9Qv2aD5V+Wjkd5ILUTerr00RHKNxAg22JZRRHF89KeUVJ6LYNUaYBnxH7cGXlC37OftPO/eYwgqCpaQ==
+  dependencies:
+    chalk "^2.4.1"
+    yargs "^12.0.5"
+
 "just-task@>=0.11.0 <1.0.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/just-task/-/just-task-0.11.0.tgz#f5f5af46b1e1c4cbcb1b767881fc687a6684401d"
-  integrity sha512-bwNC+YtT0HVEuNzZNXQATr1MmYatC3jFLKqAjsVuvufXEvibIDRy7xngI+0PcMd0ZiIUM8yyjV312e2Q82LJ3Q==
+  version "0.12.2"
+  resolved "https://registry.yarnpkg.com/just-task/-/just-task-0.12.2.tgz#8b698d348d0943d5856bb7dc1b2555824ae9930a"
+  integrity sha512-nSNfPJm+oEEyGfl5DBIYt9347Y1/G/LIr3SItMQqjzoJ0p5VmQVf0Z01En80oiO9pP+OWpUaoJS3I0JXkgrbag==
   dependencies:
     "@microsoft/package-deps-hash" "^2.2.153"
     chalk "^2.4.1"
     fs-extra "^7.0.1"
-    just-task-logger ">=0.2.1 <1.0.0"
+    just-task-logger ">=0.3.0 <1.0.0"
     resolve "^1.8.1"
     undertaker "^1.2.0"
     undertaker-registry "^1.0.1"

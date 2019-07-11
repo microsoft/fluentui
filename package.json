@@ -8,9 +8,9 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "devDependencies": {
-    "lerna": "^3.15.0",
     "beachball": "^1.9.2",
     "husky": "^3.0.0",
+    "lerna": "^3.15.0",
     "lint-staged": "^7.0.5"
   },
   "scripts": {
