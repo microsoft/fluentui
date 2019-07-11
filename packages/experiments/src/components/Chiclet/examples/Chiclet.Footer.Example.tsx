@@ -3,6 +3,8 @@ import { Chiclet, ChicletSize } from '@uifabric/experiments';
 import { IButtonProps, IconButton, Stack } from 'office-ui-fabric-react';
 import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
 
+const SAMPLE_URL = 'https://contoso.sharepoint.com';
+
 export class FooterComponent extends React.Component<IFooterComponent, {}> {
   public render(): JSX.Element {
     const { buttonProps, activities } = this.props;
@@ -60,7 +62,7 @@ export class ChicletFooterExample extends React.Component<{}, {}> {
 
     return (
       <Stack tokens={{ childrenGap: 16 }}>
-        <Chiclet url={'https://microsoft.sharepoint.com'} title="Quarterly Results.docx" size={ChicletSize.medium} footer={footer} />
+        <Chiclet url={SAMPLE_URL} title="Quarterly Results.docx" size={ChicletSize.medium} footer={footer} />
       </Stack>
     );
   }

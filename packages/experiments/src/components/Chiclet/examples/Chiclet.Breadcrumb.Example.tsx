@@ -3,6 +3,8 @@ import { Chiclet, ChicletSize } from '@uifabric/experiments';
 import { Breadcrumb, getRTL, IBreadcrumbItem, Icon, TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react';
 import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
 
+const SAMPLE_URL = 'https://contoso.sharepoint.com';
+
 const chevronStyle = mergeStyles({
   fontSize: 8,
   paddingLeft: 3,
@@ -47,7 +49,7 @@ export class ChicletBreadcrumbExample extends React.Component<{}, {}> {
 
     return (
       <Chiclet
-        url={'https://microsoft.sharepoint.com'}
+        url={SAMPLE_URL}
         title="Quarterly Results.docx"
         image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg"
         size={ChicletSize.medium}
