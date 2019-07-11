@@ -273,7 +273,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 top: 0px;
               }
               &:hover {
-                background-color: #ffffff;
+                background-color: #f3f2f1;
                 color: #201f1e;
                 cursor: pointer;
               }
@@ -435,7 +435,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 top: 0px;
               }
               &:hover {
-                background-color: #ffffff;
+                background-color: #f3f2f1;
                 color: #201f1e;
                 cursor: pointer;
               }
@@ -597,7 +597,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 top: 0px;
               }
               &:hover {
-                background-color: #ffffff;
+                background-color: #f3f2f1;
                 color: #201f1e;
                 cursor: pointer;
               }

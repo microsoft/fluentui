@@ -1,8 +1,0 @@
-{
-  "comment": "Dropdown: set aria-hidden to true on the ChevronDown icon so that it is not picked up by the screen reader",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "natalie.ethell@microsoft.com",
-  "commit": "aed04bd39cec455176e1f8d20b6638cb9d2515c3",
-  "date": "2019-07-03T23:12:51.757Z"
-}

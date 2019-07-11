@@ -83,7 +83,7 @@ exports[`Component Examples renders ProgressIndicator.Basic.Example.tsx correctl
         ms-ProgressIndicator-itemDescription
         {
           color: #605e5c;
-          font-size: 10px;
+          font-size: 12px;
           line-height: 18px;
         }
   >

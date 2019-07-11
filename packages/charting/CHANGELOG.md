@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 01 Jul 2019 18:51:42 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jul 2019 12:28:00 GMT and should not be manually modified.
+
+## 0.133.2
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- FIx linechart issue when consumer didn't sent height and width for the chart (v-ragor@microsoft.com)
 
 ## 0.133.1
 Mon, 01 Jul 2019 18:51:42 GMT

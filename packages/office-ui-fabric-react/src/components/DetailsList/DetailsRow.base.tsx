@@ -271,7 +271,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
             {onRenderCheck({
               selected: isSelected,
               anySelected: isSelectionModal,
-              title: checkButtonAriaLabel,
+              'aria-label': checkButtonAriaLabel,
               canSelect,
               compact,
               className: this._classNames.check,

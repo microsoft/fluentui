@@ -2,6 +2,20 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Wed, 10 Jul 2019 12:28:00 GMT",
+      "tag": "@uifabric/fluent-theme_v7.0.3",
+      "version": "7.0.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Fixing CompoundButton and SplitButton high contrast mode styling.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "c0c16b62a94e508a551b84dd03fce418b1c07c69"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Jul 2019 12:30:55 GMT",
       "tag": "@uifabric/fluent-theme_v7.0.2",
       "version": "7.0.2",

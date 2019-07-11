@@ -1,6 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 09 Jul 2019 17:34:38 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Jul 2019 12:29:51 GMT and should not be manually modified.
+
+## 7.8.2
+Thu, 11 Jul 2019 12:29:51 GMT
+
+### Patches
+
+- Pivot: updating white hover background color(#9595) (marygans@microsoft.com)
+,- Pass disabled state to labels in ChoiceGroup, Dropdown, Slider and SpinButton. (vibraga@microsoft.com)
+,- Tooltip: Fixing 'persist on scroll' issues. (humbertomakotomorimoto@gmail.com)
+,- DetailsRow: pass aria-label attribute to each row's checkbox. (vibraga@microsoft.com)
+,- Only clear selection in MarqueeSelection when starting a new marquee (tmichon@microsoft.com)
+,- Utilities: reuse an exisiting clamp function. (vibraga@microsoft.com)
+
+## 7.8.1
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- Dropdown: set aria-hidden to true on the ChevronDown icon so that it is not picked up by the screen reader (natalie.ethell@microsoft.com)
+,- Button: Fixing CompoundButton and SplitButton high contrast mode styling. (humbertomakotomorimoto@gmail.com)
+,- FocusTrapZone: Updating overview description to indicate restriction of website interaction. (Humberto.Morimoto@microsoft.com)
+,- Nav: fixes focus border in High Contrast mode. (vibraga@microsoft.com)
+,- Pickers: replace empty string with undefined. (vibraga@microsoft.com)
 
 ## 7.8.0
 Tue, 09 Jul 2019 17:34:38 GMT

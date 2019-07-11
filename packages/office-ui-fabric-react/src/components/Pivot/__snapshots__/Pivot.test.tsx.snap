@@ -102,7 +102,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #ffffff;
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
@@ -261,7 +261,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #ffffff;
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
@@ -476,7 +476,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #ffffff;
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
@@ -635,7 +635,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #ffffff;
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
@@ -837,7 +837,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #ffffff;
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
@@ -997,7 +997,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #ffffff;
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
@@ -1159,7 +1159,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #ffffff;
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
@@ -1386,7 +1386,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #ffffff;
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
@@ -1545,7 +1545,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #ffffff;
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
@@ -1915,7 +1915,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #ffffff;
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
@@ -2128,7 +2128,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #ffffff;
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
@@ -2287,7 +2287,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #ffffff;
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
@@ -2656,7 +2656,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #ffffff;
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
@@ -2868,7 +2868,7 @@ exports[`Pivot supports JSX expressions 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #ffffff;
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
@@ -3018,7 +3018,7 @@ exports[`Pivot supports JSX expressions 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #ffffff;
+              background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
