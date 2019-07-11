@@ -29,7 +29,7 @@ export interface IExampleCardProps {
   styles?: IStyleFunctionOrObject<IExampleCardStyleProps, IExampleCardStyles>;
 
   /** On click handler to ensure only one code editor instance is shown at once */
-  onClick?: (card: string) => void;
+  onToggleEditor?: (card: string) => void;
 
   /** Whether code example is visible */
   isCodeVisible?: boolean;
