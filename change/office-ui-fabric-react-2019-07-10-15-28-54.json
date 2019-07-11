@@ -1,0 +1,8 @@
+{
+  "comment": "GroupedList: Refactor out BaseComponent in favor of React.Component and React.FunctionComponent",
+  "type": "minor",
+  "packageName": "office-ui-fabric-react",
+  "email": "706967+KevinTCoughlin@users.noreply.github.com",
+  "commit": "0ef080de76f13560e9b5d3507f4cb39bfdc8875d",
+  "date": "2019-07-10T22:28:54.462Z"
+}
