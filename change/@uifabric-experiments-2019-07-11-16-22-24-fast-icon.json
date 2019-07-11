@@ -1,0 +1,8 @@
+{
+  "comment": "Move styles only used by Tile next to Tile",
+  "type": "patch",
+  "packageName": "@uifabric/experiments",
+  "email": "elcraig@microsoft.com",
+  "commit": "5d34532885bf85c78a8ea5e8b7db478f5c80837b",
+  "date": "2019-07-11T23:22:09.337Z"
+}
