@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {
-  BaseComponent,
+  initializeComponentRef,
+  EventGroup,
+  Async,
   IRectangle,
   css,
   findIndex,
@@ -79,7 +81,7 @@ const _measureScrollRect = _measurePageRect;
  * or forcing an update change cause pages to shrink/grow. When these operations occur, we increment a measureVersion
  * number, which we associate with cached measurements and use to determine if a remeasure should occur.
  */
-export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> implements IList {
+export class List<T = any> extends React.Component<IListProps<T>, IListState<T>> implements IList {
   public static defaultProps = {
     startIndex: 0,
     onRenderCell: (item: any, index: number, containsFocus: boolean) => <>{(item && item.name) || ''}</>,
@@ -93,7 +95,8 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
 
   private _root = React.createRef<HTMLDivElement>();
   private _surface = React.createRef<HTMLDivElement>();
-
+  private _events: EventGroup;
+  private _async: Async;
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
   private _cachedPageHeights: {
@@ -132,11 +135,15 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
   constructor(props: IListProps<T>) {
     super(props);
 
+    initializeComponentRef(this);
+
     this.state = {
       pages: [],
       isScrolling: false
     };
 
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
     this._estimatedPageHeight = 0;
     this._totalEstimates = 0;
     this._requiredWindowsAhead = 0;
