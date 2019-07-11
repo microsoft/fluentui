@@ -9,11 +9,6 @@ const PREVIEW_IMAGE_WIDTH = '198px';
 const PREVIEW_IMAGE_HEIGHT = '122px';
 
 export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
-  public static defaultProps: IChicletCardProps = {
-    imageWidth: PREVIEW_IMAGE_WIDTH,
-    imageHeight: PREVIEW_IMAGE_HEIGHT
-  };
-
   private _classNames: { [key in keyof IChicletCardStyles]: string };
 
   public render(): JSX.Element {
@@ -31,7 +26,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
 
     return (
       <div tabIndex={tabIndex} role={role} onClick={actionable ? this._onClick : undefined} className={this._classNames.root}>
-        {generateCommonHTML(this.props, false, this._classNames.icon, this._classNames.preview)}
+        {generateCommonHTML(this.props, false, this._classNames.icon, this._classNames.preview, PREVIEW_IMAGE_HEIGHT, PREVIEW_IMAGE_WIDTH)}
         <div className={this._classNames.info}>
           <div className={this._classNames.title}>{title ? title : null}</div>
           <div className={this._classNames.description}>{description ? description : url}</div>

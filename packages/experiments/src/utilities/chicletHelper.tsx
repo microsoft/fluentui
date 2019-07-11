@@ -74,11 +74,13 @@ export function generateCommonHTML(
   props: IChicletCardProps,
   imageProvided: boolean,
   icon?: string,
-  preview?: string
+  preview?: string,
+  height?: string,
+  width?: string
 ): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> | undefined {
   return (
     <div className={preview}>
-      {renderPreview(props.image, props.imageHeight, props.imageWidth, props.imageAlt)}
+      {renderPreview(props.image, height, width, props.imageAlt)}
       {renderIcon(props.itemType || (props.title && findIcon(props.title)), icon, imageProvided)}
     </div>
   );

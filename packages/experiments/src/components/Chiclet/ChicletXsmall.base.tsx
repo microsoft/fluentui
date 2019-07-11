@@ -6,6 +6,9 @@ import { generateCommonHTML } from '../../utilities/chicletHelper';
 
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
 
+const PREVIEW_IMAGE_WIDTH = '64px';
+const PREVIEW_IMAGE_HEIGHT = '64px';
+
 export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
   private _classNames: { [key in keyof IChicletCardStyles]: string };
 
@@ -23,7 +26,14 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
 
     return (
       <div tabIndex={tabIndex} role={role} onClick={this._onClick} className={this._classNames.root}>
-        {generateCommonHTML(this.props, imageProvided, this._classNames.icon, this._classNames.preview)}
+        {generateCommonHTML(
+          this.props,
+          imageProvided,
+          this._classNames.icon,
+          this._classNames.preview,
+          PREVIEW_IMAGE_HEIGHT,
+          PREVIEW_IMAGE_WIDTH
+        )}
         <div className={this._classNames.info}>
           <div className={this._classNames.title}>{title ? title : null}</div>
           <div className={this._classNames.url}>{url ? url : null}</div>
