@@ -10,10 +10,9 @@ import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomization
 import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
-import { CodeSnippet } from '../CodeSnippet/index';
+import { Editor } from '@uifabric/tsx-editor';
 
 export interface IExampleCardState {
-  isCodeVisible?: boolean;
   schemeIndex: number;
   themeIndex: number;
 }
@@ -42,7 +41,6 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     super(props);
 
     this.state = {
-      isCodeVisible: false,
       schemeIndex: 0,
       themeIndex: 0
     };
@@ -50,7 +48,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
   public render(): JSX.Element {
     const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme } = this.props;
-    const { isCodeVisible, schemeIndex, themeIndex } = this.state;
+    const { schemeIndex, themeIndex } = this.state;
 
     return (
       <AppCustomizationsContext.Consumer>
@@ -69,7 +67,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
               : [];
           }
 
-          const styleProps: IExampleCardStyleProps = { isRightAligned, isScrollable, isCodeVisible, theme };
+          const styleProps: IExampleCardStyleProps = { isRightAligned, isScrollable, theme };
           const classNames = (this._classNames = getClassNames(styles, styleProps));
           const { subComponentStyles } = classNames;
           const { codeButtons: codeButtonStyles } = subComponentStyles;
@@ -80,8 +78,10 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
             </div>
           );
 
+          const editor = <Editor width={800} height={500} code={code!} language="typescript" />;
+
           const exampleCard = (
-            <div className={css(classNames.root, isCodeVisible && 'is-codeVisible')}>
+            <div className={css(classNames.root, this.props.isCodeVisible && 'is-codeVisible')}>
               <div className={classNames.header}>
                 <span className={classNames.title}>{title}</span>
                 <div className={classNames.toggleButtons}>
@@ -111,17 +111,17 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                     <CommandButton
                       iconProps={{ iconName: 'Embed' }}
                       onClick={this._onToggleCodeClick}
-                      checked={isCodeVisible}
+                      checked={this.props.isCodeVisible}
                       // TODO: fix once button has full styling support
                       styles={typeof codeButtonStyles === 'function' ? codeButtonStyles({}) : codeButtonStyles}
                     >
-                      {isCodeVisible ? 'Hide code' : 'Show code'}
+                      {this.props.isCodeVisible ? 'Hide code' : 'Show code'}
                     </CommandButton>
                   )}
                 </div>
               </div>
 
-              <div className={classNames.code}>{isCodeVisible && <CodeSnippet language="tsx">{code}</CodeSnippet>}</div>
+              <div className={classNames.code}>{this.props.isCodeVisible && editor}</div>
 
               {activeCustomizations ? (
                 <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
@@ -172,9 +172,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   };
 
   private _onToggleCodeClick = () => {
-    this.setState({
-      isCodeVisible: !this.state.isCodeVisible
-    });
+    this.props.onClick!(this.props.title);
   };
 }
 
