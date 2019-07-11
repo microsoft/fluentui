@@ -1068,14 +1068,21 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   private _onRenderLabel = (props: IDropdownProps): JSX.Element | null => {
     const id = this._id;
-    const { label, required } = props;
+    const { label, required, disabled } = props;
 
     const labelStyles = this._classNames.subComponentStyles
       ? (this._classNames.subComponentStyles.label as IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>)
       : undefined;
 
     return label ? (
-      <Label className={this._classNames.label} id={id + '-label'} htmlFor={id} required={required} styles={labelStyles}>
+      <Label
+        className={this._classNames.label}
+        id={id + '-label'}
+        htmlFor={id}
+        required={required}
+        styles={labelStyles}
+        disabled={disabled}
+      >
         {label}
       </Label>
     ) : null;
