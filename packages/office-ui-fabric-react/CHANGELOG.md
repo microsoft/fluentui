@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 10 Jul 2019 00:26:15 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Jul 2019 12:23:15 GMT and should not be manually modified.
+
+## 6.195.1
+Thu, 11 Jul 2019 12:23:15 GMT
+
+### Patches
+
+- Only clear selection in MarqueeSelection when starting a new marquee
 
 ## 6.195.0
 Wed, 10 Jul 2019 00:26:15 GMT

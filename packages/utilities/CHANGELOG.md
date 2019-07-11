@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 28 Jun 2019 12:22:28 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Jul 2019 12:23:15 GMT and should not be manually modified.
+
+## 6.41.5
+Thu, 11 Jul 2019 12:23:15 GMT
+
+### Patches
+
+- Utilities: Update implementation for raising a click event to support IE
 
 ## 6.41.4
 Fri, 28 Jun 2019 12:22:28 GMT
