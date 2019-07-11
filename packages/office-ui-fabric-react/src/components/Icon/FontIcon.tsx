@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { IFontIconProps } from './Icon.types';
-import { classNames } from './Icon.styles';
+import { classNames, MS_ICON } from './Icon.styles';
 import { css, getNativeProps, htmlElementProperties, memoizeFunction } from '../../Utilities';
 import { getIcon } from '../../Styling';
 
@@ -40,7 +40,7 @@ export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
       data-icon-name={iconName}
       {...containerProps}
       {...nativeProps}
-      className={css(classNames.root, iconClassName, !iconName && classNames.placeholder, className)}
+      className={css(MS_ICON, classNames.root, iconClassName, !iconName && classNames.placeholder, className)}
     >
       {children}
     </i>
@@ -54,5 +54,5 @@ export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
  * @param ariaLabel - Label for the icon for the benefit of screen readers.
  */
 export const getFontIcon = memoizeFunction((iconName: string, className?: string, ariaLabel?: string) => {
-  return <FontIcon iconName={iconName} className={className} aria-label={ariaLabel} />;
+  return FontIcon({ iconName, className, 'aria-label': ariaLabel });
 });

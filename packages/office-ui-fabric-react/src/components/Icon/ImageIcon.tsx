@@ -3,7 +3,7 @@ import * as React from 'react';
 import { IImageIconProps } from './Icon.types';
 import { Image } from '../Image/Image';
 import { css, getNativeProps, htmlElementProperties } from '../../Utilities';
-import { classNames } from './Icon.styles';
+import { classNames, MS_ICON } from './Icon.styles';
 
 export const ImageIcon: React.FunctionComponent<IImageIconProps> = props => {
   const { className, imageProps } = props;
@@ -18,7 +18,7 @@ export const ImageIcon: React.FunctionComponent<IImageIconProps> = props => {
       };
 
   return (
-    <div {...containerProps} {...nativeProps} className={css(classNames.root, classNames.image, className)}>
+    <div {...containerProps} {...nativeProps} className={css(MS_ICON, classNames.root, classNames.image, className)}>
       <Image {...imageProps} />
     </div>
   );

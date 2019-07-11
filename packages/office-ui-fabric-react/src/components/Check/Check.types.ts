@@ -1,12 +1,10 @@
-import * as React from 'react';
-import { CheckBase } from './Check.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory Check}
  */
-export interface ICheckProps extends React.ClassAttributes<CheckBase> {
+export interface ICheckProps {
   /**
    * Gets the component ref.
    */
@@ -37,6 +35,12 @@ export interface ICheckProps extends React.ClassAttributes<CheckBase> {
    * Additional css class to apply to the Check
    */
   className?: string;
+
+  /**
+   * Whether to use fast icon components. The icons can't be targeted by customization but are
+   * still customizable via class names.
+   */
+  useFastIcons?: boolean;
 }
 
 /**
@@ -79,15 +83,8 @@ export interface ICheckStyles {
 
   /**
    * Check host style
-   * @deprecated Not used directly within the component. Instead, apply `CHECK_HOST_HOVER_STYLE`
-   * from `Check.styles.ts` to the parent element of the check.
+   * @deprecated Not used directly within the component. Instead, use `getCheckHostStyle` from
+   * `Check.styles.ts` to get a style to apply to the parent element of the Check.
    */
   checkHost: IStyle;
 }
-
-/**
- * Props for a faster check component. Still in development, so props are subject to change.
- * @beta
- * {@docCategory Check}
- */
-export type IFastCheckProps = Pick<ICheckProps, 'checked' | 'className' | 'styles' | 'theme'>;

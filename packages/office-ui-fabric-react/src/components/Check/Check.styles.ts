@@ -1,11 +1,13 @@
 import { ICheckStyleProps, ICheckStyles } from './Check.types';
-import { HighContrastSelector, IStyle, IRawStyle, getGlobalClassNames } from '../../Styling';
+import { HighContrastSelector, IStyle, getGlobalClassNames } from '../../Styling';
 import { getRTL } from '../../Utilities';
 
-const GlobalClassNames = {
+export const CheckGlobalClassNames = {
   root: 'ms-Check',
   circle: 'ms-Check-circle',
-  check: 'ms-Check-check'
+  check: 'ms-Check-check',
+  /** Must be manually applied to the parent element of the check. */
+  checkHost: 'ms-Check-checkHost'
 };
 
 export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
@@ -14,7 +16,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
   const { palette, semanticColors } = theme;
   const isRTL = getRTL();
 
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const classNames = getGlobalClassNames(CheckGlobalClassNames, theme);
 
   const sharedCircleCheck: IStyle = {
     fontSize: height,
@@ -53,11 +55,8 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
             background: semanticColors.bodyBackground
           },
 
-          /**
-           * TODO: Come back to this once .checkHost has been
-           * converted to mergeStyles
-           */
-          '$checkHost:hover &, $checkHost:focus &, &:hover, &:focus': {
+          // Always use the global class name for this, or it won't work.
+          [`.${CheckGlobalClassNames.checkHost}:hover &, .${CheckGlobalClassNames.checkHost}:focus &, &:hover, &:focus`]: {
             opacity: 1
           }
         }
@@ -138,18 +137,4 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
 
     checkHost: [{}]
   };
-};
-
-/**
- * Style which should be applied to the parent element of the check, so that the check's opacity
- * is set when the parent is hovered/focused. This replaces `ICheckStyles.checkHost` because
- * calculating the check styles in the parent component causes an unacceptable perf penalty.
- * (Global class names must be enabled for this to work.)
- */
-export const CHECK_HOST_HOVER_STYLE: IRawStyle = {
-  selectors: {
-    [`:hover, :hover .${GlobalClassNames.root}, :focus, :focus .${GlobalClassNames.root}`]: {
-      opacity: 1
-    }
-  }
 };

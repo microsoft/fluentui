@@ -89,4 +89,5 @@ export interface IDetailsRowCheckStyles {
 
 export interface IDetailsCheckboxProps {
   checked: boolean;
+  theme?: ITheme;
 }
