@@ -10,7 +10,7 @@ import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomization
 import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
-import { Editor } from '@uifabric/tsx-editor';
+import { Editor, ITextModel } from '@uifabric/tsx-editor';
 
 export interface IExampleCardState {
   schemeIndex: number;
@@ -78,7 +78,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
             </div>
           );
 
-          const editor = <Editor width={800} height={500} code={code!} language="typescript" />;
+          const editor = <Editor onChange={this._editorOnChange} width={800} height={500} code={code!} language="typescript" />;
 
           const exampleCard = (
             <div className={css(classNames.root, this.props.isCodeVisible && 'is-codeVisible')}>
@@ -172,7 +172,15 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   };
 
   private _onToggleCodeClick = () => {
-    this.props.onClick!(this.props.title);
+    if (this.props.isCodeVisible) {
+      this.props.onClick!('');
+    } else {
+      this.props.onClick!(this.props.title);
+    }
+  };
+
+  private _editorOnChange = (val: ITextModel) => {
+    console.log(val.id);
   };
 }
 
