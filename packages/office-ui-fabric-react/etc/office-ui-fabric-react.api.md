@@ -4253,6 +4253,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     onChanged?: (option: IDropdownOption, index?: number) => void;
     onDismiss?: () => void;
     onRenderCaretDown?: IRenderFunction<IDropdownProps>;
+    onRenderLabel?: IRenderFunction<IDropdownProps>;
     // @deprecated
     onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
     onRenderPlaceholder?: IRenderFunction<IDropdownProps>;
