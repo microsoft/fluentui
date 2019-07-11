@@ -6885,6 +6885,7 @@ export interface ISpinButtonStyles {
     inputDisabled: IStyle;
     inputTextSelected: IStyle;
     label: IStyle;
+    // @deprecated
     labelDisabled: IStyle;
     labelWrapper: IStyle;
     labelWrapperBottom: IStyle;

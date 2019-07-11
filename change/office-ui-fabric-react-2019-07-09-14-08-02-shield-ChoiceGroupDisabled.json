@@ -1,0 +1,8 @@
+{
+  "comment": "Pass disabled state to labels in ChoiceGroup, Dropdown, Slider and SpinButton.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "vibraga@microsoft.com",
+  "commit": "61660371b5c45486aef4a7014bbc3494d3ff8cb3",
+  "date": "2019-07-09T21:08:02.295Z"
+}

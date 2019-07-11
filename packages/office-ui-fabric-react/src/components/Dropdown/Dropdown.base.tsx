@@ -252,7 +252,14 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     return (
       <div className={this._classNames.root}>
         {label && (
-          <Label className={this._classNames.label} id={id + '-label'} htmlFor={id} required={required} styles={labelStyles}>
+          <Label
+            className={this._classNames.label}
+            id={id + '-label'}
+            htmlFor={id}
+            required={required}
+            styles={labelStyles}
+            disabled={disabled}
+          >
             {label}
           </Label>
         )}
