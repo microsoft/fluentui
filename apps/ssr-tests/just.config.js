@@ -1,5 +1,4 @@
 const { preset, just } = require('@uifabric/build');
-const path = require('path');
 const { task, series, logger } = just;
 const { spawn } = require('child_process');
 
