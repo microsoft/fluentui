@@ -6,14 +6,6 @@ const BUNDLE_NAME = 'tsx-editor';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
 module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }
-    ]
-  },
   entry: {
     [BUNDLE_NAME]: './lib/index.js'
   },

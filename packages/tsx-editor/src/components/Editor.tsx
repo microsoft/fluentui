@@ -9,7 +9,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
 
   React.useEffect(() => {
     const editor = monaco.editor.create(ref.current!, {
-      model: monaco.editor.createModel(code, 'typescript'),
+      model: monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('file:///main.tsx')),
       value: code,
       language
     });
@@ -32,6 +32,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
     });
 
     return () => {
+      editor.getModel()!.dispose();
       editor.dispose();
     };
   }, []);

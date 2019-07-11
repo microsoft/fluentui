@@ -23,15 +23,6 @@ module.exports = resources.createServeConfig({
     'react-dom': 'ReactDOM'
   },
 
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }
-    ]
-  },
-
   plugins: [
     new MonacoWebpackPlugin({
       // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
