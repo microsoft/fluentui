@@ -1,0 +1,8 @@
+{
+  "comment": "Utilities: reuse an exisiting clamp function.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "vibraga@microsoft.com",
+  "commit": "383a6ee5f2ebde57fbff43a34b4cfe7f07c3d48d",
+  "date": "2019-07-10T23:59:11.870Z"
+}
