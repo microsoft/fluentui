@@ -2,6 +2,34 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 09 Jul 2019 17:34:38 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.5",
+      "version": "7.2.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix website version selection and delete stray Animate file",
+            "author": "elcraig@microsoft.com",
+            "commit": "9ea03099ee878a1d9c3f79e8212a142b5fe55bc6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Jul 2019 12:30:55 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.4",
+      "version": "7.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList cell update animation",
+            "author": "inateeg@microsoft.com",
+            "commit": "a3a32acde358ce34984ebc130a7f5684caf204bf"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.2.3",
       "tag": "@uifabric/fabric-website_v7.2.3",
       "date": "Tue, 02 Jul 2019 12:29:06 GMT",

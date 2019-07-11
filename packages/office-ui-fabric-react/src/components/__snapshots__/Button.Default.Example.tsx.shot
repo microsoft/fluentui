@@ -152,7 +152,7 @@ exports[`Component Examples renders Button.Default.Example.tsx correctly 1`] = `
                 }
             id="id__0"
           >
-            Button
+            Standard Button
           </div>
         </div>
       </div>
@@ -307,7 +307,7 @@ exports[`Component Examples renders Button.Default.Example.tsx correctly 1`] = `
                 }
             id="id__3"
           >
-            Button
+            Primary Button
           </div>
         </div>
       </div>

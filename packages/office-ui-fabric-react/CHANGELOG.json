@@ -2,6 +2,162 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 10 Jul 2019 12:28:00 GMT",
+      "tag": "office-ui-fabric-react_v7.8.1",
+      "version": "7.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: set aria-hidden to true on the ChevronDown icon so that it is not picked up by the screen reader",
+            "author": "natalie.ethell@microsoft.com",
+            "commit": "aed04bd39cec455176e1f8d20b6638cb9d2515c3"
+          },
+          {
+            "comment": "Button: Fixing CompoundButton and SplitButton high contrast mode styling.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "c0c16b62a94e508a551b84dd03fce418b1c07c69"
+          },
+          {
+            "comment": "FocusTrapZone: Updating overview description to indicate restriction of website interaction.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a56fc9fb319b8d938d6c92af516c015d4b4c00a3"
+          },
+          {
+            "comment": "Nav: fixes focus border in High Contrast mode.",
+            "author": "vibraga@microsoft.com",
+            "commit": "50bab982367b015dcdbb41e2c958e4f67309c290"
+          },
+          {
+            "comment": "Pickers: replace empty string with undefined.",
+            "author": "vibraga@microsoft.com",
+            "commit": "0a9842224b57e55472a222757c252e3d14b43537"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Disable unreliable TextField tests",
+            "author": "elcraig@microsoft.com",
+            "commit": "7e7d86e0b755d16cc9a52d78ede02164a06da891"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Jul 2019 17:34:38 GMT",
+      "tag": "office-ui-fabric-react_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Panel: Adding Overlay props.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "86fd6e06921c0cdf7723610c98e38114e1ec4053"
+          },
+          {
+            "comment": "Modal: Adding overlayProps as a prop.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "7f27de8dd01f9bb3d3888c7d3e006a5411c8143b"
+          },
+          {
+            "comment": "Adding tooltipHostProps as a prop to the Breadcrumb component.",
+            "author": "Heather.HoaglundBiron@microsoft.com",
+            "commit": "0e7737eb466ec78bea0f7174049499aa792fbddb"
+          },
+          {
+            "comment": "\"FocusZone: Add setFocusAlignment public method to Force horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on the last horizontal motion.\"",
+            "author": "nasabek@microsoft.com",
+            "commit": "0ed9f55c26856af8bbef7356f222570a1c40c114"
+          },
+          {
+            "comment": "User should use onRenderPersonaCoin for custom rendering. When this is set, this custom rendering will be used.",
+            "author": "22574161+gingeroun@users.noreply.github.com",
+            "commit": "78c7a9ed3b47e0b43f5ab434a55e6ff874ddbfad"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Updating master branch broken state due to stale PR 9595",
+            "author": "marygans@microsoft.com",
+            "commit": "9028b83c5690b3f8a8987b66e7fe845538c3da81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Jul 2019 12:27:04 GMT",
+      "tag": "office-ui-fabric-react_v7.7.2",
+      "version": "7.7.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix mock Date class",
+            "author": "rezha@microsoft.com",
+            "commit": "ffeec1a5e02aa849b7927442b1cfb554d4c8bc9d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Jul 2019 12:29:39 GMT",
+      "tag": "office-ui-fabric-react_v7.7.1",
+      "version": "7.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: allow passing in id for input",
+            "author": "elcraig@microsoft.com",
+            "commit": "c8ea3dd79fc6a2508dacdab123d1226dfbb70f7f"
+          },
+          {
+            "comment": "Breadcrumb: Adding overflowAriaLabel to examples.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "623b6e19cf9f0935facb8ae53d6092e6c4e8f450"
+          },
+          {
+            "comment": "Button: Updating example to make it less confusing to screen readers.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "da7410efb76f689bf8a87db7658ed4cb19058194"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Jul 2019 12:30:55 GMT",
+      "tag": "office-ui-fabric-react_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "SplitButton: add in props to control splitbutton menu button",
+            "author": "joschect@microsoft.com",
+            "commit": "3860973708bfb101b35059337e33d53691536b56"
+          },
+          {
+            "comment": "Callout: add support for RefObject as target",
+            "author": "joschect@microsoft.com",
+            "commit": "7284f222a60150b69c67c49920cfd0a1eebd463c"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Revert \"BaseFloatingItem: fix tests + remove redundant state  (#9500)\"",
+            "author": "miclo@microsoft.com",
+            "commit": "d6fbb563e83b0f606bc4ca685ab60302aabaa334"
+          },
+          {
+            "comment": "Announced: fix QuickActions example to reset Announced message",
+            "author": "naethell@microsoft.com",
+            "commit": "7be3c03db4bf36248942f01007e30f06243bae0f"
+          },
+          {
+            "comment": "update snapshots and update extended picker tests",
+            "author": "joschect@microsoft.com",
+            "commit": "b5ed95fbdbc5ea8449d4dc95bdc6729786d0a9cb"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.6.3",
       "tag": "office-ui-fabric-react_v7.6.3",
       "date": "Mon, 01 Jul 2019 18:51:43 GMT",

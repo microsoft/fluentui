@@ -1,6 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 01 Jul 2019 18:51:42 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jul 2019 12:28:00 GMT and should not be manually modified.
+
+## 7.4.2
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- Update names in floatingSuggestons + expose needed functionality for UnifiedPicker t (mhuan13@gmail.com)
+
+## 7.4.1
+Wed, 03 Jul 2019 12:30:55 GMT
+
+### Patches
+
+- Filter out disallowed props from Tile root element (tmichon@microsoft.com)
 
 ## 7.4.0
 Mon, 01 Jul 2019 18:51:42 GMT

@@ -5362,6 +5362,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="key"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -5545,6 +5546,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="key"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -5976,6 +5978,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="key"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -6159,6 +6162,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="key"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -6342,6 +6346,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="key"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"

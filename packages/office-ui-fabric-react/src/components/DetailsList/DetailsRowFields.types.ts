@@ -8,7 +8,8 @@ import { IDetailsRowProps } from './DetailsRow';
  *
  * {@docCategory DetailsList}
  */
-export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
+export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'> &
+  Pick<IDetailsRowProps, 'cellsByColumn'>;
 
 /**
  * Props interface for the DetailsRowFields component.
@@ -48,6 +49,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     isMultiline: string;
     isRowHeader: string;
     cell: string;
+    cellAnimation: string;
     cellPadded: string;
     cellUnpadded: string;
     fields: string;

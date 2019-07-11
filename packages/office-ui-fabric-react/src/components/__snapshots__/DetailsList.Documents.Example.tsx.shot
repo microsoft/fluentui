@@ -1492,6 +1492,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1566,6 +1567,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -1625,6 +1627,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1635,7 +1638,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               }
                             >
                               <span>
-                                Wed, 06 Dec 2017 04:41:20 GMT
+                                Fri, 06 Jan 2017 04:41:20 GMT
                               </span>
                             </div>
                           </div>
@@ -1808,6 +1811,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1882,6 +1886,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -1941,6 +1946,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1951,7 +1957,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               }
                             >
                               <span>
-                                Wed, 06 Dec 2017 04:41:20 GMT
+                                Fri, 06 Jan 2017 04:41:20 GMT
                               </span>
                             </div>
                           </div>
@@ -2124,6 +2130,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2198,6 +2205,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -2257,6 +2265,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2267,7 +2276,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               }
                             >
                               <span>
-                                Wed, 06 Dec 2017 04:41:20 GMT
+                                Fri, 06 Jan 2017 04:41:20 GMT
                               </span>
                             </div>
                           </div>
@@ -2440,6 +2449,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2514,6 +2524,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -2573,6 +2584,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2583,7 +2595,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               }
                             >
                               <span>
-                                Wed, 06 Dec 2017 04:41:20 GMT
+                                Fri, 06 Jan 2017 04:41:20 GMT
                               </span>
                             </div>
                           </div>
@@ -2756,6 +2768,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2830,6 +2843,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -2889,6 +2903,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2899,7 +2914,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               }
                             >
                               <span>
-                                Wed, 06 Dec 2017 04:41:20 GMT
+                                Fri, 06 Jan 2017 04:41:20 GMT
                               </span>
                             </div>
                           </div>
@@ -3072,6 +3087,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3146,6 +3162,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -3205,6 +3222,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3215,7 +3233,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               }
                             >
                               <span>
-                                Wed, 06 Dec 2017 04:41:20 GMT
+                                Fri, 06 Jan 2017 04:41:20 GMT
                               </span>
                             </div>
                           </div>
@@ -3388,6 +3406,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3462,6 +3481,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -3521,6 +3541,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3531,7 +3552,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               }
                             >
                               <span>
-                                Wed, 06 Dec 2017 04:41:20 GMT
+                                Fri, 06 Jan 2017 04:41:20 GMT
                               </span>
                             </div>
                           </div>
@@ -3704,6 +3725,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3778,6 +3800,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -3837,6 +3860,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3847,7 +3871,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               }
                             >
                               <span>
-                                Wed, 06 Dec 2017 04:41:20 GMT
+                                Fri, 06 Jan 2017 04:41:20 GMT
                               </span>
                             </div>
                           </div>
@@ -4020,6 +4044,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4094,6 +4119,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -4153,6 +4179,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4163,7 +4190,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               }
                             >
                               <span>
-                                Wed, 06 Dec 2017 04:41:20 GMT
+                                Fri, 06 Jan 2017 04:41:20 GMT
                               </span>
                             </div>
                           </div>
@@ -4336,6 +4363,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4410,6 +4438,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -4469,6 +4498,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   &.$checkCell {
                                     padding-right: 0px;
                                   }
+
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4479,7 +4509,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               }
                             >
                               <span>
-                                Wed, 06 Dec 2017 04:41:20 GMT
+                                Fri, 06 Jan 2017 04:41:20 GMT
                               </span>
                             </div>
                           </div>

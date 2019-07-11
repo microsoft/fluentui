@@ -1318,6 +1318,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1374,6 +1375,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1752,6 +1754,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1808,6 +1811,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2186,6 +2190,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2242,6 +2247,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2620,6 +2626,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2676,6 +2683,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3054,6 +3062,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3110,6 +3119,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3488,6 +3498,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3544,6 +3555,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3922,6 +3934,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3978,6 +3991,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4356,6 +4370,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4412,6 +4427,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4790,6 +4806,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4846,6 +4863,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -5224,6 +5242,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -5280,6 +5299,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   {
                                     padding-right: 8px;
                                   }
+
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="gridcell"

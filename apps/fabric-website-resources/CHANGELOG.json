@@ -2,6 +2,34 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Wed, 10 Jul 2019 12:28:00 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "automatically generate webpack alias for npm start - part 1",
+            "author": "kchau@microsoft.com",
+            "commit": "b103de0cb556f6cf4dfe2648b990c07b37d6b988"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Jul 2019 12:30:55 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add DetailsList animation example page",
+            "author": "inateeg@microsoft.com",
+            "commit": "a3a32acde358ce34984ebc130a7f5684caf204bf"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.1",
       "tag": "@uifabric/fabric-website-resources_v7.1.1",
       "date": "Mon, 01 Jul 2019 18:51:42 GMT",

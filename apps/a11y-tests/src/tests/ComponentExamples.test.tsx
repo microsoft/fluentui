@@ -3,8 +3,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as glob from 'glob';
 import { getSarifReport } from '../getSarifReport';
-import { SarifLog } from 'axe-sarif-converter/dist/sarif/sarif-log';
-import { Result } from 'axe-sarif-converter/dist/sarif/sarif-2.0.0';
+import { SarifLog } from 'axe-sarif-converter';
+import { Result } from 'sarif';
 
 const ReactDOM = require('react-dom');
 
@@ -42,6 +42,7 @@ const excludedExampleFiles: string[] = ['Keytips.Basic.Example', 'List.Basic.Exa
 declare const global: any;
 
 describe('a11y test', () => {
+  const RealDate = Date;
   const constantDate = new Date(Date.UTC(2017, 0, 6, 4, 41, 20));
 
   beforeAll(() => {
@@ -62,11 +63,11 @@ describe('a11y test', () => {
     // Prevent random and time elements from failing repeated tests.
     global.Date = class {
       public static now() {
-        return constantDate;
+        return new RealDate(constantDate);
       }
 
       constructor() {
-        return constantDate;
+        return new RealDate(constantDate);
       }
     };
 
