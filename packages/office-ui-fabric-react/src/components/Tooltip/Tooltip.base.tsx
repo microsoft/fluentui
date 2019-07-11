@@ -43,6 +43,8 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
       theme: theme!,
       className: className || (calloutProps && calloutProps.className),
       delay: delay!,
+      directionalHint: directionalHint || DirectionalHint.topCenter,
+      gapSpace: (calloutProps && calloutProps.gapSpace && calloutProps.gapSpace + 15) || 15,
       maxWidth: maxWidth!
     });
 

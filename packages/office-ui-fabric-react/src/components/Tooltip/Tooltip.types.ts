@@ -110,6 +110,18 @@ export interface ITooltipStyleProps {
    * Maximum width of tooltip.
    */
   maxWidth?: string;
+
+  /**
+   * The gap between the Callout and the target
+   * @defaultvalue 0
+   */
+  gapSpace: number;
+
+  /**
+   * Indicator of how the tooltip should be anchored to its targetElement.
+   * @defaultvalue DirectionalHint.topCenter
+   */
+  directionalHint: DirectionalHint;
 }
 
 /**
