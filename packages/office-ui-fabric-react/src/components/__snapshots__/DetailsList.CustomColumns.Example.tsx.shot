@@ -668,6 +668,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
 
@@ -1109,6 +1110,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
 
@@ -1550,6 +1552,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
 
@@ -1991,6 +1994,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
 
@@ -2432,6 +2436,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
 
@@ -2873,6 +2878,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
 
@@ -3314,6 +3320,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
 
@@ -3755,6 +3762,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
 
@@ -4196,6 +4204,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
 
@@ -4637,6 +4646,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
 

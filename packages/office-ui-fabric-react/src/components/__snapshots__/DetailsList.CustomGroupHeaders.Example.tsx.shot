@@ -1011,6 +1011,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -1420,6 +1421,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -1829,6 +1831,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -2238,6 +2241,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -2647,6 +2651,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -3056,6 +3061,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -3465,6 +3471,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -3874,6 +3881,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -4283,6 +4291,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -4692,6 +4701,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 

@@ -931,6 +931,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
+                            aria-label="Row checkbox"
                             className=
                                 ms-DetailsRow-check
 
@@ -1402,6 +1403,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
+                            aria-label="Row checkbox"
                             className=
                                 ms-DetailsRow-check
 
@@ -1873,6 +1875,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
+                            aria-label="Row checkbox"
                             className=
                                 ms-DetailsRow-check
 
@@ -2344,6 +2347,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
+                            aria-label="Row checkbox"
                             className=
                                 ms-DetailsRow-check
 
@@ -2815,6 +2819,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
+                            aria-label="Row checkbox"
                             className=
                                 ms-DetailsRow-check
 
@@ -3286,6 +3291,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
+                            aria-label="Row checkbox"
                             className=
                                 ms-DetailsRow-check
 
@@ -3757,6 +3763,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
+                            aria-label="Row checkbox"
                             className=
                                 ms-DetailsRow-check
 
@@ -4228,6 +4235,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
+                            aria-label="Row checkbox"
                             className=
                                 ms-DetailsRow-check
 
@@ -4699,6 +4707,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
+                            aria-label="Row checkbox"
                             className=
                                 ms-DetailsRow-check
 
@@ -5170,6 +5179,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-checked={false}
+                            aria-label="Row checkbox"
                             className=
                                 ms-DetailsRow-check
 

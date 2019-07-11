@@ -64,6 +64,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         onRenderDetailsHeader={this._onRenderDetailsHeader}
+        checkButtonAriaLabel="Row checkbox"
       />
     );
   }

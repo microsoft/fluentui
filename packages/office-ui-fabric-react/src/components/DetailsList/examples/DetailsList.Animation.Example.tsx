@@ -80,6 +80,7 @@ export class DetailsListAnimationExample extends React.Component<{}, IDetailsLis
           selectionPreservedOnEmptyClick={true}
           ariaLabelForSelectionColumn="Toggle selection"
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+          checkButtonAriaLabel="Row checkbox"
           onItemInvoked={this._onItemInvoked}
           enableUpdateAnimations={true}
           getCellValueKey={this._getCellValueKey}

@@ -48,6 +48,7 @@ export class DetailsListCustomFooterExample extends React.Component<{}, {}> {
         selectionPreservedOnEmptyClick={true}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="Row checkbox"
         onRenderDetailsFooter={this._onRenderDetailsFooter}
       />
     );
