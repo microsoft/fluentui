@@ -29,7 +29,7 @@ const descriptionStyle = mergeStyles({
   textOverflow: 'ellipsis'
 });
 
-export class ChicletBreadcrumbExample extends React.Component<{}, {}> {
+export class ChicletBreadcrumbExample extends React.Component {
   constructor(props: {}) {
     super(props);
   }

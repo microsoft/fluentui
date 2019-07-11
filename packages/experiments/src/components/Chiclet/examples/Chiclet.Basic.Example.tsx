@@ -3,7 +3,7 @@ import { Chiclet, ChicletSize } from '@uifabric/experiments/lib/Chiclet';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
-export class ChicletBasicExample extends React.Component<{}, {}> {
+export class ChicletBasicExample extends React.Component {
   constructor(props: {}) {
     super(props);
   }

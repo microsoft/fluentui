@@ -38,7 +38,7 @@ const sizeStyle = mergeStyles({
   letterSpacing: 'normal'
 });
 
-export class ChicletXsmallFooterExample extends React.Component<{}, {}> {
+export class ChicletXsmallFooterExample extends React.Component {
   constructor(props: {}) {
     super(props);
   }

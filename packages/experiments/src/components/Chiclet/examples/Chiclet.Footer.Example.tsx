@@ -42,7 +42,7 @@ const actionStyle = mergeStyles({
   color: '#0078d7'
 });
 
-export class ChicletFooterExample extends React.Component<{}, {}> {
+export class ChicletFooterExample extends React.Component {
   constructor(props: {}) {
     super(props);
   }
