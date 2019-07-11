@@ -17,7 +17,10 @@ export interface IGroupHeaderProps extends IGroupDividerProps {
    */
   groupedListId?: string;
 
-  /** Native props for the GroupHeader expand and collapse button */
+  /** 
+  * Native props for the GroupHeader expand and collapse button 
+  * 'aria-label' defaults to 'expand group' if `group.isCollapsed` is true and 'collapse group' if `group.isCollapsed' is false
+  */
   expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
 
   /** Native props for the GroupHeader select all button */
