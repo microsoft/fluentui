@@ -1,0 +1,8 @@
+{
+  "comment": "DetailsRow: pass aria-label attribute to each row's checkbox.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "vibraga@microsoft.com",
+  "commit": "6717d7c71de202760f4d0ecbe061f40acbb0ec9a",
+  "date": "2019-07-10T00:52:01.015Z"
+}
