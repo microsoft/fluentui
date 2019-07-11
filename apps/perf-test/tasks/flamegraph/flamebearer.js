@@ -43,7 +43,7 @@ module.exports = function(buf) {
     .split('/* BIN_PLACEHOLDER */')
     .join(data);
 
-  data += 'module.exports = { names, levels, numTicks };';
-
-  return [flamegraph, data];
+  // data += 'module.exports = { names, levels, numTicks };';
+  // return [flamegraph, data];
+  return flamegraph;
 };

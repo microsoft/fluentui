@@ -9,79 +9,99 @@
       body {
         height: 100%;
       }
+
       body {
         font: 16px 'Helvetica Neue', sans-serif;
         margin: 0;
       }
+
       body.hover {
         background: #cfc;
       }
+
       h1 {
         font-size: 30px;
         margin: 30px 30px 15px;
       }
+
       h1 a {
         color: black;
         text-decoration: none;
       }
+
       h1 a:hover {
         text-decoration: underline;
       }
+
       #fire-icon {
         fill: #f53;
         width: 26px;
         height: 26px;
         vertical-align: -1px;
       }
+
       #intro {
         margin: 0 30px;
       }
+
       code {
         font-size: 13px;
         color: #444;
       }
+
       code span {
         color: #aaa;
       }
+
       #canvas {
         width: 100%;
       }
+
       #controls {
         display: none;
       }
+
       #search {
         margin-right: 10px;
       }
+
       label {
         font-size: 14px;
       }
+
       #highlight {
         position: absolute;
         pointer-events: none;
         background: #ffffff40;
       }
+
       .loaded #intro {
         display: none;
       }
+
       .loaded #header {
         display: flex;
         align-items: center;
         flex-flow: row wrap;
         padding: 7px 10px;
       }
+
       .loaded h1 {
         font-size: 22px;
         margin: 0 auto 0 0;
         flex-shrink: 0;
       }
+
       .loaded #fire-icon {
         width: 20px;
         height: 20px;
       }
+
       .loaded #controls {
         display: block;
         flex-shrink: 0;
       }
+
       #tooltip {
         position: absolute;
         pointer-events: none;
@@ -93,15 +113,18 @@
         font: 12px Tahoma, sans-serif;
         display: none;
       }
+
       #tooltip .path {
         color: #888;
         font-size: 11px;
       }
+
       #tooltip .time {
         color: #4a4;
       }
     </style>
   </head>
+
   <body>
     <div id="header">
       <h1>
@@ -143,8 +166,9 @@
     </div>
     <canvas id="canvas" height="0"></canvas>
 
-    <!-- /* BIN_SPLIT */ --><script src="index.js"></script
-    ><!-- /* BIN_SPLIT */ -->
+    <!-- /* BIN_SPLIT */ -->
+    <script src="index.js"></script>
+    <!-- /* BIN_SPLIT */ -->
     <script src="viz.js"></script>
   </body>
 </html>
