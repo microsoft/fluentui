@@ -44,7 +44,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
   private _id: string;
   private _draggedColumnIndex = -1;
   private _dropHintDetails: { [key: number]: IDropHintDetails } = {};
-  private _dragDropHelper: DragDropHelper | null;
+  private _dragDropHelper: DragDropHelper;
   private _currentDropHintIndex: number;
   private _subscriptionObject: IDisposable;
   private _onDropIndexInfo: {
@@ -55,9 +55,8 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
   public static getDerivedStateFromProps(newProps: IDetailsHeaderBaseProps, prevState: IDetailsHeaderState): IDetailsHeaderState {
     const columnReorderProps: IColumnReorderHeaderProps | undefined =
       newProps.columnReorderProps || (newProps.columnReorderOptions && getLegacyColumnReorderProps(newProps.columnReorderOptions));
-    const { groupNestingDepth } = newProps;
 
-    const newState: IDetailsHeaderState = { columnReorderProps, groupNestingDepth };
+    const newState: IDetailsHeaderState = { columnReorderProps };
 
     if (newProps.isAllCollapsed !== undefined) {
       newState.isAllCollapsed = newProps.isAllCollapsed;
@@ -77,7 +76,6 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     this.state = {
       columnReorderProps,
       columnResizeDetails: undefined,
-      groupNestingDepth: this.props.groupNestingDepth,
       isAllCollapsed: this.props.isAllCollapsed,
       isAllSelected: !!this.props.selection && this.props.selection.isAllSelected()
     };
@@ -88,6 +86,15 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     };
     this._id = getId('header');
     this._currentDropHintIndex = -1;
+
+    this._dragDropHelper = new DragDropHelper({
+      selection: {
+        getSelection: () => {
+          return;
+        }
+      } as ISelection,
+      minimumPixelsForDrag: this.props.minimumPixelsForDrag
+    });
   }
 
   public componentDidMount(): void {
@@ -96,20 +103,22 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
 
     this._events.on(selection, SELECTION_CHANGE, this._onSelectionChanged);
 
-    // We need to use native on this to avoid MarqueeSelection from handling the event before us.
+    // We need to use native on this to prevent MarqueeSelection from handling the event before us.
     this._events.on(this._rootElement!, 'mousedown', this._onRootMouseDown);
 
     this._events.on(this._rootElement!, 'keydown', this._onRootKeyDown);
 
     if (columnReorderProps) {
-      this._ensureDragDropHandling();
+      this._subscriptionObject = this._dragDropHelper.subscribe(this._rootElement!, this._events, this._getHeaderDragDropOptions());
     }
   }
 
   public componentDidUpdate(prevProps: IDetailsHeaderBaseProps): void {
     const { columnReorderProps } = this.state;
     if (columnReorderProps) {
-      this._ensureDragDropHandling();
+      if (!this._subscriptionObject) {
+        this._subscriptionObject = this._dragDropHelper.subscribe(this._rootElement!, this._events, this._getHeaderDragDropOptions());
+      }
     } else if (this._subscriptionObject) {
       this._subscriptionObject.dispose();
       delete this._subscriptionObject;
@@ -133,9 +142,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       delete this._subscriptionObject;
     }
 
-    if (this._dragDropHelper) {
-      this._dragDropHelper.dispose();
-    }
+    this._dragDropHelper.dispose();
 
     this._events.dispose();
   }
@@ -156,9 +163,10 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       styles,
       theme,
       onRenderDetailsCheckbox,
+      groupNestingDepth,
       useFastIcons
     } = this.props;
-    const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed, columnReorderProps } = this.state;
+    const { isAllSelected, columnResizeDetails, isSizing, isAllCollapsed, columnReorderProps } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
     const isCheckboxHidden = selectAllVisibility === SelectAllVisibility.hidden;
 
@@ -618,6 +626,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       </div>
     );
   }
+
   private _onRenderColumnHeaderTooltip = (tooltipHostProps: ITooltipHostProps): JSX.Element => {
     return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;
   };
@@ -842,22 +851,6 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       onToggleCollapseAll(newCollapsed);
     }
   };
-
-  private _ensureDragDropHandling() {
-    if (!this._dragDropHelper) {
-      this._dragDropHelper = new DragDropHelper({
-        selection: {
-          getSelection: () => {
-            return;
-          }
-        } as ISelection,
-        minimumPixelsForDrag: this.props.minimumPixelsForDrag
-      });
-    }
-    if (!this._subscriptionObject) {
-      this._subscriptionObject = this._dragDropHelper.subscribe(this._rootElement!, this._events, this._getHeaderDragDropOptions());
-    }
-  }
 }
 
 function getLegacyColumnReorderProps(columnReorderOptions: IColumnReorderOptions): IColumnReorderHeaderProps {

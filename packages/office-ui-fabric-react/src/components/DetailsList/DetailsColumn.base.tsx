@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Icon } from '../../Icon';
-import { initializeComponentRef, EventGroup, Async, IRenderFunction, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
+import { initializeComponentRef, EventGroup, Async, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
 import { IColumn, ColumnActionsMode } from './DetailsList.types';
 
 import { ITooltipHostProps } from '../../Tooltip';
@@ -148,20 +148,8 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
   }
 
   public componentDidMount(): void {
-    if (this._dragDropSubscription) {
-      this._dragDropSubscription.dispose();
-      delete this._dragDropSubscription;
-    }
-
     if (this.props.dragDropHelper && this.props.isDraggable) {
-      this._dragDropSubscription = this.props.dragDropHelper.subscribe(
-        this._root.current as HTMLElement,
-        this._events,
-        this._getColumnDragDropOptions()
-      );
-
-      // We need to use native on this to avoid MarqueeSelection from handling the event before us.
-      this._events.on(this._root.current, 'mousedown', this._onRootMouseDown);
+      this._addDragDropHandling();
     }
 
     const classNames = this._classNames;
@@ -197,15 +185,9 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
 
   public componentDidUpdate(): void {
     if (!this._dragDropSubscription && this.props.dragDropHelper && this.props.isDraggable) {
-      this._dragDropSubscription = this.props.dragDropHelper.subscribe(
-        this._root.current as HTMLElement,
-        this._events,
-        this._getColumnDragDropOptions()
-      );
-
-      // We need to use native on this to avoid MarqueeSelection from handling the event before us.
-      this._events.on(this._root.current, 'mousedown', this._onRootMouseDown);
+      this._addDragDropHandling();
     }
+
     if (this._dragDropSubscription && !this.props.isDraggable) {
       this._dragDropSubscription.dispose();
       this._events.off(this._root.current, 'mousedown');
@@ -213,10 +195,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     }
   }
 
-  private _onRenderColumnHeaderTooltip = (
-    tooltipHostProps: ITooltipHostProps,
-    defaultRender?: IRenderFunction<ITooltipHostProps>
-  ): JSX.Element => {
+  private _onRenderColumnHeaderTooltip = (tooltipHostProps: ITooltipHostProps): JSX.Element => {
     return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;
   };
 
@@ -327,4 +306,15 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       ev.stopPropagation();
     }
   };
+
+  private _addDragDropHandling() {
+    this._dragDropSubscription = this.props.dragDropHelper!.subscribe(
+      this._root.current as HTMLElement,
+      this._events,
+      this._getColumnDragDropOptions()
+    );
+
+    // We need to use native on this to prevent MarqueeSelection from handling the event before us.
+    this._events.on(this._root.current, 'mousedown', this._onRootMouseDown);
+  }
 }

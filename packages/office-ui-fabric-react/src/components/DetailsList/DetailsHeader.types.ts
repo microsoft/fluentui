@@ -134,7 +134,6 @@ export interface IDetailsHeaderState {
   columnResizeDetails?: IColumnResizeDetails;
   isAllSelected?: boolean;
   isSizing?: boolean;
-  groupNestingDepth?: number;
   isAllCollapsed?: boolean;
 }
 

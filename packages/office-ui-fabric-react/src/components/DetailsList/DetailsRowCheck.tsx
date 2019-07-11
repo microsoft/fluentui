@@ -7,7 +7,6 @@ import { getStyles } from './DetailsRowCheck.styles';
 const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
 
 const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
-  const defaultCheckboxRender = props.useFastIcons ? _fastDefaultCheckboxRender : _defaultCheckboxRender;
   const {
     isVisible = false,
     canSelect = false,
@@ -19,9 +18,12 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     styles,
     theme,
     compact,
-    onRenderDetailsCheckbox = defaultCheckboxRender,
+    onRenderDetailsCheckbox,
+    useFastIcons, // must be removed from buttonProps
     ...buttonProps
   } = props;
+  const defaultCheckboxRender = useFastIcons ? _fastDefaultCheckboxRender : _defaultCheckboxRender;
+  const onRenderCheckbox = onRenderDetailsCheckbox || defaultCheckboxRender;
 
   const classNames = getClassNames(styles, {
     theme: theme!,
@@ -48,7 +50,7 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
       data-selection-toggle={true}
       data-automationid="DetailsRowCheck"
     >
-      {onRenderDetailsCheckbox(detailsCheckboxProps, defaultCheckboxRender)}
+      {onRenderCheckbox(detailsCheckboxProps, defaultCheckboxRender)}
     </div>
   ) : (
     <div {...buttonProps} className={css(classNames.root, classNames.check)} />

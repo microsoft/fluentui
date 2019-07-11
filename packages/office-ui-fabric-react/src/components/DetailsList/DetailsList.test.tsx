@@ -12,6 +12,7 @@ import { IDetailsHeaderProps, DetailsHeader } from './DetailsHeader';
 import { EventGroup, IRenderFunction } from '../../Utilities';
 import { IDragDropEvents } from './../../utilities/dragdrop/index';
 import { SelectionMode, Selection } from '../../utilities/selection/index';
+import { getTheme } from '../../Styling';
 
 // Populate mock data for testing
 function mockData(count: number, isColumn: boolean = false, customDivider: boolean = false): any {
@@ -453,6 +454,7 @@ describe('DetailsList', () => {
   it('invokes optional onRenderCheckbox callback to customize checkbox rendering when provided', () => {
     const onRenderCheckboxMock = jest.fn();
     const selection = new Selection();
+    const theme = getTheme();
     mount(
       <DetailsList
         items={mockData(2)}
@@ -467,11 +469,11 @@ describe('DetailsList', () => {
     );
 
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(3);
-    expect(onRenderCheckboxMock.mock.calls[2][0]).toEqual({ checked: false });
+    expect(onRenderCheckboxMock.mock.calls[2][0]).toEqual({ checked: false, theme });
 
     selection.setAllSelected(true);
 
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(6);
-    expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true });
+    expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true, theme });
   });
 });

@@ -3,7 +3,7 @@ import { styled, memoizeFunction } from '../../Utilities';
 import { ICheckProps, ICheckStyleProps, ICheckStyles } from './Check.types';
 import { CheckBase } from './Check.base';
 import { getStyles } from './Check.styles';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme } from '../../Styling';
 
 export const Check: React.StatelessComponent<ICheckProps> = styled<ICheckProps, ICheckStyleProps, ICheckStyles>(
   CheckBase,
