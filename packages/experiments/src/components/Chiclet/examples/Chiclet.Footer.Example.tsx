@@ -42,22 +42,16 @@ const actionStyle = mergeStyles({
   color: '#0078d7'
 });
 
-export class ChicletFooterExample extends React.Component {
-  constructor(props: {}) {
-    super(props);
-  }
+export const ChicletFooterExample: React.FunctionComponent<{}> = () => {
+  const footerButtonProps: IButtonProps[] = [
+    { iconProps: { iconName: 'More' } },
+    { iconProps: { iconName: 'Save' } },
+    { iconProps: { iconName: 'Share' } }
+  ];
+  const footer = <FooterComponent buttonProps={footerButtonProps} activities="10 Comments  16 Shares  87 Views" />;
 
-  public render(): JSX.Element {
-    const footerButtonProps: IButtonProps[] = [
-      { iconProps: { iconName: 'More' } },
-      { iconProps: { iconName: 'Save' } },
-      { iconProps: { iconName: 'Share' } }
-    ];
-    const footer = <FooterComponent buttonProps={footerButtonProps} activities="10 Comments  16 Shares  87 Views" />;
-
-    return <Chiclet url={SAMPLE_URL} title="Quarterly Results.docx" size={ChicletSize.medium} footer={footer} />;
-  }
-}
+  return <Chiclet url={SAMPLE_URL} title="Quarterly Results.docx" size={ChicletSize.medium} footer={footer} />;
+};
 
 export interface IFooterComponent extends React.Props<FooterComponent> {
   buttonProps: IButtonProps[];

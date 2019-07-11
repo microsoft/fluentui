@@ -38,26 +38,17 @@ const sizeStyle = mergeStyles({
   letterSpacing: 'normal'
 });
 
-export class ChicletXsmallFooterExample extends React.Component {
-  constructor(props: {}) {
-    super(props);
-  }
+export const ChicletXsmallFooterExample: React.FunctionComponent<{}> = () => {
+  const footerButtonProps: IButtonProps[] = [{ iconProps: { iconName: 'More' } }, { iconProps: { iconName: 'CloudUpload' } }];
+  const attachIconProp: IIconProps = { iconName: 'Attach' };
+  const footer = <FooterComponent buttonProps={footerButtonProps} attachProps={attachIconProp} />;
 
-  public render(): JSX.Element {
-    const footerButtonProps: IButtonProps[] = [{ iconProps: { iconName: 'More' } }, { iconProps: { iconName: 'CloudUpload' } }];
-
-    const attachIconProp: IIconProps = { iconName: 'Attach' };
-
-    const footer = <FooterComponent buttonProps={footerButtonProps} attachProps={attachIconProp} />;
-
-    return <Chiclet url={SAMPLE_URL} title="Quarterly Results.docx" itemType="docx" size={ChicletSize.xSmall} footer={footer} />;
-  }
-}
+  return <Chiclet url={SAMPLE_URL} title="Quarterly Results.docx" itemType="docx" size={ChicletSize.xSmall} footer={footer} />;
+};
 
 export class FooterComponent extends React.Component<IFooterComponent, {}> {
   public render(): JSX.Element {
     const { buttonProps, attachProps } = this.props;
-
     return _renderFooter(buttonProps, attachProps);
   }
 }
