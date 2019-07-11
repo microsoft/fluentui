@@ -116,12 +116,6 @@ export interface ITooltipStyleProps {
    * @defaultvalue 0
    */
   gapSpace: number;
-
-  /**
-   * Indicator of how the tooltip should be anchored to its targetElement.
-   * @defaultvalue DirectionalHint.topCenter
-   */
-  directionalHint: DirectionalHint;
 }
 
 /**
