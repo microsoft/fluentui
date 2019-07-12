@@ -9,11 +9,10 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: stretch;
         background-color: #ffffff;
-        border-radius: 2px;
-        border: 1px solid #8a8886;
+        border: 1px solid #a6a6a6;
         box-shadow: none;
         box-sizing: border-box;
-        color: #323130;
+        color: #333333;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -34,7 +33,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         border: 1px solid WindowText;
       }
       &:hover {
-        border-color: #201f1e;
+        border-color: #212121;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
@@ -91,7 +90,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           border: none;
           box-shadow: none;
           box-sizing: border-box;
-          color: #323130;
+          color: #333333;
           flex: 1 1 0px;
           font-family: inherit;
           font-size: inherit;
@@ -110,15 +109,15 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           text-overflow: ellipsis;
         }
         &::placeholder {
-          color: #605e5c;
+          color: #666666;
           opacity: 1;
         }
         &:-ms-input-placeholder {
-          color: #605e5c;
+          color: #666666;
           opacity: 1;
         }
         &::-ms-input-placeholder {
-          color: #605e5c;
+          color: #666666;
           opacity: 1;
         }
         &::-ms-clear {
@@ -142,11 +141,10 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: stretch;
         background-color: #ffffff;
-        border-radius: 2px;
-        border: 1px solid #8a8886;
+        border: 1px solid #a6a6a6;
         box-shadow: none;
         box-sizing: border-box;
-        color: #323130;
+        color: #333333;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -167,7 +165,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         border: 1px solid WindowText;
       }
       &:hover {
-        border-color: #201f1e;
+        border-color: #212121;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
@@ -222,7 +220,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
           border: none;
           box-shadow: none;
           box-sizing: border-box;
-          color: #323130;
+          color: #333333;
           flex: 1 1 0px;
           font-family: inherit;
           font-size: inherit;
@@ -241,15 +239,15 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
           text-overflow: ellipsis;
         }
         &::placeholder {
-          color: #605e5c;
+          color: #666666;
           opacity: 1;
         }
         &:-ms-input-placeholder {
-          color: #605e5c;
+          color: #666666;
           opacity: 1;
         }
         &::-ms-input-placeholder {
-          color: #605e5c;
+          color: #666666;
           opacity: 1;
         }
         &::-ms-clear {
