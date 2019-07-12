@@ -1,4 +1,4 @@
-let { createConfig, mergeStylesSerializer } = require('@uifbaric/build/jest/jest-resources');
+let { createConfig, mergeStylesSerializer } = require('@uifabric/build/jest/jest-resources');
 let path = require('path');
 
 const config = createConfig({
