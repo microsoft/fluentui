@@ -111,6 +111,8 @@
     var scripts = [appPath + entryPointFilename + '.min.js'];
 
     if (!window.React) {
+      // Only needed for Fabric 5 and 6 (7 bundles React)
+      // DO NOT replace 16.3.2 with a newer version!
       var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react';
       var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom';
 
