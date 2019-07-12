@@ -32,9 +32,12 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   public static defaultProps: INavProps = {
     groups: null
   };
+  private _linkSelectedAriaLabel: string | undefined;
 
   constructor(props: INavProps) {
     super(props);
+
+    this._linkSelectedAriaLabel = this.props.selectedAriaLabel;
 
     this.state = {
       isGroupCollapsed: {},
@@ -88,7 +91,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
-    const selectStateAria = isSelectedLink ? 'Selected' : '';
+    const selectStateAria = isSelectedLink ? this._linkSelectedAriaLabel : '';
     const ariaLabel = !!link.ariaLabel ? link.ariaLabel : '';
     return (
       <LinkAs
