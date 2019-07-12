@@ -53,7 +53,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         position: 'relative',
         overflow: 'hidden',
         transform: 'translateZ(0)',
-        backgroundColor: shimmerColor || semanticColors.listItemBackgroundHovered,
+        backgroundColor: shimmerColor || semanticColors.disabledBackground,
         transition: `opacity ${transitionAnimationInterval}ms`,
         selectors: {
           '> *': {
@@ -88,12 +88,12 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
         left: 0,
         width: '100%',
         height: '100%',
-        background: `${shimmerColor || semanticColors.listItemBackgroundHovered}
+        background: `${shimmerColor || semanticColors.disabledBackground}
                       linear-gradient(
                         to right,
-                        ${shimmerColor || semanticColors.listItemBackgroundHovered} 0%,
-                        ${shimmerWaveColor || semanticColors.listItemBackgroundChecked} 50%,
-                        ${shimmerColor || semanticColors.listItemBackgroundHovered} 100%)
+                        ${shimmerColor || semanticColors.disabledBackground} 0%,
+                        ${shimmerWaveColor || semanticColors.bodyDivider} 50%,
+                        ${shimmerColor || semanticColors.disabledBackground} 100%)
                       0 0 / 90% 100%
                       no-repeat`,
         transform: `translateX(-${BACKGROUND_OFF_SCREEN_POSITION})`,
