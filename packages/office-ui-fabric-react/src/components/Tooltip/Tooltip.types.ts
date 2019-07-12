@@ -113,8 +113,9 @@ export interface ITooltipStyleProps {
 
   /**
    * The gap between the Callout and the target
+   * @defaultvalue 0
    */
-  gapSpace: number;
+  gapSpace?: number;
 }
 
 /**

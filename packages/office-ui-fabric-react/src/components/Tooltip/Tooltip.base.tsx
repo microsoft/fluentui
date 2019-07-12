@@ -43,7 +43,7 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
       theme: theme!,
       className: className || (calloutProps && calloutProps.className),
       delay: delay!,
-      gapSpace: (calloutProps && calloutProps.gapSpace && -15 - calloutProps.gapSpace) || -15,
+      gapSpace: calloutProps && calloutProps.gapSpace,
       maxWidth: maxWidth!
     });
 
