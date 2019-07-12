@@ -334,7 +334,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
       <div
         aria-disabled={false}
         aria-label="Snapping slider example"
-        aria-valuemax={5}
+        aria-valuemax={50}
         aria-valuemin={1}
         aria-valuenow={2}
         className=
@@ -463,7 +463,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
 
             style={
               Object {
-                "left": "25%",
+                "left": "2.0408163265306123%",
               }
             }
           />
@@ -480,7 +480,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                 }
             style={
               Object {
-                "width": "25%",
+                "width": "2.0408163265306123%",
               }
             }
           />
@@ -497,7 +497,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                 }
             style={
               Object {
-                "width": "75%",
+                "width": "97.95918367346938%",
               }
             }
           />

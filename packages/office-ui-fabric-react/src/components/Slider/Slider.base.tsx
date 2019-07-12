@@ -254,7 +254,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
   private _updateValue(value: number, renderedValue: number): void {
     const { step, snaps } = this.props;
-
     let numDec = 0;
     if (isFinite(step!)) {
       while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
