@@ -3734,6 +3734,7 @@ export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithRe
     ariaLabelledById?: string;
     // @deprecated
     className?: string;
+    // @deprecated
     componentRef?: IRefObject<IDialog>;
     // @deprecated
     containerClassName?: string;

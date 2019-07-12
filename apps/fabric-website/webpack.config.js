@@ -35,10 +35,10 @@ module.exports = function(env) {
         alias: {
           '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
           '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
-          'office-ui-fabric-react$': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
-          'office-ui-fabric-react/src': path.join(__dirname, 'node_modules/office-ui-fabric-react/src'),
-          'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
-          '@uifabric/api-docs/lib': path.join(__dirname, 'node_modules/@uifabric/api-docs/lib')
+          'office-ui-fabric-react$': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
+          'office-ui-fabric-react/src': path.join(__dirname, '../../packages/office-ui-fabric-react/src'),
+          'office-ui-fabric-react/lib': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
+          '@uifabric/api-docs/lib': path.join(__dirname, '../../packages/api-docs/lib')
         }
       }
     },
