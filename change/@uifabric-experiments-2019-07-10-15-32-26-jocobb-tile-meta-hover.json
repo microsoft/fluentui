@@ -1,8 +1,0 @@
-{
-  "comment": "Add screener tests for media tiles",
-  "type": "minor",
-  "packageName": "@uifabric/experiments",
-  "email": "jocobb@microsoft.com",
-  "commit": "57675680a18d6c5463ec44c5f5beaca8890dc226",
-  "date": "2019-07-10T22:32:26.256Z"
-}

@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 12 Jul 2019 12:29:52 GMT",
+      "tag": "office-ui-fabric-react_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "GroupedList: Refactor out BaseComponent in favor of React.Component and React.FunctionComponent",
+            "author": "706967+KevinTCoughlin@users.noreply.github.com",
+            "commit": "0ef080de76f13560e9b5d3507f4cb39bfdc8875d"
+          },
+          {
+            "comment": "Dropdown: adds an `onRenderLabel` custom renderer prop.",
+            "author": "vibraga@microsoft.com",
+            "commit": "5c848eb0915176ae13977801c9574dd9fc9f8895"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update to progressBar indicator description label font size to match design toolkti spec.",
+            "author": "marygans@microsoft.com",
+            "commit": "48a333ccde37c619e7d75108d26c727299feb396"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Jul 2019 12:29:51 GMT",
       "tag": "office-ui-fabric-react_v7.8.2",
       "version": "7.8.2",
