@@ -26,6 +26,7 @@
     "@types/prettier": "^1.16.1",
     "@uifabric/prettier-rules": "^7.0.2",
     "@uifabric/tslint-rules": "^7.0.2",
+    "jest-cli": "24.1.0",
     "just-scripts": "~0.25.2",
     "ts-jest": "24.0.1",
     "webpack": "4.29.5"
