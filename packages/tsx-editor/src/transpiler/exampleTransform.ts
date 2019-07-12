@@ -1,14 +1,21 @@
 export function transformExample(example: string, id: string) {
+  const classNamePattern = /(?<=var )(.*)(?= = \/\*\* @class \*\/ \(function \(_super)/g;
   const identifierPattern = /(?<=import { )(.*)(?= } from 'office-ui-fabric-react)/g;
+  const constNamePattern = /(?<=var )(.*)(?= = function())/g;
   const importPattern = /(import.+?;)/g;
-  let className = /(?<=var )(.*)(?= = \/\*\* @class \*\/ \(function \(_super)/.exec(example)![0];
-  if (!className) {
-    className = /(?<=var )(.*)(?= = function())/.exec(example)![0];
-  }
-
   const identifiers: string[] = [];
   const imports: string[] = [];
   let temp;
+  let className;
+
+  while ((temp = classNamePattern.exec(example))) {
+    className = temp[0];
+  }
+  if (className === undefined) {
+    while ((temp = constNamePattern.exec(example))) {
+      className = temp[0];
+    }
+  }
 
   while ((temp = identifierPattern.exec(example))) {
     temp[0].split(', ').map((identifier: string) => identifiers.push(identifier));
@@ -21,7 +28,6 @@ export function transformExample(example: string, id: string) {
   imports.map(imp => {
     example = example.replace(imp, '');
   });
-
   example = example.replace('export ', '');
   example =
     'const {' +
@@ -31,7 +37,7 @@ export function transformExample(example: string, id: string) {
     `
     ReactDOM.render(
       React.createElement(Fabric, null, React.createElement(${className}, null)),
-      document.getElementById('${id}')
+      document.getElementById('${id.replace(' ', '')}')
     );
     `;
   return example;

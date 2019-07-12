@@ -15,6 +15,8 @@ import { Editor, ITextModel, transpile, evalCode, ITranspiledOutput } from '@uif
 export interface IExampleCardState {
   schemeIndex: number;
   themeIndex: number;
+  contentRendered: boolean;
+  error?: string;
 }
 
 const getClassNames = classNamesFunction<IExampleCardStyleProps, IExampleCardStyles>();
@@ -42,13 +44,15 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
     this.state = {
       schemeIndex: 0,
-      themeIndex: 0
+      themeIndex: 0,
+      contentRendered: false
     };
   }
 
   public render(): JSX.Element {
     const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme } = this.props;
-    // const { schemeIndex, themeIndex } = this.state;
+    // const { schemeIndex, themeIndex, contentRendered } = this.state;
+    // const { themeIndex } = this.state;
 
     return (
       <AppCustomizationsContext.Consumer>
@@ -123,7 +127,30 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
               <div className={classNames.code}>{this.props.isCodeVisible && editor}</div>
 
-              {/* {activeCustomizations ? (
+              {this.props.isCodeVisible && (
+                <div
+                  style={
+                    this.state.error !== undefined
+                      ? {
+                          backgroundColor: 'gray',
+                          opacity: 0.5,
+                          pointerEvents: 'none',
+                          WebkitTouchCallout: 'none',
+                          WebkitUserSelect: 'none',
+                          MozUserSelect: 'none',
+                          msUserSelect: 'none',
+                          userSelect: 'none'
+                        }
+                      : {}
+                  }
+                  hidden={!this.props.isCodeVisible}
+                  id={title.replace(' ', '')}
+                />
+              )}
+
+              {!this.props.isCodeVisible && exampleCardContent}
+
+              {/* {!this.props.isCodeVisible && contentRendered && activeCustomizations ? (
                 <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
                   <Customizer {...activeCustomizations}>
                     <ThemeProvider scheme={_schemes[schemeIndex]}>
@@ -134,9 +161,6 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
               ) : (
                 exampleCardContent
               )} */}
-
-              {this.props.isCodeVisible && <div hidden={!this.props.isCodeVisible} id={title.replace(' ', '')} />}
-              {!this.props.isCodeVisible && exampleCardContent}
 
               {this._getDosAndDonts()}
             </div>
@@ -169,16 +193,26 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   private _editorOnChange = (editor: ITextModel) => {
     transpile(editor).then((output: ITranspiledOutput) => {
       if (output.outputString) {
-        const evalCodeError = evalCode(output.outputString, this.props.title.replace(' ', ''));
+        const evalCodeError = evalCode(output.outputString, this.props.title);
         if (output.outputString) {
           if (evalCodeError) {
-            console.log(evalCodeError);
+            this.setState({
+              error: evalCodeError
+            });
+          } else {
+            this.setState({
+              error: undefined
+            });
           }
         } else {
-          console.log(output.error);
+          this.setState({
+            error: output.error
+          });
         }
       } else {
-        console.log(output.error);
+        this.setState({
+          error: output.error
+        });
       }
     });
   };

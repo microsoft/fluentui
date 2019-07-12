@@ -8,12 +8,6 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
   const style = { width, height };
 
   React.useEffect(() => {
-    const editor = monaco.editor.create(ref.current!, {
-      model: monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('file:///main.tsx')),
-      value: code,
-      language
-    });
-
     monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
       allowNonTsExtensions: true,
       target: monaco.languages.typescript.ScriptTarget.ES5,
@@ -25,6 +19,12 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       outDir: 'lib',
       module: monaco.languages.typescript.ModuleKind.ESNext,
       lib: ['es5', 'dom']
+    });
+
+    const editor = monaco.editor.create(ref.current!, {
+      model: monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('file:///main.tsx')),
+      value: code,
+      language
     });
 
     editor.onDidChangeModelContent(() => {
