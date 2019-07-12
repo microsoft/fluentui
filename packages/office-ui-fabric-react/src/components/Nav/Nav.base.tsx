@@ -104,7 +104,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
         target={link.target}
         rel={rel}
         disabled={link.disabled}
-        aria-label={ariaLabel + selectStateAria ? `${selectStateAria}` : ''}
+        aria-label={ariaLabel + selectStateAria ? ` ${selectStateAria}` : ''}
       >
         {onRenderLink(link, this._onRenderLink)}
       </LinkAs>
