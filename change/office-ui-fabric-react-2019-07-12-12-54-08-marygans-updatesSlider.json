@@ -1,0 +1,8 @@
+{
+  "comment": "Slider: update active pressed state color for slider background and thumb to match design toolkit spec. Update palette references to semantic colors",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "marygans@microsoft.com",
+  "commit": "eb26de4fa2bd00bc5def80601eeb24191e07f6c0",
+  "date": "2019-07-12T19:54:08.806Z"
+}
