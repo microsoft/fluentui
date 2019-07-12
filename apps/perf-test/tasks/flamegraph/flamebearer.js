@@ -28,7 +28,11 @@ module.exports = function(buf) {
 
   const vizSrc = fs.readFileSync(require.resolve('./viz.js'), 'utf8');
   const helperSrc = fs.readFileSync(require.resolve('./helpers.js'), 'utf8');
-  let data = `names = ${JSON.stringify(names)};\n` + `levels = ${JSON.stringify(levels)};\n` + `numTicks = ${stacks.length};\n`;
+
+  let data = `names = ${JSON.stringify(names)};\n`;
+  data += `levels = ${JSON.stringify(levels)};\n`;
+  data += `numTicks = ${stacks.length};\n`;
+
   const flamegraph = fs
     .readFileSync(require.resolve('./index.html'), 'utf8')
     .toString()

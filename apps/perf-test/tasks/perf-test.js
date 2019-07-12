@@ -29,6 +29,10 @@ const iterationsDefault = 5000;
 
 // TODO:
 //  - Results Analysis
+//    - If System/Framework is cutting out over half of overall time.. what is consuming the rest? How can that be identified for users?
+//      - Is the case for Toggle.. but not SplitButton. Maybe it's normal for "ok" perf components?
+//      - Text is not nearly as bad as Toggle with overall lower samples, though, so something in Toggle is more expensive in Framework.
+//      - Even so, rationalize the time and what's consuming it, even if it's expected.
 //    - Could compare percentage differences rather than absolute to negate variance. (see variance examples)
 //      - Would also have to account for new or missing call hierarchies, which will affect overall percentages.
 //    - Production vs. Debug Build Results
@@ -71,6 +75,8 @@ const iterationsDefault = 5000;
 //    - Standard method for scenario implementation. Storybook?
 //    - Would require way of delineating scenario execution, if separate logfiles can't be used for each.
 //  - Options
+//    - Options to run in development mode to see React stack?
+//      - If nothing else should document ways that users can do it locally on wiki.
 //    - Ways to test changes to packages that doesn't require rebuilding everything to perf-test?
 //      - Add notes to wiki regarding requirements for changing other packages under test.
 //      - Add webpack serve option with aliasing?

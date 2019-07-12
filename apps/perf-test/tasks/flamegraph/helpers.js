@@ -1,15 +1,12 @@
-// TODO: test regex on mac, linux and windows
-const frameworkName = new RegExp(
-  /~([a-zA-Z]{1}|[a-zA-Z]{2}|[a-zA-Z]{1}|[a-zA-Z]{1}\.[a-zA-Z]{1})[\. ]|~render |~\(anonymous\)|\(unknown\)|\~webpack/
-);
-const systemName = new RegExp(/\(C\+\+\)|\(lib\)/);
+const frameworkName = /~([a-zA-Z]{1,2}|[a-zA-Z]{1}\.[a-zA-Z]{1})[\. ]|~render |~\(anonymous\)|\(unknown\)|\~webpack/;
+const systemName = /\(C\+\+\)|\(lib\)/;
 
 function isFrameworkName(name) {
-  return name.match(frameworkName);
+  return frameworkName.test(name);
 }
 
 function isSystemName(name) {
-  return name.match(systemName);
+  return systemName.test(name);
 }
 
 /* MODULE_EXPORT */
