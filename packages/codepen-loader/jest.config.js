@@ -1,6 +1,4 @@
-const { createConfig } = require('../../scripts/jest/jest-resources');
-
-module.exports = createConfig({
-  testEnvironment: 'node',
+module.exports = {
+  preset: 'ts-jest',
   testRegex: '/__tests__/.*\\.test\\.ts$'
-});
+};
