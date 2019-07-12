@@ -1,0 +1,8 @@
+{
+  "comment": "Fix donut chart transform when height and width props change",
+  "type": "patch",
+  "packageName": "@uifabric/charting",
+  "email": "v-ragor@microsoft.com",
+  "commit": "7c5619a4fdf31fdbb966a1e50c9cc12a2dcb0180",
+  "date": "2019-07-12T10:58:00.696Z"
+}
