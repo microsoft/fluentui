@@ -1,8 +1,0 @@
-{
-  "comment": "Update to progressBar indicator description label font size to match design toolkti spec.",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "marygans@microsoft.com",
-  "commit": "48a333ccde37c619e7d75108d26c727299feb396",
-  "date": "2019-07-11T15:52:10.663Z"
-}

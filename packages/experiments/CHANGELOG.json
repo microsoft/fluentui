@@ -2,6 +2,27 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 12 Jul 2019 12:29:52 GMT",
+      "tag": "@uifabric/experiments_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chiclet: adjust xsmall chiclet title height",
+            "author": "natalie.ethell@microsoft.com",
+            "commit": "04958abbb3a8d0ff556770fc0c4fb0abdb9dbca4"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add screener tests for media tiles",
+            "author": "jocobb@microsoft.com",
+            "commit": "57675680a18d6c5463ec44c5f5beaca8890dc226"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Jul 2019 12:28:00 GMT",
       "tag": "@uifabric/experiments_v7.4.2",
       "version": "7.4.2",

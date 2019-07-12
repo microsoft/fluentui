@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 10 Jul 2019 12:28:00 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Jul 2019 12:29:52 GMT and should not be manually modified.
+
+## 7.5.0
+Fri, 12 Jul 2019 12:29:52 GMT
+
+### Minor changes
+
+- Add screener tests for media tiles (jocobb@microsoft.com)
+
+### Patches
+
+- Chiclet: adjust xsmall chiclet title height (natalie.ethell@microsoft.com)
 
 ## 7.4.2
 Wed, 10 Jul 2019 12:28:00 GMT
