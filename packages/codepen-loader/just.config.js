@@ -1,4 +1,6 @@
-const { taskPresets, task, series, parallel, tscTask, copyTask } = require('just-scripts');
+const {
+  just: { taskPresets, task, series, parallel, tscTask, copyTask }
+} = require('@uifabric/build');
 
 taskPresets.lib();
 
@@ -16,4 +18,4 @@ task(
   )
 );
 
-task('build', series('clean', 'copy', parallel('jest', 'ts')));
+task('build', series('clean', 'copy', parallel('jest', 'ts:commonjs-only')));
