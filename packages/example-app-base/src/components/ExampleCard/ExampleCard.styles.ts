@@ -100,8 +100,6 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
       {
         borderBottom: `1px solid ${theme.palette.neutralTertiary}`,
         overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
         position: 'relative'
       },
       isCodeVisible && {
