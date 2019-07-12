@@ -257,7 +257,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 z-index: 1;
               }
               &:active $activeSection {
-                background-color: #0078d4;
+                background-color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:active $activeSection {
                 background-color: Highlight;
@@ -281,7 +281,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 border-color: Highlight;
               }
               &:active $thumb {
-                border: 2px solid #0078d4;
+                border: 2px solid #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:active $thumb {
                 border-color: Highlight;
@@ -514,7 +514,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 z-index: 1;
               }
               &:active $activeSection {
-                background-color: #0078d4;
+                background-color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:active $activeSection {
                 background-color: Highlight;
@@ -538,7 +538,7 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 border-color: Highlight;
               }
               &:active $thumb {
-                border: 2px solid #0078d4;
+                border: 2px solid #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:active $thumb {
                 border-color: Highlight;
