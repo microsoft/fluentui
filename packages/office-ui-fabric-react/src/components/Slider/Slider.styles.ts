@@ -26,7 +26,8 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   // Tokens
-  const sliderInteractedActiveSectionColor = palette.themePrimary;
+  const sliderInteractedActiveSectionColor = palette.themeDarkAlt;
+  const sliderHoverSectionColor = palette.themePrimary;
   const sliderInteractedInactiveSectionColor = palette.themeLight;
   const sliderRestActiveSectionColor = palette.neutralSecondary;
   const sliderRestInactiveSectionColor = palette.neutralTertiaryAlt;
@@ -40,6 +41,14 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
 
   const slideBoxActiveSectionStyles = !disabled && {
     backgroundColor: sliderInteractedActiveSectionColor,
+    selectors: {
+      [HighContrastSelector]: {
+        backgroundColor: 'Highlight'
+      }
+    }
+  };
+  const slideHoverSectionStyles = !disabled && {
+    backgroundColor: sliderHoverSectionColor,
     selectors: {
       [HighContrastSelector]: {
         backgroundColor: 'Highlight'
@@ -122,7 +131,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         alignItems: 'center',
         selectors: {
           ':active $activeSection': slideBoxActiveSectionStyles,
-          ':hover $activeSection': slideBoxActiveSectionStyles,
+          ':hover $activeSection': slideHoverSectionStyles,
           ':active $inactiveSection': slideBoxInactiveSectionStyles,
           ':hover $inactiveSection': slideBoxInactiveSectionStyles,
           ':active $thumb': slideBoxActiveThumbStyles,
