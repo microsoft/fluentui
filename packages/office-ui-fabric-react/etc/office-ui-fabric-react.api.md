@@ -7685,6 +7685,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
 export interface ITooltipStyleProps {
     className?: string;
     delay?: TooltipDelay;
+    gapSpace?: number;
     maxWidth?: string;
     theme: ITheme;
 }
