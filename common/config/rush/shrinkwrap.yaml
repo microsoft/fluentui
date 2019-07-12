@@ -496,10 +496,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-zmP6zNddcIrRXbg8NX9oHX2iCBLU9hZF/+7GeUi3hLbp13xMDHfdT4KepoT+8ZMOMZzRF1lcqiTiVy24VYvCEg==
-  /@microsoft/package-deps-hash/2.2.158:
-    dev: false
-    resolution:
-      integrity: sha512-gN0vkVrF38flbxbPJlEEGJi72Hxqn9JFYILCs0rOSL+LZOGuKUzaZYm3B7XbX7GF6LzPs2R3T5gmWx1EHxxQAQ==
   /@microsoft/package-deps-hash/2.2.162:
     dev: false
     resolution:
@@ -1210,10 +1206,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-QcAKpaO6nhHLlxWBvpc4WeLrTvPqlHOvaj0s5GriKkA1zq+bsFBPpfYCvQhLqLgYlIko8A9YrPdaMHCo5mBcpg==
-  /@types/node/10.14.9:
-    dev: false
-    resolution:
-      integrity: sha512-NelG/dSahlXYtSoVPErrp06tYFrvzj8XLWmKA+X8x0W//4MqbUyZu++giUG/v0bjAT6/Qxa8IjodrfdACyb0Fg==
   /@types/node/8.10.49:
     dev: false
     resolution:
@@ -8842,21 +8834,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-FrLwOgm+iXrPV+5zDU6Jqu4gCRXbWEQg2O3SKONsWE4w7AXFRkryS53bpWdaL9cNol+AmR3AEYz6kn+o0fCPnw==
-  /just-scripts-utils/0.8.1:
-    dependencies:
-      fs-extra: 7.0.1
-      glob: 7.1.4
-      handlebars: 4.1.2
-      jju: 1.4.0
-      just-task-logger: 0.2.1
-      marked: 0.6.2
-      marked-terminal: /marked-terminal/3.2.0/marked@0.6.2
-      semver: 5.7.0
-      tar: 4.4.10
-      yargs: 12.0.5
-    dev: false
-    resolution:
-      integrity: sha512-DAhkzy25SiXZancqtup2LtXUJZb8Cksic40Xivj9KPjU+mYtsKTde+W0iEyRD9aZSQjIPN39dJMFdIC8AIVC2g==
   /just-scripts-utils/0.8.2:
     dependencies:
       fs-extra: 7.0.1
@@ -8872,6 +8849,23 @@ packages:
     dev: false
     resolution:
       integrity: sha512-b1ESJiE0DKmhoI+9Cc/jhNH6/VWCkL2g8ZMS9SRqlRI9zuSMRsoPXQrfGYT2PHbkUedDA9LMR99Z+QKxx/yblw==
+  /just-scripts/0.20.0:
+    dependencies:
+      '@types/node': 10.14.12
+      chalk: 2.4.2
+      diff-match-patch: 1.0.4
+      fs-extra: 7.0.1
+      glob: 7.1.4
+      just-scripts-utils: 0.8.2
+      just-task: 0.13.0
+      npm-registry-fetch: 3.9.1
+      prompts: 2.1.0
+      run-parallel-limit: 1.0.5
+      webpack-merge: 4.2.1
+    dev: false
+    hasBin: true
+    resolution:
+      integrity: sha512-S1ttsInIhleqhHUYr0IS5El82m6zL9mhVhVi63WOXX47onx+k5wXLKUig0kbdnXzUk3xgnavIVIpeCuwRnRuWw==
   /just-scripts/0.25.2:
     dependencies:
       '@types/node': 10.14.12
@@ -8889,13 +8883,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-b7M+1YY8L0WZKQdzLn0PgJkeblYSsfIIVJI5Bkiz8x5Db26edglgX8p6Bs1Jz3Zh2JVCTm47eaE+U/rSoftxjg==
-  /just-task-logger/0.2.1:
-    dependencies:
-      chalk: 2.4.2
-      yargs: 12.0.5
-    dev: false
-    resolution:
-      integrity: sha512-M6Ij4pcPG0wm5ypiv5bu4mx9dlCbKPseGsWZdfl7B2OjTfzBr+Iph1oS3ftSXPmgyC4aEZR0cIAwEdOSPK8z9g==
   /just-task-logger/0.3.0:
     dependencies:
       chalk: 2.4.2
@@ -9430,22 +9417,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-c3sIjNUow0+8swNwVpqoH4YCShKNFkMaw6oH1mNS2haDZQqkeZFlHS3dhoeEbKKmJB4vXpJucU6oH75aDYeE9g==
-  /make-fetch-happen/4.0.1:
-    dependencies:
-      agentkeepalive: 3.5.2
-      cacache: 11.3.2
-      http-cache-semantics: 3.8.1
-      http-proxy-agent: 2.1.0
-      https-proxy-agent: 2.2.1
-      lru-cache: 4.1.5
-      mississippi: 3.0.0
-      node-fetch-npm: 2.0.2
-      promise-retry: 1.1.1
-      socks-proxy-agent: 4.0.2
-      ssri: 6.0.1
-    dev: false
-    resolution:
-      integrity: sha512-7R5ivfy9ilRJ1EMKIOziwrns9fGeAD4bAha8EB7BIiBBLHm2KeTUGCrICFt2rbHfzheTLynv50GnNTK1zDTrcQ==
   /make-fetch-happen/4.0.2:
     dependencies:
       agentkeepalive: 3.5.2
@@ -9539,21 +9510,6 @@ packages:
       react: '>= 0.14.0'
     resolution:
       integrity: sha1-hYs3+KklJrHzQHWT/3fJWSdyC+8=
-  /marked-terminal/3.2.0/marked@0.6.2:
-    dependencies:
-      ansi-escapes: 3.2.0
-      cardinal: 2.1.1
-      chalk: 2.4.2
-      cli-table: 0.3.1
-      marked: 0.6.2
-      node-emoji: 1.10.0
-      supports-hyperlinks: 1.0.1
-    dev: false
-    id: registry.npmjs.org/marked-terminal/3.2.0
-    peerDependencies:
-      marked: ^0.4.0 || ^0.5.0 || ^0.6.0
-    resolution:
-      integrity: sha512-Yr1yVS0BbDG55vx7be1D0mdv+jGs9AW563o/Tt/7FTsId2J0yqhrTeXAqq/Q0DyyXltIn6CSxzesQuFqXgafjQ==
   /marked-terminal/3.2.0/marked@0.6.3:
     dependencies:
       ansi-escapes: 3.2.0
@@ -9576,13 +9532,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-ea2eGWOqNxPcXv8dyERdSr/6FmzvWwzjMxpfGB/sbMccXoct+xY+YukPD+QTUZwyvK7BZwcr4m21WBOW41pAkg==
-  /marked/0.6.2:
-    dev: false
-    engines:
-      node: '>=0.10.0'
-    hasBin: true
-    resolution:
-      integrity: sha512-LqxwVH3P/rqKX4EKGz7+c2G9r98WeM/SW34ybhgNGhUQNKtf1GmmSkJ6cDGJ/t6tiyae49qRkpyTw2B9HOrgUA==
   /marked/0.6.3:
     dev: false
     engines:
@@ -10322,17 +10271,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-IFsj0R9C7ZdR5cP+ET342q77uSRdtWOlWpih5eC+lu29tIDbNEgDbzgVJ5UFvYHWhxDZ5TFkJafFioO0pPQjCw==
-  /npm-registry-fetch/3.9.0:
-    dependencies:
-      JSONStream: 1.3.5
-      bluebird: 3.5.5
-      figgy-pudding: 3.5.1
-      lru-cache: 4.1.5
-      make-fetch-happen: 4.0.1
-      npm-package-arg: 6.1.0
-    dev: false
-    resolution:
-      integrity: sha512-srwmt8YhNajAoSAaDWndmZgx89lJwIZ1GWxOuckH4Coek4uHv5S+o/l9FLQe/awA+JwTnj4FJHldxhlXdZEBmw==
   /npm-registry-fetch/3.9.1:
     dependencies:
       JSONStream: 1.3.5
@@ -15791,7 +15729,7 @@ packages:
       '@types/prettier': 1.16.4
       babylon: 7.0.0-beta.47
       jscodeshift: 0.5.1
-      just-scripts: 0.20.0
+      just-scripts: 0.25.2
       loader-utils: 1.2.3
       prettier: 1.17.1
       recast: 0.15.5
@@ -15801,7 +15739,7 @@ packages:
     dev: false
     name: '@rush-temp/codepen-loader'
     resolution:
-      integrity: sha512-dvNiUaC6W8+9m4h6JgPdxfHhn3ilyqvsZXl6EQ/8Go1+z+Ob/FKr7AYinzVHsoX2wNKJYD7YxVD+QknPY20YmA==
+      integrity: sha512-8YeZYm1YpsHEQjujLBAOU/ZtPWLZFwk861Zhaa47UsFZbbMCCJ/HNN04TUKsHi902SlN6nqsc9jxan1Mz1V9GA==
       tarball: 'file:projects/codepen-loader.tgz'
     version: 0.0.0
   'file:projects/date-time.tgz':
