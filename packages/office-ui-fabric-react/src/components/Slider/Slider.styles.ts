@@ -74,6 +74,15 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     }
   };
 
+  const slideBoxHoverThumbStyles = !disabled && {
+    border: `2px solid ${sliderHoverSectionColor}`,
+    selectors: {
+      [HighContrastSelector]: {
+        borderColor: 'Highlight'
+      }
+    }
+  };
+
   const slideBoxActiveZeroTickStyles = !props.disabled && {
     backgroundColor: theme.palette.themeLight,
     selectors: {
@@ -135,7 +144,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           ':active $inactiveSection': slideBoxInactiveSectionStyles,
           ':hover $inactiveSection': slideBoxInactiveSectionStyles,
           ':active $thumb': slideBoxActiveThumbStyles,
-          ':hover $thumb': slideBoxActiveThumbStyles,
+          ':hover $thumb': slideBoxHoverThumbStyles,
           ':active $zeroTick': slideBoxActiveZeroTickStyles,
           ':hover $zeroTick': slideBoxActiveZeroTickStyles,
           $thumb: [
