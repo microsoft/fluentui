@@ -22,22 +22,22 @@ const GlobalClassNames = {
 
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   const { className, titleLabelClassName, theme, vertical, disabled, showTransitions, showValue } = props;
-  const { palette } = theme;
+  const { semanticColors, palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   // Tokens
-  const sliderInteractedActiveSectionColor = palette.themeDarkAlt;
-  const sliderHoverSectionColor = palette.themePrimary;
+  const sliderInteractedActiveSectionColor = semanticColors.inputBackgroundCheckedHovered;
+  const sliderHoverSectionColor = semanticColors.inputBackgroundChecked;
   const sliderInteractedInactiveSectionColor = palette.themeLight;
-  const sliderRestActiveSectionColor = palette.neutralSecondary;
-  const sliderRestInactiveSectionColor = palette.neutralTertiaryAlt;
+  const sliderRestActiveSectionColor = semanticColors.smallInputBorder;
+  const sliderRestInactiveSectionColor = semanticColors.buttonBackgroundChecked;
 
-  const sliderDisabledActiveSectionColor = palette.neutralTertiary;
-  const sliderDisabledInactiveSectionColor = palette.neutralLight;
+  const sliderDisabledActiveSectionColor = semanticColors.variantBorderHovered;
+  const sliderDisabledInactiveSectionColor = semanticColors.variantBorder;
 
-  const sliderThumbBackgroundColor = palette.white;
-  const sliderThumbBorderColor = palette.neutralSecondary;
-  const sliderThumbDisabledBorderColor = palette.neutralTertiaryAlt;
+  const sliderThumbBackgroundColor = semanticColors.inputBackground;
+  const sliderThumbBorderColor = semanticColors.smallInputBorder;
+  const sliderThumbDisabledBorderColor = semanticColors.disabledBodySubtext;
 
   const slideBoxActiveSectionStyles = !disabled && {
     backgroundColor: sliderInteractedActiveSectionColor,
@@ -283,7 +283,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       classNames.zeroTick,
       {
         position: 'absolute',
-        background: theme.palette.neutralTertiaryAlt,
+        background: sliderRestInactiveSectionColor,
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'WindowText'
@@ -291,7 +291,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         }
       },
       props.disabled && {
-        background: theme.palette.neutralLight,
+        background: sliderDisabledInactiveSectionColor,
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'GrayText'
