@@ -21,6 +21,7 @@
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
     "start": "cd apps && cd fabric-website-resources && npm start",
     "start-exp": "cd packages && cd experiments && npm start",
+    "rebuild": "npm run _rushRebuildFast",
     "build": "npm run _rushRebuild",
     "buildci": "npm run _rushRebuildCi",
     "buildfast": "npm run _rushBuild",
