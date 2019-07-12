@@ -1,0 +1,8 @@
+{
+  "comment": "Adding Georgian and Armenian font for Segoe UI Web",
+  "type": "minor",
+  "packageName": "@uifabric/styling",
+  "email": "marygans@microsoft.com",
+  "commit": "330c3f5497854336017766c16478c4932338d227",
+  "date": "2019-07-11T22:35:18.636Z"
+}

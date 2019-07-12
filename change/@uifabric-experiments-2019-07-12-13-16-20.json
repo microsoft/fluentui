@@ -1,0 +1,8 @@
+{
+  "comment": "Change media tile to show metadata only on hover",
+  "type": "minor",
+  "packageName": "@uifabric/experiments",
+  "email": "jocobb@microsoft.com",
+  "commit": "",
+  "date": "2019-07-12T20:16:20.070Z"
+}
