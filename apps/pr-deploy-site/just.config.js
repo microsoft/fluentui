@@ -26,4 +26,4 @@ task(
   copyInstructionsTask({
     copyInstructions: [...copyInstructions.copyFilesToDestinationDirectory(['index.html', 'chiclet-test.html'], 'dist'), ...instructions]
   })
-);
+).cached();
