@@ -1531,7 +1531,42 @@ exports[`a11y test checks accessibility of DocumentCard (DocumentCard.Conversati
 
 exports[`a11y test checks accessibility of DocumentCard (DocumentCard.Image.Example) 1`] = `Array []`;
 
-exports[`a11y test checks accessibility of Dropdown (Dropdown.Basic.Example) 1`] = `Array []`;
+exports[`a11y test checks accessibility of Dropdown (Dropdown.Basic.Example) 1`] = `
+Array [
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "#Dropdown1-label",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<label class=\\"ms-Label ms-Dropdown-label label-26\\" id=\\"Dropdown1-label\\" for=\\"Dropdown1\\">Disabled example with defaultSelectedKey</label>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- Element has insufficient color contrast of 2.63 (foreground color: #a19f9d, background color: #ffffff, font size: 10.5pt, font weight: bold). Expected contrast ratio of 4.5:1.",
+      "text": "Fix any of the following: Element has insufficient color contrast of 2.63 (foreground color: #a19f9d, background color: #ffffff, font size: 10.5pt, font weight: bold). Expected contrast ratio of 4.5:1.",
+    },
+    "ruleId": "color-contrast",
+    "ruleIndex": 17,
+  },
+]
+`;
 
 exports[`a11y test checks accessibility of Dropdown (Dropdown.Controlled.Example) 1`] = `Array []`;
 
@@ -6863,9 +6898,143 @@ exports[`a11y test checks accessibility of Shimmer (Shimmer.LoadData.Example) 1`
 
 exports[`a11y test checks accessibility of Shimmer (Shimmer.Styling.Example) 1`] = `Array []`;
 
-exports[`a11y test checks accessibility of Slider (Slider.Basic.Example) 1`] = `Array []`;
+exports[`a11y test checks accessibility of Slider (Slider.Basic.Example) 1`] = `
+Array [
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".titleLabel-18",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<label class=\\"ms-Label titleLabel-18\\" for=\\"Slider1\\">Disabled example</label>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- Element has insufficient color contrast of 2.63 (foreground color: #a19f9d, background color: #ffffff, font size: 10.5pt, font weight: bold). Expected contrast ratio of 4.5:1.",
+      "text": "Fix any of the following: Element has insufficient color contrast of 2.63 (foreground color: #a19f9d, background color: #ffffff, font size: 10.5pt, font weight: bold). Expected contrast ratio of 4.5:1.",
+    },
+    "ruleId": "color-contrast",
+    "ruleIndex": 17,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".valueLabel-19",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<label class=\\"ms-Label ms-Slider-value valueLabel-19\\">300</label>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- Element has insufficient color contrast of 2.63 (foreground color: #a19f9d, background color: #ffffff, font size: 10.5pt, font weight: bold). Expected contrast ratio of 4.5:1.",
+      "text": "Fix any of the following: Element has insufficient color contrast of 2.63 (foreground color: #a19f9d, background color: #ffffff, font size: 10.5pt, font weight: bold). Expected contrast ratio of 4.5:1.",
+    },
+    "ruleId": "color-contrast",
+    "ruleIndex": 17,
+  },
+]
+`;
 
-exports[`a11y test checks accessibility of Slider (Slider.Vertical.Example) 1`] = `Array []`;
+exports[`a11y test checks accessibility of Slider (Slider.Vertical.Example) 1`] = `
+Array [
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".titleLabel-18",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<label class=\\"ms-Label titleLabel-18\\" for=\\"Slider1\\">Disabled</label>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- Element has insufficient color contrast of 2.63 (foreground color: #a19f9d, background color: #ffffff, font size: 10.5pt, font weight: bold). Expected contrast ratio of 4.5:1.",
+      "text": "Fix any of the following: Element has insufficient color contrast of 2.63 (foreground color: #a19f9d, background color: #ffffff, font size: 10.5pt, font weight: bold). Expected contrast ratio of 4.5:1.",
+    },
+    "ruleId": "color-contrast",
+    "ruleIndex": 17,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".valueLabel-19",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<label class=\\"ms-Label ms-Slider-value valueLabel-19\\">300</label>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- Element has insufficient color contrast of 2.63 (foreground color: #a19f9d, background color: #ffffff, font size: 10.5pt, font weight: bold). Expected contrast ratio of 4.5:1.",
+      "text": "Fix any of the following: Element has insufficient color contrast of 2.63 (foreground color: #a19f9d, background color: #ffffff, font size: 10.5pt, font weight: bold). Expected contrast ratio of 4.5:1.",
+    },
+    "ruleId": "color-contrast",
+    "ruleIndex": 17,
+  },
+]
+`;
 
 exports[`a11y test checks accessibility of SpinButton (SpinButton.Basic.Example) 1`] = `Array []`;
 
@@ -6944,7 +7113,74 @@ exports[`a11y test checks accessibility of Stack (Stack.Horizontal.WrapNested.Ex
 
 exports[`a11y test checks accessibility of Stack (Stack.Vertical.Basic.Example) 1`] = `Array []`;
 
-exports[`a11y test checks accessibility of Stack (Stack.Vertical.Configure.Example) 1`] = `Array []`;
+exports[`a11y test checks accessibility of Stack (Stack.Vertical.Configure.Example) 1`] = `
+Array [
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".titleLabel-32",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<label class=\\"ms-Label titleLabel-32\\" for=\\"Slider5\\">Container height:</label>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- Element has insufficient color contrast of 2.63 (foreground color: #a19f9d, background color: #ffffff, font size: 10.5pt, font weight: bold). Expected contrast ratio of 4.5:1.",
+      "text": "Fix any of the following: Element has insufficient color contrast of 2.63 (foreground color: #a19f9d, background color: #ffffff, font size: 10.5pt, font weight: bold). Expected contrast ratio of 4.5:1.",
+    },
+    "ruleId": "color-contrast",
+    "ruleIndex": 17,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".valueLabel-33",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<label class=\\"ms-Label ms-Slider-value valueLabel-33\\">200</label>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- Element has insufficient color contrast of 2.63 (foreground color: #a19f9d, background color: #ffffff, font size: 10.5pt, font weight: bold). Expected contrast ratio of 4.5:1.",
+      "text": "Fix any of the following: Element has insufficient color contrast of 2.63 (foreground color: #a19f9d, background color: #ffffff, font size: 10.5pt, font weight: bold). Expected contrast ratio of 4.5:1.",
+    },
+    "ruleId": "color-contrast",
+    "ruleIndex": 17,
+  },
+]
+`;
 
 exports[`a11y test checks accessibility of Stack (Stack.Vertical.Grow.Example) 1`] = `Array []`;
 

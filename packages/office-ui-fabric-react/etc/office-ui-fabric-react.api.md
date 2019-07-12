@@ -1337,7 +1337,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
 export const GroupedList: React.StatelessComponent<IGroupedListProps>;
 
 // @public (undocumented)
-export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
+export class GroupedListBase extends React.Component<IGroupedListProps, IGroupedListState> implements IGroupedList {
     constructor(props: IGroupedListProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1379,7 +1379,7 @@ export const groupOne: IExtendedPersonaProps[];
 export const GroupShowAll: React.StatelessComponent<IGroupShowAllProps>;
 
 // @public (undocumented)
-export const GroupSpacer: React.SFC<IGroupSpacerProps>;
+export const GroupSpacer: React.FunctionComponent<IGroupSpacerProps>;
 
 // @public (undocumented)
 export const groupTwo: IExtendedPersonaProps[];
@@ -3734,6 +3734,7 @@ export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithRe
     ariaLabelledById?: string;
     // @deprecated
     className?: string;
+    // @deprecated
     componentRef?: IRefObject<IDialog>;
     // @deprecated
     containerClassName?: string;
@@ -4253,6 +4254,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     onChanged?: (option: IDropdownOption, index?: number) => void;
     onDismiss?: () => void;
     onRenderCaretDown?: IRenderFunction<IDropdownProps>;
+    onRenderLabel?: IRenderFunction<IDropdownProps>;
     // @deprecated
     onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
     onRenderPlaceholder?: IRenderFunction<IDropdownProps>;
@@ -6885,6 +6887,7 @@ export interface ISpinButtonStyles {
     inputDisabled: IStyle;
     inputTextSelected: IStyle;
     label: IStyle;
+    // @deprecated
     labelDisabled: IStyle;
     labelWrapper: IStyle;
     labelWrapperBottom: IStyle;

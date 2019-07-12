@@ -77,9 +77,9 @@ describe('a11y test', () => {
   });
 
   const files: string[] = [];
-  const exampleFiles: string[] = glob.sync(
-    path.resolve(process.cwd(), `node_modules/office-ui-fabric-react/lib-commonjs/components/**/examples/*Example*.js`)
-  );
+  const oufrPath = path.dirname(require.resolve('office-ui-fabric-react/package.json'));
+  const exampleFiles: string[] = glob.sync(path.join(oufrPath, `lib-commonjs/components/**/examples/*Example*.js`));
+
   files.push(...exampleFiles);
 
   files

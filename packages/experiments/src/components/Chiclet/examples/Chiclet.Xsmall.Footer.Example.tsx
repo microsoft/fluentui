@@ -1,21 +1,11 @@
 import * as React from 'react';
-import { Chiclet, ChicletSize } from '@uifabric/experiments';
-import { IButtonProps, IconButton, Stack } from 'office-ui-fabric-react';
+import { Chiclet, ChicletSize } from '@uifabric/experiments/lib/Chiclet';
+import { IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
+import { Icon, IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { Text } from 'office-ui-fabric-react/lib/Text';
 import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
 
-const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
-
-export class FooterComponent extends React.Component<IFooterComponent, {}> {
-  public render(): JSX.Element {
-    const { buttonProps, attachProp } = this.props;
-
-    return _renderFooter(buttonProps, attachProp);
-  }
-}
-
-export interface IChicletXsmallFooterExampleState {
-  textFieldValue: string;
-}
+const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
 const footerStyle = mergeStyles({
   display: 'flex'
@@ -32,63 +22,49 @@ const activitiesStyle = mergeStyles({
 });
 
 const attachStyle = mergeStyles({
-  width: 25,
-  alignSelf: 'center',
-  cursor: 'pointer',
+  height: '24px',
+  width: '16px',
+  fontSize: '16px',
+  marginTop: '6px',
+  marginLeft: '6px',
   backgroundColor: 'white',
   color: '#0078d7'
 });
 
 const sizeStyle = mergeStyles({
-  width: 25,
-  fontSize: 12,
+  width: 34,
   alignSelf: 'center',
   lineHeight: 1.83,
   letterSpacing: 'normal'
 });
 
-export class ChicletXsmallFooterExample extends React.Component<{}, IChicletXsmallFooterExampleState> {
-  constructor(props: {}) {
-    super(props);
+export const ChicletXsmallFooterExample: React.FunctionComponent<{}> = () => {
+  const footerButtonProps: IButtonProps[] = [{ iconProps: { iconName: 'More' } }, { iconProps: { iconName: 'CloudUpload' } }];
+  const attachIconProp: IIconProps = { iconName: 'Attach' };
+  const footer = <FooterComponent buttonProps={footerButtonProps} attachProps={attachIconProp} />;
 
-    this.state = {
-      textFieldValue: 'http://localhost:4322'
-    };
-  }
+  return <Chiclet url={SAMPLE_URL} title="Quarterly Results.docx" itemType="docx" size={ChicletSize.xSmall} footer={footer} />;
+};
 
+export class FooterComponent extends React.Component<IFooterComponent, {}> {
   public render(): JSX.Element {
-    const footerButtonProps: IButtonProps[] = [{ iconProps: { iconName: 'More' } }, { iconProps: { iconName: 'CloudUpload' } }];
-
-    const attachButtonProp: IButtonProps = { iconProps: { iconName: 'Attach' } };
-
-    const footer = <FooterComponent buttonProps={footerButtonProps} attachProp={attachButtonProp} />;
-
-    return (
-      <Stack tokens={{ childrenGap: 16 }}>
-        <Chiclet
-          url={TEST_URL}
-          title="Quarterly Results"
-          image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg"
-          size={ChicletSize.xSmall}
-          footer={footer}
-        />
-      </Stack>
-    );
+    const { buttonProps, attachProps } = this.props;
+    return _renderFooter(buttonProps, attachProps);
   }
 }
 
 export interface IFooterComponent extends React.Props<FooterComponent> {
   buttonProps: IButtonProps[];
-  attachProp: IButtonProps;
+  attachProps: IIconProps;
 }
 
-function _renderFooter(buttonProps: IButtonProps[], attachProp: IButtonProps): React.ReactElement<HTMLDivElement> {
+function _renderFooter(buttonProps: IButtonProps[], attachProps: IIconProps): React.ReactElement<HTMLDivElement> {
   return (
     <div className={footerStyle}>
-      <div className={attachStyle}>
-        <IconButton {...attachProp} />
-      </div>
-      <div className={sizeStyle}>{'4MB'}</div>
+      <Icon {...attachProps} className={attachStyle} />
+      <Text variant="small" className={sizeStyle}>
+        {'4MB'}
+      </Text>
       <div className={activitiesStyle}>
         {buttonProps &&
           buttonProps.map((buttonProp: IButtonProps, index: number) => {
