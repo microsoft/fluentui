@@ -2242,7 +2242,11 @@ export interface IChoiceGroupOptionStyleProps {
     // (undocumented)
     hasImage?: boolean;
     // (undocumented)
+    imageHeight?: number;
+    // (undocumented)
     imageIsLarge?: boolean;
+    // (undocumented)
+    imageWidth?: number;
     // (undocumented)
     theme: ITheme;
 }
