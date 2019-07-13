@@ -24,7 +24,6 @@ function lintImports() {
   const fs = require('fs');
   const chalk = require('chalk').default;
   const findGitRoot = require('../monorepo/findGitRoot');
-  const { readRushJson } = require('../read-config');
 
   const gitRoot = findGitRoot();
   const sourcePath = path.resolve(process.cwd(), 'src');

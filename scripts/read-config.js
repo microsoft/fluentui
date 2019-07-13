@@ -34,11 +34,4 @@ function readConfig(file) {
  * }} RushJson
  */
 
-/**
- * @returns {RushJson}
- */
-function readRushJson() {
-  return readConfig('rush.json');
-}
-
-module.exports = { readConfig, readRushJson };
+module.exports = { readConfig };

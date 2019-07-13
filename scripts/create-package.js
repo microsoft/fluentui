@@ -4,7 +4,6 @@ const mustache = require('mustache');
 const argv = require('yargs').argv;
 const fs = require('fs');
 const exec = require('./exec-sync');
-const { readRushJson } = require('./read-config');
 const writeConfig = require('./write-config');
 const path = require('path');
 
@@ -33,13 +32,6 @@ const packagePath = path.join(process.cwd(), 'packages', newPackageName);
 const templateFolderPath = path.join(process.cwd(), 'scripts', 'templates', 'create-package');
 if (fs.existsSync(packagePath)) {
   console.error(`New package path ${packagePath} already exists.`);
-  process.exit(1);
-}
-
-// rush.json contents
-const rushJson = readRushJson();
-if (!rushJson) {
-  console.error('Could not find rush.json.');
   process.exit(1);
 }
 
@@ -81,13 +73,9 @@ const steps = [
 ];
 
 // Strings
-const successCreatedPackage = `New package ${newPackageName} successfully created.`;
-const npmGenerateMessage = 'Running "npm generate" (to bypass this step, use --no-generate arg)';
-const rushPackagePresent = `Package ${newPackageNpmName} is already present in rush.json`;
 const errorUnableToCreatePackage = `Error creating package directory ${packagePath}`;
 const errorUnableToOpenTemplate = templateFile => `Unable to open mustache template ${templateFile} for component`;
 const errorUnableToWriteFile = step => `Unable to write ${step} file`;
-const errorUnableToUpdateRush = `Could not add an entry for ${newPackageNpmName} to list of projects in rush.json. You must add this entry manually.`;
 
 // Functions
 function handleError(error, errorPrependMessage) {
@@ -101,7 +89,6 @@ function handleError(error, errorPrependMessage) {
 
 function performStep(stepIndex) {
   if (stepIndex >= steps.length) {
-    updateRush();
     return;
   }
 
@@ -170,34 +157,6 @@ function writeFileCallback(error, writeFileError, callback) {
 
   if (callback) {
     callback();
-  }
-}
-
-function updateRush() {
-  // don't add the same package to rush.json twice
-  if (rushJson.projects.some(project => project.packageName === newPackageNpmName)) {
-    console.error(rushPackagePresent);
-    postRushUpdate();
-    return;
-  }
-
-  rushJson.projects.push({
-    packageName: newPackageNpmName,
-    projectFolder: 'packages/' + newPackageName,
-    shouldPublish: false
-  });
-  if (!writeConfig('rush.json', rushJson)) {
-    console.error(errorUnableToUpdateRush);
-  }
-  postRushUpdate();
-}
-
-function postRushUpdate() {
-  console.log(successCreatedPackage);
-
-  if (generate) {
-    console.log(npmGenerateMessage);
-    exec('npm run generate');
   }
 }
 
