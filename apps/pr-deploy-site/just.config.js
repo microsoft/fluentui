@@ -13,9 +13,19 @@ repoDeps.forEach(dep => {
   const distPath = path.join(gitRoot, dep.packagePath, 'dist');
 
   if (fs.existsSync(distPath)) {
-    instructions = instructions.concat(
-      copyInstructions.copyFilesToDestinationDirectory(distPath, path.join('dist', path.basename(dep.packagePath)))
-    );
+    let sourcePath = distPath;
+
+    // NOTE for backwards compatibility: @uifabric/* projects gets the dist folders themselvescopied
+    // otherwise copy the contents not the dist directory itself
+    if (dep.packageJson.name.includes('@uifabric')) {
+      instructions = instructions.concat(
+        copyInstructions.copyFilesToDestinationDirectory(sourcePath, path.join('dist', path.basename(dep.packagePath)))
+      );
+    } else {
+      instructions = instructions.concat(
+        copyInstructions.copyFilesInDirectory(sourcePath, path.join('dist', path.basename(dep.packagePath)))
+      );
+    }
   }
 });
 
@@ -26,4 +36,4 @@ task(
   copyInstructionsTask({
     copyInstructions: [...copyInstructions.copyFilesToDestinationDirectory(['index.html', 'chiclet-test.html'], 'dist'), ...instructions]
   })
-);
+).cached();

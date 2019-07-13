@@ -1,0 +1,8 @@
+{
+  "comment": "Card: Importing from office-ui-fabric-react directly instead of from office-ui-fabric-react/lib/...",
+  "type": "patch",
+  "packageName": "@uifabric/react-cards",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "a0ff67e977da9e8ee92d55506efe5ce4e766a44d",
+  "date": "2019-07-11T22:35:18.636Z"
+}

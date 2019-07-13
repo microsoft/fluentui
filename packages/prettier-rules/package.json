@@ -5,8 +5,9 @@
   "main": "prettier.config.js",
   "scripts": {
     "clean": "",
-    "build": "node -v",
-    "code-style": "node ../../scripts/bin/just-scripts.js code-style",
-    "just": "node ../../scripts/bin/just-scripts.js"
+    "build": "just-scripts no-op"
+  },
+  "devDependencies": {
+    "just-scripts": "~0.25.2"
   }
 }
