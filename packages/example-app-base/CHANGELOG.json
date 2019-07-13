@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/example-app-base_v7.1.3",
+      "version": "7.1.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.3",
       "tag": "@uifabric/example-app-base_v7.1.3",
       "date": "Mon, 01 Jul 2019 18:51:42 GMT",

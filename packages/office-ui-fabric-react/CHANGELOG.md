@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 12 Jul 2019 12:29:52 GMT and should not be manually modified.
+This log was last generated on Sat, 13 Jul 2019 22:20:41 GMT and should not be manually modified.
+
+## 7.10.0
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Minor changes
+
+- Dialog: Deprecating componentRef prop. (Humberto.Morimoto@microsoft.com)
+,- Tooltip: Rendering hidden hoverable area to allow for interaction with Tooltips. (Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Panel: remove window.innerHeight from styles (kakje@microsoft.com)
 
 ## 7.9.0
 Fri, 12 Jul 2019 12:29:52 GMT

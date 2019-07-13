@@ -2,6 +2,20 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/variants_v7.0.2",
+      "version": "7.0.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Jul 2019 12:30:55 GMT",
       "tag": "@uifabric/variants_v7.0.2",
       "version": "7.0.2",

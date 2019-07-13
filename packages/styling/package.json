@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/styling",
-  "version": "7.1.1",
+  "version": "7.2.0",
   "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
   "repository": {
     "type": "git",

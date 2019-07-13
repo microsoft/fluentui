@@ -2,6 +2,27 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/styling_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding Georgian and Armenian font for Segoe UI Web",
+            "author": "marygans@microsoft.com",
+            "commit": "330c3f5497854336017766c16478c4932338d227"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.1",
       "tag": "@uifabric/styling_v7.1.1",
       "date": "Mon, 01 Jul 2019 18:51:42 GMT",

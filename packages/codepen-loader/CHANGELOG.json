@@ -2,6 +2,25 @@
   "name": "@uifabric/codepen-loader",
   "entries": [
     {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/codepen-loader_v7.0.3",
+      "version": "7.0.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          },
+          {
+            "comment": "adding build cache",
+            "author": "kchau@microsoft.com",
+            "commit": "babf367fa3a2f05d6689b9ea0a0cdb765b282380"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.0.3",
       "tag": "@uifabric/codepen-loader_v7.0.3",
       "date": "Mon, 24 Jun 2019 23:11:20 GMT",

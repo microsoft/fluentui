@@ -2,6 +2,20 @@
   "name": "@uifabric/tslint-rules",
   "entries": [
     {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/tslint-rules_v7.0.2",
+      "version": "7.0.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "adding build cache",
+            "author": "kchau@microsoft.com",
+            "commit": "babf367fa3a2f05d6689b9ea0a0cdb765b282380"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.0.2",
       "tag": "@uifabric/tslint-rules_v7.0.2",
       "date": "Fri, 14 Jun 2019 12:26:30 GMT",

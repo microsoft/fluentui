@@ -2,6 +2,44 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "office-ui-fabric-react_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Dialog: Deprecating componentRef prop.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ce7e6ffc84e7272a193d9cde863767dfc91fac7a"
+          },
+          {
+            "comment": "Tooltip: Rendering hidden hoverable area to allow for interaction with Tooltips.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "2de5fa384ad6bbbd8cd8d5bf0d4a5b1d1952275f"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Panel: remove window.innerHeight from styles",
+            "author": "kakje@microsoft.com",
+            "commit": "8165fcdb231bf13ce2c1ea1529604d7c19eebd23"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Shimmer: Update palette references to semantic colors",
+            "author": "marygans@microsoft.com",
+            "commit": "8cb86495c5b91eaf777c626a3697c973983de590"
+          },
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Jul 2019 12:29:52 GMT",
       "tag": "office-ui-fabric-react_v7.9.0",
       "version": "7.9.0",

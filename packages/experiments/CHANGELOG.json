@@ -2,6 +2,34 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/experiments_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Updating Button styles to use corresponding semanticColors instead of palette.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "044e13c2c8c391885693bbaa493e975fab35f3ea"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Change media tile to show metadata only on hover",
+            "author": "jocobb@microsoft.com",
+            "commit": ""
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Jul 2019 12:29:52 GMT",
       "tag": "@uifabric/experiments_v7.5.0",
       "version": "7.5.0",
