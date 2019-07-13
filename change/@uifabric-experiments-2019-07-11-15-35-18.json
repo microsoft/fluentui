@@ -1,0 +1,8 @@
+{
+  "comment": "Button: Updating Button styles to use corresponding semanticColors instead of palette.",
+  "type": "patch",
+  "packageName": "@uifabric/experiments",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "044e13c2c8c391885693bbaa493e975fab35f3ea",
+  "date": "2019-07-11T22:35:18.636Z"
+}

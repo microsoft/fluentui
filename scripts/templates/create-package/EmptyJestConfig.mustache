@@ -1,4 +1,4 @@
-let { createConfig } = require('../../scripts/jest/jest-resources');
+let { createConfig, resolveMergeStylesSerializer } = require('@uifabric/build/jest/jest-resources');
 let path = require('path');
 
 const mergestylesSerializerPath = path.dirname(require.resolve('@uifabric/jest-serializer-merge-styles/package.json'));
@@ -10,7 +10,7 @@ const config = createConfig({
     'office-ui-fabric-react/lib/(.*)$': 'office-ui-fabric-react/lib-commonjs/$1'
   },
 
-  snapshotSerializers: [mergestylesSerializerPath]
+  snapshotSerializers: [resolveMergeStylesSerializer()]
 });
 
 module.exports = config;

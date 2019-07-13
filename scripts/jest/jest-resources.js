@@ -1,9 +1,10 @@
 const path = require('path');
 const merge = require('../tasks/merge');
 const resolve = require('resolve');
+const { resolveCwd } = require('just-scripts');
 
 module.exports = {
-  mergeStylesSerializer: path.dirname(require.resolve('@uifabric/jest-serializer-merge-styles/package.json')),
+  resolveMergeStylesSerializer: () => resolveCwd('@uifabric/jest-serializer-merge-styles'),
   createRawConfig: () => ({
     rootDir: 'lib',
     testRegex: '(/__tests__/.*|\\.(test|spec))\\.js$'

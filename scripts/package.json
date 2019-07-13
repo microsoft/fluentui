@@ -7,9 +7,10 @@
     "just-scripts": "./just-scripts.js"
   },
   "scripts": {
-    "build": "just-scripts no-op",
+    "build": "node ./just-scripts.js no-op",
     "bundlesize": "bundlesize --debug",
-    "code-style": "just-scripts code-style",
+    "clean": "",
+    "code-style": "node ./just-scripts.js code-style",
     "test": "jest"
   },
   "devDependencies": {

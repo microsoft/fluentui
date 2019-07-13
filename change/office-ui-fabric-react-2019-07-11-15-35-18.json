@@ -1,0 +1,8 @@
+{
+  "comment": "Panel: remove window.innerHeight from styles",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "kakje@microsoft.com",
+  "commit": "8165fcdb231bf13ce2c1ea1529604d7c19eebd23",
+  "date": "2019-07-11T22:35:18.637Z"
+}
