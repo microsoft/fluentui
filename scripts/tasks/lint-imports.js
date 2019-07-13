@@ -245,7 +245,7 @@ function lintImports() {
       const pkgName = pkgNameMatch[1] || pkgNameMatch[2];
 
       // we don't evaluate imports of non monorepo packages
-      if (Object.keys(packagesInfo).find(name => name !== pkgName)) {
+      if (!Object.keys(packagesInfo).includes(pkgName)) {
         return;
       }
 
@@ -326,7 +326,3 @@ function lintImports() {
 }
 
 module.exports = lintImports;
-
-if (require.main === module) {
-  lintImports();
-}
