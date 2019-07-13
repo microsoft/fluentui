@@ -1,5 +1,5 @@
 import { Shade } from '../../utilities/color/shades';
-import { getColorFromString } from '../../utilities/color/colors';
+import { getColorFromString } from '../../utilities/color/getColorFromString';
 import { mapEnumByName } from '../../Utilities';
 
 import { IThemeRules } from './IThemeRules';
@@ -46,7 +46,7 @@ export enum FabricSlots {
   neutralDark, // BaseSlots.foregroundColor, Shade[Shade.Shade7]);
 
   black, // BaseSlots.foregroundColor, Shade[Shade.Shade8]);
-  white, // BaseSlots.backgroundColor, Shade[Shade.Unshaded]);
+  white // BaseSlots.backgroundColor, Shade[Shade.Unshaded]);
 }
 
 /* List of all the semantic color slots for this theme.
@@ -58,8 +58,8 @@ export enum SemanticColorSlots {
   disabledText
 }
 
-export function themeRulesStandardCreator() {
-  let slotRules: IThemeRules = {};
+export function themeRulesStandardCreator(): IThemeRules {
+  const slotRules: IThemeRules = {};
 
   /*** BASE COLORS and their SHADES */
   // iterate through each base slot and make the SlotRules for those
@@ -76,8 +76,8 @@ export function themeRulesStandardCreator() {
       if (shadeName === Shade[Shade.Unshaded]) {
         return;
       }
-      let inherits = slotRules[baseSlot];
-      let thisSlotRule = {
+      const inherits = slotRules[baseSlot];
+      const thisSlotRule = {
         name: baseSlot + shadeName,
         inherits: slotRules[baseSlot],
         asShade: shadeValue,
@@ -95,7 +95,7 @@ export function themeRulesStandardCreator() {
   });
 
   // set default colors for the base colors
-  slotRules[BaseSlots[BaseSlots.primaryColor]].color = getColorFromString('#0078d7');
+  slotRules[BaseSlots[BaseSlots.primaryColor]].color = getColorFromString('#0078d4');
   slotRules[BaseSlots[BaseSlots.backgroundColor]].color = getColorFromString('#fff');
   slotRules[BaseSlots[BaseSlots.foregroundColor]].color = getColorFromString('#333');
 
@@ -119,9 +119,9 @@ export function themeRulesStandardCreator() {
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade7]].color = getColorFromString('#212121');
   slotRules[BaseSlots[BaseSlots.foregroundColor] + Shade[Shade.Shade8]].color = getColorFromString('#000000');
 
-  function _makeFabricSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: Shade, isBackgroundShade = false) {
-    let inherits = slotRules[BaseSlots[inheritedBase]];
-    let thisSlotRule = {
+  function _makeFabricSlotRule(slotName: string, inheritedBase: BaseSlots, inheritedShade: Shade, isBackgroundShade = false): void {
+    const inherits = slotRules[BaseSlots[inheritedBase]];
+    const thisSlotRule = {
       name: slotName,
       inherits: inherits,
       asShade: inheritedShade,
@@ -175,44 +175,24 @@ export function themeRulesStandardCreator() {
   slotRules[FabricSlots[FabricSlots.themeDark]].isCustomized = true;
   slotRules[FabricSlots[FabricSlots.themeDarker]].isCustomized = true;
 
-  // todo: can remove this once we remove these outdated slots from the product
-  let primaryBackground = 'primaryBackground';
-  slotRules[primaryBackground] = {
-    name: primaryBackground,
-    inherits: slotRules[FabricSlots[FabricSlots.white]],
-    isCustomized: false,
-    dependentRules: []
-  };
-  slotRules[FabricSlots[FabricSlots.white]].dependentRules.push(slotRules[primaryBackground]);
-
-  let primaryText = 'primaryText';
-  slotRules[primaryText] = {
-    name: primaryText,
-    inherits: slotRules[FabricSlots[FabricSlots.neutralPrimary]],
-    isCustomized: false,
-    dependentRules: []
-  };
-  slotRules[FabricSlots[FabricSlots.neutralPrimary]].dependentRules.push(slotRules[primaryText]);
-
   /*** SEMANTIC SLOTS */
+  // This code is commented out for now but left for future semantic color customization.
   // create the SlotRule for a semantic slot
-  function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots) {
-    let inherits = slotRules[FabricSlots[inheritedFabricSlot]];
-    let thisSlotRule = {
-      name: SemanticColorSlots[semanticSlot],
-      inherits: slotRules[FabricSlots[inheritedFabricSlot]],
-      isCustomized: false,
-      dependentRules: []
-    };
-    slotRules[SemanticColorSlots[semanticSlot]] = thisSlotRule;
-    inherits.dependentRules.push(thisSlotRule);
-  }
+  // function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots): void {
+  //   const inherits = slotRules[FabricSlots[inheritedFabricSlot]];
+  //   const thisSlotRule = {
+  //     name: SemanticColorSlots[semanticSlot],
+  //     inherits: slotRules[FabricSlots[inheritedFabricSlot]],
+  //     isCustomized: false,
+  //     dependentRules: []
+  //   };
+  //   slotRules[SemanticColorSlots[semanticSlot]] = thisSlotRule;
+  //   inherits.dependentRules.push(thisSlotRule);
+  // }
 
   // Basic simple slots
-  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
-  _makeSemanticSlotRule(SemanticColorSlots.disabledBackground, FabricSlots.neutralLighter);
-  _makeSemanticSlotRule(SemanticColorSlots.disabledText, FabricSlots.neutralTertiaryAlt);
+  // _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
+  // _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
 
   return slotRules;
 }

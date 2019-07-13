@@ -1,6 +1,6 @@
 {
-  "extends": [
-    "office-ui-fabric-react-tslint"
-  ],
-  "rules": {}
+  "extends": ["@uifabric/tslint-rules"],
+  "rules": {
+    "prefer-const": false
+  }
 }

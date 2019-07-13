@@ -1,5 +1,5 @@
 import { Rectangle } from '../Utilities';
-import { positioningFunctions } from './positioning';
+import { __positioningTestPackage, RectangleEdge, IElementPosition } from './positioning';
 import { DirectionalHint } from '../common/DirectionalHint';
 interface ITestValidation {
   callout: Rectangle;
@@ -13,16 +13,18 @@ interface ITestValues {
   beakWidth: number;
 }
 
-function stringifyResults(expected: any, actual: any) {
-  return 'expected was: ' + JSON.stringify(expected) + ' actual was: ' + JSON.stringify(actual);
-}
+function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation): void {
+  const { callout, target, bounds, beakWidth } = testValues;
+  const gap: number = __positioningTestPackage._calculateActualBeakWidthInPixels(beakWidth) / 2;
+  const result: IElementPosition = __positioningTestPackage._positionElementWithinBounds(
+    callout,
+    target,
+    bounds,
+    __positioningTestPackage._getPositionData(alignment),
+    gap
+  );
 
-function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation) {
-  let { callout, target, bounds, beakWidth } = testValues;
-  let gap: number = positioningFunctions._calculateActualBeakWidthInPixels(beakWidth) / 2;
-  let result: positioningFunctions.IElementPosition = positioningFunctions._positionElementWithinBounds(callout, target, bounds, positioningFunctions._getPositionData(alignment), gap);
-
-  let beak = positioningFunctions._positionBeak(beakWidth, { ...result, targetRectangle: target });
+  const beak = __positioningTestPackage._positionBeak(beakWidth, { ...result, targetRectangle: target });
 
   expect(result.elementRectangle).toEqual(validate.callout);
 
@@ -36,34 +38,39 @@ function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint
   }
 }
 
-function validateNoBeakTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation) {
-  let { callout, target, bounds, beakWidth } = testValues;
-  let result: positioningFunctions.IElementPosition = positioningFunctions._positionElementWithinBounds(callout, target, bounds, positioningFunctions._getPositionData(alignment), beakWidth);
+function validateNoBeakTest(testValues: ITestValues, alignment: DirectionalHint, validate: ITestValidation): void {
+  const { callout, target, bounds, beakWidth } = testValues;
+  const result: IElementPosition = __positioningTestPackage._positionElementWithinBounds(
+    callout,
+    target,
+    bounds,
+    __positioningTestPackage._getPositionData(alignment),
+    beakWidth
+  );
 
   expect(result.elementRectangle).toEqual(validate.callout);
 }
 
 describe('Callout Positioning', () => {
   it('Correctly positions the callout without beak', () => {
-
-    let noBeakTestCase: ITestValues = {
+    const noBeakTestCase: ITestValues = {
       callout: new Rectangle(0, 300, 0, 300),
       target: new Rectangle(400, 800, 400, 800),
       bounds: new Rectangle(0, 1600, 0, 1600),
-      beakWidth: 0,
+      beakWidth: 0
     };
 
-    let validateNoBeakBottomLeft: ITestValidation = {
+    const validateNoBeakBottomLeft: ITestValidation = {
       callout: new Rectangle(400, 700, 800, 1100),
       beak: null
     };
 
-    let validateNoBeakLeft: ITestValidation = {
+    const validateNoBeakLeft: ITestValidation = {
       callout: new Rectangle(100, 400, 400, 700),
       beak: null
     };
 
-    let validateNoBeakTop: ITestValidation = {
+    const validateNoBeakTop: ITestValidation = {
       callout: new Rectangle(400, 700, 100, 400),
       beak: null
     };
@@ -76,26 +83,40 @@ describe('Callout Positioning', () => {
   });
 
   it('Correctly positions the callout with the beak', () => {
-
-    let basicTestCase: ITestValues = {
+    const basicTestCase: ITestValues = {
       callout: new Rectangle(0, 300, 0, 300),
       target: new Rectangle(400, 800, 400, 800),
       bounds: new Rectangle(0, 1600, 0, 1600),
-      beakWidth: 16,
+      beakWidth: 16
     };
 
-    let validateBottomLeft: ITestValidation = {
-      callout: new Rectangle(400, 700, 800 + positioningFunctions._calculateActualBeakWidthInPixels(8), 1100 + positioningFunctions._calculateActualBeakWidthInPixels(8)),
+    const validateBottomLeft: ITestValidation = {
+      callout: new Rectangle(
+        400,
+        700,
+        800 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
+        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8)
+      ),
       beak: new Rectangle(192, 208, -8, 8)
     };
 
-    let validateBottomCenter: ITestValidation = {
-      callout: new Rectangle(450, 750, 800 + positioningFunctions._calculateActualBeakWidthInPixels(8), 1100 + positioningFunctions._calculateActualBeakWidthInPixels(8)),
+    const validateBottomCenter: ITestValidation = {
+      callout: new Rectangle(
+        450,
+        750,
+        800 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
+        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8)
+      ),
       beak: new Rectangle(142, 158, -8, 8)
     };
 
-    let validateBottomRight: ITestValidation = {
-      callout: new Rectangle(500, 800, 800 + positioningFunctions._calculateActualBeakWidthInPixels(8), 1100 + positioningFunctions._calculateActualBeakWidthInPixels(8)),
+    const validateBottomRight: ITestValidation = {
+      callout: new Rectangle(
+        500,
+        800,
+        800 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
+        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8)
+      ),
       beak: new Rectangle(92, 108, -8, 8)
     };
 
@@ -107,13 +128,13 @@ describe('Callout Positioning', () => {
   });
 
   it('Correctly determines max height', () => {
-    let getMaxHeight = positioningFunctions._getMaxHeightFromTargetRectangle;
+    const getMaxHeight = __positioningTestPackage._getMaxHeightFromTargetRectangle;
     let targetTop;
     let targetBot;
-    let targetRight = targetBot = 20;
-    let targetLeft = targetTop = 10;
-    let targetRectangle = new Rectangle(targetLeft, targetRight, targetTop, targetBot);
-    let bounds = new Rectangle(0, 1000, 0, 1000);
+    const targetRight = (targetBot = 20);
+    const targetLeft = (targetTop = 10);
+    const targetRectangle = new Rectangle(targetLeft, targetRight, targetTop, targetBot);
+    const bounds = new Rectangle(0, 1000, 0, 1000);
 
     let testMax = getMaxHeight(targetRectangle, DirectionalHint.bottomCenter, 0, bounds);
     // Test for maxHeight from bottom of target to bottom of bounds
@@ -129,14 +150,14 @@ describe('Callout Positioning', () => {
   });
 
   it('Correctly determines max height with a gapSpace included', () => {
-    let getMaxHeight = positioningFunctions._getMaxHeightFromTargetRectangle;
+    const getMaxHeight = __positioningTestPackage._getMaxHeightFromTargetRectangle;
     let targetTop;
     let targetBot;
-    let targetRight = targetBot = 200;
-    let targetLeft = targetTop = 100;
-    let targetRectangle = new Rectangle(targetLeft, targetRight, targetTop, targetBot);
-    let bounds = new Rectangle(0, 1000, 0, 1000);
-    let gapSpace = 10;
+    const targetRight = (targetBot = 200);
+    const targetLeft = (targetTop = 100);
+    const targetRectangle = new Rectangle(targetLeft, targetRight, targetTop, targetBot);
+    const bounds = new Rectangle(0, 1000, 0, 1000);
+    const gapSpace = 10;
 
     let testMax = getMaxHeight(targetRectangle, DirectionalHint.bottomCenter, gapSpace, bounds);
 
@@ -152,4 +173,57 @@ describe('Callout Positioning', () => {
     expect(testMax).toBe(1000 - targetTop - gapSpace);
   });
 
+  it('Correctly determines the correct edges to return', () => {
+    // Create a dummy host, this isn't the part that we care about for this test
+    const host = {
+      getBoundingClientRect: () => {
+        return {
+          bottom: 0,
+          top: 0,
+          left: 0,
+          right: 0,
+          width: 0,
+          height: 0
+        };
+      }
+    };
+    // create a dummy beak
+    const beakPos = new Rectangle(8, -8, 8, -8);
+    const pos: IElementPosition = {
+      elementRectangle: new Rectangle(400, 500, 400, 500),
+      targetEdge: RectangleEdge.top,
+      alignmentEdge: RectangleEdge.left
+    };
+    const bounds = new Rectangle(0, 500, 0, 500);
+
+    // Normal positioning should target the alignment edge and the opposite of the target edge.
+    // In this case, that's left (alignment) and bottom (opposite of target)
+    let finalizedPosition = __positioningTestPackage._finalizePositionData(pos, host as any);
+    expect(finalizedPosition.elementPosition.left).toBeDefined();
+    expect(finalizedPosition.elementPosition.bottom).toBeDefined();
+    expect(finalizedPosition.elementPosition.top).toBeUndefined();
+
+    // Cover positioning should target the alignment edge and the target edge.
+    // In this case, that's left (alignment) and top (target)
+    finalizedPosition = __positioningTestPackage._finalizePositionData(pos, host as any, undefined, true);
+    expect(finalizedPosition.elementPosition.left).toBeDefined();
+    expect(finalizedPosition.elementPosition.top).toBeDefined();
+    expect(finalizedPosition.elementPosition.bottom).toBeUndefined();
+
+    // With bounds introduced, if the elementRectangle is closer to one edge of bounds than another,
+    // should align to edge closest to bounds
+    // In this case, that's bottom (opposite of target) and right (closer to edge of bounds)
+    finalizedPosition = __positioningTestPackage._finalizePositionData(pos, host as any, bounds);
+    expect(finalizedPosition.elementPosition.right).toBeDefined();
+    expect(finalizedPosition.elementPosition.bottom).toBeDefined();
+    expect(finalizedPosition.elementPosition.left).toBeUndefined();
+
+    // With bounds introduced, the alignment should apply to the beak as well, aligning it to
+    // the edge closest to bounds
+    // In this case, that's the bottom (opposite of target) and right (closer to edge of bounds)
+    const finalizedBeakPosition = __positioningTestPackage._finalizeBeakPosition(pos, beakPos, bounds);
+    expect(finalizedBeakPosition.elementPosition.right).toBeDefined();
+    expect(finalizedBeakPosition.elementPosition.bottom).toBeDefined();
+    expect(finalizedPosition.elementPosition.left).toBeUndefined();
+  });
 });

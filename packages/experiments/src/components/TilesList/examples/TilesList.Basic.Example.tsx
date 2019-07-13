@@ -1,11 +1,5 @@
-
 import * as React from 'react';
-import {
-  TilesList,
-  ITilesGridSegment,
-  ITilesGridItem,
-  TilesGridMode
-} from '../../TilesList';
+import { TilesList, ITilesGridSegment, ITilesGridItem, TilesGridMode, ITileSize } from '@uifabric/experiments/lib/TilesList';
 
 export interface IBasicItem {
   color: string;
@@ -14,7 +8,7 @@ export interface IBasicItem {
 
 const ITEMS: IBasicItem[] = [];
 
-for (let i = 0; i < 500; i++) {
+for (let i = 0; i < 27; i++) {
   ITEMS.push({
     color: ['red', 'blue', 'green', 'yellow', 'orange', 'brown', 'purple', 'gray'][Math.floor(Math.random() * 8)],
     key: `item-${i}`
@@ -30,14 +24,16 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
     super(props);
 
     this.state = {
-      items: ITEMS.map((item: IBasicItem): ITilesGridItem<IBasicItem> => {
-        return {
-          content: item,
-          desiredSize: { width: 100, height: 100 },
-          key: item.key,
-          onRender: renderItem
-        };
-      })
+      items: ITEMS.map(
+        (item: IBasicItem): ITilesGridItem<IBasicItem> => {
+          return {
+            content: item,
+            desiredSize: { width: 100, height: 100 },
+            key: item.key,
+            onRender: renderItem
+          };
+        }
+      )
     };
   }
 
@@ -50,30 +46,27 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
       spacing: 10
     };
 
-    return (
-      <TilesList
-        items={
-          [gridSegment]
-        }
-      />
-    );
+    return <TilesList items={[gridSegment]} />;
   }
 }
 
-function renderItem(item: IBasicItem): JSX.Element {
+function renderItem(item: IBasicItem, finalSize?: ITileSize): JSX.Element {
   return (
     <div
       // tslint:disable-next-line:jsx-ban-props
-      style={
-        {
-          position: 'absolute',
-          top: '0',
-          left: '0',
-          bottom: '0',
-          right: '0',
-          backgroundColor: item.color
-        }
-      }
-    />
+      style={{
+        position: 'absolute',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        top: '0',
+        left: '0',
+        bottom: '0',
+        right: '0',
+        backgroundColor: item.color
+      }}
+    >
+      <span>{finalSize ? `${finalSize.width.toFixed(1)}x${finalSize.height.toFixed(1)}` : ''}</span>
+    </div>
   );
 }

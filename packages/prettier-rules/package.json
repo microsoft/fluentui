@@ -1,0 +1,13 @@
+{
+  "name": "@uifabric/prettier-rules",
+  "version": "7.0.2",
+  "description": "Shared Prettier rules for UI Fabric projects",
+  "main": "prettier.config.js",
+  "scripts": {
+    "clean": "",
+    "build": "just-scripts no-op"
+  },
+  "devDependencies": {
+    "just-scripts": "~0.25.2"
+  }
+}

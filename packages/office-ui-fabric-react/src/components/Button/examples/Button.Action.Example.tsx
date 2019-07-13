@@ -1,24 +1,40 @@
 import * as React from 'react';
-import {
-  ActionButton,
-  IButtonProps
-} from 'office-ui-fabric-react/lib/Button';
+import { ActionButton, css, classNamesFunction, IButtonProps, IStyle } from 'office-ui-fabric-react';
+
+type IButtonBasicExampleStyleProps = {};
+
+interface IButtonBasicExampleStyles {
+  example?: IStyle;
+}
+
+const exampleStyles: IButtonBasicExampleStyles = {
+  example: [
+    'ms-BasicButtonsExample',
+    {
+      selectors: {
+        '.ms-Button': {
+          margin: '10px 0'
+        }
+      }
+    }
+  ]
+};
+
+const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+const classNames = getClassNames(exampleStyles, {});
 
 export class ButtonActionExample extends React.Component<IButtonProps> {
-  public constructor(props: {}) {
-    super(props);
-  }
-
-  public render() {
-    let { disabled, checked } = this.props;
+  public render(): JSX.Element {
+    const { disabled, checked } = this.props;
 
     return (
-      <div className='ms-BasicButtonsExample'>
+      <div className={css(classNames.example)}>
         <ActionButton
-          data-automation-id='test'
-          iconProps={ { iconName: 'AddFriend' } }
-          disabled={ disabled }
-          checked={ checked }
+          data-automation-id="test"
+          iconProps={{ iconName: 'AddFriend' }}
+          allowDisabledFocus={true}
+          disabled={disabled}
+          checked={checked}
         >
           Create account
         </ActionButton>

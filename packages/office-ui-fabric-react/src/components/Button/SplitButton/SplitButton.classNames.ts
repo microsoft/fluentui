@@ -9,54 +9,48 @@ export interface ISplitButtonClassNames {
   flexContainer?: string;
   divider?: string;
 }
+export const getClassNames = memoizeFunction(
+  (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean, primaryDisabled?: boolean): ISplitButtonClassNames => {
+    return {
+      root: mergeStyles(
+        styles.splitButtonMenuButton,
+        expanded && [styles.splitButtonMenuButtonExpanded],
+        disabled && [styles.splitButtonMenuButtonDisabled],
+        checked && !disabled && [styles.splitButtonMenuButtonChecked]
+      ),
 
-export const getClassNames = memoizeFunction((
-  styles: IButtonStyles,
-  disabled: boolean,
-  expanded: boolean,
-  checked: boolean,
-): ISplitButtonClassNames => {
-  return {
+      splitButtonContainer: mergeStyles(
+        styles.splitButtonContainer,
+        !disabled &&
+          checked && [
+            styles.splitButtonContainerChecked,
+            {
+              selectors: {
+                ':hover': styles.splitButtonContainerCheckedHovered
+              }
+            }
+          ],
+        !disabled &&
+          !checked && [
+            {
+              selectors: {
+                ':hover': styles.splitButtonContainerHovered,
+                ':focus': styles.splitButtonContainerFocused
+              }
+            }
+          ],
+        disabled && styles.splitButtonContainerDisabled
+      ),
 
-    root: mergeStyles(
-      styles.splitButtonMenuButton,
-      expanded && [
-        styles.splitButtonMenuButtonExpanded
-      ],
-      disabled && [
-        styles.splitButtonMenuButtonDisabled
-      ],
-      checked && !disabled && [
-        styles.splitButtonMenuButtonChecked
-      ]
-    ),
+      icon: mergeStyles(
+        styles.splitButtonMenuIcon,
+        disabled && styles.splitButtonMenuIconDisabled,
+        !disabled && primaryDisabled && styles.splitButtonMenuIcon
+      ),
 
-    splitButtonContainer: mergeStyles(
-      styles.splitButtonContainer,
-      checked && !disabled && [
-        styles.splitButtonContainerChecked,
-        {
-          selectors: {
-            ':hover': styles.splitButtonContainerCheckedHovered
-          }
-        }],
-      !disabled && !checked && [{
-        selectors: {
-          ':hover': styles.splitButtonContainerHovered,
-          ':focus': styles.splitButtonContainerFocused
-        }
-      }],
-      disabled && styles.splitButtonContainerDisabled
-    ),
+      flexContainer: mergeStyles(styles.splitButtonFlexContainer),
 
-    icon: mergeStyles(
-      styles.splitButtonMenuIcon,
-      disabled && styles.splitButtonMenuIconDisabled
-    ),
-
-    flexContainer: mergeStyles(styles.splitButtonFlexContainer),
-
-    divider: mergeStyles(styles.splitButtonDivider)
-
-  };
-});
+      divider: mergeStyles(styles.splitButtonDivider, (primaryDisabled || disabled) && styles.splitButtonDividerDisabled)
+    };
+  }
+);

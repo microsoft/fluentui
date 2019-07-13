@@ -6,45 +6,41 @@
  */
 
 const path = require('path');
-const PACKAGE_NAME = require('./package.json').name;
-const resources = require('../../scripts/tasks/webpack-resources');
+const resources = require('../../scripts/webpack/webpack-resources');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const HOST_NAME = require('os').hostname();
 const version = require('./package.json').version;
 const isProduction = process.argv.indexOf('--production') > -1;
 const minFileNamePart = isProduction ? '.min' : '';
 const entryPointFilename = 'fabric-sitev5';
+const devServer = {
+  host: HOST_NAME,
+  disableHostCheck: true,
+  port: 4324
+};
 
 module.exports = resources.createServeConfig({
   entry: './src/root.tsx',
   output: {
     filename: entryPointFilename + '.js',
     path: path.join(__dirname, 'dist'),
-    publicPath: '/dist/',
+    publicPath: 'http://' + HOST_NAME + ':' + devServer.port + '/dist/',
     chunkFilename: `${entryPointFilename}-${version}-[name]${minFileNamePart}.js`
   },
 
-  devServer: {
-    host: HOST_NAME,
-    disableHostCheck: true
-  },
-
-  externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM'
-  },
+  devServer: devServer,
 
   resolve: {
     alias: {
-      'office-ui-fabric-react/src': path.join(__dirname, 'node_modules/office-ui-fabric-react/src'),
-      'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
+      '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
+      '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
+      'office-ui-fabric-react$': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
+      'office-ui-fabric-react/src': path.join(__dirname, '../../packages/office-ui-fabric-react/src'),
+      'office-ui-fabric-react/lib': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'
     }
   },
 
-  plugins: [
-    new WriteFilePlugin()
-  ]
-
+  plugins: [new WriteFilePlugin()]
 });

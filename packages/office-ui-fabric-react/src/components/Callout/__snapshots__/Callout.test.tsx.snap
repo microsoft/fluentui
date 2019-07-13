@@ -12,13 +12,14 @@ exports[`Callout renders Callout correctly 1`] = `
     className=
         ms-Callout
         {
-          border-color: #eaeaea;
-          border-style: solid;
-          border-width: 1px;
-          box-shadow: 0 0 5px 0px rgba(0,0,0,0.4);
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          border-radius: 2px;
+          box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
           box-sizing: border-box;
-          filter: opacity(0);
-          opacity: 0;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           outline: transparent;
           position: absolute;
         }
@@ -30,27 +31,32 @@ exports[`Callout renders Callout correctly 1`] = `
         &::-moz-focus-inner {
           border: 0px;
         }
+    style={
+      Object {
+        "filter": "opacity(0)",
+        "opacity": 0,
+      }
+    }
     tabIndex={-1}
   >
     <div
-      aria-describedby={undefined}
-      aria-label={undefined}
-      aria-labelledby={undefined}
       className=
           ms-Callout-main
           {
             background-color: #ffffff;
-            max-height: 750px;
+            border-radius: 2px;
             overflow-x: hidden;
             overflow-y: auto;
             position: relative;
           }
       onKeyDown={[Function]}
-      onScroll={undefined}
-      role={undefined}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
       style={
         Object {
-          "overflowY": "auto",
+          "maxHeight": 752,
+          "outline": "none",
+          "overflowY": undefined,
         }
       }
     >

@@ -1,33 +1,28 @@
-import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import * as React from 'react';
 
-export class PanelFooterExample extends React.Component<{}, {
+export interface IPanelFooterExampleState {
   showPanel: boolean;
-}> {
+}
 
-  constructor(props: {}) {
-    super(props);
-    this.state = { showPanel: false };
-  }
+export class PanelFooterExample extends React.Component<{}, IPanelFooterExampleState> {
+  public state = {
+    showPanel: false
+  };
 
   public render() {
     return (
       <div>
-        <DefaultButton
-          description='Opens the Sample Panel'
-          onClick={ this._onShowPanel }
-          text='Open Panel'
-        />
+        <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
         <Panel
-          isOpen={ this.state.showPanel }
-          type={ PanelType.smallFixedFar }
-          onDismiss={ this._onClosePanel }
-          isFooterAtBottom={ true }
-          headerText='Panel with footer at bottom'
-          closeButtonAriaLabel='Close'
-          onRenderFooterContent={ this._onRenderFooterContent }
+          isOpen={this.state.showPanel}
+          type={PanelType.smallFixedFar}
+          onDismiss={this._hidePanel}
+          isFooterAtBottom={true}
+          headerText="Panel with footer at bottom"
+          closeButtonAriaLabel="Close"
+          onRenderFooterContent={this._onRenderFooterContent}
         >
           <span>Content goes here.</span>
         </Panel>
@@ -35,30 +30,22 @@ export class PanelFooterExample extends React.Component<{}, {
     );
   }
 
-  private _onClosePanel = () => {
-    this.setState({ showPanel: false });
-  }
-
-  @autobind
-  private _onRenderFooterContent(): JSX.Element {
+  private _onRenderFooterContent = (): JSX.Element => {
     return (
       <div>
-        <PrimaryButton
-          onClick={ this._onClosePanel }
-          style={ { 'marginRight': '8px' } }
-        >
+        <PrimaryButton onClick={this._hidePanel} style={{ marginRight: '8px' }}>
           Save
         </PrimaryButton>
-        <DefaultButton
-          onClick={ this._onClosePanel }
-        >
-          Cancel
-        </DefaultButton>
+        <DefaultButton onClick={this._hidePanel}>Cancel</DefaultButton>
       </div>
     );
-  }
+  };
 
-  private _onShowPanel = () => {
+  private _showPanel = () => {
     this.setState({ showPanel: true });
-  }
+  };
+
+  private _hidePanel = () => {
+    this.setState({ showPanel: false });
+  };
 }

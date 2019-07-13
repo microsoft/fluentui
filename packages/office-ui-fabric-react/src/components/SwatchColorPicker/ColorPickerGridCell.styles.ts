@@ -1,115 +1,118 @@
-import {
-  IRawStyle,
-  getFocusStyle,
-  HighContrastSelector,
-} from '../../Styling';
+import { IsFocusVisibleClassName } from '../../Utilities';
+import { HighContrastSelector, getFocusStyle } from '../../Styling';
 import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
-const ACTIVE_BORDER_COLOR = '#969696';
+// Size breakpoint when the default border width changes from 2px to 4px.
+const CELL_BORDER_BREAKPOINT = 24;
+const LARGE_BORDER = 4;
+const SMALL_BORDER = 2;
+const DIVIDING_PADDING = 2;
+const DEFAULT_CELL_SIZE = 20;
 
-function getSvgSelectorStyles(borderColor: string, isHover: boolean): IRawStyle {
-  return {
-    width: 12,
-    height: 12,
-    border: '4px solid',
-    borderColor: borderColor,
-    boxShadow: isHover ? 'none' : '0 0 0 1px #969696',
-    padding: 4,
-    margin: 0
-  };
-}
+const cellHighContrastFocus = {
+  left: -2,
+  top: -2,
+  bottom: -2,
+  right: -2,
+  border: 'none',
+  outlineColor: 'ButtonText'
+};
 
 export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGridCellStyles => {
-  const {
-    theme,
-    disabled,
-    selected,
-    circle,
-    isWhite
-  } = props;
+  const { theme, disabled, selected, circle, isWhite, height = DEFAULT_CELL_SIZE, width = DEFAULT_CELL_SIZE, borderWidth } = props;
+  const { semanticColors } = theme;
 
-  const { semanticColors, fonts } = theme;
+  // If user provided a value, use it. If not, then we decide depending on the 24px size breakpoint.
+  const calculatedBorderWidth = borderWidth ? borderWidth : width < CELL_BORDER_BREAKPOINT ? SMALL_BORDER : LARGE_BORDER;
+
   return {
+    // this is a button that wraps the color
     colorCell: [
+      getFocusStyle(theme, -1, 'relative', cellHighContrastFocus),
       {
-        backgroundColor: 'transparent',
+        backgroundColor: semanticColors.bodyBackground,
         padding: 0,
-        overflow: 'visible',
         position: 'relative',
         boxSizing: 'border-box',
         display: 'inline-block',
-        border: '1px solid transparent',
-        background: 'transparent',
         cursor: 'pointer',
-        textAlign: 'center',
-        verticalAlign: 'top',
         userSelect: 'none',
-        height: 40,
-        selectors: {
-          [HighContrastSelector]: { border: 'none' },
-          '.ms-Fabric.is-focusVisible &:focus, .ms-Fabric.is-focusVisible &:focus::after': { border: 'none' },
-          '.ms-Fabric.is-focusVisible &:focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, false),
-          ':hover $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, true),
-          ':focus $svg': getSvgSelectorStyles(theme.palette.neutralQuaternaryAlt, false),
-          ':active $svg': getSvgSelectorStyles(ACTIVE_BORDER_COLOR, false),
-        }
+        borderRadius: 0,
+        border: 'none',
+        height: height,
+        width: width
       },
-      isWhite && {
+      !circle && {
         selectors: {
-          '$svg': {
-            padding: 0,
-            border: '1px solid',
-            borderColor: theme.palette.neutralTertiary,
-            margin: 4,
-          },
-        }
-      },
-      circle && 'is-circle' && {
-        selectors: {
-          '$svg': { borderRadius: '100%' },
-        }
-      },
-      selected && 'isSelected' && {
-        selectors: {
-          '$svg': {
-            boxShadow: '0 0 0 1px #969696',
-            border: '4px solid',
-            borderColor: theme.palette.neutralTertiaryAlt,
-            width: 12,
-            height: 12,
-          },
-          ':hover $svg': { boxShadow: '0 0 0 1px #969696' },
-          ':focus $svg': {
-            boxShadow: '0 0 0 1px #969696',
-          },
-          ':active $svg':
-            {
-              boxShadow: '0 0 0 1px #969696',
-              borderColor: ACTIVE_BORDER_COLOR,
-            },
-        },
-      },
-      selected && isWhite && {
-        selectors: {
-          '$svg': {
-            padding: 4,
-            margin: 0
+          [`.${IsFocusVisibleClassName} &:focus::after`]: {
+            // -1px so that we don't increase visually the size of the cell.
+            outlineOffset: `${calculatedBorderWidth - 1}px`
           }
         }
       },
-      disabled && 'is-disabled' && {
+      // In focus state for circle we want a round border which is not possible with outline.
+      circle && {
+        borderRadius: '50%',
+        selectors: {
+          [`.${IsFocusVisibleClassName} &:focus::after`]: {
+            outline: 'none',
+            borderColor: semanticColors.focusBorder,
+            borderRadius: '50%',
+            left: -calculatedBorderWidth,
+            right: -calculatedBorderWidth,
+            top: -calculatedBorderWidth,
+            bottom: -calculatedBorderWidth,
+            selectors: {
+              [HighContrastSelector]: {
+                outline: `1px solid ButtonText`
+              }
+            }
+          }
+        }
+      },
+      selected && {
+        padding: DIVIDING_PADDING,
+        border: `${calculatedBorderWidth}px solid ${theme.palette.neutralTertiaryAlt}`
+      },
+      !selected && {
+        selectors: {
+          ['&:hover, &:active, &:focus']: {
+            backgroundColor: semanticColors.bodyBackground, // overwrite white's override
+            padding: DIVIDING_PADDING,
+            border: `${calculatedBorderWidth}px solid ${theme.palette.neutralLight}`
+          },
+          ['&:focus']: {
+            borderColor: semanticColors.bodyBackground,
+            padding: 0,
+            selectors: {
+              ':hover': {
+                borderColor: theme.palette.neutralLight,
+                padding: DIVIDING_PADDING
+              }
+            }
+          }
+        }
+      },
+      disabled && {
         color: semanticColors.disabledBodyText,
-        cursor: 'default',
         pointerEvents: 'none',
-        opacity: .3
-      }
+        opacity: 0.3
+      },
+      isWhite &&
+        !selected && {
+          // fake a border for white
+          backgroundColor: semanticColors.bodyDivider,
+          padding: 1
+        }
     ],
+    // the <svg> that holds the color
     svg: [
       {
-        width: 20,
-        height: 20,
-        padding: 4,
-        boxSizing: 'content-box',
+        width: '100%',
+        height: '100%'
+      },
+      circle && {
+        borderRadius: '50%'
       }
     ]
   };

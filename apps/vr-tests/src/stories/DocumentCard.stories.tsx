@@ -1,117 +1,170 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
 import {
   DocumentCard,
   DocumentCardPreview,
   DocumentCardTitle,
   DocumentCardActivity,
   DocumentCardType,
-  ImageFit
+  ImageFit,
+  DocumentCardDetails,
+  Fabric,
+  IDocumentCardPreviewProps
 } from 'office-ui-fabric-react';
 
 import { TestImages } from '../common/TestImages';
 
-let previewProps = {
+const previewProps: IDocumentCardPreviewProps = {
   previewImages: [
     {
       name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
-      url: 'http://bing.com',
+      linkProps: {
+        href: 'http://bing.com'
+      },
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
       imageFit: ImageFit.cover,
       width: 318,
       height: 196
     }
-  ],
+  ]
 };
 
-let previewPropsCompact = {
+const previewPropsCompact: IDocumentCardPreviewProps = {
   getOverflowDocumentCountText: (overflowCount: number) => `+${overflowCount} more`,
   previewImages: [
     {
       name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
-      url: 'http://bing.com',
+      linkProps: {
+        href: 'http://bing.com'
+      },
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
       width: 144
     },
     {
       name: 'New Contoso Collaboration for Conference Presentation Draft',
-      url: 'http://bing.com',
+      linkProps: {
+        href: 'http://bing.com'
+      },
       previewImageSrc: TestImages.documentPreviewTwo,
       iconSrc: TestImages.iconPpt,
       width: 144
     },
     {
       name: 'Spec Sheet for design',
-      url: 'http://bing.com',
+      linkProps: {
+        href: 'http://bing.com'
+      },
       previewImageSrc: TestImages.documentPreviewThree,
       iconSrc: TestImages.iconPpt,
       width: 144
     },
     {
       name: 'Contoso Marketing Presentation',
-      url: 'http://bing.com',
+      linkProps: {
+        href: 'http://bing.com'
+      },
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
       width: 144
-    },
-  ],
+    }
+  ]
 };
 
-let DocActivity = (
-  <DocumentCardActivity
-    activity='Created a few minutes ago'
-    people={
-      [
-        { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale }
-      ]
-    }
-  />
+const docActivity = (
+  <Fabric>
+    <DocumentCardActivity
+      activity="Created a few minutes ago"
+      people={[{ name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale }]}
+    />
+  </Fabric>
 );
 
 storiesOf('DocumentCard', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator(story =>
+    // prettier-ignore
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .end()
-      }
+        .end()}
     >
-      { story() }
+      {story()}
     </Screener>
+  )
+  // Commenting out this story as it has some racing issues with the truncation logic and causes the test to fail on unrelated PRs
+  // .addStory('Root', () => (
+  //   <Fabric>
+  //     <DocumentCard onClickHref="http://bing.com">
+  //       <DocumentCardPreview {...previewProps} />
+  //       <DocumentCardTitle
+  //         title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
+  //         shouldTruncate={true}
+  //       />
+  //       {docActivity}
+  //     </DocumentCard>
+  //   </Fabric>
+  // ))
+  .addStory('Not truncated', () => (
+    <Fabric>
+      <DocumentCard onClickHref="http://bing.com">
+        <DocumentCardPreview {...previewProps} />
+        <DocumentCardTitle
+          title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
+          shouldTruncate={false}
+        />
+        {docActivity}
+      </DocumentCard>
+    </Fabric>
   ))
-  .add('Root', () => (
-    <DocumentCard onClickHref='http://bing.com'>
-      <DocumentCardPreview { ...previewProps } />
-      <DocumentCardTitle
-        title='Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx'
-        shouldTruncate={ true }
-      />
-      { DocActivity }
-    </DocumentCard>
+  .addStory('With secondary title style', () => (
+    <Fabric>
+      <DocumentCard onClickHref="http://bing.com">
+        <DocumentCardPreview {...previewProps} />
+        <DocumentCardTitle title="4 files were uploaded" showAsSecondaryTitle={true} />
+        {docActivity}
+      </DocumentCard>
+    </Fabric>
+  ));
+
+storiesOf('DocumentCard', module)
+  .addDecorator(FabricDecoratorFullWidth)
+  .addDecorator(story =>
+    // prettier-ignore
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  )
+  .addStory('Compact with preview list', () => (
+    <Fabric>
+      <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCardPreview {...previewPropsCompact} />
+        <DocumentCardDetails>
+          <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
+          {docActivity}
+        </DocumentCardDetails>
+      </DocumentCard>
+    </Fabric>
   ))
-  .add('Not truncated', () => (
-    <DocumentCard onClickHref='http://bing.com'>
-      <DocumentCardPreview { ...previewProps } />
-      <DocumentCardTitle
-        title='Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx'
-        shouldTruncate={ false }
-      />
-      { DocActivity }
-    </DocumentCard>
-  ))
-  .add('Compact', () => (
-    <DocumentCard type={ DocumentCardType.compact } onClickHref='http://bing.com'>
-      <DocumentCardPreview { ...previewPropsCompact } />
-      <DocumentCardTitle
-        title='4 files were uploaded'
-        shouldTruncate={ true }
-      />
-      { DocActivity }
-    </DocumentCard >
+  .addStory('Compact with preview image', () => (
+    <Fabric>
+      <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCardPreview previewImages={[previewProps.previewImages[0]]} />
+        <DocumentCardDetails>
+          <DocumentCardTitle
+            title="Revenue stream proposal fiscal year 2016 version02.pptx"
+            shouldTruncate={true}
+          />
+          {docActivity}
+        </DocumentCardDetails>
+      </DocumentCard>
+    </Fabric>
   ));

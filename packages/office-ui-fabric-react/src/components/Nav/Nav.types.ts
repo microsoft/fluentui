@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { IRenderFunction } from '../../Utilities';
+import { IStyle, ITheme } from '../../Styling';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
+import { IIconProps } from '../Icon/Icon.types';
+import { IButtonProps } from '../Button/Button.types';
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INav {
   /**
    * The meta 'key' property of the currently selected NavItem of the Nav. Can return
@@ -11,12 +17,31 @@ export interface INav {
   selectedKey: string | undefined;
 }
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INavProps {
   /**
    * Optional callback to access the INav interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: INav) => void;
+  componentRef?: IRefObject<INav>;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules
+   */
+  styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
+
+  /**
+   * Additional css class to apply to the Nav
+   * @defaultvalue undefined
+   */
+  className?: string;
 
   /**
    * A collection of link groups to display in the navigation bar
@@ -24,9 +49,16 @@ export interface INavProps {
   groups: INavLinkGroup[] | null;
 
   /**
-   * Optional class name to allow styling.
+   * Used to customize how content inside the group header is rendered
+   * @defaultvalue Default group header rendering
    */
-  className?: string;
+  onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
+
+  /**
+   * Render a custom link in place of the normal one.
+   * This replaces the entire button rather than simply button content
+   */
+  linkAs?: IComponentAs<IButtonProps>;
 
   /**
    * Used to customize how content inside the link tag is rendered
@@ -65,23 +97,15 @@ export interface INavProps {
   ariaLabel?: string;
 
   /**
-   * (Optional) The nav container aria label.
+   * (Optional) The nav container aria label. The link name is prepended to this label.
+   * If not provided, the aria label will default to the link name.
    */
   expandButtonAriaLabel?: string;
-
-  /**
-   * Deprecated at v0.68.1 and will be removed at >= V1.0.0.
-   * @deprecated
-   **/
-  expandedStateText?: string;
-
-  /**
-   * Deprecated at v0.68.1 and will be removed at >= V1.0.0.
-   * @deprecated
-   **/
-  collapsedStateText?: string;
 }
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INavLinkGroup {
   /**
    * Text to render as the header of a group
@@ -109,6 +133,9 @@ export interface INavLinkGroup {
   onHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
 }
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INavLink {
   /**
    * Text to render for this link
@@ -121,7 +148,8 @@ export interface INavLink {
   url: string;
 
   /**
-   * Meta info for the link server, if negative, client side added node.
+   * Unique, stable key for the link, used when rendering the list of links and for tracking
+   * the currently selected link.
    */
   key?: string;
 
@@ -137,26 +165,20 @@ export interface INavLink {
   onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
 
   /**
-   * button icon name if applied
+   * Name of an icon to render next to the link button.
    */
   icon?: string;
 
   /**
-   * Classname to apply to the icon link.
+   * Deprecated. Use `iconProps.className` instead.
+   * @deprecated Use `iconProps.className` instead.
    */
   iconClassName?: string;
 
   /**
-   * Deprecated at v0.68.1 and will be removed at >= v1.0.0.
-   * @deprecated
+   * Props for an icon to render next to the link button.
    */
-  engagementName?: string;
-
-  /**
-   * Deprecated at v0.68.1 and will be removed at >= v1.0.0.
-   * @deprecated
-   */
-  altText?: string;
+  iconProps?: IIconProps;
 
   /**
    * The name to use for functional automation tests
@@ -174,7 +196,7 @@ export interface INavLink {
   ariaLabel?: string;
 
   /**
-   * title for tooltip or description
+   * Text for title tooltip and ARIA description.
    */
   title?: string;
 
@@ -184,10 +206,9 @@ export interface INavLink {
   target?: string;
 
   /**
-   * Point to the parent node key.  This is used in EditNav when move node from sublink to
-   *   parent link vs vers.
+   * Whether or not the link is disabled.
    */
-  parentId?: string;
+  disabled?: boolean;
 
   /**
    * (Optional) By default, any link with onClick defined will render as a button.
@@ -200,4 +221,143 @@ export interface INavLink {
    * (Optional) Any additional properties to apply to the rendered links.
    */
   [propertyName: string]: any;
+}
+
+/**
+ * {@docCategory Nav}
+ */
+export interface INavStyleProps {
+  /**
+   * Accept theme prop.
+   */
+  theme: ITheme;
+
+  /**
+   * Accept custom classNames
+   */
+  className?: string;
+
+  /**
+   * is element on top boolean
+   */
+  isOnTop?: boolean;
+
+  /**
+   * is element a link boolean
+   */
+  isLink?: boolean;
+
+  /**
+   * is element disabled
+   */
+  isDisabled?: boolean;
+
+  /**
+   * is element a group boolean
+   */
+  isGroup?: boolean;
+
+  /**
+   * is element expanded boolean
+   */
+  isExpanded?: boolean;
+
+  /**
+   * is element selected boolean
+   */
+  isSelected?: boolean;
+
+  /**
+   * is button
+   */
+  isButtonEntry?: boolean;
+
+  /**
+   * Nav height value
+   */
+  navHeight?: number;
+
+  /**
+   * left padding value
+   */
+  leftPadding?: number;
+
+  /**
+   * left padding when expanded value
+   */
+  leftPaddingExpanded?: number;
+
+  /**
+   * right padding value
+   */
+  rightPadding?: number;
+
+  /**
+   * position value
+   */
+  position?: number;
+
+  /**
+   * Inherited from INavProps
+   * A collection of link groups to display in the navigation bar
+   */
+  groups: INavLinkGroup[] | null;
+}
+
+/**
+ * {@docCategory Nav}
+ */
+export interface INavStyles {
+  /**
+   * Style set for the root element.
+   */
+  root: IStyle;
+
+  /**
+   * Style set for the link text container div element.
+   */
+  linkText: IStyle;
+
+  /**
+   * Style set for the link element extending the
+   * root style set for ActionButton component.
+   */
+  link: IStyle;
+
+  /**
+   * Style set for the composite link container div element
+   */
+  compositeLink: IStyle;
+
+  /**
+   * Style set for the chevron button inside the composite
+   * link and group elements.
+   */
+  chevronButton: IStyle;
+
+  /**
+   * Style set for the chevron icon inside the composite
+   * link and group elements.
+   */
+  chevronIcon: IStyle;
+
+  /**
+   * Style set for the nav links ul element.
+   */
+  navItems: IStyle;
+
+  /**
+   * Style set for the nav links li element.
+   */
+  navItem: IStyle;
+
+  /**
+   * Style set for the group root div.
+   */
+  group: IStyle;
+
+  /**
+   * Style set for the group content div inside group.
+   */
+  groupContent: IStyle;
 }

@@ -19,39 +19,24 @@ export type FitMode = 'contain' | 'cover';
 
 /**
  * Options for fitting content sizes into bounding sizes.
- *
- * @export
- * @interface IFitContentToBoundsOptions
  */
 export interface IFitContentToBoundsOptions {
   /**
    * The size of the content to fit to the bounds.
    * The output will be proportional to this value.
-   *
-   * @type {ISize}
-   * @memberof IFitContentToBoundsOptions
    */
   contentSize: ISize;
   /**
    * The size of the bounds.
-   *
-   * @type {ISize}
-   * @memberof IFitContentToBoundsOptions
    */
   boundsSize: ISize;
   /**
    * The fit mode to apply, either 'contain' or 'cover'.
-   *
-   * @type {FitMode}
-   * @memberof IFitContentToBoundsOptions
    */
   mode: FitMode;
   /**
    * An optional maximum scale factor to apply. The default is 1.
    * Use Infinity for an unbounded resize.
-   *
-   * @type {number}
-   * @memberof IFitContentToBoundsOptions
    */
   maxScale?: number;
 }
@@ -65,15 +50,10 @@ export interface IFitContentToBoundsOptions {
  * With `cover`, the output size must be the smallest it can be while completely around the `boundsSize`.
  * By default, there is a `maxScale` value of 1, which prevents the `contentSize` from being scaled larger.
  *
- * @param options the options for the bounds fit operation
+ * @param options - the options for the bounds fit operation
  */
 export function fitContentToBounds(options: IFitContentToBoundsOptions): ISize {
-  const {
-    contentSize,
-    boundsSize,
-    mode = 'contain',
-    maxScale = 1
-  } = options;
+  const { contentSize, boundsSize, mode = 'contain', maxScale = 1 } = options;
 
   const contentAspectRatio = contentSize.width / contentSize.height;
   const boundsAspectRatio = boundsSize.width / boundsSize.height;
@@ -99,7 +79,7 @@ export function fitContentToBounds(options: IFitContentToBoundsOptions): ISize {
  * zeros if the number does not have a decimal indicated by a negative
  * precision. Otherwise, it calculates the number of digits after
  * the decimal point indicated by a positive precision.
- * @param value
+ * @param value - the value to determine the precision of
  */
 export function calculatePrecision(value: number | string): number {
   /**
@@ -123,8 +103,8 @@ export function calculatePrecision(value: number | string): number {
 
 /**
  * Rounds a number to a certain level of precision. Accepts negative precision.
- * @param value The value that is being rounded.
- * @param precision The number of decimal places to round the number to
+ * @param value - The value that is being rounded.
+ * @param precision - The number of decimal places to round the number to
  */
 export function precisionRound(value: number, precision: number, base: number = 10): number {
   const exp = Math.pow(base, precision);

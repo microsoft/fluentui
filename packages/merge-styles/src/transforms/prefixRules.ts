@@ -4,10 +4,7 @@ const autoPrefixNames: { [key: string]: number } = {
   'user-select': 1
 };
 
-export function prefixRules(
-  rulePairs: (string | number)[],
-  index: number
-): void {
+export function prefixRules(rulePairs: (string | number)[], index: number): void {
   const vendorSettings = getVendorSettings();
 
   const name = rulePairs[index];

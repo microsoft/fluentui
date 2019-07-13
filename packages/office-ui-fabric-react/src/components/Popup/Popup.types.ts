@@ -1,19 +1,10 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import { Popup } from './Popup';
 
-export interface IPopup {
-
-}
-
+/**
+ * {@docCategory Popup}
+ */
 export interface IPopupProps extends React.HTMLAttributes<Popup> {
-  /**
-   * Optional callback to access the IPopup interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: (component: IPopup) => void;
-
   /**
    * Aria role for popup
    */
@@ -30,8 +21,8 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
   ariaLabelledBy?: string;
 
   /**
-    * Defines the element id referencing the element containing the description for the popup.
-    */
+   * Defines the element id referencing the element containing the description for the popup.
+   */
   ariaDescribedBy?: string;
 
   /**
@@ -47,7 +38,7 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
 
   /**
    * If true, the unmounting of this component will cause focus to be restored to the element that had focus when first mounted.
-   * @default true
+   * @defaultvalue true
    */
   shouldRestoreFocus?: boolean;
 }

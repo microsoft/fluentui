@@ -1,90 +1,71 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
-import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-import {
-  IOverflowSetItemProps,
-  OverflowSet
-} from 'office-ui-fabric-react/lib/OverflowSet';
+import { TooltipHost, DirectionalHint } from 'office-ui-fabric-react/lib/Tooltip';
+import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 
-import * as stylesImport from './OverflowSet.Example.scss';
-const styles: any = stylesImport;
+const noOp = () => undefined;
 
-export class OverflowSetVerticalExample extends BaseComponent<any, any> {
-
-  public render() {
+export class OverflowSetVerticalExample extends React.PureComponent {
+  public render(): JSX.Element {
     return (
       <OverflowSet
         vertical
-        items={ [
+        items={[
           {
             key: 'item1',
             icon: 'Add',
             name: 'Link 1',
             ariaLabel: 'New. Use left and right arrow keys to navigate',
-            onClick: () => { return; },
+            onClick: noOp
           },
           {
             key: 'item2',
             icon: 'Upload',
             name: 'Link 2',
-            onClick: () => { return; },
+            onClick: noOp
           },
           {
             key: 'item3',
             icon: 'Share',
             name: 'Link 3',
-            onClick: () => { return; }
+            onClick: noOp
           }
-        ] }
-        overflowItems={ [
+        ]}
+        overflowItems={[
           {
             key: 'item4',
             icon: 'Mail',
             name: 'Overflow Link 1',
-            onClick: () => { return; }
+            onClick: noOp
           },
           {
             key: 'item5',
             icon: 'Calendar',
             name: 'Overflow Link 2',
-            onClick: () => { return; }
+            onClick: noOp
           }
-        ]
-        }
-        onRenderOverflowButton={ this._onRenderOverflowButton }
-        onRenderItem={ this._onRenderItem }
+        ]}
+        onRenderOverflowButton={this._onRenderOverflowButton}
+        onRenderItem={this._onRenderItem}
       />
     );
   }
 
-  private _onRenderItem(item: IOverflowSetItemProps): JSX.Element {
+  private _onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
     return (
-
-      <TooltipHost
-        content={ item.name }
-        calloutProps={ { directionalHint: DirectionalHint.rightCenter, beakWidth: 12 } }
-      >
-        <CommandBarButton
-          styles={ { root: { padding: '10px' } } }
-          iconProps={ { iconName: item.icon } }
-          onClick={ item.onClick }
-        />
+      <TooltipHost content={item.name} calloutProps={{ directionalHint: DirectionalHint.rightCenter, beakWidth: 12 }}>
+        <CommandBarButton styles={{ root: { padding: '10px' } }} iconProps={{ iconName: item.icon }} onClick={item.onClick} />
       </TooltipHost>
     );
-  }
+  };
 
-  private _onRenderOverflowButton(overflowItems: any[] | undefined): JSX.Element {
+  private _onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
     return (
       <CommandBarButton
-        styles={ { root: { padding: '10px' }, menuIcon: { fontSize: '16px' } } }
-        menuIconProps={ { iconName: 'More' } }
-        menuProps={ { items: overflowItems! } }
+        styles={{ root: { padding: '10px' }, menuIcon: { fontSize: '16px' } }}
+        menuIconProps={{ iconName: 'More' }}
+        menuProps={{ items: overflowItems! }}
       />
     );
-  }
+  };
 }

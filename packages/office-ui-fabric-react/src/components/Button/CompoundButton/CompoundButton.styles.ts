@@ -1,139 +1,142 @@
 import { IButtonStyles } from '../Button.types';
-import {
-  ITheme,
-  concatStyleSets,
-  FontWeights,
-  HighContrastSelector
-} from '../../../Styling';
+import { ITheme, concatStyleSets, FontWeights, HighContrastSelector } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
-import {
-  getStyles as getBaseButtonStyles
-} from '../BaseButton.styles';
-import {
-  getStyles as getSplitButtonStyles
-} from '../SplitButton/SplitButton.styles';
-import {
-  primaryStyles,
-  standardStyles
-} from '../ButtonThemes';
+import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
+import { getStyles as getSplitButtonStyles } from '../SplitButton/SplitButton.styles';
+import { primaryStyles, standardStyles } from '../ButtonThemes';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: IButtonStyles,
-  primary?: boolean
-): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
-  let compoundButtonStyles: IButtonStyles = {
-    root: {
-      maxWidth: '280px',
-      minHeight: '72px',
-      height: 'auto',
-      padding: '20px'
-    },
+export const getStyles = memoizeFunction(
+  (theme: ITheme, customStyles?: IButtonStyles, primary?: boolean): IButtonStyles => {
+    const { fonts, palette } = theme;
 
-    flexContainer: {
-      flexDirection: 'row',
-      alignItems: 'flex-start',
-      minWidth: '100%',
-      margin: ''
-    },
+    const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+    const splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
+    const compoundButtonStyles: IButtonStyles = {
+      root: {
+        maxWidth: '280px',
+        minHeight: '72px',
+        height: 'auto',
+        padding: '16px 12px'
+      },
 
-    textContainer: {
-      textAlign: 'left'
-    },
+      flexContainer: {
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        minWidth: '100%',
+        margin: ''
+      },
 
-    icon: {
-      fontSize: '2em',
-      lineHeight: '1em',
-      height: '1em',
-      margin: '0px 8px 0px 0px',
-      flexBasis: '1em',
-      flexShrink: '0'
-    },
+      textContainer: {
+        textAlign: 'left'
+      },
 
-    label: {
-      margin: '0 0 5px',
-      lineHeight: '100%',
-      fontWeight: FontWeights.semibold
-    },
-    description: [
-      theme.fonts.small,
-      {
-        lineHeight: '100%'
+      icon: {
+        fontSize: '2em',
+        lineHeight: '1em',
+        height: '1em',
+        margin: '0px 8px 0px 0px',
+        flexBasis: '1em',
+        flexShrink: '0'
+      },
+
+      label: {
+        margin: '0 0 5px',
+        lineHeight: '100%',
+        fontWeight: FontWeights.semibold
+      },
+      description: [
+        fonts.small,
+        {
+          lineHeight: '100%'
+        }
+      ]
+    };
+
+    const standardCompoundTheme: IButtonStyles = {
+      description: {
+        color: palette.neutralSecondary
+      },
+
+      descriptionHovered: {
+        color: palette.neutralDark
+      },
+
+      descriptionPressed: {
+        color: 'inherit'
+      },
+
+      descriptionChecked: {
+        color: 'inherit'
+      },
+
+      descriptionDisabled: {
+        color: 'inherit'
       }
-    ],
+    };
 
-  };
+    const primaryCompoundTheme: IButtonStyles = {
+      description: {
+        color: palette.white,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'WindowText',
+            color: 'Window',
+            MsHighContrastAdjust: 'none'
+          }
+        }
+      },
 
-  let standardCompoundTheme: IButtonStyles = {
+      descriptionHovered: {
+        color: palette.white,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'Highlight',
+            color: 'Window'
+          }
+        }
+      },
 
-    description: {
-      color: theme.palette.neutralSecondary,
-    },
+      descriptionPressed: {
+        color: 'inherit',
 
-    descriptionHovered: {
-      color: theme.palette.neutralDark
-    },
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'Window',
+            backgroundColor: 'WindowText',
+            MsHighContrastAdjust: 'none'
+          }
+        }
+      },
 
-    descriptionPressed: {
-      color: 'inherit'
-    },
+      descriptionChecked: {
+        color: 'inherit',
 
-    descriptionChecked: {
-      color: 'inherit'
-    },
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'Window',
+            backgroundColor: 'WindowText',
+            MsHighContrastAdjust: 'none'
+          }
+        }
+      },
 
-    descriptionDisabled: {
-      color: 'inherit'
-    }
-  };
-
-  let primaryCompoundTheme: IButtonStyles = {
-
-    description: {
-      color: theme.palette.white,
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'Window',
-          backgroundColor: 'WindowText',
-          MsHighContrastAdjust: 'none'
+      descriptionDisabled: {
+        color: 'inherit',
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'inherit'
+          }
         }
       }
+    };
 
-    },
-
-    descriptionHovered: {
-      color: theme.palette.white,
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'Window',
-          backgroundColor: 'WindowText',
-          MsHighContrastAdjust: 'none'
-        }
-      }
-    },
-
-    descriptionPressed: {
-      color: 'inherit'
-    },
-
-    descriptionChecked: {
-      color: 'inherit'
-    },
-
-    descriptionDisabled: {
-      color: 'inherit'
-    }
-  };
-
-  return concatStyleSets(
-    baseButtonStyles,
-    compoundButtonStyles,
-    primary ? primaryStyles(theme) : standardStyles(theme),
-    primary ? primaryCompoundTheme : standardCompoundTheme,
-    splitButtonStyles,
-    customStyles
-  )!;
-
-});
+    return concatStyleSets(
+      baseButtonStyles,
+      compoundButtonStyles,
+      primary ? primaryStyles(theme) : standardStyles(theme),
+      primary ? primaryCompoundTheme : standardCompoundTheme,
+      splitButtonStyles,
+      customStyles
+    )!;
+  }
+);

@@ -1,255 +1,293 @@
 import * as React from 'react';
-import {
-  css,
-  getDocument
-} from 'office-ui-fabric-react/lib/Utilities';
-import {
-  Link
-} from 'office-ui-fabric-react/lib/Link';
-import './ComponentPage.scss';
+import { css, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
+import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
+import { EditSection } from '../EditSection/index';
+import { IComponentPageProps, IComponentPageStyleProps, IComponentPageStyles, IComponentPageSection } from './ComponentPage.types';
+import { getStyles } from './ComponentPage.styles';
+import { showOnlyExamples } from '../../utilities/showOnlyExamples';
+import { getCurrentUrl } from '../../utilities/getCurrentUrl';
 
-export interface IComponentPageSection {
-  title: string;
-  section: JSX.Element;
+const getClassNames = classNamesFunction<IComponentPageStyleProps, IComponentPageStyles>();
+
+/**
+ * Extended section interface used internally for de-duplicating section rendering code.
+ */
+interface IExtendedComponentPageSection extends IComponentPageSection {
+  /** URL for editing the section markdown */
+  editUrl?: string;
+  /** Override for section ID. Null means don't use a section ID. */
+  id?: string | null;
+  /** Class for the section wrapper (default variantsSection). Null means don't use a class. */
+  wrapperClass?: string | null;
+  /** Class for the section title (default variantsTitle). Null means don't use a class. */
+  titleClass?: string | null;
 }
 
-export interface IComponentPageProps {
-  title: string;
-  componentName: string;
-  exampleCards?: JSX.Element;
-  implementationExampleCards?: JSX.Element;
-  propertiesTables?: JSX.Element;
-  bestPractices?: JSX.Element;
-  dos?: JSX.Element;
-  donts?: JSX.Element;
-  overview: JSX.Element;
-  related?: JSX.Element;
-  isHeaderVisible?: boolean;
-  areBadgesVisible?: boolean;
-  className?: string;
-  componentStatus?: JSX.Element;
-  otherSections?: [IComponentPageSection];
-}
+const headingWithEditStackProps: IStackProps = {
+  horizontal: true,
+  verticalAlign: 'center',
+  horizontalAlign: 'space-between'
+};
 
-export class ComponentPage extends React.Component<IComponentPageProps, {}> {
+export class ComponentPageBase extends React.PureComponent<IComponentPageProps> {
   public static defaultProps: Partial<IComponentPageProps> = {
     isHeaderVisible: true,
     areBadgesVisible: false
   };
 
   private _baseUrl: string;
+  private _showOnlyExamples: boolean;
+  private _styles: IProcessedStyleSet<IComponentPageStyles>;
 
   constructor(props: IComponentPageProps) {
     super(props);
 
-    let doc = getDocument();
-    this._baseUrl = doc ? document.location.href : '';
+    this._baseUrl = getCurrentUrl();
+    this._showOnlyExamples = showOnlyExamples();
   }
 
-  public render(): JSX.Element {
-    let {
-      componentName,
-      overview,
-      className
-    } = this.props;
+  public render() {
+    const { componentName, className, otherSections, styles, theme } = this.props;
 
-    return (
-      <div className={ css('ComponentPage', className) }>
-        <div className={ componentName }>
-          { this._pageHeader() }
-          <div className='ComponentPage-body'>
-            { this._getComponentStatusBadges() }
-            <div className='ComponentPage-overviewSection'>
-              <h2 className='ComponentPage-subHeading' id='Overview'>Overview</h2>
-              <div className='ComponentPage-overviewSectionContent'>
-                <div className='ComponentPage-overview'>
-                  { overview }
-                </div>
-                { this._getRelatedComponents() }
-              </div>
-            </div>
-            { this._getDosAndDonts() }
-            { this._getVariants() }
-            { this._getImplementationExamples() }
-            { this._getPropertiesTable() }
-            { this.props.otherSections && this.props.otherSections.map((componentPageSection: IComponentPageSection) => {
-              return this._getSection(componentPageSection);
-            }) }
+    const onlyExamples = this._showOnlyExamples;
+
+    const classNames = (this._styles = getClassNames(styles, { theme }));
+
+    return onlyExamples ? (
+      this._getVariants()
+    ) : (
+      <div className={css(classNames.root, className)}>
+        <div className={componentName}>
+          {this._getPageHeader()}
+          <div className={classNames.body}>
+            {this._getOverview()}
+            {this._getBestPractices()}
+            {this._getVariants()}
+            {this._getPropertiesTable()}
+            {this._getFeedback()}
+            {otherSections && otherSections.map(section => this._getSection(section))}
           </div>
-        </div >
-      </div >
+        </div>
+      </div>
     );
   }
 
-  private _pageHeader(): JSX.Element | undefined {
+  private _getPageHeader(): JSX.Element | undefined {
+    const classNames = this._styles;
     if (this.props.isHeaderVisible) {
       return (
-        <div className='ComponentPage-header'>
-          <h1 className='ComponentPage-title'>{ this.props.title }</h1>
-          { this._navigationLinks() }
+        <div className={classNames.header}>
+          <h1 className={classNames.title}>{this.props.title}</h1>
+          {this._navigationLinks()}
         </div>
       );
     }
   }
 
   private _navigationLinks(): JSX.Element {
-    let links: Array<JSX.Element> = [];
-    let {
-      bestPractices,
-      dos,
-      donts
-    } = this.props;
+    const classNames = this._styles;
+    const props = this.props;
 
-    if (bestPractices && dos && donts) {
-      links.push(
-        <div className='ComponentPage-navLink' key='nav-link'>
-          <Link { ...{ href: this._baseUrl + '#BestPractices' } }>Best Practices</Link>
-        </div>
-      );
-    }
+    const sections = [
+      { title: 'Overview' },
+      !!(props.bestPractices || (props.dos && props.donts)) && { title: 'Best Practices' },
+      props.exampleCards && { title: 'Variants' },
+      props.propertiesTables && { title: 'Implementation' },
+      props.isFeedbackVisible && { title: 'Feedback' },
+      ...(props.otherSections || [])
+    ].filter(section => !!section) as Array<{ title: string }>;
 
     return (
-      <div className='ComponentPage-navigation'>
-        <div className='ComponentPage-navLink'>
-          <Link { ...{ href: this._baseUrl + '#Overview' } }>Overview</Link>
-        </div>
-        { links }
-        { this.props.exampleCards && <div className='ComponentPage-navLink'>
-          <Link { ...{ href: this._baseUrl + '#Variants' } }>Variants</Link>
-        </div> }
-        { this.props.implementationExampleCards && <div className='ComponentPage-navLink'>
-          <Link { ...{ href: this._baseUrl + '#ImplementationExamples' } }>Implementation Examples</Link>
-        </div> }
-        { this.props.propertiesTables && <div className='ComponentPage-navLink'>
-          <Link { ...{ href: this._baseUrl + '#Implementation' } }>Implementation</Link>
-        </div> }
-        { this.props.otherSections && this.props.otherSections.map((componentPageSection: IComponentPageSection, index: number) => {
-          return <div key={ index + 'class' } className='ComponentPage-navLink'>
-            <Link
-              key={ index + componentPageSection.title }
-              { ...{ href: this._baseUrl + '#' + componentPageSection.title } }
-            >
-              { componentPageSection.title }
-            </Link>
-          </div>;
-        }) }
-      </div >
+      <Stack horizontal maxWidth="100%" wrap tokens={{ childrenGap: '5px 40px' }} className={classNames.navigation}>
+        {sections.map(section => (
+          <Link key={section.title} href={this._baseUrl + '#' + _idFromSectionTitle(section.title)} className={classNames.headerLink}>
+            {section.title}
+          </Link>
+        ))}
+      </Stack>
     );
   }
 
-  private _getRelatedComponents(): JSX.Element | undefined {
-    if (this.props.related) {
+  private _getNativePropsInfo(): JSX.Element | undefined {
+    const { allowNativeProps, allowNativePropsForComponentName, nativePropsElement = 'div' } = this.props;
+    if (allowNativeProps) {
+      const nativePropsElems = Array.isArray(nativePropsElement) ? nativePropsElement : [nativePropsElement];
+
+      const elementsArr: (JSX.Element | string)[] = [];
+      for (const elem of nativePropsElems) {
+        elementsArr.push(<code key={elem}>{`<${elem}>`}</code>);
+        elementsArr.push(' and ');
+      }
+      elementsArr.pop(); // remove last ' and '
+      elementsArr.push(` tag${nativePropsElems.length > 1 ? 's' : ''}`);
+
+      let componentNameJsx: JSX.Element | undefined;
+      if (allowNativePropsForComponentName) {
+        componentNameJsx = <code>{allowNativePropsForComponentName}</code>;
+      }
+
       return (
-        <div className='ComponentPage-related'>
-          <span className='ComponentPage-relatedTitle'>Also available in</span>
-          { this.props.related }
-        </div>
+        <MessageBar>
+          <strong>Native props allowed {componentNameJsx && <>for {componentNameJsx}</>}</strong> - all HTML attributes native to the{' '}
+          {elementsArr}, including all aria and custom data attributes, can be applied as native props on{' '}
+          {componentNameJsx || 'this component'}.
+        </MessageBar>
       );
     }
   }
 
   private _getPropertiesTable(): JSX.Element | undefined {
     if (this.props.propertiesTables) {
-      return (
-        <div className='ComponentPage-implementationSection'>
-          <h2 className='ComponentPage-subHeading' id='Implementation'>Implementation</h2>
-          { this.props.propertiesTables }
-        </div>
-      );
+      return this._getSection({
+        title: 'Implementation',
+        section: (
+          <>
+            {!this.props.jsonDocs && this._getNativePropsInfo()}
+            {this.props.propertiesTables}
+          </>
+        ),
+        wrapperClass: this._styles.implementationSection,
+        titleClass: null
+      });
     }
   }
 
-  private _getDosAndDonts(): JSX.Element | undefined {
-    let dosAndDonts: Array<JSX.Element> = [];
-
-    if (this.props.bestPractices) {
-      dosAndDonts.push(
-        <div className='ComponentPage-usage' id='BestPractices' key='best-practices'>
-          <h2 className='ComponentPage-subHeading'>Best Practices</h2>
-          { this.props.bestPractices }
-        </div>
-      );
+  private _getBestPractices(): JSX.Element | undefined {
+    const classNames = this._styles;
+    const props = this.props;
+    const { bestPractices, dos, donts, title } = props;
+    if (!(bestPractices || (dos && donts))) {
+      return;
     }
 
-    if (this.props.dos && this.props.donts) {
-      dosAndDonts.push(
-        <div className='ComponentPage-doSections' key='do-sections'>
-          <div className='ComponentPage-doSection'>
-            <h3>Do</h3>
-            { this.props.dos }
+    const practicesUrl = this._getURL('BestPractices', props.editBestPracticesUrl);
+    const dosUrl = this._getURL('Dos', props.editDosUrl);
+    const dontsUrl = this._getURL('Donts', props.editDontsUrl);
+
+    return (
+      <div id="BestPractices" className={classNames.bestPracticesSection}>
+        {bestPractices &&
+          this._getSection({
+            title: 'Best Practices',
+            section: bestPractices,
+            editUrl: practicesUrl,
+            wrapperClass: classNames.usageSection,
+            titleClass: classNames.usageHeading,
+            id: null
+          })}
+        {!!(dos && donts) && (
+          <div className={css(classNames.section, classNames.doSections)}>
+            <div className={classNames.dosDontsSection}>
+              <Stack className={classNames.dosDontsHeading} {...headingWithEditStackProps}>
+                <h3>Do</h3>
+                {dosUrl && <EditSection title={title} section="Dos" url={dosUrl} />}
+              </Stack>
+              <hr className={css(classNames.dosDontsLine, classNames.dosLine)} />
+              {dos}
+            </div>
+            <div className={css(classNames.dosDontsSection, classNames.dontsSection)}>
+              <Stack className={classNames.dosDontsHeading} {...headingWithEditStackProps}>
+                <h3>Don&rsquo;t</h3>
+                {dontsUrl && <EditSection title={title} section="Don'ts" url={dontsUrl} />}
+              </Stack>
+              <hr className={css(classNames.dosDontsLine, classNames.dontsLine)} />
+              {donts}
+            </div>
           </div>
-          <div className='ComponentPage-doSection ComponentPage-doSection--dont'>
-            <h3>Don&rsquo;t</h3>
-            { this.props.donts }
-          </div>
-        </div>
-      );
-    }
-
-    if (this.props.bestPractices || (this.props.dos && this.props.donts)) {
-      return (
-        <div className='ComponentPage-bestPracticesSection'>
-          { dosAndDonts }
-        </div>
-      );
-    }
+        )}
+      </div>
+    );
   }
 
   private _getVariants(): JSX.Element | undefined {
-    if (this.props.exampleCards) {
-      return (
-        <div className='ComponentPage-variantsSection'>
-          <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='Variants'>Variants</h2>
-          { this.props.exampleCards }
-        </div>
-      );
+    const { exampleCards } = this.props;
+    // We want to show the "Variants" header if the header is present since it has a relative anchor to it
+    // or we have more than one example JSX element to render.
+    const hasVariants = this.props.isHeaderVisible || (exampleCards && !!exampleCards.props.children.length);
+
+    // If only one variant then use its title as the header text, otherwise use "Variants".
+    const headerText = hasVariants ? 'Variants' : this.props.title;
+
+    if (exampleCards) {
+      return this._getSection({ title: headerText, section: exampleCards, id: 'Variants' });
+    }
+  }
+
+  private _getFeedback(): JSX.Element | undefined {
+    if (this.props.isFeedbackVisible && this.props.feedback) {
+      return this._getSection({ title: 'Feedback', section: this.props.feedback, wrapperClass: this._styles.feedbackSection });
+    }
+  }
+
+  private _getOverview(): JSX.Element | undefined {
+    const { overview, editOverviewUrl } = this.props;
+    if (overview) {
+      return this._getSection({
+        title: 'Overview',
+        section: overview,
+        editUrl: this._getURL('Overview', editOverviewUrl),
+        wrapperClass: this._styles.overviewSection,
+        titleClass: this._styles.overviewHeading
+      });
     }
 
     return undefined;
   }
 
-  private _getImplementationExamples(): JSX.Element | undefined {
-    if (this.props.implementationExampleCards) {
-      return (
-        <div className='ComponentPage-implementationExamplesSection'>
-          <h2 className='ComponentPage-subHeading ComponentPage-variantsTitle' id='ImplementationExamples'>Implementation Examples</h2>
-          { this.props.implementationExampleCards }
-        </div>
-      );
-    }
-
-    return undefined;
+  private _getSection(section: IExtendedComponentPageSection): JSX.Element {
+    const {
+      title,
+      section: sectionContent,
+      wrapperClass = this._styles.variantsSection,
+      titleClass = this._styles.variantsTitle,
+      id = _idFromSectionTitle(section.title),
+      editUrl
+    } = section;
+    const classNames = this._styles;
+    return (
+      <div key={id || title} className={css(classNames.section, wrapperClass)}>
+        <Stack className={classNames.subHeading} {...headingWithEditStackProps}>
+          <h2 className={css(titleClass)} id={!!id ? id : undefined}>
+            {title}
+          </h2>
+          {editUrl && <EditSection title={this.props.title} section={title} url={editUrl} />}
+        </Stack>
+        {sectionContent}
+      </div>
+    );
   }
 
-  private _getComponentStatusBadges(): JSX.Element | undefined {
-    if (this.props.componentStatus && this.props.areBadgesVisible) {
-      return (
-        <div className='ComponentPage-componentStatusSection'>
-          { this.props.componentStatus }
-        </div>
-      );
+  private _getURL(section: string, url?: string): string | undefined {
+    if (url) {
+      return url;
     }
-
-    return undefined;
-  }
-
-  private _getSection(componentPageSection: IComponentPageSection): JSX.Element | undefined {
-    if (this.props.otherSections) {
-      return (
-        <div key={ componentPageSection.title + '-key' }>
-          <div className='ComponentPage-variantsSection'>
-            <h2
-              className='ComponentPage-subHeading ComponentPage-variantsTitle'
-              id={ componentPageSection.title }
-            >
-              { componentPageSection.title }
-            </h2>
-            { componentPageSection.section }
-          </div>
-        </div>
-      );
+    const componentName = _idFromSectionTitle(this.props.title || this.props.componentName);
+    // Generate edit URL from componentURL
+    let mdUrl;
+    if (this.props.componentUrl) {
+      mdUrl = `${this.props.componentUrl}/docs/${componentName}${section}.md`;
+      // Replace /tree/ or /blob/ with /edit/ to get straight to GitHub editor.
+      if (mdUrl.indexOf('/tree/') !== -1) {
+        mdUrl = mdUrl.replace('/tree/', '/edit/');
+      } else if (mdUrl.indexOf('/blob/') !== -1) {
+        mdUrl = mdUrl.replace('/blob/', '/edit/');
+      }
     }
-
-    return undefined;
+    return mdUrl;
   }
 }
+
+function _idFromSectionTitle(title: string): string {
+  return title.replace(/[^\w-]/g, '');
+}
+
+export const ComponentPage: React.StatelessComponent<IComponentPageProps> = styled<
+  IComponentPageProps,
+  IComponentPageStyleProps,
+  IComponentPageStyles
+>(ComponentPageBase, getStyles, undefined, {
+  scope: 'ComponentPage'
+});

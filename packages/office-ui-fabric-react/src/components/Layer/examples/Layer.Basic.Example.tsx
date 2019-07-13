@@ -1,95 +1,80 @@
-import * as React from 'react'; // tslint:disable-line:no-unused-variable
-import * as PropTypes from 'prop-types';
-import './Layer.Example.scss';
-import '../../../common/_exampleStyles.scss';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import * as React from 'react';
+import * as styles from './Layer.Example.scss';
+import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
+import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { AnimationClassNames } from '../../../Styling';
-import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
-const exampleStyles: any = exampleStylesImport;
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
-export class LayerContentExample extends BaseComponent<{}, {
-  time: string
-}> {
-  public static contextTypes = {
-    message: PropTypes.string
+interface ILayerBasicExampleContext {
+  message?: string;
+}
+
+const LayerBasicExampleContext = React.createContext<ILayerBasicExampleContext>({ message: undefined });
+
+interface ILayerContentExampleState {
+  time: string;
+}
+
+class LayerContentExample extends BaseComponent<{}, ILayerContentExampleState> {
+  public state = {
+    time: new Date().toLocaleTimeString()
   };
-
-  public context: {
-    message: string;
-  };
-
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      time: new Date().toLocaleTimeString()
-    };
-  }
 
   public componentDidMount() {
-    this._async.setInterval(() => this.setState({ time: new Date().toLocaleTimeString() }), 1000);
+    this._async.setInterval(() => {
+      this.setState({
+        time: new Date().toLocaleTimeString()
+      });
+    }, 1000);
   }
 
   public render() {
     return (
-      <div className={ 'LayerExample-content ' + AnimationClassNames.scaleUpIn100 }>
-        <div className='LayerExample-textContent'>{ this.context.message }</div>
-        <div>{ this.state.time }</div>
-      </div>
-
+      <LayerBasicExampleContext.Consumer>
+        {value => (
+          <div className={css(styles.content, AnimationClassNames.scaleUpIn100)}>
+            <div className={styles.textContent}>{value.message}</div>
+            <div>{this.state.time}</div>
+          </div>
+        )}
+      </LayerBasicExampleContext.Consumer>
     );
   }
 }
-export class LayerBasicExample extends BaseComponent<{}, {
-  showLayer: boolean;
-}> {
 
-  public static childContextTypes = {
-    message: PropTypes.string
+interface ILayerBasicExampleState {
+  showLayer: boolean;
+}
+
+export class LayerBasicExample extends BaseComponent<{}, ILayerBasicExampleState> {
+  public state = {
+    showLayer: false
   };
 
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      showLayer: false
-    };
-  }
-
-  public getChildContext() {
-    return {
-      'message': 'Hello world.'
-    };
-  }
-
   public render() {
-    let { showLayer } = this.state;
-
+    const { showLayer } = this.state;
     return (
-      <div>
+      <LayerBasicExampleContext.Provider
+        value={{
+          message: 'Hello world.'
+        }}
+      >
+        <div>
+          <Toggle label="Wrap the content box below in a Layer" inlineLabel checked={showLayer} onChange={this._onChange} />
 
-        <Checkbox
-          className={ exampleStyles.exampleCheckbox }
-          label='Wrap the content box belowed in a Layer'
-          checked={ showLayer }
-          onChange={ this._onChange }
-        />
-
-        { showLayer ? (
-          <Layer>
+          {showLayer ? (
+            <Layer>
+              <LayerContentExample />
+            </Layer>
+          ) : (
             <LayerContentExample />
-          </Layer>
-        ) : (
-            <LayerContentExample />
-          ) }
-
-      </div>
+          )}
+        </div>
+      </LayerBasicExampleContext.Provider>
     );
   }
 
-  @autobind
-  private _onChange(ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void {
+  private _onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, checked: boolean): void => {
     this.setState({ showLayer: checked });
-  }
+  };
 }

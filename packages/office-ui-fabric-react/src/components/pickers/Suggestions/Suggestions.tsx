@@ -1,72 +1,65 @@
 import * as React from 'react';
-import {
-  BaseComponent,
-  css,
-  autobind,
-  KeyCodes
-} from '../../../Utilities';
-import { CommandButton, IconButton, IButton } from '../../../Button';
-import { Spinner } from '../../../Spinner';
-import { ISuggestionItemProps, ISuggestionsProps } from './Suggestions.types';
-import * as stylesImport from './Suggestions.scss';
-const styles: any = stylesImport;
 
-export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
-  public render() {
-    let {
-      suggestionModel,
-      RenderSuggestion,
-      onClick,
-      className,
-      onRemoveItem
-    } = this.props;
-    return (
-      <div
-        className={ css(
-          'ms-Suggestions-item',
-          styles.suggestionsItem,
-          {
-            ['is-suggested ' + styles.suggestionsItemIsSuggested]: suggestionModel.selected
-          },
-          className
-        ) }
-      >
-        <CommandButton
-          onClick={ onClick }
-          className={ css('ms-Suggestions-itemButton', styles.itemButton) }
-        >
-          { RenderSuggestion(suggestionModel.item, this.props) }
-        </CommandButton>
-        { this.props.showRemoveButton ? (
-          <IconButton
-            iconProps={ { iconName: 'Cancel', style: { fontSize: '12px' } } }
-            title='Remove'
-            ariaLabel='Remove'
-            onClick={ onRemoveItem }
-            className={ css('ms-Suggestions-closeButton', styles.closeButton) }
-          />) : (null)
-        }
-      </div>
-    );
-  }
+import { BaseComponent, KeyCodes, classNamesFunction, IStyleFunctionOrObject, css, styled } from '../../../Utilities';
+import { IProcessedStyleSet } from '../../../Styling';
+import { CommandButton, IButton } from '../../../Button';
+import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
+import { ISuggestionsProps, SuggestionActionType, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
+import { SuggestionsItem } from './SuggestionsItem';
+import { getStyles as suggestionsItemStyles } from './SuggestionsItem.styles';
+import { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
+
+import * as stylesImport from './Suggestions.scss';
+const legacyStyles: any = stylesImport;
+
+const getClassNames = classNamesFunction<ISuggestionsStyleProps, ISuggestionsStyles>();
+
+export interface ISuggestionsState {
+  selectedActionType: SuggestionActionType;
 }
 
-export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
+const StyledSuggestionsItem = styled<ISuggestionItemProps<any>, ISuggestionsItemStyleProps, ISuggestionsItemStyles>(
+  SuggestionsItem,
+  suggestionsItemStyles,
+  undefined,
+  { scope: 'SuggestionItem' }
+);
 
-  protected _searchForMoreButton: IButton;
-  protected _selectedElement: HTMLDivElement;
-  private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
+/**
+ * {@docCategory Pickers}
+ */
+export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
+  protected _forceResolveButton = React.createRef<IButton>();
+  protected _searchForMoreButton = React.createRef<IButton>();
+  protected _selectedElement = React.createRef<HTMLDivElement>();
+  private activeSelectedElement: HTMLDivElement | null;
+  private _classNames: Partial<IProcessedStyleSet<ISuggestionsStyles>>;
 
   constructor(suggestionsProps: ISuggestionsProps<T>) {
     super(suggestionsProps);
+    this.state = {
+      selectedActionType: SuggestionActionType.none
+    };
   }
 
-  public componentDidUpdate() {
+  public componentDidMount(): void {
     this.scrollSelected();
+    this.activeSelectedElement = this._selectedElement ? this._selectedElement.current : null;
   }
 
-  public render() {
-    let {
+  public componentDidUpdate(): void {
+    // Only scroll to selected element if the selected element has changed. Otherwise do nothing.
+    // This prevents some odd behavior where scrolling the active element out of view and clicking on a selected element
+    // will trigger a focus event and not give the clicked element the click.
+    if (this._selectedElement.current && this.activeSelectedElement !== this._selectedElement.current) {
+      this.scrollSelected();
+      this.activeSelectedElement = this._selectedElement.current;
+    }
+  }
+
+  public render(): JSX.Element {
+    const {
+      forceResolveText,
       mostRecentlyUsedHeaderText,
       searchForMoreText,
       className,
@@ -82,162 +75,334 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, {}> {
       resultsMaximumNumber,
       resultsFooterFull,
       resultsFooter,
+      isResultsFooterVisible = true,
       suggestionsAvailableAlertText,
-      suggestionsHeaderText
+      suggestionsHeaderText,
+      suggestionsClassName,
+      theme,
+      styles
     } = this.props;
 
-    let noResults = () => {
-      return noResultsFoundText ?
-        (
-          <div role='alert' className={ css('ms-Suggestions-none', styles.suggestionsNone) }>
-            { noResultsFoundText }
-          </div>
-        ) : null;
+    // TODO
+    // Clean this up by leaving only the first part after removing support for SASS.
+    // Currently we can not remove the SASS styles from Suggestions class because it
+    // might be used by consumers separately from pickers extending from BasePicker
+    // and have not used the new 'styles' prop. Because it's expecting a type parameter,
+    // we can not use the 'styled' function without adding some helpers which can break
+    // downstream consumers who did not use the new helpers.
+    // We check for 'styles' prop which is going to be injected by the 'styled' HOC
+    // in BasePicker when the typed Suggestions class is ready to be rendered. If the check
+    // passes we can use the CSS-in-JS styles. If the check fails (ex: custom picker),
+    // then we just use the old SASS styles instead.
+    this._classNames = styles
+      ? getClassNames(styles, {
+          theme: theme!,
+          className,
+          suggestionsClassName,
+          forceResolveButtonSelected: this.state.selectedActionType === SuggestionActionType.forceResolve,
+          searchForMoreButtonSelected: this.state.selectedActionType === SuggestionActionType.searchMore
+        })
+      : {
+          root: css('ms-Suggestions', className, legacyStyles.root),
+          title: css('ms-Suggestions-title', legacyStyles.suggestionsTitle),
+          searchForMoreButton: css('ms-SearchMore-button', legacyStyles.actionButton, {
+            ['is-selected ' + legacyStyles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.searchMore
+          }),
+          forceResolveButton: css('ms-forceResolve-button', legacyStyles.actionButton, {
+            ['is-selected ' + legacyStyles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.forceResolve
+          }),
+          suggestionsAvailable: css('ms-Suggestions-suggestionsAvailable', legacyStyles.suggestionsAvailable),
+          suggestionsContainer: css('ms-Suggestions-container', legacyStyles.suggestionsContainer, suggestionsClassName),
+          noSuggestions: css('ms-Suggestions-none', legacyStyles.suggestionsNone)
+        };
+
+    const spinnerStyles = this._classNames.subComponentStyles
+      ? (this._classNames.subComponentStyles.spinner as IStyleFunctionOrObject<ISpinnerStyleProps, ISpinnerStyles>)
+      : undefined;
+
+    // TODO: cleanup after refactor of pickers to composition pattern and remove SASS support.
+    const spinnerClassNameOrStyles = styles
+      ? { styles: spinnerStyles }
+      : { className: css('ms-Suggestions-spinner', legacyStyles.suggestionsSpinner) };
+
+    const noResults = () => {
+      return noResultsFoundText ? (
+        <div role="alert" className={this._classNames.noSuggestions}>
+          {noResultsFoundText}
+        </div>
+      ) : null;
     };
+
     // MostRecently Used text should supercede the header text if it's there and available.
     let headerText: string | undefined = suggestionsHeaderText;
     if (isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText) {
       headerText = mostRecentlyUsedHeaderText;
     }
-    let footerTitle = (suggestions.length >= (resultsMaximumNumber as number)) ? resultsFooterFull : resultsFooter;
+
+    let footerTitle: ((props: ISuggestionsProps<T>) => JSX.Element) | undefined = undefined;
+    if (isResultsFooterVisible) {
+      footerTitle = suggestions.length >= (resultsMaximumNumber as number) ? resultsFooterFull : resultsFooter;
+    }
+
+    const hasNoSuggestions = (!suggestions || !suggestions.length) && !isLoading;
+
     return (
-      <div
-        className={ css(
-          'ms-Suggestions',
-          className ? className : '',
-          styles.root) }
-      >
-        { headerText ?
-          (<div className={ css('ms-Suggestions-title', styles.suggestionsTitle) }>
-            { headerText }
-          </div>) : (null) }
-        { isLoading && (
-          <Spinner
-            className={ css('ms-Suggestions-spinner', styles.suggestionsSpinner) }
-            label={ loadingText }
-          />) }
-        { (!suggestions || !suggestions.length) && !isLoading ?
-          (onRenderNoResultFound ? onRenderNoResultFound(undefined, noResults) : noResults()) :
-          this._renderSuggestions()
-        }
-        { searchForMoreText && moreSuggestionsAvailable && (
+      <div className={this._classNames.root}>
+        {headerText ? <div className={this._classNames.title}>{headerText}</div> : null}
+        {forceResolveText && this._shouldShowForceResolve() && (
           <CommandButton
-            componentRef={ this._resolveRef('_searchForMoreButton') }
-            className={ css('ms-SearchMore-button', styles.searchMoreButton) }
-            iconProps={ { iconName: 'Search' } }
-            onClick={ this._getMoreResults }
-            onKeyDown={ this._onKeyDown }
+            componentRef={this._forceResolveButton}
+            className={this._classNames.forceResolveButton}
+            onClick={this._forceResolve}
           >
-            { searchForMoreText }
+            {forceResolveText}
           </CommandButton>
-        ) }
-        { isSearching ?
-          (<Spinner
-            className={ css('ms-Suggestions-spinner', styles.suggestionsSpinner) }
-            label={ searchingText }
-          />) : (null)
-        }
-        {
-          !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ?
-            (<div className={ css('ms-Suggestions-title', styles.suggestionsTitle) }>
-              { footerTitle && footerTitle(this.props) }
-            </div>) : (null)
-        }
-        { (!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText) ?
-          (<span
-            role='alert'
-            className={ css('ms-Suggestions-suggestionsAvailable', styles.suggestionsAvailable) }
+        )}
+        {isLoading && <Spinner {...spinnerClassNameOrStyles} label={loadingText} />}
+        {hasNoSuggestions ? (onRenderNoResultFound ? onRenderNoResultFound(undefined, noResults) : noResults()) : this._renderSuggestions()}
+        {searchForMoreText && moreSuggestionsAvailable && (
+          <CommandButton
+            componentRef={this._searchForMoreButton}
+            className={this._classNames.searchForMoreButton}
+            iconProps={{ iconName: 'Search' }}
+            onClick={this._getMoreResults}
           >
-            { suggestionsAvailableAlertText }
-          </span>) : (null)
+            {searchForMoreText}
+          </CommandButton>
+        )}
+        {isSearching ? <Spinner {...spinnerClassNameOrStyles} label={searchingText} /> : null}
+        {footerTitle && !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ? (
+          <div className={this._classNames.title}>{footerTitle(this.props)}</div>
+        ) : null}
+        {
+          <span role="alert" aria-live="polite" className={this._classNames.suggestionsAvailable}>
+            {!isLoading && !isSearching && suggestions && suggestions.length > 0 && suggestionsAvailableAlertText
+              ? suggestionsAvailableAlertText
+              : null}
+          </span>
         }
       </div>
     );
   }
 
-  public focusSearchForMoreButton() {
-    if (this._searchForMoreButton) {
-      this._searchForMoreButton.focus();
+  /**
+   * Returns true if the event was handled, false otherwise
+   */
+  public tryHandleKeyDown = (keyCode: number, currentSuggestionIndex: number): boolean => {
+    let isEventHandled = false;
+    let newSelectedActionType = null;
+    const currentSelectedAction = this.state.selectedActionType;
+    const suggestionLength = this.props.suggestions.length;
+    if (keyCode === KeyCodes.down) {
+      switch (currentSelectedAction) {
+        case SuggestionActionType.forceResolve:
+          if (suggestionLength > 0) {
+            this._refocusOnSuggestions(keyCode);
+            newSelectedActionType = SuggestionActionType.none;
+          } else if (this._searchForMoreButton.current) {
+            newSelectedActionType = SuggestionActionType.searchMore;
+          } else {
+            newSelectedActionType = SuggestionActionType.forceResolve;
+          }
+          break;
+        case SuggestionActionType.searchMore:
+          if (this._forceResolveButton.current) {
+            newSelectedActionType = SuggestionActionType.forceResolve;
+          } else if (suggestionLength > 0) {
+            this._refocusOnSuggestions(keyCode);
+            newSelectedActionType = SuggestionActionType.none;
+          } else {
+            newSelectedActionType = SuggestionActionType.searchMore;
+          }
+          break;
+        case SuggestionActionType.none:
+          if (currentSuggestionIndex === -1 && this._forceResolveButton.current) {
+            newSelectedActionType = SuggestionActionType.forceResolve;
+          }
+          break;
+      }
+    } else if (keyCode === KeyCodes.up) {
+      switch (currentSelectedAction) {
+        case SuggestionActionType.forceResolve:
+          if (this._searchForMoreButton.current) {
+            newSelectedActionType = SuggestionActionType.searchMore;
+          } else if (suggestionLength > 0) {
+            this._refocusOnSuggestions(keyCode);
+            newSelectedActionType = SuggestionActionType.none;
+          }
+          break;
+        case SuggestionActionType.searchMore:
+          if (suggestionLength > 0) {
+            this._refocusOnSuggestions(keyCode);
+            newSelectedActionType = SuggestionActionType.none;
+          } else if (this._forceResolveButton.current) {
+            newSelectedActionType = SuggestionActionType.forceResolve;
+          }
+          break;
+        case SuggestionActionType.none:
+          if (currentSuggestionIndex === -1 && this._searchForMoreButton.current) {
+            newSelectedActionType = SuggestionActionType.searchMore;
+          }
+          break;
+      }
+    }
+
+    if (newSelectedActionType !== null) {
+      this.setState({ selectedActionType: newSelectedActionType });
+      isEventHandled = true;
+    }
+
+    return isEventHandled;
+  };
+
+  public hasSuggestedAction(): boolean {
+    return this._searchForMoreButton.current !== undefined || this._forceResolveButton.current !== undefined;
+  }
+
+  public hasSuggestedActionSelected(): boolean {
+    return this.state.selectedActionType !== SuggestionActionType.none;
+  }
+
+  public executeSelectedAction(): void {
+    switch (this.state.selectedActionType) {
+      case SuggestionActionType.forceResolve:
+        this._forceResolve();
+        break;
+      case SuggestionActionType.searchMore:
+        this._getMoreResults();
+        break;
+    }
+  }
+
+  public focusAboveSuggestions(): void {
+    if (this._forceResolveButton.current) {
+      this.setState({ selectedActionType: SuggestionActionType.forceResolve });
+    } else if (this._searchForMoreButton.current) {
+      this.setState({ selectedActionType: SuggestionActionType.searchMore });
+    }
+  }
+
+  public focusBelowSuggestions(): void {
+    if (this._searchForMoreButton.current) {
+      this.setState({ selectedActionType: SuggestionActionType.searchMore });
+    } else if (this._forceResolveButton.current) {
+      this.setState({ selectedActionType: SuggestionActionType.forceResolve });
+    }
+  }
+
+  public focusSearchForMoreButton(): void {
+    if (this._searchForMoreButton.current) {
+      this._searchForMoreButton.current.focus();
     }
   }
 
   // TODO get the element to scroll into view properly regardless of direction.
-  public scrollSelected() {
-    if (this._selectedElement) {
-      this._selectedElement.scrollIntoView(false);
+  public scrollSelected(): void {
+    if (this._selectedElement.current && this._selectedElement.current.scrollIntoView !== undefined) {
+      this._selectedElement.current.scrollIntoView(false);
     }
   }
 
-  private _renderSuggestions(): JSX.Element {
-    let {
-      suggestions,
+  private _renderSuggestions(): JSX.Element | null {
+    const {
       onRenderSuggestion,
+      removeSuggestionAriaLabel,
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
-      suggestionsContainerAriaLabel } = this.props;
-    let TypedSuggestionsItem = this.SuggestionsItemOfProperType;
+      suggestionsContainerAriaLabel,
+      suggestionsListId
+    } = this.props;
+
+    let { suggestions } = this.props;
+
+    const StyledTypedSuggestionsItem: React.StatelessComponent<ISuggestionItemProps<T>> = StyledSuggestionsItem;
+
+    let selectedIndex = -1;
+    suggestions.some((element, index) => {
+      if (element.selected) {
+        selectedIndex = index;
+        return true;
+      }
+      return false;
+    });
 
     if (resultsMaximumNumber) {
-      suggestions = suggestions.slice(0, resultsMaximumNumber);
+      suggestions =
+        selectedIndex >= resultsMaximumNumber
+          ? suggestions.slice(selectedIndex - resultsMaximumNumber + 1, selectedIndex + 1)
+          : suggestions.slice(0, resultsMaximumNumber);
+    }
+
+    if (suggestions.length === 0) {
+      return null;
     }
 
     return (
       <div
-        className={ css('ms-Suggestions-container', styles.suggestionsContainer) }
-        id='suggestion-list'
-        role='list'
-        aria-label={ suggestionsContainerAriaLabel }
+        className={this._classNames.suggestionsContainer}
+        id={suggestionsListId}
+        role="listbox"
+        aria-label={suggestionsContainerAriaLabel}
       >
-        { suggestions.map((suggestion, index) =>
+        {suggestions.map((suggestion, index) => (
           <div
-            ref={ this._resolveRef(suggestion.selected ? '_selectedElement' : '') }
+            ref={suggestion.selected ? this._selectedElement : undefined}
             // tslint:disable-next-line:no-string-literal
-            key={ (suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index }
-            id={ 'sug-' + index }
-            role='listitem'
-            aria-label={ suggestion.ariaLabel }
+            key={(suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index}
+            id={'sug-' + index}
+            aria-selected={suggestion.selected}
+            role="option"
+            aria-label={suggestion.ariaLabel}
           >
-            <TypedSuggestionsItem
-              id={ 'sug-item' + index }
-              suggestionModel={ suggestion }
-              RenderSuggestion={ onRenderSuggestion as any }
-              onClick={ this._onClickTypedSuggestionsItem(suggestion.item, index) }
-              className={ suggestionsItemClassName }
-              showRemoveButton={ showRemoveButtons }
-              onRemoveItem={ this._onRemoveTypedSuggestionsItem(suggestion.item, index) }
+            <StyledTypedSuggestionsItem
+              suggestionModel={suggestion}
+              RenderSuggestion={onRenderSuggestion}
+              onClick={this._onClickTypedSuggestionsItem(suggestion.item, index)}
+              className={suggestionsItemClassName}
+              showRemoveButton={showRemoveButtons}
+              removeButtonAriaLabel={removeSuggestionAriaLabel}
+              onRemoveItem={this._onRemoveTypedSuggestionsItem(suggestion.item, index)}
             />
-          </div>) }
-      </div>);
+          </div>
+        ))}
+      </div>
+    );
   }
 
-  @autobind
-  private _getMoreResults() {
+  private _getMoreResults = (): void => {
     if (this.props.onGetMoreResults) {
       this.props.onGetMoreResults();
     }
-  }
+  };
 
-  @autobind
-  private _onClickTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
+  private _forceResolve = (): void => {
+    if (this.props.createGenericItem) {
+      this.props.createGenericItem();
+    }
+  };
+
+  private _shouldShowForceResolve = (): boolean => {
+    return this.props.showForceResolve ? this.props.showForceResolve() : false;
+  };
+
+  private _onClickTypedSuggestionsItem = (item: T, index: number): ((ev: React.MouseEvent<HTMLElement>) => void) => {
     return (ev: React.MouseEvent<HTMLElement>): void => {
       this.props.onSuggestionClick(ev, item, index);
     };
-  }
+  };
 
-  @autobind
-  private _onKeyDown(ev: React.KeyboardEvent<HTMLButtonElement>) {
-    if ((ev.keyCode === KeyCodes.up || ev.keyCode === KeyCodes.down) && typeof this.props.refocusSuggestions === 'function') {
-      this.props.refocusSuggestions(ev.keyCode);
+  private _refocusOnSuggestions = (keyCode: number): void => {
+    if (typeof this.props.refocusSuggestions === 'function') {
+      this.props.refocusSuggestions(keyCode);
     }
-  }
+  };
 
-  @autobind
-  private _onRemoveTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
+  private _onRemoveTypedSuggestionsItem = (item: T, index: number): ((ev: React.MouseEvent<HTMLElement>) => void) => {
     return (ev: React.MouseEvent<HTMLElement>): void => {
-      let onSuggestionRemove = this.props.onSuggestionRemove!;
+      const onSuggestionRemove = this.props.onSuggestionRemove!;
       onSuggestionRemove(ev, item, index);
       ev.stopPropagation();
     };
-  }
+  };
 }

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IRenderFunction } from '../../Utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../Icon/Icon.types';
-import { ICheckboxClassNames } from './Checkbox.classNames';
+import { IKeytipProps } from '../../Keytip';
 
 /**
  * Checkbox class interface.
+ * {@docCategory Checkbox}
  */
 export interface ICheckbox {
   /** Gets the current checked state. */
@@ -17,13 +18,14 @@ export interface ICheckbox {
 
 /**
  * Checkbox properties.
+ * {@docCategory Checkbox}
  */
 export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ICheckbox) => void;
+  componentRef?: IRefObject<ICheckbox>;
 
   /**
    * Additional class name to provide on the root element, in addition to the ms-Checkbox class.
@@ -67,7 +69,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 
   /**
    * Allows you to set the checkbox to be at the before (start) or after (end) the label.
-   * @default 'start'
+   * @defaultvalue 'start'
    */
   boxSide?: 'start' | 'end';
 
@@ -92,19 +94,19 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   ariaDescribedBy?: string;
 
   /**
-   * Custom styles for this component
+   * The position in the parent set (if in a set) for aria-posinset.
    */
-  styles?: ICheckboxStyles;
+  ariaPositionInSet?: number;
 
   /**
-   * Custom function for providing the classNames for the checkbox. Can be used to provide
-   * all styles for the component instead of applying them on top of the default styles.
+   * The total size of the parent set (if in a set) for aria-setsize.
    */
-  getClassNames?: (theme: ITheme,
-    disabled: boolean,
-    isChecked: boolean,
-    isReversed: boolean,
-    className?: string) => ICheckboxClassNames;
+  ariaSetSize?: number;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
 
   /**
    * Custom render function for the label.
@@ -115,8 +117,28 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * Custom icon props for the check mark rendered by the checkbox
    */
   checkmarkIconProps?: IIconProps;
+
+  /**
+   * Optional keytip for this checkbox
+   */
+  keytipProps?: IKeytipProps;
 }
 
+/**
+ * {@docCategory Checkbox}
+ */
+export interface ICheckboxStyleProps {
+  theme: ITheme;
+  className?: string;
+  disabled?: boolean;
+  checked?: boolean;
+  reversed?: boolean;
+  isUsingCustomLabelRender: boolean;
+}
+
+/**
+ * {@docCategory Checkbox}
+ */
 export interface ICheckboxStyles {
   /**
    * Style for the root element (a button) of the checkbox component in the default enabled/unchecked state.
@@ -124,19 +146,15 @@ export interface ICheckboxStyles {
   root?: IStyle;
 
   /**
+   * INTERNAL: This is mostly an internal implementation detail which you should avoid styling.
+   * This refers to the <input type="checkbox"> element that is typically hidden and not rendered on screen.
+   */
+  input?: IStyle;
+
+  /**
    * Style for the label part (contains the customized checkbox + text) when enabled.
    */
   label?: IStyle;
-
-  /**
-   * Style for the label when reversed
-   */
-  labelReversed?: IStyle;
-
-  /**
-   * Style override for the label part when disabled.
-   */
-  labelDisabled?: IStyle;
 
   /**
    * Style for checkbox in its default unchecked/enabled state.
@@ -144,77 +162,12 @@ export interface ICheckboxStyles {
   checkbox?: IStyle;
 
   /**
-   * Style override for checkbox when enabled/unchecked/hovered.
-   */
-  checkboxHovered?: IStyle;
-
-  /**
-   * Style override for checkbox when enabled/unchecked/focused.
-   */
-  checkboxFocused?: IStyle;
-
-  /**
-   * Style override for checkbox when enabled/checked.
-   */
-  checkboxChecked?: IStyle;
-
-  /**
-   * Style override for checkbox when enabled/checked/hovered.
-   */
-  checkboxCheckedHovered?: IStyle;
-
-  /**
-   * Style override for checkbox when enabled/checked/focused.
-   */
-  checkboxCheckedFocused?: IStyle;
-
-  /**
-   * Style override for checkbox when disabled/unchecked.
-   */
-  checkboxDisabled?: IStyle;
-
-  /**
-   * Style override for checkbox when disabled/checked.
-   */
-  checkboxCheckedDisabled?: IStyle;
-
-  /**
    * Style for the checkmark in the default enabled/unchecked state.
    */
   checkmark?: IStyle;
 
   /**
-   * Style override for the checkmark when enabled/checked.
-   */
-  checkmarkChecked?: IStyle;
-
-  /**
-   * Style override for checkmark when disabled/unchecked.
-   */
-  checkmarkDisabled?: IStyle;
-
-  /**
- * Style override for checkmark when disabled/checked.
- */
-  checkmarkCheckedDisabled?: IStyle;
-
-  /**
    * Style for text appearing with the checkbox in its default enabled state.
    */
   text?: IStyle;
-
-  /**
-   * Style override for text appearing with the checkbox when enabled/hovered.
-   */
-  textHovered?: IStyle;
-
-  /**
-   * Style override for text appearing with the checkbox when enabled/focused.
-   */
-  textFocused?: IStyle;
-
-  /**
-   * Style override for text appearing with the checkbox when disabled.
-   */
-  textDisabled?: IStyle;
 }

@@ -2,8 +2,15 @@ import * as React from 'react';
 import { Position } from '../../utilities/positioning';
 import { IIconProps } from '../../Icon';
 import { ITheme, IStyle } from '../../Styling';
+import { ISpinButtonClassNames } from './SpinButton.classNames';
+import { KeyboardSpinDirection } from './SpinButton';
 import { IButtonStyles } from '../../Button';
+import { IKeytipProps } from '../../Keytip';
+import { IRefObject } from '../../Utilities';
 
+/**
+ * {@docCategory SpinButton}
+ */
 export interface ISpinButton {
   /**
    * The value of the SpinButton. Use this if you intend to pass in a new value as a result of onChange events.
@@ -17,17 +24,19 @@ export interface ISpinButton {
   focus: () => void;
 }
 
+/**
+ * {@docCategory SpinButton}
+ */
 export interface ISpinButtonProps {
-
   /**
    * Gets the component ref.
    */
-  componentRef?: (component?: ISpinButton) => void;
+  componentRef?: IRefObject<ISpinButton>;
 
   /**
    * The initial value of the SpinButton. Use this if you intend for the SpinButton to be an uncontrolled component.
    * This value is mutually exclusive to value. Use one or the other.
-   * @default 0
+   * @defaultvalue 0
    */
   defaultValue?: string;
 
@@ -39,13 +48,13 @@ export interface ISpinButtonProps {
 
   /**
    * The min value of the SpinButton.
-   * @default 0
+   * @defaultvalue 0
    */
   min?: number;
 
   /**
    * The max value of the SpinButton.
-   * @default 10
+   * @defaultvalue 10
    */
   max?: number;
 
@@ -53,8 +62,8 @@ export interface ISpinButtonProps {
    * The difference between the two adjacent values of the SpinButton.
    * This value is sued to calculate the precision of the input if no
    * precision is given. The precision calculated this way will always
-   * be >= 0.
-   * @default 1
+   * be \>= 0.
+   * @defaultvalue 1
    */
   step?: number;
 
@@ -62,6 +71,11 @@ export interface ISpinButtonProps {
    * A description of the SpinButton for the benefit of screen readers.
    */
   ariaLabel?: string;
+
+  /**
+   * Optional prop to add a string id that can be referenced inside the aria-describedby attribute
+   */
+  ariaDescribedBy?: string;
 
   /**
    * A title for the SpinButton used for a more descriptive name that's also visible on its tooltip.
@@ -74,17 +88,17 @@ export interface ISpinButtonProps {
   disabled?: boolean;
 
   /**
-  * Optional className for SpinButton.
-  */
+   * Optional className for SpinButton.
+   */
   className?: string;
 
   /**
    * Descriptive label for the SpinButton.
    */
-  label: string;
+  label?: string;
 
   /**
-   * @default: Left
+   * @defaultvalue Left
    */
   labelPosition?: Position;
 
@@ -95,19 +109,23 @@ export interface ISpinButtonProps {
 
   /**
    * This callback is triggered when the value inside the SpinButton should be validated.
-   * @return {string | void} If a string is returned, it will be used as the value of the SpinButton.
+   * @param value - The value entered in the SpinButton to validate
+   * @param event - The event that triggered this validate, if any. (For accessibility)
+   * @returns If a string is returned, it will be used as the value of the SpinButton.
    */
-  onValidate?: (value: string) => string | void;
+  onValidate?: (value: string, event?: React.SyntheticEvent<HTMLElement>) => string | void;
 
   /**
-   * This callback is triggered when the increment button is pressed or if the user presses up arrow with focus on the input of the spinButton
-   * @return {string | void} If a string is returned, it will be used as the value of the SpinButton.
+   * This callback is triggered when the increment button is pressed or if the user presses up arrow
+   * with focus on the input of the spinButton
+   * @returns If a string is returned, it will be used as the value of the SpinButton.
    */
   onIncrement?: (value: string) => string | void;
 
   /**
-   * This callback is triggered when the decrement button is pressed or if the user presses down arrow with focus on the input of the spinButton
-   * @return {string | void} If a string is returned, it will be used as the value of the SpinButton.
+   * This callback is triggered when the decrement button is pressed or if the user presses down arrow
+   * with focus on the input of the spinButton
+   * @returns If a string is returned, it will be used as the value of the SpinButton.
    */
   onDecrement?: (value: string) => string | void;
 
@@ -137,6 +155,19 @@ export interface ISpinButtonProps {
   styles?: Partial<ISpinButtonStyles>;
 
   /**
+   * Custom function for providing the classNames for the spinbutton. Can be used to provide
+   * all styles for the component instead of applying them on top of the default styles.
+   */
+  getClassNames?: (
+    theme: ITheme,
+    disabled: boolean,
+    isFocused: boolean,
+    keyboardSpinDirection: KeyboardSpinDirection,
+    labelPosition?: Position,
+    className?: string
+  ) => ISpinButtonClassNames;
+
+  /**
    * Custom styles for the upArrow button.
    *
    * Note: The buttons are in a checked state when arrow keys are used to
@@ -160,12 +191,12 @@ export interface ISpinButtonProps {
   theme?: ITheme;
 
   /**
-   * Accessibility label text for the increment button for the benefit of the screen reader.
+   * Accessibile label text for the increment button for the benefit of the screen reader.
    */
   incrementButtonAriaLabel?: string;
 
   /**
-   * Accessibility label text for the decrement button for the benefit of the screen reader.
+   * Accessibile label text for the decrement button for the benefit of the screen reader.
    */
   decrementButtonAriaLabel?: string;
 
@@ -175,10 +206,40 @@ export interface ISpinButtonProps {
    * IE: if step = 1, precision = 0. step = 0.0089, precision = 4. step = 300, precision = 2. step = 23.00, precision = 2.
    */
   precision?: number;
+
+  /**
+   * The position in the parent set (if in a set) for aria-posinset.
+   */
+  ariaPositionInSet?: number;
+
+  /**
+   * The total size of the parent set (if in a set) for aria-setsize.
+   */
+  ariaSetSize?: number;
+
+  /**
+   * Sets the aria-valuenow of the spin button. The component must be
+   * controlled by the creator who controls the value externally.
+   * ariaValueNow would be the numeric form of value.
+   */
+  ariaValueNow?: number;
+
+  /*
+   * Sets the aria-valuetext of the spin button. The component must be
+   * controlled by the creator who controls the values externally.
+   */
+  ariaValueText?: string;
+
+  /**
+   * Optional keytip for this spin button
+   */
+  keytipProps?: IKeytipProps;
 }
 
+/**
+ * {@docCategory SpinButton}
+ */
 export interface ISpinButtonStyles {
-
   /**
    * Styles for the root of the spin button component.
    */
@@ -216,8 +277,8 @@ export interface ISpinButtonStyles {
   icon: IStyle;
 
   /**
- * Style for the icon.
- */
+   * Style for the icon.
+   */
   iconDisabled: IStyle;
 
   /**
@@ -227,6 +288,7 @@ export interface ISpinButtonStyles {
 
   /**
    * Style for the label text
+   * @deprecated Disabled styles taken care by `Label` component.
    */
   labelDisabled: IStyle;
 

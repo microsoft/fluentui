@@ -1,0 +1,14 @@
+@import '../../../common/common';
+@import '../../../common/semanticSlots';
+
+:global {
+  .textField-cssStyled {
+    .ms-TextField-fieldGroup {
+      width: 300px;
+      border-top-color: $errorTextColor;
+    }
+    .ms-Label {
+      color: $ms-color-themePrimary;
+    }
+  }
+}

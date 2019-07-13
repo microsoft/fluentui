@@ -1,113 +1,70 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 
-import { autobind } from '../../../Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Text } from 'office-ui-fabric-react/lib/Text';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import './FocusTrapZone.Box.Example.scss';
 
-export interface IBoxExampleExampleState {
-  isChecked: boolean;
+export interface IFocusTrapZoneBoxExampleState {
+  useTrapZone: boolean;
 }
 
-export default class BoxExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxExampleExampleState> {
-  private _toggle: IToggle;
+export class FocusTrapZoneBoxExample extends React.Component<{}, IFocusTrapZoneBoxExampleState> {
+  public state: IFocusTrapZoneBoxExampleState = {
+    useTrapZone: false
+  };
 
-  constructor(props: React.HTMLAttributes<HTMLDivElement>) {
-    super(props);
-
-    this.state = {
-      isChecked: false,
-    };
-  }
+  private _toggle = React.createRef<IToggle>();
 
   public render() {
-    let { isChecked } = this.state;
+    const { useTrapZone } = this.state;
 
     return (
-      <div>
-        <DefaultButton
-          description='Focuses inside the FocusTrapZone'
-          onClick={ this._onButtonClickHandler }
-          text='Go to Trap Zone'
-        />
-
-        { (() => {
-          if (isChecked) {
-            return (
-              <FocusTrapZone>
-                { this._internalContents() }
-              </FocusTrapZone>
-            );
-          } else {
-            return (
-              <div>
-                { this._internalContents() }
-              </div>
-            );
-          }
-        })() }
-      </div>
+      <Stack tokens={{ childrenGap: 8 }}>
+        <Stack.Item>
+          <Text>
+            If this button is used to enable FocusTrapZone, focus should return to this button after the FocusTrapZone is disabled.
+          </Text>
+        </Stack.Item>
+        <Stack.Item>
+          <DefaultButton onClick={this._onButtonClickHandler} text="Trap Focus" />
+        </Stack.Item>
+        <FocusTrapZone disabled={!useTrapZone}>
+          <Stack
+            horizontalAlign="start"
+            tokens={{ childrenGap: 15 }}
+            styles={{
+              root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 }
+            }}
+          >
+            <Toggle
+              label="Use trap zone"
+              componentRef={this._toggle}
+              checked={useTrapZone}
+              onChange={this._onFocusTrapZoneToggleChanged}
+              onText="On (toggle to exit)"
+              offText="Off"
+            />
+            <TextField label="Input inside trap zone" styles={{ root: { width: 300 } }} />
+            <Link href="https://bing.com" target="_blank">
+              Hyperlink inside trap zone
+            </Link>
+          </Stack>
+        </FocusTrapZone>
+      </Stack>
     );
   }
 
-  private _internalContents() {
-    let { isChecked } = this.state;
-
-    return (
-      <div className='ms-FocusTrapZoneBoxExample'>
-        <TextField label='Default TextField' placeholder='Input inside Focus Trap Zone' className='' />
-        <Link href='' className='' >Hyperlink inside FocusTrapZone</Link><br /><br />
-        <Toggle
-          componentRef={ this._setRef }
-          checked={ isChecked }
-          onChanged={ this._onFocusTrapZoneToggleChanged }
-          label='Focus Trap Zone'
-          onText='On'
-          offText='Off'
-        />
-        { (() => {
-          if (isChecked) {
-            return (
-              <DefaultButton
-                description='Exit Focus Trap Zone'
-                onClick={ this._onExitButtonClickHandler }
-                text='Exit Focus Trap Zone'
-              />
-            );
-          }
-        })() }
-      </div>
-    );
-  }
-
-  @autobind
-  private _onButtonClickHandler() {
+  private _onButtonClickHandler = (): void => {
     this.setState({
-      isChecked: true
+      useTrapZone: true
     });
-  }
+  };
 
-  @autobind
-  private _onExitButtonClickHandler() {
-    this.setState({
-      isChecked: false
-    });
-  }
-
-  @autobind
-  private _onFocusTrapZoneToggleChanged(isChecked: boolean) {
-    this.setState({
-      isChecked: isChecked
-    }, () => this._toggle.focus());
-  }
-
-  @autobind
-  private _setRef(toggle: IToggle): void {
-    this._toggle = toggle;
-  }
+  private _onFocusTrapZoneToggleChanged = (ev: React.MouseEvent<HTMLElement>, checked?: boolean): void => {
+    this.setState({ useTrapZone: !!checked });
+  };
 }

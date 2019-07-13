@@ -1,54 +1,60 @@
 import { IButtonStyles } from '../Button.types';
-import {
-  ITheme,
-  concatStyleSets
-} from '../../../Styling';
+import { ITheme, concatStyleSets, HighContrastSelector } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
-import {
-  getStyles as getBaseButtonStyles
-} from '../BaseButton.styles';
-import {
-  getStyles as getSplitButtonStyles
-} from '../SplitButton/SplitButton.styles';
+import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
+import { getStyles as getSplitButtonStyles } from '../SplitButton/SplitButton.styles';
 
-export const getStyles = memoizeFunction((
-  theme: ITheme,
-  customStyles?: IButtonStyles
-): IButtonStyles => {
-  let baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-  let splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
-  let iconButtonStyles: IButtonStyles = {
-    root: {
-      padding: '0 4px',
-      width: '32px',
-      height: '32px',
-      backgroundColor: 'transparent'
-    },
+export const getStyles = memoizeFunction(
+  (theme: ITheme, customStyles?: IButtonStyles): IButtonStyles => {
+    const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+    const splitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
+    const { palette, semanticColors } = theme;
+    const iconButtonStyles: IButtonStyles = {
+      root: {
+        padding: '0 4px',
+        width: '32px',
+        height: '32px',
+        backgroundColor: 'transparent',
+        border: 'none',
+        color: semanticColors.link
+      },
 
-    rootHovered: {
-      color: theme.palette.themeDarker
-    },
+      rootHovered: {
+        color: palette.themeDarkAlt,
+        backgroundColor: palette.neutralLighter,
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'Highlight',
+            color: 'Highlight'
+          }
+        }
+      },
 
-    rootPressed: {
-      color: theme.palette.themePrimary
-    },
+      rootPressed: {
+        color: palette.themeDark,
+        backgroundColor: palette.neutralLight
+      },
 
-    rootExpanded: {
-      color: theme.palette.themePrimary
-    },
+      rootExpanded: {
+        color: palette.themeDark,
+        backgroundColor: palette.neutralLight
+      },
 
-    rootChecked: {
-      backgroundColor: theme.palette.neutralTertiaryAlt,
-    },
+      rootChecked: {
+        color: palette.themeDark,
+        backgroundColor: palette.neutralLight
+      },
 
-    rootCheckedHovered: {
-      backgroundColor: theme.palette.neutralLight
-    },
+      rootCheckedHovered: {
+        color: palette.themeDark,
+        backgroundColor: palette.neutralQuaternaryAlt
+      },
 
-    rootDisabled: {
-      color: theme.palette.neutralTertiary
-    }
-  };
+      rootDisabled: {
+        color: palette.neutralTertiaryAlt
+      }
+    };
 
-  return concatStyleSets(baseButtonStyles, iconButtonStyles, splitButtonStyles, customStyles)!;
-});
+    return concatStyleSets(baseButtonStyles, iconButtonStyles, splitButtonStyles, customStyles)!;
+  }
+);

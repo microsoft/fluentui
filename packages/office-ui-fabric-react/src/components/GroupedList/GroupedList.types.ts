@@ -1,28 +1,27 @@
 import * as React from 'react';
-import {
-  GroupedList
-} from './GroupedList';
-import {
-  IList,
-  IListProps
-} from '../../List';
-import { IRenderFunction } from '../../Utilities';
-import {
-  IDragDropContext,
-  IDragDropEvents,
-  IDragDropHelper
-} from '../../utilities/dragdrop/index';
-import {
-  ISelection,
-  SelectionMode
-} from '../../utilities/selection/index';
+import { GroupedListBase } from './GroupedList.base';
+import { IList, IListProps } from '../../List';
+import { IRefObject, IRenderFunction } from '../../Utilities';
+import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
+import { ISelection, SelectionMode } from '../../utilities/selection/index';
 import { IViewport } from '../../utilities/decorators/withViewport';
+import { ITheme, IStyle } from '../../Styling';
+import { IStyleFunctionOrObject } from '../../Utilities';
+import { IGroupHeaderProps } from './GroupHeader.types';
+import { IGroupShowAllProps } from './GroupShowAll.types';
+import { IGroupFooterProps } from './GroupFooter.types';
 
+/**
+ * {@docCategory GroupedList}
+ */
 export enum CollapseAllVisibility {
   hidden = 0,
   visible = 1
 }
 
+/**
+ * {@docCategory GroupedList}
+ */
 export interface IGroupedList extends IList {
   /**
    * Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list
@@ -37,15 +36,31 @@ export interface IGroupedList extends IList {
   toggleCollapseAll: (allCollapsed: boolean) => void;
 }
 
-export interface IGroupedListProps extends React.Props<GroupedList> {
+/**
+ * {@docCategory GroupedList}
+ */
+export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase> {
+  /**
+   * Theme that is passed in from Higher Order Component
+   */
+  theme?: ITheme;
+
+  /**
+   * Style function to be passed in to override the themed or default styles
+   */
+  styles?: IStyleFunctionOrObject<IGroupedListStyleProps, IGroupedListStyles>;
+
   /**
    * Optional callback to access the IGroupedList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component?: IGroupedList) => void;
+  componentRef?: IRefObject<IGroupedList>;
 
   /** Optional class name to add to the root element. */
   className?: string;
+
+  /** Boolean value to indicate if the component should render in compact mode. Set to false by default */
+  compact?: boolean;
 
   /** Map of callback functions related to drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
@@ -54,7 +69,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
   dragDropHelper?: IDragDropHelper;
 
   /** Event names and corresponding callbacks that will be registered to groups and rendered elements */
-  eventsToRegister?: { eventName: string, callback: (context: IDragDropContext, event?: any) => void }[];
+  eventsToRegister?: { eventName: string; callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Optional override properties to render groups. */
   groupProps?: IGroupRenderProps;
@@ -69,11 +84,7 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
   listProps?: IListProps;
 
   /** Rendering callback to render the group items. */
-  onRenderCell: (
-    nestingDepth?: number,
-    item?: any,
-    index?: number
-  ) => React.ReactNode;
+  onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
 
   /** Optional selection model to track selection state.  */
   selection?: ISelection;
@@ -100,8 +111,16 @@ export interface IGroupedListProps extends React.Props<GroupedList> {
    * The default implementation will virtualize when this callback is not provided.
    */
   onShouldVirtualize?: (props: IListProps) => boolean;
+
+  /**
+   * Optional function to override default group height calculation used by list virtualization.
+   */
+  getGroupHeight?: (group: IGroup, groupIndex: number) => number;
 }
 
+/**
+ * {@docCategory GroupedList}
+ */
 export interface IGroup {
   /**
    * Unique identifier for the group.
@@ -135,7 +154,7 @@ export interface IGroup {
 
   /**
    * Deprecated at 1.0.0, selection state will be controled by the selection store only.
-   * @deprecated
+   * @deprecated At 1.0.0, selection state wil be controlled by the selection store only.
    */
   isSelected?: boolean;
 
@@ -172,8 +191,10 @@ export interface IGroup {
   hasMoreData?: boolean;
 }
 
+/**
+ * {@docCategory GroupedList}
+ */
 export interface IGroupRenderProps {
-
   /** Boolean indicating if all groups are in collapsed state. */
   isAllGroupsCollapsed?: boolean;
 
@@ -184,32 +205,32 @@ export interface IGroupRenderProps {
   onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
 
   /** Information to pass in to the group header. */
-  headerProps?: IGroupDividerProps;
+  headerProps?: IGroupHeaderProps;
 
   /** Information to pass in to the group Show all footer. */
-  showAllProps?: IGroupDividerProps;
+  showAllProps?: IGroupShowAllProps;
 
   /** Information to pass in to the group footer. */
-  footerProps?: IGroupDividerProps;
+  footerProps?: IGroupFooterProps;
 
   /**
    * Override which allows the caller to provide a custom header.
    */
-  onRenderHeader?: IRenderFunction<IGroupDividerProps>;
+  onRenderHeader?: IRenderFunction<IGroupHeaderProps>;
 
   /**
    * Override which allows the caller to provide a custom Show All link.
    */
-  onRenderShowAll?: IRenderFunction<IGroupDividerProps>;
+  onRenderShowAll?: IRenderFunction<IGroupShowAllProps>;
 
   /**
    * Override which allows the caller to provide a custom footer.
    */
-  onRenderFooter?: IRenderFunction<IGroupDividerProps>;
+  onRenderFooter?: IRenderFunction<IGroupFooterProps>;
 
   /**
    * Flag to indicate whether to ignore the collapsing icon on header.
-   * @default CheckboxVisibility.visible
+   * @defaultvalue CheckboxVisibility.visible
    */
   collapseAllVisibility?: CollapseAllVisibility;
 
@@ -220,9 +241,14 @@ export interface IGroupRenderProps {
   showEmptyGroups?: boolean;
 }
 
+/**
+ * {@docCategory GroupedList}
+ */
 export interface IGroupDividerProps {
+  componentRef?: IRefObject<{}>;
 
-  componentRef?: () => void;
+  /** Boolean value to indicate if the component should render in compact mode. Set to false by default */
+  compact?: boolean;
 
   /** Callback to determine if a group has missing items and needs to load them from the server. */
   isGroupLoading?: (group: IGroup) => boolean;
@@ -239,12 +265,15 @@ export interface IGroupDividerProps {
   /** The indent level of the group. */
   groupLevel?: number;
 
+  /** Width corresponding to a single level. This is multiplied by the groupLevel to get the full spacer width for the group. */
+  indentWidth?: number;
+
   /** If all items in the group are selected. */
   selected?: boolean;
 
   /**
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
-   * @deprecated
+   * Deprecated at v.65.1 and will be removed by v 1.0. Use `selected` instead.
+   * @deprecated Use `selected` instead.
    */
   isSelected?: boolean;
 
@@ -274,4 +303,42 @@ export interface IGroupDividerProps {
 
   /** Determines if the group selection check box is shown for collapsed groups. */
   isCollapsedGroupSelectVisible?: boolean;
+
+  /** Override which allows the caller to provider a custom renderer for the GroupHeader title. */
+  onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
+
+  /** Props for expand/collapse button
+   * @deprecated Use {@link IGroupHeaderProps.expandButtonProps} instead.
+   */
+  expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
+
+  /** Stores parent group's children. */
+  groups?: IGroup[];
+
+  /** Custom className */
+  className?: string;
+
+  /** Theme provided by the Higher Order Component */
+  theme?: ITheme;
+}
+
+/**
+ * {@docCategory GroupedList}
+ */
+export type IGroupedListStyleProps = Required<Pick<IGroupedListProps, 'theme'>> &
+  Pick<IGroupedListProps, 'className'> & {
+    /** whether or not the group is collapsed */
+    isCollapsed?: boolean;
+
+    /** Whether the group is in compact mode or not */
+    compact?: boolean;
+  };
+
+/**
+ * {@docCategory GroupedList}
+ */
+export interface IGroupedListStyles {
+  root: IStyle;
+  group: IStyle;
+  groupIsDropping: IStyle;
 }

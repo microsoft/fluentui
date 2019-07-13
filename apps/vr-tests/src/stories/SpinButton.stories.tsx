@@ -1,12 +1,12 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFixedWidth } from '../utilities';
-import { SpinButton } from 'office-ui-fabric-react';
+import { Fabric, SpinButton } from 'office-ui-fabric-react';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 
-let props = {
+const props = {
   defaultValue: '0',
   label: 'Basic SpinButton:',
   min: 0,
@@ -18,7 +18,7 @@ storiesOf('SpinButton', module)
   .addDecorator(FabricDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-spinButton-input')
         .snapshot('hover input', { cropTo: '.testWrapper' })
@@ -29,28 +29,36 @@ storiesOf('SpinButton', module)
         .snapshot('hover arrow', { cropTo: '.testWrapper' })
         .mouseDown('.ms-Button-flexContainer')
         .snapshot('mouseDown arrow', { cropTo: '.testWrapper' })
-        .end()
-      }
+        .end()}
     >
-      { story() }
+      {story()}
     </Screener>
-  )).add('Root', () => (
-    <SpinButton
-      {...props}
-    />
-  )).add('Disabled', () => (
-    <SpinButton
-      {...props}
-      disabled
-    />
-  )).add('With icon', () => (
-    <SpinButton
-      {...props}
-      iconProps={ { iconName: 'IncreaseIndentLegacy' } }
-    />
-  )).add('Label at end', () => (
-    <SpinButton
-      {...props}
-      labelPosition={ Position.end }
-    />
-  ));
+  ))
+  .addStory('Root', () => (
+    <Fabric>
+      <SpinButton {...props} />
+    </Fabric>
+  ))
+  .addStory('Disabled', () => (
+    <Fabric>
+      <SpinButton {...props} disabled />
+    </Fabric>
+  ))
+  .addStory(
+    'With icon',
+    () => (
+      <Fabric>
+        <SpinButton {...props} iconProps={{ iconName: 'IncreaseIndentLegacy' }} />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
+  .addStory(
+    'Label at end',
+    () => (
+      <Fabric>
+        <SpinButton {...props} labelPosition={Position.end} />
+      </Fabric>
+    ),
+    { rtl: true }
+  );

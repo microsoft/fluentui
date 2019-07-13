@@ -1,40 +1,84 @@
 import * as React from 'react';
-import { CommandButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { CommandButton, css, classNamesFunction, IButtonProps, IStyle, Label } from 'office-ui-fabric-react';
+
+type IButtonBasicExampleStyleProps = {};
+
+interface IButtonBasicExampleStyles {
+  twoup?: IStyle;
+}
+
+const exampleStyles: IButtonBasicExampleStyles = {
+  twoup: [
+    'ms-BasicButtonsTwoUp',
+    {
+      display: 'flex',
+      selectors: {
+        '& > *': {
+          flexGrow: 1
+        },
+        '.ms-Label': {
+          marginBottom: '10px'
+        }
+      }
+    }
+  ]
+};
+
+const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+const classNames = getClassNames(exampleStyles, {});
 
 export class ButtonCommandExample extends React.Component<IButtonProps, {}> {
-  public render() {
-    let { disabled, checked } = this.props;
-
+  public render(): JSX.Element {
+    const { disabled, checked } = this.props;
     return (
-      <div>
-        <div style={ { display: 'flex', alignItems: 'stretch', height: '40px' } }>
+      <div className={css(classNames.twoup)}>
+        <div>
+          <Label>CommandButton that focuses on menu</Label>
           <CommandButton
-            data-automation-id='test'
-            disabled={ disabled }
-            checked={ checked }
-            iconProps={ { iconName: 'Add' } }
-            text='Create account'
-            menuProps={ {
+            data-automation-id="test"
+            disabled={disabled}
+            checked={checked}
+            iconProps={{ iconName: 'Add' }}
+            text="Create account"
+            menuProps={{
               items: [
                 {
                   key: 'emailMessage',
-                  name: 'Email message',
-                  icon: 'Mail'
+                  text: 'Email message',
+                  iconProps: { iconName: 'Mail' }
                 },
                 {
                   key: 'calendarEvent',
-                  name: 'Calendar event',
-                  icon: 'Calendar'
+                  text: 'Calendar event',
+                  iconProps: { iconName: 'Calendar' }
                 }
               ]
-            } }
+            }}
           />
+        </div>
+        <div>
+          <Label>CommandButton that doesn't focus on menu</Label>
           <CommandButton
-            data-automation-id='test2'
-            disabled={ disabled }
-            checked={ checked }
-            iconProps={ { iconName: 'Mail' } }
-            text='Send Mail'
+            data-automation-id="test"
+            disabled={disabled}
+            checked={checked}
+            iconProps={{ iconName: 'Add' }}
+            text="Create account"
+            menuProps={{
+              shouldFocusOnMount: false,
+              items: [
+                {
+                  key: 'emailMessage',
+                  text: 'Email message',
+                  iconProps: { iconName: 'Mail' }
+                },
+                {
+                  key: 'calendarEvent',
+                  text: 'Calendar event',
+                  iconProps: { iconName: 'Calendar' }
+                }
+              ]
+            }}
           />
         </div>
       </div>

@@ -1,72 +1,87 @@
 import * as React from 'react';
 import { TextField, ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import './TextField.Examples.scss';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Text } from 'office-ui-fabric-react/lib/Text';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { getTheme, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
-export class TextFieldCustomRenderExample extends React.Component<{}, {
+export interface ITextFieldCustomRenderExampleState {
   isCalloutVisible: boolean;
-}> {
+}
 
-  private _iconButtonElement: HTMLElement;
+const stackTokens: IStackTokens = {
+  childrenGap: 20,
+  maxWidth: 300
+};
 
-  constructor(props: {}) {
-    super(props);
+export class TextFieldCustomRenderExample extends React.Component<{}, ITextFieldCustomRenderExampleState> {
+  public state: ITextFieldCustomRenderExampleState = { isCalloutVisible: false };
 
-    this.state = {
-      isCalloutVisible: false
-    };
-  }
+  private _descriptionId: string = getId('description');
+  private _iconButtonId: string = getId('iconButton');
 
-  public render() {
+  public render(): JSX.Element {
     return (
-      <div className='docs-TextFieldExample'>
-        <TextField onRenderLabel={ this._onRenderLabel } />
-      </div>
+      <Stack tokens={stackTokens}>
+        <TextField label="Custom label rendering" onRenderLabel={this._onRenderLabel} description="Click the (i) icon!" />
+
+        <TextField
+          label="Custom description rendering"
+          description="A colorful description!"
+          onRenderDescription={this._onRenderDescription}
+        />
+      </Stack>
     );
   }
 
-  @autobind
-  private _onRenderLabel(props: ITextFieldProps): JSX.Element {
-
-    let { isCalloutVisible } = this.state;
+  private _onRenderDescription = (props: ITextFieldProps): JSX.Element => {
+    const theme = getTheme();
     return (
-      <div className='ms-CustomRenderExample' style={ { display: 'flex', alignItems: 'center' } }>
-        <span>TextField with custom label render</span>
-        <span className='ms-CustomRenderExample-labelIconArea' ref={ (menuButton) => this._iconButtonElement = menuButton! }>
+      <Text variant="small" styles={{ root: { color: theme.palette.green, fontWeight: FontWeights.bold } }}>
+        {props.description}
+      </Text>
+    );
+  };
+
+  private _onRenderLabel = (props: ITextFieldProps): JSX.Element => {
+    return (
+      <>
+        <Stack horizontal verticalAlign="center">
+          <span>{props.label}</span>
           <IconButton
-            iconProps={ { iconName: 'Info' } }
-            title='Info'
-            ariaLabel='Info'
-            onClick={ this._onClick }
+            id={this._iconButtonId}
+            iconProps={{ iconName: 'Info' }}
+            title="Info"
+            ariaLabel="Info"
+            onClick={this._onIconClick}
+            styles={{ root: { marginBottom: -3 } }}
           />
-        </span>
-        { isCalloutVisible && (
+        </Stack>
+        {this.state.isCalloutVisible && (
           <Callout
-            className='ms-CustomRenderExample-callout'
-            target={ this._iconButtonElement }
-            onDismiss={ this._onDismiss }
+            target={'#' + this._iconButtonId}
+            setInitialFocus={true}
+            onDismiss={this._onDismiss}
+            ariaDescribedBy={this._descriptionId}
+            role="alertdialog"
           >
-            <text> In additon to the label itself, this label includes an iconbutton which pops out more information in a callout</text>
+            <Stack tokens={stackTokens} horizontalAlign="start" styles={{ root: { padding: 20 } }}>
+              <span id={this._descriptionId}>The custom label includes an IconButton that displays this Callout on click.</span>
+              <DefaultButton onClick={this._onDismiss}>Close</DefaultButton>
+            </Stack>
           </Callout>
-        ) }
-      </div>
+        )}
+      </>
     );
+  };
 
-  }
+  private _onIconClick = (): void => {
+    this.setState({ isCalloutVisible: !this.state.isCalloutVisible });
+  };
 
-  @autobind
-  private _onClick(): void {
-    this.setState({
-      isCalloutVisible: !this.state.isCalloutVisible
-    });
-  }
-
-  @autobind
-  private _onDismiss() {
-    this.setState({
-      isCalloutVisible: false
-    });
-  }
+  private _onDismiss = (): void => {
+    this.setState({ isCalloutVisible: false });
+  };
 }

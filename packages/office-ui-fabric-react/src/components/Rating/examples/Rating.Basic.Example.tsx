@@ -1,24 +1,17 @@
 import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import {
-  Rating,
-  RatingSize
-} from 'office-ui-fabric-react/lib/Rating';
-import {
-  getTheme,
-  createTheme,
-  ITheme
-} from '../../../Styling';
+import { Rating, RatingSize } from 'office-ui-fabric-react/lib/Rating';
+import { getTheme, createTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
 
-import './Rating.Basic.Example.scss';
-
-export class RatingBasicExample extends React.Component<{}, {
-  rating?: number;
-  largeStarRating?: number;
-  smallStarRating?: number;
-  tenStarRating?: number;
-  themedStarRating?: number;
-}> {
+export class RatingBasicExample extends React.Component<
+  {},
+  {
+    rating?: number;
+    largeStarRating?: number;
+    smallStarRating?: number;
+    tenStarRating?: number;
+    themedStarRating?: number;
+  }
+> {
   private _customTheme: ITheme;
 
   constructor(props: {}) {
@@ -36,120 +29,114 @@ export class RatingBasicExample extends React.Component<{}, {
     this._customTheme.semanticColors.bodyTextChecked = '#1E9FE8';
   }
 
-  // tslint:disable:jsx-no-lambda
-  public render() {
+  public render(): JSX.Element {
     return (
-      <div className='ms-RatingBasicExample'>
+      <div className="ms-RatingBasicExample">
         Large Stars:
         <Rating
-          id={ 'largeRatingStar' }
-          min={ 1 }
-          max={ 5 }
-          size={ RatingSize.Large }
-          rating={ this.state.largeStarRating }
-          getAriaLabel={ this._getRatingComponentAriaLabel }
-          onChanged={ this._onLargeStarChanged }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
-          ariaLabelFormat={ '{0} of {1} stars selected' }
+          min={1}
+          max={5}
+          size={RatingSize.Large}
+          rating={this.state.largeStarRating}
+          getAriaLabel={this._getRatingComponentAriaLabel}
+          onChange={this._onLargeStarChange}
+          onFocus={this._onFocus}
+          onBlur={this._onBlur}
+          ariaLabelFormat={'{0} of {1} stars selected'}
         />
-
         Small Stars
         <Rating
-          id={ 'smallRatingStar' }
-          min={ 1 }
-          max={ 5 }
-          rating={ this.state.smallStarRating }
-          onChanged={ this._onSmallStarChanged }
-          getAriaLabel={ this._getRatingComponentAriaLabel }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
-          ariaLabelFormat={ '{0} of {1} stars selected' }
+          min={1}
+          max={5}
+          rating={this.state.smallStarRating}
+          onChange={this._onSmallStarChange}
+          getAriaLabel={this._getRatingComponentAriaLabel}
+          onFocus={this._onFocus}
+          onBlur={this._onBlur}
+          ariaLabelFormat={'{0} of {1} stars selected'}
         />
-
         10 Small Stars
         <Rating
-          id={ 'tenRatingStar' }
-          min={ 1 }
-          max={ 10 }
-          rating={ this.state.tenStarRating }
-          onChanged={ this._onTenStarChanged }
-          getAriaLabel={ this._getRatingComponentAriaLabel }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
-          ariaLabelFormat={ '{0} of {1} stars selected' }
+          min={1}
+          max={10}
+          rating={this.state.tenStarRating}
+          onChange={this._onTenStarChange}
+          getAriaLabel={this._getRatingComponentAriaLabel}
+          onFocus={this._onFocus}
+          onBlur={this._onBlur}
+          ariaLabelFormat={'{0} of {1} stars selected'}
         />
-
         Disabled:
         <Rating
-          min={ 1 }
-          max={ 5 }
-          rating={ this.state.rating }
-          disabled={ true }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
-          ariaLabelFormat={ '{0} of {1} stars selected' }
+          min={1}
+          max={5}
+          rating={this.state.rating}
+          disabled={true}
+          onFocus={this._onFocus}
+          onBlur={this._onBlur}
+          ariaLabelFormat={'{0} of {1} stars selected'}
         />
-
         Half star in readOnly mode:
         <Rating
-          id={ 'readOnlyRatingStar' }
-          min={ 1 }
-          max={ 5 }
-          rating={ 2.5 }
-          getAriaLabel={ this._getRatingComponentAriaLabel }
-          readOnly={ true }
-          ariaLabelFormat={ '{0} of {1} stars selected' }
+          min={1}
+          max={5}
+          rating={2.5}
+          getAriaLabel={this._getRatingComponentAriaLabel}
+          readOnly={true}
+          ariaLabelFormat={'{0} of {1} stars selected'}
         />
-
+        Custom icons:
+        <Rating
+          min={1}
+          max={5}
+          rating={2.5}
+          getAriaLabel={this._getRatingComponentAriaLabel}
+          readOnly={true}
+          ariaLabelFormat={'{0} of {1} stars selected'}
+          icon="StarburstSolid"
+          unselectedIcon="Starburst"
+        />
         Themed star
         <Rating
-          id={ 'themedRatingStar' }
-          min={ 1 }
-          max={ 5 }
-          rating={ this.state.themedStarRating }
-          onChanged={ this._onThemedStarChanged }
-          getAriaLabel={ this._getRatingComponentAriaLabel }
-          onFocus={ () => console.log('onFocus called') }
-          onBlur={ () => console.log('onBlur called') }
-          ariaLabelFormat={ '{0} of {1} stars selected' }
-          theme={ this._customTheme }
+          min={1}
+          max={5}
+          rating={this.state.themedStarRating}
+          onChange={this._onThemedStarChange}
+          getAriaLabel={this._getRatingComponentAriaLabel}
+          onFocus={this._onFocus}
+          onBlur={this._onBlur}
+          ariaLabelFormat={'{0} of {1} stars selected'}
+          theme={this._customTheme}
         />
       </div>
     );
   }
 
-  @autobind
-  private _onLargeStarChanged(rating: number) {
-    this.setState({
-      largeStarRating: rating
-    });
-  }
+  private _onFocus = () => {
+    console.log('onFocus called');
+  };
 
-  @autobind
-  private _onSmallStarChanged(rating: number) {
-    this.setState({
-      smallStarRating: rating
-    });
-  }
+  private _onBlur = () => {
+    console.log('onBlur called');
+  };
 
-  @autobind
-  private _onTenStarChanged(rating: number) {
-    this.setState({
-      tenStarRating: rating
-    });
-  }
+  private _onLargeStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
+    this.setState({ largeStarRating: rating });
+  };
 
-  @autobind
-  private _onThemedStarChanged(rating: number) {
-    this.setState({
-      themedStarRating: rating
-    });
-  }
+  private _onSmallStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
+    this.setState({ smallStarRating: rating });
+  };
 
-  private _getRatingComponentAriaLabel(rating: number, maxRating: number) {
+  private _onTenStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
+    this.setState({ tenStarRating: rating });
+  };
 
-    return 'Rating value is ' + rating + ' of ' + maxRating;
+  private _onThemedStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
+    this.setState({ themedStarRating: rating });
+  };
 
+  private _getRatingComponentAriaLabel(rating: number, maxRating: number): string {
+    return `Rating value is ${rating} of ${maxRating}`;
   }
 }

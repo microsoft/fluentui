@@ -30,9 +30,9 @@ export interface IDelayedRenderState {
  * if necessary.
  *
  * @public
+ * {@docCategory DelayedRender}
  */
 export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
-  // tslint:disable-next-line:typedef
   public static defaultProps = {
     delay: 0
   };
@@ -62,6 +62,6 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
   }
 
   public render(): React.ReactElement<{}> | null {
-    return this.state.isRendered ? React.Children.only(this.props.children) : null;
+    return this.state.isRendered ? (React.Children.only(this.props.children) as React.ReactElement<{}>) : null;
   }
 }

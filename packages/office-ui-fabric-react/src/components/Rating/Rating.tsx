@@ -1,11 +1,12 @@
-import {
-  styled
-} from '../../Utilities';
-import { IRatingProps } from './Rating.types';
+import * as React from 'react';
+import { styled } from '../../Utilities';
+import { IRatingProps, IRatingStyleProps, IRatingStyles } from './Rating.types';
 import { getStyles } from './Rating.styles';
-import { RatingBase } from './RatingBase';
+import { RatingBase } from './Rating.base';
 
-export const Rating = styled(
+export const Rating: React.StatelessComponent<IRatingProps> = styled<IRatingProps, IRatingStyleProps, IRatingStyles>(
   RatingBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'Rating' }
 );

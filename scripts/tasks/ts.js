@@ -1,15 +1,29 @@
-module.exports = function (options) {
-  const path = require('path');
-  const execSync = require('../exec-sync');
-  const typescriptPath = 'node ' + path.resolve(__dirname, '../node_modules/typescript/lib/tsc');
-  const libPath = path.resolve(process.cwd(), 'lib');
-  const srcPath = path.resolve(process.cwd(), 'src');
-  const extraParams = '--pretty' + (options.isProduction ? ` --inlineSources --sourceRoot ${path.relative(libPath, srcPath)}` : '');
+// @ts-check
 
-  execSync(typescriptPath + ' -outDir lib -t es5 -m commonjs ' + extraParams);
+const path = require('path');
+const { tscTask, argv } = require('just-scripts');
+const libPath = path.resolve(process.cwd(), 'lib');
+const srcPath = path.resolve(process.cwd(), 'src');
 
-  if (options.isProduction) {
-    execSync(typescriptPath + ' -outDir lib-amd -t es5 -m amd ' + extraParams);
-    execSync(typescriptPath + ' -outDir lib-es2015 -t es5 -m es2015 ' + extraParams);
+function getExtraTscParams(args) {
+  return { pretty: true, target: 'es5', ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath) }) };
+}
+
+module.exports.ts = {
+  commonjs: () => {
+    const extraOptions = getExtraTscParams(argv());
+    return tscTask({ ...extraOptions, outDir: 'lib-commonjs', module: 'commonjs' });
+  },
+  esm: () => {
+    const extraOptions = getExtraTscParams(argv());
+    return tscTask({ ...extraOptions, outDir: 'lib', module: 'es2015' });
+  },
+  amd: () => {
+    const extraOptions = getExtraTscParams(argv());
+    return tscTask({ ...extraOptions, outDir: 'lib-amd', module: 'amd' });
+  },
+  commonjsOnly: () => {
+    const extraOptions = getExtraTscParams(argv());
+    return tscTask({ ...extraOptions, outDir: 'lib', module: 'commonjs' });
   }
 };

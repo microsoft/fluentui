@@ -1,19 +1,38 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-import { Breadcrumb, IBreadCrumbData } from './Breadcrumb';
-import { IRenderFunction } from '../../Utilities';
+import { IIconProps } from '../../Icon';
+import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
+import { ITheme, IStyle } from '../../Styling';
+import { IFocusZoneProps } from '../../FocusZone';
+import { ITooltipHostProps } from '../../Tooltip';
 
-export interface IBreadcrumb {
-
+/**
+ * {@docCategory Breadcrumb}
+ */
+export interface IBreadcrumbData {
+  props: IBreadcrumbProps;
+  renderedItems: IBreadcrumbItem[];
+  renderedOverflowItems: IBreadcrumbItem[];
 }
 
-export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
+/**
+ * {@docCategory Breadcrumb}
+ */
+export interface IBreadcrumb {
+  /**
+   * Sets focus to the first breadcrumb link.
+   */
+  focus(): void;
+}
+
+/**
+ * {@docCategory Breadcrumb}
+ */
+export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IBreadcrumb) => void;
+  componentRef?: IRefObject<IBreadcrumb>;
 
   /**
    * Collection of breadcrumbs to render
@@ -26,28 +45,59 @@ export interface IBreadcrumbProps extends React.Props<Breadcrumb> {
   className?: string;
 
   /**
+   * Render a custom divider in place of the default chevron `>`
+   */
+  dividerAs?: IComponentAs<IDividerAsProps>;
+
+  /**
    * The maximum number of breadcrumbs to display before coalescing.
    * If not specified, all breadcrumbs will be rendered.
    */
   maxDisplayedItems?: number;
 
   /** Method to call when trying to render an item. */
+
   onRenderItem?: IRenderFunction<IBreadcrumbItem>;
 
   /**
    * Method to call when reducing the length of the breadcrumb.
    * Return undefined to never reduce breadcrumb length
    */
-  onReduceData?: (data: IBreadCrumbData) => IBreadCrumbData | undefined;
+  onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
 
   /**
    * Aria label to place on the navigation landmark for breadcrumb
    */
   ariaLabel?: string;
+
+  /**
+   * Optional name to use for aria label on overflow button.
+   */
+  overflowAriaLabel?: string;
+
+  /**
+   * Optional index where overflow items will be collapsed. Defaults to 0.
+   */
+  overflowIndex?: number;
+
+  styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
+  theme?: ITheme;
+
+  /**
+   * Focuszone props that will get passed through to the root focus zone.
+   */
+  focusZoneProps?: IFocusZoneProps;
+
+  /**
+   * TooltipHost props that will get passed through to overflow tooltips.
+   */
+  tooltipHostProps?: ITooltipHostProps;
 }
 
+/**
+ * {@docCategory Breadcrumb}
+ */
 export interface IBreadcrumbItem {
-
   /**
    * Text to display to the user for the breadcrumb
    */
@@ -69,7 +119,41 @@ export interface IBreadcrumbItem {
   href?: string;
 
   /**
-   * If this breadcrumb item is the item the user is currently on, if set to true, aria-current="page" will be applied to this breadcrumb link
+   * If this breadcrumb item is the item the user is currently on, if set to true, aria-current="page" will be applied to this
+   * breadcrumb link
    */
   isCurrentItem?: boolean;
+}
+
+/**
+ * {@docCategory Breadcrumb}
+ */
+export interface IDividerAsProps extends IIconProps {
+  /**
+   * Optional breadcrumb item corresponds to left of the divider to be passed for custom rendering.
+   * For overflowed items, it will be last item in the list
+   */
+  item?: IBreadcrumbItem;
+}
+
+/**
+ * {@docCategory Breadcrumb}
+ */
+export interface IBreadcrumbStyleProps {
+  className?: string;
+  theme: ITheme;
+}
+
+/**
+ * {@docCategory Breadcrumb}
+ */
+export interface IBreadcrumbStyles {
+  root: IStyle;
+  list: IStyle;
+  listItem: IStyle;
+  chevron: IStyle;
+  overflow: IStyle;
+  overflowButton: IStyle;
+  itemLink: IStyle;
+  item: IStyle;
 }

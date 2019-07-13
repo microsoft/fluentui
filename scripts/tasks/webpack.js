@@ -1,82 +1,51 @@
-module.exports = function (options) {
-  const path = require('path');
-  const fs = require('fs');
+// @ts-check
 
-  const webpackConfigPath = path.join(process.cwd(), 'webpack.config.js');
+const { webpackTask, argv } = require('just-scripts');
+const path = require('path');
+const fs = require('fs');
 
-  if (fs.existsSync(webpackConfigPath)) {
-    const webpack = require('webpack');
+exports.webpack = webpackTask();
+exports.webpackDevServer = async function() {
+  const fp = require('find-free-port');
+  const webpackConfigFilePath = argv().webpackConfig || 'webpack.serve.config.js';
+  const configPath = path.resolve(process.cwd(), webpackConfigFilePath);
+  const port = await fp(4322, 4400);
 
-    const configLoader = require(webpackConfigPath);
-    let config;
+  if (fs.existsSync(configPath)) {
+    const webpackDevServerPath = require.resolve('webpack-dev-server/bin/webpack-dev-server.js');
+    const execSync = require('../exec-sync');
 
-    // If the loaded webpack config is a function
-    // call it with the original process.argv arguments from build.js.
-    if (typeof configLoader == 'function') {
-      config = configLoader(options.argv);
-    } else {
-      config = configLoader;
-    }
-    config = flatten(config);
-
-    return new Promise((resolve, reject) => {
-      webpack(config, (err, stats) => {
-        if (err || stats.hasErrors()) {
-          const chalk = require('chalk');
-          let errorStats = stats.toJson('errors-only');
-          errorStats.errors.forEach(error => {
-            console.log(chalk.red(error));
-          })
-          reject(`Webpack failed with ${errorStats.errors.length} error(s).`);
-        } else {
-          _printStats(stats);
-          resolve();
-        }
-      });
-    });
+    execSync(`node ${webpackDevServerPath} --config ${configPath} --port ${port} --open`);
   }
 };
 
-function _printStats(stats, isProduction) {
-  const { logStatus } = require('../logging');
-  const chalk = require('chalk');
-  const path = require('path');
+let server;
+exports.webpackDevServerWithCompileResolution = async function() {
+  return new Promise((resolve, reject) => {
+    const webpack = require('webpack');
+    const webpackDevServer = require('webpack-dev-server');
+    const webpackConfig = require(path.resolve(process.cwd(), 'webpack.serve.config.js'));
 
-  for (const stat of stats.stats) {
-    if (stat.compilation && stat.compilation.assets) {
-      for (const asset in stat.compilation.assets) {
-        const assetInfo = stat.compilation.assets[asset];
-        const assetPath = path.relative(process.cwd(), assetInfo.existsAt);
+    const compiler = webpack(webpackConfig);
+    compiler.plugin('done', () => {
+      resolve();
+    });
 
-        if (asset.endsWith('.min.js')) {
-          const gzipSize = require('gzip-size');
-          const fs = require('fs');
-          const content = fs.readFileSync(assetInfo.existsAt, 'utf8');
-          const size = gzipSize.sync(content);
+    const devServerOptions = Object.assign({}, webpackConfig.devServer, {
+      stats: 'minimal'
+    });
+    server = new webpackDevServer(compiler, devServerOptions);
+    const port = webpackConfig.devServer.port;
+    server.listen(port, '127.0.0.1', () => {
+      console.log(`started server on http://localhost:${port}`);
+    });
+  });
+};
 
-          logStatus(`Created bundle "${chalk.cyan(assetPath)}" (gzipped: ${getFileSize(size)})`);
-        } else if (asset.endsWith('.js')) {
-          logStatus(`Created bundle "${chalk.cyan(assetPath)}"`);
-        }
-      }
-    }
-  }
-}
-
-function flatten(arr) {
-  return arr.reduce(function (flat, toFlatten) {
-    return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
-  }, []);
-}
-
-function getFileSize(size) {
-  const chalk = require('chalk');
-  let sizeString = '';
-
-  if (size < 1024) {
-    sizeString = size + ' bytes';
-  } else {
-    sizeString = (Math.round(1000 * size / 1024) / 1000) + ' KB'
-  }
-  return chalk.cyan(sizeString);
-}
+exports.webpackDevServerWithCompileResolution.done = async function() {
+  return new Promise((resolve, reject) => {
+    server.close(() => {
+      resolve();
+    });
+  });
+};

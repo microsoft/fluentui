@@ -1,38 +1,31 @@
-import * as React from 'react';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
-import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import * as React from 'react';
 
-export class PanelSmallRightExample extends React.Component<{}, {
+export interface IPanelSmallRightExampleState {
   showPanel: boolean;
-}> {
+}
 
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      showPanel: false
-    };
-  }
+export class PanelSmallRightExample extends React.Component<{}, IPanelSmallRightExampleState> {
+  public state = {
+    showPanel: false
+  };
 
   public render() {
     return (
       <div>
-        <DefaultButton
-          description='Opens the Sample Panel'
-          onClick={ this._onShowPanel }
-          text='Open Panel'
-        />
+        <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._showPanel} text="Open Panel" />
         <Panel
-          isOpen={ this.state.showPanel }
-          type={ PanelType.smallFixedFar }
-          onDismiss={ this._onClosePanel }
-          headerText='Panel - Small, right-aligned, fixed, with footer'
-          closeButtonAriaLabel='Close'
-          onRenderFooterContent={ this._onRenderFooterContent }
+          isOpen={this.state.showPanel}
+          type={PanelType.smallFixedFar}
+          onDismiss={this._hidePanel}
+          headerText="Panel - Small, right-aligned, fixed, with footer"
+          closeButtonAriaLabel="Close"
+          onRenderFooterContent={this._onRenderFooterContent}
         >
           <ChoiceGroup
-            options={ [
+            options={[
               {
                 key: 'A',
                 text: 'Option A'
@@ -53,41 +46,31 @@ export class PanelSmallRightExample extends React.Component<{}, {
                 checked: true,
                 disabled: true
               }
-            ] }
-            label='Pick one'
-            required={ true }
+            ]}
+            label="Pick one"
+            required={true}
           />
         </Panel>
       </div>
     );
   }
 
-  @autobind
-  private _onClosePanel(): void {
-    this.setState({ showPanel: false });
-  }
-
-  @autobind
-  private _onRenderFooterContent(): JSX.Element {
+  private _onRenderFooterContent = () => {
     return (
       <div>
-        <PrimaryButton
-          onClick={ this._onClosePanel }
-          style={ { 'marginRight': '8px' } }
-        >
+        <PrimaryButton onClick={this._hidePanel} style={{ marginRight: '8px' }}>
           Save
         </PrimaryButton>
-        <DefaultButton
-          onClick={ this._onClosePanel }
-        >
-          Cancel
-        </DefaultButton>
+        <DefaultButton onClick={this._showPanel}>Cancel</DefaultButton>
       </div>
     );
-  }
+  };
 
-  @autobind
-  private _onShowPanel(): void {
+  private _showPanel = () => {
     this.setState({ showPanel: true });
-  }
+  };
+
+  private _hidePanel = () => {
+    this.setState({ showPanel: false });
+  };
 }

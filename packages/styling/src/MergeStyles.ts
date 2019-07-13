@@ -4,7 +4,9 @@ export {
   IRawStyle,
   IStyle,
   IStyleSet,
+  IProcessedStyleSet,
   IStyleSheetConfig,
+  ICSPSettings,
   InjectionMode,
   Stylesheet,
   concatStyleSets,
@@ -12,4 +14,4 @@ export {
   keyframes,
   mergeStyleSets,
   mergeStyles
-} from '@uifabric/merge-styles/lib/index';
+} from '@uifabric/merge-styles';

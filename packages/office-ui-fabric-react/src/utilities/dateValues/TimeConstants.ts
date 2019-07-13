@@ -1,7 +1,7 @@
 /**
  * Common constants and methods
  */
-let TimeConstants = {
+const TimeConstants = {
   MillisecondsInOneDay: 86400000,
   MillisecondsIn1Sec: 1000,
   MillisecondsIn1Min: 60000,

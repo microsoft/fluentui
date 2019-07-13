@@ -1,19 +1,12 @@
-import {
-  IColor,
-  getColorFromString
-} from '../../utilities/color/colors';
-import {
-  isValidShade,
-  getShade,
-  getBackgroundShade
-} from '../../utilities/color/shades';
+import { IColor } from '../../utilities/color/interfaces';
+import { getColorFromString } from '../../utilities/color/getColorFromString';
+import { isValidShade, getShade, getBackgroundShade } from '../../utilities/color/shades';
 import { format } from '../../Utilities';
 
 import { IThemeSlotRule } from './IThemeSlotRule';
 import { IThemeRules } from './IThemeRules';
 
 export class ThemeGenerator {
-
   /* Sets an IThemeSlotRule to the given color and cascades it to the rest of the theme, updating other IThemeSlotRules in the theme that
    *   inherit from that color.
    * isInverted: whether it's a dark theme or not, which affects the algorithm used to generate shades
@@ -55,9 +48,9 @@ export class ThemeGenerator {
    */
   public static insureSlots(slotRules: IThemeRules, isInverted: boolean) {
     // Get all the "root" rules, the ones which don't inherit. Then "set" them to trigger updating dependent slots.
-    for (let ruleName in slotRules) {
+    for (const ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
-        let rule: IThemeSlotRule = slotRules[ruleName];
+        const rule: IThemeSlotRule = slotRules[ruleName];
         if (!rule.inherits && !rule.value) {
           if (!rule.color) {
             throw 'A color slot rule that does not inherit must provide its own color.';
@@ -75,14 +68,35 @@ export class ThemeGenerator {
    *   ... }
    */
   public static getThemeAsJson(slotRules: IThemeRules): any {
-    let theme: any = {};
-    for (let ruleName in slotRules) {
+    const theme: any = {};
+    for (const ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
-        let rule: IThemeSlotRule = slotRules[ruleName];
+        const rule: IThemeSlotRule = slotRules[ruleName];
         theme[rule.name] = rule.color ? rule.color.str : rule.value || '';
       }
     }
     return theme;
+  }
+
+  /*
+   * Gets code-formatted load theme blob that can be copy and pasted.
+   */
+  public static getThemeAsCode(slotRules: IThemeRules): any {
+    const attributeTemplate = "    {0}: '{1}',\n";
+    let output = '';
+
+    output += 'loadTheme({\n  palette: {\n';
+
+    for (const ruleName in slotRules) {
+      if (slotRules.hasOwnProperty(ruleName)) {
+        const rule: IThemeSlotRule = slotRules[ruleName];
+        const camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
+        const outputColor = rule.color ? '#' + rule.color.hex : rule.value || '';
+        output += format(attributeTemplate, camelCasedName, outputColor);
+      }
+    }
+    output += '  }\n});';
+    return output;
   }
 
   /* Gets the theme as a list of SASS variables that can be used in code
@@ -91,17 +105,14 @@ export class ThemeGenerator {
    * ...
    */
   public static getThemeAsSass(slotRules: IThemeRules): any {
-    let sassVarTemplate = '${0}Color: "[theme: {1}, default: {2}]";\n';
+    const sassVarTemplate = '${0}Color: "[theme: {1}, default: {2}]";\n';
     let output = '';
 
-    for (let ruleName in slotRules) {
+    for (const ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
-        let rule: IThemeSlotRule = slotRules[ruleName];
-        let camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
-        output += format(sassVarTemplate,
-          camelCasedName,
-          camelCasedName,
-          rule.color ? rule.color.str : rule.value || '');
+        const rule: IThemeSlotRule = slotRules[ruleName];
+        const camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
+        output += format(sassVarTemplate, camelCasedName, camelCasedName, rule.color ? rule.color.str : rule.value || '');
       }
     }
     return output;
@@ -115,25 +126,23 @@ export class ThemeGenerator {
    * }
    */
   public static getThemeForPowerShell(slotRules: IThemeRules): any {
-    let psVarTemplate = '"{0}" = "{1}";\n';
+    const psVarTemplate = '"{0}" = "{1}";\n';
     let output = '';
 
-    for (let ruleName in slotRules) {
+    for (const ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {
-        let rule: IThemeSlotRule = slotRules[ruleName];
+        const rule: IThemeSlotRule = slotRules[ruleName];
         if (rule.value) {
           // skip this one, it's not a color
           continue;
         }
-        let camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
+        const camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
         let outputColor = rule.color ? '#' + rule.color.hex : rule.value || '';
         // powershell endpoint uses the RGBA format
         if (rule.color && rule.color.a && rule.color.a !== 100) {
           outputColor += String(rule.color.a.toString(16));
         }
-        output += format(psVarTemplate,
-          camelCasedName,
-          outputColor);
+        output += format(psVarTemplate, camelCasedName, outputColor);
       }
     }
     return '@{\n' + output + '}';
@@ -143,19 +152,14 @@ export class ThemeGenerator {
      Then, iterates through all other rules (that are this rule's dependents) to update them accordingly.
      isCustomization=true means it's a user provided color, set it to that raw color
      isCustomization=false means the rule it's inheriting from changed, so updated using asShade */
-  private static _setSlot(
-    rule: IThemeSlotRule,
-    color: IColor,
-    isInverted: boolean,
-    isCustomization: boolean,
-    overwriteCustomColor = true
-  ) {
+  private static _setSlot(rule: IThemeSlotRule, color: IColor, isInverted: boolean, isCustomization: boolean, overwriteCustomColor = true) {
     if (!rule.color && rule.value) {
       // not a color rule
       return;
     }
 
-    if (overwriteCustomColor || !rule.color || !rule.isCustomized || !rule.inherits) { // set the rule's color under these conditions
+    if (overwriteCustomColor || !rule.color || !rule.isCustomized || !rule.inherits) {
+      // set the rule's color under these conditions
       if ((overwriteCustomColor || !rule.isCustomized) && !isCustomization && rule.inherits && isValidShade(rule.asShade)) {
         // it's inheriting by shade
         if (rule.isBackgroundShade) {
@@ -170,7 +174,7 @@ export class ThemeGenerator {
       }
 
       // then update dependent colors
-      for (let ruleToUpdate of rule.dependentRules) {
+      for (const ruleToUpdate of rule.dependentRules) {
         ThemeGenerator._setSlot(ruleToUpdate, rule.color, isInverted, false, overwriteCustomColor);
       }
     }

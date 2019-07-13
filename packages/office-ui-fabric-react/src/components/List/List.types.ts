@@ -1,8 +1,48 @@
 import * as React from 'react';
-import { IRectangle, IRenderFunction } from '../../Utilities';
+import { IRefObject, IRectangle, IRenderFunction } from '../../Utilities';
 import { List } from './List';
 
+/**
+ * {@docCategory List}
+ */
+export const ScrollToMode = {
+  /**
+   * Does not make any consideration to where in the viewport the item should align to.
+   */
+  auto: 0 as 0,
+  /**
+   * Attempts to scroll the list so the top of the desired item is aligned with the top of the viewport.
+   */
+  top: 1 as 1,
+  /**
+   * Attempts to scroll the list so the bottom of the desired item is aligned with the bottom of the viewport.
+   */
+  bottom: 2 as 2,
+  /**
+   * Attempts to scroll the list so the desired item is in the exact center of the viewport.
+   */
+  center: 3 as 3
+};
+
+/**
+ * {@docCategory List}
+ */
+export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
+
+/**
+ * {@docCategory List}
+ */
 export interface IList {
+  /**
+   * Force the component to update.
+   */
+  forceUpdate: () => void;
+
+  /**
+   * Get the current height the list and it's pages.
+   */
+  getTotalListHeight?: () => number;
+
   /**
    * Scroll to the given index. By default will bring the page the specified item is on into the view. If a callback
    * to measure the height of an individual item is specified, will only scroll to bring the specific item into view.
@@ -10,41 +50,61 @@ export interface IList {
    * Note: with items of variable height and no passed in `getPageHeight` method, the list might jump after scrolling
    * when windows before/ahead are being rendered, and the estimated height is replaced using actual elements.
    *
-   * @param index Index of item to scroll to
-   * @param measureItem Optional callback to measure the height of an individual item
+   * @param index - Index of item to scroll to
+   * @param measureItem - Optional callback to measure the height of an individual item
+   * @param scrollToMode - Optional defines the behavior of the scrolling alignment. Defaults to auto.
+   *  Note: The scrollToMode requires the measureItem callback is provided to function.
    */
-  scrollToIndex(index: number, measureItem?: (itemIndex: number) => number): void;
+  scrollToIndex: (index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
+
+  /**
+   * Get the start index of the page that is currently in view
+   */
+  getStartItemIndexInView: () => number;
 }
 
-export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> {
+/**
+ * {@docCategory List}
+ */
+export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTMLDivElement> {
   /**
    * Optional callback to access the IList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: IList) => void;
+  componentRef?: IRefObject<IList>;
 
   /** Optional classname to append to root list. */
   className?: string;
 
   /** Items to render. */
-  items?: any[];
+  items?: T[];
 
   /**
    * Method to call when trying to render an item.
-   * @param {any} item - The the data associated with the cell that is being rendered.
-   * @param {number} index - The index of the cell being rendered.
-   * @param {boolean} isScrolling - True if the list is being scrolled. May be useful for rendering a placeholder if your cells are complex.
+   * @param item - The the data associated with the cell that is being rendered.
+   * @param index - The index of the cell being rendered.
+   * @param isScrolling - True if the list is being scrolled. May be useful for rendering a placeholder if your cells are complex.
    */
-  onRenderCell?: (item?: any, index?: number, isScrolling?: boolean) => React.ReactNode;
+  onRenderCell?: (item?: T, index?: number, isScrolling?: boolean) => React.ReactNode;
+
+  /**
+   * Optional callback invoked when List rendering completed.
+   * This can be on initial mount or on re-render due to scrolling.
+   * This method will be called as a result of changes in List pages (added or removed),
+   * and after ALL the changes complete.
+   * To track individual page Add / Remove use onPageAdded / onPageRemoved instead.
+   * @param pages - The current array of pages in the List.
+   */
+  onPagesUpdated?: (pages: IPage<T>[]) => void;
 
   /** Optional callback for monitoring when a page is added. */
-  onPageAdded?: (page: IPage) => void;
+  onPageAdded?: (page: IPage<T>) => void;
 
   /** Optional callback for monitoring when a page is removed. */
-  onPageRemoved?: (page: IPage) => void;
+  onPageRemoved?: (page: IPage<T>) => void;
 
   /** Optional callback to get the item key, to be used on render. */
-  getKey?: (item: any, index?: number) => string;
+  getKey?: (item: T, index?: number) => string;
 
   /**
    * Called by the list to get the specification for a page.
@@ -67,23 +127,23 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
    * in pixels, which has been seen to cause browser performance issues.
    * In general, use `getPageSpecification` instead.
    */
-  getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle) => number;
+  getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle, itemCount?: number) => number;
 
   /**
    * Method called by the list to derive the page style object. For spacer pages, the list will derive
    * the height and passed in heights will be ignored.
    */
-  getPageStyle?: (page: IPage) => any;
+  getPageStyle?: (page: IPage<T>) => any;
 
   /**
    * In addition to the visible window, how many windowHeights should we render ahead.
-   * @default 2
+   * @defaultvalue 2
    */
   renderedWindowsAhead?: number;
 
   /**
    * In addition to the visible window, how many windowHeights should we render behind.
-   * @default 2
+   * @defaultvalue 2
    */
   renderedWindowsBehind?: number;
 
@@ -94,10 +154,10 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
   renderCount?: number;
 
   /**
-  * Boolean value to enable render page caching. This is an experimental performance optimization
-  * that is off by default.
-  * @defaultValue false
-  */
+   * Boolean value to enable render page caching. This is an experimental performance optimization
+   * that is off by default.
+   * @defaultvalue false
+   */
   usePageCache?: boolean;
 
   /**
@@ -106,7 +166,7 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
    * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists.
    * The default implementation will virtualize when this callback is not provided.
    */
-  onShouldVirtualize?: (props: IListProps) => boolean;
+  onShouldVirtualize?: (props: IListProps<T>) => boolean;
 
   /**
    * The role to assign to the list root element.
@@ -118,21 +178,29 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
    * Called when the List will render a page.
    * Override this to control how cells are rendered within a page.
    */
-  onRenderPage?: (pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>) => React.ReactNode;
+  onRenderPage?: (pageProps: IPageProps<T>, defaultRender?: IRenderFunction<IPageProps<T>>) => React.ReactNode;
 }
 
-export interface IPage {
+/**
+ * {@docCategory List}
+ */
+export interface IPage<T = any> {
   key: string;
-  items: any[] | undefined;
+  items: T[] | undefined;
   startIndex: number;
   itemCount: number;
-  style: any;
+  style: React.CSSProperties;
   top: number;
   height: number;
   data?: any;
+  isSpacer?: boolean;
+  isVisible?: boolean;
 }
 
-export interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.Props<HTMLDivElement> {
+/**
+ * {@docCategory List}
+ */
+export interface IPageProps<T = any> extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
   /**
    * The role being assigned to the rendered page element by the list.
    */
@@ -140,9 +208,12 @@ export interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.
   /**
    * The allocation data for the page.
    */
-  page: IPage;
+  page: IPage<T>;
 }
 
+/**
+ * {@docCategory List}
+ */
 export interface IPageSpecification {
   /**
    * The number of items to allocate to the page.

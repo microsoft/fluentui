@@ -1,9 +1,12 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { SearchBoxBase } from './SearchBox.base';
-import { ISearchBoxProps } from './SearchBox.types';
+import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 import { getStyles } from './SearchBox.styles';
 
-export const SearchBox = styled(
+export const SearchBox: React.StatelessComponent<ISearchBoxProps> = styled<ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles>(
   SearchBoxBase,
-  getStyles
+  getStyles,
+  undefined,
+  { scope: 'SearchBox' }
 );

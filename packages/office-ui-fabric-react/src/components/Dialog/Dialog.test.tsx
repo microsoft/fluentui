@@ -1,36 +1,42 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import * as renderer from 'react-test-renderer';
 
 import { mount } from 'enzyme';
-
-import { Dialog } from './Dialog';
+import { DialogBase } from './Dialog.base';
 import { DialogContent } from './DialogContent';
-import { DialogType } from './DialogContent.types';
+import { DialogType } from './DialogContent.types'; // for express fluent assertions
 
-/* tslint:disable:no-unused-expression */// for express fluent assertions
-
-describe('Dialog', () => {
+/* tslint:disable:no-unused-expression */ describe('Dialog', () => {
   it('renders Dialog correctly', () => {
     const component = renderer.create(<DialogContent />);
-    let tree = component.toJSON();
+    const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('Fires dismissed after closing', (done) => {
+  it('renders Dialog with a jsx title', () => {
+    const component = renderer.create(
+      <DialogContent
+        type={DialogType.normal}
+        title={
+          <div>
+            <span>I am span 1</span>
+            <span>I am span 2</span>
+          </div>
+        }
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Fires dismissed after closing', done => {
     let dismissedCalled = false;
 
     const handleDismissed = () => {
       dismissedCalled = true;
     };
 
-    const wrapper = mount(
-      <Dialog
-        hidden={ false }
-        modalProps={ { onDismissed: handleDismissed } }
-      />
-    );
+    const wrapper = mount(<DialogBase hidden={false} modalProps={{ onDismissed: handleDismissed }} />);
 
     expect(document.querySelector('[role="dialog"]')).not.toBeNull();
     wrapper.setProps({ hidden: true });
@@ -51,14 +57,18 @@ describe('Dialog', () => {
 
   it('Properly attaches auto-generated aria attributes IDs', () => {
     const wrapper = mount(
-      <Dialog
-        hidden={ false }
-        modalProps={ { onDismissed: () => {/* no-op */ } } }
-        dialogContentProps={ {
+      <DialogBase
+        hidden={false}
+        modalProps={{
+          onDismissed: () => {
+            /* no-op */
+          }
+        }}
+        dialogContentProps={{
           type: DialogType.normal,
           title: 'sample title',
           subText: 'Sample subtext'
-        } }
+        }}
       />
     );
 
@@ -72,17 +82,19 @@ describe('Dialog', () => {
   it('Properly attaches IDs when aria-describedby is passed', () => {
     const subTextAriaId = 'subtextariaid';
     const wrapper = mount(
-      <Dialog
-        hidden={ false }
-        modalProps={ {
-          onDismissed: () => {/* no-op */ },
-          subtitleAriaId: subTextAriaId,
-        } }
-        dialogContentProps={ {
+      <DialogBase
+        hidden={false}
+        modalProps={{
+          onDismissed: () => {
+            /* no-op */
+          },
+          subtitleAriaId: subTextAriaId
+        }}
+        dialogContentProps={{
           type: DialogType.normal,
           title: 'sample title',
           subText: 'Sample subtext'
-        } }
+        }}
       />
     );
 
@@ -96,17 +108,19 @@ describe('Dialog', () => {
   it('Properly attaches IDs when aria-labelledby is passed', () => {
     const titleAriaId = 'titleariaid';
     const wrapper = mount(
-      <Dialog
-        hidden={ false }
-        modalProps={ {
-          onDismissed: () => {/* no-op */ },
-          titleAriaId: titleAriaId,
-        } }
-        dialogContentProps={ {
+      <DialogBase
+        hidden={false}
+        modalProps={{
+          onDismissed: () => {
+            /* no-op */
+          },
+          titleAriaId: titleAriaId
+        }}
+        dialogContentProps={{
           type: DialogType.normal,
           title: 'sample title',
           subText: 'Sample subtext'
-        } }
+        }}
       />
     );
 

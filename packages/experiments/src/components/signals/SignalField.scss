@@ -1,8 +1,16 @@
-
 @import '~office-ui-fabric-react/src/common/common';
 
 .signalField {
-  display: inline-flex;
+  &,
+  &.compact {
+    display: inline-flex;
+  }
+
+  &.wide {
+    display: flex;
+    vertical-align: top;
+  }
+
   max-width: 100%;
   flex-direction: row nowrap;
 }
@@ -11,5 +19,6 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  text-align: left;
+  @include text-align(left);
+  flex: 1 1 auto;
 }

@@ -1,133 +1,131 @@
 import * as React from 'react';
-import {
-  css
-} from 'office-ui-fabric-react/lib/Utilities';
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { AppCustomizationsContext } from '../../utilities/customizations';
+import { classNamesFunction, css, styled } from 'office-ui-fabric-react/lib/Utilities';
+import { ExampleStatus, IAppProps, IAppStyleProps, IAppStyles } from './App.types';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { Nav } from 'office-ui-fabric-react/lib/Nav';
-import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
-import { INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
+import { getStyles } from './App.styles';
 import { Header } from '../Header/Header';
-import './App.scss';
-
-export enum ExampleStatus {
-  placeholder = 0,
-  started = 1,
-  beta = 2,
-  release = 3
-}
-
-export interface IAppLink extends INavLink {
-  // tslint:disable-next-line:no-any
-  getComponent?: (cb: (obj: any) => void) => any;
-  component?: React.ComponentClass | (() => JSX.Element);
-}
-
-export interface IAppLinkGroup extends INavLinkGroup {
-  links: IAppLink[];
-}
-
-export interface IAppDefinition {
-  appTitle: string;
-  testPages: IAppLink[];
-  examplePages: IAppLinkGroup[];
-  headerLinks: IAppLink[];
-}
-
-export interface IAppProps extends React.Props<App> {
-  responsiveMode?: ResponsiveMode;
-  appDefinition: IAppDefinition;
-}
+import { INavLink, Nav } from 'office-ui-fabric-react/lib/Nav';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { showOnlyExamples } from '../../utilities/showOnlyExamples';
 
 export interface IAppState {
   isMenuVisible: boolean;
 }
 
+const getClassNames = classNamesFunction<IAppStyleProps, IAppStyles>();
+
 @withResponsiveMode
-export class App extends React.Component<IAppProps, IAppState> {
+export class AppBase extends React.Component<IAppProps, IAppState> {
+  public state: IAppState = { isMenuVisible: false };
+  private _classNames: IProcessedStyleSet<IAppStyles>;
+  private _showOnlyExamples: boolean;
 
   constructor(props: IAppProps) {
     super(props);
 
-    this.state = {
-      isMenuVisible: false
-    };
+    this._showOnlyExamples = showOnlyExamples();
   }
 
   public render(): JSX.Element {
-    let { appDefinition, responsiveMode } = this.props;
-    let { isMenuVisible } = this.state;
+    const { appDefinition, styles, responsiveMode = ResponsiveMode.xLarge, theme } = this.props;
+    const { customizations } = appDefinition;
+    const { isMenuVisible } = this.state;
 
-    if (responsiveMode === undefined) {
-      responsiveMode = ResponsiveMode.large;
-    }
+    const onlyExamples = this._showOnlyExamples;
 
-    let navPanel = (
+    const classNames = (this._classNames = getClassNames(styles, { responsiveMode, theme, showOnlyExamples: onlyExamples }));
+
+    const isLargeDown = responsiveMode <= ResponsiveMode.large;
+
+    const nav = (
       <Nav
-        groups={ appDefinition.examplePages }
-        onLinkClick={ this._onLinkClick }
-        onRenderLink={ this._onRenderLink }
+        groups={appDefinition.examplePages}
+        onLinkClick={this._onLinkClick}
+        onRenderLink={this._onRenderLink}
+        styles={classNames.subComponentStyles.nav}
       />
     );
 
-    return (
-      <Fabric className={ css('ms-App', 'ms-App--' + ResponsiveMode[responsiveMode]) }>
-
-        <div className='ms-App-header'>
-          <Header
-            title={ appDefinition.appTitle }
-            sideLinks={ appDefinition.headerLinks }
-            isMenuVisible={ isMenuVisible }
-            onIsMenuVisibleChanged={ this._onIsMenuVisibleChanged }
-          />
-        </div>
-
-        { (responsiveMode > ResponsiveMode.large) ? (
-          <div className='ms-App-nav'>
-            { navPanel }
+    const app = (
+      <Fabric className={classNames.root}>
+        {!onlyExamples && (
+          <div className={classNames.headerContainer}>
+            <Header
+              isLargeDown={isLargeDown}
+              title={appDefinition.appTitle}
+              sideLinks={appDefinition.headerLinks}
+              isMenuVisible={isMenuVisible}
+              onIsMenuVisibleChanged={this._onIsMenuVisibleChanged}
+              styles={classNames.subComponentStyles.header}
+            />
           </div>
-        ) : (null) }
+        )}
 
-        <div className='ms-App-content' data-is-scrollable='true'>
-          { this.props.children }
+        {!isLargeDown && !onlyExamples && <div className={classNames.leftNavContainer}>{nav}</div>}
+
+        <div className={classNames.content} data-is-scrollable="true">
+          {this.props.children}
         </div>
 
-        { (responsiveMode <= ResponsiveMode.large) ? (
+        {isLargeDown && (
           <Panel
-            className='ms-App-navPanel'
-            isOpen={ isMenuVisible }
-            isLightDismiss={ true }
-            type={ PanelType.smallFixedNear }
-            onDismiss={ this._onIsMenuVisibleChanged.bind(this, false) }
+            isOpen={isMenuVisible}
+            isLightDismiss={true}
+            type={PanelType.smallFixedNear}
+            // Close by tapping outside the panel
+            hasCloseButton={false}
+            // Use onDismissed (not onDismiss) to prevent _onIsMenuVisibleChanged being called twice
+            // (once by the panel and once by the header button)
+            onDismissed={this._onIsMenuVisibleChanged.bind(this, false)}
+            styles={classNames.subComponentStyles.navPanel}
           >
-            { navPanel }
+            {nav}
           </Panel>
-        ) : (null) }
+        )}
       </Fabric>
     );
+
+    return customizations ? <AppCustomizationsContext.Provider value={customizations}>{app}</AppCustomizationsContext.Provider> : app;
   }
 
-  @autobind
-  private _onIsMenuVisibleChanged(isMenuVisible: boolean): void {
+  private _onIsMenuVisibleChanged = (isMenuVisible: boolean): void => {
     this.setState({ isMenuVisible });
-  }
+  };
 
-  @autobind
-  private _onLinkClick(): void {
+  private _onLinkClick = (): void => {
     this.setState({ isMenuVisible: false });
-  }
+  };
 
-  @autobind
-  // tslint:disable-next-line:no-any
-  private _onRenderLink(link: INavLink): any {
+  private _onRenderLink = (link: INavLink): JSX.Element => {
+    const classNames = this._classNames;
+
+    // Nav-linkText is a class name from the Fabric nav
     return (
-      [
-        <span key={ 1 } className='Nav-linkText'>{ link.name }</span>,
-        (link.status !== undefined ?
-          <span key={ 2 } className={ 'Nav-linkFlair ' + 'is-state' + link.status } >{ ExampleStatus[link.status] }</span> :
-          null)
-      ]
+      <>
+        <span key={1} className="Nav-linkText">
+          {link.name}
+        </span>
+        {link.status !== undefined && (
+          <span
+            key={2}
+            className={css(
+              classNames.linkFlair,
+              link.status === ExampleStatus.started && classNames.linkFlairStarted,
+              link.status === ExampleStatus.beta && classNames.linkFlairBeta,
+              link.status === ExampleStatus.release && classNames.linkFlairRelease
+            )}
+          >
+            {ExampleStatus[link.status]}
+          </span>
+        )}
+      </>
     );
-  }
+  };
 }
+
+export const App: React.StatelessComponent<IAppProps> = styled<IAppProps, IAppStyleProps, IAppStyles>(AppBase, getStyles, undefined, {
+  scope: 'App'
+});

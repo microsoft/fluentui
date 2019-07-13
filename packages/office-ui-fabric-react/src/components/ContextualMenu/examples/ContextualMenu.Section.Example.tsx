@@ -4,18 +4,15 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuSectionExample extends React.Component<any, any> {
-
-  public render() {
+  public render(): JSX.Element {
     return (
       <div>
         <DefaultButton
-          id='ContextualMenuButton1'
-          text='Click for ContextualMenu'
-          menuProps={ {
-            items:
-            [
+          text="Click for ContextualMenu"
+          menuProps={{
+            items: [
               {
-                key: 'section',
+                key: 'section1',
                 itemType: ContextualMenuItemType.Section,
                 sectionProps: {
                   topDivider: true,
@@ -24,53 +21,53 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
                   items: [
                     {
                       key: 'newItem',
-                      name: 'New',
+                      text: 'New'
                     },
                     {
                       key: 'deleteItem',
-                      name: 'Delete',
+                      text: 'Delete'
                     }
                   ]
                 }
               },
               {
-                key: 'section',
+                key: 'section2',
                 itemType: ContextualMenuItemType.Section,
                 sectionProps: {
                   title: 'Social',
                   items: [
                     {
                       key: 'share',
-                      name: 'Share'
+                      text: 'Share'
                     },
                     {
                       key: 'print',
-                      name: 'Print'
+                      text: 'Print'
                     },
                     {
                       key: 'music',
-                      name: 'Music',
-                    },
+                      text: 'Music'
+                    }
                   ]
                 }
               },
               {
-                key: 'section',
+                key: 'section3',
                 itemType: ContextualMenuItemType.Section,
                 sectionProps: {
                   title: 'Navigation',
                   items: [
                     {
                       key: 'Bing',
-                      name: 'Go to Bing',
-                      href: 'http://www.bing.com'
+                      text: 'Go to Bing',
+                      href: 'http://www.bing.com',
+                      target: '_blank'
                     }
                   ]
                 }
               }
             ]
-          }
-          }
+          }}
         />
       </div>
     );

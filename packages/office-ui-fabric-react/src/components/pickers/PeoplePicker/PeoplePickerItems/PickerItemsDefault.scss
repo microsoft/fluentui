@@ -87,9 +87,11 @@
     flex: 0 1 auto;
     min-width: 0px;
 
-    /** CSS below is needed for IE 11 to properly truncate long persona names in the picker **/
+    /** CSS below is needed for IE 11 to properly truncate long persona names in the picker
+     ** and to clip the presence indicator (in all browsers)
+     **/
     max-width: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
   }
 
   .removeButton {

@@ -1,13 +1,20 @@
 import * as React from 'react';
-import { IRenderFunction } from '../../Utilities';
+import { IStyle, IStyleSet, ITheme } from '../../Styling';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 
+/**
+ * {@docCategory TextField}
+ */
 export interface ITextField {
   /** Gets the current value of the input. */
   value: string | undefined;
 
   /** Sets focus to the input. */
   focus: () => void;
+
+  /** Blurs the input */
+  blur: () => void;
 
   /** Select the value of the text field. */
   select: () => void;
@@ -20,166 +27,168 @@ export interface ITextField {
 
   /**
    * Sets the start and end positions of a selection in a text field.
-   * @param start Index of the start of the selection.
-   * @param end Index of the end of the selection.
+   * Call with start and end set to the same value to set the cursor position.
+   * @param start - Index of the start of the selection.
+   * @param end - Index of the end of the selection.
    */
   setSelectionRange: (start: number, end: number) => void;
 
   /** Gets the selection start of the text field. Returns -1 if there is no selection. */
-  selectionStart: number;
+  selectionStart: number | null;
 
   /** Gets the selection end of the text field. Returns -1 if there is no selection. */
-  selectionEnd: number;
+  selectionEnd: number | null;
 }
 
 /**
  * TextField component props.
+ * {@docCategory TextField}
  */
 export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   /**
-   * Optional callback to access the ITextField interface. Use this instead of ref for accessing
+   * Optional callback to access the ITextField component. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
-  componentRef?: (component: ITextField) => void;
+  componentRef?: IRefObject<ITextField>;
 
   /**
-   * Whether or not the textfield is a multiline textfield.
-   * @default false
+   * Whether or not the text field is a multiline text field.
+   * @defaultvalue false
    */
   multiline?: boolean;
 
   /**
-   * Whether or not the multiline textfield is resizable.
-   * @default true
+   * For multiline text fields, whether or not the field is resizable.
+   * @defaultvalue true
    */
   resizable?: boolean;
 
   /**
-   * Whether or not to auto adjust textField height. Applies only to multiline textfield.
-   * @default false
+   * For multiline text fields, whether or not to auto adjust text field height.
+   * @defaultvalue false
    */
   autoAdjustHeight?: boolean;
 
   /**
-   * Whether or not the textfield is underlined.
-   * @default false
+   * Whether or not the text field is underlined.
+   * @defaultvalue false
    */
   underlined?: boolean;
 
   /**
-   * Whether or not the textfield is borderless.
-   * @default false
+   * Whether or not the text field is borderless.
+   * @defaultvalue false
    */
   borderless?: boolean;
 
   /**
-   * Label for the textfield.
+   * Label displayed above the text field (and read by screen readers).
    */
   label?: string;
 
   /**
-   * Optional custom renderer for the label
+   * Custom renderer for the label.
    */
   onRenderLabel?: IRenderFunction<ITextFieldProps>;
 
   /**
-   * The textfield input description
+   * Description displayed below the text field to provide additional details about what text to enter.
    */
   description?: string;
 
   /**
-   * @deprecated
-   * Deprecated; use prefix instead.
+   * Custom renderer for the description.
    */
-  addonString?: string;
+  onRenderDescription?: IRenderFunction<ITextFieldProps>;
 
   /**
-  * String for prefix
-  */
+   * Prefix displayed before the text field contents. This is not included in the value.
+   * Ensure a descriptive label is present to assist screen readers, as the value does not include the prefix.
+   */
   prefix?: string;
 
   /**
-  * String for suffix
-  */
+   * Suffix displayed after the text field contents. This is not included in the value.
+   * Ensure a descriptive label is present to assist screen readers, as the value does not include the suffix.
+   */
   suffix?: string;
 
   /**
-   * @deprecated
-   * Deprecated; use onRenderPrefix instead.
+   * Custom render function for prefix.
    */
-  onRenderAddon?: IRenderFunction<ITextFieldProps>;
-
-  /**
-  * Custom render function for prefix
-  */
   onRenderPrefix?: IRenderFunction<ITextFieldProps>;
 
   /**
-  * Custom render function for suffix
-  */
+   * Custom render function for suffix.
+   */
   onRenderSuffix?: IRenderFunction<ITextFieldProps>;
 
   /**
-   * Optional icon props for an icon.
+   * Props for an optional icon, displayed in the far right end of the text field.
    */
   iconProps?: IIconProps;
 
   /**
-   * Default value of the textfield, if any. Only provide this if the textfield is an uncontrolled component;
-   * otherwise, use the "value" property.
+   * Default value of the text field. Only provide this if the text field is an uncontrolled component;
+   * otherwise, use the `value` property.
    */
   defaultValue?: string;
 
   /**
-   * Current value of the textfield. Only provide this if the textfield is a controlled component where you
-   * are maintaining its current state; otherwise, use the "defaultValue" property.
+   * Current value of the text field. Only provide this if the text field is a controlled component where you
+   * are maintaining its current state; otherwise, use the `defaultValue` property.
    */
   value?: string;
 
   /**
-   * Disabled state of the textfield.
-   * @default false
+   * Disabled state of the text field.
+   * @defaultvalue false
    */
   disabled?: boolean;
 
   /**
-   * If set, this will display an error message for the text field.
+   * If true, the text field is readonly.
+   * @defaultvalue false
    */
-  errorMessage?: string;
+  readOnly?: boolean;
 
   /**
-   * Callback for the onChanged event.
+   * Static error message displayed below the text field. Use `onGetErrorMessage` to dynamically
+   * change the error message displayed (if any) based on the current value. `errorMessage` and
+   * `onGetErrorMessage` are mutually exclusive (`errorMessage` takes precedence).
    */
-  onChanged?: (newValue: any) => void;
+  errorMessage?: string | JSX.Element;
 
   /**
-   * Callback for the onBeforeChange event.
+   * Callback for when the input value changes.
+   * This is called on both `input` and `change` native events.
    */
-  onBeforeChange?: (newValue: any) => void;
+  onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
 
   /**
-   * Callback for the onNotifyValidationResult event.
+   * Function called after validation completes.
    */
-  onNotifyValidationResult?: (errorMessage: string, value: string | undefined) => void;
+  onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
 
   /**
-   * The method is used to get the validation error message and determine whether the input value is valid or not.
+   * Function used to determine whether the input value is valid and get an error message if not.
+   * Mutually exclusive with the static string `errorMessage` (it will take precedence over this).
    *
-   *   When it returns string:
-   *   - If valid, it returns empty string.
-   *   - If invalid, it returns the error message string and the text field will
-   *     show a red border and show an error message below the text field.
+   * When it returns `string | JSX.Element`:
+   * - If valid, it returns empty string.
+   * - If invalid, it returns the error message and the text field will
+   *   show a red border and show an error message below the text field.
    *
-   *   When it returns Promise<string>:
-   *   - The resolved value is display as error message.
-   *   - The rejected, the value is thrown away.
-   *
+   * When it returns `Promise<string | JSX.Element>`:
+   * - The resolved value is displayed as the error message.
+   * - If rejected, the value is thrown away.
    */
-  onGetErrorMessage?: (value: string) => string | PromiseLike<string> | undefined;
+  onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
 
   /**
    * Text field will start to validate after users stop typing for `deferredValidationTime` milliseconds.
-   * @default 200
+   * Updates to this prop will not be respected.
+   * @defaultvalue 200
    */
   deferredValidationTime?: number;
 
@@ -194,42 +203,161 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   inputClassName?: string;
 
   /**
-   * Aria Label for textfield, if any.
+   * Aria label for the text field.
    */
   ariaLabel?: string;
 
   /**
-   * Run validation only on input focus
-   * @default false
+   * Run validation when focus moves into the input, and **do not** validate on change.
+   *
+   * (Unless this prop and/or `validateOnFocusOut` is set to true, validation will run on every change.)
+   * @defaultvalue false
    */
   validateOnFocusIn?: boolean;
 
   /**
-   * Run validation only on input focus out
-   * @default false
+   * Run validation when focus moves out of the input, and **do not** validate on change.
+   *
+   * (Unless this prop and/or `validateOnFocusIn` is set to true, validation will run on every change.)
+   * @defaultvalue false
    */
   validateOnFocusOut?: boolean;
 
   /**
-   * Optional flag to disable onload validation
-   * @default true
+   * Whether validation should run when the input is initially rendered.
+   * @defaultvalue true
    */
   validateOnLoad?: boolean;
 
   /**
-   * @deprecated
-   * Deprecated; use iconProps instead.
+   * Theme (provided through customization).
    */
-  iconClass?: string;
+  theme?: ITheme;
 
   /**
-   * Internal ID passed to render functions.
+   * Call to provide customized styling that will layer on top of the variant rules.
    */
-  componentId?: string;
+  styles?: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
 
   /**
    * Whether the input field should have autocomplete enabled.
    * This tells the browser to display options based on earlier typed values.
+   * Common values are 'on' and 'off' but for all possible values see the following links:
+   * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#Values
+   * https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill
    */
-  autoComplete?: 'on' | 'off';
+  autoComplete?: string;
+
+  /**
+   * The masking string that defines the mask's behavior.
+   * A backslash will escape any character.
+   * Special format characters are:
+   * '9': [0-9]
+   * 'a': [a-zA-Z]
+   * '*': [a-zA-Z0-9]
+   *
+   * @example `Phone Number: (999) 999-9999`
+   */
+  mask?: string;
+
+  /**
+   * The character to show in place of unfilled characters of the mask.
+   * @defaultvalue '_'
+   */
+  maskChar?: string;
+
+  /**
+   * An object defining the format characters and corresponding regexp values.
+   * Default format characters: \{
+   *  '9': /[0-9]/,
+   *  'a': /[a-zA-Z]/,
+   *  '*': /[a-zA-Z0-9]/
+   * \}
+   */
+  maskFormat?: { [key: string]: RegExp };
+}
+
+/**
+ * {@docCategory TextField}
+ */
+export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
+  Pick<
+    ITextFieldProps,
+    'className' | 'disabled' | 'inputClassName' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'autoAdjustHeight'
+  > & {
+    /** Element has an error message. */
+    hasErrorMessage?: boolean;
+    /** Element has an icon. */
+    hasIcon?: boolean;
+    /** Element has a label. */
+    hasLabel?: boolean;
+    /** Element has focus. */
+    focused?: boolean;
+  };
+
+/**
+ * {@docCategory TextField}
+ */
+export interface ITextFieldSubComponentStyles {
+  /**
+   * Styling for Label child component.
+   */
+  // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4
+  // label: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
+  label: IStyleFunctionOrObject<any, any>;
+}
+
+/**
+ * {@docCategory TextField}
+ */
+export interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
+  /**
+   * Style for root element.
+   */
+  root: IStyle;
+
+  /**
+   * Style for field group encompassing entry area (prefix, field, icon and suffix).
+   */
+  fieldGroup: IStyle;
+
+  /**
+   * Style for prefix element.
+   */
+  prefix: IStyle;
+
+  /**
+   * Style for suffix element.
+   */
+  suffix: IStyle;
+
+  /**
+   * Style for main field entry element.
+   */
+  field: IStyle;
+
+  /**
+   * Style for icon prop element.
+   */
+  icon: IStyle;
+
+  /**
+   * Style for description element.
+   */
+  description: IStyle;
+
+  /**
+   * Style for TextField wrapper element.
+   */
+  wrapper: IStyle;
+
+  /**
+   * Style for error message element.
+   */
+  errorMessage: IStyle;
+
+  /**
+   * Styling for subcomponents.
+   */
+  subComponentStyles: ITextFieldSubComponentStyles;
 }

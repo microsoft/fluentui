@@ -1,70 +1,78 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import {
-  ExampleCard,
-  IComponentDemoPageProps,
-  ComponentPage,
-  PropertiesTableSet
-} from '@uifabric/example-app-base';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
 /* tslint:disable:max-line-length */
 import { TilesListBasicExample } from './examples/TilesList.Basic.Example';
-const TilesListBasicExampleCode = require(
-  '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Basic.Example.tsx'
-) as string;
+const TilesListBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/TilesList/examples/TilesList.Basic.Example.tsx') as string;
 
 import { TilesListDocumentExample } from './examples/TilesList.Document.Example';
-const TilesListDocumentExampleCode = require(
-  '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Document.Example.tsx'
-) as string;
+const TilesListDocumentExampleCode = require('!raw-loader!@uifabric/experiments/src/components/TilesList/examples/TilesList.Document.Example.tsx') as string;
 
 import { TilesListMediaExample } from './examples/TilesList.Media.Example';
 
-const TilesListMediaExampleCode = require(
-  '!raw-loader!experiments/src/components/TilesList/examples/TilesList.Media.Example.tsx'
-) as string;
+const TilesListMediaExampleCode = require('!raw-loader!@uifabric/experiments/src/components/TilesList/examples/TilesList.Media.Example.tsx') as string;
 
-export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> {
+export interface ITilesListPageState {
+  size: 'small' | 'large';
+}
+
+export class TilesListPage extends React.Component<IComponentDemoPageProps, ITilesListPageState> {
+  constructor(props: {}) {
+    super(props);
+
+    this.state = {
+      size: 'large'
+    };
+  }
+
   public render(): JSX.Element {
+    const { size } = this.state;
+
     return (
       <ComponentPage
-        title='TilesList'
-        componentName='TilesListExample'
+        title="TilesList"
+        componentName="TilesListExample"
         exampleCards={
           <div>
-            <ExampleCard title='TilesList with basic tiles' isOptIn={ true } code={ TilesListBasicExampleCode }>
+            <ExampleCard title="TilesList with basic tiles" isOptIn={true} code={TilesListBasicExampleCode}>
               <TilesListBasicExample />
             </ExampleCard>
-            <ExampleCard title='TilesList with document tiles' isOptIn={ true } code={ TilesListDocumentExampleCode }>
-              <TilesListDocumentExample />
+            <ExampleCard
+              title="TilesList with document tiles and placeholders when data is missing"
+              isOptIn={true}
+              code={TilesListDocumentExampleCode}
+            >
+              <Checkbox label="Use large tiles" checked={size === 'large'} onChange={this._onIsLargeChanged} />
+              <TilesListDocumentExample tileSize={size} />
             </ExampleCard>
-            <ExampleCard title='TilesList with media tiles' isOptIn={ true } code={ TilesListMediaExampleCode }>
+            <ExampleCard title="TilesList with media tiles" isOptIn={true} code={TilesListMediaExampleCode}>
               <TilesListMediaExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={ [
-              require<string>('!raw-loader!experiments/src/components/TilesList/TilesList.types.ts')
-            ] }
+            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/TilesList/TilesList.types.ts')]}
           />
         }
         overview={
           <div>
             <p>
-              <code>TilesList</code> is a specialization of the <Link href='#/examples/List'><code>List</code></Link> component.
-              It is intended to represent items visual using a one or mote content-focused flowing grids.
+              <code>TilesList</code> is a specialization of the{' '}
+              <Link href="#/examples/List">
+                <code>List</code>
+              </Link>{' '}
+              component. It is intended to represent items visual using a one or mote content-focused flowing grids.
             </p>
             <p>
-              <code>TilesList</code> is designed to be used in conjunction with the <code>Tile</code> component.
-              The <code>Tile</code> component provides a standardized form of focusable and selectable content item.
+              <code>TilesList</code> is designed to be used in conjunction with the <code>Tile</code> component. The <code>Tile</code>{' '}
+              component provides a standardized form of focusable and selectable content item.
             </p>
           </div>
         }
-        bestPractices={
-          <div />
-        }
+        bestPractices={<div />}
         dos={
           <div>
             <ul>
@@ -79,8 +87,14 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, {}> 
             </ul>
           </div>
         }
-        isHeaderVisible={ this.props.isHeaderVisible }
+        isHeaderVisible={this.props.isHeaderVisible}
       />
     );
   }
+
+  private _onIsLargeChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
+    this.setState({
+      size: checked ? 'large' : 'small'
+    });
+  };
 }

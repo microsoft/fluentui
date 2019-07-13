@@ -1,141 +1,254 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
-import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
+import { Image, ImageFit, Label, Layer, IImageProps } from 'office-ui-fabric-react';
+import * as React from 'react';
+import Screener from 'screener-storybook/src/screener';
 import { FabricDecorator } from '../utilities';
-import { Image, ImageFit, Label, Layer } from 'office-ui-fabric-react';
-
-import './Image.css';
 
 const img350x150 = 'http://placehold.it/350x150';
 
-let imagePropsFitNone = {
+const imagePropsFitNone: IImageProps = {
   src: 'http://placehold.it/500x250',
   imageFit: ImageFit.none,
   width: 350,
   height: 150
 };
 
-let imagePropsFitCenter = {
+const imagePropsFitCenter: IImageProps = {
   src: 'http://placehold.it/800x300',
   imageFit: ImageFit.center,
   width: 350,
   height: 150
 };
 
-let imagePropsFitContain = {
+const imagePropsFitContain: IImageProps = {
   src: 'http://placehold.it/700x300',
   imageFit: ImageFit.contain
 };
 
-let imagePropsFitCover = {
+const imagePropsFitCover: IImageProps = {
   src: 'http://placehold.it/500x500',
   imageFit: ImageFit.cover
 };
 
-let imagePropsMaximizeFrame = {
+const imagePropsFitCenterContain: IImageProps = {
+  src: 'http://placehold.it/400x400',
+  imageFit: ImageFit.centerContain
+};
+
+const imagePropsFitCenterCover: IImageProps = {
+  src: 'http://placehold.it/400x400',
+  imageFit: ImageFit.centerCover
+};
+
+const imagePropsMaximizeFrame: IImageProps = {
   src: 'http://placehold.it/500x500',
   imageFit: ImageFit.cover,
   maximizeFrame: true
 };
 
+const border = 'solid 1px black';
+
 // tslint:disable:jsx-ban-props
 
 storiesOf('Image', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator(story =>
+    // prettier-ignore
     <Screener
-      steps={ new Screener.Steps()
+      steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .end()
-      }
+        .end()}
     >
-      { story() }
+      {story()}
     </Screener>
-  ))
-  .add('No fit, no w/h', () => (
+  )
+  .addStory('No fit, no w/h', () => (
     <div>
-      <Label>Without a width or height specified, the frame remains at its natural size and the image will not be scaled.</Label>
-      <Image src={ img350x150 } />
+      <Label>
+        Without a width or height specified, the frame remains at its natural size and the image
+        will not be scaled.
+      </Label>
+      <Image src={img350x150} />
     </div>
   ))
-  .add('No fit, only width', () => (
+  .addStory('No fit, only width', () => (
     <div>
-      <Label>If only a width is provided, the frame will be set to that width.
-      The image will scale proportionally to fill the available width.</Label>
-      <Image src={ img350x150 } width={ 600 } />
+      <Label>
+        If only a width is provided, the frame will be set to that width. The image will scale
+        proportionally to fill the available width.
+      </Label>
+      <Image src={img350x150} width={600} />
     </div>
   ))
-  .add('No fit, only heght', () => (
+  .addStory('No fit, only height', () => (
     <div>
-      <Label>If only a height is provided, the frame will be set to that height.
-        The image will scale proportionally to fill the available height.</Label>
-      <Image src={ img350x150 } width={ 100 } />
+      <Label>
+        If only a height is provided, the frame will be set to that height. The image will scale
+        proportionally to fill the available height.
+      </Label>
+      <Image src={img350x150} width={100} />
     </div>
   ))
-  .add('Fit: none, image larger', () => (
+  .addStory('Fit: none, image larger', () => (
     <div>
-      <Label>The image is larger than the frame, so it is cropped to fit. The image is positioned at the upper left of the frame.</Label>
-      <Image  { ...imagePropsFitNone } />
+      <Label>
+        The image is larger than the frame, so it is cropped to fit. The image is positioned at the
+        upper left of the frame.
+      </Label>
+      <Image {...imagePropsFitNone} />
     </div>
   ))
-  .add('Fit: none, image smaller', () => (
+  .addStory('Fit: none, image smaller', () => (
     <div>
-      <Label>The image is smaller than the frame, so there is empty space within the frame.
-        The image is positioned at the upper left of the frame.</Label>
-      <Image  { ...imagePropsFitNone } src='http://placehold.it/100x100' />
+      <Label>
+        The image is smaller than the frame, so there is empty space within the frame. The image is
+        positioned at the upper left of the frame.
+      </Label>
+      <Image {...imagePropsFitNone} src="http://placehold.it/100x100" />
     </div>
   ))
-  .add('Fit: center, image larger', () => (
+  .addStory('Fit: center, image larger', () => (
     <div>
-      <Label>The image is larger than the frame, so all sides are cropped to center the image.</Label>
-      <Image  { ...imagePropsFitCenter } src='http://placehold.it/800x300' />
+      <Label>
+        The image is larger than the frame, so all sides are cropped to center the image.
+      </Label>
+      <Image {...imagePropsFitCenter} src="http://placehold.it/800x300" />
     </div>
   ))
-  .add('Fit: center, image smaller', () => (
+  .addStory('Fit: center, image smaller', () => (
     <div>
-      <Label>The image is smaller than the frame, so there is empty space within the frame.
-            The image is centered in the available space.</Label>
-      <Image  { ...imagePropsFitCenter } src='http://placehold.it/100x100' />
+      <Label>
+        The image is smaller than the frame, so there is empty space within the frame. The image is
+        centered in the available space.
+      </Label>
+      <Image {...imagePropsFitCenter} src="http://placehold.it/100x100" />
     </div>
   ))
-  .add('Fit: contain, image wider', () => (
+  .addStory('Fit: contain, image wider', () => (
     <div>
-      <Label>The image has a wider aspect ratio (more landscape) than the frame,
-              so the image is scaled to fit the width and centered in the available vertical space.</Label>
-      <Image { ...imagePropsFitContain } width={ 200 } height={ 200 } />
+      <Label>
+        The image has a wider aspect ratio (more landscape) than the frame, so the image is scaled
+        to fit the width and centered in the available vertical space.
+      </Label>
+      <Image {...imagePropsFitContain} width={200} height={200} />
     </div>
   ))
-  .add('Fit: contain, image taller', () => (
+  .addStory('Fit: contain, image taller', () => (
     <div>
-      <Label>The image has a taller aspect ratio (more portrait) than the frame,
-                so the image is scaled to fit the height and centered in the available horizontal space.</Label>
-      <Image { ...imagePropsFitContain } width={ 300 } height={ 50 } />
+      <Label>
+        The image has a taller aspect ratio (more portrait) than the frame, so the image is scaled
+        to fit the height and centered in the available horizontal space.
+      </Label>
+      <Image {...imagePropsFitContain} width={300} height={50} />
     </div>
   ))
-  .add('Fit: cover, image wider', () => (
+  .addStory('Fit: cover, image wider', () => (
     <div>
-      <Label>The image has a wider aspect ratio (more landscape) than the frame,
-          so the image is scaled to fit the height and the sides are cropped evenly.</Label>
-      <Image { ...imagePropsFitCover } width={ 150 } height={ 250 } />
+      <Label>
+        The image has a wider aspect ratio (more landscape) than the frame, so the image is scaled
+        to fit the height and the sides are cropped evenly.
+      </Label>
+      <Image {...imagePropsFitCover} width={150} height={250} />
     </div>
   ))
-  .add('Fit: cover, image taller', () => (
+  .addStory('Fit: cover, image taller', () => (
     <div>
-      <Label>The image has a taller aspect ratio (more portrait) than the frame,
-            so the image is scaled to fit the width and the top and bottom are cropped evenly.</Label>
-      <Image { ...imagePropsFitCover } width={ 250 } height={ 150 } />
+      <Label>
+        The image has a taller aspect ratio (more portrait) than the frame, so the image is scaled
+        to fit the width and the top and bottom are cropped evenly.
+      </Label>
+      <Image {...imagePropsFitCover} width={250} height={150} />
     </div>
   ))
-  .add('Maximize frame, landscape container', () => (
+  .addStory('Fit: CenterContain, image smaller', () => (
     <div>
-      <Label>The image is placed within a landscape container.</Label>
-      <div style={ { width: '200px', height: '100px' } }>
-        <Image { ...imagePropsMaximizeFrame } />
+      <Label>
+        The image is smaller than the frame, so the image is centered with empty space within the
+        frame.
+      </Label>
+      <div style={{ width: 500, height: 500, border }}>
+        <Image {...imagePropsFitCenterContain} width={500} height={500} />
       </div>
     </div>
   ))
-  .add('Maximize frame, portrait container', () => (
-    <Layer>sdfsfdsf</Layer>
+  .addStory('Fit: CenterContain, image larger', () => (
+    <div>
+      <Label>The image is larger than the frame, so the image behaves as "contain".</Label>
+      <div style={{ width: 350, height: 250, border }}>
+        <Image {...imagePropsFitCenterContain} width={350} height={250} />
+      </div>
+    </div>
   ))
-  ;
+  .addStory('Fit: CenterContain, image wider', () => (
+    <div>
+      <Label>
+        The image has a wider aspect ratio (more landscape) than the frame, so the image is
+        contained.
+      </Label>
+      <div style={{ width: 300, height: 500, border }}>
+        <Image {...imagePropsFitCenterContain} width={300} height={500} />
+      </div>
+    </div>
+  ))
+  .addStory('Fit: CenterContain, image taller', () => (
+    <div>
+      <Label>
+        The image has a taller aspect ratio (more portrait) than the frame, so the image is
+        contained.
+      </Label>
+      <div style={{ width: 500, height: 300, border }}>
+        <Image {...imagePropsFitCenterContain} width={500} height={300} />
+      </div>
+    </div>
+  ))
+  .addStory('Fit: centerCover, image smaller', () => (
+    <div>
+      <Label>
+        The image is smaller than the frame, so the image is centered with empty space within the
+        frame.
+      </Label>
+      <div style={{ width: 500, height: 500, border }}>
+        <Image {...imagePropsFitCenterCover} width={500} height={500} />
+      </div>
+    </div>
+  ))
+  .addStory('Fit: centerCover, image larger', () => (
+    <div>
+      <Label>The image is larger than the frame, so the image behaves as "cover".</Label>
+      <div style={{ width: 350, height: 250, border }}>
+        <Image {...imagePropsFitCenterCover} width={350} height={250} />
+      </div>
+    </div>
+  ))
+  .addStory('Fit: centerCover, image wider', () => (
+    <div>
+      <Label>
+        The image has a wider aspect ratio (more landscape) than the frame, so the sides are cropped
+        evenly.
+      </Label>
+      <div style={{ width: 300, height: 500, border }}>
+        <Image {...imagePropsFitCenterCover} width={300} height={500} />
+      </div>
+    </div>
+  ))
+  .addStory('Fit: centerCover, image taller', () => (
+    <div>
+      <Label>
+        The image has a taller aspect ratio (more portrait) than the frame, so the top and bottom
+        are cropped evenly.
+      </Label>
+      <div style={{ width: 500, height: 300, border }}>
+        <Image {...imagePropsFitCenterCover} width={500} height={300} />
+      </div>
+    </div>
+  ))
+  .addStory('Maximize frame, landscape container', () => (
+    <div>
+      <Label>The image is placed within a landscape container.</Label>
+      <div style={{ width: '200px', height: '100px' }}>
+        <Image {...imagePropsMaximizeFrame} />
+      </div>
+    </div>
+  ))
+  .addStory('Maximize frame, portrait container', () => <Layer>sdfsfdsf</Layer>);

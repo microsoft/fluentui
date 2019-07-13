@@ -1,4 +1,4 @@
-import { IColor } from '../../utilities/color/colors';
+import { IColor } from '../../utilities/color/interfaces';
 import { Shade } from '../../utilities/color/shades';
 
 export interface IThemeSlotRule {
@@ -16,6 +16,7 @@ export interface IThemeSlotRule {
   isBackgroundShade?: boolean;
   /* Whether this slot has been manually overridden (else, it was automatically generated based on inheritance). */
   isCustomized?: boolean;
-  /* A collection of rules that inherit from this one. It is the responsibility of the inheriting rule to add itself to its parent's dependentRules collection. */
+  /* A collection of rules that inherit from this one. It is the responsibility of the inheriting rule to add
+  itself to its parent's dependentRules collection. */
   dependentRules: IThemeSlotRule[];
 }

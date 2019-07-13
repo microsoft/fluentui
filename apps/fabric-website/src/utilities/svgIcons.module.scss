@@ -1,0 +1,11 @@
+@import '../styles/variables';
+
+.icon {
+  color: $ms-color-neutralPrimary;
+  margin: 0;
+}
+
+.androidLogo,
+.appleLogo {
+  fill: $ms-color-neutralPrimary;
+}

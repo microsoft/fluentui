@@ -14,6 +14,6 @@ describe('css', () => {
   });
 
   it('can handle a class map', () => {
-    expect(css('a', { 'b': true, 'z': false }, 'c')).toEqual('a b c');
+    expect(css('a', { b: true, z: false }, 'c')).toEqual('a b c');
   });
 });

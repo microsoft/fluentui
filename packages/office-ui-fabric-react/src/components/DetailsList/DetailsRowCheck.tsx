@@ -1,57 +1,82 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-import { css } from '../../Utilities';
+import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
+import { css, styled } from '../../Utilities';
 import { Check } from '../../Check';
-import * as DetailsRowCheckStyles from './DetailsRowCheck.scss';
-import * as CheckStylesModule from '../Check/Check.scss';
+import { ICheckStyleProps, ICheckStyles } from '../Check/Check.types';
+import { getStyles as getCheckStyles } from '../Check/Check.styles';
+import { getStyles } from './DetailsRowCheck.styles';
+import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
+import { classNamesFunction } from '../../Utilities';
 
-// tslint:disable:no-any
-const CheckStyles: any = CheckStylesModule;
-// tslint:enable:no-any
+const getCheckClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>({
+  disableCaching: true
+});
+const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>({
+  disableCaching: true
+});
 
-export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement> {
-  isHeader?: boolean;
-  selected?: boolean;
-  /**
-   * Deprecated at v.65.1 and will be removed by v 1.0. Use 'selected' instead.
-   * @deprecated
-   */
-  isSelected?: boolean;
-  anySelected?: boolean;
-  canSelect: boolean;
-}
-
-export const DetailsRowCheck = (props: IDetailsRowCheckProps) => {
+const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
   const {
+    isVisible = false,
     canSelect = false,
-    isSelected = false,
     anySelected = false,
     selected = false,
     isHeader = false,
     className,
+    checkClassName,
+    styles,
+    theme,
+    compact,
+    onRenderDetailsCheckbox,
     ...buttonProps
   } = props;
 
-  let isPressed = props.isSelected || props.selected;
+  const checkStyles = getCheckStyles({ theme: theme! });
 
-  return (
+  const checkClassNames = getCheckClassNames(checkStyles, {
+    theme: theme!
+  });
+
+  const classNames = getClassNames(styles, {
+    theme: theme!,
+    canSelect,
+    selected,
+    anySelected,
+    className,
+    isHeader,
+    isVisible,
+    compact
+  });
+
+  const defaultCheckboxRender = (checkboxProps: IDetailsCheckboxProps) => {
+    return <Check checked={checkboxProps.checked} />;
+  };
+
+  const detailsCheckboxProps: IDetailsCheckboxProps = {
+    checked: selected
+  };
+
+  return canSelect ? (
     <div
-      { ...buttonProps }
-      role='checkbox'
-      className={
-        css(className, 'ms-DetailsRow-check', DetailsRowCheckStyles.check, CheckStyles.checkHost, {
-          [`ms-DetailsRow-check--isDisabled ${DetailsRowCheckStyles.isDisabled}`]: !props.canSelect,
-          [`ms-DetailsRow-check--isHeader ${DetailsRowCheckStyles.isHeader}`]: props.isHeader
-        })
-      }
-      aria-checked={ isPressed }
-      data-selection-toggle={ true }
-      data-automationid='DetailsRowCheck'
+      {...buttonProps}
+      role="checkbox"
+      className={css(classNames.root, classNames.check, checkClassNames.checkHost)}
+      aria-checked={selected}
+      data-selection-toggle={true}
+      data-automationid="DetailsRowCheck"
     >
-      <Check
-        checked={ isPressed }
-      />
+      {onRenderDetailsCheckbox
+        ? onRenderDetailsCheckbox(detailsCheckboxProps, defaultCheckboxRender)
+        : defaultCheckboxRender(detailsCheckboxProps)}
     </div>
+  ) : (
+    <div {...buttonProps} className={css(classNames.root, classNames.check)} />
   );
 };
+
+export const DetailsRowCheck = styled<IDetailsRowCheckProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>(
+  DetailsRowCheckBase,
+  getStyles,
+  undefined,
+  { scope: 'DetailsRowCheck' }
+);

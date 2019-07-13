@@ -1,25 +1,11 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
-import {
-  css
-} from '../../Utilities';
-import * as stylesImport from './GroupSpacer.scss';
-const styles: any = stylesImport;
+import { IGroupSpacerProps } from './GroupSpacer.types';
 
-export interface IGroupSpacerProps {
-  count: number;
-}
+export const SPACER_WIDTH = 36;
 
-const SPACER_WIDTH = 36;
+export const GroupSpacer: React.FunctionComponent<IGroupSpacerProps> = props => {
+  const { count, indentWidth = SPACER_WIDTH } = props;
+  const width = count * indentWidth;
 
-export const GroupSpacer = (props: IGroupSpacerProps) =>
-  props.count > 0 && (
-    <span
-      className={ css(
-        'ms-GroupSpacer',
-        styles.root
-      ) }
-      style={ { width: props.count * SPACER_WIDTH } }
-    />
-  );
+  return count > 0 ? <span className={'ms-GroupSpacer'} style={{ display: 'inline-block', width }} /> : null;
+};

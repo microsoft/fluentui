@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { autobind, BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 import * as stylesImport from './Todo.scss';
@@ -42,13 +42,10 @@ export interface ITodoFormState {
  * Button: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/button
  */
 export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormState> {
-  private _textField: ITextField;
+  private _textField = React.createRef<ITextField>();
 
   constructor(props: ITodoFormProps) {
     super(props);
-
-    this._onSubmit = this._onSubmit.bind(this);
-    this._onBeforeTextFieldChange = this._onBeforeTextFieldChange.bind(this);
 
     this.state = {
       inputValue: '',
@@ -58,51 +55,52 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
 
   public render(): JSX.Element {
     return (
-      <form className={ styles.todoForm } onSubmit={ this._onSubmit }>
+      <form className={styles.todoForm} onSubmit={this._onSubmit}>
         <TextField
-          className={ styles.textField }
-          value={ this.state.inputValue }
-          componentRef={ this._resolveRef('_textField') }
-          placeholder={ strings.inputBoxPlaceholder }
-          onBeforeChange={ this._onBeforeTextFieldChange }
-          autoComplete='off'
-          errorMessage={ this.state.errorMessage }
+          className={styles.textField}
+          value={this.state.inputValue}
+          componentRef={this._textField}
+          placeholder={strings.inputBoxPlaceholder}
+          onChange={this._onTextFieldChange}
+          autoComplete="off"
+          errorMessage={this.state.errorMessage}
         />
-        <PrimaryButton
-          className={ styles.addButton }
-          type='submit'
-        >
-          { strings.addButton }
+        <PrimaryButton className={styles.addButton} type="submit">
+          {strings.addButton}
         </PrimaryButton>
       </form>
     );
   }
 
-  @autobind
-  private _onSubmit(event: React.FormEvent<HTMLElement>): void {
+  private _onSubmit = (event: React.FormEvent<HTMLElement>): void => {
     event.preventDefault();
 
-    if (!this._getTitleErrorMessage(this._textField.value || '')) {
+    const { current: textField } = this._textField;
+    if (!textField) {
+      return;
+    }
+
+    if (!this._getTitleErrorMessage(textField.value || '')) {
       this.setState({
         inputValue: ''
       } as ITodoFormState);
 
-      this.props.onSubmit(this._textField.value || '');
+      this.props.onSubmit(textField.value || '');
     } else {
       this.setState({
         errorMessage: this._getTitleErrorMessage(this.state.inputValue)
       } as ITodoFormState);
 
-      this._textField.focus();
+      textField.focus();
     }
-  }
+  };
 
-  private _onBeforeTextFieldChange(newValue: string): void {
+  private _onTextFieldChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string | undefined): void => {
     this.setState({
-      inputValue: newValue,
+      inputValue: newValue || '',
       errorMessage: ''
     });
-  }
+  };
 
   private _getTitleErrorMessage(title: string): string {
     if (title.trim() === '') {

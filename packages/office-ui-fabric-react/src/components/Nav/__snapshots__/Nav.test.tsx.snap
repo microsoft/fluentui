@@ -2,9 +2,11 @@
 
 exports[`Nav renders Nav correctly 1`] = `
 <div
-  aria-describedby={undefined}
-  aria-labelledby={undefined}
-  className="ms-FocusZone"
+  className=
+      ms-FocusZone
+      &:focus {
+        outline: none;
+      }
   data-focuszone-id="FocusZone0"
   onFocus={[Function]}
   onKeyDown={[Function]}
@@ -12,11 +14,25 @@ exports[`Nav renders Nav correctly 1`] = `
   role="presentation"
 >
   <nav
-    className="ms-Nav"
+    className=
+        ms-Nav
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          -webkit-overflow-scrolling: touch;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow-y: auto;
+          user-select: none;
+        }
     role="navigation"
   >
     <div
-      className="ms-Nav-group is-expanded undefined"
+      className=
+          ms-Nav-group
+          is-expanded
+
     >
       <div
         className=
@@ -24,77 +40,118 @@ exports[`Nav renders Nav correctly 1`] = `
             {
               animation-duration: 0.367s;
               animation-fill-mode: both;
-              animation-name: css-0,css-13;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-20px,0);}to{transform:translate3d(0,0,0);};
               animation-timing-function: cubic-bezier(.1,.9,.2,1);
+              display: block;
+              margin-bottom: 40px;
             }
       >
         <ul
-          aria-label={undefined}
-          className=""
+          className=
+              ms-Nav-navItems
+              {
+                list-style-type: none;
+                padding-bottom: 0px;
+                padding-left: 0px;
+                padding-right: 0px;
+                padding-top: 0px;
+              }
           role="list"
         >
           <li
-            className=""
+            className=
+                ms-Nav-navItem
+                {
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                }
             role="listitem"
           >
             <div
-              className="ms-Nav-compositeLink"
+              className=
+                  ms-Nav-compositeLink
+                  {
+                    background-color: #ffffff;
+                    color: #323130;
+                    display: block;
+                    position: relative;
+                  }
               name=""
             >
               <button
-                aria-describedby={null}
-                aria-label={undefined}
-                aria-labelledby={null}
-                aria-pressed={undefined}
                 className=
                     ms-Button
                     ms-Button--action
                     ms-Button--command
-                    ms-Nav-linkButton
+                    ms-Nav-link
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: 1px solid transparent;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
-                      display: inline-block;
-                      font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      display: block;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
-                      height: 40px;
+                      height: 36px;
+                      line-height: 36px;
                       outline: transparent;
+                      overflow: hidden;
                       padding-bottom: 0;
-                      padding-left: 3px;
+                      padding-left: 27px;
                       padding-right: 20px;
                       padding-top: 0;
                       position: relative;
                       text-align: center;
                       text-decoration: none;
+                      text-overflow: ellipsis;
                       user-select: none;
                       vertical-align: top;
+                      white-space: nowrap;
+                      width: 100%;
                     }
                     &::-moz-focus-inner {
                       border: 0;
                     }
-                    .ms-Fabric.is-focusVisible &:focus:after {
+                    .ms-Fabric--isFocusVisible &:focus:after {
                       border: 1px solid #ffffff;
-                      bottom: 0px;
+                      bottom: 1px;
                       content: "";
-                      left: 0px;
-                      outline: 1px solid #666666;
+                      left: 1px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 1px;
+                      top: 1px;
                       z-index: 1;
                     }
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: -2px;
+                      left: -2px;
+                      outline-color: ButtonText;
+                      right: -2px;
+                      top: -2px;
+                    }
+                    &:active > * {
+                      left: 0px;
+                      position: relative;
+                      top: 0px;
+                    }
                     &:hover {
-                      color: #0078d7;
+                      color: #0078d4;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover {
+                      border-color: Highlight;
+                      color: Highlight;
                     }
                     &:hover .ms-Button-icon {
-                      color: #0078d7;
+                      color: #0078d4;
                     }
                     &:active {
                       color: #000000;
@@ -102,10 +159,23 @@ exports[`Nav renders Nav correctly 1`] = `
                     &:active .ms-Button-icon {
                       color: #004578;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: transparent;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:focus {
+                      border-color: WindowText;
+                    }
+                    .ms-Nav-compositeLink:hover & {
+                      background-color: #faf9f8;
+                      color: #323130;
+                    }
                 data-is-focusable={true}
-                disabled={undefined}
                 onClick={[Function]}
-                rel={undefined}
+                onKeyDown={[Function]}
+                onKeyPress={[Function]}
+                onKeyUp={[Function]}
+                onMouseDown={[Function]}
+                onMouseUp={[Function]}
                 title=""
                 type="button"
               >
@@ -120,32 +190,19 @@ exports[`Nav renders Nav correctly 1`] = `
                         justify-content: flex-start;
                       }
                 >
-                  <i
-                    aria-hidden={true}
-                    aria-label={undefined}
+                  <div
                     className=
-                        ms-Icon-placeHolder
-                        ms-Button-icon
+                        ms-Nav-linkText
                         {
-                          width: 1em;
-                        }
-                        {
-                          color: #106ebe;
-                          flex-shrink: 0;
-                          font-size: 16px;
-                          height: 16px;
-                          line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          text-align: center;
+                          overflow: hidden;
+                          text-align: left;
+                          text-overflow: ellipsis;
                           vertical-align: middle;
                         }
-                    role="presentation"
-                  />
-                  <div
-                    className="ms-Nav-linkText"
                   >
                     
                   </div>

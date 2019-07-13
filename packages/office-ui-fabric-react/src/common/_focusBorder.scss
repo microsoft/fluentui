@@ -14,7 +14,7 @@
 
 @mixin focus($onFocus: true) {
   @if $onFocus {
-    :global(.ms-Fabric.is-focusVisible) &:focus {
+    :global(.ms-Fabric--isFocusVisible) &:focus {
       @content;
     }
   }
@@ -57,7 +57,7 @@
 
 // When focus is set using the keyboard, apply an outline.
 @mixin focus-outline {
-  :global(.ms-Fabric.is-focusVisible) &:focus {
+  :global(.ms-Fabric--isFocusVisible) &:focus {
     outline: 1px solid $focusBorderColor;
   }
 }
