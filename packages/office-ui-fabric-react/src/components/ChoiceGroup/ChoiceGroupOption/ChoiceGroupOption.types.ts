@@ -69,6 +69,8 @@ export interface IChoiceGroupOptionStyleProps {
   checked?: boolean;
   disabled?: boolean;
   imageIsLarge?: boolean;
+  imageHeight?: number;
+  imageWidth?: number;
   focused?: boolean;
 }
 
