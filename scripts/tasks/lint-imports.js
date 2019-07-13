@@ -1,5 +1,6 @@
 // @ts-check
 
+const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
 const importStatementGlobalRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/gm;
 const importStatementRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/;
 const pkgNameRegex = /^(@[a-z\-]+\/[a-z\-]+)\/|([a-z\-]+)\//;
@@ -18,20 +19,17 @@ const pkgNameRegex = /^(@[a-z\-]+\/[a-z\-]+)\/|([a-z\-]+)\//;
  * }} ImportErrors
  */
 
-module.exports = function() {
+function lintImports() {
   const path = require('path');
   const fs = require('fs');
   const chalk = require('chalk').default;
-  const findConfig = require('../find-config');
   const findGitRoot = require('../monorepo/findGitRoot');
   const { readRushJson } = require('../read-config');
 
   const gitRoot = findGitRoot();
   const sourcePath = path.resolve(process.cwd(), 'src');
   const nodeModulesPath = path.resolve(gitRoot, 'node_modules');
-  const rushJsonPath = findConfig('rush.json');
-  const rootFolder = path.dirname(rushJsonPath);
-  const rushJson = readRushJson();
+  const rootFolder = gitRoot;
 
   const allowRelativeImportExamples = [
     // These were added to reduce the initial ramifications of disabling relative imports across all examples,
@@ -108,15 +106,11 @@ module.exports = function() {
     'TilesList.Media.Example.tsx'
   ];
 
-  if (!rushJson) {
-    throw new Error('lint-imports: unable to find rush.json');
-  }
+  const packagesInfo = getAllPackageInfo();
 
-  const rushPackages = rushJson.projects.map(project => project.packageName);
-
-  const currentRushPackage = rushJson.projects.find(project => {
-    return path.normalize(project.projectFolder) === path.normalize(path.relative(rootFolder, process.cwd()));
-  }).packageName;
+  const currentMonorepoPackage = Object.keys(packagesInfo).find(name => {
+    return path.normalize(packagesInfo[name].packagePath) === path.normalize(path.relative(rootFolder, process.cwd()));
+  });
 
   return lintSource();
 
@@ -250,9 +244,9 @@ module.exports = function() {
       const pkgName = pkgNameMatch[1] || pkgNameMatch[2];
 
       // we don't evaluate imports of non rush packages
-      if (rushPackages.indexOf(pkgName) === -1) return;
+      if (Object.keys(packagesInfo).find(name => name === pkgName)) return;
 
-      if (pkgName === currentRushPackage) {
+      if (pkgName === currentMonorepoPackage) {
         const importPathWithoutPkgName = importPath.substring(pkgName.length + 1 /* 1 is for '/' */);
         fullImportPath = _evaluateImportPath(process.cwd(), './' + importPathWithoutPkgName);
       } else {
@@ -326,4 +320,10 @@ module.exports = function() {
 
     return pathNotFile.count > 0 || pathRelative.count > 0;
   }
-};
+}
+
+module.exports = lintImports;
+
+if (require.main === module) {
+  lintImports();
+}
