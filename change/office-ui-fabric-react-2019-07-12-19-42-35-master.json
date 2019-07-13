@@ -1,0 +1,8 @@
+{
+  "comment": "Rating: ensure rating gets updated even when it has value of 0.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "vibraga@microsoft.com",
+  "commit": "9bc839d808db40145e4881b92490618c47e5a8fe",
+  "date": "2019-07-13T02:42:35.543Z"
+}

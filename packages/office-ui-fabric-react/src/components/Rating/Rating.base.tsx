@@ -193,10 +193,10 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _getRating(): number {
-    if (this.props.rating) {
+    if (this.props.rating !== undefined) {
       return this._getClampedRating(this.props.rating);
     }
-    if (this.state.rating) {
+    if (this.state.rating !== undefined && this.state.rating !== null) {
       return this._getClampedRating(this.state.rating);
     }
     return 0;
