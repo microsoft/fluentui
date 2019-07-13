@@ -35,9 +35,8 @@ if (!newVersion || !newDep) {
 }
 
 for (const name of Object.keys(allPackages)) {
-  const package = allPackages[name];
-  let packagePath = path.resolve(__dirname, '..', package.packagePath, 'package.json');
-  const packageJson = package.packageJson;
+  const info = allPackages[name];
+  const packageJson = info.packageJson;
 
   console.log(`Updating ${chalk.magenta(name)} from ${chalk.grey(packageJson.version)} to ${chalk.green(newVersion)}.`);
 
@@ -56,5 +55,5 @@ for (const name of Object.keys(allPackages)) {
   updateDependencies(packageJson.dependencies);
   updateDependencies(packageJson.devDependencies);
 
-  writeConfig(packagePath, packageJson);
+  writeConfig(info.packagePath, packageJson);
 }
