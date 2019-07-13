@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "beachball": "^1.9.2",
-    "husky": "^3.0.0",
+    "git-hooks": "^1.1.10",
     "lerna": "^3.15.0",
     "lint-staged": "^7.0.5"
   },
@@ -71,8 +71,5 @@
       "packages/*",
       "scripts"
     ]
-  },
-  "husky": {
-    "precommit": "lint-staged"
   }
 }
