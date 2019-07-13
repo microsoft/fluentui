@@ -1,9 +1,11 @@
 // @ts-check
 
 const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
+const findConfig = require('../find-config');
+const { readConfig } = require('../read-config');
 const importStatementGlobalRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/gm;
 const importStatementRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/;
-const pkgNameRegex = /^(@[a-z\-]+\/[a-z\-]+)\/|([a-z\-]+)\//;
+const pkgNameRegex = /^(@[a-z\-]+\/[a-z\-]+)|([a-z\-]+)/;
 
 /**
  * @typedef {{
@@ -107,9 +109,8 @@ function lintImports() {
 
   const packagesInfo = getAllPackageInfo();
 
-  const currentMonorepoPackage = Object.keys(packagesInfo).find(name => {
-    return path.normalize(packagesInfo[name].packagePath) === path.normalize(path.relative(rootFolder, process.cwd()));
-  });
+  const currentPackageJson = readConfig(findConfig('package.json'));
+  const currentMonorepoPackage = currentPackageJson.name;
 
   return lintSource();
 
@@ -228,6 +229,7 @@ function lintImports() {
   function _evaluateImport(filePath, importPath, importErrors, allowRelativeImports) {
     let fullImportPath;
     let pathIsRelative = false;
+
     if (importPath.indexOf('.') === 0) {
       // import is a file path. is this a file?
       fullImportPath = _evaluateImportPath(path.dirname(filePath), importPath);
@@ -242,8 +244,10 @@ function lintImports() {
 
       const pkgName = pkgNameMatch[1] || pkgNameMatch[2];
 
-      // we don't evaluate imports of non rush packages
-      if (Object.keys(packagesInfo).find(name => name === pkgName)) return;
+      // we don't evaluate imports of non monorepo packages
+      if (Object.keys(packagesInfo).find(name => name !== pkgName)) {
+        return;
+      }
 
       if (pkgName === currentMonorepoPackage) {
         const importPathWithoutPkgName = importPath.substring(pkgName.length + 1 /* 1 is for '/' */);

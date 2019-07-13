@@ -47,9 +47,5 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
   "editor.formatOnSave": true,
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "tslint.autoFixOnSave": false,
-  "files.associations": {
-    "rush.json": "jsonc",
-    "**/common/config/rush/*.json": "jsonc"
-  }
+  "tslint.autoFixOnSave": false
 }

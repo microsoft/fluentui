@@ -17,8 +17,8 @@ steps:
     displayName: 'Install Node.js'
 
   - script: |
-      node common/scripts/install-run-rush.js install --bypass-policy
-    displayName: rush install
+      yarn
+    displayName: yarn
 
   - script: |
       npm run checkchange

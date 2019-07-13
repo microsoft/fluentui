@@ -6,7 +6,7 @@ const fs = require('fs');
 const glob = require('glob');
 
 const generateOnly = process.argv.indexOf('-g') > -1;
-const rushCmd = `"${process.execPath}" "${path.resolve(__dirname, '../../common/scripts/install-run-rush.js')}"`;
+const bumpCmd = `yarn beachball bump`;
 
 function run(cmd) {
   return execSync(cmd, { cwd: path.resolve(__dirname, '../..') }).toString();
@@ -25,7 +25,7 @@ module.exports = function generateVersionFiles() {
     }
 
     // Do a dry-run on all packages
-    run(`${rushCmd} publish -a`);
+    run(`${bumpCmd}`);
     status = run('git status --porcelain=1');
     status.split(/\n/g).forEach(line => {
       if (line) {
@@ -35,7 +35,7 @@ module.exports = function generateVersionFiles() {
           // untracked files at this point would be things like CHANGELOG files for a brand new project
           untracked.push(parts[1]);
         } else {
-          // modified files include package.json, generated CHANGELOG files from rush publish dry run
+          // modified files include package.json, generated CHANGELOG files from beachball
           modified.push('"' + parts[1] + '"');
         }
       }

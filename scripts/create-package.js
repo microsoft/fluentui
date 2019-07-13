@@ -36,7 +36,7 @@ if (fs.existsSync(packagePath)) {
 }
 
 // @uifabric/experiments package.json contents
-// (current dependency versions are copied from here to avoid causing issues with rush check)
+// (current dependency versions are copied from here to avoid causing issues with yarn checkchange)
 const experimentsPackagePath = path.join(process.cwd(), 'packages/experiments/package.json');
 if (!fs.existsSync(experimentsPackagePath)) {
   console.error('Could not find @uifabric/experiments package.json (needed to get current dependency versions)');
@@ -126,7 +126,6 @@ function readFileCallback(error, data, templateName, outputFilePath, callback, r
   };
   if (templateName.toLowerCase().indexOf('packagejson') !== -1) {
     // The package.json template has an additional tag for the version of each dependency.
-    // This is preferable over hardcoding dependency versions to prevent errors with rush check.
     // As of writing, @uifabric/experiments also depends on all the packages the template needs,
     // so we grab the current versions from there and add tags for them in the view object.
     const templatePackageJson = JSON.parse(data);
