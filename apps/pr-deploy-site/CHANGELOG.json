@@ -1,16 +1,21 @@
 {
-  "name": "@uifabric/foundation-scenarios",
+  "name": "@uifabric/pr-deploy-site",
   "entries": [
     {
       "date": "Sat, 13 Jul 2019 22:20:41 GMT",
-      "tag": "@uifabric/foundation-scenarios_v0.102.0",
-      "version": "0.102.0",
+      "tag": "@uifabric/pr-deploy-site_v7.0.0",
+      "version": "7.0.0",
       "comments": {
         "none": [
           {
             "comment": "Use resolves for all package paths",
             "author": "kchau@microsoft.com",
             "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          },
+          {
+            "comment": "adding build cache",
+            "author": "kchau@microsoft.com",
+            "commit": "babf367fa3a2f05d6689b9ea0a0cdb765b282380"
           }
         ]
       }

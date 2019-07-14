@@ -1,8 +1,0 @@
-{
-  "comment": "Tooltip: Rendering hidden hoverable area to allow for interaction with Tooltips.",
-  "type": "minor",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "2de5fa384ad6bbbd8cd8d5bf0d4a5b1d1952275f",
-  "date": "2019-07-11T19:14:25.058Z"
-}

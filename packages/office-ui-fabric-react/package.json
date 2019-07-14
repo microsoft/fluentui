@@ -1,6 +1,6 @@
 {
   "name": "office-ui-fabric-react",
-  "version": "7.9.0",
+  "version": "7.10.0",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -73,7 +73,7 @@
     "@uifabric/icons": "^7.1.0",
     "@uifabric/merge-styles": "^7.1.1",
     "@uifabric/set-version": "^7.0.0",
-    "@uifabric/styling": "^7.1.1",
+    "@uifabric/styling": "^7.2.0",
     "@uifabric/utilities": "^7.0.6",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"

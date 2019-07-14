@@ -2,6 +2,25 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/date-time_v7.1.4",
+      "version": "7.1.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          },
+          {
+            "comment": "adding build cache",
+            "author": "kchau@microsoft.com",
+            "commit": "babf367fa3a2f05d6689b9ea0a0cdb765b282380"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 04 Jul 2019 12:29:39 GMT",
       "tag": "@uifabric/date-time_v7.1.4",
       "version": "7.1.4",

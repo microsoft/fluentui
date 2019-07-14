@@ -1,8 +1,0 @@
-{
-  "comment": "Use resolves for all package paths",
-  "type": "none",
-  "packageName": "@uifabric/styling",
-  "email": "kchau@microsoft.com",
-  "commit": "f8887fbdac76e651b0161edf624014a33741cf86",
-  "date": "2019-07-12T04:46:09.395Z"
-}

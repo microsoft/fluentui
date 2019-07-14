@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.5",
+      "version": "7.2.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jul 2019 17:34:38 GMT",
       "tag": "@uifabric/fabric-website_v7.2.5",
       "version": "7.2.5",
