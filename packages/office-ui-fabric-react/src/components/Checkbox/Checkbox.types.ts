@@ -122,6 +122,11 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * Optional keytip for this checkbox
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Optional indeterminate state for this checkbox
+   */
+  indeterminate?: boolean;
 }
 
 /**
@@ -133,6 +138,7 @@ export interface ICheckboxStyleProps {
   disabled?: boolean;
   checked?: boolean;
   reversed?: boolean;
+  indeterminate?: boolean;
   isUsingCustomLabelRender: boolean;
 }
 

@@ -7,6 +7,10 @@ import { KeytipData } from '../../KeytipData';
 export interface ICheckboxState {
   /** Is true when Uncontrolled control is checked. */
   isChecked?: boolean;
+  isIndeterminate?: boolean;
+  /** Since indeterminant props are always truthy,
+   * isIndeterCheck state acts as a secondary logic gate to turn off indeterminate state after the first click */
+  isIndeterCheck?: boolean;
 }
 
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
@@ -21,7 +25,14 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   private _classNames: { [key in keyof ICheckboxStyles]: string };
 
   public static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState {
-    if (props.checked !== undefined) {
+    if (props.indeterminate && state.isIndeterCheck === false) {
+      return {
+        ...state,
+        isIndeterminate: true,
+        isIndeterCheck: true,
+        isChecked: false
+      };
+    } else if (props.checked !== undefined) {
       return {
         ...state,
         isChecked: !!props.checked
@@ -48,7 +59,9 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
 
     this._id = this.props.id || getId('checkbox-');
     this.state = {
-      isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked)
+      isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked),
+      isIndeterminate: false,
+      isIndeterCheck: false
     };
   }
 
@@ -84,6 +97,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       theme: theme!,
       className,
       disabled,
+      indeterminate: this.state.isIndeterminate,
       checked: isChecked,
       reversed: isReversed,
       isUsingCustomLabelRender: onRenderLabel !== this._onRenderLabel
@@ -155,11 +169,18 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
 
   private _onChange = (ev: React.FormEvent<HTMLElement>): void => {
     const { disabled, onChange } = this.props;
-    const { isChecked } = this.state;
+    const { isChecked, isIndeterminate } = this.state;
 
     if (!disabled) {
-      if (onChange) {
-        onChange(ev, !isChecked);
+      if (isIndeterminate) {
+        if (onChange) {
+          onChange(ev, !isChecked);
+        }
+        this.setState({ isIndeterminate: false });
+      } else {
+        if (onChange) {
+          onChange(ev, !isChecked);
+        }
       }
 
       if (this.props.checked === undefined) {
