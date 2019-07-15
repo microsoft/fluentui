@@ -451,10 +451,24 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
+                    }
+                    &:after {
+                      border-radius: 2px;
+                      box-sizing: border-box;
+                      content: "";
+                      height: 0px;
+                      left: 10px;
+                      position: absolute;
+                      right: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-width, border, border-color;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 0px;
                     }
               >
                 <i
@@ -590,10 +604,24 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
+                    }
+                    &:after {
+                      border-radius: 2px;
+                      box-sizing: border-box;
+                      content: "";
+                      height: 0px;
+                      left: 10px;
+                      position: absolute;
+                      right: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-width, border, border-color;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 0px;
                     }
               >
                 <i
@@ -729,10 +757,24 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
+                    }
+                    &:after {
+                      border-radius: 2px;
+                      box-sizing: border-box;
+                      content: "";
+                      height: 0px;
+                      left: 10px;
+                      position: absolute;
+                      right: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-width, border, border-color;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 0px;
                     }
               >
                 <i
@@ -867,10 +909,24 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
+                    }
+                    &:after {
+                      border-radius: 2px;
+                      box-sizing: border-box;
+                      content: "";
+                      height: 0px;
+                      left: 10px;
+                      position: absolute;
+                      right: 0px;
+                      transition-duration: 200ms;
+                      transition-property: border-width, border, border-color;
+                      transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                      width: 0px;
                     }
               >
                 <i
@@ -1184,6 +1240,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 background: #005a9e;
                 border-color: #005a9e;
               }
+              & .ms-Checkbox-checkbox {
+                background: #0078d4;
+                border-color: #0078d4;
+              }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
                 background: Window;
                 border-color: Highlight;
@@ -1272,10 +1332,24 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     justify-content: center;
                     margin-right: 4px;
                     overflow: hidden;
+                    position: relative;
                     transition-duration: 200ms;
                     transition-property: background, border, border-color;
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
+                  }
+                  &:after {
+                    border-radius: 2px;
+                    box-sizing: border-box;
+                    content: "";
+                    height: 0px;
+                    left: 10px;
+                    position: absolute;
+                    right: 0px;
+                    transition-duration: 200ms;
+                    transition-property: border-width, border, border-color;
+                    transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                    width: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background: Highlight;
@@ -2225,10 +2299,24 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         justify-content: center;
                         margin-right: 4px;
                         overflow: hidden;
+                        position: relative;
                         transition-duration: 200ms;
                         transition-property: background, border, border-color;
                         transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                         width: 20px;
+                      }
+                      &:after {
+                        border-radius: 2px;
+                        box-sizing: border-box;
+                        content: "";
+                        height: 0px;
+                        left: 10px;
+                        position: absolute;
+                        right: 0px;
+                        transition-duration: 200ms;
+                        transition-property: border-width, border, border-color;
+                        transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                        width: 0px;
                       }
                 >
                   <i
