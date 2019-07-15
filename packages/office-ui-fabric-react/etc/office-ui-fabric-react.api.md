@@ -2122,6 +2122,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     componentRef?: IRefObject<ICheckbox>;
     defaultChecked?: boolean;
     disabled?: boolean;
+    indeterminate?: boolean;
     inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
     keytipProps?: IKeytipProps;
     label?: string;
@@ -2134,6 +2135,9 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 // @public (undocumented)
 export interface ICheckboxState {
     isChecked?: boolean;
+    isIndeterCheck?: boolean;
+    // (undocumented)
+    isIndeterminate?: boolean;
 }
 
 // @public (undocumented)
@@ -2144,6 +2148,8 @@ export interface ICheckboxStyleProps {
     className?: string;
     // (undocumented)
     disabled?: boolean;
+    // (undocumented)
+    indeterminate?: boolean;
     // (undocumented)
     isUsingCustomLabelRender: boolean;
     // (undocumented)
