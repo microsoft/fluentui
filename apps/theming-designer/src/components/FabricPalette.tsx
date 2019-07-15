@@ -45,8 +45,11 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
           <thead>
             <tr>
               <Text as="th"> Primary</Text>
+              <Text as="th"> Hex</Text>
               <Text as="th"> Foreground</Text>
+              <Text as="th"> Hex</Text>
               <Text as="th"> Background</Text>
+              <Text as="th"> Hex</Text>
             </tr>
           </thead>
           <tbody>
@@ -60,6 +63,9 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
                 />
               </Text>
               <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.themeDarker]].color.str}</div>
+              </Text>
+              <Text as="td">
                 <FabricSlotWidget
                   themeRules={this.props.themeRules!}
                   slot={FabricSlots.black}
@@ -68,12 +74,18 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
                 />
               </Text>
               <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.black]].color.str}</div>
+              </Text>
+              <Text as="td">
                 <FabricSlotWidget
                   themeRules={this.props.themeRules!}
                   slot={FabricSlots.neutralTertiaryAlt}
                   onFabricPaletteColorChange={this.props.onFabricPaletteColorChange}
                   directionalHint={DirectionalHint.topCenter}
                 />
+              </Text>
+              <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.neutralTertiaryAlt]].color.str}</div>
               </Text>
             </tr>
             <tr>
@@ -86,6 +98,9 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
                 />
               </Text>
               <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.themeDark]].color.str}</div>
+              </Text>
+              <Text as="td">
                 <FabricSlotWidget
                   themeRules={this.props.themeRules!}
                   slot={FabricSlots.neutralDark}
@@ -94,12 +109,18 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
                 />
               </Text>
               <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.neutralDark]].color.str}</div>
+              </Text>
+              <Text as="td">
                 <FabricSlotWidget
                   themeRules={this.props.themeRules!}
                   slot={FabricSlots.neutralQuaternary}
                   onFabricPaletteColorChange={this.props.onFabricPaletteColorChange}
                   directionalHint={DirectionalHint.leftCenter}
                 />
+              </Text>
+              <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.neutralQuaternary]].color.str}</div>
               </Text>
             </tr>
             <tr>
@@ -112,6 +133,9 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
                 />
               </Text>
               <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.themeDarkAlt]].color.str}</div>
+              </Text>
+              <Text as="td">
                 <FabricSlotWidget
                   themeRules={this.props.themeRules!}
                   slot={FabricSlots.neutralPrimary}
@@ -120,12 +144,18 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
                 />
               </Text>
               <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.neutralPrimary]].color.str}</div>
+              </Text>
+              <Text as="td">
                 <FabricSlotWidget
                   themeRules={this.props.themeRules!}
                   slot={FabricSlots.neutralQuaternaryAlt}
                   onFabricPaletteColorChange={this.props.onFabricPaletteColorChange}
                   directionalHint={DirectionalHint.leftCenter}
                 />
+              </Text>
+              <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.neutralQuaternaryAlt]].color.str}</div>
               </Text>
             </tr>
             <tr>
@@ -138,6 +168,9 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
                 />
               </Text>
               <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.themePrimary]].color.str}</div>
+              </Text>
+              <Text as="td">
                 <FabricSlotWidget
                   themeRules={this.props.themeRules!}
                   slot={FabricSlots.neutralPrimaryAlt}
@@ -146,12 +179,18 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
                 />
               </Text>
               <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.neutralPrimaryAlt]].color.str}</div>
+              </Text>
+              <Text as="td">
                 <FabricSlotWidget
                   themeRules={this.props.themeRules!}
                   slot={FabricSlots.neutralLight}
                   onFabricPaletteColorChange={this.props.onFabricPaletteColorChange}
                   directionalHint={DirectionalHint.leftCenter}
                 />
+              </Text>
+              <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.neutralLight]].color.str}</div>
               </Text>
             </tr>
             <tr>
@@ -164,6 +203,9 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
                 />
               </Text>
               <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.themeSecondary]].color.str}</div>
+              </Text>
+              <Text as="td">
                 <FabricSlotWidget
                   themeRules={this.props.themeRules!}
                   slot={FabricSlots.neutralSecondary}
@@ -172,12 +214,18 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
                 />
               </Text>
               <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.neutralSecondary]].color.str}</div>
+              </Text>
+              <Text as="td">
                 <FabricSlotWidget
                   themeRules={this.props.themeRules!}
                   slot={FabricSlots.neutralLighter}
                   onFabricPaletteColorChange={this.props.onFabricPaletteColorChange}
                   directionalHint={DirectionalHint.leftCenter}
                 />
+              </Text>
+              <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.neutralLighter]].color.str}</div>
               </Text>
             </tr>
             <tr>
@@ -190,6 +238,9 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
                 />
               </Text>
               <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.themeTertiary]].color.str}</div>
+              </Text>
+              <Text as="td">
                 <FabricSlotWidget
                   themeRules={this.props.themeRules!}
                   slot={FabricSlots.neutralTertiary}
@@ -198,12 +249,18 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
                 />
               </Text>
               <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.neutralTertiary]].color.str}</div>
+              </Text>
+              <Text as="td">
                 <FabricSlotWidget
                   themeRules={this.props.themeRules!}
                   slot={FabricSlots.neutralLighterAlt}
                   onFabricPaletteColorChange={this.props.onFabricPaletteColorChange}
                   directionalHint={DirectionalHint.leftCenter}
                 />
+              </Text>
+              <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.neutralLighterAlt]].color.str}</div>
               </Text>
             </tr>
             <tr>
@@ -216,12 +273,18 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
                 />
               </Text>
               <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.themeLight]].color.str}</div>
+              </Text>
+              <Text as="td">
                 <FabricSlotWidget
                   themeRules={this.props.themeRules!}
                   slot={FabricSlots.white}
                   onFabricPaletteColorChange={this.props.onFabricPaletteColorChange}
                   directionalHint={DirectionalHint.leftCenter}
                 />
+              </Text>
+              <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.white]].color.str}</div>
               </Text>
             </tr>
             <tr>
@@ -233,6 +296,9 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
                   directionalHint={DirectionalHint.leftCenter}
                 />
               </Text>
+              <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.themeLighter]].color.str}</div>
+              </Text>
             </tr>
             <tr>
               <Text as="td">
@@ -242,6 +308,9 @@ export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
                   onFabricPaletteColorChange={this.props.onFabricPaletteColorChange}
                   directionalHint={DirectionalHint.leftCenter}
                 />
+              </Text>
+              <Text as="td">
+                <div>{this.props.themeRules[FabricSlots[FabricSlots.themeLighterAlt]].color.str}</div>
               </Text>
             </tr>
           </tbody>

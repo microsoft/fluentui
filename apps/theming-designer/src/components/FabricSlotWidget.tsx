@@ -5,6 +5,7 @@ import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { Text } from 'office-ui-fabric-react';
 
 export interface IFabricSlotWidgetProps {
   slot: FabricSlots;
@@ -53,30 +54,27 @@ export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IF
     const { isColorPickerVisible, colorPickerElement, slotRule } = this.state;
     return (
       <div key={slotRule.name} className={slotClassName}>
-        <Stack horizontal gap={20}>
-          <Stack horizontal gap={5}>
-            <div
-              key={slotRule.name}
-              className={fabricPaletteColorBox}
-              style={{ backgroundColor: slotRule.color!.str }}
-              onClick={this._onColorBoxClick}
-            />
-            {isColorPickerVisible && (
-              <div>
-                <Callout
-                  gapSpace={10}
-                  target={colorPickerElement}
-                  directionalHint={this.props.directionalHint}
-                  setInitialFocus={true}
-                  onDismiss={this._onCalloutDismiss}
-                >
-                  <ColorPicker color={slotRule.color} onChange={this._onColorPickerChange} alphaSliderHidden={true} />
-                </Callout>
-              </div>
-            )}
-            <div>{slotRule.name}</div>
-          </Stack>
-          <div>{slotRule.color!.str}</div>
+        <Stack horizontal gap={5}>
+          <div
+            key={slotRule.name}
+            className={fabricPaletteColorBox}
+            style={{ backgroundColor: slotRule.color!.str }}
+            onClick={this._onColorBoxClick}
+          />
+          {isColorPickerVisible && (
+            <div>
+              <Callout
+                gapSpace={10}
+                target={colorPickerElement}
+                directionalHint={this.props.directionalHint}
+                setInitialFocus={true}
+                onDismiss={this._onCalloutDismiss}
+              >
+                <ColorPicker color={slotRule.color} onChange={this._onColorPickerChange} alphaSliderHidden={true} />
+              </Callout>
+            </div>
+          )}
+          <div>{slotRule.name}</div>
         </Stack>
       </div>
     );
