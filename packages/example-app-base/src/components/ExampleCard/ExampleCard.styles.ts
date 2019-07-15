@@ -99,6 +99,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
     header: [
       {
         borderBottom: `1px solid ${theme.palette.neutralTertiary}`,
+        display: 'flex',
         overflow: 'hidden',
         position: 'relative'
       },
@@ -110,15 +111,19 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
     title: [
       theme.fonts.medium,
       {
-        marginBottom: 10,
-        display: 'inline-block'
+        display: 'inline-flex',
+        flexGrow: 1,
+        flexShrink: 1,
+        marginBottom: 10
       },
       globalClassNames.title
     ],
     toggleButtons: [
       theme.fonts.medium,
       {
+        alignSelf: 'flex-end',
         display: 'flex',
+        flexShrink: 0,
         float: 'right'
       },
       globalClassNames.toggleButtons
