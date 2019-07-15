@@ -1,6 +1,8 @@
 let { createConfig, resolveMergeStylesSerializer } = require('@uifabric/build/jest/jest-resources');
 let path = require('path');
 
+const mergestylesSerializerPath = path.dirname(require.resolve('@uifabric/jest-serializer-merge-styles/package.json'));
+
 const config = createConfig({
   setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
 

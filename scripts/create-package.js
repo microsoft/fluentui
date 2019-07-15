@@ -4,7 +4,6 @@ const mustache = require('mustache');
 const argv = require('yargs').argv;
 const fs = require('fs');
 const exec = require('./exec-sync');
-const { readRushJson } = require('./read-config');
 const writeConfig = require('./write-config');
 const path = require('path');
 
@@ -36,15 +35,8 @@ if (fs.existsSync(packagePath)) {
   process.exit(1);
 }
 
-// rush.json contents
-const rushJson = readRushJson();
-if (!rushJson) {
-  console.error('Could not find rush.json.');
-  process.exit(1);
-}
-
 // @uifabric/experiments package.json contents
-// (current dependency versions are copied from here to avoid causing issues with rush check)
+// (current dependency versions are copied from here to avoid causing issues with yarn checkchange)
 const experimentsPackagePath = path.join(process.cwd(), 'packages/experiments/package.json');
 if (!fs.existsSync(experimentsPackagePath)) {
   console.error('Could not find @uifabric/experiments package.json (needed to get current dependency versions)');
@@ -81,13 +73,9 @@ const steps = [
 ];
 
 // Strings
-const successCreatedPackage = `New package ${newPackageName} successfully created.`;
-const npmGenerateMessage = 'Running "npm generate" (to bypass this step, use --no-generate arg)';
-const rushPackagePresent = `Package ${newPackageNpmName} is already present in rush.json`;
 const errorUnableToCreatePackage = `Error creating package directory ${packagePath}`;
 const errorUnableToOpenTemplate = templateFile => `Unable to open mustache template ${templateFile} for component`;
 const errorUnableToWriteFile = step => `Unable to write ${step} file`;
-const errorUnableToUpdateRush = `Could not add an entry for ${newPackageNpmName} to list of projects in rush.json. You must add this entry manually.`;
 
 // Functions
 function handleError(error, errorPrependMessage) {
@@ -101,7 +89,6 @@ function handleError(error, errorPrependMessage) {
 
 function performStep(stepIndex) {
   if (stepIndex >= steps.length) {
-    updateRush();
     return;
   }
 
@@ -139,7 +126,6 @@ function readFileCallback(error, data, templateName, outputFilePath, callback, r
   };
   if (templateName.toLowerCase().indexOf('packagejson') !== -1) {
     // The package.json template has an additional tag for the version of each dependency.
-    // This is preferable over hardcoding dependency versions to prevent errors with rush check.
     // As of writing, @uifabric/experiments also depends on all the packages the template needs,
     // so we grab the current versions from there and add tags for them in the view object.
     const templatePackageJson = JSON.parse(data);
@@ -170,34 +156,6 @@ function writeFileCallback(error, writeFileError, callback) {
 
   if (callback) {
     callback();
-  }
-}
-
-function updateRush() {
-  // don't add the same package to rush.json twice
-  if (rushJson.projects.some(project => project.packageName === newPackageNpmName)) {
-    console.error(rushPackagePresent);
-    postRushUpdate();
-    return;
-  }
-
-  rushJson.projects.push({
-    packageName: newPackageNpmName,
-    projectFolder: 'packages/' + newPackageName,
-    shouldPublish: false
-  });
-  if (!writeConfig('rush.json', rushJson)) {
-    console.error(errorUnableToUpdateRush);
-  }
-  postRushUpdate();
-}
-
-function postRushUpdate() {
-  console.log(successCreatedPackage);
-
-  if (generate) {
-    console.log(npmGenerateMessage);
-    exec('npm run generate');
   }
 }
 
