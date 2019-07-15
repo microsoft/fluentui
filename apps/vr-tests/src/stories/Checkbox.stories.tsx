@@ -23,6 +23,15 @@ storiesOf('Checkbox', module)
   .addStory('Checked disabled', () => (
     <Checkbox label="Checked disabled checkbox" checked disabled />
   ))
+  .addStory('Checked indeterminate', () => (
+    <Checkbox label="Checked disabled checkbox" checked indeterminate />
+  ))
+  .addStory('Unchecked indeterminate', () => (
+    <Checkbox label="Unchecked disabled checkbox" indeterminate />
+  ))
+  .addStory('Checked indeterminate disabled', () => (
+    <Checkbox label="Checked disabled checkbox" checked disabled indeterminate />
+  ))
   .addStory('End', () => <Checkbox label="Checkbox end" boxSide="end" />, { rtl: true })
   .addStory('Multi-line Checkbox', () => (
     <Checkbox
