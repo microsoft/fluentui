@@ -116,6 +116,7 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         ariaLabelForSelectionColumn="Toggle selection"
         selectionMode={SelectionMode.none}
+        disableSelectionZone={true}
         onRenderRow={onRenderRow}
         groupProps={{
           showEmptyGroups: true

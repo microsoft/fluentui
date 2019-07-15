@@ -34,10 +34,6 @@ const tableClassName = mergeStyles({
 });
 
 export class FabricPalette extends React.Component<IFabricPaletteProps, {}> {
-  constructor(props: IFabricPaletteProps) {
-    super(props);
-  }
-
   public render() {
     return (
       <div className={MainPanelInnerContent}>

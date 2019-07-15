@@ -17,7 +17,6 @@ export interface IFabricSlotWidgetProps {
 export interface IFabricSlotWidgetState {
   isColorPickerVisible: boolean;
   colorPickerElement: HTMLElement | null;
-  slotRule: IThemeSlotRule | null;
 }
 
 const slotClassName = mergeStyles({
@@ -42,8 +41,7 @@ export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IF
 
     this.state = {
       isColorPickerVisible: false,
-      colorPickerElement: null,
-      slotRule: props.themeRules![FabricSlots[this.props.slot]]
+      colorPickerElement: null
     };
 
     this._onColorBoxClick = this._onColorBoxClick.bind(this);
@@ -51,7 +49,8 @@ export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IF
   }
 
   public render() {
-    const { isColorPickerVisible, colorPickerElement, slotRule } = this.state;
+    const { isColorPickerVisible, colorPickerElement } = this.state;
+    const slotRule = this.props.themeRules![FabricSlots[this.props.slot]];
     return (
       <div key={slotRule.name} className={slotClassName}>
         <Stack horizontal gap={5}>

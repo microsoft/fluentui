@@ -16,7 +16,7 @@ export interface IThemeSlotsProps {
 export const ThemeSlots: React.StatelessComponent<IThemeSlotsProps> = (props: IThemeSlotsProps) => {
   return (
     <div className={MainPanelInnerContent}>
-      <TitleText>Theme Slots</TitleText>
+      <TitleText>Theme slots</TitleText>
       <Pivot>
         <PivotItem headerText="Fabric palette slots">
           <FabricPalette themeRules={props.themeRules} onFabricPaletteColorChange={props.onFabricPaletteColorChange} />
