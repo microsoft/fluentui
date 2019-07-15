@@ -4,12 +4,13 @@ import { IColor } from 'office-ui-fabric-react/lib/Color';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 
 export interface IFabricSlotWidgetProps {
   slot: FabricSlots;
   onFabricPaletteColorChange: (newColor: IColor | undefined, fabricSlot: FabricSlots) => void;
   themeRules?: IThemeRules;
+  directionalHint?: DirectionalHint;
 }
 
 export interface IFabricSlotWidgetState {
@@ -62,7 +63,13 @@ export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IF
             />
             {isColorPickerVisible && (
               <div>
-                <Callout gapSpace={10} target={colorPickerElement} setInitialFocus={true} onDismiss={this._onCalloutDismiss}>
+                <Callout
+                  gapSpace={10}
+                  target={colorPickerElement}
+                  directionalHint={this.props.directionalHint}
+                  setInitialFocus={true}
+                  onDismiss={this._onCalloutDismiss}
+                >
                   <ColorPicker color={slotRule.color} onChange={this._onColorPickerChange} alphaSliderHidden={true} />
                 </Callout>
               </div>
