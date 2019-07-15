@@ -14,11 +14,11 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style",
-    "start-test": "npx just-scripts jest-watch"
+    "build": "just-scripts build",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
     "@types/jest": "23.0.0",

@@ -4,8 +4,8 @@
   "description": "A site to be deployed as a static site to view what is built during PR",
   "main": "index.js",
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts"
+    "build": "just-scripts build",
+    "just": "just-scripts"
   },
   "license": "MIT",
   "dependencies": {

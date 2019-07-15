@@ -6,9 +6,9 @@
   "typings": "lib/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts",
-    "clean": "npx just-scripts clean"
+    "build": "just-scripts build",
+    "just": "just-scripts",
+    "clean": "just-scripts clean"
   },
   "devDependencies": {
     "@types/node": "^8.10.29",

@@ -4,13 +4,13 @@
   "version": "7.0.0",
   "private": true,
   "scripts": {
-    "build": "npx just-scripts build",
+    "build": "just-scripts build",
     "clean": "",
-    "code-style": "npx just-scripts code-style",
+    "code-style": "just-scripts code-style",
     "screener": "screener-storybook --conf screener.config.js",
     "screener:local": "screener-storybook --conf screener.local.config.js --debug",
     "start": "start-storybook --port 5555",
-    "just": "npx just-scripts"
+    "just": "just-scripts"
   },
   "devDependencies": {
     "@storybook/addon-options": "=3.2.3",
