@@ -65,13 +65,7 @@ export class ChicletXsmallFooterExample extends React.Component<{}, IChicletXsma
 
     return (
       <Stack tokens={{ childrenGap: 16 }}>
-        <Chiclet
-          url={TEST_URL}
-          title="Quarterly Results"
-          image="https://www.prestigeanimalhospital.com/sites/default/files/styles/large/adaptive-image/public/dachshund-dog-breed-info.jpg?itok=NMM11ZuZ"
-          size={ChicletSize.xSmall}
-          footer={footer}
-        />
+        <Chiclet url={TEST_URL} title="Quarterly Results" size={ChicletSize.xSmall} footer={footer} />
       </Stack>
     );
   }
