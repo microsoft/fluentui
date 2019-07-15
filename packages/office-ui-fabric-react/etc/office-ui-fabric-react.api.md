@@ -7844,7 +7844,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
 }
 
 // @public
-export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> implements IList {
+export class List<T = any> extends React.Component<IListProps<T>, IListState<T>> implements IList {
     constructor(props: IListProps<T>);
     // (undocumented)
     componentDidMount(): void;
@@ -8702,7 +8702,7 @@ export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
 export const ShimmeredDetailsList: React.StatelessComponent<IShimmeredDetailsListProps>;
 
 // @public (undocumented)
-export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsListProps, {}> {
+export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsListProps, {}> {
     constructor(props: IShimmeredDetailsListProps);
     // (undocumented)
     render(): JSX.Element;
