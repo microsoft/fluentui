@@ -318,8 +318,7 @@ exports[`Panel renders Panel correctly 1`] = `
               className=
                   ms-Panel-header
                   {
-                    flex-grow: 1;
-                    flex-shrink: 0;
+                    flex-grow: 0;
                     margin-bottom: 14px;
                     margin-left: 0;
                     margin-right: 0;
