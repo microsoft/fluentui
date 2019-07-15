@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 11 Jul 2019 12:23:15 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jul 2019 12:21:21 GMT and should not be manually modified.
+
+## 6.195.2
+Mon, 15 Jul 2019 12:21:21 GMT
+
+### Patches
+
+- FocusZone: Add setFocusAlignment public method to Force horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on the last horizontal motion.
 
 ## 6.195.1
 Thu, 11 Jul 2019 12:23:15 GMT
