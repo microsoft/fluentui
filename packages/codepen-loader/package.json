@@ -11,8 +11,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build --commonjs",
+    "build": "just-scripts build",
     "clean": "just-scripts clean",
+    "rebuild": "npm run clean && npm run build",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "start-test": "just-scripts jest-watch",
