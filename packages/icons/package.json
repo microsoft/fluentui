@@ -14,10 +14,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style"
+    "build": "just-scripts build",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style"
   },
   "devDependencies": {
     "@uifabric/prettier-rules": "^7.0.2",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.0",
-    "@uifabric/styling": "^7.1.1",
+    "@uifabric/styling": "^7.2.0",
     "tslib": "^1.7.1"
   }
 }

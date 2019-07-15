@@ -2,6 +2,27 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/react-cards_v0.107.4",
+      "version": "0.107.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Card: Importing from office-ui-fabric-react directly instead of from office-ui-fabric-react/lib/...",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a0ff67e977da9e8ee92d55506efe5ce4e766a44d"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.107.3",
       "tag": "@uifabric/react-cards_v0.107.3",
       "date": "Mon, 01 Jul 2019 18:51:42 GMT",

@@ -200,7 +200,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       calloutProps,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer,
-      onRenderCaretDown = this._onRenderCaretDown
+      onRenderCaretDown = this._onRenderCaretDown,
+      onRenderLabel = this._onRenderLabel
     } = props;
     const { isOpen, selectedIndices, hasFocus, calloutRenderEdge } = this.state;
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
@@ -246,23 +247,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       calloutRenderEdge: calloutRenderEdge
     });
 
-    const labelStyles = this._classNames.subComponentStyles
-      ? (this._classNames.subComponentStyles.label as IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>)
-      : undefined;
     return (
       <div className={this._classNames.root}>
-        {label && (
-          <Label
-            className={this._classNames.label}
-            id={id + '-label'}
-            htmlFor={id}
-            required={required}
-            styles={labelStyles}
-            disabled={disabled}
-          >
-            {label}
-          </Label>
-        )}
+        {onRenderLabel(this.props, this._onRenderLabel)}
         <KeytipData keytipProps={keytipProps} disabled={disabled}>
           {(keytipAttributes: any): JSX.Element => (
             <div
@@ -627,7 +614,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         }}
         label={item.text}
         title={item.title ? item.title : item.text}
-        onRenderLabel={this._onRenderLabel.bind(this, item)}
+        onRenderLabel={this._onRenderItemLabel.bind(this, item)}
         className={itemClassName}
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
@@ -642,7 +629,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   };
 
   /** Render custom label for drop down item */
-  private _onRenderLabel = (item: IDropdownOption): JSX.Element | null => {
+  private _onRenderItemLabel = (item: IDropdownOption): JSX.Element | null => {
     const { onRenderOption = this._onRenderOption } = this.props;
     return onRenderOption(item, this._onRenderOption);
   };
@@ -1077,5 +1064,27 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     }
 
     return disabled;
+  };
+
+  private _onRenderLabel = (props: IDropdownProps): JSX.Element | null => {
+    const id = this._id;
+    const { label, required, disabled } = props;
+
+    const labelStyles = this._classNames.subComponentStyles
+      ? (this._classNames.subComponentStyles.label as IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>)
+      : undefined;
+
+    return label ? (
+      <Label
+        className={this._classNames.label}
+        id={id + '-label'}
+        htmlFor={id}
+        required={required}
+        styles={labelStyles}
+        disabled={disabled}
+      >
+        {label}
+      </Label>
+    ) : null;
   };
 }

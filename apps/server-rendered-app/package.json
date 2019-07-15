@@ -7,10 +7,10 @@
     "lib/version.js"
   ],
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style",
+    "build": "just-scripts build",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
     "start": "node ./server/index.js"
   },
   "devDependencies": {
@@ -30,7 +30,7 @@
     "@uifabric/merge-styles": "^7.1.1",
     "@uifabric/set-version": "^7.0.0",
     "es6-promise": "^4.1.0",
-    "office-ui-fabric-react": "^7.8.2",
+    "office-ui-fabric-react": "^7.10.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
