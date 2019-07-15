@@ -41,7 +41,7 @@ exports[`Dialog renders chiclet with title, icon, onClick, and url 1`] = `
 
         {
           align-items: center;
-          background-color: #edebe9;
+          background-color: #eaeaea;
           display: flex;
           height: 122px;
           padding-bottom: 2px;
@@ -55,7 +55,7 @@ exports[`Dialog renders chiclet with title, icon, onClick, and url 1`] = `
       className=
 
           {
-            background-color: #edebe9;
+            background-color: #eaeaea;
             height: 80px;
             width: 190px;
           }

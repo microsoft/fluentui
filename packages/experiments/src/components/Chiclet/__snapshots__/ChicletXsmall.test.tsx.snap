@@ -13,7 +13,7 @@ exports[`Chiclet renders chiclet with title, icon, onClick, and url 1`] = `
         display: flex;
         flex-wrap: wrap;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 10px;
+        font-size: 11px;
         font-weight: 400;
         margin-bottom: 0px;
         margin-left: 0px;
@@ -46,7 +46,7 @@ exports[`Chiclet renders chiclet with title, icon, onClick, and url 1`] = `
       className=
           ms-ChicletXsmall-icon
           {
-            background-color: #edebe9;
+            background-color: #eaeaea;
             height: 29px;
             padding-bottom: 17.44px;
             padding-left: 17.44px;
@@ -72,7 +72,7 @@ exports[`Chiclet renders chiclet with title, icon, onClick, and url 1`] = `
       className=
           ms-ChicletXsmall-title
           {
-            color: #323130;
+            color: #333333;
             font-size: 14px;
             height: 37px;
             letter-spacing: normal;
@@ -114,7 +114,7 @@ exports[`Chiclet renders chiclet with title, preview, onClick, and url 1`] = `
         display: flex;
         flex-wrap: wrap;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 10px;
+        font-size: 11px;
         font-weight: 400;
         margin-bottom: 0px;
         margin-left: 0px;
@@ -193,7 +193,7 @@ exports[`Chiclet renders chiclet with title, preview, onClick, and url 1`] = `
       className=
           ms-ChicletXsmall-title
           {
-            color: #323130;
+            color: #333333;
             font-size: 14px;
             height: 37px;
             letter-spacing: normal;
@@ -235,7 +235,7 @@ exports[`Chiclet renders the correct icon from a file extension 1`] = `
         display: flex;
         flex-wrap: wrap;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 10px;
+        font-size: 11px;
         font-weight: 400;
         margin-bottom: 0px;
         margin-left: 0px;
@@ -268,7 +268,7 @@ exports[`Chiclet renders the correct icon from a file extension 1`] = `
       className=
           ms-ChicletXsmall-icon
           {
-            background-color: #edebe9;
+            background-color: #eaeaea;
             height: 29px;
             padding-bottom: 17.44px;
             padding-left: 17.44px;
@@ -294,7 +294,7 @@ exports[`Chiclet renders the correct icon from a file extension 1`] = `
       className=
           ms-ChicletXsmall-title
           {
-            color: #323130;
+            color: #333333;
             font-size: 14px;
             height: 37px;
             letter-spacing: normal;
