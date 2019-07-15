@@ -4,12 +4,12 @@
   "private": true,
   "description": "App for test that use real browser.",
   "scripts": {
-    "build": "npx just-scripts build",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style",
-    "jest-dom": "npx just-scripts ",
-    "just": "npx just-scripts",
-    "start": "npx just-scripts dev"
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "jest-dom": "just-scripts ",
+    "just": "just-scripts",
+    "start": "just-scripts dev"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",

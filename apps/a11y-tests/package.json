@@ -4,11 +4,11 @@
   "private": true,
   "description": "A11y Tests for Office UI Fabric React",
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts",
-    "test": "npx just-scripts jest",
-    "code-style": "npx just-scripts code-style",
-    "update-snapshots": "npx just-scripts jest -u"
+    "build": "just-scripts build",
+    "just": "just-scripts",
+    "test": "just-scripts jest",
+    "code-style": "just-scripts code-style",
+    "update-snapshots": "just-scripts jest -u"
   },
   "dependencies": {
     "@uifabric/fabric-website-resources": "^7.2.0",

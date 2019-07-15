@@ -14,10 +14,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style"
+    "build": "just-scripts build",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style"
   },
   "devDependencies": {
     "@types/react": "16.8.11",

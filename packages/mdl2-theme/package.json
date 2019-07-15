@@ -14,10 +14,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style",
-    "just": "npx just-scripts"
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts"
   },
   "devDependencies": {
     "@uifabric/build": "^7.0.0",
