@@ -1,0 +1,8 @@
+{
+  "comment": "Allowing example title to show completely even when it goes past one line.",
+  "type": "patch",
+  "packageName": "@uifabric/example-app-base",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "d4f8fb07f1043d4ecbc2200623e7ac8befd8aa82",
+  "date": "2019-07-12T21:39:54.972Z"
+}
