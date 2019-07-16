@@ -479,7 +479,7 @@ export enum ButtonType {
 }
 
 // @public (undocumented)
-export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> implements ICalendar {
+export class Calendar extends React.Component<ICalendarProps, ICalendarState> implements ICalendar {
     constructor(props: ICalendarProps);
     // (undocumented)
     componentDidUpdate(): void;
@@ -569,7 +569,7 @@ export const Coachmark: React.StatelessComponent<ICoachmarkProps>;
 export const COACHMARK_ATTRIBUTE_NAME = "data-coachmarkid";
 
 // @public (undocumented)
-export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
+export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
     constructor(props: ICoachmarkProps);
     // (undocumented)
     componentDidMount(): void;
@@ -577,6 +577,8 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
     componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void;
     // (undocumented)
     componentWillReceiveProps(newProps: ICoachmarkProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: Partial<ICoachmarkProps>;
     // (undocumented)
@@ -790,7 +792,7 @@ export function cssColor(color?: string): IRGB | undefined;
 export const DatePicker: React.StatelessComponent<IDatePickerProps>;
 
 // @public (undocumented)
-export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
+export class DatePickerBase extends React.Component<IDatePickerProps, IDatePickerState> implements IDatePicker {
     constructor(props: IDatePickerProps);
     // (undocumented)
     componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void;
