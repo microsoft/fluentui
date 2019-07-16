@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   initializeComponentRef,
-  EventGroup,
+  on,
   Async,
   IRectangle,
   css,
@@ -95,7 +95,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
 
   private _root = React.createRef<HTMLDivElement>();
   private _surface = React.createRef<HTMLDivElement>();
-  private _events: EventGroup;
+  private _disposables: Function[];
   private _async: Async;
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
@@ -143,7 +143,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     };
 
     this._async = new Async(this);
-    this._events = new EventGroup(this);
+    this._disposables = [];
     this._estimatedPageHeight = 0;
     this._totalEstimates = 0;
     this._requiredWindowsAhead = 0;
@@ -304,14 +304,18 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     this._measureVersion++;
     this._scrollElement = findScrollableParent(this._root.current) as HTMLElement;
 
-    this._events.on(window, 'resize', this._onAsyncResize);
+    this._disposables.push(on(window, 'resize', this._onAsyncResize));
     if (this._root.current) {
-      this._events.on(this._root.current, 'focus', this._onFocus, true);
+      this._disposables.push(on(this._root.current, 'focus', this._onFocus, true));
     }
     if (this._scrollElement) {
-      this._events.on(this._scrollElement, 'scroll', this._onScroll);
-      this._events.on(this._scrollElement, 'scroll', this._onAsyncScroll);
+      this._disposables.push(on(this._scrollElement, 'scroll', this._onScroll));
+      this._disposables.push(on(this._scrollElement, 'scroll', this._onAsyncScroll));
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._disposables.forEach(dispose => dispose());
   }
 
   public componentWillReceiveProps(newProps: IListProps<T>): void {
