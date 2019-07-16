@@ -1,0 +1,475 @@
+diff --git a/scripts/find-config.js b/scripts/find-config.js
+index 2be1a0f83..6453da289 100644
+--- a/scripts/find-config.js
++++ b/scripts/find-config.js
+@@ -1,6 +1,6 @@
+ /**
+  * Find a config file path, starting in the current directory and looking up to the Git root directory
+- * (which contains rush.json) or the drive root.
++ * (which contain .git) or the drive root.
+  * @param {string} configName - Config file name. If an absolute path, will be returned unmodified.
+  * @returns The config file's path, or undefined if not found
+  */
+diff --git a/scripts/just-scripts.js b/scripts/just-scripts.js
+old mode 100644
+new mode 100755
+diff --git a/scripts/just.config.js b/scripts/just.config.js
+index ddc274259..b5a752cbf 100644
+--- a/scripts/just.config.js
++++ b/scripts/just.config.js
+@@ -63,9 +63,6 @@ module.exports = function preset() {
+   task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
+   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
+ 
+-  // Special case build for the serializer, which needs to absolutely run typescript and jest serially.
+-  task('build-jest-serializer-merge-styles', series('ts', 'jest'));
+-
+   task('build:node-lib', series('clean', 'copy', series(condition('validate', () => !argv().min), 'ts:commonjs-only'))).cached();
+ 
+   task(
+diff --git a/scripts/monorepo/findRepoDeps.js b/scripts/monorepo/findRepoDeps.js
+index ca009312e..b863be514 100644
+--- a/scripts/monorepo/findRepoDeps.js
++++ b/scripts/monorepo/findRepoDeps.js
+@@ -1,28 +1,6 @@
+-const { spawnSync } = require('child_process');
+ const { readConfig } = require('../read-config');
+ const path = require('path');
+-const findGitRoot = require('./findGitRoot');
+-
+-function getAllPackageInfo() {
+-  const gitRoot = findGitRoot();
+-  const results = spawnSync('git', ['ls-tree', '-r', '--name-only', '--full-tree', 'HEAD']);
+-  const packageInfo = {};
+-
+-  results.stdout
+-    .toString()
+-    .split('\n')
+-    .map(line => line.trim())
+-    .filter(line => line.endsWith('package.json'))
+-    .forEach(packageJsonFile => {
+-      const packageJson = readConfig(path.join(gitRoot, packageJsonFile));
+-      packageInfo[packageJson.name] = {
+-        packagePath: path.dirname(packageJsonFile),
+-        packageJson
+-      };
+-    });
+-
+-  return packageInfo;
+-}
++const getAllPackageInfo = require('./getAllPackageInfo');
+ 
+ function getDeps(packageJson) {
+   if (!packageJson) {
+diff --git a/scripts/monorepo/getAllPackageInfo.js b/scripts/monorepo/getAllPackageInfo.js
+new file mode 100644
+index 000000000..ecc35e65d
+--- /dev/null
++++ b/scripts/monorepo/getAllPackageInfo.js
+@@ -0,0 +1,25 @@
++const { spawnSync } = require('child_process');
++const { readConfig } = require('../read-config');
++const path = require('path');
++const findGitRoot = require('./findGitRoot');
++
++module.exports = function getAllPackageInfo() {
++  const gitRoot = findGitRoot();
++  const results = spawnSync('git', ['ls-tree', '-r', '--name-only', '--full-tree', 'HEAD']);
++  const packageInfo = {};
++
++  results.stdout
++    .toString()
++    .split('\n')
++    .map(line => line.trim())
++    .filter(line => line.endsWith('package.json'))
++    .forEach(packageJsonFile => {
++      const packageJson = readConfig(path.join(gitRoot, packageJsonFile));
++      packageInfo[packageJson.name] = {
++        packagePath: path.dirname(packageJsonFile),
++        packageJson
++      };
++    });
++
++  return packageInfo;
++};
+diff --git a/scripts/prettier.js b/scripts/prettier.js
+index 3ad359567..f2fd303c3 100644
+--- a/scripts/prettier.js
++++ b/scripts/prettier.js
+@@ -3,9 +3,8 @@ const { execSync } = require('child_process');
+ const path = require('path');
+ const { EOL, cpus } = require('os');
+ const { runPrettierMultiProject, runPrettierForProject, prettierExtensions } = require('./prettier/prettier-helpers');
+-const { readRushJson } = require('./read-config');
+ const { default: PQueue } = require('p-queue');
+-
++const getAllPackageInfo = require('./monorepo/getAllPackageInfo');
+ const runOnAllFiles = require('yargs').argv.all;
+ 
+ /**
+@@ -26,8 +25,8 @@ console.log(`Running prettier on ${runOnAllFiles ? 'changed' : 'all'} files (on
+ 
+ const queue = new PQueue({ concurrency: numberOfCpus });
+ if (runOnAllFiles) {
+-  const rushJson = readRushJson();
+-  queue.addAll(rushJson.projects.map(project => () => runPrettierForProject(project.projectFolder)));
++  const allPackages = getAllPackageInfo();
++  queue.addAll(Object.keys(allPackages).map(name => () => runPrettierForProject(allPackages[name].packagePath)));
+ } else {
+   const prettierIntroductionCommit = 'HEAD~1';
+   const passedDiffTarget = process.argv.slice(2).length ? process.argv.slice(2)[0] : prettierIntroductionCommit;
+diff --git a/scripts/prettier/prettier-helpers.js b/scripts/prettier/prettier-helpers.js
+index 2a992c814..9d97de421 100644
+--- a/scripts/prettier/prettier-helpers.js
++++ b/scripts/prettier/prettier-helpers.js
+@@ -3,7 +3,6 @@ const path = require('path');
+ const fs = require('fs');
+ const execSync = require('../exec-sync');
+ const exec = require('../exec');
+-const { readRushJson } = require('../read-config');
+ 
+ const prettierConfig = 'prettier.config.js';
+ const prettierIgnore = '.prettierignore';
+@@ -11,6 +10,7 @@ const repoRoot = path.resolve(__dirname, '..', '..');
+ const prettierRulesConfig = path.join(repoRoot, 'packages', 'prettier-rules', prettierConfig);
+ const prettierIgnorePath = path.join(repoRoot, prettierIgnore);
+ const prettierBin = require.resolve('prettier/bin-prettier.js');
++const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
+ /** Array of absolute project paths with prettier configs */
+ let projectsWithPrettierConfig;
+ 
+@@ -22,11 +22,12 @@ function init() {
+   }
+ 
+   projectsWithPrettierConfig = [];
+-  const rushJson = readRushJson();
+-  if (rushJson) {
++  const projects = getAllPackageInfo();
++  if (projects) {
+     // Check the root of each project for a custom prettier config, and save the project paths that have one
+-    for (const project of rushJson.projects) {
+-      const packagePath = path.resolve(repoRoot, project.projectFolder);
++    for (const project of Object.keys(projects)) {
++      const info = projects[project];
++      const packagePath = path.resolve(repoRoot, info.packagePath);
+       if (fs.existsSync(path.join(packagePath, prettierConfig))) {
+         projectsWithPrettierConfig.push(packagePath);
+       }
+diff --git a/scripts/publish-beta.js b/scripts/publish-beta.js
+index e6656effb..8e0c9e74c 100644
+--- a/scripts/publish-beta.js
++++ b/scripts/publish-beta.js
+@@ -3,19 +3,20 @@
+ const path = require('path');
+ const chalk = require('chalk').default;
+ const execSync = require('./exec-sync');
+-const { readRushJson } = require('./read-config');
+-const process = require('process');
++const getAllPackageInfo = require('./monorepo/getAllPackageInfo');
+ 
+-const rushJson = readRushJson();
+-if (!rushJson) {
+-  console.error('Could not find rush.json');
+-  process.exit(1);
+-}
++const allPackages = getAllPackageInfo();
++const packages = [];
+ 
+-const packages = rushJson.projects.filter(project => project.shouldPublish || project.versionPolicyName);
++Object.keys(allPackages).forEach(name => {
++  const info = allPackages[name];
++  if (info.packageJson.private !== true) {
++    packages.push(info);
++  }
++});
+ 
+ for (const package of packages) {
+-  const packagePath = path.resolve(__dirname, '..', package.projectFolder);
++  const packagePath = path.resolve(__dirname, '..', package.packagePath);
+ 
+   console.log(`Publishing ${chalk.magenta(package.packageName)} in ${packagePath}`);
+   execSync('npm publish --tag next', undefined, packagePath);
+diff --git a/scripts/tasks/generate-version-files.js b/scripts/tasks/generate-version-files.js
+index ba8fdd2f2..78af58ee4 100644
+--- a/scripts/tasks/generate-version-files.js
++++ b/scripts/tasks/generate-version-files.js
+@@ -6,7 +6,7 @@ const fs = require('fs');
+ const glob = require('glob');
+ 
+ const generateOnly = process.argv.indexOf('-g') > -1;
+-const rushCmd = `"${process.execPath}" "${path.resolve(__dirname, '../../common/scripts/install-run-rush.js')}"`;
++const bumpCmd = `yarn beachball bump`;
+ 
+ function run(cmd) {
+   return execSync(cmd, { cwd: path.resolve(__dirname, '../..') }).toString();
+@@ -25,7 +25,7 @@ module.exports = function generateVersionFiles() {
+     }
+ 
+     // Do a dry-run on all packages
+-    run(`${rushCmd} publish -a`);
++    run(`${bumpCmd}`);
+     status = run('git status --porcelain=1');
+     status.split(/\n/g).forEach(line => {
+       if (line) {
+@@ -35,7 +35,7 @@ module.exports = function generateVersionFiles() {
+           // untracked files at this point would be things like CHANGELOG files for a brand new project
+           untracked.push(parts[1]);
+         } else {
+-          // modified files include package.json, generated CHANGELOG files from rush publish dry run
++          // modified files include package.json, generated CHANGELOG files from beachball
+           modified.push('"' + parts[1] + '"');
+         }
+       }
+diff --git a/scripts/tasks/lint-imports.js b/scripts/tasks/lint-imports.js
+index f48eb4000..827b11690 100644
+--- a/scripts/tasks/lint-imports.js
++++ b/scripts/tasks/lint-imports.js
+@@ -1,8 +1,11 @@
+ // @ts-check
+ 
++const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
++const findConfig = require('../find-config');
++const { readConfig } = require('../read-config');
+ const importStatementGlobalRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/gm;
+ const importStatementRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/;
+-const pkgNameRegex = /^(@[a-z\-]+\/[a-z\-]+)\/|([a-z\-]+)\//;
++const pkgNameRegex = /^(@[a-z\-]+\/[a-z\-]+)|([a-z\-]+)/;
+ 
+ /**
+  * @typedef {{
+@@ -18,18 +21,17 @@ const pkgNameRegex = /^(@[a-z\-]+\/[a-z\-]+)\/|([a-z\-]+)\//;
+  * }} ImportErrors
+  */
+ 
+-module.exports = function() {
++function lintImports() {
+   const path = require('path');
+   const fs = require('fs');
+   const chalk = require('chalk').default;
+-  const findConfig = require('../find-config');
+-  const { readRushJson } = require('../read-config');
++  const findGitRoot = require('../monorepo/findGitRoot');
+ 
++  const gitRoot = findGitRoot();
+   const sourcePath = path.resolve(process.cwd(), 'src');
+-  const nodeModulesPath = path.resolve(process.cwd(), 'node_modules');
+-  const rushJsonPath = findConfig('rush.json');
+-  const rootFolder = path.dirname(rushJsonPath);
+-  const rushJson = readRushJson();
++  const cwdNodeModulesPath = path.resolve(process.cwd(), 'node_modules');
++  const nodeModulesPath = path.resolve(gitRoot, 'node_modules');
++  const rootFolder = gitRoot;
+ 
+   const allowRelativeImportExamples = [
+     // These were added to reduce the initial ramifications of disabling relative imports across all examples,
+@@ -106,15 +108,10 @@ module.exports = function() {
+     'TilesList.Media.Example.tsx'
+   ];
+ 
+-  if (!rushJson) {
+-    throw new Error('lint-imports: unable to find rush.json');
+-  }
+-
+-  const rushPackages = rushJson.projects.map(project => project.packageName);
++  const packagesInfo = getAllPackageInfo();
+ 
+-  const currentRushPackage = rushJson.projects.find(project => {
+-    return path.normalize(project.projectFolder) === path.normalize(path.relative(rootFolder, process.cwd()));
+-  }).packageName;
++  const currentPackageJson = readConfig(findConfig('package.json'));
++  const currentMonorepoPackage = currentPackageJson.name;
+ 
+   return lintSource();
+ 
+@@ -233,10 +230,14 @@ module.exports = function() {
+   function _evaluateImport(filePath, importPath, importErrors, allowRelativeImports) {
+     let fullImportPath;
+     let pathIsRelative = false;
++
+     if (importPath.indexOf('.') === 0) {
+       // import is a file path. is this a file?
+       fullImportPath = _evaluateImportPath(path.dirname(filePath), importPath);
+       pathIsRelative = true;
++    } else if (packagesInfo[importPath]) {
++      // skip the full import of packages within the monorepo
++      return;
+     } else {
+       const pkgNameMatch = importPath.match(pkgNameRegex);
+       if (pkgNameMatch === null) {
+@@ -247,14 +248,17 @@ module.exports = function() {
+ 
+       const pkgName = pkgNameMatch[1] || pkgNameMatch[2];
+ 
+-      // we don't evaluate imports of non rush packages
+-      if (rushPackages.indexOf(pkgName) === -1) return;
++      // we don't evaluate imports of non monorepo packages
++      if (!Object.keys(packagesInfo).includes(pkgName)) {
++        return;
++      }
+ 
+-      if (pkgName === currentRushPackage) {
++      if (pkgName === currentMonorepoPackage) {
+         const importPathWithoutPkgName = importPath.substring(pkgName.length + 1 /* 1 is for '/' */);
+         fullImportPath = _evaluateImportPath(process.cwd(), './' + importPathWithoutPkgName);
+       } else {
+-        fullImportPath = _evaluateImportPath(nodeModulesPath, './' + importPath);
++        fullImportPath =
++          _evaluateImportPath(nodeModulesPath, './' + importPath) || _evaluateImportPath(cwdNodeModulesPath, './' + importPath);
+       }
+     }
+ 
+@@ -298,6 +302,7 @@ module.exports = function() {
+    */
+   function reportFilePathErrors(pathNotFile, pathRelative) {
+     if (pathNotFile.count) {
++      debugger;
+       console.error(
+         `${chalk.red('ERROR')}: ${
+           pathNotFile.count
+@@ -323,4 +328,6 @@ module.exports = function() {
+ 
+     return pathNotFile.count > 0 || pathRelative.count > 0;
+   }
+-};
++}
++
++module.exports = lintImports;
+diff --git a/scripts/templates/create-package/EmptyJestConfig.mustache b/scripts/templates/create-package/EmptyJestConfig.mustache
+index 508fafd97..9ecc20b87 100644
+--- a/scripts/templates/create-package/EmptyJestConfig.mustache
++++ b/scripts/templates/create-package/EmptyJestConfig.mustache
+@@ -1,6 +1,8 @@
+ let { createConfig, resolveMergeStylesSerializer } = require('@uifabric/build/jest/jest-resources');
+ let path = require('path');
+ 
++const mergestylesSerializerPath = path.dirname(require.resolve('@uifabric/jest-serializer-merge-styles/package.json'));
++
+ const config = createConfig({
+   setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
+ 
+diff --git a/scripts/update-package-versions.js b/scripts/update-package-versions.js
+index 5e53a4cc2..da83013a0 100644
+--- a/scripts/update-package-versions.js
++++ b/scripts/update-package-versions.js
+@@ -11,10 +11,10 @@
+ const path = require('path');
+ const process = require('process');
+ const chalk = require('chalk').default;
+-const { readRushJson, readConfig } = require('./read-config');
++const getAllPackageInfo = require('./monorepo/getAllPackageInfo');
+ const writeConfig = require('./write-config');
+ 
+-const rushJson = readRushJson();
++const allPackages = getAllPackageInfo();
+ const newVersion = process.argv[2];
+ const newDep = process.argv[3] || newVersion;
+ 
+@@ -22,9 +22,9 @@ function help() {
+   console.error('update-package-versions.js - usage:\n  node update-package-versions.js "6.0.0-alpha" ">=6.0.0-0 <7.0.0-0"');
+ }
+ 
+-if (!rushJson) {
++if (!allPackages) {
+   help();
+-  console.error('Could not find rush.json');
++  console.error('Could not find get all the packages');
+   process.exit(1);
+ }
+ 
+@@ -34,17 +34,17 @@ if (!newVersion || !newDep) {
+   process.exit(1);
+ }
+ 
+-for (const package of rushJson.projects) {
+-  let packagePath = path.resolve(__dirname, '..', package.projectFolder, 'package.json');
+-  let packageJson = readConfig(packagePath);
++for (const name of Object.keys(allPackages)) {
++  const info = allPackages[name];
++  const packageJson = info.packageJson;
+ 
+-  console.log(`Updating ${chalk.magenta(package.packageName)} from ${chalk.grey(packageJson.version)} to ${chalk.green(newVersion)}.`);
++  console.log(`Updating ${chalk.magenta(name)} from ${chalk.grey(packageJson.version)} to ${chalk.green(newVersion)}.`);
+ 
+   packageJson.version = newVersion;
+ 
+   function updateDependencies(deps) {
+     for (const dependency in deps) {
+-      if (rushJson.projects.find(pkg => pkg.packageName === dependency)) {
++      if (Object.keys(allPackages).find(name => name === dependency)) {
+         console.log(`  Updating deps ${dependency}`);
+ 
+         deps[dependency] = newDep;
+@@ -55,5 +55,5 @@ for (const package of rushJson.projects) {
+   updateDependencies(packageJson.dependencies);
+   updateDependencies(packageJson.devDependencies);
+ 
+-  writeConfig(packagePath, packageJson);
++  writeConfig(info.packagePath, packageJson);
+ }
+diff --git a/scripts/webpack/webpack-resources.js b/scripts/webpack/webpack-resources.js
+index d2a82a9f1..f39460499 100644
+--- a/scripts/webpack/webpack-resources.js
++++ b/scripts/webpack/webpack-resources.js
+@@ -62,10 +62,6 @@ module.exports = {
+   webpack,
+ 
+   createConfig(packageName, isProduction, customConfig, onlyProduction, excludeSourceMaps) {
+-    const resolveLoader = {
+-      modules: [path.resolve(__dirname, '../node_modules'), path.resolve(process.cwd(), 'node_modules')]
+-    };
+-
+     const module = {
+       noParse: [/autoit.js/],
+       rules: excludeSourceMaps
+@@ -92,7 +88,6 @@ module.exports = {
+               path: path.resolve(process.cwd(), 'dist'),
+               pathinfo: false
+             },
+-            resolveLoader,
+             module,
+             devtool,
+             plugins: getPlugins(packageName, false)
+@@ -112,7 +107,6 @@ module.exports = {
+               path: path.resolve(process.cwd(), 'dist')
+             },
+ 
+-            resolveLoader,
+             module,
+             devtool: excludeSourceMaps ? undefined : devtool,
+             plugins: getPlugins(packageName, true)
+@@ -140,9 +134,6 @@ module.exports = {
+ 
+         mode: 'development',
+ 
+-        resolveLoader: {
+-          modules: [path.resolve(__dirname, '../node_modules'), path.resolve(process.cwd(), 'node_modules')]
+-        },
+         resolve: {
+           extensions: ['.ts', '.tsx', '.js']
+         },
+@@ -198,10 +189,8 @@ module.exports = {
+         plugins: [
+           // TODO: will investigate why this doesn't work on mac
+           // new WebpackNotifierPlugin(),
+-          new ForkTsCheckerWebpackPlugin()
+-          // This sends output to stderr for some reason, which makes rush build say
+-          // "succeeded with warnings" when there were no real warnings
+-          // ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()])
++          new ForkTsCheckerWebpackPlugin(),
++          ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()])
+         ]
+       },
+       customConfig
+diff --git a/scripts/write-config.js b/scripts/write-config.js
+index e5bbd3b53..3ffd565e9 100644
+--- a/scripts/write-config.js
++++ b/scripts/write-config.js
+@@ -6,7 +6,7 @@ const jju = require('jju');
+  * Make the requested updates to the given config file.
+  *
+  * @param {string} file Full path to or name of the config file. If no file exists at the location
+- * as given, `file` is assumed to be a config file name (such as rush.json) and the method will run
++ * as given, `file` is assumed to be a config file name and the method will run
+  * `findConfig(file)` to find the full path.
+  * @param {any} newContents Object representing the new contents of the file. Any comments from the
+  * original file should be preserved.
