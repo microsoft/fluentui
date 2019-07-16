@@ -439,9 +439,9 @@ export const getClassNames = () => {
 };
 ```
 
-## Controling where styles are injected
+## Controlling where styles are injected
 
-By default `merge-styles` will initially inject a `style` element into the document head as its first node and then append after the last one added.
+By default `merge-styles` will initially inject a `style` element into the document head as the first node and then append and new `style` elements as next sibling to the previous one added.
 
 In some cases you may want to control where styles are injected to ensure some stylesheets are more specific than others. To do this, you can add a placeholder `style` element in the head with `data-merge-styles` attribute:
 
