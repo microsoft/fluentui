@@ -1082,7 +1082,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       dropdownMaxWidth,
       onRenderLowerContent = this._onRenderLowerContent,
       useComboBoxAsMenuWidth,
-      persistMenu
+      persistMenu,
+      shouldRestoreFocus = true
     } = props;
 
     const { isOpen } = this.state;
@@ -1107,7 +1108,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         calloutWidth={useComboBoxAsMenuWidth && this._comboBoxWrapper.current ? comboBoxMenuWidth && comboBoxMenuWidth : dropdownWidth}
         calloutMaxWidth={dropdownMaxWidth ? dropdownMaxWidth : comboBoxMenuWidth}
         hidden={persistMenu ? !isOpen : undefined}
-        shouldRestoreFocus={this.props.shouldRestoreFocus}
+        shouldRestoreFocus={shouldRestoreFocus}
       >
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
           {(onRenderList as any)({ ...props }, this._onRenderList)}
