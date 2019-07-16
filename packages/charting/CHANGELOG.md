@@ -1,6 +1,27 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 20 Jun 2019 12:27:38 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jul 2019 12:28:00 GMT and should not be manually modified.
+
+## 0.133.2
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- FIx linechart issue when consumer didn't sent height and width for the chart (v-ragor@microsoft.com)
+
+## 0.133.1
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 0.133.0
+Thu, 27 Jun 2019 22:14:22 GMT
+
+### Minor changes
+
+- Bisected the height to the chart and legends
 
 ## 0.132.0
 Thu, 20 Jun 2019 12:27:38 GMT

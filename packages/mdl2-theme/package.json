@@ -14,10 +14,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style",
-    "just": "npx just-scripts"
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts"
   },
   "devDependencies": {
     "@uifabric/build": "^7.0.0",
@@ -26,9 +26,9 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.0",
-    "@uifabric/styling": "^7.0.3",
+    "@uifabric/styling": "^7.2.0",
     "@uifabric/variants": "^7.0.2",
-    "office-ui-fabric-react": "^7.6.0",
+    "office-ui-fabric-react": "^7.10.0",
     "tslib": "^1.7.1"
   }
 }

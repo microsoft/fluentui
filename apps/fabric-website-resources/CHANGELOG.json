@@ -2,6 +2,82 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Jul 2019 12:28:00 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "automatically generate webpack alias for npm start - part 1",
+            "author": "kchau@microsoft.com",
+            "commit": "b103de0cb556f6cf4dfe2648b990c07b37d6b988"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Jul 2019 12:30:55 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add DetailsList animation example page",
+            "author": "inateeg@microsoft.com",
+            "commit": "a3a32acde358ce34984ebc130a7f5684caf204bf"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.1",
+      "tag": "@uifabric/fabric-website-resources_v7.1.1",
+      "date": "Mon, 01 Jul 2019 18:51:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adds react-app-polyfill",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "40245650abdfb17e9f1cd6472f3671380237bcc2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.2` to `^7.1.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.5` to `^7.0.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.2` to `^7.6.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.0",
       "tag": "@uifabric/fabric-website-resources_v7.1.0",
       "date": "Wed, 26 Jun 2019 12:23:41 GMT",

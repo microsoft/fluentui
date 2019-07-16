@@ -20,21 +20,34 @@ module.exports = function(buf) {
   console.timeEnd('Parsed JSON in');
 
   console.time('Processed V8 log in');
+
+  // TODO: can level be shuffled so that it appears in the same order before and after?
   const { names, stacks } = flamebearer.v8logToStacks(json);
   const levels = flamebearer.mergeStacks(stacks);
   console.timeEnd('Processed V8 log in');
 
-  const vizSrc = fs.readFileSync(require.resolve('flamebearer/viz.js'), 'utf8');
-  const src = fs
-    .readFileSync(require.resolve('flamebearer/index.html'), 'utf8')
+  const vizSrc = fs.readFileSync(require.resolve('./viz.js'), 'utf8');
+  const helperSrc = fs.readFileSync(require.resolve('./helpers.js'), 'utf8');
+
+  let data = `names = ${JSON.stringify(names)};\n`;
+  data += `levels = ${JSON.stringify(levels)};\n`;
+  data += `numTicks = ${stacks.length};\n`;
+
+  const flamegraph = fs
+    .readFileSync(require.resolve('./index.html'), 'utf8')
     .toString()
     .split('<script src="viz.js"></script>')
-    .join(`<script>${vizSrc}</script>`)
+    .join(`<script>${helperSrc}${vizSrc}</script>`)
     .split('/* BIN_SPLIT */')
     .filter((str, i) => i % 2 === 0)
     .join('')
+    .split('/* MODULE_EXPORT */')
+    .filter((str, i) => i % 2 === 0)
+    .join('')
     .split('/* BIN_PLACEHOLDER */')
-    .join(`names = ${JSON.stringify(names)};\n` + `levels = ${JSON.stringify(levels)};\n` + `numTicks = ${stacks.length};`);
+    .join(data);
 
-  return src;
+  // data += 'module.exports = { names, levels, numTicks };';
+  // return [flamegraph, data];
+  return flamegraph;
 };

@@ -12,7 +12,7 @@ exports.webpackDevServer = async function() {
   const port = await fp(4322, 4400);
 
   if (fs.existsSync(configPath)) {
-    const webpackDevServerPath = path.resolve(__dirname, '../node_modules/webpack-dev-server/bin/webpack-dev-server.js');
+    const webpackDevServerPath = require.resolve('webpack-dev-server/bin/webpack-dev-server.js');
     const execSync = require('../exec-sync');
 
     execSync(`node ${webpackDevServerPath} --config ${configPath} --port ${port} --open`);

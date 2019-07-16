@@ -1,6 +1,28 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 26 Jun 2019 12:23:41 GMT and should not be manually modified.
+This log was last generated on Sat, 13 Jul 2019 22:20:41 GMT and should not be manually modified.
+
+## 7.2.0
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Minor changes
+
+- Adding Georgian and Armenian font for Segoe UI Web (marygans@microsoft.com)
+
+## 7.1.1
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.1.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+- Semantic Slots: added successText.
+- Add `font-display: 'swap'` when registering font face'
 
 ## 7.0.3
 Wed, 26 Jun 2019 12:23:41 GMT

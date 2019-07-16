@@ -119,7 +119,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               }
               &:active {
                 background-color: #edebe9;
-                color: #000000;
+                color: #201f1e;
               }
               &:active .ms-Button-icon {
                 color: #004578;
@@ -317,7 +317,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               }
               &:active {
                 background-color: #edebe9;
-                color: #000000;
+                color: #201f1e;
               }
               &:active .ms-Button-icon {
                 color: #004578;
@@ -493,7 +493,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               }
               &:active {
                 background-color: #edebe9;
-                color: #000000;
+                color: #201f1e;
               }
               &:active .ms-Button-icon {
                 color: #004578;
@@ -656,7 +656,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               }
               &:active {
                 background-color: #edebe9;
-                color: #000000;
+                color: #201f1e;
               }
               &:active .ms-Button-icon {
                 color: #004578;
@@ -844,7 +844,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               }
               &:active {
                 background-color: #edebe9;
-                color: #000000;
+                color: #201f1e;
               }
               &:active .ms-Button-icon {
                 color: #004578;

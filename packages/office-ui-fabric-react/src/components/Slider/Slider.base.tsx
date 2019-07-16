@@ -83,7 +83,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     return (
       <div className={classNames.root}>
         {label && (
-          <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })}>
+          <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })} disabled={disabled}>
             {label}
           </Label>
         )}
@@ -139,7 +139,11 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               )}
             </div>
           </div>
-          {showValue && <Label className={classNames.valueLabel}>{valueFormat ? valueFormat(value!) : value}</Label>}
+          {showValue && (
+            <Label className={classNames.valueLabel} disabled={disabled}>
+              {valueFormat ? valueFormat(value!) : value}
+            </Label>
+          )}
         </div>
       </div>
     ) as React.ReactElement<{}>;

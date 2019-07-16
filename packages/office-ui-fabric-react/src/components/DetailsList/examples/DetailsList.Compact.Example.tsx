@@ -71,12 +71,13 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
             items={items}
             columns={this._columns}
             setKey="set"
-            layoutMode={DetailsListLayoutMode.fixedColumns}
+            layoutMode={DetailsListLayoutMode.justified}
             selection={this._selection}
             selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+            checkButtonAriaLabel="Row checkbox"
           />
         </MarqueeSelection>
       </Fabric>

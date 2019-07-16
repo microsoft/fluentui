@@ -1,6 +1,127 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 26 Jun 2019 21:48:30 GMT and should not be manually modified.
+This log was last generated on Sat, 13 Jul 2019 22:20:41 GMT and should not be manually modified.
+
+## 7.10.0
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Minor changes
+
+- Dialog: Deprecating componentRef prop. (Humberto.Morimoto@microsoft.com)
+,- Tooltip: Rendering hidden hoverable area to allow for interaction with Tooltips. (Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Panel: remove window.innerHeight from styles (kakje@microsoft.com)
+
+## 7.9.0
+Fri, 12 Jul 2019 12:29:52 GMT
+
+### Minor changes
+
+- GroupedList: Refactor out BaseComponent in favor of React.Component and React.FunctionComponent (706967+KevinTCoughlin@users.noreply.github.com)
+,- Dropdown: adds an `onRenderLabel` custom renderer prop. (vibraga@microsoft.com)
+
+### Patches
+
+- Update to progressBar indicator description label font size to match design toolkti spec. (marygans@microsoft.com)
+
+## 7.8.2
+Thu, 11 Jul 2019 12:29:51 GMT
+
+### Patches
+
+- Pivot: updating white hover background color(#9595) (marygans@microsoft.com)
+,- Pass disabled state to labels in ChoiceGroup, Dropdown, Slider and SpinButton. (vibraga@microsoft.com)
+,- Tooltip: Fixing 'persist on scroll' issues. (humbertomakotomorimoto@gmail.com)
+,- DetailsRow: pass aria-label attribute to each row's checkbox. (vibraga@microsoft.com)
+,- Only clear selection in MarqueeSelection when starting a new marquee (tmichon@microsoft.com)
+,- Utilities: reuse an exisiting clamp function. (vibraga@microsoft.com)
+
+## 7.8.1
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- Dropdown: set aria-hidden to true on the ChevronDown icon so that it is not picked up by the screen reader (natalie.ethell@microsoft.com)
+,- Button: Fixing CompoundButton and SplitButton high contrast mode styling. (humbertomakotomorimoto@gmail.com)
+,- FocusTrapZone: Updating overview description to indicate restriction of website interaction. (Humberto.Morimoto@microsoft.com)
+,- Nav: fixes focus border in High Contrast mode. (vibraga@microsoft.com)
+,- Pickers: replace empty string with undefined. (vibraga@microsoft.com)
+
+## 7.8.0
+Tue, 09 Jul 2019 17:34:38 GMT
+
+### Minor changes
+
+- Panel: Adding Overlay props. (Humberto.Morimoto@microsoft.com)
+,- Modal: Adding overlayProps as a prop. (Humberto.Morimoto@microsoft.com)
+,- Adding tooltipHostProps as a prop to the Breadcrumb component. (Heather.HoaglundBiron@microsoft.com)
+,- "FocusZone: Add setFocusAlignment public method to Force horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on the last horizontal motion." (nasabek@microsoft.com)
+,- User should use onRenderPersonaCoin for custom rendering. When this is set, this custom rendering will be used. (22574161+gingeroun@users.noreply.github.com)
+
+## 7.7.2
+Mon, 08 Jul 2019 12:27:04 GMT
+
+### Patches
+
+- Fix mock Date class (rezha@microsoft.com)
+
+## 7.7.1
+Thu, 04 Jul 2019 12:29:39 GMT
+
+### Patches
+
+- SearchBox: allow passing in id for input (elcraig@microsoft.com)
+,- Breadcrumb: Adding overflowAriaLabel to examples. (Humberto.Morimoto@microsoft.com)
+,- Button: Updating example to make it less confusing to screen readers. (Humberto.Morimoto@microsoft.com)
+
+## 7.7.0
+Wed, 03 Jul 2019 12:30:55 GMT
+
+### Minor changes
+
+- SplitButton: add in props to control splitbutton menu button (joschect@microsoft.com)
+,- Callout: add support for RefObject as target (joschect@microsoft.com)
+
+### Patches
+
+- Revert "BaseFloatingItem: fix tests + remove redundant state  (#9500)" (miclo@microsoft.com)
+,- Announced: fix QuickActions example to reset Announced message (naethell@microsoft.com)
+,- update snapshots and update extended picker tests (joschect@microsoft.com)
+
+## 7.6.3
+Mon, 01 Jul 2019 18:51:43 GMT
+
+### Patches
+
+- Prettier change
+- adds react-app-polyfill
+- Fix tests for BasePicker + remove redundant state
+
+## 7.6.2
+Fri, 28 Jun 2019 12:27:34 GMT
+
+### Patches
+
+- Replaced SCSS in favour of CSS in JS in List Basic Example
+- Added interfaces for List Ghosting Example
+- GroupedList: Fix "Show All" not rendering all items in a group
+- Removed scss usage from List example.
+- GroupedList: Updated header text color on hover and updated snapshots.
+- Layer: remove the usage of viewport width and height to fix layout issues on mobile browsers
+- Removed used Rating SCSS file
+
+## 7.6.1
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Patches
+
+- Prettier changes.
+- Avoid marking DetailsRow as non-draggable unless backed by DragDropEvents
+- Addressing a variety of problems related to style recalculations.
+- Panel: Overflowing header text should word break and wrap by default
+- Add placeholder as TextArea property, allows placeholder in multiline TextField
 
 ## 7.6.0
 Wed, 26 Jun 2019 21:48:30 GMT

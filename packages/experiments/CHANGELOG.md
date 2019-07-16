@@ -1,6 +1,65 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 25 Jun 2019 12:26:09 GMT and should not be manually modified.
+This log was last generated on Sat, 13 Jul 2019 22:20:41 GMT and should not be manually modified.
+
+## 7.6.0
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Minor changes
+
+- Change media tile to show metadata only on hover (jocobb@microsoft.com)
+
+### Patches
+
+- Button: Updating Button styles to use corresponding semanticColors instead of palette. (Humberto.Morimoto@microsoft.com)
+
+## 7.5.0
+Fri, 12 Jul 2019 12:29:52 GMT
+
+### Minor changes
+
+- Add screener tests for media tiles (jocobb@microsoft.com)
+
+### Patches
+
+- Chiclet: adjust xsmall chiclet title height (natalie.ethell@microsoft.com)
+
+## 7.4.2
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- Update names in floatingSuggestons + expose needed functionality for UnifiedPicker t (mhuan13@gmail.com)
+
+## 7.4.1
+Wed, 03 Jul 2019 12:30:55 GMT
+
+### Patches
+
+- Filter out disallowed props from Tile root element (tmichon@microsoft.com)
+
+## 7.4.0
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Minor changes
+
+- Button: Renaming BaseButton to Actionable, extending Button from Actionable and removing content and icon from Actionable types.
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.3.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+-  Button: Removing Stack usage from vanilla Button's slots and view to improve perf.
+- Chiclet: Add x-small variant
+
+### Patches
+
+- Button example updated.
 
 ## 7.2.3
 Tue, 25 Jun 2019 12:26:09 GMT

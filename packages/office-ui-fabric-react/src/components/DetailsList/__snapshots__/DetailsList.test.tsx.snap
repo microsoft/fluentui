@@ -90,7 +90,7 @@ exports[`DetailsList renders List correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 100,
             }
           }
         >
@@ -681,7 +681,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 500,
             }
           }
         >
@@ -1868,7 +1868,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 100,
             }
           }
         >
@@ -2460,7 +2460,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 900,
             }
           }
         >
@@ -3431,7 +3431,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 500,
             }
           }
         >
@@ -4632,7 +4632,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 100,
             }
           }
         >
@@ -5017,6 +5017,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               }
                               &:hover {
                                 background: #f3f2f1;
+                                color: #201f1e;
                               }
                               &:hover $check {
                                 opacity: 1;
@@ -5293,7 +5294,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -5361,6 +5362,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="key"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -5476,7 +5478,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -5544,6 +5546,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="key"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -5630,6 +5633,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               }
                               &:hover {
                                 background: #f3f2f1;
+                                color: #201f1e;
                               }
                               &:hover $check {
                                 opacity: 1;
@@ -5906,7 +5910,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -5974,6 +5978,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="key"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -6089,7 +6094,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -6157,6 +6162,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="key"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -6272,7 +6278,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -6340,6 +6346,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="key"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"

@@ -66,7 +66,7 @@ module.exports = function preset() {
   // Special case build for the serializer, which needs to absolutely run typescript and jest serially.
   task('build-jest-serializer-merge-styles', series('ts', 'jest'));
 
-  task('build:node-lib', series('clean', 'copy', series(condition('validate', () => !argv().min), 'ts:commonjs-only')));
+  task('build:node-lib', series('clean', 'copy', series(condition('validate', () => !argv().min), 'ts:commonjs-only'))).cached();
 
   task(
     'build',
@@ -79,5 +79,7 @@ module.exports = function preset() {
         series('ts', parallel(condition('webpack', () => !argv().min), condition('lint-imports', () => !argv().min)))
       )
     )
-  );
+  ).cached();
+
+  task('no-op', () => {}).cached();
 };

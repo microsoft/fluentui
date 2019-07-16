@@ -1,3 +1,5 @@
+// NOTE: this package cannot take @uifabric/build as a dependency because of circular dependency
+// So, it will take just-scripts directly.
 const { taskPresets, task, series, parallel, tscTask, copyTask } = require('just-scripts');
 
 taskPresets.lib();
@@ -16,4 +18,4 @@ task(
   )
 );
 
-task('build', series('clean', 'copy', parallel('jest', 'ts')));
+task('build', series('clean', 'copy', parallel('jest', 'ts'))).cached();

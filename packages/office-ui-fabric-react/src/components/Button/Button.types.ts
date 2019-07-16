@@ -289,6 +289,13 @@ export interface IButtonProps
   persistMenu?: boolean;
 
   /**
+   * Experimental prop that get passed into the menuButton that's rendered as part of
+   * split button. Anything passed in will likely need to have accompanying
+   * style changes.
+   */
+  splitButtonMenuProps?: IButtonProps;
+
+  /**
    * Style for the description text if applicable (for compound buttons.)
    * Deprecated, use `secondaryText` instead.
    * @deprecated Use `secondaryText` instead.

@@ -10,7 +10,7 @@ const prettierIgnore = '.prettierignore';
 const repoRoot = path.resolve(__dirname, '..', '..');
 const prettierRulesConfig = path.join(repoRoot, 'packages', 'prettier-rules', prettierConfig);
 const prettierIgnorePath = path.join(repoRoot, prettierIgnore);
-const prettierBin = path.join(__dirname, '..', 'node_modules', 'prettier', 'bin-prettier.js');
+const prettierBin = require.resolve('prettier/bin-prettier.js');
 /** Array of absolute project paths with prettier configs */
 let projectsWithPrettierConfig;
 

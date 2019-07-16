@@ -193,6 +193,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     headerClassName,
     isAnimating,
     isFooterSticky,
+    isFooterAtBottom,
     isOnRightSide,
     isOpen,
     isHiddenOnDismiss,
@@ -337,6 +338,9 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.scrollableContent,
       {
         overflowY: 'auto'
+      },
+      isFooterAtBottom && {
+        flexGrow: 1
       }
     ],
     content: [
@@ -351,7 +355,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.footer,
       {
         // Ensure that footer doesn't shrink if screen is too small
-        flexGrow: 0,
+        flexGrow: 1,
+        flexShrink: 0,
         borderTop: '1px solid transparent',
         transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction2}`
       },

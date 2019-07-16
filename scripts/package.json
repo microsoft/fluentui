@@ -7,10 +7,10 @@
     "just-scripts": "./just-scripts.js"
   },
   "scripts": {
-    "build": "node -v",
+    "build": "node ./just-scripts.js no-op",
     "bundlesize": "bundlesize --debug",
     "clean": "",
-    "code-style": "npx just-scripts code-style",
+    "code-style": "node ./just-scripts.js code-style",
     "test": "jest"
   },
   "devDependencies": {
@@ -22,6 +22,7 @@
     "async": "^2.6.1",
     "autoprefixer": "^7.1.5",
     "babylon": "^7.0.0-beta.47",
+    "beachball": "^1.9.2",
     "bundlesize": "^0.15.2",
     "chalk": "^2.1.0",
     "codecov": "^3.1.0",
@@ -40,7 +41,7 @@
     "jju": "^1.4.0",
     "jscodeshift": "^0.5.0",
     "json-loader": "^0.5.7",
-    "just-scripts": "~0.20.0",
+    "just-scripts": "~0.25.2",
     "lint-staged": "^7.0.5",
     "mustache": "^2.3.0",
     "ngrok": "^3.0.1",

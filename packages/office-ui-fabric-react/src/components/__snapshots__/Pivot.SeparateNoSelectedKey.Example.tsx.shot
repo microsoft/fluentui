@@ -141,7 +141,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                 }
                 &:active {
                   background-color: #edebe9;
-                  color: #000000;
+                  color: #201f1e;
                 }
                 &:active .ms-Button-icon {
                   color: #004578;
@@ -290,7 +290,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                 }
                 &:active {
                   background-color: #edebe9;
-                  color: #000000;
+                  color: #201f1e;
                 }
                 &:active .ms-Button-icon {
                   color: #004578;
@@ -439,7 +439,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                 }
                 &:active {
                   background-color: #edebe9;
-                  color: #000000;
+                  color: #201f1e;
                 }
                 &:active .ms-Button-icon {
                   color: #004578;

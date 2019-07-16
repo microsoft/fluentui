@@ -1,6 +1,27 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Wed, 19 Jun 2019 12:27:03 GMT and should not be manually modified.
+This log was last generated on Sat, 13 Jul 2019 22:20:41 GMT and should not be manually modified.
+
+## 0.107.4
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Patches
+
+- Card: Importing from office-ui-fabric-react directly instead of from office-ui-fabric-react/lib/... (Humberto.Morimoto@microsoft.com)
+
+## 0.107.3
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 0.107.2
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Patches
+
+- Updating snapshots after Button changes.
 
 ## 0.107.1
 Wed, 19 Jun 2019 12:27:03 GMT

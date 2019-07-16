@@ -90,7 +90,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 200,
             }
           }
         >
@@ -904,6 +904,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                               }
                               &:hover {
                                 background: #f3f2f1;
+                                color: #201f1e;
                               }
                               &:hover $check {
                                 opacity: 1;
@@ -1322,7 +1323,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -1377,6 +1378,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -1593,6 +1595,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -1649,6 +1652,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -1764,7 +1768,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -1819,6 +1823,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -2035,6 +2040,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2091,6 +2097,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2206,7 +2213,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -2261,6 +2268,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -2477,6 +2485,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2533,6 +2542,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2648,7 +2658,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -2703,6 +2713,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -2919,6 +2930,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2975,6 +2987,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -3090,7 +3103,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -3145,6 +3158,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -3361,6 +3375,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -3417,6 +3432,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -3532,7 +3548,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -3587,6 +3603,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -3803,6 +3820,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -3859,6 +3877,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -3974,7 +3993,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -4029,6 +4048,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -4245,6 +4265,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -4301,6 +4322,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -4416,7 +4438,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -4471,6 +4493,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -4687,6 +4710,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -4743,6 +4767,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -4858,7 +4883,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -4913,6 +4938,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -5129,6 +5155,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -5185,6 +5212,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -5300,7 +5328,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 200,
                                     }
                                   }
                                 >
@@ -5355,6 +5383,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   >
                                     <div
                                       aria-checked={false}
+                                      aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
 
@@ -5571,6 +5600,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -5627,6 +5657,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
+
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
