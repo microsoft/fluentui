@@ -29,6 +29,7 @@ function lintImports() {
 
   const gitRoot = findGitRoot();
   const sourcePath = path.resolve(process.cwd(), 'src');
+  const cwdNodeModulesPath = path.resolve(process.cwd(), 'node_modules');
   const nodeModulesPath = path.resolve(gitRoot, 'node_modules');
   const rootFolder = gitRoot;
 
@@ -234,6 +235,9 @@ function lintImports() {
       // import is a file path. is this a file?
       fullImportPath = _evaluateImportPath(path.dirname(filePath), importPath);
       pathIsRelative = true;
+    } else if (packagesInfo[importPath]) {
+      // skip the full import of packages within the monorepo
+      return;
     } else {
       const pkgNameMatch = importPath.match(pkgNameRegex);
       if (pkgNameMatch === null) {
@@ -253,7 +257,8 @@ function lintImports() {
         const importPathWithoutPkgName = importPath.substring(pkgName.length + 1 /* 1 is for '/' */);
         fullImportPath = _evaluateImportPath(process.cwd(), './' + importPathWithoutPkgName);
       } else {
-        fullImportPath = _evaluateImportPath(nodeModulesPath, './' + importPath);
+        fullImportPath =
+          _evaluateImportPath(nodeModulesPath, './' + importPath) || _evaluateImportPath(cwdNodeModulesPath, './' + importPath);
       }
     }
 
@@ -297,7 +302,6 @@ function lintImports() {
    */
   function reportFilePathErrors(pathNotFile, pathRelative) {
     if (pathNotFile.count) {
-      debugger;
       console.error(
         `${chalk.red('ERROR')}: ${
           pathNotFile.count

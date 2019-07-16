@@ -14,6 +14,8 @@
     "lint-staged": "^7.0.5"
   },
   "scripts": {
+    "preinstall": "node ./scripts/use-yarn-please.js",
+    "postinstall": "lerna run build --stream @uifabric/fabric-website-resources -- --min",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
     "start": "cd apps && cd fabric-website-resources && npm start",
