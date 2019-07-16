@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 15 Jul 2019 12:21:21 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jul 2019 12:23:13 GMT and should not be manually modified.
+
+## 6.195.3
+Tue, 16 Jul 2019 12:23:13 GMT
+
+### Patches
+
+- TextField: Add condition for Edge browser to detect placeholder styles
 
 ## 6.195.2
 Mon, 15 Jul 2019 12:21:21 GMT

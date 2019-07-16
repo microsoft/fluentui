@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 24 Jun 2019 23:08:57 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jul 2019 12:23:13 GMT and should not be manually modified.
+
+## 6.50.2
+Tue, 16 Jul 2019 12:23:13 GMT
+
+### Patches
+
+- Add getPlaceholderStyles to return style object based on browser used
 
 ## 6.50.1
 Mon, 24 Jun 2019 23:08:57 GMT

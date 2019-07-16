@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.195.3",
+      "tag": "office-ui-fabric-react_v6.195.3",
+      "date": "Tue, 16 Jul 2019 12:23:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TextField: Add condition for Edge browser to detect placeholder styles",
+            "author": "Aftab Hassan <aftabh@uw.edu>",
+            "commit": "60341350bdd2613581bf3dff7414319b60379436"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.50.1` to `^6.50.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.195.2",
       "tag": "office-ui-fabric-react_v6.195.2",
       "date": "Mon, 15 Jul 2019 12:21:21 GMT",
