@@ -9,10 +9,11 @@ const generateOnly = process.argv.indexOf('-g') > -1;
 const beachballBin = require.resolve('beachball/bin/beachball.js');
 const bumpCmd = [process.execPath, beachballBin];
 const findGitRoot = require('../monorepo/findGitRoot');
+const gitRoot = findGitRoot();
 
 function run(args) {
   const [cmd, ...restArgs] = args;
-  const runResult = spawnSync(cmd, restArgs, { cwd: path.resolve(__dirname, '../..') });
+  const runResult = spawnSync(cmd, restArgs, { cwd: gitRoot });
   if (runResult.status === 0) {
     return runResult.stdout.toString().trim();
   }
@@ -25,10 +26,6 @@ module.exports = function generateVersionFiles() {
   let untracked = [];
 
   const gitRoot = findGitRoot();
-
-  const cwd = process.cwd();
-
-  process.chdir(gitRoot);
 
   if (!generateOnly) {
     // Check that no uncommitted changes exist
@@ -58,7 +55,7 @@ module.exports = function generateVersionFiles() {
 
   const packageJsons = glob.sync('+(packages|apps)/*/package.json', { cwd: gitRoot });
   packageJsons.forEach(packageJsonPath => {
-    const versionFile = path.join(path.dirname(packageJsonPath), 'src/version.ts');
+    const versionFile = path.join(gitRoot, path.dirname(packageJsonPath), 'src/version.ts');
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath).toString());
     const dependencies = packageJson.dependencies || {};
 
@@ -87,8 +84,6 @@ module.exports = function generateVersionFiles() {
   setVersion('${packageJson.name}', '${packageJson.version}');`
       );
     }
-
-    process.chdir(cwd);
   });
 
   if (!generateOnly) {
