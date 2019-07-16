@@ -1,5 +1,5 @@
 {
-  "comment": "Fix Facepile Position in set for narrator",
+  "comment": "Facepile: fix screenreader readout of PersonaCoin position in the set.”,
   "type": "patch",
   "packageName": "office-ui-fabric-react",
   "email": "tabrumle@microsoft.com",
