@@ -10,8 +10,6 @@ const beachballBin = require.resolve('beachball/bin/beachball.js');
 const bumpCmd = [process.execPath, beachballBin];
 const findGitRoot = require('../monorepo/findGitRoot');
 
-const gitRoot = findGitRoot();
-
 function run(args) {
   const [cmd, ...restArgs] = args;
   const runResult = spawnSync(cmd, restArgs, { cwd: path.resolve(__dirname, '../..') });
@@ -25,6 +23,12 @@ function run(args) {
 module.exports = function generateVersionFiles() {
   let modified = [];
   let untracked = [];
+
+  const gitRoot = findGitRoot();
+
+  const cwd = process.cwd();
+
+  process.chdir(gitRoot);
 
   if (!generateOnly) {
     // Check that no uncommitted changes exist
@@ -83,6 +87,8 @@ module.exports = function generateVersionFiles() {
   setVersion('${packageJson.name}', '${packageJson.version}');`
       );
     }
+
+    process.chdir(cwd);
   });
 
   if (!generateOnly) {
