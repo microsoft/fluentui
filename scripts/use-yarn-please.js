@@ -3,7 +3,10 @@ const { spawnSync } = require('child_process');
 const npmPath = process.env.npm_execpath;
 
 const Strings = {
-  useYarnInstead: `Looks like you are trying to run "npm install", this repository has migrated to use Yarn as its package manager for installations.`,
+  useYarnInstead: `Looks like you are trying to run "npm install", this repository has migrated to use Yarn as its package manager for installations.
+  `,
+  yarnDetected: `Great! Looks like you already have yarn installed!
+  `,
   installYarn: `You current do not have an installation of Yarn in your PATH. Be sure to install the latest stable version of Yarn here:
 
 Download an installer here: https://yarnpkg.com/en/docs/install
@@ -15,10 +18,8 @@ Windows users can run the installer here:
 Mac users can run a one-liner for the install:
 
   curl -o- -L https://yarnpkg.com/install.sh | bash
-
 `,
-  gettingStartedWithYarn: `
-To install UI Fabric monorepo dependencies and establish links between projects, simply run:
+  gettingStartedWithYarn: `To install UI Fabric monorepo dependencies and establish links between projects, simply run:
 
   yarn
 
@@ -42,6 +43,8 @@ if (path.basename(npmPath) !== 'yarn.js') {
 
   if (!detectYarnInstallation()) {
     console.log(Strings.installYarn);
+  } else {
+    console.log(Strings.yarnDetected);
   }
 
   console.log(Strings.gettingStartedWithYarn);
