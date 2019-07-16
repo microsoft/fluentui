@@ -89,6 +89,7 @@ function handleError(error, errorPrependMessage) {
 
 function performStep(stepIndex) {
   if (stepIndex >= steps.length) {
+    yarnInstall();
     return;
   }
 
@@ -109,6 +110,10 @@ function performStep(stepIndex) {
       errorUnableToWriteFile(step.output)
     );
   });
+}
+
+function yarnInstall() {
+  spawnSync('yarn', { cwd: packagePath, stdio: 'inherit' });
 }
 
 function readFileCallback(error, data, templateName, outputFilePath, callback, readFileError, writeFileError) {
