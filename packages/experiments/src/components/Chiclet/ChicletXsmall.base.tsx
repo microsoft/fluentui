@@ -26,14 +26,7 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
 
     return (
       <div tabIndex={tabIndex} role={role} onClick={this._onClick} className={this._classNames.root}>
-        {generatePreview(
-          this.props,
-          imageProvided,
-          this._classNames.icon,
-          this._classNames.preview,
-          PREVIEW_IMAGE_HEIGHT,
-          PREVIEW_IMAGE_WIDTH
-        )}
+        {generatePreview(this.props, imageProvided, this._classNames, PREVIEW_IMAGE_HEIGHT, PREVIEW_IMAGE_WIDTH)}
         <div className={this._classNames.info}>
           <div className={this._classNames.title}>{title ? title : null}</div>
           <div className={this._classNames.url}>{url ? url : null}</div>

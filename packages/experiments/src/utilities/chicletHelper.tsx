@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Image } from 'office-ui-fabric-react/lib/Image';
-import { IChicletCardProps } from '../components/Chiclet/ChicletCard.types';
+import { IChicletCardProps, IChicletCardStyles } from '../components/Chiclet/ChicletCard.types';
 
 const ASSET_CDN_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/assets';
 
@@ -106,15 +106,14 @@ export function findIcon(title: string): string | undefined {
 export function generatePreview(
   props: IChicletCardProps,
   imageProvided: boolean,
-  iconStyle?: string,
-  previewStyle?: string,
+  classNames: { [key in keyof IChicletCardStyles]: string },
   height?: string,
   width?: string
 ): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> | undefined {
   return (
-    <div className={previewStyle}>
+    <div className={classNames.preview}>
       {renderPreview(props.image, height, width, props.imageAlt)}
-      {renderIcon(props.itemType || (props.title && findIcon(props.title)), iconStyle, imageProvided)}
+      {renderIcon(props.itemType || (props.title && findIcon(props.title)), classNames.icon, imageProvided)}
     </div>
   );
 }

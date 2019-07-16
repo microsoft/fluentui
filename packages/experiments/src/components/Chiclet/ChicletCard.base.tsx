@@ -26,7 +26,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
 
     return (
       <div tabIndex={tabIndex} role={role} onClick={actionable ? this._onClick : undefined} className={this._classNames.root}>
-        {generatePreview(this.props, false, this._classNames.icon, this._classNames.preview, PREVIEW_IMAGE_HEIGHT, PREVIEW_IMAGE_WIDTH)}
+        {generatePreview(this.props, false, this._classNames, PREVIEW_IMAGE_HEIGHT, PREVIEW_IMAGE_WIDTH)}
         <div className={this._classNames.info}>
           <div className={this._classNames.title}>{title ? title : null}</div>
           <div className={this._classNames.description}>{description ? description : url}</div>
