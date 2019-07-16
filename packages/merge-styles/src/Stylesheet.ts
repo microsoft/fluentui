@@ -297,7 +297,7 @@ export class Stylesheet {
     } else {
       const placeholderStyleTag: Element | null = this._findPlaceholderStyleTag();
       if (placeholderStyleTag) {
-        placeholderStyleTag.after(styleElement);
+        head!.insertBefore(styleElement, placeholderStyleTag.nextElementSibling);
       } else {
         head!.insertBefore(styleElement, head.childNodes[0]);
       }
@@ -310,12 +310,7 @@ export class Stylesheet {
   private _findPlaceholderStyleTag(): Element | null {
     const head: HTMLHeadElement = document.head;
     if (head) {
-      for (let i = 0; i < head.children.length; i++) {
-        const child: Element | null = head.children.item(i);
-        if (child && child.tagName === 'STYLE' && child.hasAttribute('data-merge-styles')) {
-          return child;
-        }
-      }
+      return head.querySelector('style[data-merge-styles]');
     }
     return null;
   }
