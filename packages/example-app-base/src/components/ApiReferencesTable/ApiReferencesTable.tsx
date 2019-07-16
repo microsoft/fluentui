@@ -278,6 +278,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
                 items={properties}
                 columns={isEnum ? this._enumColumns : this._defaultColumns}
                 onRenderRow={this._onRenderRow}
+                onShouldVirtualize={() => false}
               />
             )}
       </Stack>
@@ -361,6 +362,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
               items={properties}
               columns={this._defaultColumns}
               onRenderRow={this._onRenderRow}
+              onShouldVirtualize={() => false}
             />
           </Stack>
         )}
@@ -373,6 +375,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
               items={methods}
               columns={this._methodColumns}
               onRenderRow={this._onRenderRow}
+              onShouldVirtualize={() => false}
             />
           </Stack>
         )}
