@@ -6,7 +6,8 @@ const fs = require('fs');
 const glob = require('glob');
 
 const generateOnly = process.argv.indexOf('-g') > -1;
-const bumpCmd = `yarn beachball bump`;
+const beachballBin = require.resolve('beachball/bin/beachball.js');
+const bumpCmd = `node ${beachballBin}`;
 
 function run(cmd) {
   return execSync(cmd, { cwd: path.resolve(__dirname, '../..') }).toString();
@@ -25,7 +26,7 @@ module.exports = function generateVersionFiles() {
     }
 
     // Do a dry-run on all packages
-    run(`${bumpCmd}`);
+    run(bumpCmd);
     status = run('git status --porcelain=1');
     status.split(/\n/g).forEach(line => {
       if (line) {
