@@ -133,6 +133,10 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     }
   }
 
+  public componentWillUnmount(): void {
+    this._events.dispose();
+  }
+
   public render(): JSX.Element {
     const {
       children,

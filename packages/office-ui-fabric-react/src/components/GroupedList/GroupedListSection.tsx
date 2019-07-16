@@ -149,6 +149,8 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
   }
 
   public componentWillUnmount() {
+    this._events.dispose();
+
     if (this._dragDropSubscription) {
       this._dragDropSubscription.dispose();
     }
