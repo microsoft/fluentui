@@ -315,6 +315,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   }
 
   public componentWillUnmount(): void {
+    this._async.dispose();
     this._disposables.forEach(dispose => dispose());
   }
 
