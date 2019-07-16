@@ -25,15 +25,15 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
   const checkmarkFontColorHovered = palette.neutralSecondary;
   // TODO: after updating the semanticColors slots mapping this needs to be semanticColors.smallInputBorder
   const checkboxBorderColor = palette.neutralPrimary;
-  const checkboxBorderIndeterminateColor = palette.themePrimary;
-  const checkboxBorderColorChecked = palette.themePrimary;
+  const checkboxBorderIndeterminateColor = semanticColors.inputBackgroundChecked;
+  const checkboxBorderColorChecked = semanticColors.inputBackgroundChecked;
   const checkboxBorderColorDisabled = semanticColors.disabledBodySubtext;
   const checkboxBorderHoveredColor = semanticColors.inputBorderHovered;
-  const checkboxBorderIndeterminateHoveredColor = palette.themeDark;
+  const checkboxBorderIndeterminateHoveredColor = semanticColors.inputBackgroundCheckedHovered;
   const checkboxBackgroundChecked = semanticColors.inputBackgroundChecked;
   // TODO: after updating the semanticColors slots mapping following 2 tokens need to be semanticColors.inputBackgroundCheckedHovered
-  const checkboxBackgroundCheckedHovered = palette.themeDark;
-  const checkboxBorderColorCheckedHovered = palette.themeDark;
+  const checkboxBackgroundCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
+  const checkboxBorderColorCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
   const checkboxHoveredTextColor = semanticColors.inputTextHovered;
   const checkboxBackgroundDisabledChecked = semanticColors.disabledBodySubtext;
   const checkboxTextColor = semanticColors.bodyText;
