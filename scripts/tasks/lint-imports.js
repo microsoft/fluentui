@@ -302,7 +302,6 @@ function lintImports() {
    */
   function reportFilePathErrors(pathNotFile, pathRelative) {
     if (pathNotFile.count) {
-      debugger;
       console.error(
         `${chalk.red('ERROR')}: ${
           pathNotFile.count
