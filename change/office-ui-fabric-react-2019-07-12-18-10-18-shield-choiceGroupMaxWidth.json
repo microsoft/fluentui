@@ -1,0 +1,8 @@
+{
+  "comment": "ChoiceGroupOption: move the inline styles into getStyles function to allow override.",
+  "type": "minor",
+  "packageName": "office-ui-fabric-react",
+  "email": "vibraga@microsoft.com",
+  "commit": "3ea233343ac97179ef22e58d4a598654443ffbb6",
+  "date": "2019-07-13T01:10:18.308Z"
+}
