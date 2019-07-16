@@ -1,0 +1,8 @@
+{
+  "comment": "Chiclet: removes imageWidth and imageHeight props",
+  "type": "patch",
+  "packageName": "@uifabric/experiments",
+  "email": "t-stcar@microsoft.com",
+  "commit": "bfc117aefbb6bc2ba800b0f696b4bbc86aa8639a",
+  "date": "2019-07-16T00:47:12.101Z"
+}
