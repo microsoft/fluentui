@@ -252,6 +252,17 @@ export function applyRegistration(registration: IRegistration): void {
         let selector = rulesToInsert[i];
 
         // Fix selector using map.
+        if (process.env.NODE_ENV === 'production') {
+          if (selector.indexOf('$')) {
+            console.warn(
+              'merge-styles: A style selector was encountered using the deprecated ' +
+                '$ syntax to refer to another part in the style set: "' +
+                selector +
+                '"'
+            );
+          }
+        }
+
         selector = selector.replace(/&/g, '.' + registration.className);
 
         // Insert. Note if a media query, we must close the query with a final bracket.

@@ -54,11 +54,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
             background: semanticColors.bodyBackground
           },
 
-          /**
-           * TODO: Come back to this once .checkHost has been
-           * converted to mergeStyles
-           */
-          [`.${classNames.checkHost}:hover &,` + `.${classNames.checkHost}:focus &,` + `&:hover,` + `&:focus`]: {
+          [`.${classNames.checkHost}:hover &, .${classNames.checkHost}:focus &, &:hover, &:focus`]: {
             opacity: 1
           }
         }
