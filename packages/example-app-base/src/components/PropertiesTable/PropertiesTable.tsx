@@ -145,9 +145,9 @@ class PropertiesTableBase extends React.PureComponent<IPropertiesTableProps> {
     );
   }
 
-  private _onShouldVirtualize(): boolean {
+  private _onShouldVirtualize = (): boolean => {
     return false;
-  }
+  };
 
   private _getGroups(): IGroup[] {
     const groups: IGroup[] = [];

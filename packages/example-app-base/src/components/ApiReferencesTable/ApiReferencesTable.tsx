@@ -348,9 +348,9 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     return textElements;
   }
 
-  private _onShouldVirtualize(): boolean {
+  private _onShouldVirtualize = (): boolean => {
     return false;
-  }
+  };
 
   private _renderClass(): JSX.Element | undefined {
     const { properties, methods } = this.state;
