@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.80.0",
+      "tag": "@uifabric/experiments_v6.80.0",
+      "date": "Tue, 16 Jul 2019 17:14:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Chiclet: Add x-small variant",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "f489307becc66fe9ddf57d3cd50a67e077b7f1a5"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.79.2",
       "tag": "@uifabric/experiments_v6.79.2",
       "date": "Wed, 03 Jul 2019 12:21:43 GMT",

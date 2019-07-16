@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 03 Jul 2019 12:21:43 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jul 2019 17:14:30 GMT and should not be manually modified.
+
+## 6.80.0
+Tue, 16 Jul 2019 17:14:30 GMT
+
+### Minor changes
+
+- Chiclet: Add x-small variant
 
 ## 6.79.2
 Wed, 03 Jul 2019 12:21:43 GMT
