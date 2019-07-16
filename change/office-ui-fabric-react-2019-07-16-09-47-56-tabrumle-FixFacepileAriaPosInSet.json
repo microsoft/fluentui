@@ -1,0 +1,8 @@
+{
+  "comment": "Fix Facepile Position in set for narrator",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "tabrumle@microsoft.com",
+  "commit": "37c55506a9f2947d9215bde436f4d5e6daf46dfd",
+  "date": "2019-07-16T16:47:55.968Z"
+}
