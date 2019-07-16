@@ -15,7 +15,8 @@
   },
   "scripts": {
     "preinstall": "node ./scripts/use-yarn-please.js",
-    "postinstall": "lerna run build --stream @uifabric/fabric-website-resources -- --min",
+    "postinstall": "node ./scripts/monorepo/buildTo.js @uifabric/fabric-website-resources --min",
+    "buildto": "node ./scripts/monorepo/buildTo.js",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
     "start": "cd apps && cd fabric-website-resources && npm start",

@@ -3,9 +3,7 @@ const { spawnSync } = require('child_process');
 const npmPath = process.env.npm_execpath;
 
 const Strings = {
-  useYarnInstead: `Looks like you are trying to run "npm install", this repository has migrated to use Yarn as its package manager for installations.
-
-  `,
+  useYarnInstead: `Looks like you are trying to run "npm install", this repository has migrated to use Yarn as its package manager for installations.`,
   installYarn: `You current do not have an installation of Yarn in your PATH. Be sure to install the latest stable version of Yarn here:
 
 Download an installer here: https://yarnpkg.com/en/docs/install
