@@ -56,7 +56,7 @@ module.exports = function generateVersionFiles() {
   const packageJsons = glob.sync('+(packages|apps)/*/package.json', { cwd: gitRoot });
   packageJsons.forEach(packageJsonPath => {
     const versionFile = path.join(gitRoot, path.dirname(packageJsonPath), 'src/version.ts');
-    const packageJson = JSON.parse(fs.readFileSync(packageJsonPath).toString());
+    const packageJson = JSON.parse(fs.readFileSync(path.join(gitRoot, packageJsonPath), 'utf-8'));
     const dependencies = packageJson.dependencies || {};
 
     if (
