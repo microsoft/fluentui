@@ -124,7 +124,8 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   keytipProps?: IKeytipProps;
 
   /**
-   * Optional indeterminate state for this checkbox
+   * Optional indeterminate state for this checkbox.
+   * Setting indeterminate state takes precedence over checked and defaultChecked props given.
    */
   indeterminate?: boolean;
 }

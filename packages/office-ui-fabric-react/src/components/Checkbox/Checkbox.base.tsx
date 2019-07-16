@@ -6,11 +6,8 @@ import { KeytipData } from '../../KeytipData';
 
 export interface ICheckboxState {
   /** Is true when Uncontrolled control is checked. */
-  isChecked?: boolean;
+  isChecked?: boolean | undefined;
   isIndeterminate?: boolean;
-  /** Since indeterminant props are always truthy,
-   * isIndeterCheck state acts as a secondary logic gate to turn off indeterminate state after the first click */
-  isIndeterCheck?: boolean;
 }
 
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
@@ -25,17 +22,22 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   private _classNames: { [key in keyof ICheckboxStyles]: string };
 
   public static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState {
-    if (props.indeterminate && state.isIndeterCheck === false) {
+    if (!props.indeterminate) {
+      if (props.checked) {
+        return {
+          ...state,
+          isIndeterminate: false,
+          isChecked: !!props.checked
+        };
+      }
       return {
         ...state,
-        isIndeterminate: true,
-        isIndeterCheck: true,
-        isChecked: false
+        isIndeterminate: false
       };
-    } else if (props.checked !== undefined) {
+    } else if (props.indeterminate && state.isIndeterminate) {
       return {
         ...state,
-        isChecked: !!props.checked
+        isChecked: undefined
       };
     }
     return state;
@@ -60,8 +62,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     this._id = this.props.id || getId('checkbox-');
     this.state = {
       isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked),
-      isIndeterminate: false,
-      isIndeterCheck: false
+      isIndeterminate: true
     };
   }
 
@@ -182,10 +183,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
           onChange(ev, !isChecked);
         }
       }
-
-      if (this.props.checked === undefined) {
-        this.setState({ isChecked: !isChecked });
-      }
+      this.setState({ isChecked: !isChecked });
     }
   };
 
