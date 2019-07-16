@@ -3,7 +3,8 @@
 const mustache = require('mustache');
 const argv = require('yargs').argv;
 const fs = require('fs');
-const exec = require('./exec-sync');
+const { spawnSync } = require('child_process');
+const findGitRoot = require('./monorepo/findGitRoot');
 const writeConfig = require('./write-config');
 const path = require('path');
 
@@ -113,7 +114,7 @@ function performStep(stepIndex) {
 }
 
 function yarnInstall() {
-  spawnSync('yarn', { cwd: packagePath, stdio: 'inherit' });
+  spawnSync('yarn', ['--ignore-scripts'], { cwd: findGitRoot(), stdio: 'inherit' });
 }
 
 function readFileCallback(error, data, templateName, outputFilePath, callback, readFileError, writeFileError) {
