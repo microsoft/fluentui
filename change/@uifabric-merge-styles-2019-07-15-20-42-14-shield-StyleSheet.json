@@ -1,0 +1,8 @@
+{
+  "comment": "Insert first style element after a placeholder or as first child of the head element.",
+  "type": "minor",
+  "packageName": "@uifabric/merge-styles",
+  "email": "vibraga@microsoft.com",
+  "commit": "6792b36740782730db6693389db9c6341727bdb5",
+  "date": "2019-07-16T03:42:14.684Z"
+}
