@@ -341,7 +341,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       compact
     } = this.props;
 
-    const nestingDepth = (subGroup.level && subGroup.level + 1) || groupNestingDepth;
+    const nestingDepth = subGroup.level ? subGroup.level + 1 : groupNestingDepth;
 
     return !subGroup || subGroup.count > 0 || (groupProps && groupProps.showEmptyGroups) ? (
       <GroupedListSection
