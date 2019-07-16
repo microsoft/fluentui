@@ -98,8 +98,7 @@ export function findIcon(title: string): string | undefined {
  *
  * @param props - Chiclet props
  * @param imageProvided - Boolean that indicates if an image was provided
- * @param iconStyle - Icon styling
- * @param previewStyle - Preview image styling
+ * @param classNames - Styling
  * @param height - Height for the preview
  * @param width - Width for the preview
  */
