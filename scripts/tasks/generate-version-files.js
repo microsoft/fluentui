@@ -8,6 +8,9 @@ const glob = require('glob');
 const generateOnly = process.argv.indexOf('-g') > -1;
 const beachballBin = require.resolve('beachball/bin/beachball.js');
 const bumpCmd = [process.execPath, beachballBin];
+const findGitRoot = require('../monorepo/findGitRoot');
+
+const gitRoot = findGitRoot();
 
 function run(args) {
   const [cmd, ...restArgs] = args;
@@ -49,7 +52,7 @@ module.exports = function generateVersionFiles() {
     });
   }
 
-  const packageJsons = glob.sync('+(packages|apps)/*/package.json');
+  const packageJsons = glob.sync('+(packages|apps)/*/package.json', { cwd: gitRoot });
   packageJsons.forEach(packageJsonPath => {
     const versionFile = path.join(path.dirname(packageJsonPath), 'src/version.ts');
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath).toString());
