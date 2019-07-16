@@ -2229,25 +2229,18 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
     theme?: ITheme;
 }
 
-// @public (undocumented)
+// @public
 export interface IChoiceGroupOptionStyleProps {
-    // (undocumented)
     checked?: boolean;
-    // (undocumented)
     disabled?: boolean;
-    // (undocumented)
     focused?: boolean;
-    // (undocumented)
     hasIcon?: boolean;
-    // (undocumented)
     hasImage?: boolean;
-    // (undocumented)
-    imageHeight?: number;
-    // (undocumented)
     imageIsLarge?: boolean;
-    // (undocumented)
-    imageWidth?: number;
-    // (undocumented)
+    imageSize?: {
+        height: number;
+        width: number;
+    };
     theme: ITheme;
 }
 

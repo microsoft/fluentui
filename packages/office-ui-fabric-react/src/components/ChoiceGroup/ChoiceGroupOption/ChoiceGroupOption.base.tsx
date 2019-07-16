@@ -39,8 +39,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
       checked,
       disabled,
       imageIsLarge: !!imageSrc && (imageSize.width > 71 || imageSize.height > 71),
-      imageHeight: imageSize.height,
-      imageWidth: imageSize.width,
+      imageSize,
       focused
     });
 
