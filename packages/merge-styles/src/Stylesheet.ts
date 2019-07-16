@@ -292,10 +292,13 @@ export class Stylesheet {
         styleElement.setAttribute('nonce', cspSettings.nonce);
       }
     }
-    if (this._lastStyleElement && this._lastStyleElement.nextElementSibling) {
+    if (this._lastStyleElement) {
+      // If the `nextElementSibling` is null, then the insertBefore will act as a regular append.
+      // https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore#Syntax
       head!.insertBefore(styleElement, this._lastStyleElement.nextElementSibling);
     } else {
       const placeholderStyleTag: Element | null = this._findPlaceholderStyleTag();
+
       if (placeholderStyleTag) {
         head!.insertBefore(styleElement, placeholderStyleTag.nextElementSibling);
       } else {
