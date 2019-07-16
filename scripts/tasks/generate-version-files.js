@@ -1,16 +1,22 @@
 // @ts-check
 
-const { execSync } = require('child_process');
+const { spawnSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
 
 const generateOnly = process.argv.indexOf('-g') > -1;
 const beachballBin = require.resolve('beachball/bin/beachball.js');
-const bumpCmd = `node ${beachballBin}`;
+const bumpCmd = [process.execPath, beachballBin];
 
-function run(cmd) {
-  return execSync(cmd, { cwd: path.resolve(__dirname, '../..') }).toString();
+function run(args) {
+  const [cmd, ...restArgs] = args;
+  const runResult = spawnSync(cmd, restArgs, { cwd: path.resolve(__dirname, '../..') });
+  if (runResult.status === 0) {
+    return runResult.stdout.toString().trim();
+  }
+
+  return null;
 }
 
 module.exports = function generateVersionFiles() {
@@ -19,7 +25,7 @@ module.exports = function generateVersionFiles() {
 
   if (!generateOnly) {
     // Check that no uncommitted changes exist
-    let status = run('git status -s');
+    let status = run(['git', 'status', '-s']);
     if (status) {
       console.log('Repository needs to contain no changes for version generation to proceed.');
       process.exit();
@@ -27,7 +33,7 @@ module.exports = function generateVersionFiles() {
 
     // Do a dry-run on all packages
     run(bumpCmd);
-    status = run('git status --porcelain=1');
+    status = run(['git', 'status', '--porcelain=1']);
     status.split(/\n/g).forEach(line => {
       if (line) {
         const parts = line.trim().split(/\s/);
@@ -82,6 +88,6 @@ module.exports = function generateVersionFiles() {
     untracked.forEach(f => fs.unlinkSync(f));
 
     console.log(`reset ${modified.join(' ')}`);
-    run(`git checkout ${modified.join(' ')}`);
+    run(['git', 'checkout', ...modified]);
   }
 };
