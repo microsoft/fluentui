@@ -281,6 +281,7 @@ export class Stylesheet {
   }
 
   private _createStyleElement(): HTMLStyleElement {
+    const head: HTMLHeadElement = document.head;
     const styleElement = document.createElement('style');
 
     styleElement.setAttribute('data-merge-styles', 'true');
@@ -292,12 +293,30 @@ export class Stylesheet {
       }
     }
     if (this._lastStyleElement && this._lastStyleElement.nextElementSibling) {
-      document.head!.insertBefore(styleElement, this._lastStyleElement.nextElementSibling);
+      head!.insertBefore(styleElement, this._lastStyleElement.nextElementSibling);
     } else {
-      document.head!.appendChild(styleElement);
+      const placeholderStyleTag: Element | null = this._findPlaceholderStyleTag();
+      if (placeholderStyleTag) {
+        placeholderStyleTag.after(styleElement);
+      } else {
+        head!.insertBefore(styleElement, head.childNodes[0]);
+      }
     }
     this._lastStyleElement = styleElement;
 
     return styleElement;
+  }
+
+  private _findPlaceholderStyleTag(): Element | null {
+    const head: HTMLHeadElement = document.head;
+    if (head) {
+      for (let i = 0; i < head.children.length; i++) {
+        const child: Element | null = head.children.item(i);
+        if (child && child.tagName === 'STYLE' && child.hasAttribute('data-merge-styles')) {
+          return child;
+        }
+      }
+    }
+    return null;
   }
 }
