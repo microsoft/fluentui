@@ -1,0 +1,8 @@
+{
+  "comment": "Fix API reference tables' flash of content on scroll",
+  "type": "patch",
+  "packageName": "@uifabric/example-app-base",
+  "email": "706967+KevinTCoughlin@users.noreply.github.com",
+  "commit": "6d4359e282aa292691f661ff655fe5b1b42b21eb",
+  "date": "2019-07-16T17:42:23.118Z"
+}

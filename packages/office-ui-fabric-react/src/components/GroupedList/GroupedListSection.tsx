@@ -348,6 +348,8 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
       compact
     } = this.props;
 
+    const nestingDepth = subGroup.level ? subGroup.level + 1 : groupNestingDepth;
+
     return !subGroup || subGroup.count > 0 || (groupProps && groupProps.showEmptyGroups) ? (
       <GroupedListSection
         ref={'subGroup_' + subGroupIndex}
@@ -359,7 +361,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
         getGroupItemLimit={getGroupItemLimit}
         group={subGroup}
         groupIndex={subGroupIndex}
-        groupNestingDepth={groupNestingDepth}
+        groupNestingDepth={nestingDepth}
         groupProps={groupProps}
         headerProps={headerProps}
         items={items}

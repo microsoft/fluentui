@@ -60,15 +60,35 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
 }
 
 /**
+ * Defines props needed to construct styles. This represents the simplified set of immutable things which control the class names.
  * {@docCategory ChoiceGroup}
  */
 export interface IChoiceGroupOptionStyleProps {
+  /** Theme provided by High-Order Component. */
   theme: ITheme;
+
+  /** Whether the option has an icon. */
   hasIcon?: boolean;
+
+  /** Whether the option icon is an image. */
   hasImage?: boolean;
+
+  /** Whether the option is checked or not. */
   checked?: boolean;
+
+  /** Whether the option is disabled or not. */
   disabled?: boolean;
+
+  /** Whether the image width or height are higher than `71`. */
   imageIsLarge?: boolean;
+
+  /**
+   * Image sizes used when `hasImage` or `hasIcon` style props are enabled.
+   * @defaultvalue \{height: 32, width: 32\}
+   */
+  imageSize?: { height: number; width: number };
+
+  /** Whether the option is in focus or not. */
   focused?: boolean;
 }
 

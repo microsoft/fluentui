@@ -1,0 +1,8 @@
+{
+  "comment": "DropDown: Adding null check in onPositioned call.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "30890297bb5b45cece99eee5f770a175f33ee259",
+  "date": "2019-07-15T23:56:38.953Z"
+}

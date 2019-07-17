@@ -63,9 +63,6 @@ module.exports = function preset() {
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
 
-  // Special case build for the serializer, which needs to absolutely run typescript and jest serially.
-  task('build-jest-serializer-merge-styles', series('ts', 'jest'));
-
   task('build:node-lib', series('clean', 'copy', series(condition('validate', () => !argv().min), 'ts:commonjs-only'))).cached();
 
   task(
