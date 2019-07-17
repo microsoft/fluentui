@@ -98,7 +98,7 @@ To view the documentation including examples, contracts, component status, and t
 1. `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
 2. `cd office-ui-fabric-react`
 3. `yarn`
-4. `yarn build`
+4. `yarn builddemo`
 5. `yarn start`
 
 This will start a demo page from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
@@ -106,6 +106,8 @@ This will start a demo page from the office-ui-fabric-react package folder, whic
 To build and run tests for all packages in the repo, run `yarn build` from the root.
 
 To build individual packages within the `packages/*` or `apps/*` folders, `cd` to the relevant folder and run `yarn build`. Note that because the packages are symlinked together, you must manage building dependencies in the right order, or use the `yarn build` script to build to the specific package you want. (See advanced tips below.)
+
+There are more advanced build commands listed here in the [Build Commands](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Build-Commands) page
 
 ### Testing
 

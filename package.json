@@ -7,12 +7,6 @@
     "type": "git",
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
-  "devDependencies": {
-    "beachball": "^1.9.2",
-    "git-hooks": "^1.1.10",
-    "lerna": "^3.15.0",
-    "lint-staged": "^7.0.5"
-  },
   "scripts": {
     "preinstall": "node ./scripts/use-yarn-please.js",
     "postinstall": "node ./scripts/postinstall.js",
@@ -43,6 +37,12 @@
     "generate-version-files": "cd scripts && just-scripts generate-version-files",
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
     "dom-test": "cd apps/dom-tests && just-scripts jest-dom-with-webpack"
+  },
+  "devDependencies": {
+    "beachball": "^1.9.2",
+    "git-hooks": "^1.1.10",
+    "lerna": "^3.15.0",
+    "lint-staged": "^7.0.5"
   },
   "license": "MIT",
   "lint-staged": {
