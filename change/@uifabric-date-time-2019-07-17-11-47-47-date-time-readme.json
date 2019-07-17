@@ -1,0 +1,8 @@
+{
+  "comment": "updated date-time readme now that it has major released",
+  "type": "patch",
+  "packageName": "@uifabric/date-time",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "c2de3c8f517d6c645e0e52a980425526ca2ed602",
+  "date": "2019-07-17T18:47:47.684Z"
+}
