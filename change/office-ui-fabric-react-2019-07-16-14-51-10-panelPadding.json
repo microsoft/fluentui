@@ -1,0 +1,8 @@
+{
+  "comment": "Panel: Making padding not change with screen width to match toolkit.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "f0c357f33de7fb3d2924a0d8dcf9208a5ae36aa7",
+  "date": "2019-07-16T21:51:10.670Z"
+}
