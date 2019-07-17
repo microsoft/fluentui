@@ -1,0 +1,8 @@
+{
+  "comment": "Tooltip: Updates box-shadow to match fluent web toolkit",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "57644c588c2e90f7e77c7dfe20346dd4f0c782ad",
+  "date": "2019-07-17T19:44:34.295Z"
+}
