@@ -15,7 +15,7 @@
     "forceConsistentCasingInFileNames": true,
     "preserveConstEnums": true,
     "lib": ["es5", "dom"],
-    "types": ["jest", "webpack-env", "react"],
+    "types": ["jest", "webpack-env"],
     "paths": {
       "@uifabric/styling": ["./src"]
     }
