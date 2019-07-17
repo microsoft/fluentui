@@ -50,6 +50,11 @@ export function createFontStyles(localeCode: string | null): IFontStyles;
 // @public
 export function createTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
 
+// Warning: (ae-incompatible-release-tags) The symbol "DefaultEffects" is marked as @public, but its signature references "IEffects" which is marked as @internal
+// 
+// @public (undocumented)
+export const DefaultEffects: IEffects;
+
 // @public (undocumented)
 export const DefaultFontStyles: IFontStyles;
 
