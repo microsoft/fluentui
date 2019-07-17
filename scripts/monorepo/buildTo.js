@@ -4,6 +4,7 @@ const getAllPackageInfo = require('./getAllPackageInfo');
 
 const argv = process.argv.slice(2);
 
+// Display a usage message when there is no projects specified
 if (argv.length < 1) {
   console.log(`Usage:
 
@@ -17,6 +18,7 @@ If multiple packages matched the pattern, they will all be built (along with the
 
 const [project, ...rest] = argv;
 
+// This script matches substrings of the input for one more many projects
 const allPackages = getAllPackageInfo();
 let foundProjects = [project];
 
@@ -37,6 +39,8 @@ foundProjects.forEach(projectName => {
   scopes.push(projectName);
 });
 
+// Lerna has many flags, --scope limits build to a specified package while --include-filtered-Dependencies makes the build include dependencies
+// --stream allows the build to proceed in parallel but still in order
 spawnSync(lernaBin, ['run', 'build', ...scopes, '--include-filtered-dependencies', '--stream', '--', ...rest], {
   stdio: 'inherit'
 });

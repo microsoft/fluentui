@@ -15,6 +15,7 @@
   },
   "scripts": {
     "preinstall": "node ./scripts/use-yarn-please.js",
+    "postinstall": "node ./scripts/postinstall.js",
     "buildto": "node ./scripts/monorepo/buildTo.js",
     "builddemo": "node ./scripts/monorepo/buildTo.js fabric-website-resources --min",
     "vrtest": "cd apps && cd vr-tests && npm run screener",

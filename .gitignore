@@ -110,7 +110,7 @@ gulp-cache
 
 # NPM debug logs
 npm-debug.log.*
-
+shrinkwrap.yaml
 package-lock.json
 
 *.swp

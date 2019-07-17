@@ -5,13 +5,11 @@ const argv = require('yargs').argv;
 const fs = require('fs');
 const { spawnSync } = require('child_process');
 const findGitRoot = require('./monorepo/findGitRoot');
-const writeConfig = require('./write-config');
 const path = require('path');
 
 // The package name can be given as a named or positional argument
 const newPackageName = /** @type {string} */ (argv.name || argv._[0]);
 const newPackageNpmName = '@uifabric/' + newPackageName;
-const generate = argv.generate !== false;
 
 if (!newPackageName) {
   console.error('Please specify a name for the new package.');
@@ -74,6 +72,8 @@ const steps = [
 ];
 
 // Strings
+const successCreatedPackage = `New package ${newPackageName} successfully created.`;
+const yarnMessage = 'Running "yarn"';
 const errorUnableToCreatePackage = `Error creating package directory ${packagePath}`;
 const errorUnableToOpenTemplate = templateFile => `Unable to open mustache template ${templateFile} for component`;
 const errorUnableToWriteFile = step => `Unable to write ${step} file`;
@@ -91,6 +91,7 @@ function handleError(error, errorPrependMessage) {
 function performStep(stepIndex) {
   if (stepIndex >= steps.length) {
     yarnInstall();
+    console.log(successCreatedPackage);
     return;
   }
 
@@ -114,7 +115,12 @@ function performStep(stepIndex) {
 }
 
 function yarnInstall() {
-  spawnSync('yarn', ['--ignore-scripts'], { cwd: findGitRoot(), stdio: 'inherit' });
+  console.log(yarnMessage);
+  const yarnResult = spawnSync('yarn', ['--ignore-scripts'], { cwd: findGitRoot(), stdio: 'inherit' });
+  if (yarnResult.status !== 0) {
+    console.error('Something went wrong with running yarn. Please check previous logs for details');
+    process.exit(1);
+  }
 }
 
 function readFileCallback(error, data, templateName, outputFilePath, callback, readFileError, writeFileError) {
@@ -132,6 +138,7 @@ function readFileCallback(error, data, templateName, outputFilePath, callback, r
   };
   if (templateName.toLowerCase().indexOf('packagejson') !== -1) {
     // The package.json template has an additional tag for the version of each dependency.
+    // This is preferable over hardcoding dependency versions to prevent errors with dependency consistency.
     // As of writing, @uifabric/experiments also depends on all the packages the template needs,
     // so we grab the current versions from there and add tags for them in the view object.
     const templatePackageJson = JSON.parse(data);
