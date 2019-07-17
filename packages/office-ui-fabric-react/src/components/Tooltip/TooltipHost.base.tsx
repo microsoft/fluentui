@@ -171,7 +171,6 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       return;
     }
 
-    console.log('entering', ev.target);
     this._clearDismissTimer();
     this._clearOpenTimer();
 

@@ -38,7 +38,6 @@ describe('Tooltip', () => {
   it('uses default documented properties', () => {
     const component = mount(<TooltipBase />);
 
-    expect(component.prop('delay')).toEqual(TooltipDelay.medium);
     expect(component.prop('directionalHint')).toEqual(DirectionalHint.topCenter);
     expect(component.prop('maxWidth')).toEqual('364px');
     expect(component.prop('calloutProps')).toEqual(defaultCalloutProps);
