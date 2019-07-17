@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/api-docs",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "A package that transforms .api.json files into page.json files",
   "main": "lib-commonjs/index.js",
   "typings": "lib/index.d.ts",
