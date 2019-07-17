@@ -11,7 +11,6 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
   // Specify default props values
   public static defaultProps: Partial<ITooltipProps> = {
     directionalHint: DirectionalHint.topCenter,
-    delay: TooltipDelay.medium,
     maxWidth: '364px',
     calloutProps: {
       isBeakVisible: true,
@@ -28,7 +27,6 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
     const {
       className,
       calloutProps,
-      delay,
       directionalHint,
       directionalHintForRTL,
       styles,
@@ -42,7 +40,6 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className: className || (calloutProps && calloutProps.className),
-      delay: delay!,
       gapSpace: calloutProps && calloutProps.gapSpace,
       maxWidth: maxWidth!
     });

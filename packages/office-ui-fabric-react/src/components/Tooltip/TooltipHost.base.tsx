@@ -92,7 +92,6 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
         {showTooltip && (
           <Tooltip
             id={tooltipId}
-            delay={delay}
             content={content}
             targetElement={this._getTargetElement()}
             directionalHint={directionalHint}
@@ -172,6 +171,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       return;
     }
 
+    console.log('entering', ev.target);
     this._clearDismissTimer();
     this._clearOpenTimer();
 
