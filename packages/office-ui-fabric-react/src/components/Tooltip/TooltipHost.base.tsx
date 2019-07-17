@@ -55,7 +55,6 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       calloutProps,
       children,
       content,
-      delay,
       directionalHint,
       directionalHintForRTL,
       hostClassName: className,
