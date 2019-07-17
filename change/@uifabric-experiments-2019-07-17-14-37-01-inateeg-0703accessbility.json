@@ -1,5 +1,5 @@
 {
-  "comment": "Nav: Add ability for screen reader to read selected state.",
+  "comment": "Tile: Add ability for screen reader to read selected state.",
   "type": "minor",
   "packageName": "@uifabric/experiments",
   "email": "Humberto.Morimoto@microsoft.com",
