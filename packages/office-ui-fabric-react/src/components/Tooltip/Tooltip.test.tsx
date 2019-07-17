@@ -6,7 +6,6 @@ import { mount } from 'enzyme';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TooltipBase } from './Tooltip.base';
-import { TooltipDelay } from './Tooltip.types';
 import { ICalloutProps } from '../../Callout';
 
 const defaultCalloutProps: ICalloutProps = {
