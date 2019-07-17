@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
-  BaseComponent,
+  initializeComponentRef,
+  Async,
   divProperties,
   getNativeProps,
   getId,
@@ -20,7 +21,7 @@ export interface ITooltipHostState {
 
 const getClassNames = classNamesFunction<ITooltipHostStyleProps, ITooltipHostStyles>();
 
-export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
+export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
   public static defaultProps = {
     delay: TooltipDelay.medium
   };
@@ -30,6 +31,7 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
   // The wrapping div that gets the hover events
   private _tooltipHost = React.createRef<HTMLDivElement>();
   private _classNames: { [key in keyof ITooltipHostStyles]: string };
+  private _async: Async;
 
   // The ID of the setTimeout that will eventually close the tooltip if the
   // the tooltip isn't hovered over.
@@ -39,9 +41,13 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
   constructor(props: ITooltipHostProps) {
     super(props);
 
+    initializeComponentRef(this);
+
     this.state = {
       isTooltipVisible: false
     };
+
+    this._async = new Async(this);
   }
 
   // Render
@@ -112,6 +118,8 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
     if (TooltipHostBase._currentVisibleTooltip && TooltipHostBase._currentVisibleTooltip === this) {
       TooltipHostBase._currentVisibleTooltip = undefined;
     }
+
+    this._async.dispose();
   }
 
   public show = (): void => {
