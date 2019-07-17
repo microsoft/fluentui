@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   initializeComponentRef,
-  on,
   Async,
   IRectangle,
   css,
@@ -13,6 +12,7 @@ import {
   IRenderFunction
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps, ScrollToMode } from './List.types';
+import { EventGroup } from '@uifabric/utilities';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
@@ -95,8 +95,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
 
   private _root = React.createRef<HTMLDivElement>();
   private _surface = React.createRef<HTMLDivElement>();
-  private _disposables: Function[];
   private _async: Async;
+  private _events: EventGroup;
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
   private _cachedPageHeights: {
@@ -143,7 +143,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     };
 
     this._async = new Async(this);
-    this._disposables = [];
+    this._events = new EventGroup(this);
     this._estimatedPageHeight = 0;
     this._totalEstimates = 0;
     this._requiredWindowsAhead = 0;
@@ -304,19 +304,19 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     this._measureVersion++;
     this._scrollElement = findScrollableParent(this._root.current) as HTMLElement;
 
-    this._disposables.push(on(window, 'resize', this._onAsyncResize));
+    this._events.on(window, 'resize', this._onAsyncResize);
     if (this._root.current) {
-      this._disposables.push(on(this._root.current, 'focus', this._onFocus, true));
+      this._events.on(this._root.current, 'focus', this._onFocus, true);
     }
     if (this._scrollElement) {
-      this._disposables.push(on(this._scrollElement, 'scroll', this._onScroll));
-      this._disposables.push(on(this._scrollElement, 'scroll', this._onAsyncScroll));
+      this._events.on(this._scrollElement, 'scroll', this._onScroll);
+      this._events.on(this._scrollElement, 'scroll', this._onAsyncScroll);
     }
   }
 
   public componentWillUnmount(): void {
     this._async.dispose();
-    this._disposables.forEach(dispose => dispose());
+    this._events.dispose();
   }
 
   public componentWillReceiveProps(newProps: IListProps<T>): void {
