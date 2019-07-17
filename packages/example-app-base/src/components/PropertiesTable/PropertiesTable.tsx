@@ -139,10 +139,15 @@ class PropertiesTableBase extends React.PureComponent<IPropertiesTableProps> {
           groups={this._groups}
           columns={renderAsEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS}
           styles={classNames.subComponentStyles.list}
+          onShouldVirtualize={this._onShouldVirtualize}
         />
       </div>
     );
   }
+
+  private _onShouldVirtualize = (): boolean => {
+    return false;
+  };
 
   private _getGroups(): IGroup[] {
     const groups: IGroup[] = [];
