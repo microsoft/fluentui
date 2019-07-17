@@ -1,8 +1,8 @@
-stages:
-  - stage: build
+jobs:
+  - job: build
     pool:
-    name: Hosted VS2017
-    demands: npm
+      name: Hosted VS2017
+      demands: npm
     steps:
       - scripts: yarn
         displayName: yarn
@@ -41,9 +41,9 @@ stages:
           PathtoPublish: 'packages/office-ui-fabric-react/dist/office-ui-fabric-react.js'
           ArtifactName: oufrdrop
 
-  - stage: lightrail
-    dependsOn: build
+  - job: lightrail
     pool: server
+    dependsOn: build
     steps:
       - task: odefun.odsp-lightrail-tasks-partner.odsp-lightrail-tasks-SizeAuditorWorker.SizeAuditorWorker@0
         displayName: 'Size Auditor Check on LightRail'
