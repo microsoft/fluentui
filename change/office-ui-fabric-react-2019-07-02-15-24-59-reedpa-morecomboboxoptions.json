@@ -1,8 +1,0 @@
-{
-  "comment": "Add new ways for callers to control the behavior of the combo box.",
-  "type": "minor",
-  "packageName": "office-ui-fabric-react",
-  "email": "reedpa@microsoft.com",
-  "commit": "18ce710a7314d56c569c4c115d24e1507345c011",
-  "date": "2019-07-02T22:24:59.438Z"
-}

@@ -1,8 +1,0 @@
-{
-  "comment": "Changed initial default style injection to insert at the start of head by default, rather than at the end. This lets user specified stylesheets have preference by default, but also added support to insert styles in a specific part of the `HEAD` element. Just create a placeholder `<style data-merge-styles/>` element within the head, and styles will be injected after that placeholder.",
-  "type": "minor",
-  "packageName": "@uifabric/merge-styles",
-  "email": "vibraga@microsoft.com",
-  "commit": "6792b36740782730db6693389db9c6341727bdb5",
-  "date": "2019-07-16T03:42:14.684Z"
-}
