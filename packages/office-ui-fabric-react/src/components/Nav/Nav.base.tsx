@@ -32,12 +32,9 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   public static defaultProps: INavProps = {
     groups: null
   };
-  private _linkSelectedAriaLabel: string | undefined;
 
   constructor(props: INavProps) {
     super(props);
-
-    this._linkSelectedAriaLabel = this.props.selectedAriaLabel;
 
     this.state = {
       isGroupCollapsed: {},
@@ -77,7 +74,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   };
 
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number): JSX.Element {
-    const { styles, groups, theme, onRenderLink = this._onRenderLink, linkAs: LinkAs = ActionButton } = this.props;
+    const { styles, groups, theme, onRenderLink = this._onRenderLink, linkAs: LinkAs = ActionButton, selectedAriaLabel } = this.props;
     const isLinkWithIcon = link.icon || link.iconProps;
     const isSelectedLink = this._isLinkSelected(link);
     const classNames = getClassNames(styles!, {
@@ -91,7 +88,8 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
-    const selectStateAria = isSelectedLink && this._linkSelectedAriaLabel ? this._linkSelectedAriaLabel : undefined;
+    const selectedStateAriaLabel = isSelectedLink && selectedAriaLabel ? selectedAriaLabel : undefined;
+    const ariaLabel = `${link.ariaLabel} ${selectedStateAriaLabel}`.trim();
     return (
       <LinkAs
         className={classNames.link}
@@ -103,15 +101,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
         target={link.target}
         rel={rel}
         disabled={link.disabled}
-        aria-label={
-          !!link.ariaLabel && !!selectStateAria
-            ? `${link.ariaLabel} ${selectStateAria}`
-            : !!selectStateAria
-            ? selectStateAria
-            : !!link.ariaLabel
-            ? link.ariaLabel
-            : undefined
-        }
+        aria-label={ariaLabel}
       >
         {onRenderLink(link, this._onRenderLink)}
       </LinkAs>
