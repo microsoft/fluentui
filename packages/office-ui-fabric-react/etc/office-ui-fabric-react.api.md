@@ -7848,6 +7848,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     // (undocumented)
     componentWillReceiveProps(newProps: IListProps<T>): void;
     // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
     static defaultProps: {
         startIndex: number;
         onRenderCell: (item: any, index: number, containsFocus: boolean) => JSX.Element;
