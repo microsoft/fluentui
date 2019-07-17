@@ -88,8 +88,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
-    const selectStateAria = isSelectedLink ? 'Selected' : '';
-    const ariaLabel = !!link.ariaLabel ? link.ariaLabel : '';
+    const selectedStateAriaLabel = isSelectedLink && selectedAriaLabel ? selectedAriaLabel : undefined;
     return (
       <LinkAs
         className={classNames.link}
@@ -101,7 +100,15 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
         target={link.target}
         rel={rel}
         disabled={link.disabled}
-        aria-label={`${ariaLabel} ${selectStateAria}`}
+        aria-label={
+          link.ariaLabel && selectedStateAriaLabel
+            ? `${link.ariaLabel} ${selectedStateAriaLabel}`
+            : selectedStateAriaLabel
+            ? selectedStateAriaLabel
+            : link.ariaLabel
+            ? link.ariaLabel
+            : undefined
+        }
       >
         {onRenderLink(link, this._onRenderLink)}
       </LinkAs>
