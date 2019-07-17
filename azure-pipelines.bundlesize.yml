@@ -4,10 +4,10 @@ jobs:
       name: Hosted VS2017
       demands: npm
     steps:
-      - scripts: yarn
+      - script: yarn
         displayName: yarn
 
-      - scripts: yarn build
+      - script: yarn build
         displayName: yarn build
 
       - task: Npm@1
