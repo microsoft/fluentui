@@ -1,5 +1,5 @@
 {
-  "comment": "updated date-time readme now that it has major released",
+  "comment": "Updated date-time README now that it has major released.”,
   "type": "patch",
   "packageName": "@uifabric/date-time",
   "email": "mgodbolt@microsoft.com",
