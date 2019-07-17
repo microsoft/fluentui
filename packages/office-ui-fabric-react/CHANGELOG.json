@@ -2,6 +2,59 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "office-ui-fabric-react_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add new ways for callers to control the behavior of the combo box.",
+            "author": "reedpa@microsoft.com",
+            "commit": "18ce710a7314d56c569c4c115d24e1507345c011"
+          },
+          {
+            "comment": "ChoiceGroupOption: move the inline styles into getStyles function to allow override.",
+            "author": "vibraga@microsoft.com",
+            "commit": "3ea233343ac97179ef22e58d4a598654443ffbb6"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "prevent header and footer in panel from shrinking",
+            "author": "nidurak@microsoft.com",
+            "commit": "51f775061f46e1f3b5c89cffb8d0d5da09c5568d"
+          },
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          },
+          {
+            "comment": "Rating: ensure rating gets updated even when it has value of 0.",
+            "author": "vibraga@microsoft.com",
+            "commit": "9bc839d808db40145e4881b92490618c47e5a8fe"
+          },
+          {
+            "comment": "GroupedList: Using level to determine nestingDepth when it is given.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1138d83d700aa157d62f8b2229bc4305775ab1df"
+          },
+          {
+            "comment": "DropDown: Adding null check in onPositioned call.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "30890297bb5b45cece99eee5f770a175f33ee259"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 13 Jul 2019 22:20:41 GMT",
       "tag": "office-ui-fabric-react_v7.10.0",
       "version": "7.10.0",
