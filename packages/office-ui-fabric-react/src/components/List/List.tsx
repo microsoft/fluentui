@@ -9,10 +9,10 @@ import {
   getParent,
   divProperties,
   getNativeProps,
-  IRenderFunction
+  IRenderFunction,
+  EventGroup
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps, ScrollToMode } from './List.types';
-import { EventGroup } from '@uifabric/utilities';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
