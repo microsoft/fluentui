@@ -22,7 +22,8 @@ import {
   raiseClick,
   shouldWrapFocus,
   warnDeprecations,
-  portalContainsElement
+  portalContainsElement,
+  IPoint
 } from '../../Utilities';
 import { mergeStyles } from '@uifabric/merge-styles';
 
@@ -61,15 +62,11 @@ const _allInstances: {
 } = {};
 const _outerZones: Set<FocusZone> = new Set();
 
-interface IPoint {
-  left: number;
-  top: number;
-}
 const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
-export class FocusZone extends React.Component<IFocusZoneProps, {}> implements IFocusZone {
+export class FocusZone extends React.Component<IFocusZoneProps> implements IFocusZone {
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional
@@ -109,7 +106,6 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
   constructor(props: IFocusZoneProps) {
     super(props);
-
     // Manage componentRef resolution.
     initializeComponentRef(this);
 
@@ -126,8 +122,8 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     this._id = getId('FocusZone');
 
     this._focusAlignment = {
-      left: 0,
-      top: 0
+      x: 0,
+      y: 0
     };
 
     this._processingTabKey = false;
@@ -291,6 +287,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     }
 
     if (element) {
+      // when we Set focus to a specific child, we should recalculate the alignment depend on its position
       this._setActiveElement(element);
       if (this._activeElement) {
         this._activeElement.focus();
@@ -300,6 +297,15 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     }
 
     return false;
+  }
+
+  /**
+   * Forces horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on
+   * the last horizontal motion.
+   * @param point - the new reference point.
+   */
+  public setFocusAlignment(point: IPoint): void {
+    this._focusAlignment = point;
   }
 
   private _evaluateFocusBeforeRender(): void {
@@ -449,7 +455,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     }
   };
 
-  private _setActiveElement(element: HTMLElement, forceAlignemnt?: boolean): void {
+  private _setActiveElement(element: HTMLElement, forceAlignment?: boolean): void {
     const previousActiveElement = this._activeElement;
 
     this._activeElement = element;
@@ -463,7 +469,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     }
 
     if (this._activeElement) {
-      if (!this._focusAlignment || forceAlignemnt) {
+      if (!this._focusAlignment || forceAlignment) {
         this._setFocusAlignment(element, true, true);
       }
 
@@ -755,7 +761,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
   private _moveFocusDown(): boolean {
     let targetTop = -1;
-    const leftAlignment = this._focusAlignment.left;
+    const leftAlignment = this._focusAlignment.x;
 
     if (
       this._moveFocus(true, (activeRect: ClientRect, targetRect: ClientRect) => {
@@ -796,7 +802,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
   private _moveFocusUp(): boolean {
     let targetTop = -1;
-    const leftAlignment = this._focusAlignment.left;
+    const leftAlignment = this._focusAlignment.x;
 
     if (
       this._moveFocus(false, (activeRect: ClientRect, targetRect: ClientRect) => {
@@ -920,15 +926,18 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       const top = rect.top + rect.height / 2;
 
       if (!this._focusAlignment) {
-        this._focusAlignment = { left, top };
+        this._focusAlignment = {
+          x: left,
+          y: top
+        };
       }
 
       if (isHorizontal) {
-        this._focusAlignment.left = left;
+        this._focusAlignment.x = left;
       }
 
       if (isVertical) {
-        this._focusAlignment.top = top;
+        this._focusAlignment.y = top;
       }
     }
   }

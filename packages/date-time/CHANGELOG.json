@@ -2,6 +2,65 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/date-time_v7.1.6",
+      "version": "7.1.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          },
+          {
+            "comment": "bumping versions to match what was published already",
+            "author": "kchau@microsoft.com",
+            "commit": "75e4ad16a2e6a54672e4929a9e003c7fd6f6ae52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/date-time_v7.1.4",
+      "version": "7.1.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          },
+          {
+            "comment": "adding build cache",
+            "author": "kchau@microsoft.com",
+            "commit": "babf367fa3a2f05d6689b9ea0a0cdb765b282380"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Jul 2019 12:29:39 GMT",
+      "tag": "@uifabric/date-time_v7.1.4",
+      "version": "7.1.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix date conversion for weeklydaypicker",
+            "author": "jolore@microsoft.com",
+            "commit": "f1273794e8c4402a86656689185bc7deb01151e4"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.3",
       "tag": "@uifabric/date-time_v7.1.3",
       "date": "Mon, 01 Jul 2019 18:51:42 GMT",

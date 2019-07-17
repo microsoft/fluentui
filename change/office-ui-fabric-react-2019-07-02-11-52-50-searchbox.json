@@ -1,8 +1,0 @@
-{
-  "comment": "SearchBox: allow passing in id for input",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "c8ea3dd79fc6a2508dacdab123d1226dfbb70f7f",
-  "date": "2019-07-02T18:52:50.961Z"
-}

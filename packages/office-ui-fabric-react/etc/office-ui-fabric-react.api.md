@@ -1238,7 +1238,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     }
 
 // @public (undocumented)
-export class FocusZone extends React.Component<IFocusZoneProps, {}> implements IFocusZone {
+export class FocusZone extends React.Component<IFocusZoneProps> implements IFocusZone {
     constructor(props: IFocusZoneProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1253,6 +1253,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     static getOuterZones(): number;
     // (undocumented)
     render(): JSX.Element;
+    setFocusAlignment(point: IPoint): void;
     }
 
 // @public (undocumented)
@@ -1336,7 +1337,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
 export const GroupedList: React.StatelessComponent<IGroupedListProps>;
 
 // @public (undocumented)
-export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
+export class GroupedListBase extends React.Component<IGroupedListProps, IGroupedListState> implements IGroupedList {
     constructor(props: IGroupedListProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1378,7 +1379,7 @@ export const groupOne: IExtendedPersonaProps[];
 export const GroupShowAll: React.StatelessComponent<IGroupShowAllProps>;
 
 // @public (undocumented)
-export const GroupSpacer: React.SFC<IGroupSpacerProps>;
+export const GroupSpacer: React.FunctionComponent<IGroupSpacerProps>;
 
 // @public (undocumented)
 export const groupTwo: IExtendedPersonaProps[];
@@ -1798,6 +1799,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
     // (undocumented)
     theme?: ITheme;
+    tooltipHostProps?: ITooltipHostProps;
 }
 
 // @public (undocumented)
@@ -2084,6 +2086,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
+    shouldRestoreFocus?: boolean;
     style?: React.CSSProperties;
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
@@ -2227,21 +2230,18 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
     theme?: ITheme;
 }
 
-// @public (undocumented)
+// @public
 export interface IChoiceGroupOptionStyleProps {
-    // (undocumented)
     checked?: boolean;
-    // (undocumented)
     disabled?: boolean;
-    // (undocumented)
     focused?: boolean;
-    // (undocumented)
     hasIcon?: boolean;
-    // (undocumented)
     hasImage?: boolean;
-    // (undocumented)
     imageIsLarge?: boolean;
-    // (undocumented)
+    imageSize?: {
+        height: number;
+        width: number;
+    };
     theme: ITheme;
 }
 
@@ -2699,6 +2699,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     multiSelect?: boolean;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
+    onMenuDismiss?: () => void;
     onMenuDismissed?: () => void;
     onMenuOpen?: () => void;
     onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
@@ -2708,6 +2709,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     options: IComboBoxOption[];
     persistMenu?: boolean;
     scrollSelectedToTop?: boolean;
+    shouldRestoreFocus?: boolean;
     styles?: Partial<IComboBoxStyles>;
     text?: string;
     theme?: ITheme;
@@ -3732,6 +3734,7 @@ export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithRe
     ariaLabelledById?: string;
     // @deprecated
     className?: string;
+    // @deprecated
     componentRef?: IRefObject<IDialog>;
     // @deprecated
     containerClassName?: string;
@@ -4251,6 +4254,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     onChanged?: (option: IDropdownOption, index?: number) => void;
     onDismiss?: () => void;
     onRenderCaretDown?: IRenderFunction<IDropdownProps>;
+    onRenderLabel?: IRenderFunction<IDropdownProps>;
     // @deprecated
     onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
     onRenderPlaceholder?: IRenderFunction<IDropdownProps>;
@@ -4520,6 +4524,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
 export interface IFocusZone {
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
+    setFocusAlignment(point: IPoint): void;
 }
 
 // @public
@@ -5433,6 +5438,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
     onDismissed?: () => any;
     // @deprecated
     onLayerDidMount?: () => void;
+    overlay?: IOverlayProps;
     scrollableContentClassName?: string;
     styles?: IStyleFunctionOrObject<IModalStyleProps, IModalStyles>;
     subtitleAriaId?: string;
@@ -5729,6 +5735,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     onRenderHeader?: IPanelHeaderRenderer;
     onRenderNavigation?: IRenderFunction<IPanelProps>;
     onRenderNavigationContent?: IRenderFunction<IPanelProps>;
+    overlayProps?: IOverlayProps;
     styles?: IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>;
     theme?: ITheme;
     type?: PanelType;
@@ -5916,8 +5923,10 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     initialsColor?: PersonaInitialsColor | string;
     isOutOfOffice?: boolean;
     onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
+    // @deprecated
     onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
     onRenderInitials?: IRenderFunction<IPersonaSharedProps>;
+    onRenderPersonaCoin?: IRenderFunction<IPersonaSharedProps>;
     optionalText?: string;
     presence?: PersonaPresence;
     // @deprecated
@@ -6879,6 +6888,7 @@ export interface ISpinButtonStyles {
     inputDisabled: IStyle;
     inputTextSelected: IStyle;
     label: IStyle;
+    // @deprecated
     labelDisabled: IStyle;
     labelWrapper: IStyle;
     labelWrapperBottom: IStyle;
@@ -7676,6 +7686,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
 export interface ITooltipStyleProps {
     className?: string;
     delay?: TooltipDelay;
+    gapSpace?: number;
     maxWidth?: string;
     theme: ITheme;
 }

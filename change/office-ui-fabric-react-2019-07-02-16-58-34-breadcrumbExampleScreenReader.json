@@ -1,8 +1,0 @@
-{
-  "comment": "Breadcrumb: Adding overflowAriaLabel to examples.",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "623b6e19cf9f0935facb8ae53d6092e6c4e8f450",
-  "date": "2019-07-02T23:58:34.565Z"
-}

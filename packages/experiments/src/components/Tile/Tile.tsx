@@ -152,6 +152,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       onClick,
       isFluentStyling,
       ariaLabelSelected,
+      nameplateOnlyOnHover,
       ...divProps
     } = this.props;
 
@@ -182,7 +183,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         {itemName || itemActivity
           ? this._onRenderNameplate({
               name: itemName,
-              activity: itemActivity
+              activity: itemActivity,
+              onlyOnHover: !!nameplateOnlyOnHover
             })
           : null}
       </>
@@ -290,16 +292,24 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     ) : null;
   }
 
-  private _onRenderNameplate({ name, activity }: { name: React.ReactNode; activity: React.ReactNode }): JSX.Element {
+  private _onRenderNameplate({
+    name,
+    activity,
+    onlyOnHover
+  }: {
+    name: React.ReactNode;
+    activity: React.ReactNode;
+    onlyOnHover: boolean;
+  }): JSX.Element {
     return (
-      <span key="nameplate" className={css('ms-Tile-nameplate', TileStyles.nameplate)}>
+      <span key="nameplate" className={css('ms-Tile-nameplate', TileStyles.nameplate, { [TileStyles.onlyOnHover]: onlyOnHover })}>
         {name ? (
-          <span id={this._nameId} className={css('ms-Tile-name', TileStyles.name)}>
+          <span id={this._nameId} className={css('ms-Tile-name', TileStyles.name, { [TileStyles.onlyOnHover]: onlyOnHover })}>
             {name}
           </span>
         ) : null}
         {activity ? (
-          <span id={this._activityId} className={css('ms-Tile-activity', TileStyles.activity)}>
+          <span id={this._activityId} className={css('ms-Tile-activity', TileStyles.activity, { [TileStyles.onlyOnHover]: onlyOnHover })}>
             {activity}
           </span>
         ) : null}

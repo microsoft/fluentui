@@ -16,7 +16,7 @@ const globalClassNames = {
 
 const linkStyles = (props: IPivotStyleProps): IStyle[] => {
   const { rootIsLarge, rootIsTabs } = props;
-  const { palette, semanticColors } = props.theme;
+  const { semanticColors } = props.theme;
   return [
     {
       color: semanticColors.actionLink,
@@ -54,12 +54,13 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
           visibility: 'hidden'
         },
         ':hover': {
-          backgroundColor: palette.neutralLighter,
-          color: semanticColors.actionLinkHovered,
+          backgroundColor: semanticColors.buttonBackgroundHovered,
+          color: semanticColors.buttonTextHovered,
           cursor: 'pointer'
         },
         ':active': {
-          backgroundColor: palette.neutralLight
+          backgroundColor: semanticColors.buttonBackgroundPressed,
+          color: semanticColors.buttonTextHovered
         },
         ':focus': {
           outline: 'none'
@@ -82,7 +83,7 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
         marginRight: 0,
         height: 44,
         lineHeight: 44,
-        backgroundColor: palette.neutralLighter,
+        backgroundColor: semanticColors.buttonBackground,
         padding: '0 10px',
         verticalAlign: 'top',
         selectors: {
@@ -102,7 +103,7 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
 
 export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
   const { className, rootIsLarge, rootIsTabs, theme } = props;
-  const { palette, semanticColors } = theme;
+  const { semanticColors } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
@@ -115,7 +116,7 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         fontSize: FontSizes.medium,
         fontWeight: FontWeights.regular,
         position: 'relative',
-        color: palette.themePrimary,
+        color: semanticColors.link,
         whiteSpace: 'nowrap'
       },
       rootIsLarge && classNames.rootIsLarge,
@@ -128,11 +129,11 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
       rootIsTabs && {
         selectors: {
           '&:hover, &:focus': {
-            color: palette.black
+            color: semanticColors.buttonTextCheckedHovered
           },
           '&:active, &:hover': {
-            color: palette.white,
-            backgroundColor: palette.themePrimary
+            color: semanticColors.primaryButtonText,
+            backgroundColor: semanticColors.primaryButtonBackground
           }
         }
       }
@@ -162,8 +163,8 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         }
       },
       rootIsTabs && {
-        backgroundColor: palette.themePrimary,
-        color: palette.white,
+        backgroundColor: semanticColors.primaryButtonBackground,
+        color: semanticColors.primaryButtonText,
         fontWeight: FontWeights.regular,
         selectors: {
           ':before': {
@@ -178,12 +179,12 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
             height: 'auto'
           },
           ':hover': {
-            backgroundColor: palette.themeDarkAlt,
-            color: palette.white
+            backgroundColor: semanticColors.primaryButtonBackgroundHovered,
+            color: semanticColors.primaryButtonText
           },
           '&:active': {
-            backgroundColor: palette.themeDark,
-            color: palette.white
+            backgroundColor: semanticColors.primaryButtonBackgroundPressed,
+            color: semanticColors.primaryButtonText
           },
           [HighContrastSelector]: {
             fontWeight: FontWeights.semibold,

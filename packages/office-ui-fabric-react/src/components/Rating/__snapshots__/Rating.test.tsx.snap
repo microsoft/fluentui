@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Rating Renders Rating correctly 1`] = `
+exports[`Rating renders correctly. 1`] = `
 <div
   aria-label=""
   className=
@@ -88,13 +88,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             cursor: default;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-            color: #a19f9d;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-            color: #a19f9d;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
@@ -156,7 +156,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a19f9d;
+                color: #605e5c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -246,13 +246,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             cursor: default;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-            color: #a19f9d;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-            color: #a19f9d;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
@@ -313,7 +313,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a19f9d;
+                color: #605e5c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -403,13 +403,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             cursor: default;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-            color: #a19f9d;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-            color: #a19f9d;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
@@ -470,7 +470,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a19f9d;
+                color: #605e5c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -560,13 +560,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             cursor: default;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-            color: #a19f9d;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-            color: #a19f9d;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
@@ -627,7 +627,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a19f9d;
+                color: #605e5c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
@@ -717,13 +717,13 @@ exports[`Rating Renders Rating correctly 1`] = `
             cursor: default;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-            color: #a19f9d;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
             color: WindowText;
           }
           &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-            color: #a19f9d;
+            color: #605e5c;
           }
           @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
             color: WindowText;
@@ -784,7 +784,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a19f9d;
+                color: #605e5c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
