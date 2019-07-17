@@ -126,6 +126,8 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   /**
    * Optional indeterminate state for this checkbox.
    * Setting indeterminate state takes precedence over checked and defaultChecked props given.
+   * This is not a toggleable state. On load the checkbox will receive indeterminate state
+   * and after the first user click it will be removed allowing the user to check or uncheck the checkbox.
    */
   indeterminate?: boolean;
 }
