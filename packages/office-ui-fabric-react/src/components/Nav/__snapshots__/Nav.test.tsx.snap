@@ -81,7 +81,6 @@ exports[`Nav renders Nav correctly 1`] = `
               name=""
             >
               <button
-                aria-label=""
                 className=
                     ms-Button
                     ms-Button--action
