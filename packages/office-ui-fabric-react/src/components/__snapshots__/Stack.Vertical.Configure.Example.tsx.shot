@@ -1233,12 +1233,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 position: relative;
               }
               &:hover .ms-Checkbox-checkbox {
-                background: #005a9e;
-                border-color: #005a9e;
+                background: #106ebe;
+                border-color: #106ebe;
               }
               &:focus .ms-Checkbox-checkbox {
-                background: #005a9e;
-                border-color: #005a9e;
+                background: #106ebe;
+                border-color: #106ebe;
               }
               & .ms-Checkbox-checkbox {
                 background: #0078d4;
