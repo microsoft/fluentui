@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Jul 2019 12:27:48 GMT and should not be manually modified.
+
+## 7.11.1
+Thu, 18 Jul 2019 12:27:48 GMT
+
+### Patches
+
+- Panel: Making padding not change with screen width to match toolkit. (Humberto.Morimoto@microsoft.com)
 
 ## 7.11.0
 Wed, 17 Jul 2019 18:58:57 GMT

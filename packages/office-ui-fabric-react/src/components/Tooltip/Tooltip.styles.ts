@@ -1,8 +1,8 @@
-import { ITooltipStyleProps, ITooltipStyles, TooltipDelay } from './Tooltip.types';
+import { ITooltipStyleProps, ITooltipStyles } from './Tooltip.types';
 import { AnimationClassNames } from '../../Styling';
 
 export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
-  const { className, delay, gapSpace = 0, maxWidth, theme } = props;
+  const { className, gapSpace = 0, maxWidth, theme } = props;
   const { palette, fonts, effects } = theme;
 
   const tooltipGapSpace = -15 - gapSpace;
@@ -16,7 +16,6 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
         background: palette.white,
         boxShadow: effects.elevation8,
         padding: '8px',
-        animationDelay: '300ms',
         maxWidth: maxWidth,
         selectors: {
           ':after': {
@@ -28,12 +27,6 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
             top: tooltipGapSpace
           }
         }
-      },
-      delay === TooltipDelay.zero && {
-        animationDelay: '0s'
-      },
-      delay === TooltipDelay.long && {
-        animationDelay: '500ms'
       },
       className
     ],

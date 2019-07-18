@@ -1,6 +1,6 @@
 // @ts-check
 
-const { task, series, parallel, condition, option, argv, logger, addResolvePath } = require('just-scripts');
+const { task, series, parallel, condition, option, argv, addResolvePath } = require('just-scripts');
 
 const path = require('path');
 const fs = require('fs');

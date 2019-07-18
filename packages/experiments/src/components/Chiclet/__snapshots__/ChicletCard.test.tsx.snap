@@ -83,7 +83,7 @@ exports[`Dialog renders chiclet with title, icon, onClick, and url 1`] = `
             font-stretch: normal;
             font-style: normal;
             font-weight: normal;
-            height: 41px;
+            height: 37px;
             letter-spacing: normal;
             line-height: 1.25;
             overflow: hidden;

@@ -156,8 +156,8 @@ exports[`Chiclet renders chiclet with title, preview, onClick, and url 1`] = `
           }
       style={
         Object {
-          "height": undefined,
-          "width": undefined,
+          "height": "59px",
+          "width": "61px",
         }
       }
     >
@@ -169,7 +169,9 @@ exports[`Chiclet renders chiclet with title, preview, onClick, and url 1`] = `
             is-fadeIn
             {
               display: block;
+              height: 100%;
               opacity: 0;
+              width: 100%;
             }
         onError={[Function]}
         onLoad={[Function]}
