@@ -29,7 +29,7 @@ if (!allPackages[project]) {
   } else if (foundProjects.length > 1) {
     console.log(`More than one project matched: "${foundProjects.join('", "')}"`);
   } else {
-    console.log(`Found a match project named "${foundProjects[0]}"`);
+    console.log(`Found a matching project named "${foundProjects[0]}"`);
   }
 }
 
