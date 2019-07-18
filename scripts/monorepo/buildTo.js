@@ -20,6 +20,7 @@ const [project, ...rest] = argv;
 
 // This script matches substrings of the input for one more many projects
 const allPackages = getAllPackageInfo();
+
 let foundProjects = [project];
 
 if (!allPackages[project]) {
@@ -41,6 +42,6 @@ foundProjects.forEach(projectName => {
 
 // Lerna has many flags, --scope limits build to a specified package while --include-filtered-Dependencies makes the build include dependencies
 // --stream allows the build to proceed in parallel but still in order
-spawnSync(lernaBin, ['run', 'build', ...scopes, '--include-filtered-dependencies', '--stream', '--', ...rest], {
+spawnSync(process.execPath, [lernaBin, 'run', 'build', ...scopes, '--include-filtered-dependencies', '--stream', '--', ...rest], {
   stdio: 'inherit'
 });
