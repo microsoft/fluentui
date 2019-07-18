@@ -69,7 +69,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
 
   private _dayGrid = React.createRef<ICalendarDayGrid>();
   private _focusOnUpdate: boolean;
-  private _initialTouchX: number;
+  private _initialTouchX: number | undefined;
 
   constructor(props: IWeeklyDayPickerProps) {
     super(props);
@@ -271,6 +271,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
         // swipe left
         this._onSelectPrevWeek();
       }
+      this._initialTouchX = undefined;
     }
   };
 }
