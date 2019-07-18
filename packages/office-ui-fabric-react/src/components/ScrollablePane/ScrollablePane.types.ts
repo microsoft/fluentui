@@ -3,6 +3,7 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 import { ScrollablePaneBase } from './ScrollablePane.base';
 import { Sticky } from '../Sticky/Sticky';
+import { StickyPositionType } from '../Sticky/Sticky.types';
 
 /**
  * {@docCategory ScrollablePane}
@@ -53,14 +54,19 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
   scrollbarVisibility?: ScrollbarVisibility;
 
   /**
+   *
+   */
+  optimizeForPerformace?: boolean;
+
+  /**
    * Determies the behavior of Sticky component(s) having stickyPosition StickyPosition.Header
    */
-  stickyHeaderContainerBehavior?: IStickyContainerBehavior;
+  stickyHeaderContainerBehavior?: StickyContainerBehaviorType;
 
   /**
    * Determies the behavior of Sticky component(s) having stickyPosition StickyPosition.Footer
    */
-  stickyFooterContainerBehavior?: IStickyContainerBehavior;
+  stickyFooterContainerBehavior?: StickyContainerBehaviorType;
 }
 
 /**
@@ -111,30 +117,6 @@ export interface IScrollablePaneStyles {
 /**
  * {@docCategory ScrollablePane}
  */
-export interface IStickyContainerBehavior {
-  /**
-   * If true, it replicates actual element instead of keeping placeholder for the component which is to be sticky'ed.
-   * Calculating placeholder height & width could be an expensive operation.
-   * It's a trade off- cost of replicating the element vs. cost of calculating placeholder height & width.
-   */
-  disablePlaceHolder: boolean;
-
-  /**
-   * If true, arranges Sticky component(s) based on Sticky's 'order' prop in ascending order.
-   */
-  arrangeStickiesBasedOnOrder: boolean;
-
-  /**
-   * Determies when sticky behavior kicks in for Sticky component(s).
-   * There are some calculations which determine if a Sticky component is sticky or non-sticky.
-   * These calculations can be expensive and affect page load time.
-   */
-  containerBehavior: StickyContainerBehaviorType;
-}
-
-/**
- * {@docCategory ScrollablePane}
- */
 export enum StickyContainerBehaviorType {
   /**
    * This is the default behavior. It can affect page load time.
@@ -154,10 +136,6 @@ export enum StickyContainerBehaviorType {
    */
   StickyAlways = 2
 }
-
-export type PlaceholderPosition = 'top' | 'bottom';
-
-export type StickyContainerPosition = 'above' | 'below';
 
 /**
  * {@docCategory ScrollablePane}
@@ -182,10 +160,10 @@ export interface IScrollablePaneContext {
     sortSticky: (sticky: Sticky, sortAgain?: boolean) => void;
     notifySubscribers: (sort?: boolean) => void;
     syncScrollSticky: (sticky: Sticky) => void;
-    usePlaceholderForSticky: (placeholderPosition: PlaceholderPosition) => boolean;
+    usePlaceholderForSticky: () => boolean;
     getScrollPosition: (horizontal?: boolean) => number;
     verifyStickyContainerBehavior: (
-      stickyContainerPosition: StickyContainerPosition,
+      stickyContainerPosition: StickyPositionType,
       stickyContainerBehavior: StickyContainerBehaviorType
     ) => boolean;
     getUserInteractionStatus: () => boolean;

@@ -12,12 +12,7 @@ import {
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
-import {
-  ScrollablePane,
-  ScrollbarVisibility,
-  IStickyContainerBehavior,
-  StickyContainerBehaviorType
-} from 'office-ui-fabric-react/lib/ScrollablePane';
+import { ScrollablePane, ScrollbarVisibility, StickyContainerBehaviorType } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
@@ -108,24 +103,14 @@ export class ScrollablePaneStickyOptimizedDetailsList extends React.Component<{}
 
   public render(): JSX.Element {
     const { items } = this.state;
-    const stickyAboveContainer: IStickyContainerBehavior = {
-      arrangeStickiesBasedOnOrder: true,
-      // use 'StickyOnScroll', 'StickyAlways' or 'Default' as per need.
-      containerBehavior: StickyContainerBehaviorType.StickyOnScroll,
-      disablePlaceHolder: true
-    };
-    const stickyBelowContainer: IStickyContainerBehavior = {
-      arrangeStickiesBasedOnOrder: true,
-      containerBehavior: StickyContainerBehaviorType.StickyAlways,
-      disablePlaceHolder: true
-    };
     const stickyBackgroundColor = getTheme().palette.white;
     return (
       <div className={classNames.wrapper}>
         <ScrollablePane
           scrollbarVisibility={ScrollbarVisibility.always}
-          stickyHeaderContainerBehavior={stickyAboveContainer}
-          stickyFooterContainerBehavior={stickyBelowContainer}
+          stickyHeaderContainerBehavior={StickyContainerBehaviorType.StickyOnScroll}
+          stickyFooterContainerBehavior={StickyContainerBehaviorType.StickyAlways}
+          optimizeForPerformace={true}
         >
           <Sticky stickyPosition={StickyPositionType.Header} order={1} stickyBackgroundColor={stickyBackgroundColor}>
             <TextField className={classNames.filter} label="Filter by name:" onChange={this._onFilterChange} />

@@ -6334,9 +6334,9 @@ export interface IScrollablePaneContext {
         sortSticky: (sticky: Sticky, sortAgain?: boolean) => void;
         notifySubscribers: (sort?: boolean) => void;
         syncScrollSticky: (sticky: Sticky) => void;
-        usePlaceholderForSticky: (placeholderPosition: PlaceholderPosition) => boolean;
+        usePlaceholderForSticky: () => boolean;
         getScrollPosition: (horizontal?: boolean) => number;
-        verifyStickyContainerBehavior: (stickyContainerPosition: StickyContainerPosition, stickyContainerBehavior: StickyContainerBehaviorType) => boolean;
+        verifyStickyContainerBehavior: (stickyContainerPosition: StickyPositionType, stickyContainerBehavior: StickyContainerBehaviorType) => boolean;
         getUserInteractionStatus: () => boolean;
     };
 }
@@ -6346,9 +6346,11 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
     className?: string;
     componentRef?: IRefObject<IScrollablePane>;
     initialScrollPosition?: number;
+    // (undocumented)
+    optimizeForPerformace?: boolean;
     scrollbarVisibility?: ScrollbarVisibility;
-    stickyFooterContainerBehavior?: IStickyContainerBehavior;
-    stickyHeaderContainerBehavior?: IStickyContainerBehavior;
+    stickyFooterContainerBehavior?: StickyContainerBehaviorType;
+    stickyHeaderContainerBehavior?: StickyContainerBehaviorType;
     styles?: IStyleFunctionOrObject<IScrollablePaneStyleProps, IScrollablePaneStyles>;
     theme?: ITheme;
 }
@@ -7028,13 +7030,6 @@ export interface IStackTokens {
     maxHeight?: number | string;
     maxWidth?: number | string;
     padding?: number | string;
-}
-
-// @public (undocumented)
-export interface IStickyContainerBehavior {
-    arrangeStickiesBasedOnOrder: boolean;
-    containerBehavior: StickyContainerBehaviorType;
-    disablePlaceHolder: boolean;
 }
 
 // @public (undocumented)
@@ -8341,9 +8336,6 @@ export enum PivotLinkSize {
 }
 
 // @public (undocumented)
-export type PlaceholderPosition = 'top' | 'bottom';
-
-// @public (undocumented)
 export const PlainCard: React.StatelessComponent<IPlainCardProps>;
 
 // @public (undocumented)
@@ -8552,9 +8544,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     // (undocumented)
     updateStickyRefHeights: () => void;
     // (undocumented)
-    usePlaceholderForSticky: (placeholderPosition: PlaceholderPosition) => boolean;
+    usePlaceholderForSticky: () => boolean;
     // (undocumented)
-    verifyStickyContainerBehavior: (stickyContainerPosition: StickyContainerPosition, stickyContainerBehavior: StickyContainerBehaviorType) => boolean;
+    verifyStickyContainerBehavior: (stickyContainerPosition: StickyPositionType, stickyContainerBehavior: StickyContainerBehaviorType) => boolean;
 }
 
 // @public (undocumented)
@@ -8863,7 +8855,7 @@ export const StackItem: React.StatelessComponent<IStackItemProps>;
 export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     constructor(props: IStickyProps);
     // (undocumented)
-    addSticky(stickyContent: HTMLDivElement, placeholderPosition: PlaceholderPosition): void;
+    addSticky(stickyContent: HTMLDivElement): void;
     // (undocumented)
     readonly canStickyBottom: boolean;
     // (undocumented)
@@ -8906,9 +8898,6 @@ export enum StickyContainerBehaviorType {
     StickyAlways = 2,
     StickyOnScroll = 1
 }
-
-// @public (undocumented)
-export type StickyContainerPosition = 'above' | 'below';
 
 // @public (undocumented)
 export enum StickyPositionType {

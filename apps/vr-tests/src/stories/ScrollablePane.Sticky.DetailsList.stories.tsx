@@ -19,7 +19,6 @@ import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Toolt
 import {
   ScrollablePane,
   ScrollbarVisibility,
-  IStickyContainerBehavior,
   StickyContainerBehaviorType
 } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
@@ -107,16 +106,6 @@ export class ScrollablePaneDetailsListExample extends React.Component<
 
   public render(): JSX.Element {
     const { items } = this.state;
-    const stickyAboveContainer: IStickyContainerBehavior = {
-      arrangeStickiesBasedOnOrder: true,
-      containerBehavior: StickyContainerBehaviorType.StickyOnScroll,
-      disablePlaceHolder: true
-    };
-    const stickyBelowContainer: IStickyContainerBehavior = {
-      arrangeStickiesBasedOnOrder: true,
-      containerBehavior: StickyContainerBehaviorType.StickyAlways,
-      disablePlaceHolder: true
-    };
     const stickyBackgroundColor = getTheme().palette.white;
     return (
       <div
@@ -132,8 +121,9 @@ export class ScrollablePaneDetailsListExample extends React.Component<
             <ScrollablePane
               style={{ maxWidth: '900px', border: '1px solid #edebe9' }}
               scrollbarVisibility={ScrollbarVisibility.always}
-              stickyHeaderContainerBehavior={stickyAboveContainer}
-              stickyFooterContainerBehavior={stickyBelowContainer}
+              stickyHeaderContainerBehavior={StickyContainerBehaviorType.StickyOnScroll}
+              stickyFooterContainerBehavior={StickyContainerBehaviorType.StickyAlways}
+              optimizeForPerformace={true}
             >
               <Sticky
                 stickyPosition={StickyPositionType.Header}
