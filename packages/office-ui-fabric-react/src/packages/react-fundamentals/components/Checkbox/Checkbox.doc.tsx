@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
 
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 import { CheckboxOtherExamples } from './examples/Checkbox.Other.Example';
 
-const CheckboxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Basic.Example.tsx') as string;
-const CheckboxBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Basic.Example.tsx') as string;
-const CheckboxOtherExamplesCode = require('!raw-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Other.Example.tsx') as string;
-const CheckboxOtherExamplesCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Other.Example.tsx') as string;
+const CheckboxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Checkbox/examples/Checkbox.Basic.Example.tsx') as string;
+const CheckboxBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Checkbox/examples/Checkbox.Basic.Example.tsx') as string;
+const CheckboxOtherExamplesCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Checkbox/examples/Checkbox.Other.Example.tsx') as string;
+const CheckboxOtherExamplesCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Checkbox/examples/Checkbox.Other.Example.tsx') as string;
 
 export const CheckboxPageProps: IDocPageProps = {
   title: 'Checkbox',
@@ -27,10 +27,12 @@ export const CheckboxPageProps: IDocPageProps = {
       codepenJS: CheckboxOtherExamplesCodepen
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Checkbox/docs/CheckboxOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Checkbox/docs/CheckboxDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Checkbox/docs/CheckboxDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { SearchBox } from './SearchBox';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes } from '../../../../Utilities';
 import { ISearchBoxProps } from './SearchBox.types';
 import { ISearchBoxState, SearchBoxBase } from './SearchBox.base';
 

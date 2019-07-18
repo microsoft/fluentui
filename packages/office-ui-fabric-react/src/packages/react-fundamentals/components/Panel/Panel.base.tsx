@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IconButton } from '../../Button';
-import { Layer } from '../../Layer';
-import { Overlay } from '../../Overlay';
-import { Popup } from '../../Popup';
-import { getTheme, IconFontSizes, IProcessedStyleSet } from '../../Styling';
+import { IconButton } from '../../../../Button';
+import { Layer } from '../../../../Layer';
+import { Overlay } from '../../../../Overlay';
+import { Popup } from '../../../../Popup';
+import { getTheme, IconFontSizes, IProcessedStyleSet } from '../../../../Styling';
 import {
   allowScrollOnElement,
   BaseComponent,
@@ -13,8 +13,8 @@ import {
   getId,
   getNativeProps,
   getRTL
-} from '../../Utilities';
-import { FocusTrapZone } from '../FocusTrapZone/index';
+} from '../../../../Utilities';
+import { FocusTrapZone } from '../../../../FocusTrapZone';
 import { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
 
 const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();

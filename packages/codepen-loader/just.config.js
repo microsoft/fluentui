@@ -15,7 +15,7 @@ task(
   copyTask(
     [
       '../office-ui-fabric-react/src/utilities/exampleData.ts',
-      '../office-ui-fabric-react/src/components/ExtendedPicker/examples/PeopleExampleData.ts',
+      '../office-ui-fabric-react/src/packages/react-pickers/components/ExtendedPicker/examples/PeopleExampleData.ts',
       '../office-ui-fabric-react/src/common/TestImages.ts'
     ],
     'lib'

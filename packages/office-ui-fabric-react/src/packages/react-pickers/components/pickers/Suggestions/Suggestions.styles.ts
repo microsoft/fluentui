@@ -1,4 +1,4 @@
-import { getGlobalClassNames, FontSizes, IStyle, hiddenContentStyle } from '../../../Styling';
+import { getGlobalClassNames, FontSizes, IStyle, hiddenContentStyle } from '../../../../../Styling';
 import { ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
 
 const GlobalClassNames = {

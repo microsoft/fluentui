@@ -1,1 +1,1 @@
-export * from './components/Keytip/index';
+export * from './packages/react-fundamentals/Keytip';

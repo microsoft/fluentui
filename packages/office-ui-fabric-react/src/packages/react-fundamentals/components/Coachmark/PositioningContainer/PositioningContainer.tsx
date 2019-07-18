@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { IPositioningContainerProps } from './PositioningContainer.types';
 import { getClassNames } from './PositioningContainer.styles';
-import { Layer } from '../../../Layer';
+import { Layer } from '../../../../../Layer';
 
 // Utilites/Helpers
-import { DirectionalHint } from '../../../common/DirectionalHint';
+import { DirectionalHint } from '../../../../../common/DirectionalHint';
 import {
   BaseComponent,
   IPoint,
@@ -15,11 +15,18 @@ import {
   focusFirstChild,
   getWindow,
   getDocument
-} from '../../../Utilities';
+} from '../../../../../Utilities';
 
-import { getMaxHeight, positionElement, IPositionedData, IPositionProps, IPosition, RectangleEdge } from '../../../utilities/positioning';
+import {
+  getMaxHeight,
+  positionElement,
+  IPositionedData,
+  IPositionProps,
+  IPosition,
+  RectangleEdge
+} from '../../../../../utilities/positioning';
 
-import { AnimationClassNames, mergeStyles } from '../../../Styling';
+import { AnimationClassNames, mergeStyles } from '../../../../../Styling';
 
 const OFF_SCREEN_STYLE = { opacity: 0 };
 

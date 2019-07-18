@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SpinButtonBasicExample } from './examples/SpinButton.Basic.Example';
 
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 import { SpinButtonBasicDisabledExample } from './examples/SpinButton.BasicDisabled.Example';
 import { SpinButtonStatefulExample } from './examples/SpinButton.Stateful.Example';
 import { SpinButtonBasicWithIconExample } from './examples/SpinButton.BasicWithIcon.Example';
@@ -9,14 +9,14 @@ import { SpinButtonBasicWithIconDisabledExample } from './examples/SpinButton.Ba
 import { SpinButtonBasicWithEndPositionExample } from './examples/SpinButton.BasicWithEndPosition.Example';
 import { SpinButtonCustomStyledExample } from './examples/SpinButton.CustomStyled.Example';
 
-const SpinButtonBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Basic.Example.tsx') as string;
-const SpinButtonBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Basic.Example.tsx') as string;
-const SpinButtonBasicDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicDisabled.Example.tsx') as string;
-const SpinButtonStatefulExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.Stateful.Example.tsx') as string;
-const SpinButtonBasicWithIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicWithIcon.Example.tsx') as string;
-const SpinButtonBasicWithIconDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicWithIconDisabled.Example.tsx') as string;
-const SpinButtonBasicWithEndPositionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.BasicWithEndPosition.Example.tsx') as string;
-const SpinButtonCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SpinButton/examples/SpinButton.CustomStyled.Example.tsx') as string;
+const SpinButtonBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/SpinButton/examples/SpinButton.Basic.Example.tsx') as string;
+const SpinButtonBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/SpinButton/examples/SpinButton.Basic.Example.tsx') as string;
+const SpinButtonBasicDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/SpinButton/examples/SpinButton.BasicDisabled.Example.tsx') as string;
+const SpinButtonStatefulExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/SpinButton/examples/SpinButton.Stateful.Example.tsx') as string;
+const SpinButtonBasicWithIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/SpinButton/examples/SpinButton.BasicWithIcon.Example.tsx') as string;
+const SpinButtonBasicWithIconDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/SpinButton/examples/SpinButton.BasicWithIconDisabled.Example.tsx') as string;
+const SpinButtonBasicWithEndPositionExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/SpinButton/examples/SpinButton.BasicWithEndPosition.Example.tsx') as string;
+const SpinButtonCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/SpinButton/examples/SpinButton.CustomStyled.Example.tsx') as string;
 
 export const SpinButtonPageProps: IDocPageProps = {
   title: 'SpinButton',
@@ -60,10 +60,14 @@ export const SpinButtonPageProps: IDocPageProps = {
       view: <SpinButtonCustomStyledExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/SpinButton/docs/SpinButtonOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/SpinButton/docs/SpinButtonDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/SpinButton/docs/SpinButtonDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

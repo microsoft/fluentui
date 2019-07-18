@@ -1,5 +1,5 @@
 import { IGroupedListStyleProps, IGroupedListStyles } from './GroupedList.types';
-import { getGlobalClassNames, FontSizes, AnimationVariables } from '../../Styling';
+import { getGlobalClassNames, FontSizes, AnimationVariables } from '../../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-GroupedList',

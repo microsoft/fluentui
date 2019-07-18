@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../../Utilities';
+import { styled } from '../../../../../Utilities';
 import { IShimmerGapProps, IShimmerGapStyleProps, IShimmerGapStyles } from './ShimmerGap.types';
 import { ShimmerGapBase } from './ShimmerGap.base';
 import { getStyles } from './ShimmerGap.styles';

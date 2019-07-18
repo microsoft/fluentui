@@ -1,1 +1,1 @@
-export * from './components/TeachingBubble/index';
+export * from './packages/react-fundamentals/TeachingBubble';

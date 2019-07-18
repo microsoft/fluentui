@@ -1,6 +1,14 @@
 import { IPivotStyleProps, IPivotStyles } from './Pivot.types';
-import { AnimationVariables, getGlobalClassNames, HighContrastSelector, IStyle, normalize, FontSizes, FontWeights } from '../../Styling';
-import { IsFocusVisibleClassName } from '../../Utilities';
+import {
+  AnimationVariables,
+  getGlobalClassNames,
+  HighContrastSelector,
+  IStyle,
+  normalize,
+  FontSizes,
+  FontWeights
+} from '../../../../Styling';
+import { IsFocusVisibleClassName } from '../../../../Utilities';
 
 const globalClassNames = {
   count: 'ms-Pivot-count',

@@ -1,5 +1,5 @@
-import { getGlobalClassNames, getFocusStyle, HighContrastSelector } from '../../../Styling';
-import { ButtonGlobalClassNames } from '../../Button/BaseButton.classNames';
+import { getGlobalClassNames, getFocusStyle, HighContrastSelector } from '../../../../../Styling';
+import { ButtonGlobalClassNames } from '../../../../../Button';
 import { ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 
 const GlobalClassNames = {

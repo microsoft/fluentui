@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from '../../Utilities';
+import { css } from '../../../../Utilities';
 import { ILayerHostProps } from './LayerHost.types';
 import { notifyHostChanged } from './Layer.notification';
 

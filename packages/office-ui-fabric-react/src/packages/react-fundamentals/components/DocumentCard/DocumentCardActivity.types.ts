@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { PersonaInitialsColor } from '../../Persona';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { PersonaInitialsColor } from '../../../../Persona';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../../../Utilities';
 import { DocumentCardActivityBase } from './DocumentCardActivity.base';
 
 /**

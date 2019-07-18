@@ -1,8 +1,8 @@
-import { getDividerClassNames } from '../Divider/VerticalDivider.classNames';
 import { getMenuItemStyles } from './ContextualMenu.cnstyles';
-import { ITheme, mergeStyleSets, getGlobalClassNames, getScreenSelector, ScreenWidthMaxMedium } from '../../Styling';
-import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { memoizeFunction, IsFocusVisibleClassName } from '../../Utilities';
+import { IVerticalDividerClassNames } from '../Divider/index';
+import { getDividerClassNames } from '../Divider/VerticalDivider.classNames';
+import { ITheme, mergeStyleSets, getGlobalClassNames, getScreenSelector, ScreenWidthMaxMedium } from '../../../../Styling';
+import { memoizeFunction, IsFocusVisibleClassName } from '../../../../Utilities';
 import { IContextualMenuItemStyles, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
 import { IContextualMenuSubComponentStyles } from './ContextualMenu.types';
 

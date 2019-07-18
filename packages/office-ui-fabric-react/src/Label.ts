@@ -1,1 +1,1 @@
-export * from './components/Label/index';
+export * from './packages/react-fundamentals/Label';

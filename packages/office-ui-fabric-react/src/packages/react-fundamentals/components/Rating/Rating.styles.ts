@@ -1,4 +1,4 @@
-import { getFocusStyle, hiddenContentStyle, HighContrastSelector, getGlobalClassNames } from '../../Styling';
+import { getFocusStyle, hiddenContentStyle, HighContrastSelector, getGlobalClassNames } from '../../../../Styling';
 import { IRatingStyleProps, IRatingStyles } from './Rating.types';
 
 const GlobalClassNames = {

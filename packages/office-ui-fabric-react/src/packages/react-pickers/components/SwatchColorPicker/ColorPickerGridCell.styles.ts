@@ -1,5 +1,5 @@
-import { IsFocusVisibleClassName } from '../../Utilities';
-import { HighContrastSelector, getFocusStyle } from '../../Styling';
+import { IsFocusVisibleClassName } from '../../../../Utilities';
+import { HighContrastSelector, getFocusStyle } from '../../../../Styling';
 import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
 // Size breakpoint when the default border width changes from 2px to 4px.

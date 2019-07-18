@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { CollapseAllVisibility } from '../../GroupedList';
-import { ITooltipHostProps } from '../../Tooltip';
-import { ITheme, IStyle } from '../../Styling';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../../../Utilities';
+import { CollapseAllVisibility } from '../../../../GroupedList';
+import { ITooltipHostProps } from '../../../../Tooltip';
+import { ITheme, IStyle } from '../../../../Styling';
 import { DetailsHeaderBase } from './DetailsHeader.base';
 import { IColumn, DetailsListLayoutMode, IColumnReorderOptions, ColumnDragEndLocation } from './DetailsList.types';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
-import { ISelection, SelectionMode } from '../../utilities/selection/index';
+import { ISelection, SelectionMode } from '../../../../utilities/selection/index';
 import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
 
 /**

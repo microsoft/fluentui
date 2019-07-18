@@ -9,7 +9,7 @@ import {
   focusAsync,
   initializeComponentRef,
   on
-} from '../../Utilities';
+} from '@uifabric/utilities';
 import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.types';
 
 export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> implements IFocusTrapZone {

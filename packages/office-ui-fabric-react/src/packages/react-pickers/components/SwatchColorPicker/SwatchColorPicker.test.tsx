@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { SwatchColorPicker } from './SwatchColorPicker';
 import { IColorCellProps } from './ColorPickerGridCell.types';
-import { expectNodes, findNodes } from '../../common/testUtilities';
+import { expectNodes, findNodes } from '../../../../common/testUtilities';
 
 const DEFAULT_OPTIONS: IColorCellProps[] = [
   { id: 'a', label: 'green', color: '#00ff00' },

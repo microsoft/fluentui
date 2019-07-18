@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps, ISlottableProps } from '../../Foundation';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps, ISlottableProps } from '../../../../Foundation';
 
 /**
  * Defines a type made by the union of the different values that the align-items and justify-content flexbox

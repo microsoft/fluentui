@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 import { ICommandBarProps } from './CommandBar.types';
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 import { CommandBarButtonAsExample } from './examples/CommandBar.ButtonAs.Example';
@@ -8,13 +8,13 @@ import { IndividualCommandBarButtonAsExampleWrapper } from './examples/CommandBa
 import { CommandBarSplitDisabledExample } from './examples/CommandBar.SplitDisabled.Example';
 import { farItems, items, overflowItems } from './examples/data';
 
-const CommandBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.Basic.Example.tsx') as string;
+const CommandBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/CommandBar/examples/CommandBar.Basic.Example.tsx') as string;
 
-const CommandBarButtonAsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.ButtonAs.Example.tsx') as string;
+const CommandBarButtonAsExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/CommandBar/examples/CommandBar.ButtonAs.Example.tsx') as string;
 
-const IndividualCommandBarButtonAsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.CommandBarButtonAs.Example.tsx') as string;
+const IndividualCommandBarButtonAsExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/CommandBar/examples/CommandBar.CommandBarButtonAs.Example.tsx') as string;
 
-const CommandBarSplitDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/CommandBar/examples/CommandBar.SplitDisabled.Example.tsx') as string;
+const CommandBarSplitDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/CommandBar/examples/CommandBar.SplitDisabled.Example.tsx') as string;
 
 const cmdBarParamsTextAndIcons: ICommandBarProps = {
   items,
@@ -48,10 +48,14 @@ export const CommandBarPageProps: IDocPageProps = {
       view: <CommandBarSplitDisabledExample {...cmdBarParamsTextAndIcons} />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/CommandBar/docs/CommandBarOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/CommandBar/docs/CommandBarDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/CommandBar/docs/CommandBarDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

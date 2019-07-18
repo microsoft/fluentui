@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISpinnerProps, ISpinnerStyleProps, ISpinnerStyles, SpinnerType, SpinnerSize } from './Spinner.types';
-import { BaseComponent, classNamesFunction, DelayedRender, getNativeProps, divProperties } from '../../Utilities';
+import { BaseComponent, classNamesFunction, DelayedRender, getNativeProps, divProperties } from '../../../../Utilities';
 
 const getClassNames = classNamesFunction<ISpinnerStyleProps, ISpinnerStyles>();
 

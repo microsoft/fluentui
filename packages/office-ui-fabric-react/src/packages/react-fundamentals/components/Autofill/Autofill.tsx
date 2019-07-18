@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IAutofillProps, IAutofill } from './Autofill.types';
-import { BaseComponent, KeyCodes, getNativeProps, inputProperties } from '../../Utilities';
+import { BaseComponent, KeyCodes, getNativeProps, inputProperties } from '../../../../Utilities';
 
 export interface IAutofillState {
   displayValue?: string;

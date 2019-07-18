@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { classNamesFunction, styled } from '../../../Utilities';
+import { classNamesFunction, styled } from '../../../../../Utilities';
 import { ITagItemSuggestionProps, ITagItemSuggestionStyleProps, ITagItemSuggestionStyles } from './TagPicker.types';
 import { getStyles } from './TagItemSuggestion.styles';
 

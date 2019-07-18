@@ -1,5 +1,5 @@
 import { IPersonaCoinStyleProps, IPersonaCoinStyles, PersonaSize } from '../Persona.types';
-import { HighContrastSelector, FontSizes, FontWeights, getGlobalClassNames } from '../../../Styling';
+import { HighContrastSelector, FontSizes, FontWeights, getGlobalClassNames } from '../../../../../Styling';
 import { sizeBoolean, sizeToPixels } from '../PersonaConsts';
 
 const GlobalClassNames = {

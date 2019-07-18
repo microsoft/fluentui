@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Autofill } from './Autofill';
-import { IRefObject, KeyCodes } from '../../Utilities';
+import { IRefObject, KeyCodes } from '../../../../Utilities';
 
 /**
  * {@docCategory Autofill}

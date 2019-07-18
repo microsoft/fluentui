@@ -6,7 +6,7 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import { KeyCodes, resetIds } from '../../Utilities';
+import { KeyCodes, resetIds } from '../../../../Utilities';
 import { Dropdown } from './Dropdown';
 import { DropdownBase } from './Dropdown.base';
 import { DropdownMenuItemType, IDropdownOption, IDropdown } from './Dropdown.types';

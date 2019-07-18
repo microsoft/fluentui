@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { classNamesFunction, IClassNames, getRTL } from '../../Utilities';
-import { SelectionMode } from '../../utilities/selection/index';
-import { Check } from '../../Check';
-import { Icon } from '../../Icon';
+import { classNamesFunction, IClassNames, getRTL } from '../../../../Utilities';
+import { SelectionMode } from '../../../../utilities/selection/index';
+import { Check } from '../../../../Check';
+import { Icon } from '../../../../Icon';
 import { GroupSpacer } from './GroupSpacer';
-import { Spinner } from '../../Spinner';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { Spinner } from '../../../../Spinner';
+import { FocusZone, FocusZoneDirection } from '../../../../FocusZone';
 import { IGroupHeaderStyleProps, IGroupHeaderStyles, IGroupHeaderProps } from './GroupHeader.types';
 
 const getClassNames = classNamesFunction<IGroupHeaderStyleProps, IGroupHeaderStyles>();

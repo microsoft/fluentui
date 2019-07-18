@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 import { ImageCenterExample } from './examples/Image.Center.Example';
 import { ImageCenterContainExample } from './examples/Image.CenterContain.Example';
 import { ImageCenterCoverExample } from './examples/Image.CenterCover.Example';
@@ -10,14 +10,14 @@ import { ImageMaximizeFrameExample } from './examples/Image.MaximizeFrame.Exampl
 import { ImageNoneExample } from './examples/Image.None.Example';
 import './ImagePage.global.scss';
 
-const ImageDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.Default.Example.tsx') as string;
-const ImageCenterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.Center.Example.tsx') as string;
-const ImageContainExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.Contain.Example.tsx') as string;
-const ImageCoverExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.Cover.Example.tsx') as string;
-const ImageCenterContainExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.CenterContain.Example.tsx') as string;
-const ImageCenterCoverExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.CenterCover.Example.tsx') as string;
-const ImageNoneExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.None.Example.tsx') as string;
-const ImageMaximizeFrameExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.MaximizeFrame.Example.tsx') as string;
+const ImageDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Image/examples/Image.Default.Example.tsx') as string;
+const ImageCenterExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Image/examples/Image.Center.Example.tsx') as string;
+const ImageContainExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Image/examples/Image.Contain.Example.tsx') as string;
+const ImageCoverExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Image/examples/Image.Cover.Example.tsx') as string;
+const ImageCenterContainExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Image/examples/Image.CenterContain.Example.tsx') as string;
+const ImageCenterCoverExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Image/examples/Image.CenterCover.Example.tsx') as string;
+const ImageNoneExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Image/examples/Image.None.Example.tsx') as string;
+const ImageMaximizeFrameExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Image/examples/Image.MaximizeFrame.Example.tsx') as string;
 
 export const ImagePageProps: IDocPageProps = {
   title: 'Image',
@@ -65,10 +65,10 @@ export const ImagePageProps: IDocPageProps = {
       view: <ImageMaximizeFrameExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Image/docs/ImageOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Image/docs/ImageDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Image/docs/ImageDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

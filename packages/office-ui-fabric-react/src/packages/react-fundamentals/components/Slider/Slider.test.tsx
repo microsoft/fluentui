@@ -7,7 +7,7 @@ import { mount } from 'enzyme';
 import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes } from '../../../../Utilities';
 
 describe('Slider', () => {
   it('renders correctly', () => {

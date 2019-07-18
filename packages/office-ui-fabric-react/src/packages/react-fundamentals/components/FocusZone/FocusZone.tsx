@@ -24,7 +24,7 @@ import {
   warnDeprecations,
   portalContainsElement,
   IPoint
-} from '../../Utilities';
+} from '@uifabric/utilities';
 import { mergeStyles } from '@uifabric/merge-styles';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';

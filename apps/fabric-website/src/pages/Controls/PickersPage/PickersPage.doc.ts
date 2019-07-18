@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { PickersPageProps as ExternalProps } from 'office-ui-fabric-react/lib/components/pickers/Pickers.doc';
+import { PickersPageProps as ExternalProps } from 'office-ui-fabric-react/lib/packages/react-pickers/components/pickers/Pickers.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PickersPage/docs/PickersRelated.md') as string;
 

@@ -1,8 +1,8 @@
-import { IIconProps } from '../../Icon';
-import { ImageFit } from '../../Image';
-import { ILinkProps } from '../../Link';
-import { IStyle, ITheme } from '../../Styling';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IIconProps } from '../../../../Icon';
+import { ImageFit } from '../../../../Image';
+import { ILinkProps } from '../../../../Link';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../../Utilities';
 
 /**
  * {@docCategory DocumentCard}

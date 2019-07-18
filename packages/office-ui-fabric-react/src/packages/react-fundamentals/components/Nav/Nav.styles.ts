@@ -1,5 +1,5 @@
 import { INavStyleProps, INavStyles } from './Nav.types';
-import { IButtonStyles } from '../../Button';
+import { IButtonStyles } from '../../../../Button';
 import {
   AnimationClassNames,
   DefaultFontStyles,
@@ -9,7 +9,7 @@ import {
   ZIndexes,
   getGlobalClassNames,
   HighContrastSelector
-} from '../../Styling';
+} from '../../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Nav',

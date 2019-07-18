@@ -1,4 +1,4 @@
-import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
+import { getGlobalClassNames, HighContrastSelector } from '../../../../../Styling';
 import { ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
 
 export const SuggestionsItemGlobalClassNames = {

@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { IExpandingCardProps } from './ExpandingCard.types';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject, KeyCodes } from '../../Utilities';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IRefObject, IStyleFunctionOrObject, KeyCodes } from '../../../../Utilities';
 import { IPlainCardProps } from './PlainCard/PlainCard.types';
 
 /**

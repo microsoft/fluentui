@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FocusZone } from './FocusZone';
-import { IRefObject, IPoint } from '../../Utilities';
+import { IRefObject, IPoint } from '@uifabric/utilities';
 
 /**
  * FocusZone component class interface.

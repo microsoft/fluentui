@@ -1,1 +1,1 @@
-export * from './components/SwatchColorPicker/index';
+export * from './packages/react-pickers/SwatchColorPicker';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 import { TextFieldBasicExample } from './examples/TextField.Basic.Example';
 import { TextFieldBorderlessExample } from './examples/TextField.Borderless.Example';
 import { TextFieldCustomRenderExample } from './examples/TextField.CustomRender.Example';
@@ -11,24 +11,24 @@ import { TextFieldPrefixAndSuffixExample } from './examples/TextField.PrefixAndS
 import { TextFieldStyledExample } from './examples/TextField.Styled.Example';
 import { TextFieldMaskedExample } from './examples/TextField.Masked.Example';
 
-const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
-const TextFieldBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
-const TextFieldBorderlessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Borderless.Example.tsx') as string;
-const TextFieldBorderlessExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Borderless.Example.tsx') as string;
-const TextFieldCustomRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.CustomRender.Example.tsx') as string;
-const TextFieldCustomRenderExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.CustomRender.Example.tsx') as string;
-const TextFieldErrorMessageExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.ErrorMessage.Example.tsx') as string;
-const TextFieldErrorMessageExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.ErrorMessage.Example.tsx') as string;
-const TextFieldMultilineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Multiline.Example.tsx') as string;
-const TextFieldMultilineExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Multiline.Example.tsx') as string;
-const TextFieldControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Controlled.Example.tsx') as string;
-const TextFieldControlledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Controlled.Example.tsx') as string;
-const TextFieldPrefixAndSuffixExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.PrefixAndSuffix.Example.tsx') as string;
-const TextFieldPrefixAndSuffixExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.PrefixAndSuffix.Example.tsx') as string;
-const TextFieldStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Styled.Example.tsx') as string;
-const TextFieldStyledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Styled.Example.tsx') as string;
-const TextFieldMaskedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Masked.Example.tsx') as string;
-const TextFieldMaskedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Masked.Example.tsx') as string;
+const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.Basic.Example.tsx') as string;
+const TextFieldBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.Basic.Example.tsx') as string;
+const TextFieldBorderlessExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.Borderless.Example.tsx') as string;
+const TextFieldBorderlessExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.Borderless.Example.tsx') as string;
+const TextFieldCustomRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.CustomRender.Example.tsx') as string;
+const TextFieldCustomRenderExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.CustomRender.Example.tsx') as string;
+const TextFieldErrorMessageExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.ErrorMessage.Example.tsx') as string;
+const TextFieldErrorMessageExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.ErrorMessage.Example.tsx') as string;
+const TextFieldMultilineExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.Multiline.Example.tsx') as string;
+const TextFieldMultilineExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.Multiline.Example.tsx') as string;
+const TextFieldControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.Controlled.Example.tsx') as string;
+const TextFieldControlledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.Controlled.Example.tsx') as string;
+const TextFieldPrefixAndSuffixExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.PrefixAndSuffix.Example.tsx') as string;
+const TextFieldPrefixAndSuffixExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.PrefixAndSuffix.Example.tsx') as string;
+const TextFieldStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.Styled.Example.tsx') as string;
+const TextFieldStyledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.Styled.Example.tsx') as string;
+const TextFieldMaskedExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.Masked.Example.tsx') as string;
+const TextFieldMaskedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/examples/TextField.Masked.Example.tsx') as string;
 
 export const TextFieldPageProps: IDocPageProps = {
   title: 'TextField',
@@ -90,10 +90,12 @@ export const TextFieldPageProps: IDocPageProps = {
       view: <TextFieldStyledExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/docs/TextFieldOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/docs/TextFieldDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/TextField/docs/TextFieldDonts.md'),
   isHeaderVisible: false,
   isFeedbackVisible: true,
   allowNativeProps: true,

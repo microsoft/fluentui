@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { BaseComponent, buttonProperties, classNamesFunction, getId, getNativeProps } from '../../Utilities';
+import { BaseComponent, buttonProperties, classNamesFunction, getId, getNativeProps } from '../../../../Utilities';
 import { IFacepileProps, IFacepilePersona, IFacepileStyleProps, IFacepileStyles, OverflowButtonType } from './Facepile.types';
 import { FacepileButton } from './FacepileButton';
-import { Icon } from '../../Icon';
-import { Persona, IPersonaStyles } from '../../Persona';
-import { PersonaCoin, PersonaSize, PersonaInitialsColor } from '../../PersonaCoin';
-import { IButtonProps } from '../Button/Button.types';
+import { Icon } from '../../../../Icon';
+import { Persona, IPersonaStyles } from '../../../../Persona';
+import { PersonaCoin, PersonaSize, PersonaInitialsColor } from '../../../../PersonaCoin';
+import { IButtonProps } from '../../../../Button';
 
 const getClassNames = classNamesFunction<IFacepileStyleProps, IFacepileStyles>();
 

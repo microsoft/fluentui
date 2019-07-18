@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IButtonClassNames } from '../../components/Button/BaseButton.classNames';
+import { IButtonClassNames } from '../../packages/react-fundamentals/components/Button/BaseButton.classNames';
 import { ITheme } from '../../Styling';
 
 export interface IGridCellProps<T> {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction } from '../../Utilities';
+import { classNamesFunction } from '../../../../Utilities';
 import { GroupSpacer } from './GroupSpacer';
 import { IGroupFooterStyleProps, IGroupFooterStyles, IGroupFooterProps } from './GroupFooter.types';
 const getClassNames = classNamesFunction<IGroupFooterStyleProps, IGroupFooterStyles>();

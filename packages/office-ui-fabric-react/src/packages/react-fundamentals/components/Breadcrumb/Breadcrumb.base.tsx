@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { BaseComponent, getRTL, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { Link } from '../../Link';
-import { Icon } from '../../Icon';
-import { IconButton } from '../../Button';
+import { BaseComponent, getRTL, classNamesFunction, getNativeProps, htmlElementProperties } from '../../../../Utilities';
+import { IProcessedStyleSet } from '../../../../Styling';
+import { FocusZone, FocusZoneDirection } from '../../../../FocusZone';
+import { Link } from '../../../../Link';
+import { Icon } from '../../../../Icon';
+import { IconButton } from '../../../../Button';
 import { IBreadcrumbProps, IBreadcrumbItem, IDividerAsProps, IBreadcrumbData } from './Breadcrumb.types';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { ResizeGroup } from '../../ResizeGroup';
-import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
+import { ResizeGroup } from '../../../../ResizeGroup';
+import { TooltipHost, TooltipOverflowMode } from '../../../../Tooltip';
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
 
 /** @deprecated Use IBreadcrumbData */

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as stylesImport from './BaseFloatingPicker.scss';
-import { BaseComponent, css, KeyCodes } from '../../Utilities';
-import { Callout, DirectionalHint } from '../../Callout';
+import { BaseComponent, css, KeyCodes } from '../../../../Utilities';
+import { Callout, DirectionalHint } from '../../../../Callout';
 import { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
-import { ISuggestionModel } from '../../Pickers';
+import { ISuggestionModel } from '../../../../Pickers';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsControl } from './Suggestions/SuggestionsControl';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';

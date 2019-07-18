@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from '../../../../../common/TestImages';
 
 /**
  * Interface for ChoiceGroupImageExample state.

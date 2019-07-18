@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction } from '../../Utilities';
+import { classNamesFunction } from '../../../../Utilities';
 import { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 
 /**

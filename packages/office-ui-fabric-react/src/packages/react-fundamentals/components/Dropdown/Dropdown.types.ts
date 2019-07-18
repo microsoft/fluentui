@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IStyle, ITheme } from '../../Styling';
-import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
-import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';
-import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { IKeytipProps } from '../../Keytip';
-import { ILabelStyleProps } from '../../Label';
-import { RectangleEdge } from '../../utilities/positioning';
-import { IPanelStyleProps } from '../Panel/Panel.types';
+import { IRenderFunction, IStyleFunctionOrObject } from '../../../../Utilities';
+import { IStyle, ITheme } from '../../../../Styling';
+import { ISelectableOption } from '../../../../utilities/selectableOption/SelectableOption.types';
+import { ISelectableDroppableTextProps } from '../../../../utilities/selectableOption/SelectableDroppableText.types';
+import { ResponsiveMode } from '../../../../utilities/decorators/withResponsiveMode';
+import { IKeytipProps } from '../../../../Keytip';
+import { ILabelStyleProps } from '../../../../Label';
+import { RectangleEdge } from '../../../../utilities/positioning';
+import { IPanelStyleProps } from '../../../../Panel';
 
-export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
+export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../../../utilities/selectableOption/SelectableOption.types';
 
 export { ResponsiveMode }; // Exported because the type is an optional prop and not exported otherwise.
 

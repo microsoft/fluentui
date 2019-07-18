@@ -1,5 +1,5 @@
 import { IScrollablePaneStyleProps, IScrollablePaneStyles } from './ScrollablePane.types';
-import { HighContrastSelector, IStyle, getGlobalClassNames } from '../../Styling';
+import { HighContrastSelector, IStyle, getGlobalClassNames } from '../../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-ScrollablePane',

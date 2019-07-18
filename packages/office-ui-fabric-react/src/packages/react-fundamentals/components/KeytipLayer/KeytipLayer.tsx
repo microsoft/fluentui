@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '../../../../Utilities';
 import { IKeytipLayerProps, IKeytipLayerStyleProps, IKeytipLayerStyles } from './KeytipLayer.types';
 import { KeytipLayerBase } from './KeytipLayer.base';
 import { getStyles } from './KeytipLayer.styles';

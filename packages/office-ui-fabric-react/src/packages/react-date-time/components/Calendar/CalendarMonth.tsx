@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getRTL, IRefObject } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getRTL, IRefObject } from '../../../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
-import { FocusZone } from '../../FocusZone';
+import { FocusZone } from '../../../../FocusZone';
 import {
   addYears,
   setMonth,
@@ -10,8 +10,8 @@ import {
   getMonthStart,
   getMonthEnd,
   compareDatePart
-} from '../../utilities/dateMath/DateMath';
-import { Icon } from '../../Icon';
+} from '../../../../utilities/dateMath/DateMath';
+import { Icon } from '../../../../Icon';
 import * as stylesImport from './Calendar.scss';
 import { CalendarYear, ICalendarYearRange } from './CalendarYear';
 const styles: any = stylesImport;

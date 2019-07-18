@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { BaseComponent, KeyCodes, classNamesFunction, IStyleFunctionOrObject, css, styled } from '../../../Utilities';
-import { IProcessedStyleSet } from '../../../Styling';
-import { CommandButton, IButton } from '../../../Button';
-import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
+import { BaseComponent, KeyCodes, classNamesFunction, IStyleFunctionOrObject, css, styled } from '../../../../../Utilities';
+import { IProcessedStyleSet } from '../../../../../Styling';
+import { CommandButton, IButton } from '../../../../../Button';
+import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../../../Spinner';
 import { ISuggestionsProps, SuggestionActionType, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
 import { SuggestionsItem } from './SuggestionsItem';
 import { getStyles as suggestionsItemStyles } from './SuggestionsItem.styles';

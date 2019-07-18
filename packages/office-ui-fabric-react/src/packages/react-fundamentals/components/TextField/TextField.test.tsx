@@ -5,8 +5,8 @@ import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { renderToStaticMarkup } from 'react-dom/server';
 
-import { resetIds, setWarningCallback, IRefObject, resetControlledWarnings } from '../../Utilities';
-import { delay, mountAttached } from '../../common/testUtilities';
+import { resetIds, setWarningCallback, IRefObject, resetControlledWarnings } from '../../../../Utilities';
+import { delay, mountAttached } from '../../../../common/testUtilities';
 
 import { TextField } from './TextField';
 import { TextFieldBase, ITextFieldState } from './TextField.base';

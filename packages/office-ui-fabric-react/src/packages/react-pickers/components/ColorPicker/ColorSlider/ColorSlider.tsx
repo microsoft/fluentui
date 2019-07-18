@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../../Utilities';
+import { styled } from '../../../../../Utilities';
 import { ColorSliderBase } from './ColorSlider.base';
 import { getStyles } from './ColorSlider.styles';
 import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';

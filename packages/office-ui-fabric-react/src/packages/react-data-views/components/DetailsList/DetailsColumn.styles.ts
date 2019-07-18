@@ -1,5 +1,5 @@
 import { IDetailsColumnStyleProps, IDetailsColumnStyles } from './DetailsColumn.types';
-import { getFocusStyle, getGlobalClassNames, hiddenContentStyle, IStyle, FontWeights } from '../../Styling';
+import { getFocusStyle, getGlobalClassNames, hiddenContentStyle, IStyle, FontWeights } from '../../../../Styling';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { getCellStyles } from './DetailsHeader.styles';
 

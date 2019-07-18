@@ -4,8 +4,8 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { SpinButton } from './SpinButton';
 import { ISpinButton } from './SpinButton.types';
-import { KeyCodes, resetIds } from '../../Utilities';
-import { mockEvent, renderIntoDocument } from '../../common/testUtilities';
+import { KeyCodes, resetIds } from '../../../../Utilities';
+import { mockEvent, renderIntoDocument } from '../../../../common/testUtilities';
 
 describe('SpinButton', () => {
   beforeEach(() => {

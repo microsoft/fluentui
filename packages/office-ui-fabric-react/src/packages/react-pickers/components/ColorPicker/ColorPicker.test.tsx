@@ -6,9 +6,9 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { ColorPicker } from './ColorPicker';
 import { ColorPickerBase, IColorPickerState } from './ColorPicker.base';
 import { IColorPickerProps } from './ColorPicker.types';
-import { IColor } from '../../utilities/color/interfaces';
-import { getColorFromString } from '../../utilities/color/getColorFromString';
-import { mockEvent } from '../../common/testUtilities';
+import { IColor } from '../../../../utilities/color/interfaces';
+import { getColorFromString } from '../../../../utilities/color/getColorFromString';
+import { mockEvent } from '../../../../common/testUtilities';
 
 const noOp = () => undefined;
 

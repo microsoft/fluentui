@@ -4,7 +4,7 @@ import * as renderer from 'react-test-renderer';
 
 import { mount } from 'enzyme';
 
-import { DirectionalHint } from '../../common/DirectionalHint';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
 import { TooltipBase } from './Tooltip.base';
 import { ICalloutProps } from '../../Callout';
 

@@ -1,6 +1,6 @@
-import { DirectionalHint } from '../../../common/DirectionalHint';
-import { IRefObject, IBaseProps, IPoint, IRectangle } from '../../../Utilities';
-import { IPositionedData } from '../../../utilities/positioning';
+import { DirectionalHint } from '../../../../../common/DirectionalHint';
+import { IRefObject, IBaseProps, IPoint, IRectangle } from '../../../../../Utilities';
+import { IPositionedData } from '../../../../../utilities/positioning';
 
 /**
  * {@docCategory PositioningContainer}

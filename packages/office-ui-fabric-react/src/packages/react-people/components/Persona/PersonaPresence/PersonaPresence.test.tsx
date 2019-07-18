@@ -1,7 +1,7 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { setRTL } from '../../../Utilities';
+import { setRTL } from '../../../../../Utilities';
 import * as PersonaTypes from '../Persona.types';
 import { PersonaPresence } from './PersonaPresence';
 

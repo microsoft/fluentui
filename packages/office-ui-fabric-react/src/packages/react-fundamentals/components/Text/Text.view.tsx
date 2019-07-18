@@ -1,6 +1,6 @@
 /** @jsx withSlots */
-import { withSlots, getSlots } from '../../Foundation';
-import { getNativeProps, htmlElementProperties } from '../../Utilities';
+import { withSlots, getSlots } from '../../../../Foundation';
+import { getNativeProps, htmlElementProperties } from '../../../../Utilities';
 import { ITextComponent, ITextProps, ITextSlots } from './Text.types';
 
 export const TextView: ITextComponent['view'] = props => {

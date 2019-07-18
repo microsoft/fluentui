@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, css, format, getId, divProperties, getNativeProps } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
-import { Icon } from '../../Icon';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { BaseComponent, classNamesFunction, css, format, getId, divProperties, getNativeProps } from '../../../../Utilities';
+import { IProcessedStyleSet } from '../../../../Styling';
+import { Icon } from '../../../../Icon';
+import { FocusZone, FocusZoneDirection } from '../../../../FocusZone';
 import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles } from './Rating.types';
 
 const getClassNames = classNamesFunction<IRatingStyleProps, IRatingStyles>();

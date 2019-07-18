@@ -1,6 +1,6 @@
 import { IStackComponent, IStackStyles, IStackStylesReturnType } from './Stack.types';
 import { parseGap, parsePadding } from './StackUtils';
-import { getGlobalClassNames } from '../../Styling';
+import { getGlobalClassNames } from '../../../../Styling';
 
 const nameMap: { [key: string]: string } = {
   start: 'flex-start',

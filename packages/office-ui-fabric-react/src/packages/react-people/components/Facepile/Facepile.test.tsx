@@ -1,14 +1,14 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { setRTL } from '../../Utilities';
+import { setRTL } from '../../../../Utilities';
 import { Facepile } from './Facepile';
 import { IFacepilePersona, OverflowButtonType } from './Facepile.types';
-import { PersonaSize } from '../../Persona';
-import { Persona } from '../../Persona';
-import { PersonaCoin } from '../../PersonaCoin';
-import { TestImages } from '../../common/TestImages';
-import { findNodes, expectOne, expectMissing } from '../../common/testUtilities';
+import { PersonaSize } from '../../../../Persona';
+import { Persona } from '../../../../Persona';
+import { PersonaCoin } from '../../../../PersonaCoin';
+import { TestImages } from '../../../../common/TestImages';
+import { findNodes, expectOne, expectMissing } from '../../../../common/testUtilities';
 
 const facepilePersonas: IFacepilePersona[] = [
   {

@@ -1,5 +1,5 @@
-import { memoizeFunction } from '../../Utilities';
-import { mergeStyleSets, ITheme } from '../../Styling';
+import { memoizeFunction } from '../../../../Utilities';
+import { mergeStyleSets, ITheme } from '../../../../Styling';
 import { IVerticalDividerClassNames } from './VerticalDivider.types';
 
 /**

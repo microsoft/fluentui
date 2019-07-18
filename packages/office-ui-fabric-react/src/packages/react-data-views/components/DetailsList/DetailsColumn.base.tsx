@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Icon } from '../../Icon';
-import { initializeComponentRef, EventGroup, Async, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
+
+import { Icon } from '../../../../Icon';
+import { initializeComponentRef, EventGroup, Async, IDisposable, classNamesFunction, IClassNames } from '../../../../Utilities';
 import { IColumn, ColumnActionsMode } from './DetailsList.types';
 
-import { ITooltipHostProps } from '../../Tooltip';
-import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
+import { ITooltipHostProps } from '../../../../Tooltip';
+import { IDragDropOptions } from '../.././../../utilities/dragdrop/interfaces';
 import { IDetailsColumnStyles } from './DetailsColumn.types';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { IDetailsColumnStyleProps, IDetailsColumnProps } from './DetailsColumn.types';

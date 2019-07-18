@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../../Utilities';
 import { IDocumentCardDetailsProps, IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles } from './DocumentCardDetails.types';
-import { IProcessedStyleSet } from '../../Styling';
+import { IProcessedStyleSet } from '../../../../Styling';
 
 const getClassNames = classNamesFunction<IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles>();
 

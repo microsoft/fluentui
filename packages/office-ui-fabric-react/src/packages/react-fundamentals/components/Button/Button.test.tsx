@@ -9,9 +9,9 @@ import { IconButton } from './IconButton/IconButton';
 import { ActionButton } from './ActionButton/ActionButton';
 import { CommandBarButton } from './CommandBarButton/CommandBarButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
-import { KeyCodes, resetIds } from '../../Utilities';
-import { renderIntoDocument } from '../../common/testUtilities';
-import { IContextualMenuProps } from '../ContextualMenu/index';
+import { KeyCodes, resetIds } from '../../../../Utilities';
+import { renderIntoDocument } from '../../../../common/testUtilities';
+import { IContextualMenuProps } from '../../../../ContextualMenu';
 
 const alertClicked = (): void => {
   /*noop*/

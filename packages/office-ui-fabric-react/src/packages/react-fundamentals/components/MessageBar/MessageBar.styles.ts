@@ -6,7 +6,7 @@ import {
   ScreenWidthMaxSmall,
   getScreenSelector,
   getGlobalClassNames
-} from '../../Styling';
+} from '../../../../Styling';
 import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
 
 const GlobalClassNames = {

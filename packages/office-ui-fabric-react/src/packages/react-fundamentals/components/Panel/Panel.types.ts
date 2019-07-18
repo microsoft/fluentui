@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IFocusTrapZoneProps } from '../../FocusTrapZone';
-import { ILayerProps } from '../../Layer';
-import { IOverlayProps } from '../../Overlay';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IFocusTrapZoneProps } from '../../../../FocusTrapZone';
+import { ILayerProps } from '../../../../Layer';
+import { IOverlayProps } from '../../../../Overlay';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../../../Utilities';
 import { PanelBase } from './Panel.base';
 
 /**

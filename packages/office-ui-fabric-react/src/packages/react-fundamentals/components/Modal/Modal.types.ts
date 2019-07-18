@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { ModalBase } from './Modal.base';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
-import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import { IStyle, ITheme } from '../../Styling';
-import { ILayerProps } from '../../Layer';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IIconProps } from '../../Icon';
-import { IContextualMenuProps } from '../../ContextualMenu';
-import { IOverlayProps } from '../../Overlay';
+import { IWithResponsiveModeState } from '../../../../utilities/decorators/withResponsiveMode';
+import { IAccessiblePopupProps } from '../../../../common/IAccessiblePopupProps';
+import { IStyle, ITheme } from '../../../../Styling';
+import { ILayerProps } from '../../../../Layer';
+import { IRefObject, IStyleFunctionOrObject } from '../../../../Utilities';
+import { IIconProps } from '../../../../Icon';
+import { IContextualMenuProps } from '../../../../ContextualMenu';
+import { IOverlayProps } from '../../../../Overlay';
 
 export interface IDragOptions {
   /**

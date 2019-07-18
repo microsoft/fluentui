@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { KeytipManager } from '../../utilities/keytips/KeytipManager';
+import { KeytipManager } from '../../../../utilities/keytips/KeytipManager';
 import { mount, ReactWrapper } from 'enzyme';
 import { KeytipLayerBase } from './KeytipLayer.base';
-import { IKeytipProps } from '../../Keytip';
-import { find } from '../../Utilities';
+import { IKeytipProps } from '../../../../Keytip';
+import { find } from '../../../../Utilities';
 import { KeytipTree } from './KeytipTree';
-import { KTP_FULL_PREFIX, KTP_SEPARATOR } from '../../utilities/keytips/KeytipConstants';
-import { KeytipTransitionModifier } from '../../utilities/keytips/IKeytipTransitionKey';
+import { KTP_FULL_PREFIX, KTP_SEPARATOR } from '../../../../utilities/keytips/KeytipConstants';
+import { KeytipTransitionModifier } from '../../../../utilities/keytips/IKeytipTransitionKey';
 
 describe('KeytipLayer', () => {
   const ktpMgr = KeytipManager.getInstance();

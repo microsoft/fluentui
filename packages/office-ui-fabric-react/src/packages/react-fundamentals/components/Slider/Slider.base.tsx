@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '../../../../Utilities';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
-import { Label } from '../../Label';
+import { classNamesFunction, getNativeProps, divProperties } from '../../../../Utilities';
+import { Label } from '../../../../Label';
 
 export interface ISliderState {
   value?: number;

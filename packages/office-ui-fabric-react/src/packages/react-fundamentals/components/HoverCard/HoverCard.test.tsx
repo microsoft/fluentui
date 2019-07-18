@@ -2,14 +2,14 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
-import { DirectionalHint } from '../../common/DirectionalHint';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
 import { PlainCardBase } from './PlainCard/PlainCard.base';
 import { IPlainCardProps } from './PlainCard/PlainCard.types';
 import { ExpandingCardBase } from './ExpandingCard.base';
 import { IExpandingCardProps } from './ExpandingCard.types';
 import { HoverCardBase } from './HoverCard.base';
 import { HoverCardType } from './HoverCard.types';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes } from '../../../../Utilities';
 
 // tslint:disable:jsx-no-lambda
 

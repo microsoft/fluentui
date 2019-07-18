@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { KeyCodes } from '../../Utilities';
-import { FocusZoneDirection } from '../../FocusZone';
+import { KeyCodes } from '../../../../Utilities';
+import { FocusZoneDirection } from '../../../../FocusZone';
 import * as renderer from 'react-test-renderer';
 
 import { IContextualMenuProps, IContextualMenuStyles, IContextualMenu } from './ContextualMenu.types';

@@ -1,4 +1,4 @@
-import { HighContrastSelector, getFocusStyle, FontWeights } from '../../Styling';
+import { HighContrastSelector, getFocusStyle, FontWeights } from '../../../../Styling';
 import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 const DEFAULT_PILL_WIDTH = 40;

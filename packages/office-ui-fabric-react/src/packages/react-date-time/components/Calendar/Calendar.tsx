@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ICalendar, ICalendarProps, ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
-import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
+import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../../../utilities/dateValues/DateValues';
 import { CalendarDay, ICalendarDay } from './CalendarDay';
 import { CalendarMonth, ICalendarMonth } from './CalendarMonth';
-import { compareDates, getDateRangeArray } from '../../utilities/dateMath/DateMath';
-import { css, BaseComponent, KeyCodes, getNativeProps, divProperties } from '../../Utilities';
+import { compareDates, getDateRangeArray } from '../../../../utilities/dateMath/DateMath';
+import { css, BaseComponent, KeyCodes, getNativeProps, divProperties } from '../../../../Utilities';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 

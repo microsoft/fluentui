@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import { MarqueeSelectionBasicExample } from './examples/MarqueeSelection.Basic.Example';
 
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 
-const MarqueeSelectionBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/MarqueeSelection/examples/MarqueeSelection.Basic.Example.tsx') as string;
+const MarqueeSelectionBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/MarqueeSelection/examples/MarqueeSelection.Basic.Example.tsx') as string;
 export const MarqueeSelectionPageProps: IDocPageProps = {
   title: 'MarqueeSelection',
   componentName: 'MarqueeSelection',
@@ -17,7 +17,9 @@ export const MarqueeSelectionPageProps: IDocPageProps = {
       view: <MarqueeSelectionBasicExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/MarqueeSelection/docs/MarqueeSelectionOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/MarqueeSelection/docs/MarqueeSelectionOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { classNamesFunction, styled, IStyleFunctionOrObject } from '../../../../Utilities';
-import { Persona, PersonaSize, IPersonaStyleProps, IPersonaStyles } from '../../../../Persona';
+import { classNamesFunction, styled, IStyleFunctionOrObject } from '../../../../../../Utilities';
+import { Persona, PersonaSize, IPersonaStyleProps, IPersonaStyles } from '../../../../../../Persona';
 import {
   IPeoplePickerItemSuggestionProps,
   IPeoplePickerItemSuggestionStyleProps,

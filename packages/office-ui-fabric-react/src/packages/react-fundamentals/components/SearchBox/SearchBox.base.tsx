@@ -9,10 +9,10 @@ import {
   classNamesFunction,
   getNativeProps,
   inputProperties
-} from '../../Utilities';
+} from '../../../../Utilities';
 
-import { IconButton } from '../../Button';
-import { Icon } from '../../Icon';
+import { IconButton } from '../../../../Button';
+import { Icon } from '../../../../Icon';
 
 const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>();
 const COMPONENT_NAME = 'SearchBox';

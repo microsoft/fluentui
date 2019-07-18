@@ -11,16 +11,16 @@ import {
   css,
   mergeAriaAttributeValues,
   portalContainsElement
-} from '../../Utilities';
-import { Icon } from '../../Icon';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
+} from '../../../../Utilities';
+import { Icon } from '../../../../Icon';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
+import { ContextualMenu, IContextualMenuProps } from '../../../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { KeytipData } from '../../KeytipData';
+import { KeytipData } from '../../../../KeytipData';
 import { memoizeFunction } from '@uifabric/utilities';
-import { IKeytipProps } from '../Keytip/Keytip.types';
+import { IKeytipProps } from '../../../../Keytip';
 
 /**
  * {@docCategory Button}

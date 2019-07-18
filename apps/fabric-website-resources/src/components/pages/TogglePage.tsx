@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { TogglePageProps } from 'office-ui-fabric-react/lib/components/Toggle/Toggle.doc';
+import { TogglePageProps } from 'office-ui-fabric-react/lib/packages/react-fundamentals/components/Toggle/Toggle.doc';
 
 export const TogglePage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

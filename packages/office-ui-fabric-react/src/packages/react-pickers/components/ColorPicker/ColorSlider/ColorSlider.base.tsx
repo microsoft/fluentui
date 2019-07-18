@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, initializeComponentRef, EventGroup } from '../../../Utilities';
+import { classNamesFunction, initializeComponentRef, EventGroup } from '../../../../../Utilities';
 import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
 
 const getClassNames = classNamesFunction<IColorSliderStyleProps, IColorSliderStyles>();

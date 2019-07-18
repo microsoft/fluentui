@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { TooltipHostBase } from './TooltipHost.base';
 import { TooltipDelay, ITooltipProps } from './Tooltip.types';
-import { ICalloutProps } from '../../Callout';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IStyle, ITheme } from '../../Styling';
+import { ICalloutProps } from '../../../../Callout';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
+import { IRefObject, IStyleFunctionOrObject } from '../../../../Utilities';
+import { IStyle, ITheme } from '../../../../Styling';
 
 /**
  * {@docCategory Tooltip}

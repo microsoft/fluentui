@@ -9,18 +9,18 @@ import {
   IRectangle,
   KeyCodes,
   shallowCompare
-} from '../../Utilities';
-import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../utilities/positioning';
+} from '../../../../Utilities';
+import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../../../utilities/positioning';
 
 // Component Dependencies
 import { PositioningContainer, IPositioningContainer } from './PositioningContainer/index';
 import { Beak, BEAK_HEIGHT, BEAK_WIDTH } from './Beak/Beak';
-import { DirectionalHint } from '../../common/DirectionalHint';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
 
 // Coachmark
 import { ICoachmark, ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
 import { COACHMARK_HEIGHT, COACHMARK_WIDTH } from './Coachmark.styles';
-import { FocusTrapZone } from '../../FocusTrapZone';
+import { FocusTrapZone } from '../../../../FocusTrapZone';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 

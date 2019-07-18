@@ -1,5 +1,5 @@
 import { IColorRectangleStyleProps, IColorRectangleStyles } from './ColorRectangle.types';
-import { HighContrastSelector } from '../../../Styling';
+import { HighContrastSelector } from '../../../../../Styling';
 
 export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyles => {
   const { className, theme } = props;

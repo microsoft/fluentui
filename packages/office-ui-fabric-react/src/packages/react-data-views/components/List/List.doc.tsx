@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 import { ListBasicExample } from './examples/List.Basic.Example';
 import { ListGridExample } from './examples/List.Grid.Example';
 import { ListScrollingExample } from './examples/List.Scrolling.Example';
 import { ListGhostingExample } from './examples/List.Ghosting.Example';
-import { createListItems } from '../../utilities/exampleData';
+import { createListItems } from '../../../../utilities/exampleData';
 
-const ListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Basic.Example.tsx') as string;
-const ListGridExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Grid.Example.tsx') as string;
-const ListScrollingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Scrolling.Example.tsx') as string;
-const ListGhostingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Ghosting.Example.tsx') as string;
-const ListGhostingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/List/examples/List.Ghosting.Example.tsx') as string;
+const ListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/List/examples/List.Basic.Example.tsx') as string;
+const ListGridExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/List/examples/List.Grid.Example.tsx') as string;
+const ListScrollingExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/List/examples/List.Scrolling.Example.tsx') as string;
+const ListGhostingExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/List/examples/List.Ghosting.Example.tsx') as string;
+const ListGhostingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/List/examples/List.Ghosting.Example.tsx') as string;
 
 const _cachedItems = createListItems(5000);
 
@@ -43,7 +43,7 @@ export const ListPageProps: IDocPageProps = {
   ],
 
   allowNativeProps: true,
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/List/docs/ListOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/List/docs/ListOverview.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

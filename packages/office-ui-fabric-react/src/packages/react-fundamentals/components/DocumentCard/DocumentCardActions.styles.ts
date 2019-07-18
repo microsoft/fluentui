@@ -1,4 +1,4 @@
-import { getGlobalClassNames, FontSizes } from '../../Styling';
+import { getGlobalClassNames, FontSizes } from '../../../../Styling';
 import { IDocumentCardActionsStyleProps, IDocumentCardActionsStyles } from './DocumentCardActions.types';
 
 const ACTION_SIZE = 34;

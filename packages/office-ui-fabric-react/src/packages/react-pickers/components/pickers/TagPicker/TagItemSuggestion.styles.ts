@@ -1,4 +1,4 @@
-import { getGlobalClassNames } from '../../../Styling';
+import { getGlobalClassNames } from '../../../../../Styling';
 import { ITagItemSuggestionStyleProps, ITagItemSuggestionStyles } from './TagPicker.types';
 
 const GlobalClassNames = {

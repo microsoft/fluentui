@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../../Utilities';
 import {
   IDocumentCardActivityProps,
   IDocumentCardActivityPerson,
   IDocumentCardActivityStyleProps,
   IDocumentCardActivityStyles
 } from './DocumentCardActivity.types';
-import { IProcessedStyleSet } from '../../Styling';
-import { PersonaSize } from '../../Persona';
-import { PersonaCoin } from '../../PersonaCoin';
+import { IProcessedStyleSet } from '../../../../Styling';
+import { PersonaSize } from '../../../../Persona';
+import { PersonaCoin } from '../../../../PersonaCoin';
 
 const getClassNames = classNamesFunction<IDocumentCardActivityStyleProps, IDocumentCardActivityStyles>();
 

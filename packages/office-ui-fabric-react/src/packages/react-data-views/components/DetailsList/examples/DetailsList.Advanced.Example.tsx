@@ -16,7 +16,7 @@ import {
   buildColumns
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, isGroupable, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
+import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/packages/react-data-views/components/DetailsList/DetailsColumn'; // TODO
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getTheme, mergeStyles, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 

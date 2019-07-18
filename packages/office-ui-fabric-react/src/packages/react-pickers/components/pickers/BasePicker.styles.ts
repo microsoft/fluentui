@@ -1,4 +1,4 @@
-import { getGlobalClassNames, hiddenContentStyle, HighContrastSelector } from '../../Styling';
+import { getGlobalClassNames, hiddenContentStyle, HighContrastSelector } from '../../../../Styling';
 import { IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
 
 const GlobalClassNames = {

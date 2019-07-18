@@ -1,5 +1,5 @@
 import { ITooltipStyleProps, ITooltipStyles } from './Tooltip.types';
-import { AnimationClassNames } from '../../Styling';
+import { AnimationClassNames } from '../../../../Styling';
 
 export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
   const { className, gapSpace = 0, maxWidth, theme } = props;

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BaseComponent, DelayedRender, getId, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
-import { IconButton } from '../../Button';
-import { Icon } from '../../Icon';
+import { BaseComponent, DelayedRender, getId, classNamesFunction, getNativeProps, htmlElementProperties } from '../../../../Utilities';
+import { IconButton } from '../../../../Button';
+import { Icon } from '../../../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
 
 const getClassNames = classNamesFunction<IMessageBarStyleProps, IMessageBarStyles>();

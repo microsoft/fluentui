@@ -1,5 +1,5 @@
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IStyleFunctionOrObject } from '../../../../Utilities';
 import { IColorCellProps, IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
 /**

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { initializeComponentRef, classNamesFunction, IClassNames, initializeFocusRects } from '../../Utilities';
+import { initializeComponentRef, classNamesFunction, IClassNames, initializeFocusRects } from '../../../../Utilities';
 import { IGroupedList, IGroupedListProps, IGroup, IGroupedListStyleProps, IGroupedListStyles } from './GroupedList.types';
 import { GroupedListSection } from './GroupedListSection';
-import { List, ScrollToMode, IListProps } from '../../List';
-import { SelectionMode } from '../../utilities/selection/index';
+import { List, ScrollToMode, IListProps } from '../../../../List';
+import { SelectionMode } from '../../../../utilities/selection/index';
 import { DEFAULT_ROW_HEIGHTS } from '../DetailsList/DetailsRow.styles';
 import { IGroupHeaderProps } from './GroupHeader';
 import { IGroupShowAllProps } from './GroupShowAll.styles';

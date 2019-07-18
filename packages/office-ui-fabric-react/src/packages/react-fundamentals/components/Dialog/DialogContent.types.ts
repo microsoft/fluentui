@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { DialogContentBase } from './DialogContent.base';
-import { IButtonProps } from '../Button/Button.types';
-import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IButtonProps } from '../../../../Button';
+import { ResponsiveMode } from '../../../../utilities/decorators/withResponsiveMode';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../../../Utilities';
 
 export { ResponsiveMode }; // Exported because the type is an optional prop and not exported otherwise.
 

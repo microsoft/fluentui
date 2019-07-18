@@ -2,9 +2,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { ActivityItem } from './ActivityItem';
-import { Icon } from '../../Icon';
-import { TestImages } from '../../common/TestImages';
-import { IPersonaSharedProps } from '../../Persona';
+import { Icon } from '../../../../Icon';
+import { TestImages } from '../../../../common/TestImages';
+import { IPersonaSharedProps } from '../../../../Persona';
 
 const defaultProps = {
   key: 1,

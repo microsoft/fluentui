@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '../../../../Utilities';
 import { TooltipBase } from './Tooltip.base';
 import { ITooltipProps, ITooltipStyleProps, ITooltipStyles } from './Tooltip.types';
 import { getStyles } from './Tooltip.styles';

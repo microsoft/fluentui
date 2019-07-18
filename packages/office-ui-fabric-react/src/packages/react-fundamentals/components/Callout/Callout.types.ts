@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
-import { ICalloutPositionedInfo } from '../../utilities/positioning';
-import { ILayerProps } from '../../Layer';
+import { IStyle, ITheme } from '../../../../Styling';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
+import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../../../Utilities';
+import { ICalloutPositionedInfo } from '../../../../utilities/positioning';
+import { ILayerProps } from '../../../../Layer';
 
 /**
  * {@docCategory Callout}

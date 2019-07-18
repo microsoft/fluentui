@@ -1,1 +1,1 @@
-export * from './components/Toggle/index';
+export * from './packages/react-fundamentals/Toggle';

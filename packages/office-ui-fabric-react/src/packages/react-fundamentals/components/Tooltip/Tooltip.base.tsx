@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { classNamesFunction, divProperties, getNativeProps } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
+import { classNamesFunction, divProperties, getNativeProps } from '../../../../Utilities';
+import { IProcessedStyleSet } from '../../../../Styling';
 import { ITooltipProps, ITooltipStyleProps, ITooltipStyles } from './Tooltip.types';
 import { Callout } from '../../Callout';
-import { DirectionalHint } from '../../common/DirectionalHint';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
 
 const getClassNames = classNamesFunction<ITooltipStyleProps, ITooltipStyles>();
 

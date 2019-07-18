@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, DelayedRender, getNativeProps, divProperties } from '../../Utilities';
+import { BaseComponent, classNamesFunction, DelayedRender, getNativeProps, divProperties } from '../../../../Utilities';
 import { IShimmerProps, IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
 

@@ -8,8 +8,8 @@ import {
   getFocusStyle,
   getGlobalClassNames,
   FontWeights
-} from '../../Styling';
-import { IsFocusVisibleClassName } from '../../Utilities';
+} from '../../../../Styling';
+import { IsFocusVisibleClassName } from '../../../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow',

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { HighContrastSelector } from '../../../Styling';
+import { HighContrastSelector } from '../../../../../Styling';
 import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 

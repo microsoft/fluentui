@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { DemoPage } from '../DemoPage';
-import { ImagePageProps } from 'office-ui-fabric-react/lib/components/Image/Image.doc';
+import { ImagePageProps } from 'office-ui-fabric-react/lib/packages/react-fundamentals/components/Image/Image.doc';
 
 export const ImagePage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

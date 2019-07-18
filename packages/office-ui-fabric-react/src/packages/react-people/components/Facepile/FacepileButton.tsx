@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { BaseButton, IButtonProps } from '../../Button';
-import { BaseComponent, customizable, nullRender } from '../../Utilities';
+import { BaseButton, IButtonProps } from '../../../../Button';
+import { BaseComponent, customizable, nullRender } from '../../../../Utilities';
 import { getStyles } from './FacepileButton.styles';
 
 @customizable('FacepileButton', ['theme', 'styles'], true)

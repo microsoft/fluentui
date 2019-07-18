@@ -1,4 +1,4 @@
-import { parseGap } from 'office-ui-fabric-react/lib/components/Stack/StackUtils';
+import { parseGap } from 'office-ui-fabric-react/lib/packages/react-fundamentals/components/Stack/StackUtils';
 import { getFocusStyle, getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 import { IActionableComponent, IActionableStylesReturnType, IActionableTokenReturnType } from './Actionable.types';
 

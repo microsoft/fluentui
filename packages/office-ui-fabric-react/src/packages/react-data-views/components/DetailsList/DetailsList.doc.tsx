@@ -1,62 +1,63 @@
 import * as React from 'react';
 
-import { IDocPageProps, IExample } from '../../common/DocPage.types';
+import { IDocPageProps, IExample } from '../../../../common/DocPage.types';
 
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
-const DetailsListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Basic.Example.tsx') as string;
-const DetailsListBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Basic.Example.tsx') as string;
+const DetailsListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.Basic.Example.tsx') as string;
+const DetailsListBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.Basic.Example.tsx') as string;
 
 import { DetailsListAnimationExample } from './examples/DetailsList.Animation.Example';
-const DetailsListAnimationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Animation.Example.tsx') as string;
-const DetailsListAnimationExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Animation.Example.tsx') as string;
+const DetailsListAnimationExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.Animation.Example.tsx') as string;
+const DetailsListAnimationExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.Animation.Example.tsx') as string;
 
 import { DetailsListCompactExample } from './examples/DetailsList.Compact.Example';
-const DetailsListCompactExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Compact.Example.tsx') as string;
-const DetailsListCompactExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Compact.Example.tsx') as string;
+const DetailsListCompactExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.Compact.Example.tsx') as string;
+const DetailsListCompactExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.Compact.Example.tsx') as string;
 
 import { DetailsListCustomColumnsExample } from './examples/DetailsList.CustomColumns.Example';
-const DetailsListCustomColumnsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomColumns.Example.tsx') as string;
-const DetailsListCustomColumnsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomColumns.Example.tsx') as string;
+const DetailsListCustomColumnsExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.CustomColumns.Example.tsx') as string;
+const DetailsListCustomColumnsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.CustomColumns.Example.tsx') as string;
 
 import { DetailsListCustomRowsExample } from './examples/DetailsList.CustomRows.Example';
-const DetailsListCustomRowsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomRows.Example.tsx') as string;
-const DetailsListCustomRowsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomRows.Example.tsx') as string;
+const DetailsListCustomRowsExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.CustomRows.Example.tsx') as string;
+const DetailsListCustomRowsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.CustomRows.Example.tsx') as string;
 
 import { DetailsListCustomGroupHeadersExample } from './examples/DetailsList.CustomGroupHeaders.Example';
-const DetailsListCustomGroupHeadersExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomGroupHeaders.Example.tsx') as string;
-const DetailsListCustomGroupHeadersExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomGroupHeaders.Example.tsx') as string;
+const DetailsListCustomGroupHeadersExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.CustomGroupHeaders.Example.tsx') as string;
+const DetailsListCustomGroupHeadersExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.CustomGroupHeaders.Example.tsx') as string;
 
 import { DetailsListAdvancedExample } from './examples/DetailsList.Advanced.Example';
-const DetailsListAdvancedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Advanced.Example.tsx') as string;
-const DetailsListAdvancedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Advanced.Example.tsx') as string;
+const DetailsListAdvancedExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.Advanced.Example.tsx') as string;
+const DetailsListAdvancedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.Advanced.Example.tsx') as string;
 
 import { DetailsListGroupedExample } from './examples/DetailsList.Grouped.Example';
-const DetailsListGroupedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Grouped.Example.tsx') as string;
-const DetailsListGroupedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Grouped.Example.tsx') as string;
+const DetailsListGroupedExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.Grouped.Example.tsx') as string;
+const DetailsListGroupedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.Grouped.Example.tsx') as string;
 
 import { DetailsListGroupedLargeExample } from './examples/DetailsList.Grouped.Large.Example';
-const DetailsListGroupedLargeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Grouped.Large.Example.tsx') as string;
-const DetailsListGroupedLargeExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Grouped.Large.Example.tsx') as string;
+const DetailsListGroupedLargeExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.Grouped.Large.Example.tsx') as string;
+const DetailsListGroupedLargeExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.Grouped.Large.Example.tsx') as string;
 
 import { DetailsListDragDropExample } from './examples/DetailsList.DragDrop.Example';
-const DetailsListDragDropExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.DragDrop.Example.tsx') as string;
-const DetailsListDragDropExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.DragDrop.Example.tsx') as string;
+const DetailsListDragDropExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.DragDrop.Example.tsx') as string;
+const DetailsListDragDropExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.DragDrop.Example.tsx') as string;
 
 import { DetailsListDocumentsExample } from './examples/DetailsList.Documents.Example';
-const DetailsListDocumentsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Documents.Example.tsx') as string;
-const DetailsListDocumentsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Documents.Example.tsx') as string;
+const DetailsListDocumentsExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.Documents.Example.tsx') as string;
+const DetailsListDocumentsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.Documents.Example.tsx') as string;
 
 import { DetailsListNavigatingFocusExample } from './examples/DetailsList.NavigatingFocus.Example';
-const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
-const DetailsListNavigatingFocusExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
+const DetailsListNavigatingFocusExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
+const DetailsListNavigatingFocusExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
 
-import { ShimmerApplicationExample as DetailsListShimmerExample } from '../Shimmer/examples/Shimmer.Application.Example';
-const DetailsListShimmerExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
-const DetailsListShimmerExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
+// tslint:disable-next-line:max-line-length
+import { ShimmerApplicationExample as DetailsListShimmerExample } from '../../../../packages/react-fundamentals/components/Shimmer/examples/Shimmer.Application.Example'; // TODO
+const DetailsListShimmerExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
+const DetailsListShimmerExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
 
 import { DetailsListCustomFooterExample } from './examples/DetailsList.CustomFooter.Example';
-const DetailsListCustomFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomFooter.Example.tsx') as string;
-const DetailsListCustomFooterExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.CustomFooter.Example.tsx') as string;
+const DetailsListCustomFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.CustomFooter.Example.tsx') as string;
+const DetailsListCustomFooterExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/examples/DetailsList.CustomFooter.Example.tsx') as string;
 
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
@@ -71,10 +72,14 @@ export const DetailsListPageProps: IDocPageProps = {
       view: <DetailsListDocumentsExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/docs/DetailsListOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DetailsList/docs/DetailsListDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/docs/DetailsListDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/DetailsList/docs/DetailsListDonts.md'),
   isHeaderVisible: true
 };
 

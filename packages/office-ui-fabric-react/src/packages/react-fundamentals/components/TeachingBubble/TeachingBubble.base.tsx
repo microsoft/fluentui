@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import {
   ITeachingBubbleProps,
@@ -7,8 +7,8 @@ import {
   ITeachingBubbleStyles,
   ITeachingBubbleSubComponentStyles
 } from './TeachingBubble.types';
-import { Callout, ICalloutProps } from '../../Callout';
-import { DirectionalHint } from '../../common/DirectionalHint';
+import { Callout, ICalloutProps } from '../../../../Callout';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 

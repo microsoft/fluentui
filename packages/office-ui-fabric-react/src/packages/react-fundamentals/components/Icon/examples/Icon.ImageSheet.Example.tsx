@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Icon, IconType } from 'office-ui-fabric-react/lib/Icon';
 import './IconExample.scss';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from '../../../../../common/TestImages';
 
 export class IconImageSheetExample extends React.Component<any, any> {
   public render(): JSX.Element {

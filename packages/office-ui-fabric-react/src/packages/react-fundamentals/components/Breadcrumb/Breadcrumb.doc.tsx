@@ -2,12 +2,12 @@ import * as React from 'react';
 
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
 import { BreadcrumbStaticExample } from './examples/Breadcrumb.Static.Example';
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 
-const BreadcrumbBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx') as string;
-const BreadcrumbBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx') as string;
-const BreadcrumbStaticExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Static.Example.tsx') as string;
-const BreadcrumbStaticExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Breadcrumb/examples/Breadcrumb.Static.Example.tsx') as string;
+const BreadcrumbBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx') as string;
+const BreadcrumbBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Breadcrumb/examples/Breadcrumb.Basic.Example.tsx') as string;
+const BreadcrumbStaticExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Breadcrumb/examples/Breadcrumb.Static.Example.tsx') as string;
+const BreadcrumbStaticExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Breadcrumb/examples/Breadcrumb.Static.Example.tsx') as string;
 export const BreadcrumbPageProps: IDocPageProps = {
   title: 'Breadcrumb',
   componentName: 'Breadcrumb',
@@ -26,10 +26,14 @@ export const BreadcrumbPageProps: IDocPageProps = {
       codepenJS: BreadcrumbStaticExampleCodepen
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/docs/BreadcrumbOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Breadcrumb/docs/BreadcrumbOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/docs/BreadcrumbDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/docs/BreadcrumbDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Breadcrumb/docs/BreadcrumbDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Breadcrumb/docs/BreadcrumbDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

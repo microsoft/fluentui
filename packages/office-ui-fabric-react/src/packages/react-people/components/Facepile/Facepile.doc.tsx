@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { FacepileAddFaceExample } from './examples/Facepile.AddFace.Example';
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 import { FacepileBasicExample } from './examples/Facepile.Basic.Example';
 import { FacepileOverflowExample } from './examples/Facepile.Overflow.Example';
 
-const FacepileAddFaceExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Facepile/examples/Facepile.AddFace.Example.tsx') as string;
-const FacepileBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Facepile/examples/Facepile.Basic.Example.tsx') as string;
-const FacepileOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Facepile/examples/Facepile.Overflow.Example.tsx') as string;
+const FacepileAddFaceExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-people/components/Facepile/examples/Facepile.AddFace.Example.tsx') as string;
+const FacepileBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-people/components/Facepile/examples/Facepile.Basic.Example.tsx') as string;
+const FacepileOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-people/components/Facepile/examples/Facepile.Overflow.Example.tsx') as string;
 
 export const FacepilePageProps: IDocPageProps = {
   title: 'Facepile',
@@ -29,10 +29,10 @@ export const FacepilePageProps: IDocPageProps = {
       view: <FacepileAddFaceExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-people/components/Facepile/docs/FacepileOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-people/components/Facepile/docs/FacepileDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-people/components/Facepile/docs/FacepileDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

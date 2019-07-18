@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '../../../../Utilities';
 import { DocumentCardImageBase } from './DocumentCardImage.base';
 import { getStyles } from './DocumentCardImage.styles';
 import { IDocumentCardImageProps, IDocumentCardImageStyleProps, IDocumentCardImageStyles } from './DocumentCardImage.types';
