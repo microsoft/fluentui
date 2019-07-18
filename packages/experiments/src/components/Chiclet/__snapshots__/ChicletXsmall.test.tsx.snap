@@ -96,7 +96,9 @@ exports[`Chiclet renders chiclet with title, icon, onClick, and url 1`] = `
             white-space: nowrap;
             width: 170px;
           }
-    />
+    >
+      contuso.sharepoint.com
+    </div>
   </div>
 </div>
 `;
@@ -219,7 +221,9 @@ exports[`Chiclet renders chiclet with title, preview, onClick, and url 1`] = `
             white-space: nowrap;
             width: 170px;
           }
-    />
+    >
+      contuso.sharepoint.com
+    </div>
   </div>
 </div>
 `;
@@ -320,7 +324,9 @@ exports[`Chiclet renders the correct icon from a file extension 1`] = `
             white-space: nowrap;
             width: 170px;
           }
-    />
+    >
+      contuso.sharepoint.com
+    </div>
   </div>
 </div>
 `;
