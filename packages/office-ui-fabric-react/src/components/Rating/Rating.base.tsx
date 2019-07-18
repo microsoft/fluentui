@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, css, format, getId, divProperties, getNativeProps } from '../../Utilities';
+import {
+  warnDeprecations,
+  initializeComponentRef,
+  classNamesFunction,
+  css,
+  format,
+  getId,
+  divProperties,
+  getNativeProps
+} from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -31,7 +40,7 @@ const RatingStar = (props: IRatingStarProps) => {
   );
 };
 
-export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
+export class RatingBase extends React.Component<IRatingProps, IRatingState> {
   public static defaultProps: IRatingProps = {
     min: 1,
     max: 5
@@ -44,9 +53,9 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   constructor(props: IRatingProps) {
     super(props);
 
-    this._warnDeprecations({
-      onChanged: 'onChange'
-    });
+    initializeComponentRef(this);
+
+    warnDeprecations('Rating', props, { onChanged: 'onChange' });
 
     this._id = getId('Rating');
     this._min = this.props.allowZeroStars ? 0 : 1;
