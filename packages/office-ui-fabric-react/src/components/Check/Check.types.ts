@@ -83,7 +83,7 @@ export interface ICheckStyles {
 
   /**
    * Check host style
-   * @deprecated Not used directly within the component. Instead, use `getCheckHostStyle` from
+   * @deprecated Not used directly within the component. Instead, use `CheckGlobalClassNames.checkHost` from
    * `Check.styles.ts` to get a style to apply to the parent element of the Check.
    */
   checkHost: IStyle;

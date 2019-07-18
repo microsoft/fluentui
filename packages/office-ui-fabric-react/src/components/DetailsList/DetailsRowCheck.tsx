@@ -6,7 +6,7 @@ import { getStyles } from './DetailsRowCheck.styles';
 
 const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
 
-const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
+const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = props => {
   const {
     isVisible = false,
     canSelect = false,
@@ -69,5 +69,6 @@ export const DetailsRowCheck = styled<IDetailsRowCheckProps, IDetailsRowCheckSty
   DetailsRowCheckBase,
   getStyles,
   undefined,
-  { scope: 'DetailsRowCheck' }
+  { scope: 'DetailsRowCheck' },
+  true
 );

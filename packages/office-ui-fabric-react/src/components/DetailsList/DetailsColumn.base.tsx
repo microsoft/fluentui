@@ -112,9 +112,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
                   onContextMenu={this._onColumnContextMenu.bind(this, column)}
                   onClick={this._onColumnClick.bind(this, column)}
                   aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
-                  aria-expanded={
-                    column.columnActionsMode === ColumnActionsMode.hasDropdown ? (column.isMenuOpen ? true : false) : undefined
-                  }
+                  aria-expanded={column.columnActionsMode === ColumnActionsMode.hasDropdown ? !!column.isMenuOpen : undefined}
                 >
                   <span id={`${parentId}-${column.key}-name`} className={classNames.cellName}>
                     {(column.iconName || column.iconClassName) && (
@@ -259,7 +257,9 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     const classNames = this._classNames;
     if (itemIndex) {
       this._updateHeaderDragInfo(itemIndex);
-      (this._root.current as HTMLElement).classList.add(classNames.borderWhileDragging);
+      if (this._root.current) {
+        this._root.current.classList.add(classNames.borderWhileDragging);
+      }
       this._async.setTimeout(() => {
         if (this._root.current) {
           this._root.current.classList.add(classNames.noBorderWhileDragging);
@@ -273,8 +273,11 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     if (event) {
       this._updateHeaderDragInfo(-1, event);
     }
-    (this._root.current as HTMLElement).classList.remove(classNames.borderWhileDragging);
-    (this._root.current as HTMLElement).classList.remove(classNames.noBorderWhileDragging);
+    const root = this._root.current;
+    if (root) {
+      root.classList.remove(classNames.borderWhileDragging);
+      root.classList.remove(classNames.noBorderWhileDragging);
+    }
   };
 
   private _updateHeaderDragInfo = (itemIndex: number, event?: MouseEvent) => {

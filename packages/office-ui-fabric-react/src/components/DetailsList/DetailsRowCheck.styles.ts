@@ -40,15 +40,11 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
         background: 'none',
         backgroundColor: 'transparent',
         border: 'none',
-        opacity: 0,
+        opacity: isCheckVisible ? 1 : 0,
         height: height,
         width: CHECK_CELL_WIDTH,
         padding: 0,
         margin: 0
-      },
-
-      isCheckVisible && {
-        opacity: 1
       }
     ],
 

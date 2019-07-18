@@ -876,8 +876,6 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     };
     focus(): boolean;
     // (undocumented)
-    static getDerivedStateFromProps(newProps: IDetailsHeaderBaseProps, prevState: IDetailsHeaderState): IDetailsHeaderState;
-    // (undocumented)
     render(): JSX.Element;
     }
 
@@ -3295,8 +3293,6 @@ export interface IDetailsHeaderProps extends IDetailsHeaderBaseProps {
 // @public (undocumented)
 export interface IDetailsHeaderState {
     // (undocumented)
-    columnReorderProps?: IColumnReorderHeaderProps;
-    // (undocumented)
     columnResizeDetails?: IColumnResizeDetails;
     // (undocumented)
     isAllCollapsed?: boolean;
@@ -3523,7 +3519,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onWillUnmount?: (row?: DetailsRowBase) => void;
-    rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
+    rowFieldsAs?: React.ComponentType<IDetailsRowFieldsProps>;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
     useFastIcons?: boolean;
@@ -3597,8 +3593,6 @@ export interface IDetailsRowState {
         column: IColumn;
         onMeasureDone: (measuredWidth: number) => void;
     };
-    // (undocumented)
-    groupNestingDepth?: number;
     // (undocumented)
     isDropping?: boolean;
     // (undocumented)

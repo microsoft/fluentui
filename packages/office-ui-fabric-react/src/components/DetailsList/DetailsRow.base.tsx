@@ -31,7 +31,6 @@ export interface IDetailsRowState {
     onMeasureDone: (measuredWidth: number) => void;
   };
   isDropping?: boolean;
-  groupNestingDepth?: number;
 }
 
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
@@ -59,8 +58,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     this.state = {
       selectionState: this._getSelectionState(props),
       columnMeasureInfo: undefined,
-      isDropping: false,
-      groupNestingDepth: props.groupNestingDepth
+      isDropping: false
     };
 
     this._droppingClassNames = '';
@@ -138,8 +136,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
   public componentWillReceiveProps(newProps: IDetailsRowBaseProps): void {
     this.setState({
-      selectionState: this._getSelectionState(newProps),
-      groupNestingDepth: newProps.groupNestingDepth
+      selectionState: this._getSelectionState(newProps)
     });
   }
 
@@ -182,9 +179,10 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       theme,
       styles,
       cellsByColumn,
+      groupNestingDepth,
       useFastIcons
     } = this.props;
-    const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
+    const { columnMeasureInfo, isDropping } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
     const isDraggable = dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrag(item)) : undefined;
     const droppingClassName = isDropping ? this._droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : '';
@@ -349,7 +347,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     };
   }
 
-  private _onSelectionChanged(): void {
+  private _onSelectionChanged = (): void => {
     const selectionState = this._getSelectionState(this.props);
 
     if (!shallowCompare(selectionState, this.state.selectionState)) {
@@ -357,7 +355,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         selectionState: selectionState
       });
     }
-  }
+  };
 
   private _onRootRef = (focusZone: FocusZone): void => {
     if (focusZone) {
