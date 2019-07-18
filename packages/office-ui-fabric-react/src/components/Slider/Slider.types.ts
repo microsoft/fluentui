@@ -130,12 +130,6 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * @defaultvalue false
    */
   originFromZero?: boolean;
-
-  /**
-   * Optional flag to determine whether or not to add tick marks and to add resistive snaps
-   *
-   */
-  marks?: boolean | [];
 }
 
 /**
