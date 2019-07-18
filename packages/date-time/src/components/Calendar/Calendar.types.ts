@@ -354,3 +354,15 @@ export interface ICalendarStyles {
 
   monthPickerWrapper: IStyle;
 }
+
+export enum AnimationDirection {
+  /**
+   * Grid will transition out and in horizontally
+   */
+  Horizontal,
+
+  /**
+   * Grid will transition out and in vertically
+   */
+  Vertical
+}

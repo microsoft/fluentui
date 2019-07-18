@@ -1,9 +1,19 @@
 import { ICalendarPickerStyleProps, ICalendarPickerStyles } from './CalendarPicker.types';
-import { normalize, FontSizes, FontWeights, getFocusStyle } from '@uifabric/styling';
+import { normalize, FontSizes, FontWeights, getFocusStyle, IRawStyle, AnimationStyles } from '@uifabric/styling';
+import { AnimationDirection } from '../Calendar.types';
 
 export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyles => {
-  const { className, theme, hasHeaderClickCallback, highlightCurrent, highlightSelected } = props;
+  const { className, theme, hasHeaderClickCallback, highlightCurrent, highlightSelected, animateBackwards, animationDirection } = props;
   const { palette } = theme;
+
+  let animationStyle: IRawStyle = {};
+  if (animateBackwards !== undefined) {
+    if (animationDirection === AnimationDirection.Horizontal) {
+      animationStyle = animateBackwards ? AnimationStyles.slideRightIn20 : AnimationStyles.slideLeftIn20;
+    } else {
+      animationStyle = animateBackwards ? AnimationStyles.slideDownIn20 : AnimationStyles.slideUpIn20;
+    }
+  }
 
   return {
     root: [
@@ -75,6 +85,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
       marginTop: 4
     },
     buttonRow: {
+      ...animationStyle,
       marginBottom: 16,
       selectors: {
         '&:nth-child(n + 3)': {

@@ -1,6 +1,7 @@
 import { ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
-import { FontSizes, FontWeights, getFocusStyle, getGlobalClassNames, AnimationStyles } from '@uifabric/styling';
+import { FontSizes, FontWeights, getFocusStyle, getGlobalClassNames, AnimationStyles, IRawStyle } from '@uifabric/styling';
 import { DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import { AnimationDirection } from '../Calendar/Calendar.types';
 
 const GlobalClassNames = {
   hoverStyle: 'ms-CalendarDay-hoverStyle',
@@ -8,10 +9,19 @@ const GlobalClassNames = {
 };
 
 export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyles => {
-  const { theme, dateRangeType, showWeekNumbers, lightenDaysOutsideNavigatedMonth, animateBackwards } = props;
+  const { theme, dateRangeType, showWeekNumbers, lightenDaysOutsideNavigatedMonth, animateBackwards, animationDirection } = props;
   const { palette } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  let animationStyle: IRawStyle = {};
+  if (animateBackwards !== undefined) {
+    if (animationDirection === AnimationDirection.Horizontal) {
+      animationStyle = animateBackwards ? AnimationStyles.slideRightIn20 : AnimationStyles.slideLeftIn20;
+    } else {
+      animationStyle = animateBackwards ? AnimationStyles.slideDownIn20 : AnimationStyles.slideUpIn20;
+    }
+  }
 
   const disabledStyle = {
     selectors: {
@@ -69,7 +79,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         }
       }
     ],
-    weekRow: animateBackwards === undefined ? [] : animateBackwards ? AnimationStyles.slideRightIn20 : AnimationStyles.slideLeftIn20,
+    weekRow: animationStyle,
     weekNumberCell: {
       margin: 0,
       padding: 0,

@@ -76,7 +76,16 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
 
   public render(): JSX.Element {
     const { activeDescendantId, weeks, animateBackwards } = this.state;
-    const { styles, theme, className, dateRangeType, showWeekNumbers, labelledBy, lightenDaysOutsideNavigatedMonth } = this.props;
+    const {
+      styles,
+      theme,
+      className,
+      dateRangeType,
+      showWeekNumbers,
+      labelledBy,
+      lightenDaysOutsideNavigatedMonth,
+      animationDirection
+    } = this.props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -84,6 +93,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       dateRangeType: dateRangeType,
       showWeekNumbers: showWeekNumbers,
       lightenDaysOutsideNavigatedMonth: lightenDaysOutsideNavigatedMonth === undefined ? true : lightenDaysOutsideNavigatedMonth,
+      animationDirection: animationDirection,
       animateBackwards: animateBackwards
     });
 

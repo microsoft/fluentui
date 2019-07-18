@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { ICalendarIconStrings } from '../Calendar.types';
+import { ICalendarIconStrings, AnimationDirection } from '../Calendar.types';
 import { ITheme } from '@uifabric/styling';
 import { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
@@ -109,6 +109,11 @@ export interface ICalendarYearProps extends IBaseProps<ICalendarYear> {
    * @param year The year to render
    */
   onRenderYear?: (year: number) => React.ReactNode;
+
+  /**
+   * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
+   */
+  animationDirection?: AnimationDirection;
 }
 
 export interface ICalendarYearStyleProps extends ICalendarPickerStyleProps {}

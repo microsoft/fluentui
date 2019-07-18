@@ -1,5 +1,12 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { ICalendarStrings, DayOfWeek, FirstWeekOfYear, DateRangeType, ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
+import {
+  ICalendarStrings,
+  DayOfWeek,
+  FirstWeekOfYear,
+  DateRangeType,
+  ICalendarFormatDateCallbacks,
+  AnimationDirection
+} from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
 
 export interface ICalendarDayGrid {
@@ -148,6 +155,11 @@ export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
    * @defaultvalue true
    */
   lightenDaysOutsideNavigatedMonth?: boolean;
+
+  /**
+   * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
+   */
+  animationDirection?: AnimationDirection;
 }
 
 export interface ICalendarDayGridStyleProps {
@@ -180,6 +192,11 @@ export interface ICalendarDayGridStyleProps {
    * Whether grid entering animation should be forwards or backwards
    */
   animateBackwards?: boolean;
+
+  /**
+   * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
+   */
+  animationDirection?: AnimationDirection;
 }
 
 export interface ICalendarDayGridStyles {

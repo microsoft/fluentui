@@ -32,8 +32,10 @@ const DefaultNavigationIcons: ICalendarIconStrings = {
 
 export interface ICalendarYearState {
   fromYear: number;
+  previousFromYear?: number;
   navigatedYear?: number;
   selectedYear?: number;
+  animateBackwards?: boolean;
 }
 
 interface ICalendarYearGrid {
@@ -51,6 +53,7 @@ interface ICalendarYearGridCellProps extends ICalendarYearProps {
 
 interface ICalendarYearGridProps extends ICalendarYearProps, ICalendarYearRange {
   selectedYear?: number;
+  animateBackwards?: boolean;
 }
 
 interface ICalendarYearGridCell {
@@ -135,11 +138,13 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
   }
 
   public render(): JSX.Element {
-    const { styles, theme, className, fromYear, toYear } = this.props;
+    const { styles, theme, className, fromYear, toYear, animationDirection, animateBackwards } = this.props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
-      className: className
+      className: className,
+      animateBackwards: animateBackwards,
+      animationDirection: animationDirection
     });
 
     let year = fromYear;
@@ -158,7 +163,7 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
         <div className={classNames.gridContainer} role="grid">
           {cells.map((cellRow: React.ReactNode[], index: number) => {
             return (
-              <div key={'yearPickerRow_' + index} role="row" className={classNames.buttonRow}>
+              <div key={'yearPickerRow_' + index + '_' + fromYear} role="row" className={classNames.buttonRow}>
                 {...cellRow}
               </div>
             );
@@ -446,11 +451,37 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
   }
 
   private _onNavNext = () => {
-    this.setState({ fromYear: this.state.fromYear + CELL_COUNT });
+    const previousFromYear = this.state.fromYear;
+    const nextFromYear = this.state.fromYear + CELL_COUNT;
+    this.setState({
+      previousFromYear: previousFromYear,
+      fromYear: nextFromYear,
+      animateBackwards: this._computeAnimateBackwards(previousFromYear, nextFromYear)
+    });
   };
 
   private _onNavPrev = () => {
-    this.setState({ fromYear: this.state.fromYear - CELL_COUNT });
+    const previousFromYear = this.state.fromYear;
+    const nextFromYear = this.state.fromYear - CELL_COUNT;
+    this.setState({
+      previousFromYear: previousFromYear,
+      fromYear: nextFromYear,
+      animateBackwards: this._computeAnimateBackwards(previousFromYear, nextFromYear)
+    });
+  };
+
+  private _computeAnimateBackwards = (previousYear: number, newYear: number): boolean | undefined => {
+    if (!previousYear || !newYear) {
+      return undefined;
+    }
+
+    if (previousYear < newYear) {
+      return false;
+    } else if (previousYear > newYear) {
+      return true;
+    }
+
+    return undefined;
   };
 
   private _renderHeader = (): React.ReactNode => {
@@ -471,6 +502,7 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
         {...this.props}
         fromYear={this.state.fromYear}
         toYear={this.state.fromYear + CELL_COUNT - 1}
+        animateBackwards={this.state.animateBackwards}
         ref={this._onGridRef}
       />
     );
