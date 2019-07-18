@@ -4085,9 +4085,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel13-1"
+          id="RatingLabel13-2.5"
         >
-          1 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -4224,9 +4224,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel13-2"
+          id="RatingLabel13-2.5"
         >
-          2 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -4364,9 +4364,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel13-3"
+          id="RatingLabel13-2.5"
         >
-          3 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -4503,9 +4503,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel13-4"
+          id="RatingLabel13-2.5"
         >
-          4 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -4642,9 +4642,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel13-5"
+          id="RatingLabel13-2.5"
         >
-          5 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -4868,9 +4868,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel16-1"
+          id="RatingLabel16-2.5"
         >
-          1 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -5025,9 +5025,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel16-2"
+          id="RatingLabel16-2.5"
         >
-          2 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -5183,9 +5183,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel16-3"
+          id="RatingLabel16-2.5"
         >
-          3 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -5340,9 +5340,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel16-4"
+          id="RatingLabel16-2.5"
         >
-          4 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -5497,9 +5497,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel16-5"
+          id="RatingLabel16-2.5"
         >
-          5 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
