@@ -25,11 +25,11 @@ let foundProjects = [project];
 if (!allPackages[project]) {
   foundProjects = Object.keys(allPackages).filter(name => name.includes(project));
   if (foundProjects.length === 0) {
-    console.log(`There is not project matching: ${project} in this repo`);
+    console.log(`There is no project matching "${project}" in this repo`);
   } else if (foundProjects.length > 1) {
     console.log(`More than one project matched: "${foundProjects.join('", "')}"`);
   } else {
-    console.log(`Found a match project named "${foundProjects[0]}"`);
+    console.log(`Found a matching project named "${foundProjects[0]}"`);
   }
 }
 
