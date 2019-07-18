@@ -4,11 +4,16 @@ jobs:
       name: Hosted VS2017
       demands: npm
     steps:
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '10.x'
+        displayName: 'Install Node.js'
+
       - script: yarn
         displayName: yarn
 
-      - script: yarn build
-        displayName: yarn build
+      - script: yarn buildci
+        displayName: yarn buildci
 
       - task: Npm@1
         displayName: 'Collate Bundle Size Information'
