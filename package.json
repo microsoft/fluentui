@@ -40,7 +40,6 @@
   },
   "devDependencies": {
     "beachball": "^1.9.2",
-    "git-hooks": "^1.1.10",
     "lerna": "^3.15.0",
     "lint-staged": "^7.0.5"
   },
