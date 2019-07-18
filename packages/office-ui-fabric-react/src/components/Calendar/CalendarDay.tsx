@@ -779,17 +779,17 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       for (let dayIndex = 0; dayIndex < DAYS_IN_WEEK; dayIndex++) {
         const originalDate = new Date(date.toString());
         const dayInfo: IDayInfo = {
-          key: date.toString(),
-          date: date.getDate().toString(),
+          key: originalDate.toString(),
+          date: originalDate.getDate().toString(),
           originalDate: originalDate,
-          isInMonth: date.getMonth() === navigatedDate.getMonth(),
-          isToday: compareDates(todaysDate, date),
-          isSelected: isInDateRangeArray(date, selectedDates),
+          isInMonth: originalDate.getMonth() === navigatedDate.getMonth(),
+          isToday: compareDates(todaysDate, originalDate),
+          isSelected: isInDateRangeArray(originalDate, selectedDates),
           onSelected: this._onSelectDate.bind(this, originalDate),
           isInBounds:
-            (minDate ? compareDatePart(minDate, date) < 1 : true) &&
-            (maxDate ? compareDatePart(date, maxDate) < 1 : true) &&
-            !this._getIsRestrictedDate(date)
+            (minDate ? compareDatePart(minDate, originalDate) < 1 : true) &&
+            (maxDate ? compareDatePart(originalDate, maxDate) < 1 : true) &&
+            !this._getIsRestrictedDate(originalDate)
         };
 
         week.push(dayInfo);
