@@ -7684,6 +7684,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
 // @public (undocumented)
 export interface ITooltipStyleProps {
     className?: string;
+    // @deprecated
     delay?: TooltipDelay;
     gapSpace?: number;
     maxWidth?: string;
@@ -9286,7 +9287,7 @@ export enum TooltipDelay {
 export const TooltipHost: React.StatelessComponent<ITooltipHostProps>;
 
 // @public (undocumented)
-export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
+export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
     constructor(props: ITooltipHostProps);
     // (undocumented)
     componentWillUnmount(): void;

@@ -52,7 +52,7 @@
     "@uifabric/set-version": "^7.0.1",
     "@uifabric/styling": "^7.2.1",
     "@uifabric/utilities": "^7.0.7",
-    "office-ui-fabric-react": "^7.11.0",
+    "office-ui-fabric-react": "^7.11.1",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {

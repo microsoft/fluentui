@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 18 Jul 2019 12:27:48 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.7",
+      "version": "7.2.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update homepage.htm to match real one",
+            "author": "elcraig@microsoft.com",
+            "commit": "75c2288c35828886d8340d3976dc340f120ad419"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jul 2019 18:58:57 GMT",
       "tag": "@uifabric/fabric-website_v7.2.7",
       "version": "7.2.7",
