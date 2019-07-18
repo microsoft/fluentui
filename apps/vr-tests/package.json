@@ -32,8 +32,8 @@
     "file-loader": "^0.11.1",
     "postcss-loader": "^2.0.9",
     "raw-loader": "^0.5.1",
-    "screener-runner": "^0.10.15",
-    "screener-storybook": "^0.16.8",
+    "screener-runner": "^0.10.41",
+    "screener-storybook": "^0.18.6",
     "storybook-readme": "^3.3.0",
     "style-loader": "^0.21.0",
     "@uifabric/build": "^7.0.0"
