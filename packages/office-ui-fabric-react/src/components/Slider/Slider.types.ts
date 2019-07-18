@@ -123,6 +123,34 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * @defaultvalue false
    */
   originFromZero?: boolean;
+
+  /**
+
+   * Optional flag to render the thumblabel.
+
+   */
+
+  thumblabel?: boolean;
+
+  /**
+
+   * Optional flag to indicate snaps on movement of thumb.
+
+   * @defaultvalue false
+
+   */
+
+  snaps?: boolean;
+
+  /**
+
+   * Optional flag to indicate whether to have tick marks
+
+   * @defaultvalue false
+
+   */
+
+  marks?: boolean;
 }
 
 /**

@@ -3,6 +3,8 @@ import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
+import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ISliderState {
   value?: number;
@@ -28,6 +30,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   private _thumb = React.createRef<HTMLSpanElement>();
   private _id: string;
   private _onKeyDownTimer = -1;
+  private _hostId: string = getId('tooltipHost');
+  private _buttonId: string = getId('targetButton');
 
   constructor(props: ISliderProps) {
     super(props);
@@ -109,7 +113,17 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               {originFromZero && (
                 <span className={css(classNames.zeroTick)} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
               )}
-              <span ref={this._thumb} className={classNames.thumb} style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)} />
+              {
+                <TooltipHost content={'' + value} id={this._hostId} calloutProps={{ gapSpace: 0, target: `#${this._buttonId}` }}>
+                  <span
+                    ref={this._thumb}
+                    className={classNames.thumb}
+                    style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)}
+                    id={this._buttonId}
+                    aria-labelledby={this._hostId}
+                  />
+                </TooltipHost>
+              }
               {originFromZero ? (
                 <>
                   <span
