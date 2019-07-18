@@ -75,11 +75,9 @@ export class ThemeDesignerColorPicker extends React.Component<IThemeDesignerColo
           </Stack>
         </Stack>
         {this.state.isColorPickerVisible && (
-          <div>
-            <Callout gapSpace={10} target={this._colorPickerRef.current} setInitialFocus={true} onDismiss={this._onCalloutDismiss}>
-              <ColorPicker color={this.props.color} onChange={this._onColorPickerChange} alphaSliderHidden={true} />
-            </Callout>
-          </div>
+          <Callout gapSpace={10} target={this._colorPickerRef.current} setInitialFocus={true} onDismiss={this._onCalloutDismiss}>
+            <ColorPicker color={this.props.color} onChange={this._onColorPickerChange} alphaSliderHidden={true} />
+          </Callout>
         )}
       </div>
     );

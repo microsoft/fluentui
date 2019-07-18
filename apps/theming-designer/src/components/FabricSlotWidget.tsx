@@ -35,6 +35,10 @@ const fabricPaletteColorBox = mergeStyles({
   flexShrink: 0
 });
 
+const colorBoxAndHexStringClassName = mergeStyles({
+  position: 'relative' /* This is necessary to make position: absolute; work in the other style. */
+});
+
 export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IFabricSlotWidgetState> {
   constructor(props: any) {
     super(props);
@@ -53,28 +57,26 @@ export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IF
     const slotRule = this.props.themeRules![FabricSlots[this.props.slot]];
     return (
       <div key={slotRule.name} className={slotClassName}>
-        <Stack horizontal gap={5}>
+        <Stack horizontal className={colorBoxAndHexStringClassName} gap={5}>
           <div
             key={slotRule.name}
             className={fabricPaletteColorBox}
             style={{ backgroundColor: slotRule.color!.str }}
             onClick={this._onColorBoxClick}
           />
-          {isColorPickerVisible && (
-            <div>
-              <Callout
-                gapSpace={10}
-                target={colorPickerElement}
-                directionalHint={this.props.directionalHint}
-                setInitialFocus={true}
-                onDismiss={this._onCalloutDismiss}
-              >
-                <ColorPicker color={slotRule.color} onChange={this._onColorPickerChange} alphaSliderHidden={true} />
-              </Callout>
-            </div>
-          )}
           <div>{slotRule.name}</div>
         </Stack>
+        {isColorPickerVisible && (
+          <Callout
+            gapSpace={10}
+            target={colorPickerElement}
+            directionalHint={this.props.directionalHint}
+            setInitialFocus={true}
+            onDismiss={this._onCalloutDismiss}
+          >
+            <ColorPicker color={slotRule.color} onChange={this._onColorPickerChange} alphaSliderHidden={true} />
+          </Callout>
+        )}
       </div>
     );
   }
