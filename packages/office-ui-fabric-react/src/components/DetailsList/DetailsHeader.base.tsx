@@ -10,7 +10,7 @@ import {
   CheckboxVisibility
 } from './DetailsList.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { Icon } from '../../Icon';
+import { Icon, FontIcon } from '../../Icon';
 import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { CollapseAllVisibility } from '../../GroupedList';
@@ -22,7 +22,6 @@ import { DetailsColumn, IDetailsColumnProps } from '../../components/DetailsList
 import { SelectAllVisibility, IDropHintDetails, IColumnReorderHeaderProps, IDetailsHeaderState } from './DetailsHeader.types';
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles, IDetailsHeader } from './DetailsHeader.types';
 import { classNamesFunction } from '../../Utilities';
-import { FontIcon } from '../Icon';
 
 const getClassNames = classNamesFunction<IDetailsHeaderStyleProps, IDetailsHeaderStyles>();
 
