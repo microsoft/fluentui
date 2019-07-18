@@ -72,10 +72,15 @@ let colorChangeTimeout: number;
 let fabricPaletteColorChangeTimeout: number;
 
 export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
-  constructor(props: any) {
+  constructor(props: {}) {
     super(props);
 
     this.state = this._buildInitialState();
+  }
+
+  public componentWillUnmount() {
+    clearTimeout(colorChangeTimeout);
+    clearTimeout(fabricPaletteColorChangeTimeout);
   }
 
   public render() {
@@ -131,7 +136,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
       return;
     }
     colorChangeTimeout = this._async.setTimeout(() => {
-      const themeRules = this.state.themeRules;
+      const { themeRules } = this.state;
       if (themeRules) {
         const currentIsDark = isDark(themeRules[FabricSlots[fabricSlot]].color!);
         ThemeGenerator.setSlot(themeRules[FabricSlots[fabricSlot]], newColor, currentIsDark, true, true);

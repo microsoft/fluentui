@@ -9,7 +9,7 @@ import { Text } from 'office-ui-fabric-react';
 
 export interface IFabricSlotWidgetProps {
   slot: FabricSlots;
-  onFabricPaletteColorChange: (newColor: IColor | undefined, fabricSlot: FabricSlots) => void;
+  onFabricPaletteColorChange: (newColor: IColor, fabricSlot: FabricSlots) => void;
   themeRules?: IThemeRules;
   directionalHint?: DirectionalHint;
 }
@@ -40,61 +40,55 @@ const colorBoxAndHexStringClassName = mergeStyles({
 });
 
 export class FabricSlotWidget extends React.Component<IFabricSlotWidgetProps, IFabricSlotWidgetState> {
-  constructor(props: any) {
+  constructor(props: IFabricSlotWidgetProps) {
     super(props);
 
     this.state = {
       isColorPickerVisible: false,
       colorPickerElement: null
     };
-
-    this._onColorBoxClick = this._onColorBoxClick.bind(this);
-    this._onCalloutDismiss = this._onCalloutDismiss.bind(this);
   }
 
   public render() {
     const { isColorPickerVisible, colorPickerElement } = this.state;
-    const slotRule = this.props.themeRules![FabricSlots[this.props.slot]];
-    return (
-      <div key={slotRule.name} className={slotClassName}>
-        <Stack horizontal className={colorBoxAndHexStringClassName} gap={5}>
-          <div
-            key={slotRule.name}
-            className={fabricPaletteColorBox}
-            style={{ backgroundColor: slotRule.color!.str }}
-            onClick={this._onColorBoxClick}
-          />
-          <div>{slotRule.name}</div>
-        </Stack>
-        {isColorPickerVisible && (
-          <Callout
-            gapSpace={10}
-            target={colorPickerElement}
-            directionalHint={this.props.directionalHint}
-            setInitialFocus={true}
-            onDismiss={this._onCalloutDismiss}
-          >
-            <ColorPicker color={slotRule.color} onChange={this._onColorPickerChange} alphaSliderHidden={true} />
-          </Callout>
-        )}
-      </div>
-    );
+    if (this.props.themeRules) {
+      const slotRule = this.props.themeRules[FabricSlots[this.props.slot]];
+      return (
+        <div className={slotClassName}>
+          <Stack horizontal className={colorBoxAndHexStringClassName} gap={5}>
+            <div className={fabricPaletteColorBox} style={{ backgroundColor: slotRule.color.str }} onClick={this._onColorBoxClick} />
+            <div>{slotRule.name}</div>
+          </Stack>
+          {isColorPickerVisible && (
+            <Callout
+              gapSpace={10}
+              target={colorPickerElement}
+              directionalHint={this.props.directionalHint}
+              setInitialFocus={true}
+              onDismiss={this._onCalloutDismiss}
+            >
+              <ColorPicker color={slotRule.color} onChange={this._onColorPickerChange} alphaSliderHidden={true} />
+            </Callout>
+          )}
+        </div>
+      );
+    }
   }
 
   private _onColorPickerChange = (ev: React.MouseEvent<HTMLElement>, newColor: IColor) => {
     this.props.onFabricPaletteColorChange(newColor, this.props.slot);
   };
 
-  private _onColorBoxClick(ev: React.MouseEvent<HTMLElement>) {
+  private _onColorBoxClick = (ev: React.MouseEvent<HTMLElement>) => {
     this.setState({
       isColorPickerVisible: true,
       colorPickerElement: ev.target as HTMLElement
     });
-  }
+  };
 
-  private _onCalloutDismiss() {
+  private _onCalloutDismiss = () => {
     this.setState({
       isColorPickerVisible: false
     });
-  }
+  };
 }
