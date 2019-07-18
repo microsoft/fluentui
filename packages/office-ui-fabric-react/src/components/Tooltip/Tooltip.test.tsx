@@ -6,7 +6,6 @@ import { mount } from 'enzyme';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TooltipBase } from './Tooltip.base';
-import { TooltipDelay } from './Tooltip.types';
 import { ICalloutProps } from '../../Callout';
 
 const defaultCalloutProps: ICalloutProps = {
@@ -38,7 +37,6 @@ describe('Tooltip', () => {
   it('uses default documented properties', () => {
     const component = mount(<TooltipBase />);
 
-    expect(component.prop('delay')).toEqual(TooltipDelay.medium);
     expect(component.prop('directionalHint')).toEqual(DirectionalHint.topCenter);
     expect(component.prop('maxWidth')).toEqual('364px');
     expect(component.prop('calloutProps')).toEqual(defaultCalloutProps);
