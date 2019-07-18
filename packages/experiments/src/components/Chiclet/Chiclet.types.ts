@@ -47,16 +47,6 @@ export interface IChicletProps extends React.HTMLAttributes<HTMLElement> {
   image?: string;
 
   /**
-   * Image Width to render for the component.
-   */
-  imageWidth?: number | string;
-
-  /**
-   * Image Height to render for the component.
-   */
-  imageHeight?: number | string;
-
-  /**
    * Alternate image to render for the component.
    */
   imageAlt?: string;

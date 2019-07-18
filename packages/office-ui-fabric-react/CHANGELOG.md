@@ -1,6 +1,53 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 11 Jul 2019 12:29:51 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Jul 2019 12:27:48 GMT and should not be manually modified.
+
+## 7.11.1
+Thu, 18 Jul 2019 12:27:48 GMT
+
+### Patches
+
+- Panel: Making padding not change with screen width to match toolkit. (Humberto.Morimoto@microsoft.com)
+
+## 7.11.0
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Minor changes
+
+- Add new ways for callers to control the behavior of the combo box. (reedpa@microsoft.com)
+,- ChoiceGroupOption: move the inline styles into getStyles function to allow override. (vibraga@microsoft.com)
+
+### Patches
+
+- prevent header and footer in panel from shrinking (nidurak@microsoft.com)
+,- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+,- Rating: ensure rating gets updated even when it has value of 0. (vibraga@microsoft.com)
+,- GroupedList: Using level to determine nestingDepth when it is given. (Humberto.Morimoto@microsoft.com)
+,- DropDown: Adding null check in onPositioned call. (Humberto.Morimoto@microsoft.com)
+
+## 7.10.0
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Minor changes
+
+- Dialog: Deprecating componentRef prop. (Humberto.Morimoto@microsoft.com)
+,- Tooltip: Rendering hidden hoverable area to allow for interaction with Tooltips. (Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Panel: remove window.innerHeight from styles (kakje@microsoft.com)
+
+## 7.9.0
+Fri, 12 Jul 2019 12:29:52 GMT
+
+### Minor changes
+
+- GroupedList: Refactor out BaseComponent in favor of React.Component and React.FunctionComponent (706967+KevinTCoughlin@users.noreply.github.com)
+,- Dropdown: adds an `onRenderLabel` custom renderer prop. (vibraga@microsoft.com)
+
+### Patches
+
+- Update to progressBar indicator description label font size to match design toolkti spec. (marygans@microsoft.com)
 
 ## 7.8.2
 Thu, 11 Jul 2019 12:29:51 GMT
