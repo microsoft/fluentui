@@ -4,7 +4,7 @@ import { IEditorProps } from './Editor.types';
 
 export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProps) => {
   const ref = React.useRef<HTMLDivElement>(null);
-  const { width, height, onChange, code, language } = props;
+  const { width, height, onChange, setModel, language, code } = props;
   const style = { width, height };
 
   React.useEffect(() => {
@@ -17,15 +17,21 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       experimentalDecorators: true,
       preserveConstEnums: true,
       outDir: 'lib',
-      module: monaco.languages.typescript.ModuleKind.ESNext,
-      lib: ['es5', 'dom']
+      module: monaco.languages.typescript.ModuleKind.ESNext
+      // lib: ['es5', 'dom']
     });
 
+    const model = monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('file:///main.tsx'));
+
+    onChange(model);
+
     const editor = monaco.editor.create(ref.current!, {
-      model: monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('file:///main.tsx')),
+      model: model,
       value: code,
       language
     });
+
+    setModel(model);
 
     editor.onDidChangeModelContent(() => {
       onChange(editor.getModel()!);

@@ -24,7 +24,12 @@ export async function transpile(model: ITextModel): Promise<ITranspiledOutput> {
 export function evalCode(code: string, id: string): string | undefined {
   try {
     // tslint:disable:no-eval
-    eval(transformExample(code, id));
+    const transfromedExample = transformExample(code, id);
+    if (transfromedExample.output !== undefined) {
+      eval(transfromedExample.output);
+    } else {
+      return transfromedExample.error;
+    }
   } catch (ex) {
     return ex.message;
   }
