@@ -264,7 +264,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
     const isRtl = getRTL();
     const touch = ev.touches[0];
     if (touch && this._initialTouchX !== undefined && touch.clientX !== this._initialTouchX) {
-      if ((touch.clientX - this._initialTouchX) * (isRtl ? -1 : 1) > 0) {
+      if ((touch.clientX - this._initialTouchX) * (isRtl ? -1 : 1) < 0) {
         // swipe right
         this._onSelectNextWeek();
       } else {
