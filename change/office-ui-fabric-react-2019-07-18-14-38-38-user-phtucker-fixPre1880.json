@@ -1,0 +1,8 @@
+{
+  "comment": "Fix Calendar day selection issue for pre-1880 dates.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "phtucker@microsoft.com",
+  "commit": "8a363c02f34115032e951d12ee2d076944e2a806",
+  "date": "2019-07-18T18:38:38.846Z"
+}
