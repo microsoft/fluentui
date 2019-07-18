@@ -112,7 +112,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
             role="presentation"
             type="button"
           >
-            {this._getLabel(i)}
+            {this._getLabel((rating as number) % 1 ? rating : i)}
             <RatingStar key={i + 'rating'} {...ratingStarProps} />
           </button>
         );
@@ -153,7 +153,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _onFocus(value: number, ev: React.FocusEvent<HTMLElement>): void {
-    if (this.state.rating !== value) {
+    if (Math.ceil(this.state.rating!) !== value) {
       this.setState({
         rating: value
       } as IRatingState);
