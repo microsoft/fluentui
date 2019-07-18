@@ -11,7 +11,8 @@ import {
   getNativeProps,
   IRenderFunction,
   EventGroup
-} from '../../Utilities';
+} from '../../../../Utilities';
+
 import { IList, IListProps, IPage, IPageProps, ScrollToMode } from './List.types';
 
 const RESIZE_DELAY = 16;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction } from '../../Utilities';
+import { classNamesFunction } from '../../../../Utilities';
 import { IProgressIndicatorProps, IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './ProgressIndicator.types';
 
 const getClassNames = classNamesFunction<IProgressIndicatorStyleProps, IProgressIndicatorStyles>();

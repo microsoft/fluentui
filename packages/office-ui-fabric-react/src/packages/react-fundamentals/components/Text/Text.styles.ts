@@ -1,6 +1,6 @@
 import { ITextComponent, ITextStyles, ITextStylesReturnType, ITextProps } from './Text.types';
 
-import { ITheme } from '../../Styling';
+import { ITheme } from '../../../../Styling';
 
 export const TextStyles: ITextComponent['styles'] = (props: ITextProps, theme: ITheme): ITextStylesReturnType => {
   const { as, className, block, nowrap, variant } = props;

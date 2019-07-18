@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { buttonProperties, getNativeProps, memoizeFunction } from '../../../Utilities';
+import { buttonProperties, getNativeProps, memoizeFunction } from '../../../../../Utilities';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
-import { KeytipData } from '../../../KeytipData';
-import { getIsChecked, isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
+import { KeytipData } from '../../../../../KeytipData';
+import { getIsChecked, isItemDisabled, hasSubmenu } from '../../../../../utilities/contextualMenu/index';
 import { ContextualMenuItem } from '../ContextualMenuItem';
-import { IKeytipDataProps } from '../../KeytipData/KeytipData.types';
-import { IKeytipProps } from '../../Keytip/Keytip.types';
+import { IKeytipDataProps } from '../../../../../KeytipData';
+import { IKeytipProps } from '../../../../../Keytip';
 
 export class ContextualMenuButton extends ContextualMenuItemWrapper {
   private _btn = React.createRef<HTMLButtonElement>();

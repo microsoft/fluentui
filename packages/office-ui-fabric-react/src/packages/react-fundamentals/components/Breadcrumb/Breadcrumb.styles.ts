@@ -8,9 +8,9 @@ import {
   getScreenSelector,
   getGlobalClassNames,
   FontWeights
-} from '../../Styling';
+} from '../../../../Styling';
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
-import { IsFocusVisibleClassName } from '../../Utilities';
+import { IsFocusVisibleClassName } from '../../../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-Breadcrumb',

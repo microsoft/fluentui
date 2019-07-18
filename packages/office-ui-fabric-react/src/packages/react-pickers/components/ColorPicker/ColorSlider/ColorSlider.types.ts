@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ITheme, IStyle } from '../../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
+import { ITheme, IStyle } from '../../../../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../../../../Utilities';
 
 /**
  * {@docCategory ColorPicker}

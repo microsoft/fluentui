@@ -6,8 +6,8 @@ import {
   IStyle,
   normalize,
   getPlaceholderStyles
-} from '../../Styling';
-import { ILabelStyles, ILabelStyleProps } from '../../Label';
+} from '../../../../Styling';
+import { ILabelStyles, ILabelStyleProps } from '../../../../Label';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 

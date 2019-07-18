@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TextField } from '../TextField';
 import { ITextField, ITextFieldProps } from '../TextField.types';
-import { initializeComponentRef, KeyCodes } from '../../../Utilities';
+import { initializeComponentRef, KeyCodes } from '../../../../../Utilities';
 
 import {
   clearNext,

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { OverlayDarkExample } from './examples/Overlay.Dark.Example';
 
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 import { OverlayLightExample } from './examples/Overlay.Light.Example';
 
-const OverlayLightExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Overlay/examples/Overlay.Light.Example.tsx') as string;
-const OverlayDarkExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Overlay/examples/Overlay.Dark.Example.tsx') as string;
+const OverlayLightExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Overlay/examples/Overlay.Light.Example.tsx') as string;
+const OverlayDarkExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Overlay/examples/Overlay.Dark.Example.tsx') as string;
 
 export const OverlayPageProps: IDocPageProps = {
   title: 'Overlay',
@@ -23,10 +23,12 @@ export const OverlayPageProps: IDocPageProps = {
       view: <OverlayDarkExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Overlay/docs/OverlayOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Overlay/docs/OverlayDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Overlay/docs/OverlayDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true

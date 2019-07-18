@@ -1,8 +1,8 @@
-import { IStyle, ITheme } from '../../../../Styling';
-import { IStyleFunctionOrObject } from '../../../../Utilities';
-import { IPersonaProps, IPersonaStyleProps, IPersonaCoinStyleProps } from '../../../../Persona';
+import { IStyle, ITheme } from '../../../../../../Styling';
+import { IStyleFunctionOrObject } from '../../../../../../Utilities';
+import { IPersonaProps, IPersonaStyleProps, IPersonaCoinStyleProps } from '../../../../../../Persona';
 import { IPickerItemProps } from '../../PickerItem.types';
-import { IContextualMenuItem } from '../../../../ContextualMenu';
+import { IContextualMenuItem } from '../../../../../../ContextualMenu';
 import { ValidationState, IBasePickerSuggestionsProps } from '../../BasePicker.types';
 
 /**

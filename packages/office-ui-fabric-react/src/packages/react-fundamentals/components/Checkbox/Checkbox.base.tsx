@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { getId, classNamesFunction, mergeAriaAttributeValues, initializeComponentRef, warnMutuallyExclusive } from '../../Utilities';
-import { Icon } from '../../Icon';
+import { getId, classNamesFunction, mergeAriaAttributeValues, initializeComponentRef, warnMutuallyExclusive } from '../../../../Utilities';
+import { Icon } from '../../../../Icon';
 import { ICheckbox, ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
-import { KeytipData } from '../../KeytipData';
+import { KeytipData } from '../../../../KeytipData';
 
 export interface ICheckboxState {
   /** Is true when Uncontrolled control is checked. */

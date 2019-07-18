@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IconButton } from '../../Button';
-import { Label } from '../../Label';
-import { Icon } from '../../Icon';
+import { IconButton } from '../../../../Button';
+import { Label } from '../../../../Label';
+import { Icon } from '../../../../Icon';
 import {
   BaseComponent,
   getId,
@@ -10,12 +10,12 @@ import {
   calculatePrecision,
   precisionRound,
   mergeAriaAttributeValues
-} from '../../Utilities';
+} from '../../../../Utilities';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
-import { Position } from '../../utilities/positioning';
+import { Position } from '../../../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
 import { getClassNames } from './SpinButton.classNames';
-import { KeytipData } from '../../KeytipData';
+import { KeytipData } from '../../../../KeytipData';
 
 export enum KeyboardSpinDirection {
   down = -1,

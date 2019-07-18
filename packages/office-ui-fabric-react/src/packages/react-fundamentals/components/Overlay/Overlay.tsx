@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '../../../../Utilities';
 import { IOverlayProps, IOverlayStyleProps, IOverlayStyles } from './Overlay.types';
 import { OverlayBase } from './Overlay.base';
 import { getStyles } from './Overlay.styles';

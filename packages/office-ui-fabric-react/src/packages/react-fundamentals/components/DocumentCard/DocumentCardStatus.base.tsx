@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../../Utilities';
 import { IDocumentCardStatusProps, IDocumentCardStatusStyleProps, IDocumentCardStatusStyles } from './DocumentCardStatus.types';
-import { Icon } from '../../Icon';
-import { IProcessedStyleSet } from '../../Styling';
+import { Icon } from '../../../../Icon';
+import { IProcessedStyleSet } from '../../../../Styling';
 
 const getClassNames = classNamesFunction<IDocumentCardStatusStyleProps, IDocumentCardStatusStyles>();
 

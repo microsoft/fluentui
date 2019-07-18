@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
-import { IKeytipProps } from '../../Keytip';
-import { BaseComponent, classNamesFunction, divProperties, elementContains, focusFirstChild, getNativeProps } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
-import { KeytipManager } from '../../utilities/keytips/KeytipManager';
+import { FocusZone, FocusZoneDirection, IFocusZone } from '../../../../FocusZone';
+import { IKeytipProps } from '../../../../Keytip';
+import { BaseComponent, classNamesFunction, divProperties, elementContains, focusFirstChild, getNativeProps } from '../../../../Utilities';
+import { IProcessedStyleSet } from '../../../../Styling';
+import { KeytipManager } from '../../../../utilities/keytips/KeytipManager';
 import { IOverflowSet, IOverflowSetItemProps, IOverflowSetProps, IOverflowSetStyles, IOverflowSetStyleProps } from './OverflowSet.types';
 
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();

@@ -3,16 +3,16 @@ import { SeparatorBasicExample } from './examples/Separator.Basic.Example';
 import { SeparatorThemingExample } from './examples/Separator.Theming.Example';
 import { SeparatorIconExample } from './examples/Separator.Icon.Example';
 
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 
-const SeparatorBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Separator/examples/Separator.Basic.Example.tsx') as string;
-const SeparatorBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Separator/examples/Separator.Basic.Example.tsx') as string;
+const SeparatorBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Separator/examples/Separator.Basic.Example.tsx') as string;
+const SeparatorBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Separator/examples/Separator.Basic.Example.tsx') as string;
 
-const SeparatorThemingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Separator/examples/Separator.Theming.Example.tsx') as string;
-const SeparatorThemingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Separator/examples/Separator.Theming.Example.tsx') as string;
+const SeparatorThemingExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Separator/examples/Separator.Theming.Example.tsx') as string;
+const SeparatorThemingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Separator/examples/Separator.Theming.Example.tsx') as string;
 
-const SeparatorIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Separator/examples/Separator.Icon.Example.tsx') as string;
-const SeparatorIconExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Separator/examples/Separator.Icon.Example.tsx') as string;
+const SeparatorIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Separator/examples/Separator.Icon.Example.tsx') as string;
+const SeparatorIconExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Separator/examples/Separator.Icon.Example.tsx') as string;
 
 export const SeparatorPageProps: IDocPageProps = {
   title: 'Separator',
@@ -38,10 +38,12 @@ export const SeparatorPageProps: IDocPageProps = {
       codepenJS: SeparatorIconExampleCodepen
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Separator/docs/SeparatorOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Separator/docs/SeparatorOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Separator/docs/SeparatorDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Separator/docs/SeparatorDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Separator/docs/SeparatorDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Separator/docs/SeparatorDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

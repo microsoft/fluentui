@@ -1,1 +1,1 @@
-export * from './components/SpinButton/index';
+export * from './packages/react-fundamentals/SpinButton';

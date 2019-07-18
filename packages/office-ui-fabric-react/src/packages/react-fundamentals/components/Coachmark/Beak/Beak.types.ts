@@ -1,5 +1,5 @@
-import { RectangleEdge } from '../../../utilities/positioning';
-import { IBaseProps, IRefObject } from '../../../Utilities';
+import { RectangleEdge } from '../../../../../utilities/positioning';
+import { IBaseProps, IRefObject } from '../../../../../Utilities';
 
 export interface IBeak {}
 

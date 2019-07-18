@@ -108,7 +108,7 @@ describe('Component Examples', () => {
   const realToLocaleTimeString = global.Date.prototype.toLocaleTimeString;
   const realToLocaleDateString = global.Date.prototype.toLocaleDateString;
   const constantDate = new Date(Date.UTC(2017, 0, 6, 4, 41, 20));
-  const files: string[] = glob.sync(path.resolve(process.cwd(), 'src/components/**/examples/*Example*.tsx'));
+  const files: string[] = glob.sync(path.resolve(process.cwd(), 'src/packages/*/components/**/examples/*Example*.tsx'));
   const createPortal = ReactDOM.createPortal;
 
   beforeAll(() => {

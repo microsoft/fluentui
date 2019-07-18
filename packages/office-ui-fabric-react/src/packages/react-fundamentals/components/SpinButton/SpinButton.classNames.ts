@@ -1,8 +1,8 @@
-import { memoizeFunction } from '../../Utilities';
-import { mergeStyles, IStyle } from '../../Styling';
+import { memoizeFunction } from '../../../../Utilities';
+import { mergeStyles, IStyle } from '../../../../Styling';
 import { ISpinButtonStyles } from './SpinButton.types';
 import { KeyboardSpinDirection } from './SpinButton';
-import { Position } from '../../utilities/positioning';
+import { Position } from '../../../../utilities/positioning';
 
 export interface ISpinButtonClassNames {
   root: string;

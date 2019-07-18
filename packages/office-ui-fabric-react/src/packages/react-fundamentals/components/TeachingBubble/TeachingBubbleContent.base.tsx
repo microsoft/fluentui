@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, KeyCodes } from '../../Utilities';
+import { BaseComponent, classNamesFunction, KeyCodes } from '../../../../Utilities';
 import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble.base';
-import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
-import { Image, ImageFit } from '../../Image';
+import { PrimaryButton, DefaultButton, IconButton } from '../../../../Button';
+import { Image, ImageFit } from '../../../../Image';
 
 const getClassNames = classNamesFunction<ITeachingBubbleStyleProps, ITeachingBubbleStyles>();
 

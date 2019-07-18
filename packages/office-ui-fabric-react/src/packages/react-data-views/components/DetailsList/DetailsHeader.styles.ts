@@ -8,8 +8,8 @@ import {
   hiddenContentStyle,
   ITheme,
   FontSizes
-} from '../../Styling';
-import { IsFocusVisibleClassName } from '../../Utilities';
+} from '../../../../Styling';
+import { IsFocusVisibleClassName } from '../../../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { ICellStyleProps } from './DetailsRow.types';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.

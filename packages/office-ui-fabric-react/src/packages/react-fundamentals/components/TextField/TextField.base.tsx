@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IProcessedStyleSet } from '../../Styling';
-import { Label, ILabelStyleProps, ILabelStyles } from '../../Label';
-import { Icon } from '../../Icon';
+import { IProcessedStyleSet } from '../../../../Styling';
+import { Label, ILabelStyleProps, ILabelStyles } from '../../../../Label';
+import { Icon } from '../../../../Icon';
 import {
   Async,
   DelayedRender,
@@ -16,7 +16,7 @@ import {
   warn,
   warnControlledUsage,
   warnMutuallyExclusive
-} from '../../Utilities';
+} from '../../../../Utilities';
 import { ITextField, ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 
 const getClassNames = classNamesFunction<ITextFieldStyleProps, ITextFieldStyles>();

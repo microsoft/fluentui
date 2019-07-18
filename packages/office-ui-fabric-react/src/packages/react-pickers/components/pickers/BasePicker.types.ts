@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.types';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../../../Utilities';
 import { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggestions.types';
-import { BaseAutoFill } from './AutoFill/BaseAutoFill';
-import { ICalloutProps } from '../../Callout';
-import { ITheme, IStyle } from '../../Styling';
+import { BaseAutoFill } from '../../../../Autofill';
+import { ICalloutProps } from '../../../../Callout';
+import { ITheme, IStyle } from '../../../../Styling';
 import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
 
 /**

@@ -7,4 +7,4 @@ export * from './ExpandingCard.types';
 export * from './PlainCard/PlainCard';
 export * from './PlainCard/PlainCard.base';
 export * from './PlainCard/PlainCard.types';
-export * from '../../common/DirectionalHint';
+export * from '../../../../common/DirectionalHint';

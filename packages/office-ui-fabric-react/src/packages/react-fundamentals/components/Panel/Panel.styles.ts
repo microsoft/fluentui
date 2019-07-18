@@ -11,8 +11,8 @@ import {
   ScreenWidthMinXXLarge,
   ScreenWidthMinUhfMobile,
   IStyle
-} from '../../Styling';
-import { FontWeights } from '../../Styling';
+} from '../../../../Styling';
+import { FontWeights } from '../../../../Styling';
 
 // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
 // import { IStyleFunctionOrObject } from '../../Utilities';

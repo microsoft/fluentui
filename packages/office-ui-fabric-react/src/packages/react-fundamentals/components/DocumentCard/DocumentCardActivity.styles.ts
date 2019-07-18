@@ -1,4 +1,4 @@
-import { getGlobalClassNames, FontSizes, FontWeights } from '../../Styling';
+import { getGlobalClassNames, FontSizes, FontWeights } from '../../../../Styling';
 import { IDocumentCardActivityStyleProps, IDocumentCardActivityStyles } from './DocumentCardActivity.types';
 
 const VERTICAL_PADDING = 8;

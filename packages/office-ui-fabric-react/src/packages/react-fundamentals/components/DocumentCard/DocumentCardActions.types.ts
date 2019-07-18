@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IButtonProps } from '../../Button';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IButtonProps } from '../../../../Button';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../../../Utilities';
 import { DocumentCardActionsBase } from './DocumentCardActions.base';
 
 /**

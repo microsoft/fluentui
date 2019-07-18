@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { classNamesFunction, EventGroup, initializeComponentRef } from '../../../Utilities';
-import { IColor } from '../../../utilities/color/interfaces';
-import { MAX_COLOR_SATURATION, MAX_COLOR_VALUE } from '../../../utilities/color/consts';
-import { getFullColorString } from '../../../utilities/color/getFullColorString';
-import { updateSV } from '../../../utilities/color/updateSV';
-import { clamp } from '../../../utilities/color/clamp';
+import { classNamesFunction, EventGroup, initializeComponentRef } from '../../../../../Utilities';
+import { IColor } from '../../../../../utilities/color/interfaces';
+import { MAX_COLOR_SATURATION, MAX_COLOR_VALUE } from '../../../../../utilities/color/consts';
+import { getFullColorString } from '../../../../../utilities/color/getFullColorString';
+import { updateSV } from '../../../../../utilities/color/updateSV';
+import { clamp } from '../../../../../utilities/color/clamp';
 import { IColorRectangleProps, IColorRectangleStyleProps, IColorRectangleStyles, IColorRectangle } from './ColorRectangle.types';
 
 const getClassNames = classNamesFunction<IColorRectangleStyleProps, IColorRectangleStyles>();

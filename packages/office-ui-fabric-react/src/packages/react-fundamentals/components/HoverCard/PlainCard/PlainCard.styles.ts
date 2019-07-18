@@ -1,4 +1,4 @@
-import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
+import { getGlobalClassNames, HighContrastSelector } from '../../../../../Styling';
 import { IPlainCardStyles, IPlainCardStyleProps } from './PlainCard.types';
 
 const GlobalClassNames = {

@@ -1,1 +1,1 @@
-export * from './components/Autofill/index';
+export * from './packages/react-fundamentals/Autofill';

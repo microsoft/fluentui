@@ -1,5 +1,5 @@
 import { IGroupShowAllProps, IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
-import { getGlobalClassNames, FontSizes } from '../../Styling';
+import { getGlobalClassNames, FontSizes } from '../../../../Styling';
 
 export { IGroupShowAllProps };
 

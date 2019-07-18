@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 
 import { CommandBar } from './CommandBar';
 import { mount } from 'enzyme';
-import { IContextualMenuItem } from '../../ContextualMenu';
+import { IContextualMenuItem } from '../../../../ContextualMenu';
 
 describe('CommandBar', () => {
   afterEach(() => {

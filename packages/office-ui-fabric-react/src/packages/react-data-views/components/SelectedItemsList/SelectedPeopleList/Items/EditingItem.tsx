@@ -1,12 +1,12 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, KeyCodes, getId, getNativeProps, inputProperties, css } from '../../../../Utilities';
-import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../../../FloatingPicker';
+import { BaseComponent, KeyCodes, getId, getNativeProps, inputProperties, css } from '../../../../../../Utilities';
+import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../../../../../FloatingPicker';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
 import { IPeoplePickerItemState } from './ExtendedSelectedItem';
-import { IPersonaProps } from '../../../../Persona';
+import { IPersonaProps } from '../../../../../../Persona';
 
 import * as stylesImport from './EditingItem.scss';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BaseComponent, css, KeyCodes } from '../../../Utilities';
-import { IButton } from '../../../Button';
-import { ISuggestionModel } from '../../../Pickers';
+import { BaseComponent, css, KeyCodes } from '../../../../../Utilities';
+import { IButton } from '../../../../../Button';
+import { ISuggestionModel } from '../../../../../Pickers';
 import {
   ISuggestionsHeaderFooterItemProps,
   ISuggestionsControlProps,

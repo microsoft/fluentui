@@ -1,4 +1,4 @@
-import { getGlobalClassNames, FontSizes } from '../../Styling';
+import { getGlobalClassNames, FontSizes } from '../../../../Styling';
 import { IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles } from './DocumentCardPreview.types';
 
 export const DocumentCardPreviewGlobalClassNames = {

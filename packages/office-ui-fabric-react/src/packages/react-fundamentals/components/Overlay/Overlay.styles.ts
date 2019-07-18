@@ -1,5 +1,5 @@
 import { IOverlayStyleProps, IOverlayStyles } from './Overlay.types';
-import { HighContrastSelector, getGlobalClassNames } from '../../Styling';
+import { HighContrastSelector, getGlobalClassNames } from '../../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Overlay',

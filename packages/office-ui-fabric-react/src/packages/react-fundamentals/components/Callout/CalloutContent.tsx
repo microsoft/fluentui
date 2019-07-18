@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '../../../../Utilities';
 import { ICalloutProps, ICalloutContentStyles, ICalloutContentStyleProps } from './Callout.types';
 import { CalloutContentBase } from './CalloutContent.base';
 import { getStyles } from './CalloutContent.styles';

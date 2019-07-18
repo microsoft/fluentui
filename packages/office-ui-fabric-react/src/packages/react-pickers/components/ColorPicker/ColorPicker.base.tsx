@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { classNamesFunction, initializeComponentRef } from '../../Utilities';
+import { classNamesFunction, initializeComponentRef } from '../../../../Utilities';
 import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles, IColorPicker } from './ColorPicker.types';
-import { TextField } from '../../TextField';
+import { TextField } from '../../../../TextField';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
 import { ColorSlider } from './ColorSlider/ColorSlider';
 // These imports are separated to help with bundling
@@ -15,14 +15,14 @@ import {
   MIN_RGBA_LENGTH,
   HEX_REGEX,
   RGBA_REGEX
-} from '../../utilities/color/consts';
-import { IColor, IRGB } from '../../utilities/color/interfaces';
-import { getColorFromString } from '../../utilities/color/getColorFromString';
-import { getColorFromRGBA } from '../../utilities/color/getColorFromRGBA';
-import { updateA } from '../../utilities/color/updateA';
-import { updateH } from '../../utilities/color/updateH';
-import { correctRGB } from '../../utilities/color/correctRGB';
-import { correctHex } from '../../utilities/color/correctHex';
+} from '../../../../utilities/color/consts';
+import { IColor, IRGB } from '../../../../utilities/color/interfaces';
+import { getColorFromString } from '../../../../utilities/color/getColorFromString';
+import { getColorFromRGBA } from '../../../../utilities/color/getColorFromRGBA';
+import { updateA } from '../../../../utilities/color/updateA';
+import { updateH } from '../../../../utilities/color/updateH';
+import { correctRGB } from '../../../../utilities/color/correctRGB';
+import { correctHex } from '../../../../utilities/color/correctHex';
 
 type IRGBHex = Pick<IColor, 'r' | 'g' | 'b' | 'a' | 'hex'>;
 

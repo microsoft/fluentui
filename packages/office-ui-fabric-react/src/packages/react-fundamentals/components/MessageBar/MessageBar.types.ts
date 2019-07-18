@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BaseButton, Button } from '../../Button';
-import { ITheme, IStyle } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { BaseButton, Button } from '../../../../Button';
+import { ITheme, IStyle } from '../../../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../../../Utilities';
 
 /**
  * {@docCategory MessageBar}

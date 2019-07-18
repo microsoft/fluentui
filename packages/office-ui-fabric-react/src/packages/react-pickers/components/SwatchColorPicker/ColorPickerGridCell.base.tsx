@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { ITheme, mergeStyleSets } from '../../Styling';
-import { classNamesFunction, memoizeFunction } from '../../Utilities';
-import { getColorFromString } from '../../utilities/color/getColorFromString';
-import { GridCell } from '../../utilities/grid/GridCell';
-import { IGridCellProps } from '../../utilities/grid/GridCell.types';
-import { getStyles as getActionButtonStyles } from '../Button/ActionButton/ActionButton.styles';
-import { IButtonClassNames } from '../Button/BaseButton.classNames';
+import { ITheme, mergeStyleSets } from '../../../../Styling';
+import { classNamesFunction, memoizeFunction } from '../../../../Utilities';
+import { getColorFromString } from '../../../../utilities/color/getColorFromString';
+import { GridCell } from '../../../../utilities/grid/GridCell';
+import { IGridCellProps } from '../../../../utilities/grid/GridCell.types';
+// tslint:disable-next-line:max-line-length
+import { getStyles as getActionButtonStyles } from '../../../../packages/react-fundamentals/components/Button/ActionButton/ActionButton.styles'; // TODO
+import { IButtonClassNames } from '../../../../Button';
 import {
   IColorCellProps,
   IColorPickerGridCellProps,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, divProperties, getNativeProps, getRTL } from '../../Utilities';
+import { BaseComponent, classNamesFunction, divProperties, getNativeProps, getRTL } from '../../../../Utilities';
 import {
   IScrollablePane,
   IScrollablePaneContext,
@@ -8,7 +8,7 @@ import {
   IScrollablePaneStyles,
   ScrollablePaneContext
 } from './ScrollablePane.types';
-import { Sticky } from '../../Sticky';
+import { Sticky } from '../../../../Sticky';
 
 export interface IScrollablePaneState {
   stickyTopHeight: number;

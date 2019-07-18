@@ -1,1 +1,1 @@
-export * from './components/Popup/index';
+export * from './packages/react-fundamentals/Popup';

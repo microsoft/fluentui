@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import { MarqueeSelection } from './MarqueeSelection';
-import { Selection } from '../../utilities/selection/index';
+import { Selection } from '../../../../utilities/selection/index';
 
 describe('MarqueeSelection', () => {
   it('renders MarqueeSelection correctly', () => {

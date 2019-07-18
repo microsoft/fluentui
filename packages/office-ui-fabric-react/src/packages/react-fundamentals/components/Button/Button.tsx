@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, warn } from '../../Utilities';
+import { BaseComponent, warn } from '../../../../Utilities';
 import { ButtonType, IButtonProps } from './Button.types';
 import { DefaultButton } from './DefaultButton/DefaultButton';
 import { ActionButton } from './ActionButton/ActionButton';

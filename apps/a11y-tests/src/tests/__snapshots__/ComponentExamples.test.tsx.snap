@@ -1868,7 +1868,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-29 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"0\\" data-item-index=\\"0\\" aria-rowindex=\\"1\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone1\\">",
+              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-3 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"0\\" data-item-index=\\"0\\" aria-rowindex=\\"1\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone1\\">",
             },
           },
         },
@@ -1900,7 +1900,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-29 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"1\\" data-item-index=\\"1\\" aria-rowindex=\\"2\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone5\\">",
+              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-3 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"1\\" data-item-index=\\"1\\" aria-rowindex=\\"2\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone5\\">",
             },
           },
         },
@@ -1932,7 +1932,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-29 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"2\\" data-item-index=\\"2\\" aria-rowindex=\\"3\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone9\\">",
+              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-3 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"2\\" data-item-index=\\"2\\" aria-rowindex=\\"3\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone9\\">",
             },
           },
         },
@@ -1964,7 +1964,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-29 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"3\\" data-item-index=\\"3\\" aria-rowindex=\\"4\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone13\\">",
+              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-3 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"3\\" data-item-index=\\"3\\" aria-rowindex=\\"4\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone13\\">",
             },
           },
         },
@@ -1996,7 +1996,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-29 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"4\\" data-item-index=\\"4\\" aria-rowindex=\\"5\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone17\\">",
+              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-3 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"4\\" data-item-index=\\"4\\" aria-rowindex=\\"5\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone17\\">",
             },
           },
         },
@@ -2028,7 +2028,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-29 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"5\\" data-item-index=\\"5\\" aria-rowindex=\\"6\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone21\\">",
+              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-3 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"5\\" data-item-index=\\"5\\" aria-rowindex=\\"6\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone21\\">",
             },
           },
         },
@@ -2060,7 +2060,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-29 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"6\\" data-item-index=\\"6\\" aria-rowindex=\\"7\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone25\\">",
+              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-3 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"6\\" data-item-index=\\"6\\" aria-rowindex=\\"7\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone25\\">",
             },
           },
         },
@@ -2092,7 +2092,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-29 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"7\\" data-item-index=\\"7\\" aria-rowindex=\\"8\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone29\\">",
+              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-3 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"7\\" data-item-index=\\"7\\" aria-rowindex=\\"8\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone29\\">",
             },
           },
         },
@@ -2124,7 +2124,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-29 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"8\\" data-item-index=\\"8\\" aria-rowindex=\\"9\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone33\\">",
+              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-3 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"8\\" data-item-index=\\"8\\" aria-rowindex=\\"9\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone33\\">",
             },
           },
         },
@@ -2156,7 +2156,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-29 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"9\\" data-item-index=\\"9\\" aria-rowindex=\\"10\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone37\\">",
+              "text": "<div role=\\"row\\" class=\\"ms-FocusZone css-3 ms-DetailsRow css-45 root-0\\" data-is-focusable=\\"true\\" data-selection-index=\\"9\\" data-item-index=\\"9\\" aria-rowindex=\\"10\\" data-automationid=\\"DetailsRow\\" style=\\"min-width:0\\" data-focuszone-id=\\"FocusZone37\\">",
             },
           },
         },
@@ -2933,7 +2933,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"1\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"1\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -2965,7 +2965,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"2\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"2\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -2997,7 +2997,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"3\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"3\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3029,7 +3029,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"4\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"4\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3061,7 +3061,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"5\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"5\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3093,7 +3093,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"6\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"6\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3125,7 +3125,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"7\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"7\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3157,7 +3157,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"8\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"8\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3189,7 +3189,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"9\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"9\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3221,7 +3221,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"10\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"10\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3253,7 +3253,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"11\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"11\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3285,7 +3285,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"12\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"12\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3317,7 +3317,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"13\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"13\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3349,7 +3349,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"14\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"14\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3381,7 +3381,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"15\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"15\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3413,7 +3413,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"16\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"16\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3445,7 +3445,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"17\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"17\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3477,7 +3477,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"18\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"18\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3509,7 +3509,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"19\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"19\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },
@@ -3541,7 +3541,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<li class=\\"photoCell-83\\" aria-posinset=\\"20\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
+              "text": "<li class=\\"photoCell-96\\" aria-posinset=\\"20\\" aria-setsize=\\"20\\" aria-label=\\"Photo\\" data-is-focusable=\\"true\\"><div class=\\"ms-Image root-0\\" style=\\"width:50px;height:100px\\"><img src=\\"http://placehold.it/50x100\\" class=\\"ms-Image-image ms-Image-image--portrait is-notLoaded is-fadeIn image-1\\"></div></li>",
             },
           },
         },

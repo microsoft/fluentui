@@ -10,7 +10,7 @@ import {
   Selection,
   SelectionMode
 } from 'office-ui-fabric-react';
-import { DetailsHeader } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader';
+import { DetailsHeader } from 'office-ui-fabric-react/lib/DetailsList';
 
 const _items: {}[] = [];
 const _selection = new Selection();

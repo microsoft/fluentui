@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonStyles } from '../../Button';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../../../Utilities';
+import { IButtonStyles } from '../../../../Button';
 
 /**
  * {@docCategory ContextualMenu}

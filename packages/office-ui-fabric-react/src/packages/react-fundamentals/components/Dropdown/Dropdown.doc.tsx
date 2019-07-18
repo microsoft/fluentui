@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 
 import { DropdownBasicExample } from './examples/Dropdown.Basic.Example';
 import { DropdownControlledExample } from './examples/Dropdown.Controlled.Example';
@@ -8,18 +8,18 @@ import { DropdownCustomExample } from './examples/Dropdown.Custom.Example';
 import { DropdownErrorExample } from './examples/Dropdown.Error.Example';
 import { DropdownRequiredExample } from './examples/Dropdown.Required.Example';
 
-const DropdownBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
-const DropdownBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
-const DropdownControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Controlled.Example.tsx') as string;
-const DropdownControlledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Controlled.Example.tsx') as string;
-const DropdownControlledMultiExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.ControlledMulti.Example.tsx') as string;
-const DropdownControlledMultiExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.ControlledMulti.Example.tsx') as string;
-const DropdownCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
-const DropdownCustomExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
-const DropdownErrorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Error.Example.tsx') as string;
-const DropdownErrorExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Error.Example.tsx') as string;
-const DropdownRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Required.Example.tsx') as string;
-const DropdownRequiredExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dropdown/examples/Dropdown.Required.Example.tsx') as string;
+const DropdownBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
+const DropdownBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Dropdown/examples/Dropdown.Basic.Example.tsx') as string;
+const DropdownControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Dropdown/examples/Dropdown.Controlled.Example.tsx') as string;
+const DropdownControlledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Dropdown/examples/Dropdown.Controlled.Example.tsx') as string;
+const DropdownControlledMultiExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Dropdown/examples/Dropdown.ControlledMulti.Example.tsx') as string;
+const DropdownControlledMultiExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Dropdown/examples/Dropdown.ControlledMulti.Example.tsx') as string;
+const DropdownCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
+const DropdownCustomExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Dropdown/examples/Dropdown.Custom.Example.tsx') as string;
+const DropdownErrorExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Dropdown/examples/Dropdown.Error.Example.tsx') as string;
+const DropdownErrorExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Dropdown/examples/Dropdown.Error.Example.tsx') as string;
+const DropdownRequiredExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Dropdown/examples/Dropdown.Required.Example.tsx') as string;
+const DropdownRequiredExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Dropdown/examples/Dropdown.Required.Example.tsx') as string;
 
 export const DropdownPageProps: IDocPageProps = {
   title: 'Dropdown',
@@ -68,10 +68,12 @@ export const DropdownPageProps: IDocPageProps = {
       )
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Dropdown/docs/DropdownOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dropdown/docs/DropdownDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Dropdown/docs/DropdownDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Dropdown/docs/DropdownDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true

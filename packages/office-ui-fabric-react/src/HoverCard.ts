@@ -1,1 +1,1 @@
-export * from './components/HoverCard/index';
+export * from './packages/react-fundamentals/HoverCard';

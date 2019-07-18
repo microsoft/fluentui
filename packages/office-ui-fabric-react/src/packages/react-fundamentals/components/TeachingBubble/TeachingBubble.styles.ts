@@ -8,7 +8,7 @@ import {
   GlobalClassNames,
   IStyle,
   keyframes
-} from '../../Styling';
+} from '../../../../Styling';
 
 const globalClassNames = {
   root: 'ms-TeachingBubble',

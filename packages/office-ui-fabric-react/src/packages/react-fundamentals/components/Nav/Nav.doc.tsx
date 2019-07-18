@@ -5,10 +5,10 @@ import { NavFabricDemoAppExample } from './examples/Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './examples/Nav.Nested.Example';
 import { NavCustomGroupHeadersExample } from './examples/Nav.CustomGroupHeaders.Example';
 
-const NavBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.Basic.Example.tsx') as string;
-const NavFabricDemoAppExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.FabricDemoApp.Example.tsx') as string;
-const NavNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.Nested.Example.tsx') as string;
-const NavCustomGroupHeadersExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Nav/examples/Nav.CustomGroupHeaders.Example.tsx') as string;
+const NavBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Nav/examples/Nav.Basic.Example.tsx') as string;
+const NavFabricDemoAppExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Nav/examples/Nav.FabricDemoApp.Example.tsx') as string;
+const NavNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Nav/examples/Nav.Nested.Example.tsx') as string;
+const NavCustomGroupHeadersExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Nav/examples/Nav.CustomGroupHeaders.Example.tsx') as string;
 
 export const NavPageProps: IDocPageProps = {
   title: 'Nav',
@@ -36,11 +36,13 @@ export const NavPageProps: IDocPageProps = {
       view: <NavCustomGroupHeadersExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/Nav.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavOverview.md'),
+  propertiesTablesSources: [
+    require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Nav/Nav.types.ts')
+  ],
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Nav/docs/NavOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Nav/docs/NavDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Nav/docs/NavDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

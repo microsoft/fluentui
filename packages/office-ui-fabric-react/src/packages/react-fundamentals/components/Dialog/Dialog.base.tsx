@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { warnDeprecations, classNamesFunction, getId } from '../../Utilities';
+import { warnDeprecations, classNamesFunction, getId } from '../../../../Utilities';
 import { IDialogProps, IDialogStyleProps, IDialogStyles } from './Dialog.types';
 import { DialogType, IDialogContentProps } from './DialogContent.types';
-import { Modal, IModalProps, IDragOptions } from '../../Modal';
-import { ILayerProps } from '../../Layer';
-import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { Modal, IModalProps, IDragOptions } from '../../../../Modal';
+import { ILayerProps } from '../../../../Layer';
+import { withResponsiveMode } from '../../../../utilities/decorators/withResponsiveMode';
 
 const getClassNames = classNamesFunction<IDialogStyleProps, IDialogStyles>();
 

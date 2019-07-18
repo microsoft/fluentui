@@ -10,34 +10,35 @@ import {
   IRenderFunction,
   classNamesFunction,
   memoizeFunction
-} from '../../Utilities';
+} from '../../../../Utilities';
+
 import {
   CheckboxVisibility,
   ColumnActionsMode,
   ConstrainMode,
-  DetailsListLayoutMode,
   IColumn,
   IDetailsList,
   IDetailsListProps,
   IDetailsListStyles,
   IDetailsListStyleProps,
   IDetailsGroupRenderProps,
-  ColumnDragEndLocation
-} from '../DetailsList/DetailsList.types';
+  ColumnDragEndLocation,
+  DetailsListLayoutMode
+} from './DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
 import { IDetailsHeader, SelectAllVisibility, IDetailsHeaderProps, IColumnReorderHeaderProps } from '../DetailsList/DetailsHeader.types';
 import { IDetailsFooterProps } from '../DetailsList/DetailsFooter.types';
 import { DetailsRowBase } from '../DetailsList/DetailsRow.base';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IDetailsRowProps } from '../DetailsList/DetailsRow.types';
-import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../utilities/selection/index';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../../../FocusZone';
+import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } from '../../../../utilities/selection/index';
 
-import { DragDropHelper } from '../../utilities/dragdrop/DragDropHelper';
-import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
-import { List, IListProps, ScrollToMode } from '../../List';
-import { withViewport } from '../../utilities/decorators/withViewport';
-import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
+import { DragDropHelper } from '../../../../utilities/dragdrop/DragDropHelper';
+import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../../../GroupedList';
+import { List, IListProps, ScrollToMode } from '../../../../List';
+import { withViewport } from '../../../../utilities/decorators/withViewport';
+import { GetGroupCount } from '../../../../utilities/groupedList/GroupedListUtility';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.

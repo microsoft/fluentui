@@ -3,8 +3,6 @@ export * from './Suggestions/Suggestions.types';
 export * from './Suggestions/SuggestionsItem';
 export * from './Suggestions/SuggestionsItem.types';
 export * from './Suggestions/SuggestionsController';
-export * from './AutoFill/BaseAutoFill';
-export * from './AutoFill/BaseAutoFill.types';
 export * from './BasePicker';
 export * from './BasePicker.types';
 export * from './PickerItem.types';

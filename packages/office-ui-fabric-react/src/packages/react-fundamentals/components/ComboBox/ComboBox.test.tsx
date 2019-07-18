@@ -3,12 +3,12 @@ import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes } from '../../../../Utilities';
 
 import { ComboBox, IComboBoxState } from './ComboBox';
 import { IComboBox, IComboBoxOption, IComboBoxProps } from './ComboBox.types';
-import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
-import { expectOne, expectMissing, renderIntoDocument } from '../../common/testUtilities';
+import { SelectableOptionMenuItemType } from '../../../../utilities/selectableOption/SelectableOption.types';
+import { expectOne, expectMissing, renderIntoDocument } from '../../../../common/testUtilities';
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [{ key: '1', text: '1' }, { key: '2', text: '2' }, { key: '3', text: '3' }];
 

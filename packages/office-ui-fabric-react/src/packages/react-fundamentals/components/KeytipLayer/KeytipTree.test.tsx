@@ -1,7 +1,7 @@
-import { IKeytipProps } from '../../Keytip';
+import { IKeytipProps } from '../../../../Keytip';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
-import { KTP_SEPARATOR, KTP_FULL_PREFIX, KTP_LAYER_ID } from '../../utilities/keytips/KeytipConstants';
+import { KTP_SEPARATOR, KTP_FULL_PREFIX, KTP_LAYER_ID } from '../../../../utilities/keytips/KeytipConstants';
 
 let keytipTree = new KeytipTree();
 

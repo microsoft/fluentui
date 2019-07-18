@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PivotBase } from './Pivot.base';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../../../Utilities';
 import { PivotItem } from './PivotItem';
 
 /**

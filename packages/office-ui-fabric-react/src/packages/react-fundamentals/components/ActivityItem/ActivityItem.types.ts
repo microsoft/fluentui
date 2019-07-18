@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStyle } from '../../Styling';
-import { IRenderFunction } from '../../Utilities';
-import { IPersonaSharedProps } from '../../Persona';
+import { IStyle } from '../../../../Styling';
+import { IRenderFunction } from '../../../../Utilities';
+import { IPersonaSharedProps } from '../../../../Persona';
 
 /**
  * {@docCategory ActivityItem}

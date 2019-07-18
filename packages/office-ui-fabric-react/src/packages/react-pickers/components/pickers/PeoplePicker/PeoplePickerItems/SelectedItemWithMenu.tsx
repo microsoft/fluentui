@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { BaseComponent, css } from '../../../../Utilities';
+import { BaseComponent, css } from '../../../../../../Utilities';
 import { IPeoplePickerItemWithMenuProps } from './PeoplePickerItem.types';
-import { Persona, PersonaPresence } from '../../../../Persona';
-import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
-import { IconButton } from '../../../../Button';
-import { FocusZone } from '../../../../FocusZone';
+import { Persona, PersonaPresence } from '../../../../../../Persona';
+import { ContextualMenu, DirectionalHint } from '../../../../../../ContextualMenu';
+import { IconButton } from '../../../../../../Button';
+import { FocusZone } from '../../../../../../FocusZone';
 
 import * as stylesImport from './PickerItemsDefault.scss';
 const styles: any = stylesImport;

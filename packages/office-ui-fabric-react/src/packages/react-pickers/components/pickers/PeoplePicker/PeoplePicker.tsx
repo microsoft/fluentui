@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { getRTL, getInitials, styled } from '../../../Utilities';
+import { getRTL, getInitials, styled } from '../../../../../Utilities';
 import { BasePicker, BasePickerListBelow } from '../BasePicker';
 import {
   IBasePickerProps,
@@ -10,7 +10,7 @@ import {
   IBasePickerStyles
 } from '../BasePicker.types';
 import { PeoplePickerItem } from './PeoplePickerItems/PeoplePickerItem';
-import { IPersonaProps } from '../../../Persona';
+import { IPersonaProps } from '../../../../../Persona';
 import { PeoplePickerItemSuggestion } from './PeoplePickerItems/PeoplePickerItemSuggestion';
 import { IPeoplePickerItemSelectedProps } from './PeoplePickerItems/PeoplePickerItem.types';
 import { getStyles } from '../BasePicker.styles';

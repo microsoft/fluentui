@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import { resetIds } from '../../Utilities';
+import { resetIds } from '../../../../Utilities';
 
 import { Pivot, PivotItem, PivotLinkFormat, PivotLinkSize } from './index';
 

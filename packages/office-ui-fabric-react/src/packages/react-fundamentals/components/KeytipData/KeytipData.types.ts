@@ -1,5 +1,5 @@
-import { IBaseProps } from '../../Utilities';
-import { IKeytipProps } from '../../Keytip';
+import { IBaseProps } from '../../../../Utilities';
+import { IKeytipProps } from '../../../../Keytip';
 
 export interface IKeytip {}
 

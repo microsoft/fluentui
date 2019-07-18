@@ -2,7 +2,7 @@
  * Functions used by Stack components to simplify style-related computations
  */
 
-import { ITheme } from '../../Styling';
+import { ITheme } from '../../../../Styling';
 import { IStackProps } from './Stack.types';
 
 // Helper function that converts a themed spacing key (if given) to the corresponding themed spacing value.

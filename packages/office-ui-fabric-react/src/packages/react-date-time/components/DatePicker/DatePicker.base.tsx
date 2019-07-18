@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { IDatePicker, IDatePickerProps, IDatePickerStrings, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { BaseComponent, KeyCodes, classNamesFunction, getId, getNativeProps, divProperties, css } from '../../Utilities';
-import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
-import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
-import { Callout } from '../../Callout';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { TextField, ITextField } from '../../TextField';
-import { compareDates, compareDatePart } from '../../utilities/dateMath/DateMath';
-import { FocusTrapZone } from '../../FocusTrapZone';
+import { BaseComponent, KeyCodes, classNamesFunction, getId, getNativeProps, divProperties, css } from '../../../../Utilities';
+import { Calendar, ICalendar, DayOfWeek } from '../../../../Calendar';
+import { FirstWeekOfYear } from '../../../../utilities/dateValues/DateValues';
+import { Callout } from '../../../../Callout';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
+import { TextField, ITextField } from '../../../../TextField';
+import { compareDates, compareDatePart } from '../../../../utilities/dateMath/DateMath';
+import { FocusTrapZone } from '../../../../FocusTrapZone';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
 

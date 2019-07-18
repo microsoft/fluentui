@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ActivityItem, css, classNamesFunction, IActivityItemProps, Icon, IStyle } from 'office-ui-fabric-react';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from '../../../../../common/TestImages';
 
 type IActivityItemExampleStyleProps = {};
 

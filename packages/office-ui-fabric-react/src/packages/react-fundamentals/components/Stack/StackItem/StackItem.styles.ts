@@ -1,4 +1,4 @@
-import { getGlobalClassNames } from '../../../Styling';
+import { getGlobalClassNames } from '../../../../../Styling';
 import { IStackItemComponent, IStackItemStyles, IStackItemStylesReturnType } from './StackItem.types';
 
 const GlobalClassNames = {

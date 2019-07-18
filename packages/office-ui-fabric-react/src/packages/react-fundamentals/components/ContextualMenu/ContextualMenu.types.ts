@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { IFocusZoneProps } from '../../FocusZone';
-import { IIconProps } from '../Icon/Icon.types';
-import { ICalloutProps, ICalloutContentStyleProps, Target } from '../../Callout';
-import { ITheme, IStyle } from '../../Styling';
-import { IButtonStyles } from '../../Button';
-import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
+import { IFocusZoneProps } from '../../../../FocusZone';
+import { IIconProps } from '../../../../Icon';
+import { ICalloutProps, ICalloutContentStyleProps, Target } from '../../../../Callout';
+import { ITheme, IStyle } from '../../../../Styling';
+import { IButtonStyles } from '../../../../Button';
+import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../../../Utilities';
+import { IWithResponsiveModeState } from '../../../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
-export { DirectionalHint } from '../../common/DirectionalHint';
-import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
+export { DirectionalHint } from '../../../../common/DirectionalHint';
+import { IVerticalDividerClassNames } from '../../../../Divider';
 import { IContextualMenuItemProps, IContextualMenuRenderItem, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
-import { IKeytipProps } from '../../Keytip';
+import { IKeytipProps } from '../../../../Keytip';
 
 /**
  * {@docCategory ContextualMenu}

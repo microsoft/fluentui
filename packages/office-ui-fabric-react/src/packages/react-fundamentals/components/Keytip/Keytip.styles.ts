@@ -1,7 +1,7 @@
 import { IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
-import { ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
-import { IStyleFunction, IPoint } from '../../Utilities';
-import { mergeStyleSets, HighContrastSelector } from '../../Styling';
+import { ICalloutContentStyleProps, ICalloutContentStyles } from '../../../../Callout';
+import { IStyleFunction, IPoint } from '../../../../Utilities';
+import { mergeStyleSets, HighContrastSelector } from '../../../../Styling';
 
 export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
   const { theme, disabled, visible } = props;

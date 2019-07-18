@@ -1,1 +1,1 @@
-export * from './components/pickers/index';
+export * from './packages/react-pickers/Pickers';

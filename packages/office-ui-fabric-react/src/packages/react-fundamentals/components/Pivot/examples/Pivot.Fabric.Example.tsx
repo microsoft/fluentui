@@ -4,7 +4,7 @@ import { PivotLinkSize, PivotLinkFormat, PivotItem, Pivot } from 'office-ui-fabr
 
 import { CalloutBasicExample } from '../../Callout/examples/Callout.Basic.Example';
 import { SpinnerBasicExample } from '../../Spinner/examples/Spinner.Basic.Example';
-import { PersonaBasicExample } from '../../Persona/examples/Persona.Basic.Example';
+import { NavBasicExample } from '../../Nav/examples/Nav.Basic.Example';
 
 export class PivotFabricExample extends React.Component<any, any> {
   public render(): JSX.Element {
@@ -19,9 +19,9 @@ export class PivotFabricExample extends React.Component<any, any> {
             <Label>Spinner Example</Label>
             <SpinnerBasicExample />
           </PivotItem>
-          <PivotItem headerText="Persona">
-            <Label>Persona Example</Label>
-            <PersonaBasicExample />
+          <PivotItem headerText="Nav">
+            <Label>Nav Example</Label>
+            <NavBasicExample />
           </PivotItem>
         </Pivot>
       </div>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '../../../../Utilities';
 import { DocumentCardPreviewBase } from './DocumentCardPreview.base';
 import { getStyles } from './DocumentCardPreview.styles';
 import { IDocumentCardPreviewProps, IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles } from './DocumentCardPreview.types';

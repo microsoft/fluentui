@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Icon } from '../../Icon';
-import { Image } from '../../Image';
-import { IProcessedStyleSet } from '../../Styling';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { Icon } from '../../../../Icon';
+import { Image } from '../../../../Image';
+import { IProcessedStyleSet } from '../../../../Styling';
+import { BaseComponent, classNamesFunction } from '../../../../Utilities';
 import { IDocumentCardImageProps, IDocumentCardImageStyleProps, IDocumentCardImageStyles } from './DocumentCardImage.types';
 
 export interface IDocumentCardImageState {

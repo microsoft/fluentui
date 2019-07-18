@@ -1,4 +1,4 @@
-import { getGlobalClassNames } from '../../Styling';
+import { getGlobalClassNames } from '../../../../Styling';
 import { IHoverCardStyles, IHoverCardStyleProps } from './HoverCard.types';
 
 const GlobalClassNames = {

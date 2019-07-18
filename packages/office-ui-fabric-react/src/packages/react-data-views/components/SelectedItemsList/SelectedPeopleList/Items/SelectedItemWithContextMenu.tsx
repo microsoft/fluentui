@@ -1,9 +1,9 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, IBaseProps } from '../../../../Utilities';
+import { BaseComponent, IBaseProps } from '../../../../../../Utilities';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
-import { ContextualMenu, DirectionalHint, IContextualMenuItem } from '../../../../ContextualMenu';
+import { ContextualMenu, DirectionalHint, IContextualMenuItem } from '../../../../../../ContextualMenu';
 
 export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;

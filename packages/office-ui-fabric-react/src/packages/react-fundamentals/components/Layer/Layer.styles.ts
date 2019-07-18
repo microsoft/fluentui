@@ -1,5 +1,5 @@
 import { ILayerStyleProps, ILayerStyles } from './Layer.types';
-import { ZIndexes, getGlobalClassNames } from '../../Styling';
+import { ZIndexes, getGlobalClassNames } from '../../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Layer',

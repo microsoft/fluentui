@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, divProperties, getNativeProps } from '../../Utilities';
+import { BaseComponent, divProperties, getNativeProps } from '../../../../Utilities';
 import { IResizeGroupProps, ResizeGroupDirection } from './ResizeGroup.types';
 
 const RESIZE_DELAY = 16;

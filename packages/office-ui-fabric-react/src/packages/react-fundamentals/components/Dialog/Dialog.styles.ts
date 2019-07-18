@@ -1,5 +1,5 @@
 import { IDialogStyleProps, IDialogStyles } from './Dialog.types';
-import { ScreenWidthMinMedium, getGlobalClassNames } from '../../Styling';
+import { ScreenWidthMinMedium, getGlobalClassNames } from '../../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Dialog'

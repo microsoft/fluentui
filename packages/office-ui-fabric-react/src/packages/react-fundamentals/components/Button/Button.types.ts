@@ -3,11 +3,11 @@ import { BaseButton } from './BaseButton';
 import { Button } from './Button';
 import { IButtonClassNames } from './BaseButton.classNames';
 import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { IRefObject, IRenderFunction, KeyCodes, IComponentAs } from '../../Utilities';
-import { IContextualMenuProps } from '../../ContextualMenu';
-import { IIconProps } from '../../Icon';
-import { IStyle, ITheme } from '../../Styling';
-import { IKeytipProps } from '../../Keytip';
+import { IRefObject, IRenderFunction, KeyCodes, IComponentAs } from '../../../../Utilities';
+import { IContextualMenuProps } from '../../../../ContextualMenu';
+import { IIconProps } from '../../../../Icon';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IKeytipProps } from '../../../../Keytip';
 
 /**
  * {@docCategory Button}

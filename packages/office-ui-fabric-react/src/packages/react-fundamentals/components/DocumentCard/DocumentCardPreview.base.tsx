@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Icon } from '../../Icon';
-import { Image } from '../../Image';
-import { Link } from '../../Link';
-import { IProcessedStyleSet } from '../../Styling';
-import { BaseComponent, classNamesFunction, css } from '../../Utilities';
+import { Icon } from '../../../../Icon';
+import { Image } from '../../../../Image';
+import { Link } from '../../../../Link';
+import { IProcessedStyleSet } from '../../../../Styling';
+import { BaseComponent, classNamesFunction, css } from '../../../../Utilities';
 import {
   IDocumentCardPreviewImage,
   IDocumentCardPreviewProps,

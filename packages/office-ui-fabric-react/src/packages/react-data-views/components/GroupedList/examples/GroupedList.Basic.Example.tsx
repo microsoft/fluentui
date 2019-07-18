@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { GroupedList, IGroup } from 'office-ui-fabric-react/lib/components/GroupedList/index';
+import { GroupedList, IGroup } from 'office-ui-fabric-react/lib/GroupedList';
 import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { DetailsRow } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRow';
+import { DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/utilities/selection/index';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';

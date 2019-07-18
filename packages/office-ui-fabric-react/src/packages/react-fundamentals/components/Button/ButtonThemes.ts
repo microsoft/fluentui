@@ -1,6 +1,6 @@
 import { IButtonStyles } from './Button.types';
-import { ITheme, HighContrastSelector } from '../../Styling';
-import { IsFocusVisibleClassName } from '../../Utilities';
+import { ITheme, HighContrastSelector } from '../../../../Styling';
+import { IsFocusVisibleClassName } from '../../../../Utilities';
 
 export function standardStyles(theme: ITheme): IButtonStyles {
   const { semanticColors: s, palette: p } = theme;

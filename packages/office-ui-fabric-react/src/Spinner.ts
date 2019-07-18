@@ -1,1 +1,1 @@
-export * from './components/Spinner/index';
+export * from './packages/react-fundamentals/Spinner';

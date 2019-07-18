@@ -1,27 +1,27 @@
 import * as React from 'react';
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 
 import { AnnouncedSearchResultsExample } from './examples/Announced.SearchResults.Example';
-const AnnouncedSearchResultsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.SearchResults.Example.tsx') as string;
-const AnnouncedSearchResultsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.SearchResults.Example.tsx') as string;
+const AnnouncedSearchResultsExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/examples/Announced.SearchResults.Example.tsx') as string;
+const AnnouncedSearchResultsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/examples/Announced.SearchResults.Example.tsx') as string;
 
 import { AnnouncedLazyLoadingExample } from './examples/Announced.LazyLoading.Example';
-const AnnouncedLazyLoadingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.LazyLoading.Example.tsx') as string;
-const AnnouncedLazyLoadingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.LazyLoading.Example.tsx') as string;
+const AnnouncedLazyLoadingExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/examples/Announced.LazyLoading.Example.tsx') as string;
+const AnnouncedLazyLoadingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/examples/Announced.LazyLoading.Example.tsx') as string;
 
 import { AnnouncedBulkOperationsExample } from './examples/Announced.BulkOperations.Example';
-const AnnouncedBulkOperationsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.BulkOperations.Example.tsx') as string;
-const AnnouncedBulkOperationsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.BulkOperations.Example.tsx') as string;
+const AnnouncedBulkOperationsExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/examples/Announced.BulkOperations.Example.tsx') as string;
+const AnnouncedBulkOperationsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/examples/Announced.BulkOperations.Example.tsx') as string;
 
 import { AnnouncedQuickActionsExample } from './examples/Announced.QuickActions.Example';
-const AnnouncedQuickActionsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.QuickActions.Example.tsx') as string;
-const AnnouncedQuickActionsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.QuickActions.Example.tsx') as string;
+const AnnouncedQuickActionsExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/examples/Announced.QuickActions.Example.tsx') as string;
+const AnnouncedQuickActionsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/examples/Announced.QuickActions.Example.tsx') as string;
 
 export const AnnouncedPageProps: IDocPageProps = {
   title: 'Use Cases',
   componentName: 'Announced',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/experiments/src/components/Announced',
-  overview: require('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/AnnouncedOverview.md'),
+  overview: require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/docs/AnnouncedOverview.md'),
   isHeaderVisible: false
 };
 
@@ -37,9 +37,13 @@ export const AnnouncedQuickActionsPageProps: IDocPageProps = {
       view: <AnnouncedQuickActionsExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/QuickActions/Overview.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/QuickActions/Dos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/QuickActions/Donts.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/docs/QuickActions/Overview.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/docs/QuickActions/Dos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/docs/QuickActions/Donts.md'),
   isHeaderVisible: false
 };
 
@@ -55,9 +59,13 @@ export const AnnouncedSearchResultsPageProps: IDocPageProps = {
       view: <AnnouncedSearchResultsExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/SearchResults/Overview.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/SearchResults/Dos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/SearchResults/Donts.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/docs/SearchResults/Overview.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/docs/SearchResults/Dos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/docs/SearchResults/Donts.md'),
   isHeaderVisible: false
 };
 
@@ -73,9 +81,13 @@ export const AnnouncedLazyLoadingPageProps: IDocPageProps = {
       view: <AnnouncedLazyLoadingExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/Asynchronous/Overview.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/Asynchronous/Dos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/Asynchronous/Donts.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/docs/Asynchronous/Overview.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/docs/Asynchronous/Dos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/docs/Asynchronous/Donts.md'),
   isHeaderVisible: false
 };
 
@@ -91,8 +103,14 @@ export const AnnouncedBulkOperationsPageProps: IDocPageProps = {
       view: <AnnouncedBulkOperationsExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/BulkLongRunning/Overview.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/BulkLongRunning/Dos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/BulkLongRunning/Donts.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/docs/BulkLongRunning/Overview.md'),
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/docs/BulkLongRunning/Dos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Announced/docs/BulkLongRunning/Donts.md'),
   isHeaderVisible: false
 };

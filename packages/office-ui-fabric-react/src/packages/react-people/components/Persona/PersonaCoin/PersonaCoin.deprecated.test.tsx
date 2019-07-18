@@ -1,7 +1,7 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { setWarningCallback, setRTL } from '../../../Utilities';
+import { setWarningCallback, setRTL } from '../../../../../Utilities';
 import { PersonaCoin } from './PersonaCoin';
 
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';

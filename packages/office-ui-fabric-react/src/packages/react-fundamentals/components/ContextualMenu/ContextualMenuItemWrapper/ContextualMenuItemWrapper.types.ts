@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IContextualMenuItem, IContextualMenuItemProps } from '../../../ContextualMenu';
+import { IContextualMenuItem, IContextualMenuItemProps } from '../../../../../ContextualMenu';
 import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
-import { IRefObject } from '../../../Utilities';
+import { IRefObject } from '../../../../../Utilities';
 
 export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<IContextualMenuItem> {
   /**

@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IStyle, ITheme } from '../../Styling';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
+import { IRefObject, IStyleFunctionOrObject } from '../../../../Utilities';
+import { IStyle, ITheme } from '../../../../Styling';
 
 /**
  * Interface containing props common for all types of cards.

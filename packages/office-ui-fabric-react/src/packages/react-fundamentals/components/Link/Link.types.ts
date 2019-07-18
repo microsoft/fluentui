@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { LinkBase } from './Link.base';
 
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IKeytipProps } from '../../Keytip';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../../../Utilities';
+import { IKeytipProps } from '../../../../Keytip';
 
 /**
  * {@docCategory Link}

@@ -1,14 +1,14 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 
 import { MessageBarBasicExample } from './examples/MessageBar.Basic.Example';
 import { MessageBarStyledExample } from './examples/MessageBar.Styled.Example';
 
-const MessageBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/MessageBar/examples/MessageBar.Basic.Example.tsx') as string;
-const MessageBarBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/MessageBar/examples/MessageBar.Basic.Example.tsx') as string;
-const MessageBarStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/MessageBar/examples/MessageBar.Styled.Example.tsx') as string;
-const MessageBarStyledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/MessageBar/examples/MessageBar.Styled.Example.tsx') as string;
+const MessageBarBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/MessageBar/examples/MessageBar.Basic.Example.tsx') as string;
+const MessageBarBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/MessageBar/examples/MessageBar.Basic.Example.tsx') as string;
+const MessageBarStyledExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/MessageBar/examples/MessageBar.Styled.Example.tsx') as string;
+const MessageBarStyledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/MessageBar/examples/MessageBar.Styled.Example.tsx') as string;
 
 export const MessageBarPageProps: IDocPageProps = {
   title: 'MessageBar',
@@ -28,10 +28,14 @@ export const MessageBarPageProps: IDocPageProps = {
       codepenJS: MessageBarStyledExampleCodepen
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/MessageBar/docs/MessageBarOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/MessageBar/docs/MessageBarDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/MessageBar/docs/MessageBarDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

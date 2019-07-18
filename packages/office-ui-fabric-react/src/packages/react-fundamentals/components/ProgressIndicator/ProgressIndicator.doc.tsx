@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { ProgressIndicatorBasicExample } from './examples/ProgressIndicator.Basic.Example';
 
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 import { ProgressIndicatorIndeterminateExample } from './examples/ProgressIndicator.Indeterminate.Example';
 
-const ProgressIndicatorBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/examples/ProgressIndicator.Basic.Example.tsx') as string;
-const ProgressIndicatorIndeterminateExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/examples/ProgressIndicator.Indeterminate.Example.tsx') as string;
+const ProgressIndicatorBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/ProgressIndicator/examples/ProgressIndicator.Basic.Example.tsx') as string;
+const ProgressIndicatorIndeterminateExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/ProgressIndicator/examples/ProgressIndicator.Indeterminate.Example.tsx') as string;
 
 export const ProgressIndicatorPageProps: IDocPageProps = {
   title: 'ProgressIndicator',
@@ -24,10 +24,16 @@ export const ProgressIndicatorPageProps: IDocPageProps = {
       view: <ProgressIndicatorIndeterminateExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/ProgressIndicator/docs/ProgressIndicatorOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorDonts.md'),
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/ProgressIndicator/docs/ProgressIndicatorDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/ProgressIndicator/docs/ProgressIndicatorDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

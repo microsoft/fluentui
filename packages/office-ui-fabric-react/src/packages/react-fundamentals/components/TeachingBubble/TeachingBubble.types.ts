@@ -2,12 +2,12 @@ import * as React from 'react';
 
 import { TeachingBubbleBase } from './TeachingBubble.base';
 import { TeachingBubbleContentBase } from './TeachingBubbleContent.base';
-import { IImageProps } from '../../Image';
-import { IButtonProps } from '../../Button';
-import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import { ICalloutProps, Target } from '../../Callout';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IImageProps } from '../../../../Image';
+import { IButtonProps } from '../../../../Button';
+import { IAccessiblePopupProps } from '../../../../common/IAccessiblePopupProps';
+import { ICalloutProps, Target } from '../../../../Callout';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../../../Utilities';
 
 /**
  * {@docCategory TeachingBubble}

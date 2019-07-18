@@ -1,5 +1,5 @@
 import { ISwatchColorPickerStyleProps, ISwatchColorPickerStyles } from './SwatchColorPicker.types';
-import { getGlobalClassNames } from '../../Styling';
+import { getGlobalClassNames } from '../../../../Styling';
 
 const GlobalClassNames = {
   focusedContainer: 'ms-swatchColorPickerBodyContainer'

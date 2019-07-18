@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { BaseComponent, css } from '../../../Utilities';
-import { ISuggestionItemProps, SuggestionsItem, ISuggestionModel } from '../../../Pickers';
+import { BaseComponent, css } from '../../../../../Utilities';
+import { ISuggestionItemProps, SuggestionsItem, ISuggestionModel } from '../../../../../Pickers';
 import { ISuggestionsCoreProps } from './Suggestions.types';
 import * as stylesImport from './SuggestionsCore.scss';
 // tslint:disable-next-line:no-any

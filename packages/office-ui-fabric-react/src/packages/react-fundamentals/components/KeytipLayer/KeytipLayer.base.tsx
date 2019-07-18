@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { IKeytipLayerProps, IKeytipLayerStyles, IKeytipLayerStyleProps } from './KeytipLayer.types';
 import { getLayerStyles } from './KeytipLayer.styles';
-import { Keytip, IKeytipProps } from '../../Keytip';
-import { Layer } from '../../Layer';
-import { BaseComponent, classNamesFunction, getDocument, arraysEqual, warn, isMac } from '../../Utilities';
-import { KeytipManager } from '../../utilities/keytips/KeytipManager';
+import { Keytip, IKeytipProps } from '../../../../Keytip';
+import { Layer } from '../../../../Layer';
+import { BaseComponent, classNamesFunction, getDocument, arraysEqual, warn, isMac } from '../../../../Utilities';
+import { KeytipManager } from '../../../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
-import { ktpTargetFromId, ktpTargetFromSequences, sequencesToID, mergeOverflows } from '../../utilities/keytips/KeytipUtils';
-import { transitionKeysContain, KeytipTransitionModifier, IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
-import { KeytipEvents, KTP_LAYER_ID, KTP_ARIA_SEPARATOR } from '../../utilities/keytips/KeytipConstants';
+import { ktpTargetFromId, ktpTargetFromSequences, sequencesToID, mergeOverflows } from '../../../../utilities/keytips/KeytipUtils';
+import { transitionKeysContain, KeytipTransitionModifier, IKeytipTransitionKey } from '../../../../utilities/keytips/IKeytipTransitionKey';
+import { KeytipEvents, KTP_LAYER_ID, KTP_ARIA_SEPARATOR } from '../../../../utilities/keytips/KeytipConstants';
 
 export interface IKeytipLayerState {
   inKeytipMode: boolean;

@@ -1,6 +1,6 @@
 import { IDropdownStyles, IDropdownStyleProps } from './Dropdown.types';
-import { IStyleFunction, IsFocusVisibleClassName } from '../../Utilities';
-import { RectangleEdge } from '../../utilities/positioning';
+import { IStyleFunction, IsFocusVisibleClassName } from '../../../../Utilities';
+import { RectangleEdge } from '../../../../utilities/positioning';
 import {
   FontSizes,
   FontWeights,
@@ -12,7 +12,7 @@ import {
   HighContrastSelectorWhite,
   getScreenSelector,
   ScreenWidthMinMedium
-} from '../../Styling';
+} from '../../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Dropdown-container',

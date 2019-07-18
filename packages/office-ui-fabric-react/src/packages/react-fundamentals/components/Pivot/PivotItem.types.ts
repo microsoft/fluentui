@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IRefObject, IRenderFunction } from '../../Utilities';
-import { IKeytipProps } from '../../Keytip';
+import { IRefObject, IRenderFunction } from '../../../../Utilities';
+import { IKeytipProps } from '../../../../Keytip';
 
 /**
  * {@docCategory Pivot}

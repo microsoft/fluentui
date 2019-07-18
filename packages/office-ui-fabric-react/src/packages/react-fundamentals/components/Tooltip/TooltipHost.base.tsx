@@ -10,7 +10,7 @@ import {
   portalContainsElement,
   classNamesFunction,
   KeyCodes
-} from '../../Utilities';
+} from '../../../../Utilities';
 import { ITooltipHostProps, TooltipOverflowMode, ITooltipHostStyles, ITooltipHostStyleProps, ITooltipHost } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.types';

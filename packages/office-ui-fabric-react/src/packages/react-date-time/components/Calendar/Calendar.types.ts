@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
-import { IRefObject, IBaseProps } from '../../Utilities';
+import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../../../utilities/dateValues/DateValues';
+import { IRefObject, IBaseProps } from '../../../../Utilities';
 export { DayOfWeek, DateRangeType, FirstWeekOfYear };
 
 /**

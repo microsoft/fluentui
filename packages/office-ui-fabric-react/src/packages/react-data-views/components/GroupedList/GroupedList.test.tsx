@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { SelectionMode, Selection } from '../../utilities/selection/index';
+import { SelectionMode, Selection } from '../../../../utilities/selection/index';
 import { GroupedList } from './GroupedList';
 import { DetailsRow } from '../DetailsList/DetailsRow';
 import { IGroup } from './GroupedList.types';
-import { IColumn } from '../DetailsList/DetailsList.types';
+import { IColumn } from '../DetailsList/index';
 import { List } from '../List/List';
 import { GroupShowAll } from './GroupShowAll';
-import { Link } from '../Link/Link';
+import { Link } from '../../../../Link';
 
 describe('GroupedList', () => {
   it("sets inner List page key to IGroup's key attribute for uniqueness", () => {

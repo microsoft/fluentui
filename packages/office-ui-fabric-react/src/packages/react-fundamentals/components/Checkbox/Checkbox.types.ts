@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IIconProps } from '../Icon/Icon.types';
-import { IKeytipProps } from '../../Keytip';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../../../Utilities';
+import { IIconProps } from '../../../../Icon';
+import { IKeytipProps } from '../../../../Keytip';
 
 /**
  * Checkbox class interface.

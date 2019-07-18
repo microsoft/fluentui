@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { classNamesFunction, BaseComponent, css } from '../../../Utilities';
-import { IProcessedStyleSet } from '../../../Styling';
-import { CommandButton, IconButton } from '../../../Button';
+import { classNamesFunction, BaseComponent, css } from '../../../../../Utilities';
+import { IProcessedStyleSet } from '../../../../../Styling';
+import { CommandButton, IconButton } from '../../../../../Button';
 import { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
 
 import * as stylesImport from './Suggestions.scss';

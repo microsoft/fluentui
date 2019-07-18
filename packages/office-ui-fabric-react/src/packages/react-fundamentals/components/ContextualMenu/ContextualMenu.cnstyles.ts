@@ -8,9 +8,9 @@ import {
   getScreenSelector,
   ScreenWidthMaxMedium,
   IconFontSizes
-} from '../../Styling';
+} from '../../../../Styling';
 import { IMenuItemStyles } from './ContextualMenu.types';
-import { memoizeFunction } from '../../Utilities';
+import { memoizeFunction } from '../../../../Utilities';
 
 export const CONTEXTUAL_MENU_ITEM_HEIGHT = 36;
 
