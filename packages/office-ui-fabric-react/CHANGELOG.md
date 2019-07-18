@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 13 Jul 2019 22:20:41 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+
+## 7.11.0
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Minor changes
+
+- Add new ways for callers to control the behavior of the combo box. (reedpa@microsoft.com)
+,- ChoiceGroupOption: move the inline styles into getStyles function to allow override. (vibraga@microsoft.com)
+
+### Patches
+
+- prevent header and footer in panel from shrinking (nidurak@microsoft.com)
+,- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+,- Rating: ensure rating gets updated even when it has value of 0. (vibraga@microsoft.com)
+,- GroupedList: Using level to determine nestingDepth when it is given. (Humberto.Morimoto@microsoft.com)
+,- DropDown: Adding null check in onPositioned call. (Humberto.Morimoto@microsoft.com)
 
 ## 7.10.0
 Sat, 13 Jul 2019 22:20:41 GMT

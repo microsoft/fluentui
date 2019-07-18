@@ -78,7 +78,7 @@ steps:
   - script: |
       git config --global user.email "fabrictactical@microsoft.com"
       git config --global user.name "Fabric Tactical"
-      npm run vrtest
+      npm run vrtest -- --debug
     displayName: run VR Test
     env:
       SCREENER_API_KEY: $(screener.key)

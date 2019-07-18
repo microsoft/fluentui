@@ -1,3 +1,5 @@
+// @ts-check
+
 /**
  * Find a config file path, starting in the current directory and looking up to the Git root directory
  * (which contain .git) or the drive root.
@@ -8,14 +10,15 @@ function findConfig(configName) {
   if (!configName) {
     return undefined;
   }
+
   const fs = require('fs');
   const path = require('path');
-  const rootPath = path.resolve('/');
 
   if (path.isAbsolute(configName)) {
     return configName;
   }
 
+  const rootPath = path.resolve('/');
   let cwd = process.cwd();
   let foundGitRoot = false;
 

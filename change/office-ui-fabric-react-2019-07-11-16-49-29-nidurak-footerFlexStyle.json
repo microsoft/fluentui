@@ -1,8 +1,0 @@
-{
-  "comment": "prevent header and footer in panel from shrinking",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "nidurak@microsoft.com",
-  "commit": "51f775061f46e1f3b5c89cffb8d0d5da09c5568d",
-  "date": "2019-07-11T23:49:29.707Z"
-}
