@@ -4,19 +4,10 @@ const npmPath = process.env.npm_execpath;
 
 const Strings = {
   useYarnInstead: `Looks like you are trying to run "npm install". This repository has migrated to use Yarn as its package manager.
-  `,
+`,
   yarnDetected: `Great! Looks like you already have yarn installed!
-  `,
-  installYarn: `You currently do not have an installation of Yarn in your PATH. Please install the latest stable version of Yarn using one of the following links:
-
-  https://yarnpkg.com/en/docs/install
-
-Windows users can run the installer here: https://yarnpkg.com/latest.msi
-
-Mac users can run a one-liner for the install:
-
-  curl -o- -L https://yarnpkg.com/install.sh | bash
-
+`,
+  installYarn: `You currently do not have an installation of Yarn in your PATH. Please install the latest stable version of Yarn following the instructions at https://yarnpkg.com/en/docs/install or by running "npm install -g yarn".
 `,
   gettingStartedWithYarn: `To install UI Fabric monorepo dependencies and establish links between projects, simply run:
 
@@ -28,12 +19,11 @@ You can then build the packages:
 
 Or start a development inner loop against the UI Fabric demo:
 
-  yarn start
+  yarn builddemo && yarn start
 
 To learn more about all the commands that this monorepo supports, see the wiki:
 
   https://github.com/OfficeDev/office-ui-fabric-react/wiki/Build-Commands
-
 `
 };
 
