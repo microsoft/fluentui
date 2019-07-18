@@ -1,4 +1,4 @@
-import { IStyle } from '../../../Styling';
+import { IStyle } from '../../../../../Styling';
 import { IBeakStylesProps } from './Beak.types';
 
 export interface IBeakStyles {

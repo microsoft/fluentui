@@ -1,4 +1,4 @@
-import { parseGap } from 'office-ui-fabric-react/lib/components/Stack/StackUtils';
+import { parseGap } from 'office-ui-fabric-react/lib/packages/react-fundamentals/components/Stack/StackUtils';
 import { IButtonComponent, IButtonStylesReturnType, IButtonTokenReturnType } from './Button.types';
 import { getFocusStyle, getGlobalClassNames, FontWeights, HighContrastSelector } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';

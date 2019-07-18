@@ -1,9 +1,9 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { css } from '../../../../Utilities';
-import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../../Persona';
-import { IBasePickerSuggestionsProps, ISuggestionItemProps } from '../../../../Pickers';
+import { css } from '../../../../../../Utilities';
+import { Persona, PersonaSize, IPersonaProps, PersonaPresence } from '../../../../../../Persona';
+import { IBasePickerSuggestionsProps, ISuggestionItemProps } from '../../../../../../Pickers';
 import * as stylesImport from '../PeoplePicker.scss';
 
 export const SuggestionItemNormal: (persona: IPersonaProps, suggestionProps?: IBasePickerSuggestionsProps) => JSX.Element = (

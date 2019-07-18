@@ -7,10 +7,10 @@ import {
   IContextualMenuStyleProps,
   IContextualMenuStyles
 } from './ContextualMenu.types';
-import { DirectionalHint } from '../../common/DirectionalHint';
-import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
+import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../../../FocusZone';
 import { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
-import { divProperties, getNativeProps, shallowCompare } from '../../Utilities';
+import { divProperties, getNativeProps, shallowCompare } from '../../../../Utilities';
 
 import {
   assign,
@@ -30,13 +30,13 @@ import {
   IStyleFunctionOrObject,
   isIOS,
   isMac
-} from '../../Utilities';
-import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
-import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { Callout, ICalloutContentStyleProps, ICalloutContentStyles, Target } from '../../Callout';
+} from '../../../../Utilities';
+import { hasSubmenu, getIsChecked, isItemDisabled } from '../../../../utilities/contextualMenu/index';
+import { withResponsiveMode, ResponsiveMode } from '../../../../utilities/decorators/withResponsiveMode';
+import { Callout, ICalloutContentStyleProps, ICalloutContentStyles, Target } from '../../../../Callout';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor } from './ContextualMenuItemWrapper/index';
-import { IProcessedStyleSet, mergeStyleSets } from '../../Styling';
+import { IProcessedStyleSet, mergeStyleSets } from '../../../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
 
 import { getItemStyles } from './ContextualMenu.classNames';

@@ -1,5 +1,5 @@
 import { IContextualMenuStyleProps, IContextualMenuStyles } from './ContextualMenu.types';
-import { getGlobalClassNames, FontWeights } from '../../Styling';
+import { getGlobalClassNames, FontWeights } from '../../../../Styling';
 import { CONTEXTUAL_MENU_ITEM_HEIGHT } from './ContextualMenu.cnstyles';
 
 const GlobalClassNames = {

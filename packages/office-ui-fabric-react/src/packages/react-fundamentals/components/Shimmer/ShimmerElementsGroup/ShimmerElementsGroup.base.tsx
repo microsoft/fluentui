@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../../../Utilities';
 import { IShimmerElementsGroupProps, IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles } from './ShimmerElementsGroup.types';
-import { IRawStyle } from '../../../Styling';
+import { IRawStyle } from '../../../../../Styling';
 import { ShimmerElementType, ShimmerElementsDefaultHeights, IShimmerElement } from '../Shimmer.types';
 import { ShimmerLine } from '../ShimmerLine/ShimmerLine';
 import { IShimmerLineStyles } from '../ShimmerLine/ShimmerLine.types';

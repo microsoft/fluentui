@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
-import { IKeytipProps } from '../../Keytip';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../../../Utilities';
+import { IKeytipProps } from '../../../../Keytip';
 
 /**
  * {@docCategory Toggle}

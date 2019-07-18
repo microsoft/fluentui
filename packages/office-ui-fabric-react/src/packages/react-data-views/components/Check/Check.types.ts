@@ -1,5 +1,5 @@
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../../../Utilities';
 
 /**
  * {@docCategory Check}

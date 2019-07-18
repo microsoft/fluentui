@@ -1,1 +1,1 @@
-export * from './components/Facepile/index';
+export * from './packages/react-people/Facepile';

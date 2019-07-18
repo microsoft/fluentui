@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, IRefObject, findIndex, find } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, IRefObject, findIndex, find } from '../../../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
-import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
-import { FocusZone } from '../../FocusZone';
-import { Icon } from '../../Icon';
+import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../../../utilities/dateValues/DateValues';
+import { FocusZone } from '../../../../FocusZone';
+import { Icon } from '../../../../Icon';
 import {
   addDays,
   addWeeks,
@@ -16,7 +16,7 @@ import {
   getWeekNumbersInMonth,
   getMonthStart,
   getMonthEnd
-} from '../../utilities/dateMath/DateMath';
+} from '../../../../utilities/dateMath/DateMath';
 
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;

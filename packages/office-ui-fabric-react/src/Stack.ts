@@ -1,1 +1,1 @@
-export * from './components/Stack/index';
+export * from './packages/react-fundamentals/Stack';

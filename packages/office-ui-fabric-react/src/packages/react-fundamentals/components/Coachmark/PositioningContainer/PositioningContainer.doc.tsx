@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { PositioningContainerBasicExample } from './examples/PositioningContainer.Basic.Example';
-import { IDocPageProps } from '../../../common/DocPage.types';
+import { IDocPageProps } from '../../../../../common/DocPage.types';
 const CoachmarkBasicExampleCode = require('!raw-loader!experiments/src/components/PositioningContainer/examples/PositioningContainer.Basic.Example.tsx') as string;
 
 export const PositioningContainerPageProps: IDocPageProps = {

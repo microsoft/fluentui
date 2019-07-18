@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '../../../../Utilities';
 import { DocumentCardLocationBase } from './DocumentCardLocation.base';
 import { getStyles } from './DocumentCardLocation.styles';
 import { IDocumentCardLocationProps, IDocumentCardLocationStyleProps, IDocumentCardLocationStyles } from './DocumentCardLocation.types';

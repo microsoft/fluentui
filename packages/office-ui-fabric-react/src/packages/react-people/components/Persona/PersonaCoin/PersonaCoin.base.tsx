@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, divProperties, getInitials, getNativeProps, getRTL } from '../../../Utilities';
-import { mergeStyles } from '../../../Styling';
+import { BaseComponent, classNamesFunction, divProperties, getInitials, getNativeProps, getRTL } from '../../../../../Utilities';
+import { mergeStyles } from '../../../../../Styling';
 import { PersonaPresence } from '../PersonaPresence/index';
-import { Icon } from '../../../Icon';
-import { Image, ImageFit, ImageLoadState } from '../../../Image';
+import { Icon } from '../../../../../Icon';
+import { Image, ImageFit, ImageLoadState } from '../../../../../Image';
 import {
   IPersonaCoinProps,
   IPersonaCoinStyleProps,

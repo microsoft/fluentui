@@ -1,10 +1,10 @@
-import { getRTL, getInitials } from '../../../Utilities';
+import { getRTL, getInitials } from '../../../../../Utilities';
 import { BaseFloatingPicker } from '../BaseFloatingPicker';
 import { IBaseFloatingPickerProps } from '../BaseFloatingPicker.types';
 import { SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
-import { IPersonaProps } from '../../../Persona';
+import { IPersonaProps } from '../../../../../Persona';
 import './PeoplePicker.scss';
-import { IBasePickerSuggestionsProps, ISuggestionModel } from '../../../Pickers';
+import { IBasePickerSuggestionsProps, ISuggestionModel } from '../../../../../Pickers';
 
 /**
  * {@docCategory FloatingPeoplePicker}

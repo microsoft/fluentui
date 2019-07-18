@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '../../../../Utilities';
 import { MarqueeSelectionBase } from './MarqueeSelection.base';
 import { getStyles } from './MarqueeSelection.styles';
 import { IMarqueeSelectionProps, IMarqueeSelectionStyleProps, IMarqueeSelectionStyles } from './MarqueeSelection.types';

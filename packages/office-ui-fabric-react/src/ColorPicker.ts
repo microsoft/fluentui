@@ -1,1 +1,1 @@
-export * from './components/ColorPicker/index';
+export * from './packages/react-pickers/ColorPicker';

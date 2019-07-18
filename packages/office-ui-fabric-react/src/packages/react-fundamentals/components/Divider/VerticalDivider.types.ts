@@ -1,5 +1,5 @@
-import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { ITheme, IStyle } from '../../../../Styling';
+import { IStyleFunctionOrObject } from '../../../../Utilities';
 
 /**
  * {@docCategory VerticalDivider}

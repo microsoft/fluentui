@@ -1,7 +1,7 @@
 /** @jsx withSlots */
 import * as React from 'react';
-import { withSlots, createComponent, getSlots } from '../../Foundation';
-import { getNativeProps, htmlElementProperties, warnDeprecations } from '../../Utilities';
+import { withSlots, createComponent, getSlots } from '../../../../Foundation';
+import { getNativeProps, htmlElementProperties, warnDeprecations } from '../../../../Utilities';
 import { styles } from './Stack.styles';
 import { IStackComponent, IStackProps, IStackSlots } from './Stack.types';
 import { StackItem } from './StackItem/StackItem';

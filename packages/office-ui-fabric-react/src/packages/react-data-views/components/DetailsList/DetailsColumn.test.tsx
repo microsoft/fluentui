@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { DetailsColumn } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
-import { IColumn, ColumnActionsMode, IDetailsHeaderProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList.types';
+import { DetailsColumn } from '../DetailsList/DetailsColumn';
+import { IColumn, ColumnActionsMode, IDetailsHeaderProps } from '../DetailsList/DetailsList.types';
 import { mount } from 'enzyme';
-import { DetailsList } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList';
+import { DetailsList } from '../DetailsList/DetailsList';
 import { IRenderFunction } from '@uifabric/utilities';
 import { ITooltipHostProps, TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 

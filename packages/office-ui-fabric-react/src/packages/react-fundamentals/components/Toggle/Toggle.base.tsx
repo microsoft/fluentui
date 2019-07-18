@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getId, inputProperties, getNativeProps } from '../../Utilities';
+import { BaseComponent, classNamesFunction, getId, inputProperties, getNativeProps } from '../../../../Utilities';
 import { IToggleProps, IToggle, IToggleStyleProps, IToggleStyles } from './Toggle.types';
-import { Label } from '../../Label';
-import { KeytipData } from '../../KeytipData';
+import { Label } from '../../../../Label';
+import { KeytipData } from '../../../../KeytipData';
 
 export interface IToggleState {
   checked: boolean;

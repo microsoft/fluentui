@@ -1,1 +1,1 @@
-export * from './components/Tooltip/index';
+export * from './packages/react-fundamentals/Tooltip';

@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getNativeProps, divProperties, enableBodyScroll, disableBodyScroll } from '../../Utilities';
+import {
+  BaseComponent,
+  classNamesFunction,
+  getNativeProps,
+  divProperties,
+  enableBodyScroll,
+  disableBodyScroll
+} from '../../../../Utilities';
 import { IOverlayProps, IOverlayStyleProps, IOverlayStyles } from './Overlay.types';
 
 const getClassNames = classNamesFunction<IOverlayStyleProps, IOverlayStyles>();

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example';
-import { IDocPageProps } from '../../../common/DocPage.types';
+import { IDocPageProps } from '../../../../../common/DocPage.types';
 
-const PeoplePickerTypesExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/examples/PeoplePicker.Types.Example.tsx') as string;
+const PeoplePickerTypesExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-pickers/components/pickers/PeoplePicker/examples/PeoplePicker.Types.Example.tsx') as string;
 
 export const PeoplePickerPageProps: IDocPageProps = {
   title: 'PeoplePicker',
@@ -16,13 +16,21 @@ export const PeoplePickerPageProps: IDocPageProps = {
       view: <PeoplePickerTypesExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/BasePicker.types.ts')],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerOverview.md'),
+  propertiesTablesSources: [
+    require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-pickers/components/pickers/BasePicker.types.ts')
+  ],
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-pickers/components/pickers/PeoplePicker/docs/PeoplePickerOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/docs/PeoplePickerDonts.md'),
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-pickers/components/pickers/PeoplePicker/docs/PeoplePickerBestPractices.md'),
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-pickers/components/pickers/PeoplePicker/docs/PeoplePickerDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-pickers/components/pickers/PeoplePicker/docs/PeoplePickerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

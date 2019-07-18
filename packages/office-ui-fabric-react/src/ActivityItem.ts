@@ -1,1 +1,1 @@
-export * from './components/ActivityItem/index';
+export * from './packages/react-fundamentals/ActivityItem';

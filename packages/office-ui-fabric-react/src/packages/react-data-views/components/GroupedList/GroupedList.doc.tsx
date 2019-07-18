@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { GroupedListBasicExample } from './examples/GroupedList.Basic.Example';
 
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 import { GroupedListCustomExample } from './examples/GroupedList.Custom.Example';
 
-const GroupedListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/GroupedList/examples/GroupedList.Basic.Example.tsx') as string;
-const GroupedListCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/GroupedList/examples/GroupedList.Custom.Example.tsx') as string;
+const GroupedListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/GroupedList/examples/GroupedList.Basic.Example.tsx') as string;
+const GroupedListCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/GroupedList/examples/GroupedList.Custom.Example.tsx') as string;
 
-const GroupedListBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/GroupedList/examples/GroupedList.Basic.Example.tsx') as string;
-const GroupedListCustomExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/GroupedList/examples/GroupedList.Custom.Example.tsx') as string;
+const GroupedListBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/GroupedList/examples/GroupedList.Basic.Example.tsx') as string;
+const GroupedListCustomExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-data-views/components/GroupedList/examples/GroupedList.Custom.Example.tsx') as string;
 
 export const GroupedListPageProps: IDocPageProps = {
   title: 'GroupedList',
@@ -29,7 +29,9 @@ export const GroupedListPageProps: IDocPageProps = {
       view: <GroupedListCustomExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/GroupedList/docs/GroupedListOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-data-views/components/GroupedList/docs/GroupedListOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',

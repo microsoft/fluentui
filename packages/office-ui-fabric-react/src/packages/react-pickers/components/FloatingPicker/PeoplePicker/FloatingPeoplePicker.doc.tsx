@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { FloatingPeoplePickerTypesExample } from '../PeoplePicker/examples/FloatingPeoplePicker.Basic.Example';
 
-import { IDocPageProps } from '../../../common/DocPage.types';
+import { IDocPageProps } from '../../../../../common/DocPage.types';
 
-const FloatingPeoplePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/examples/FloatingPeoplePicker.Basic.Example.tsx') as string;
-const FloatingPeoplePickerBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/examples/FloatingPeoplePicker.Basic.Example.tsx') as string;
+const FloatingPeoplePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-pickers/components/FloatingPicker/PeoplePicker/examples/FloatingPeoplePicker.Basic.Example.tsx') as string;
+const FloatingPeoplePickerBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-pickers/components/FloatingPicker/PeoplePicker/examples/FloatingPeoplePicker.Basic.Example.tsx') as string;
+
+// tslint:disable:max-line-length
 
 export const FloatingPeoplePickerPageProps: IDocPageProps = {
   title: 'FloatingPeoplePicker',
@@ -20,16 +22,20 @@ export const FloatingPeoplePickerPageProps: IDocPageProps = {
     }
   ],
   propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/BaseFloatingPicker.types.ts')
+    require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-pickers/components/FloatingPicker/BaseFloatingPicker.types.ts')
   ],
   overview: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerOverview.md'),
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-pickers/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerBestPractices.md'),
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerDonts.md'),
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-pickers/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerBestPractices.md'),
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-pickers/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-pickers/components/FloatingPicker/PeoplePicker/docs/FloatingPeoplePickerDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
+import { IStyle, ITheme } from '../../../../Styling';
 import { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../../../Utilities';
 import { CoachmarkBase } from './Coachmark.base';
-import { ITeachingBubble } from '../../TeachingBubble';
+import { ITeachingBubble } from '../../../../TeachingBubble';
 
 /**
  * {@docCategory Coachmark}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, getNativeProps, divProperties } from '../../Utilities';
+import { BaseComponent, getNativeProps, divProperties } from '../../../../Utilities';
 import { IPivotItemProps } from './PivotItem.types';
 
 export class PivotItem extends BaseComponent<IPivotItemProps, {}> {

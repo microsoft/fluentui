@@ -1,1 +1,1 @@
-export * from './components/Sticky/index';
+export * from './packages/react-fundamentals/Sticky';

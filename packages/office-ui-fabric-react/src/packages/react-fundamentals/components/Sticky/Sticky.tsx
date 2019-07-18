@@ -1,7 +1,7 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { BaseComponent } from '../../Utilities';
-import { IScrollablePaneContext, ScrollablePaneContext } from '../ScrollablePane/ScrollablePane.types';
+import { BaseComponent } from '../../../../Utilities';
+import { IScrollablePaneContext, ScrollablePaneContext } from '../ScrollablePane/index';
 import { IStickyProps, StickyPositionType } from './Sticky.types';
 
 export interface IStickyState {

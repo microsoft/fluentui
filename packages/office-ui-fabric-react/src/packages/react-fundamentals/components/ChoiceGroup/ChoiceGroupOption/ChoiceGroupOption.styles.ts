@@ -1,5 +1,5 @@
-import { FontSizes, FontWeights, HighContrastSelector, IStyle, getGlobalClassNames } from '../../../Styling';
-import { IsFocusVisibleClassName } from '../../../Utilities';
+import { FontSizes, FontWeights, HighContrastSelector, IStyle, getGlobalClassNames } from '../../../../../Styling';
+import { IsFocusVisibleClassName } from '../../../../../Utilities';
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
 
 const GlobalClassNames = {

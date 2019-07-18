@@ -1,20 +1,20 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import { initializeComponentRef, EventGroup, IDisposable, css, getRTL, getId, KeyCodes, IClassNames } from '../../Utilities';
+import { initializeComponentRef, EventGroup, IDisposable, css, getRTL, getId, KeyCodes, IClassNames } from '../../../../Utilities';
 import { IColumn, IDetailsHeaderBaseProps, IColumnDragDropDetails, ColumnDragEndLocation, CheckboxVisibility } from './DetailsList.types';
-import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { Icon } from '../../Icon';
-import { Layer } from '../../Layer';
+import { IFocusZone, FocusZone, FocusZoneDirection } from '../../../../FocusZone';
+import { Icon } from '../../../../Icon';
+import { Layer } from '../../../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
-import { CollapseAllVisibility } from '../../GroupedList';
+import { CollapseAllVisibility } from '../../../../GroupedList';
 import { DetailsRowCheck } from './DetailsRowCheck';
-import { ITooltipHostProps } from '../../Tooltip';
-import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
-import { IDragDropOptions, DragDropHelper } from '../../utilities/dragdrop/index';
+import { ITooltipHostProps } from '../../../../Tooltip';
+import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../../../utilities/selection/interfaces';
+import { IDragDropOptions, DragDropHelper } from '../../../../utilities/dragdrop/index';
 import { DetailsColumn, IDetailsColumnProps } from '../../components/DetailsList/DetailsColumn';
 import { SelectAllVisibility, IDropHintDetails, IColumnReorderHeaderProps, IDetailsHeaderState } from './DetailsHeader.types';
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles, IDetailsHeader } from './DetailsHeader.types';
-import { classNamesFunction } from '../../Utilities';
+import { classNamesFunction } from '../../../../Utilities';
 
 const getClassNames = classNamesFunction<IDetailsHeaderStyleProps, IDetailsHeaderStyles>();
 

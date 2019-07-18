@@ -1,4 +1,4 @@
-import { getGlobalClassNames, getFocusStyle } from '../../Styling';
+import { getGlobalClassNames, getFocusStyle } from '../../../../Styling';
 import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
 import { DEFAULT_ROW_HEIGHTS } from './DetailsRow.styles';
 import { HEADER_HEIGHT } from './DetailsHeader.styles';

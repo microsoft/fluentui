@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ISuggestionModel } from '../../Pickers';
+import { ISuggestionModel } from '../../../../Pickers';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
-import { IRefObject } from '../../Utilities';
+import { IRefObject } from '../../../../Utilities';
 import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
 
 export interface IBaseFloatingPicker {

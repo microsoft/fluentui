@@ -1,12 +1,12 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes } from '../../../../Utilities';
 import { setWarningCallback } from '@uifabric/utilities';
 import { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { ContextualMenuItemType } from './ContextualMenu.types';
 import { IMenuItemClassNames, getItemClassNames } from './ContextualMenu.classNames';
-import { createTheme } from '../../Styling';
+import { createTheme } from '../../../../Styling';
 
 let customClassNames: () => IMenuItemClassNames;
 

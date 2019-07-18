@@ -1,11 +1,11 @@
 /* tslint:disable-next-line:no-unused-variable */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { setRTL, IRenderFunction } from '../../Utilities';
+import { setRTL, IRenderFunction } from '../../../../Utilities';
 import { Persona } from './Persona';
 import { mount, ReactWrapper } from 'enzyme';
-import { getIcon } from '../../Styling';
-import { IPersonaSharedProps, IPersonaProps, IPersonaCoinProps, PersonaPresence, PersonaSize } from '../../index';
+import { getIcon } from '../../../../Styling';
+import { IPersonaSharedProps, IPersonaProps, IPersonaCoinProps, PersonaPresence, PersonaSize } from './index';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { TestImages } from 'office-ui-fabric-react/lib/common/TestImages';
 

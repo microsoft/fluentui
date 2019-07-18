@@ -1,4 +1,4 @@
-import { getGlobalClassNames } from '../../Styling';
+import { getGlobalClassNames } from '../../../../Styling';
 import { IDocumentCardStatusStyleProps, IDocumentCardStatusStyles } from './DocumentCardStatus.types';
 
 const GlobalClassNames = {

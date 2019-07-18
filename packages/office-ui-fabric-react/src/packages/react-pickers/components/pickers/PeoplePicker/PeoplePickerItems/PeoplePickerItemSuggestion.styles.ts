@@ -1,4 +1,4 @@
-import { getGlobalClassNames, HighContrastSelector, IStyle } from '../../../../Styling';
+import { getGlobalClassNames, HighContrastSelector, IStyle } from '../../../../../../Styling';
 import { IPeoplePickerItemSuggestionStyles, IPeoplePickerItemSuggestionStyleProps } from './PeoplePickerItem.types';
 import { SuggestionsItemGlobalClassNames as suggested } from '../../Suggestions/SuggestionsItem.styles';
 const GlobalClassNames = {

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../../Utilities';
 import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
-import { KeytipData } from '../../KeytipData';
+import { KeytipData } from '../../../../KeytipData';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 

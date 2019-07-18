@@ -1,6 +1,6 @@
-import { ILayerStyles, ILayerStyleProps } from '../../Layer';
+import { ILayerStyles, ILayerStyleProps } from '../../../../Layer';
 import { IKeytipLayerStyleProps, IKeytipLayerStyles } from './KeytipLayer.types';
-import { ZIndexes } from '../../Styling';
+import { ZIndexes } from '../../../../Styling';
 
 export const getLayerStyles = (props: ILayerStyleProps): ILayerStyles => {
   return {

@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { TeachingBubblePageProps as ExternalProps } from 'office-ui-fabric-react/lib/components/TeachingBubble/TeachingBubble.doc';
+import { TeachingBubblePageProps as ExternalProps } from 'office-ui-fabric-react/lib/packages/react-fundamentals/components/TeachingBubble/TeachingBubble.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TeachingBubblePage/docs/TeachingBubbleRelated.md') as string;
 // const componentUrl =

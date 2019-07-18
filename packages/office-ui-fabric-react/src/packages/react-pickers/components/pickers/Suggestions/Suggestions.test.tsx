@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import { styled } from '../../../Utilities';
+import { styled } from '../../../../../Utilities';
 import { Suggestions } from './Suggestions';
 import { getStyles as suggestionsStyles } from './Suggestions.styles';
 import { ISuggestionModel, ISuggestionsProps, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';

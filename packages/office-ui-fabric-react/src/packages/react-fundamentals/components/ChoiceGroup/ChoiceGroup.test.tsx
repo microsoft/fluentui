@@ -7,7 +7,7 @@ import * as renderer from 'react-test-renderer';
 
 import { ChoiceGroup } from './ChoiceGroup';
 import { IChoiceGroupOption, IChoiceGroup } from './ChoiceGroup.types';
-import { merge, resetIds } from '../../Utilities';
+import { merge, resetIds } from '../../../../Utilities';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
   { key: '1', text: '1', 'data-automation-id': 'auto1' } as IChoiceGroupOption,

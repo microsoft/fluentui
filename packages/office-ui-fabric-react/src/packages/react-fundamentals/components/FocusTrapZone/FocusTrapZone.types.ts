@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRefObject } from '../../Utilities';
+import { IRefObject } from '@uifabric/utilities';
 
 /**
  * {@docCategory FocusTrapZone}

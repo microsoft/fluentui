@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '../../../../Utilities';
 import { BreadcrumbBase } from './Breadcrumb.base';
 import { getStyles } from './Breadcrumb.styles';
 import { IBreadcrumbProps, IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';

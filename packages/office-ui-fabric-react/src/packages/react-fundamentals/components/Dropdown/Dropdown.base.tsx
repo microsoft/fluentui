@@ -19,23 +19,27 @@ import {
   safeRequestAnimationFrame,
   warnDeprecations,
   warnMutuallyExclusive
-} from '../../Utilities';
-import { Callout } from '../../Callout';
-import { Checkbox } from '../../Checkbox';
-import { CommandButton } from '../../Button';
-import { DirectionalHint } from '../../common/DirectionalHint';
+} from '../../../../Utilities';
+import { Callout } from '../../../../Callout';
+import { Checkbox } from '../../../../Checkbox';
+import { CommandButton } from '../../../../Button';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
 import { DropdownMenuItemType, IDropdownOption, IDropdownProps, IDropdownStyleProps, IDropdownStyles, IDropdown } from './Dropdown.types';
 import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ICalloutPositionedInfo, RectangleEdge } from '../../utilities/positioning';
-import { Icon } from '../../Icon';
-import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
-import { IProcessedStyleSet } from '../../Styling';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
-import { KeytipData } from '../../KeytipData';
-import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
-import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { SelectableOptionMenuItemType, getAllSelectedOptions, ISelectableDroppableTextProps } from '../../utilities/selectableOption/index';
+import { FocusZone, FocusZoneDirection } from '../../../../FocusZone';
+import { ICalloutPositionedInfo, RectangleEdge } from '../../../../utilities/positioning';
+import { Icon } from '../../../../Icon';
+import { ILabelStyleProps, ILabelStyles, Label } from '../../../../Label';
+import { IProcessedStyleSet } from '../../../../Styling';
+import { IWithResponsiveModeState } from '../../../../utilities/decorators/withResponsiveMode';
+import { KeytipData } from '../../../../KeytipData';
+import { Panel, IPanelStyleProps, IPanelStyles } from '../../../../Panel';
+import { ResponsiveMode, withResponsiveMode } from '../../../../utilities/decorators/withResponsiveMode';
+import {
+  SelectableOptionMenuItemType,
+  getAllSelectedOptions,
+  ISelectableDroppableTextProps
+} from '../../../../utilities/selectableOption/index';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 

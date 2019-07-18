@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getId, allowScrollOnElement, KeyCodes } from '../../Utilities';
-import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
+import { BaseComponent, classNamesFunction, getId, allowScrollOnElement, KeyCodes } from '../../../../Utilities';
+import { FocusTrapZone, IFocusTrapZone } from '../../../../FocusTrapZone';
 import { animationDuration } from './Modal.styles';
 import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.types';
-import { Overlay } from '../../Overlay';
-import { ILayerProps, Layer } from '../../Layer';
+import { Overlay } from '../../../../Overlay';
+import { ILayerProps, Layer } from '../../../../Layer';
 import { Popup } from '../Popup/index';
-import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { DirectionalHint } from '../Callout/index';
-import { Icon } from '../Icon/index';
-import { DraggableZone, IDragData } from '../../utilities/DraggableZone/index';
+import { withResponsiveMode, ResponsiveMode } from '../../../../utilities/decorators/withResponsiveMode';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
+import { Icon } from '../../../../Icon';
+import { DraggableZone, IDragData } from '../../../../utilities/DraggableZone/index';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../../Utilities';
 import { DialogType, IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
-import { IconButton } from '../../Button';
+import { IconButton } from '../../../../Button';
 import { DialogFooter } from './DialogFooter';
 import { IDialogFooterProps } from './DialogFooter.types';
-import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { withResponsiveMode } from '../../../../utilities/decorators/withResponsiveMode';
 
 const getClassNames = classNamesFunction<IDialogContentStyleProps, IDialogContentStyles>();
 

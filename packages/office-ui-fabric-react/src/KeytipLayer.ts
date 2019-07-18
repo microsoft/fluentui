@@ -1,1 +1,1 @@
-export * from './components/KeytipLayer/index';
+export * from './packages/react-fundamentals/KeytipLayer';

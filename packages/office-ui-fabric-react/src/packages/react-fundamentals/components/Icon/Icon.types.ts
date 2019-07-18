@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IImageProps } from '../Image/Image.types';
-import { IStyle, ITheme } from '../../Styling';
-import { IBaseProps, IStyleFunctionOrObject } from '../../Utilities';
+import { IImageProps } from '../../Image';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IBaseProps, IStyleFunctionOrObject } from '../../../../Utilities';
 
 // Please keep alphabetized
 export enum IconType {

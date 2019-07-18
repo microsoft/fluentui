@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { BaseComponent, shallowCompare } from '../../../Utilities';
+import { BaseComponent, shallowCompare } from '../../../../../Utilities';
 import { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
-import { IContextualMenuItem } from '../../../ContextualMenu';
+import { IContextualMenuItem } from '../../../../../ContextualMenu';
 
 export class ContextualMenuItemWrapper extends BaseComponent<IContextualMenuItemWrapperProps> {
   public shouldComponentUpdate(newProps: IContextualMenuItemWrapperProps): boolean {

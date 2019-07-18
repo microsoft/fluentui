@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, classNamesFunction } from '../../Utilities';
+import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, classNamesFunction } from '../../../../Utilities';
 import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode, HoverCardType, IHoverCard } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
 import { ExpandingCardMode, IExpandingCardProps } from './ExpandingCard.types';

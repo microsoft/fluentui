@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { IFocusZoneProps } from '../../FocusZone';
-import { IKeytipProps } from '../../Keytip';
-import { IStyle } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IFocusZoneProps } from '../../../../FocusZone';
+import { IKeytipProps } from '../../../../Keytip';
+import { IStyle } from '../../../../Styling';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../../../Utilities';
 import { OverflowSetBase } from './OverflowSet.base';
 
 /**

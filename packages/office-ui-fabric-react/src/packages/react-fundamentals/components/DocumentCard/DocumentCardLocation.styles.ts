@@ -1,4 +1,4 @@
-import { getGlobalClassNames, FontSizes } from '../../Styling';
+import { getGlobalClassNames, FontSizes } from '../../../../Styling';
 import { IDocumentCardLocationStyleProps, IDocumentCardLocationStyles } from './DocumentCardLocation.types';
 
 export const DocumentCardLocationGlobalClassNames = {

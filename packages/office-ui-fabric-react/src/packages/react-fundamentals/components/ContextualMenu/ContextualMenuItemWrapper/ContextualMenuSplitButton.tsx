@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { buttonProperties, getNativeProps, KeyCodes, mergeAriaAttributeValues, memoizeFunction } from '../../../Utilities';
+import { buttonProperties, getNativeProps, KeyCodes, mergeAriaAttributeValues, memoizeFunction } from '../../../../../Utilities';
 import { ContextualMenuItem } from '../ContextualMenuItem';
 import { IContextualMenuItem } from '../ContextualMenu.types';
 import { IMenuItemClassNames, getSplitButtonVerticalDividerClassNames } from '../ContextualMenu.classNames';
-import { KeytipData } from '../../../KeytipData';
-import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
-import { VerticalDivider } from '../../../Divider';
+import { KeytipData } from '../../../../../KeytipData';
+import { isItemDisabled, hasSubmenu } from '../../../../../utilities/contextualMenu/index';
+import { VerticalDivider } from '../../../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
-import { IKeytipProps } from '../../Keytip/Keytip.types';
+import { IKeytipProps } from '../../../../../Keytip';
 
 export interface IContextualMenuSplitButtonState {}
 

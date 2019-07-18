@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '../../../../Utilities';
 import { IContextualMenuProps, IContextualMenuStyleProps, IContextualMenuStyles } from './ContextualMenu.types';
 import { ContextualMenuBase } from './ContextualMenu.base';
 import { getStyles } from './ContextualMenu.styles';

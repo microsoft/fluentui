@@ -1,5 +1,5 @@
 import { IDetailsListStyleProps, IDetailsListStyles } from './DetailsList.types';
-import { getGlobalClassNames, FontSizes } from '../../Styling';
+import { getGlobalClassNames, FontSizes } from '../../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-DetailsList',

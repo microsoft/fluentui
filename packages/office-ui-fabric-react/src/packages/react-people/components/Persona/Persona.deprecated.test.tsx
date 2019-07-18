@@ -4,7 +4,7 @@ import * as renderer from 'react-test-renderer';
 import { setRTL, setWarningCallback } from '@uifabric/utilities';
 import { Persona } from './Persona';
 import { mount, ReactWrapper } from 'enzyme';
-import { getIcon } from '../../Styling';
+import { getIcon } from '../../../../Styling';
 
 const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 const STYLES = {

@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { IRefObject, IRenderFunction, KeyCodes, IStyleFunctionOrObject } from '../../../Utilities';
-import { IPersonaProps } from '../../Persona/Persona.types';
-import { IStyle, ITheme } from '../../../Styling';
-import { ISpinnerStyleProps } from '../../Spinner/Spinner.types';
+import { IRefObject, IRenderFunction, KeyCodes, IStyleFunctionOrObject } from '../../../../../Utilities';
+import { IPersonaProps } from '../../../../../Persona';
+import { IStyle, ITheme } from '../../../../../Styling';
+import { ISpinnerStyleProps } from '../../../../../Spinner';
 import { ISuggestionItemProps } from './SuggestionsItem.types';
 
 /**

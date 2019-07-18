@@ -4,19 +4,19 @@ import { IGroupHeaderProps } from './GroupHeader.types';
 import { IGroupFooterProps } from './GroupFooter.types';
 import { IGroupShowAllProps } from './GroupShowAll.types';
 
-import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
+import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../../../utilities/dragdrop/index';
 
-import { initializeComponentRef, IRenderFunction, IDisposable, IClassNames, css, getId, EventGroup } from '../../Utilities';
+import { initializeComponentRef, IRenderFunction, IDisposable, IClassNames, css, getId, EventGroup } from '../../../../Utilities';
 
-import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/index';
+import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../../../utilities/selection/index';
 
 import { GroupHeader } from './GroupHeader';
 import { GroupShowAll } from './GroupShowAll';
 import { GroupFooter } from './GroupFooter';
 
 import { List } from '../../List';
-import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
-import { IViewport } from '../../utilities/decorators/withViewport';
+import { IDragDropOptions } from '../../../../utilities/dragdrop/interfaces';
+import { IViewport } from '../../../../utilities/decorators/withViewport';
 import { IListProps } from '../List/index';
 
 export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedListSection> {

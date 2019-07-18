@@ -8,11 +8,11 @@ import {
   HighContrastSelector,
   IStyle,
   getPlaceholderStyles
-} from '../../Styling';
+} from '../../../../Styling';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
-import { IButtonStyles } from '../../Button';
-import { memoizeFunction } from '../../Utilities';
+import { IButtonStyles } from '../../../../Button';
+import { memoizeFunction } from '../../../../Utilities';
 
 const ComboBoxHeight = 32;
 const ComboBoxLineHeight = 30;

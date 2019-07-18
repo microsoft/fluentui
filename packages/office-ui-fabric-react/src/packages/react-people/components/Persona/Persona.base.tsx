@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, divProperties, getNativeProps, IRenderFunction } from '../../Utilities';
-import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
+import { BaseComponent, classNamesFunction, divProperties, getNativeProps, IRenderFunction } from '../../../../Utilities';
+import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../../../Tooltip';
 import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
   IPersonaProps,

@@ -1,4 +1,4 @@
-import { getGlobalClassNames, HighContrastSelector } from '../../Styling';
+import { getGlobalClassNames, HighContrastSelector } from '../../../../Styling';
 import { IExpandingCardStyles, IExpandingCardStyleProps } from './ExpandingCard.types';
 
 const GlobalClassNames = {

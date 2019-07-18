@@ -1,1 +1,1 @@
-export * from './components/Separator/index';
+export * from './packages/react-fundamentals/Separator';

@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { IIconProps } from '../../Icon';
-import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
-import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';
-import { IStyle, ITheme } from '../../Styling';
-import { IButtonStyles } from '../../Button';
-import { IRefObject, IRenderFunction } from '../../Utilities';
+import { IIconProps } from '../../../../Icon';
+import { ISelectableOption } from '../../../../utilities/selectableOption/SelectableOption.types';
+import { ISelectableDroppableTextProps } from '../../../../utilities/selectableOption/SelectableDroppableText.types';
+import { IStyle, ITheme } from '../../../../Styling';
+import { IButtonStyles } from '../../../../Button';
+import { IRefObject, IRenderFunction } from '../../../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
-import { IKeytipProps } from '../../Keytip';
-import { IAutofillProps } from '../pickers/AutoFill/BaseAutoFill.types';
+import { IKeytipProps } from '../../../../Keytip';
+import { IAutofillProps } from '../../Autofill';
 
 /**
  * {@docCategory ComboBox}

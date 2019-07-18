@@ -1,8 +1,15 @@
 import * as React from 'react';
 
-import { getId, classNamesFunction, styled, IStyleFunctionOrObject } from '../../../../Utilities';
-import { Persona, PersonaSize, IPersonaStyleProps, IPersonaStyles, IPersonaCoinStyleProps, IPersonaCoinStyles } from '../../../../Persona';
-import { IconButton } from '../../../../Button';
+import { getId, classNamesFunction, styled, IStyleFunctionOrObject } from '../../../../../../Utilities';
+import {
+  Persona,
+  PersonaSize,
+  IPersonaStyleProps,
+  IPersonaStyles,
+  IPersonaCoinStyleProps,
+  IPersonaCoinStyles
+} from '../../../../../../Persona';
+import { IconButton } from '../../../../../../Button';
 import { ValidationState } from '../../BasePicker.types';
 import {
   IPeoplePickerItemSelectedProps,

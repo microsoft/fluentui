@@ -1,5 +1,5 @@
 import { IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
-import { FontWeights, getGlobalClassNames } from '../../Styling';
+import { FontWeights, getGlobalClassNames } from '../../../../Styling';
 
 const GlobalClassNames = {
   contentLgHeader: 'ms-Dialog-lgHeader',

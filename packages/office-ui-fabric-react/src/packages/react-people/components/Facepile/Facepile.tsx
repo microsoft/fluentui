@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '../../../../Utilities';
 import { IFacepileProps, IFacepileStyleProps, IFacepileStyles } from './Facepile.types';
 import { FacepileBase } from './Facepile.base';
 import { styles } from './Facepile.styles';

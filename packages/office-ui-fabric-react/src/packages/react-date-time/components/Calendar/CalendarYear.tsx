@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { KeyCodes, css, getRTL } from '../../Utilities';
+import { KeyCodes, css, getRTL } from '../../../../Utilities';
 import { ICalendarIconStrings } from './Calendar.types';
-import { FocusZone } from '../../FocusZone';
+import { FocusZone } from '../../../../FocusZone';
 import * as stylesImport from './Calendar.scss';
-import { Icon } from '../../Icon';
+import { Icon } from '../../../../Icon';
 
 const styles: any = stylesImport;
 

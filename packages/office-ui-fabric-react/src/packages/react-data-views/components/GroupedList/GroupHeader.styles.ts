@@ -1,6 +1,6 @@
 import { IGroupHeaderStyleProps, IGroupHeaderStyles } from './GroupHeader.types';
-import { getGlobalClassNames, getFocusStyle, IStyle, AnimationVariables, FontWeights, IconFontSizes } from '../../Styling';
-import { IsFocusVisibleClassName } from '../../Utilities';
+import { getGlobalClassNames, getFocusStyle, IStyle, AnimationVariables, FontWeights, IconFontSizes } from '../../../../Styling';
+import { IsFocusVisibleClassName } from '../../../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from '../DetailsList/DetailsRow.styles';
 import { CHECK_CELL_WIDTH } from '../DetailsList/DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.

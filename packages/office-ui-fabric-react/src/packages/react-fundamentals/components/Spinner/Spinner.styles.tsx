@@ -1,5 +1,5 @@
 import { ISpinnerStyleProps, ISpinnerStyles, SpinnerSize } from './Spinner.types';
-import { hiddenContentStyle, keyframes, HighContrastSelector, getGlobalClassNames } from '../../Styling';
+import { hiddenContentStyle, keyframes, HighContrastSelector, getGlobalClassNames } from '../../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Spinner',

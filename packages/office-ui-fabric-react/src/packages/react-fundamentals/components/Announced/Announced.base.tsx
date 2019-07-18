@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { DelayedRender, classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
+import { DelayedRender, classNamesFunction, getNativeProps, divProperties } from '../../../../Utilities';
+import { IProcessedStyleSet } from '../../../../Styling';
 import { IAnnouncedProps, IAnnouncedStyles } from './Announced.types';
 
 const getClassNames = classNamesFunction<{}, IAnnouncedStyles>();

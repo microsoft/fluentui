@@ -1,1 +1,1 @@
-export * from './utilities/color/index';
+export * from './packages/react-fundamentals/Color';

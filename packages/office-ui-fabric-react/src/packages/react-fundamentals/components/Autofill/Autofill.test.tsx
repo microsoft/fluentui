@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes } from '../../../../Utilities';
 import { Autofill } from './Autofill';
 
 describe('Autofill', () => {

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Autofill } from '../../Autofill';
-import { IInputProps } from '../../Pickers';
-import { IBaseFloatingPickerProps } from '../../FloatingPicker';
-import { IBaseSelectedItemsListProps } from '../../SelectedItemsList';
-import { IRefObject } from '../../Utilities';
-import { IFocusZoneProps } from '../../FocusZone';
+import { Autofill } from '../../../../Autofill';
+import { IInputProps } from '../../../../Pickers';
+import { IBaseFloatingPickerProps } from '../../../../FloatingPicker';
+import { IBaseSelectedItemsListProps } from '../../../../SelectedItemsList';
+import { IRefObject } from '../../../../Utilities';
+import { IFocusZoneProps } from '../../../../FocusZone';
 
 export interface IBaseExtendedPicker<T> {
   /** Forces the picker to resolve */

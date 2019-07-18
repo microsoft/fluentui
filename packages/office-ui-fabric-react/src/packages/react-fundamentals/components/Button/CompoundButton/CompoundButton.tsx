@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseButton } from '../BaseButton';
-import { BaseComponent, customizable } from '../../../Utilities';
+import { BaseComponent, customizable } from '../../../../../Utilities';
 import { IButtonProps } from '../Button.types';
 import { getStyles } from './CompoundButton.styles';
 

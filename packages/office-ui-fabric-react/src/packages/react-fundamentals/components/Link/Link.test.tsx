@@ -2,8 +2,8 @@ import { mount } from 'enzyme';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
 import * as renderer from 'react-test-renderer';
-import { Customizer } from '../../Utilities';
-import { createTheme } from '../../Styling';
+import { Customizer } from '../../../../Utilities';
+import { createTheme } from '../../../../Styling';
 
 import { Link } from './Link';
 

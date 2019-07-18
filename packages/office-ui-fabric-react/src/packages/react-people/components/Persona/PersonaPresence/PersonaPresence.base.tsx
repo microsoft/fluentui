@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../../Utilities';
-import { Icon } from '../../../Icon';
+import { BaseComponent, classNamesFunction } from '../../../../../Utilities';
+import { Icon } from '../../../../../Icon';
 import {
   IPersonaPresenceProps,
   IPersonaPresenceStyleProps,

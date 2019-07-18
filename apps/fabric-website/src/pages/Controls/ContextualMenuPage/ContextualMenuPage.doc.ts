@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { ContextualMenuPageProps as ExternalProps } from 'office-ui-fabric-react/lib/components/ContextualMenu/ContextualMenu.doc';
+import { ContextualMenuPageProps as ExternalProps } from 'office-ui-fabric-react/lib/packages/react-fundamentals/components/ContextualMenu/ContextualMenu.doc';
 
 // const componentUrl =
 //   'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/ContextualMenuPage';

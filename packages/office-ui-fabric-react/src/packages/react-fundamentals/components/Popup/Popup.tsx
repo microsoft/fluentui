@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Async, KeyCodes, divProperties, doesElementContainFocus, getDocument, getNativeProps, on } from '../../Utilities';
+import { Async, KeyCodes, divProperties, doesElementContainFocus, getDocument, getNativeProps, on } from '../../../../Utilities';
 import { IPopupProps } from './Popup.types';
 
 export interface IPopupState {

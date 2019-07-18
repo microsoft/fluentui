@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { BaseComponent } from '../../Utilities';
-import { Selection } from '../../Selection';
+import { BaseComponent } from '../../../../Utilities';
+import { Selection } from '../../../../Selection';
 
 import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
 

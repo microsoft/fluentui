@@ -9,7 +9,7 @@ import {
   findScrollableParent,
   getDistanceBetweenPoints,
   getRTL
-} from '../../Utilities';
+} from '../../../../Utilities';
 
 import { IMarqueeSelectionProps, IMarqueeSelectionStyleProps, IMarqueeSelectionStyles } from './MarqueeSelection.types';
 

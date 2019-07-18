@@ -1,5 +1,5 @@
 import { ITooltipHostStyleProps, ITooltipHostStyles } from './TooltipHost.types';
-import { getGlobalClassNames } from '../../Styling';
+import { getGlobalClassNames } from '../../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-TooltipHost'

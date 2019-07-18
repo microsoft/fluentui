@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, getNativeProps, imageProperties } from '../../Utilities';
+import { classNamesFunction, getNativeProps, imageProperties } from '../../../../Utilities';
 import { IImageProps, IImageStyleProps, IImageStyles, ImageCoverStyle, ImageFit, ImageLoadState } from './Image.types';
 
 const getClassNames = classNamesFunction<IImageStyleProps, IImageStyles>();

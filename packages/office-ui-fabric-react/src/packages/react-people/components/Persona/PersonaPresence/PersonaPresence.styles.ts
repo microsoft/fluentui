@@ -1,5 +1,5 @@
 import { IPersonaPresenceStyleProps, IPersonaPresenceStyles, PersonaPresence, PersonaSize } from '../Persona.types';
-import { FontSizes, HighContrastSelector, getGlobalClassNames, IRawStyle } from '../../../Styling';
+import { FontSizes, HighContrastSelector, getGlobalClassNames, IRawStyle } from '../../../../../Styling';
 import { personaPresenceSize, presenceBoolean, sizeBoolean } from '../PersonaConsts';
 
 const GlobalClassNames = {

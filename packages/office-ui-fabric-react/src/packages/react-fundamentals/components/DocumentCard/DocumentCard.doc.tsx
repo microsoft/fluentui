@@ -1,22 +1,22 @@
 import * as React from 'react';
 import { DocumentCardBasicExample } from './examples/DocumentCard.Basic.Example';
 
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 import { DocumentCardCompactExample } from './examples/DocumentCard.Compact.Example';
 import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Example';
 import { DocumentCardImageExample } from './examples/DocumentCard.Image.Example';
 import { DocumentCardConversationExample } from './examples/DocumentCard.Conversation.Example';
 
-const DocumentCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
-const DocumentCardBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
-const DocumentCardCompactExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Compact.Example.tsx') as string;
-const DocumentCardCompactExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Compact.Example.tsx') as string;
-const DocumentCardCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Complete.Example.tsx') as string;
-const DocumentCardCompleteExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Complete.Example.tsx') as string;
-const DocumentCardImageExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Image.Example.tsx') as string;
-const DocumentCardImageExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Image.Example.tsx') as string;
-const DocumentCardConversationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Conversation.Example.tsx') as string;
-const DocumentCardConversationExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Conversation.Example.tsx') as string;
+const DocumentCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
+const DocumentCardBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
+const DocumentCardCompactExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/DocumentCard/examples/DocumentCard.Compact.Example.tsx') as string;
+const DocumentCardCompactExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/DocumentCard/examples/DocumentCard.Compact.Example.tsx') as string;
+const DocumentCardCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/DocumentCard/examples/DocumentCard.Complete.Example.tsx') as string;
+const DocumentCardCompleteExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/DocumentCard/examples/DocumentCard.Complete.Example.tsx') as string;
+const DocumentCardImageExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/DocumentCard/examples/DocumentCard.Image.Example.tsx') as string;
+const DocumentCardImageExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/DocumentCard/examples/DocumentCard.Image.Example.tsx') as string;
+const DocumentCardConversationExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/DocumentCard/examples/DocumentCard.Conversation.Example.tsx') as string;
+const DocumentCardConversationExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/DocumentCard/examples/DocumentCard.Conversation.Example.tsx') as string;
 
 export const DocumentCardPageProps: IDocPageProps = {
   title: 'DocumentCard',
@@ -93,10 +93,16 @@ export const DocumentCardPageProps: IDocPageProps = {
       )
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/DocumentCard/docs/DocumentCardOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardDonts.md'),
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/DocumentCard/docs/DocumentCardDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/DocumentCard/docs/DocumentCardDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true
 };

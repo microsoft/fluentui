@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { classNamesFunction, BaseComponent, KeyCodes } from '../../Utilities';
+import { classNamesFunction, BaseComponent, KeyCodes } from '../../../../Utilities';
 import { ExpandingCardMode, IExpandingCardProps, IExpandingCardStyles, IExpandingCardStyleProps } from './ExpandingCard.types';
 import { CardCallout } from './CardCallout/CardCallout';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { StackPageProps } from 'office-ui-fabric-react/lib/components/Stack/Stack.doc';
+import { StackPageProps } from 'office-ui-fabric-react/lib/packages/react-fundamentals/components/Stack/Stack.doc';
 
 export const StackPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

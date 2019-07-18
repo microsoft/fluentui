@@ -15,17 +15,17 @@ import {
   KeyCodes,
   shallowCompare,
   mergeAriaAttributeValues
-} from '../../Utilities';
-import { Callout } from '../../Callout';
-import { Checkbox } from '../../Checkbox';
-import { CommandButton, IButtonStyles, IconButton } from '../../Button';
-import { DirectionalHint } from '../../common/DirectionalHint';
+} from '../../../../Utilities';
+import { Callout } from '../../../../Callout';
+import { Checkbox } from '../../../../Checkbox';
+import { CommandButton, IButtonStyles, IconButton } from '../../../../Button';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
 import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from './ComboBox.classNames';
 import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps } from './ComboBox.types';
-import { KeytipData } from '../../KeytipData';
-import { Label } from '../../Label';
-import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../utilities/selectableOption/index';
+import { KeytipData } from '../../../../KeytipData';
+import { Label } from '../../../../Label';
+import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../../../utilities/selectableOption/index';
 import { BaseButton, Button } from '../Button/index';
 
 export interface IComboBoxState {

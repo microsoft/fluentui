@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IIconProps } from '../../Icon';
-import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
-import { ITheme, IStyle } from '../../Styling';
-import { IFocusZoneProps } from '../../FocusZone';
-import { ITooltipHostProps } from '../../Tooltip';
+import { IIconProps } from '../../../../Icon';
+import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../../../Utilities';
+import { ITheme, IStyle } from '../../../../Styling';
+import { IFocusZoneProps } from '../../../../FocusZone';
+import { ITooltipHostProps } from '../../../../Tooltip';
 
 /**
  * {@docCategory Breadcrumb}

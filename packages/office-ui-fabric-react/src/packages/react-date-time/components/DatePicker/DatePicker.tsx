@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '../../../../Utilities';
 import { IDatePickerProps, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
 import { DatePickerBase } from './DatePicker.base';
 import { styles } from './DatePicker.styles';

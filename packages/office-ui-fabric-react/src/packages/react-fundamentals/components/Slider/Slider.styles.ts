@@ -1,5 +1,5 @@
 import { ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { getGlobalClassNames, HighContrastSelector, AnimationVariables, getFocusStyle } from '../../Styling';
+import { getGlobalClassNames, HighContrastSelector, AnimationVariables, getFocusStyle } from '../../../../Styling';
 import { getRTL } from '@uifabric/utilities';
 
 const GlobalClassNames = {

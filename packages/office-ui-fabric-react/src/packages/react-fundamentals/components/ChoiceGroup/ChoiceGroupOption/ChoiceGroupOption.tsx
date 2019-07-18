@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../../Utilities';
+import { styled } from '../../../../../Utilities';
 import { ChoiceGroupOptionBase } from './ChoiceGroupOption.base';
 import { IChoiceGroupOptionProps, IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
 import { getStyles } from './ChoiceGroupOption.styles';

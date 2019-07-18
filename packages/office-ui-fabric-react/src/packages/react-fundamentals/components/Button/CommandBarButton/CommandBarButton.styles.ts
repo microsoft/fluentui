@@ -1,6 +1,6 @@
 import { IButtonStyles } from '../Button.types';
-import { ITheme, concatStyleSets, getFocusStyle, HighContrastSelector } from '../../../Styling';
-import { memoizeFunction } from '../../../Utilities';
+import { ITheme, concatStyleSets, getFocusStyle, HighContrastSelector } from '../../../../../Styling';
+import { memoizeFunction } from '../../../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
 import { getStyles as getSplitButtonStyles } from '../SplitButton/SplitButton.styles';
 import { ButtonGlobalClassNames } from '../BaseButton.classNames';

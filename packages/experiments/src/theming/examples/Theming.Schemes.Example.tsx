@@ -21,7 +21,7 @@ import {
   Text
 } from 'office-ui-fabric-react';
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@uifabric/variants';
-import { farItems, items, overflowItems } from 'office-ui-fabric-react/lib/components/CommandBar/examples/data';
+import { farItems, items, overflowItems } from 'office-ui-fabric-react/lib/packages/react-fundamentals/components/CommandBar/examples/data';
 
 // tslint:disable:max-line-length
 import { CollapsibleSectionRecursiveExample } from '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';

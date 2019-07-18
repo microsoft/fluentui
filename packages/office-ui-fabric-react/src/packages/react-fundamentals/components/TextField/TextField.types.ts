@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStyle, IStyleSet, ITheme } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IIconProps } from '../../Icon';
+import { IStyle, IStyleSet, ITheme } from '../../../../Styling';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../../../Utilities';
+import { IIconProps } from '../../../../Icon';
 
 /**
  * {@docCategory TextField}

@@ -1,6 +1,6 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
-import { FontSizes, HighContrastSelector, getGlobalClassNames } from '../../Styling';
-import { IsFocusVisibleClassName } from '../../Utilities';
+import { FontSizes, HighContrastSelector, getGlobalClassNames } from '../../../../Styling';
+import { IsFocusVisibleClassName } from '../../../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-Checkbox',

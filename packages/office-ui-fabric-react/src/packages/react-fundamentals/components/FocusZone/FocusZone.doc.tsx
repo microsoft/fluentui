@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { FocusZonePhotosExample } from './examples/FocusZone.Photos.Example';
 
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 import { FocusZoneListExample } from './examples/FocusZone.List.Example';
 import { FocusZoneDisabledExample } from './examples/FocusZone.Disabled.Example';
 import { FocusZoneTabbableExample } from './examples/FocusZone.Tabbable.Example';
 
-const FocusZonePhotosExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Photos.Example.tsx') as string;
-const FocusZonePhotosExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Photos.Example.tsx') as string;
-const FocusZoneListExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.List.Example.tsx') as string;
-const FocusZoneListExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.List.Example.tsx') as string;
-const FocusZoneDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Disabled.Example.tsx') as string;
-const FocusZoneDisabledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Disabled.Example.tsx') as string;
-const FocusZoneTabbableCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Tabbable.Example.tsx') as string;
-const FocusZoneTabbableCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/FocusZone/examples/FocusZone.Tabbable.Example.tsx') as string;
+const FocusZonePhotosExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/FocusZone/examples/FocusZone.Photos.Example.tsx') as string;
+const FocusZonePhotosExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/FocusZone/examples/FocusZone.Photos.Example.tsx') as string;
+const FocusZoneListExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/FocusZone/examples/FocusZone.List.Example.tsx') as string;
+const FocusZoneListExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/FocusZone/examples/FocusZone.List.Example.tsx') as string;
+const FocusZoneDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/FocusZone/examples/FocusZone.Disabled.Example.tsx') as string;
+const FocusZoneDisabledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/FocusZone/examples/FocusZone.Disabled.Example.tsx') as string;
+const FocusZoneTabbableCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/FocusZone/examples/FocusZone.Tabbable.Example.tsx') as string;
+const FocusZoneTabbableCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/FocusZone/examples/FocusZone.Tabbable.Example.tsx') as string;
 
 export const FocusZonePageProps: IDocPageProps = {
   title: 'FocusZone',
@@ -45,7 +45,9 @@ export const FocusZonePageProps: IDocPageProps = {
       view: <FocusZoneTabbableExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/docs/FocusZoneOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/FocusZone/docs/FocusZoneOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes } from '@uifabric/utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { FocusTrapZone } from './FocusTrapZone';
 import { IFocusTrapZoneProps } from './FocusTrapZone.types';

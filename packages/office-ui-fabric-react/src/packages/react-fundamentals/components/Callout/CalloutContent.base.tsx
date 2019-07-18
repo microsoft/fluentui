@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles, Target } from './Callout.types';
-import { DirectionalHint } from '../../common/DirectionalHint';
+import { DirectionalHint } from '../../../../common/DirectionalHint';
 import {
   Async,
   IPoint,
@@ -15,7 +15,7 @@ import {
   getWindow,
   on,
   shallowCompare
-} from '../../Utilities';
+} from '../../../../Utilities';
 import {
   positionCallout,
   ICalloutPositionedInfo,
@@ -23,10 +23,10 @@ import {
   getMaxHeight,
   IPosition,
   RectangleEdge
-} from '../../utilities/positioning';
-import { Popup } from '../../Popup';
-import { classNamesFunction } from '../../Utilities';
-import { AnimationClassNames } from '../../Styling';
+} from '../../../../utilities/positioning';
+import { Popup } from '../../../../Popup';
+import { classNamesFunction } from '../../../../Utilities';
+import { AnimationClassNames } from '../../../../Styling';
 
 const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.top]: AnimationClassNames.slideUpIn10,

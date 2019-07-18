@@ -1,5 +1,5 @@
-import { memoizeFunction } from '../../../Utilities';
-import { mergeStyleSets, focusClear, IStyle, HighContrastSelector } from '../../../Styling';
+import { memoizeFunction } from '../../../../../Utilities';
+import { mergeStyleSets, focusClear, IStyle, HighContrastSelector } from '../../../../../Styling';
 
 export interface IPositioningContainerStyles {
   /**

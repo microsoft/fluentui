@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Image } from '../../../Image';
-import { Icon } from '../../../Icon';
+import { Image } from '../../../../../Image';
+import { Icon } from '../../../../../Icon';
 import { IChoiceGroupOptionProps, IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
-import { classNamesFunction, getNativeProps, inputProperties, css } from '../../../Utilities';
-import { IProcessedStyleSet } from '../../../Styling';
+import { classNamesFunction, getNativeProps, inputProperties, css } from '../../../../../Utilities';
+import { IProcessedStyleSet } from '../../../../../Styling';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 

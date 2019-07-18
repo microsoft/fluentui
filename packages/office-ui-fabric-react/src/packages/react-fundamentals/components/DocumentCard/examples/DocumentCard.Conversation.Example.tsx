@@ -9,7 +9,7 @@ import {
   IDocumentCardActivityPerson
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from '../../../../../common/TestImages';
 import { IDocumentCardStyles } from '../DocumentCard.types';
 
 const conversationTileClass = mergeStyles({ height: 182 });

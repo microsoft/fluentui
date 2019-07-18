@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '../../../../Utilities';
 import { IDetailsHeaderProps, IDetailsHeaderBaseProps, IDetailsHeaderStyleProps, IDetailsHeaderStyles } from './DetailsHeader.types';
 import { DetailsHeaderBase } from './DetailsHeader.base';
 import { getStyles } from './DetailsHeader.styles';

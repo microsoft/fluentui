@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { IconBasicExample } from './examples/Icon.Basic.Example';
 
-import { IDocPageProps } from '../../common/DocPage.types';
+import { IDocPageProps } from '../../../../common/DocPage.types';
 import { IconSvgExample } from './examples/Icon.Svg.Example';
 import { IconColorExample } from './examples/Icon.Color.Example';
 import { IconImageSheetExample } from './examples/Icon.ImageSheet.Example';
 
-const IconBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Basic.Example.tsx') as string;
-const IconBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Basic.Example.tsx') as string;
-const IconSvgExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Svg.Example.tsx') as string;
-const IconColorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Color.Example.tsx') as string;
-const IconImageSheetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.ImageSheet.Example.tsx') as string;
+const IconBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Icon/examples/Icon.Basic.Example.tsx') as string;
+const IconBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Icon/examples/Icon.Basic.Example.tsx') as string;
+const IconSvgExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Icon/examples/Icon.Svg.Example.tsx') as string;
+const IconColorExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Icon/examples/Icon.Color.Example.tsx') as string;
+const IconImageSheetExampleCode = require('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Icon/examples/Icon.ImageSheet.Example.tsx') as string;
 
 export const IconPageProps: IDocPageProps = {
   title: 'Icon',
@@ -39,10 +39,10 @@ export const IconPageProps: IDocPageProps = {
       view: <IconImageSheetExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Icon/docs/IconOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDonts.md'),
+  dos: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Icon/docs/IconDos.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Icon/docs/IconDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true

@@ -1,4 +1,4 @@
-import { HighContrastSelector, AnimationVariables, normalize, IStyle } from '../../Styling';
+import { HighContrastSelector, AnimationVariables, normalize, IStyle } from '../../../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 import { getPlaceholderStyles } from '@uifabric/styling';
 

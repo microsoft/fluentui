@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IActivityItemProps } from './ActivityItem.types';
 import { IActivityItemClassNames, getClassNames } from './ActivityItem.classNames';
 import { getStyles } from './ActivityItem.styles';
-import { PersonaSize, PersonaCoin, IPersonaSharedProps, IPersonaCoinProps } from '../../Persona';
+import { PersonaSize, PersonaCoin, IPersonaSharedProps, IPersonaCoinProps } from '../../../../Persona';
 
 type OptionalReactKey = { key?: React.Key };
 

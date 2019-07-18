@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IDetailsRowCheckProps, IDetailsCheckboxProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
-import { css, styled, classNamesFunction } from '../../Utilities';
+import { css, styled, classNamesFunction } from '../../../../Utilities';
 import { Check } from '../../Check';
 import { getStyles } from './DetailsRowCheck.styles';
 

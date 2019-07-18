@@ -7,9 +7,9 @@ import {
   getId,
   warnMutuallyExclusive,
   warnConditionallyRequiredProps
-} from '../../Utilities';
+} from '../../../../Utilities';
 import { ISwatchColorPickerProps, ISwatchColorPickerStyleProps, ISwatchColorPickerStyles } from './SwatchColorPicker.types';
-import { Grid } from '../../utilities/grid/Grid';
+import { Grid } from '../../../../utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
 
