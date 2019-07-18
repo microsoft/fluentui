@@ -139,7 +139,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
             [this._classNames.rootIsSmall]: size !== RatingSize.Large
           })}
           data-is-focusable={readOnly ? true : false}
-          defaultActiveElement={rating ? starIds[rating - 1] && '#' + starIds[rating - 1] : undefined}
+          defaultActiveElement={rating ? starIds[Math.ceil(rating) - 1] && '#' + starIds[Math.ceil(rating) - 1] : undefined}
           aria-label={readOnly ? ariaLabel : ''}
         >
           {stars}
