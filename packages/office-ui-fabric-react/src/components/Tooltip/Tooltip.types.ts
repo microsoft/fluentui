@@ -103,6 +103,7 @@ export interface ITooltipStyleProps {
 
   /**
    * Delay before tooltip appears.
+   * @deprecated Delay logic moved to TooltipHost vs relying on animation delay.
    */
   delay?: TooltipDelay;
 
