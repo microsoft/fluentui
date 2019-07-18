@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon } from '../../Icon';
+import { Icon, FontIcon } from '../../Icon';
 import { initializeComponentRef, EventGroup, Async, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
 import { IColumn, ColumnActionsMode } from './DetailsList.types';
 
@@ -8,7 +8,6 @@ import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
 import { IDetailsColumnStyles } from './DetailsColumn.types';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { IDetailsColumnStyleProps, IDetailsColumnProps } from './DetailsColumn.types';
-import { FontIcon } from '../Icon';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 
