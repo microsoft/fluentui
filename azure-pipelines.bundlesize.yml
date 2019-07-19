@@ -18,13 +18,8 @@ jobs:
       - script: yarn workspace test-bundles build
         displayName: yarn build test-bundles
 
-      - task: Npm@1
+      - script: yarn bundlesizecollect
         displayName: 'Collate Bundle Size Information'
-        inputs:
-          command: custom
-          workingDir: .
-          verbose: false
-          customCommand: 'run bundlesizecollect'
 
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Bundle Size information to Azure Dev Ops Artifacts'
