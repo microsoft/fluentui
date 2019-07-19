@@ -1,6 +1,6 @@
 // @ts-check
 
-const { task, series, parallel, condition, option, argv, logger, addResolvePath } = require('just-scripts');
+const { task, series, parallel, condition, option, argv, addResolvePath } = require('just-scripts');
 
 const path = require('path');
 const fs = require('fs');
@@ -63,10 +63,7 @@ module.exports = function preset() {
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
 
-  // Special case build for the serializer, which needs to absolutely run typescript and jest serially.
-  task('build-jest-serializer-merge-styles', series('ts', 'jest'));
-
-  task('build:node-lib', series('clean', 'copy', series(condition('validate', () => !argv().min), 'ts:commonjs-only')));
+  task('build:node-lib', series('clean', 'copy', series(condition('validate', () => !argv().min), 'ts:commonjs-only'))).cached();
 
   task(
     'build',
@@ -79,5 +76,7 @@ module.exports = function preset() {
         series('ts', parallel(condition('webpack', () => !argv().min), condition('lint-imports', () => !argv().min)))
       )
     )
-  );
+  ).cached();
+
+  task('no-op', () => {}).cached();
 };

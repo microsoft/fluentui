@@ -1,6 +1,20 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Mon, 01 Jul 2019 18:51:42 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+
+## 0.107.5
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 0.107.4
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Patches
+
+- Card: Importing from office-ui-fabric-react directly instead of from office-ui-fabric-react/lib/... (Humberto.Morimoto@microsoft.com)
 
 ## 0.107.3
 Mon, 01 Jul 2019 18:51:42 GMT

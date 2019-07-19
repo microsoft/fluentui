@@ -5,8 +5,9 @@
 import { IHSV, IColor } from './interfaces';
 import { MAX_COLOR_RGBA } from './consts';
 import { assign } from '../../Utilities';
-import { hsv2hsl } from './hsv2hsl';
+import { clamp } from './clamp';
 import { getColorFromRGBA } from './getColorFromRGBA';
+import { hsv2hsl } from './hsv2hsl';
 import { hsv2rgb } from './hsv2rgb';
 
 // Soften: to get closer to the background color's luminance
@@ -62,20 +63,16 @@ function _darken(hsv: IHSV, factor: number): IHSV {
   return {
     h: hsv.h,
     s: hsv.s,
-    v: _clamp(hsv.v - hsv.v * factor, 0, 100)
+    v: clamp(hsv.v - hsv.v * factor, 100, 0)
   };
 }
 
 function _lighten(hsv: IHSV, factor: number): IHSV {
   return {
     h: hsv.h,
-    s: _clamp(hsv.s - hsv.s * factor, 0, 100),
-    v: _clamp(hsv.v + (100 - hsv.v) * factor, 0, 100)
+    s: clamp(hsv.s - hsv.s * factor, 100, 0),
+    v: clamp(hsv.v + (100 - hsv.v) * factor, 100, 0)
   };
-}
-
-function _clamp(n: number, min: number, max: number) {
-  return n; // Math.max(min, Math.min(n, max));
 }
 
 export function isDark(color: IColor): boolean {

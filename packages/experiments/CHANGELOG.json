@@ -2,6 +2,114 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 19 Jul 2019 12:25:58 GMT",
+      "tag": "@uifabric/experiments_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Chiclet: removes imageHeight and imageWidth props",
+            "author": "t-stcar@microsoft.com",
+            "commit": "7852d0520f5ee54d4dacbb8fcc22f1b748dac9b6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/experiments_v7.6.2",
+      "version": "7.6.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          },
+          {
+            "comment": "Remove fluent customizations.",
+            "author": "vibraga@microsoft.com",
+            "commit": "6931990896b08f816e10d3936d36a92b82aa794a"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          },
+          {
+            "comment": "bumping versions to match what was published already",
+            "author": "kchau@microsoft.com",
+            "commit": "75e4ad16a2e6a54672e4929a9e003c7fd6f6ae52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/experiments_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Updating Button styles to use corresponding semanticColors instead of palette.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "044e13c2c8c391885693bbaa493e975fab35f3ea"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Change media tile to show metadata only on hover",
+            "author": "jocobb@microsoft.com",
+            "commit": ""
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Jul 2019 12:29:52 GMT",
+      "tag": "@uifabric/experiments_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chiclet: adjust xsmall chiclet title height",
+            "author": "natalie.ethell@microsoft.com",
+            "commit": "04958abbb3a8d0ff556770fc0c4fb0abdb9dbca4"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add screener tests for media tiles",
+            "author": "jocobb@microsoft.com",
+            "commit": "57675680a18d6c5463ec44c5f5beaca8890dc226"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Jul 2019 12:28:00 GMT",
+      "tag": "@uifabric/experiments_v7.4.2",
+      "version": "7.4.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update names in floatingSuggestons + expose needed functionality for UnifiedPicker t",
+            "author": "mhuan13@gmail.com",
+            "commit": "c6b2d2909cec0a169e9ec3d69dd68bbb621081f8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Jul 2019 12:30:55 GMT",
       "tag": "@uifabric/experiments_v7.4.1",
       "version": "7.4.1",

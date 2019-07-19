@@ -1,0 +1,8 @@
+{
+  "comment": "Tile: Add ability for screen reader to read selected state.",
+  "type": "minor",
+  "packageName": "@uifabric/experiments",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "284ca631afe83fc5ec56b4c221691bd85ad341f8",
+  "date": "2019-07-17T21:36:19.488Z"
+}

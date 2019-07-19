@@ -139,10 +139,6 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       return;
     }
 
-    if (!ev.shiftKey) {
-      this.props.selection.setAllSelected(false);
-    }
-
     if (!this._isTouch && isEnabled && !this._isDragStartInSelection(ev) && (!onShouldStartSelection || onShouldStartSelection(ev))) {
       if (this._scrollableSurface && ev.button === 0 && this._root.current) {
         this._selectedIndicies = {};
@@ -218,6 +214,10 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       if (this.state.dragRect || getDistanceBetweenPoints(this._dragOrigin, currentPoint) > MIN_DRAG_DISTANCE) {
         if (!this.state.dragRect) {
           const { selection } = this.props;
+
+          if (!ev.shiftKey) {
+            selection.setAllSelected(false);
+          }
 
           this._preservedIndicies = selection && selection.getSelectedIndices && selection.getSelectedIndices();
         }

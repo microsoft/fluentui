@@ -3,7 +3,7 @@ import { IAppDefinition } from '@uifabric/example-app-base';
 import { AppCustomizations } from './customizations';
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'Fabric - React',
+  appTitle: 'UI Fabric - Experiments',
   customizations: AppCustomizations,
   testPages: [],
   examplePages: [

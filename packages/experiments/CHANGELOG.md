@@ -1,6 +1,50 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 03 Jul 2019 12:30:55 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Jul 2019 12:25:58 GMT and should not be manually modified.
+
+## 7.7.0
+Fri, 19 Jul 2019 12:25:58 GMT
+
+### Minor changes
+
+- Chiclet: removes imageHeight and imageWidth props (t-stcar@microsoft.com)
+
+## 7.6.2
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+,- Remove fluent customizations. (vibraga@microsoft.com)
+
+## 7.6.0
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Minor changes
+
+- Change media tile to show metadata only on hover (jocobb@microsoft.com)
+
+### Patches
+
+- Button: Updating Button styles to use corresponding semanticColors instead of palette. (Humberto.Morimoto@microsoft.com)
+
+## 7.5.0
+Fri, 12 Jul 2019 12:29:52 GMT
+
+### Minor changes
+
+- Add screener tests for media tiles (jocobb@microsoft.com)
+
+### Patches
+
+- Chiclet: adjust xsmall chiclet title height (natalie.ethell@microsoft.com)
+
+## 7.4.2
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- Update names in floatingSuggestons + expose needed functionality for UnifiedPicker t (mhuan13@gmail.com)
 
 ## 7.4.1
 Wed, 03 Jul 2019 12:30:55 GMT

@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/migration",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "Migration scripts for UI Fabric",
   "main": "lib/index.js",
   "bin": {
@@ -13,13 +13,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style",
-    "start": "npx just-scripts dev",
-    "start-test": "npx just-scripts jest-watch",
-    "update-snapshots": "npx just-scripts jest -u",
-    "just": "npx just-scripts"
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start": "just-scripts dev",
+    "start-test": "just-scripts jest-watch",
+    "update-snapshots": "just-scripts jest -u",
+    "just": "just-scripts"
   },
   "devDependencies": {
     "@types/jest": "23.0.0",
@@ -27,8 +27,8 @@
     "@types/mock-fs": "3.6.30",
     "@types/node": "^8.10.29",
     "@types/semver": "^5.5.0",
-    "@uifabric/prettier-rules": "^7.0.2",
-    "@uifabric/tslint-rules": "^7.0.2",
+    "@uifabric/prettier-rules": "^7.0.3",
+    "@uifabric/tslint-rules": "^7.0.3",
     "glob": "^7.1.2",
     "mock-fs": "4.10.0",
     "@uifabric/build": "^7.0.0"

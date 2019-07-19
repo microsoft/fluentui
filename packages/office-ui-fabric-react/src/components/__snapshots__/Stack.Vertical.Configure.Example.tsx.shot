@@ -973,7 +973,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #323130;
+                  color: #a19f9d;
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -988,6 +988,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   padding-right: 0px;
                   padding-top: 0px;
                   word-wrap: break-word;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: GrayText;
                 }
             htmlFor="Slider5"
           >
@@ -1136,7 +1139,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     -webkit-font-smoothing: antialiased;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #323130;
+                    color: #a19f9d;
                     display: block;
                     flex-shrink: 1;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1155,6 +1158,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     white-space: nowrap;
                     width: 40px;
                     word-wrap: break-word;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: GrayText;
                   }
             >
               200

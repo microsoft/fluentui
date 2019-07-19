@@ -1,0 +1,8 @@
+{
+  "comment": "Fix jest reporter",
+  "type": "none",
+  "packageName": "@uifabric/codepen-loader",
+  "email": "elcraig@microsoft.com",
+  "commit": "19929074bdec2913e519d675aac09a5831653f68",
+  "date": "2019-07-19T00:48:09.286Z"
+}

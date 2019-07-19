@@ -288,6 +288,7 @@ export interface ISpinButtonStyles {
 
   /**
    * Style for the label text
+   * @deprecated Disabled styles taken care by `Label` component.
    */
   labelDisabled: IStyle;
 

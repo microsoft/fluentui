@@ -6,21 +6,15 @@ import { ICheckStyleProps, ICheckStyles } from './Check.types';
 
 const getClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
 
-export class CheckBase extends React.Component<ICheckProps, {}> {
-  public static defaultProps: ICheckProps = {
-    checked: false
-  };
+export const CheckBase: React.FunctionComponent<ICheckProps> = props => {
+  const { checked = false, className, theme, styles } = props;
 
-  public render(): JSX.Element {
-    const { checked, className, theme, styles } = this.props;
+  const classNames = getClassNames(styles!, { theme: theme!, className, checked });
 
-    const classNames = getClassNames(styles!, { theme: theme!, className, checked });
-
-    return (
-      <div className={classNames.root}>
-        <Icon iconName="CircleRing" className={classNames.circle} />
-        <Icon iconName="StatusCircleCheckmark" className={classNames.check} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className={classNames.root}>
+      <Icon iconName="CircleRing" className={classNames.circle} />
+      <Icon iconName="StatusCircleCheckmark" className={classNames.check} />
+    </div>
+  );
+};

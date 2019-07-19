@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/test-utilities",
-  "version": "7.0.3",
+  "version": "7.0.4",
   "description": "Utilities used when testing components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,13 +14,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style",
-    "start": "npx just-scripts dev",
-    "start-test": "npx just-scripts jest-watch",
-    "update-api": "npx just-scripts update-api"
+    "build": "just-scripts build",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start": "just-scripts dev",
+    "start-test": "just-scripts jest-watch",
+    "update-api": "just-scripts update-api"
   },
   "devDependencies": {
     "@types/enzyme": "3.1.13",
@@ -31,9 +31,9 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.13.9",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.3",
-    "@uifabric/prettier-rules": "^7.0.2",
-    "@uifabric/tslint-rules": "^7.0.2",
+    "@uifabric/jest-serializer-merge-styles": "^7.0.4",
+    "@uifabric/prettier-rules": "^7.0.3",
+    "@uifabric/tslint-rules": "^7.0.3",
     "enzyme": "~3.9.0",
     "enzyme-adapter-react-16": "^1.2.0",
     "es6-weak-map": "^2.0.2",
@@ -44,9 +44,11 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.0"
+    "@uifabric/set-version": "^7.0.1"
   },
   "peerDependencies": {
+    "@types/react": ">=16.8.0 <17.0.0",
+    "@types/react-dom": ">=16.8.0 <17.0.0",
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0"
   }

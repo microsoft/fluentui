@@ -1,4 +1,4 @@
-const path = require('path');
+const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
 const resources = require('../../scripts/webpack/webpack-resources');
 
 module.exports = resources.createServeConfig({
@@ -14,15 +14,6 @@ module.exports = resources.createServeConfig({
   },
 
   resolve: {
-    alias: {
-      'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
-      'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
-      'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
-      '@uifabric/fluent-theme$': path.resolve(__dirname, '../../packages/fluent-theme/src'),
-      '@uifabric/mdl2-theme$': path.resolve(__dirname, '../../packages/mdl2-theme/src'),
-      '@uifabric/theme-samples$': path.resolve(__dirname, '../../packages/theme-samples/src'),
-      'Props.ts.js': 'Props',
-      'Example.tsx.js': 'Example'
-    }
+    alias: getResolveAlias()
   }
 });

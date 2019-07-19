@@ -2,6 +2,60 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 18 Jul 2019 12:27:48 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.7",
+      "version": "7.2.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update homepage.htm to match real one",
+            "author": "elcraig@microsoft.com",
+            "commit": "75c2288c35828886d8340d3976dc340f120ad419"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.7",
+      "version": "7.2.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          },
+          {
+            "comment": "bumping versions to match what was published already",
+            "author": "kchau@microsoft.com",
+            "commit": "75e4ad16a2e6a54672e4929a9e003c7fd6f6ae52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.5",
+      "version": "7.2.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jul 2019 17:34:38 GMT",
       "tag": "@uifabric/fabric-website_v7.2.5",
       "version": "7.2.5",
