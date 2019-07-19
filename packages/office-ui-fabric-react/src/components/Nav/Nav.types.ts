@@ -101,18 +101,10 @@ export interface INavProps {
    * If not provided, the aria label will default to the link name.
    */
   expandButtonAriaLabel?: string;
-
   /**
-   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
-   * @deprecated Removed at v1.0.0.
-   **/
-  expandedStateText?: string;
-
-  /**
-   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
-   * @deprecated Removed at v1.0.0.
-   **/
-  collapsedStateText?: string;
+   * (Optional) The nav link selected state aria label.
+   */
+  selectedAriaLabel?: string;
 }
 
 /**

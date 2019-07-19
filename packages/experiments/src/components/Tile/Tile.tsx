@@ -151,6 +151,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       href,
       onClick,
       isFluentStyling,
+      ariaLabelSelected,
       nameplateOnlyOnHover,
       ...divProps
     } = this.props;
@@ -159,12 +160,12 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
 
     const isSelectable = !!selection && selectionIndex > -1;
     const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
-
+    const ariaLabelWithSelectState = isSelected && ariaLabelSelected ? `${ariaLabel}, ${ariaLabelSelected}` : ariaLabel;
     const content = (
       <>
         {ariaLabel ? (
           <span key="label" id={this._labelId} className={css('ms-Tile-label', TileStylesModule.label)}>
-            {ariaLabel}
+            {ariaLabelWithSelectState}
           </span>
         ) : null}
         {background
@@ -208,7 +209,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         aria-selected={isSelected}
         {...getNativeProps(divProps, divProperties)}
         aria-labelledby={ariaLabel ? this._labelId : this._nameId}
-        aria-describedby={descriptionAriaLabel ? this._descriptionId : this._activityId}
+        aria-describedby={ariaLabelWithSelectState ? this._descriptionId : this._activityId}
         className={css('ms-Tile', className, TileStyles.tile, {
           [`ms-Tile--isSmall ${TileStyles.isSmall}`]: tileSize === 'small',
           [`ms-Tile--isLarge ${TileStyles.isLarge}`]: tileSize === 'large',

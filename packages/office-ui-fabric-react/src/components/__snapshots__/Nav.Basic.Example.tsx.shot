@@ -638,7 +638,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
               name="Documents"
             >
               <a
-                aria-label="undefined, Selected"
+                aria-label="Selected"
                 className=
                     ms-Button
                     ms-Button--action
