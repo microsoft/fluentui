@@ -221,4 +221,9 @@ export interface ISliderStyles {
    * Style set for tick on 0 on number line. This element only shows up when originFromZero prop is true.
    */
   zeroTick: IStyle;
+
+  /**
+   * Style set for tick on number line. This element only shows up when marks prop is true.
+   */
+  regularTick: IStyle;
 }

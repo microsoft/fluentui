@@ -4,7 +4,6 @@ import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slide
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ISliderState {
   value?: number;
@@ -64,7 +63,9 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       valueFormat,
       styles,
       theme,
-      originFromZero
+      originFromZero,
+      marks,
+      thumblabel
     } = this.props;
     const value = this.value;
     const renderedValue = this.renderedValue;
@@ -113,8 +114,13 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               {originFromZero && (
                 <span className={css(classNames.zeroTick)} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
               )}
-              {
-                <TooltipHost content={'' + value} id={this._hostId} calloutProps={{ gapSpace: 0, target: `#${this._buttonId}` }}>
+              {typeof marks === 'boolean' && marks && this._addTickmarks(css(classNames.regularTick))}
+              {thumblabel ? (
+                <TooltipHost
+                  content={'' + value}
+                  id={this._hostId}
+                  calloutProps={{ gapSpace: 5, beakWidth: 8, target: `#${this._buttonId}` }}
+                >
                   <span
                     ref={this._thumb}
                     className={classNames.thumb}
@@ -123,7 +129,15 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                     aria-labelledby={this._hostId}
                   />
                 </TooltipHost>
-              }
+              ) : (
+                <span
+                  ref={this._thumb}
+                  className={classNames.thumb}
+                  style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)}
+                  id={this._buttonId}
+                  aria-labelledby={this._hostId}
+                />
+              )}
               {originFromZero ? (
                 <>
                   <span
@@ -153,7 +167,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               )}
             </div>
           </div>
-          {showValue && (
+          {showValue && !thumblabel && (
             <Label className={classNames.valueLabel} disabled={disabled}>
               {valueFormat ? valueFormat(value!) : value}
             </Label>
@@ -266,6 +280,30 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     }
     return currentPosition;
   }
+
+  private _addTickmarks(cssRegularTickClassNames: string | undefined) {
+    const { min, max, step, vertical } = this.props;
+    if (min === undefined || max === undefined || step === undefined) {
+      return [];
+    }
+    const ticks = [];
+    for (let i = 0; i <= 100; i += (100 * step) / (max - min)) {
+      // += number is basically the distance between each tick
+      ticks.push(
+        <span
+          className={cssRegularTickClassNames}
+          style={
+            // the zeroOffsetPercent denotes where the tick mark should go
+            this._getStyleUsingOffsetPercent(vertical, i)
+          }
+        />
+      );
+    }
+    console.log(ticks);
+    // return html here
+    return ticks;
+  }
+
   private _updateValue(value: number, renderedValue: number): void {
     const { step } = this.props;
 
