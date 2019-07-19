@@ -23,6 +23,13 @@ const classNames = mergeStyleSets({
     height: '80vh',
     position: 'relative'
   },
+  detailsListRows: {
+    selectors: {
+      '.ms-DetailsRow': {
+        animation: 'none'
+      }
+    }
+  },
   filter: {
     paddingBottom: 20,
     maxWidth: 300
@@ -113,6 +120,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, IScrol
           </Sticky>
           <MarqueeSelection selection={this._selection}>
             <DetailsList
+              className={classNames.detailsListRows}
               items={items}
               columns={this._columns}
               setKey="set"
@@ -159,6 +167,7 @@ function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRend
     <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
       <div className={classNames.row}>
         <DetailsRow
+          className={classNames.detailsListRows}
           columns={props.columns}
           item={_footerItem}
           itemIndex={-1}
