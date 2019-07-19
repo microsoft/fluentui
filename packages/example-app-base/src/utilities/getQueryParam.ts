@@ -5,14 +5,14 @@
  */
 export function getQueryParam(name: string, url?: string): string | null {
   url = url || window.location.href;
-  name = name.replace(/[\[\]]/g, '\\$&');
-  const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
-  const results = regex.exec(url);
-  if (!results) {
-    return null;
+  // Manually get the query string in case it's after the hash (possible with hash routing)
+  const queryIndex = url.indexOf('?');
+  const query = queryIndex !== -1 ? url.substr(queryIndex) : '';
+
+  const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`);
+  const match = query.match(regex);
+  if (match) {
+    return decodeURIComponent((match[2] || '').replace(/\+/g, ' '));
   }
-  if (!results[2]) {
-    return '';
-  }
-  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+  return null;
 }
