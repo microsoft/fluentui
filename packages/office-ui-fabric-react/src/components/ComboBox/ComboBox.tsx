@@ -427,10 +427,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               onRenderList,
               onRenderItem,
               onRenderOption,
-              options: this.state.currentOptions.map((item, index) => ({
-                ...item,
-                index: index
-              }))
+              options: this.state.currentOptions.map((item, index) => ({ ...item, index: index }))
             },
             this._onRenderContainer
           )}

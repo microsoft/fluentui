@@ -422,9 +422,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
 
     if (this._spinningByMouse || this.state.keyboardSpinDirection !== KeyboardSpinDirection.notSpinning) {
       this._spinningByMouse = false;
-      this.setState({
-        keyboardSpinDirection: KeyboardSpinDirection.notSpinning
-      });
+      this.setState({ keyboardSpinDirection: KeyboardSpinDirection.notSpinning });
     }
   };
 
