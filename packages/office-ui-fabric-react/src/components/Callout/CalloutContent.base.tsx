@@ -191,7 +191,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       hideOverflow = !!finalHeight,
       backgroundColor,
       calloutMaxHeight,
-      onScroll
+      onScroll,
+      shouldRestoreFocus = true
     } = this.props;
     target = this._getTarget();
     const { positions } = this.state;
@@ -241,7 +242,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
             className={this._classNames.calloutMain}
             onDismiss={this.dismiss}
             onScroll={onScroll}
-            shouldRestoreFocus={true}
+            shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
             onMouseDown={this._mouseDownOnPopup}
             onMouseUp={this._mouseUpOnPopup}
@@ -332,8 +333,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       this._disposables.push(
         on(this._targetWindow, 'scroll', this._dismissOnScroll, true),
         on(this._targetWindow, 'resize', this._dismissOnResize, true),
-        on(this._targetWindow.document.documentElement as any, 'focus', this._dismissOnLostFocus, true), // FABRIC7TODO remove any
-        on(this._targetWindow.document.documentElement as any, 'click', this._dismissOnLostFocus, true) // FABRIC7TODO remove any
+        on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true),
+        on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true)
       );
       this._hasListeners = true;
     }, 0);

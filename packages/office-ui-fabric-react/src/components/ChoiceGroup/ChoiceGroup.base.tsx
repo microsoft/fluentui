@@ -103,7 +103,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
       <div role={role} className={classNames.applicationRole} {...divProps}>
         <div className={classNames.root} role="radiogroup" {...ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy }}>
           {label && (
-            <Label className={classNames.label} required={required} id={this._id + '-label'}>
+            <Label className={classNames.label} required={required} id={this._id + '-label'} disabled={disabled}>
               {label}
             </Label>
           )}

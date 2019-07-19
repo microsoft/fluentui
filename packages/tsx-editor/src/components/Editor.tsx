@@ -1,4 +1,4 @@
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
+import * as monaco from 'monaco-editor';
 import * as React from 'react';
 import { IEditorProps } from './Editor.types';
 
@@ -32,6 +32,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
     });
 
     return () => {
+      editor.getModel()!.dispose();
       editor.dispose();
     };
   }, []);

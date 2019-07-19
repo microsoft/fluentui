@@ -54,7 +54,7 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
           visibility: 'hidden'
         },
         ':hover': {
-          backgroundColor: semanticColors.buttonBackground,
+          backgroundColor: semanticColors.buttonBackgroundHovered,
           color: semanticColors.buttonTextHovered,
           cursor: 'pointer'
         },

@@ -2,6 +2,34 @@
   "name": "@uifabric/prettier-rules",
   "entries": [
     {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/prettier-rules_v7.0.3",
+      "version": "7.0.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/prettier-rules_v7.0.2",
+      "version": "7.0.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "adding build cache",
+            "author": "kchau@microsoft.com",
+            "commit": "babf367fa3a2f05d6689b9ea0a0cdb765b282380"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.0.2",
       "tag": "@uifabric/prettier-rules_v7.0.2",
       "date": "Fri, 14 Jun 2019 12:26:30 GMT",

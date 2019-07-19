@@ -1337,7 +1337,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
 export const GroupedList: React.StatelessComponent<IGroupedListProps>;
 
 // @public (undocumented)
-export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
+export class GroupedListBase extends React.Component<IGroupedListProps, IGroupedListState> implements IGroupedList {
     constructor(props: IGroupedListProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1379,7 +1379,7 @@ export const groupOne: IExtendedPersonaProps[];
 export const GroupShowAll: React.StatelessComponent<IGroupShowAllProps>;
 
 // @public (undocumented)
-export const GroupSpacer: React.SFC<IGroupSpacerProps>;
+export const GroupSpacer: React.FunctionComponent<IGroupSpacerProps>;
 
 // @public (undocumented)
 export const groupTwo: IExtendedPersonaProps[];
@@ -2086,6 +2086,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
+    shouldRestoreFocus?: boolean;
     style?: React.CSSProperties;
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
@@ -2229,21 +2230,18 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
     theme?: ITheme;
 }
 
-// @public (undocumented)
+// @public
 export interface IChoiceGroupOptionStyleProps {
-    // (undocumented)
     checked?: boolean;
-    // (undocumented)
     disabled?: boolean;
-    // (undocumented)
     focused?: boolean;
-    // (undocumented)
     hasIcon?: boolean;
-    // (undocumented)
     hasImage?: boolean;
-    // (undocumented)
     imageIsLarge?: boolean;
-    // (undocumented)
+    imageSize?: {
+        height: number;
+        width: number;
+    };
     theme: ITheme;
 }
 
@@ -2701,6 +2699,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     multiSelect?: boolean;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
+    onMenuDismiss?: () => void;
     onMenuDismissed?: () => void;
     onMenuOpen?: () => void;
     onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
@@ -2710,6 +2709,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     options: IComboBoxOption[];
     persistMenu?: boolean;
     scrollSelectedToTop?: boolean;
+    shouldRestoreFocus?: boolean;
     styles?: Partial<IComboBoxStyles>;
     text?: string;
     theme?: ITheme;
@@ -3734,6 +3734,7 @@ export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithRe
     ariaLabelledById?: string;
     // @deprecated
     className?: string;
+    // @deprecated
     componentRef?: IRefObject<IDialog>;
     // @deprecated
     containerClassName?: string;
@@ -4253,6 +4254,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     onChanged?: (option: IDropdownOption, index?: number) => void;
     onDismiss?: () => void;
     onRenderCaretDown?: IRenderFunction<IDropdownProps>;
+    onRenderLabel?: IRenderFunction<IDropdownProps>;
     // @deprecated
     onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
     onRenderPlaceholder?: IRenderFunction<IDropdownProps>;
@@ -6892,6 +6894,7 @@ export interface ISpinButtonStyles {
     inputDisabled: IStyle;
     inputTextSelected: IStyle;
     label: IStyle;
+    // @deprecated
     labelDisabled: IStyle;
     labelWrapper: IStyle;
     labelWrapperBottom: IStyle;
@@ -7689,7 +7692,9 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
 // @public (undocumented)
 export interface ITooltipStyleProps {
     className?: string;
+    // @deprecated
     delay?: TooltipDelay;
+    gapSpace?: number;
     maxWidth?: string;
     theme: ITheme;
 }
@@ -9303,7 +9308,7 @@ export enum TooltipDelay {
 export const TooltipHost: React.StatelessComponent<ITooltipHostProps>;
 
 // @public (undocumented)
-export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
+export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
     constructor(props: ITooltipHostProps);
     // (undocumented)
     componentWillUnmount(): void;

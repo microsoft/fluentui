@@ -147,8 +147,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     const { isFocused, value, keyboardSpinDirection } = this.state;
 
     const classNames = this.props.getClassNames
-      ? this.props.getClassNames(theme!, !!disabled, !!isFocused, keyboardSpinDirection, labelPosition, className)
-      : getClassNames(getStyles(theme!, customStyles), !!disabled, !!isFocused, keyboardSpinDirection, labelPosition, className);
+      ? this.props.getClassNames(theme!, disabled, isFocused, keyboardSpinDirection, labelPosition, className)
+      : getClassNames(getStyles(theme!, customStyles), disabled, isFocused, keyboardSpinDirection, labelPosition, className);
 
     return (
       <div className={classNames.root}>
@@ -156,7 +156,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon {...iconProps} className={classNames.icon} aria-hidden="true" />}
             {label && (
-              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label}>
+              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label} disabled={disabled}>
                 {label}
               </Label>
             )}
@@ -232,7 +232,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon iconName={iconProps.iconName} className={classNames.icon} aria-hidden="true" />}
             {label && (
-              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label}>
+              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label} disabled={disabled}>
                 {label}
               </Label>
             )}

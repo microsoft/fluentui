@@ -51,6 +51,16 @@ export function standardStyles(theme: ITheme): IButtonStyles {
       color: buttonTextCheckedHovered
     },
 
+    rootDisabled: {
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText',
+          borderColor: 'GrayText',
+          backgroundColor: 'Window'
+        }
+      }
+    },
+
     // Split button styles
     splitButtonContainer: {
       selectors: {
@@ -249,11 +259,23 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonMenuIcon: {
-      color: s.primaryButtonText
+      color: s.primaryButtonText,
+
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'Window'
+        }
+      }
     },
 
     splitButtonMenuIconDisabled: {
-      color: p.neutralTertiary
+      color: p.neutralTertiary,
+
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText'
+        }
+      }
     }
   };
 }
