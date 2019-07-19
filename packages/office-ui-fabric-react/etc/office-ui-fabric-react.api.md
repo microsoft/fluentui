@@ -2174,17 +2174,15 @@ export interface ICheckProps extends React.ClassAttributes<CheckBase> {
 }
 
 // @public (undocumented)
-export interface ICheckStyleProps {
+export type ICheckStyleProps = Required<Pick<ICheckProps, 'theme'>> & Pick<ICheckProps, 'className' | 'checked'> & {
+    height?: string;
     checkBoxHeight?: string;
-    // (undocumented)
-    checked?: boolean;
-    className?: string;
-    theme: ITheme;
-}
+};
 
 // @public (undocumented)
 export interface ICheckStyles {
     check: IStyle;
+    // @deprecated
     checkHost: IStyle;
     circle: IStyle;
     root: IStyle;
@@ -3535,7 +3533,7 @@ export type IDetailsRowCheckStyleProps = Required<Pick<IDetailsRowCheckProps, 't
 
 // @public (undocumented)
 export interface IDetailsRowCheckStyles {
-    // (undocumented)
+    // @deprecated (undocumented)
     check: IStyle;
     // (undocumented)
     isDisabled: IStyle;
