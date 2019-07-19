@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { CommandButton } from 'office-ui-fabric-react/lib/Button';
-// import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-// import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
-// import { styled, classNamesFunction, Customizer, css, CustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { styled, classNamesFunction, css, isIE11 } from 'office-ui-fabric-react/lib/Utilities';
 import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
@@ -27,13 +24,6 @@ const _schemeOptions: IDropdownOption[] = _schemes.map((item: string, index: num
   text: 'Scheme: ' + item
 }));
 
-// const regionStyles: IStackComponent['styles'] = (props, theme) => ({
-//   root: {
-//     backgroundColor: theme.semanticColors.bodyBackground,
-//     color: theme.semanticColors.bodyText
-//   }
-// });
-
 export class ExampleCardBase extends React.Component<IExampleCardProps, IExampleCardState> {
   private _themeCustomizations: IExampleCardCustomizations[] | undefined;
   private _themeOptions: IDropdownOption[];
@@ -53,15 +43,11 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
   public render(): JSX.Element {
     const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme, isCodeVisible } = this.props;
-    // const { schemeIndex, themeIndex } = this.state;
-    // const { themeIndex } = this.state;
 
     return (
       <AppCustomizationsContext.Consumer>
         {(context: IAppCustomizations) => {
           const { exampleCardCustomizations, hideSchemes } = context;
-          // const activeCustomizations =
-          //   exampleCardCustomizations && exampleCardCustomizations[themeIndex] && exampleCardCustomizations[themeIndex].customizations;
 
           if (exampleCardCustomizations !== this._themeCustomizations) {
             this._themeCustomizations = exampleCardCustomizations;
