@@ -1,0 +1,8 @@
+{
+  "comment": "Remove reference to index.html in precopy",
+  "type": "none",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "de6db9792f9e208e5d44e3697db3f718a9c2b4f6",
+  "date": "2019-07-19T16:44:47.570Z"
+}
