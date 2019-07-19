@@ -1,12 +1,10 @@
-import * as React from 'react';
-import { CheckBase } from './Check.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory Check}
  */
-export interface ICheckProps extends React.ClassAttributes<CheckBase> {
+export interface ICheckProps {
   /**
    * Gets the component ref.
    */
@@ -24,7 +22,7 @@ export interface ICheckProps extends React.ClassAttributes<CheckBase> {
   styles?: IStyleFunctionOrObject<ICheckStyleProps, ICheckStyles>;
 
   /**
-   * Flag to always show the check icon. Not currently working.
+   * @deprecated Not used
    */
   alwaysShowCheck?: boolean;
 
@@ -35,7 +33,6 @@ export interface ICheckProps extends React.ClassAttributes<CheckBase> {
 
   /**
    * Additional css class to apply to the Check
-   * @defaultvalue undefined
    */
   className?: string;
 }

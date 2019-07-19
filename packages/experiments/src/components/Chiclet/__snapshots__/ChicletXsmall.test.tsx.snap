@@ -74,7 +74,7 @@ exports[`Chiclet renders chiclet with title, icon, onClick, and url 1`] = `
           {
             color: #323130;
             font-size: 14px;
-            height: 37px;
+            height: 35px;
             letter-spacing: normal;
             line-height: 1.25;
             overflow: hidden;
@@ -156,8 +156,8 @@ exports[`Chiclet renders chiclet with title, preview, onClick, and url 1`] = `
           }
       style={
         Object {
-          "height": undefined,
-          "width": undefined,
+          "height": "59px",
+          "width": "61px",
         }
       }
     >
@@ -169,7 +169,9 @@ exports[`Chiclet renders chiclet with title, preview, onClick, and url 1`] = `
             is-fadeIn
             {
               display: block;
+              height: 100%;
               opacity: 0;
+              width: 100%;
             }
         onError={[Function]}
         onLoad={[Function]}
@@ -195,7 +197,7 @@ exports[`Chiclet renders chiclet with title, preview, onClick, and url 1`] = `
           {
             color: #323130;
             font-size: 14px;
-            height: 37px;
+            height: 35px;
             letter-spacing: normal;
             line-height: 1.25;
             overflow: hidden;
@@ -296,7 +298,7 @@ exports[`Chiclet renders the correct icon from a file extension 1`] = `
           {
             color: #323130;
             font-size: 14px;
-            height: 37px;
+            height: 35px;
             letter-spacing: normal;
             line-height: 1.25;
             overflow: hidden;

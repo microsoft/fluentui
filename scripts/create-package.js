@@ -60,7 +60,6 @@ const steps = [
   { template: 'ChangelogMarkdown', output: 'CHANGELOG.md' },
   { template: 'License', output: 'LICENSE' },
   { template: 'Readme', output: 'README.md' },
-  { template: 'IndexHtml', output: 'index.html' },
   { template: 'JustConfig', output: 'just.config.js' },
   { template: 'JestConfig', output: 'jest.config.js' },
   { template: 'JsConfig', output: 'jsconfig.json' },

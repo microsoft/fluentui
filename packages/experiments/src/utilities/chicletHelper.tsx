@@ -1,9 +1,18 @@
 import * as React from 'react';
 import { Image } from 'office-ui-fabric-react/lib/Image';
-import { IChicletCardProps } from '../components/Chiclet/ChicletCard.types';
+import { IChicletCardProps, IChicletCardStyles } from '../components/Chiclet/ChicletCard.types';
 
 const ASSET_CDN_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/assets';
 
+/**
+ * Returns an Image tag with filled in info
+ *
+ * @param imageUrl - Image url
+ * @param imageHeight - Preview image height
+ * @param imageWidth - Preview image width
+ * @param imageAlt - Alternate image
+ * @returns - Image tag with filled in info
+ */
 export function renderPreview(
   imageUrl?: string,
   imageHeight?: string | number,
@@ -17,6 +26,14 @@ export function renderPreview(
   return image;
 }
 
+/**
+ * Uses itemType to find the proper icon and return an img tag containing the icon url
+ *
+ * @param itemType - File type (Word, Excel, or PowerPoint)
+ * @param style - Icon styling
+ * @param imageProvided - Boolean that indicates if an image was provided
+ * @returns - img tag that contains the url for the specified file type
+ */
 export function renderIcon(
   itemType?: string,
   style?: string,
@@ -51,6 +68,12 @@ export function renderIcon(
   return icon;
 }
 
+/**
+ * Uses the file title to determine file type
+ *
+ * @param title - File title
+ * @returns - An extension or undefined
+ */
 export function findIcon(title: string): string | undefined {
   let extensionIndex;
   let pos;
@@ -70,16 +93,26 @@ export function findIcon(title: string): string | undefined {
   return undefined;
 }
 
-export function generateCommonHTML(
+/**
+ * Generates the HTML for a preview image and/or file icon
+ *
+ * @param props - Chiclet props
+ * @param imageProvided - Boolean that indicates if an image was provided
+ * @param classNames - Styling
+ * @param height - Height for the preview
+ * @param width - Width for the preview
+ */
+export function generatePreview(
   props: IChicletCardProps,
   imageProvided: boolean,
-  icon?: string,
-  preview?: string
+  classNames: { [key in keyof IChicletCardStyles]: string },
+  height?: string,
+  width?: string
 ): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> | undefined {
   return (
-    <div className={preview}>
-      {renderPreview(props.image, props.imageHeight, props.imageWidth, props.imageAlt)}
-      {renderIcon(props.itemType || (props.title && findIcon(props.title)), icon, imageProvided)}
+    <div className={classNames.preview}>
+      {renderPreview(props.image, height, width, props.imageAlt)}
+      {renderIcon(props.itemType || (props.title && findIcon(props.title)), classNames.icon, imageProvided)}
     </div>
   );
 }

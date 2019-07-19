@@ -1,0 +1,8 @@
+{
+  "comment": "Improve how to get the min query string",
+  "type": "patch",
+  "packageName": "@uifabric/charting",
+  "email": "elcraig@microsoft.com",
+  "commit": "17b31ca8739504e1d4c7b7dcaa725091254d0eb5",
+  "date": "2019-07-19T00:23:00.675Z"
+}

@@ -508,12 +508,7 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 export const Check: React.StatelessComponent<ICheckProps>;
 
 // @public (undocumented)
-export class CheckBase extends React.Component<ICheckProps, {}> {
-    // (undocumented)
-    static defaultProps: ICheckProps;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const CheckBase: React.FunctionComponent<ICheckProps>;
 
 // @public (undocumented)
 export const Checkbox: React.StatelessComponent<ICheckboxProps>;
@@ -850,7 +845,8 @@ export class DefaultButton extends BaseComponent<IButtonProps, {}> {
 export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
 
 // @public
-export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
+export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
+    constructor(props: IDetailsColumnProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -865,7 +861,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
 export const DetailsHeader: React.StatelessComponent<IDetailsHeaderBaseProps>;
 
 // @public (undocumented)
-export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {
+export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {
     constructor(props: IDetailsHeaderBaseProps);
     // (undocumented)
     componentDidMount(): void;
@@ -889,7 +885,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
 export const DetailsList: React.StatelessComponent<IDetailsListProps>;
 
 // @public (undocumented)
-export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
+export class DetailsListBase extends React.Component<IDetailsListProps, IDetailsListState> implements IDetailsList {
     constructor(props: IDetailsListProps);
     // (undocumented)
     componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState): void;
@@ -932,7 +928,7 @@ export enum DetailsListLayoutMode {
 export const DetailsRow: React.StatelessComponent<IDetailsRowBaseProps>;
 
 // @public (undocumented)
-export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetailsRowState> {
+export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetailsRowState> {
     constructor(props: IDetailsRowBaseProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1337,7 +1333,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
 export const GroupedList: React.StatelessComponent<IGroupedListProps>;
 
 // @public (undocumented)
-export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
+export class GroupedListBase extends React.Component<IGroupedListProps, IGroupedListState> implements IGroupedList {
     constructor(props: IGroupedListProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1379,7 +1375,7 @@ export const groupOne: IExtendedPersonaProps[];
 export const GroupShowAll: React.StatelessComponent<IGroupShowAllProps>;
 
 // @public (undocumented)
-export const GroupSpacer: React.SFC<IGroupSpacerProps>;
+export const GroupSpacer: React.FunctionComponent<IGroupSpacerProps>;
 
 // @public (undocumented)
 export const groupTwo: IExtendedPersonaProps[];
@@ -2086,6 +2082,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
+    shouldRestoreFocus?: boolean;
     style?: React.CSSProperties;
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
@@ -2163,7 +2160,8 @@ export interface ICheckboxStyles {
 }
 
 // @public (undocumented)
-export interface ICheckProps extends React.ClassAttributes<CheckBase> {
+export interface ICheckProps {
+    // @deprecated (undocumented)
     alwaysShowCheck?: boolean;
     checked?: boolean;
     className?: string;
@@ -2229,21 +2227,18 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
     theme?: ITheme;
 }
 
-// @public (undocumented)
+// @public
 export interface IChoiceGroupOptionStyleProps {
-    // (undocumented)
     checked?: boolean;
-    // (undocumented)
     disabled?: boolean;
-    // (undocumented)
     focused?: boolean;
-    // (undocumented)
     hasIcon?: boolean;
-    // (undocumented)
     hasImage?: boolean;
-    // (undocumented)
     imageIsLarge?: boolean;
-    // (undocumented)
+    imageSize?: {
+        height: number;
+        width: number;
+    };
     theme: ITheme;
 }
 
@@ -2701,6 +2696,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     multiSelect?: boolean;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
+    onMenuDismiss?: () => void;
     onMenuDismissed?: () => void;
     onMenuOpen?: () => void;
     onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
@@ -2710,6 +2706,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     options: IComboBoxOption[];
     persistMenu?: boolean;
     scrollSelectedToTop?: boolean;
+    shouldRestoreFocus?: boolean;
     styles?: Partial<IComboBoxStyles>;
     text?: string;
     theme?: ITheme;
@@ -3734,6 +3731,7 @@ export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithRe
     ariaLabelledById?: string;
     // @deprecated
     className?: string;
+    // @deprecated
     componentRef?: IRefObject<IDialog>;
     // @deprecated
     containerClassName?: string;
@@ -4253,6 +4251,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     onChanged?: (option: IDropdownOption, index?: number) => void;
     onDismiss?: () => void;
     onRenderCaretDown?: IRenderFunction<IDropdownProps>;
+    onRenderLabel?: IRenderFunction<IDropdownProps>;
     // @deprecated
     onRenderPlaceHolder?: IRenderFunction<IDropdownProps>;
     onRenderPlaceholder?: IRenderFunction<IDropdownProps>;
@@ -6885,6 +6884,7 @@ export interface ISpinButtonStyles {
     inputDisabled: IStyle;
     inputTextSelected: IStyle;
     label: IStyle;
+    // @deprecated
     labelDisabled: IStyle;
     labelWrapper: IStyle;
     labelWrapperBottom: IStyle;
@@ -7681,7 +7681,9 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
 // @public (undocumented)
 export interface ITooltipStyleProps {
     className?: string;
+    // @deprecated
     delay?: TooltipDelay;
+    gapSpace?: number;
     maxWidth?: string;
     theme: ITheme;
 }
@@ -9282,7 +9284,7 @@ export enum TooltipDelay {
 export const TooltipHost: React.StatelessComponent<ITooltipHostProps>;
 
 // @public (undocumented)
-export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
+export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
     constructor(props: ITooltipHostProps);
     // (undocumented)
     componentWillUnmount(): void;

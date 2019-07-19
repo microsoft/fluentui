@@ -2,6 +2,190 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 19 Jul 2019 12:25:58 GMT",
+      "tag": "office-ui-fabric-react_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Tooltip: render tooltip only after the delay and make sure if provided `closeDelay` is bigger than `delay` not to flash the Tooltip.",
+            "author": "vibraga@microsoft.com",
+            "commit": "28b4e28c52a8d8b6554dd8d83316c954e15d4b1e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Jul 2019 12:27:48 GMT",
+      "tag": "office-ui-fabric-react_v7.11.1",
+      "version": "7.11.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Panel: Making padding not change with screen width to match toolkit.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "f0c357f33de7fb3d2924a0d8dcf9208a5ae36aa7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "office-ui-fabric-react_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add new ways for callers to control the behavior of the combo box.",
+            "author": "reedpa@microsoft.com",
+            "commit": "18ce710a7314d56c569c4c115d24e1507345c011"
+          },
+          {
+            "comment": "ChoiceGroupOption: move the inline styles into getStyles function to allow override.",
+            "author": "vibraga@microsoft.com",
+            "commit": "3ea233343ac97179ef22e58d4a598654443ffbb6"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "prevent header and footer in panel from shrinking",
+            "author": "nidurak@microsoft.com",
+            "commit": "51f775061f46e1f3b5c89cffb8d0d5da09c5568d"
+          },
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          },
+          {
+            "comment": "Rating: ensure rating gets updated even when it has value of 0.",
+            "author": "vibraga@microsoft.com",
+            "commit": "9bc839d808db40145e4881b92490618c47e5a8fe"
+          },
+          {
+            "comment": "GroupedList: Using level to determine nestingDepth when it is given.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1138d83d700aa157d62f8b2229bc4305775ab1df"
+          },
+          {
+            "comment": "DropDown: Adding null check in onPositioned call.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "30890297bb5b45cece99eee5f770a175f33ee259"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "office-ui-fabric-react_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Dialog: Deprecating componentRef prop.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "ce7e6ffc84e7272a193d9cde863767dfc91fac7a"
+          },
+          {
+            "comment": "Tooltip: Rendering hidden hoverable area to allow for interaction with Tooltips.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "2de5fa384ad6bbbd8cd8d5bf0d4a5b1d1952275f"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Panel: remove window.innerHeight from styles",
+            "author": "kakje@microsoft.com",
+            "commit": "8165fcdb231bf13ce2c1ea1529604d7c19eebd23"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Shimmer: Update palette references to semantic colors",
+            "author": "marygans@microsoft.com",
+            "commit": "8cb86495c5b91eaf777c626a3697c973983de590"
+          },
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Jul 2019 12:29:52 GMT",
+      "tag": "office-ui-fabric-react_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "GroupedList: Refactor out BaseComponent in favor of React.Component and React.FunctionComponent",
+            "author": "706967+KevinTCoughlin@users.noreply.github.com",
+            "commit": "0ef080de76f13560e9b5d3507f4cb39bfdc8875d"
+          },
+          {
+            "comment": "Dropdown: adds an `onRenderLabel` custom renderer prop.",
+            "author": "vibraga@microsoft.com",
+            "commit": "5c848eb0915176ae13977801c9574dd9fc9f8895"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update to progressBar indicator description label font size to match design toolkti spec.",
+            "author": "marygans@microsoft.com",
+            "commit": "48a333ccde37c619e7d75108d26c727299feb396"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Jul 2019 12:29:51 GMT",
+      "tag": "office-ui-fabric-react_v7.8.2",
+      "version": "7.8.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pivot: updating white hover background color(#9595)",
+            "author": "marygans@microsoft.com",
+            "commit": "1305e42be11877daef8e6716305763d47679a8f9"
+          },
+          {
+            "comment": "Pass disabled state to labels in ChoiceGroup, Dropdown, Slider and SpinButton.",
+            "author": "vibraga@microsoft.com",
+            "commit": "61660371b5c45486aef4a7014bbc3494d3ff8cb3"
+          },
+          {
+            "comment": "Tooltip: Fixing 'persist on scroll' issues.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "eca43a063b66456426959e89bc1c32df7de9fc67"
+          },
+          {
+            "comment": "DetailsRow: pass aria-label attribute to each row's checkbox.",
+            "author": "vibraga@microsoft.com",
+            "commit": "6717d7c71de202760f4d0ecbe061f40acbb0ec9a"
+          },
+          {
+            "comment": "Only clear selection in MarqueeSelection when starting a new marquee",
+            "author": "tmichon@microsoft.com",
+            "commit": "ed153240bd10909f2879139cfc2b58822730140b"
+          },
+          {
+            "comment": "Utilities: reuse an exisiting clamp function.",
+            "author": "vibraga@microsoft.com",
+            "commit": "383a6ee5f2ebde57fbff43a34b4cfe7f07c3d48d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Jul 2019 12:28:00 GMT",
       "tag": "office-ui-fabric-react_v7.8.1",
       "version": "7.8.1",
