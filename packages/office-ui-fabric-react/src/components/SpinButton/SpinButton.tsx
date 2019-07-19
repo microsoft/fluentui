@@ -142,8 +142,8 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       ariaValueText,
       keytipProps,
       className,
-      inputCustomProps,
-      iconButtonCustomProps
+      inputProps,
+      iconButtonProps
     } = this.props as ISpinButtonInternalProps;
 
     const { isFocused, value, keyboardSpinDirection } = this.state;
@@ -198,7 +198,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 aria-disabled={disabled}
                 data-lpignore={true}
                 data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-                {...inputCustomProps}
+                {...inputProps}
               />
               <span className={classNames.arrowBox}>
                 <IconButton
@@ -213,7 +213,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                   tabIndex={-1}
                   ariaLabel={incrementButtonAriaLabel}
                   data-is-focusable={false}
-                  {...iconButtonCustomProps}
+                  {...iconButtonProps}
                 />
                 <IconButton
                   styles={getArrowButtonStyles(theme!, false, customDownArrowButtonStyles)}
@@ -227,7 +227,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                   tabIndex={-1}
                   ariaLabel={decrementButtonAriaLabel}
                   data-is-focusable={false}
-                  {...iconButtonCustomProps}
+                  {...iconButtonProps}
                 />
               </span>
             </div>

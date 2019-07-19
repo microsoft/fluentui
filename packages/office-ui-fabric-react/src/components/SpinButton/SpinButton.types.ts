@@ -7,6 +7,7 @@ import { KeyboardSpinDirection } from './SpinButton';
 import { IButtonStyles } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
 import { IRefObject } from '../../Utilities';
+import { IButtonProps } from '../Button/Button.types';
 
 /**
  * {@docCategory SpinButton}
@@ -236,14 +237,14 @@ export interface ISpinButtonProps {
   keytipProps?: IKeytipProps;
 
   /**
-   * Optional custom props on input element of spin button
+   * Optional input props on spin button
    */
-  inputCustomProps?: any;
+  inputProps?: React.InputHTMLAttributes<HTMLElement | HTMLInputElement>;
 
   /**
-   * Optional iconButton custom props on spin button
+   * Optional iconButton props on spin button
    */
-  iconButtonCustomProps?: any;
+  iconButtonProps?: IButtonProps;
 }
 
 /**

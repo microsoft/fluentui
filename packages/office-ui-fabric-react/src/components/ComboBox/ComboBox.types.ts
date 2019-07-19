@@ -8,6 +8,7 @@ import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
 import { IKeytipProps } from '../../Keytip';
 import { IAutofillProps } from '../pickers/AutoFill/BaseAutoFill.types';
+import { IButtonProps } from '../Button/Button.types';
 
 /**
  * {@docCategory ComboBox}
@@ -242,14 +243,9 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
   shouldRestoreFocus?: boolean;
 
   /**
-   * Optional autoFill custom props on combo box
+   * Optional iconButton props on combo box
    */
-  autoFillCustomProps?: any;
-
-  /**
-   * Optional iconButton custom props on combo box
-   */
-  iconButtonCustomProps?: any;
+  iconButtonProps?: IButtonProps;
 }
 
 /**
