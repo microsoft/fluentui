@@ -50,6 +50,8 @@
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
+    "@types/react": "^0.14.x || ^15.x || ^16.x",
+    "@types/react-dom": "^0.14.x || ^15.x || ^16.x",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0"
   }

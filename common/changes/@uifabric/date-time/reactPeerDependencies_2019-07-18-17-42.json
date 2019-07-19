@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/date-time",
+      "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/date-time",
+  "email": "Humberto.Morimoto@microsoft.com"
+}
