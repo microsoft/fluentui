@@ -1,0 +1,8 @@
+{
+  "comment": "support to add custom attributes on SpinButton and ComboBox components",
+  "type": "minor",
+  "packageName": "office-ui-fabric-react",
+  "email": "pagaur@microsoft.com",
+  "commit": "a9df1cc74eebaa9938997f645cc9bfb1421158a1",
+  "date": "2019-07-19T17:16:35.433Z"
+}
