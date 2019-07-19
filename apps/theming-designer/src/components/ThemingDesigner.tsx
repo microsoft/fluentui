@@ -68,10 +68,10 @@ const Main = (props: IStackProps) => (
   />
 );
 
-let colorChangeTimeout: number;
-let fabricPaletteColorChangeTimeout: number;
-
 export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
+  private _colorChangeTimeout: number;
+  private _fabricPaletteColorChangeTimeout: number;
+
   constructor(props: {}) {
     super(props);
 
@@ -124,13 +124,13 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
   }
 
   private _onFabricPaletteColorChange = (newColor: IColor | undefined, fabricSlot: FabricSlots) => {
-    if (fabricPaletteColorChangeTimeout) {
-      this._async.clearTimeout(fabricPaletteColorChangeTimeout);
+    if (this._fabricPaletteColorChangeTimeout) {
+      this._async.clearTimeout(this._fabricPaletteColorChangeTimeout);
     }
     if (!this.state.themeRules) {
       return;
     }
-    fabricPaletteColorChangeTimeout = this._async.setTimeout(() => {
+    this._fabricPaletteColorChangeTimeout = this._async.setTimeout(() => {
       const { themeRules } = this.state;
       if (themeRules) {
         const currentIsDark = isDark(themeRules[FabricSlots[fabricSlot]].color!);
@@ -171,8 +171,8 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
   };
 
   private _onColorChange = (colorToChange: IColor, baseSlot: BaseSlots, newColor: IColor | undefined) => {
-    if (colorChangeTimeout) {
-      this._async.clearTimeout(colorChangeTimeout);
+    if (this._colorChangeTimeout) {
+      this._async.clearTimeout(this._colorChangeTimeout);
     }
     if (newColor) {
       if (colorToChange === this.state.primaryColor) {
@@ -184,7 +184,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
       } else {
         return;
       }
-      colorChangeTimeout = this._async.setTimeout(() => {
+      this._colorChangeTimeout = this._async.setTimeout(() => {
         const themeRules = this.state.themeRules;
         if (themeRules) {
           const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
