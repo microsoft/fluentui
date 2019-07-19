@@ -1,6 +1,6 @@
 {
   "comment": "Updated date-time README now that it has major released.”,
-  "type": "patch",
+  "type": "none",
   "packageName": "@uifabric/date-time",
   "email": "mgodbolt@microsoft.com",
   "commit": "c2de3c8f517d6c645e0e52a980425526ca2ed602",
