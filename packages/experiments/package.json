@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/experiments",
-  "version": "6.80.0",
+  "version": "6.81.0",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

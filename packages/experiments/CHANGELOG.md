@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 16 Jul 2019 17:14:30 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Jul 2019 12:22:57 GMT and should not be manually modified.
+
+## 6.81.0
+Fri, 19 Jul 2019 12:22:57 GMT
+
+### Minor changes
+
+- Change media tile to show metadata only on hover
 
 ## 6.80.0
 Tue, 16 Jul 2019 17:14:30 GMT

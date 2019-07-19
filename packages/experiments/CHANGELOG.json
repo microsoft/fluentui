@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.81.0",
+      "tag": "@uifabric/experiments_v6.81.0",
+      "date": "Fri, 19 Jul 2019 12:22:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Change media tile to show metadata only on hover",
+            "author": "Jonathon Cobb <jocobb@microsoft.com>",
+            "commit": "e7680d66c8d8a2b058d3a4d146fd59918a4b79c0"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.80.0",
       "tag": "@uifabric/experiments_v6.80.0",
       "date": "Tue, 16 Jul 2019 17:14:30 GMT",
