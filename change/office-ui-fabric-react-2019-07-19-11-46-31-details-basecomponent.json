@@ -1,0 +1,8 @@
+{
+  "comment": "DetailsList: Remove unnecessary BaseComponent and class component usage",
+  "type": "minor",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "3e37d3320b5e1e518007afb5ca79eb4748829da1",
+  "date": "2019-07-19T18:46:31.038Z"
+}

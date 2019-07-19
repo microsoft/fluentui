@@ -508,12 +508,7 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 export const Check: React.StatelessComponent<ICheckProps>;
 
 // @public (undocumented)
-export class CheckBase extends React.Component<ICheckProps, {}> {
-    // (undocumented)
-    static defaultProps: ICheckProps;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const CheckBase: React.FunctionComponent<ICheckProps>;
 
 // @public (undocumented)
 export const Checkbox: React.StatelessComponent<ICheckboxProps>;
@@ -847,7 +842,8 @@ export class DefaultButton extends BaseComponent<IButtonProps, {}> {
 export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
 
 // @public
-export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
+export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
+    constructor(props: IDetailsColumnProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -862,7 +858,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
 export const DetailsHeader: React.StatelessComponent<IDetailsHeaderBaseProps>;
 
 // @public (undocumented)
-export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {
+export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {
     constructor(props: IDetailsHeaderBaseProps);
     // (undocumented)
     componentDidMount(): void;
@@ -886,7 +882,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
 export const DetailsList: React.StatelessComponent<IDetailsListProps>;
 
 // @public (undocumented)
-export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
+export class DetailsListBase extends React.Component<IDetailsListProps, IDetailsListState> implements IDetailsList {
     constructor(props: IDetailsListProps);
     // (undocumented)
     componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState): void;
@@ -930,7 +926,7 @@ export enum DetailsListLayoutMode {
 export const DetailsRow: React.StatelessComponent<IDetailsRowBaseProps>;
 
 // @public (undocumented)
-export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetailsRowState> {
+export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetailsRowState> {
     constructor(props: IDetailsRowBaseProps);
     // (undocumented)
     componentDidMount(): void;
@@ -2155,7 +2151,8 @@ export interface ICheckboxStyles {
 }
 
 // @public (undocumented)
-export interface ICheckProps extends React.ClassAttributes<CheckBase> {
+export interface ICheckProps {
+    // @deprecated (undocumented)
     alwaysShowCheck?: boolean;
     checked?: boolean;
     className?: string;
