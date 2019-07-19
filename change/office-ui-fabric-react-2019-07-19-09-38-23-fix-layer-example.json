@@ -1,0 +1,8 @@
+{
+  "comment": "fix the layer example so the panel dismisses properly",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "7d837a911a8a6a96cf7532026783aa5db68a6575",
+  "date": "2019-07-19T16:38:23.458Z"
+}
