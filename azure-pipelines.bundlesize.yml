@@ -12,8 +12,11 @@ jobs:
       - script: yarn
         displayName: yarn
 
-      - script: yarn buildci
-        displayName: yarn buildci
+      - script: yarn buildto test-bundles -- --min
+        displayName: yarn build to test-bundles, with no tests or webpack
+
+      - script: yarn workspace test-bundles build
+        displayName: yarn build test-bundles
 
       - task: Npm@1
         displayName: 'Collate Bundle Size Information'
