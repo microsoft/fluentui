@@ -2,27 +2,29 @@ import { ICheckStyleProps, ICheckStyles } from './Check.types';
 import { HighContrastSelector, IStyle, getGlobalClassNames } from '../../Styling';
 import { getRTL } from '../../Utilities';
 
-const GlobalClassNames = {
+export const CheckGlobalClassNames = {
   root: 'ms-Check',
   circle: 'ms-Check-circle',
-  check: 'ms-Check-check'
+  check: 'ms-Check-check',
+  /** Must be manually applied to the parent element of the check. */
+  checkHost: 'ms-Check-checkHost'
 };
 
 export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
-  const { checkBoxHeight = '18px', checked, className, theme } = props;
+  const { height = props.checkBoxHeight || '18px', checked, className, theme } = props;
 
   const { palette, semanticColors } = theme;
   const isRTL = getRTL();
 
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const classNames = getGlobalClassNames(CheckGlobalClassNames, theme);
 
   const sharedCircleCheck: IStyle = {
-    fontSize: checkBoxHeight,
+    fontSize: height,
     position: 'absolute',
     left: 0,
     top: 0,
-    width: checkBoxHeight,
-    height: checkBoxHeight,
+    width: height,
+    height: height,
     textAlign: 'center',
     verticalAlign: 'middle'
   };
@@ -34,8 +36,8 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
       {
         // lineHeight currently needs to be a string to output without 'px'
         lineHeight: '1',
-        width: checkBoxHeight,
-        height: checkBoxHeight,
+        width: height,
+        height: height,
         verticalAlign: 'top',
         position: 'relative',
         userSelect: 'none',
@@ -53,11 +55,8 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
             background: semanticColors.bodyBackground
           },
 
-          /**
-           * TODO: Come back to this once .checkHost has been
-           * converted to mergeStyles
-           */
-          '$checkHost:hover &, $checkHost:focus &, &:hover, &:focus': {
+          // Always use the global class name for this, or it won't work.
+          [`.${CheckGlobalClassNames.checkHost}:hover &, .${CheckGlobalClassNames.checkHost}:focus &, &:hover, &:focus`]: {
             opacity: 1
           }
         }
