@@ -5519,6 +5519,7 @@ export interface INavProps {
     onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
     onRenderLink?: IRenderFunction<INavLink>;
+    selectedAriaLabel?: string;
     selectedKey?: string;
     styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
     theme?: ITheme;
