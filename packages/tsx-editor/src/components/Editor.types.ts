@@ -10,6 +10,5 @@ export interface IEditorProps {
   height: number | string;
   language: string;
   code: string;
-  setModel: (model: ITextModel) => void;
   onChange: (model: ITextModel) => void;
 }

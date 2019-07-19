@@ -11,17 +11,7 @@ import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
 import { CodeSnippet } from '../CodeSnippet/index';
-import {
-  Editor,
-  ITextModel,
-  transpile,
-  evalCode,
-  ITranspiledOutput,
-  EditorProvider,
-  EditorContext,
-  EditorPreview,
-  transformExample
-} from '@uifabric/tsx-editor';
+import { Editor, ITextModel, transpile, evalCode, ITranspiledOutput, EditorPreview, transformExample } from '@uifabric/tsx-editor';
 
 export interface IExampleCardState {
   schemeIndex: number;
@@ -95,23 +85,10 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
           );
 
           const editor = (
-            <EditorProvider code={code!}>
-              <EditorContext.Consumer>
-                {({ model, id, setModel, setID }) => (
-                  <div>
-                    <Editor
-                      code={code!}
-                      onChange={this._editorOnChange}
-                      width={'auto'}
-                      height={500}
-                      setModel={setModel}
-                      language="typescript"
-                    />
-                    <EditorPreview error={this.state.error} id={this.props.title.replace(' ', '')} />
-                  </div>
-                )}
-              </EditorContext.Consumer>
-            </EditorProvider>
+            <div>
+              <Editor code={code!} onChange={this._editorOnChange} width={'auto'} height={500} language="typescript" />
+              <EditorPreview error={this.state.error} id={this.props.title.replace(' ', '')} />
+            </div>
           );
 
           const exampleCard = (

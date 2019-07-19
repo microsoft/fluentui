@@ -17,7 +17,7 @@ export const EditorPreview = (props: IEditorPreview) => {
       {props.error === undefined ? (
         ''
       ) : (
-        <Label style={{ color: '#FF5E79' }}>There is an error preventing the code to be rendered: {props.error}</Label>
+        <Label style={{ color: '#FF5E79' }}>There is an error preventing the code from being rendered: {props.error}</Label>
       )}
       <div style={props.error === undefined ? {} : errorStyle}>
         <div id={props.id} />

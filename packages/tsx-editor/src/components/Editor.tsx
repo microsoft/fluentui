@@ -4,7 +4,7 @@ import { IEditorProps } from './Editor.types';
 
 export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProps) => {
   const ref = React.useRef<HTMLDivElement>(null);
-  const { width, height, onChange, setModel, language, code } = props;
+  const { width, height, onChange, language, code } = props;
   const style = { width, height };
 
   React.useEffect(() => {
@@ -21,7 +21,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       lib: ['es5', 'dom']
     });
 
-    monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({ noSyntaxValidation: true });
+    monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: true });
 
     const model = monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('file:///main.tsx'));
 
@@ -32,8 +32,6 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       value: code,
       language
     });
-
-    setModel(model);
 
     editor.onDidChangeModelContent(() => {
       onChange(editor.getModel()!);
