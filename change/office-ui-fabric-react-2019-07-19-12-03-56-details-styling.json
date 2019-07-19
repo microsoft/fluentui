@@ -1,0 +1,8 @@
+{
+  "comment": "DetailsList and Check styling optimizations",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "fabd0c72bc1955d4296f42b312df5eece4c61c13",
+  "date": "2019-07-19T19:03:56.690Z"
+}
