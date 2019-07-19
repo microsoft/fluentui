@@ -1,0 +1,8 @@
+{
+  "comment": "Refactor out BaseComponent from List components",
+  "type": "minor",
+  "packageName": "office-ui-fabric-react",
+  "email": "706967+KevinTCoughlin@users.noreply.github.com",
+  "commit": "ad4bc7b67d858e082b281482f419848aad120abe",
+  "date": "2019-07-15T19:05:30.983Z"
+}

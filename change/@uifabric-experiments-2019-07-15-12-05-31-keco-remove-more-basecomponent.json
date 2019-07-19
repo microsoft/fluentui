@@ -1,0 +1,8 @@
+{
+  "comment": "Refactor out BaseComponent from Tile",
+  "type": "minor",
+  "packageName": "@uifabric/experiments",
+  "email": "706967+KevinTCoughlin@users.noreply.github.com",
+  "commit": "ad4bc7b67d858e082b281482f419848aad120abe",
+  "date": "2019-07-15T19:05:11.320Z"
+}
