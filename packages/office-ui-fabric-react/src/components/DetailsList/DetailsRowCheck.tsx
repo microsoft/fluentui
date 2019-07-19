@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
-import { css, styled } from '../../Utilities';
+import { IDetailsRowCheckProps, IDetailsCheckboxProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
+import { css, styled, classNamesFunction } from '../../Utilities';
 import { Check } from '../../Check';
 import { ICheckStyleProps, ICheckStyles } from '../Check/Check.types';
 import { getStyles as getCheckStyles } from '../Check/Check.styles';
 import { getStyles } from './DetailsRowCheck.styles';
-import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
-import { classNamesFunction } from '../../Utilities';
 
 const getCheckClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>({
   disableCaching: true
@@ -15,7 +13,7 @@ const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRow
   disableCaching: true
 });
 
-const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
+const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = props => {
   const {
     isVisible = false,
     canSelect = false,

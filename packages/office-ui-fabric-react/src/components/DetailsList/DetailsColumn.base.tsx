@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Icon } from '../../Icon';
-import { BaseComponent, IRenderFunction, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
+import { initializeComponentRef, IRenderFunction, EventGroup, Async, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
 import { IColumn, ColumnActionsMode } from './DetailsList.types';
 
 import { ITooltipHostProps } from '../../Tooltip';
@@ -21,10 +21,19 @@ const CLASSNAME_ADD_INTERVAL = 20; // ms
  *
  * {@docCategory DetailsList}
  */
-export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
+export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
+  private _async: Async;
+  private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
   private _dragDropSubscription: IDisposable;
   private _classNames: IClassNames<IDetailsColumnStyles>;
+
+  constructor(props: IDetailsColumnProps) {
+    super(props);
+    initializeComponentRef(this);
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+  }
 
   public render(): JSX.Element {
     const { column, columnIndex, parentId, isDraggable, styles, theme, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = this.props;
@@ -167,6 +176,8 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       this._dragDropSubscription.dispose();
       delete this._dragDropSubscription;
     }
+    this._async.dispose();
+    this._events.dispose();
   }
 
   public componentDidUpdate(): void {
