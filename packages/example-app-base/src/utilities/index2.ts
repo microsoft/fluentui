@@ -5,6 +5,7 @@ export * from './appInsightsHelper';
 export * from './baseDefinition';
 export * from './getEditUrl';
 export * from './getPageFirstPlatform';
+export * from './getQueryParam';
 export * from './getSiteArea';
 export * from './jumpToAnchor';
 export * from './PlatformContext';

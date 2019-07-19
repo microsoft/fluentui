@@ -1,0 +1,8 @@
+{
+  "comment": "Fix IE 11 incompatible syntax",
+  "type": "patch",
+  "packageName": "@uifabric/fabric-website",
+  "email": "elcraig@microsoft.com",
+  "commit": "19929074bdec2913e519d675aac09a5831653f68",
+  "date": "2019-07-19T00:47:54.261Z"
+}

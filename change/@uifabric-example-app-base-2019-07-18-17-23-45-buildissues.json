@@ -1,0 +1,8 @@
+{
+  "comment": "Add a way to get settings from query or session storage",
+  "type": "patch",
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com",
+  "commit": "17b31ca8739504e1d4c7b7dcaa725091254d0eb5",
+  "date": "2019-07-19T00:23:37.345Z"
+}
