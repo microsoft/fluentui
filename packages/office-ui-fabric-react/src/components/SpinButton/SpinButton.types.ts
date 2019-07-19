@@ -234,6 +234,16 @@ export interface ISpinButtonProps {
    * Optional keytip for this spin button
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Optional custom props on input element of spin button
+   */
+  inputCustomProps?: any;
+
+  /**
+   * Optional iconButton custom props on spin button
+   */
+  iconButtonCustomProps?: any;
 }
 
 /**

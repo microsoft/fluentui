@@ -240,6 +240,16 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
    * @defaultvalue true;
    */
   shouldRestoreFocus?: boolean;
+
+  /**
+   * Optional autoFill custom props on combo box
+   */
+  autoFillCustomProps?: any;
+
+  /**
+   * Optional iconButton custom props on combo box
+   */
+  iconButtonCustomProps?: any;
 }
 
 /**

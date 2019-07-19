@@ -327,7 +327,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       placeholder,
       tabIndex,
       autofill,
-      persistMenu
+      persistMenu,
+      autoFillCustomProps,
+      iconButtonCustomProps
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -399,6 +401,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 placeholder={placeholder}
                 tabIndex={tabIndex}
                 {...autofill}
+                {...autoFillCustomProps}
               />
               <IconButton
                 className={'ms-ComboBox-CaretDown-button'}
@@ -412,6 +415,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 iconProps={buttonIconProps}
                 disabled={disabled}
                 checked={isOpen}
+                {...iconButtonCustomProps}
               />
             </div>
           )}
@@ -423,7 +427,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
               onRenderList,
               onRenderItem,
               onRenderOption,
-              options: this.state.currentOptions.map((item, index) => ({ ...item, index: index }))
+              options: this.state.currentOptions.map((item, index) => ({
+                ...item,
+                index: index
+              }))
             },
             this._onRenderContainer
           )}
