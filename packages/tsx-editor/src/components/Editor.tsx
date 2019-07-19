@@ -17,9 +17,11 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       experimentalDecorators: true,
       preserveConstEnums: true,
       outDir: 'lib',
-      module: monaco.languages.typescript.ModuleKind.ESNext
-      // lib: ['es5', 'dom']
+      module: monaco.languages.typescript.ModuleKind.ESNext,
+      lib: ['es5', 'dom']
     });
+
+    monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({ noSyntaxValidation: true });
 
     const model = monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('file:///main.tsx'));
 

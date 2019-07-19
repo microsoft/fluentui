@@ -4,10 +4,10 @@ export interface ITransformedExample {
 }
 
 export function transformExample(example: string, id: string) {
-  const classNamePattern = /(?<=var )(.*)(?= = \/\*\* @class \*\/ \(function \(_super)/g;
-  const identifierPattern = /(?<=import { )(.*)(?= } from 'office-ui-fabric-react)/g;
-  const constNamePattern = /(?<=var )(.*)(?= = function())/g;
-  const importPattern = /(import { (.*)from 'office-ui-fabric-react(.*);)/g;
+  const classNamePattern = new RegExp('(?<=var )(.*)(?= = /\\*\\* @class \\*/ \\(function \\(_super)', 'g');
+  const constNamePattern = new RegExp('(?<=var )(.*)(?= = function())', 'g');
+  const identifierPattern = new RegExp('(?<=import {)([\\s\\S]*)(?=} from)', 'g');
+  const importPattern = new RegExp("(?:import)([\\s\\S]*?)(?:';)", 'g');
   const identifiers: string[] = [];
   const imports: string[] = [];
   let temp;
@@ -16,6 +16,7 @@ export function transformExample(example: string, id: string) {
 
   example = example.replace("import * as React from 'react';", '');
 
+  // Getting classname
   while ((temp = classNamePattern.exec(example))) {
     className = temp[0];
   }
@@ -25,26 +26,33 @@ export function transformExample(example: string, id: string) {
     }
   }
 
-  // Getting identifiers
-  while ((temp = identifierPattern.exec(example))) {
-    temp[0].split(', ').map((identifier: string) => identifiers.push(identifier));
-  }
-
-  // Finding import from oufr
   while ((temp = importPattern.exec(example))) {
-    imports.push(temp[0]);
+    if (!/office-ui-fabric-react/.test(temp[0])) {
+      output.error = 'error: unsupported imports';
+    } else {
+      imports.push(temp[0]);
+    }
   }
 
-  // Getting rid of imports
-  imports.map(imp => {
+  imports.map((imp: string) => {
+    temp = identifierPattern.exec(imp);
+    if (temp !== null) {
+      temp[0].split(',').map((ident: string) => {
+        ident.replace('\n', '');
+        ident.replace(' ', '');
+        identifiers.push(ident);
+      });
+    }
     example = example.replace(imp, '');
   });
 
-  example = example.replace('export ', '');
+  while (/export/.test(example)) {
+    example = example.replace('export', '');
+  }
 
   example =
     'const {' +
-    identifiers.map(identifier => ' ' + identifier) +
+    identifiers.map(identifier => identifier) +
     ', Fabric } = window.Fabric;\n' +
     example +
     `
@@ -54,12 +62,7 @@ export function transformExample(example: string, id: string) {
     );
     `;
 
-  if (/import/.test(example)) {
-    output.error = 'error: unsupported imports';
-  } else {
-    output.output = example;
-  }
-
+  output.output = example;
   console.log(example);
   return output;
 }

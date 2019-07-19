@@ -58,7 +58,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
       themeIndex: 0
     };
 
-    this.canRenderLiveEditor = transformExample(props.code!, 'placeholder').error === undefined && !isIE11() ? true : false;
+    this.canRenderLiveEditor = !isIE11() && transformExample(props.code!, 'placeholder').error === undefined ? true : false;
   }
 
   public render(): JSX.Element {
@@ -83,7 +83,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
               : [];
           }
 
-          const styleProps: IExampleCardStyleProps = { isRightAligned, isScrollable, theme };
+          const styleProps: IExampleCardStyleProps = { isRightAligned, isScrollable, theme, isCodeVisible };
           const classNames = (this._classNames = getClassNames(styles, styleProps));
           const { subComponentStyles } = classNames;
           const { codeButtons: codeButtonStyles } = subComponentStyles;
@@ -99,17 +99,15 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
               <EditorContext.Consumer>
                 {({ model, id, setModel, setID }) => (
                   <div>
-                    <div className={classNames.code}>
-                      <Editor
-                        code={code!}
-                        onChange={this._editorOnChange}
-                        width={'auto'}
-                        height={500}
-                        setModel={setModel}
-                        language="typescript"
-                      />
-                    </div>
-                    <EditorPreview id={this.props.title.replace(' ', '')} />
+                    <Editor
+                      code={code!}
+                      onChange={this._editorOnChange}
+                      width={'auto'}
+                      height={500}
+                      setModel={setModel}
+                      language="typescript"
+                    />
+                    <EditorPreview error={this.state.error} id={this.props.title.replace(' ', '')} />
                   </div>
                 )}
               </EditorContext.Consumer>
@@ -157,15 +155,13 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                 </div>
               </div>
 
-              <div className={classNames.code}>{isCodeVisible && <CodeSnippet language="tsx">{code}</CodeSnippet>}</div>
-
-              {/* {isCodeVisible && this.canRenderLiveEditor && editor} */}
-
-              {/* {isCodeVisible && !this.canRenderLiveEditor && (
+              {isCodeVisible && !this.canRenderLiveEditor && (
                 <div className={classNames.code}>
                   <CodeSnippet language="tsx">{code}</CodeSnippet>
                 </div>
-              )} */}
+              )}
+
+              {isCodeVisible && this.canRenderLiveEditor && editor}
 
               {(!isCodeVisible || !this.canRenderLiveEditor) && exampleCardContent}
 

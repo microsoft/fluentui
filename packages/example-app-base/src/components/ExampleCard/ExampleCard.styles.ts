@@ -143,7 +143,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
     code: [
       {
         backgroundColor: NeutralColors.gray20,
-        overflow: 'hidden',
+        // overflow: 'hidden',
         selectors: {
           pre: [
             {

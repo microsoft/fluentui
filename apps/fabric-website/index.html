@@ -136,7 +136,7 @@
           fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0] ? 'v' + fabricVersion + '-' : '';
         // If a devhost is provided, override the config app path
 
-        var configPrefix = `fabric-website-${prefixVer}${isProduction ? 'prod' : 'df'}`;
+        var configPrefix = 'fabric-website-' + prefixVer + (isProduction ? 'prod' : 'df');
 
         var configScript = ['https://fabricweb.azureedge.net/fabric-website/manifests/' + configPrefix + '.js'];
 
@@ -174,7 +174,7 @@
         (function run() {
           if (array.length != 0) {
             const scriptName = array.shift();
-            loader(scriptName, run, () => {
+            loader(scriptName, run, function() {
               loader(scriptName.replace('.min.js', '.js'), run);
             });
           } else {
