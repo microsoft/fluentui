@@ -18,8 +18,8 @@ jobs:
       - script: yarn workspace test-bundles build
         displayName: yarn build test-bundles
 
-      - script: yarn workspace office-ui-fabric-react build
-        displayName: yarn build OUFR (with webpack)
+      - script: yarn workspace office-ui-fabric-react just webpack
+        displayName: yarn bundle OUFR
 
       - script: yarn bundlesizecollect
         displayName: 'Collate Bundle Size Information'
