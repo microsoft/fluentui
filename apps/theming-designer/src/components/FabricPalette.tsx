@@ -34,6 +34,7 @@ const tableClassName = mergeStyles({
 });
 
 export const FabricPalette: React.StatelessComponent<IFabricPaletteProps> = (props: IFabricPaletteProps) => {
+  const { themeRules, onFabricPaletteColorChange } = props;
   return (
     <div className={MainPanelInnerContent}>
       <table className={tableClassName}>
@@ -51,218 +52,218 @@ export const FabricPalette: React.StatelessComponent<IFabricPaletteProps> = (pro
           <tr>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.themeDarker]]}
                 slot={FabricSlots.themeDarker}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.themeDarker]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.themeDarker]].color.str}</Text>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.black]]}
                 slot={FabricSlots.black}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.topCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.black]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.black]].color.str}</Text>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.neutralTertiaryAlt]]}
                 slot={FabricSlots.neutralTertiaryAlt}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.topCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.neutralTertiaryAlt]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.neutralTertiaryAlt]].color.str}</Text>
           </tr>
           <tr>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.themeDark]]}
                 slot={FabricSlots.themeDark}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.themeDark]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.themeDark]].color.str}</Text>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.neutralDark]]}
                 slot={FabricSlots.neutralDark}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.neutralDark]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.neutralDark]].color.str}</Text>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.neutralDark]]}
                 slot={FabricSlots.neutralQuaternary}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.neutralQuaternary]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.neutralDark]].color.str}</Text>
           </tr>
           <tr>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.themeDarkAlt]]}
                 slot={FabricSlots.themeDarkAlt}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.themeDarkAlt]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.themeDarkAlt]].color.str}</Text>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.neutralPrimary]]}
                 slot={FabricSlots.neutralPrimary}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.neutralPrimary]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.neutralPrimary]].color.str}</Text>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.neutralQuaternaryAlt]]}
                 slot={FabricSlots.neutralQuaternaryAlt}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.neutralQuaternaryAlt]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.neutralQuaternaryAlt]].color.str}</Text>
           </tr>
           <tr>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.themePrimary]]}
                 slot={FabricSlots.themePrimary}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.themePrimary]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.themePrimary]].color.str}</Text>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.neutralPrimaryAlt]]}
                 slot={FabricSlots.neutralPrimaryAlt}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.neutralPrimaryAlt]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.neutralPrimaryAlt]].color.str}</Text>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.neutralLight]]}
                 slot={FabricSlots.neutralLight}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.neutralLight]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.neutralLight]].color.str}</Text>
           </tr>
           <tr>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.themeSecondary]]}
                 slot={FabricSlots.themeSecondary}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.themeSecondary]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.themeSecondary]].color.str}</Text>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.neutralSecondary]]}
                 slot={FabricSlots.neutralSecondary}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.neutralSecondary]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.neutralSecondary]].color.str}</Text>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.neutralLighter]]}
                 slot={FabricSlots.neutralLighter}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.neutralLighter]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.neutralLighter]].color.str}</Text>
           </tr>
           <tr>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.themeTertiary]]}
                 slot={FabricSlots.themeTertiary}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.themeTertiary]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.themeTertiary]].color.str}</Text>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.neutralTertiary]]}
                 slot={FabricSlots.neutralTertiary}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.neutralTertiary]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.neutralTertiary]].color.str}</Text>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.neutralLighterAlt]]}
                 slot={FabricSlots.neutralLighterAlt}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.neutralLighterAlt]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.neutralLighterAlt]].color.str}</Text>
           </tr>
           <tr>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.themeLight]]}
                 slot={FabricSlots.themeLight}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.themeLight]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.themeLight]].color.str}</Text>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.white]]}
                 slot={FabricSlots.white}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.white]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.white]].color.str}</Text>
           </tr>
           <tr>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.themeLighter]]}
                 slot={FabricSlots.themeLighter}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.themeLighter]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.themeLighter]].color.str}</Text>
           </tr>
           <tr>
             <Text as="td">
               <FabricSlotWidget
-                themeRules={props.themeRules}
+                slotRule={themeRules[FabricSlots[FabricSlots.themeLighterAlt]]}
                 slot={FabricSlots.themeLighterAlt}
-                onFabricPaletteColorChange={props.onFabricPaletteColorChange}
+                onFabricPaletteColorChange={onFabricPaletteColorChange}
                 directionalHint={DirectionalHint.leftCenter}
               />
             </Text>
-            <Text as="td">{props.themeRules[FabricSlots[FabricSlots.themeLighterAlt]].color.str}</Text>
+            <Text as="td">{themeRules[FabricSlots[FabricSlots.themeLighterAlt]].color.str}</Text>
           </tr>
         </tbody>
       </table>

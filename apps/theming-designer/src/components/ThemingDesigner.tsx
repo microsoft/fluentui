@@ -78,11 +78,6 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     this.state = this._buildInitialState();
   }
 
-  public componentWillUnmount() {
-    clearTimeout(colorChangeTimeout);
-    clearTimeout(fabricPaletteColorChangeTimeout);
-  }
-
   public render() {
     return (
       <Page>
@@ -130,12 +125,12 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
 
   private _onFabricPaletteColorChange = (newColor: IColor | undefined, fabricSlot: FabricSlots) => {
     if (fabricPaletteColorChangeTimeout) {
-      clearTimeout(fabricPaletteColorChangeTimeout);
+      this._async.clearTimeout(fabricPaletteColorChangeTimeout);
     }
     if (!this.state.themeRules) {
       return;
     }
-    colorChangeTimeout = this._async.setTimeout(() => {
+    fabricPaletteColorChangeTimeout = this._async.setTimeout(() => {
       const { themeRules } = this.state;
       if (themeRules) {
         const currentIsDark = isDark(themeRules[FabricSlots[fabricSlot]].color!);
@@ -177,7 +172,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
 
   private _onColorChange = (colorToChange: IColor, baseSlot: BaseSlots, newColor: IColor | undefined) => {
     if (colorChangeTimeout) {
-      clearTimeout(colorChangeTimeout);
+      this._async.clearTimeout(colorChangeTimeout);
     }
     if (newColor) {
       if (colorToChange === this.state.primaryColor) {
