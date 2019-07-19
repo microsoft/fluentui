@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 18 Jul 2019 12:27:48 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Jul 2019 12:25:58 GMT and should not be manually modified.
+
+## 7.12.0
+Fri, 19 Jul 2019 12:25:58 GMT
+
+### Minor changes
+
+- Tooltip: render tooltip only after the delay and make sure if provided `closeDelay` is bigger than `delay` not to flash the Tooltip. (vibraga@microsoft.com)
 
 ## 7.11.1
 Thu, 18 Jul 2019 12:27:48 GMT

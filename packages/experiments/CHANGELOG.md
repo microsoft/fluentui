@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Jul 2019 12:25:58 GMT and should not be manually modified.
+
+## 7.7.0
+Fri, 19 Jul 2019 12:25:58 GMT
+
+### Minor changes
+
+- Chiclet: removes imageHeight and imageWidth props (t-stcar@microsoft.com)
 
 ## 7.6.2
 Wed, 17 Jul 2019 18:58:57 GMT
