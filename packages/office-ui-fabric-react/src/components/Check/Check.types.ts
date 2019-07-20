@@ -40,25 +40,21 @@ export interface ICheckProps {
 /**
  * {@docCategory Check}
  */
-export interface ICheckStyleProps {
-  /**
-   * Accept theme prop.
-   */
-  theme: ITheme;
+export type ICheckStyleProps = Required<Pick<ICheckProps, 'theme'>> &
+  Pick<ICheckProps, 'className' | 'checked'> & {
+    /**
+     * Custom height/width for the checkbox.
+     * @defaultvalue '18px'
+     */
+    height?: string;
 
-  /**
-   * Accept custom classNames
-   */
-  className?: string;
-
-  /**
-   * Accept custom checkBox size in pixels.
-   * @defaultvalue '18px'
-   */
-  checkBoxHeight?: string;
-
-  checked?: boolean;
-}
+    /**
+     * Custom height/width for the checkbox.
+     * @defaultvalue '18px'
+     * @deprecated Use `height`
+     */
+    checkBoxHeight?: string;
+  };
 
 /**
  * {@docCategory Check}
@@ -81,6 +77,8 @@ export interface ICheckStyles {
 
   /**
    * Check host style
+   * @deprecated Not used directly within the component. Instead, use `CheckGlobalClassNames.checkHost` from
+   * `Check.styles.ts` to get a style to apply to the parent element of the Check.
    */
   checkHost: IStyle;
 }
