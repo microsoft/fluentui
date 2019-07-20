@@ -17,7 +17,7 @@
     "build": "just-scripts build",
     "just": "just-scripts",
     "code-style": "just-scripts code-style",
-    "clean": "node node_modules/@uifabric/build/just-scripts.js clean"
+    "clean": "just-scripts clean"
   },
   "devDependencies": {
     "@types/jest": "23.0.0",

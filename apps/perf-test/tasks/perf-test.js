@@ -15,7 +15,7 @@ const iterationsDefault = 5000;
 // "C:\Program Files (x86)\Google\Chrome\Application\chrome" --no-sandbox --js-flags=" --logfile=C:\git\perf\output\chrome.log --prof --jitless --no-opt" --user-data-dir="C:\git\perf\user" http://localhost:4322
 
 // Current commands to run:
-//    rush build --to perf-test
+//    yarn buildto perf-test
 //    From apps/perf-test directory:
 //      To build and run perf-test:
 //        npm run just perf-test

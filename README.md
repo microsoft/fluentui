@@ -97,34 +97,23 @@ To view the documentation including examples, contracts, component status, and t
 
 1. `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
 2. `cd office-ui-fabric-react`
-3. `npm install`
-4. `npm start`
+3. `yarn`
+4. `yarn builddemo`
+5. `yarn start`
 
 This will start a demo page from the office-ui-fabric-react package folder, which will open a web browser with the example page. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
-To build and run tests for all packages in the repo, run `npm run build` from the root.
+To build and run tests for all packages in the repo, run `yarn build` from the root.
 
-To build individual packages within the `packages/*` or `apps/*` folders, `cd` to the relevant folder and run `npm run build`. Note that because the packages are symlinked together, you must manage building dependencies in the right order, or use the `rush` tool to build to the specific package you want. (See advanced tips below.)
+To build individual packages within the `packages/*` or `apps/*` folders, `cd` to the relevant folder and run `yarn build`. Note that because the packages are symlinked together, you must manage building dependencies in the right order, or use the `yarn buildto` script to build to the specific package you want.
+
+#### Advanced build commands
+
+There are more advanced build commands listed in the [Build Commands](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Build-Commands) wiki page.
 
 ### Testing
 
 For info about testing, see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Testing).
-
-### Advanced building tips
-
-The repo contains many packages, each which may have dependencies on each other. You can use [Rush](https://rushjs.io/) to build projects in the correct order, if you have it globally installed.
-
-```bash
-npm install -g @microsoft/rush
-```
-
-To use Rush to build, you can run `rush build`, which will incrementally build the entire repo (only build what has changed since the last build). If you don't have Rush globally installed, you can use the command `npm run buildfast`, which abstracts `rush build`.
-
-To build up to a specific project, use the `--to <package>` argument. For example, to build up to `office-ui-fabric-react`, run:
-
-```bash
-rush build --to office-ui-fabric-react
-```
 
 ## Licenses
 
