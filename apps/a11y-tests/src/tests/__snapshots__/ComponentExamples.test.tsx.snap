@@ -1716,7 +1716,42 @@ Array [
 ]
 `;
 
-exports[`a11y test checks accessibility of Facepile (Facepile.AddFace.Example) 1`] = `Array []`;
+exports[`a11y test checks accessibility of Facepile (Facepile.AddFace.Example) 1`] = `
+Array [
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "ul",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<ul class=\\"ms-Facepile-members members-5\\" role=\\"list\\"></ul>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- Required ARIA child role not present: listitem.",
+      "text": "Fix any of the following: Required ARIA child role not present: listitem.",
+    },
+    "ruleId": "aria-required-children",
+    "ruleIndex": 8,
+  },
+]
+`;
 
 exports[`a11y test checks accessibility of Facepile (Facepile.Basic.Example) 1`] = `Array []`;
 
