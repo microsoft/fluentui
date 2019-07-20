@@ -1716,7 +1716,9 @@ Array [
 ]
 `;
 
-exports[`a11y test checks accessibility of Facepile (Facepile.AddFace.Example) 1`] = `
+exports[`a11y test checks accessibility of Facepile (Facepile.AddFace.Example) 1`] = `Array []`;
+
+exports[`a11y test checks accessibility of Facepile (Facepile.Basic.Example) 1`] = `
 Array [
   Object {
     "kind": "fail",
@@ -1725,7 +1727,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "ul",
+            "fullyQualifiedName": "button",
             "kind": "element",
           },
         ],
@@ -1736,26 +1738,59 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<ul class=\\"ms-Facepile-members members-5\\" role=\\"list\\"></ul>",
+              "text": "<button type=\\"button\\" data-is-focusable=\\"true\\" aria-hidden=\\"true\\" title=\\"Alex Lundberg\\" class=\\"ms-Button ms-Facepile-itemButton ms-Facepile-person ms-Button--facepile itemButton-19\\">",
             },
           },
         },
       },
     ],
     "message": Object {
-      "markdown": "Fix any of the following:
-- Required ARIA child role not present: listitem.",
-      "text": "Fix any of the following: Required ARIA child role not present: listitem.",
+      "markdown": "Fix all of the following:
+- Focusable content should be disabled or be removed from the DOM.",
+      "text": "Fix all of the following: Focusable content should be disabled or be removed from the DOM.",
     },
-    "ruleId": "aria-required-children",
-    "ruleIndex": 8,
+    "ruleId": "aria-hidden-focus",
+    "ruleIndex": 6,
   },
 ]
 `;
 
-exports[`a11y test checks accessibility of Facepile (Facepile.Basic.Example) 1`] = `Array []`;
-
-exports[`a11y test checks accessibility of Facepile (Facepile.Overflow.Example) 1`] = `Array []`;
+exports[`a11y test checks accessibility of Facepile (Facepile.Overflow.Example) 1`] = `
+Array [
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "button",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" data-is-focusable=\\"true\\" aria-hidden=\\"true\\" title=\\"Alex Lundberg\\" class=\\"ms-Button ms-Facepile-itemButton ms-Facepile-person ms-Button--facepile itemButton-19\\">",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix all of the following:
+- Focusable content should be disabled or be removed from the DOM.",
+      "text": "Fix all of the following: Focusable content should be disabled or be removed from the DOM.",
+    },
+    "ruleId": "aria-hidden-focus",
+    "ruleIndex": 6,
+  },
+]
+`;
 
 exports[`a11y test checks accessibility of FloatingPicker/PeoplePicker (FloatingPeoplePicker.Basic.Example) 1`] = `Array []`;
 
