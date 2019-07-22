@@ -327,7 +327,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       placeholder,
       tabIndex,
       autofill,
-      persistMenu
+      persistMenu,
+      iconButtonProps
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -412,6 +413,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 iconProps={buttonIconProps}
                 disabled={disabled}
                 checked={isOpen}
+                {...iconButtonProps}
               />
             </div>
           )}

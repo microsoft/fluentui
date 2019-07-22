@@ -2687,6 +2687,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     dropdownWidth?: number;
     // Warning: (ae-forgotten-export) The symbol "IComboBoxClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
+    iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
     keytipProps?: IKeytipProps;
     multiSelect?: boolean;
@@ -6827,9 +6828,11 @@ export interface ISpinButtonProps {
     downArrowButtonStyles?: Partial<IButtonStyles>;
     // Warning: (ae-forgotten-export) The symbol "ISpinButtonClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, disabled: boolean, isFocused: boolean, keyboardSpinDirection: KeyboardSpinDirection, labelPosition?: Position, className?: string) => ISpinButtonClassNames;
+    iconButtonProps?: IButtonProps;
     iconProps?: IIconProps;
     incrementButtonAriaLabel?: string;
     incrementButtonIcon?: IIconProps;
+    inputProps?: React.InputHTMLAttributes<HTMLElement | HTMLInputElement>;
     keytipProps?: IKeytipProps;
     label?: string;
     // Warning: (ae-forgotten-export) The symbol "Position" needs to be exported by the entry point index.d.ts
