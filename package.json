@@ -19,7 +19,7 @@
     "build": "lerna run build --stream -- --production --lint",
     "buildci": "lerna run build --stream -- --lint",
     "rebuild": "node ./scripts/invalidate-just-cache.js && npx lerna build --stream",
-    "buildfast": "lerna run build --min",
+    "buildfast": "lerna run build -- --min",
     "code-style": "lerna run code-style --stream",
     "change": "beachball change",
     "bundlesize": "cd scripts && npm run bundlesize",
