@@ -3,7 +3,7 @@ import { findDOMNode } from 'react-dom';
 import { initializeComponentRef, EventGroup, IDisposable, css, getRTL, getId, KeyCodes, IClassNames } from '../../Utilities';
 import { IColumn, IDetailsHeaderBaseProps, IColumnDragDropDetails, ColumnDragEndLocation, CheckboxVisibility } from './DetailsList.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { Icon } from '../../Icon';
+import { Icon, FontIcon } from '../../Icon';
 import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { CollapseAllVisibility } from '../../GroupedList';
@@ -143,7 +143,8 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       styles,
       theme,
       onRenderDetailsCheckbox,
-      groupNestingDepth
+      groupNestingDepth,
+      useFastIcons
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, isAllCollapsed } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
@@ -166,6 +167,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     });
 
     const classNames = this._classNames;
+    const IconComponent = useFastIcons ? FontIcon : Icon;
 
     const isRTL = getRTL();
     return (
@@ -216,6 +218,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
                         canSelect={!isCheckboxHidden}
                         className={classNames.check}
                         onRenderDetailsCheckbox={onRenderDetailsCheckbox}
+                        useFastIcons={useFastIcons}
                       />
                     )
                   },
@@ -244,7 +247,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
             aria-expanded={!isAllCollapsed}
             role={ariaLabelForToggleAllGroupsButton ? 'button' : undefined}
           >
-            <Icon className={classNames.collapseButton} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
+            <IconComponent className={classNames.collapseButton} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
           </div>
         ) : null}
         <GroupSpacer indentWidth={indentWidth} count={groupNestingDepth! - 1} />
@@ -270,6 +273,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
               onRenderColumnHeaderTooltip={this.props.onRenderColumnHeaderTooltip}
               isDropped={this._onDropIndexInfo.targetIndex === columnIndex}
               cellStyleProps={this.props.cellStyleProps}
+              useFastIcons={useFastIcons}
             />,
             this._renderColumnDivider(columnIndex)
           ];
@@ -578,9 +582,10 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
 
   private _renderDropHint(dropHintIndex: number): JSX.Element {
     const classNames = this._classNames;
+    const IconComponent = this.props.useFastIcons ? FontIcon : Icon;
     return (
       <div key={'dropHintKey'} className={classNames.dropHintStyle} id={`columnDropHint_${dropHintIndex}`}>
-        <Icon
+        <IconComponent
           key={`dropHintCaretKey`}
           aria-hidden={true}
           data-is-focusable={false}

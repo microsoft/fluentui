@@ -327,7 +327,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       styles,
       theme,
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
-      onRenderCheckbox
+      onRenderCheckbox,
+      useFastIcons
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -449,7 +450,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
                   checkboxVisibility,
                   indentWidth,
                   onRenderDetailsCheckbox: onRenderCheckbox,
-                  rowWidth: this._sumColumnWidths(this.state.adjustedColumns)
+                  rowWidth: this._sumColumnWidths(this.state.adjustedColumns),
+                  useFastIcons
                 },
                 this._onRenderDetailsHeader
               )}
@@ -542,7 +544,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       indentWidth,
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
       onRenderCheckbox,
-      enableUpdateAnimations
+      enableUpdateAnimations,
+      useFastIcons
     } = this.props;
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
@@ -576,7 +579,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       cellStyleProps: cellStyleProps,
       onRenderDetailsCheckbox: onRenderCheckbox,
       enableUpdateAnimations,
-      rowWidth: this._sumColumnWidths(columns)
+      rowWidth: this._sumColumnWidths(columns),
+      useFastIcons
     };
 
     if (!item) {
