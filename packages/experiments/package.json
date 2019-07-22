@@ -20,9 +20,11 @@
     "code-style": "just-scripts code-style",
     "start": "just-scripts dev",
     "start-test": "just-scripts jest-watch",
-    "update-snapshots": "just-scripts jest -u"
+    "update-snapshots": "just-scripts jest -u",
+    "change": "beachball change"
   },
   "devDependencies": {
+    "beachball": "^1.9.2",
     "@types/deep-assign": "^0.1.1",
     "@types/enzyme": "3.1.13",
     "@types/enzyme-adapter-react-16": "1.0.3",
