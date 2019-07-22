@@ -1,0 +1,8 @@
+{
+  "comment": "added ariaLabelForToggleAllGroupsButton",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "t-mashia@microsoft.com",
+  "commit": "7b098972ab47604f5352c3fc8407be69d92a5177",
+  "date": "2019-07-22T20:08:40.521Z"
+}
