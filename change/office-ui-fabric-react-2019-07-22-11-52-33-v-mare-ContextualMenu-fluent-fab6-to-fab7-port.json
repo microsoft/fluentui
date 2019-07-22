@@ -1,0 +1,8 @@
+{
+  "comment": "ContextualMenu: Updates split button hover state to only highlight either primary button or the menu button",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "128e0d0a3feeaa9df992bf6b904bafd869cb3443",
+  "date": "2019-07-22T18:52:33.047Z"
+}
