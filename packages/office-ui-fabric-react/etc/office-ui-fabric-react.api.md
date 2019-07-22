@@ -876,8 +876,6 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     };
     focus(): boolean;
     // (undocumented)
-    static getDerivedStateFromProps(newProps: IDetailsHeaderBaseProps, prevState: IDetailsHeaderState): IDetailsHeaderState;
-    // (undocumented)
     render(): JSX.Element;
     }
 
@@ -2171,17 +2169,15 @@ export interface ICheckProps {
 }
 
 // @public (undocumented)
-export interface ICheckStyleProps {
+export type ICheckStyleProps = Required<Pick<ICheckProps, 'theme'>> & Pick<ICheckProps, 'className' | 'checked'> & {
+    height?: string;
     checkBoxHeight?: string;
-    // (undocumented)
-    checked?: boolean;
-    className?: string;
-    theme: ITheme;
-}
+};
 
 // @public (undocumented)
 export interface ICheckStyles {
     check: IStyle;
+    // @deprecated
     checkHost: IStyle;
     circle: IStyle;
     root: IStyle;
@@ -3275,11 +3271,7 @@ export interface IDetailsHeaderProps extends IDetailsHeaderBaseProps {
 // @public (undocumented)
 export interface IDetailsHeaderState {
     // (undocumented)
-    columnReorderProps?: IColumnReorderHeaderProps;
-    // (undocumented)
     columnResizeDetails?: IColumnResizeDetails;
-    // (undocumented)
-    groupNestingDepth?: number;
     // (undocumented)
     isAllCollapsed?: boolean;
     // (undocumented)
@@ -3504,7 +3496,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onWillUnmount?: (row?: DetailsRowBase) => void;
-    rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
+    rowFieldsAs?: React.ComponentType<IDetailsRowFieldsProps>;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
     useReducedRowRenderer?: boolean;
@@ -3532,7 +3524,7 @@ export type IDetailsRowCheckStyleProps = Required<Pick<IDetailsRowCheckProps, 't
 
 // @public (undocumented)
 export interface IDetailsRowCheckStyles {
-    // (undocumented)
+    // @deprecated (undocumented)
     check: IStyle;
     // (undocumented)
     isDisabled: IStyle;
@@ -3549,13 +3541,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     item: any;
     itemIndex: number;
     rowClassNames: {
-        isMultiline: string;
-        isRowHeader: string;
-        cell: string;
-        cellAnimation: string;
-        cellPadded: string;
-        cellUnpadded: string;
-        fields: string;
+        [k in keyof Pick<IDetailsRowStyles, 'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'>]: string;
     };
 }
 
@@ -3583,11 +3569,9 @@ export interface IDetailsRowState {
         onMeasureDone: (measuredWidth: number) => void;
     };
     // (undocumented)
-    groupNestingDepth?: number;
-    // (undocumented)
     isDropping?: boolean;
     // (undocumented)
-    selectionState?: IDetailsRowSelectionState;
+    selectionState: IDetailsRowSelectionState;
 }
 
 // @public (undocumented)
@@ -5519,6 +5503,7 @@ export interface INavProps {
     onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
     onRenderLink?: IRenderFunction<INavLink>;
+    selectedAriaLabel?: string;
     selectedKey?: string;
     styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
     theme?: ITheme;
@@ -7842,12 +7827,14 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
 }
 
 // @public
-export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> implements IList {
+export class List<T = any> extends React.Component<IListProps<T>, IListState<T>> implements IList {
     constructor(props: IListProps<T>);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentWillReceiveProps(newProps: IListProps<T>): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: {
         startIndex: number;
@@ -8700,7 +8687,7 @@ export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
 export const ShimmeredDetailsList: React.StatelessComponent<IShimmeredDetailsListProps>;
 
 // @public (undocumented)
-export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsListProps, {}> {
+export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsListProps, {}> {
     constructor(props: IShimmeredDetailsListProps);
     // (undocumented)
     render(): JSX.Element;
