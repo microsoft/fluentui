@@ -327,7 +327,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       placeholder,
       tabIndex,
       autofill,
-      persistMenu
+      persistMenu,
+      iconButtonProps
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -412,6 +413,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 iconProps={buttonIconProps}
                 disabled={disabled}
                 checked={isOpen}
+                {...iconButtonProps}
               />
             </div>
           )}
@@ -1082,7 +1084,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       dropdownMaxWidth,
       onRenderLowerContent = this._onRenderLowerContent,
       useComboBoxAsMenuWidth,
-      persistMenu
+      persistMenu,
+      shouldRestoreFocus = true
     } = props;
 
     const { isOpen } = this.state;
@@ -1107,6 +1110,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         calloutWidth={useComboBoxAsMenuWidth && this._comboBoxWrapper.current ? comboBoxMenuWidth && comboBoxMenuWidth : dropdownWidth}
         calloutMaxWidth={dropdownMaxWidth ? dropdownMaxWidth : comboBoxMenuWidth}
         hidden={persistMenu ? !isOpen : undefined}
+        shouldRestoreFocus={shouldRestoreFocus}
       >
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
           {(onRenderList as any)({ ...props }, this._onRenderList)}
@@ -1392,6 +1396,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Handles dismissing (cancelling) the menu
    */
   private _onDismiss = (): void => {
+    const { onMenuDismiss } = this.props;
+    if (onMenuDismiss) {
+      onMenuDismiss();
+    }
+
     // In persistMode we need to simulate callout layer mount
     // since that only happens once. We do it on dismiss since
     // it works either way.

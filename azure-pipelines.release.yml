@@ -33,16 +33,18 @@ steps:
     displayName: Authenticate git for pushes
 
   - script: |
-      node common/scripts/install-run-rush.js install --bypass-policy
-    displayName: rush install
+      yarn
+    displayName: yarn
+
+  # TODO: disable this step until a proper fix to this is found
+  #       root cause: this step is generating a set of changes that are not checked in and not accounted for in the change files
+  # - script: |
+  #     npm run generate-version-files
+  #   displayName: npm run generate-version-files
 
   - script: |
-      npm run generate-version-files
-    displayName: npm run generate-version-files
-
-  - script: |
-      node common/scripts/install-run-rush.js build --production --verbose
-    displayName: rush build (Create production build)
+      yarn build --production
+    displayName: yarn build (Create production build)
 
   - script: |
       echo Making $(Build.ArtifactStagingDirectory)/api &&

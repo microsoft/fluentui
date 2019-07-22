@@ -1,8 +1,0 @@
-{
-  "comment": "GroupedList: Using level to determine nestingDepth when it is given.",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "1138d83d700aa157d62f8b2229bc4305775ab1df",
-  "date": "2019-07-15T23:24:08.629Z"
-}

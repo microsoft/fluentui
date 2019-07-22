@@ -1,6 +1,34 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Sat, 13 Jul 2019 22:20:41 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+
+## 7.8.0
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Minor changes
+
+- Refactor out BaseComponent from Tile (706967+KevinTCoughlin@users.noreply.github.com)
+,- Tile: Add ability for screen reader to read selected state. (Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Button: Updating Button styles to use corresponding semanticColors instead of palette. (Humberto.Morimoto@microsoft.com)
+,- Improve how to get the min query string (elcraig@microsoft.com)
+
+## 7.7.0
+Fri, 19 Jul 2019 12:25:58 GMT
+
+### Minor changes
+
+- Chiclet: removes imageHeight and imageWidth props (t-stcar@microsoft.com)
+
+## 7.6.2
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+,- Remove fluent customizations. (vibraga@microsoft.com)
 
 ## 7.6.0
 Sat, 13 Jul 2019 22:20:41 GMT

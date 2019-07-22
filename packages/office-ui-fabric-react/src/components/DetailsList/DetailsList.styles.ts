@@ -33,7 +33,7 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
         }
       },
 
-      isFixed && [classNames.isFixed],
+      isFixed && classNames.isFixed,
 
       compact && [
         classNames.compact,
@@ -65,7 +65,7 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
         minHeight: 1
       }
     ],
-    headerWrapper: [classNames.headerWrapper],
-    contentWrapper: [classNames.contentWrapper]
+    headerWrapper: classNames.headerWrapper,
+    contentWrapper: classNames.contentWrapper
   };
 };
