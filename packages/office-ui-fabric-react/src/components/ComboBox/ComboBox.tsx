@@ -1235,6 +1235,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           aria-selected={isSelected ? 'true' : 'false'}
           checked={isSelected}
           title={title}
+          disabled={item.disabled}
         >
           {onRenderOption(item, this._onRenderOptionContent)}
         </Checkbox>

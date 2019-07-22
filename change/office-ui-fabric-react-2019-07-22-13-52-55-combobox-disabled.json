@@ -1,0 +1,8 @@
+{
+  "comment": "Multiselect ComboBox options should respect disabled setting",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "46b9110a123f5dd03cd516818edeac38a407d7d4",
+  "date": "2019-07-22T20:52:55.277Z"
+}
