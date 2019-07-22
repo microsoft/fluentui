@@ -156,17 +156,7 @@ const commandBarHeight = '44px';
 
 const sharedPaddingStyles = {
   paddingLeft: '16px',
-  paddingRight: '16px',
-  selectors: {
-    [`@media screen and (min-width: ${ScreenWidthMinLarge}px)`]: {
-      paddingLeft: '32px',
-      paddingRight: '32px'
-    },
-    [`@media screen and (min-width: ${ScreenWidthMinXXLarge}px)`]: {
-      paddingLeft: '40px',
-      paddingRight: '40px'
-    }
-  }
+  paddingRight: '16px'
 };
 
 // // TODO -Issue #5689: Comment in once Button is converted to mergeStyles

@@ -80,7 +80,7 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         color: palette.neutralPrimary,
         letterSpacing: 'normal',
         textAlign: 'left',
-        height: 41, // Two lines of text, making sure the third line is hidden
+        height: 37, // Two lines of text, making sure the third line is hidden
         width: 363,
         lineHeight: '1.25',
         overflow: 'hidden',

@@ -17,8 +17,8 @@ steps:
     displayName: 'Install Node.js'
 
   - script: |
-      node common/scripts/install-run-rush.js install --bypass-policy
-    displayName: rush install
+      yarn
+    displayName: yarn
 
   - script: |
       npm run checkchange
@@ -78,7 +78,7 @@ steps:
   - script: |
       git config --global user.email "fabrictactical@microsoft.com"
       git config --global user.name "Fabric Tactical"
-      npm run vrtest
+      npm run vrtest -- --debug
     displayName: run VR Test
     env:
       SCREENER_API_KEY: $(screener.key)

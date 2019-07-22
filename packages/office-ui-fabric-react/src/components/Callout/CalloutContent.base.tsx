@@ -191,7 +191,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       hideOverflow = !!finalHeight,
       backgroundColor,
       calloutMaxHeight,
-      onScroll
+      onScroll,
+      shouldRestoreFocus = true
     } = this.props;
     target = this._getTarget();
     const { positions } = this.state;
@@ -241,7 +242,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
             className={this._classNames.calloutMain}
             onDismiss={this.dismiss}
             onScroll={onScroll}
-            shouldRestoreFocus={true}
+            shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
             onMouseDown={this._mouseDownOnPopup}
             onMouseUp={this._mouseUpOnPopup}
