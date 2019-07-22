@@ -22,3 +22,4 @@ export * from './components/Table/index';
 export * from './components/TopNav/index';
 export * from './components/Video/index';
 export * from './utilities/index2';
+export * from './utilities/settings';

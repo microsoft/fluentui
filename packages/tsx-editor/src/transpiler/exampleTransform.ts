@@ -63,6 +63,5 @@ export function transformExample(example: string, id: string) {
     `;
 
   output.output = example;
-  console.log(example);
   return output;
 }

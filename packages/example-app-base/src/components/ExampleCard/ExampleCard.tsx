@@ -1,14 +1,17 @@
 import * as React from 'react';
 import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { styled, classNamesFunction, css, isIE11 } from 'office-ui-fabric-react/lib/Utilities';
+import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
+import { styled, Customizer, classNamesFunction, css, isIE11, CustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
 import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
 import { CodeSnippet } from '../CodeSnippet/index';
 import { Editor, ITextModel, transpile, evalCode, ITranspiledOutput, EditorPreview, transformExample } from '@uifabric/tsx-editor';
+import { getSetting } from '../../index2';
 
 export interface IExampleCardState {
   schemeIndex: number;
@@ -24,6 +27,13 @@ const _schemeOptions: IDropdownOption[] = _schemes.map((item: string, index: num
   text: 'Scheme: ' + item
 }));
 
+const regionStyles: IStackComponent['styles'] = (props, theme) => ({
+  root: {
+    backgroundColor: theme.semanticColors.bodyBackground,
+    color: theme.semanticColors.bodyText
+  }
+});
+
 export class ExampleCardBase extends React.Component<IExampleCardProps, IExampleCardState> {
   private _themeCustomizations: IExampleCardCustomizations[] | undefined;
   private _themeOptions: IDropdownOption[];
@@ -38,16 +48,20 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
       themeIndex: 0
     };
 
-    this.canRenderLiveEditor = !isIE11() && transformExample(props.code!, 'placeholder').error === undefined ? true : false;
+    this.canRenderLiveEditor =
+      getSetting('useEditor') === '1' && !isIE11() && transformExample(props.code!, 'placeholder').error === undefined ? true : false;
   }
 
   public render(): JSX.Element {
     const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme, isCodeVisible } = this.props;
+    const { schemeIndex, themeIndex } = this.state;
 
     return (
       <AppCustomizationsContext.Consumer>
         {(context: IAppCustomizations) => {
           const { exampleCardCustomizations, hideSchemes } = context;
+          const activeCustomizations =
+            exampleCardCustomizations && exampleCardCustomizations[themeIndex] && exampleCardCustomizations[themeIndex].customizations;
 
           if (exampleCardCustomizations !== this._themeCustomizations) {
             this._themeCustomizations = exampleCardCustomizations;
@@ -126,7 +140,18 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
               {isCodeVisible && this.canRenderLiveEditor && editor}
 
-              {(!isCodeVisible || !this.canRenderLiveEditor) && exampleCardContent}
+              {(!isCodeVisible || !this.canRenderLiveEditor) &&
+                (activeCustomizations ? (
+                  <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
+                    <Customizer {...activeCustomizations}>
+                      <ThemeProvider scheme={_schemes[schemeIndex]}>
+                        <Stack styles={regionStyles}>{exampleCardContent}</Stack>
+                      </ThemeProvider>
+                    </Customizer>
+                  </CustomizerContext.Provider>
+                ) : (
+                  exampleCardContent
+                ))}
 
               {this._getDosAndDonts()}
             </div>
