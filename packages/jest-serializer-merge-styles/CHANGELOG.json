@@ -2,6 +2,25 @@
   "name": "@uifabric/jest-serializer-merge-styles",
   "entries": [
     {
+      "version": "6.0.12",
+      "tag": "@uifabric/jest-serializer-merge-styles_v6.0.12",
+      "date": "Mon, 22 Jul 2019 12:21:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).",
+            "author": "Makoto Morimoto <humbertomakotomorimoto@gmail.com>",
+            "commit": "541b30dfa57d13e783a46f02ed510caba6679b5d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.19.2` to `^6.19.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.11",
       "tag": "@uifabric/jest-serializer-merge-styles_v6.0.11",
       "date": "Wed, 12 Jun 2019 22:15:55 GMT",

@@ -2,6 +2,31 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "version": "6.0.4",
+      "tag": "@uifabric/azure-themes_v6.0.4",
+      "date": "Mon, 22 Jul 2019 12:21:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).",
+            "author": "Makoto Morimoto <humbertomakotomorimoto@gmail.com>",
+            "commit": "541b30dfa57d13e783a46f02ed510caba6679b5d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.19.2` to `^6.19.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.195.3` to `^6.195.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.11` to `^6.0.12`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.3",
       "tag": "@uifabric/azure-themes_v6.0.3",
       "date": "Wed, 12 Jun 2019 22:15:55 GMT",
