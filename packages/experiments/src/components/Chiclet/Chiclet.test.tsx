@@ -6,7 +6,7 @@ import { ChicletCard } from './ChicletCard';
 import { IChicletCardProps } from './ChicletCard.types';
 
 describe('Chiclet', () => {
-  it('renders Xsmall chiclet with title, icon, onClick, and url', () => {
+  it('renders Xsmall chiclet with a title, icon, onClick, and url', () => {
     const chicletCardProps: IChicletCardProps = {
       url: 'contoso.sharepoint.com',
       title: 'My Daily Notes',
