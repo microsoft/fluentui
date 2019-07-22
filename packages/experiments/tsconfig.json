@@ -17,12 +17,12 @@
     "preserveConstEnums": true,
     "skipLibCheck": true,
     "lib": ["es5", "dom"],
-    "typeRoots": ["node_modules/@types", "../../typings"],
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
     "types": ["jest", "webpack-env", "custom-global"],
     "paths": {
       "@uifabric/experiments/lib/*": ["./src/*"],
       "@uifabric/experiments": ["./src"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "../../typings"]
 }

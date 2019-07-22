@@ -1,6 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 18 Jul 2019 12:27:48 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+
+## 7.13.0
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Minor changes
+
+- Refactor out BaseComponent from List components (706967+KevinTCoughlin@users.noreply.github.com)
+,- Nav: Add ability for screen reader to read selected state. (Humberto.Morimoto@microsoft.com)
+,- DetailsList: Remove unnecessary BaseComponent and class component usage (elcraig@microsoft.com)
+
+### Patches
+
+- Panel: remove window.innerHeight from styles (kakje@microsoft.com)
+,- fix the layer example so the panel dismisses properly (joschect@microsoft.com)
+,- DetailsList and Check styling optimizations (elcraig@microsoft.com)
+
+## 7.12.0
+Fri, 19 Jul 2019 12:25:58 GMT
+
+### Minor changes
+
+- Tooltip: render tooltip only after the delay and make sure if provided `closeDelay` is bigger than `delay` not to flash the Tooltip. (vibraga@microsoft.com)
 
 ## 7.11.1
 Thu, 18 Jul 2019 12:27:48 GMT

@@ -15,7 +15,10 @@ module.exports = [
       library: 'FabricFoundationScenarios'
     },
 
-    externals: [{ react: 'React' }, { 'react-dom': 'ReactDOM' }],
+    externals: {
+      react: 'React',
+      'react-dom': 'ReactDOM'
+    },
 
     resolve: {
       alias: {

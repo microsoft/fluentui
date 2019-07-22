@@ -110,9 +110,8 @@ gulp-cache
 
 # NPM debug logs
 npm-debug.log.*
-
+shrinkwrap.yaml
 package-lock.json
-yarn.lock
 
 *.swp
 
@@ -123,3 +122,7 @@ yarn.lock
 
 # Fabric website
 apps/fabric-website/flights/
+
+# Rush files - since we are moving away from it
+/common
+rush.json

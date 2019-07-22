@@ -11,7 +11,7 @@
     "build": "just-scripts build",
     "code-style": "just-scripts code-style",
     "clean": "just-scripts clean",
-    "start": "node ../../scripts/node_modules/typescript/bin/tsc -w --outDir lib -m commonjs -t es5",
+    "start": "node ../../node_modules/typescript/bin/tsc -w --outDir lib -m commonjs -t es5",
     "just": "just-scripts"
   },
   "devDependencies": {

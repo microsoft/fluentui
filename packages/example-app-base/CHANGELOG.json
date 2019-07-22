@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Mon, 22 Jul 2019 12:28:42 GMT",
+      "tag": "@uifabric/example-app-base_v7.1.6",
+      "version": "7.1.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add a way to get settings from query or session storage",
+            "author": "elcraig@microsoft.com",
+            "commit": "17b31ca8739504e1d4c7b7dcaa725091254d0eb5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jul 2019 18:58:57 GMT",
       "tag": "@uifabric/example-app-base_v7.1.5",
       "version": "7.1.5",
