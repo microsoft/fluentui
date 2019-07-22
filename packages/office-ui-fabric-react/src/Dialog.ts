@@ -1,2 +1,1 @@
-export * from './components/Dialog/index';
-export { Dialog as default } from './components/Dialog/index';
+export * from './packages/react-fundamentals/Dialog';

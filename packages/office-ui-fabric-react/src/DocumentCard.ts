@@ -1,1 +1,1 @@
-export * from './components/DocumentCard/index';
+export * from './packages/react-fundamentals/DocumentCard';

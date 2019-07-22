@@ -1,1 +1,1 @@
-export * from './components/Nav/index';
+export * from './packages/react-fundamentals/Nav';

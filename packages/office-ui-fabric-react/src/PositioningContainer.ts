@@ -1,1 +1,1 @@
-export * from './components/Coachmark/PositioningContainer/index';
+export * from './packages/react-fundamentals/PositioningContainer';

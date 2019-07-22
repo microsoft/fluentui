@@ -1,0 +1,1 @@
+- Don’t use a Toggle if the user will have to do something else or go somewhere else in order to experience its effect. If any extra step is required for changes to be effective, you should use a checkbox and corresponding "Apply" button instead of a Toggle.

@@ -1,1 +1,1 @@
-export * from './components/Breadcrumb/index';
+export * from './packages/react-fundamentals/Breadcrumb';

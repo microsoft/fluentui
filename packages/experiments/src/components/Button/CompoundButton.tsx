@@ -4,7 +4,7 @@ import { IButtonComponent, IButtonStylesReturnType, IButtonTokenReturnType } fro
 import { IButtonVariantProps } from './ButtonVariants.types';
 import { HighContrastSelector } from '../../Styling';
 import { Text } from 'office-ui-fabric-react';
-import { parseGap } from 'office-ui-fabric-react/lib/components/Stack/StackUtils';
+import { parseGap } from 'office-ui-fabric-react/lib/packages/react-fundamentals/components/Stack/StackUtils';
 
 export interface ICompoundButtonProps extends IButtonVariantProps {
   secondaryText?: string;

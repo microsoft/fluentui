@@ -1,1 +1,1 @@
-export * from './components/OverflowSet/index';
+export * from './packages/react-fundamentals/OverflowSet';
