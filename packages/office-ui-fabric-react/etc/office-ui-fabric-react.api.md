@@ -876,8 +876,6 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     };
     focus(): boolean;
     // (undocumented)
-    static getDerivedStateFromProps(newProps: IDetailsHeaderBaseProps, prevState: IDetailsHeaderState): IDetailsHeaderState;
-    // (undocumented)
     render(): JSX.Element;
     }
 
@@ -3273,11 +3271,7 @@ export interface IDetailsHeaderProps extends IDetailsHeaderBaseProps {
 // @public (undocumented)
 export interface IDetailsHeaderState {
     // (undocumented)
-    columnReorderProps?: IColumnReorderHeaderProps;
-    // (undocumented)
     columnResizeDetails?: IColumnResizeDetails;
-    // (undocumented)
-    groupNestingDepth?: number;
     // (undocumented)
     isAllCollapsed?: boolean;
     // (undocumented)
@@ -3502,7 +3496,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onWillUnmount?: (row?: DetailsRowBase) => void;
-    rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
+    rowFieldsAs?: React.ComponentType<IDetailsRowFieldsProps>;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
     useReducedRowRenderer?: boolean;
@@ -3547,13 +3541,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     item: any;
     itemIndex: number;
     rowClassNames: {
-        isMultiline: string;
-        isRowHeader: string;
-        cell: string;
-        cellAnimation: string;
-        cellPadded: string;
-        cellUnpadded: string;
-        fields: string;
+        [k in keyof Pick<IDetailsRowStyles, 'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'>]: string;
     };
 }
 
@@ -3581,11 +3569,9 @@ export interface IDetailsRowState {
         onMeasureDone: (measuredWidth: number) => void;
     };
     // (undocumented)
-    groupNestingDepth?: number;
-    // (undocumented)
     isDropping?: boolean;
     // (undocumented)
-    selectionState?: IDetailsRowSelectionState;
+    selectionState: IDetailsRowSelectionState;
 }
 
 // @public (undocumented)
