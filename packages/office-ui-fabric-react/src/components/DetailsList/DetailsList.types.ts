@@ -699,6 +699,7 @@ export interface IDetailsListStyles {
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
   onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
   onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
+  ariaLabelForToggleAllGroupsButton?: string;
 }
 
 /**
