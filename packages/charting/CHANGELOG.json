@@ -2,6 +2,34 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.30.5",
+      "tag": "@uifabric/charting_v0.30.5",
+      "date": "Mon, 22 Jul 2019 12:21:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).",
+            "author": "Makoto Morimoto <humbertomakotomorimoto@gmail.com>",
+            "commit": "541b30dfa57d13e783a46f02ed510caba6679b5d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^6.5.3` to `^6.5.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.195.3` to `^6.195.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.6` to `^6.23.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.11` to `^6.0.12`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.4",
       "tag": "@uifabric/charting_v0.30.4",
       "date": "Wed, 12 Jun 2019 22:15:55 GMT",
