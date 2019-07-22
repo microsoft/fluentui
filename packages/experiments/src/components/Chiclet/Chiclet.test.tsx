@@ -8,7 +8,7 @@ import { IChicletCardProps } from './ChicletCard.types';
 describe('Chiclet', () => {
   it('renders Xsmall chiclet with title, icon, onClick, and url', () => {
     const chicletCardProps: IChicletCardProps = {
-      url: 'contuso.sharepoint.com',
+      url: 'contoso.sharepoint.com',
       title: 'My Daily Notes',
       itemType: 'docx',
       onClick: () => alert('test')
@@ -22,7 +22,7 @@ describe('Chiclet', () => {
 
   it('renders Xsmall chiclet with title, preview, onClick, and url', () => {
     const chicletCardProps: IChicletCardProps = {
-      url: 'contuso.sharepoint.com',
+      url: 'contoso.sharepoint.com',
       title: 'My Daily Notes',
       itemType: 'docx',
       image: 'https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg',
@@ -35,9 +35,9 @@ describe('Chiclet', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders the correct icon from a file extension for Xsmall Chiclet', () => {
+  it('renders Xsmall Chiclet with the correct icon from a file extension', () => {
     const chicletCardProps: IChicletCardProps = {
-      url: 'contuso.sharepoint.com',
+      url: 'contoso.sharepoint.com',
       title: 'My Daily Notes.xlsx',
       onClick: () => alert('test')
     };
@@ -50,7 +50,7 @@ describe('Chiclet', () => {
 
   it('renders Medium chiclet with title, icon, onClick, and url', () => {
     const chicletCardProps: IChicletCardProps = {
-      url: 'contuso.sharepoint.com',
+      url: 'contoso.sharepoint.com',
       title: 'My Daily Notes',
       itemType: 'docx',
       onClick: () => alert('test')
