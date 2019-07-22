@@ -1,8 +1,15 @@
 import { ISearchBoxStyleProps, ISearchBoxStyles } from 'office-ui-fabric-react/lib/SearchBox';
 
 export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBoxStyles> => {
-  const { theme, hasFocus, hasInput, underlined } = props;
-  const { effects, semanticColors } = theme;
+  const { theme, hasFocus, hasInput, underlined, disabled } = props;
+  const { effects, palette, semanticColors } = theme;
+
+  const inputIcon = palette.themeDarkAlt;
+  const inputIconAlt = palette.neutralSecondary;
+  const inputIconAltHovered = palette.neutralPrimary;
+  const inputIconDisabled = palette.neutralTertiary;
+  const inputBorderHasInput = palette.neutralSecondary;
+  const inputBackgroundHovered = palette.neutralLighter;
 
   return {
     root: [
@@ -32,7 +39,7 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
           }
         },
       hasInput && {
-        borderColor: semanticColors.smallInputBorder
+        borderColor: inputBorderHasInput
       },
       hasFocus && {
         borderColor: semanticColors.inputFocusBorderAlt
@@ -41,9 +48,14 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
         borderRadius: 0
       }
     ],
-    iconContainer: {
-      color: semanticColors.inputBackgroundCheckedHovered
-    },
+    iconContainer: [
+      {
+        color: inputIcon
+      },
+      disabled && {
+        color: inputIconDisabled
+      }
+    ],
     field: {
       paddingLeft: 6
     },
@@ -51,13 +63,13 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
       padding: 0,
       selectors: {
         '&:hover .ms-Button': {
-          backgroundColor: semanticColors.buttonBackground
+          backgroundColor: inputBackgroundHovered
         },
         '&:hover .ms-Button-icon': {
-          color: semanticColors.buttonText
+          color: inputIconAltHovered
         },
         '.ms-Button-icon': {
-          color: semanticColors.inputPlaceholderText
+          color: inputIconAlt
         }
       }
     }
