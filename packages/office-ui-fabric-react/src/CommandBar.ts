@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/CommandBar';
+export * from './components/CommandBar/index';

@@ -1,1 +1,1 @@
-export * from './packages/react-data-views/GroupedList';
+export * from './components/GroupedList/index';

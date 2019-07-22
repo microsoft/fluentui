@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Image';
+export * from './components/Image/index';

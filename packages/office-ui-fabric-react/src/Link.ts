@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Link';
+export * from './components/Link/index';

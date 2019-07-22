@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/ChoiceGroup';
+export * from './components/ChoiceGroup/index';

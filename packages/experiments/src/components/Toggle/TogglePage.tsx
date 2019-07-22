@@ -32,22 +32,10 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Toggle/Toggle.types.ts')]} />
         }
-        overview={
-          <Markdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Toggle/docs/ToggleOverview.md')}
-          </Markdown>
-        }
+        overview={<Markdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleOverview.md')}</Markdown>}
         bestPractices={<div />}
-        dos={
-          <Markdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Toggle/docs/ToggleDos.md')}
-          </Markdown>
-        }
-        donts={
-          <Markdown>
-            {require<string>('!raw-loader!office-ui-fabric-react/src/packages/react-fundamentals/components/Toggle/docs/ToggleDonts.md')}
-          </Markdown>
-        }
+        dos={<Markdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDos.md')}</Markdown>}
+        donts={<Markdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDonts.md')}</Markdown>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

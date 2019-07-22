@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Coachmark';
+export * from './components/Coachmark/index';

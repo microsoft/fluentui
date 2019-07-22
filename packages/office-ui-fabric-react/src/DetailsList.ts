@@ -1,1 +1,1 @@
-export * from './packages/react-data-views/DetailsList';
+export * from './components/DetailsList/index';

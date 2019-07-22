@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Callout';
+export * from './components/Callout/index';

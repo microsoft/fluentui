@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { ListPageProps } from 'office-ui-fabric-react/lib/packages/react-data-views/components/List/List.doc';
+import { ListPageProps } from 'office-ui-fabric-react/lib/components/List/List.doc';
 import { DemoPage } from '../DemoPage';
 
 export const ListPage = (props: { isHeaderVisible: boolean }) => (

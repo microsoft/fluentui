@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/SearchBox';
+export * from './components/SearchBox/index';

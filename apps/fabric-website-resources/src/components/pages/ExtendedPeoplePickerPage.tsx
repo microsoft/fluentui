@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { DemoPage } from '../DemoPage';
-import { ExtendedPeoplePickerPageProps } from 'office-ui-fabric-react/lib/packages/react-pickers/components/ExtendedPicker/PeoplePicker/ExtendedPeoplePicker.doc';
+import { ExtendedPeoplePickerPageProps } from 'office-ui-fabric-react/lib/components/ExtendedPicker/PeoplePicker/ExtendedPeoplePicker.doc';
 
 export const ExtendedPeoplePickerPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

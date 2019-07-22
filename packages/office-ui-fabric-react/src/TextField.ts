@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/TextField';
+export * from './components/TextField/index';

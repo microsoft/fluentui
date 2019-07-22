@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Rating';
+export * from './components/Rating/index';

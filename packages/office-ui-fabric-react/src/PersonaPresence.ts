@@ -1,1 +1,1 @@
-export * from './packages/react-people/PersonaPresence';
+export * from './components/Persona/PersonaPresence/index';

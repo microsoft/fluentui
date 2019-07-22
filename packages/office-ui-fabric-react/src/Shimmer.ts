@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Shimmer';
+export * from './components/Shimmer/index';

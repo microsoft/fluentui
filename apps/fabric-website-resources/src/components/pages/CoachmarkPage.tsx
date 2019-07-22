@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { DemoPage } from '../DemoPage';
-import { CoachmarkPageProps } from 'office-ui-fabric-react/lib/packages/react-fundamentals/components/Coachmark/Coachmark.doc';
+import { CoachmarkPageProps } from 'office-ui-fabric-react/lib/components/Coachmark/Coachmark.doc';
 
 export const CoachmarkPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

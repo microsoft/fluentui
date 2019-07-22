@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Icons';
+export * from '@uifabric/icons';

@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/ComboBox';
+export * from './components/ComboBox/index';

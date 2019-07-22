@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/MessageBar';
+export * from './components/MessageBar/index';

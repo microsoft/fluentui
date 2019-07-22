@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Icon';
+export * from './components/Icon/index';

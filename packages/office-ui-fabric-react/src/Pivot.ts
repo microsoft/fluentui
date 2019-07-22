@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Pivot';
+export * from './components/Pivot/index';

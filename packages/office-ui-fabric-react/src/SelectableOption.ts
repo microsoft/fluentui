@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/SelectableOption';
+export * from './utilities/selectableOption/index';

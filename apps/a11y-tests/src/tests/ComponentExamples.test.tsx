@@ -91,7 +91,7 @@ describe('a11y test', () => {
 
   const files: string[] = [];
   const oufrPath = path.dirname(require.resolve('office-ui-fabric-react/package.json'));
-  const exampleFiles: string[] = glob.sync(path.join(oufrPath, `lib-commonjs/packages/**/components/**/examples/*Example*.js`));
+  const exampleFiles: string[] = glob.sync(path.join(oufrPath, `lib-commonjs/components/**/examples/*Example*.js`));
   files.push(...exampleFiles);
 
   files

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AnnouncedBulkOperationsPageProps } from 'office-ui-fabric-react/lib/packages/react-fundamentals/components/Announced/Announced.doc';
+import { AnnouncedBulkOperationsPageProps } from 'office-ui-fabric-react/lib/components/Announced/Announced.doc';
 import { DemoPage } from '../../DemoPage';
 
 export const AnnouncedBulkOperationsPage = (props: { isHeaderVisible: boolean }) => (

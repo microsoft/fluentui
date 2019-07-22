@@ -34,7 +34,6 @@
     "fork-ts-checker-webpack-plugin": "^0.4.1",
     "fs-extra": "^7.0.1",
     "glob": "^7.1.2",
-    "good-fences": "0.5.1",
     "gzip-size": "^3.0.0",
     "jest": "24.1.0",
     "jest-cli": "24.1.0",

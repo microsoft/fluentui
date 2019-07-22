@@ -1,1 +1,1 @@
-export * from './packages/react-data-views/SelectedItemsList';
+export * from './components/SelectedItemsList/index';

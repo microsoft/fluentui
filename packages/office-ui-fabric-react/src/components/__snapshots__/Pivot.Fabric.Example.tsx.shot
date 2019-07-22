@@ -455,10 +455,10 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #605e5c;
               }
-          data-content="Nav"
+          data-content="Persona"
           data-is-focusable={true}
           id="Pivot0-Tab2"
-          name="Nav"
+          name="Persona"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -493,7 +493,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                     }
               >
                  
-                Nav
+                Persona
               </span>
             </span>
           </div>

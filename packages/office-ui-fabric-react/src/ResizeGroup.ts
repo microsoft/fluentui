@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/ResizeGroup';
+export * from './components/ResizeGroup/index';

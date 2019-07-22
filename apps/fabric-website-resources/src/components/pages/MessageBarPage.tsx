@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { MessageBarPageProps } from 'office-ui-fabric-react/lib/packages/react-fundamentals/components/MessageBar/MessageBar.doc';
+import { MessageBarPageProps } from 'office-ui-fabric-react/lib/components/MessageBar/MessageBar.doc';
 
 export const MessageBarPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

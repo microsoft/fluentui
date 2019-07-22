@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Button';
+export * from './components/Button/index';

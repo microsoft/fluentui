@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Divider';
+export * from './components/Divider/index';

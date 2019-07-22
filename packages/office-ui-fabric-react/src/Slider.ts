@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Slider';
+export * from './components/Slider/index';

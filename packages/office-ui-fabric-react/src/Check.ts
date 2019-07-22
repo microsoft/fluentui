@@ -1,1 +1,1 @@
-export * from './packages/react-data-views/Check';
+export * from './components/Check/index';

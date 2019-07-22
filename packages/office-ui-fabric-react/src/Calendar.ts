@@ -1,1 +1,1 @@
-export * from './packages/react-date-time/Calendar';
+export * from './components/Calendar/index';

@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Dropdown';
+export * from './components/Dropdown/index';

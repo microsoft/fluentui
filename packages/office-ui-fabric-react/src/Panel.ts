@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Panel';
+export * from './components/Panel/index';

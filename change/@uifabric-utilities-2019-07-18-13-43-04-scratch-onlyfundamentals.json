@@ -1,8 +1,0 @@
-{
-  "comment": "Stage OUFR for eventual package breakout.",
-  "type": "patch",
-  "packageName": "@uifabric/utilities",
-  "email": "jdh@microsoft.com",
-  "commit": "baf34afcd1b15b998cce38b833b754a0fc5df709",
-  "date": "2019-07-18T20:43:04.272Z"
-}

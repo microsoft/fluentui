@@ -1,8 +1,0 @@
-{
-  "comment": "Update imports for OUFR file moves",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "jdh@microsoft.com",
-  "commit": "c7a108d887fa6b85770955ebc32381a79c88692c",
-  "date": "2019-07-19T00:49:29.030Z"
-}

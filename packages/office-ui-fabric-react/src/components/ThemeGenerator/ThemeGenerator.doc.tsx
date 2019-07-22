@@ -1,5 +1,3 @@
-// tslint:disable:max-line-length
-// tslint/prettier disagree on how to format several lines in this file.
 import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 
@@ -20,11 +18,10 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
 
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
-
-import { TeachingBubbleBasicExample } from '../../packages/react-fundamentals/components/TeachingBubble/examples/TeachingBubble.Basic.Example';
-import { TextFieldBasicExample } from '../../packages/react-fundamentals/components/TextField/examples/TextField.Basic.Example';
-import { ToggleBasicExample } from '../../packages/react-fundamentals/components/Toggle/examples/Toggle.Basic.Example';
-import { ProgressIndicatorBasicExample } from '../../packages/react-fundamentals/components/ProgressIndicator/examples/ProgressIndicator.Basic.Example';
+import { TeachingBubbleBasicExample } from '../../components/TeachingBubble/examples/TeachingBubble.Basic.Example';
+import { TextFieldBasicExample } from '../TextField/examples/TextField.Basic.Example';
+import { ToggleBasicExample } from '../../components/Toggle/examples/Toggle.Basic.Example';
+import { ProgressIndicatorBasicExample } from '../ProgressIndicator/examples/ProgressIndicator.Basic.Example';
 
 export interface IThemeGeneratorPageState {
   themeRules: IThemeRules;

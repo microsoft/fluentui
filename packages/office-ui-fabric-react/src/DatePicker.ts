@@ -1,1 +1,1 @@
-export * from './packages/react-date-time/DatePicker';
+export * from './components/DatePicker/index';

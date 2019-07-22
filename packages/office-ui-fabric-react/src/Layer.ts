@@ -1,1 +1,2 @@
-export * from './packages/react-fundamentals/Layer';
+import './version';
+export * from './components/Layer/index';

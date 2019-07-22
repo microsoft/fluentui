@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { PivotPageProps as ExternalProps } from 'office-ui-fabric-react/lib/packages/react-fundamentals/components/Pivot/Pivot.doc';
+import { PivotPageProps as ExternalProps } from 'office-ui-fabric-react/lib/components/Pivot/Pivot.doc';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PivotPage/docs/PivotRelated.md') as string;
 const componentUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/PivotPage';

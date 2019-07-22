@@ -1,1 +1,1 @@
-export * from './packages/react-pickers/ExtendedPicker';
+export * from './components/ExtendedPicker/index';

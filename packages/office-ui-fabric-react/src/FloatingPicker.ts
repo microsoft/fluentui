@@ -1,1 +1,1 @@
-export * from './packages/react-pickers/FloatingPicker';
+export * from './components/FloatingPicker/index';

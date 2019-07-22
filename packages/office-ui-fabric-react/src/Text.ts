@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Text';
+export * from './components/Text/index';

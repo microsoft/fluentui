@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/ScrollablePane';
+export * from './components/ScrollablePane/index';

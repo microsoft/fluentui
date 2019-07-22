@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/ProgressIndicator';
+export * from './components/ProgressIndicator/index';

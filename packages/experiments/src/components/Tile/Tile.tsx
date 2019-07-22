@@ -5,7 +5,7 @@ import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
 import { ISize, css, initializeComponentRef, getId, getNativeProps, divProperties, EventGroup } from '../../Utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signal.scss';
-import * as CheckStylesModule from 'office-ui-fabric-react/lib/packages/react-data-views/components/Check/Check.scss';
+import * as CheckStylesModule from 'office-ui-fabric-react/lib/components/Check/Check.scss';
 
 // tslint:disable:no-any
 const TileStyles: any = TileStylesModule;

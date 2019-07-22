@@ -164,7 +164,7 @@ const mockNodeComponents = ['ScrollablePane'];
 describe('Component File Conformance', () => {
   beforeAll(() => {
     // Mock Layer since otherwise components that use Layer will have empty JSON representations
-    jest.mock('./../packages/react-fundamentals/Layer', () => {
+    jest.mock('./Layer', () => {
       return {
         Layer: jest.fn().mockImplementation(props => {
           return props.children;

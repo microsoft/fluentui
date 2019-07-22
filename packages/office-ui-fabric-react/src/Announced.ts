@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/Announced';
+export * from './components/Announced/index';

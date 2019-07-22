@@ -1,6 +1,6 @@
 import { FontSizes } from '../FluentType';
 import { FontWeights } from '@uifabric/styling';
-import { IDetailsColumnStyles } from 'office-ui-fabric-react/lib/DetailsList';
+import { IDetailsColumnStyles } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn.types';
 
 export const DetailsColumnStyles = (): Partial<IDetailsColumnStyles> => {
   return {

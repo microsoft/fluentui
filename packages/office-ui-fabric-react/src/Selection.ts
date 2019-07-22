@@ -1,1 +1,1 @@
-export * from './utilities/selection';
+export * from './utilities/selection/index';

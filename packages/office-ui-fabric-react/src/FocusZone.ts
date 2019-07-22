@@ -1,1 +1,1 @@
-export * from './packages/react-fundamentals/FocusZone';
+export * from './components/FocusZone/index';

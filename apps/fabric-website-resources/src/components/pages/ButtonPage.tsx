@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ButtonPageProps } from 'office-ui-fabric-react/lib/packages/react-fundamentals/components/Button/Button.doc';
+import { ButtonPageProps } from 'office-ui-fabric-react/lib/components/Button/Button.doc';
 import { DemoPage } from '../DemoPage';
 import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
