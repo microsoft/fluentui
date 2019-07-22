@@ -2,6 +2,25 @@
   "name": "@uifabric/codepen-loader",
   "entries": [
     {
+      "date": "Mon, 22 Jul 2019 12:28:42 GMT",
+      "tag": "@uifabric/codepen-loader_v7.0.5",
+      "version": "7.0.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "build tool updates",
+            "author": "kchau@microsoft.com",
+            "commit": "8ae5522b84eef67ee39fe16ecded4ae9111479c1"
+          },
+          {
+            "comment": "Fix jest reporter",
+            "author": "elcraig@microsoft.com",
+            "commit": "19929074bdec2913e519d675aac09a5831653f68"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Jul 2019 12:27:48 GMT",
       "tag": "@uifabric/codepen-loader_v7.0.5",
       "version": "7.0.5",

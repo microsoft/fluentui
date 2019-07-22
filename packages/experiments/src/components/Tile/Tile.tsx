@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ITileProps, TileSize } from './Tile.types';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
-import { ISize, css, BaseComponent, getId, getNativeProps, divProperties } from '../../Utilities';
+import { ISize, css, initializeComponentRef, getId, getNativeProps, divProperties, EventGroup } from '../../Utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signal.scss';
 import * as CheckStylesModule from 'office-ui-fabric-react/lib/components/Check/Check.scss';
@@ -62,15 +62,18 @@ export const TileLayoutSizes: {
  * @class Tile
  * @extends {React.Component<ITileProps, ITileState>}
  */
-export class Tile extends BaseComponent<ITileProps, ITileState> {
+export class Tile extends React.Component<ITileProps, ITileState> {
   private _nameId: string;
   private _activityId: string;
   private _labelId: string;
   private _descriptionId: string;
+  private _events: EventGroup;
 
   // tslint:disable-next-line:no-any
   constructor(props: ITileProps, context: any) {
     super(props, context);
+
+    initializeComponentRef(this);
 
     this._nameId = getId('Tile-name');
     this._activityId = getId('Tile-activity');
@@ -86,6 +89,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       isSelected: isSelected,
       isModal: isModal
     };
+
+    this._events = new EventGroup(this);
   }
 
   public componentWillReceiveProps(nextProps: ITileProps): void {
@@ -126,6 +131,10 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         this._events.on(selection, SELECTION_CHANGE, this._onSelectionChange);
       }
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._events.dispose();
   }
 
   public render(): JSX.Element {

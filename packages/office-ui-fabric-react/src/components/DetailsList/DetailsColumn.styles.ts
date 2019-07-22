@@ -55,17 +55,13 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     paddingLeft: 8
   };
 
-  const borderWhileDragging: IStyle = [
-    {
-      outline: `1px solid ${palette.themePrimary}`
-    }
-  ];
+  const borderWhileDragging: IStyle = {
+    outline: `1px solid ${palette.themePrimary}`
+  };
 
-  const borderAfterDragOrDrop: IStyle = [
-    {
-      outlineColor: 'transparent'
-    }
-  ];
+  const borderAfterDragOrDrop: IStyle = {
+    outlineColor: 'transparent'
+  };
 
   return {
     root: [
@@ -105,15 +101,13 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       headerClassName
     ],
 
-    gripperBarVerticalStyle: [
-      {
-        display: 'none',
-        position: 'absolute',
-        textAlign: 'left',
-        color: palette.neutralTertiary,
-        left: 1
-      }
-    ],
+    gripperBarVerticalStyle: {
+      display: 'none',
+      position: 'absolute',
+      textAlign: 'left',
+      color: palette.neutralTertiary,
+      left: 1
+    },
 
     nearIcon: nearIconStyle,
 
@@ -183,24 +177,22 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       }
     ],
 
-    cellTooltip: [
-      {
-        display: 'block',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0
-      }
-    ],
+    cellTooltip: {
+      display: 'block',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0
+    },
 
-    accessibleLabel: [hiddenContentStyle],
+    accessibleLabel: hiddenContentStyle,
 
     borderWhileDragging: borderWhileDragging,
 
     noBorderWhileDragging: [borderAfterDragOrDrop, { transition: `outline ${transitionDurationDrag}ms ease` }],
 
-    borderAfterDropping: [borderWhileDragging],
+    borderAfterDropping: borderWhileDragging,
 
     noBorderAfterDropping: [borderAfterDragOrDrop, { transition: `outline  ${transitionDurationDrop}ms ease` }]
   };

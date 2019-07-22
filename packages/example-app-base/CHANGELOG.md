@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+
+## 7.1.6
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Patches
+
+- Add a way to get settings from query or session storage (elcraig@microsoft.com)
 
 ## 7.1.5
 Wed, 17 Jul 2019 18:58:57 GMT
