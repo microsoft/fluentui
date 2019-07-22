@@ -3224,6 +3224,8 @@ export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsI
 // @public (undocumented)
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
     // (undocumented)
+    ariaLabelForToggleAllGroupsButton?: string;
+    // (undocumented)
     onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
     // (undocumented)
     onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
@@ -4771,6 +4773,8 @@ export interface IGroupHeaderStyles {
 
 // @public (undocumented)
 export interface IGroupRenderProps {
+    // (undocumented)
+    ariaLabelForToggleAllGroupsButton?: string;
     collapseAllVisibility?: CollapseAllVisibility;
     footerProps?: IGroupFooterProps;
     getGroupItemLimit?: (group: IGroup) => number;

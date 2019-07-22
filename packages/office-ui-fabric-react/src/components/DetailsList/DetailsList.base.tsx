@@ -438,6 +438,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
                   ariaLabel: ariaLabelForListHeader,
                   ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
                   ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
+                  ariaLabelForToggleAllGroupsButton: groupProps && groupProps.ariaLabelForToggleAllGroupsButton,
                   selectAllVisibility: selectAllVisibility,
                   collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
                   viewport: viewport,
