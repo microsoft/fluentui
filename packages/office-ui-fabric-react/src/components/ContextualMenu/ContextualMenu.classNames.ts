@@ -141,7 +141,6 @@ export const getItemClassNames = memoizeFunction(
             {
               selectors: {
                 ':hover': styles.rootHovered,
-                ':hover ~ $splitMenu': styles.rootHovered, // when hovering over the splitPrimary also affect the splitMenu
                 ':active': styles.rootPressed,
                 [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
                 [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
