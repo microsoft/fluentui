@@ -47,14 +47,12 @@ export const FontIcon: React.StatelessComponent<IFontIconProps> = props => {
   );
 };
 
-const _getFontIcon = (iconName: string, className?: string, ariaLabel?: string) => {
-  return FontIcon({ iconName, className, 'aria-label': ariaLabel });
-};
-
 /**
  * Memoized helper for rendering a FontIcon.
  * @param iconName - The name of the icon to use from the icon font.
  * @param className - Class name for styling the icon.
  * @param ariaLabel - Label for the icon for the benefit of screen readers.
  */
-export const getFontIcon = memoizeFunction<typeof _getFontIcon, React.ReactElement<any> | null>(_getFontIcon);
+export const getFontIcon = memoizeFunction((iconName: string, className?: string, ariaLabel?: string) => {
+  return FontIcon({ iconName, className, 'aria-label': ariaLabel });
+});

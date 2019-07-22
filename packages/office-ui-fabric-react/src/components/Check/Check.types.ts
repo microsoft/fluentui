@@ -35,6 +35,12 @@ export interface ICheckProps {
    * Additional css class to apply to the Check
    */
   className?: string;
+
+  /**
+   * Whether to use fast icon components. The icons can't be targeted by customization but are
+   * still customizable via class names.
+   */
+  useFastIcons?: boolean;
 }
 
 /**

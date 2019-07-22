@@ -1,5 +1,5 @@
 {
-  "comment": "Add fast Icon variants and use in DetailsList",
+  "comment": "Add fast Icon variants and useFastIcons option in DetailsList",
   "type": "minor",
   "packageName": "office-ui-fabric-react",
   "email": "elcraig@microsoft.com",

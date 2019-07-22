@@ -186,7 +186,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       compact,
       theme,
       styles,
-      cellsByColumn
+      cellsByColumn,
+      useFastIcons
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
@@ -294,7 +295,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
               className: this._classNames.check,
               theme,
               isVisible: checkboxVisibility === CheckboxVisibility.always,
-              onRenderDetailsCheckbox: onRenderDetailsCheckbox
+              onRenderDetailsCheckbox: onRenderDetailsCheckbox,
+              useFastIcons
             })}
           </div>
         )}

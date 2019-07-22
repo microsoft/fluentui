@@ -3,15 +3,19 @@ import { IImageProps } from '../Image/Image.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IBaseProps, IStyleFunctionOrObject } from '../../Utilities';
 
-// Please keep alphabetized
+/**
+ * @deprecated Icon type is inferred based on presence of `IIconProps.imageProps`
+ */
 export enum IconType {
   /**
    * Render using the fabric icon font.
+   * @deprecated Icon type is inferred based on presence of `IIconProps.imageProps`
    */
   default = 0,
 
   /**
    * Render using an image, where imageProps would be used.
+   * @deprecated Icon type is inferred based on presence of `IIconProps.imageProps`
    */
   image = 1,
 
@@ -39,12 +43,14 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
   iconName?: string;
 
   /**
-   * The aria label of the button for the benefit of screen readers.
+   * The aria label of the icon for the benefit of screen readers.
+   * @deprecated Use the native prop `aria-label`
    */
   ariaLabel?: string;
 
   /**
    * The type of icon to render (image or icon font).
+   * @deprecated Inferred based on the presence of `imageProps`
    */
   iconType?: IconType;
 

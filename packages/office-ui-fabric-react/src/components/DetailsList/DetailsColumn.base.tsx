@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FontIcon } from '../../Icon';
+import { Icon, FontIcon } from '../../Icon';
 import { initializeComponentRef, IRenderFunction, EventGroup, Async, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
 import { IColumn, ColumnActionsMode } from './DetailsList.types';
 
@@ -36,7 +36,16 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
   }
 
   public render(): JSX.Element {
-    const { column, columnIndex, parentId, isDraggable, styles, theme, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = this.props;
+    const {
+      column,
+      columnIndex,
+      parentId,
+      isDraggable,
+      styles,
+      theme,
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+      useFastIcons
+    } = this.props;
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
 
     this._classNames = getClassNames(styles, {
@@ -54,6 +63,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     });
 
     const classNames = this._classNames;
+    const IconComponent = useFastIcons ? FontIcon : Icon;
 
     return (
       <>
@@ -76,7 +86,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
           data-automationid={'ColumnsHeaderColumn'}
           data-item-key={column.key}
         >
-          {isDraggable && <FontIcon iconName="GripperBarVertical" className={classNames.gripperBarVerticalStyle} />}
+          {isDraggable && <IconComponent iconName="GripperBarVertical" className={classNames.gripperBarVerticalStyle} />}
           {onRenderColumnHeaderTooltip(
             {
               hostClassName: classNames.cellTooltip,
@@ -108,22 +118,22 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
                 >
                   <span id={`${parentId}-${column.key}-name`} className={classNames.cellName}>
                     {(column.iconName || column.iconClassName) && (
-                      <FontIcon className={classNames.iconClassName} iconName={column.iconName} />
+                      <IconComponent className={classNames.iconClassName} iconName={column.iconName} />
                     )}
 
                     {column.isIconOnly ? <span className={classNames.accessibleLabel}>{column.name}</span> : column.name}
                   </span>
 
-                  {column.isFiltered && <FontIcon className={classNames.nearIcon} iconName="Filter" />}
+                  {column.isFiltered && <IconComponent className={classNames.nearIcon} iconName="Filter" />}
 
                   {column.isSorted && (
-                    <FontIcon className={classNames.sortIcon} iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'} />
+                    <IconComponent className={classNames.sortIcon} iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'} />
                   )}
 
-                  {column.isGrouped && <FontIcon className={classNames.nearIcon} iconName="GroupedDescending" />}
+                  {column.isGrouped && <IconComponent className={classNames.nearIcon} iconName="GroupedDescending" />}
 
                   {column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
-                    <FontIcon aria-hidden={true} className={classNames.filterChevron} iconName="ChevronDown" />
+                    <IconComponent aria-hidden={true} className={classNames.filterChevron} iconName="ChevronDown" />
                   )}
                 </span>
               )

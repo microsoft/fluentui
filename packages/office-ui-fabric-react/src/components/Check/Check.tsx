@@ -16,11 +16,11 @@ export const Check: React.StatelessComponent<ICheckProps> = styled<ICheckProps, 
 );
 
 /**
- * Memoized helper for rendering a Check.
+ * Memoized helper for rendering a Check. Always uses fast icons.
  * @param theme - Theme, so the check can be re-rendered if it changes.
  * @param checked - Whether the check is checked.
  * @param className - Class name for styling the check.
  */
 export const getCheck = memoizeFunction((theme?: ITheme, checked?: boolean, className?: string) => {
-  return <Check theme={theme} checked={checked} className={className} />;
+  return <Check theme={theme} checked={checked} className={className} useFastIcons />;
 });
