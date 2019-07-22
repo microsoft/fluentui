@@ -1,5 +1,5 @@
 {
-  "comment": "export default effects",
+  "comment": "Export default effects",
   "type": "minor",
   "packageName": "@uifabric/styling",
   "email": "joschect@microsoft.com",
