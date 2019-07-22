@@ -2,6 +2,27 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Mon, 22 Jul 2019 12:28:42 GMT",
+      "tag": "@uifabric/fabric-website_v7.2.8",
+      "version": "7.2.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "moving to lerna",
+            "author": "kchau@microsoft.com",
+            "commit": "181d2d537ec5feaaed43f35412d6f2d8b523d690"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix IE 11 incompatible syntax",
+            "author": "elcraig@microsoft.com",
+            "commit": "19929074bdec2913e519d675aac09a5831653f68"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Jul 2019 12:27:48 GMT",
       "tag": "@uifabric/fabric-website_v7.2.7",
       "version": "7.2.7",

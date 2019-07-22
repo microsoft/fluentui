@@ -2,6 +2,27 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 22 Jul 2019 12:28:42 GMT",
+      "tag": "@uifabric/charting_v0.133.5",
+      "version": "0.133.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "moving to lerna",
+            "author": "kchau@microsoft.com",
+            "commit": "181d2d537ec5feaaed43f35412d6f2d8b523d690"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Improve how to get the min query string",
+            "author": "elcraig@microsoft.com",
+            "commit": "17b31ca8739504e1d4c7b7dcaa725091254d0eb5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jul 2019 18:58:57 GMT",
       "tag": "@uifabric/charting_v0.133.4",
       "version": "0.133.4",

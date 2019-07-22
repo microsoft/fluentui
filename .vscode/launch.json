@@ -99,7 +99,7 @@
       "request": "launch",
       // scripts/start.js generates this script path and launches a subprocess (which is harder
       // to debug), so in the launch configuration we start the script directly instead.
-      "program": "${workspaceRoot}/scripts/node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+      "program": "${workspaceRoot}/node_modules/webpack-dev-server/bin/webpack-dev-server.js",
       "stopOnEntry": true,
       "cwd": "${workspaceRoot}/apps/fabric-website",
       "runtimeExecutable": null,
