@@ -242,6 +242,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
             data-is-focusable={true}
             aria-label={ariaLabelForToggleAllGroupsButton}
             aria-expanded={!isAllCollapsed}
+            role={'button'}
           >
             <Icon className={classNames.collapseButton} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
           </div>
