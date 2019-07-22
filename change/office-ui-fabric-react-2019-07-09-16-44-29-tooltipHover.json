@@ -1,8 +1,0 @@
-{
-  "comment": "Tooltip: Fixing 'persist on scroll' issues.",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "eca43a063b66456426959e89bc1c32df7de9fc67",
-  "date": "2019-07-09T23:44:29.420Z"
-}

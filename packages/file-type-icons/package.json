@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/file-type-icons",
-  "version": "7.0.4",
+  "version": "7.0.5",
   "description": "Office UI Fabric file type icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,28 +14,30 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style"
+    "build": "just-scripts build",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style"
   },
   "devDependencies": {
     "@types/react": "16.8.11",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.13.9",
-    "@uifabric/prettier-rules": "^7.0.2",
-    "@uifabric/tslint-rules": "^7.0.2",
+    "@uifabric/prettier-rules": "^7.0.3",
+    "@uifabric/tslint-rules": "^7.0.3",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/styling": "^7.1.1",
-    "@uifabric/set-version": "^7.0.0",
+    "@uifabric/styling": "^7.2.1",
+    "@uifabric/set-version": "^7.0.1",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
+    "@types/react": ">=16.8.0 <17.0.0",
+    "@types/react-dom": ">=16.8.0 <17.0.0",
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0"
   }

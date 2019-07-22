@@ -64,7 +64,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
       classNames.itemDescription,
       {
         color: semanticColors.bodySubtext,
-        fontSize: FontSizes.xSmall,
+        fontSize: FontSizes.small,
         lineHeight: textHeight
       }
     ],

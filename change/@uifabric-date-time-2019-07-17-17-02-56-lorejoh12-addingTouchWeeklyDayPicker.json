@@ -1,0 +1,8 @@
+{
+  "comment": "fixing issue where buttons don't hide if they have focus, adding touch for navigation",
+  "type": "patch",
+  "packageName": "@uifabric/date-time",
+  "email": "jolore@microsoft.com",
+  "commit": "c32b92aa6da7e582a87ed1e2f9426a5409850af9",
+  "date": "2019-07-18T00:02:56.883Z"
+}

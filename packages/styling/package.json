@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/styling",
-  "version": "7.1.1",
+  "version": "7.2.1",
   "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
   "repository": {
     "type": "git",
@@ -12,20 +12,20 @@
   "sideEffects": true,
   "typings": "lib/index.d.ts",
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts",
-    "clean": "npx just-scripts clean",
-    "code-style": "npx just-scripts code-style",
-    "start-test": "npx just-scripts jest-watch",
-    "update-api": "npx just-scripts update-api",
-    "update-snapshots": "npx just-scripts jest -u"
+    "build": "just-scripts build",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start-test": "just-scripts jest-watch",
+    "update-api": "just-scripts update-api",
+    "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
     "@types/jest": "23.0.0",
     "@types/react": "16.8.11",
     "@types/webpack-env": "1.13.9",
-    "@uifabric/prettier-rules": "^7.0.2",
-    "@uifabric/tslint-rules": "^7.0.2",
+    "@uifabric/prettier-rules": "^7.0.3",
+    "@uifabric/tslint-rules": "^7.0.3",
     "es6-map": "^0.1.5",
     "es6-weak-map": "^2.0.2",
     "react": "16.8.6",
@@ -35,9 +35,9 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "@uifabric/merge-styles": "^7.1.1",
-    "@uifabric/set-version": "^7.0.0",
-    "@uifabric/utilities": "^7.0.6",
+    "@uifabric/merge-styles": "^7.2.0",
+    "@uifabric/set-version": "^7.0.1",
+    "@uifabric/utilities": "^7.0.7",
     "tslib": "^1.7.1"
   }
 }

@@ -99,6 +99,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGro
           columns={this._columns}
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
+          checkButtonAriaLabel="Row checkbox"
           onRenderDetailsHeader={this._onRenderDetailsHeader}
           groupProps={{
             showEmptyGroups: true
