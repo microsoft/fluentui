@@ -9559,9 +9559,9 @@ just-scripts@~0.25.2:
     yargs "^12.0.5"
 
 "just-task@>=0.12.1 <1.0.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/just-task/-/just-task-0.13.0.tgz#0185b41c36456dc26f32c6e963938f77c6a2f4bf"
-  integrity sha512-Xsnia2IU5nZye3fQjCGUAB40mhJXpZ83XkIJLemQN143hy3hYf30fOWOXqhWuUKqdmLQPb8ahAQHAeauKYpzgw==
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/just-task/-/just-task-0.13.1.tgz#18fee82364d4a29d1e3c09863ce2f1efa053436f"
+  integrity sha512-i/mYabRo01haIUzUZH1sh9Znbzf7fu04d8p6YzLV3v2TySaDLAJRZVE1QJBqBxV08UHTJZ67awzVPuoQk8Wvew==
   dependencies:
     "@microsoft/package-deps-hash" "^2.2.153"
     chalk "^2.4.1"
