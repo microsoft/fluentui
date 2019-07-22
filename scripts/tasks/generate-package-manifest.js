@@ -6,5 +6,5 @@ const findGitRoot = require('../monorepo/findGitRoot');
 module.exports = function generatePackageManifestTask() {
   const allPackageInfo = getAllPackageInfo();
   const root = findGitRoot();
-  fs.writeFileSync(path.join(root, 'package-manifeset.json'), JSON.stringify(allPackageInfo, null, 2));
+  fs.writeFileSync(path.join(root, 'package-manifest.json'), JSON.stringify(allPackageInfo, null, 2));
 };
