@@ -33,7 +33,8 @@ export enum IconType {
  */
 export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement> {
   /**
-   * The name of the icon to use from the icon font. If string is empty, a placeholder icon will be rendered the same width as an icon
+   * The name of the icon to use from the icon font.
+   * If string is empty, a placeholder icon will be rendered the same width as an icon.
    */
   iconName?: string;
 
@@ -53,9 +54,9 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
   imageProps?: IImageProps;
 
   /**
-   * If rendering an image icon, this function callback will be invoked in the event loading the image errors.
+   * If rendering an image icon, this component will be rendered in the event that loading the image fails.
    */
-  imageErrorAs?: React.StatelessComponent<IImageProps> | React.ComponentClass<IImageProps>;
+  imageErrorAs?: React.ComponentType<IImageProps>;
 
   /**
    * Gets the styles for an Icon.
@@ -87,4 +88,38 @@ export interface IIconStyles {
    * @deprecated Use `root`.
    */
   imageContainer?: IStyle;
+}
+
+/**
+ * Props for a basic icon component which only supports font glyphs and isn't themeable.
+ * {@docCategory Icon}
+ */
+export interface IFontIconProps extends React.HTMLAttributes<HTMLElement> {
+  /**
+   * The name of the icon to use from the icon font.
+   * If string is empty, a placeholder icon will be rendered the same width as an icon.
+   */
+  iconName?: string;
+
+  /**
+   * Custom class to style the icon.
+   */
+  className?: string;
+}
+
+/**
+ * Props for a basic image icon component which doesn't directly provide image load error handling
+ * and isn't themeable.
+ * {@docCategory Icon}
+ */
+export interface IImageIconProps extends React.HTMLAttributes<HTMLElement> {
+  /**
+   * Props passed to the Image component.
+   */
+  imageProps: IImageProps;
+
+  /**
+   * Custom class to style the icon.
+   */
+  className?: string;
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ICheckProps } from './Check.types';
-import { Icon } from '../../Icon';
+import { FontIcon } from '../../Icon';
 import { classNamesFunction } from '../../Utilities';
 import { ICheckStyleProps, ICheckStyles } from './Check.types';
 
@@ -13,8 +13,8 @@ export const CheckBase: React.StatelessComponent<ICheckProps> = props => {
 
   return (
     <div className={classNames.root}>
-      <Icon iconName="CircleRing" className={classNames.circle} />
-      <Icon iconName="StatusCircleCheckmark" className={classNames.check} />
+      <FontIcon iconName="CircleRing" className={classNames.circle} />
+      <FontIcon iconName="StatusCircleCheckmark" className={classNames.check} />
     </div>
   );
 };

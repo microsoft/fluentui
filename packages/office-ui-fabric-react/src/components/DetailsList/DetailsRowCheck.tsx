@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IDetailsRowCheckProps, IDetailsCheckboxProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
 import { css, styled, classNamesFunction } from '../../Utilities';
-import { Check } from '../../Check';
+import { getCheck } from '../../Check';
 import { getStyles } from './DetailsRowCheck.styles';
 
 const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
@@ -37,7 +37,8 @@ const DetailsRowCheckBase: React.StatelessComponent<IDetailsRowCheckProps> = pro
   });
 
   const detailsCheckboxProps: IDetailsCheckboxProps = {
-    checked: isPressed
+    checked: isPressed,
+    theme
   };
 
   return canSelect ? (
@@ -57,7 +58,7 @@ const DetailsRowCheckBase: React.StatelessComponent<IDetailsRowCheckProps> = pro
 };
 
 function _defaultCheckboxRender(checkboxProps: IDetailsCheckboxProps) {
-  return <Check checked={checkboxProps.checked} />;
+  return getCheck(checkboxProps.theme, checkboxProps.checked);
 }
 
 export const DetailsRowCheck = styled<IDetailsRowCheckProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>(

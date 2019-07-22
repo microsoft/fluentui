@@ -10,7 +10,7 @@ import {
   CheckboxVisibility
 } from './DetailsList.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { Icon } from '../../Icon';
+import { FontIcon } from '../../Icon';
 import { Layer } from '../../Layer';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { CollapseAllVisibility } from '../../GroupedList';
@@ -271,7 +271,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
             aria-expanded={!isAllCollapsed}
             role={ariaLabelForToggleAllGroupsButton ? 'button' : undefined}
           >
-            <Icon className={classNames.collapseButton} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
+            <FontIcon className={classNames.collapseButton} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
           </div>
         ) : null}
         <GroupSpacer indentWidth={indentWidth} count={groupNestingDepth! - 1} />
@@ -612,7 +612,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     const classNames = this._classNames;
     return (
       <div key={'dropHintKey'} className={classNames.dropHintStyle} id={`columnDropHint_${dropHintIndex}`}>
-        <Icon
+        <FontIcon
           key={`dropHintCaretKey`}
           aria-hidden={true}
           data-is-focusable={false}
