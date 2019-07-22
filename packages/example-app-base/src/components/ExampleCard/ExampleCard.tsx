@@ -13,6 +13,7 @@ import { CodeSnippet } from '../CodeSnippet/index';
 import { Editor, ITextModel, transpile, evalCode, ITranspiledOutput, EditorPreview, transformExample } from '@uifabric/tsx-editor';
 import { getSetting } from '../../index2';
 
+
 export interface IExampleCardState {
   schemeIndex: number;
   themeIndex: number;
