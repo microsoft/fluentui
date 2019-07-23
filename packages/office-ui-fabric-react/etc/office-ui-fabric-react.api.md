@@ -8412,7 +8412,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
 export const Rating: React.StatelessComponent<IRatingProps>;
 
 // @public (undocumented)
-export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
+export class RatingBase extends React.Component<IRatingProps, IRatingState> {
     constructor(props: IRatingProps);
     // (undocumented)
     static defaultProps: IRatingProps;

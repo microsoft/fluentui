@@ -1,0 +1,8 @@
+{
+  "comment": "Rating: fix aria-label in `readOnly` mode and when use half stars.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "vibraga@microsoft.com",
+  "commit": "c7a16f7c1ca63270de8110b0a72de6f7dbf41f77",
+  "date": "2019-07-18T03:57:21.252Z"
+}

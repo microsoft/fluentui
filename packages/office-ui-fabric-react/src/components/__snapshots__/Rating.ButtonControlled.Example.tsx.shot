@@ -5,7 +5,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
   className="ms-RatingButtonControlledExample"
 >
   <div
-    aria-label="Rating value is 0 of 5"
+    aria-label=""
     className=
         ms-Rating-star
         ms-RatingStar-root
@@ -23,6 +23,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
     id="Rating0"
   >
     <div
+      aria-label="Rating value is 0 of 5"
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -32,6 +33,22 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           }
           {
             display: inline-block;
+            outline: transparent;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
           }
           {
             height: 32px;
