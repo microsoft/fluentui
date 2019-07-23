@@ -40,11 +40,11 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 10px;
@@ -57,6 +57,7 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
               word-wrap: break-word;
             }
         htmlFor="TextField0"
+        id="TextFieldLabel2"
       >
         Hover delay (ms)
       </label>
@@ -66,7 +67,8 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
             {
               align-items: stretch;
               background: #ffffff;
-              border: 1px solid #a6a6a6;
+              border-radius: 2px;
+              border: 1px solid #8a8886;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;
@@ -85,7 +87,7 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -93,6 +95,7 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
       >
         <input
           aria-invalid={false}
+          aria-labelledby="TextFieldLabel2"
           className=
               ms-TextField-field
               {
@@ -104,7 +107,7 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -115,8 +118,8 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
                 min-width: 0px;
                 outline: 0px;
                 padding-bottom: 0;
-                padding-left: 12px;
-                padding-right: 12px;
+                padding-left: 8px;
+                padding-right: 8px;
                 padding-top: 0;
                 text-overflow: ellipsis;
                 width: 100%;
@@ -130,7 +133,7 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
               &::placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
+                color: #605e5c;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -139,7 +142,16 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
               &:-ms-input-placeholder {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                opacity: 1;
+              }
+              &::-ms-input-placeholder {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -166,11 +178,11 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          background-color: #f4f4f4;
-          border-radius: 0px;
-          border: 1px solid transparent;
+          background-color: #ffffff;
+          border-radius: 2px;
+          border: 1px solid #8a8886;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           cursor: pointer;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -193,14 +205,14 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
+          border: 1px solid transparent;
+          bottom: 2px;
           content: "";
-          left: 0px;
-          outline: 1px solid #666666;
+          left: 2px;
+          outline: 1px solid #605e5c;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: 2px;
+          top: 2px;
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -217,16 +229,16 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           top: 0px;
         }
         &:hover {
-          background-color: #eaeaea;
-          color: #212121;
+          background-color: #f3f2f1;
+          color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
         &:active {
-          background-color: #c8c8c8;
-          color: #212121;
+          background-color: #edebe9;
+          color: #201f1e;
         }
     data-is-focusable={true}
     onClick={[Function]}
@@ -266,12 +278,13 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
                 margin-right: 4px;
                 margin-top: 0;
               }
-          id="id__2"
+          id="id__3"
         >
           Click for ContextualMenu
         </div>
       </div>
       <i
+        aria-hidden={true}
         className=
             ms-Button-menuIcon
             {

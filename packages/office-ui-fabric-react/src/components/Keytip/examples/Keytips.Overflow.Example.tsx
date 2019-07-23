@@ -108,13 +108,14 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
           example triggering 'T' and 'Y' will show off this functionality (see console messages).
         </p>
         <OverflowSet
-          className="u-marginBottom"
+          styles={{ root: { marginBottom: 28 } }}
           items={this.state.items}
           overflowItems={this.state.overflowItems}
           keytipSequences={keytipMap.OverflowButton4.keySequences}
           onRenderOverflowButton={this._onRenderOverflowButton}
           onRenderItem={this._onRenderItem}
         />
+
         <p>When an item is moved out of the overflow well, it behaves as a normal keytip.</p>
         <DefaultButton text={'Move overflow items'} onClick={this._toggleOverflowItems} />
       </div>

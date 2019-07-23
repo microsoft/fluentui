@@ -6,7 +6,6 @@ import { TeachingBubbleCondensedExample } from './examples/TeachingBubble.Conden
 import { TeachingBubbleIllustrationExample } from './examples/TeachingBubble.Illustration.Example';
 import { TeachingBubbleWideIllustrationExample } from './examples/TeachingBubble.WideIllustration.Example';
 import { TeachingBubbleSmallHeadlineExample } from './examples/TeachingBubble.SmallHeadline.Example';
-import { TeachingBubbleStatus } from './TeachingBubble.checklist';
 
 const TeachingBubbleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.Basic.Example.tsx') as string;
 const TeachingBubbleCondensedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/examples/TeachingBubble.Condensed.Example.tsx') as string;
@@ -19,7 +18,6 @@ export const TeachingBubblePageProps: IDocPageProps = {
   componentName: 'TeachingBubble',
   componentUrl:
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TeachingBubble',
-  componentStatus: TeachingBubbleStatus,
   examples: [
     {
       title: 'TeachingBubble',
@@ -47,7 +45,6 @@ export const TeachingBubblePageProps: IDocPageProps = {
       view: <TeachingBubbleSmallHeadlineExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/TeachingBubble.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleOverview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleDonts.md'),

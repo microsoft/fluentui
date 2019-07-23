@@ -1,10 +1,17 @@
+import * as React from 'react';
 import { IButtonProps } from '../../Button';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { DocumentCardActionsBase } from './DocumentCardActions.base';
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardActions {}
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActionsBase> {
   /**
    * Gets the component ref.
@@ -37,6 +44,9 @@ export interface IDocumentCardActionsProps extends React.ClassAttributes<Documen
   className?: string;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardActionsStyleProps {
   /**
    * Accept theme prop.
@@ -49,6 +59,9 @@ export interface IDocumentCardActionsStyleProps {
   className?: string;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardActionsStyles {
   root: IStyle;
   action: IStyle;

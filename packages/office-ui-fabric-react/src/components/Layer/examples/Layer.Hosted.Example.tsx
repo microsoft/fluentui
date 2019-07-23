@@ -1,12 +1,19 @@
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
-import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
-import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import * as React from 'react';
-import './Layer.Example.scss';
-const exampleStyles: any = exampleStylesImport;
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Layer, LayerHost } from 'office-ui-fabric-react/lib/Layer';
+import { AnimationClassNames, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { getId, css } from 'office-ui-fabric-react/lib/Utilities';
+import { IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
+import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import * as styles from './Layer.Example.scss';
+
+const toggleStyles: Partial<IStyleSet<IToggleStyles>> = {
+  root: { margin: '10px 0' }
+};
+
+const rootClass = mergeStyles({
+  selectors: { p: { marginTop: 30 } }
+});
 
 export interface ILayerHostedExampleState {
   showLayer: boolean;
@@ -26,13 +33,13 @@ export class LayerHostedExample extends React.Component<{}, ILayerHostedExampleS
 
   public render(): JSX.Element {
     const { showLayer, showLayerNoId, showHost } = this.state;
-    const content = <div className={`LayerExample-content ${AnimationClassNames.scaleUpIn100}`}>This is example layer content.</div>;
+    const content = <div className={css(styles.content, AnimationClassNames.scaleUpIn100)}>This is example layer content.</div>;
 
     return (
-      <div>
-        <Toggle label="Show host" checked={showHost} onChange={this._onChangeToggle} />
+      <div className={rootClass}>
+        <Toggle label="Show host" inlineLabel checked={showHost} onChange={this._onChangeToggle} />
 
-        {showHost && <LayerHost id={this._layerHostId} className="LayerExample-customHost" />}
+        {showHost && <LayerHost id={this._layerHostId} className={styles.customHost} />}
 
         <p>
           In some cases, you may need to contain layered content within an area. Create an instance of a LayerHost along with an id, and
@@ -40,33 +47,30 @@ export class LayerHostedExample extends React.Component<{}, ILayerHostedExampleS
           within the LayerHost. It's meant to contain Layered content only.)
         </p>
 
-        <Checkbox
-          className={exampleStyles.exampleCheckbox}
+        <Toggle
+          styles={toggleStyles}
           label={`Render the box below in a Layer and target it at hostId=${this._layerHostId}`}
+          inlineLabel
           checked={showLayer}
           onChange={this._onChangeCheckbox}
         />
 
         {showLayer ? (
-          <Layer
-            hostId={this._layerHostId}
-            onLayerDidMount={this._log('didmount')}
-            onLayerWillUnmount={this._log('willunmount')}
-            className="exampleLayerClassName"
-          >
+          <Layer hostId={this._layerHostId} onLayerDidMount={this._log('didmount')} onLayerWillUnmount={this._log('willunmount')}>
             {content}
           </Layer>
         ) : (
           content
         )}
 
-        <div className="LayerExample-nonLayered">I am normally below the content.</div>
+        <div className={styles.nonLayered}>I am normally below the content.</div>
 
-        <p>If you do not specify a hostId then the hosted layer will default to being fixed to the page by default.</p>
+        <p>If you do not specify a hostId, the hosted layer will default to being fixed to the page by default.</p>
 
-        <Checkbox
-          className={exampleStyles.exampleCheckbox}
+        <Toggle
+          styles={toggleStyles}
           label="Render the box below in a Layer without specifying a host, fixing it to the top of the page"
+          inlineLabel
           checked={showLayerNoId}
           onChange={this._onChangeCheckboxNoId}
         />

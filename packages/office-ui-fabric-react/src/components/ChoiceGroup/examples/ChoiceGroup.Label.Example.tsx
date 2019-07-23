@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
 import { Label } from 'office-ui-fabric-react/lib/Label';

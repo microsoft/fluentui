@@ -5,6 +5,9 @@ import { DocumentCardType, IDocumentCard, IDocumentCardProps, IDocumentCardStyle
 
 const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardStyles>();
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> implements IDocumentCard {
   public static defaultProps: IDocumentCardProps = {
     type: DocumentCardType.normal
@@ -23,7 +26,12 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
 
   public render(): JSX.Element {
     const { onClick, onClickHref, children, type, accentColor, styles, theme, className } = this.props;
-    const nativeProps = getNativeProps(this.props, divProperties, ['className', 'onClick', 'type', 'role']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
+      'className',
+      'onClick',
+      'type',
+      'role'
+    ]);
     const actionable = onClick || onClickHref ? true : false;
 
     this._classNames = getClassNames(styles!, {

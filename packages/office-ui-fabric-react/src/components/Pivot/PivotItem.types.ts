@@ -2,6 +2,9 @@ import * as React from 'react';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
+/**
+ * {@docCategory Pivot}
+ */
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Gets the component ref.

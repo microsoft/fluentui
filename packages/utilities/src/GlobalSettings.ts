@@ -1,3 +1,5 @@
+import { getWindow } from './dom/getWindow';
+
 /**
  * Storing global state in local module variables has issues when more than one copy
  * if the module gets loaded on the page (due to a bundling error or simply by consuming
@@ -18,6 +20,7 @@ let _counter = 0;
  * Change description used for change callbacks in GlobalSettings.
  *
  * @public
+ * {@docCategory IChangeDescription}
  */
 export interface IChangeDescription {
   key: string;
@@ -31,6 +34,7 @@ export interface IChangeDescription {
  * Change event callback.
  *
  * @public
+ * {@docCategory IChangeEventCallback}
  */
 export interface IChangeEventCallback {
   __id__?: string;
@@ -43,6 +47,7 @@ export interface IChangeEventCallback {
  * way to observe changes as well when their values change.
  *
  * @public
+ * {@docCategory GlobalSettings}
  */
 export class GlobalSettings {
   public static getValue<T>(key: string, defaultValue?: T | (() => T)): T {
@@ -99,7 +104,8 @@ export class GlobalSettings {
 }
 
 function _getGlobalSettings(): { [key: string]: any } {
-  const globalObj: { [key: string]: any } = typeof window !== 'undefined' ? window : {};
+  const win = getWindow();
+  const globalObj: { [key: string]: any } = win || {};
 
   if (!globalObj[GLOBAL_SETTINGS_PROP_NAME]) {
     globalObj[GLOBAL_SETTINGS_PROP_NAME] = {

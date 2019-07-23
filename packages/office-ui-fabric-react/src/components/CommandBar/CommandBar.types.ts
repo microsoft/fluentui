@@ -6,6 +6,9 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import { ITooltipHostProps } from '../../Tooltip';
 
+/**
+ * {@docCategory CommandBar}
+ */
 export interface ICommandBar {
   /**
    * Sets focus to the active command in the list.
@@ -18,6 +21,9 @@ export interface ICommandBar {
   remeasure(): void;
 }
 
+/**
+ * {@docCategory CommandBar}
+ */
 export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ICommandBar interface. Use this instead of ref for accessing
@@ -65,7 +71,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
    * Custom function to reduce data if items do not fit in given space. Return `undefined`
    * if no more steps can be taken to avoid infinate loop.
    */
-  onReduceData?: (data: ICommandBarData) => ICommandBarData;
+  onReduceData?: (data: ICommandBarData) => ICommandBarData | undefined;
 
   /**
    * Custom function to grow data if items are too small for the given space.
@@ -108,7 +114,10 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   theme?: ITheme;
 }
 
-// ICommandBarItemProps extends IContextualMenuItem and adds a few CommandBar specific props
+/**
+ * ICommandBarItemProps extends IContextualMenuItem and adds a few CommandBar specific props
+ * {@docCategory CommandBar}
+ */
 export interface ICommandBarItemProps extends IContextualMenuItem {
   /**
    * Remove text when button is not in the overflow
@@ -144,11 +153,17 @@ export interface ICommandBarItemProps extends IContextualMenuItem {
   commandBarButtonAs?: IComponentAs<ICommandBarItemProps>;
 }
 
+/**
+ * {@docCategory CommandBar}
+ */
 export interface ICommandBarStyleProps {
   theme: ITheme;
   className?: string;
 }
 
+/**
+ * {@docCategory CommandBar}
+ */
 export interface ICommandBarStyles {
   root?: IStyle;
   primarySet?: IStyle;

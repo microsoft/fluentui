@@ -89,7 +89,6 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
             </ul>
           </div>
         }
-        related={<a href="https://dev.office.com/fabric-js/Components/StackedBarChart/StackedBarChart.html">Fabric JS</a>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

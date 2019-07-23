@@ -1,54 +1,58 @@
 import { ISemanticTextColors } from './ISemanticTextColors';
 
+// WARNING: The comment below must use valid markdown, or it will break the website.
+// Headings must start at h4 to be appropriate for the website.
 /**
  * The collection of all semantic slots for colors used in themes.
  *
  * Note: text colors are defined in ISemanticTextColors.ts.
  *
- * ## Naming Convention
+ * #### Naming Convention
  *
  * The name of a semantic slot can quickly tell you how it’s meant to be used. It generally follows this format:
  *
- * [category name][element name][checked state][hovered/pressed/disabled state]
- * [category name] – The “family” that this slot belongs to.
- * [element name] – The name of the thing being targeted, such as the background or border.
- * [checked state] – Whether the thing is checked. We assume things are unchecked by default, so no need to specify the unchecked state.
+ * `[category name][element name][checked state][hovered/pressed/disabled state]`
+ *
+ * * `[category name]` – The “family” that this slot belongs to.
+ * * `[element name]` – The name of the thing being targeted, such as the background or border.
+ * * `[checked state]` – Whether the thing is checked. We assume things are unchecked by default, so no need to specify the unchecked state.
  * (We used “checked” to refer to anything that is on, selected, toggled, highlighted, emphasized, etc.)
- * [hovered/pressed/disabled state] – One of these states, if applicable. Each of these states are mutually exclusive.
+ * * `[hovered/pressed/disabled state]` – One of these states, if applicable. Each of these states are mutually exclusive.
  * Pressed styles overwrite hovered styles, and disabled elements cannot be hovered or pressed.
  *
- * ## Base Slots
+ * #### Base Slots
  *
  * A basic set of slots that provide many default body styles, such as text, subtext, disabled colors, and so on.
  * If a category doesn't provide the slot you're looking for, use one from this category.
  * For example, the placeholder text on a text input field has no corresponding slot in its category,
  * so you'd use the bodySubtextColor from this category.
  *
- * ## Invariants
+ * #### Invariants
  *
  * When color has meaning, we do not want to change the color much theme to theme. For example, we
  * will always want errors to be some shade of red, but we will need to tweak the exact shade so it's
  * legible depending on whether it's an inverted theme or not.
  * Invariant colors should almost never be changed by the theme, the defaults should suffice.
  *
- * ## Input Controls
+ * #### Input Controls
  *
  * This category contains input components commonly used to denote state, including radio buttons,
  * check boxes, toggle switches, sliders, progress bars, and more.
  *
- * ## Buttons
+ * #### Buttons
  *
  * Buttons! And all the flavors thereof.
  *
- * ## Menus
+ * #### Menus
  *
  * Any kind of popup menus uses this category.
  *
- * ## Lists
+ * #### Lists
  *
  * Lists differ from menus in that they are designed to show infinite amounts of items, often scroll,
  * and have a large and complex interaction surface.
  * This category covers all kinds of lists, whether they're typical one-item-per-row lists (like DetailsList) or ones with a tiled layout.
+ * {@docCategory ISemanticColors}
  */
 export interface ISemanticColors extends ISemanticTextColors {
   /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\office-ui-fabric-react\src\common\_semanticSlots.scss */

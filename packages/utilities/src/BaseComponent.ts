@@ -15,6 +15,7 @@ import { IBaseProps } from './BaseComponent.types';
  * BaseComponent class, which provides basic helpers for all components.
  *
  * @public
+ * {@docCategory BaseComponent}
  */
 export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
   /**

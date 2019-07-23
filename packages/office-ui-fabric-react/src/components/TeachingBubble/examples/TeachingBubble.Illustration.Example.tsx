@@ -15,6 +15,7 @@ export class TeachingBubbleIllustrationExample extends React.Component<{}, ITeac
     super(props);
 
     this._onDismiss = this._onDismiss.bind(this);
+    this._onShow = this._onShow.bind(this);
 
     this.state = {
       isTeachingBubbleVisible: false
@@ -35,13 +36,16 @@ export class TeachingBubbleIllustrationExample extends React.Component<{}, ITeac
     return (
       <div className="ms-TeachingBubbleExample">
         <span className="ms-TeachingBubbleBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
-          <DefaultButton onClick={this._onDismiss} text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'} />
+          <DefaultButton
+            onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
+            text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
+          />
         </span>
         {isTeachingBubbleVisible ? (
           <div>
             <TeachingBubble
               illustrationImage={exampleImageProps}
-              targetElement={this._menuButtonElement}
+              target={this._menuButtonElement}
               primaryButtonProps={examplePrimaryButton}
               secondaryButtonProps={exampleSecondaryButtonProps}
               onDismiss={this._onDismiss}
@@ -57,7 +61,13 @@ export class TeachingBubbleIllustrationExample extends React.Component<{}, ITeac
 
   private _onDismiss(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: !this.state.isTeachingBubbleVisible
+      isTeachingBubbleVisible: false
+    });
+  }
+
+  private _onShow(ev: any): void {
+    this.setState({
+      isTeachingBubbleVisible: true
     });
   }
 }

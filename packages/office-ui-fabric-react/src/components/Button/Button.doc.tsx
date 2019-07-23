@@ -1,28 +1,30 @@
 import * as React from 'react';
-import { ButtonStatus } from './Button.checklist';
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonContextualMenuExample } from './examples/Button.ContextualMenu.Example';
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
 import { ButtonActionExample } from './examples/Button.Action.Example';
 import { ButtonCommandBarExample } from './examples/Button.CommandBar.Example';
+import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
-import { ButtonSplitExample, ButtonSplitCustomExample } from './examples/Button.Split.Example';
+import { ButtonSplitExample } from './examples/Button.Split.Example';
+import { ButtonSplitCustomExample } from './examples/Button.CustomSplit.Example';
 import { ButtonToggleExample } from './examples/Button.Toggle.Example';
-import { IDocPageProps, ChecklistStatus } from '../../common/DocPage.types';
-export { ChecklistStatus };
+import { IDocPageProps } from '../../common/DocPage.types';
 
-const ButtonDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Default.Example.tsx') as string;
-const ButtonCompoundExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Compound.Example.tsx') as string;
 const ButtonActionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Action.Example.tsx') as string;
-const ButtonCommandBarExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.CommandBar.Example.tsx') as string;
-const ButtonIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Icon.Example.tsx') as string;
 const ButtonAnchorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Anchor.Example.tsx') as string;
-const ButtonScreenReaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ScreenReader.Example.tsx') as string;
+const ButtonCommandBarExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.CommandBar.Example.tsx') as string;
+const ButtonCompoundExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Compound.Example.tsx') as string;
 const ButtonContextualMenuExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ContextualMenu.Example.tsx') as string;
+const ButtonCustomSplitExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.CustomSplit.Example.tsx') as string;
+const ButtonDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Default.Example.tsx') as string;
+const ButtonIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Icon.Example.tsx') as string;
+const ButtonScreenReaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ScreenReader.Example.tsx') as string;
 const ButtonSplitExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx') as string;
 const ButtonToggleExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Toggle.Example.tsx') as string;
+const ButtonCommandExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Command.Example.tsx') as string;
 
 export interface IButtonDocPageProps {
   areButtonsDisabled: boolean;
@@ -72,12 +74,14 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
       title: 'Action Button',
       code: ButtonActionExampleCode,
       view: <ButtonActionExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
-    }
-  ],
-
-  implementationExamples: [
+    },
     {
-      title: 'Button Like Anchor',
+      title: 'Command Button',
+      code: ButtonCommandExampleCode,
+      view: <ButtonCommandExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
+    },
+    {
+      title: 'Button-like Anchor',
       code: ButtonAnchorExampleCode,
       view: <ButtonAnchorExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
@@ -88,7 +92,7 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
     },
     {
       title: 'Custom Split Button',
-      code: ButtonSplitExampleCode,
+      code: ButtonCustomSplitExampleCode,
       view: <ButtonSplitCustomExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
     {
@@ -100,11 +104,9 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
 
   allowNativeProps: true,
   nativePropsElement: ['a', 'button'],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/Button.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonOverview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true,
-  componentStatus: ButtonStatus
+  isFeedbackVisible: true
 });

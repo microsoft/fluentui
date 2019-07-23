@@ -1,11 +1,17 @@
-// @codepen
-
 import * as React from 'react';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { IDetailsList, DetailsList, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
-import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import {
+  DefaultButton,
+  DetailsHeader,
+  DetailsList,
+  IColumn,
+  IDetailsHeaderProps,
+  IDetailsList,
+  IGroup,
+  IRenderFunction,
+  IToggleStyles,
+  mergeStyles,
+  Toggle
+} from 'office-ui-fabric-react';
 
 const margin = '0 20px 20px 0';
 const controlWrapperClass = mergeStyles({
@@ -31,7 +37,7 @@ export interface IDetailsListGroupedExampleState {
 }
 const _blueGroupIndex = 2;
 
-export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGroupedExampleState> {
+export class DetailsListGroupedExample extends React.Component<{}, IDetailsListGroupedExampleState> {
   private _root = React.createRef<IDetailsList>();
   private _columns: IColumn[];
 
@@ -92,6 +98,8 @@ export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGro
           columns={this._columns}
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
+          checkButtonAriaLabel="Row checkbox"
+          onRenderDetailsHeader={this._onRenderDetailsHeader}
           groupProps={{
             showEmptyGroups: true
           }}
@@ -125,6 +133,10 @@ export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGro
       }
     );
   };
+
+  private _onRenderDetailsHeader(props: IDetailsHeaderProps, _defaultRender?: IRenderFunction<IDetailsHeaderProps>) {
+    return <DetailsHeader {...props} ariaLabelForToggleAllGroupsButton={'Expand collapse groups'} />;
+  }
 
   private _onRenderColumn(item: IDetailsListGroupedExampleItem, index: number, column: IColumn) {
     const value = item && column && column.fieldName ? item[column.fieldName as keyof IDetailsListGroupedExampleItem] || '' : '';

@@ -5,10 +5,20 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, KeyCodes } from '../../Utilities';
 import { IPlainCardProps } from './PlainCard/PlainCard.types';
 
-export interface IHoverCard {}
+/**
+ * {@docCategory HoverCard}
+ */
+export interface IHoverCard {
+  /**
+   * Public `dismiss` method to be used through `componentRef` of the HoverCard.
+   * Boolean argument controls if the dismiss happens with a timeout delay.
+   */
+  dismiss: (withTimeOut?: boolean) => void;
+}
 
 /**
  * HoverCard component props.
+ * {@docCategory HoverCard}
  */
 export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
@@ -114,7 +124,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
    * If not provided and using HoverCard as a wrapper, don't set 'data-is-focusable=true' attribute to the root of the wrapped child.
    * When no target given, HoverCard will use it's root as a target and become the focusable element with a focus listener attached to it.
    */
-  target?: HTMLElement | string;
+  target?: HTMLElement | string | null;
 
   /**
    * Theme provided by higher order component.
@@ -134,6 +144,9 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   type?: HoverCardType;
 }
 
+/**
+ * {@docCategory HoverCard}
+ */
 export enum OpenCardMode {
   /**
    * Open card by hover
@@ -146,6 +159,9 @@ export enum OpenCardMode {
   hotKey = 1
 }
 
+/**
+ * {@docCategory HoverCard}
+ */
 export enum HoverCardType {
   /**
    * Plain card consisting of one part responsive to the size of content.
@@ -158,6 +174,9 @@ export enum HoverCardType {
   expanding = 'ExpandingCard'
 }
 
+/**
+ * {@docCategory HoverCard}
+ */
 export interface IHoverCardStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -170,6 +189,9 @@ export interface IHoverCardStyleProps {
   className?: string;
 }
 
+/**
+ * {@docCategory HoverCard}
+ */
 export interface IHoverCardStyles {
   /**
    * Style for the host element in the default enabled, non-toggled state.

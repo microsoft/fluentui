@@ -24,7 +24,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
           padding-right: 0px;
           padding-top: 0px;
         }
-    placeholder="Select a date..."
   >
     <div
       aria-expanded={false}
@@ -70,7 +69,8 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                 {
                   align-items: stretch;
                   background: #ffffff;
-                  border: 1px solid #a6a6a6;
+                  border-radius: 2px;
+                  border: 1px solid #8a8886;
                   box-shadow: none;
                   box-sizing: border-box;
                   cursor: text;
@@ -88,7 +88,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                   position: relative;
                 }
                 &:hover {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -108,7 +108,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                     border: none;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
@@ -119,7 +119,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                     min-width: 0px;
                     outline: 0px;
                     padding-bottom: 0;
-                    padding-left: 12px;
+                    padding-left: 8px;
                     padding-right: 24px;
                     padding-top: 0;
                     text-overflow: ellipsis;
@@ -134,7 +134,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                   &::placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #666666;
+                    color: #605e5c;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
@@ -143,7 +143,16 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                   &:-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #666666;
+                    color: #605e5c;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    opacity: 1;
+                  }
+                  &::-ms-input-placeholder {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #605e5c;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
@@ -163,13 +172,14 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               value=""
             />
             <i
+              aria-hidden={true}
               className=
                   ms-DatePicker-event--without-label
                   msDatePickerDisabled
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #666666;
+                    color: #605e5c;
                     cursor: pointer;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
@@ -208,11 +218,11 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -224,23 +234,24 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Dropdown3"
-      id="Dropdown3-label"
+      htmlFor="Dropdown5"
+      id="Dropdown5-label"
     >
       Select the first day of the week
     </label>
     <div
-      aria-describedby="Dropdown3-option"
+      aria-describedby="Dropdown5-option"
       aria-expanded="false"
-      aria-labelledby="Dropdown3-label"
+      aria-labelledby="Dropdown5-label"
       className=
           ms-Dropdown
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            border-color: #605e5c;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
@@ -257,15 +268,15 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             user-select: none;
           }
           &:hover .ms-Dropdown-title {
-            border-color: #212121;
-            color: #212121;
+            border-color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
             border-color: Highlight;
           }
           &:focus .ms-Dropdown-title {
             border-color: #0078d4;
-            color: #212121;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
             background-color: Highlight;
@@ -279,17 +290,17 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             -ms-high-contrast-adjust: none;
           }
           &:active .ms-Dropdown-title {
-            border-color: #005a9e;
-            color: #212121;
+            border-color: #0078d4;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
             border-color: Highlight;
           }
           &:hover .ms-Dropdown-caretDown {
-            color: #212121;
+            color: #323130;
           }
           &:focus .ms-Dropdown-caretDown {
-            color: #212121;
+            color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
             color: HighlightText;
@@ -298,28 +309,28 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             -ms-high-contrast-adjust: none;
           }
           &:active .ms-Dropdown-caretDown {
-            color: #212121;
+            color: #323130;
           }
           &:hover .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
+            color: #323130;
           }
           &:focus .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
+            color: #323130;
           }
           &:active .ms-Dropdown-titleIsPlaceHolder {
-            color: #666666;
+            color: #323130;
           }
           &:hover .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
           &:active .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
           &:focus .ms-Dropdown-title--hasError {
-            border-color: #a80000;
+            border-color: #a4262c;
           }
       data-is-focusable={true}
-      id="Dropdown3"
+      id="Dropdown5"
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -340,7 +351,8 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             ms-Dropdown-title
             {
               background-color: #ffffff;
-              border-color: #a6a6a6;
+              border-color: #8a8886;
+              border-radius: 2px;
               border-style: solid;
               border-width: 1px;
               box-shadow: none;
@@ -355,14 +367,14 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               margin-top: 0px;
               overflow: hidden;
               padding-bottom: 0;
-              padding-left: 12px;
-              padding-right: 32px;
+              padding-left: 8px;
+              padding-right: 28px;
               padding-top: 0;
               position: relative;
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        id="Dropdown3-option"
+        id="Dropdown5-option"
         role="option"
       >
         <span>
@@ -377,17 +389,18 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               height: 32px;
               line-height: 30px;
               position: absolute;
-              right: 12px;
+              right: 8px;
               top: 1px;
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Dropdown-caretDown
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
+                color: #605e5c;
                 display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-size: 12px;

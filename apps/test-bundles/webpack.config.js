@@ -4,42 +4,51 @@ const resources = require('../../scripts/webpack/webpack-resources');
 
 // Files which should not be considered top-level entries.
 const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'];
-const StatsFileName = 'test-bundles';
 
-module.exports = resources.createConfig(
-  StatsFileName,
-  true,
-  {
-    entry: _buildEntries('office-ui-fabric-react'),
-    externals: {
-      react: 'React',
-      'react-dom': 'ReactDOM'
-    },
-    plugins: [
+const Entries = _buildEntries('office-ui-fabric-react');
+
+let experimentalButtonPath = path.join(path.dirname(require.resolve('@uifabric/experiments')).replace('lib-commonjs', 'lib'), 'Button.js');
+Entries['experiments-Button'] = experimentalButtonPath;
+
+module.exports = Object.keys(Entries).map(
+  entryName =>
+    resources.createConfig(
+      entryName,
+      true,
       {
-        apply: compiler => {
-          compiler.hooks.afterEmit.tap('AfterEmitPlugin', compilation => _copyStats('office-ui-fabric-react'));
+        entry: {
+          [entryName]: Entries[entryName]
+        },
+        externals: {
+          react: 'React',
+          'react-dom': 'ReactDOM'
         }
-      }
-    ]
-  },
-  true,
-  true
+        // plugins: [
+        //   {
+        //     apply: compiler => {
+        //       compiler.hooks.afterEmit.tap('AfterEmitPlugin', compilation => _copyStats('office-ui-fabric-react'));
+        //     }
+        //   }
+        // ]
+      },
+      true,
+      true
+    )[0]
 );
 
 /**
  * Copy the stats file to dist folder the package the bundles were generated from.
  */
-function _copyStats(packageName) {
-  try {
-    fs.copyFileSync(
-      path.join(__dirname, 'dist/test-bundles.stats.html'),
-      path.resolve(__dirname, `../../packages/${packageName}/dist/${StatsFileName}.stats.html`)
-    );
-  } catch (e) {
-    console.log(e);
-  }
-}
+// function _copyStats(packageName) {
+//   try {
+//     fs.copyFileSync(
+//       path.join(__dirname, 'dist/test-bundles.stats.html'),
+//       path.resolve(__dirname, `../../packages/${packageName}/dist/${StatsFileName}.stats.html`)
+//     );
+//   } catch (e) {
+//     console.log(e);
+//   }
+// }
 
 /**
  * Build webpack entries based on top level imports available in a package.

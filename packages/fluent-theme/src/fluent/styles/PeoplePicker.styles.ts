@@ -7,7 +7,13 @@ export const PeoplePickerItemStyles = (props: IPeoplePickerItemSelectedStyleProp
   return {
     removeButton: [
       {
-        background: 'transparent'
+        background: 'transparent',
+        selectors: {
+          ':active': {
+            color: palette.white,
+            backgroundColor: palette.themeDark
+          }
+        }
       },
       !selected && {
         color: palette.neutralPrimary

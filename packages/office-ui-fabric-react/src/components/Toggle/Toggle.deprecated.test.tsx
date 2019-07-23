@@ -28,29 +28,7 @@ describe('Toggle', () => {
   });
 
   it('renders aria-label based on onAriaLabel when Toggle is ON', () => {
-    let isToggledValue;
-    const callback = (isToggled: boolean) => {
-      isToggledValue = isToggled;
-    };
-
-    const component = mount<React.ReactInstance>(
-      <Toggle label="Label" onChanged={callback} offAriaLabel="offLabel" onAriaLabel="onLabel" />
-    );
-
-    expect(
-      component
-        .find('button')
-        .first()
-        .getDOMNode()
-        .getAttribute('aria-label')
-    ).toEqual('offLabel');
-
-    component
-      .find('button')
-      .first()
-      .simulate('click');
-
-    expect(isToggledValue).toEqual(true);
+    const component = mount(<Toggle label="Label" onAriaLabel="onLabel" defaultChecked />);
 
     expect(
       component
@@ -59,5 +37,29 @@ describe('Toggle', () => {
         .getDOMNode()
         .getAttribute('aria-label')
     ).toEqual('onLabel');
+  });
+
+  it('has no aria-labelledby attribute when checked if onAriaLabel is provided', () => {
+    const component = mount(<Toggle label="Label" onAriaLabel="OnAriaLabel" defaultChecked />);
+
+    expect(
+      component
+        .find('button')
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-labelledby')
+    ).toBeNull();
+  });
+
+  it('has no aria-labelledby attribute when unchecked if offAriaLabel is provided', () => {
+    const component = mount(<Toggle label="Label" offAriaLabel="OffAriaLabel" />);
+
+    expect(
+      component
+        .find('button')
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-labelledby')
+    ).toBeNull();
   });
 });

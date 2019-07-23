@@ -1,12 +1,19 @@
+import * as React from 'react';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { IRefObject, IBaseProps } from '../../Utilities';
 export { DayOfWeek, DateRangeType, FirstWeekOfYear };
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendar {
   /** Sets focus to the selected date. */
   focus: () => void;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
@@ -184,6 +191,9 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttribu
   yearPickerHidden?: boolean;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarStrings {
   /**
    * An array of strings for the full names of months.
@@ -235,6 +245,16 @@ export interface ICalendarStrings {
   nextYearAriaLabel?: string;
 
   /**
+   * Aria-label for the "previous year range" button.
+   */
+  prevYearRangeAriaLabel?: string;
+
+  /**
+   * Aria-label for the "next year range" button.
+   */
+  nextYearRangeAriaLabel?: string;
+
+  /**
    * Aria-label for the "close" button.
    */
   closeButtonAriaLabel?: string;
@@ -245,6 +265,9 @@ export interface ICalendarStrings {
   weekNumberFormatString?: string;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarIconStrings {
   /**
    * FabricMDL2Icons name for the left navigation icon.  Previous default: ChevronLeft.
@@ -265,6 +288,9 @@ export interface ICalendarIconStrings {
   closeIcon?: string;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarFormatDateCallbacks {
   /**
    * Callback to apply formatting to mmmm d, yyyy formated dates

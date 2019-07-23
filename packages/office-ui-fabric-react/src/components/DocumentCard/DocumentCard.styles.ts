@@ -61,7 +61,7 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
         {
           display: 'flex',
           maxWidth: '480px',
-          height: '109px',
+          height: '108px',
           selectors: {
             [`.${previewClassNames.root}`]: {
               borderRight: `1px solid ${palette.neutralLight}`,

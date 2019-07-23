@@ -96,18 +96,19 @@ storiesOf('DocumentCard', module)
       {story()}
     </Screener>
   )
-  .addStory('Root', () => (
-    <Fabric>
-      <DocumentCard onClickHref="http://bing.com">
-        <DocumentCardPreview {...previewProps} />
-        <DocumentCardTitle
-          title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
-          shouldTruncate={true}
-        />
-        {docActivity}
-      </DocumentCard>
-    </Fabric>
-  ))
+  // Commenting out this story as it has some racing issues with the truncation logic and causes the test to fail on unrelated PRs
+  // .addStory('Root', () => (
+  //   <Fabric>
+  //     <DocumentCard onClickHref="http://bing.com">
+  //       <DocumentCardPreview {...previewProps} />
+  //       <DocumentCardTitle
+  //         title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
+  //         shouldTruncate={true}
+  //       />
+  //       {docActivity}
+  //     </DocumentCard>
+  //   </Fabric>
+  // ))
   .addStory('Not truncated', () => (
     <Fabric>
       <DocumentCard onClickHref="http://bing.com">
@@ -142,12 +143,26 @@ storiesOf('DocumentCard', module)
       {story()}
     </Screener>
   )
-  .addStory('Compact', () => (
+  .addStory('Compact with preview list', () => (
     <Fabric>
       <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
         <DocumentCardPreview {...previewPropsCompact} />
         <DocumentCardDetails>
           <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
+          {docActivity}
+        </DocumentCardDetails>
+      </DocumentCard>
+    </Fabric>
+  ))
+  .addStory('Compact with preview image', () => (
+    <Fabric>
+      <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCardPreview previewImages={[previewProps.previewImages[0]]} />
+        <DocumentCardDetails>
+          <DocumentCardTitle
+            title="Revenue stream proposal fiscal year 2016 version02.pptx"
+            shouldTruncate={true}
+          />
           {docActivity}
         </DocumentCardDetails>
       </DocumentCard>

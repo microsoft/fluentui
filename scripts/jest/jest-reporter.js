@@ -5,8 +5,23 @@ const DefaultReporter = require('jest-cli/build/reporters/default_reporter').def
  * when there are no errors.
  */
 class JestReporter extends DefaultReporter {
-  log(message) {
-    process.stdout.write(message + '\n');
+  constructor(...args) {
+    super(...args);
+
+    this._isLoggingError = false;
+    this.log = message => {
+      if (this._isLoggingError) {
+        process.stderr.write(message + '\n');
+      } else {
+        process.stdout.write(message + '\n');
+      }
+    };
+  }
+
+  printTestFileFailureMessage(...args) {
+    this._isLoggingError = true;
+    super.printTestFileFailureMessage(...args);
+    this._isLoggingError = false;
   }
 }
 

@@ -32,7 +32,6 @@ export class VirtualizedListPage extends React.Component<IComponentDemoPageProps
         bestPractices={<div />}
         dos={<div />}
         donts={<div />}
-        related={<a href="https://dev.office.com/fabric-js/Components/VirtualizedList/VirtualizedList.html">Fabric JS</a>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

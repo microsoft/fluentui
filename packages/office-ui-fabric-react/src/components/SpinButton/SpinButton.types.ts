@@ -7,7 +7,11 @@ import { KeyboardSpinDirection } from './SpinButton';
 import { IButtonStyles } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
 import { IRefObject } from '../../Utilities';
+import { IButtonProps } from '../Button/Button.types';
 
+/**
+ * {@docCategory SpinButton}
+ */
 export interface ISpinButton {
   /**
    * The value of the SpinButton. Use this if you intend to pass in a new value as a result of onChange events.
@@ -21,6 +25,9 @@ export interface ISpinButton {
   focus: () => void;
 }
 
+/**
+ * {@docCategory SpinButton}
+ */
 export interface ISpinButtonProps {
   /**
    * Gets the component ref.
@@ -89,7 +96,7 @@ export interface ISpinButtonProps {
   /**
    * Descriptive label for the SpinButton.
    */
-  label: string;
+  label?: string;
 
   /**
    * @defaultvalue Left
@@ -228,8 +235,21 @@ export interface ISpinButtonProps {
    * Optional keytip for this spin button
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Optional input props on spin button
+   */
+  inputProps?: React.InputHTMLAttributes<HTMLElement | HTMLInputElement>;
+
+  /**
+   * Optional iconButton props on spin button
+   */
+  iconButtonProps?: IButtonProps;
 }
 
+/**
+ * {@docCategory SpinButton}
+ */
 export interface ISpinButtonStyles {
   /**
    * Styles for the root of the spin button component.
@@ -279,6 +299,7 @@ export interface ISpinButtonStyles {
 
   /**
    * Style for the label text
+   * @deprecated Disabled styles taken care by `Label` component.
    */
   labelDisabled: IStyle;
 

@@ -9,11 +9,13 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
     return (
       <div style={{ width: '400px' }}>
         <SpinButton
-          label="SpinButton with custom implementation:"
+          label={'SpinButton with custom implementation:'}
+          min={0}
+          max={100}
           value={'7' + suffix}
           onValidate={(value: string) => {
             value = this._removeSuffix(value, suffix);
-            if (value.trim().length === 0 || isNaN(+value)) {
+            if (Number(value) > 100 || Number(value) < 0 || value.trim().length === 0 || isNaN(+value)) {
               return '0' + suffix;
             }
 
@@ -21,11 +23,19 @@ export class SpinButtonStatefulExample extends React.Component<any, any> {
           }}
           onIncrement={(value: string) => {
             value = this._removeSuffix(value, suffix);
-            return String(+value + 2) + suffix;
+            if (Number(value) + 2 > 100) {
+              return String(+value) + suffix;
+            } else {
+              return String(+value + 2) + suffix;
+            }
           }}
           onDecrement={(value: string) => {
             value = this._removeSuffix(value, suffix);
-            return String(+value - 2) + suffix;
+            if (Number(value) - 2 < 0) {
+              return String(+value) + suffix;
+            } else {
+              return String(+value - 2) + suffix;
+            }
           }}
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}

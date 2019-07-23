@@ -35,19 +35,20 @@ exports[`Spinner renders Spinner correctly 1`] = `
     className=
         ms-Spinner-label
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           color: #0078d4;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
           margin-bottom: 0;
           margin-left: 0;
           margin-right: 0;
-          margin-top: 10px;
+          margin-top: 8px;
           text-align: center;
         }
   >
     Standard spinner
   </div>
-  <div
-    aria-live="polite"
-    role="status"
-  />
 </div>
 `;

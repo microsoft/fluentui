@@ -8,6 +8,9 @@ import { getStyles } from './TagItem.styles';
 
 const getClassNames = classNamesFunction<ITagItemStyleProps, ITagItemStyles>();
 
+/**
+ * {@docCategory TagPicker}
+ */
 export const TagItemBase = (props: ITagItemProps) => {
   const {
     theme,

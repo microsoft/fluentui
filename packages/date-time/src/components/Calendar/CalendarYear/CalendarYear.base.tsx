@@ -17,6 +17,7 @@ import { ICalendarIconStrings } from '../Calendar.types';
 const getClassNames = classNamesFunction<ICalendarYearStyleProps, ICalendarYearStyles>();
 
 const CELL_COUNT = 12;
+const CELLS_PER_ROW = 4;
 
 const DefaultCalendarYearStrings: ICalendarYearStrings = {
   prevRangeAriaLabel: undefined,
@@ -89,6 +90,7 @@ class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {
         aria-label={String(year)}
         aria-selected={selected}
         ref={this._onButtonRef}
+        aria-readonly={true} // prevent grid from being "editable"
       >
         {this._onRenderYear()}
       </button>
@@ -141,17 +143,26 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
     });
 
     let year = fromYear;
-    const cells = [];
+    const cells: React.ReactNode[][] = [];
 
-    while (year <= toYear) {
-      cells.push(this._renderCell(year));
-      year++;
+    for (let i = 0; i < (toYear - fromYear + 1) / CELLS_PER_ROW; i++) {
+      cells.push([]);
+      for (let j = 0; j < CELLS_PER_ROW; j++) {
+        cells[i].push(this._renderCell(year));
+        year++;
+      }
     }
 
     return (
       <FocusZone>
         <div className={classNames.gridContainer} role="grid">
-          <div role="row">{cells}</div>
+          {cells.map((cellRow: React.ReactNode[], index: number) => {
+            return (
+              <div key={'yearPickerRow_' + index} role="row" className={classNames.buttonRow}>
+                {...cellRow}
+              </div>
+            );
+          })}
         </div>
       </FocusZone>
     );
@@ -189,7 +200,7 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
 
 class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> {
   public render(): JSX.Element {
-    const { styles, theme, className, navigationIcons, strings, onSelectPrev } = this.props;
+    const { styles, theme, className, navigationIcons, strings, onSelectPrev, fromYear, toYear } = this.props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -198,11 +209,12 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
 
     const iconStrings = navigationIcons || DefaultNavigationIcons;
     const yearStrings = strings || DefaultCalendarYearStrings;
-    const prevRangeAriaLabel = yearStrings.prevRangeAriaLabel || yearStrings.rangeAriaLabel;
+    const prevRangeAriaLabel = yearStrings.prevRangeAriaLabel;
+    const prevRange = { fromYear: fromYear - CELL_COUNT, toYear: toYear - CELL_COUNT };
     const prevAriaLabel = prevRangeAriaLabel
       ? typeof prevRangeAriaLabel === 'string'
         ? (prevRangeAriaLabel as string)
-        : (prevRangeAriaLabel as ICalendarYearRangeToString)(this.props)
+        : (prevRangeAriaLabel as ICalendarYearRangeToString)(prevRange)
       : undefined;
     const disabled = this.isDisabled;
 
@@ -214,7 +226,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
         onClick={!disabled && onSelectPrev ? this._onSelectPrev : undefined}
         onKeyDown={!disabled && onSelectPrev ? this._onKeyDown : undefined}
         type="button"
-        aria-label={prevAriaLabel}
+        title={prevAriaLabel}
         disabled={disabled}
       >
         <Icon iconName={getRTL() ? iconStrings.rightNavigation : iconStrings.leftNavigation} />
@@ -242,7 +254,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
 
 class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> {
   public render(): JSX.Element {
-    const { styles, theme, className, navigationIcons, strings, onSelectNext } = this.props;
+    const { styles, theme, className, navigationIcons, strings, onSelectNext, fromYear, toYear } = this.props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -251,11 +263,12 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> 
 
     const iconStrings = navigationIcons || DefaultNavigationIcons;
     const yearStrings = strings || DefaultCalendarYearStrings;
-    const nextRangeAriaLabel = yearStrings.nextRangeAriaLabel || yearStrings.rangeAriaLabel;
+    const nextRangeAriaLabel = yearStrings.nextRangeAriaLabel;
+    const nextRange = { fromYear: fromYear + CELL_COUNT, toYear: toYear + CELL_COUNT };
     const nextAriaLabel = nextRangeAriaLabel
       ? typeof nextRangeAriaLabel === 'string'
         ? (nextRangeAriaLabel as string)
-        : (nextRangeAriaLabel as ICalendarYearRangeToString)(this.props)
+        : (nextRangeAriaLabel as ICalendarYearRangeToString)(nextRange)
       : undefined;
     const disabled = this.isDisabled;
 
@@ -267,7 +280,7 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> 
         onClick={!disabled && onSelectNext ? this._onSelectNext : undefined}
         onKeyDown={!disabled && onSelectNext ? this._onKeyDown : undefined}
         type="button"
-        aria-label={nextAriaLabel}
+        title={nextAriaLabel}
         disabled={this.isDisabled}
       >
         <Icon iconName={getRTL() ? iconStrings.leftNavigation : iconStrings.rightNavigation} />
@@ -337,6 +350,8 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
           aria-label={ariaLabel}
           role="button"
           type="button"
+          aria-atomic={true}
+          aria-live="polite"
         >
           {this._onRenderYear(fromYear)} - {this._onRenderYear(toYear)}
         </button>
@@ -406,10 +421,6 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
   constructor(props: ICalendarYearProps) {
     super(props);
     this.state = this._getState(this.props);
-  }
-
-  public componentWillReceiveProps(nextProps: ICalendarYearProps): void {
-    this.setState(this._getState(nextProps));
   }
 
   public focus(): void {

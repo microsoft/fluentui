@@ -1,10 +1,13 @@
 import * as React from 'react';
-import { BaseComponent, IRectangle, assign, classNamesFunction, IClassNames } from '../../Utilities';
+import { initializeComponentRef, classNamesFunction, IClassNames, initializeFocusRects } from '../../Utilities';
 import { IGroupedList, IGroupedListProps, IGroup, IGroupedListStyleProps, IGroupedListStyles } from './GroupedList.types';
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode, IListProps } from '../../List';
 import { SelectionMode } from '../../utilities/selection/index';
 import { DEFAULT_ROW_HEIGHTS } from '../DetailsList/DetailsRow.styles';
+import { IGroupHeaderProps } from './GroupHeader';
+import { IGroupShowAllProps } from './GroupShowAll.styles';
+import { IGroupFooterProps } from './GroupFooter.types';
 
 const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListStyles>();
 const { rowHeight: ROW_HEIGHT, compactRowHeight: COMPACT_ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
@@ -15,7 +18,7 @@ export interface IGroupedListState {
   groups?: IGroup[];
 }
 
-export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedListState> implements IGroupedList {
+export class GroupedListBase extends React.Component<IGroupedListProps, IGroupedListState> implements IGroupedList {
   public static defaultProps = {
     selectionMode: SelectionMode.multiple,
     isHeaderVisible: true,
@@ -35,6 +38,9 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
 
   constructor(props: IGroupedListProps) {
     super(props);
+
+    initializeComponentRef(this);
+    initializeFocusRects();
 
     this._isSomeGroupExpanded = this._computeIsSomeGroupExpanded(props.groups);
 
@@ -69,6 +75,14 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
 
     if (shouldForceUpdates) {
       this._forceListUpdates();
+    }
+  }
+
+  public componentDidMount() {
+    const { groupProps, groups = [] } = this.props;
+
+    if (groupProps && groupProps.isAllGroupsCollapsed) {
+      this._setGroupsCollapsedState(groups, groupProps.isAllGroupsCollapsed);
     }
   }
 
@@ -108,22 +122,26 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
   }
 
   public toggleCollapseAll(allCollapsed: boolean): void {
-    const { groups } = this.state;
+    const { groups = [] } = this.state;
     const { groupProps } = this.props;
     const onToggleCollapseAll = groupProps && groupProps.onToggleCollapseAll;
 
-    if (groups) {
+    if (groups.length > 0) {
       if (onToggleCollapseAll) {
         onToggleCollapseAll(allCollapsed);
       }
 
-      for (let groupIndex = 0; groupIndex < groups.length; groupIndex++) {
-        groups[groupIndex].isCollapsed = allCollapsed;
-      }
+      this._setGroupsCollapsedState(groups, allCollapsed);
 
       this._updateIsSomeGroupExpanded();
 
       this.forceUpdate();
+    }
+  }
+
+  private _setGroupsCollapsedState(groups: IGroup[], isCollapsed: boolean): void {
+    for (let groupIndex = 0; groupIndex < groups.length; groupIndex++) {
+      groups[groupIndex].isCollapsed = isCollapsed;
     }
   }
 
@@ -151,9 +169,9 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
       onToggleSummarize: this._onToggleSummarize
     };
 
-    const headerProps = assign({}, groupProps!.headerProps, dividerProps);
-    const showAllProps = assign({}, groupProps!.showAllProps, dividerProps);
-    const footerProps = assign({}, groupProps!.footerProps, dividerProps);
+    const headerProps: IGroupHeaderProps = { ...groupProps!.headerProps, ...dividerProps };
+    const showAllProps: IGroupShowAllProps = { ...groupProps!.showAllProps, ...dividerProps };
+    const footerProps: IGroupFooterProps = { ...groupProps!.footerProps, ...dividerProps };
     const groupNestingDepth = this._getGroupNestingDepth();
 
     if (!groupProps!.showEmptyGroups && group && group.count === 0) {
@@ -301,8 +319,7 @@ export class GroupedListBase extends BaseComponent<IGroupedListProps, IGroupedLi
   };
 
   private _getPageSpecification = (
-    itemIndex: number,
-    visibleRect: IRectangle
+    itemIndex: number
   ): {
     key?: string;
   } => {

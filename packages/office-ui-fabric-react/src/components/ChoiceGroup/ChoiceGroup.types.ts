@@ -5,6 +5,9 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption/ChoiceGroupOption.types';
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroup {
   /**
    * Gets the current checked option.
@@ -17,6 +20,9 @@ export interface IChoiceGroup {
   focus: () => void;
 }
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
@@ -72,6 +78,9 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
   ariaLabelledBy?: string;
 }
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * A required key to uniquely identify the option.
@@ -152,12 +161,18 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
   styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
 }
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupStyleProps {
   theme: ITheme;
   className?: string;
   optionsContainIconOrImage?: boolean;
 }
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupStyles {
   applicationRole?: IStyle;
   root?: IStyle;

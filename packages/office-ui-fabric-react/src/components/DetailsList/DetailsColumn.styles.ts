@@ -1,5 +1,5 @@
 import { IDetailsColumnStyleProps, IDetailsColumnStyles } from './DetailsColumn.types';
-import { getFocusStyle, getGlobalClassNames, hiddenContentStyle, IStyle } from '../../Styling';
+import { getFocusStyle, getGlobalClassNames, hiddenContentStyle, IStyle, FontWeights } from '../../Styling';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { getCellStyles } from './DetailsHeader.styles';
 
@@ -55,17 +55,13 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     paddingLeft: 8
   };
 
-  const borderWhileDragging: IStyle = [
-    {
-      outline: `1px solid ${palette.themePrimary}`
-    }
-  ];
+  const borderWhileDragging: IStyle = {
+    outline: `1px solid ${palette.themePrimary}`
+  };
 
-  const borderAfterDragOrDrop: IStyle = [
-    {
-      outlineColor: 'transparent'
-    }
-  ];
+  const borderAfterDragOrDrop: IStyle = {
+    outlineColor: 'transparent'
+  };
 
   return {
     root: [
@@ -105,15 +101,13 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       headerClassName
     ],
 
-    gripperBarVerticalStyle: [
-      {
-        display: 'none',
-        position: 'absolute',
-        textAlign: 'left',
-        color: palette.neutralTertiary,
-        left: 1
-      }
-    ],
+    gripperBarVerticalStyle: {
+      display: 'none',
+      position: 'absolute',
+      textAlign: 'left',
+      color: palette.neutralTertiary,
+      left: 1
+    },
 
     nearIcon: nearIconStyle,
 
@@ -138,8 +132,9 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       classNames.filterChevron,
       {
         color: colors.dropdownChevronForegroundColor,
-        paddingLeft: 4,
-        verticalAlign: 'middle'
+        paddingLeft: 6,
+        verticalAlign: 'middle',
+        fontSize: 12 // TODO needs to be updated after type ramp reconcile
       }
     ],
 
@@ -169,7 +164,9 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       {
         flex: '0 1 auto',
         overflow: 'hidden',
-        textOverflow: 'ellipsis'
+        textOverflow: 'ellipsis',
+        fontWeight: FontWeights.semibold,
+        fontSize: 14
       },
       isIconOnly && {
         selectors: {
@@ -180,24 +177,22 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       }
     ],
 
-    cellTooltip: [
-      {
-        display: 'block',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0
-      }
-    ],
+    cellTooltip: {
+      display: 'block',
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0
+    },
 
-    accessibleLabel: [hiddenContentStyle],
+    accessibleLabel: hiddenContentStyle,
 
     borderWhileDragging: borderWhileDragging,
 
     noBorderWhileDragging: [borderAfterDragOrDrop, { transition: `outline ${transitionDurationDrag}ms ease` }],
 
-    borderAfterDropping: [borderWhileDragging],
+    borderAfterDropping: borderWhileDragging,
 
     noBorderAfterDropping: [borderAfterDragOrDrop, { transition: `outline  ${transitionDurationDrop}ms ease` }]
   };

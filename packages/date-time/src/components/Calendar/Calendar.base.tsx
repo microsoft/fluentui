@@ -8,7 +8,7 @@ import {
   ICalendarStyleProps,
   ICalendarStyles
 } from './Calendar.types';
-import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
+import { DayOfWeek, FirstWeekOfYear, DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { CalendarDay } from './CalendarDay/CalendarDay';
 import { CalendarMonth } from './CalendarMonth/CalendarMonth';
 import { ICalendarDay } from './CalendarDay/CalendarDay.types';
@@ -17,6 +17,22 @@ import { css, BaseComponent, KeyCodes, classNamesFunction } from '@uifabric/util
 import { IProcessedStyleSet } from '@uifabric/styling';
 
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
+
+const DEFAULT_STRINGS = {
+  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+  goToToday: 'Go to today',
+  prevMonthAriaLabel: 'Go to previous month',
+  nextMonthAriaLabel: 'Go to next month',
+  prevYearAriaLabel: 'Go to previous year',
+  nextYearAriaLabel: 'Go to next year',
+  prevYearRangeAriaLabel: 'Previous year range',
+  nextYearRangeAriaLabel: 'Next year range',
+  closeButtonAriaLabel: 'Close date picker',
+  weekNumberFormatString: 'Week number {0}'
+};
 
 const leftArrow = 'Up';
 const rightArrow = 'Down';
@@ -72,7 +88,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
     firstDayOfWeek: DayOfWeek.Sunday,
     dateRangeType: DateRangeType.Day,
     showGoToToday: true,
-    strings: null,
+    strings: DEFAULT_STRINGS,
     highlightCurrentMonth: false,
     highlightSelectedMonth: false,
     navigationIcons: defaultIconStrings,
@@ -144,7 +160,9 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
       allFocusable,
       styles,
       showWeekNumbers,
-      theme
+      theme,
+      calendarDayProps,
+      calendarMonthProps
     } = this.props;
     const { selectedDate, navigatedDayDate, navigatedMonthDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
@@ -189,6 +207,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
             componentRef={this._dayPicker}
             showCloseButton={showCloseButton}
             allFocusable={allFocusable}
+            {...calendarDayProps} // at end of list so consumer's custom functions take precedence
           />
         )}
         {isDayPickerVisible && isMonthPickerVisible && <div className={classes.divider} />}
@@ -202,12 +221,13 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
               today={this.props.today}
               highlightCurrentMonth={highlightCurrentMonth!}
               highlightSelectedMonth={highlightSelectedMonth!}
-              onHeaderSelect={this._onHeaderSelect}
+              onHeaderSelect={onHeaderSelect}
               navigationIcons={navigationIcons!}
               dateTimeFormatter={this.props.dateTimeFormatter!}
               minDate={minDate}
               maxDate={maxDate}
               componentRef={this._monthPicker}
+              {...calendarMonthProps} // at end of list so consumer's custom functions take precedence
             />
             {this._renderGoToTodayButton(classes)}
           </div>
@@ -227,7 +247,18 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
   }
 
   private _renderGoToTodayButton = (classes: IProcessedStyleSet<ICalendarStyles>) => {
-    const { showGoToToday, strings } = this.props;
+    const { showGoToToday, strings, today } = this.props;
+    const { navigatedDayDate, navigatedMonthDate } = this.state;
+    let goTodayEnabled = showGoToToday;
+
+    if (goTodayEnabled && navigatedDayDate && navigatedMonthDate && today) {
+      goTodayEnabled =
+        navigatedDayDate.getFullYear() !== today.getFullYear() ||
+        navigatedDayDate.getMonth() !== today.getMonth() ||
+        navigatedMonthDate.getFullYear() !== today.getFullYear() ||
+        navigatedMonthDate.getMonth() !== today.getMonth();
+    }
+
     return (
       showGoToToday && (
         <button
@@ -235,6 +266,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
           onClick={this._onGotoToday}
           onKeyDown={this._onButtonKeyDown(this._onGotoToday)}
           type="button"
+          disabled={!goTodayEnabled}
         >
           {strings!.goToToday}
         </button>
@@ -303,6 +335,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
   private _onGotoToday = (): void => {
     const { today } = this.props;
     this._navigateDayPickerDay(today!);
+    this.focus();
   };
 
   private _onButtonKeyDown = (callback: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) => {

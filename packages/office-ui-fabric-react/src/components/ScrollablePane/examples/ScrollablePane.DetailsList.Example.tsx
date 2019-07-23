@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import {

@@ -32,10 +32,6 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcr
     fontWeight: FontWeights.regular,
     color: palette.neutralSecondary,
     selectors: {
-      '&:last-child': {
-        fontWeight: FontWeights.semibold,
-        color: palette.neutralPrimary
-      },
       '.ms-Fabric--isFocusVisible &:focus': {
         // Necessary due to changes of Link component not using getFocusStyle.
         outline: 'none'
@@ -47,12 +43,23 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcr
     }
   };
 
+  const lastChildItem = {
+    fontWeight: FontWeights.semibold,
+    color: palette.neutralPrimary
+  };
+
   return {
     root: {
       marginTop: 11
     },
     itemLink: itemStyle,
     item: itemStyle,
+    listItem: {
+      selectors: {
+        '&:last-child .ms-Breadcrumb-itemLink': lastChildItem,
+        '&:last-child .ms-Breadcrumb-item': lastChildItem
+      }
+    },
     overflowButton: {
       color: palette.neutralSecondary,
       selectors: {

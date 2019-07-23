@@ -6,7 +6,6 @@
  */
 
 const path = require('path');
-const PACKAGE_NAME = require('./package.json').name;
 const resources = require('../../scripts/webpack/webpack-resources');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const HOST_NAME = require('os').hostname();
@@ -31,15 +30,13 @@ module.exports = resources.createServeConfig({
 
   devServer: devServer,
 
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM'
-  },
-
   resolve: {
     alias: {
-      'office-ui-fabric-react/src': path.join(__dirname, 'node_modules/office-ui-fabric-react/src'),
-      'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
+      '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
+      '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
+      'office-ui-fabric-react$': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
+      'office-ui-fabric-react/src': path.join(__dirname, '../../packages/office-ui-fabric-react/src'),
+      'office-ui-fabric-react/lib': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'
     }

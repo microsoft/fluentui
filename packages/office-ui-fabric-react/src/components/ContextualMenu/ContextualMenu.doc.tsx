@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { IDocPageProps } from '../../common/DocPage.types';
-import { ContextualMenuStatus } from './ContextualMenu.checklist';
 
 import { ContextualMenuBasicExample } from './examples/ContextualMenu.Basic.Example';
 import { ContextualMenuIconExample } from './examples/ContextualMenu.Icon.Example';
@@ -20,7 +19,7 @@ import { ContextualMenuPersistedExample } from './examples/ContextualMenu.Persis
 
 const ContextualMenuBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Basic.Example.tsx') as string;
 const ContextualMenuPersistedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Persisted.Example.tsx') as string;
-const ContextualMenuBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/ContextualMenu/ContextualMenu.Basic.Example.Codepen.txt') as string;
+const ContextualMenuBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Basic.Example.tsx') as string;
 const ContextualMenuIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Icon.Example.tsx') as string;
 const ContextualMenuIconSecondaryTextExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Icon.SecondaryText.Example.tsx') as string;
 const ContextualMenuSubmenuExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/examples/ContextualMenu.Submenu.Example.tsx') as string;
@@ -39,7 +38,6 @@ export const ContextualMenuPageProps: IDocPageProps = {
   componentName: 'ContextualMenu',
   componentUrl:
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ContextualMenu',
-  componentStatus: ContextualMenuStatus,
   examples: [
     {
       title: 'Default ContextualMenu',
@@ -112,10 +110,6 @@ export const ContextualMenuPageProps: IDocPageProps = {
       code: ContextualMenuHeaderExampleCode,
       view: <ContextualMenuHeaderExample />
     }
-  ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts')
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuOverview.md'),
   bestPractices: '',

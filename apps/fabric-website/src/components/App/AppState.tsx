@@ -1,13 +1,15 @@
 import * as React from 'react';
 
-// Props
-import { INavPage } from '../Nav/Nav.types';
 import { ComponentPage } from '../ComponentPage/ComponentPage';
 import { PageHeader } from '../PageHeader/PageHeader';
+import { ApiReferencesTableSet } from '@uifabric/example-app-base';
+const pageStyles: any = require('../../pages/PageStyles.module.scss');
+
+export interface ILegacyNavPage {}
 
 export interface IAppState {
   appTitle: string;
-  pages: INavPage[];
+  pages: ILegacyNavPage[];
 }
 
 // Giving the loading component a height so that the left nav loads in full screen and there is less flashing as the component page loads.
@@ -28,6 +30,27 @@ const StylesLoadingComponent = (props: any): JSX.Element => {
     </div>
   );
 };
+
+function loadReferences(): ILegacyNavPage[] {
+  const requireContext = require.context('@uifabric/api-docs/lib/pages/references', false, /\w+\.page\.json$/);
+
+  return requireContext.keys().map(pagePath => {
+    const pageName = pagePath.match(/(\w+)\.page\.json/)![1];
+    return {
+      title: pageName,
+      url: '#/components/references/' + pageName.toLowerCase(),
+      isFilterable: true,
+      component: () => (
+        <div className={pageStyles.basePage}>
+          <ComponentPage>
+            <PageHeader pageTitle={pageName} backgroundColor="#038387" />
+            <ApiReferencesTableSet jsonDocs={require('@uifabric/api-docs/lib/pages/references/' + pageName + '.page.json')} />
+          </ComponentPage>
+        </div>
+      )
+    };
+  });
+}
 
 export const AppState: IAppState = {
   appTitle: 'Office UI Fabric',
@@ -157,7 +180,7 @@ export const AppState: IAppState = {
             },
             {
               title: 'ComboBox',
-              url: '#/components/ComboBox',
+              url: '#/components/combobox',
               isFilterable: true,
               component: () => <LoadingComponent title="ComboBox" />,
               getComponent: cb =>
@@ -220,14 +243,6 @@ export const AppState: IAppState = {
               component: () => <LoadingComponent title="SpinButton" />,
               getComponent: cb =>
                 require.ensure([], require => cb(require<any>('../../pages/Components/SpinButtonComponentPage').SpinButtonComponentPage))
-            },
-            {
-              title: 'Text',
-              url: '#/components/text',
-              isFilterable: true,
-              component: () => <LoadingComponent title="Text" />,
-              getComponent: cb =>
-                require.ensure([], require => cb(require<any>('../../pages/Components/TextComponentPage').TextComponentPage))
             },
             {
               title: 'TextField',
@@ -337,7 +352,7 @@ export const AppState: IAppState = {
             },
             {
               title: 'Calendar',
-              url: '#/components/Calendar',
+              url: '#/components/calendar',
               isFilterable: true,
               component: () => <LoadingComponent title="Calendar" />,
               getComponent: cb =>
@@ -544,6 +559,14 @@ export const AppState: IAppState = {
               component: () => <LoadingComponent title="Persona" />,
               getComponent: cb =>
                 require.ensure([], require => cb(require<any>('../../pages/Components/PersonaComponentPage').PersonaComponentPage))
+            },
+            {
+              title: 'Separator',
+              url: '#/components/separator',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Separator" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/SeparatorComponentPage').SeparatorComponentPage))
             }
           ]
         },
@@ -805,6 +828,14 @@ export const AppState: IAppState = {
                 require.ensure([], require => cb(require<any>('../../pages/Components/SelectionUtilityPage').SelectionUtilityPage))
             },
             {
+              title: 'Text',
+              url: '#/components/text',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Text" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/TextComponentPage').TextComponentPage))
+            },
+            {
               title: 'Themes',
               url: '#/components/themes',
               isHiddenFromMainNav: true, // moved to Customizations but entry left here to preserve old URL
@@ -912,8 +943,23 @@ export const AppState: IAppState = {
                     )
                 }
               ]
+            },
+            {
+              title: 'Keytips',
+              url: '#/components/keytips',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Keytips" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/KeytipsComponentPage').KeytipsComponentPage))
             }
           ]
+        },
+        {
+          title: 'References',
+          url: '#/components/references',
+          className: 'componentsPage',
+          isCategory: true,
+          pages: loadReferences()
         }
       ]
     },
@@ -925,40 +971,11 @@ export const AppState: IAppState = {
       getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/ResourcesPage/ResourcesPage').ResourcesPage))
     },
     {
-      title: 'Blog',
-      url: '#/blog',
-      className: 'blogPage',
-      isUhfLink: true,
-      isHiddenFromMainNav: true,
-      getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/BlogPage/BlogPage').BlogPage))
-    },
-    {
-      title: 'Blog Post',
-      url: '#/blog/blog-post',
-      className: 'blogPostPage',
-      isHiddenFromMainNav: true,
-      getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/BlogPage/BlogPost').BlogPost))
-    },
-    {
       title: 'Fabric JS',
       url: '#/fabric-js',
       className: 'fabricJsPage',
       isHiddenFromMainNav: true,
       getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/Interstitials/FabricJSPage').FabricJSPage))
-    },
-    {
-      title: 'Angular JS',
-      url: '#/angular-js',
-      className: 'angularJsPage',
-      isHiddenFromMainNav: true,
-      getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/Interstitials/AngularJSPage').AngularJSPage))
-    },
-    {
-      title: 'Fabric iOS',
-      url: '#/fabric-ios',
-      className: 'fabricIosPage',
-      isHiddenFromMainNav: true,
-      getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/Interstitials/FabricIOSPage').FabricIOSPage))
     }
   ]
 };

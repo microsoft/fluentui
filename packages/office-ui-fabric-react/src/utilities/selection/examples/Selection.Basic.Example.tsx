@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
 import { Check } from 'office-ui-fabric-react/lib/Check';

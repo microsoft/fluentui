@@ -168,7 +168,7 @@ describe('Stack', () => {
 
   it('renders vertical Stack with a gap correctly', () => {
     const component = renderer.create(
-      <Stack gap={10}>
+      <Stack tokens={{ childrenGap: 10 }}>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
       </Stack>
@@ -179,7 +179,7 @@ describe('Stack', () => {
 
   it('renders horizontal Stack with a gap correctly', () => {
     const component = renderer.create(
-      <Stack horizontal gap={10}>
+      <Stack horizontal tokens={{ childrenGap: 10 }}>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
       </Stack>

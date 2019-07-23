@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Tile } from '../Tile';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { SignalField, NewSignal, CommentsSignal, SharedSignal } from '../../signals/Signals';
+import { SignalField, NewSignal, CommentsSignal, SharedSignal, Tile } from '@uifabric/experiments';
 import { FolderCover, getFolderCoverLayout, renderFolderCoverWithLayout, FolderCoverType } from '@uifabric/experiments/lib/FolderCover';
 import { lorem } from '@uifabric/example-app-base';
 import { css, ISize, fitContentToBounds } from '@uifabric/experiments/lib/Utilities';

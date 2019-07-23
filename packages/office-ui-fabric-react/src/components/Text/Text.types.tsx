@@ -1,23 +1,44 @@
-import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
+import * as React from 'react';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps, ISlottableProps } from '../../Foundation';
 import { IFontStyles } from '../../Styling';
 
+/**
+ * {@docCategory Text}
+ */
 export type ITextComponent = IComponent<ITextProps, ITextTokens, ITextStyles>;
 
-// These types are redundant with ITextComponent but are needed until TS function return widening issue is resolved:
+// The following two types are redundant with ITextComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+
+/**
+ * {@docCategory Text}
+ */
 export type ITextTokenReturnType = ReturnType<Extract<ITextComponent['tokens'], Function>>;
+
+/**
+ * {@docCategory Text}
+ */
 export type ITextStylesReturnType = ReturnType<Extract<ITextComponent['styles'], Function>>;
 
-export type ITextSlot = ISlotProp<ITextProps, React.ReactNode>;
+/**
+ * {@docCategory Text}
+ */
+export type ITextSlot = ISlotProp<ITextProps, string>;
 
+/**
+ * {@docCategory Text}
+ */
 export interface ITextSlots {
   root?: IHTMLSlot;
 }
 
-// Inputs to the component
+/**
+ * Inputs to the component
+ * {@docCategory Text}
+ */
 export interface ITextProps
-  extends ITextSlots,
+  extends ISlottableProps<ITextSlots>,
     IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles>,
     React.HTMLAttributes<HTMLElement> {
   /**
@@ -47,6 +68,12 @@ export interface ITextProps
   nowrap?: boolean;
 }
 
+/**
+ * {@docCategory Text}
+ */
 export interface ITextTokens {}
 
+/**
+ * {@docCategory Text}
+ */
 export type ITextStyles = IComponentStyles<ITextSlots>;

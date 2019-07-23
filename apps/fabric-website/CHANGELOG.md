@@ -1,6 +1,422 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 05 Mar 2019 04:25:07 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+
+## 7.2.8
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Patches
+
+- Fix IE 11 incompatible syntax (elcraig@microsoft.com)
+
+## 7.2.7
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.2.5
+Tue, 09 Jul 2019 17:34:38 GMT
+
+### Patches
+
+- Fix website version selection and delete stray Animate file (elcraig@microsoft.com)
+
+## 7.2.4
+Wed, 03 Jul 2019 12:30:55 GMT
+
+### Patches
+
+- DetailsList cell update animation (inateeg@microsoft.com)
+
+## 7.2.3
+Tue, 02 Jul 2019 12:29:06 GMT
+
+### Patches
+
+- Add pivot for Fabric Icons page
+
+## 7.2.2
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.2.1
+Thu, 27 Jun 2019 22:14:22 GMT
+
+### Patches
+
+- Add fabric 7 to website version selector
+
+## 7.2.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+- making all getting started links point to microsoft rather than kenotron
+
+## 7.1.6
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- Update website for Fabric 7
+
+## 7.1.5
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- Renamed instances of "Microsoft UI Fabric" to "UI Fabric"
+
+## 7.1.4
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Patches
+
+- Get rid of references to _exampleStyles.scss
+
+## 7.1.3
+Tue, 18 Jun 2019 19:00:04 GMT
+
+### Patches
+
+- Mobile: Added source code links, removed generic library link.
+
+## 7.1.2
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- Add overview and controls request sections to mobile pages.
+- Add theme slots page
+- Add links to documentation pages.
+
+## 7.1.1
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Add more mobile docs, update screenshots.
+- Fix missing assets in production build.
+
+## 7.1.0
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Minor changes
+
+- Bundles react with the site to prevent version mismatch issues
+
+### Patches
+
+- Clean up Site component life-cycle
+- Initial release of Fabric 7
+
+## 6.19.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Minor changes
+
+- Changes to support slots API refactoring
+
+### Patches
+
+- Update Calendar and DatePicker import paths
+- Update and dedupe React deps.
+- Support slots API changes.
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
+- Update Router imports
+
+## 6.18.11
+Thu, 06 Jun 2019 12:22:24 GMT
+
+### Patches
+
+- Add redirects to new website
+- Fix uhf style override className.
+
+## 6.18.10
+Fri, 31 May 2019 12:21:27 GMT
+
+### Patches
+
+- Added Text and Separator docs for mobile, plus doc bug fixes.
+
+## 6.18.9
+Thu, 30 May 2019 12:22:06 GMT
+
+### Patches
+
+- Move fluent theme page to styles
+- Fix more UHF style overrides
+
+## 6.18.8
+Thu, 23 May 2019 22:14:40 GMT
+
+### Patches
+
+- Added new mobiles docs for the website.
+- Hide UHF back to top button
+- Webpack configuration fix.
+
+## 6.18.7
+Wed, 22 May 2019 12:21:34 GMT
+
+### Patches
+
+- Removing unused code and styles
+- Fix home page card link color
+
+## 6.18.6
+Mon, 20 May 2019 12:22:33 GMT
+
+### Patches
+
+- Fix color route
+
+## 6.18.5
+Thu, 16 May 2019 17:34:08 GMT
+
+### Patches
+
+- fixed the way it creates a flight baseCDNUrl
+- Fix Button page imports
+
+## 6.18.4
+Thu, 16 May 2019 12:21:56 GMT
+
+### Patches
+
+- Add versioned release notes and demo section
+
+## 6.18.3
+Thu, 16 May 2019 05:28:50 GMT
+
+### Patches
+
+- Adding mobile examples and docs for Button.
+
+## 6.18.2
+Wed, 15 May 2019 12:31:44 GMT
+
+### Patches
+
+- Add 404 page
+
+## 6.18.1
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Fix pages not rendering on first load
+- Update Fabric assets link
+- Fix left nav section behavior
+
+## 6.18.0
+Tue, 14 May 2019 01:56:43 GMT
+
+### Minor changes
+
+- Export `categories` object to serve as a source of navigation structure for the table of content on docs.microsoft
+
+### Patches
+
+- Update neutrals content and move palette objects to json files.
+- Fix IE11 home page styles
+- Fix types import
+
+## 6.17.2
+Fri, 10 May 2019 12:36:11 GMT
+
+### Patches
+
+- Fixes website to be IE11 compatible with polyfills provided by react-app-polyfill
+
+## 6.17.1
+Thu, 09 May 2019 12:35:50 GMT
+
+### Patches
+
+- Include md files in nested docs folders
+- Move renderSiteMessageBar to SiteDefinition
+
+## 6.17.0
+Tue, 07 May 2019 12:34:52 GMT
+
+### Minor changes
+
+- Expand getting started info and use kebab case IDs
+
+### Patches
+
+- Fix DetailsList large grouped demo infinite loading loop
+- Include .md files in npm package
+- Fix UHF element selectors for un-overriding font
+- Fix UHF header styles
+- Add stub "get started" pages for mobile
+
+## 6.16.4
+Mon, 06 May 2019 19:32:45 GMT
+
+### Patches
+
+- Fix UHF styling conflicts
+
+## 6.16.3
+Mon, 06 May 2019 12:35:11 GMT
+
+### Patches
+
+- Remove css reset
+
+## 6.16.2
+Mon, 06 May 2019 00:28:08 GMT
+
+### Patches
+
+- Accessibility fixes
+
+## 6.16.1
+Sun, 05 May 2019 19:59:10 GMT
+
+### Patches
+
+- Added get started section
+- Added more mobile controls documentation
+- Mobile documentation updates
+- Adjust Resources content
+- Anchor link handling and other bug fixes
+- Add version dropdown and fix other bugs
+
+## 6.16.0
+Sat, 04 May 2019 00:01:54 GMT
+
+### Minor changes
+
+- ported logic for devhost from index.html to homepage.htm
+- Switch to new website
+
+### Patches
+
+- Getting started update with CRA, just and Gatsby.js
+
+## 6.15.0
+Thu, 02 May 2019 12:36:35 GMT
+
+### Minor changes
+
+- Adds a manifest generation script
+
+### Patches
+
+- Check for undefined hashes
+
+## 6.14.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- add references section to nav
+
+## 6.13.6
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Patches
+
+- Remove implementation examples sections
+
+## 6.13.5
+Tue, 23 Apr 2019 12:32:00 GMT
+
+### Patches
+
+- Remove very old things from the website	
+
+## 6.13.4
+Wed, 17 Apr 2019 12:33:35 GMT
+
+### Patches
+
+- Run prettier on all files
+
+## 6.13.3
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Patches
+
+- Update example-app-base styling overrides to use css-in-js
+
+## 6.13.2
+Thu, 04 Apr 2019 12:34:57 GMT
+
+### Patches
+
+- HomePage: check sessionStorage for fabricVer
+
+## 6.13.1
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.13.0
+Mon, 01 Apr 2019 12:37:03 GMT
+
+### Minor changes
+
+- add Separator page
+
+### Patches
+
+- move Text under Utilities
+
+## 6.12.6
+Fri, 29 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- Add session storage to index to preserve fabricVer between page navigation
+- Fix key errors from Nav
+
+## 6.12.5
+Thu, 28 Mar 2019 12:36:39 GMT
+
+### Patches
+
+- Remove unused state in HomePage.tsx
+- Keytips: Adding component page to AppState.
+
+## 6.12.4
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- HomePage: Add ContextualMenu to enable switching documentation versions
+
+## 6.12.3
+Fri, 22 Mar 2019 02:41:50 GMT
+
+### Patches
+
+- Add missing hypen for prefixVer
+
+## 6.12.2
+Wed, 20 Mar 2019 12:34:45 GMT
+
+### Patches
+
+- Remove template literal in fabric-website/index
+
+## 6.12.1
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- Add query parameter to change Fabric version
 
 ## 6.12.0
 Tue, 05 Mar 2019 04:25:07 GMT

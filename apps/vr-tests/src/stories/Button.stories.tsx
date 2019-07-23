@@ -149,15 +149,15 @@ storiesOf('Button Split', module)
         .snapshot('hover main', { cropTo: '.testWrapper' })
         .hover('.ms-Button:nth-child(2)')
         .snapshot('hover split', { cropTo: '.testWrapper' })
-        .mouseDown('.ms-Button:nth-child(1)')
-        .snapshot('pressed main', { cropTo: '.testWrapper' })
-        .hover('.ms-Button') // reset mouseDown
-        .mouseUp('.ms-Button:nth-child(2)')
-        .mouseDown('.ms-Button:nth-child(2)')
-        .snapshot('pressed split', { cropTo: '.testWrapper' })
-        .click('.ms-Button:nth-child(2)')
-        .hover('.ms-Button') // move mouse to make click work
-        .snapshot('open', { cropTo: '.testWrapper' })
+        // .mouseDown('.ms-Button:nth-child(1)')
+        // .snapshot('pressed main', { cropTo: '.testWrapper' })
+        // .hover('.ms-Button') // reset mouseDown
+        // .mouseUp('.ms-Button:nth-child(2)')
+        // .mouseDown('.ms-Button:nth-child(2)')
+        // .snapshot('pressed split', { cropTo: '.testWrapper' })
+        // .click('.ms-Button:nth-child(2)')
+        // .hover('.ms-Button') // move mouse to make click work
+        // .snapshot('open', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
@@ -165,10 +165,16 @@ storiesOf('Button Split', module)
   ))
   .addStory('Root', () => <DefaultButton {...commandProps} split={true} />, { rtl: true })
   .addStory('Disabled', () => <DefaultButton {...commandProps} disabled={true} split={true} />)
+  .addStory('Default with Primary Action Disabled', () => (
+    <DefaultButton {...commandProps} primaryDisabled={true} split={true} />
+  ))
   .addStory('Checked', () => <DefaultButton {...commandProps} checked={true} split={true} />)
   .addStory('Primary', () => <DefaultButton {...commandProps} primary={true} split={true} />)
   .addStory('Primary Disabled', () => (
     <DefaultButton {...commandProps} primary={true} disabled={true} split={true} />
+  ))
+  .addStory('Primary with Primary Action Disabled', () => (
+    <DefaultButton {...commandProps} primaryDisabled={true} primary={true} split={true} />
   ))
   .addStory('Primary Checked', () => (
     <DefaultButton {...commandProps} primary={true} checked={true} split={true} />

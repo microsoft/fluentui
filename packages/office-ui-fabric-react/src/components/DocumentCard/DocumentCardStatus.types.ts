@@ -1,9 +1,16 @@
+import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { DocumentCardStatusBase } from './DocumentCardStatus.base';
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardStatus {}
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardStatusProps extends React.Props<DocumentCardStatusBase> {
   /**
    * Gets the component ref.
@@ -36,6 +43,9 @@ export interface IDocumentCardStatusProps extends React.Props<DocumentCardStatus
   className?: string;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardStatusStyleProps {
   /**
    * Accept theme prop.
@@ -48,6 +58,9 @@ export interface IDocumentCardStatusStyleProps {
   className?: string;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardStatusStyles {
   root: IStyle;
 }

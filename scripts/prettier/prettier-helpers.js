@@ -3,15 +3,18 @@ const path = require('path');
 const fs = require('fs');
 const execSync = require('../exec-sync');
 const exec = require('../exec');
-const readConfig = require('../read-config');
 
 const prettierConfig = 'prettier.config.js';
 const prettierIgnore = '.prettierignore';
 const repoRoot = path.resolve(__dirname, '..', '..');
 const prettierRulesConfig = path.join(repoRoot, 'packages', 'prettier-rules', prettierConfig);
 const prettierIgnorePath = path.join(repoRoot, prettierIgnore);
-const prettierBin = path.join(__dirname, '..', 'node_modules', 'prettier', 'bin-prettier.js');
+const prettierBin = require.resolve('prettier/bin-prettier.js');
+const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
+/** Array of absolute project paths with prettier configs */
 let projectsWithPrettierConfig;
+
+const prettierExtensions = ['ts', 'tsx', 'js', 'jsx', 'json', 'scss', 'html', 'md'];
 
 function init() {
   if (projectsWithPrettierConfig) {
@@ -19,11 +22,12 @@ function init() {
   }
 
   projectsWithPrettierConfig = [];
-  const rushJson = readConfig('rush.json');
-  if (rushJson) {
+  const projects = getAllPackageInfo();
+  if (projects) {
     // Check the root of each project for a custom prettier config, and save the project paths that have one
-    for (const project of rushJson.projects) {
-      const packagePath = path.resolve(repoRoot, project.projectFolder);
+    for (const project of Object.keys(projects)) {
+      const info = projects[project];
+      const packagePath = path.resolve(repoRoot, info.packagePath);
       if (fs.existsSync(path.join(packagePath, prettierConfig))) {
         projectsWithPrettierConfig.push(packagePath);
       }
@@ -37,10 +41,22 @@ function init() {
  * @param {string[]} files List of files for which to run prettier
  * @param {string} configPath Path to relevant prettier.config.js.
  * @param {boolean} [runAsync] Whether to run the command synchronously or asynchronously
+ * @param {boolean} [logErrorsOnly] If true, log errors/warnings only. Otherwise log all output.
  * @returns A promise if run asynchronously, or nothing if run synchronously
  */
-function runPrettier(files, configPath, runAsync) {
-  const cmd = `node ${prettierBin} --config ${configPath} --ignore-path "${prettierIgnorePath}" --write ${files.join(' ')}`;
+function runPrettier(files, configPath, runAsync, logErrorsOnly) {
+  const cmd = [
+    'node',
+    prettierBin,
+    '--config',
+    configPath,
+    '--ignore-path',
+    `"${prettierIgnorePath}"`,
+    ...(logErrorsOnly ? ['--loglevel', 'warn'] : []),
+    '--write',
+    ...files
+  ].join(' ');
+
   if (runAsync) {
     return exec(cmd, undefined, undefined, process);
   } else {
@@ -52,13 +68,21 @@ function runPrettier(files, configPath, runAsync) {
  * Runs prettier on all ts/tsx/json/js files in a project.
  *
  * @param {string} projectPath Path to the project root for which to run prettier
+ * @returns {Promise<void>}
  */
 function runPrettierForProject(projectPath) {
   init();
 
-  const sourcePath = path.join(projectPath, '**', '*.{ts,tsx,json,js}');
-  const configPath = projectsWithPrettierConfig[projectPath] || prettierRulesConfig;
-  runPrettier([sourcePath], configPath);
+  if (!path.isAbsolute(projectPath)) {
+    projectPath = path.join(repoRoot, projectPath);
+  }
+
+  const sourcePath = path.join(projectPath, '**', `*.{${prettierExtensions.join(',')}}`);
+  const configPath = projectsWithPrettierConfig.includes(projectPath) ? path.join(projectPath, prettierConfig) : prettierRulesConfig;
+
+  console.log(`Running prettier for ${sourcePath} using config ${configPath}`);
+
+  return runPrettier([sourcePath], configPath, true, true);
 }
 
 /**
@@ -109,4 +133,4 @@ function runPrettierMultiProject(files, runAsync) {
   }
 }
 
-module.exports = { runPrettierForProject, runPrettierMultiProject };
+module.exports = { runPrettierForProject, runPrettierMultiProject, prettierExtensions };

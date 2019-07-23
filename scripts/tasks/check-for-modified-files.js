@@ -1,4 +1,4 @@
-const { logger } = require('just-task');
+const { logger } = require('just-scripts');
 
 module.exports = function checkForModifiedFiles() {
   const EOL = require('os').EOL;

@@ -10,6 +10,7 @@ import { PrimaryButton } from './PrimaryButton/PrimaryButton';
 /**
  * This class is deprecated. Use the individual *Button components instead.
  * @deprecated Use the individual *Button components instead.
+ * {@docCategory Button}
  */
 export class Button extends BaseComponent<IButtonProps, {}> {
   /**

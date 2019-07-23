@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { concatStyleSets, IStyleSet, IStyleFunctionOrObject, IConcatenatedStyleSet } from '@uifabric/merge-styles';
+import { concatStyleSets, IStyleSet, IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { Customizations } from './customizations/Customizations';
 import { CustomizerContext, ICustomizerContext } from './customizations/CustomizerContext';
 
@@ -37,6 +37,9 @@ const DefaultFields = ['theme', 'styles'];
  * @param baseStyles - The styles which should be curried with the component.
  * @param getProps - A helper which provides default props.
  * @param customizable - An object which defines which props can be customized using the Customizer.
+ * @param pure - A boolean indicating if the component should avoid re-rendering when props haven't changed.
+ * Note that pure should not be used on components which allow children, or take in complex objects or
+ * arrays as props which could mutate on every render.
  */
 export function styled<
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>,
@@ -46,32 +49,25 @@ export function styled<
   Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
-  customizable?: ICustomizableProps
+  customizable?: ICustomizableProps,
+  pure?: boolean
 ): React.StatelessComponent<TComponentProps> {
   customizable = customizable || { scope: '', fields: undefined };
 
   const { scope, fields = DefaultFields } = customizable;
+  const ParentComponent = pure ? React.PureComponent : React.Component;
 
-  class Wrapped extends React.Component<TComponentProps, {}> {
-    public static displayName = `Styled${Component.displayName || Component.name}`;
+  class Wrapped extends ParentComponent<TComponentProps, {}> {
+    // Function.prototype.name is an ES6 feature, so the cast to any is required until we're
+    // able to drop IE 11 support and compile with ES6 libs
+    // tslint:disable-next-line:no-any
+    public static displayName = `Styled${Component.displayName || (Component as any).name}`;
 
     private _inCustomizerContext = false;
+    private _styles: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
 
     public render(): JSX.Element {
-      return (
-        <CustomizerContext.Consumer>
-          {(context: ICustomizerContext) => {
-            this._inCustomizerContext = !!context.customizations.inCustomizerContext;
-
-            const settings = Customizations.getSettings(fields, scope, context.customizations);
-            const { styles: customizedStyles, ...rest } = settings;
-            const styles = (styleProps: TStyleProps) => _resolve(styleProps, baseStyles, customizedStyles, this.props.styles);
-
-            const additionalProps = getProps ? getProps(this.props) : undefined;
-            return <Component {...rest} {...additionalProps} {...this.props} styles={styles} />;
-          }}
-        </CustomizerContext.Consumer>
-      );
+      return <CustomizerContext.Consumer>{this._renderContent}</CustomizerContext.Consumer>;
     }
 
     public componentDidMount(): void {
@@ -86,7 +82,36 @@ export function styled<
       }
     }
 
-    private _onSettingsChanged = () => this.forceUpdate();
+    private _renderContent = (context: ICustomizerContext): JSX.Element => {
+      this._inCustomizerContext = !!context.customizations.inCustomizerContext;
+
+      const settings = Customizations.getSettings(fields, scope, context.customizations);
+      const { styles: customizedStyles, dir, ...rest } = settings;
+      const additionalProps = getProps ? getProps(this.props) : undefined;
+
+      this._updateStyles(customizedStyles);
+
+      return <Component {...rest} {...additionalProps} {...this.props} styles={this._styles} />;
+    };
+
+    private _updateStyles(customizedStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>): void {
+      // tslint:disable-next-line:no-any
+      if (!this._styles || customizedStyles !== (this._styles as any).__cachedInputs__[1] || !!this.props.styles) {
+        // Cache the customized styles.
+        // this._customizedStyles = customizedStyles;
+
+        // Using styled components as the Component arg will result in nested styling arrays.
+        this._styles = (styleProps: TStyleProps) => _resolve(styleProps, baseStyles, customizedStyles, this.props.styles);
+
+        // The __cachedInputs__ array is attached to the function and consumed by the
+        // classNamesFunction as a list of keys to include for memoizing classnames.
+
+        // tslint:disable-next-line:no-any
+        (this._styles as any).__cachedInputs__ = [baseStyles, customizedStyles, this.props.styles];
+      }
+    }
+
+    private _onSettingsChanged = (): void => this.forceUpdate();
   }
 
   // This preserves backwards compatibility.
@@ -97,7 +122,7 @@ export function styled<
 function _resolve<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(
   styleProps: TStyleProps,
   ...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]
-): IConcatenatedStyleSet<TStyleSet> | undefined {
+): Partial<TStyleSet> {
   const result: Partial<TStyleSet>[] = [];
 
   for (const styles of allStyles) {
@@ -105,14 +130,17 @@ function _resolve<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(
       result.push(typeof styles === 'function' ? styles(styleProps) : styles);
     }
   }
-  if (result.length) {
+
+  if (result.length === 1) {
+    return result[0] as Partial<TStyleSet>;
+  } else if (result.length) {
     // cliffkoh: I cannot figure out how to avoid the cast to any here.
     // It is something to do with the use of Omit in IStyleSet.
     // It might not be necessary once  Omit becomes part of lib.d.ts (when we remove our own Omit and rely on
     // the official version).
     // tslint:disable-next-line:no-any
-    return concatStyleSets(...(result as any)) as IConcatenatedStyleSet<TStyleSet>;
+    return concatStyleSets(...(result as any)) as any;
   }
 
-  return undefined;
+  return {};
 }

@@ -20,9 +20,15 @@ describe('Callout', () => {
   it('renders Callout correctly', () => {
     const createNodeMock = (el: React.ReactElement<{}>) => {
       return {
-        __events__: {}
+        addEventListener: () => {
+          /* no-op */
+        },
+        removeEventListener: () => {
+          /* no-op */
+        }
       };
     };
+
     const component = renderer.create(<CalloutContentWrapper>Content</CalloutContentWrapper>, { createNodeMock });
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

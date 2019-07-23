@@ -5,7 +5,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { ColorRectangle } from './ColorRectangle';
 import { ColorRectangleBase, IColorRectangleState, _getNewColor } from './ColorRectangle.base';
 import { IColorRectangleProps } from './ColorRectangle.types';
-import { getColorFromString } from '../../../utilities/color/colors';
+import { getColorFromString } from '../../../utilities/color/getColorFromString';
 
 describe('ColorRectangle', () => {
   let wrapper: ReactWrapper<IColorRectangleProps, IColorRectangleState, ColorRectangleBase> | undefined;

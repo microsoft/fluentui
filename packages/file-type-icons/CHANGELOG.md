@@ -1,6 +1,126 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 01 Mar 2019 13:33:08 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jul 2019 16:33:51 GMT and should not be manually modified.
+
+## 7.0.6
+Tue, 23 Jul 2019 16:33:51 GMT
+
+### Patches
+
+- Added multiple.png to FileIconType enum (t-shfozd@microsoft.com)
+
+## 7.0.5
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.0.4
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.0.3
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 7.0.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Breaking changes
+
+- Update file type icons to use new Fluent assets by default
+
+### Patches
+
+- Update and dedupe React deps.
+- fix mapping for OneNote notebook filetype icon
+- updating getFileTypeIconProps to make reference to correct sharepoint… 
+
+## 6.5.1
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- adding missing filetype mappings to support LPC and other partners
+
+## 6.5.0
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Minor changes
+
+- added new extensions to icon groups to support LPC and Outlook mobile
+
+## 6.4.10
+Thu, 16 May 2019 05:28:50 GMT
+
+### Patches
+
+- Update README with note about how to use the new Fluent file type icons
+
+## 6.4.9
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.4.8
+Sat, 27 Apr 2019 00:04:47 GMT
+
+### Patches
+
+- removing duplicate entries in FileTypeIconMap.ts
+
+## 6.4.7
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Patches
+
+- reverting the json payload back inside the ts file due to downstream issues
+
+## 6.4.6
+Thu, 18 Apr 2019 12:31:50 GMT
+
+### Patches
+
+- fix mapping for OneNote notebook filetype icon
+- updating getFileTypeIconProps to make reference to correct sharepoint… 
+
+## 6.4.5
+Wed, 10 Apr 2019 12:33:17 GMT
+
+### Patches
+
+- decoupled the icon mapping from ts in file-type-icons so that it can be use in an upcoming cocoapod for fabric-cdn icons
+
+## 6.4.4
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.4.3
+Tue, 12 Mar 2019 12:31:43 GMT
+
+### Patches
+
+- fix mapping for OneNote notebook filetype icon
+- updating getFileTypeIconProps to make reference to correct sharepoint… 
 
 ## 6.4.2
 Fri, 01 Mar 2019 13:33:08 GMT

@@ -15,7 +15,7 @@ export class CommandBarButtonAsExample extends React.Component<{}, {}> {
           styles={{
             ...props.styles,
             textContainer: { fontSize: 18 },
-            icon: { color: 'red' }
+            icon: { color: '#E20000' }
           }}
         />
       );

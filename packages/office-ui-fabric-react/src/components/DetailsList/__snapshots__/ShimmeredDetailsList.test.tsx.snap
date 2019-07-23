@@ -19,7 +19,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -37,7 +37,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
     <div
       aria-colcount={1}
       aria-readonly="true"
-      aria-rowcount={11}
+      aria-rowcount={-1}
       role="grid"
     >
       <div
@@ -51,19 +51,22 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background: #ffffff;
-                border-bottom: 1px solid #eaeaea;
+                border-bottom: 1px solid #edebe9;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
                 padding-top: 1px;
@@ -101,9 +104,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -128,7 +131,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
@@ -147,8 +150,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -166,7 +170,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -180,7 +184,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -190,16 +194,12 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -233,17 +233,18 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 18px;
@@ -267,12 +268,13 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                     
                   </i>
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
+                          color: #605e5c;
                           display: inline-block;
                           font-family: "FabricMDL2Icons";
                           font-size: 16px;
@@ -315,6 +317,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -343,11 +348,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
               className=
                   ms-List
                   {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 12px;
-                    font-weight: 400;
+                    position: relative;
                   }
                   &:after {
                     background-image: linear-gradient(to bottom, transparent 30%, rgba(255,255,255,.4) 65%,#ffffff 100%);
@@ -377,118 +378,177 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   >
                     <div
                       className=
-
+                          ms-Shimmer-container
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            height: auto;
+                            position: relative;
                           }
                     >
                       <div
                         className=
-                            ms-Shimmer-container
+                            ms-Shimmer-shimmerWrapper
                             {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 14px;
-                              font-weight: 400;
-                              height: auto;
+                              background-color: #f3f2f1;
+                              overflow: hidden;
                               position: relative;
+                              transform: translateZ(0);
+                              transition: opacity 200ms;
                             }
+                            & > * {
+                              transform: translateZ(0);
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              background: WindowText
+                                                    linear-gradient(
+                                                      to right,
+                                                      transparent 0%,
+                                                      Window 50%,
+                                                      transparent 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                            }
+                        style={
+                          Object {
+                            "width": "100%",
+                          }
+                        }
                       >
                         <div
                           className=
-                              ms-Shimmer-shimmerWrapper
+                              ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
                                 animation-duration: 2s;
                                 animation-iteration-count: infinite;
-                                animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+                                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
-                                                  linear-gradient(
-                                                    to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
-                                                  0 0 / 90% 100%
-                                                  no-repeat;
-                                transition: opacity 200ms;
+                                background: #f3f2f1
+                                                    linear-gradient(
+                                                      to right,
+                                                      #f3f2f1 0%,
+                                                      #edebe9 50%,
+                                                      #f3f2f1 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                                height: 100%;
+                                left: 0px;
+                                position: absolute;
+                                top: 0px;
+                                transform: translateX(-100%);
+                                width: 100%;
                               }
-                              @media screen and (-ms-high-contrast: active){& {
-                                background: WindowText
-                                                      linear-gradient(
-                                                        to right,
-                                                        transparent 0%,
-                                                        Window 50%,
-                                                        transparent 100%)
-                                                      0 0 / 90% 100%
-                                                      no-repeat;
-                              }
+                        />
+                        <div
                           style={
                             Object {
-                              "width": "100%",
+                              "display": "flex",
                             }
                           }
                         >
                           <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
                             style={
                               Object {
-                                "display": "flex",
+                                "width": "auto",
                               }
                             }
                           >
                             <div
                               className=
-                                  ms-ShimmerElementsGroup-root
+                                  ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    align-items: center;
-                                    display: flex;
-                                    flex-wrap: nowrap;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
                                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                     font-size: 14px;
                                     font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
                                   }
                               style={
                                 Object {
+                                  "minWidth": "auto",
+                                  "width": "40px",
+                                }
+                              }
+                            />
+                          </div>
+                          <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
+                            style={
+                              Object {
+                                "width": "100%",
+                              }
+                            }
+                          >
+                            <div
+                              className=
+                                  ms-ShimmerGap-root
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
+                                  }
+                              style={
+                                Object {
+                                  "minWidth": "auto",
                                   "width": "100%",
                                 }
                               }
-                            >
-                              <div
-                                className=
-                                    ms-ShimmerGap-root
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      background-color: #ffffff;
-                                      border-bottom-style: solid;
-                                      border-bottom-width: 0px;
-                                      border-color: #ffffff;
-                                      border-top-style: solid;
-                                      border-top-width: 0px;
-                                      box-sizing: content-box;
-                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                      font-size: 14px;
-                                      font-weight: 400;
-                                      height: 42px;
-                                    }
-                                    @media screen and (-ms-high-contrast: active){& {
-                                      background-color: Window;
-                                      border-color: Window;
-                                    }
-                                style={
-                                  Object {
-                                    "minWidth": "auto",
-                                    "width": "100%",
-                                  }
-                                }
-                              />
-                            </div>
+                            />
                           </div>
                         </div>
                       </div>
@@ -502,118 +562,177 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   >
                     <div
                       className=
-
+                          ms-Shimmer-container
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            height: auto;
+                            position: relative;
                           }
                     >
                       <div
                         className=
-                            ms-Shimmer-container
+                            ms-Shimmer-shimmerWrapper
                             {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 14px;
-                              font-weight: 400;
-                              height: auto;
+                              background-color: #f3f2f1;
+                              overflow: hidden;
                               position: relative;
+                              transform: translateZ(0);
+                              transition: opacity 200ms;
                             }
+                            & > * {
+                              transform: translateZ(0);
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              background: WindowText
+                                                    linear-gradient(
+                                                      to right,
+                                                      transparent 0%,
+                                                      Window 50%,
+                                                      transparent 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                            }
+                        style={
+                          Object {
+                            "width": "100%",
+                          }
+                        }
                       >
                         <div
                           className=
-                              ms-Shimmer-shimmerWrapper
+                              ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
                                 animation-duration: 2s;
                                 animation-iteration-count: infinite;
-                                animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+                                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
-                                                  linear-gradient(
-                                                    to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
-                                                  0 0 / 90% 100%
-                                                  no-repeat;
-                                transition: opacity 200ms;
+                                background: #f3f2f1
+                                                    linear-gradient(
+                                                      to right,
+                                                      #f3f2f1 0%,
+                                                      #edebe9 50%,
+                                                      #f3f2f1 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                                height: 100%;
+                                left: 0px;
+                                position: absolute;
+                                top: 0px;
+                                transform: translateX(-100%);
+                                width: 100%;
                               }
-                              @media screen and (-ms-high-contrast: active){& {
-                                background: WindowText
-                                                      linear-gradient(
-                                                        to right,
-                                                        transparent 0%,
-                                                        Window 50%,
-                                                        transparent 100%)
-                                                      0 0 / 90% 100%
-                                                      no-repeat;
-                              }
+                        />
+                        <div
                           style={
                             Object {
-                              "width": "100%",
+                              "display": "flex",
                             }
                           }
                         >
                           <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
                             style={
                               Object {
-                                "display": "flex",
+                                "width": "auto",
                               }
                             }
                           >
                             <div
                               className=
-                                  ms-ShimmerElementsGroup-root
+                                  ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    align-items: center;
-                                    display: flex;
-                                    flex-wrap: nowrap;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
                                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                     font-size: 14px;
                                     font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
                                   }
                               style={
                                 Object {
+                                  "minWidth": "auto",
+                                  "width": "40px",
+                                }
+                              }
+                            />
+                          </div>
+                          <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
+                            style={
+                              Object {
+                                "width": "100%",
+                              }
+                            }
+                          >
+                            <div
+                              className=
+                                  ms-ShimmerGap-root
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
+                                  }
+                              style={
+                                Object {
+                                  "minWidth": "auto",
                                   "width": "100%",
                                 }
                               }
-                            >
-                              <div
-                                className=
-                                    ms-ShimmerGap-root
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      background-color: #ffffff;
-                                      border-bottom-style: solid;
-                                      border-bottom-width: 0px;
-                                      border-color: #ffffff;
-                                      border-top-style: solid;
-                                      border-top-width: 0px;
-                                      box-sizing: content-box;
-                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                      font-size: 14px;
-                                      font-weight: 400;
-                                      height: 42px;
-                                    }
-                                    @media screen and (-ms-high-contrast: active){& {
-                                      background-color: Window;
-                                      border-color: Window;
-                                    }
-                                style={
-                                  Object {
-                                    "minWidth": "auto",
-                                    "width": "100%",
-                                  }
-                                }
-                              />
-                            </div>
+                            />
                           </div>
                         </div>
                       </div>
@@ -627,118 +746,177 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   >
                     <div
                       className=
-
+                          ms-Shimmer-container
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            height: auto;
+                            position: relative;
                           }
                     >
                       <div
                         className=
-                            ms-Shimmer-container
+                            ms-Shimmer-shimmerWrapper
                             {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 14px;
-                              font-weight: 400;
-                              height: auto;
+                              background-color: #f3f2f1;
+                              overflow: hidden;
                               position: relative;
+                              transform: translateZ(0);
+                              transition: opacity 200ms;
                             }
+                            & > * {
+                              transform: translateZ(0);
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              background: WindowText
+                                                    linear-gradient(
+                                                      to right,
+                                                      transparent 0%,
+                                                      Window 50%,
+                                                      transparent 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                            }
+                        style={
+                          Object {
+                            "width": "100%",
+                          }
+                        }
                       >
                         <div
                           className=
-                              ms-Shimmer-shimmerWrapper
+                              ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
                                 animation-duration: 2s;
                                 animation-iteration-count: infinite;
-                                animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+                                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
-                                                  linear-gradient(
-                                                    to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
-                                                  0 0 / 90% 100%
-                                                  no-repeat;
-                                transition: opacity 200ms;
+                                background: #f3f2f1
+                                                    linear-gradient(
+                                                      to right,
+                                                      #f3f2f1 0%,
+                                                      #edebe9 50%,
+                                                      #f3f2f1 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                                height: 100%;
+                                left: 0px;
+                                position: absolute;
+                                top: 0px;
+                                transform: translateX(-100%);
+                                width: 100%;
                               }
-                              @media screen and (-ms-high-contrast: active){& {
-                                background: WindowText
-                                                      linear-gradient(
-                                                        to right,
-                                                        transparent 0%,
-                                                        Window 50%,
-                                                        transparent 100%)
-                                                      0 0 / 90% 100%
-                                                      no-repeat;
-                              }
+                        />
+                        <div
                           style={
                             Object {
-                              "width": "100%",
+                              "display": "flex",
                             }
                           }
                         >
                           <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
                             style={
                               Object {
-                                "display": "flex",
+                                "width": "auto",
                               }
                             }
                           >
                             <div
                               className=
-                                  ms-ShimmerElementsGroup-root
+                                  ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    align-items: center;
-                                    display: flex;
-                                    flex-wrap: nowrap;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
                                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                     font-size: 14px;
                                     font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
                                   }
                               style={
                                 Object {
+                                  "minWidth": "auto",
+                                  "width": "40px",
+                                }
+                              }
+                            />
+                          </div>
+                          <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
+                            style={
+                              Object {
+                                "width": "100%",
+                              }
+                            }
+                          >
+                            <div
+                              className=
+                                  ms-ShimmerGap-root
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
+                                  }
+                              style={
+                                Object {
+                                  "minWidth": "auto",
                                   "width": "100%",
                                 }
                               }
-                            >
-                              <div
-                                className=
-                                    ms-ShimmerGap-root
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      background-color: #ffffff;
-                                      border-bottom-style: solid;
-                                      border-bottom-width: 0px;
-                                      border-color: #ffffff;
-                                      border-top-style: solid;
-                                      border-top-width: 0px;
-                                      box-sizing: content-box;
-                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                      font-size: 14px;
-                                      font-weight: 400;
-                                      height: 42px;
-                                    }
-                                    @media screen and (-ms-high-contrast: active){& {
-                                      background-color: Window;
-                                      border-color: Window;
-                                    }
-                                style={
-                                  Object {
-                                    "minWidth": "auto",
-                                    "width": "100%",
-                                  }
-                                }
-                              />
-                            </div>
+                            />
                           </div>
                         </div>
                       </div>
@@ -752,118 +930,177 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   >
                     <div
                       className=
-
+                          ms-Shimmer-container
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            height: auto;
+                            position: relative;
                           }
                     >
                       <div
                         className=
-                            ms-Shimmer-container
+                            ms-Shimmer-shimmerWrapper
                             {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 14px;
-                              font-weight: 400;
-                              height: auto;
+                              background-color: #f3f2f1;
+                              overflow: hidden;
                               position: relative;
+                              transform: translateZ(0);
+                              transition: opacity 200ms;
                             }
+                            & > * {
+                              transform: translateZ(0);
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              background: WindowText
+                                                    linear-gradient(
+                                                      to right,
+                                                      transparent 0%,
+                                                      Window 50%,
+                                                      transparent 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                            }
+                        style={
+                          Object {
+                            "width": "100%",
+                          }
+                        }
                       >
                         <div
                           className=
-                              ms-Shimmer-shimmerWrapper
+                              ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
                                 animation-duration: 2s;
                                 animation-iteration-count: infinite;
-                                animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+                                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
-                                                  linear-gradient(
-                                                    to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
-                                                  0 0 / 90% 100%
-                                                  no-repeat;
-                                transition: opacity 200ms;
+                                background: #f3f2f1
+                                                    linear-gradient(
+                                                      to right,
+                                                      #f3f2f1 0%,
+                                                      #edebe9 50%,
+                                                      #f3f2f1 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                                height: 100%;
+                                left: 0px;
+                                position: absolute;
+                                top: 0px;
+                                transform: translateX(-100%);
+                                width: 100%;
                               }
-                              @media screen and (-ms-high-contrast: active){& {
-                                background: WindowText
-                                                      linear-gradient(
-                                                        to right,
-                                                        transparent 0%,
-                                                        Window 50%,
-                                                        transparent 100%)
-                                                      0 0 / 90% 100%
-                                                      no-repeat;
-                              }
+                        />
+                        <div
                           style={
                             Object {
-                              "width": "100%",
+                              "display": "flex",
                             }
                           }
                         >
                           <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
                             style={
                               Object {
-                                "display": "flex",
+                                "width": "auto",
                               }
                             }
                           >
                             <div
                               className=
-                                  ms-ShimmerElementsGroup-root
+                                  ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    align-items: center;
-                                    display: flex;
-                                    flex-wrap: nowrap;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
                                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                     font-size: 14px;
                                     font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
                                   }
                               style={
                                 Object {
+                                  "minWidth": "auto",
+                                  "width": "40px",
+                                }
+                              }
+                            />
+                          </div>
+                          <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
+                            style={
+                              Object {
+                                "width": "100%",
+                              }
+                            }
+                          >
+                            <div
+                              className=
+                                  ms-ShimmerGap-root
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
+                                  }
+                              style={
+                                Object {
+                                  "minWidth": "auto",
                                   "width": "100%",
                                 }
                               }
-                            >
-                              <div
-                                className=
-                                    ms-ShimmerGap-root
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      background-color: #ffffff;
-                                      border-bottom-style: solid;
-                                      border-bottom-width: 0px;
-                                      border-color: #ffffff;
-                                      border-top-style: solid;
-                                      border-top-width: 0px;
-                                      box-sizing: content-box;
-                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                      font-size: 14px;
-                                      font-weight: 400;
-                                      height: 42px;
-                                    }
-                                    @media screen and (-ms-high-contrast: active){& {
-                                      background-color: Window;
-                                      border-color: Window;
-                                    }
-                                style={
-                                  Object {
-                                    "minWidth": "auto",
-                                    "width": "100%",
-                                  }
-                                }
-                              />
-                            </div>
+                            />
                           </div>
                         </div>
                       </div>
@@ -877,118 +1114,177 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   >
                     <div
                       className=
-
+                          ms-Shimmer-container
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            height: auto;
+                            position: relative;
                           }
                     >
                       <div
                         className=
-                            ms-Shimmer-container
+                            ms-Shimmer-shimmerWrapper
                             {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 14px;
-                              font-weight: 400;
-                              height: auto;
+                              background-color: #f3f2f1;
+                              overflow: hidden;
                               position: relative;
+                              transform: translateZ(0);
+                              transition: opacity 200ms;
                             }
+                            & > * {
+                              transform: translateZ(0);
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              background: WindowText
+                                                    linear-gradient(
+                                                      to right,
+                                                      transparent 0%,
+                                                      Window 50%,
+                                                      transparent 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                            }
+                        style={
+                          Object {
+                            "width": "100%",
+                          }
+                        }
                       >
                         <div
                           className=
-                              ms-Shimmer-shimmerWrapper
+                              ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
                                 animation-duration: 2s;
                                 animation-iteration-count: infinite;
-                                animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+                                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
-                                                  linear-gradient(
-                                                    to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
-                                                  0 0 / 90% 100%
-                                                  no-repeat;
-                                transition: opacity 200ms;
+                                background: #f3f2f1
+                                                    linear-gradient(
+                                                      to right,
+                                                      #f3f2f1 0%,
+                                                      #edebe9 50%,
+                                                      #f3f2f1 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                                height: 100%;
+                                left: 0px;
+                                position: absolute;
+                                top: 0px;
+                                transform: translateX(-100%);
+                                width: 100%;
                               }
-                              @media screen and (-ms-high-contrast: active){& {
-                                background: WindowText
-                                                      linear-gradient(
-                                                        to right,
-                                                        transparent 0%,
-                                                        Window 50%,
-                                                        transparent 100%)
-                                                      0 0 / 90% 100%
-                                                      no-repeat;
-                              }
+                        />
+                        <div
                           style={
                             Object {
-                              "width": "100%",
+                              "display": "flex",
                             }
                           }
                         >
                           <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
                             style={
                               Object {
-                                "display": "flex",
+                                "width": "auto",
                               }
                             }
                           >
                             <div
                               className=
-                                  ms-ShimmerElementsGroup-root
+                                  ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    align-items: center;
-                                    display: flex;
-                                    flex-wrap: nowrap;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
                                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                     font-size: 14px;
                                     font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
                                   }
                               style={
                                 Object {
+                                  "minWidth": "auto",
+                                  "width": "40px",
+                                }
+                              }
+                            />
+                          </div>
+                          <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
+                            style={
+                              Object {
+                                "width": "100%",
+                              }
+                            }
+                          >
+                            <div
+                              className=
+                                  ms-ShimmerGap-root
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
+                                  }
+                              style={
+                                Object {
+                                  "minWidth": "auto",
                                   "width": "100%",
                                 }
                               }
-                            >
-                              <div
-                                className=
-                                    ms-ShimmerGap-root
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      background-color: #ffffff;
-                                      border-bottom-style: solid;
-                                      border-bottom-width: 0px;
-                                      border-color: #ffffff;
-                                      border-top-style: solid;
-                                      border-top-width: 0px;
-                                      box-sizing: content-box;
-                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                      font-size: 14px;
-                                      font-weight: 400;
-                                      height: 42px;
-                                    }
-                                    @media screen and (-ms-high-contrast: active){& {
-                                      background-color: Window;
-                                      border-color: Window;
-                                    }
-                                style={
-                                  Object {
-                                    "minWidth": "auto",
-                                    "width": "100%",
-                                  }
-                                }
-                              />
-                            </div>
+                            />
                           </div>
                         </div>
                       </div>
@@ -1002,118 +1298,177 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   >
                     <div
                       className=
-
+                          ms-Shimmer-container
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            height: auto;
+                            position: relative;
                           }
                     >
                       <div
                         className=
-                            ms-Shimmer-container
+                            ms-Shimmer-shimmerWrapper
                             {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 14px;
-                              font-weight: 400;
-                              height: auto;
+                              background-color: #f3f2f1;
+                              overflow: hidden;
                               position: relative;
+                              transform: translateZ(0);
+                              transition: opacity 200ms;
                             }
+                            & > * {
+                              transform: translateZ(0);
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              background: WindowText
+                                                    linear-gradient(
+                                                      to right,
+                                                      transparent 0%,
+                                                      Window 50%,
+                                                      transparent 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                            }
+                        style={
+                          Object {
+                            "width": "100%",
+                          }
+                        }
                       >
                         <div
                           className=
-                              ms-Shimmer-shimmerWrapper
+                              ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
                                 animation-duration: 2s;
                                 animation-iteration-count: infinite;
-                                animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+                                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
-                                                  linear-gradient(
-                                                    to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
-                                                  0 0 / 90% 100%
-                                                  no-repeat;
-                                transition: opacity 200ms;
+                                background: #f3f2f1
+                                                    linear-gradient(
+                                                      to right,
+                                                      #f3f2f1 0%,
+                                                      #edebe9 50%,
+                                                      #f3f2f1 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                                height: 100%;
+                                left: 0px;
+                                position: absolute;
+                                top: 0px;
+                                transform: translateX(-100%);
+                                width: 100%;
                               }
-                              @media screen and (-ms-high-contrast: active){& {
-                                background: WindowText
-                                                      linear-gradient(
-                                                        to right,
-                                                        transparent 0%,
-                                                        Window 50%,
-                                                        transparent 100%)
-                                                      0 0 / 90% 100%
-                                                      no-repeat;
-                              }
+                        />
+                        <div
                           style={
                             Object {
-                              "width": "100%",
+                              "display": "flex",
                             }
                           }
                         >
                           <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
                             style={
                               Object {
-                                "display": "flex",
+                                "width": "auto",
                               }
                             }
                           >
                             <div
                               className=
-                                  ms-ShimmerElementsGroup-root
+                                  ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    align-items: center;
-                                    display: flex;
-                                    flex-wrap: nowrap;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
                                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                     font-size: 14px;
                                     font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
                                   }
                               style={
                                 Object {
+                                  "minWidth": "auto",
+                                  "width": "40px",
+                                }
+                              }
+                            />
+                          </div>
+                          <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
+                            style={
+                              Object {
+                                "width": "100%",
+                              }
+                            }
+                          >
+                            <div
+                              className=
+                                  ms-ShimmerGap-root
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
+                                  }
+                              style={
+                                Object {
+                                  "minWidth": "auto",
                                   "width": "100%",
                                 }
                               }
-                            >
-                              <div
-                                className=
-                                    ms-ShimmerGap-root
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      background-color: #ffffff;
-                                      border-bottom-style: solid;
-                                      border-bottom-width: 0px;
-                                      border-color: #ffffff;
-                                      border-top-style: solid;
-                                      border-top-width: 0px;
-                                      box-sizing: content-box;
-                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                      font-size: 14px;
-                                      font-weight: 400;
-                                      height: 42px;
-                                    }
-                                    @media screen and (-ms-high-contrast: active){& {
-                                      background-color: Window;
-                                      border-color: Window;
-                                    }
-                                style={
-                                  Object {
-                                    "minWidth": "auto",
-                                    "width": "100%",
-                                  }
-                                }
-                              />
-                            </div>
+                            />
                           </div>
                         </div>
                       </div>
@@ -1127,118 +1482,177 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   >
                     <div
                       className=
-
+                          ms-Shimmer-container
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            height: auto;
+                            position: relative;
                           }
                     >
                       <div
                         className=
-                            ms-Shimmer-container
+                            ms-Shimmer-shimmerWrapper
                             {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 14px;
-                              font-weight: 400;
-                              height: auto;
+                              background-color: #f3f2f1;
+                              overflow: hidden;
                               position: relative;
+                              transform: translateZ(0);
+                              transition: opacity 200ms;
                             }
+                            & > * {
+                              transform: translateZ(0);
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              background: WindowText
+                                                    linear-gradient(
+                                                      to right,
+                                                      transparent 0%,
+                                                      Window 50%,
+                                                      transparent 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                            }
+                        style={
+                          Object {
+                            "width": "100%",
+                          }
+                        }
                       >
                         <div
                           className=
-                              ms-Shimmer-shimmerWrapper
+                              ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
                                 animation-duration: 2s;
                                 animation-iteration-count: infinite;
-                                animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+                                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
-                                                  linear-gradient(
-                                                    to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
-                                                  0 0 / 90% 100%
-                                                  no-repeat;
-                                transition: opacity 200ms;
+                                background: #f3f2f1
+                                                    linear-gradient(
+                                                      to right,
+                                                      #f3f2f1 0%,
+                                                      #edebe9 50%,
+                                                      #f3f2f1 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                                height: 100%;
+                                left: 0px;
+                                position: absolute;
+                                top: 0px;
+                                transform: translateX(-100%);
+                                width: 100%;
                               }
-                              @media screen and (-ms-high-contrast: active){& {
-                                background: WindowText
-                                                      linear-gradient(
-                                                        to right,
-                                                        transparent 0%,
-                                                        Window 50%,
-                                                        transparent 100%)
-                                                      0 0 / 90% 100%
-                                                      no-repeat;
-                              }
+                        />
+                        <div
                           style={
                             Object {
-                              "width": "100%",
+                              "display": "flex",
                             }
                           }
                         >
                           <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
                             style={
                               Object {
-                                "display": "flex",
+                                "width": "auto",
                               }
                             }
                           >
                             <div
                               className=
-                                  ms-ShimmerElementsGroup-root
+                                  ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    align-items: center;
-                                    display: flex;
-                                    flex-wrap: nowrap;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
                                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                     font-size: 14px;
                                     font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
                                   }
                               style={
                                 Object {
+                                  "minWidth": "auto",
+                                  "width": "40px",
+                                }
+                              }
+                            />
+                          </div>
+                          <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
+                            style={
+                              Object {
+                                "width": "100%",
+                              }
+                            }
+                          >
+                            <div
+                              className=
+                                  ms-ShimmerGap-root
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
+                                  }
+                              style={
+                                Object {
+                                  "minWidth": "auto",
                                   "width": "100%",
                                 }
                               }
-                            >
-                              <div
-                                className=
-                                    ms-ShimmerGap-root
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      background-color: #ffffff;
-                                      border-bottom-style: solid;
-                                      border-bottom-width: 0px;
-                                      border-color: #ffffff;
-                                      border-top-style: solid;
-                                      border-top-width: 0px;
-                                      box-sizing: content-box;
-                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                      font-size: 14px;
-                                      font-weight: 400;
-                                      height: 42px;
-                                    }
-                                    @media screen and (-ms-high-contrast: active){& {
-                                      background-color: Window;
-                                      border-color: Window;
-                                    }
-                                style={
-                                  Object {
-                                    "minWidth": "auto",
-                                    "width": "100%",
-                                  }
-                                }
-                              />
-                            </div>
+                            />
                           </div>
                         </div>
                       </div>
@@ -1252,118 +1666,177 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   >
                     <div
                       className=
-
+                          ms-Shimmer-container
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            height: auto;
+                            position: relative;
                           }
                     >
                       <div
                         className=
-                            ms-Shimmer-container
+                            ms-Shimmer-shimmerWrapper
                             {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 14px;
-                              font-weight: 400;
-                              height: auto;
+                              background-color: #f3f2f1;
+                              overflow: hidden;
                               position: relative;
+                              transform: translateZ(0);
+                              transition: opacity 200ms;
                             }
+                            & > * {
+                              transform: translateZ(0);
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              background: WindowText
+                                                    linear-gradient(
+                                                      to right,
+                                                      transparent 0%,
+                                                      Window 50%,
+                                                      transparent 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                            }
+                        style={
+                          Object {
+                            "width": "100%",
+                          }
+                        }
                       >
                         <div
                           className=
-                              ms-Shimmer-shimmerWrapper
+                              ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
                                 animation-duration: 2s;
                                 animation-iteration-count: infinite;
-                                animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+                                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
-                                                  linear-gradient(
-                                                    to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
-                                                  0 0 / 90% 100%
-                                                  no-repeat;
-                                transition: opacity 200ms;
+                                background: #f3f2f1
+                                                    linear-gradient(
+                                                      to right,
+                                                      #f3f2f1 0%,
+                                                      #edebe9 50%,
+                                                      #f3f2f1 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                                height: 100%;
+                                left: 0px;
+                                position: absolute;
+                                top: 0px;
+                                transform: translateX(-100%);
+                                width: 100%;
                               }
-                              @media screen and (-ms-high-contrast: active){& {
-                                background: WindowText
-                                                      linear-gradient(
-                                                        to right,
-                                                        transparent 0%,
-                                                        Window 50%,
-                                                        transparent 100%)
-                                                      0 0 / 90% 100%
-                                                      no-repeat;
-                              }
+                        />
+                        <div
                           style={
                             Object {
-                              "width": "100%",
+                              "display": "flex",
                             }
                           }
                         >
                           <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
                             style={
                               Object {
-                                "display": "flex",
+                                "width": "auto",
                               }
                             }
                           >
                             <div
                               className=
-                                  ms-ShimmerElementsGroup-root
+                                  ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    align-items: center;
-                                    display: flex;
-                                    flex-wrap: nowrap;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
                                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                     font-size: 14px;
                                     font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
                                   }
                               style={
                                 Object {
+                                  "minWidth": "auto",
+                                  "width": "40px",
+                                }
+                              }
+                            />
+                          </div>
+                          <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
+                            style={
+                              Object {
+                                "width": "100%",
+                              }
+                            }
+                          >
+                            <div
+                              className=
+                                  ms-ShimmerGap-root
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
+                                  }
+                              style={
+                                Object {
+                                  "minWidth": "auto",
                                   "width": "100%",
                                 }
                               }
-                            >
-                              <div
-                                className=
-                                    ms-ShimmerGap-root
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      background-color: #ffffff;
-                                      border-bottom-style: solid;
-                                      border-bottom-width: 0px;
-                                      border-color: #ffffff;
-                                      border-top-style: solid;
-                                      border-top-width: 0px;
-                                      box-sizing: content-box;
-                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                      font-size: 14px;
-                                      font-weight: 400;
-                                      height: 42px;
-                                    }
-                                    @media screen and (-ms-high-contrast: active){& {
-                                      background-color: Window;
-                                      border-color: Window;
-                                    }
-                                style={
-                                  Object {
-                                    "minWidth": "auto",
-                                    "width": "100%",
-                                  }
-                                }
-                              />
-                            </div>
+                            />
                           </div>
                         </div>
                       </div>
@@ -1377,118 +1850,177 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   >
                     <div
                       className=
-
+                          ms-Shimmer-container
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            height: auto;
+                            position: relative;
                           }
                     >
                       <div
                         className=
-                            ms-Shimmer-container
+                            ms-Shimmer-shimmerWrapper
                             {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 14px;
-                              font-weight: 400;
-                              height: auto;
+                              background-color: #f3f2f1;
+                              overflow: hidden;
                               position: relative;
+                              transform: translateZ(0);
+                              transition: opacity 200ms;
                             }
+                            & > * {
+                              transform: translateZ(0);
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              background: WindowText
+                                                    linear-gradient(
+                                                      to right,
+                                                      transparent 0%,
+                                                      Window 50%,
+                                                      transparent 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                            }
+                        style={
+                          Object {
+                            "width": "100%",
+                          }
+                        }
                       >
                         <div
                           className=
-                              ms-Shimmer-shimmerWrapper
+                              ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
                                 animation-duration: 2s;
                                 animation-iteration-count: infinite;
-                                animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+                                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
-                                                  linear-gradient(
-                                                    to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
-                                                  0 0 / 90% 100%
-                                                  no-repeat;
-                                transition: opacity 200ms;
+                                background: #f3f2f1
+                                                    linear-gradient(
+                                                      to right,
+                                                      #f3f2f1 0%,
+                                                      #edebe9 50%,
+                                                      #f3f2f1 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                                height: 100%;
+                                left: 0px;
+                                position: absolute;
+                                top: 0px;
+                                transform: translateX(-100%);
+                                width: 100%;
                               }
-                              @media screen and (-ms-high-contrast: active){& {
-                                background: WindowText
-                                                      linear-gradient(
-                                                        to right,
-                                                        transparent 0%,
-                                                        Window 50%,
-                                                        transparent 100%)
-                                                      0 0 / 90% 100%
-                                                      no-repeat;
-                              }
+                        />
+                        <div
                           style={
                             Object {
-                              "width": "100%",
+                              "display": "flex",
                             }
                           }
                         >
                           <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
                             style={
                               Object {
-                                "display": "flex",
+                                "width": "auto",
                               }
                             }
                           >
                             <div
                               className=
-                                  ms-ShimmerElementsGroup-root
+                                  ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    align-items: center;
-                                    display: flex;
-                                    flex-wrap: nowrap;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
                                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                     font-size: 14px;
                                     font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
                                   }
                               style={
                                 Object {
+                                  "minWidth": "auto",
+                                  "width": "40px",
+                                }
+                              }
+                            />
+                          </div>
+                          <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
+                            style={
+                              Object {
+                                "width": "100%",
+                              }
+                            }
+                          >
+                            <div
+                              className=
+                                  ms-ShimmerGap-root
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
+                                  }
+                              style={
+                                Object {
+                                  "minWidth": "auto",
                                   "width": "100%",
                                 }
                               }
-                            >
-                              <div
-                                className=
-                                    ms-ShimmerGap-root
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      background-color: #ffffff;
-                                      border-bottom-style: solid;
-                                      border-bottom-width: 0px;
-                                      border-color: #ffffff;
-                                      border-top-style: solid;
-                                      border-top-width: 0px;
-                                      box-sizing: content-box;
-                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                      font-size: 14px;
-                                      font-weight: 400;
-                                      height: 42px;
-                                    }
-                                    @media screen and (-ms-high-contrast: active){& {
-                                      background-color: Window;
-                                      border-color: Window;
-                                    }
-                                style={
-                                  Object {
-                                    "minWidth": "auto",
-                                    "width": "100%",
-                                  }
-                                }
-                              />
-                            </div>
+                            />
                           </div>
                         </div>
                       </div>
@@ -1502,118 +2034,177 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   >
                     <div
                       className=
-
+                          ms-Shimmer-container
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 14px;
+                            font-weight: 400;
+                            height: auto;
+                            position: relative;
                           }
                     >
                       <div
                         className=
-                            ms-Shimmer-container
+                            ms-Shimmer-shimmerWrapper
                             {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 14px;
-                              font-weight: 400;
-                              height: auto;
+                              background-color: #f3f2f1;
+                              overflow: hidden;
                               position: relative;
+                              transform: translateZ(0);
+                              transition: opacity 200ms;
                             }
+                            & > * {
+                              transform: translateZ(0);
+                            }
+                            @media screen and (-ms-high-contrast: active){& {
+                              background: WindowText
+                                                    linear-gradient(
+                                                      to right,
+                                                      transparent 0%,
+                                                      Window 50%,
+                                                      transparent 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                            }
+                        style={
+                          Object {
+                            "width": "100%",
+                          }
+                        }
                       >
                         <div
                           className=
-                              ms-Shimmer-shimmerWrapper
+                              ms-Shimmer-shimmerGradient
                               {
                                 animation-direction: normal;
                                 animation-duration: 2s;
                                 animation-iteration-count: infinite;
-                                animation-name: keyframes 0%{background-position:-1000%;}100%{background-position:1000%;};
+                                animation-name: keyframes 0%{transform:translateX(-100%);}100%{transform:translateX(100%);};
                                 animation-timing-function: ease-in-out;
-                                background: #f4f4f4
-                                                  linear-gradient(
-                                                    to right,
-                                                    #f4f4f4 0%,
-                                                    #eaeaea 50%,
-                                                    #f4f4f4 100%)
-                                                  0 0 / 90% 100%
-                                                  no-repeat;
-                                transition: opacity 200ms;
+                                background: #f3f2f1
+                                                    linear-gradient(
+                                                      to right,
+                                                      #f3f2f1 0%,
+                                                      #edebe9 50%,
+                                                      #f3f2f1 100%)
+                                                    0 0 / 90% 100%
+                                                    no-repeat;
+                                height: 100%;
+                                left: 0px;
+                                position: absolute;
+                                top: 0px;
+                                transform: translateX(-100%);
+                                width: 100%;
                               }
-                              @media screen and (-ms-high-contrast: active){& {
-                                background: WindowText
-                                                      linear-gradient(
-                                                        to right,
-                                                        transparent 0%,
-                                                        Window 50%,
-                                                        transparent 100%)
-                                                      0 0 / 90% 100%
-                                                      no-repeat;
-                              }
+                        />
+                        <div
                           style={
                             Object {
-                              "width": "100%",
+                              "display": "flex",
                             }
                           }
                         >
                           <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
                             style={
                               Object {
-                                "display": "flex",
+                                "width": "auto",
                               }
                             }
                           >
                             <div
                               className=
-                                  ms-ShimmerElementsGroup-root
+                                  ms-ShimmerGap-root
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    align-items: center;
-                                    display: flex;
-                                    flex-wrap: nowrap;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
                                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                     font-size: 14px;
                                     font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
                                   }
                               style={
                                 Object {
+                                  "minWidth": "auto",
+                                  "width": "40px",
+                                }
+                              }
+                            />
+                          </div>
+                          <div
+                            className=
+                                ms-ShimmerElementsGroup-root
+                                {
+                                  -moz-osx-font-smoothing: grayscale;
+                                  -webkit-font-smoothing: antialiased;
+                                  align-items: center;
+                                  display: flex;
+                                  flex-wrap: nowrap;
+                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                  font-size: 14px;
+                                  font-weight: 400;
+                                  position: relative;
+                                }
+                            style={
+                              Object {
+                                "width": "100%",
+                              }
+                            }
+                          >
+                            <div
+                              className=
+                                  ms-ShimmerGap-root
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    background-color: #ffffff;
+                                    border-bottom-style: solid;
+                                    border-bottom-width: 0px;
+                                    border-color: #ffffff;
+                                    border-top-style: solid;
+                                    border-top-width: 0px;
+                                    box-sizing: content-box;
+                                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                    font-size: 14px;
+                                    font-weight: 400;
+                                    height: 43px;
+                                  }
+                                  @media screen and (-ms-high-contrast: active){& {
+                                    background-color: Window;
+                                    border-color: Window;
+                                  }
+                              style={
+                                Object {
+                                  "minWidth": "auto",
                                   "width": "100%",
                                 }
                               }
-                            >
-                              <div
-                                className=
-                                    ms-ShimmerGap-root
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      background-color: #ffffff;
-                                      border-bottom-style: solid;
-                                      border-bottom-width: 0px;
-                                      border-color: #ffffff;
-                                      border-top-style: solid;
-                                      border-top-width: 0px;
-                                      box-sizing: content-box;
-                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                      font-size: 14px;
-                                      font-weight: 400;
-                                      height: 42px;
-                                    }
-                                    @media screen and (-ms-high-contrast: active){& {
-                                      background-color: Window;
-                                      border-color: Window;
-                                    }
-                                style={
-                                  Object {
-                                    "minWidth": "auto",
-                                    "width": "100%",
-                                  }
-                                }
-                              />
-                            </div>
+                            />
                           </div>
                         </div>
                       </div>

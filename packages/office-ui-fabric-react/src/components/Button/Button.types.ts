@@ -9,6 +9,9 @@ import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
 import { IKeytipProps } from '../../Keytip';
 
+/**
+ * {@docCategory Button}
+ */
 export interface IButton {
   /**
    * Sets focus to the button.
@@ -31,6 +34,9 @@ export interface IButton {
   openMenu: (shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean) => void;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface IButtonProps
   extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button> {
   /**
@@ -283,13 +289,28 @@ export interface IButtonProps
   persistMenu?: boolean;
 
   /**
+   * Experimental prop that get passed into the menuButton that's rendered as part of
+   * split button. Anything passed in will likely need to have accompanying
+   * style changes.
+   */
+  splitButtonMenuProps?: IButtonProps;
+
+  /**
    * Style for the description text if applicable (for compound buttons.)
    * Deprecated, use `secondaryText` instead.
    * @deprecated Use `secondaryText` instead.
    */
   description?: IStyle;
+
+  /**
+   * yet unknown docs
+   */
+  defaultRender?: any;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export enum ElementType {
   /** <button> element. */
   button = 0,
@@ -297,6 +318,9 @@ export enum ElementType {
   anchor = 1
 }
 
+/**
+ * {@docCategory Button}
+ */
 export enum ButtonType {
   normal = 0,
   primary = 1,
@@ -307,6 +331,9 @@ export enum ButtonType {
   default = 6
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface IButtonStyles {
   /**
    * Style for the root element in the default enabled, non-toggled state.
@@ -533,6 +560,12 @@ export interface IButtonStyles {
    * for a split button.
    */
   splitButtonDivider?: IStyle;
+
+  /**
+   * Style override for the divider element that appears between the button and menu button
+   * for a split button in a disabled state.
+   */
+  splitButtonDividerDisabled?: IStyle;
 
   /**
    * Style override for the SplitButton menu button

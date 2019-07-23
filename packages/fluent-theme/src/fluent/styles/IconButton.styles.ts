@@ -9,7 +9,7 @@ export const IconButtonStyles = (props: IButtonProps): Partial<IButtonStyles> =>
 
   return {
     root: {
-      backgroundColor: palette.white,
+      backgroundColor: 'transparent',
       color: palette.themePrimary
     },
     rootHovered: {
@@ -25,7 +25,7 @@ export const IconButtonStyles = (props: IButtonProps): Partial<IButtonStyles> =>
       color: palette.themeDark
     },
     rootDisabled: {
-      backgroundColor: palette.white,
+      backgroundColor: 'transparent',
       color: palette.neutralTertiary
     }
   };

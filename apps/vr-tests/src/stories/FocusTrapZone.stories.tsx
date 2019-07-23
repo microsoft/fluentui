@@ -40,8 +40,7 @@ storiesOf('FocusTrapZones', module)
             modalProps={{
               titleAriaId: 'myLabelId',
               subtitleAriaId: 'mySubTextId',
-              isBlocking: false,
-              containerClassName: 'ms-dialogMainOverride'
+              isBlocking: false
             }}
           >
             {null}

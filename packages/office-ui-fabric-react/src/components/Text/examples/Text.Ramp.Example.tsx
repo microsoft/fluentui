@@ -1,4 +1,3 @@
-// @codepen
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { IFontStyles } from 'office-ui-fabric-react/lib/Styling';
 import {

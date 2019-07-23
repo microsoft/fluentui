@@ -85,7 +85,7 @@ const disabledLinks: INavLink[] = [
     disabled: true,
     key: 'key4'
   }
-]
+];
 
 storiesOf('Nav', module)
   .addDecorator(FabricDecorator)
@@ -107,12 +107,7 @@ storiesOf('Nav', module)
     'Root',
     () => (
       <div style={{ width: '208px' }}>
-        <Nav
-          groups={[{ links: links }]}
-          expandedStateText={'expanded'}
-          collapsedStateText={'collapsed'}
-          selectedKey={'key3'}
-        />
+        <Nav groups={[{ links: links }]} selectedKey="key3" />
       </div>
     ),
     { rtl: true }
@@ -121,12 +116,7 @@ storiesOf('Nav', module)
     'Disabled',
     () => (
       <div style={{ width: '208px' }}>
-        <Nav
-          groups={[{ links: disabledLinks }]}
-          expandedStateText={'expanded'}
-          collapsedStateText={'collapsed'}
-          selectedKey={'key3'}
-        />
+        <Nav groups={[{ links: disabledLinks }]} selectedKey="key3" />
       </div>
     ),
     { rtl: true }

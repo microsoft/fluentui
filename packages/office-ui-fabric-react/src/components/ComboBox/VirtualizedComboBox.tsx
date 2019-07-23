@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent } from '../../Utilities';
 import { ComboBox } from './ComboBox';
-import { IComboBoxProps, IComboBox } from './ComboBox.types';
+import { IComboBoxProps, IComboBox, IComboBoxOption } from './ComboBox.types';
 import { IList, List } from '../../List';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 
@@ -10,6 +10,16 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
   private _comboBox = React.createRef<IComboBox>();
   /** The virtualized list element */
   private _list = React.createRef<IList>();
+
+  /**
+   * All selected options
+   */
+  public get selectedOptions(): IComboBoxOption[] {
+    if (this._comboBox.current) {
+      return this._comboBox.current.selectedOptions;
+    }
+    return [];
+  }
 
   public dismissMenu(): void {
     if (this._comboBox.current) {

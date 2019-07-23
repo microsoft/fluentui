@@ -10,6 +10,198 @@
   },
   "glyphs": [
     {
+      "name": "IncreaseIndentArrow",
+      "unicode": "F7A1"
+    },
+    {
+      "name": "DecreaseIndentText",
+      "unicode": "F7A2"
+    },
+    {
+      "name": "DecreaseIndentArrow",
+      "unicode": "F7A3"
+    },
+    {
+      "name": "IncreaseIndentTextMirrored",
+      "unicode": "F7A4"
+    },
+    {
+      "name": "IncreaseIndentArrowMirrored",
+      "unicode": "F7A5"
+    },
+    {
+      "name": "DecreaseIndentTextMirrored",
+      "unicode": "F7A6"
+    },
+    {
+      "name": "DecreaseIndentArrowMirrored",
+      "unicode": "F7A7"
+    },
+    {
+      "name": "CheckListText",
+      "unicode": "F7A8"
+    },
+    {
+      "name": "CheckListCheck",
+      "unicode": "F7A9"
+    },
+    {
+      "name": "CheckListTextMirrored",
+      "unicode": "F7AA"
+    },
+    {
+      "name": "CheckListCheckMirrored",
+      "unicode": "F7AB"
+    },
+    {
+      "name": "NumberSymbol",
+      "unicode": "F7AC"
+    },
+    {
+      "name": "Coupon",
+      "unicode": "F7BC"
+    },
+    {
+      "name": "VerifiedBrand",
+      "unicode": "F7BD"
+    },
+    {
+      "name": "ReleaseGate",
+      "unicode": "F7BE"
+    },
+    {
+      "name": "ReleaseGateCheck",
+      "unicode": "F7BF"
+    },
+    {
+      "name": "ReleaseGateError",
+      "unicode": "F7C0"
+    },
+    {
+      "name": "M365InvoicingLogo",
+      "unicode": "F7C1"
+    },
+    {
+      "name": "ShieldAlert",
+      "unicode": "F7D7"
+    },
+    {
+      "name": "FabricTextHighlightComposite",
+      "unicode": "F7DA"
+    },
+    {
+      "name": "Dataflows",
+      "unicode": "F7DD"
+    },
+    {
+      "name": "GenericScanFilled",
+      "unicode": "F7DE"
+    },
+    {
+      "name": "DiagnosticDataBarTooltip",
+      "unicode": "F7DF"
+    },
+    {
+      "name": "SaveToMobile",
+      "unicode": "F7E0"
+    },
+    {
+      "name": "Orientation2",
+      "unicode": "F7E1"
+    },
+    {
+      "name": "ScreenCast",
+      "unicode": "F7E2"
+    },
+    {
+      "name": "ShowGrid",
+      "unicode": "F7E3"
+    },
+    {
+      "name": "SnapToGrid",
+      "unicode": "F7E4"
+    },
+    {
+      "name": "ContactList",
+      "unicode": "F7E5"
+    },
+    {
+      "name": "NewMail",
+      "unicode": "F7EA"
+    },
+    {
+      "name": "EyeShadow",
+      "unicode": "F7EB"
+    },
+    {
+      "name": "FabricFolderConfirm",
+      "unicode": "F7FF"
+    },
+    {
+      "name": "InformationBarriers",
+      "unicode": "F803"
+    },
+    {
+      "name": "CommentActive",
+      "unicode": "F804"
+    },
+    {
+      "name": "ColumnVerticalSectionEdit",
+      "unicode": "F806"
+    },
+    {
+      "name": "WavingHand",
+      "unicode": "F807"
+    },
+    {
+      "name": "ShakeDevice",
+      "unicode": "F80A"
+    },
+    {
+      "name": "SmartGlassRemote",
+      "unicode": "F80B"
+    },
+    {
+      "name": "Rotate90Clockwise",
+      "unicode": "F80D"
+    },
+    {
+      "name": "Rotate90CounterClockwise",
+      "unicode": "F80E"
+    },
+    {
+      "name": "CampaignTemplate",
+      "unicode": "F811"
+    },
+    {
+      "name": "ChartTemplate",
+      "unicode": "F812"
+    },
+    {
+      "name": "PageListFilter",
+      "unicode": "F813"
+    },
+    {
+      "name": "SecondaryNav",
+      "unicode": "F814"
+    },
+    {
+      "name": "ColumnVerticalSection",
+      "unicode": "F81E"
+    },
+    {
+      "name": "SkypeCircleSlash",
+      "unicode": "F825"
+    },
+    {
+      "name": "SkypeSlash",
+      "unicode": "F826"
+    },
+    {
+      "name": "CustomizeToolbar",
+      "unicode": "F828"
+    },
+    {
       "name": "DuplicateRow",
       "unicode": "F82A"
     },
@@ -54,6 +246,10 @@
       "unicode": "F842"
     },
     {
+      "name": "ReservationOrders",
+      "unicode": "F845"
+    },
+    {
       "name": "TabOneColumn",
       "unicode": "F849"
     },
@@ -64,6 +260,86 @@
     {
       "name": "TabThreeColumn",
       "unicode": "F84B"
+    },
+    {
+      "name": "MicrosoftTranslatorLogoGreen",
+      "unicode": "F852"
+    },
+    {
+      "name": "MicrosoftTranslatorLogoBlue",
+      "unicode": "F853"
+    },
+    {
+      "name": "InternalInvestigation",
+      "unicode": "F854"
+    },
+    {
+      "name": "AddReaction",
+      "unicode": "F85D"
+    },
+    {
+      "name": "ContactHeart",
+      "unicode": "F862"
+    },
+    {
+      "name": "VisuallyImpaired",
+      "unicode": "F866"
+    },
+    {
+      "name": "EventToDoLogo",
+      "unicode": "F869"
+    },
+    {
+      "name": "Variable2",
+      "unicode": "F86D"
+    },
+    {
+      "name": "ModelingView",
+      "unicode": "F871"
+    },
+    {
+      "name": "DisconnectVirtualMachine",
+      "unicode": "F873"
+    },
+    {
+      "name": "ReportLock",
+      "unicode": "F875"
+    },
+    {
+      "name": "Uneditable2",
+      "unicode": "F876"
+    },
+    {
+      "name": "Uneditable2Mirrored",
+      "unicode": "F877"
+    },
+    {
+      "name": "BarChartVerticalEdit",
+      "unicode": "F89D"
+    },
+    {
+      "name": "GlobalNavButtonActive",
+      "unicode": "F89F"
+    },
+    {
+      "name": "PollResults",
+      "unicode": "F8A0"
+    },
+    {
+      "name": "Rerun",
+      "unicode": "F8A1"
+    },
+    {
+      "name": "QandA",
+      "unicode": "F8A2"
+    },
+    {
+      "name": "QandAMirror",
+      "unicode": "F8A3"
+    },
+    {
+      "name": "BookAnswers",
+      "unicode": "F8A4"
     },
     {
       "name": "DecreaseIndentLegacy",

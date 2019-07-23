@@ -25,18 +25,19 @@ exports[`Dialog renders Dialog correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #333333;
+            color: #323130;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 21px;
-            font-weight: 100;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: normal;
             margin-bottom: 0;
             margin-left: 0;
             margin-right: 0;
             margin-top: 0;
-            padding-bottom: 20px;
-            padding-left: 28px;
-            padding-right: 36px;
-            padding-top: 20px;
+            padding-bottom: 24px;
+            padding-left: 24px;
+            padding-right: 46px;
+            padding-top: 16px;
           }
       role="heading"
     />
@@ -49,8 +50,8 @@ exports[`Dialog renders Dialog correctly 1`] = `
             flex-wrap: nowrap;
             padding-bottom: 0;
             padding-left: 0;
-            padding-right: 12px;
-            padding-top: 12px;
+            padding-right: 14px;
+            padding-top: 14px;
             position: absolute;
             right: 0;
             top: 0;
@@ -58,15 +59,22 @@ exports[`Dialog renders Dialog correctly 1`] = `
           & > * {
             flex: 0 0 auto;
           }
+          & .ms-Dialog-button {
+            color: #605e5c;
+          }
+          & .ms-Dialog-button:hover {
+            border-radius: 2px;
+            color: #201f1e;
+          }
     />
   </div>
   <div
     className=
         ms-Dialog-inner
         {
-          padding-bottom: 20px;
-          padding-left: 28px;
-          padding-right: 28px;
+          padding-bottom: 24px;
+          padding-left: 24px;
+          padding-right: 24px;
           padding-top: 0;
         }
   >
@@ -77,11 +85,104 @@ exports[`Dialog renders Dialog correctly 1`] = `
             position: relative;
             width: 100%;
           }
-          & .ms-Button.ms-Button--compount {
-            margin-bottom: 20px;
-          }
-          &:last-child {
+    />
+  </div>
+</div>
+`;
+
+exports[`Dialog renders Dialog with a jsx title 1`] = `
+<div
+  className=
+
+      {
+        flex-grow: 1;
+        overflow-y: hidden;
+      }
+>
+  <div
+    className=
+        ms-Dialog-header
+        {
+          box-sizing: border-box;
+          position: relative;
+          width: 100%;
+        }
+  >
+    <p
+      aria-level={2}
+      className=
+          ms-Dialog-title
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #323130;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: normal;
             margin-bottom: 0;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 0;
+            padding-bottom: 24px;
+            padding-left: 24px;
+            padding-right: 46px;
+            padding-top: 16px;
+          }
+      role="heading"
+    >
+      <div>
+        <span>
+          I am span 1
+        </span>
+        <span>
+          I am span 2
+        </span>
+      </div>
+    </p>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            padding-bottom: 0;
+            padding-left: 0;
+            padding-right: 14px;
+            padding-top: 14px;
+            position: absolute;
+            right: 0;
+            top: 0;
+          }
+          & > * {
+            flex: 0 0 auto;
+          }
+          & .ms-Dialog-button {
+            color: #605e5c;
+          }
+          & .ms-Dialog-button:hover {
+            border-radius: 2px;
+            color: #201f1e;
+          }
+    />
+  </div>
+  <div
+    className=
+        ms-Dialog-inner
+        {
+          padding-bottom: 24px;
+          padding-left: 24px;
+          padding-right: 24px;
+          padding-top: 0;
+        }
+  >
+    <div
+      className=
+          ms-Dialog-content
+          {
+            position: relative;
+            width: 100%;
           }
     />
   </div>

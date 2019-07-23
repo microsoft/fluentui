@@ -1,9 +1,15 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { isElementVisible, isElementTabbable, focusAsync, getElementIndexPath, getFocusableByIndexPath } from './focus';
+import {
+  isElementVisible,
+  isElementTabbable,
+  focusAsync,
+  getElementIndexPath,
+  getFirstTabbable,
+  getFocusableByIndexPath,
+  getLastTabbable
+} from './focus';
 
 let _hiddenElement: HTMLElement | undefined;
 let _visibleElement: HTMLElement | undefined;
@@ -117,6 +123,14 @@ describe('isElementTabbable', () => {
 
     expect(isElementTabbable(button)).toEqual(false);
   });
+
+  it('returns false with -1 tabIndex', () => {
+    let button = document.createElement('button');
+
+    button.tabIndex = -1;
+
+    expect(isElementTabbable(button, true)).toEqual(false);
+  });
 });
 
 describe('focusAsync', () => {
@@ -144,13 +158,13 @@ describe('focusAsync', () => {
     // Focus the first button.
     focusAsync(buttonA);
     window.requestAnimationFrame(() => {
-      expect(container.ownerDocument.activeElement).toBe(buttonA);
+      expect(container.ownerDocument!.activeElement).toBe(buttonA);
 
       // Focus the second button, then the third before the next frame
       focusAsync(buttonB);
       focusAsync(buttonC);
       window.requestAnimationFrame(() => {
-        expect(container.ownerDocument.activeElement).toBe(buttonC);
+        expect(container.ownerDocument!.activeElement).toBe(buttonC);
       });
     });
 
@@ -203,7 +217,7 @@ describe('getFocusableByIndexPath', () => {
     </div>
   `;
 
-    const child = parent.querySelector('#child') as HTMLElement;
+    parent.querySelector('#child') as HTMLElement;
 
     expect(getFocusableByIndexPath(parent, [0, 2, 1])).toEqual(null);
   });
@@ -251,5 +265,107 @@ describe('getElementIndexPath', () => {
     const parent = document.createElement('div');
 
     expect(getElementIndexPath(parent, parent)).toEqual([]);
+  });
+});
+
+describe('getFirstTabbable', () => {
+  it('focuses on the next tabbable item', () => {
+    const component = renderIntoDocument(
+      <div>
+        <div className="parent">
+          <button className="a" data-is-visible={true}>
+            a
+          </button>
+          <button className="b" data-is-visible={true}>
+            b
+          </button>
+          <button className="c" data-is-visible={true}>
+            c
+          </button>
+        </div>
+      </div>
+    );
+
+    const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
+    const parent = container.querySelector('.parent') as HTMLElement;
+    const buttonA = container.querySelector('.a') as HTMLElement;
+    const buttonB = container.querySelector('.b') as HTMLElement;
+
+    expect(getFirstTabbable(parent, buttonA, true, false)).toEqual(buttonB);
+  });
+
+  it('does not focus on an item with tabIndex of -1', () => {
+    const component = renderIntoDocument(
+      <div>
+        <div className="parent">
+          <button className="a" data-is-visible={true} tabIndex={-1}>
+            a
+          </button>
+          <button className="b" data-is-visible={true} tabIndex={-1}>
+            b
+          </button>
+          <button className="c" data-is-visible={true} tabIndex={-1}>
+            c
+          </button>
+        </div>
+      </div>
+    );
+
+    const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
+    const parent = container.querySelector('.parent') as HTMLElement;
+    const buttonA = container.querySelector('.a') as HTMLElement;
+
+    expect(getFirstTabbable(parent, buttonA, true, false)).toEqual(null);
+  });
+});
+
+describe('getLastTabbable', () => {
+  it('focuses on the last tabbable item', () => {
+    const component = renderIntoDocument(
+      <div>
+        <div className="parent">
+          <button className="a" data-is-visible={true}>
+            a
+          </button>
+          <button className="b" data-is-visible={true}>
+            b
+          </button>
+          <button className="c" data-is-visible={true}>
+            c
+          </button>
+        </div>
+      </div>
+    );
+
+    const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
+    const parent = container.querySelector('.parent') as HTMLElement;
+    const buttonB = container.querySelector('.b') as HTMLElement;
+    const buttonC = container.querySelector('.c') as HTMLElement;
+
+    expect(getLastTabbable(parent, buttonC, true, false)).toEqual(buttonB);
+  });
+
+  it('does not focus on an item with tabIndex of -1', () => {
+    const component = renderIntoDocument(
+      <div>
+        <div className="parent">
+          <button className="a" data-is-visible={true} tabIndex={-1}>
+            a
+          </button>
+          <button className="b" data-is-visible={true} tabIndex={-1}>
+            b
+          </button>
+          <button className="c" data-is-visible={true} tabIndex={-1}>
+            c
+          </button>
+        </div>
+      </div>
+    );
+
+    const container = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLElement;
+    const parent = container.querySelector('.parent') as HTMLElement;
+    const buttonC = container.querySelector('.c') as HTMLElement;
+
+    expect(getLastTabbable(parent, buttonC, true, false)).toEqual(null);
   });
 });

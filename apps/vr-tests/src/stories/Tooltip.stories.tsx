@@ -45,7 +45,9 @@ storiesOf('Tooltip - Multiple', module)
       <TooltipHost content="I am the outer tooltip">
         <div id="outerTooltip">I am the outer tooltip text</div>
         <div id="innerTooltip" style={{ padding: '20px' }}>
-          <TooltipHost content="I am the inner tooltip">and I am the inner tooltip text</TooltipHost>
+          <TooltipHost content="I am the inner tooltip">
+            and I am the inner tooltip text
+          </TooltipHost>
         </div>
       </TooltipHost>
     </div>

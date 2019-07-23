@@ -5,8 +5,6 @@ import { DirectionalHint, ContextualMenuItemType } from 'office-ui-fabric-react/
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import './ContextualMenuExample.scss';
-import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
-const exampleStyles: any = exampleStylesImport;
 
 export interface IContextualMenuDirectionalExampleState {
   directionalHint?: DirectionalHint;
@@ -56,7 +54,7 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
     return (
       <div className="ms-ContextualMenuDirectionalExample">
         <div className="ms-ContextualMenuDirectionalExample-configArea">
-          <Checkbox className={exampleStyles.exampleCheckbox} label="Show beak" checked={isBeakVisible} onChange={this._onShowBeakChange} />
+          <Checkbox styles={{ root: { margin: '10px 0' } }} label="Show beak" checked={isBeakVisible} onChange={this._onShowBeakChange} />
           <Dropdown
             label="Directional hint"
             selectedKey={directionalHint!}

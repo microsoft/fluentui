@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
@@ -24,8 +23,23 @@ export class ContextualMenuPersistedExample extends React.Component {
             items: [
               {
                 key: 'newItem',
+                subMenuProps: {
+                  items: [
+                    {
+                      key: 'emailMessage',
+                      text: 'Email message',
+                      title: 'Create an email'
+                    },
+                    {
+                      key: 'calendarEvent',
+                      text: 'Calendar event',
+                      title: 'Create a calendar event'
+                    }
+                  ]
+                },
+                href: 'https://bing.com',
                 text: 'New',
-                onClick: () => console.log('New clicked')
+                target: '_blank'
               },
               {
                 key: 'divider_1',

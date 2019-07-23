@@ -108,7 +108,7 @@ storiesOf('Dropdown', module)
         label="Custom example:"
         id="Customdrop1"
         ariaLabel="Custom dropdown example"
-        onRenderPlaceHolder={(props: IDropdownProps): JSX.Element => {
+        onRenderPlaceholder={(props: IDropdownProps): JSX.Element => {
           return (
             <div className="dropdownExample-placeholder">
               <Icon style={{ marginRight: '8px' }} iconName={'MessageFill'} aria-hidden="true" />
@@ -120,7 +120,7 @@ storiesOf('Dropdown', module)
           const option = options[0];
 
           return (
-            <div className="dropdownExample-option">
+            <div>
               {option.data && option.data.icon && (
                 <Icon
                   style={{ marginRight: '8px' }}
@@ -135,7 +135,7 @@ storiesOf('Dropdown', module)
         }}
         onRenderOption={(option: IDropdownOption): JSX.Element => {
           return (
-            <div className="dropdownExample-option">
+            <div>
               {option.data && option.data.icon && (
                 <Icon
                   style={{ marginRight: '8px' }}

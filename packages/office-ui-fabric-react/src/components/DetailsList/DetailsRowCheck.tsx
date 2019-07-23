@@ -1,21 +1,15 @@
 import * as React from 'react';
-import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
-import { css, styled } from '../../Utilities';
+import { IDetailsRowCheckProps, IDetailsCheckboxProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
+import { css, styled, classNamesFunction } from '../../Utilities';
 import { Check } from '../../Check';
-import { ICheckStyleProps, ICheckStyles } from '../Check/Check.types';
-import { getStyles as getCheckStyles } from '../Check/Check.styles';
 import { getStyles } from './DetailsRowCheck.styles';
-import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
-import { classNamesFunction } from '../../Utilities';
 
-const getCheckClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
 const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
 
-const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
+const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = props => {
   const {
     isVisible = false,
     canSelect = false,
-    isSelected = false,
     anySelected = false,
     selected = false,
     isHeader = false,
@@ -24,21 +18,14 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     styles,
     theme,
     compact,
+    onRenderDetailsCheckbox = _defaultCheckboxRender,
     ...buttonProps
   } = props;
-
-  const isPressed = props.isSelected || props.selected;
-
-  const checkStyles = getCheckStyles({ theme: theme! });
-
-  const checkClassNames = getCheckClassNames(checkStyles, {
-    theme: theme!
-  });
 
   const classNames = getClassNames(styles, {
     theme: theme!,
     canSelect,
-    selected: isPressed,
+    selected,
     anySelected,
     className,
     isHeader,
@@ -46,25 +33,34 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     compact
   });
 
+  const detailsCheckboxProps: IDetailsCheckboxProps = {
+    checked: selected
+  };
+
   return canSelect ? (
     <div
       {...buttonProps}
       role="checkbox"
-      className={css(classNames.root, classNames.check, checkClassNames.checkHost)}
-      aria-checked={isPressed}
+      className={css(classNames.root, classNames.check)}
+      aria-checked={selected}
       data-selection-toggle={true}
       data-automationid="DetailsRowCheck"
     >
-      <Check checked={isPressed} />
+      {onRenderDetailsCheckbox(detailsCheckboxProps, _defaultCheckboxRender)}
     </div>
   ) : (
     <div {...buttonProps} className={css(classNames.root, classNames.check)} />
   );
 };
 
+function _defaultCheckboxRender(checkboxProps: IDetailsCheckboxProps) {
+  return <Check checked={checkboxProps.checked} />;
+}
+
 export const DetailsRowCheck = styled<IDetailsRowCheckProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>(
   DetailsRowCheckBase,
   getStyles,
   undefined,
-  { scope: 'DetailsRowCheck' }
+  { scope: 'DetailsRowCheck' },
+  true
 );

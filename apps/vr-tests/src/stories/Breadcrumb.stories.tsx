@@ -5,6 +5,8 @@ import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTall } from '../utilities';
 import { Breadcrumb } from 'office-ui-fabric-react';
 
+const noOp = () => undefined;
+
 storiesOf('Breadcrumb', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
@@ -58,12 +60,12 @@ storiesOf('Breadcrumb', module)
     () => (
       <Breadcrumb
         items={[
-          { text: 'Files', key: 'Files', onClick: () => {} },
-          { text: 'This is folder 1', key: 'l1', onClick: () => {} },
-          { text: 'This is folder 2', key: 'l2', onClick: () => {} },
-          { text: 'This is folder 3', key: 'l3', onClick: () => {} },
-          { text: 'This is folder 4', key: 'l4', onClick: () => {} },
-          { text: 'This is folder 5', key: 'l5', onClick: () => {}, isCurrentItem: true }
+          { text: 'Files', key: 'Files', onClick: noOp },
+          { text: 'This is folder 1', key: 'l1', onClick: noOp },
+          { text: 'This is folder 2', key: 'l2', onClick: noOp },
+          { text: 'This is folder 3', key: 'l3', onClick: noOp },
+          { text: 'This is folder 4', key: 'l4', onClick: noOp },
+          { text: 'This is folder 5', key: 'l5', onClick: noOp, isCurrentItem: true }
         ]}
         maxDisplayedItems={3}
       />

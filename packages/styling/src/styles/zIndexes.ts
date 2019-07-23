@@ -1,5 +1,8 @@
 export namespace ZIndexes {
   export const Nav: number = 1;
+  /**
+   * @deprecated ScrollablePane
+   */
   export const ScrollablePane: number = 1;
   export const FocusStyle: number = 1;
   export const Coachmark: number = 1000;

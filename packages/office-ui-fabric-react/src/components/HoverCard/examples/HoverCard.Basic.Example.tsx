@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { HoverCard, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';

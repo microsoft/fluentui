@@ -1,9 +1,12 @@
 /** @jsx withSlots */
+import { Text } from 'office-ui-fabric-react/lib/Text';
 import { withSlots, getSlots } from '../../Foundation';
-import { Text } from '../../Text';
 
 import { I{{componentName}}Component, I{{componentName}}Props, I{{componentName}}Slots } from './{{componentName}}.types';
 
+/**
+* {@docCategory {{componentName}}}
+*/
 export const {{componentName}}View: I{{componentName}}Component['view'] = props => {
 
   const Slots = getSlots<I{{componentName}}Props, I{{componentName}}Slots>(props, {
@@ -13,8 +16,8 @@ export const {{componentName}}View: I{{componentName}}Component['view'] = props 
 
   return (
     <Slots.root>
-      <Slots.text />
-      <span>Status: {props.status}</span>
+      <Slots.text onClick={props.onClick} />
+      <br /><span>Status: {props.clicks} clicks</span>
     </Slots.root>
   );
 };

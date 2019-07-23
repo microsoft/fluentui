@@ -5,21 +5,77 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { List } from 'office-ui-fabric-react/lib/List';
-import './List.Basic.Example.scss';
+import { ITheme, mergeStyleSets, getTheme, getFocusStyle, DefaultFontStyles, FontSizes } from '@uifabric/styling';
+
+export type IExampleItem = { name: string; thumbnail: string; description: string };
 
 export interface IListBasicExampleProps {
-  items: any[];
+  items: IExampleItem[];
 }
 
 export interface IListBasicExampleState {
   filterText?: string;
-  items?: any[];
+  items?: IExampleItem[];
 }
 
-export class ListBasicExample extends React.Component<IListBasicExampleProps, any> {
+interface IListBasicExampleClassObject {
+  itemCell: string;
+  itemImage: string;
+  itemContent: string;
+  itemName: string;
+  itemIndex: string;
+  chevron: string;
+}
+
+const theme: ITheme = getTheme();
+
+const classNames: IListBasicExampleClassObject = mergeStyleSets({
+  itemCell: [
+    getFocusStyle(theme, { inset: -1 }),
+    {
+      minHeight: 54,
+      padding: 10,
+      boxSizing: 'border-box',
+      borderBottom: `1px solid ${theme.semanticColors.bodyDivider}`,
+      display: 'flex',
+      selectors: {
+        '&:hover': { background: theme.palette.neutralLight }
+      }
+    }
+  ],
+  itemImage: {
+    flexShrink: 0
+  },
+  itemContent: {
+    marginLeft: 10,
+    overflow: 'hidden',
+    flexGrow: 1
+  },
+  itemName: [
+    DefaultFontStyles.xLarge,
+    {
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
+    }
+  ],
+  itemIndex: {
+    fontSize: FontSizes.small,
+    color: theme.palette.neutralTertiary,
+    marginBottom: 10
+  },
+  chevron: {
+    alignSelf: 'center',
+    marginLeft: 10,
+    color: theme.palette.neutralTertiary,
+    fontSize: FontSizes.large,
+    flexShrink: 0
+  }
+});
+
+export class ListBasicExample extends React.Component<IListBasicExampleProps, IListBasicExampleState> {
   constructor(props: IListBasicExampleProps) {
     super(props);
-
     this._onFilterChanged = this._onFilterChanged.bind(this);
 
     this.state = {
@@ -30,18 +86,18 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
 
   public render(): JSX.Element {
     const { items: originalItems } = this.props;
-    const { items } = this.state;
+    const { items = [] } = this.state;
     const resultCountText = items.length === originalItems.length ? '' : ` (${items.length} of ${originalItems.length} shown)`;
 
     return (
       <FocusZone direction={FocusZoneDirection.vertical}>
-        <TextField label={'Filter by name' + resultCountText} onBeforeChange={this._onFilterChanged} />
+        <TextField label={'Filter by name' + resultCountText} onChange={this._onFilterChanged} />
         <List items={items} onRenderCell={this._onRenderCell} />
       </FocusZone>
     );
   }
 
-  private _onFilterChanged(text: string): void {
+  private _onFilterChanged(_: any, text: string): void {
     const { items } = this.props;
 
     this.setState({
@@ -50,16 +106,16 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, an
     });
   }
 
-  private _onRenderCell(item: any, index: number | undefined): JSX.Element {
+  private _onRenderCell(item: IExampleItem, index: number | undefined): JSX.Element {
     return (
-      <div className="ms-ListBasicExample-itemCell" data-is-focusable={true}>
-        <Image className="ms-ListBasicExample-itemImage" src={item.thumbnail} width={50} height={50} imageFit={ImageFit.cover} />
-        <div className="ms-ListBasicExample-itemContent">
-          <div className="ms-ListBasicExample-itemName">{item.name}</div>
-          <div className="ms-ListBasicExample-itemIndex">{`Item ${index}`}</div>
-          <div className="ms-ListBasicExample-itemDesc">{item.description}</div>
+      <div className={classNames.itemCell} data-is-focusable={true}>
+        <Image className={classNames.itemImage} src={item.thumbnail} width={50} height={50} imageFit={ImageFit.cover} />
+        <div className={classNames.itemContent}>
+          <div className={classNames.itemName}>{item.name}</div>
+          <div className={classNames.itemIndex}>{`Item ${index}`}</div>
+          <div>{item.description}</div>
         </div>
-        <Icon className="ms-ListBasicExample-chevron" iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} />
+        <Icon className={classNames.chevron} iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} />
       </div>
     );
   }

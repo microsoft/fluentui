@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, IBaseProps, createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 import * as stylesImport from './Todo.scss';
@@ -42,13 +42,10 @@ export interface ITodoFormState {
  * Button: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/button
  */
 export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormState> {
-  private _textField = createRef<ITextField>();
+  private _textField = React.createRef<ITextField>();
 
   constructor(props: ITodoFormProps) {
     super(props);
-
-    this._onSubmit = this._onSubmit.bind(this);
-    this._onBeforeTextFieldChange = this._onBeforeTextFieldChange.bind(this);
 
     this.state = {
       inputValue: '',
@@ -64,7 +61,7 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
           value={this.state.inputValue}
           componentRef={this._textField}
           placeholder={strings.inputBoxPlaceholder}
-          onBeforeChange={this._onBeforeTextFieldChange}
+          onChange={this._onTextFieldChange}
           autoComplete="off"
           errorMessage={this.state.errorMessage}
         />
@@ -98,12 +95,12 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
     }
   };
 
-  private _onBeforeTextFieldChange(newValue: string): void {
+  private _onTextFieldChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string | undefined): void => {
     this.setState({
-      inputValue: newValue,
+      inputValue: newValue || '',
       errorMessage: ''
     });
-  }
+  };
 
   private _getTitleErrorMessage(title: string): string {
     if (title.trim() === '') {

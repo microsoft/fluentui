@@ -1,24 +1,12 @@
-import './Header.scss';
-
 import * as React from 'react';
 
 import { ContextualMenu, DirectionalHint, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
-import { getRTL, setRTL } from 'office-ui-fabric-react/lib/Utilities';
-
-import { FontClassNames } from 'office-ui-fabric-react/lib/Styling';
+import { getRTL, setRTL, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
-export interface IHeaderProps {
-  title: string;
-  sideLinks: { name: string; url: string }[];
-
-  isMenuVisible: boolean;
-  onIsMenuVisibleChanged?: (isMenuVisible: boolean) => void;
-
-  responsiveMode?: ResponsiveMode;
-}
+import { IHeaderProps, IHeaderStyleProps, IHeaderStyles } from './Header.types';
+import { getStyles } from './Header.styles';
 
 export interface IHeaderState {
   contextMenu?: {
@@ -27,17 +15,13 @@ export interface IHeaderState {
   };
 }
 
-@withResponsiveMode
-export class Header extends React.Component<IHeaderProps, IHeaderState> {
+const getClassNames = classNamesFunction<IHeaderStyleProps, IHeaderStyles>();
+
+export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
   private _isRTLEnabled: boolean;
 
   constructor(props: IHeaderProps) {
     super(props);
-
-    this._onGearClick = this._onGearClick.bind(this);
-    this._onDismiss = this._onDismiss.bind(this);
-    this._onRTLToggled = this._onRTLToggled.bind(this);
-    this._onMenuClick = this._onMenuClick.bind(this);
 
     this._isRTLEnabled = getRTL();
     this.state = {
@@ -46,44 +30,41 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
   }
 
   public render(): JSX.Element {
-    let { title, sideLinks, responsiveMode } = this.props;
-    let { contextMenu } = this.state;
+    const { title, styles, isLargeDown = false, theme } = this.props;
+    const { contextMenu } = this.state;
 
-    if (responsiveMode === undefined) {
-      responsiveMode = ResponsiveMode.large;
-    }
+    // For screen sizes large down, hide the side links.
+    const sideLinks = isLargeDown ? [] : this.props.sideLinks;
 
-    // In medium and below scenarios, hide the side links.
-    if (responsiveMode <= ResponsiveMode.large) {
-      sideLinks = [];
-    }
+    const classNames = getClassNames(styles, { theme });
+    const { subComponentStyles } = classNames;
 
     return (
       <div>
-        <div className="Header">
-          {responsiveMode <= ResponsiveMode.large && (
-            <button className="Header-button" onClick={this._onMenuClick}>
-              <Icon iconName="GlobalNavButton" />
+        <div className={classNames.root}>
+          {isLargeDown && (
+            <button className={classNames.button} onClick={this._onMenuClick}>
+              <Icon iconName="GlobalNavButton" styles={subComponentStyles.icons} />
             </button>
           )}
-          <div className={'Header-title ' + FontClassNames.large}>{title}</div>
-          <div className="Header-buttons">
+          <div className={classNames.title}>{title}</div>
+          <div className={classNames.buttons}>
             <FocusZone direction={FocusZoneDirection.horizontal}>
               {sideLinks
-                .map((link: { name: string; url: string }, linkIndex: number) => (
-                  <a key={linkIndex} className="Header-button" href={link.url}>
+                .map(link => (
+                  <a key={link.url} className={classNames.button} href={link.url}>
                     {link.name}
                   </a>
                 ))
                 .concat([
-                  <button key="headerButton" className="Header-button" onClick={this._onGearClick}>
-                    <Icon iconName="Settings" />
+                  <button key="headerButton" className={classNames.button} onClick={this._onGearClick}>
+                    <Icon iconName="Settings" styles={subComponentStyles.icons} />
                   </button>
                 ])}
             </FocusZone>
           </div>
         </div>
-        {contextMenu ? (
+        {contextMenu && (
           <ContextualMenu
             items={contextMenu.items}
             isBeakVisible={true}
@@ -92,21 +73,21 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
             gapSpace={5}
             onDismiss={this._onDismiss}
           />
-        ) : null}
+        )}
       </div>
     );
   }
 
-  private _onMenuClick(ev: React.MouseEvent<HTMLElement>): void {
-    let { onIsMenuVisibleChanged, isMenuVisible } = this.props;
+  private _onMenuClick = () => {
+    const { onIsMenuVisibleChanged, isMenuVisible } = this.props;
 
     if (onIsMenuVisibleChanged) {
       onIsMenuVisibleChanged(!isMenuVisible);
     }
-  }
+  };
 
-  private _onGearClick(ev: React.MouseEvent<HTMLElement>): void {
-    let { contextMenu } = this.state;
+  private _onGearClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { contextMenu } = this.state;
 
     this.setState({
       contextMenu: contextMenu
@@ -116,7 +97,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
             items: this._getOptionMenuItems()
           }
     });
-  }
+  };
 
   private _getOptionMenuItems(): IContextualMenuItem[] {
     return [
@@ -129,14 +110,23 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     ];
   }
 
-  private _onRTLToggled(ev: React.MouseEvent<HTMLElement>): void {
+  private _onRTLToggled = () => {
     setRTL(!this._isRTLEnabled, true);
     location.reload();
-  }
+  };
 
-  private _onDismiss(): void {
+  private _onDismiss = () => {
     this.setState({
       contextMenu: undefined
     });
-  }
+  };
 }
+
+export const Header: React.StatelessComponent<IHeaderProps> = styled<IHeaderProps, IHeaderStyleProps, IHeaderStyles>(
+  HeaderBase,
+  getStyles,
+  undefined,
+  {
+    scope: 'Header'
+  }
+);

@@ -1,10 +1,14 @@
 import * as React from 'react';
 import { IFocusTrapZoneProps } from '../../FocusTrapZone';
 import { ILayerProps } from '../../Layer';
+import { IOverlayProps } from '../../Overlay';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { PanelBase } from './Panel.base';
 
+/**
+ * {@docCategory Panel}
+ */
 export interface IPanel {
   /**
    * Forces the panel to open.
@@ -16,6 +20,10 @@ export interface IPanel {
    */
   dismiss: (ev?: React.KeyboardEvent<HTMLElement>) => void;
 }
+
+/**
+ * {@docCategory Panel}
+ */
 export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   /**
    * Optional callback to access the IPanel interface. Use this instead of ref for accessing
@@ -25,7 +33,10 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
 
   /**
    * Whether the panel is displayed.
-   * @defaultvalue false
+   * If true, will cause panel to stay open even if dismissed.
+   * If false, will cause panel to stay hidden.
+   * If undefined, will allow the panel to control its own visility through open/dismiss methods.
+   * @defaultvalue undefined
    */
   isOpen?: boolean;
 
@@ -65,6 +76,16 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
    * @defaultvalue ""
    */
   headerText?: string;
+
+  /**
+   * A callback function for when the Panel is opened, before the animation completes.
+   */
+  onOpen?: () => void;
+
+  /**
+   * A callback function for when the Panel is opened, after the animation completes.
+   */
+  onOpened?: () => void;
 
   /**
    * A callback function for when the panel is closed, before the animation completes.
@@ -154,6 +175,11 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   layerProps?: ILayerProps;
 
   /**
+   * Optional props to pass to the Overlay component that the panel uses.
+   */
+  overlayProps?: IOverlayProps;
+
+  /**
    * Optional custom function to handle clicks outside the panel in lightdismiss mode
    */
   onLightDismissClick?: () => void;
@@ -205,6 +231,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
  * the panel's title. This allows the `aria-labelledby` for the panel popup to work correctly.
  * Note that if `headerTextId` is provided, it **must** be used on an element, or screen readers
  * will be confused by the reference to a nonexistent ID.
+ * {@docCategory Panel}
  */
 export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
   /**
@@ -217,6 +244,9 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
   (props?: IPanelProps, defaultRender?: IPanelHeaderRenderer, headerTextId?: string | undefined): JSX.Element | null;
 }
 
+/**
+ * {@docCategory Panel}
+ */
 export enum PanelType {
   /**
    * Renders the Panel with a `fluid` (full screen) width.
@@ -307,6 +337,9 @@ export enum PanelType {
   customNear = 8
 }
 
+/**
+ * {@docCategory Panel}
+ */
 export interface IPanelStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -379,6 +412,9 @@ export interface IPanelStyleProps {
 //   button: IStyleFunctionOrObject<any, any>;
 // }
 
+/**
+ * {@docCategory Panel}
+ */
 export interface IPanelStyles {
   /**
    * Style for the root element.

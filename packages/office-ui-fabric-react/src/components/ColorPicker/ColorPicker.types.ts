@@ -1,13 +1,20 @@
+import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IColor } from '../../utilities/color/colors';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IColor } from '../../utilities/color/interfaces';
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export interface IColorPicker {
   /** The currently selected color. */
   color: IColor;
 }
 
-export interface IColorPickerProps extends IBaseProps<IColorPicker> {
+/**
+ * {@docCategory ColorPicker}
+ */
+export interface IColorPickerProps {
   /**
    * Gets the component ref.
    */
@@ -17,14 +24,6 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
    * Object or CSS-compatible string to describe the color.
    */
   color: IColor | string;
-
-  /**
-   * Callback for when the user changes the color.
-   * (To preserve existing behavior, this is also called when the color changes via props.)
-   *
-   * @deprecated Use `onChange` instead.
-   */
-  onColorChanged?: (color: string, colorObject: IColor) => void;
 
   /**
    * Callback for when the user changes the color.
@@ -83,6 +82,9 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
   styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
 }
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export interface IColorPickerStyleProps {
   /**
    * Theme (provided through customization).
@@ -95,6 +97,9 @@ export interface IColorPickerStyleProps {
   className?: string;
 }
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export interface IColorPickerStyles {
   /**
    * Style set for the root element.

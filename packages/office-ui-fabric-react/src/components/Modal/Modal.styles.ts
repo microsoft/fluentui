@@ -22,9 +22,11 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     modalRectangleTop,
     theme,
     topOffsetFixed,
-    isModeless
+    isModeless,
+    layerClassName,
+    isDefaultDragHandle
   } = props;
-  const { palette } = theme;
+  const { palette, effects } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
@@ -58,7 +60,8 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     main: [
       classNames.main,
       {
-        boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.4)',
+        boxShadow: effects.elevation64,
+        borderRadius: effects.roundedCorner2,
         backgroundColor: palette.white,
         boxSizing: 'border-box',
         position: 'relative',
@@ -72,23 +75,44 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         hasBeenOpened && {
           top: modalRectangleTop
         },
+      isDefaultDragHandle && {
+        cursor: 'move'
+      },
       containerClassName
     ],
     scrollableContent: [
       classNames.scrollableContent,
       {
         overflowY: 'auto',
-        flexGrow: 1
+        flexGrow: 1,
+        maxHeight: '100vh',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            maxHeight: window.innerHeight
+          }
+        }
       },
       scrollableContentClassName
     ],
     layer: isModeless && [
+      layerClassName,
       classNames.layer,
       {
         position: 'static',
         width: 'unset',
         height: 'unset'
       }
-    ]
+    ],
+    keyboardMoveIconContainer: {
+      position: 'absolute',
+      display: 'flex',
+      justifyContent: 'center',
+      width: '100%',
+      padding: '3px 0px'
+    },
+    keyboardMoveIcon: {
+      fontSize: '24px',
+      width: '24px'
+    }
   };
 };

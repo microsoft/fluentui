@@ -1,4 +1,12 @@
-import { AnimationClassNames, FontSizes, getGlobalClassNames, HighContrastSelector, IStyle, normalize } from '../../Styling';
+import {
+  AnimationClassNames,
+  FontSizes,
+  getGlobalClassNames,
+  HighContrastSelector,
+  IStyle,
+  normalize,
+  getPlaceholderStyles
+} from '../../Styling';
 import { ILabelStyles, ILabelStyleProps } from '../../Label';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
@@ -65,12 +73,11 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     hasIcon,
     resizable,
     hasErrorMessage,
-    iconClass,
     inputClassName,
     autoAdjustHeight
   } = props;
 
-  const { semanticColors } = theme;
+  const { semanticColors, effects } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
@@ -81,7 +88,21 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     alignItems: 'center',
     padding: '0 10px',
     lineHeight: 1,
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
+    flexShrink: 0
+  };
+
+  // placeholder style constants
+  const placeholderStyles: IStyle = [
+    theme.fonts.medium,
+    {
+      color: semanticColors.inputPlaceholderText,
+      opacity: 1
+    }
+  ];
+
+  const disabledPlaceholderStyles: IStyle = {
+    color: semanticColors.disabledText
   };
 
   return {
@@ -159,6 +180,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       normalize,
       {
         border: `1px solid ${semanticColors.inputBorder}`,
+        borderRadius: effects.roundedCorner2,
         background: semanticColors.inputBackground,
         cursor: 'text',
         height: 32,
@@ -266,7 +288,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         background: 'none',
         backgroundColor: 'transparent',
         color: semanticColors.inputText,
-        padding: '0 12px',
+        padding: '0 8px',
         width: '100%',
         minWidth: 0,
         textOverflow: 'ellipsis',
@@ -275,23 +297,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           '&:active, &:focus, &:hover': { outline: 0 },
           '::-ms-clear': {
             display: 'none'
-          },
-          '::placeholder': [
-            theme.fonts.medium,
-            {
-              color: semanticColors.inputPlaceholderText,
-              opacity: 1
-            }
-          ],
-          ':-ms-input-placeholder': [
-            theme.fonts.medium,
-            {
-              color: semanticColors.inputPlaceholderText,
-              opacity: 1
-            }
-          ]
+          }
         }
       },
+      getPlaceholderStyles(placeholderStyles),
       multiline &&
         !resizable && [
           classNames.unresizable,
@@ -304,6 +313,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         lineHeight: 17,
         flexGrow: 1,
         paddingTop: 6,
+        paddingBottom: 6,
         overflow: 'auto',
         width: '100%'
       },
@@ -318,19 +328,14 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         hasIcon && {
           paddingRight: 40
         },
-      disabled && {
-        backgroundColor: 'transparent',
-        borderColor: 'transparent',
-        color: semanticColors.disabledText,
-        selectors: {
-          '::placeholder': {
-            color: semanticColors.disabledText
-          },
-          ':-ms-input-placeholder': {
-            color: semanticColors.disabledText
-          }
-        }
-      },
+      disabled && [
+        {
+          backgroundColor: 'transparent',
+          borderColor: 'transparent',
+          color: semanticColors.disabledText
+        },
+        getPlaceholderStyles(disabledPlaceholderStyles)
+      ],
       underlined && {
         textAlign: 'left'
       },
@@ -371,8 +376,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       },
       disabled && {
         color: semanticColors.disabledText
-      },
-      iconClass
+      }
     ],
     description: [
       classNames.description,

@@ -45,8 +45,18 @@ storiesOf('SwatchColorPicker', module)
     </Screener>
   ))
   .addStory('Circle', () => <SwatchColorPicker {...props} />, { rtl: true })
-  .addStory('Circle over 24px size', () => <SwatchColorPicker {...props} cellHeight={35} cellWidth={35} />)
+  .addStory('Circle over 24px size', () => (
+    <SwatchColorPicker {...props} cellHeight={35} cellWidth={35} />
+  ))
   .addStory('Square', () => <SwatchColorPicker {...props} cellShape="square" />)
-  .addStory('Square over 24px size', () => <SwatchColorPicker {...props} cellShape="square" cellHeight={35} cellWidth={35} />)
+  .addStory('Square over 24px size', () => (
+    <SwatchColorPicker {...props} cellShape="square" cellHeight={35} cellWidth={35} />
+  ))
   .addStory('Disabled', () => <SwatchColorPicker {...props} disabled />)
-  .addStory('Multiple rows', () => <SwatchColorPicker {...props} columnCount={4} colorCells={props.colorCells.concat(props.colorCells)} />);
+  .addStory('Multiple rows', () => (
+    <SwatchColorPicker
+      {...props}
+      columnCount={4}
+      colorCells={props.colorCells.concat(props.colorCells)}
+    />
+  ));

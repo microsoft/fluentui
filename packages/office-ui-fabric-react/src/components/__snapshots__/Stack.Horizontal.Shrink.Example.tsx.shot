@@ -44,11 +44,11 @@ exports[`Component Examples renders Stack.Horizontal.Shrink.Example.tsx correctl
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -107,7 +107,7 @@ exports[`Component Examples renders Stack.Horizontal.Shrink.Example.tsx correctl
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -149,9 +149,21 @@ exports[`Component Examples renders Stack.Horizontal.Shrink.Example.tsx correctl
             @media screen and (-ms-high-contrast: active){&:hover $thumb {
               border-color: Highlight;
             }
+            &:active $zeroTick {
+              background-color: #c7e0f4;
+            }
+            @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+              background-color: Highlight;
+            }
+            &:hover $zeroTick {
+              background-color: #c7e0f4;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
+              background-color: Highlight;
+            }
             & $thumb {
               background: #ffffff;
-              border-color: #666666;
+              border-color: #605e5c;
               border-radius: 10px;
               border-style: solid;
               border-width: 2px;
@@ -202,7 +214,7 @@ exports[`Component Examples renders Stack.Horizontal.Shrink.Example.tsx correctl
                 ms-Slider-active
 
                 {
-                  background: #666666;
+                  background: #605e5c;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -219,7 +231,7 @@ exports[`Component Examples renders Stack.Horizontal.Shrink.Example.tsx correctl
                 ms-Slider-inactive
 
                 {
-                  background: #c8c8c8;
+                  background: #c8c6c4;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -242,12 +254,12 @@ exports[`Component Examples renders Stack.Horizontal.Shrink.Example.tsx correctl
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               flex-shrink: 1;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               line-height: 1;
               margin-bottom: 0;
               margin-left: 8px;

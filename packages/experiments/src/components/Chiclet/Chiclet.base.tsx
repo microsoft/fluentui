@@ -1,38 +1,20 @@
 import * as React from 'react';
-import { BaseComponent } from '../../Utilities';
 import { ChicletCard } from './ChicletCard';
-import { getOpenGraphProperties } from './OpenGraph';
+import { ChicletXsmall } from './ChicletXsmall';
 import { IChicletProps, ChicletSize } from './Chiclet.types';
 import { IChicletCardProps } from './ChicletCard.types';
 
-export interface IChicletState {
-  chicletCardProps?: IChicletCardProps;
-}
-
-export class ChicletBase extends BaseComponent<IChicletProps, IChicletState> {
-  constructor(props: IChicletProps) {
-    super(props);
-
-    const chicletCardProps = getOpenGraphProperties(this.props.url);
-    this.state = { chicletCardProps: chicletCardProps };
-  }
-
+export class ChicletBase extends React.Component<IChicletProps, {}> {
   public render(): JSX.Element {
-    const { size, footer, description } = this.props;
-    const { chicletCardProps } = this.state;
-
-    switch (size) {
+    const props: IChicletCardProps = this.props;
+    switch (this.props.size) {
       case ChicletSize.medium:
-        return <ChicletCard {...chicletCardProps} onClick={this._onClick} footer={footer} description={description} />;
+        return <ChicletCard onClick={this._onClick} {...props} />;
       // @todo: handle other types of chiclets
+      case ChicletSize.xSmall:
+        return <ChicletXsmall onClick={this._onClick} {...props} />;
       default:
-        return <ChicletCard {...chicletCardProps} onClick={this._onClick} footer={footer} description={description} />;
-    }
-  }
-
-  public componentWillReceiveProps(nextProps: IChicletProps): void {
-    if (this.props.url !== nextProps.url) {
-      this.setState({ chicletCardProps: getOpenGraphProperties(this.props.url) });
+        return <ChicletCard onClick={this._onClick} {...props} />;
     }
   }
 

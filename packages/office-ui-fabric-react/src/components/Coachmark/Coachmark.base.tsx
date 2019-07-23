@@ -10,7 +10,6 @@ import {
   KeyCodes,
   shallowCompare
 } from '../../Utilities';
-import { DefaultPalette } from '../../Styling';
 import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../utilities/positioning';
 
 // Component Dependencies
@@ -116,7 +115,6 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
     mouseProximityOffset: 10,
     delayBeforeMouseOpen: 3600, // The approximate time the coachmark shows up
     delayBeforeCoachmarkAnimation: 0,
-    color: DefaultPalette.themePrimary,
     isPositionForced: true,
     positioningContainerProps: {
       directionalHint: DirectionalHint.bottomAutoEdge
@@ -177,6 +175,8 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
 
   public render(): JSX.Element {
     const {
+      beaconColorOne,
+      beaconColorTwo,
       children,
       target,
       color,
@@ -206,13 +206,21 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       isMeasured
     } = this.state;
 
+    // Defaulting the main background before passing it to the styles because it is used for `Beak` too.
+    let defaultColor = color;
+    if (!defaultColor && theme) {
+      defaultColor = theme.semanticColors.primaryButtonBackground;
+    }
+
     const classNames = getClassNames(styles, {
       theme,
+      beaconColorOne,
+      beaconColorTwo,
       className,
       isCollapsed,
       isBeaconAnimating,
       isMeasuring,
-      color,
+      color: defaultColor,
       transformOrigin,
       isMeasured,
       entityHostHeight: `${entityInnerHostRect.height}px`,
@@ -245,7 +253,14 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
             <div className={classNames.scaleAnimationLayer}>
               <div className={classNames.rotateAnimationLayer}>
                 {this._positioningContainer.current && isCollapsed && (
-                  <Beak left={beakLeft} top={beakTop} right={beakRight} bottom={beakBottom} direction={this._beakDirection} color={color} />
+                  <Beak
+                    left={beakLeft}
+                    top={beakTop}
+                    right={beakRight}
+                    bottom={beakBottom}
+                    direction={this._beakDirection}
+                    color={defaultColor}
+                  />
                 )}
                 <div
                   className={classNames.entityHost}

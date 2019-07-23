@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Announced } from '../Announced';
+import { Announced } from 'office-ui-fabric-react/lib/Announced';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -9,52 +9,25 @@ import {
   IDetailsRowProps,
   DetailsRow
 } from 'office-ui-fabric-react/lib/DetailsList';
+import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
-import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 
 const _items: IAnnouncedQuickActionsExampleItem[] = [];
 
-const _columns: IColumn[] = [
-  {
-    key: 'column1',
-    name: 'Name',
-    fieldName: 'name',
+const _columns: IColumn[] = ['Name', 'Modified', 'Modified By', 'File Size'].map((name: string) => {
+  const fieldName = name.replace(' ', '').toLowerCase();
+  return {
+    fieldName,
+    name,
+    key: fieldName,
     minWidth: 100,
     maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for name'
-  },
-  {
-    key: 'column2',
-    name: 'Modified',
-    fieldName: 'modified',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for modified'
-  },
-  {
-    key: 'column3',
-    name: 'Modified By',
-    fieldName: 'modifiedby',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for modifiedby'
-  },
-  {
-    key: 'column4',
-    name: 'File Size',
-    fieldName: 'filesize',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for filesize'
-  }
-];
+    isResizable: true
+  };
+});
 
 const _names: string[] = [
   'Annie Lindqvist',
@@ -66,10 +39,8 @@ const _names: string[] = [
   'Makenzie Sharett'
 ];
 
-const nullFunction = (): null => null;
-
-function generateRandomDate(): string {
-  return new Date(new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())).toDateString();
+function getMockDateString(): string {
+  return 'Thu Jan 05 2017‌';
 }
 
 export interface IAnnouncedQuickActionsExampleItem {
@@ -90,11 +61,14 @@ export interface IAnnouncedQuickActionsExampleState {
 
 export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnouncedQuickActionsExampleState> {
   private _selection: Selection;
-  private _detailsList = createRef<IDetailsList>();
-  private _textField = createRef<ITextField>();
+  private _detailsList = React.createRef<IDetailsList>();
+  private _textField = React.createRef<ITextField>();
+  private _async: Async;
 
   constructor(props: {}) {
     super(props);
+
+    this._async = new Async(this);
 
     // Populate with items for demos.
     if (_items.length === 0) {
@@ -102,7 +76,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
         _items.push({
           key: i,
           name: 'Item ' + i,
-          modified: generateRandomDate(),
+          modified: getMockDateString(),
           modifiedby: _names[Math.floor(Math.random() * _names.length)],
           filesize: Math.floor(Math.random() * 30).toString() + ' MB'
         });
@@ -113,12 +87,6 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
       onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
     });
 
-    this._onRenderRow = this._onRenderRow.bind(this);
-    this._deleteItem = this._deleteItem.bind(this);
-    this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
-    this._closeRenameDialog = this._closeRenameDialog.bind(this);
-    this._renderAnnounced = this._renderAnnounced.bind(this);
-
     this.state = {
       items: _items,
       selectionDetails: this._getSelectionDetails(),
@@ -126,6 +94,20 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
       dialogContent: undefined,
       announced: undefined
     };
+  }
+
+  public componentDidUpdate(prevState: IAnnouncedQuickActionsExampleState) {
+    if (prevState.announced !== this.state.announced && this.state.announced !== undefined) {
+      this._async.setTimeout(() => {
+        this.setState({
+          announced: undefined
+        });
+      }, 2000);
+    }
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   public render(): JSX.Element {
@@ -156,72 +138,69 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
     );
   }
 
-  private _onRenderRow(props: IDetailsRowProps): JSX.Element {
+  private _onRenderRow = (props: IDetailsRowProps): JSX.Element => {
     return <DetailsRow {...props} />;
-  }
+  };
 
-  private _onRenderItemColumn(item: any, index: number, column: IColumn) {
-    const fieldContent = item[column.fieldName || ''];
+  private _onRenderItemColumn = (item: IAnnouncedQuickActionsExampleItem, index: number, column: IColumn) => {
+    const fieldContent = item[column.fieldName as keyof IAnnouncedQuickActionsExampleItem];
 
-    switch (column.key) {
-      case 'column1':
-        return (
-          <div>
-            {fieldContent}
-            <IconButton
-              iconProps={{ iconName: 'MoreVertical' }}
-              role="button"
-              aria-haspopup={true}
-              aria-label="Show actions"
-              onRenderMenuIcon={nullFunction}
-              styles={{ root: { float: 'right', height: 'inherit' } }}
-              menuProps={{
-                items: [
-                  {
-                    key: 'delete',
-                    text: 'Delete',
-                    onClick: () => this._deleteItem(index)
-                  },
-                  {
-                    key: 'rename',
-                    text: 'Rename',
-                    onClick: () => this._renameItem(item, index)
-                  }
-                ]
-              }}
-            />
-          </div>
-        );
-
-      default:
-        return <span>{fieldContent}</span>;
+    if (column.key === 'name') {
+      return (
+        <div>
+          {fieldContent}
+          <IconButton
+            menuIconProps={{ iconName: 'MoreVertical' }}
+            role="button"
+            aria-haspopup={true}
+            aria-label="Show actions"
+            styles={{ root: { float: 'right', height: 'inherit' } }}
+            menuProps={{
+              items: [
+                {
+                  key: 'delete',
+                  text: 'Delete',
+                  onClick: () => this._deleteItem(index)
+                },
+                {
+                  key: 'rename',
+                  text: 'Rename',
+                  onClick: () => this._renameItem(item, index)
+                }
+              ]
+            }}
+          />
+        </div>
+      );
+    } else {
+      return <span>{fieldContent}</span>;
     }
-  }
+  };
 
-  private _renderAnnounced(): JSX.Element | undefined {
+  private _renderAnnounced = (): JSX.Element | undefined => {
     const { announced } = this.state;
     return announced;
-  }
+  };
 
-  private _deleteItem(index: number): void {
+  private _deleteItem = (index: number): void => {
     const items = this.state.items;
     items.splice(items.indexOf(items[index]), 1);
 
     this.setState({
       items: [...items],
-      announced: <Announced message={`Item deleted`} />
+      announced: <Announced message="Item deleted" aria-live="assertive" />
     });
     return;
-  }
+  };
 
-  private _renameItem(item: any, index: number): void {
+  private _renameItem(item: IAnnouncedQuickActionsExampleItem, index: number): void {
     this.setState({
       renameDialogOpen: true,
       dialogContent: (
         <>
-          <TextField componentRef={this._textField} label="Rename" value={item.name} />
+          <TextField componentRef={this._textField} label="Rename" defaultValue={item.name} />
           <DialogFooter>
-            <PrimaryButton onClick={this._updateItemName.bind(this, item, index)} text="Save" />
+            <PrimaryButton onClick={this._updateItemName.bind(this, index)} text="Save" />
           </DialogFooter>
         </>
       )
@@ -229,25 +208,25 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
     return;
   }
 
-  private _updateItemName(item: any, index: number): void {
+  private _updateItemName(index: number): void {
     if (this._textField && this._textField.current) {
       const items = this.state.items;
       items[index].name = this._textField.current.value || items[index].name;
       this.setState({
         renameDialogOpen: false,
         items: [...items],
-        announced: <Announced message={`Item renamed`} />
+        announced: <Announced message="Item renamed" aria-live="assertive" />
       });
     } else {
       return;
     }
   }
 
-  private _closeRenameDialog(): void {
+  private _closeRenameDialog = (): void => {
     this.setState({
       renameDialogOpen: false
     });
-  }
+  };
 
   private _getSelectionDetails(): string {
     const selectionCount = this._selection.getSelectedCount();

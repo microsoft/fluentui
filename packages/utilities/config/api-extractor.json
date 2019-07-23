@@ -1,15 +1,26 @@
 {
-  "compiler": {
-    "configType": "tsconfig",
-    "rootFolder": "./"
+  "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+  "mainEntryPointFilePath": "<projectFolder>/lib/index.d.ts",
+  "apiReport": {
+    "enabled": true
   },
-  "policies": {
-    "namespaceSupport": "conservative"
+  "docModel": {
+    "enabled": true,
+    "apiJsonFilePath": "<projectFolder>/dist/<unscopedPackageName>.api.json"
   },
-  "project": {
-    "entryPointSourceFile": "lib/index.d.ts"
+  "dtsRollup": {
+    "enabled": true
   },
-  "validationRules": {
-    "missingReleaseTags": "allow"
+  "messages": {
+    "extractorMessageReporting": {
+      "ae-missing-release-tag": {
+        "logLevel": "none"
+      }
+    },
+    "tsdocMessageReporting": {
+      "tsdoc-undefined-tag": {
+        "logLevel": "none"
+      }
+    }
   }
 }

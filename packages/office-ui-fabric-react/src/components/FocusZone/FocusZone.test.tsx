@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import * as renderer from 'react-test-renderer';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { setRTL, KeyCodes } from '../../Utilities';
 import { FocusZone } from './FocusZone';
-import { FocusZoneDirection, FocusZoneTabbableElements } from './FocusZone.types';
+import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone } from './FocusZone.types';
 
 // tslint:disable:typedef jsx-no-lambda
 
@@ -55,6 +56,18 @@ describe('FocusZone', () => {
     lastFocusedElement = undefined;
   });
 
+  it('renders FocusZone correctly with no props', () => {
+    const component = renderer.create(<FocusZone />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders FocusZone correctly with aria-describedby and aria-labelledby', () => {
+    const component = renderer.create(<FocusZone aria-describedby="customDescribedBy" aria-labelledby="customLabelledBy" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('can use arrows vertically', () => {
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus }}>
@@ -66,7 +79,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!!.firstChild as Element;
 
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
@@ -230,6 +243,28 @@ describe('FocusZone', () => {
     expect(document.activeElement).toBe(host.querySelector('#b'));
   });
 
+  it('only adds outerzones to be updated for tab changes', () => {
+    const activeZones = FocusZone.getOuterZones();
+
+    host = document.createElement('div');
+
+    // Render component without button A.
+    ReactDOM.render(
+      <FocusZone>
+        <FocusZone>
+          <button>ok</button>
+        </FocusZone>
+      </FocusZone>,
+      host
+    );
+
+    expect(FocusZone.getOuterZones()).toEqual(activeZones + 1);
+
+    ReactDOM.unmountComponentAtNode(host);
+
+    expect(FocusZone.getOuterZones()).toEqual(activeZones);
+  });
+
   it('can call onActiveItemChanged when the active item is changed', () => {
     let called = false;
     const component = ReactTestUtils.renderIntoDocument(
@@ -242,7 +277,7 @@ describe('FocusZone', () => {
         </button>
       </FocusZone>
     );
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!!.firstChild as Element;
     const buttonA = focusZone.querySelector('#a') as HTMLElement;
     const buttonB = focusZone.querySelector('#b') as HTMLElement;
 
@@ -344,7 +379,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!!.firstChild as Element;
 
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
@@ -388,7 +423,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
     const buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -487,7 +522,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
     const buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -602,7 +637,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
     const buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -704,6 +739,77 @@ describe('FocusZone', () => {
     setRTL(false);
   });
 
+  it('can focus correctly when receiving initial focus, bidirectionally', () => {
+    const component = ReactTestUtils.renderIntoDocument(
+      <div {...{ onFocusCapture: _onFocus }}>
+        <FocusZone>
+          <button className="a">a</button>
+          <button className="b">b</button>
+          <button className="c">c</button>
+          <button className="d">d</button>
+        </FocusZone>
+      </div>
+    );
+
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
+    const buttonA = focusZone.querySelector('.a') as HTMLElement;
+    const buttonB = focusZone.querySelector('.b') as HTMLElement;
+    const buttonC = focusZone.querySelector('.c') as HTMLElement;
+    const buttonD = focusZone.querySelector('.d') as HTMLElement;
+
+    // Set up a grid like so:
+    // A B
+    // C D
+    //
+    // We will focus B, and then down arrow, expecting D to be focused.
+
+    setupElement(buttonA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 0,
+        right: 30
+      }
+    });
+
+    setupElement(buttonB, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonC, {
+      clientRect: {
+        top: 20,
+        bottom: 40,
+        left: 0,
+        right: 20
+      }
+    });
+
+    setupElement(buttonD, {
+      clientRect: {
+        top: 20,
+        bottom: 40,
+        left: 20,
+        right: 40
+      }
+    });
+
+    // Focus the first button.
+    ReactTestUtils.Simulate.focus(buttonB);
+    expect(buttonA.getAttribute('tabindex')).toBe('-1');
+    expect(buttonB.getAttribute('tabindex')).toBe('0');
+    expect(lastFocusedElement).toBe(buttonB);
+
+    // Pressing down should go to d.
+    ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.down });
+    expect(lastFocusedElement).toBe(buttonD);
+  });
+
   it('can use arrows bidirectionally with data-no-vertical-wrap', () => {
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus }}>
@@ -716,7 +822,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
     const buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -822,7 +928,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
     const buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -940,7 +1046,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
     const buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -1025,7 +1131,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
     const buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -1136,7 +1242,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
     const buttonC = focusZone.querySelector('.c') as HTMLElement;
@@ -1203,7 +1309,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
 
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const divB = focusZone.querySelector('.b') as HTMLElement;
@@ -1285,7 +1391,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
 
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const divB = focusZone.querySelector('.b') as HTMLElement;
@@ -1384,7 +1490,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const rootNode = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
+    const rootNode = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance) as Element;
     const textArea = rootNode.children[0];
 
     setupElement(buttonA, {
@@ -1451,7 +1557,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZoneElement = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZoneElement = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
     const buttonAElement = focusZoneElement.querySelector('.a') as HTMLElement;
 
     // HACK declare that elements are not null at this point.
@@ -1513,7 +1619,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
 
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
@@ -1593,7 +1699,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
 
     const buttonA = focusZone.querySelector('.a') as HTMLElement;
 
@@ -1629,7 +1735,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
 
     const inputA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
@@ -1696,7 +1802,7 @@ describe('FocusZone', () => {
       </div>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance)!.firstChild as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
 
     const inputA = focusZone.querySelector('.a') as HTMLElement;
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
@@ -1740,10 +1846,52 @@ describe('FocusZone', () => {
       </FocusZone>
     );
 
-    const focusZone = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
+    const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance) as Element;
     const innerFocusZone = focusZone.querySelector('.innerFocusZone') as HTMLElement;
     ReactTestUtils.Simulate.keyDown(innerFocusZone, { which: KeyCodes.del });
 
     expect(keyDownHandler).toBeCalled();
+  });
+
+  it('should not set an element outside its DOM as its active element', () => {
+    const focusZoneRef = React.createRef<IFocusZone>();
+    const component = ReactTestUtils.renderIntoDocument(
+      <div>
+        <FocusZone componentRef={focusZoneRef}>
+          <button id="a">a</button>
+          <button id="b">b</button>
+          {ReactDOM.createPortal(<div id="externalElement" tabIndex={0} />, window.document.body)}
+        </FocusZone>
+      </div>
+    );
+
+    const parent = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)! as Element;
+    const externalElement = document.querySelector('#externalElement') as HTMLElement;
+    const buttonA = parent.querySelector('#a') as HTMLElement;
+
+    setupElement(externalElement, {
+      clientRect: {
+        top: 100,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    ReactTestUtils.Simulate.focus(buttonA);
+    // No public API to test active element. Therefore, we need to do an explicit cast.
+    expect((focusZoneRef.current! as any)._activeElement.id).toBe('a');
+    ReactTestUtils.Simulate.focus(externalElement);
+    expect((focusZoneRef.current! as any)._activeElement.id).not.toBe('externalElement');
+    expect((focusZoneRef.current! as any)._activeElement.id).toBe('a');
   });
 });

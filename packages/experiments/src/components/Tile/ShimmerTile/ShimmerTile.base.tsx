@@ -3,9 +3,7 @@ import { BaseComponent, classNamesFunction } from '../../../Utilities';
 import { IShimmerTileProps, IShimmerTileStyleProps, IShimmerTileStyles } from './ShimmerTile.types';
 import { TileSize } from '../Tile.types';
 import { TileLayoutSizes } from '../Tile';
-import { ShimmerGap } from '../../Shimmer/ShimmerGap/ShimmerGap';
-import { ShimmerElementsGroup } from '../../Shimmer/ShimmerElementsGroup/ShimmerElementsGroup';
-import { ShimmerElementType as ElemType } from '../../Shimmer/Shimmer.types';
+import { ShimmerGap, ShimmerElementsGroup, ShimmerElementType } from 'office-ui-fabric-react/lib/Shimmer';
 
 const ShimmerTileLayoutValues = {
   largeSquareWidth: 96,
@@ -89,51 +87,51 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
 
     return (
       <div className={this._classNames.root}>
-        <ShimmerGap widthInPixel={contentSize.width} height={contentSize.height - squareHeight - nameplateHeight} />
+        <ShimmerGap width={contentSize.width} height={contentSize.height - squareHeight - nameplateHeight} />
         <ShimmerElementsGroup
           shimmerElements={[
             {
-              type: ElemType.gap,
-              widthInPixel: (contentSize.width - squareWidth) / 2,
+              type: ShimmerElementType.gap,
+              width: (contentSize.width - squareWidth) / 2,
               height: squareHeight
             },
             itemThumbnail
               ? {
-                  type: ElemType.line,
-                  widthInPixel: squareWidth,
+                  type: ShimmerElementType.line,
+                  width: squareWidth,
                   height: squareHeight
                 }
               : {
-                  type: ElemType.gap,
-                  widthInPixel: squareWidth,
+                  type: ShimmerElementType.gap,
+                  width: squareWidth,
                   height: squareHeight
                 },
             {
-              type: ElemType.gap,
-              widthInPixel: (contentSize.width - squareWidth) / 2,
+              type: ShimmerElementType.gap,
+              width: (contentSize.width - squareWidth) / 2,
               height: squareHeight
             }
           ]}
         />
         {itemActivity || itemName ? (
           <div>
-            <ShimmerGap widthInPixel={contentSize.width} height={nameplatePadding} />
+            <ShimmerGap width={contentSize.width} height={nameplatePadding} />
             {itemName ? (
               <ShimmerElementsGroup
                 shimmerElements={[
                   {
-                    type: ElemType.gap,
-                    widthInPixel: (contentSize.width - nameWidth) / 2,
+                    type: ShimmerElementType.gap,
+                    width: (contentSize.width - nameWidth) / 2,
                     height: nameplateNameHeight
                   },
                   {
-                    type: ElemType.line,
-                    widthInPixel: nameWidth,
+                    type: ShimmerElementType.line,
+                    width: nameWidth,
                     height: nameHeight
                   },
                   {
-                    type: ElemType.gap,
-                    widthInPixel: (contentSize.width - nameWidth) / 2,
+                    type: ShimmerElementType.gap,
+                    width: (contentSize.width - nameWidth) / 2,
                     height: nameplateNameHeight
                   }
                 ]}
@@ -143,24 +141,24 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
               <ShimmerElementsGroup
                 shimmerElements={[
                   {
-                    type: ElemType.gap,
-                    widthInPixel: (contentSize.width - activityWidth) / 2,
+                    type: ShimmerElementType.gap,
+                    width: (contentSize.width - activityWidth) / 2,
                     height: nameplateActivityHeight
                   },
                   {
-                    type: ElemType.line,
-                    widthInPixel: activityWidth,
+                    type: ShimmerElementType.line,
+                    width: activityWidth,
                     height: activityHeight
                   },
                   {
-                    type: ElemType.gap,
-                    widthInPixel: (contentSize.width - activityWidth) / 2,
+                    type: ShimmerElementType.gap,
+                    width: (contentSize.width - activityWidth) / 2,
                     height: nameplateActivityHeight
                   }
                 ]}
               />
             ) : null}
-            <ShimmerGap widthInPixel={contentSize.width} height={nameplatePadding} />
+            <ShimmerGap width={contentSize.width} height={nameplatePadding} />
           </div>
         ) : null}
       </div>

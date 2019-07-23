@@ -15,6 +15,8 @@ export namespace LocalizedFontNames {
   export const Vietnamese = 'Segoe UI Web (Vietnamese)';
   export const WestEuropean = 'Segoe UI Web (West European)';
   export const Selawik = 'Selawik Web';
+  export const Armenian = 'Segoe UI Web (Armenian)';
+  export const Georgian = 'Segoe UI Web (Georgian)';
 }
 
 // Font families with fallbacks, for the general regions.
@@ -33,6 +35,8 @@ export namespace LocalizedFontFamilies {
   export const Thai = `'Leelawadee UI Web', 'Kmer UI'`;
   export const Vietnamese = `'${LocalizedFontNames.Vietnamese}'`;
   export const WestEuropean = `'${LocalizedFontNames.WestEuropean}'`;
+  export const Armenian = `'${LocalizedFontNames.Armenian}'`;
+  export const Georgian = `'${LocalizedFontNames.Georgian}'`;
 }
 
 // By default, we favor system fonts for the default.
@@ -64,23 +68,27 @@ const LanguageToFontMap = {
   uk: LocalizedFontFamilies.Cyrillic,
   vi: LocalizedFontFamilies.Vietnamese,
   'zh-hans': LocalizedFontFamilies.ChineseSimplified,
-  'zh-hant': LocalizedFontFamilies.ChineseTraditional
+  'zh-hant': LocalizedFontFamilies.ChineseTraditional,
+  hy: LocalizedFontFamilies.Armenian,
+  ka: LocalizedFontFamilies.Georgian
 };
 
 // Standard font sizes.
 export namespace FontSizes {
   export const mini: string = '10px';
-  export const xSmall: string = '11px';
+  export const xSmall: string = '10px';
   export const small: string = '12px';
-  export const smallPlus: string = '13px';
+  export const smallPlus: string = '12px';
   export const medium: string = '14px';
-  export const mediumPlus: string = '15px';
+  export const mediumPlus: string = '16px';
   export const icon: string = '16px';
-  export const large: string = '17px';
-  export const xLarge: string = '21px';
+  export const large: string = '18px';
+  export const xLarge: string = '20px';
+  export const xLargePlus: string = '24px';
   export const xxLarge: string = '28px';
+  export const xxLargePlus: string = '32px';
   export const superLarge: string = '42px';
-  export const mega: string = '72px';
+  export const mega: string = '68px';
 }
 
 // Standard font weights.
@@ -107,25 +115,21 @@ function _fontFamilyWithFallbacks(fontFamily: string): string {
 export function createFontStyles(localeCode: string | null): IFontStyles {
   const localizedFont = _getLocalizedFontFamily(localeCode);
   let fontFamilyWithFallback = _fontFamilyWithFallbacks(localizedFont);
-  let semilightFontFamilyWithFallback = fontFamilyWithFallback;
-
-  // Chrome has a bug where it does not render Segoe UI Semilight correctly, so we force the webfont to be used in that case
-  if (localizedFont === defaultFontFamily) {
-    semilightFontFamilyWithFallback = _fontFamilyWithFallbacks(LocalizedFontFamilies.WestEuropean);
-  }
 
   const fontStyles = {
-    tiny: _createFont(FontSizes.mini, FontWeights.semibold, fontFamilyWithFallback),
+    tiny: _createFont(FontSizes.mini, FontWeights.regular, fontFamilyWithFallback),
     xSmall: _createFont(FontSizes.xSmall, FontWeights.regular, fontFamilyWithFallback),
     small: _createFont(FontSizes.small, FontWeights.regular, fontFamilyWithFallback),
     smallPlus: _createFont(FontSizes.smallPlus, FontWeights.regular, fontFamilyWithFallback),
     medium: _createFont(FontSizes.medium, FontWeights.regular, fontFamilyWithFallback),
     mediumPlus: _createFont(FontSizes.mediumPlus, FontWeights.regular, fontFamilyWithFallback),
-    large: _createFont(FontSizes.large, FontWeights.semilight, semilightFontFamilyWithFallback),
-    xLarge: _createFont(FontSizes.xLarge, FontWeights.light, fontFamilyWithFallback),
-    xxLarge: _createFont(FontSizes.xxLarge, FontWeights.light, fontFamilyWithFallback),
-    superLarge: _createFont(FontSizes.superLarge, FontWeights.light, fontFamilyWithFallback),
-    mega: _createFont(FontSizes.mega, FontWeights.light, fontFamilyWithFallback)
+    large: _createFont(FontSizes.large, FontWeights.regular, fontFamilyWithFallback),
+    xLarge: _createFont(FontSizes.xLarge, FontWeights.semibold, fontFamilyWithFallback),
+    xLargePlus: _createFont(FontSizes.xLargePlus, FontWeights.semibold, fontFamilyWithFallback),
+    xxLarge: _createFont(FontSizes.xxLarge, FontWeights.semibold, fontFamilyWithFallback),
+    xxLargePlus: _createFont(FontSizes.xxLargePlus, FontWeights.semibold, fontFamilyWithFallback),
+    superLarge: _createFont(FontSizes.superLarge, FontWeights.semibold, fontFamilyWithFallback),
+    mega: _createFont(FontSizes.mega, FontWeights.semibold, fontFamilyWithFallback)
   };
 
   return fontStyles;

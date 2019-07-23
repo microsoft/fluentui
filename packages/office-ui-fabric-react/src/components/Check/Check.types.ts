@@ -1,9 +1,10 @@
-import * as React from 'react';
-import { CheckBase } from './Check.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface ICheckProps extends React.ClassAttributes<CheckBase> {
+/**
+ * {@docCategory Check}
+ */
+export interface ICheckProps {
   /**
    * Gets the component ref.
    */
@@ -21,7 +22,7 @@ export interface ICheckProps extends React.ClassAttributes<CheckBase> {
   styles?: IStyleFunctionOrObject<ICheckStyleProps, ICheckStyles>;
 
   /**
-   * Flag to always show the check icon. Not currently working.
+   * @deprecated Not used
    */
   alwaysShowCheck?: boolean;
 
@@ -32,31 +33,32 @@ export interface ICheckProps extends React.ClassAttributes<CheckBase> {
 
   /**
    * Additional css class to apply to the Check
-   * @defaultvalue undefined
    */
   className?: string;
 }
 
-export interface ICheckStyleProps {
-  /**
-   * Accept theme prop.
-   */
-  theme: ITheme;
+/**
+ * {@docCategory Check}
+ */
+export type ICheckStyleProps = Required<Pick<ICheckProps, 'theme'>> &
+  Pick<ICheckProps, 'className' | 'checked'> & {
+    /**
+     * Custom height/width for the checkbox.
+     * @defaultvalue '18px'
+     */
+    height?: string;
 
-  /**
-   * Accept custom classNames
-   */
-  className?: string;
+    /**
+     * Custom height/width for the checkbox.
+     * @defaultvalue '18px'
+     * @deprecated Use `height`
+     */
+    checkBoxHeight?: string;
+  };
 
-  /**
-   * Accept custom checkBox size in pixels.
-   * @defaultvalue '18px'
-   */
-  checkBoxHeight?: string;
-
-  checked?: boolean;
-}
-
+/**
+ * {@docCategory Check}
+ */
 export interface ICheckStyles {
   /**
    * Style for the root element.
@@ -75,6 +77,8 @@ export interface ICheckStyles {
 
   /**
    * Check host style
+   * @deprecated Not used directly within the component. Instead, use `CheckGlobalClassNames.checkHost` from
+   * `Check.styles.ts` to get a style to apply to the parent element of the Check.
    */
   checkHost: IStyle;
 }

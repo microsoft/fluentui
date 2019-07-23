@@ -7,7 +7,11 @@ exports[`BasePicker renders correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -29,14 +33,9 @@ exports[`BasePicker renders correctly 1`] = `
       <div
         className="ms-BasePicker-text"
       >
-        <span
-          id="selected-items-id__0"
-          role="list"
-        />
         <input
           aria-autocomplete="both"
           aria-controls=" "
-          aria-describedby="selected-items-id__0"
           aria-expanded={false}
           aria-haspopup="true"
           autoCapitalize="off"
@@ -68,7 +67,11 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -90,14 +93,9 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
       <div
         className="ms-BasePicker-text"
       >
-        <span
-          id="selected-items-id__0"
-          role="list"
-        />
         <input
           aria-autocomplete="both"
           aria-controls=" "
-          aria-describedby="selected-items-id__0"
           aria-expanded={false}
           aria-haspopup="true"
           autoCapitalize="off"

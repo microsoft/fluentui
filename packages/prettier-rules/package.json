@@ -1,14 +1,6 @@
 {
   "name": "@uifabric/prettier-rules",
-  "version": "1.0.1",
+  "version": "7.0.3",
   "description": "Shared Prettier rules for UI Fabric projects",
-  "main": "prettier.config.js",
-  "scripts": {
-    "clean": "",
-    "build": "node -v",
-    "code-style": "node -v"
-  },
-  "disabledTasks": [
-    "verify-api-extractor"
-  ]
+  "main": "prettier.config.js"
 }

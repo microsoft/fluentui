@@ -9,10 +9,11 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: stretch;
         background-color: #ffffff;
-        border: 1px solid #a6a6a6;
+        border-radius: 2px;
+        border: 1px solid #8a8886;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -33,7 +34,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         border: 1px solid WindowText;
       }
       &:hover {
-        border-color: #212121;
+        border-color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
@@ -62,6 +63,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     onClick={[Function]}
   >
     <i
+      aria-hidden={true}
       className=
           ms-SearchBox-icon
           {
@@ -89,7 +91,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           border: none;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           flex: 1 1 0px;
           font-family: inherit;
           font-size: inherit;
@@ -107,15 +109,20 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
           padding-top: 0px;
           text-overflow: ellipsis;
         }
-        &::-ms-clear {
-          display: none;
-        }
         &::placeholder {
-          color: #666666;
+          color: #605e5c;
           opacity: 1;
         }
         &:-ms-input-placeholder {
-          color: #666666;
+          color: #605e5c;
+          opacity: 1;
+        }
+        &::-ms-input-placeholder {
+          color: #605e5c;
+          opacity: 1;
+        }
+        &::-ms-clear {
+          display: none;
         }
     id="SearchBox0"
     onChange={[Function]}
@@ -135,10 +142,11 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: stretch;
         background-color: #ffffff;
-        border: 1px solid #a6a6a6;
+        border-radius: 2px;
+        border: 1px solid #8a8886;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -159,7 +167,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         border: 1px solid WindowText;
       }
       &:hover {
-        border-color: #212121;
+        border-color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
@@ -187,6 +195,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
     onClick={[Function]}
   >
     <i
+      aria-hidden={true}
       className=
           ms-SearchBox-icon
           {
@@ -213,7 +222,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
           border: none;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           flex: 1 1 0px;
           font-family: inherit;
           font-size: inherit;
@@ -231,15 +240,20 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
           padding-top: 0px;
           text-overflow: ellipsis;
         }
-        &::-ms-clear {
-          display: none;
-        }
         &::placeholder {
-          color: #666666;
+          color: #605e5c;
           opacity: 1;
         }
         &:-ms-input-placeholder {
-          color: #666666;
+          color: #605e5c;
+          opacity: 1;
+        }
+        &::-ms-input-placeholder {
+          color: #605e5c;
+          opacity: 1;
+        }
+        &::-ms-clear {
+          display: none;
         }
     id="SearchBox5"
     onChange={[Function]}

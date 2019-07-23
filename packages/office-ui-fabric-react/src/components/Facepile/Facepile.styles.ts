@@ -48,7 +48,7 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
 
     addButton: [
       classNames.addButton,
-      getFocusStyle(theme, -1),
+      getFocusStyle(theme, { inset: -1 }),
       ItemButtonStyles,
       {
         fontSize: fonts.medium.fontSize,
@@ -74,12 +74,12 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
 
     descriptiveOverflowButton: [
       classNames.descriptiveOverflowButton,
-      getFocusStyle(theme, -1),
+      getFocusStyle(theme, { inset: -1 }),
       ItemButtonStyles,
       {
         fontSize: fonts.small.fontSize,
         color: palette.neutralSecondary,
-        backgroundColor: palette.neutralLight,
+        backgroundColor: palette.neutralLighter,
         marginLeft: `${spacingAroundItemButton * 2}px`
       }
     ],
@@ -115,12 +115,12 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
 
     overflowButton: [
       classNames.overflowButton,
-      getFocusStyle(theme, -1),
+      getFocusStyle(theme, { inset: -1 }),
       ItemButtonStyles,
       {
         fontSize: fonts.medium.fontSize,
         color: palette.neutralSecondary,
-        backgroundColor: palette.neutralLight,
+        backgroundColor: palette.neutralLighter,
         marginLeft: `${spacingAroundItemButton * 2}px`
       }
     ],

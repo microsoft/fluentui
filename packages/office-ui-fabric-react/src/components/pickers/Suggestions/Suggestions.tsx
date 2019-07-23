@@ -18,11 +18,20 @@ export interface ISuggestionsState {
   selectedActionType: SuggestionActionType;
 }
 
+const StyledSuggestionsItem = styled<ISuggestionItemProps<any>, ISuggestionsItemStyleProps, ISuggestionsItemStyles>(
+  SuggestionsItem,
+  suggestionsItemStyles,
+  undefined,
+  { scope: 'SuggestionItem' }
+);
+
+/**
+ * {@docCategory Pickers}
+ */
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
   protected _forceResolveButton = React.createRef<IButton>();
   protected _searchForMoreButton = React.createRef<IButton>();
   protected _selectedElement = React.createRef<HTMLDivElement>();
-  private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
   private activeSelectedElement: HTMLDivElement | null;
   private _classNames: Partial<IProcessedStyleSet<ISuggestionsStyles>>;
 
@@ -307,22 +316,22 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 
     let { suggestions } = this.props;
 
-    const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
+    const StyledTypedSuggestionsItem: React.StatelessComponent<ISuggestionItemProps<T>> = StyledSuggestionsItem;
 
-    // TODO:
-    // Move this styled component in a separate file and make it available to the public API.
-    // This should be done after rewriting pickers to use a composition pattern instead of inheritance.
-    const StyledTypedSuggestionsItem = styled<ISuggestionItemProps<T>, ISuggestionsItemStyleProps, ISuggestionsItemStyles>(
-      TypedSuggestionsItem,
-      suggestionsItemStyles,
-      undefined,
-      {
-        scope: 'SuggestionItem'
+    let selectedIndex = -1;
+    suggestions.some((element, index) => {
+      if (element.selected) {
+        selectedIndex = index;
+        return true;
       }
-    );
+      return false;
+    });
 
     if (resultsMaximumNumber) {
-      suggestions = suggestions.slice(0, resultsMaximumNumber);
+      suggestions =
+        selectedIndex >= resultsMaximumNumber
+          ? suggestions.slice(selectedIndex - resultsMaximumNumber + 1, selectedIndex + 1)
+          : suggestions.slice(0, resultsMaximumNumber);
     }
 
     if (suggestions.length === 0) {
@@ -338,7 +347,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       >
         {suggestions.map((suggestion, index) => (
           <div
-            ref={suggestion.selected ? this._selectedElement : ''}
+            ref={suggestion.selected ? this._selectedElement : undefined}
             // tslint:disable-next-line:no-string-literal
             key={(suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index}
             id={'sug-' + index}
@@ -348,7 +357,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           >
             <StyledTypedSuggestionsItem
               suggestionModel={suggestion}
-              RenderSuggestion={onRenderSuggestion as any}
+              RenderSuggestion={onRenderSuggestion}
               onClick={this._onClickTypedSuggestionsItem(suggestion.item, index)}
               className={suggestionsItemClassName}
               showRemoveButton={showRemoveButtons}

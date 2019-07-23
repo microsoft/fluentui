@@ -245,6 +245,16 @@ describe('SelectionZone', () => {
     expect(_selection.getSelectedCount()).toEqual(0);
   });
 
+  it('can remove selection after the first click event rebinding', () => {
+    _selection.setAllSelected(true);
+
+    _simulateClick(_toggle0);
+    // Raise real browser event.
+    document.documentElement.click();
+
+    expect(_selection.getSelectedCount()).toEqual(0);
+  });
+
   it('does not select an item on mousedown of the surface with no modifiers', () => {
     ReactTestUtils.Simulate.mouseDown(_invoke0);
     expect(_selection.isIndexSelected(0)).toEqual(false);
@@ -264,6 +274,28 @@ describe('SelectionZone', () => {
   it('selects an item when a button is clicked that has data-selection-select', () => {
     ReactTestUtils.Simulate.keyDown(_select1, { which: KeyCodes.enter });
     expect(_selection.isIndexSelected(1)).toEqual(true);
+  });
+});
+
+describe('SelectionZone - SelectionMode.none', () => {
+  beforeEach(() => _initializeSelection(SelectionMode.none));
+
+  it('does not select an item when selection mode is SelectionMode.none', () => {
+    ReactTestUtils.Simulate.mouseDown(_surface0);
+    expect(_selection.isIndexSelected(0)).toEqual(false);
+    expect(_selection.getSelectedCount()).toEqual(0);
+  });
+
+  it('still invokes on click', () => {
+    _simulateClick(_invoke0);
+    expect(_onItemInvokeCalled).toEqual(1);
+    expect(_lastItemInvoked.key).toEqual('a');
+  });
+
+  it('still invokes on double-click', () => {
+    ReactTestUtils.Simulate.doubleClick(_surface0);
+    expect(_onItemInvokeCalled).toEqual(1);
+    expect(_lastItemInvoked.key).toEqual('a');
   });
 });
 

@@ -2,6 +2,9 @@ import * as React from 'react';
 import { Autofill } from './Autofill';
 import { IRefObject, KeyCodes } from '../../Utilities';
 
+/**
+ * {@docCategory Autofill}
+ */
 export interface IAutofill {
   /**
    * The current index of the cursor in the input area. Returns -1 if the input element
@@ -40,6 +43,9 @@ export interface IAutofill {
   clear(): void;
 }
 
+/**
+ * {@docCategory Autofill}
+ */
 export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputElement | Autofill> {
   /**
    * Gets the compoonent ref.
@@ -107,11 +113,13 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
 /**
  * Deprecated, do not use.
  * @deprecated do not use, will be removed in 6.0
+ * {@docCategory Autofill}
  */
 export interface IBaseAutoFill extends IAutofill {}
 
 /**
  * Deprecated, do not use.
  * @deprecated do not use, will be removed in 6.0
+ * {@docCategory Autofill}
  */
 export interface IBaseAutoFillProps extends IAutofillProps {}

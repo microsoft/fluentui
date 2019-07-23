@@ -5,7 +5,7 @@ describe('relativeDate', () => {
     const then = new Date(2018, 5, 25, 10, 0);
     const now = new Date(2018, 5, 25, 10, 30);
 
-    let response = relativeDates(then, now);
+    const response = relativeDates(then, now);
 
     expect(response).toEqual('1 hour ago');
   });
@@ -14,7 +14,7 @@ describe('relativeDate', () => {
     const then = new Date(2018, 5, 25, 10, 0);
     const now = new Date(2018, 5, 25, 11, 30);
 
-    let response = relativeDates(then, now);
+    const response = relativeDates(then, now);
 
     expect(response).toEqual('1 hour ago');
   });
@@ -23,7 +23,7 @@ describe('relativeDate', () => {
     const then = new Date(2018, 5, 25, 6, 0);
     const now = new Date(2018, 5, 25, 10, 30);
 
-    let response = relativeDates(then, now);
+    const response = relativeDates(then, now);
 
     expect(response).toEqual('4 hours ago');
   });
@@ -32,7 +32,7 @@ describe('relativeDate', () => {
     const then = new Date(2018, 5, 25);
     const now = new Date(2018, 5, 26);
 
-    let response = relativeDates(then, now);
+    const response = relativeDates(then, now);
 
     expect(response).toEqual('1 day ago');
   });
@@ -41,7 +41,7 @@ describe('relativeDate', () => {
     const then = new Date(2018, 5, 25);
     const now = new Date(2018, 5, 26, 10);
 
-    let response = relativeDates(then, now);
+    const response = relativeDates(then, now);
 
     expect(response).toEqual('1 day ago');
   });
@@ -50,7 +50,7 @@ describe('relativeDate', () => {
     const then = new Date(2018, 5, 25);
     const now = new Date(2018, 6, 10);
 
-    let response = relativeDates(then, now);
+    const response = relativeDates(then, now);
 
     expect(response).toEqual('15 days ago');
   });
@@ -59,7 +59,7 @@ describe('relativeDate', () => {
     const then = new Date(2018, 6, 25);
     const now = new Date(2018, 8, 29);
 
-    let response = relativeDates(then, now);
+    const response = relativeDates(then, now);
 
     expect(response).toEqual('on Jul 25');
   });

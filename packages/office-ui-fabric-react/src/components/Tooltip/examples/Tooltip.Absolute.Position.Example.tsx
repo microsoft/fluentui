@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
@@ -11,7 +10,6 @@ export class TooltipAbsolutePositionExample extends React.Component<any, any> {
   private _buttonId: string = getId('targetButton');
 
   public render(): JSX.Element {
-    console.log(this._buttonId);
     return (
       <div
         style={{

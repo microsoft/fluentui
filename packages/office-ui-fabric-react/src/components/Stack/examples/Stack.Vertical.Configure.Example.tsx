@@ -1,10 +1,11 @@
-// @codepen
 import * as React from 'react';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack } from '../Stack';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStackStyles, IStackTokens } from '../Stack.types';
+import { IStackItemStyles } from '../StackItem/StackItem.types';
+import { mergeStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 
 export type VerticalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
@@ -18,7 +19,7 @@ export interface IExampleState {
   wrap: boolean;
   stackHeight: number;
   autoHeight: boolean;
-  gap: number;
+  childrenGap: number;
   paddingLeft: number;
   paddingRight: number;
   paddingTop: number;
@@ -28,6 +29,10 @@ export interface IExampleState {
   hideEmptyChildren: boolean;
   emptyChildren: string[];
 }
+
+// Non-mutating tokens definition
+const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+const configureStackTokens: IStackTokens = { childrenGap: 20 };
 
 export class VerticalStackConfigureExample extends React.Component<{}, IExampleState> {
   constructor(props: {}) {
@@ -40,7 +45,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       wrap: false,
       stackHeight: 200,
       autoHeight: true,
-      gap: 0,
+      childrenGap: 0,
       paddingLeft: 0,
       paddingRight: 0,
       paddingTop: 0,
@@ -61,7 +66,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       wrap,
       stackHeight,
       autoHeight,
-      gap,
+      childrenGap,
       paddingLeft,
       paddingRight,
       paddingTop,
@@ -72,34 +77,42 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       emptyChildren
     } = this.state;
 
-    const styles = mergeStyleSets({
+    // Styles definition
+    const stackStyles: IStackStyles = {
       root: [
         {
           background: DefaultPalette.themeTertiary,
+          height: autoHeight ? 'auto' : stackHeight,
           marginLeft: 10,
-          marginRight: 10,
-          height: autoHeight ? 'auto' : stackHeight
+          marginRight: 10
         },
         preventOverflow && {
           overflow: 'hidden' as 'hidden'
         }
-      ],
-
-      item: {
-        width: 50,
-        height: 50,
-        display: 'flex',
+      ]
+    };
+    const stackItemStyles: IStackItemStyles = {
+      root: {
         alignItems: 'center',
-        justifyContent: 'center',
         background: DefaultPalette.themePrimary,
+        boxShadow: showBoxShadow ? `0px 0px 10px 5px ${DefaultPalette.themeDarker}` : '',
         color: DefaultPalette.white,
-        boxShadow: showBoxShadow ? `0px 0px 10px 5px ${DefaultPalette.themeDarker}` : ''
+        display: 'flex',
+        height: 50,
+        justifyContent: 'center',
+        width: 50
       }
-    });
+    };
+
+    // Tokens definition
+    const exampleStackTokens: IStackTokens = {
+      childrenGap: childrenGap + ' ' + 0,
+      padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`
+    };
 
     return (
-      <Stack gap={10}>
-        <Stack horizontal gap={20}>
+      <Stack tokens={sectionStackTokens}>
+        <Stack horizontal tokens={configureStackTokens}>
           <Stack.Item grow>
             <Stack>
               <Slider
@@ -136,7 +149,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal gap={20}>
+        <Stack horizontal tokens={configureStackTokens}>
           <Stack.Item grow>
             <Stack>
               <Slider
@@ -148,7 +161,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 showValue={true}
                 onChange={this._onGapChange}
               />
-              <Stack horizontal gap={20} verticalAlign="end">
+              <Stack horizontal verticalAlign="end" tokens={configureStackTokens}>
                 <Stack.Item grow>
                   <Dropdown
                     selectedKey={verticalAlignment}
@@ -232,19 +245,22 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
         <Stack
           disableShrink={disableShrink}
           wrap={wrap}
-          gap={gap + ' ' + 0}
-          padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
           verticalAlign={verticalAlignment}
           horizontalAlign={horizontalAlignment}
-          className={styles.root}
+          styles={stackStyles}
+          tokens={exampleStackTokens}
         >
           {this._range(1, numItems).map((value: number, index: number) => {
             if (emptyChildren.indexOf(value.toString()) !== -1) {
-              return hideEmptyChildren ? <Stack.Item key={index} className={styles.item} /> : <span key={index} className={styles.item} />;
+              return hideEmptyChildren ? (
+                <Stack.Item key={index} styles={stackItemStyles} />
+              ) : (
+                <span key={index} className={mergeStyles(stackItemStyles.root)} />
+              );
             }
 
             return (
-              <span key={index} className={styles.item}>
+              <span key={index} className={mergeStyles(stackItemStyles.root)}>
                 {value}
               </span>
             );
@@ -291,7 +307,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
   };
 
   private _onGapChange = (value: number): void => {
-    this.setState({ gap: value });
+    this.setState({ childrenGap: value });
   };
 
   private _onPaddingLeftChange = (value: number): void => {

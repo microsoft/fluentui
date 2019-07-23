@@ -10,6 +10,154 @@
   },
   "glyphs": [
     {
+      "name": "DeleteRowsMirrored",
+      "unicode": "F650"
+    },
+    {
+      "name": "DeleteTable",
+      "unicode": "F651"
+    },
+    {
+      "name": "AccountBrowser",
+      "unicode": "F652"
+    },
+    {
+      "name": "VersionControlPush",
+      "unicode": "F664"
+    },
+    {
+      "name": "StackedColumnChart2",
+      "unicode": "F666"
+    },
+    {
+      "name": "TripleColumnWide",
+      "unicode": "F66E"
+    },
+    {
+      "name": "QuadColumn",
+      "unicode": "F66F"
+    },
+    {
+      "name": "WhiteBoardApp16",
+      "unicode": "F673"
+    },
+    {
+      "name": "WhiteBoardApp32",
+      "unicode": "F674"
+    },
+    {
+      "name": "PinnedSolid",
+      "unicode": "F676"
+    },
+    {
+      "name": "InsertSignatureLine",
+      "unicode": "F677"
+    },
+    {
+      "name": "ArrangeByFrom",
+      "unicode": "F678"
+    },
+    {
+      "name": "Phishing",
+      "unicode": "F679"
+    },
+    {
+      "name": "CreateMailRule",
+      "unicode": "F67A"
+    },
+    {
+      "name": "PublishCourse",
+      "unicode": "F699"
+    },
+    {
+      "name": "DictionaryRemove",
+      "unicode": "F69A"
+    },
+    {
+      "name": "UserRemove",
+      "unicode": "F69B"
+    },
+    {
+      "name": "UserEvent",
+      "unicode": "F69C"
+    },
+    {
+      "name": "Encryption",
+      "unicode": "F69D"
+    },
+    {
+      "name": "PasswordField",
+      "unicode": "F6AA"
+    },
+    {
+      "name": "OpenInNewTab",
+      "unicode": "F6AB"
+    },
+    {
+      "name": "Hide3",
+      "unicode": "F6AC"
+    },
+    {
+      "name": "VerifiedBrandSolid",
+      "unicode": "F6AD"
+    },
+    {
+      "name": "MarkAsProtected",
+      "unicode": "F6AE"
+    },
+    {
+      "name": "AuthenticatorApp",
+      "unicode": "F6B1"
+    },
+    {
+      "name": "WebTemplate",
+      "unicode": "F6B2"
+    },
+    {
+      "name": "DefenderTVM",
+      "unicode": "F6B3"
+    },
+    {
+      "name": "MedalSolid",
+      "unicode": "F6B9"
+    },
+    {
+      "name": "D365TalentLearn",
+      "unicode": "F6BB"
+    },
+    {
+      "name": "D365TalentInsight",
+      "unicode": "F6BC"
+    },
+    {
+      "name": "D365TalentHRCore",
+      "unicode": "F6BD"
+    },
+    {
+      "name": "BacklogList",
+      "unicode": "F6BF"
+    },
+    {
+      "name": "ButtonControl",
+      "unicode": "F6C0"
+    },
+    {
+      "name": "TableGroup",
+      "unicode": "F6D9"
+    },
+    {
+      "name": "MountainClimbing",
+      "unicode": "F6DB"
+    },
+    {
+      "name": "TagUnknown",
+      "unicode": "F6DF"
+    },
+    {
+      "name": "TagUnknownMirror",
+      "unicode": "F6E0"
+    },
+    {
       "name": "TagUnknown12",
       "unicode": "F6E1"
     },
@@ -178,6 +326,10 @@
       "unicode": "F77F"
     },
     {
+      "name": "MicrosoftTranslatorLogo",
+      "unicode": "F782"
+    },
+    {
       "name": "ShowTimeAs",
       "unicode": "F787"
     },
@@ -256,158 +408,6 @@
     {
       "name": "IncreaseIndentText",
       "unicode": "F7A0"
-    },
-    {
-      "name": "IncreaseIndentArrow",
-      "unicode": "F7A1"
-    },
-    {
-      "name": "DecreaseIndentText",
-      "unicode": "F7A2"
-    },
-    {
-      "name": "DecreaseIndentArrow",
-      "unicode": "F7A3"
-    },
-    {
-      "name": "IncreaseIndentTextMirrored",
-      "unicode": "F7A4"
-    },
-    {
-      "name": "IncreaseIndentArrowMirrored",
-      "unicode": "F7A5"
-    },
-    {
-      "name": "DecreaseIndentTextMirrored",
-      "unicode": "F7A6"
-    },
-    {
-      "name": "DecreaseIndentArrowMirrored",
-      "unicode": "F7A7"
-    },
-    {
-      "name": "CheckListText",
-      "unicode": "F7A8"
-    },
-    {
-      "name": "CheckListCheck",
-      "unicode": "F7A9"
-    },
-    {
-      "name": "CheckListTextMirrored",
-      "unicode": "F7AA"
-    },
-    {
-      "name": "CheckListCheckMirrored",
-      "unicode": "F7AB"
-    },
-    {
-      "name": "NumberSymbol",
-      "unicode": "F7AC"
-    },
-    {
-      "name": "Coupon",
-      "unicode": "F7BC"
-    },
-    {
-      "name": "VerifiedBrand",
-      "unicode": "F7BD"
-    },
-    {
-      "name": "ReleaseGate",
-      "unicode": "F7BE"
-    },
-    {
-      "name": "ReleaseGateCheck",
-      "unicode": "F7BF"
-    },
-    {
-      "name": "ReleaseGateError",
-      "unicode": "F7C0"
-    },
-    {
-      "name": "M365InvoicingLogo",
-      "unicode": "F7C1"
-    },
-    {
-      "name": "FabricTextHighlightComposite",
-      "unicode": "F7DA"
-    },
-    {
-      "name": "Dataflows",
-      "unicode": "F7DD"
-    },
-    {
-      "name": "GenericScanFilled",
-      "unicode": "F7DE"
-    },
-    {
-      "name": "DiagnosticDataBarTooltip",
-      "unicode": "F7DF"
-    },
-    {
-      "name": "SaveToMobile",
-      "unicode": "F7E0"
-    },
-    {
-      "name": "Orientation2",
-      "unicode": "F7E1"
-    },
-    {
-      "name": "ScreenCast",
-      "unicode": "F7E2"
-    },
-    {
-      "name": "ShowGrid",
-      "unicode": "F7E3"
-    },
-    {
-      "name": "SnapToGrid",
-      "unicode": "F7E4"
-    },
-    {
-      "name": "ContactList",
-      "unicode": "F7E5"
-    },
-    {
-      "name": "NewMail",
-      "unicode": "F7EA"
-    },
-    {
-      "name": "EyeShadow",
-      "unicode": "F7EB"
-    },
-    {
-      "name": "CampaignTemplate",
-      "unicode": "F811"
-    },
-    {
-      "name": "ChartTemplate",
-      "unicode": "F812"
-    },
-    {
-      "name": "PageListFilter",
-      "unicode": "F813"
-    },
-    {
-      "name": "SecondaryNav",
-      "unicode": "F814"
-    },
-    {
-      "name": "ColumnVerticalSection",
-      "unicode": "F81E"
-    },
-    {
-      "name": "SkypeCircleSlash",
-      "unicode": "F825"
-    },
-    {
-      "name": "SkypeSlash",
-      "unicode": "F826"
-    },
-    {
-      "name": "CustomizeToolbar",
-      "unicode": "F828"
     }
   ]
 }

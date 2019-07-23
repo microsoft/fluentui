@@ -5,7 +5,6 @@ import {
   HighContrastSelector,
   ScreenWidthMaxSmall,
   getScreenSelector,
-  getFocusStyle,
   getGlobalClassNames
 } from '../../Styling';
 import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
@@ -65,7 +64,7 @@ const getIconColor = (messageBarType: MessageBarType | undefined, palette: IPale
 };
 
 export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
-  const { theme, className, messageBarType, onDismiss, actions, truncated, isMultiline, expandSingleLine } = props;
+  const { theme, className, messageBarType, onDismiss, truncated, isMultiline, expandSingleLine } = props;
   const { semanticColors, palette, fonts } = theme;
 
   const SmallScreenSelector = getScreenSelector(0, ScreenWidthMaxSmall);
@@ -73,38 +72,33 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const dismissalAndExpandIconStyle: IStyle = {
-    fontSize: 12,
-    height: 12,
-    lineHeight: '12px',
+    fontSize: 10,
+    height: 10,
+    lineHeight: '10px',
     color: palette.neutralPrimary,
     selectors: {
       [HighContrastSelector]: {
         MsHighContrastAdjust: 'none',
-        color: 'window'
+        color: 'Window'
       }
-    }
-  };
-
-  const dismissalAndExpandSingleLineStyle: IStyle = {
-    display: 'flex',
-    selectors: {
-      '& .ms-Button-icon': dismissalAndExpandIconStyle
     }
   };
 
   const dismissalAndExpandStyle: IStyle = {
     flexShrink: 0,
-    margin: 8,
-    marginLeft: 0,
+    width: 32,
+    height: 32,
+    padding: '8px 12px',
     selectors: {
       '& .ms-Button-icon': dismissalAndExpandIconStyle,
-      [SmallScreenSelector]: {
-        margin: '0px 0px 0px 8px'
+      ':hover': {
+        backgroundColor: 'transparent'
+      },
+      ':active': {
+        backgroundColor: 'transparent'
       }
     }
   };
-
-  const focusStyle = getFocusStyle(theme, 0, 'relative', undefined, palette.black);
 
   return {
     root: [
@@ -123,9 +117,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         color: palette.neutralPrimary,
         minHeight: 32,
         width: '100%',
-        boxSizing: 'border-box',
         display: 'flex',
-        position: 'relative',
         wordBreak: 'break-word',
         selectors: {
           '& .ms-Link': {
@@ -133,25 +125,13 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
             ...fonts.small
           },
           [HighContrastSelector]: {
-            background: 'windowText'
+            background: 'WindowText',
+            color: 'Window'
           }
         }
       },
       isMultiline && {
         flexDirection: 'column'
-      },
-      !isMultiline && {
-        selectors: {
-          [SmallScreenSelector]: {
-            flexDirection: 'column'
-          }
-        }
-      },
-      truncated && {
-        flexDirection: 'column',
-        selectors: {
-          '& .ms-Button-icon': dismissalAndExpandIconStyle
-        }
       },
       className
     ],
@@ -159,37 +139,8 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       classNames.content,
       {
         display: 'flex',
-        lineHeight: 'normal',
         width: '100%',
-        boxSizing: 'border-box',
-        selectors: {
-          '&:before': {
-            pointerEvents: 'none',
-            position: 'absolute',
-            right: 0,
-            bottom: 0,
-            left: 0,
-            top: 0,
-            margin: 0,
-            selectors: {
-              [HighContrastSelector]: {
-                background: 'WindowText',
-                color: 'Window',
-                content: ' '
-              }
-            }
-          }
-        }
-      },
-      !isMultiline && {
-        selectors: {
-          [SmallScreenSelector]: {
-            flexDirection: 'row'
-          }
-        }
-      },
-      (truncated || isMultiline) && {
-        flexDirection: 'row'
+        lineHeight: 'normal'
       }
     ],
     iconContainer: [
@@ -199,15 +150,8 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         minWidth: 16,
         minHeight: 16,
         display: 'flex',
-        color: palette.neutralSecondary,
         flexShrink: 0,
-        margin: 16,
-        marginRight: 0,
-        selectors: {
-          [SmallScreenSelector]: {
-            margin: '8px 0px 8px 8px'
-          }
-        }
+        margin: '8px 0 8px 12px'
       }
     ],
     icon: {
@@ -215,7 +159,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       selectors: {
         [HighContrastSelector]: {
           MsHighContrastAdjust: 'none',
-          color: 'window'
+          color: 'Window'
         }
       }
     },
@@ -225,55 +169,25 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         minWidth: 0,
         display: 'flex',
         flexGrow: 1,
-        margin: '16px 8px',
+        margin: 8,
         ...fonts.small,
         selectors: {
-          [SmallScreenSelector]: {
-            margin: '8px 0px 8px 8px'
-          },
           [HighContrastSelector]: {
-            MsHighContrastAdjust: 'none',
-            color: 'window'
+            MsHighContrastAdjust: 'none'
           }
         }
       },
       !onDismiss && {
-        marginRight: 16,
-        selectors: {
-          [SmallScreenSelector]: {
-            marginRight: 8
-          }
-        }
-      },
-      isMultiline &&
-        actions && {
-          marginBottom: 8,
-          selectors: {
-            [SmallScreenSelector]: {
-              marginBottom: 0
-            }
-          }
-        },
-      !isMultiline &&
-        actions && {
-          selectors: {
-            [SmallScreenSelector]: {
-              marginBottom: 0
-            }
-          }
-        }
+        marginRight: 12
+      }
     ],
     innerText: [
       classNames.innerText,
       {
         lineHeight: 16,
         selectors: {
-          '& span': {
-            selectors: {
-              '& a': {
-                paddingLeft: 4
-              }
-            }
+          '& span a': {
+            paddingLeft: 4
           }
         }
       },
@@ -300,10 +214,10 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         whiteSpace: 'pre-wrap'
       }
     ],
-    dismissSingleLine: [classNames.dismissSingleLine, dismissalAndExpandSingleLineStyle],
-    expandSingleLine: [classNames.expandSingleLine, dismissalAndExpandSingleLineStyle],
-    dismissal: [classNames.dismissal, dismissalAndExpandStyle, focusStyle],
-    expand: [classNames.expand, dismissalAndExpandStyle, focusStyle],
+    dismissSingleLine: [classNames.dismissSingleLine],
+    expandSingleLine: [classNames.expandSingleLine],
+    dismissal: [classNames.dismissal, dismissalAndExpandStyle],
+    expand: [classNames.expand, dismissalAndExpandStyle],
     actions: [
       isMultiline ? classNames.actions : classNames.actionsSingleline,
       {
@@ -313,7 +227,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         flexBasis: 'auto',
         flexDirection: 'row-reverse',
         alignItems: 'center',
-        margin: '8px 8px 8px 0',
+        margin: '0 12px 0 8px',
         selectors: {
           '& button:nth-child(n+2)': {
             marginLeft: 8
@@ -321,13 +235,12 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         }
       },
       isMultiline && {
-        margin: '0px 12px 12px 0',
-        selectors: {
-          '& button:nth-child(n+2)': {
-            marginLeft: 12
-          }
+        marginBottom: 8
+      },
+      onDismiss &&
+        !isMultiline && {
+          marginRight: 0
         }
-      }
     ]
   };
 };

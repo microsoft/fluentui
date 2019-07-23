@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, Selection, IColumn, buildColumns, IColumnReorderOptions } from 'office-ui-fabric-react/lib/DetailsList';
@@ -97,6 +95,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
             columnReorderOptions={this.state.isColumnReorderEnabled ? this._getColumnReorderOptions() : undefined}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+            checkButtonAriaLabel="Row checkbox"
           />
         </MarqueeSelection>
       </div>

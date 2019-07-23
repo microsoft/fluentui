@@ -57,7 +57,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
   }
 
   public render(): JSX.Element {
-    const { calloutProps: setCalloutProps, targetElement, onDismiss, isWide, styles, theme } = this.props;
+    const { calloutProps: setCalloutProps, targetElement, onDismiss, isWide, styles, theme, target } = this.props;
     const calloutProps = { ...this._defaultCalloutProps, ...setCalloutProps };
     const stylesProps: ITeachingBubbleStyleProps = {
       theme: theme!,
@@ -72,7 +72,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
 
     return (
       <Callout
-        target={targetElement}
+        target={target || targetElement}
         onDismiss={onDismiss}
         {...calloutProps}
         className={classNames.root}

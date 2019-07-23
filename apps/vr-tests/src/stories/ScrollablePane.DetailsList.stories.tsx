@@ -18,7 +18,6 @@ import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Toolt
 import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
@@ -96,16 +95,17 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
     super(props);
 
     this._items = [];
-
+    let rowData = '';
     for (let i = 0; i < 200; i++) {
+      rowData = 'row ' + (i + 1).toString() + ', column ';
       this._items.push({
         key: i,
-        test1: i === 0 ? lorem(7) : lorem(2),
-        test2: lorem(2),
-        test3: lorem(2),
-        test4: lorem(2),
-        test5: lorem(2),
-        test6: lorem(2)
+        test1: rowData + '1',
+        test2: rowData + '2',
+        test3: rowData + '3',
+        test4: rowData + '4',
+        test5: rowData + '5',
+        test6: rowData + '6'
       });
     }
 

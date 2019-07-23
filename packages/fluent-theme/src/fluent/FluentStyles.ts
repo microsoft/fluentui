@@ -28,11 +28,12 @@ import { PersonaStyles } from './styles/Persona.styles';
 import { PivotStyles } from './styles/Pivot.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { RatingStyles } from './styles/Rating.styles';
+import { SearchBoxStyles } from './styles/SearchBox.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
 import { SuggestionItemStyles, SuggestionsStyles } from './styles/PickerSuggestions.styles';
 import { TagItemStyles } from './styles/TagPicker.styles';
-import { TeachingBubbleStyles, TeachingBubbleContentStyles } from './styles/TeachingBubble.styles';
+import { TeachingBubbleStyles } from './styles/TeachingBubble.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
 import { ToggleStyles } from './styles/Toggle.styles';
 
@@ -123,7 +124,7 @@ export const FluentStyles: any = {
   Link: {
     styles: LinkStyles
   },
-  ListPeoplePicker: {
+  ListPeoplePickerBase: {
     styles: BasePickerStyles
   },
   Modal: {
@@ -153,6 +154,9 @@ export const FluentStyles: any = {
   Rating: {
     styles: RatingStyles
   },
+  SearchBox: {
+    styles: SearchBoxStyles
+  },
   Slider: {
     styles: SliderStyles
   },
@@ -175,7 +179,7 @@ export const FluentStyles: any = {
     styles: TeachingBubbleStyles
   },
   TeachingBubbleContent: {
-    styles: TeachingBubbleContentStyles
+    styles: TeachingBubbleStyles
   },
   TextField: {
     styles: TextFieldStyles

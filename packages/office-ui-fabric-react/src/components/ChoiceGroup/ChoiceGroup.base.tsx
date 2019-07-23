@@ -1,7 +1,16 @@
 import * as React from 'react';
 
 import { Label } from '../../Label';
-import { BaseComponent, classNamesFunction, find, getId } from '../../Utilities';
+import {
+  initializeComponentRef,
+  warnDeprecations,
+  warnMutuallyExclusive,
+  classNamesFunction,
+  find,
+  getId,
+  getNativeProps,
+  divProperties
+} from '../../Utilities';
 import { IChoiceGroup, IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
 import { ChoiceGroupOption, OnChangeCallback, OnFocusCallback } from './ChoiceGroupOption/index';
 
@@ -14,7 +23,10 @@ export interface IChoiceGroupState {
   keyFocused?: string | number;
 }
 
-export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
+/**
+ * {@docCategory ChoiceGroup}
+ */
+export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
   public static defaultProps: IChoiceGroupProps = {
     options: []
   };
@@ -28,10 +40,14 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
   constructor(props: IChoiceGroupProps) {
     super(props);
 
-    this._warnDeprecations({ onChanged: 'onChange' });
-    this._warnMutuallyExclusive({
-      selectedKey: 'defaultSelectedKey'
-    });
+    initializeComponentRef(this);
+
+    if (process.env.NODE_ENV !== 'production') {
+      warnDeprecations('ChoiceGroup', props, { onChanged: 'onChange' });
+      warnMutuallyExclusive('ChoiceGroup', props, {
+        selectedKey: 'defaultSelectedKey'
+      });
+    }
 
     const validDefaultSelectedKey: boolean = !!props.options && props.options.some(option => option.key === props.defaultSelectedKey);
 
@@ -69,6 +85,8 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
     const { className, theme, styles, options, label, required, disabled, name, role } = this.props;
     const { keyChecked, keyFocused } = this.state;
 
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['onChange', 'className', 'required']);
+
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
@@ -82,10 +100,10 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
       : (this.props as any)['aria-labelledby'];
 
     return (
-      <div role={role} className={classNames.applicationRole}>
+      <div role={role} className={classNames.applicationRole} {...divProps}>
         <div className={classNames.root} role="radiogroup" {...ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy }}>
           {label && (
-            <Label className={classNames.label} required={required} id={this._id + '-label'}>
+            <Label className={classNames.label} required={required} id={this._id + '-label'} disabled={disabled}>
               {label}
             </Label>
           )}

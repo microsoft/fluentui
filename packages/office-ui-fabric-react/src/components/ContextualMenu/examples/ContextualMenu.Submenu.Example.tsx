@@ -55,7 +55,8 @@ export class ContextualMenuSubmenuExample extends React.Component<any, IContextu
                   ]
                 },
                 href: 'https://bing.com',
-                text: 'New'
+                text: 'New',
+                target: '_blank'
               },
               {
                 key: 'share',

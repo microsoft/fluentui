@@ -1,7 +1,11 @@
+import * as React from 'react';
 import { IStyleFunctionOrObject } from '../../Utilities';
 import { IGroupDividerProps } from './GroupedList.types';
 import { IStyle } from '../../Styling';
 
+/**
+ * {@docCategory GroupedList}
+ */
 export interface IGroupHeaderProps extends IGroupDividerProps {
   /**
    * Style function to be passed in to override the themed or default styles
@@ -20,6 +24,9 @@ export interface IGroupHeaderProps extends IGroupDividerProps {
   selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
 }
 
+/**
+ * {@docCategory GroupedList}
+ */
 export type IGroupHeaderStyleProps = Required<Pick<IGroupHeaderProps, 'theme'>> &
   Pick<IGroupHeaderProps, 'selected' | 'className'> & {
     /** Is Header collapsed */
@@ -29,6 +36,9 @@ export type IGroupHeaderStyleProps = Required<Pick<IGroupHeaderProps, 'theme'>> 
     compact?: boolean;
   };
 
+/**
+ * {@docCategory GroupedList}
+ */
 export interface IGroupHeaderStyles {
   root: IStyle;
   groupHeaderContainer: IStyle;

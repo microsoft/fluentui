@@ -3,12 +3,14 @@ import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
+import * as renderer from 'react-test-renderer';
 
-import { IContextualMenuProps, IContextualMenuStyles } from './ContextualMenu.types';
+import { IContextualMenuProps, IContextualMenuStyles, IContextualMenu } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
+import { DefaultButton, IButton } from 'office-ui-fabric-react/lib/Button';
 
 describe('ContextualMenu', () => {
   afterEach(() => {
@@ -508,16 +510,16 @@ describe('ContextualMenu', () => {
     expect(menuItems.length).toEqual(3);
 
     menuItems[0].focus();
-    expect(document.activeElement.textContent).toEqual('TestText 1');
-    expect(document.activeElement.className.split(' ')).not.toContain('is-disabled');
+    expect(document.activeElement!.textContent).toEqual('TestText 1');
+    expect(document.activeElement!.className.split(' ')).not.toContain('is-disabled');
 
     menuItems[1].focus();
-    expect(document.activeElement.textContent).toEqual('TestText 2');
-    expect(document.activeElement.className.split(' ')).toContain('is-disabled');
+    expect(document.activeElement!.textContent).toEqual('TestText 2');
+    expect(document.activeElement!.className.split(' ')).toContain('is-disabled');
 
     menuItems[2].focus();
-    expect(document.activeElement.textContent).toEqual('TestText 3');
-    expect(document.activeElement.className.split(' ')).toContain('is-disabled');
+    expect(document.activeElement!.textContent).toEqual('TestText 3');
+    expect(document.activeElement!.className.split(' ')).toContain('is-disabled');
   });
 
   it('cannot click on disabled items', () => {
@@ -915,6 +917,128 @@ describe('ContextualMenu', () => {
     ReactTestUtils.Simulate.click(menuItem);
 
     expect(customRenderer).toHaveBeenCalledTimes(2);
+  });
+
+  describe('ContextualMenu snapshot', () => {
+    it('ContextualMenu should be present in DOM when hidden (snapshot)', () => {
+      // Mock createPortal to capture its component hierarchy in snapshot output.
+      const ReactDOM = require('react-dom');
+      const createPortal = ReactDOM.createPortal;
+      ReactDOM.createPortal = jest.fn(element => {
+        return element;
+      });
+      const buttonRef = React.createRef<IButton>();
+      const component = renderer.create(
+        <DefaultButton
+          persistMenu={true}
+          componentRef={buttonRef}
+          menuProps={{
+            items: [
+              {
+                text: 'Test1',
+                key: 'Test1',
+                subMenuProps: {
+                  items: [
+                    {
+                      text: 'Test2',
+                      key: 'Test2',
+                      className: 'SubMenuClass'
+                    }
+                  ]
+                }
+              }
+            ],
+            hidden: false
+          }}
+        />
+      );
+      buttonRef.current!.openMenu();
+      buttonRef.current!.dismissMenu();
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+
+      ReactDOM.createPortal = createPortal;
+    });
+  });
+
+  describe('ContextualMenu with hidden prop tests', () => {
+    const contextualItem = React.createRef<IContextualMenuRenderItem>();
+    const contextualMenu = React.createRef<IContextualMenu>();
+    const button = React.createRef<IButton>();
+    const menu: IContextualMenuItem[] = [
+      {
+        text: 'Test1',
+        key: 'Test1',
+        componentRef: contextualItem,
+        subMenuProps: {
+          items: [
+            {
+              text: 'Test2',
+              key: 'Test2',
+              className: 'SubMenuClass'
+            },
+            {
+              text: 'Test3',
+              key: 'Test3',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
+      }
+    ];
+
+    beforeEach(() => {
+      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
+        <DefaultButton
+          persistMenu={true}
+          componentRef={button}
+          menuProps={{
+            items: menu,
+            hidden: false,
+            componentRef: contextualMenu
+          }}
+        />
+      );
+    });
+
+    it('ContextualMenu should be present in DOM when hidden', () => {
+      button.current!.openMenu();
+      button.current!.dismissMenu();
+      expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
+    });
+
+    it('Submenu should not be shown when ContextualMenu is hidden', () => {
+      // 1. Open parent menu
+      button.current!.openMenu();
+      expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
+
+      // 2. Open sub menu
+      contextualItem.current!.openSubMenu();
+      expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+
+      // 3. Dismiss parent menu - sub menu should disappear from DOM.
+      // Submenus are not persisted using the hidden prop as of now
+      button.current!.dismissMenu();
+      expect(document.querySelector('.SubMenuClass')).toEqual(null);
+    });
+
+    it('Submenu should not be shown by default when ContextualMenu is shown', () => {
+      // 1. Open parent menu
+      button.current!.openMenu();
+      expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
+
+      // 2. Open sub menu
+      contextualItem.current!.openSubMenu();
+      expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+
+      // 3. Dismiss parent menu - sub menu should disappear from DOM.
+      button.current!.dismissMenu();
+      expect(document.querySelector('.SubMenuClass')).toEqual(null);
+
+      // 4. Reopen parent menu - sub menu should not be present by default
+      button.current!.openMenu();
+      expect(document.querySelector('.SubMenuClass')).toEqual(null);
+    });
   });
 
   describe('canAnyMenuItemsCheck', () => {

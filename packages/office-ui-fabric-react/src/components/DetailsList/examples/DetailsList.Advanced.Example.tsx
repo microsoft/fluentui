@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
@@ -181,6 +179,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           ariaLabelForListHeader="Column headers. Click to sort."
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
+          checkButtonAriaLabel="Row checkbox"
           onRenderMissingItem={this._onRenderMissingItem}
         />
 

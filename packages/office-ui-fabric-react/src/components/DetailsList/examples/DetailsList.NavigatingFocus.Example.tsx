@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { DetailsList, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Link } from 'office-ui-fabric-react/lib/Link';
@@ -47,6 +45,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
         initialFocusedIndex={this.state.initialFocusedIndex}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="Row checkbox"
       />
     );
   }

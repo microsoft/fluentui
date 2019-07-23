@@ -3,7 +3,7 @@ import { DetailsColumn } from 'office-ui-fabric-react/lib/components/DetailsList
 import { IColumn, ColumnActionsMode, IDetailsHeaderProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList.types';
 import { mount } from 'enzyme';
 import { DetailsList } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList';
-import { assign, IRenderFunction } from '@uifabric/utilities';
+import { IRenderFunction } from '@uifabric/utilities';
 import { ITooltipHostProps, TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 
 let mockOnColumnClick: jest.Mock<{}>;
@@ -47,7 +47,7 @@ describe('DetailsColumn', () => {
   });
 
   it('invokes IColumn#onColumnClick when columnActionMode is ColumnActionsMode.clickable', () => {
-    const column = assign({}, baseColumn, { columnActionsMode: ColumnActionsMode.clickable });
+    const column: IColumn = { ...baseColumn, columnActionsMode: ColumnActionsMode.clickable };
     const columns = [column];
     let component: any;
 
@@ -74,7 +74,7 @@ describe('DetailsColumn', () => {
   });
 
   it('invokes IColumn#onColumnClick when columnActionMode is ColumnActionsMode.hasDropdown', () => {
-    const column = assign({}, baseColumn, { columnActionsMode: ColumnActionsMode.hasDropdown });
+    const column: IColumn = { ...baseColumn, columnActionsMode: ColumnActionsMode.hasDropdown };
     const columns = [column];
     let component: any;
 
@@ -101,7 +101,7 @@ describe('DetailsColumn', () => {
   });
 
   it('does not invoke IColumn#onColumnClick when columnActionMode is ColumnActionMode.disabled', () => {
-    const column = assign({}, baseColumn, { columnActionsMode: ColumnActionsMode.disabled });
+    const column: IColumn = { ...baseColumn, columnActionsMode: ColumnActionsMode.disabled };
     const columns = [column];
     let component: any;
 
@@ -128,7 +128,7 @@ describe('DetailsColumn', () => {
   });
 
   it('by default, has aria-describedby set for columns which provide an ariaLabel value', () => {
-    const column = assign({}, baseColumn, { ariaLabel: 'Foo' });
+    const column: IColumn = { ...baseColumn, ariaLabel: 'Foo' };
     let component: any;
     const columns = [column];
 
@@ -150,7 +150,7 @@ describe('DetailsColumn', () => {
   });
 
   it("by default, has a node present in the DOM referenced by the column's aria-describedby attribute", () => {
-    const column = assign({}, baseColumn, { ariaLabel: 'Foo' });
+    const column: IColumn = { ...baseColumn, ariaLabel: 'Foo' };
     let component: any;
     const columns = [column];
 
@@ -178,7 +178,7 @@ describe('DetailsColumn', () => {
   });
 
   it('if custom DetailsHeader has optional onRenderColumnHeaderTooltip, do not render invalid aria-describedby attribute', () => {
-    const column = assign({}, baseColumn, { ariaLabel: 'Foo' });
+    const column: IColumn = { ...baseColumn, ariaLabel: 'Foo' };
     let component: any;
     const columns = [column];
 
@@ -209,7 +209,7 @@ describe('DetailsColumn', () => {
   });
 
   it('Examine aria-expanded value when columnActionMode is not hasDropDown', () => {
-    const column = assign({}, baseColumn, { columnActionsMode: ColumnActionsMode.clickable, isMenuOpen: true });
+    const column: IColumn = { ...baseColumn, columnActionsMode: ColumnActionsMode.clickable, isMenuOpen: true };
     const columns = [column];
     let component: any;
 
@@ -234,7 +234,7 @@ describe('DetailsColumn', () => {
   });
 
   it('Examine aria-expanded value when columnActionMode is hasDropDown with isMenuOpen property set', () => {
-    const column = assign({}, baseColumn, { columnActionsMode: ColumnActionsMode.hasDropdown, isMenuOpen: true });
+    const column: IColumn = { ...baseColumn, columnActionsMode: ColumnActionsMode.hasDropdown, isMenuOpen: true };
     const columns = [column];
     let component: any;
 

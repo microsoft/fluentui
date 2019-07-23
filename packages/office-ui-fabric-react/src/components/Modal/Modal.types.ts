@@ -5,7 +5,41 @@ import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
 import { ILayerProps } from '../../Layer';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IIconProps } from '../../Icon';
+import { IContextualMenuProps } from '../../ContextualMenu';
+import { IOverlayProps } from '../../Overlay';
 
+export interface IDragOptions {
+  /**
+   * Optional selector for the element where the drag can be initiated. If not supplied when
+   * isDraggable is true dragging can be initated by the whole contents of the modal
+   */
+  dragHandleSelector?: string;
+
+  /**
+   * IconProps for the icon used to indicate that the dialog is in keyboard move mode
+   */
+  keyboardMoveIconProps?: IIconProps;
+
+  /**
+   * The text to use for the modal move menu item
+   */
+  moveMenuItemText: string;
+
+  /**
+   * The text to use for the modal close menu item
+   */
+  closeMenuItemText: string;
+
+  /**
+   * The Draggable Control Menu so that the draggable zone can be moved via the keyboard
+   */
+  menu: React.StatelessComponent<IContextualMenuProps>;
+}
+
+/**
+ * {@docCategory Modal}
+ */
 export interface IModal {
   /**
    * Sets focus on the first focusable, or configured, child in focus trap zone
@@ -13,6 +47,9 @@ export interface IModal {
   focus: () => void;
 }
 
+/**
+ * {@docCategory Modal}
+ */
 export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
@@ -53,9 +90,14 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
   onDismissed?: () => any;
 
   /**
-   * Props to be passed through to Layer
+   * Defines an optional set of props to be passed through to Layer
    */
   layerProps?: ILayerProps;
+
+  /**
+   * Defines an optional set of props to be passed through to Overlay
+   */
+  overlay?: IOverlayProps;
 
   /**
    * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
@@ -106,8 +148,16 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
    * when the content changes dynamically.
    */
   topOffsetFixed?: boolean;
+
+  /**
+   * The options to make the modal draggable
+   */
+  dragOptions?: IDragOptions;
 }
 
+/**
+ * {@docCategory Modal}
+ */
 export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
   Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless'> & {
     /** Modal open state. */
@@ -118,11 +168,20 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
     hasBeenOpened?: boolean;
     /** Positioning of modal on first render */
     modalRectangleTop?: number;
+    /** Classname for layer element */
+    layerClassName?: string;
+    /** Whether this modal is draggable and using the default handler */
+    isDefaultDragHandle?: boolean;
   };
 
+/**
+ * {@docCategory Modal}
+ */
 export interface IModalStyles {
   root: IStyle;
   main: IStyle;
   scrollableContent: IStyle;
   layer: IStyle;
+  keyboardMoveIconContainer: IStyle;
+  keyboardMoveIcon: IStyle;
 }

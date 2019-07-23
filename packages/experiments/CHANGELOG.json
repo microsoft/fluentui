@@ -2,6 +2,1632 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 23 Jul 2019 16:33:51 GMT",
+      "tag": "@uifabric/experiments_v7.8.1",
+      "version": "7.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chiclet: Url is now a required prop and two test files are combined into one",
+            "author": "t-stcar@microsoft.com",
+            "commit": "7147dbd40fc5b52da42714379c6f832d215eaaed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jul 2019 12:28:42 GMT",
+      "tag": "@uifabric/experiments_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Updating Button styles to use corresponding semanticColors instead of palette.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": ""
+          },
+          {
+            "comment": "Improve how to get the min query string",
+            "author": "elcraig@microsoft.com",
+            "commit": "17b31ca8739504e1d4c7b7dcaa725091254d0eb5"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Refactor out BaseComponent from Tile",
+            "author": "706967+KevinTCoughlin@users.noreply.github.com",
+            "commit": "ad4bc7b67d858e082b281482f419848aad120abe"
+          },
+          {
+            "comment": "Tile: Add ability for screen reader to read selected state.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "284ca631afe83fc5ec56b4c221691bd85ad341f8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Jul 2019 12:25:58 GMT",
+      "tag": "@uifabric/experiments_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Chiclet: removes imageHeight and imageWidth props",
+            "author": "t-stcar@microsoft.com",
+            "commit": "7852d0520f5ee54d4dacbb8fcc22f1b748dac9b6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/experiments_v7.6.2",
+      "version": "7.6.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          },
+          {
+            "comment": "Remove fluent customizations.",
+            "author": "vibraga@microsoft.com",
+            "commit": "6931990896b08f816e10d3936d36a92b82aa794a"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          },
+          {
+            "comment": "bumping versions to match what was published already",
+            "author": "kchau@microsoft.com",
+            "commit": "75e4ad16a2e6a54672e4929a9e003c7fd6f6ae52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/experiments_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Updating Button styles to use corresponding semanticColors instead of palette.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "044e13c2c8c391885693bbaa493e975fab35f3ea"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Change media tile to show metadata only on hover",
+            "author": "jocobb@microsoft.com",
+            "commit": ""
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Jul 2019 12:29:52 GMT",
+      "tag": "@uifabric/experiments_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chiclet: adjust xsmall chiclet title height",
+            "author": "natalie.ethell@microsoft.com",
+            "commit": "04958abbb3a8d0ff556770fc0c4fb0abdb9dbca4"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add screener tests for media tiles",
+            "author": "jocobb@microsoft.com",
+            "commit": "57675680a18d6c5463ec44c5f5beaca8890dc226"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Jul 2019 12:28:00 GMT",
+      "tag": "@uifabric/experiments_v7.4.2",
+      "version": "7.4.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update names in floatingSuggestons + expose needed functionality for UnifiedPicker t",
+            "author": "mhuan13@gmail.com",
+            "commit": "c6b2d2909cec0a169e9ec3d69dd68bbb621081f8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Jul 2019 12:30:55 GMT",
+      "tag": "@uifabric/experiments_v7.4.1",
+      "version": "7.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Filter out disallowed props from Tile root element",
+            "author": "tmichon@microsoft.com",
+            "commit": "e2b722f766eb822063fcf5f6176884dda48dede5"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.4.0",
+      "tag": "@uifabric/experiments_v7.4.0",
+      "date": "Mon, 01 Jul 2019 18:51:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Renaming BaseButton to Actionable, extending Button from Actionable and removing content and icon from Actionable types.",
+            "author": "Makoto Morimoto <humbertomakotomorimoto@gmail.com>",
+            "commit": "9848e9abde2762c98af424ed030fa683bd72628c"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "adds react-app-polyfill",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "40245650abdfb17e9f1cd6472f3671380237bcc2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^7.0.3` to `^7.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.5` to `^7.0.6`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.2` to `^7.6.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.2` to `^7.1.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.2` to `^7.0.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.3.0",
+      "tag": "@uifabric/experiments_v7.3.0",
+      "date": "Thu, 27 Jun 2019 18:25:04 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": " Button: Removing Stack usage from vanilla Button's slots and view to improve perf.",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          },
+          {
+            "comment": "Chiclet: Add x-small variant",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button example updated.",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.0.2` to `^7.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.3` to `^7.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.3` to `^7.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.0` to `^7.6.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.1` to `^7.1.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.2.3",
+      "tag": "@uifabric/experiments_v7.2.3",
+      "date": "Tue, 25 Jun 2019 12:26:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updates to tileslist, list and marquee selection",
+            "author": "wiolsen <36865486+wiolsen@users.noreply.github.com>",
+            "commit": "c758198a95328be804d8837a3517ed051161ec83"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.5.1` to `^7.5.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.2.2",
+      "tag": "@uifabric/experiments_v7.2.2",
+      "date": "Mon, 24 Jun 2019 23:11:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Adding focus tests for Button, MenuButton and SplitButton.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "7fb25fe44a8b5d35f08ffd2384921f006cbf170d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.5.0` to `^7.5.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.2.1",
+      "tag": "@uifabric/experiments_v7.2.1",
+      "date": "Fri, 21 Jun 2019 12:27:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots due to Tooltip bug fix",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "659b57cc432a37173324eb06f22ea7a918ecff36"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.3` to `^7.5.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.2.0",
+      "tag": "@uifabric/experiments_v7.2.0",
+      "date": "Thu, 20 Jun 2019 12:27:38 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Removing charting from dependencies.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "a70b92d3df16686f776d948fe8796fad1ec432f4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.2` to `^7.4.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.0` to `^7.1.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.1",
+      "tag": "@uifabric/experiments_v7.1.1",
+      "date": "Tue, 18 Jun 2019 12:26:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Getting anchor native props if href prop is specified.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "f666ee652c500f55caf7350bcf963eedceedd1f3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.131.2` to `^0.131.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.3.0` to `^7.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.3` to `^7.0.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.0",
+      "tag": "@uifabric/experiments_v7.1.0",
+      "date": "Fri, 14 Jun 2019 15:54:00 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Major bumping the foundation package.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ef4b1d9bc7a63a9479cbf3d846a35d45627d7209"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.1.1` to `^7.2.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.3",
+      "tag": "@uifabric/experiments_v7.0.3",
+      "date": "Fri, 14 Jun 2019 12:26:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix missing assets in production build.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "e1bebe54dd798847060baaf4a52956c2f6dd866b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.131.1` to `^0.131.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.109.1` to `^0.109.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.1` to `^7.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.2",
+      "tag": "@uifabric/experiments_v7.0.2",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.131.0` to `^0.131.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.109.0` to `^0.109.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.0",
+      "tag": "@uifabric/experiments_v7.0.0",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding allowDisabledFocus prop and adding @docCategory tags on exports.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "44be390505c024b84f6031eb9f564102736b9fa0"
+          },
+          {
+            "comment": "Button: Changing style of all variants to be Fluent by default and removing use of palette in favor of semantic slots.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "2faffcc51ec77341b3f1d796ea8d9e7440ecf0f7"
+          },
+          {
+            "comment": "Button: Adding keytips to new Button.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "c4507e4bfb50076f51febafb4c6d238465b4c8b6"
+          },
+          {
+            "comment": "Button: Making all MenuButton props optional.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "8d6c7c460cf9f9fa5e7985205fc9b602a678dd7f"
+          },
+          {
+            "comment": "Button: Adding uniqueId prop.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "88152626b21e2f8c5ebf3f1c0750fbc6ac6917b8"
+          },
+          {
+            "comment": "Convert foundation components that have state to hooks.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "5f4051fd8cad5ebd5f5b88c418093b879efbec9a"
+          },
+          {
+            "comment": "Support slots API changes.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "37a52465422d2622d52b7339ac2f9b2f234300da"
+          },
+          {
+            "comment": "Changes to support slots API refactoring.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "14b1d77fc97fffb1c333a3601d62c3e30c4cf3b0"
+          },
+          {
+            "comment": "SplitButton: Improving screenreader narration for secondary action and fixing styling in fabric 7 branch.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "f81572376bc29b57a53a34f359b799e1be519844"
+          },
+          {
+            "comment": "SplitButton: Adding ability to use Alt+Down key combination from first focus stop and cleaning up API.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "3e3bc89d8de0580dce51dc285c54010635ba1710"
+          },
+          {
+            "comment": "Button: Adding toggle/checked functionality to Button.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "65d3dece099cf1ae247de1d761992f8265e23294"
+          },
+          {
+            "comment": "Add FloatingSuggestions (FloatingPeoplePicker without inheritence)",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "47173727698850e1a13820d3ad14a0ac40203f20"
+          },
+          {
+            "comment": "SelectedItemsList: Add reworked Selected Items (no inheritence + hooks)",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "69ea4ba3a0a3f50ad54e3b187be4dbc7014d7353"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button: Fixing SplitButton so that `root` and `button` slot props do not propagate to inner slots.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "b1c6ed2faf2b1b4fc0e4d436c2ce833023fb5879"
+          },
+          {
+            "comment": "Button: Conditionally rendering KeytipData.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "5da0db91c88aca852eb416ed8930a0508f08cb1a"
+          },
+          {
+            "comment": "Button: Fixing some className assignments in styling.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "bb3eb04b10512a12c160c0784bae4fcc9f1ed455"
+          },
+          {
+            "comment": "Render demo app with Markdown instead of PageMarkdown",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d7047fc795ab94f49a9e14649b2f5fc4ae082f43"
+          },
+          {
+            "comment": "Revert unintended change to Button example.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "f97b56f0a62e4c99e4ed26b8df588e5fc8d5e9bb"
+          },
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          },
+          {
+            "comment": "Support changes to createComponent API.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "20b09cc417500b205e6007538cb6f04ffee208eb"
+          },
+          {
+            "comment": "Remove use of deprecated @autobind decorator",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "d7dd09998172855cfd005aa2ec901a575b838619"
+          },
+          {
+            "comment": "SplitButton: Fixing some styling bugs related to the divider.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "1b8b476e1fbbae857d6f6f99bf0ceca0314896cd"
+          },
+          {
+            "comment": "Button: Adding documentation to tokens.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "2c553b0947be860aa28cb877ae3816cfea461c7a"
+          }
+        ],
+        "major": [
+          {
+            "comment": "Experiments package: remove Shimmer component",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "bf302f58aee3db20249f23e94a9e4418a5a01a55"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^6.0.1` to `^6.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.30.2` to `^0.30.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.5.1` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.10` to `^0.16.11`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.7` to `^0.8.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.1` to `^6.19.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.1` to `^6.49.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^0.1.6` to `^0.1.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.0` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.14.2` to `^6.14.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.1` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.9` to `^6.0.10`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.7",
+      "tag": "@uifabric/experiments_v6.78.7",
+      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots to conform with `getNativeAttributes` changes which should filter out unexpected attributes from primatives more accurately.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5a10a485dfa2f9d69b29c69e1ec1593c3a573ab8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.30.1` to `^0.30.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.5.0` to `^6.5.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.6` to `^0.7.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.0` to `^6.18.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.0` to `^6.48.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.40.1` to `^6.41.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.3` to `^6.189.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.6",
+      "tag": "@uifabric/experiments_v6.78.6",
+      "date": "Mon, 10 Jun 2019 12:23:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Snapshot updates to components for adding aria-hidden to icon component conditionally",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "8e4f91a21866140b041266f6840af828b491600c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.2` to `^6.189.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.5",
+      "tag": "@uifabric/experiments_v6.78.5",
+      "date": "Tue, 04 Jun 2019 12:22:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added a signal to wrap an icon for republising reminder",
+            "author": "fishibru <51141774+fishibru@users.noreply.github.com>",
+            "commit": "bd59e4c38d4641f0277528f39b12f2f7601993ba"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.188.1` to `^6.188.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.4",
+      "tag": "@uifabric/experiments_v6.78.4",
+      "date": "Mon, 03 Jun 2019 23:04:02 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.29.2` to `^0.30.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.188.0` to `^6.188.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.3",
+      "tag": "@uifabric/experiments_v6.78.3",
+      "date": "Fri, 31 May 2019 12:21:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue where SideBar ignored colors props",
+            "author": "Rony Liderman <ronyl@microsoft.com>",
+            "commit": "3033364ff4d9ce7f6637a820eb40ed47b02e62d1"
+          },
+          {
+            "comment": "and updated snapshots.",
+            "author": "Mary <38991459+marygans@users.noreply.github.com>",
+            "commit": "9a08f2de52341e1d3c9a8df99b2a80d6276e26ec"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.187.1` to `^6.187.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.2",
+      "tag": "@uifabric/experiments_v6.78.2",
+      "date": "Wed, 29 May 2019 12:21:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Revert styled perf fixes temporarily.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "9d0c9173ec62ebbaa43879af9d1cc97d66b2b8c9"
+          },
+          {
+            "comment": "PersonaCoin: use renamed persona color function",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "88d9b8194c02dcbb04c6d836dd303510034e5adf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.39.2` to `^6.39.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.186.1` to `^6.187.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.0` to `^6.23.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.1",
+      "tag": "@uifabric/experiments_v6.78.1",
+      "date": "Thu, 23 May 2019 22:14:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Examples: Remove relative imports.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "1b705beb1cad712f93da2954511b7d6a1d583797"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.185.0` to `^6.186.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.0",
+      "tag": "@uifabric/experiments_v6.78.0",
+      "date": "Wed, 22 May 2019 12:21:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update azure-themes version",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "13890726ff0b82f5145193e1566b3298e1f02f99"
+          },
+          {
+            "comment": "Button example updated.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "cc3ff2379bd7df5fa55800f97ec83d2242d9a11e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Added a variant to MicroFeedback and converted to use Slots",
+            "author": "memichail <48455735+memichail@users.noreply.github.com>",
+            "commit": "291125117ca335c05e4629b0f945b699855969c7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^6.0.0` to `^6.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.38.3` to `^6.39.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.184.0` to `^6.185.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.22.0` to `^6.23.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.77.0",
+      "tag": "@uifabric/experiments_v6.77.0",
+      "date": "Tue, 21 May 2019 12:20:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use shared demo app bootstrapping code",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "3d93653335bbd66e7faec628e64b4c380dbfe82d"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "<Fabric> element does not affect global button styling.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "2bbb305599bb49cc5cae7c20fc1201ec64b56542"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.29.0` to `^0.29.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.9` to `^0.16.10`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.3` to `^6.17.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.183.0` to `^6.184.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.21.1` to `^6.22.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.76.4",
+      "tag": "@uifabric/experiments_v6.76.4",
+      "date": "Fri, 17 May 2019 12:22:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chiclet: update examples and use opengraph API",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "9af0e13acba5f14a9d8c566d435db06159e40629"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.76.3",
+      "tag": "@uifabric/experiments_v6.76.3",
+      "date": "Thu, 16 May 2019 17:34:08 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.14` to `^0.29.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.76.2",
+      "tag": "@uifabric/experiments_v6.76.2",
+      "date": "Tue, 14 May 2019 07:50:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Fabric assets link",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "4cbda272f3ba109cdff14d9ff1b603564b73ea2a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^0.1.8` to `^0.1.9`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.13` to `^0.28.14`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.4.8` to `^6.4.9`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.8` to `^0.16.9`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.5` to `^0.7.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^6.5.1` to `^6.5.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.2` to `^6.17.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.5` to `^6.47.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^0.1.5` to `^0.1.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.38.2` to `^6.38.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.14.1` to `^6.14.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.181.0` to `^6.181.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.20.0` to `^6.20.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.8` to `^6.0.9`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^1.0.1` to `^1.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^1.0.1` to `^1.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.76.1",
+      "tag": "@uifabric/experiments_v6.76.1",
+      "date": "Fri, 10 May 2019 12:36:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update snapshot",
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "db5e7d73e8718f76e5670679f16d8c037f3ef515"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.3` to `^6.47.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.179.0` to `^6.180.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.76.0",
+      "tag": "@uifabric/experiments_v6.76.0",
+      "date": "Tue, 07 May 2019 12:34:52 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add isFluentStyling prop and styles to Tile component",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "309cc7262eafb58489d275c0b9e2dc270a25bd4b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.176.3` to `^6.177.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.17.4` to `^6.18.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.75.0",
+      "tag": "@uifabric/experiments_v6.75.0",
+      "date": "Tue, 30 Apr 2019 12:31:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": " Use new getFocusStyle signature",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "376e3c909728320b23dfdf60dd581f712064763a"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding a new Microfeedback component",
+            "author": "memichail <48455735+memichail@users.noreply.github.com>",
+            "commit": "a1947a24c401056a470abcaef37694ae1c8419ef"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^0.1.7` to `^0.1.8`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.6` to `^0.16.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.46.1` to `^6.47.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.37.0` to `^6.37.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.173.0` to `^6.174.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.14.4` to `^6.15.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.74.2",
+      "tag": "@uifabric/experiments_v6.74.2",
+      "date": "Fri, 19 Apr 2019 12:33:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TilesList: replaces the imports of Shimmer from experiments package with the one from OUFR.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "b2b4e0fb0531eed850f00ce0b4abea2b234d6f32"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.5` to `^6.35.6`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.1` to `^6.167.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.74.1",
+      "tag": "@uifabric/experiments_v6.74.1",
+      "date": "Thu, 18 Apr 2019 12:31:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Removing 'undefined' from 'cursor' token definition.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "ed34421750c629b101d0af3359dbd94901abf29b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.4.5` to `^6.4.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.14.1` to `^6.14.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.74.0",
+      "tag": "@uifabric/experiments_v6.74.0",
+      "date": "Wed, 17 Apr 2019 12:33:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Add focus() call in IButton interface.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "1aad16a747e5336325705595771a6ed412370c2e"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button: Renaming test files because they were testing the component and not only the view and changing menu in examples and tests from render functions to menuProps.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "cbbfff4910b5918b93b11ed6e3472c8287751607"
+          },
+          {
+            "comment": "Button: Adding overview, dos and don'ts documentation",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "b1057174b0291b4c1ee26a6abd6a081315c45893"
+          },
+          {
+            "comment": "Run prettier on all files",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.0` to `^6.167.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.14.0` to `^6.14.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.73.0",
+      "tag": "@uifabric/experiments_v6.73.0",
+      "date": "Tue, 16 Apr 2019 12:32:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Sidebar: update example card styling approach",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "acefdefb12eec6c495d5ffe25625b7da9d17cf78"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Button: Creating CommandBarButton, IconButton and MessageBarButton variants.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "c0d4864da09c312bd137a50f7b0ae06464952529"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.12` to `^0.28.13`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.166.1` to `^6.167.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.13.2` to `^6.14.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.72.0",
+      "tag": "@uifabric/experiments_v6.72.0",
+      "date": "Fri, 12 Apr 2019 12:34:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Styling fixes to issues found while working on Multiline Ribbon buttons.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "f0b1b882a7cd1f25957b8550d5c557e0a2e94f1f"
+          }
+        ],
+        "minor": [
+          {
+            "comment": " Button: Creating CompoundButton and BaseButton variants.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "7ab1d90394574f6723920c229641a30f49b0d1bb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.165.1` to `^6.166.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.71.0",
+      "tag": "@uifabric/experiments_v6.71.0",
+      "date": "Wed, 10 Apr 2019 12:33:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Creating ActionButton variant and cleaning styling.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "98347544dc0eabb461beea23bc50a1fec10be873"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.4.4` to `^6.4.5`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.8` to `^6.165.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.70.0",
+      "tag": "@uifabric/experiments_v6.70.0",
+      "date": "Tue, 09 Apr 2019 12:35:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding DefaultButton and PrimaryButton variants.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "63cf8144e33150d05c45fdce3e57f34c7bfb78f9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.7` to `^6.164.8`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.69.0",
+      "tag": "@uifabric/experiments_v6.69.0",
+      "date": "Mon, 08 Apr 2019 12:37:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Supporting high contrast in Button, MenuButton and SplitButton.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "1f3afa6704bc39758d4055a74b23f6d2150b3bf3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.3` to `^6.35.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.6` to `^6.164.7`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.68.0",
+      "tag": "@uifabric/experiments_v6.68.0",
+      "date": "Fri, 05 Apr 2019 22:09:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding ariaLabel prop and updating examples to fix accessibility issues.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "0fe9a28b970f4d9b5a7a575e9b679ff92b9d8004"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.5` to `^6.164.6`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.67.1",
+      "tag": "@uifabric/experiments_v6.67.1",
+      "date": "Fri, 05 Apr 2019 12:36:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use styles instead of className on theming example dialog",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "40feb7581c56d191c3ad6ee7c958e9b7efe4267a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.4` to `^6.164.5`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.67.0",
+      "tag": "@uifabric/experiments_v6.67.0",
+      "date": "Wed, 03 Apr 2019 12:38:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Improvements on Button docs.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "1638c988fadd418537debd78d4244144d3b63527"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button: Fixing SplitButton styling issues and correctly placing divider.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "bfe9b414a7620ea54351f98c805aef36bf3567d7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.2` to `^6.164.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.66.1",
+      "tag": "@uifabric/experiments_v6.66.1",
+      "date": "Tue, 02 Apr 2019 00:38:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          },
+          {
+            "comment": "add proxy component for experiments/Separator",
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "84eb35052997bfaa4055605d0ecf55ec83e28820"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^0.1.5` to `^0.1.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.11` to `^0.28.12`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.4.3` to `^6.4.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.3` to `^0.16.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.3` to `^0.7.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^6.5.0` to `^6.5.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.16.3` to `^6.16.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.45.1` to `^6.45.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^0.1.4` to `^0.1.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.2` to `^6.35.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.14.0` to `^6.14.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.0` to `^6.164.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.13.0` to `^6.13.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.7` to `^6.0.8`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.66.0",
+      "tag": "@uifabric/experiments_v6.66.0",
+      "date": "Mon, 01 Apr 2019 12:37:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Separator: remove from experiments and promote to OUFR",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "8db1d9bfc880dfbe533fb469dda8aa87f468a503"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Updating examples using Stack to use childrenGap token instead of gap prop.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "df359770c046490ac1d7cb17a783cbb7e0cbcdcf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.7.2 <1.0.0` to `>=0.7.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.16.2 <7.0.0` to `>=6.16.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.163.0 <7.0.0` to `>=6.164.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.65.0",
+      "tag": "@uifabric/experiments_v6.65.0",
+      "date": "Wed, 27 Mar 2019 12:34:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add support for maxRowCount in TilesList",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "e35d63ea000a0cb11efa4b1e13ef876e002f17f5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.10` to `^0.28.11`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.16.2 <1.0.0` to `>=0.16.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.16.1 <7.0.0` to `>=6.16.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.45.0 <7.0.0` to `>=6.45.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.35.1 <7.0.0` to `>=6.35.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.161.0 <7.0.0` to `>=6.162.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.12.3 <7.0.0` to `>=6.12.4 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.64.2",
+      "tag": "@uifabric/experiments_v6.64.2",
+      "date": "Thu, 21 Mar 2019 12:36:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Toggle: Fix invalid references to this object.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "eb67bcfd042546ace4ef386cb1ba5c56245b53d0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.8` to `^0.28.9`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.157.3 <7.0.0` to `>=6.158.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.64.1",
+      "tag": "@uifabric/experiments_v6.64.1",
+      "date": "Tue, 19 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix a bug in the tooltip of last page button in pagination component, experiment package",
+            "author": "caradong <caradong1122@gmail.com>",
+            "commit": "fbc1b3cb28a8cc1259e568327a1d9b3d57fc35a9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.16.1 <1.0.0` to `>=0.16.2 <1.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.64.0",
+      "tag": "@uifabric/experiments_v6.64.0",
+      "date": "Fri, 15 Mar 2019 12:34:06 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Separating MenuButton and SplitButton as variants to decouple ContextualMenu from Button.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "4ba0a8146f789021ac1b3166ef446e56d742ee88"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `>=0.16.0 <1.0.0` to `>=0.16.1 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.7.1 <1.0.0` to `>=0.7.2 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `>=6.4.0 <7.0.0` to `>=6.5.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.35.0 <7.0.0` to `>=6.35.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.156.0 <7.0.0` to `>=6.157.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.63.1",
+      "tag": "@uifabric/experiments_v6.63.1",
+      "date": "Wed, 13 Mar 2019 00:42:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update snapshots to reflect default change in Text",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "e4ab66c8976e0f6808ad90295b526b1a20ba1142"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.155.0 <7.0.0` to `>=6.156.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.12.1 <7.0.0` to `>=6.12.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.63.0",
+      "tag": "@uifabric/experiments_v6.63.0",
+      "date": "Thu, 07 Mar 2019 13:32:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "folder cover ux cleaned up",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "15fc20513cb4b2bbe722718f7f9bc4a693861b9d"
+          },
+          {
+            "comment": "Signals: changes icon color of `follow` signal.",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "ec354ff191a91f187bdc01bbe8eb553fc8b8ace1"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Removing Card component from experiments package.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "89c91d93100f85435ecc442e330222af91b01435"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.152.0 <7.0.0` to `>=6.152.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.62.2",
       "tag": "@uifabric/experiments_v6.62.2",
       "date": "Wed, 06 Mar 2019 13:27:18 GMT",

@@ -1,17 +1,39 @@
-import { IComponentStyles, IHTMLSlot, IComponent, IStyleableComponentProps } from '../../../Foundation';
+import { IComponentStyles, IHTMLSlot, IComponent, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 
+/**
+ * {@docCategory Stack}
+ */
 export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, IStackItemStyles>;
 
+/**
+ * {@docCategory Stack}
+ */
+export type IStackItemSlot = ISlotProp<IStackItemProps>;
+
+/**
+ * {@docCategory Stack}
+ */
 export interface IStackItemSlots {
   root?: IHTMLSlot;
 }
 
-// These types are redundant with IStackItemComponent but are needed until TS function return widening issue is resolved:
+// The following two types are redundant with IStackItemComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+
+/**
+ * {@docCategory Stack}
+ */
 export type IStackItemTokenReturnType = ReturnType<Extract<IStackItemComponent['tokens'], Function>>;
+
+/**
+ * {@docCategory Stack}
+ */
 export type IStackItemStylesReturnType = ReturnType<Extract<IStackItemComponent['styles'], Function>>;
 
+/**
+ * {@docCategory Stack}
+ */
 export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
   /**
    * Defines a CSS class name used to style the StackItem.
@@ -45,8 +67,30 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
    * @defaultvalue true
    */
   verticalFill?: boolean;
+
+  /**
+   * Defines order of the StackItem.
+   * @defaultvalue 0
+   */
+  order?: number | string;
 }
 
-export interface IStackItemTokens {}
+/**
+ * {@docCategory Stack}
+ */
+export interface IStackItemTokens {
+  /**
+   * Defines the margin to be applied to the StackItem relative to its container.
+   */
+  margin?: number | string;
 
+  /**
+   * Defines the padding to be applied to the StackItem contents relative to its border.
+   */
+  padding?: number | string;
+}
+
+/**
+ * {@docCategory Stack}
+ */
 export type IStackItemStyles = IComponentStyles<IStackItemSlots>;

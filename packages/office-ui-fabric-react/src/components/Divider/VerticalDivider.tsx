@@ -1,15 +1,13 @@
 import * as React from 'react';
-import { getDividerClassNames } from './VerticalDivider.classNames';
-import { IVerticalDividerProps } from './VerticalDivider.types';
-import { getTheme } from '../../Styling';
+import { IVerticalDividerProps, IVerticalDividerStyles, IVerticalDividerPropsStyles } from './VerticalDivider.types';
+import { getStyles } from './VerticalDivider.styles';
+import { VerticalDividerBase } from './VerticalDivider.base';
+import { styled } from '../../Utilities';
 
-export const VerticalDivider = (props: IVerticalDividerProps) => {
-  const theme = getTheme();
-  const classNames = props.getClassNames ? props.getClassNames(theme) : getDividerClassNames(theme);
-
-  return (
-    <span className={classNames.wrapper}>
-      <span className={classNames.divider} />
-    </span>
-  );
-};
+export const VerticalDivider: React.StatelessComponent<IVerticalDividerProps> = styled<
+  IVerticalDividerProps,
+  IVerticalDividerPropsStyles,
+  IVerticalDividerStyles
+>(VerticalDividerBase, getStyles, undefined, {
+  scope: 'VerticalDivider'
+});

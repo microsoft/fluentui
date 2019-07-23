@@ -5,23 +5,23 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
-import { IBreadcrumbProps, IBreadcrumbItem, IDividerAsProps } from './Breadcrumb.types';
+import { IBreadcrumbProps, IBreadcrumbItem, IDividerAsProps, IBreadcrumbData } from './Breadcrumb.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
 
-const getClassNames = classNamesFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>();
+/** @deprecated Use IBreadcrumbData */
+export type IBreadCrumbData = IBreadcrumbData;
 
-export interface IBreadCrumbData {
-  props: IBreadcrumbProps;
-  renderedItems: IBreadcrumbItem[];
-  renderedOverflowItems: IBreadcrumbItem[];
-}
+const getClassNames = classNamesFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>();
 
 const OVERFLOW_KEY = 'overflow';
 const nullFunction = (): null => null;
 
+/**
+ * {@docCategory Breadcrumb}
+ */
 export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   public static defaultProps: IBreadcrumbProps = {
     items: [],
@@ -48,10 +48,12 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   }
 
   public render(): JSX.Element {
+    this._validateProps(this.props);
+
     const { onReduceData = this._onReduceData, overflowIndex, maxDisplayedItems, items, className, theme, styles } = this.props;
     const renderedItems = [...items];
     const renderedOverflowItems = renderedItems.splice(overflowIndex!, renderedItems.length - maxDisplayedItems!);
-    const breadCrumbData: IBreadCrumbData = {
+    const breadcrumbData: IBreadcrumbData = {
       props: this.props,
       renderedItems,
       renderedOverflowItems
@@ -62,14 +64,10 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       theme: theme!
     });
 
-    return <ResizeGroup onRenderData={this._onRenderBreadcrumb} onReduceData={onReduceData} data={breadCrumbData} />;
+    return <ResizeGroup onRenderData={this._onRenderBreadcrumb} onReduceData={onReduceData} data={breadcrumbData} />;
   }
 
-  public componentWillReceiveProps(nextProps: IBreadcrumbProps): void {
-    this._validateProps(nextProps);
-  }
-
-  private _onReduceData = (data: IBreadCrumbData): IBreadCrumbData | undefined => {
+  private _onReduceData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
     let { renderedItems, renderedOverflowItems } = data;
     const { overflowIndex } = data.props;
 
@@ -84,7 +82,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     }
   };
 
-  private _onRenderBreadcrumb = (data: IBreadCrumbData) => {
+  private _onRenderBreadcrumb = (data: IBreadcrumbData) => {
     const {
       ariaLabel,
       dividerAs: DividerType = Icon as React.ReactType<IDividerAsProps>,
@@ -143,11 +141,11 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       );
     }
 
-    const nativeProps = getNativeProps(this.props, htmlElementProperties, ['className']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, htmlElementProperties, ['className']);
 
     return (
       <div className={this._classNames.root} role="navigation" aria-label={ariaLabel} {...nativeProps}>
-        <FocusZone componentRef={this._focusZone} direction={FocusZoneDirection.horizontal}>
+        <FocusZone componentRef={this._focusZone} direction={FocusZoneDirection.horizontal} {...this.props.focusZoneProps}>
           <ol className={this._classNames.list}>{itemElements}</ol>
         </FocusZone>
       </div>
@@ -163,7 +161,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
           aria-current={item.isCurrentItem ? 'page' : undefined}
           onClick={this._onBreadcrumbClicked.bind(this, item)}
         >
-          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent}>
+          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
             {item.text}
           </TooltipHost>
         </Link>
@@ -171,7 +169,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     } else {
       return (
         <span className={this._classNames.item}>
-          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent}>
+          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
             {item.text}
           </TooltipHost>
         </span>
@@ -187,7 +185,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
 
   /**
    * Validate incoming props
-   * @param props Props to validate
+   * @param props - Props to validate
    */
   private _validateProps(props: IBreadcrumbProps): void {
     const { maxDisplayedItems, overflowIndex, items } = props;

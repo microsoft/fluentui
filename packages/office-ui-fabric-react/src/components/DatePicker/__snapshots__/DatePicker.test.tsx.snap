@@ -66,7 +66,8 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
               {
                 align-items: stretch;
                 background: #ffffff;
-                border: 1px solid #a6a6a6;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: text;
@@ -84,7 +85,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                 position: relative;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -103,7 +104,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -114,7 +115,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   min-width: 0px;
                   outline: 0px;
                   padding-bottom: 0;
-                  padding-left: 12px;
+                  padding-left: 8px;
                   padding-right: 24px;
                   padding-top: 0;
                   text-overflow: ellipsis;
@@ -129,7 +130,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                 &::placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #666666;
+                  color: #605e5c;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -138,7 +139,16 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                 &:-ms-input-placeholder {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #666666;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -157,13 +167,14 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
             value=""
           />
           <i
+            aria-hidden={true}
             className=
                 ms-DatePicker-event--without-label
                 msDatePickerDisabled
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #666666;
+                  color: #605e5c;
                   cursor: pointer;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";

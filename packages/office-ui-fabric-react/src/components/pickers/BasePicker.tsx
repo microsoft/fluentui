@@ -11,7 +11,6 @@ import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState, IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
 import { IAutofill, Autofill } from '../Autofill/index';
 import { IPickerItemProps } from './PickerItem.types';
-import { IPersonaProps } from '../Persona/Persona.types';
 import * as stylesImport from './BasePicker.scss';
 const legacyStyles: any = stylesImport;
 
@@ -30,6 +29,7 @@ export interface IBasePickerState {
 
 /**
  * Aria id's for internal picker components
+ * {@docCategory Pickers}
  */
 export type IPickerAriaIds = {
   /**
@@ -48,6 +48,18 @@ export type IPickerAriaIds = {
 
 const getClassNames = classNamesFunction<IBasePickerStyleProps, IBasePickerStyles>();
 
+/**
+ * Should be removed once new picker without inheritance is created
+ */
+function getStyledSuggestions<T>(suggestionsType: new (props: ISuggestionsProps<T>) => Suggestions<T>) {
+  return styled<ISuggestionsProps<any>, ISuggestionsStyleProps, ISuggestionsStyles>(suggestionsType, suggestionsStyles, undefined, {
+    scope: 'Suggestions'
+  });
+}
+
+/**
+ * {@docCategory Pickers}
+ */
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
   // Refs
   protected root = React.createRef<HTMLDivElement>();
@@ -57,10 +69,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected selection: Selection;
   protected suggestionStore: SuggestionsController<T>;
+  /**
+   * @deprecated this is no longer necessary as typescript now supports generic elements
+   */
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
+  private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
   private _id: string;
+  private _requestSuggestionsOnClick = false;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -169,6 +186,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     } else {
       selectItemFunction();
     }
+
+    this._requestSuggestionsOnClick = false;
     this.setState({ suggestionsVisible: false });
   };
 
@@ -192,7 +211,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   };
 
   public render(): JSX.Element {
-    const { suggestedDisplayValue, isFocused } = this.state;
+    const { suggestedDisplayValue, isFocused, items } = this.state;
     const { className, inputProps, disabled, theme, styles } = this.props;
 
     const selectedSuggestionAlertId = this.props.enableSelectedSuggestionAlert ? this._ariaMap.selectedSuggestionAlert : '';
@@ -233,15 +252,18 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           {this.getSuggestionsAlert(classNames.screenReaderText)}
           <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
             <div className={classNames.text}>
-              <span id={this._ariaMap.selectedItems} className={classNames.itemsWrapper} role={'list'}>
-                {this.renderItems()}
-              </span>
+              {items.length > 0 && (
+                <span id={this._ariaMap.selectedItems} className={classNames.itemsWrapper} role={'list'}>
+                  {this.renderItems()}
+                </span>
+              )}
               {this.canAddItems() && (
                 <Autofill
                   spellCheck={false}
                   {...inputProps as any}
                   className={classNames.input}
                   componentRef={this.input}
+                  onClick={this.onClick}
                   onFocus={this.onInputFocus}
                   onBlur={this.onInputBlur}
                   onInputValueChange={this.onInputChange}
@@ -249,7 +271,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                   aria-activedescendant={this.getActiveDescendant()}
                   aria-expanded={!!this.state.suggestionsVisible}
                   aria-haspopup="true"
-                  aria-describedby={this._ariaMap.selectedItems}
+                  aria-describedby={items.length > 0 ? this._ariaMap.selectedItems : undefined}
                   autoCapitalize="off"
                   autoComplete="off"
                   role={'combobox'}
@@ -275,17 +297,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderSuggestions(): JSX.Element | null {
-    const TypedSuggestions = this.SuggestionOfProperType;
-
-    // TODO:
-    // Move this styled component in a separate file and make it available to the public API.
-    // This should be done after rewriting pickers to use a composition pattern instead of inheritance.
-    const StyledTypedSuggestions = styled<ISuggestionsProps<T>, ISuggestionsStyleProps, ISuggestionsStyles>(
-      TypedSuggestions,
-      suggestionsStyles,
-      undefined,
-      { scope: 'Suggestions' }
-    );
+    const StyledTypedSuggestions: React.StatelessComponent<ISuggestionsProps<T>> = this._styledSuggestions;
 
     return this.state.suggestionsVisible && this.input ? (
       <Callout
@@ -298,7 +310,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         {...this.props.pickerCalloutProps}
       >
         <StyledTypedSuggestions
-          onRenderSuggestion={this.props.onRenderSuggestionsItem}
+          // Assumed to set in derived component's defaultProps
+          onRenderSuggestion={this.props.onRenderSuggestionsItem!}
           onSuggestionClick={this.onSuggestionClick}
           onSuggestionRemove={this.onSuggestionRemove}
           suggestions={this.suggestionStore.getSuggestions()}
@@ -376,8 +389,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected onEmptyInputFocus() {
-    const onEmptyInputFocus = this.props.onEmptyInputFocus as (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
-    const suggestions: T[] | PromiseLike<T[]> = onEmptyInputFocus(this.state.items);
+    const emptyResolveSuggestions = this.props.onEmptyResolveSuggestions
+      ? this.props.onEmptyResolveSuggestions
+      : this.props.onEmptyInputFocus;
+
+    const suggestions = emptyResolveSuggestions!(this.state.items);
     this.updateSuggestionsList(suggestions);
   }
 
@@ -403,13 +419,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       if (updatedValue !== undefined) {
         this.setState({
-          suggestionsVisible: this.input.current
-            ? this.input.current.value !== '' && this.input.current.inputElement === document.activeElement
-            : false
+          suggestionsVisible: this._getShowSuggestions()
         });
       } else {
         this.setState({
-          suggestionsVisible: this.input.current ? this.input.current.inputElement === document.activeElement : false
+          suggestionsVisible: this.input.current! && this.input.current!.inputElement === document.activeElement
         });
       }
 
@@ -437,9 +451,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.setState(
       {
         suggestedDisplayValue: itemValue,
-        suggestionsVisible: this.input.current
-          ? this.input.current.value !== '' && this.input.current.inputElement === document.activeElement
-          : false
+        suggestionsVisible: this._getShowSuggestions()
       },
       () => this.setState({ suggestionsLoading: false })
     );
@@ -461,12 +473,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected onSuggestionClick = (ev: React.MouseEvent<HTMLElement>, item: any, index: number): void => {
     this.addItemByIndex(index);
+    this._requestSuggestionsOnClick = false;
     this.setState({ suggestionsVisible: false });
   };
 
-  protected onSuggestionRemove = (ev: React.MouseEvent<HTMLElement>, item: IPersonaProps, index: number): void => {
+  protected onSuggestionRemove = (ev: React.MouseEvent<HTMLElement>, item: T, index: number): void => {
     if (this.props.onRemoveSuggestion) {
-      (this.props.onRemoveSuggestion as any)(item);
+      this.props.onRemoveSuggestion(item);
     }
     this.suggestionStore.removeSuggestion(index);
   };
@@ -478,14 +491,20 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (!this.state.isFocused) {
       this.setState({ isFocused: true });
       this.selection.setAllSelected(false);
-      if (this.input.current && this.input.current.value === '' && this.props.onEmptyInputFocus) {
+
+      if (
+        this.input.current &&
+        this.input.current.value === '' &&
+        (this.props.onEmptyResolveSuggestions || this.props.onEmptyInputFocus) &&
+        !this._requestSuggestionsOnClick
+      ) {
         this.onEmptyInputFocus();
         this.setState({
           isMostRecentlyUsedVisible: true,
           moreSuggestionsAvailable: false,
           suggestionsVisible: true
         });
-      } else if (this.input.current && this.input.current.value) {
+      } else if (this.input.current && this.input.current.value && !this._requestSuggestionsOnClick) {
         this.setState({
           isMostRecentlyUsedVisible: false,
           suggestionsVisible: true
@@ -528,11 +547,40 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     }
   };
 
+  /**
+   * Reveals suggestions any time the user clicks on the input element
+   * without shifting focus.
+   */
+  protected onClick = (ev: React.MouseEvent<HTMLInputElement>): void => {
+    const input = this.input.current ? this.input.current.value : '';
+
+    if (this.props.inputProps !== undefined && this.props.inputProps.onClick !== undefined) {
+      this.props.inputProps.onClick(ev);
+    }
+
+    // Only primary (left) clicks show suggestions.
+    if (ev.button === 0 && !this.state.suggestionsVisible) {
+      const emptyResolveSuggestions = this.props.onEmptyResolveSuggestions
+        ? this.props.onEmptyResolveSuggestions
+        : this.props.onEmptyInputFocus;
+
+      if (input === '' && emptyResolveSuggestions) {
+        this.setState({ suggestionsVisible: true });
+        const suggestions = emptyResolveSuggestions!(this.state.items);
+        this.updateSuggestionsList(suggestions);
+      } else {
+        this._requestSuggestionsOnClick = true;
+        this._onResolveSuggestions(input);
+      }
+    }
+  };
+
   protected onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
     const keyCode = ev.which;
     switch (keyCode) {
       case KeyCodes.escape:
         if (this.state.suggestionsVisible) {
+          this._requestSuggestionsOnClick = false;
           this.setState({ suggestionsVisible: false });
           ev.preventDefault();
           ev.stopPropagation();
@@ -569,7 +617,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
             this.suggestionStore.currentIndex !== -1
           ) {
             if (this.props.onRemoveSuggestion) {
-              (this.props.onRemoveSuggestion as any)(this.suggestionStore.currentSuggestion!.item);
+              this.props.onRemoveSuggestion(this.suggestionStore.currentSuggestion!.item);
             }
             this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
             this.forceUpdate();
@@ -788,6 +836,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       );
     }
   }
+
   /**
    * Takes in the current updated value and either resolves it with the new suggestions
    * or if updated value is undefined then it clears out currently suggested items
@@ -823,6 +872,21 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   private _onSelectedItemsUpdated(items?: T[], focusIndex?: number): void {
     this.resetFocus(focusIndex);
     this.onChange(items);
+  }
+
+  /**
+   * Suggestions are normally shown after the user updates text and the text
+   * is non-empty, but also when the user clicks on the input element.
+   * @returns True if suggestions should be shown.
+   */
+  private _getShowSuggestions(): boolean {
+    const areSuggestionsVisible =
+      this.input.current !== undefined &&
+      this.input.current !== null &&
+      this.input.current.inputElement === document.activeElement &&
+      (this.input.current.value !== '' || this._requestSuggestionsOnClick);
+
+    return areSuggestionsVisible;
   }
 
   private _onResolveSuggestions(updatedValue: string): void {
@@ -899,6 +963,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
               componentRef={this.input}
               onFocus={this.onInputFocus}
               onBlur={this.onInputBlur}
+              onClick={this.onClick}
               onInputValueChange={this.onInputChange}
               suggestedDisplayValue={suggestedDisplayValue}
               aria-activedescendant={this.getActiveDescendant()}

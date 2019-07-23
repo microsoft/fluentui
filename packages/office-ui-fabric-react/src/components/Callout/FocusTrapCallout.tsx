@@ -11,7 +11,9 @@ import { FocusTrapZone } from '../../FocusTrapZone';
 export const FocusTrapCallout: React.StatelessComponent<IFocusTrapCalloutProps> = (props: IFocusTrapCalloutProps): JSX.Element => {
   return (
     <Callout {...props}>
-      <FocusTrapZone {...props.focusTrapProps}>{props.children}</FocusTrapZone>
+      <FocusTrapZone disabled={props.hidden} {...props.focusTrapProps}>
+        {props.children}
+      </FocusTrapZone>
     </Callout>
   );
 };

@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { ChicletBase } from './Chiclet.base';
 import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 
 export interface IChiclet {}
 
-export interface IChicletProps extends React.Props<ChicletBase> {
+export interface IChicletProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IChiclet interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -23,9 +22,14 @@ export interface IChicletProps extends React.Props<ChicletBase> {
   className?: string;
 
   /**
-   * Sharing link
+   * Sharing link.
    */
   url: string;
+
+  /**
+   * File title to render for the component.
+   */
+  title?: string;
 
   /**
    * Chiclet size to render
@@ -36,6 +40,26 @@ export interface IChicletProps extends React.Props<ChicletBase> {
    * Description to render for the component.
    */
   description?: React.ReactElement<JSX.Element>;
+
+  /**
+   * Image to render for the component.
+   */
+  image?: string;
+
+  /**
+   * Alternate image to render for the component.
+   */
+  imageAlt?: string;
+
+  /**
+   * Icon to render for the component.
+   */
+  itemType?: 'word' | 'docx' | 'powerpoint' | 'pptx' | 'excel' | 'xlsx';
+
+  /**
+   * Function to call when the card is clicked.
+   */
+  onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
 
   /**
    * Footer to render for the component.

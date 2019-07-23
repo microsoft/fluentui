@@ -1,11 +1,15 @@
+import * as React from 'react';
 import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
-import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
+import { ICalendarFormatDateCallbacks, ICalendarStrings } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IBaseProps, IStyleFunction, IComponentAs } from '../../Utilities';
-import { ICalloutProps } from '../../Callout';
+import { ICalloutProps } from '../Callout/Callout.types';
 import { ITextFieldProps } from '../TextField/TextField.types';
 
+/**
+ * {@docCategory DatePicker}
+ */
 export interface IDatePicker {
   /** Sets focus to the text field */
   focus(): void;
@@ -14,6 +18,9 @@ export interface IDatePicker {
   reset(): void;
 }
 
+/**
+ * {@docCategory DatePicker}
+ */
 export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
@@ -236,36 +243,10 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   tabIndex?: number;
 }
 
-export interface IDatePickerStrings {
-  /**
-   * An array of strings for the full names of months.
-   * The array is 0-based, so months[0] should be the full name of January.
-   */
-  months: string[];
-
-  /**
-   * An array of strings for the short names of months.
-   * The array is 0-based, so shortMonths[0] should be the short name of January.
-   */
-  shortMonths: string[];
-
-  /**
-   * An array of strings for the full names of days of the week.
-   * The array is 0-based, so days[0] should be the full name of Sunday.
-   */
-  days: string[];
-
-  /**
-   * An array of strings for the initials of the days of the week.
-   * The array is 0-based, so days[0] should be the initial of Sunday.
-   */
-  shortDays: string[];
-
-  /**
-   * String to render for button to direct the user to today's date.
-   */
-  goToToday: string;
-
+/**
+ * {@docCategory DatePicker}
+ */
+export interface IDatePickerStrings extends ICalendarStrings {
   /**
    * Error message to render for TextField if isRequired validation fails.
    */
@@ -280,32 +261,11 @@ export interface IDatePickerStrings {
    * Error message to render for TextField if date boundary (minDate, maxDate) validation fails.
    */
   isOutOfBoundsErrorMessage?: string;
-
-  /**
-   * Aria-label for the "previous month" button.
-   */
-  prevMonthAriaLabel?: string;
-
-  /**
-   * Aria-label for the "next month" button.
-   */
-  nextMonthAriaLabel?: string;
-
-  /**
-   * Aria-label for the "previous year" button.
-   */
-  prevYearAriaLabel?: string;
-
-  /**
-   * Aria-label for the "next year" button.
-   */
-  nextYearAriaLabel?: string;
-
-  /**
-   * Aria-label for the "close" button.
-   */
-  closeButtonAriaLabel?: string;
 }
+
+/**
+ * {@docCategory DatePicker}
+ */
 export interface IDatePickerStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -323,6 +283,9 @@ export interface IDatePickerStyleProps {
   isDatePickerShown?: boolean;
 }
 
+/**
+ * {@docCategory DatePicker}
+ */
 export interface IDatePickerStyles {
   /**
    * Style for the root element.

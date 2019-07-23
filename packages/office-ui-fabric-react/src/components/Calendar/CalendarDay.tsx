@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, IRefObject, findIndex } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, IRefObject, findIndex, find } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
@@ -167,7 +167,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 onClick={prevMonthInBounds ? this._onSelectPrevMonth : undefined}
                 onKeyDown={prevMonthInBounds ? this._onPrevMonthKeyDown : undefined}
                 aria-controls={dayPickerId}
-                aria-label={
+                title={
                   strings.prevMonthAriaLabel
                     ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()]
                     : undefined
@@ -186,7 +186,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 onClick={nextMonthInBounds ? this._onSelectNextMonth : undefined}
                 onKeyDown={nextMonthInBounds ? this._onNextMonthKeyDown : undefined}
                 aria-controls={dayPickerId}
-                aria-label={
+                title={
                   strings.nextMonthAriaLabel
                     ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()]
                     : undefined
@@ -201,7 +201,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   className={css('ms-DatePicker-closeButton js-closeButton', styles.closeButton)}
                   onClick={this._onClose}
                   onKeyDown={this._onCloseButtonKeyDown}
-                  aria-label={strings.closeButtonAriaLabel}
+                  title={strings.closeButtonAriaLabel}
                   role="button"
                   type="button"
                 >
@@ -322,6 +322,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                           onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
                           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
                           id={isNavigatedDate ? activeDescendantId : undefined}
+                          aria-readonly={true}
                           aria-selected={day.isInBounds ? day.isSelected : undefined}
                           data-is-focusable={allFocusable || (day.isInBounds ? true : undefined)}
                           ref={element => this._setDayRef(element, day, isNavigatedDate)}
@@ -815,7 +816,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     if (!restrictedDates) {
       return false;
     }
-    const restrictedDate = restrictedDates.find(rd => {
+    const restrictedDate = find(restrictedDates, rd => {
       return compareDates(rd, date);
     });
     return restrictedDate ? true : false;

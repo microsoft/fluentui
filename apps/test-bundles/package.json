@@ -1,6 +1,6 @@
 {
   "name": "test-bundles",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "Testing the button for bundling.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -15,29 +15,28 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/just.js build",
-    "just": "node ../../scripts/just.js",
-    "clean": "node ../../scripts/just.js clean",
-    "code-style": "node ../../scripts/just.js code-style",
-    "start": "node ../../scripts/just.js dev"
+    "build": "just-scripts build",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start": "just-scripts dev"
   },
-  "disabledTasks": [
-    "verify-api-extractor",
-    "jest"
-  ],
   "devDependencies": {
-    "@types/react": "16.3.16",
-    "@types/react-dom": "16.0.5",
-    "@types/webpack-env": "1.13.0",
-    "@uifabric/prettier-rules": ">=1.0.1 <2.0.0",
-    "@uifabric/tslint-rules": ">=1.0.1 <2.0.0"
+    "@types/react": "16.8.11",
+    "@types/react-dom": "16.8.4",
+    "@types/webpack-env": "1.13.9",
+    "@uifabric/prettier-rules": "^7.0.3",
+    "@uifabric/tslint-rules": "^7.0.3",
+    "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": ">=1.1.3 <2.0.0",
-    "@uifabric/styling": ">=6.44.1 <7.0.0",
-    "react": ">=16.3.2-0 <17.0.0",
-    "react-dom": ">=16.3.2-0 <17.0.0",
-    "office-ui-fabric-react": ">=6.152.0 <7.0.0",
+    "@uifabric/experiments": "^7.8.1",
+    "@uifabric/set-version": "^7.0.1",
+    "@uifabric/styling": "^7.3.0",
+    "office-ui-fabric-react": "^7.14.1",
+    "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
+    "react-dom": "16.8.6",
     "tslib": "^1.7.1"
   }
 }

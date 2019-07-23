@@ -14,11 +14,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/just.js build",
-    "clean": "node ../../scripts/just.js clean",
-    "start": "node ../../scripts/just.js dev",
-    "start-test": "node ../../scripts/just.js jest-watch",
-    "update-snapshots": "node ../../scripts/just.js jest -u"
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start": "just-scripts dev",
+    "start-test": "just-scripts jest-watch",
+    "update-snapshots": "just-scripts jest -u",
+    "just": "just-scripts"
   },
   "devDependencies": {
     "@types/enzyme": "{{{typesEnzyme}}}",
@@ -29,6 +31,7 @@
     "@types/react-dom": "{{{typesReactDom}}}",
     "@types/react-test-renderer": "{{{typesReactTestRenderer}}}",
     "@types/webpack-env": "{{{typesWebpackEnv}}}",
+    "@uifabric/build": "{{{uifabricBuild}}}",
     "@uifabric/example-app-base": "{{{uifabricExampleAppBase}}}",
     "@uifabric/jest-serializer-merge-styles": "{{{uifabricJestSerializerMergeStyles}}}",
     "@uifabric/prettier-rules": "{{{uifabricPrettierRules}}}",
@@ -37,6 +40,7 @@
     "enzyme-adapter-react-16": "{{{enzymeAdapterReact16}}}",
     "es6-weak-map": "{{{es6WeakMap}}}",
     "react": "{{{react}}}",
+    "react-app-polyfill": "{{{reactAppPolyfill}}}",
     "react-dom": "{{{reactDom}}}",
     "react-test-renderer": "{{{reactTestRenderer}}}"
   },

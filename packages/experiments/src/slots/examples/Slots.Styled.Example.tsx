@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Button, IButtonComponent } from '@uifabric/experiments';
-import { Customizer, Stack } from 'office-ui-fabric-react';
-import { stackProps } from './SlotExampleUtils';
+import { Customizer, IStackProps, Stack } from 'office-ui-fabric-react';
+
+const stackProps: IStackProps = { tokens: { childrenGap: 16 }, padding: 8, maxWidth: 400 };
 
 const ButtonTheme = {
   scopedSettings: {
@@ -10,13 +11,6 @@ const ButtonTheme = {
         root: {
           fontSize: 24,
           color: 'purple'
-        }
-      }
-    },
-    Stack: {
-      styles: {
-        root: {
-          background: 'lightblue'
         }
       }
     },
@@ -32,7 +26,6 @@ const ButtonTheme = {
 
 const getButtonStyles: IButtonComponent['styles'] = {
   icon: ButtonTheme.scopedSettings.Icon.styles.root,
-  stack: ButtonTheme.scopedSettings.Stack.styles.root,
   content: ButtonTheme.scopedSettings.Text.styles.root
 };
 
@@ -47,7 +40,7 @@ export class SlotsStyledExample extends React.Component<{}, {}> {
           <Button icon="share" content={{ children: 'Text as ITextProps with styles', styles: ButtonTheme.scopedSettings.Text.styles }} />
           <Button icon={{ iconName: 'share', styles: { root: { color: 'red' } } }} styles={getButtonStyles} content="Button styles prop" />
           <Customizer {...ButtonTheme}>
-            <Button icon={{ iconName: 'share' }} content="Button scopedSettings" />
+            <Button icon="share" content="Button scopedSettings" />
           </Customizer>
         </Stack>
       </Stack>

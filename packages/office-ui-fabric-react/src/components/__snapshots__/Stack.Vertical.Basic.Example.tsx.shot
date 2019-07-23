@@ -58,6 +58,89 @@ exports[`Component Examples renders Stack.Vertical.Basic.Example.tsx correctly 1
     </span>
   </div>
   <span>
+    Ordered stack
+  </span>
+  <div
+    className=
+        ms-Stack
+        {
+          background: #71afe5;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          height: auto;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 0px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div
+      className=
+          ms-StackItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            flex-shrink: 1;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: auto;
+            order: 2;
+            width: auto;
+          }
+    >
+      <span>
+        Item One
+      </span>
+    </div>
+    <div
+      className=
+          ms-StackItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            flex-shrink: 1;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: auto;
+            order: 3;
+            width: auto;
+          }
+    >
+      <span>
+        Item Two
+      </span>
+    </div>
+    <div
+      className=
+          ms-StackItem
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            flex-shrink: 1;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: auto;
+            order: 1;
+            width: auto;
+          }
+    >
+      <span>
+        Item Three
+      </span>
+    </div>
+  </div>
+  <span>
     Vertical gap between items
   </span>
   <div

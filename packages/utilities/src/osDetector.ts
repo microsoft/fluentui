@@ -1,3 +1,5 @@
+import { getWindow } from './dom/getWindow';
+
 let isMacResult: boolean | undefined;
 
 /**
@@ -6,7 +8,9 @@ let isMacResult: boolean | undefined;
  */
 export function isMac(reset?: boolean): boolean {
   if (typeof isMacResult === 'undefined' || reset) {
-    const userAgent = typeof window !== 'undefined' && window.navigator.userAgent;
+    const win = getWindow();
+    const userAgent = win && win.navigator.userAgent;
+
     isMacResult = !!userAgent && userAgent.indexOf('Macintosh') !== -1;
   }
   return !!isMacResult;

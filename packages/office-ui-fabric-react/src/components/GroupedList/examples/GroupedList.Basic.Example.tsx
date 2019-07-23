@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { GroupedList, IGroup } from 'office-ui-fabric-react/lib/components/GroupedList/index';
 import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';

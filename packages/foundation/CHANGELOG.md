@@ -1,6 +1,99 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Mon, 04 Feb 2019 13:36:12 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+
+## 7.0.3
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.0.2
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.0.1
+Fri, 14 Jun 2019 15:54:00 GMT
+
+### Patches
+
+- Major bumping the foundation package. (Though the tooling will report this as a patch.)
+
+## 0.109.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 0.109.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 0.8.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Minor changes
+
+- Updating IComponent typings for ease of use in tests.
+- Evolve create component API to separate out view and make options bag optional.
+- Enable API verification and export legacy styled.
+- Foundation: Convert state components to hooks.
+- Slots: Move slot options from individual props to new slots prop object.
+- Slots: Refactor API and add slot options object.
+
+### Patches
+
+- Update and dedupe React deps.
+
+## 0.7.7
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- upgrade to api-extractor 7.1.6
+
+## 0.7.6
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 0.7.5
+Thu, 09 May 2019 12:35:50 GMT
+
+### Patches
+
+- Remove duplicate export from foundation package.
+
+## 0.7.4
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 0.7.3
+Mon, 01 Apr 2019 12:37:03 GMT
+
+### Patches
+
+- Passing styling and tokens to view.
+
+## 0.7.2
+Fri, 15 Mar 2019 12:34:06 GMT
+
+### Patches
+
+- TSDoc fixes.
 
 ## 0.7.1
 Mon, 04 Feb 2019 13:36:12 GMT

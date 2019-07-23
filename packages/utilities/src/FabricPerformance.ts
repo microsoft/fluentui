@@ -38,6 +38,7 @@ const RESET_INTERVAL = 3 * 60 * 1000; // auto reset every 3 minutes
  * Performance helper class for measuring things.
  *
  * @public
+ * {@docCategory FabricPerformance}
  */
 export class FabricPerformance {
   public static summary: IPerfSummary = {};

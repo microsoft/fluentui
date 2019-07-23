@@ -39,7 +39,7 @@ export class LayerNestedLayersExample extends React.Component<{}, ILayerNestedLa
               titleAriaId: 'myLabelId',
               subtitleAriaId: 'mySubTextId',
               isBlocking: false,
-              containerClassName: 'ms-dialogMainOverride'
+              styles: { main: { maxWidth: 450 } }
             }}
           >
             <DialogFooter>

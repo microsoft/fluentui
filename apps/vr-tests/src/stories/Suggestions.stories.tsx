@@ -2,7 +2,8 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, DevOnlyStoryHeader } from '../utilities';
+import { FabricDecorator } from '../utilities';
+import { DevOnlyStoryHeader } from '../utilities';
 import { Suggestions, ISuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 
@@ -38,16 +39,18 @@ const getProvincesMap = () => {
   return provincesObj;
 };
 
-const makeProvinceIntoSuggestion = (Province: Province) => ({
-  item: Province,
+const makeProvinceIntoSuggestion = (province: Province) => ({
+  item: province,
   selected: false,
-  ariaLabel: Province.name
+  ariaLabel: province.name
 });
 
 const ProvinceSuggestionItem = ({ name, id }: Province) => (
   <div
     id={`province-${id}`}
     style={{
+      // Required for text truncation in IE11
+      overflow: 'hidden',
       minWidth: 0,
       flexShrink: 1
     }}
@@ -68,23 +71,15 @@ const ProvinceSuggestionItem = ({ name, id }: Province) => (
 );
 const NoResultFound = () => <div>No Result Found ¯\_(ツ)_/¯</div>;
 
-export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: ProvincesMap }> {
-  ProvinceSuggestions: new (props: ISuggestionsProps<Province>) => Suggestions<
-    Province
-  > = Suggestions;
+// prettier-ignore
+const ProvinceSuggestions: new (props: ISuggestionsProps<Province>) => Suggestions<Province> = Suggestions;
 
+export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: ProvincesMap }> {
   constructor(props: {}) {
     super(props);
     this.state = {
       Provinces: getProvincesMap()
     };
-  }
-
-  private removeProvince(removedProvince: Province) {
-    this.setState(() => {
-      delete this.state.Provinces[removedProvince.id];
-      return { Provinces: this.state.Provinces };
-    });
   }
 
   public render(): JSX.Element {
@@ -104,25 +99,32 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
             available space when the Close button appears on hover.
           </DevOnlyStoryHeader>
 
-          <this.ProvinceSuggestions
+          <ProvinceSuggestions
             showRemoveButtons={true}
             suggestions={Object.keys(this.state.Provinces).map(key =>
               makeProvinceIntoSuggestion(this.state.Provinces[key])
             )}
-            onSuggestionClick={(_: any, Province: Province) => {
-              alert(`clicked ${Province.name} `);
+            onSuggestionClick={(_: any, province: Province) => {
+              alert(`clicked ${province.name} `);
             }}
             onRenderNoResultFound={NoResultFound}
             onRenderSuggestion={ProvinceSuggestionItem}
             // TODO (ajective-object) update this once I fix the Suggestions
             // typedef for onSuggestionRemove.
             onSuggestionRemove={(_ev?: any, removedProvince?: any, _index?: any) =>
-              removedProvince && this.removeProvince(removedProvince as Province)
+              removedProvince && this._removeProvince(removedProvince as Province)
             }
           />
         </Fabric>
       </div>
     );
+  }
+
+  private _removeProvince(removedProvince: Province) {
+    this.setState(() => {
+      delete this.state.Provinces[removedProvince.id];
+      return { Provinces: this.state.Provinces };
+    });
   }
 }
 

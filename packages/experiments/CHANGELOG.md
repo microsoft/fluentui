@@ -1,6 +1,469 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 06 Mar 2019 13:27:18 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jul 2019 16:33:51 GMT and should not be manually modified.
+
+## 7.8.1
+Tue, 23 Jul 2019 16:33:51 GMT
+
+### Patches
+
+- Chiclet: Url is now a required prop and two test files are combined into one (t-stcar@microsoft.com)
+
+## 7.8.0
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Minor changes
+
+- Refactor out BaseComponent from Tile (706967+KevinTCoughlin@users.noreply.github.com)
+,- Tile: Add ability for screen reader to read selected state. (Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Button: Updating Button styles to use corresponding semanticColors instead of palette. (Humberto.Morimoto@microsoft.com)
+,- Improve how to get the min query string (elcraig@microsoft.com)
+
+## 7.7.0
+Fri, 19 Jul 2019 12:25:58 GMT
+
+### Minor changes
+
+- Chiclet: removes imageHeight and imageWidth props (t-stcar@microsoft.com)
+
+## 7.6.2
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+,- Remove fluent customizations. (vibraga@microsoft.com)
+
+## 7.6.0
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Minor changes
+
+- Change media tile to show metadata only on hover (jocobb@microsoft.com)
+
+### Patches
+
+- Button: Updating Button styles to use corresponding semanticColors instead of palette. (Humberto.Morimoto@microsoft.com)
+
+## 7.5.0
+Fri, 12 Jul 2019 12:29:52 GMT
+
+### Minor changes
+
+- Add screener tests for media tiles (jocobb@microsoft.com)
+
+### Patches
+
+- Chiclet: adjust xsmall chiclet title height (natalie.ethell@microsoft.com)
+
+## 7.4.2
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- Update names in floatingSuggestons + expose needed functionality for UnifiedPicker t (mhuan13@gmail.com)
+
+## 7.4.1
+Wed, 03 Jul 2019 12:30:55 GMT
+
+### Patches
+
+- Filter out disallowed props from Tile root element (tmichon@microsoft.com)
+
+## 7.4.0
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Minor changes
+
+- Button: Renaming BaseButton to Actionable, extending Button from Actionable and removing content and icon from Actionable types.
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.3.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+-  Button: Removing Stack usage from vanilla Button's slots and view to improve perf.
+- Chiclet: Add x-small variant
+
+### Patches
+
+- Button example updated.
+
+## 7.2.3
+Tue, 25 Jun 2019 12:26:09 GMT
+
+### Patches
+
+- Updates to tileslist, list and marquee selection
+
+## 7.2.2
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- Button: Adding focus tests for Button, MenuButton and SplitButton.
+
+## 7.2.1
+Fri, 21 Jun 2019 12:27:05 GMT
+
+### Patches
+
+- update snapshots due to Tooltip bug fix
+
+## 7.2.0
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Minor changes
+
+- Removing charting from dependencies.
+
+## 7.1.1
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- Button: Getting anchor native props if href prop is specified.
+
+## 7.1.0
+Fri, 14 Jun 2019 15:54:00 GMT
+
+### Minor changes
+
+- Major bumping the foundation package.
+
+## 7.0.3
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 7.0.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Breaking changes
+
+- Experiments package: remove Shimmer component
+
+### Minor changes
+
+- Button: Adding allowDisabledFocus prop and adding @docCategory tags on exports.
+- Button: Changing style of all variants to be Fluent by default and removing use of palette in favor of semantic slots.
+- Button: Adding keytips to new Button.
+- Button: Making all MenuButton props optional.
+- Button: Adding uniqueId prop.
+- Convert foundation components that have state to hooks.
+- Support slots API changes.
+- Changes to support slots API refactoring.
+- SplitButton: Improving screenreader narration for secondary action and fixing styling in fabric 7 branch.
+- SplitButton: Adding ability to use Alt+Down key combination from first focus stop and cleaning up API.
+- Button: Adding toggle/checked functionality to Button.
+- Add FloatingSuggestions (FloatingPeoplePicker without inheritence)
+- SelectedItemsList: Add reworked Selected Items (no inheritence + hooks)
+
+### Patches
+
+- Button: Fixing SplitButton so that `root` and `button` slot props do not propagate to inner slots.
+- Button: Conditionally rendering KeytipData.
+- Button: Fixing some className assignments in styling.
+- Render demo app with Markdown instead of PageMarkdown
+- Revert unintended change to Button example.
+- Update and dedupe React deps.
+- Support changes to createComponent API.
+- Remove use of deprecated @autobind decorator
+- SplitButton: Fixing some styling bugs related to the divider.
+- Button: Adding documentation to tokens.
+
+## 6.78.7
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- Updating snapshots to conform with `getNativeAttributes` changes which should filter out unexpected attributes from primatives more accurately.
+
+## 6.78.6
+Mon, 10 Jun 2019 12:23:59 GMT
+
+### Patches
+
+- Snapshot updates to components for adding aria-hidden to icon component conditionally
+
+## 6.78.5
+Tue, 04 Jun 2019 12:22:17 GMT
+
+### Patches
+
+- Added a signal to wrap an icon for republising reminder
+
+## 6.78.4
+Mon, 03 Jun 2019 23:04:02 GMT
+
+*Version update only*
+
+## 6.78.3
+Fri, 31 May 2019 12:21:26 GMT
+
+### Patches
+
+- Fix issue where SideBar ignored colors props
+- and updated snapshots.
+
+## 6.78.2
+Wed, 29 May 2019 12:21:24 GMT
+
+### Patches
+
+- Revert styled perf fixes temporarily.
+- PersonaCoin: use renamed persona color function
+
+## 6.78.1
+Thu, 23 May 2019 22:14:40 GMT
+
+### Patches
+
+- Examples: Remove relative imports.
+
+## 6.78.0
+Wed, 22 May 2019 12:21:34 GMT
+
+### Minor changes
+
+- Added a variant to MicroFeedback and converted to use Slots
+
+### Patches
+
+- update azure-themes version
+- Button example updated.
+
+## 6.77.0
+Tue, 21 May 2019 12:20:44 GMT
+
+### Minor changes
+
+- <Fabric> element does not affect global button styling.
+
+### Patches
+
+- Use shared demo app bootstrapping code
+
+## 6.76.4
+Fri, 17 May 2019 12:22:31 GMT
+
+### Patches
+
+- Chiclet: update examples and use opengraph API
+
+## 6.76.3
+Thu, 16 May 2019 17:34:08 GMT
+
+*Version update only*
+
+## 6.76.2
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.76.1
+Fri, 10 May 2019 12:36:11 GMT
+
+### Patches
+
+- Update snapshot
+
+## 6.76.0
+Tue, 07 May 2019 12:34:52 GMT
+
+### Minor changes
+
+- Add isFluentStyling prop and styles to Tile component
+
+## 6.75.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- Adding a new Microfeedback component
+
+### Patches
+
+-  Use new getFocusStyle signature
+
+## 6.74.2
+Fri, 19 Apr 2019 12:33:02 GMT
+
+### Patches
+
+- TilesList: replaces the imports of Shimmer from experiments package with the one from OUFR.
+
+## 6.74.1
+Thu, 18 Apr 2019 12:31:50 GMT
+
+### Patches
+
+- Button: Removing 'undefined' from 'cursor' token definition.
+
+## 6.74.0
+Wed, 17 Apr 2019 12:33:35 GMT
+
+### Minor changes
+
+- Button: Add focus() call in IButton interface.
+
+### Patches
+
+- Button: Renaming test files because they were testing the component and not only the view and changing menu in examples and tests from render functions to menuProps.
+- Button: Adding overview, dos and don'ts documentation
+- Run prettier on all files
+
+## 6.73.0
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Minor changes
+
+- Button: Creating CommandBarButton, IconButton and MessageBarButton variants.
+
+### Patches
+
+- Sidebar: update example card styling approach
+
+## 6.72.0
+Fri, 12 Apr 2019 12:34:16 GMT
+
+### Minor changes
+
+-  Button: Creating CompoundButton and BaseButton variants.
+
+### Patches
+
+- Button: Styling fixes to issues found while working on Multiline Ribbon buttons.
+
+## 6.71.0
+Wed, 10 Apr 2019 12:33:17 GMT
+
+### Minor changes
+
+- Button: Creating ActionButton variant and cleaning styling.
+
+## 6.70.0
+Tue, 09 Apr 2019 12:35:20 GMT
+
+### Minor changes
+
+- Button: Adding DefaultButton and PrimaryButton variants.
+
+## 6.69.0
+Mon, 08 Apr 2019 12:37:15 GMT
+
+### Minor changes
+
+- Button: Supporting high contrast in Button, MenuButton and SplitButton.
+
+## 6.68.0
+Fri, 05 Apr 2019 22:09:48 GMT
+
+### Minor changes
+
+- Button: Adding ariaLabel prop and updating examples to fix accessibility issues.
+
+## 6.67.1
+Fri, 05 Apr 2019 12:36:12 GMT
+
+### Patches
+
+- Use styles instead of className on theming example dialog
+
+## 6.67.0
+Wed, 03 Apr 2019 12:38:51 GMT
+
+### Minor changes
+
+- Button: Improvements on Button docs.
+
+### Patches
+
+- Button: Fixing SplitButton styling issues and correctly placing divider.
+
+## 6.66.1
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+- add proxy component for experiments/Separator
+
+## 6.66.0
+Mon, 01 Apr 2019 12:37:03 GMT
+
+### Minor changes
+
+- Separator: remove from experiments and promote to OUFR
+
+### Patches
+
+- Updating examples using Stack to use childrenGap token instead of gap prop.
+
+## 6.65.0
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Minor changes
+
+- Add support for maxRowCount in TilesList
+
+## 6.64.2
+Thu, 21 Mar 2019 12:36:30 GMT
+
+### Patches
+
+- Toggle: Fix invalid references to this object.
+
+## 6.64.1
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- fix a bug in the tooltip of last page button in pagination component, experiment package
+
+## 6.64.0
+Fri, 15 Mar 2019 12:34:06 GMT
+
+### Minor changes
+
+- Button: Separating MenuButton and SplitButton as variants to decouple ContextualMenu from Button.
+
+## 6.63.1
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Patches
+
+- update snapshots to reflect default change in Text
+
+## 6.63.0
+Thu, 07 Mar 2019 13:32:46 GMT
+
+### Minor changes
+
+- Removing Card component from experiments package.
+
+### Patches
+
+- folder cover ux cleaned up
+- Signals: changes icon color of `follow` signal.
 
 ## 6.62.2
 Wed, 06 Mar 2019 13:27:18 GMT

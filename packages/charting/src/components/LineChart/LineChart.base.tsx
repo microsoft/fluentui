@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom } from 'd3-axis';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
@@ -31,6 +31,7 @@ export class LineChartBase extends React.Component<
 > {
   private _points: ILineChartPoints[];
   private _classNames: IProcessedStyleSet<ILineChartStyles>;
+  private _reqID: number;
   private xAxisElement: SVGElement | null;
   private yAxisElement: SVGElement | null;
   // tslint:disable-next-line:no-any
@@ -68,6 +69,10 @@ export class LineChartBase extends React.Component<
   public componentDidMount(): void {
     this._fitParentContainer();
     window.addEventListener('resize', this._fitParentContainer);
+  }
+
+  public componentWillUnmount(): void {
+    cancelAnimationFrame(this._reqID);
   }
 
   public render(): JSX.Element {
@@ -141,9 +146,10 @@ export class LineChartBase extends React.Component<
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
     if (this.props.parentRef) {
-      setTimeout(() => {
+      this._reqID = requestAnimationFrame(() => {
         const currentContainerWidth = this.props.parentRef!.getBoundingClientRect().width;
-        const currentContainerHeight = this.props.parentRef!.getBoundingClientRect().height;
+        const currentContainerHeight =
+          this.props.parentRef!.getBoundingClientRect().height > 26 ? this.props.parentRef!.getBoundingClientRect().height : 350;
         const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - 26;
         if (shouldResize) {
           this.setState({
@@ -151,11 +157,12 @@ export class LineChartBase extends React.Component<
             containerHeight: currentContainerHeight - 26
           });
         }
-      }, 100);
+      });
     } else {
-      setTimeout(() => {
+      this._reqID = requestAnimationFrame(() => {
         const currentContainerWidth = this.chartContainer.getBoundingClientRect().width;
-        const currentContainerHeight = this.chartContainer.getBoundingClientRect().height;
+        const currentContainerHeight =
+          this.chartContainer.getBoundingClientRect().height > 26 ? this.chartContainer.getBoundingClientRect().height : 350;
         const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - 26;
         if (shouldResize) {
           this.setState({
@@ -163,7 +170,7 @@ export class LineChartBase extends React.Component<
             containerHeight: currentContainerHeight - 26
           });
         }
-      }, 100);
+      });
     }
   }
 
@@ -217,9 +224,9 @@ export class LineChartBase extends React.Component<
     }
   }
 
-  private _prepareDatapoints(maxVal: number, splitInto: number, includeZero: boolean): number[] {
+  private _prepareDatapoints(minVal: number, maxVal: number, splitInto: number, includeZero: boolean): number[] {
     const val = Math.ceil(maxVal / splitInto);
-    const dataPointsArray: number[] = includeZero ? [0, val] : [val];
+    const dataPointsArray: number[] = minVal > 100 ? [100, val] : includeZero ? [0, val] : [val];
     while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
       dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
     }
@@ -254,8 +261,12 @@ export class LineChartBase extends React.Component<
     if (this.xAxisElement) {
       d3Select(this.xAxisElement)
         .call(xAxis)
-        .select('text')
-        .style('font', '10px Segoe UI Semibold');
+        .selectAll('text')
+        .style('text-anchor', 'end')
+        .style('font', '10px Segoe UI Semibold')
+        .attr('dx', '-0.5em')
+        .attr('dy', '-0.5em')
+        .attr('transform', 'rotate(-30)');
     }
   };
 
@@ -263,7 +274,10 @@ export class LineChartBase extends React.Component<
     const yMax = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: ILineChartDataPoint) => item.y);
     })!;
-    const domainValues = this._prepareDatapoints(yMax, 4, true);
+    const yMin = d3Min(this._points, (point: ILineChartPoints) => {
+      return d3Min(point.data, (item: ILineChartDataPoint) => item.y);
+    })!;
+    const domainValues = this._prepareDatapoints(yMin, yMax, 4, true);
     const yAxisScale = d3ScaleLinear()
       .domain([0, domainValues[domainValues.length - 1]])
       .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);

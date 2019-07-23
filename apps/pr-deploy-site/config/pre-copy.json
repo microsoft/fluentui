@@ -1,7 +1,0 @@
-{
-  "copyTo": {
-    "dist": ["./node_modules/@uifabric/*/dist/**", "index.html"],
-    "dist/todo-app": ["./node_modules/todo-app/dist/**"],
-    "dist/test-bundles": ["./node_modules/test-bundles/dist/**"]
-  }
-}
