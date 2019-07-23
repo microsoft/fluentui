@@ -6,8 +6,8 @@ export interface ITextModel {
 }
 
 export interface IEditorProps {
-  width: number;
-  height: number;
+  width: number | string;
+  height: number | string;
   code: string;
   language: string;
   onChange: (model: ITextModel) => void;

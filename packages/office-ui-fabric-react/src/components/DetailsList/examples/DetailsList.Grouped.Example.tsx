@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  BaseComponent,
   DefaultButton,
   DetailsHeader,
   DetailsList,
@@ -38,7 +37,7 @@ export interface IDetailsListGroupedExampleState {
 }
 const _blueGroupIndex = 2;
 
-export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGroupedExampleState> {
+export class DetailsListGroupedExample extends React.Component<{}, IDetailsListGroupedExampleState> {
   private _root = React.createRef<IDetailsList>();
   private _columns: IColumn[];
 
@@ -99,6 +98,7 @@ export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGro
           columns={this._columns}
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
+          checkButtonAriaLabel="Row checkbox"
           onRenderDetailsHeader={this._onRenderDetailsHeader}
           groupProps={{
             showEmptyGroups: true

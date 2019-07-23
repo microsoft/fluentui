@@ -141,14 +141,16 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       ariaValueNow,
       ariaValueText,
       keytipProps,
-      className
+      className,
+      inputProps,
+      iconButtonProps
     } = this.props as ISpinButtonInternalProps;
 
     const { isFocused, value, keyboardSpinDirection } = this.state;
 
     const classNames = this.props.getClassNames
-      ? this.props.getClassNames(theme!, !!disabled, !!isFocused, keyboardSpinDirection, labelPosition, className)
-      : getClassNames(getStyles(theme!, customStyles), !!disabled, !!isFocused, keyboardSpinDirection, labelPosition, className);
+      ? this.props.getClassNames(theme!, disabled, isFocused, keyboardSpinDirection, labelPosition, className)
+      : getClassNames(getStyles(theme!, customStyles), disabled, isFocused, keyboardSpinDirection, labelPosition, className);
 
     return (
       <div className={classNames.root}>
@@ -156,7 +158,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon {...iconProps} className={classNames.icon} aria-hidden="true" />}
             {label && (
-              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label}>
+              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label} disabled={disabled}>
                 {label}
               </Label>
             )}
@@ -196,6 +198,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 aria-disabled={disabled}
                 data-lpignore={true}
                 data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
+                {...inputProps}
               />
               <span className={classNames.arrowBox}>
                 <IconButton
@@ -210,6 +213,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                   tabIndex={-1}
                   ariaLabel={incrementButtonAriaLabel}
                   data-is-focusable={false}
+                  {...iconButtonProps}
                 />
                 <IconButton
                   styles={getArrowButtonStyles(theme!, false, customDownArrowButtonStyles)}
@@ -223,6 +227,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                   tabIndex={-1}
                   ariaLabel={decrementButtonAriaLabel}
                   data-is-focusable={false}
+                  {...iconButtonProps}
                 />
               </span>
             </div>
@@ -232,7 +237,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon iconName={iconProps.iconName} className={classNames.icon} aria-hidden="true" />}
             {label && (
-              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label}>
+              <Label id={this._labelId} htmlFor={this._inputId} className={classNames.label} disabled={disabled}>
                 {label}
               </Label>
             )}

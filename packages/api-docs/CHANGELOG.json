@@ -2,6 +2,51 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/api-docs_v7.0.4",
+      "version": "7.0.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          },
+          {
+            "comment": "bumping versions to match what was published already",
+            "author": "kchau@microsoft.com",
+            "commit": "75e4ad16a2e6a54672e4929a9e003c7fd6f6ae52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/api-docs_v7.0.2",
+      "version": "7.0.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          },
+          {
+            "comment": "adding build cache",
+            "author": "kchau@microsoft.com",
+            "commit": "babf367fa3a2f05d6689b9ea0a0cdb765b282380"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Jul 2019 12:30:55 GMT",
       "tag": "@uifabric/api-docs_v7.0.2",
       "version": "7.0.2",

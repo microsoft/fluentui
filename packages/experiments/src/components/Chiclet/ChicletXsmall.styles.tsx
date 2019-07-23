@@ -90,7 +90,7 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         letterSpacing: 'normal',
         textAlign: 'left',
         width: 170,
-        height: 37, // Two lines of text, making sure the third line is hidden
+        height: 35, // Two lines of text, making sure the third line is hidden
         lineHeight: '1.25',
         overflow: 'hidden',
         wordWrap: 'break-word'

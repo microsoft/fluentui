@@ -1,7 +1,10 @@
-const cp = require('child_process');
+// @ts-check
+
 const fs = require('fs');
 const path = require('path');
+const puppeteer = require('puppeteer');
 const generateFlamegraph = require('./flamegraph/generateFlamegraph');
+const scenarioNames = require('../src/scenarioNames');
 const { argv } = require('@uifabric/build').just;
 
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
@@ -12,7 +15,7 @@ const iterationsDefault = 5000;
 // "C:\Program Files (x86)\Google\Chrome\Application\chrome" --no-sandbox --js-flags=" --logfile=C:\git\perf\output\chrome.log --prof --jitless --no-opt" --user-data-dir="C:\git\perf\user" http://localhost:4322
 
 // Current commands to run:
-//    rush build --to perf-test
+//    yarn buildto perf-test
 //    From apps/perf-test directory:
 //      To build and run perf-test:
 //        npm run just perf-test
@@ -25,32 +28,67 @@ const iterationsDefault = 5000;
 //    npm run just perf-test -- --scenarios SplitButton,SplitButtonNew --iterations 1000
 
 // TODO:
-//  - Compare results with and without V8 flags. Make sure things that appear to be bottlenecks are consistent regardless of flags.
-//  - Watch mode for flamegraphs.
-//    - Would require going back to webserve config mode?
-//  - Explore impact of:
-//    - https://github.com/OfficeDev/office-ui-fabric-react/pull/9580
-//    - https://github.com/OfficeDev/office-ui-fabric-react/pull/9432
-//  - Figure out what is causing huge log file size differences between Windows and Mac. (mac perf is pretty bad)
-//  - Verify results are repeatable and consistent
-//    - 1 tab vs. 100 tabs simulateneously
-//    - Eliminate or account for variance!
-//    - Minimize scenarios.
-//  - Tick Processing
-//      - Flags:" https://github.com/v8/v8/blob/master/tools/tickprocessor.js"
+//  - Results Analysis
+//    - If System/Framework is cutting out over half of overall time.. what is consuming the rest? How can that be identified for users?
+//      - Is the case for Toggle.. but not SplitButton. Maybe it's normal for "ok" perf components?
+//      - Text is not nearly as bad as Toggle with overall lower samples, though, so something in Toggle is more expensive in Framework.
+//      - Even so, rationalize the time and what's consuming it, even if it's expected.
+//    - Could compare percentage differences rather than absolute to negate variance. (see variance examples)
+//      - Would also have to account for new or missing call hierarchies, which will affect overall percentages.
+//    - Production vs. Debug Build Results
+//      - Differences?
+//    - System Calls
+//      - Appear in CI but just appear as DLLs locally on Windows
+//      - V8 bug?
+//    - Ways to demonstrate improvement/regression:
+//      - How could perf results of https://github.com/OfficeDev/office-ui-fabric-react/pull/9622 be more succintly seen and summarized?
+//        - Some way of differing parts of the call graph that differ, from the root function (in this case filteredAssign)
+//      - https://github.com/OfficeDev/office-ui-fabric-react/pull/9516
+//      - https://github.com/OfficeDev/office-ui-fabric-react/pull/9548
+//      - https://github.com/OfficeDev/office-ui-fabric-react/pull/9580
+//      - https://github.com/OfficeDev/office-ui-fabric-react/pull/9432
+//    - How will pass/fail be determined?
+//      - What role should React measurements play in results?
+//    - Tick Processing
+//      - Flags: "https://github.com/v8/v8/blob/master/tools/tickprocessor.js"
 //      - Use same version of V8 in Puppeteer to process ticks, somehow
 //        - If not, need to remove "Testing v8 version different from logging version" from processed logs
-//  - How will pass/fail be determined?
-//    - What role should React measurements play in results?
-//  - Use debug version of React to make results more readable? (Where time in React is being spent?)
-//  - Scaling issues:
-//    - Is already taking 10 minutes on CI. If users add scenarios it could get out of control.
+//  - Results Presentation
+//    - Use debug version of React to make results more readable? (Where time in React is being spent?)
+//    - Add links to scenario implementations?
+//    - Master trends for scenario results
+//  - Perf
+//    - Figure out what is causing huge PROCESSED log file size differences between Windows and Mac. (mac perf is pretty bad)
+//      - Mac files have many thousands more platform functions defined.
+//      - Way to remove? Any benefit to filtering out while streaming output? (Probably still as time consuming.)
+//    - Single CPU usage
+//      - Both perf testing and log processing seem to only use one CPU.
+//      - Ways to scale / parallelize processing? Node limitation?
+//      - Is already taking 10 minutes on CI. If users add scenarios it could get out of control.
 //    - Options:
 //      - Don't test master, just use posted results.
 //        - If master has a "bad" variance, this result will be frozen. May be ok since it can happen on PRs too.
 //      - Reduce default number iterations
 //      - Allow varying iterations by scenario (for "problem" components like DocumentCardTitle)
 //        - This may not be good if these components don't "stand out" as much with high samples.
+//  - Modularize:
+//    - Standard method for scenario implementation. Storybook?
+//    - Would require way of delineating scenario execution, if separate logfiles can't be used for each.
+//  - Options
+//    - Options to run in development mode to see React stack?
+//      - If nothing else should document ways that users can do it locally on wiki.
+//    - Ways to test changes to packages that doesn't require rebuilding everything to perf-test?
+//      - Add notes to wiki regarding requirements for changing other packages under test.
+//      - Add webpack serve option with aliasing?
+//    - Reference selection (local file, OUFR version, etc?)
+//    - Watch mode for flamegraphs.
+//      - Would require going back to webserve config mode?
+//  - Variance
+//    - Characterize variance
+//    - Verify results are repeatable and consistent
+//      - 1 tab vs. 100 tabs simulateneously
+//      - Eliminate or account for variance!
+//      - Minimize scenarios.
 //  - Further ideas:
 //    - Resizing page to determine reflow
 //    - React cascading updates on initial component render.
@@ -63,6 +101,19 @@ const iterationsDefault = 5000;
 // https://github.com/v8/v8/blob/master/src/flags/flag-definitions.h
 //  --log-timer-events
 //  --log-source-code
+
+// Analysis
+//  - Why is BaseComponent warnMutuallyExclusive appearing in flamegraphs?
+//    - It appears the CPU is being consumed simply by calling warnMututallyExclusive.
+//    - warnMutuallyExlusive impl is neutered but there still perf hit in setting up the args to call it.
+//    - The "get" in flamegraphs is caused by "this.className" arg.
+//    - makeAllSafe also consumes time just by having any component extend BaseComponent.
+//    - Puppeteer.tracing
+//      - Similar to using profiler in Chrome, does not show bottom-up analysis well
+//      - Seems to break V8 profile logging output.
+//        await page.tracing.start({ path: path.join(logPath, testLogFile[0] + '.trace') });
+//        await page.goto(testUrl);
+//        await page.tracing.stop();
 
 const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test`
@@ -95,7 +146,8 @@ module.exports = async function getPerfRegressions() {
     });
   }
 
-  const iterationsArg = Number.isInteger(argv().iterations) && argv().iterations;
+  const iterationsArgv = /** @type {number} */ (argv().iterations);
+  const iterationsArg = Number.isInteger(iterationsArgv) && iterationsArgv;
   const iterations = iterationsArg || iterationsDefault;
 
   const scenariosAvailable = fs
@@ -103,14 +155,13 @@ module.exports = async function getPerfRegressions() {
     .filter(name => name.indexOf('scenarioList') < 0)
     .map(name => path.basename(name, '.tsx'));
 
-  const scenariosArg = (argv().scenarios && argv().scenarios.split && argv().scenarios.split(',')) || [];
+  const scenariosArgv = /** @type {string} */ (argv().scenarios);
+  const scenariosArg = (scenariosArgv && scenariosArgv.split && scenariosArgv.split(',')) || [];
   scenariosArg.forEach(scenario => {
     if (!scenariosAvailable.includes(scenario)) {
       throw new Error(`Invalid scenario: ${scenario}.`);
     }
   });
-
-  const scenarioNames = require('../src/scenarioNames');
 
   const scenarios = scenariosArg.length > 0 ? scenariosArg : scenariosAvailable;
 
@@ -119,7 +170,7 @@ module.exports = async function getPerfRegressions() {
   // const extraV8Flags = '--log-source-code --log-timer-events';
   // const extraV8Flags = '--log-source-code';
   const extraV8Flags = '';
-  const browser = await require('puppeteer').launch({
+  const browser = await puppeteer.launch({
     headless: true,
     args: [
       '--flag-switches-begin',
@@ -270,7 +321,6 @@ function getTicks(resultsFile) {
     .match(/numTicks\s?\=\s?([0-9]+)/);
 
   if (numTicks && numTicks[1]) {
-    console.log('numTicks: ' + numTicks[1]);
     return numTicks[1];
   } else {
     console.log('Could not read numTicks from ' + resultsFile);

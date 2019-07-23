@@ -127,7 +127,6 @@ export const getStyles = memoizeFunction(
     const SpinButtonRootBorderColorHovered = semanticColors.inputBorderHovered;
     const SpinButtonRootBorderColorFocused = semanticColors.inputFocusBorderAlt;
 
-    const SpinButtonTextColorDisabled = semanticColors.disabledText;
     const SpinButtonInputTextColor = semanticColors.bodyText;
     const SpinButtonInputTextColorSelected = palette.white;
     const SpinButtonInputBackgroundColorSelected = palette.themePrimary;
@@ -175,15 +174,7 @@ export const getStyles = memoizeFunction(
         // centering the label with the icon by forcing the exact same height as the icon.
         lineHeight: IconFontSizes.large
       },
-      labelDisabled: {
-        cursor: 'default',
-        color: SpinButtonTextColorDisabled,
-        selectors: {
-          [HighContrastSelector]: {
-            color: 'GrayText'
-          }
-        }
-      },
+      labelDisabled: {},
       spinButtonWrapper: {
         display: 'flex',
         boxSizing: 'border-box',

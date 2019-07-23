@@ -1,4 +1,10 @@
-const { taskPresets, task, series, parallel, tscTask, copyTask } = require('just-scripts');
+// @ts-check
+
+// NOTE: this package cannot take @uifabric/build as a dependency because of circular dependency
+// So, it will take just-scripts directly.
+const { taskPresets, task, series, parallel, option, condition, tscTask, copyTask, argv } = require('just-scripts');
+
+option('min', { alias: 'npm-install-mode' });
 
 taskPresets.lib();
 
@@ -16,4 +22,4 @@ task(
   )
 );
 
-task('build', series('clean', 'copy', parallel('jest', 'ts')));
+task('build', series('clean', 'copy', parallel('ts', condition('jest', () => !argv().min)))).cached();

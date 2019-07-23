@@ -7,18 +7,19 @@
     "just-scripts": "./just-scripts.js"
   },
   "scripts": {
-    "build": "node -v",
+    "build": "node ./just-scripts.js no-op",
     "bundlesize": "bundlesize --debug",
     "clean": "",
-    "code-style": "npx just-scripts code-style",
+    "code-style": "node ./just-scripts.js code-style",
     "test": "jest"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "7.1.6",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
-    "@uifabric/codepen-loader": "^7.0.3",
-    "@uifabric/prettier-rules": "^7.0.2",
+    "@octokit/rest": "^16.28.2",
+    "@uifabric/codepen-loader": "^7.0.5",
+    "@uifabric/prettier-rules": "^7.0.3",
     "async": "^2.6.1",
     "autoprefixer": "^7.1.5",
     "babylon": "^7.0.0-beta.47",
@@ -32,7 +33,6 @@
     "find-free-port": "~2.0.0",
     "fork-ts-checker-webpack-plugin": "^0.4.1",
     "fs-extra": "^7.0.1",
-    "github": "^7.0.0",
     "glob": "^7.1.2",
     "gzip-size": "^3.0.0",
     "jest": "24.1.0",
@@ -41,8 +41,7 @@
     "jju": "^1.4.0",
     "jscodeshift": "^0.5.0",
     "json-loader": "^0.5.7",
-    "just-scripts": "~0.20.0",
-    "lint-staged": "^7.0.5",
+    "just-scripts": "~0.25.2",
     "mustache": "^2.3.0",
     "ngrok": "^3.0.1",
     "node-sass": "^4.5.3",
@@ -69,7 +68,7 @@
     "webpack-cli": "3.2.3",
     "webpack-dev-server": "3.1.14",
     "webpack-notifier": "^1.6.0",
-    "yargs": "^6.5.0"
+    "yargs": "^13.2.4"
   },
   "bundlesize": [
     {
