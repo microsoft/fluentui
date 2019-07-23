@@ -1,5 +1,5 @@
 import { IColumn } from './DetailsList.types';
-import { ICellStyleProps } from './DetailsRow.types';
+import { ICellStyleProps, IDetailsRowStyles } from './DetailsRow.types';
 import { IDetailsListProps } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow';
 
@@ -46,13 +46,10 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
    * Subset of classnames currently generated in DetailsRow that are used within DetailsRowFields.
    */
   rowClassNames: {
-    isMultiline: string;
-    isRowHeader: string;
-    cell: string;
-    cellAnimation: string;
-    cellPadded: string;
-    cellUnpadded: string;
-    fields: string;
+    [k in keyof Pick<
+      IDetailsRowStyles,
+      'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'
+    >]: string
   };
 
   /**

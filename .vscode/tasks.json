@@ -5,7 +5,7 @@
       "label": "Typescript (oufr) watch",
       "type": "process",
       "command": "node",
-      "args": ["./scripts/node_modules/typescript/bin/tsc", "-p", "packages/office-ui-fabric-react/tsconfig.json", "-w", "--noEmit"],
+      "args": ["./node_modules/typescript/bin/tsc", "-p", "packages/office-ui-fabric-react/tsconfig.json", "-w", "--noEmit"],
       "problemMatcher": "$tsc",
       "group": {
         "kind": "build",
@@ -16,7 +16,7 @@
       "label": "Typescript (vr-tests) watch",
       "type": "process",
       "command": "node",
-      "args": ["./scripts/node_modules/typescript/bin/tsc", "-p", "apps/vr-tests/tsconfig.json", "-w", "--noEmit"],
+      "args": ["./node_modules/typescript/bin/tsc", "-p", "apps/vr-tests/tsconfig.json", "-w", "--noEmit"],
       "problemMatcher": "$tsc",
       "group": {
         "kind": "build",
@@ -27,7 +27,7 @@
       "label": "Typescript (experiments) watch",
       "type": "process",
       "command": "node",
-      "args": ["./scripts/node_modules/typescript/bin/tsc", "-p", "packages/experiments/tsconfig.json", "-w", "--noEmit"],
+      "args": ["./node_modules/typescript/bin/tsc", "-p", "packages/experiments/tsconfig.json", "-w", "--noEmit"],
       "problemMatcher": "$tsc",
       "group": {
         "kind": "build",
@@ -38,7 +38,7 @@
       "label": "Typescript (example-app-base) watch",
       "type": "process",
       "command": "node",
-      "args": ["./scripts/node_modules/typescript/bin/tsc", "-p", "packages/example-app-base/tsconfig.json", "-w", "--noEmit"],
+      "args": ["./node_modules/typescript/bin/tsc", "-p", "packages/example-app-base/tsconfig.json", "-w", "--noEmit"],
       "problemMatcher": "$tsc",
       "group": {
         "kind": "build",

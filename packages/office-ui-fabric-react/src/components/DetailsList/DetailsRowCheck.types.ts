@@ -76,6 +76,7 @@ export type IDetailsRowCheckStyleProps = Required<Pick<IDetailsRowCheckProps, 't
  */
 export interface IDetailsRowCheckStyles {
   root: IStyle;
+  /** @deprecated Use `root` (they're applied to the same element) */
   check: IStyle;
   isDisabled: IStyle;
 }
