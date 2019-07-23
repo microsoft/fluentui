@@ -1,9 +1,19 @@
 import { ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
-import { normalize, FontSizes, FontWeights, getFocusStyle } from '@uifabric/styling';
+import { normalize, FontSizes, FontWeights, getFocusStyle, AnimationStyles, IRawStyle } from '@uifabric/styling';
+import { AnimationDirection } from '../Calendar.types';
 
 export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
-  const { className, theme, headerIsClickable, showWeekNumbers } = props;
+  const { className, theme, headerIsClickable, showWeekNumbers, animateBackwards, animationDirection } = props;
   const { palette } = theme;
+
+  let animationStyle: IRawStyle = {};
+  if (animateBackwards !== undefined) {
+    if (animationDirection === AnimationDirection.Horizontal) {
+      animationStyle = animateBackwards ? AnimationStyles.slideRightIn20 : AnimationStyles.slideLeftIn20;
+    } else {
+      animationStyle = animateBackwards ? AnimationStyles.slideDownIn20 : AnimationStyles.slideUpIn20;
+    }
+  }
 
   const disabledStyle = {
     selectors: {
@@ -37,6 +47,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
     monthAndYear: [
       getFocusStyle(theme, { inset: -1 }),
       {
+        ...animationStyle,
         alignItems: 'center',
         fontSize: FontSizes.medium,
         color: palette.neutralPrimary,

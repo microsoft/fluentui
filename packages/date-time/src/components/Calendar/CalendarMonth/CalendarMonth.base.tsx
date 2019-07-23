@@ -120,10 +120,9 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
 
     if (this.state.isYearPickerVisible) {
       // use navigated date for the year picker
-      const currentSelectedDate = navigatedDate ? navigatedDate.getFullYear() : undefined;
       return (
         <CalendarYear
-          key={'calendarYear_' + (currentSelectedDate && currentSelectedDate.toString())}
+          key={'calendarYear'}
           minYear={minDate ? minDate.getFullYear() : undefined}
           maxYear={maxDate ? maxDate.getFullYear() : undefined}
           onSelectYear={this._onSelectYear}
@@ -154,6 +153,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
       <div className={classNames.root}>
         <div className={classNames.headerContainer}>
           <button
+            key={dateFormatter.formatYear(navigatedDate)}
             className={classNames.currentItemButton}
             onClick={this._onHeaderSelect}
             onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}

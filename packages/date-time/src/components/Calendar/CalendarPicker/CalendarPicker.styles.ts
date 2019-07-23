@@ -31,6 +31,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
     currentItemButton: [
       getFocusStyle(theme, { inset: -1 }),
       {
+        ...animationStyle,
         fontSize: FontSizes.medium,
         fontWeight: FontWeights.semibold,
         textAlign: 'left',

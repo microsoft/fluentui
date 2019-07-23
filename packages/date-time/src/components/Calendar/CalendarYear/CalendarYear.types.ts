@@ -130,4 +130,9 @@ export interface ICalendarYearHeaderProps extends ICalendarYearProps, ICalendarY
    * Callback action when the 'next' navigation button is selected
    */
   onSelectNext?: () => void;
+
+  /**
+   * Whether title entering animation should be forwards or backwards
+   */
+  animateBackwards?: boolean;
 }

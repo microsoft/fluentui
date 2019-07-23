@@ -36,6 +36,7 @@ export interface ICalendarYearState {
   navigatedYear?: number;
   selectedYear?: number;
   animateBackwards?: boolean;
+  internalNavigate?: boolean;
 }
 
 interface ICalendarYearGrid {
@@ -331,12 +332,14 @@ class CalendarYearNav extends React.Component<ICalendarYearHeaderProps, {}> {
 
 class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
   public render(): JSX.Element {
-    const { styles, theme, className, fromYear, toYear, onHeaderSelect, strings } = this.props;
+    const { styles, theme, className, fromYear, toYear, onHeaderSelect, strings, animateBackwards, animationDirection } = this.props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
       className: className,
-      hasHeaderClickCallback: !!this.props.onHeaderSelect
+      hasHeaderClickCallback: !!this.props.onHeaderSelect,
+      animateBackwards: animateBackwards,
+      animationDirection: animationDirection
     });
 
     if (onHeaderSelect) {
@@ -349,6 +352,7 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
 
       return (
         <button
+          key={fromYear}
           className={classNames.currentItemButton}
           onClick={this._onHeaderSelect}
           onKeyDown={this._onHeaderKeyDown}
@@ -392,12 +396,14 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
 
 class CalendarYearHeader extends BaseComponent<ICalendarYearHeaderProps, {}> {
   public render(): JSX.Element {
-    const { styles, theme, className } = this.props;
+    const { styles, theme, className, animateBackwards, animationDirection } = this.props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
       className: className,
-      hasHeaderClickCallback: !!this.props.onHeaderSelect
+      hasHeaderClickCallback: !!this.props.onHeaderSelect,
+      animateBackwards: animateBackwards,
+      animationDirection: animationDirection
     });
 
     return (
@@ -423,9 +429,28 @@ class CalendarYearHeader extends BaseComponent<ICalendarYearHeaderProps, {}> {
 export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalendarYearState> implements ICalendarYear {
   private _gridRef: CalendarYearGrid;
 
+  public static getDerivedStateFromProps(props: ICalendarYearProps, state: ICalendarYearState): ICalendarYearState {
+    const { selectedYear, navigatedYear } = props;
+    const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
+    const fromYear = Math.floor(rangeYear / 10) * 10;
+
+    if (state && state.internalNavigate) {
+      return {
+        ...state,
+        internalNavigate: false
+      };
+    }
+
+    return {
+      fromYear: fromYear,
+      navigatedYear: navigatedYear,
+      selectedYear: selectedYear,
+      animateBackwards: state && (state.animateBackwards !== undefined ? state.animateBackwards : state.fromYear > fromYear)
+    };
+  }
+
   constructor(props: ICalendarYearProps) {
     super(props);
-    this.state = this._getState(this.props);
   }
 
   public focus(): void {
@@ -456,7 +481,8 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
     this.setState({
       previousFromYear: previousFromYear,
       fromYear: nextFromYear,
-      animateBackwards: this._computeAnimateBackwards(previousFromYear, nextFromYear)
+      animateBackwards: this._computeAnimateBackwards(previousFromYear, nextFromYear),
+      internalNavigate: true
     });
   };
 
@@ -466,7 +492,8 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
     this.setState({
       previousFromYear: previousFromYear,
       fromYear: nextFromYear,
-      animateBackwards: this._computeAnimateBackwards(previousFromYear, nextFromYear)
+      animateBackwards: this._computeAnimateBackwards(previousFromYear, nextFromYear),
+      internalNavigate: true
     });
   };
 
@@ -492,6 +519,7 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
         toYear={this.state.fromYear + CELL_COUNT - 1}
         onSelectPrev={this._onNavPrev}
         onSelectNext={this._onNavNext}
+        animateBackwards={this.state.animateBackwards}
       />
     );
   };
@@ -511,16 +539,4 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
   private _onGridRef = (ref: CalendarYearGrid) => {
     this._gridRef = ref;
   };
-
-  private _getState(props: ICalendarYearProps): ICalendarYearState {
-    const { selectedYear, navigatedYear } = props;
-    const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
-    const fromYear = Math.floor(rangeYear / 10) * 10;
-
-    return {
-      fromYear: fromYear,
-      navigatedYear: navigatedYear,
-      selectedYear: selectedYear
-    };
-  }
 }
