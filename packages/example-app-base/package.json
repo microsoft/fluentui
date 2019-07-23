@@ -44,8 +44,8 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "@uifabric/fluent-theme": "^7.0.3",
-    "@uifabric/set-version": "^7.0.0",
+    "@uifabric/fluent-theme": "^7.0.4",
+    "@uifabric/set-version": "^7.0.1",
     "@uifabric/tsx-editor": "^0.1.0",
     "color-check": "0.0.2",
     "markdown-to-jsx": "6.6.1",
