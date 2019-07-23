@@ -1,5 +1,5 @@
 {
-  "comment": "Merge branch 'master' of https://github.com/OfficeDev/office-ui-fabric-react into sticky-scrollablePane-newProps-7.x",
+  "comment": "fixing ScrollablePane example",
   "type": "patch",
   "packageName": "office-ui-fabric-react",
   "email": "hatrived@microsoft.com",
