@@ -50,7 +50,15 @@ export const ChicletFooterExample: React.FunctionComponent<{}> = () => {
   ];
   const footer = <FooterComponent buttonProps={footerButtonProps} activities="10 Comments  16 Shares  87 Views" />;
 
-  return <Chiclet url={SAMPLE_URL} title="Quarterly Results.docx" size={ChicletSize.medium} footer={footer} />;
+  return (
+    <Chiclet
+      url={SAMPLE_URL}
+      image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_16x1_5.svg"
+      title="Quarterly Results.docx"
+      size={ChicletSize.medium}
+      footer={footer}
+    />
+  );
 };
 
 export interface IFooterComponent extends React.Props<FooterComponent> {
