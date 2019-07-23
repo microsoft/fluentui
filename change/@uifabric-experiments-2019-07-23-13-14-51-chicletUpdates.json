@@ -1,8 +1,0 @@
-{
-  "comment": "Chiclet: add preview prop and only render preview image prop specified",
-  "type": "minor",
-  "packageName": "@uifabric/experiments",
-  "email": "naethell@microsoft.com",
-  "commit": "c91c8667788b77bdbe58bd470e274890000dc58b",
-  "date": "2019-07-23T20:14:51.016Z"
-}
