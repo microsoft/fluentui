@@ -1,0 +1,8 @@
+{
+  "comment": "ChoiceGroup: updating IChoiceOption to accept input attributes",
+  "type": "minor",
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@microsoft.com",
+  "commit": "b8e2f97a56b821785b575f0eb9c909b73c7be5ab",
+  "date": "2019-07-23T15:22:05.808Z"
+}
