@@ -38,17 +38,19 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
   private _renderPreview(): JSX.Element {
     const { image, imageAlt, preview } = this.props;
 
-    return preview ? (
-      preview
-    ) : (
+    return (
       <div className={this._classNames.preview}>
-        <Image
-          width={PREVIEW_IMAGE_WIDTH}
-          height={PREVIEW_IMAGE_HEIGHT}
-          src={image}
-          role="presentation"
-          alt={imageAlt ? imageAlt : undefined}
-        />
+        {preview ? (
+          preview
+        ) : (
+          <Image
+            width={PREVIEW_IMAGE_WIDTH}
+            height={PREVIEW_IMAGE_HEIGHT}
+            src={image}
+            role="presentation"
+            alt={imageAlt ? imageAlt : undefined}
+          />
+        )}
       </div>
     );
   }
