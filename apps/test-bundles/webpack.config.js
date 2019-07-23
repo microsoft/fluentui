@@ -5,7 +5,7 @@ const resources = require('../../scripts/webpack/webpack-resources');
 // Files which should not be considered top-level entries.
 const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'];
 
-const Entries = _buildEntries('office-ui-fabric-react/lib/Coachmark');
+const Entries = _buildEntries('office-ui-fabric-react');
 
 let experimentalButtonPath = path.join(path.dirname(require.resolve('@uifabric/experiments')).replace('lib-commonjs', 'lib'), 'Button.js');
 Entries['experiments-Button'] = experimentalButtonPath;
