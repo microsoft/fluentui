@@ -39,6 +39,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
       checked,
       disabled,
       imageIsLarge: !!imageSrc && (imageSize.width > 71 || imageSize.height > 71),
+      imageSize,
       focused
     });
 
@@ -97,7 +98,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
     return (
       <label htmlFor={id} className={this._classNames.field}>
         {imageSrc && (
-          <div className={this._classNames.innerField} style={{ height: imageSize.height, width: imageSize.width }}>
+          <div className={this._classNames.innerField}>
             <div className={this._classNames.imageWrapper}>
               <Image src={imageSrc} alt={imageAlt ? imageAlt : ''} width={imageSize.width} height={imageSize.height} />
             </div>
@@ -113,13 +114,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
             </div>
           </div>
         ) : null}
-        {imageSrc || iconProps ? (
-          <div className={this._classNames.labelWrapper} style={{ maxWidth: imageSize.width * 2 }}>
-            {onRenderLabel!(props)}
-          </div>
-        ) : (
-          onRenderLabel!(props)
-        )}
+        {imageSrc || iconProps ? <div className={this._classNames.labelWrapper}>{onRenderLabel!(props)}</div> : onRenderLabel!(props)}
       </label>
     );
   };

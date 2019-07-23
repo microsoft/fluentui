@@ -15,6 +15,7 @@ import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
 import { CalendarYear, ICalendarYearRange } from './CalendarYear';
 const styles: any = stylesImport;
+const MONTHS_PER_ROW: number = 4;
 
 export interface ICalendarMonth {
   focus(): void;
@@ -113,6 +114,11 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
       );
     }
 
+    const rowIndexes = [];
+    for (let i = 0; i < strings.shortMonths.length / MONTHS_PER_ROW; i++) {
+      rowIndexes.push(i);
+    }
+
     const leftNavigationIcon = navigationIcons.leftNavigation;
     const rightNavigationIcon = navigationIcons.rightNavigation;
 
@@ -137,10 +143,10 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
               {dateTimeFormatter.formatYear(navigatedDate)}
             </div>
           ) : (
-            <div className={css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear)}>
-              {dateTimeFormatter.formatYear(navigatedDate)}
-            </div>
-          )}
+              <div className={css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear)}>
+                {dateTimeFormatter.formatYear(navigatedDate)}
+              </div>
+            )}
           <div className={css('ms-DatePicker-yearComponents', styles.yearComponents)}>
             <div className={css('ms-DatePicker-navContainer', styles.navContainer)}>
               <button
@@ -182,41 +188,47 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
         </div>
         <FocusZone>
           <div className={css('ms-DatePicker-optionGrid', styles.optionGrid)} role="grid" aria-readonly="true">
-            <div role="row">
-              {strings.shortMonths.map((month, index) => {
-                const indexedMonth = setMonth(navigatedDate, index);
-                const isCurrentMonth = this._isCurrentMonth(index, navigatedDate.getFullYear(), today!);
-                const isNavigatedMonth = navigatedDate.getMonth() === index;
-                const isSelectedMonth = selectedDate.getMonth() === index;
-                const isSelectedYear = selectedDate.getFullYear() === navigatedDate.getFullYear();
-                const isInBounds =
-                  (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
-                  (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true);
+            {rowIndexes.map((rowNum: number) => {
+              const monthsForRow = strings.shortMonths.slice(rowNum * MONTHS_PER_ROW, (rowNum + 1) * MONTHS_PER_ROW);
+              return (
+                <div key={'monthRow_' + rowNum} role="row">
+                  {monthsForRow.map((month: string, index: number) => {
+                    const monthIndex = rowNum * MONTHS_PER_ROW + index;
+                    const indexedMonth = setMonth(navigatedDate, monthIndex);
+                    const isCurrentMonth = this._isCurrentMonth(monthIndex, navigatedDate.getFullYear(), today!);
+                    const isNavigatedMonth = navigatedDate.getMonth() === monthIndex;
+                    const isSelectedMonth = selectedDate.getMonth() === monthIndex;
+                    const isSelectedYear = selectedDate.getFullYear() === navigatedDate.getFullYear();
+                    const isInBounds =
+                      (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
+                      (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true);
 
-                return (
-                  <button
-                    role={'gridcell'}
-                    className={css('ms-DatePicker-monthOption', styles.monthOption, {
-                      ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && isCurrentMonth!,
-                      ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]:
-                        (highlightCurrentMonth || highlightSelectedMonth) && isSelectedMonth && isSelectedYear,
-                      ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds
-                    })}
-                    disabled={!isInBounds}
-                    key={index}
-                    onClick={isInBounds ? this._selectMonthCallbacks[index] : undefined}
-                    onKeyDown={isInBounds ? this._onSelectMonthKeyDown(index) : undefined}
-                    aria-label={dateTimeFormatter.formatMonthYear(indexedMonth, strings)}
-                    aria-selected={isCurrentMonth || isNavigatedMonth}
-                    data-is-focusable={isInBounds ? true : undefined}
-                    ref={isNavigatedMonth ? 'navigatedMonth' : undefined}
-                    type="button"
-                  >
-                    {month}
-                  </button>
-                );
-              })}
-            </div>
+                    return (
+                      <button
+                        role={'gridcell'}
+                        className={css('ms-DatePicker-monthOption', styles.monthOption, {
+                          ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && isCurrentMonth!,
+                          ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]:
+                            (highlightCurrentMonth || highlightSelectedMonth) && isSelectedMonth && isSelectedYear,
+                          ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds
+                        })}
+                        disabled={!isInBounds}
+                        key={monthIndex}
+                        onClick={isInBounds ? this._selectMonthCallbacks[monthIndex] : undefined}
+                        onKeyDown={isInBounds ? this._onSelectMonthKeyDown(monthIndex) : undefined}
+                        aria-label={dateTimeFormatter.formatMonthYear(indexedMonth, strings)}
+                        aria-selected={isCurrentMonth || isNavigatedMonth}
+                        data-is-focusable={isInBounds ? true : undefined}
+                        ref={isNavigatedMonth ? 'navigatedMonth' : undefined}
+                        type="button"
+                      >
+                        {month}
+                      </button>
+                    );
+                  })}
+                </div>
+              );
+            })}
           </div>
         </FocusZone>
       </div>

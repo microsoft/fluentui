@@ -1,5 +1,6 @@
 import { IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles } from './WeeklyDayPicker.types';
 import { normalize, FontSizes, getFocusStyle, getGlobalClassNames } from '@uifabric/styling';
+import { IsFocusVisibleClassName } from '@uifabric/utilities';
 
 const GlobalClassNames = {
   root: 'ms-WeeklyDayPicker-root'
@@ -46,12 +47,12 @@ export const styles = (props: IWeeklyDayPickerStyleProps): IWeeklyDayPickerStyle
         backgroundColor: palette.neutralLighter,
         fontSize: FontSizes.small,
         selectors: {
-          [`.${classNames.root}:hover &, .${classNames.root}:focus &, &:focus`]: {
+          [`.${classNames.root}:hover &, .${IsFocusVisibleClassName} .${classNames.root}:focus &, .${IsFocusVisibleClassName} &:focus`]: {
             height: 53,
             minHeight: 12,
             overflow: 'initial'
           },
-          [`.${classNames.root}:focus-within &`]: {
+          [`.${IsFocusVisibleClassName} .${classNames.root}:focus-within &`]: {
             // edge does not recognize focus-within, so separate it out
             height: 53,
             minHeight: 12,

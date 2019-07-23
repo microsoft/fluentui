@@ -1,8 +1,0 @@
-{
-  "comment": "Dialog: Deprecating componentRef prop.",
-  "type": "minor",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "ce7e6ffc84e7272a193d9cde863767dfc91fac7a",
-  "date": "2019-07-08T18:10:48.693Z"
-}

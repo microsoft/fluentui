@@ -3,9 +3,8 @@ const { execSync } = require('child_process');
 const path = require('path');
 const { EOL, cpus } = require('os');
 const { runPrettierMultiProject, runPrettierForProject, prettierExtensions } = require('./prettier/prettier-helpers');
-const { readRushJson } = require('./read-config');
 const { default: PQueue } = require('p-queue');
-
+const getAllPackageInfo = require('./monorepo/getAllPackageInfo');
 const runOnAllFiles = require('yargs').argv.all;
 
 /**
@@ -26,8 +25,8 @@ console.log(`Running prettier on ${runOnAllFiles ? 'changed' : 'all'} files (on 
 
 const queue = new PQueue({ concurrency: numberOfCpus });
 if (runOnAllFiles) {
-  const rushJson = readRushJson();
-  queue.addAll(rushJson.projects.map(project => () => runPrettierForProject(project.projectFolder)));
+  const allPackages = getAllPackageInfo();
+  queue.addAll(Object.keys(allPackages).map(name => () => runPrettierForProject(allPackages[name].packagePath)));
 } else {
   const prettierIntroductionCommit = 'HEAD~1';
   const passedDiffTarget = process.argv.slice(2).length ? process.argv.slice(2)[0] : prettierIntroductionCommit;

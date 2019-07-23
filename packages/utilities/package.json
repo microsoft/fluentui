@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/utilities",
-  "version": "7.0.6",
+  "version": "7.0.7",
   "description": "Office UI Fabric utilities for building React components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,13 +14,13 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "just": "npx just-scripts",
-    "code-style": "npx just-scripts code-style",
-    "clean": "npx just-scripts clean",
-    "start-test": "npx just-scripts jest-watch",
-    "update-api": "npx just-scripts update-api",
-    "update-snapshots": "npx just-scripts jest -u"
+    "build": "just-scripts build",
+    "just": "just-scripts",
+    "code-style": "just-scripts code-style",
+    "clean": "just-scripts clean",
+    "start-test": "just-scripts jest-watch",
+    "update-api": "just-scripts update-api",
+    "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
     "@types/enzyme": "3.1.13",
@@ -32,10 +32,10 @@
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/sinon": "2.2.2",
-    "@uifabric/jest-serializer-merge-styles": "^7.0.3",
-    "@uifabric/prettier-rules": "^7.0.2",
-    "@uifabric/test-utilities": "^7.0.3",
-    "@uifabric/tslint-rules": "^7.0.2",
+    "@uifabric/jest-serializer-merge-styles": "^7.0.4",
+    "@uifabric/prettier-rules": "^7.0.3",
+    "@uifabric/test-utilities": "^7.0.4",
+    "@uifabric/tslint-rules": "^7.0.3",
     "enzyme": "~3.9.0",
     "enzyme-adapter-react-16": "^1.2.0",
     "react": "16.8.6",
@@ -46,12 +46,14 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/merge-styles": "^7.1.1",
-    "@uifabric/set-version": "^7.0.0",
+    "@uifabric/merge-styles": "^7.2.0",
+    "@uifabric/set-version": "^7.0.1",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
+    "@types/react": ">=16.8.0 <17.0.0",
+    "@types/react-dom": ">=16.8.0 <17.0.0",
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0"
   }

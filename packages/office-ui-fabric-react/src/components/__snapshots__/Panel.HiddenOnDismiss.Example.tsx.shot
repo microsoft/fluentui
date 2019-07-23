@@ -411,14 +411,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                       padding-left: 16px;
                       padding-right: 16px;
                     }
-                    @media screen and (min-width: 640px){& {
-                      padding-left: 32px;
-                      padding-right: 32px;
-                    }
-                    @media screen and (min-width: 1366px){& {
-                      padding-left: 40px;
-                      padding-right: 40px;
-                    }
                     @media (min-width: 1024px){& {
                       margin-top: 30px;
                     }
@@ -466,14 +458,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         padding-bottom: 20px;
                         padding-left: 16px;
                         padding-right: 16px;
-                      }
-                      @media screen and (min-width: 640px){& {
-                        padding-left: 32px;
-                        padding-right: 32px;
-                      }
-                      @media screen and (min-width: 1366px){& {
-                        padding-left: 40px;
-                        padding-right: 40px;
                       }
                 >
                   <span>
