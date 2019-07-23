@@ -3,9 +3,5 @@ export const isIE11 = (): boolean => {
     return false;
   }
 
-  if (window.navigator.userAgent.indexOf('rv:11.0') > -1) {
-    return true;
-  } else {
-    return false;
-  }
+  return window.navigator.userAgent.indexOf('rv:11.0') > -1;
 };

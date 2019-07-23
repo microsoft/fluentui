@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { Label } from 'office-ui-fabric-react';
-interface IEditorPreview {
+
+export interface IEditorPreviewProps {
   id: string;
   error?: string;
 }
 
-const errorStyle = {
+const errorStyle: React.CSSProperties = {
   backgroundColor: 'lightgray',
-  opacity: 0.7,
-  disabled: true
+  opacity: 0.7
 };
 
-export const EditorPreview = (props: IEditorPreview) => {
+export const EditorPreview = (props: IEditorPreviewProps) => {
   return (
     <div>
       {props.error === undefined ? (

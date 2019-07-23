@@ -21,10 +21,19 @@ export async function transpile(model: ITextModel): Promise<ITranspiledOutput> {
   return transpiledOutput;
 }
 
-export function evalCode(code: string, id: string): string | undefined {
+/**
+ * Evaluates the code given after transforming it. Since eval will need a div element to insert the result into,
+ * divId is the id of the div element where the result will be inserted.
+ *
+ * @export
+ * @param {code} string
+ * @param {divId} string
+ * @returns {string | undefined}
+ */
+export function evalCode(code: string, divId: string): string | undefined {
   try {
     // tslint:disable:no-eval
-    const transfromedExample = transformExample(code, id);
+    const transfromedExample = transformExample(code, divId);
     if (transfromedExample.output !== undefined) {
       eval(transfromedExample.output);
     } else {
