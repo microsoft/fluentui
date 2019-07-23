@@ -101,6 +101,10 @@ export interface INavProps {
    * If not provided, the aria label will default to the link name.
    */
   expandButtonAriaLabel?: string;
+  /**
+   * (Optional) The nav link selected state aria label.
+   */
+  selectedAriaLabel?: string;
 }
 
 /**

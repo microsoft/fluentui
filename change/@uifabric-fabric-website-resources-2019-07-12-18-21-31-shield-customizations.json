@@ -1,8 +1,0 @@
-{
-  "comment": "Replace fluent customizations with default ones.",
-  "type": "patch",
-  "packageName": "@uifabric/fabric-website-resources",
-  "email": "vibraga@microsoft.com",
-  "commit": "6931990896b08f816e10d3936d36a92b82aa794a",
-  "date": "2019-07-13T01:21:08.787Z"
-}
