@@ -24,7 +24,7 @@ export interface IChicletProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Sharing link.
    */
-  url?: string;
+  url: string;
 
   /**
    * File title to render for the component.
@@ -45,16 +45,6 @@ export interface IChicletProps extends React.HTMLAttributes<HTMLElement> {
    * Image to render for the component.
    */
   image?: string;
-
-  /**
-   * Image Width to render for the component.
-   */
-  imageWidth?: number | string;
-
-  /**
-   * Image Height to render for the component.
-   */
-  imageHeight?: number | string;
 
   /**
    * Alternate image to render for the component.

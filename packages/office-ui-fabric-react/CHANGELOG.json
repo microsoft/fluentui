@@ -2,6 +2,140 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 23 Jul 2019 16:33:51 GMT",
+      "tag": "office-ui-fabric-react_v7.14.1",
+      "version": "7.14.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tooltip: Updates box-shadow to match fluent web toolkit",
+            "author": "v-mare@microsoft.com",
+            "commit": "57644c588c2e90f7e77c7dfe20346dd4f0c782ad"
+          },
+          {
+            "comment": "Rating: fix aria-label in `readOnly` mode and when use half stars.",
+            "author": "vibraga@microsoft.com",
+            "commit": "c7a16f7c1ca63270de8110b0a72de6f7dbf41f77"
+          },
+          {
+            "comment": "Spinner: Updating label font size and position in respect to spinner to match fluent toolkit",
+            "author": "v-mare@microsoft.com",
+            "commit": "a15ec8e293eb52477d7dde9b702e32f4bd1b7de6"
+          },
+          {
+            "comment": "ColorPicker: Updates margin bottom of the color rectangle to match web fluent toolkit.",
+            "author": "v-mare@microsoft.com",
+            "commit": "f560ff800795f17a5f2feb2457d28c319fe38b9b"
+          },
+          {
+            "comment": "Multiselect ComboBox options should respect disabled setting",
+            "author": "elcraig@microsoft.com",
+            "commit": "46b9110a123f5dd03cd516818edeac38a407d7d4"
+          },
+          {
+            "comment": "making mousemove event bind to capture phase to work inside Layers and Callouts",
+            "author": "jolore@microsoft.com",
+            "commit": "551deacac2f6a74e727c98eff6c50bf2388545d3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jul 2019 21:37:45 GMT",
+      "tag": "office-ui-fabric-react_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "support to add custom attributes on SpinButton and ComboBox components",
+            "author": "pagaur@microsoft.com",
+            "commit": "a9df1cc74eebaa9938997f645cc9bfb1421158a1"
+          },
+          {
+            "comment": "Details____ general cleanup",
+            "author": "elcraig@microsoft.com",
+            "commit": "04730c1de9a8f91d8800b5c157562d568c7f575f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jul 2019 12:28:42 GMT",
+      "tag": "office-ui-fabric-react_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Panel: remove window.innerHeight from styles",
+            "author": "kakje@microsoft.com",
+            "commit": ""
+          },
+          {
+            "comment": "fix the layer example so the panel dismisses properly",
+            "author": "joschect@microsoft.com",
+            "commit": "7d837a911a8a6a96cf7532026783aa5db68a6575"
+          },
+          {
+            "comment": "DetailsList and Check styling optimizations",
+            "author": "elcraig@microsoft.com",
+            "commit": "fabd0c72bc1955d4296f42b312df5eece4c61c13"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Refactor out BaseComponent from List components",
+            "author": "706967+KevinTCoughlin@users.noreply.github.com",
+            "commit": "ad4bc7b67d858e082b281482f419848aad120abe"
+          },
+          {
+            "comment": "Nav: Add ability for screen reader to read selected state.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "284ca631afe83fc5ec56b4c221691bd85ad341f8"
+          },
+          {
+            "comment": "DetailsList: Remove unnecessary BaseComponent and class component usage",
+            "author": "elcraig@microsoft.com",
+            "commit": "3e37d3320b5e1e518007afb5ca79eb4748829da1"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove reference to index.html in precopy",
+            "author": "elcraig@microsoft.com",
+            "commit": "de6db9792f9e208e5d44e3697db3f718a9c2b4f6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Jul 2019 12:25:58 GMT",
+      "tag": "office-ui-fabric-react_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Tooltip: render tooltip only after the delay and make sure if provided `closeDelay` is bigger than `delay` not to flash the Tooltip.",
+            "author": "vibraga@microsoft.com",
+            "commit": "28b4e28c52a8d8b6554dd8d83316c954e15d4b1e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Jul 2019 12:27:48 GMT",
+      "tag": "office-ui-fabric-react_v7.11.1",
+      "version": "7.11.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Panel: Making padding not change with screen width to match toolkit.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "f0c357f33de7fb3d2924a0d8dcf9208a5ae36aa7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jul 2019 18:58:57 GMT",
       "tag": "office-ui-fabric-react_v7.11.0",
       "version": "7.11.0",

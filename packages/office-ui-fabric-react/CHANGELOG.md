@@ -1,6 +1,55 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jul 2019 16:33:51 GMT and should not be manually modified.
+
+## 7.14.1
+Tue, 23 Jul 2019 16:33:51 GMT
+
+### Patches
+
+- Tooltip: Updates box-shadow to match fluent web toolkit (v-mare@microsoft.com)
+,- Rating: fix aria-label in `readOnly` mode and when use half stars. (vibraga@microsoft.com)
+,- Spinner: Updating label font size and position in respect to spinner to match fluent toolkit (v-mare@microsoft.com)
+,- ColorPicker: Updates margin bottom of the color rectangle to match web fluent toolkit. (v-mare@microsoft.com)
+,- Multiselect ComboBox options should respect disabled setting (elcraig@microsoft.com)
+,- making mousemove event bind to capture phase to work inside Layers and Callouts (jolore@microsoft.com)
+
+## 7.14.0
+Mon, 22 Jul 2019 21:37:45 GMT
+
+### Minor changes
+
+- support to add custom attributes on SpinButton and ComboBox components (pagaur@microsoft.com)
+,- Details____ general cleanup (elcraig@microsoft.com)
+
+## 7.13.0
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Minor changes
+
+- Refactor out BaseComponent from List components (706967+KevinTCoughlin@users.noreply.github.com)
+,- Nav: Add ability for screen reader to read selected state. (Humberto.Morimoto@microsoft.com)
+,- DetailsList: Remove unnecessary BaseComponent and class component usage (elcraig@microsoft.com)
+
+### Patches
+
+- Panel: remove window.innerHeight from styles (kakje@microsoft.com)
+,- fix the layer example so the panel dismisses properly (joschect@microsoft.com)
+,- DetailsList and Check styling optimizations (elcraig@microsoft.com)
+
+## 7.12.0
+Fri, 19 Jul 2019 12:25:58 GMT
+
+### Minor changes
+
+- Tooltip: render tooltip only after the delay and make sure if provided `closeDelay` is bigger than `delay` not to flash the Tooltip. (vibraga@microsoft.com)
+
+## 7.11.1
+Thu, 18 Jul 2019 12:27:48 GMT
+
+### Patches
+
+- Panel: Making padding not change with screen width to match toolkit. (Humberto.Morimoto@microsoft.com)
 
 ## 7.11.0
 Wed, 17 Jul 2019 18:58:57 GMT

@@ -1,6 +1,14 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+
+## 0.107.6
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Patches
+
+- Card: Importing from office-ui-fabric-react directly instead of from office-ui-fabric-react/lib/... (Humberto.Morimoto@microsoft.com)
+,- Improve how to get the min query string (elcraig@microsoft.com)
 
 ## 0.107.5
 Wed, 17 Jul 2019 18:58:57 GMT

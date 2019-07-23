@@ -181,6 +181,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                   className=
                       ms-DetailsRow-check
                       ms-DetailsRow-check--isHeader
+                      ms-Check-checkHost
                       {
                         height: 42px;
                       }
@@ -230,10 +231,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        opacity: 1;
-                      }
-
                   data-automationid="DetailsRowCheck"
                   data-is-focusable={true}
                   data-selection-toggle={true}
@@ -267,7 +264,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                           right: 1px;
                           top: 1px;
                         }
-                        $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                        .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                           opacity: 1;
                         }
                   >
@@ -668,6 +665,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                             aria-checked={false}
                             className=
                                 ms-DetailsRow-check
+                                ms-Check-checkHost
 
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -712,10 +710,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -747,7 +741,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -1046,6 +1040,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                             aria-checked={false}
                             className=
                                 ms-DetailsRow-check
+                                ms-Check-checkHost
 
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -1090,10 +1085,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -1125,7 +1116,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -1424,6 +1415,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                             aria-checked={false}
                             className=
                                 ms-DetailsRow-check
+                                ms-Check-checkHost
 
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -1468,10 +1460,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -1503,7 +1491,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -1802,6 +1790,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                             aria-checked={false}
                             className=
                                 ms-DetailsRow-check
+                                ms-Check-checkHost
 
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -1846,10 +1835,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -1881,7 +1866,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -2180,6 +2165,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                             aria-checked={false}
                             className=
                                 ms-DetailsRow-check
+                                ms-Check-checkHost
 
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -2224,10 +2210,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -2259,7 +2241,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -2558,6 +2540,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                             aria-checked={false}
                             className=
                                 ms-DetailsRow-check
+                                ms-Check-checkHost
 
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -2602,10 +2585,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -2637,7 +2616,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -2936,6 +2915,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                             aria-checked={false}
                             className=
                                 ms-DetailsRow-check
+                                ms-Check-checkHost
 
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -2980,10 +2960,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -3015,7 +2991,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -3314,6 +3290,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                             aria-checked={false}
                             className=
                                 ms-DetailsRow-check
+                                ms-Check-checkHost
 
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -3358,10 +3335,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -3393,7 +3366,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -3692,6 +3665,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                             aria-checked={false}
                             className=
                                 ms-DetailsRow-check
+                                ms-Check-checkHost
 
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -3736,10 +3710,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -3771,7 +3741,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -4070,6 +4040,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                             aria-checked={false}
                             className=
                                 ms-DetailsRow-check
+                                ms-Check-checkHost
 
                                 {
                                   -moz-osx-font-smoothing: grayscale;
@@ -4114,10 +4085,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -4149,7 +4116,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
