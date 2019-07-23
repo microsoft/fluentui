@@ -48,14 +48,9 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
         borderRadius: 0
       }
     ],
-    iconContainer: [
-      {
-        color: inputIcon
-      },
-      disabled && {
-        color: inputIconDisabled
-      }
-    ],
+    iconContainer: {
+      color: disabled ? inputIconDisabled : inputIcon
+    },
     field: {
       paddingLeft: 6
     },
