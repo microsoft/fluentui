@@ -52,6 +52,8 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
 
     this._onSelectNextMonth = this._onSelectNextMonth.bind(this);
     this._onSelectPrevMonth = this._onSelectPrevMonth.bind(this);
+
+    this.state = {};
   }
 
   public render(): JSX.Element {

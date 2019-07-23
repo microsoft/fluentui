@@ -1,5 +1,11 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { ICalendarStrings, DayOfWeek, ICalendarFormatDateCallbacks, ICalendarIconStrings } from '../Calendar/Calendar.types';
+import {
+  ICalendarStrings,
+  DayOfWeek,
+  ICalendarFormatDateCallbacks,
+  ICalendarIconStrings,
+  AnimationDirection
+} from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
 import { ICalendarDayGridStyleProps, ICalendarDayGridStyles } from '../CalendarDayGrid/CalendarDayGrid.types';
 
@@ -87,6 +93,11 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker> {
    * If set the Calendar will not allow selection of dates in this array.
    */
   restrictedDates?: Date[];
+
+  /**
+   * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
+   */
+  animationDirection?: AnimationDirection;
 }
 
 export interface IWeeklyDayPickerStrings extends ICalendarStrings {

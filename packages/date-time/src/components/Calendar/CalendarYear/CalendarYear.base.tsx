@@ -430,10 +430,6 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
   private _gridRef: CalendarYearGrid;
 
   public static getDerivedStateFromProps(props: ICalendarYearProps, state: ICalendarYearState): ICalendarYearState {
-    const { selectedYear, navigatedYear } = props;
-    const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
-    const fromYear = Math.floor(rangeYear / 10) * 10;
-
     if (state && state.internalNavigate) {
       return {
         ...state,
@@ -441,16 +437,17 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
       };
     }
 
+    const newState = CalendarYearBase._getState(props);
+
     return {
-      fromYear: fromYear,
-      navigatedYear: navigatedYear,
-      selectedYear: selectedYear,
-      animateBackwards: state && (state.animateBackwards !== undefined ? state.animateBackwards : state.fromYear > fromYear)
+      ...newState,
+      animateBackwards: state && (state.animateBackwards !== undefined ? state.animateBackwards : state.fromYear > newState.fromYear)
     };
   }
 
   constructor(props: ICalendarYearProps) {
     super(props);
+    this.state = CalendarYearBase._getState(props);
   }
 
   public focus(): void {
@@ -474,6 +471,18 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
       </div>
     );
   }
+
+  private static _getState = (props: ICalendarYearProps) => {
+    const { selectedYear, navigatedYear } = props;
+    const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
+    const fromYear = Math.floor(rangeYear / 10) * 10;
+
+    return {
+      fromYear: fromYear,
+      navigatedYear: navigatedYear,
+      selectedYear: selectedYear
+    };
+  };
 
   private _onNavNext = () => {
     const previousFromYear = this.state.fromYear;
