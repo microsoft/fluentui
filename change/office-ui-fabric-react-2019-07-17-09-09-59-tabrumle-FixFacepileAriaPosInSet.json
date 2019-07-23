@@ -1,0 +1,8 @@
+{
+  "comment": "Facepile: Fix narrator not announcing coauthor position",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "tabrumle@microsoft.com",
+  "commit": "490254bd74dabc3338735164ec109f4076007309",
+  "date": "2019-07-17T16:09:59.003Z"
+}

@@ -2,6 +2,20 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Tue, 23 Jul 2019 16:33:51 GMT",
+      "tag": "@uifabric/file-type-icons_v7.0.6",
+      "version": "7.0.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added multiple.png to FileIconType enum",
+            "author": "t-shfozd@microsoft.com",
+            "commit": "4717c9370521adb2d8afa0d4398b5ece9fb4b311"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jul 2019 18:58:57 GMT",
       "tag": "@uifabric/file-type-icons_v7.0.5",
       "version": "7.0.5",

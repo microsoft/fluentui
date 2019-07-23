@@ -878,8 +878,6 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     };
     focus(): boolean;
     // (undocumented)
-    static getDerivedStateFromProps(newProps: IDetailsHeaderBaseProps, prevState: IDetailsHeaderState): IDetailsHeaderState;
-    // (undocumented)
     render(): JSX.Element;
     }
 
@@ -2691,6 +2689,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     dropdownWidth?: number;
     // Warning: (ae-forgotten-export) The symbol "IComboBoxClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
+    iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
     keytipProps?: IKeytipProps;
     multiSelect?: boolean;
@@ -3275,11 +3274,7 @@ export interface IDetailsHeaderProps extends IDetailsHeaderBaseProps {
 // @public (undocumented)
 export interface IDetailsHeaderState {
     // (undocumented)
-    columnReorderProps?: IColumnReorderHeaderProps;
-    // (undocumented)
     columnResizeDetails?: IColumnResizeDetails;
-    // (undocumented)
-    groupNestingDepth?: number;
     // (undocumented)
     isAllCollapsed?: boolean;
     // (undocumented)
@@ -3504,7 +3499,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onWillUnmount?: (row?: DetailsRowBase) => void;
-    rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
+    rowFieldsAs?: React.ComponentType<IDetailsRowFieldsProps>;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
     useReducedRowRenderer?: boolean;
@@ -3549,13 +3544,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     item: any;
     itemIndex: number;
     rowClassNames: {
-        isMultiline: string;
-        isRowHeader: string;
-        cell: string;
-        cellAnimation: string;
-        cellPadded: string;
-        cellUnpadded: string;
-        fields: string;
+        [k in keyof Pick<IDetailsRowStyles, 'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'>]: string;
     };
 }
 
@@ -3583,11 +3572,9 @@ export interface IDetailsRowState {
         onMeasureDone: (measuredWidth: number) => void;
     };
     // (undocumented)
-    groupNestingDepth?: number;
-    // (undocumented)
     isDropping?: boolean;
     // (undocumented)
-    selectionState?: IDetailsRowSelectionState;
+    selectionState: IDetailsRowSelectionState;
 }
 
 // @public (undocumented)
@@ -6843,9 +6830,11 @@ export interface ISpinButtonProps {
     downArrowButtonStyles?: Partial<IButtonStyles>;
     // Warning: (ae-forgotten-export) The symbol "ISpinButtonClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, disabled: boolean, isFocused: boolean, keyboardSpinDirection: KeyboardSpinDirection, labelPosition?: Position, className?: string) => ISpinButtonClassNames;
+    iconButtonProps?: IButtonProps;
     iconProps?: IIconProps;
     incrementButtonAriaLabel?: string;
     incrementButtonIcon?: IIconProps;
+    inputProps?: React.InputHTMLAttributes<HTMLElement | HTMLInputElement>;
     keytipProps?: IKeytipProps;
     label?: string;
     // Warning: (ae-forgotten-export) The symbol "Position" needs to be exported by the entry point index.d.ts
@@ -8425,7 +8414,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
 export const Rating: React.StatelessComponent<IRatingProps>;
 
 // @public (undocumented)
-export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
+export class RatingBase extends React.Component<IRatingProps, IRatingState> {
     constructor(props: IRatingProps);
     // (undocumented)
     static defaultProps: IRatingProps;

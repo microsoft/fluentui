@@ -24,14 +24,13 @@ export interface IDetailsRowSelectionState {
 }
 
 export interface IDetailsRowState {
-  selectionState?: IDetailsRowSelectionState;
+  selectionState: IDetailsRowSelectionState;
   columnMeasureInfo?: {
     index: number;
     column: IColumn;
     onMeasureDone: (measuredWidth: number) => void;
   };
   isDropping?: boolean;
-  groupNestingDepth?: number;
 }
 
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
@@ -44,7 +43,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
   private _cellMeasurer = React.createRef<HTMLSpanElement>();
   private _focusZone = React.createRef<IFocusZone>();
   private _droppingClassNames: string;
-  private _hasMounted: boolean;
+  /** Whether this.props.onDidMount has been called */
+  private _onDidMountCalled: boolean;
   private _dragDropSubscription: IDisposable;
 
   private _classNames: IProcessedStyleSet<IDetailsRowStyles>;
@@ -59,8 +59,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     this.state = {
       selectionState: this._getSelectionState(props),
       columnMeasureInfo: undefined,
-      isDropping: false,
-      groupNestingDepth: props.groupNestingDepth
+      isDropping: false
     };
 
     this._droppingClassNames = '';
@@ -77,7 +76,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
     if (this.props.onDidMount && this.props.item) {
       // If the item appears later, we should wait for it before calling this method.
-      this._hasMounted = true;
+      this._onDidMountCalled = true;
       this.props.onDidMount(this);
     }
   }
@@ -116,8 +115,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       });
     }
 
-    if (item && onDidMount && !this._hasMounted) {
-      this._hasMounted = true;
+    if (item && onDidMount && !this._onDidMountCalled) {
+      this._onDidMountCalled = true;
       onDidMount(this);
     }
   }
@@ -140,18 +139,15 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
   public componentWillReceiveProps(newProps: IDetailsRowBaseProps): void {
     this.setState({
-      selectionState: this._getSelectionState(newProps),
-      groupNestingDepth: newProps.groupNestingDepth
+      selectionState: this._getSelectionState(newProps)
     });
   }
 
   public shouldComponentUpdate(nextProps: IDetailsRowBaseProps, nextState: IDetailsRowState): boolean {
     if (this.props.useReducedRowRenderer) {
-      if (this.state.selectionState) {
-        const newSelectionState = this._getSelectionState(nextProps);
-        if (this.state.selectionState.isSelected !== newSelectionState.isSelected) {
-          return true;
-        }
+      const newSelectionState = this._getSelectionState(nextProps);
+      if (this.state.selectionState.isSelected !== newSelectionState.isSelected) {
+        return true;
       }
       return shallowCompare(this.props, nextProps);
     } else {
@@ -185,15 +181,16 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       compact,
       theme,
       styles,
-      cellsByColumn
+      cellsByColumn,
+      groupNestingDepth
     } = this.props;
-    const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
-    const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
+    const { columnMeasureInfo, isDropping } = this.state;
+    const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
     const isDraggable = dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrag(item)) : undefined;
-    const droppingClassName = isDropping ? (this._droppingClassNames ? this._droppingClassNames : DEFAULT_DROPPING_CSS_CLASS) : '';
+    const droppingClassName = isDropping ? this._droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : '';
     const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : undefined;
     const ariaDescribedBy = getRowAriaDescribedBy ? getRowAriaDescribedBy(item) : undefined;
-    const canSelect = !!selection && selection.canSelectItem!(item, itemIndex);
+    const canSelect = !!selection && selection.canSelectItem(item, itemIndex);
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
@@ -399,21 +396,19 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
    * @param event - The event trigger dropping state change which can be dragenter, dragleave etc
    */
   private _updateDroppingState = (newValue: boolean, event: DragEvent): void => {
-    const { selectionState, isDropping } = this.state;
+    const { isDropping } = this.state;
     const { dragDropEvents, item } = this.props;
 
     if (!newValue) {
       if (dragDropEvents!.onDragLeave) {
-        dragDropEvents!.onDragLeave!(item, event);
+        dragDropEvents!.onDragLeave(item, event);
       }
-    } else {
-      if (dragDropEvents!.onDragEnter) {
-        this._droppingClassNames = dragDropEvents!.onDragEnter!(item, event);
-      }
+    } else if (dragDropEvents!.onDragEnter) {
+      this._droppingClassNames = dragDropEvents!.onDragEnter(item, event);
     }
 
     if (isDropping !== newValue) {
-      this.setState({ selectionState: selectionState, isDropping: newValue });
+      this.setState({ isDropping: newValue });
     }
   };
 }
