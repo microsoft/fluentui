@@ -599,7 +599,6 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
 
     // Take the initial measure out of the initial render to prevent
     // an unnecessary render.
-    // this._async.setTimeout(() => {
     this._setTargetElementRect();
 
     // When the window resizes we want to async
@@ -626,7 +625,6 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
         }
       )
     );
-    // }, 10);
 
     // Every time the document's mouse move is triggered
     // we want to check if inside of an element and
