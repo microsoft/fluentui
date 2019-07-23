@@ -1,8 +1,0 @@
-{
-  "comment": "Added multiple.png to FileIconType enum",
-  "type": "patch",
-  "packageName": "@uifabric/file-type-icons",
-  "email": "t-shfozd@microsoft.com",
-  "commit": "4717c9370521adb2d8afa0d4398b5ece9fb4b311",
-  "date": "2019-07-23T00:46:35.951Z"
-}

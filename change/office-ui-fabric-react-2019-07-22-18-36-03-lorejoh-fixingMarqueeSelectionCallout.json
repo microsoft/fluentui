@@ -1,8 +1,0 @@
-{
-  "comment": "making mousemove event bind to capture phase to work inside Layers and Callouts",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "jolore@microsoft.com",
-  "commit": "551deacac2f6a74e727c98eff6c50bf2388545d3",
-  "date": "2019-07-23T01:36:03.219Z"
-}
