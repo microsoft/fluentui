@@ -135,7 +135,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
   private _childrenContainer = React.createRef<HTMLDivElement>();
   private _positioningContainer = React.createRef<IPositioningContainer>();
   private _async: Async;
-  private _disposables: (() => void)[] = [];
+  private _disposables: Function[] = [];
   private _hasListeners = false;
 
   /**
@@ -321,7 +321,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
 
   public componentWillUnmount() {
     this._async.dispose();
-    this._disposables.forEach((dispose: () => void) => dispose());
+    this._disposables.forEach(dispose => dispose());
   }
 
   public componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void {
@@ -395,18 +395,14 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
     const currentDoc: Document = getDocument()!;
 
     if (currentDoc) {
-      this._async.setTimeout(() => {
-        this._disposables.push(on(currentDoc.documentElement, 'keydown', this._onKeyDown, true));
-        this._hasListeners = true;
-      }, 0);
+      this._disposables.push(on(currentDoc.documentElement, 'keydown', this._onKeyDown, true));
+      this._hasListeners = true;
       if (!preventDismissOnLostFocus) {
-        this._async.setTimeout(() => {
-          this._disposables.push(
-            on(currentDoc.documentElement, 'click', this._dismissOnLostFocus, true),
-            on(currentDoc.documentElement, 'focus', this._dismissOnLostFocus, true)
-          );
-          this._hasListeners = true;
-        }, 0);
+        this._disposables.push(
+          on(currentDoc.documentElement, 'click', this._dismissOnLostFocus, true),
+          on(currentDoc.documentElement, 'focus', this._dismissOnLostFocus, true)
+        );
+        this._hasListeners = true;
       }
     }
   }
@@ -603,34 +599,34 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
 
     // Take the initial measure out of the initial render to prevent
     // an unnecessary render.
-    this._async.setTimeout(() => {
-      this._setTargetElementRect();
+    // this._async.setTimeout(() => {
+    this._setTargetElementRect();
 
-      // When the window resizes we want to async
-      // get the bounding client rectangle.
-      // Every time the event is triggered we want to
-      // setTimeout and then clear any previous instances
-      // of setTimeout.
-      this._disposables.push(
-        on(
-          window,
-          'resize',
-          (): void => {
-            timeoutIds.forEach(
-              (value: number): void => {
-                clearInterval(value);
-              }
-            );
+    // When the window resizes we want to async
+    // get the bounding client rectangle.
+    // Every time the event is triggered we want to
+    // setTimeout and then clear any previous instances
+    // of setTimeout.
+    this._disposables.push(
+      on(
+        window,
+        'resize',
+        (): void => {
+          timeoutIds.forEach(
+            (value: number): void => {
+              clearInterval(value);
+            }
+          );
 
-            timeoutIds.push(
-              this._async.setTimeout((): void => {
-                this._setTargetElementRect();
-              }, 100)
-            );
-          }
-        )
-      );
-    }, 10);
+          timeoutIds.push(
+            this._async.setTimeout((): void => {
+              this._setTargetElementRect();
+            }, 100)
+          );
+        }
+      )
+    );
+    // }, 10);
 
     // Every time the document's mouse move is triggered
     // we want to check if inside of an element and

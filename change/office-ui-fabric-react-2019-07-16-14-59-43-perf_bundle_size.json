@@ -2,7 +2,7 @@
   "comment": "Reduce bundle size by removing BaseComponent from Coachmark, Calendar, and Datepicker components. Also used Async, on utilities instead of relying on this._async or this._events",
   "type": "minor",
   "packageName": "office-ui-fabric-react",
-  "email": "email not defined",
+  "email": "aneeshak@microsoft.com",
   "commit": "aedad3e737db4d1147cf0a316dff14adc7886cb1",
   "date": "2019-07-16T21:59:43.783Z"
 }
