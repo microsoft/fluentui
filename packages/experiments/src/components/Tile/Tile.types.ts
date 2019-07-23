@@ -96,6 +96,11 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
   isFluentStyling?: boolean;
 
   /**
+   * The accessible label representing tile selected state.
+   */
+  ariaLabelSelected?: string;
+
+  /*
    * Hide nameplate and activity until the tile is hovered or selected (applies only to media tiles)
    */
   nameplateOnlyOnHover?: boolean;

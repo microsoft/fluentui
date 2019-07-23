@@ -1,0 +1,8 @@
+{
+  "comment": "Spinner: Updating label font size and position in respect to spinner to match fluent toolkit",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "a15ec8e293eb52477d7dde9b702e32f4bd1b7de6",
+  "date": "2019-07-19T01:03:55.756Z"
+}

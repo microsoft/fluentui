@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, css, format, getId, divProperties, getNativeProps } from '../../Utilities';
+import {
+  warnDeprecations,
+  initializeComponentRef,
+  classNamesFunction,
+  css,
+  format,
+  getId,
+  divProperties,
+  getNativeProps
+} from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
@@ -9,8 +18,8 @@ const getClassNames = classNamesFunction<IRatingStyleProps, IRatingStyles>();
 
 interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
   fillPercentage: number;
-  disabled: boolean;
-  readOnly: boolean;
+  disabled?: boolean;
+  readOnly?: boolean;
   classNames: IProcessedStyleSet<IRatingStyles>;
   icon?: string;
 }
@@ -31,7 +40,7 @@ const RatingStar = (props: IRatingStarProps) => {
   );
 };
 
-export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
+export class RatingBase extends React.Component<IRatingProps, IRatingState> {
   public static defaultProps: IRatingProps = {
     min: 1,
     max: 5
@@ -44,9 +53,9 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   constructor(props: IRatingProps) {
     super(props);
 
-    this._warnDeprecations({
-      onChanged: 'onChange'
-    });
+    initializeComponentRef(this);
+
+    warnDeprecations('Rating', props, { onChanged: 'onChange' });
 
     this._id = getId('Rating');
     this._min = this.props.allowZeroStars ? 0 : 1;
@@ -61,9 +70,6 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   public render(): JSX.Element {
-    const id = this._id;
-    const stars = [];
-    const starIds = [];
     const {
       disabled,
       getAriaLabel,
@@ -75,8 +81,13 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
       icon = 'FavoriteStarFill',
       unselectedIcon = 'FavoriteStar'
     } = this.props;
+
+    const id = this._id;
+    const stars = [];
+    const starIds = [];
     const rating = this._getRating();
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
+
     this._classNames = getClassNames(styles!, {
       disabled,
       readOnly,
@@ -88,8 +99,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
         const fillPercentage = this._getFillingPercentage(i);
         const ratingStarProps: IRatingStarProps = {
           fillPercentage,
-          disabled: disabled ? true : false,
-          readOnly: readOnly ? true : false,
+          disabled,
           classNames: this._classNames,
           icon: fillPercentage > 0 ? icon : unselectedIcon
         };
@@ -111,12 +121,14 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
             role="presentation"
             type="button"
           >
-            {this._getLabel(i)}
+            {this._getLabel((rating as number) % 1 ? rating : i)}
             <RatingStar key={i + 'rating'} {...ratingStarProps} />
           </button>
         );
       }
     }
+
+    const ariaLabel = getAriaLabel ? getAriaLabel(rating ? rating : 0, max as number) : '';
 
     return (
       <div
@@ -124,7 +136,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
           [this._classNames.rootIsLarge]: size === RatingSize.Large,
           [this._classNames.rootIsSmall]: size !== RatingSize.Large
         })}
-        aria-label={getAriaLabel ? getAriaLabel(rating ? rating : 0, this.props.max as number) : ''}
+        aria-label={!readOnly ? ariaLabel : ''}
         id={id}
         {...divProps}
       >
@@ -136,7 +148,8 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
             [this._classNames.rootIsSmall]: size !== RatingSize.Large
           })}
           data-is-focusable={readOnly ? true : false}
-          defaultActiveElement={rating ? starIds[rating - 1] && '#' + starIds[rating - 1] : undefined}
+          defaultActiveElement={rating ? starIds[Math.ceil(rating) - 1] && '#' + starIds[Math.ceil(rating) - 1] : undefined}
+          aria-label={readOnly ? ariaLabel : ''}
         >
           {stars}
         </FocusZone>
@@ -149,7 +162,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   }
 
   private _onFocus(value: number, ev: React.FocusEvent<HTMLElement>): void {
-    if (this.state.rating !== value) {
+    if (Math.ceil(this.state.rating!) !== value) {
       this.setState({
         rating: value
       } as IRatingState);

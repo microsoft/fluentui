@@ -47,7 +47,7 @@ export class LayerCustomizedExample extends React.Component<{}, ILayerCustomized
                 isClickableOutsideFocusTrap: true,
                 forceFocusInsideTrap: false
               }}
-              onDismissed={this._onDismissPanel}
+              onDismiss={this._onDismissPanel}
             />
           )}
         </Customizer>

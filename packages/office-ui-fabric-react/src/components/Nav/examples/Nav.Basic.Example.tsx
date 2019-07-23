@@ -7,6 +7,7 @@ export const NavBasicExample: React.StatelessComponent = () => {
       onLinkClick={_onLinkClick}
       selectedKey="key3"
       expandButtonAriaLabel="Expand or collapse"
+      selectedAriaLabel="Selected"
       styles={{
         root: {
           width: 208,

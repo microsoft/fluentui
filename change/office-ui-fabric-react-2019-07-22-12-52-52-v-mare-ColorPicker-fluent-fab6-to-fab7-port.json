@@ -1,0 +1,8 @@
+{
+  "comment": "ColorPicker: Updates margin bottom of the color rectangle to match web fluent toolkit.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "f560ff800795f17a5f2feb2457d28c319fe38b9b",
+  "date": "2019-07-22T19:52:52.271Z"
+}
