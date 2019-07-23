@@ -1284,11 +1284,17 @@ export const FocusZoneTabbableElements: {
 // @public (undocumented)
 export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
 
+// @public
+export const FontIcon: React.FunctionComponent<IFontIconProps>;
+
 // @public (undocumented)
 export function getAllSelectedOptions(options: ISelectableOption[], selectedIndices: number[]): ISelectableOption[];
 
 // @public (undocumented)
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
+
+// @public
+export const getCheck: (theme?: ITheme | undefined, checked?: boolean | undefined, className?: string | undefined) => JSX.Element;
 
 // @public
 export function getColorFromHSV(hsv: IHSV, a?: number): IColor;
@@ -1303,7 +1309,16 @@ export function getColorFromString(inputColor: string): IColor | undefined;
 export function getContrastRatio(color1: IColor, color2: IColor): number;
 
 // @public
+export const getFontIcon: (iconName: string, className?: string | undefined, ariaLabel?: string | undefined) => React.ReactElement<any, string | ((props: any) => React.ReactElement<any, string | any | (new (props: any) => React.Component<any, any, any>)> | null) | (new (props: any) => React.Component<any, any, any>)> | null;
+
+// @public
 export function getFullColorString(color: IColor): string;
+
+// @public (undocumented)
+export const getIconContent: (iconName?: string | undefined) => {
+    children: string | undefined;
+    iconClassName: string | undefined;
+};
 
 // @public
 export const getMeasurementCache: () => {
@@ -2190,6 +2205,7 @@ export interface ICheckProps {
     componentRef?: IRefObject<ICheckProps>;
     styles?: IStyleFunctionOrObject<ICheckStyleProps, ICheckStyles>;
     theme?: ITheme;
+    useFastIcons?: boolean;
 }
 
 // @public (undocumented)
@@ -3070,13 +3086,15 @@ export interface IContextualMenuSubComponentStyles {
     menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export enum IconType {
     // @deprecated
     Default = 100000,
+    // @deprecated
     default = 0,
     // @deprecated
     Image = 100001,
+    // @deprecated
     image = 1
 }
 
@@ -3176,6 +3194,8 @@ export interface IDatePickerStyles {
 export interface IDetailsCheckboxProps {
     // (undocumented)
     checked: boolean;
+    // (undocumented)
+    theme?: ITheme;
 }
 
 // @public (undocumented)
@@ -3198,6 +3218,7 @@ export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumn
     updateDragInfo?: (props: {
         itemIndex: number;
     }, event?: MouseEvent) => void;
+    useFastIcons?: boolean;
 }
 
 // @public (undocumented)
@@ -3284,6 +3305,7 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
     selectAllVisibility?: SelectAllVisibility;
     styles?: IStyleFunctionOrObject<IDetailsHeaderStyleProps, IDetailsHeaderStyles>;
     theme?: ITheme;
+    useFastIcons?: boolean;
 }
 
 // @public (undocumented)
@@ -3447,6 +3469,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     shouldApplyApplicationRole?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsListStyleProps, IDetailsListStyles>;
     theme?: ITheme;
+    useFastIcons?: boolean;
     usePageCache?: boolean;
     useReducedRowRenderer?: boolean;
     viewport?: IViewport;
@@ -3524,6 +3547,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     rowFieldsAs?: React.ComponentType<IDetailsRowFieldsProps>;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
+    useFastIcons?: boolean;
     useReducedRowRenderer?: boolean;
 }
 
@@ -3540,6 +3564,7 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
     selected?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>;
     theme?: ITheme;
+    useFastIcons?: boolean;
 }
 
 // @public (undocumented)
@@ -4566,6 +4591,12 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 }
 
 // @public
+export interface IFontIconProps extends React.HTMLAttributes<HTMLElement> {
+    className?: string;
+    iconName?: string;
+}
+
+// @public
 export interface IGap extends IShimmerElement {
     height?: number;
     width?: number | string;
@@ -4915,10 +4946,12 @@ export interface IHSV {
 
 // @public (undocumented)
 export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement> {
+    // @deprecated
     ariaLabel?: string;
     iconName?: string;
+    // @deprecated
     iconType?: IconType;
-    imageErrorAs?: React.StatelessComponent<IImageProps> | React.ComponentClass<IImageProps>;
+    imageErrorAs?: React.ComponentType<IImageProps>;
     imageProps?: IImageProps;
     styles?: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
     // (undocumented)
@@ -4957,6 +4990,12 @@ export interface IIconStyles {
 
 // @public (undocumented)
 export interface IImage {
+}
+
+// @public
+export interface IImageIconProps extends React.HTMLAttributes<HTMLElement> {
+    className?: string;
+    imageProps: IImageProps;
 }
 
 // @public (undocumented)
@@ -5305,6 +5344,9 @@ export enum ImageFit {
     cover = 2,
     none = 3
 }
+
+// @public (undocumented)
+export const ImageIcon: React.FunctionComponent<IImageIconProps>;
 
 // @public (undocumented)
 export enum ImageLoadState {
