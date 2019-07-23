@@ -1,8 +1,0 @@
-{
-  "comment": "Chiclet: adds preview prop and will just render image specified instead of doing icon lookup\"",
-  "type": "minor",
-  "packageName": "@uifabric/experiments",
-  "email": "naethell@microsoft.com",
-  "commit": "86f7f4592f54b1e88256e53c71f41c15eb3dd525",
-  "date": "2019-07-23T20:28:00.937Z"
-}
