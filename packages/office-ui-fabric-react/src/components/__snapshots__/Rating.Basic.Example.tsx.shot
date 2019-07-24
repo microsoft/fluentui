@@ -33,6 +33,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     onFocus={[Function]}
   >
     <div
+      aria-label=""
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -42,6 +43,22 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           }
           {
             display: inline-block;
+            outline: transparent;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
           }
           {
             height: 36px;
@@ -871,6 +888,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     onFocus={[Function]}
   >
     <div
+      aria-label=""
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -880,6 +898,22 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           }
           {
             display: inline-block;
+            outline: transparent;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
           }
           {
             height: 32px;
@@ -1709,6 +1743,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     onFocus={[Function]}
   >
     <div
+      aria-label=""
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -1718,6 +1753,22 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           }
           {
             display: inline-block;
+            outline: transparent;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
           }
           {
             height: 32px;
@@ -3325,6 +3376,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     onFocus={[Function]}
   >
     <div
+      aria-label=""
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -3334,6 +3386,22 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           }
           {
             display: inline-block;
+            outline: transparent;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
           }
           {
             height: 32px;
@@ -3891,7 +3959,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
   </div>
   Half star in readOnly mode:
   <div
-    aria-label="Rating value is 2.5 of 5"
+    aria-label=""
     className=
         ms-Rating-star
         ms-RatingStar-root
@@ -3909,6 +3977,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     id="Rating12"
   >
     <div
+      aria-label="Rating value is 2.5 of 5"
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -3918,6 +3987,22 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           }
           {
             display: inline-block;
+            outline: transparent;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
           }
           {
             height: 32px;
@@ -4000,9 +4085,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel13-1"
+          id="RatingLabel13-2.5"
         >
-          1 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -4139,9 +4224,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel13-2"
+          id="RatingLabel13-2.5"
         >
-          2 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -4279,9 +4364,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel13-3"
+          id="RatingLabel13-2.5"
         >
-          3 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -4418,9 +4503,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel13-4"
+          id="RatingLabel13-2.5"
         >
-          4 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -4557,9 +4642,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel13-5"
+          id="RatingLabel13-2.5"
         >
-          5 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -4642,12 +4727,22 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
+        &:hover .ms-RatingStar-back {
+          color: #323130;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover .ms-RatingStar-back {
+          color: Highlight;
+        }
         {
           height: 32px;
         }
     id="Rating15"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
   >
     <div
+      aria-label=""
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -4657,17 +4752,33 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           }
           {
             display: inline-block;
+            outline: transparent;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
           }
           {
             height: 32px;
           }
       data-focuszone-id="FocusZone17"
-      data-is-focusable={true}
+      data-is-focusable={false}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
       role="presentation"
-      tabIndex={0}
+      tabIndex={-1}
     >
       <button
         className=
@@ -4709,12 +4820,30 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             &[disabled] {
               cursor: default;
             }
+            &:hover ~ .ms-Rating-button .ms-RatingStar-back {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+              color: WindowText;
+            }
+            &:hover ~ .ms-Rating-button .ms-RatingStar-front {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+              color: WindowText;
+            }
+            &:hover .ms-RatingStar-back {
+              color: #0078d4;
+            }
+            &:hover .ms-RatingStar-front {
+              color: #005a9e;
+            }
             {
               font-size: 16px;
               height: 16px;
               line-height: 16px;
             }
-        disabled={true}
+        disabled={false}
         id="Rating15-star-0"
         onClick={[Function]}
         onFocus={[Function]}
@@ -4739,9 +4868,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel16-1"
+          id="RatingLabel16-2.5"
         >
-          1 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -4848,12 +4977,30 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             &[disabled] {
               cursor: default;
             }
+            &:hover ~ .ms-Rating-button .ms-RatingStar-back {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+              color: WindowText;
+            }
+            &:hover ~ .ms-Rating-button .ms-RatingStar-front {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+              color: WindowText;
+            }
+            &:hover .ms-RatingStar-back {
+              color: #0078d4;
+            }
+            &:hover .ms-RatingStar-front {
+              color: #005a9e;
+            }
             {
               font-size: 16px;
               height: 16px;
               line-height: 16px;
             }
-        disabled={true}
+        disabled={false}
         id="Rating15-star-1"
         onClick={[Function]}
         onFocus={[Function]}
@@ -4878,9 +5025,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel16-2"
+          id="RatingLabel16-2.5"
         >
-          2 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -4987,13 +5134,31 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             &[disabled] {
               cursor: default;
             }
+            &:hover ~ .ms-Rating-button .ms-RatingStar-back {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+              color: WindowText;
+            }
+            &:hover ~ .ms-Rating-button .ms-RatingStar-front {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+              color: WindowText;
+            }
+            &:hover .ms-RatingStar-back {
+              color: #0078d4;
+            }
+            &:hover .ms-RatingStar-front {
+              color: #005a9e;
+            }
             {
               font-size: 16px;
               height: 16px;
               line-height: 16px;
             }
         data-is-current={true}
-        disabled={true}
+        disabled={false}
         id="Rating15-star-2"
         onClick={[Function]}
         onFocus={[Function]}
@@ -5018,9 +5183,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel16-3"
+          id="RatingLabel16-2.5"
         >
-          3 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -5127,12 +5292,30 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             &[disabled] {
               cursor: default;
             }
+            &:hover ~ .ms-Rating-button .ms-RatingStar-back {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+              color: WindowText;
+            }
+            &:hover ~ .ms-Rating-button .ms-RatingStar-front {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+              color: WindowText;
+            }
+            &:hover .ms-RatingStar-back {
+              color: #0078d4;
+            }
+            &:hover .ms-RatingStar-front {
+              color: #005a9e;
+            }
             {
               font-size: 16px;
               height: 16px;
               line-height: 16px;
             }
-        disabled={true}
+        disabled={false}
         id="Rating15-star-3"
         onClick={[Function]}
         onFocus={[Function]}
@@ -5157,9 +5340,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel16-4"
+          id="RatingLabel16-2.5"
         >
-          4 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -5266,12 +5449,30 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             &[disabled] {
               cursor: default;
             }
+            &:hover ~ .ms-Rating-button .ms-RatingStar-back {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
+              color: WindowText;
+            }
+            &:hover ~ .ms-Rating-button .ms-RatingStar-front {
+              color: #605e5c;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
+              color: WindowText;
+            }
+            &:hover .ms-RatingStar-back {
+              color: #0078d4;
+            }
+            &:hover .ms-RatingStar-front {
+              color: #005a9e;
+            }
             {
               font-size: 16px;
               height: 16px;
               line-height: 16px;
             }
-        disabled={true}
+        disabled={false}
         id="Rating15-star-4"
         onClick={[Function]}
         onFocus={[Function]}
@@ -5296,9 +5497,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 position: absolute;
                 width: 1px;
               }
-          id="RatingLabel16-5"
+          id="RatingLabel16-2.5"
         >
-          5 of 5 stars selected
+          2.5 of 5 stars selected
         </span>
         <div
           className=
@@ -5396,6 +5597,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
     onFocus={[Function]}
   >
     <div
+      aria-label=""
       className=
           ms-FocusZone
           ms-Rating-focuszone
@@ -5405,6 +5607,22 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           }
           {
             display: inline-block;
+            outline: transparent;
+            position: relative;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
           }
           {
             height: 32px;
