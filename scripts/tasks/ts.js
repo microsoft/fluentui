@@ -16,7 +16,7 @@ module.exports.ts = {
   },
   esm: () => {
     const extraOptions = getExtraTscParams(argv());
-    return tscTask({ ...extraOptions, outDir: 'lib', module: 'es2015' });
+    return tscTask({ ...extraOptions, outDir: 'lib', module: 'esnext' });
   },
   amd: () => {
     const extraOptions = getExtraTscParams(argv());

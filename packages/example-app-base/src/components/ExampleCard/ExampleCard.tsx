@@ -10,9 +10,8 @@ import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
 import { CodeSnippet } from '../CodeSnippet/index';
-import { Editor, ITextModel, transpile, evalCode, ITranspiledOutput, EditorPreview, transformExample } from '@uifabric/tsx-editor';
+import { ITextModel, transformExample, ITranspiledOutput } from '@uifabric/tsx-editor';
 import { getSetting } from '../../index2';
-
 
 export interface IExampleCardState {
   schemeIndex: number;
@@ -50,7 +49,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     };
 
     this.canRenderLiveEditor =
-      getSetting('useEditor') === '1' && !isIE11() && transformExample(props.code!, 'placeholder').error === undefined ? true : false;
+      getSetting('useEditor') === '1' && !isIE11() && transformExample(props.code!, 'placeholder').error === undefined;
   }
 
   public render(): JSX.Element {
@@ -82,13 +81,6 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
           const exampleCardContent = (
             <div className={classNames.example} data-is-scrollable={isScrollable}>
               {children}
-            </div>
-          );
-
-          const editor = (
-            <div>
-              <Editor code={code!} onChange={this._editorOnChange} width={'auto'} height={500} language="typescript" />
-              <EditorPreview error={this.state.error} id={this.props.title.replace(' ', '')} />
             </div>
           );
 
@@ -133,20 +125,29 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                 </div>
               </div>
 
-              {isCodeVisible && !this.canRenderLiveEditor && (
-                <div className={classNames.code}>
-                  <CodeSnippet language="tsx">{code}</CodeSnippet>
-                </div>
-              )}
-
-              {isCodeVisible && this.canRenderLiveEditor && editor}
+              {isCodeVisible &&
+                (this.canRenderLiveEditor ? (
+                  import('@uifabric/tsx-editor').then(tsxEditor => {
+                    <tsxEditor.Editor code={code!} onChange={this._editorOnChange} width={'auto'} height={500} language="typescript" />;
+                  })
+                ) : (
+                  <div className={classNames.code}>
+                    <CodeSnippet language="tsx">{code}</CodeSnippet>
+                  </div>
+                ))}
 
               {(!isCodeVisible || !this.canRenderLiveEditor) &&
                 (activeCustomizations ? (
                   <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
                     <Customizer {...activeCustomizations}>
                       <ThemeProvider scheme={_schemes[schemeIndex]}>
-                        <Stack styles={regionStyles}>{exampleCardContent}</Stack>
+                        <Stack styles={regionStyles}>
+                          {this.canRenderLiveEditor
+                            ? import('@uifabric/tsx-editor').then(tsxEditor => {
+                                <tsxEditor.EditorPreview error={this.state.error} id={this.props.title.replace(' ', '')} />;
+                              })
+                            : exampleCardContent}
+                        </Stack>
                       </ThemeProvider>
                     </Customizer>
                   </CustomizerContext.Provider>
@@ -183,23 +184,19 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   }
 
   private _editorOnChange = (editor: ITextModel) => {
-    transpile(editor).then((output: ITranspiledOutput) => {
-      if (output.outputString) {
-        const evalCodeError = evalCode(output.outputString, this.props.title.replace(' ', ''));
-        if (evalCodeError) {
+    import('@uifabric/tsx-editor').then(tsxEditor => {
+      tsxEditor.transpile(editor).then((output: ITranspiledOutput) => {
+        if (output.outputString) {
+          const evalCodeError = tsxEditor.evalCode(output.outputString, this.props.title.replace(' ', ''));
           this.setState({
-            error: evalCodeError
+            error: evalCodeError || undefined
           });
         } else {
           this.setState({
-            error: undefined
+            error: output.error
           });
         }
-      } else {
-        this.setState({
-          error: output.error
-        });
-      }
+      });
     });
   };
 
@@ -212,11 +209,11 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   };
 
   private _onToggleCodeClick = () => {
-    if (this.props.onClick) {
+    if (this.props.onToggleEditor) {
       if (this.props.isCodeVisible) {
-        this.props.onClick('');
+        this.props.onToggleEditor('');
       } else {
-        this.props.onClick(this.props.title);
+        this.props.onToggleEditor(this.props.title);
       }
     }
   };
