@@ -25,7 +25,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
       & textarea {
         font-family: inherit;
       }
-      & > * {
+      & > .ms-Shimmer-container {
         margin-bottom: 10px;
         margin-left: 0;
         margin-right: 0;

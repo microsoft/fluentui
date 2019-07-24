@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, DelayedRender, getNativeProps, divProperties, Async } from '../../Utilities';
+import { classNamesFunction, DelayedRender, getNativeProps, divProperties, Async, initializeComponentRef } from '../../Utilities';
 import { IShimmerProps, IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
 
@@ -28,6 +28,8 @@ export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
 
   constructor(props: IShimmerProps) {
     super(props);
+
+    initializeComponentRef(this);
 
     this.state = {
       contentLoaded: props.isDataLoaded
