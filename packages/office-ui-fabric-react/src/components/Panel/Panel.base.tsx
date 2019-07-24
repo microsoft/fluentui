@@ -122,8 +122,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     const headerTextId = headerText && id + '-headerText';
     const customWidthStyles = type === PanelType.custom || type === PanelType.customNear ? { width: customWidth } : {};
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
-    const isOpen = this.isActive;
-    const isAnimating = visibility === PanelVisibilityState.animatingClosed || visibility === PanelVisibilityState.animatingOpen;
+
+    const isOpen = this._isOpen;
 
     if (!isOpen && !isAnimating && !isHiddenOnDismiss) {
       return null;
