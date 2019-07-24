@@ -16,18 +16,24 @@ const getClassNames = classNamesFunction<IShimmerElementsGroupStyleProps, IShimm
  * {@docCategory Shimmer}
  */
 export const ShimmerElementsGroupBase: React.FunctionComponent<IShimmerElementsGroupProps> = props => {
-  const { styles, width, shimmerElements, rowHeight, flexWrap = false, theme, backgroundColor } = props;
+  const {
+    styles,
+    width = 'auto',
+    shimmerElements,
+    rowHeight = findMaxElementHeight(shimmerElements || []),
+    flexWrap = false,
+    theme,
+    backgroundColor
+  } = props;
 
   const classNames = getClassNames(styles!, {
     theme: theme!,
     flexWrap
   });
 
-  const height = rowHeight ? rowHeight : findMaxElementHeight(shimmerElements ? shimmerElements : []);
-
   return (
-    <div style={{ width: width ? width : 'auto' }} className={classNames.root}>
-      {getRenderedElements(shimmerElements, backgroundColor, height)}
+    <div style={{ width: width }} className={classNames.root}>
+      {getRenderedElements(shimmerElements, backgroundColor, rowHeight)}
     </div>
   );
 };
@@ -48,7 +54,7 @@ function getRenderedElements(shimmerElements?: IShimmerElement[], backgroundColo
       }
     )
   ) : (
-    <ShimmerLine height={ShimmerElementsDefaultHeights.line} styles={{ root: [{ borderWidth: '0px' }] }} />
+    <ShimmerLine height={ShimmerElementsDefaultHeights.line} />
   );
 
   return renderedElements;
@@ -104,7 +110,7 @@ function getElementStyles(
   }
 
   return {
-    root: { ...borderStyle }
+    root: borderStyle
   };
 }
 
