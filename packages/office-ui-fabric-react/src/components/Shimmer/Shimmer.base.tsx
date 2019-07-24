@@ -10,7 +10,7 @@ export interface IShimmerState {
   contentLoaded?: boolean;
 }
 
-const TRANSITION_ANIMATION_INTERVAL = 2000; /* ms */
+const TRANSITION_ANIMATION_INTERVAL = 200; /* ms */
 
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 
