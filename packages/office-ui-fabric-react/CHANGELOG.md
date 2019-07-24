@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 23 Jul 2019 16:33:51 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jul 2019 12:27:56 GMT and should not be manually modified.
+
+## 7.15.0
+Wed, 24 Jul 2019 12:27:56 GMT
+
+### Minor changes
+
+- split calendarMonth into three rows (Qianqian.Li@microsoft.com)
+
+### Patches
+
+- Facepile: Fix narrator not announcing coauthor position (tabrumle@microsoft.com)
 
 ## 7.14.1
 Tue, 23 Jul 2019 16:33:51 GMT

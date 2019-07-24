@@ -1,8 +1,0 @@
-{
-  "comment": "split calendarMonth into three rows",
-  "type": "minor",
-  "packageName": "office-ui-fabric-react",
-  "email": "Qianqian.Li@microsoft.com",
-  "commit": "b5ca3ec0de972c59a154e74acde9d47a99b0e253",
-  "date": "2019-07-23T07:09:50.858Z"
-}
