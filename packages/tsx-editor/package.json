@@ -51,7 +51,7 @@
     "@uifabric/fluent-theme": "^7.0.4",
     "monaco-editor": "^0.17.0",
     "monaco-editor-webpack-plugin": "^1.7.0",
-    "office-ui-fabric-react": "^7.14.1",
+    "office-ui-fabric-react": "^7.15.0",
     "tslib": "^1.7.1",
     "typescript": "3.5.1"
   },

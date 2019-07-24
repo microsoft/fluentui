@@ -3,6 +3,7 @@ import { Markdown, ColorPalette, IColorSwatch, IPageSectionProps } from '@uifabr
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { ColorsSharedPageProps } from './SharedPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
+import { getColorsImplementation } from './getColorsImplementation';
 
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
 const sharedColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-shared.json');
@@ -28,15 +29,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             </>
           )
         },
-        {
-          sectionName: 'Implementation',
-          editUrl: `${baseUrl}/web/ColorsImplementation.md`,
-          content: (
-            <Markdown>
-              {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/Colors/docs/web/ColorsImplementation.md') as string}
-            </Markdown>
-          )
-        }
+        getColorsImplementation(baseUrl, 'SharedColors', 'red20', 'sharedRed20')
       ];
 
     default:
