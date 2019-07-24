@@ -13,6 +13,7 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
       {
         display: 'flex',
         flexWrap: 'wrap',
+        overflow: 'hidden',
         WebkitFontSmoothing: 'antialiased',
         backgroundColor: palette.white,
         borderRadius: 2,
@@ -31,12 +32,10 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
     ],
     preview: [
       {
-        height: 122,
+        display: 'flex',
+        height: 126,
         width: 198,
-        padding: '2px 0px 2px 2px',
-        position: 'relative',
-        backgroundColor: palette.white,
-        display: 'block'
+        backgroundColor: palette.white
       }
     ],
     info: [

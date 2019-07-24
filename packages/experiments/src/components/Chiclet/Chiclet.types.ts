@@ -44,7 +44,7 @@ export interface IChicletProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Preview to render for the component.
    */
-  preview?: React.ReactElement<JSX.Element>;
+  preview?: React.ComponentType<{ className: string }>;
 
   /**
    * Image to render for the component.

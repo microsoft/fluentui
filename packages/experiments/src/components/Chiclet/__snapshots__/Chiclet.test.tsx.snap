@@ -21,6 +21,7 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
+        overflow: hidden;
         padding-bottom: 0px;
         padding-left: 0px;
         padding-right: 0px;
@@ -40,27 +41,47 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
     className=
 
         {
-          align-items: center;
-          background-color: #edebe9;
+          background-color: #ffffff;
           display: flex;
-          height: 122px;
-          padding-bottom: 2px;
-          padding-left: 2px;
-          padding-right: 0px;
-          padding-top: 2px;
+          height: 126px;
           width: 198px;
         }
   >
-    <img
+    <div
       className=
-
+          ms-Image
           {
-            background-color: #edebe9;
-            height: 80px;
-            width: 190px;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            overflow: hidden;
           }
-      src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_16x1_5.svg"
-    />
+      style={
+        Object {
+          "height": "122px",
+          "width": "198px",
+        }
+      }
+    >
+      <img
+        className=
+            ms-Image-image
+            ms-Image-image--portrait
+            is-notLoaded
+            is-fadeIn
+            {
+              display: block;
+              height: 100%;
+              opacity: 0;
+              width: 100%;
+            }
+        onError={[Function]}
+        onLoad={[Function]}
+        role="presentation"
+      />
+    </div>
   </div>
   <div
     className=
@@ -166,23 +187,46 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
     className=
         ms-ChicletXsmall-preview
         {
-          width: 60px;
+          display: flex;
+          height: 60px;
+          width: 59px;
         }
   >
-    <img
+    <div
       className=
-          ms-ChicletXsmall-icon
+          ms-Image
           {
-            background-color: #edebe9;
-            height: 29px;
-            padding-bottom: 17.44px;
-            padding-left: 17.44px;
-            padding-right: 17.44px;
-            padding-top: 17.44px;
-            width: 29px;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            overflow: hidden;
           }
-      src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/excel_16x1_5.svg"
-    />
+      style={
+        Object {
+          "height": "59px",
+          "width": "61px",
+        }
+      }
+    >
+      <img
+        className=
+            ms-Image-image
+            ms-Image-image--portrait
+            is-notLoaded
+            is-fadeIn
+            {
+              display: block;
+              height: 100%;
+              opacity: 0;
+              width: 100%;
+            }
+        onError={[Function]}
+        onLoad={[Function]}
+        role="presentation"
+      />
+    </div>
   </div>
   <div
     className=
@@ -269,23 +313,46 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
     className=
         ms-ChicletXsmall-preview
         {
-          width: 60px;
+          display: flex;
+          height: 60px;
+          width: 59px;
         }
   >
-    <img
+    <div
       className=
-          ms-ChicletXsmall-icon
+          ms-Image
           {
-            background-color: #edebe9;
-            height: 29px;
-            padding-bottom: 17.44px;
-            padding-left: 17.44px;
-            padding-right: 17.44px;
-            padding-top: 17.44px;
-            width: 29px;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            overflow: hidden;
           }
-      src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_16x1_5.svg"
-    />
+      style={
+        Object {
+          "height": "59px",
+          "width": "61px",
+        }
+      }
+    >
+      <img
+        className=
+            ms-Image-image
+            ms-Image-image--portrait
+            is-notLoaded
+            is-fadeIn
+            {
+              display: block;
+              height: 100%;
+              opacity: 0;
+              width: 100%;
+            }
+        onError={[Function]}
+        onLoad={[Function]}
+        role="presentation"
+      />
+    </div>
   </div>
   <div
     className=
@@ -372,7 +439,9 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
     className=
         ms-ChicletXsmall-preview
         {
-          width: 60px;
+          display: flex;
+          height: 60px;
+          width: 59px;
         }
   >
     <div
@@ -456,4 +525,15 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
     </div>
   </div>
 </div>
+`;
+
+exports[`Class Change should change the classname 1`] = `
+<img
+  className=
+
+      {
+        max-width: 100%;
+      }
+  src="https://vetstreet.brightspotcdn.com/dims4/default/ac70f62/2147483647/thumbnail/645x380/quality/90/?url=https%3A%2F%2Fvetstreet-brightspot.s3.amazonaws.com%2F5b%2Fe6%2F1dc93ba2496a9d9c3608cba0b41e%2FDachshund-AP-08EJPM-645sm101513.jpg"
+/>
 `;

@@ -54,7 +54,9 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
       classNames.preview,
       {
         // @todo: change value for width according to redline
-        width: 60
+        display: 'flex',
+        height: 60,
+        width: 59
       }
     ],
     info: [
