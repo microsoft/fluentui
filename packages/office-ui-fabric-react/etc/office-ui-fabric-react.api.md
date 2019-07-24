@@ -8666,10 +8666,12 @@ export enum Shade {
 export const Shimmer: React.StatelessComponent<IShimmerProps>;
 
 // @public (undocumented)
-export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
+export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
     constructor(props: IShimmerProps);
     // (undocumented)
-    componentWillReceiveProps(nextProps: IShimmerProps): void;
+    componentDidUpdate(prevProps: IShimmerProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: IShimmerProps;
     // (undocumented)
@@ -8680,11 +8682,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
 export const ShimmerCircle: React.StatelessComponent<IShimmerCircleProps>;
 
 // @public (undocumented)
-export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
-    constructor(props: IShimmerCircleProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ShimmerCircleBase: React.FunctionComponent<IShimmerCircleProps>;
 
 // @public (undocumented)
 export const ShimmeredDetailsList: React.StatelessComponent<IShimmeredDetailsListProps>;
@@ -8707,13 +8705,7 @@ export enum ShimmerElementsDefaultHeights {
 export const ShimmerElementsGroup: React.StatelessComponent<IShimmerElementsGroupProps>;
 
 // @public (undocumented)
-export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGroupProps, {}> {
-    constructor(props: IShimmerElementsGroupProps);
-    // (undocumented)
-    static defaultProps: IShimmerElementsGroupProps;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ShimmerElementsGroupBase: React.FunctionComponent<IShimmerElementsGroupProps>;
 
 // @public
 export enum ShimmerElementType {
@@ -8726,21 +8718,13 @@ export enum ShimmerElementType {
 export const ShimmerGap: React.StatelessComponent<IShimmerGapProps>;
 
 // @public (undocumented)
-export class ShimmerGapBase extends BaseComponent<IShimmerGapProps, {}> {
-    constructor(props: IShimmerGapProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ShimmerGapBase: React.FunctionComponent<IShimmerGapProps>;
 
 // @public (undocumented)
 export const ShimmerLine: React.StatelessComponent<IShimmerLineProps>;
 
 // @public (undocumented)
-export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
-    constructor(props: IShimmerLineProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ShimmerLineBase: React.FunctionComponent<IShimmerLineProps>;
 
 // @public (undocumented)
 export const sizeBoolean: (size: PersonaSize) => {
