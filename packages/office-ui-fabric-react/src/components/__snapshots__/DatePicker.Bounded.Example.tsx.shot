@@ -31,7 +31,6 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
         }
   >
     <div
-      aria-expanded={false}
       aria-haspopup="true"
     >
       <div
@@ -99,6 +98,7 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
                 }
           >
             <input
+              aria-expanded={false}
               aria-invalid={false}
               aria-label="Select a date"
               className=

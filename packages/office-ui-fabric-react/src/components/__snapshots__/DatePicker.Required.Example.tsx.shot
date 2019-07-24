@@ -29,7 +29,6 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
         }
   >
     <div
-      aria-expanded={false}
       aria-haspopup="true"
     >
       <div
@@ -132,6 +131,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                 }
           >
             <input
+              aria-expanded={false}
               aria-invalid={false}
               aria-label="Select a date"
               aria-labelledby="TextFieldLabel4"
@@ -265,7 +265,6 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
         }
   >
     <div
-      aria-expanded={false}
       aria-haspopup="true"
     >
       <div
@@ -344,6 +343,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                 }
           >
             <input
+              aria-expanded={false}
               aria-invalid={false}
               aria-label="Select a date"
               className=
