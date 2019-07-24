@@ -4777,7 +4777,6 @@ export interface IGroupHeaderStyles {
 
 // @public (undocumented)
 export interface IGroupRenderProps {
-    // (undocumented)
     ariaLabelForToggleAllGroupsButton?: string;
     collapseAllVisibility?: CollapseAllVisibility;
     footerProps?: IGroupFooterProps;
