@@ -221,16 +221,12 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                     ms-ChoiceField-innerField
                     {
                       display: inline-block;
+                      height: 32px;
                       padding-left: 30px;
                       padding-right: 30px;
                       position: relative;
+                      width: 32px;
                     }
-                style={
-                  Object {
-                    "height": 32,
-                    "width": 32,
-                  }
-                }
               >
                 <div
                   className=
@@ -356,16 +352,12 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                       margin-left: 8px;
                       margin-right: 8px;
                       margin-top: 4px;
+                      max-width: 64px;
                       overflow: hidden;
                       position: relative;
                       text-overflow: ellipsis;
                       white-space: pre-wrap;
                     }
-                style={
-                  Object {
-                    "maxWidth": 64,
-                  }
-                }
               >
                 <span
                   className="ms-ChoiceFieldLabel"
@@ -522,16 +514,12 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                     ms-ChoiceField-innerField
                     {
                       display: inline-block;
+                      height: 32px;
                       padding-left: 30px;
                       padding-right: 30px;
                       position: relative;
+                      width: 32px;
                     }
-                style={
-                  Object {
-                    "height": 32,
-                    "width": 32,
-                  }
-                }
               >
                 <div
                   className=
@@ -657,16 +645,12 @@ exports[`Component Examples renders ChoiceGroup.Image.Example.tsx correctly 1`] 
                       margin-left: 8px;
                       margin-right: 8px;
                       margin-top: 4px;
+                      max-width: 64px;
                       overflow: hidden;
                       position: relative;
                       text-overflow: ellipsis;
                       white-space: pre-wrap;
                     }
-                style={
-                  Object {
-                    "maxWidth": 64,
-                  }
-                }
               >
                 <span
                   className="ms-ChoiceFieldLabel"

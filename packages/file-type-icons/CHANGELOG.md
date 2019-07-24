@@ -1,6 +1,20 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Mon, 01 Jul 2019 18:51:42 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jul 2019 16:33:51 GMT and should not be manually modified.
+
+## 7.0.6
+Tue, 23 Jul 2019 16:33:51 GMT
+
+### Patches
+
+- Added multiple.png to FileIconType enum (t-shfozd@microsoft.com)
+
+## 7.0.5
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
 
 ## 7.0.4
 Mon, 01 Jul 2019 18:51:42 GMT

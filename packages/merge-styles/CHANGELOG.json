@@ -2,6 +2,48 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/merge-styles_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Changed initial default style injection to insert at the start of head by default, rather than at the end. This lets user specified stylesheets have preference by default, but also added support to insert styles in a specific part of the `HEAD` element. Just create a placeholder `<style data-merge-styles/>` element within the head, and styles will be injected after that placeholder.",
+            "author": "vibraga@microsoft.com",
+            "commit": "6792b36740782730db6693389db9c6341727bdb5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/merge-styles_v7.1.1",
+      "version": "7.1.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.1",
       "tag": "@uifabric/merge-styles_v7.1.1",
       "date": "Mon, 01 Jul 2019 18:51:42 GMT",

@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/set-version",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Non-Fabric specific package version setter",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,14 +14,14 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build",
-    "code-style": "npx just-scripts code-style",
-    "just": "npx just-scripts"
+    "build": "just-scripts build",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts"
   },
   "devDependencies": {
     "@types/jest": "23.0.0",
-    "@uifabric/prettier-rules": "^7.0.2",
-    "@uifabric/tslint-rules": "^7.0.2",
+    "@uifabric/prettier-rules": "^7.0.3",
+    "@uifabric/tslint-rules": "^7.0.3",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
