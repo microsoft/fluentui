@@ -23,7 +23,10 @@ export function transformExample(example: string, id: string) {
   example = example.replace("import * as React from 'react';", '');
 
   /**
-   * Getting class name that should render, it will find all class names but will only use the last one since the examples have the class that should render at the end. If there is no such class then it will check for the last const which should be the const that should be the one to render.
+   * Getting class name that should render, it will find all class names but will only
+   * use the last one since the examples have the class that should render at the end.
+   * If there is no such class then it will check for the last const which should be
+   * the const that should be the one to render.
    */
   while ((temp = classNamePattern.exec(example))) {
     className = temp[0];
@@ -34,7 +37,11 @@ export function transformExample(example: string, id: string) {
     }
   }
 
-  // Getting all the imports from fabric and pushing them into an array. If there are imports that do not come from OUFR then it will add an error since the import is not supported.
+  /**
+   * Getting all the imports from fabric and pushing them into an array.
+   * If there are imports that do not come from OUFR then it will add an
+   * error since the import is not supported.
+   */
   while ((temp = importPattern.exec(example))) {
     if (!/office-ui-fabric-react/.test(temp[0])) {
       output.error = 'error: unsupported imports';
@@ -44,7 +51,10 @@ export function transformExample(example: string, id: string) {
   }
 
   /**
-   * This will loop through all imports getting and saving the identifiers, if no identifiers were found then it will just eliminate the import. If identifiers were found, the string will be split, spaces will be removed, and next line characters will also be removed.
+   * This will loop through all imports getting and saving the identifiers,
+   * if no identifiers were found then it will just eliminate the import.
+   * If identifiers were found, the string will be split, spaces will be removed,
+   * and next line characters will also be removed.
    */
   imports.forEach((imp: string) => {
     temp = identifierPattern.exec(imp);

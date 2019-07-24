@@ -71,6 +71,11 @@ module.exports = {
               test: /\.js$/,
               use: 'source-map-loader',
               enforce: 'pre'
+            },
+            {
+              test: /\.css$/,
+              include: /node_modules/,
+              use: ['style-loader', 'css-loader']
             }
           ]
     };
@@ -143,6 +148,11 @@ module.exports = {
         module: {
           rules: [
             {
+              test: /\.css$/,
+              include: /node_modules/,
+              use: ['style-loader', 'css-loader']
+            },
+            {
               test: [/\.tsx?$/],
               use: {
                 loader: 'ts-loader',
@@ -182,10 +192,6 @@ module.exports = {
                   loader: 'sass-loader'
                 }
               ]
-            },
-            {
-              test: /\.css$/,
-              use: ['style-loader', 'css-loader']
             }
           ]
         },
@@ -201,7 +207,6 @@ module.exports = {
     );
 
     config.entry = createEntryWithPolyfill(config.entry, config);
-
     return config;
   }
 };
