@@ -93,19 +93,20 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   public render(): JSX.Element {
     const { className, headerItemsProps, footerItemsProps, suggestionsAvailableAlertText } = this.props;
 
-    const screenReaderText = mergeStyles(hiddenContentStyle);
+    const screenReaderTextStyles = mergeStyles(hiddenContentStyle);
+    const shouldAlertSuggestionsAvailableText =
+      this.state.suggestions && this.state.suggestions.length > 0 && suggestionsAvailableAlertText;
+
     return (
       <div className={css('ms-Suggestions', className ? className : '', styles.root)}>
         {headerItemsProps && this.renderHeaderItems()}
         {this._renderSuggestions()}
         {footerItemsProps && this.renderFooterItems()}
-        {
-          <span role="alert" aria-live="polite" className={screenReaderText}>
-            {this.state.suggestions && this.state.suggestions.length > 0 && suggestionsAvailableAlertText
-              ? suggestionsAvailableAlertText
-              : null}
+        {shouldAlertSuggestionsAvailableText ? (
+          <span role="alert" aria-live="polite" className={screenReaderTextStyles}>
+            {suggestionsAvailableAlertText}
           </span>
-        }
+        ) : null}
       </div>
     );
   }
