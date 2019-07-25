@@ -19,7 +19,6 @@ export class PanelScrollExample extends React.Component<{}, IPanelScrollExampleS
           isOpen={this.state.showPanel}
           type={PanelType.smallFixedFar}
           onDismiss={this._hidePanel}
-          isFooterAtBottom={true}
           headerText="Panel with scrolling content"
           closeButtonAriaLabel="Close"
           onRenderFooterContent={this._onRenderFooterContent}

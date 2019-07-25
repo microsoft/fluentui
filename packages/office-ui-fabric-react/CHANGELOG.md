@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 22 Jul 2019 12:21:49 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jul 2019 12:22:28 GMT and should not be manually modified.
+
+## 6.195.5
+Wed, 24 Jul 2019 12:22:28 GMT
+
+### Patches
+
+- Panel: move windowHeight from classNames into inline styles to prevent unnecessary className recalculations, respect isFooterAtBottom prop
+- Panel: remove window.innerHeight from styles
 
 ## 6.195.4
 Mon, 22 Jul 2019 12:21:49 GMT
