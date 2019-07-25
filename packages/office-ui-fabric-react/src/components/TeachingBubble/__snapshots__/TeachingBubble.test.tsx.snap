@@ -390,6 +390,13 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               background-color: WindowText;
               color: Window;
             }
+            & .ms-Button-label {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
         data-is-focusable={true}
         onClick={[Function]}
         onKeyDown={[Function]}

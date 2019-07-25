@@ -200,13 +200,14 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     primaryButton: [
       classNames.primaryButton,
       primaryButtonClassName,
-      DefaultFontStyles.medium,
       {
         backgroundColor: palette.white,
         borderColor: palette.white,
         color: palette.themePrimary,
         whiteSpace: 'nowrap',
         selectors: {
+          // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
+          [`.${classNames.buttonLabel}`]: DefaultFontStyles.medium,
           ':hover': {
             backgroundColor: palette.themeLighter,
             borderColor: palette.themeLighter,
