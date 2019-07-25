@@ -1,5 +1,5 @@
 {
-  "comment": "Chiclet: adds in preview prop, another example, and a test",
+  "comment": "Chiclet: adds in preview styling, another example, and a test",
   "type": "minor",
   "packageName": "@uifabric/experiments",
   "email": "t-stcar@microsoft.com",
