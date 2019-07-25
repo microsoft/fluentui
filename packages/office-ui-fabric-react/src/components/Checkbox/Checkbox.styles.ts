@@ -102,42 +102,43 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
             }
           }
         },
-        checked && {
-          selectors: {
-            ':hover .ms-Checkbox-checkbox': {
-              background: checkboxBackgroundCheckedHovered,
-              borderColor: checkboxBorderColorCheckedHovered
-            },
-            ':focus .ms-Checkbox-checkbox': {
-              background: checkboxBackgroundCheckedHovered,
-              borderColor: checkboxBorderColorCheckedHovered
-            },
-            '.ms-Checkbox-checkbox': {
-              background: checkboxBorderColorChecked,
-              borderColor: checkboxBorderColorChecked
-            },
-            [HighContrastSelector]: {
-              selectors: {
-                ':hover .ms-Checkbox-checkbox': {
-                  background: 'Window',
-                  borderColor: 'Highlight'
-                },
-                ':focus .ms-Checkbox-checkbox': {
-                  background: 'Highlight'
-                },
-                ':focus:hover .ms-Checkbox-checkbox': {
-                  background: 'Highlight'
-                },
-                ':focus:hover .ms-Checkbox-checkmark': {
-                  color: 'Window'
-                },
-                ':hover .ms-Checkbox-checkmark': {
-                  color: 'Highlight'
+        checked &&
+          !indeterminate && {
+            selectors: {
+              ':hover .ms-Checkbox-checkbox': {
+                background: checkboxBackgroundCheckedHovered,
+                borderColor: checkboxBorderColorCheckedHovered
+              },
+              ':focus .ms-Checkbox-checkbox': {
+                background: checkboxBackgroundCheckedHovered,
+                borderColor: checkboxBorderColorCheckedHovered
+              },
+              '.ms-Checkbox-checkbox': {
+                background: checkboxBorderColorChecked,
+                borderColor: checkboxBorderColorChecked
+              },
+              [HighContrastSelector]: {
+                selectors: {
+                  ':hover .ms-Checkbox-checkbox': {
+                    background: 'Window',
+                    borderColor: 'Highlight'
+                  },
+                  ':focus .ms-Checkbox-checkbox': {
+                    background: 'Highlight'
+                  },
+                  ':focus:hover .ms-Checkbox-checkbox': {
+                    background: 'Highlight'
+                  },
+                  ':focus:hover .ms-Checkbox-checkmark': {
+                    color: 'Window'
+                  },
+                  ':hover .ms-Checkbox-checkmark': {
+                    color: 'Highlight'
+                  }
                 }
               }
             }
-          }
-        },
+          },
         indeterminate && {
           selectors: {
             ':hover .ms-Checkbox-checkbox, :hover .ms-Checkbox-checkbox:after': {
@@ -234,9 +235,6 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
           ':after': indeterminateDotStyles
         }
       },
-      indeterminate && {
-        borderColor: checkboxBorderColor
-      },
       !reversed
         ? // this margin on the checkbox is for backwards compat.
           // notably it has the effect where a customRender is used, there will be only a 4px margin from checkbox to label.
@@ -249,6 +247,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
             marginLeft: 4
           },
       !disabled &&
+        !indeterminate &&
         checked && {
           background: checkboxBackgroundChecked,
           borderColor: checkboxBorderColorChecked,

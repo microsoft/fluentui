@@ -124,12 +124,30 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   keytipProps?: IKeytipProps;
 
   /**
-   * Optional indeterminate state for this checkbox.
-   * Setting indeterminate state takes precedence over checked and defaultChecked props given.
-   * This is not a toggleable state. On load the checkbox will receive indeterminate state
-   * and after the first user click it will be removed allowing the user to check or uncheck the checkbox.
+   * Optional controlled indeterminate visual state for checkbox. Use this if you want to control
+   * the indeterminate state. Setting indeterminate state takes visual precedence
+   * over checked or defaultChecked props given but does not affect checked state.
+   * This is should not be a toggleable state.
+   * On load the checkbox will receive indeterminate visual state
+   * and after the first user click it should be removed
+   * by your supplied removeIndeterminate callback function exposing the true state of the checkbox.
    */
   indeterminate?: boolean;
+
+  /**
+   * Optional uncontrolled indeterminate visual state for checkbox. Use this if you want an uncontrolled
+   * indeterminate state. Setting indeterminate state takes visual precedence
+   * over checked or defaultChecked props given but does not affect checked state.
+   * This is not a toggleable state.
+   * On load the checkbox will receive indeterminate visual state
+   * and after the first user click it will be removed exposing the true state of the checkbox.
+   */
+  defaultIndeterminate?: boolean;
+
+  /**
+   * Callback that is called to remove indeterminate visual state.
+   */
+  removeIndeterminate?: () => void;
 }
 
 /**

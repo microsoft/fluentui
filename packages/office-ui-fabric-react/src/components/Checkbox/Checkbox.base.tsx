@@ -22,23 +22,18 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   private _classNames: { [key in keyof ICheckboxStyles]: string };
 
   public static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState {
-    if (!props.indeterminate) {
-      if (props.checked) {
+    if (props.indeterminate !== undefined && state.isIndeterminate) {
+      return {
+        ...state,
+        isIndeterminate: !!props.indeterminate
+      };
+    } else {
+      if (props.checked !== undefined) {
         return {
           ...state,
-          isIndeterminate: false,
           isChecked: !!props.checked
         };
       }
-      return {
-        ...state,
-        isIndeterminate: false
-      };
-    } else if (props.indeterminate && state.isIndeterminate) {
-      return {
-        ...state,
-        isChecked: undefined
-      };
     }
     return state;
   }
@@ -62,7 +57,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     this._id = this.props.id || getId('checkbox-');
     this.state = {
       isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked),
-      isIndeterminate: true
+      isIndeterminate: !!(props.indeterminate !== undefined ? props.indeterminate : props.defaultIndeterminate)
     };
   }
 
@@ -88,17 +83,19 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       ariaPositionInSet,
       ariaSetSize,
       keytipProps,
-      title
+      title,
+      indeterminate
     } = this.props;
 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
+    const isIndeterminate = indeterminate === undefined ? this.state.isIndeterminate : indeterminate;
     const isReversed = boxSide !== 'start' ? true : false;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
       disabled,
-      indeterminate: this.state.isIndeterminate,
+      indeterminate: isIndeterminate,
       checked: isChecked,
       reversed: isReversed,
       isUsingCustomLabelRender: onRenderLabel !== this._onRenderLabel
@@ -129,6 +126,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
               aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
               aria-posinset={ariaPositionInSet}
               aria-setsize={ariaSetSize}
+              aria-checked={isIndeterminate ? 'mixed' : isChecked ? 'true' : 'false'}
             />
             <label className={this._classNames.label} htmlFor={this._id}>
               <div className={this._classNames.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
@@ -169,21 +167,23 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   };
 
   private _onChange = (ev: React.FormEvent<HTMLElement>): void => {
-    const { disabled, onChange } = this.props;
+    const { disabled, onChange, removeIndeterminate } = this.props;
     const { isChecked, isIndeterminate } = this.state;
 
     if (!disabled) {
       if (isIndeterminate) {
-        if (onChange) {
-          onChange(ev, !isChecked);
+        if (removeIndeterminate) {
+          removeIndeterminate();
         }
         this.setState({ isIndeterminate: false });
       } else {
         if (onChange) {
           onChange(ev, !isChecked);
         }
+        if (this.props.checked === undefined) {
+          this.setState({ isChecked: !isChecked });
+        }
       }
-      this.setState({ isChecked: !isChecked });
     }
   };
 

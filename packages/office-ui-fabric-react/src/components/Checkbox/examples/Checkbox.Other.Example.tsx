@@ -4,16 +4,18 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 export interface ICheckboxOtherExamplesState {
   isChecked: boolean;
   isChecked2: boolean;
+  isIndeter: boolean;
 }
 
 export class CheckboxOtherExamples extends React.Component<{}, ICheckboxOtherExamplesState> {
   public state: ICheckboxOtherExamplesState = {
     isChecked: false,
-    isChecked2: false
+    isChecked2: false,
+    isIndeter: true
   };
 
   public render(): JSX.Element {
-    const { isChecked, isChecked2 } = this.state;
+    const { isChecked, isChecked2, isIndeter } = this.state;
 
     const checkboxStyles = () => {
       return {
@@ -63,19 +65,31 @@ export class CheckboxOtherExamples extends React.Component<{}, ICheckboxOtherExa
         <Checkbox label="Persona Checkbox" styles={checkboxStyles} onRenderLabel={this._renderLabelWithLink} />
 
         <Checkbox
-          label="Indeterminate Controlled Checkbox"
+          label="Controlled Indeterminate Uncontrolled check Checkbox"
           styles={checkboxStyles}
-          checked={isChecked2}
-          onChange={this._onControlledIndeterminateCheckboxChange}
-          indeterminate
+          removeIndeterminate={this._indeterRemove}
+          indeterminate={isIndeter}
+          defaultChecked
         />
 
-        <Checkbox label="Indeterminate Uncontrolled Checkbox" styles={checkboxStyles} onChange={this._onCheckboxChange} indeterminate />
+        <Checkbox
+          label="Uncontrolled Indeterminate Controlled Check Checkbox"
+          styles={checkboxStyles}
+          checked={isChecked2}
+          onChange={this._onControlledCheckboxChange2}
+          defaultIndeterminate
+        />
 
-        <Checkbox label="Disabled Indeterminate Checkbox" styles={checkboxStyles} disabled={true} indeterminate />
+        <Checkbox label="Disabled Controlled Indeterminate Checkbox" styles={checkboxStyles} disabled={true} indeterminate={true} />
+
+        <Checkbox label="Disabled Uncontrolled Indeterminate Checkbox" styles={checkboxStyles} disabled={true} defaultIndeterminate />
       </div>
     );
   }
+
+  private _indeterRemove = () => {
+    this.setState({ isIndeter: false });
+  };
 
   private _onCheckboxChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean) => {
     console.log(`The option has been changed to ${isChecked}.`);
@@ -85,7 +99,7 @@ export class CheckboxOtherExamples extends React.Component<{}, ICheckboxOtherExa
     this.setState({ isChecked: checked! });
   };
 
-  private _onControlledIndeterminateCheckboxChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
+  private _onControlledCheckboxChange2 = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ isChecked2: checked! });
   };
 
