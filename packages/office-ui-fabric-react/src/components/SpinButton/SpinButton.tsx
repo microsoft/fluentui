@@ -99,11 +99,16 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
       keyboardSpinDirection: KeyboardSpinDirection.notSpinning
     };
 
+    this._async = new Async(this);
     this._currentStepFunctionHandle = -1;
     this._labelId = getId('Label');
     this._inputId = getId('input');
     this._spinningByMouse = false;
     this._valueToValidate = undefined;
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   /**
