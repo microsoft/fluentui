@@ -1,0 +1,8 @@
+{
+  "comment": "Added aria label to demo page for custom picker",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "susunda@microsoft.com",
+  "commit": "68ea0bec1c98e56038683fc464e0002222e9a772",
+  "date": "2019-07-24T22:54:55.140Z"
+}

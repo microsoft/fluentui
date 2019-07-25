@@ -346,7 +346,8 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
           disabled={this.state.isPickerDisabled}
           inputProps={{
             onFocus: () => console.log('onFocus called'),
-            onBlur: () => console.log('onBlur called')
+            onBlur: () => console.log('onBlur called'),
+            'aria-label': 'Document Picker'
           }}
         />
       </div>
