@@ -33,9 +33,15 @@ export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'sty
 
   /**
    * Custom placeholder renderer to be used when in need to override the default placeholder of a DetailsRow.
-   * An argument is passed to leverage the calculated column measurements done by DetailsList.
+   * `rowProps` argument is passed to leverage the calculated column measurements done by DetailsList
+   * or you can use the optional arguments of item `index` and `defaultRender` to execute additional
+   * logic before rendering the default placeholder.
    */
-  onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React.ReactNode;
+  onRenderCustomPlaceholder?: (
+    rowProps: IDetailsRowProps,
+    index?: number,
+    defaultRender?: (props: IDetailsRowProps) => React.ReactNode
+  ) => React.ReactNode;
 
   /**
    * Custom styles to override the styles specific to the ShimmeredDetailsList root area.
