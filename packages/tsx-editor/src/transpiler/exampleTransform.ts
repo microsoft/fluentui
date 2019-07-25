@@ -78,7 +78,7 @@ export function transformExample(example: string, id: string) {
    */
   example =
     'const {' +
-    identifiers.forEach((identifier: string) => identifier) +
+    identifiers.map((identifier: string) => identifier) +
     ', Fabric } = window.Fabric;\n' +
     example +
     `
@@ -87,7 +87,8 @@ export function transformExample(example: string, id: string) {
       document.getElementById('${id}')
     );
     `;
-
   output.output = example;
+  console.log(identifiers);
+  console.log(example);
   return output;
 }
