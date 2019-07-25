@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 24 Jul 2019 12:27:56 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Jul 2019 12:27:19 GMT and should not be manually modified.
+
+## 7.16.0
+Thu, 25 Jul 2019 12:27:19 GMT
+
+### Minor changes
+
+- ChoiceGroup: updating IChoiceOption to accept input attributes (dzearing@microsoft.com)
 
 ## 7.15.0
 Wed, 24 Jul 2019 12:27:56 GMT
