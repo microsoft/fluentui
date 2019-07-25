@@ -8783,6 +8783,8 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     constructor(props: ISpinButtonProps);
     componentWillReceiveProps(newProps: ISpinButtonProps): void;
     // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
     static defaultProps: DefaultProps;
     // (undocumented)
     focus(): void;
