@@ -45,3 +45,5 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
 
   return <div ref={ref} style={style} />;
 };
+
+export default Editor;

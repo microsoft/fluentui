@@ -78,6 +78,9 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
           const { subComponentStyles } = classNames;
           const { codeButtons: codeButtonStyles } = subComponentStyles;
 
+          const LazyEditorPreview = React.lazy(() => import('@uifabric/tsx-editor/lib/components/EditorPreview'));
+          const LazyEditor = React.lazy(() => import('@uifabric/tsx-editor/lib/components/Editor'));
+
           const exampleCardContent = (
             <div className={classNames.example} data-is-scrollable={isScrollable}>
               {children}
@@ -127,9 +130,9 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
               {isCodeVisible &&
                 (this.canRenderLiveEditor ? (
-                  import('@uifabric/tsx-editor').then(tsxEditor => {
-                    <tsxEditor.Editor code={code!} onChange={this._editorOnChange} width={'auto'} height={500} language="typescript" />;
-                  })
+                  <React.Suspense fallback={<div>Loading...</div>}>
+                    <LazyEditor code={code!} onChange={this._editorOnChange} width={'auto'} height={500} language="typescript" />
+                  </React.Suspense>
                 ) : (
                   <div className={classNames.code}>
                     <CodeSnippet language="tsx">{code}</CodeSnippet>
@@ -142,11 +145,13 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                     <Customizer {...activeCustomizations}>
                       <ThemeProvider scheme={_schemes[schemeIndex]}>
                         <Stack styles={regionStyles}>
-                          {this.canRenderLiveEditor
-                            ? import('@uifabric/tsx-editor').then(tsxEditor => {
-                                <tsxEditor.EditorPreview error={this.state.error} id={this.props.title.replace(' ', '')} />;
-                              })
-                            : exampleCardContent}
+                          {this.canRenderLiveEditor ? (
+                            <React.Suspense fallback={<div>Loading...</div>}>
+                              <LazyEditorPreview error={this.state.error} id={this.props.title.replace(' ', '')} />
+                            </React.Suspense>
+                          ) : (
+                            exampleCardContent
+                          )}
                         </Stack>
                       </ThemeProvider>
                     </Customizer>
