@@ -50,7 +50,7 @@ export class ShimmerApplicationExample extends React.Component<{}, IShimmerAppli
     this._async = new Async(this);
   }
 
-  public componentWillMount(): void {
+  public componentWillUnmount(): void {
     this._async.dispose();
   }
 
