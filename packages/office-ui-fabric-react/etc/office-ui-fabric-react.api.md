@@ -8779,7 +8779,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 }
 
 // @public (undocumented)
-export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
+export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
     constructor(props: ISpinButtonProps);
     componentWillReceiveProps(newProps: ISpinButtonProps): void;
     // (undocumented)
