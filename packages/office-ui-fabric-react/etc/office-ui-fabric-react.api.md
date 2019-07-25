@@ -2195,7 +2195,7 @@ export interface IChoiceGroup {
 }
 
 // @public (undocumented)
-export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
     ariaLabel?: string;
     checked?: boolean;
     disabled?: boolean;
@@ -6600,7 +6600,7 @@ export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'sty
     ariaLabelForShimmer?: string;
     detailsListStyles?: IDetailsListProps['styles'];
     enableShimmer?: boolean;
-    onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React.ReactNode;
+    onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps, index?: number, defaultRender?: (props: IDetailsRowProps) => React.ReactNode) => React.ReactNode;
     removeFadingOverlay?: boolean;
     shimmerLines?: number;
     // @deprecated
@@ -8417,7 +8417,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
 export const Rating: React.StatelessComponent<IRatingProps>;
 
 // @public (undocumented)
-export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
+export class RatingBase extends React.Component<IRatingProps, IRatingState> {
     constructor(props: IRatingProps);
     // (undocumented)
     static defaultProps: IRatingProps;

@@ -1,6 +1,36 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 22 Jul 2019 21:37:45 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Jul 2019 12:27:19 GMT and should not be manually modified.
+
+## 7.16.0
+Thu, 25 Jul 2019 12:27:19 GMT
+
+### Minor changes
+
+- ChoiceGroup: updating IChoiceOption to accept input attributes (dzearing@microsoft.com)
+
+## 7.15.0
+Wed, 24 Jul 2019 12:27:56 GMT
+
+### Minor changes
+
+- split calendarMonth into three rows (Qianqian.Li@microsoft.com)
+
+### Patches
+
+- Facepile: Fix narrator not announcing coauthor position (tabrumle@microsoft.com)
+
+## 7.14.1
+Tue, 23 Jul 2019 16:33:51 GMT
+
+### Patches
+
+- Tooltip: Updates box-shadow to match fluent web toolkit (v-mare@microsoft.com)
+,- Rating: fix aria-label in `readOnly` mode and when use half stars. (vibraga@microsoft.com)
+,- Spinner: Updating label font size and position in respect to spinner to match fluent toolkit (v-mare@microsoft.com)
+,- ColorPicker: Updates margin bottom of the color rectangle to match web fluent toolkit. (v-mare@microsoft.com)
+,- Multiselect ComboBox options should respect disabled setting (elcraig@microsoft.com)
+,- making mousemove event bind to capture phase to work inside Layers and Callouts (jolore@microsoft.com)
 
 ## 7.14.0
 Mon, 22 Jul 2019 21:37:45 GMT
