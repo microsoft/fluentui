@@ -3226,8 +3226,6 @@ export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsI
 // @public (undocumented)
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
     // (undocumented)
-    ariaLabelForToggleAllGroupsButton?: string;
-    // (undocumented)
     onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
     // (undocumented)
     onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
@@ -3369,6 +3367,8 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     ariaLabelForListHeader?: string;
     ariaLabelForSelectAllCheckbox?: string;
     ariaLabelForSelectionColumn?: string;
+    // (undocumented)
+    ariaLabelForToggleAllGroupsButton?: string;
     cellStyleProps?: ICellStyleProps;
     checkboxCellClassName?: string;
     checkboxVisibility?: CheckboxVisibility;
