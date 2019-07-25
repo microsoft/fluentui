@@ -12,7 +12,7 @@ export function transformExample(example: string, id: string) {
    */
   const classNamePattern = new RegExp('(?<=var )(.*)(?= = /\\*\\* @class \\*/ \\(function \\(_super)', 'g');
   const constNamePattern = new RegExp('(?<=var )(.*)(?= = function())', 'g');
-  const identifierPattern = new RegExp('(?<=import {)([\\s\\S]*)(?=} from)', 'g');
+  const identifierPattern = new RegExp('(?<=import {)([\\s\\S]*)(?=})');
   const importPattern = new RegExp("(?:import)([\\s\\S]*?)(?:';)", 'g');
   const identifiers: string[] = [];
   const imports: string[] = [];
@@ -88,7 +88,5 @@ export function transformExample(example: string, id: string) {
     );
     `;
   output.output = example;
-  console.log(identifiers);
-  console.log(example);
   return output;
 }
