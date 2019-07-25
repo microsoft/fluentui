@@ -25,3 +25,5 @@ export const EditorPreview = (props: IEditorPreviewProps) => {
     </div>
   );
 };
+
+export default EditorPreview;
