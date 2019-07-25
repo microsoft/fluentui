@@ -1,8 +1,0 @@
-{
-  "comment": "Chiclet: add preview prop and don't do icon lookup for preview",
-  "type": "minor",
-  "packageName": "@uifabric/experiments",
-  "email": "naethell@microsoft.com",
-  "commit": "3d38043ccb2faaae341d270e3941c99e45ae2a95",
-  "date": "2019-07-23T20:33:53.052Z"
-}
