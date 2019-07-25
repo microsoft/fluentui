@@ -1,0 +1,8 @@
+{
+  "comment": "[BaseExtendedPicker] Only add aria-owns tag when the picker is expanded",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "andrescb@microsoft.com",
+  "commit": "2d761ca83281964abfa1de77f2dc42bd753cf90e",
+  "date": "2019-07-25T17:58:51.078Z"
+}
