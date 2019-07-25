@@ -389,6 +389,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 }
           >
             <input
+              aria-checked="false"
               className=
 
                   {
@@ -541,6 +542,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 }
           >
             <input
+              aria-checked="false"
               className=
 
                   {
@@ -753,6 +755,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 }
           >
             <input
+              aria-checked="false"
               className=
 
                   {
@@ -905,6 +908,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 }
           >
             <input
+              aria-checked="false"
               className=
 
                   {
@@ -3500,6 +3504,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             }
       >
         <input
+          aria-checked="false"
           className=
 
               {

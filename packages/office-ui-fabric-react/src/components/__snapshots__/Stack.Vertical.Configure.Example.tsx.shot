@@ -390,6 +390,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-checked="false"
               className=
 
                   {
@@ -543,6 +544,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-checked="false"
               className=
 
                   {
@@ -696,6 +698,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-checked="false"
               className=
 
                   {
@@ -848,6 +851,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-checked="false"
               className=
 
                   {
@@ -1268,6 +1272,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               }
         >
           <input
+            aria-checked="true"
             className=
 
                 {
@@ -2238,6 +2243,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   }
             >
               <input
+                aria-checked="false"
                 className=
 
                     {

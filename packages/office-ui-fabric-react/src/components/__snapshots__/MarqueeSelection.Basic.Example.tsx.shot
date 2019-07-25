@@ -58,6 +58,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
         }
   >
     <input
+      aria-checked="true"
       className=
 
           {

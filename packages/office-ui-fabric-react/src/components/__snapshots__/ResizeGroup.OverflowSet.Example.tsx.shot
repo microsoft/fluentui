@@ -3380,6 +3380,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           }
     >
       <input
+        aria-checked="false"
         checked={false}
         className=
 
@@ -3533,6 +3534,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           }
     >
       <input
+        aria-checked="false"
         checked={false}
         className=
 
@@ -3686,6 +3688,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           }
     >
       <input
+        aria-checked="false"
         checked={false}
         className=
 
