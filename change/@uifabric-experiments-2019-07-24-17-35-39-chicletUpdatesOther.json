@@ -1,5 +1,5 @@
 {
-  "comment": "Chiclet: adds in preview styling, another example, and a test",
+  "comment": "Chiclet: add preview prop and its styling and don't do icon lookup for preview",
   "type": "minor",
   "packageName": "@uifabric/experiments",
   "email": "t-stcar@microsoft.com",

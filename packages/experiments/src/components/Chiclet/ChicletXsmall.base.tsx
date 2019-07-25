@@ -7,11 +7,13 @@ import { mergeStyles } from '../../Styling';
 
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
 
-const PREVIEW_IMAGE_WIDTH = '61px';
+const PREVIEW_IMAGE_WIDTH = '60px';
 const PREVIEW_IMAGE_HEIGHT = '59px';
 
-const innerStyling = mergeStyles({
-  maxWidth: '100%'
+const customPreviewStyling = mergeStyles({
+  height: 60,
+  width: '100%',
+  objectFit: 'contain'
 });
 
 export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
@@ -46,7 +48,7 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
     return (
       <div className={this._classNames.preview}>
         {Preview ? (
-          <Preview className={innerStyling} />
+          <Preview className={customPreviewStyling} />
         ) : (
           <Image
             width={PREVIEW_IMAGE_WIDTH}

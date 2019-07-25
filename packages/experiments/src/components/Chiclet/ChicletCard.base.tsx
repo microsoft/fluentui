@@ -9,8 +9,10 @@ const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardSty
 const PREVIEW_IMAGE_WIDTH = '198px';
 const PREVIEW_IMAGE_HEIGHT = '122px';
 
-const innerStyling = mergeStyles({
-  maxWidth: '100%'
+const customPreviewStyling = mergeStyles({
+  height: 126,
+  width: '100%',
+  objectFit: 'contain'
 });
 
 export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
@@ -45,7 +47,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
     return (
       <div className={this._classNames.preview}>
         {Preview ? (
-          <Preview className={innerStyling} />
+          <Preview className={customPreviewStyling} />
         ) : (
           <Image
             width={PREVIEW_IMAGE_WIDTH}

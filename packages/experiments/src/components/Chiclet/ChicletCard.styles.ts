@@ -31,8 +31,11 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
       className
     ],
     preview: [
+      'ms-ChicletCard-preview',
       {
         display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         height: 126,
         width: 198,
         backgroundColor: palette.white

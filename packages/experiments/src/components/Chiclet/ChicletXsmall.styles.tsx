@@ -55,6 +55,8 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
       {
         // @todo: change value for width according to redline
         display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         height: 60,
         width: 59
       }
