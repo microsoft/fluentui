@@ -58,7 +58,6 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="People Picker"
-            aria-owns="suggestion-list"
             autoCapitalize="off"
             autoComplete="off"
             className="ms-BasePicker-input"
