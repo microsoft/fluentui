@@ -321,6 +321,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * Whether to animate updates
    */
   enableUpdateAnimations?: boolean;
+  ariaLabelForToggleAllGroupsButton?: string;
 }
 
 /**
@@ -699,7 +700,7 @@ export interface IDetailsListStyles {
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
   onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
   onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
-  ariaLabelForToggleAllGroupsButton?: string;
+  // ariaLabelForToggleAllGroupsButton?: string;
 }
 
 /**
