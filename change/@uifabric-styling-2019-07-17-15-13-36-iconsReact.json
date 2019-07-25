@@ -1,8 +1,0 @@
-{
-  "comment": "Removing react dependency in @uifabric/styling library.",
-  "type": "patch",
-  "packageName": "@uifabric/styling",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "b4fa04939a12442b2db3c2a9ae376aa1da23b9cb",
-  "date": "2019-07-17T22:13:36.614Z"
-}
