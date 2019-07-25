@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 23 Jul 2019 16:33:51 GMT",
+      "tag": "@uifabric/experiments_v7.8.1",
+      "version": "7.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chiclet: Url is now a required prop and two test files are combined into one",
+            "author": "t-stcar@microsoft.com",
+            "commit": "7147dbd40fc5b52da42714379c6f832d215eaaed"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jul 2019 12:28:42 GMT",
       "tag": "@uifabric/experiments_v7.8.0",
       "version": "7.8.0",

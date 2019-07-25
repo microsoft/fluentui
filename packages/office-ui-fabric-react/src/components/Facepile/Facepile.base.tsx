@@ -90,7 +90,12 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
         ? onRenderPersona(persona, this._getPersonaControl)
         : onRenderPersonaCoin(persona, this._getPersonaCoinControl);
       return (
-        <li role="option" key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`} className={this._classNames.member}>
+        <li
+          role="option"
+          key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`}
+          className={this._classNames.member}
+          aria-label={persona['aria-label'] || persona.personaName}
+        >
           {persona.onClick
             ? this._getElementWithOnClickEvent(personaControl, persona, index)
             : this._getElementWithoutOnClickEvent(personaControl, persona, index)}
@@ -167,7 +172,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     return {
       key: (!!persona.imageUrl ? 'i' : '') + index,
       'data-is-focusable': true,
-      role: 'option',
+      'aria-hidden': true,
       className: _classNames.itemButton,
       title: persona.personaName,
       onMouseMove: this._onPersonaMouseMove.bind(this, persona),

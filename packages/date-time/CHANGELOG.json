@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Wed, 24 Jul 2019 12:27:56 GMT",
+      "tag": "@uifabric/date-time_v7.1.7",
+      "version": "7.1.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update Date-time readme",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "440e00c27ba3c162d6d2145b80ae578684d366b0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jul 2019 12:28:42 GMT",
       "tag": "@uifabric/date-time_v7.1.7",
       "version": "7.1.7",

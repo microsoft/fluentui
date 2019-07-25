@@ -126,3 +126,6 @@ apps/fabric-website/flights/
 # Rush files - since we are moving away from it
 /common
 rush.json
+
+# package manifest
+/package-manifest.json

@@ -165,6 +165,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
     ],
     labelText: [classNames.labelText, hiddenContentStyle],
     ratingFocusZone: [
+      getFocusStyle(theme),
       classNames.ratingFocusZone,
       {
         display: 'inline-block'

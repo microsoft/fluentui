@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Wed, 24 Jul 2019 12:27:56 GMT",
+      "tag": "@uifabric/styling_v7.3.1",
+      "version": "7.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing react dependency in @uifabric/styling library.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "b4fa04939a12442b2db3c2a9ae376aa1da23b9cb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jul 2019 12:28:42 GMT",
       "tag": "@uifabric/styling_v7.3.0",
       "version": "7.3.0",
