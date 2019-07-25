@@ -73,7 +73,7 @@ export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsL
     const { onRenderCustomPlaceholder } = this.props;
 
     const placeholderElements: React.ReactNode = onRenderCustomPlaceholder
-      ? onRenderCustomPlaceholder(rowProps, this._renderDefaultShimmerPlaceholder)
+      ? onRenderCustomPlaceholder(rowProps, index, this._renderDefaultShimmerPlaceholder)
       : this._renderDefaultShimmerPlaceholder(rowProps);
 
     return <Shimmer customElementsGroup={placeholderElements} />;
