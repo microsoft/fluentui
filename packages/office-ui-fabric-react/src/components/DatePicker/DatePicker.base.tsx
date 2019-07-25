@@ -1,6 +1,15 @@
 import * as React from 'react';
 import { IDatePicker, IDatePickerProps, IDatePickerStrings, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { initializeComponentRef, KeyCodes, classNamesFunction, getId, getNativeProps, divProperties, css } from '../../Utilities';
+import {
+  initializeComponentRef,
+  initializeFocusRects,
+  KeyCodes,
+  classNamesFunction,
+  getId,
+  getNativeProps,
+  divProperties,
+  css
+} from '../../Utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
@@ -81,6 +90,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
     super(props);
 
     initializeComponentRef(this);
+    initializeFocusRects();
 
     this.state = this._getDefaultState();
 

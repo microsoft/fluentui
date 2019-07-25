@@ -2,16 +2,17 @@
 import * as React from 'react';
 import {
   initializeComponentRef,
+  initializeFocusRects,
   warnDeprecations,
+  Async,
+  EventGroup,
   classNamesFunction,
   elementContains,
   focusFirstChild,
   getDocument,
   IRectangle,
   KeyCodes,
-  shallowCompare,
-  Async,
-  on
+  shallowCompare
 } from '../../Utilities';
 import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../utilities/positioning';
 
@@ -134,9 +135,9 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
   private _ariaAlertContainer = React.createRef<HTMLDivElement>();
   private _childrenContainer = React.createRef<HTMLDivElement>();
   private _positioningContainer = React.createRef<IPositioningContainer>();
+
   private _async: Async;
-  private _disposables: Function[] = [];
-  private _hasListeners = false;
+  private _events: EventGroup;
 
   /**
    * The target element the mouse would be in
@@ -148,17 +149,17 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
     super(props);
 
     initializeComponentRef(this);
-    if (process.env.NODE_ENV !== 'production') {
-      warnDeprecations('Coachmark', props, {
-        teachingBubbleRef: undefined,
-        collapsed: 'isCollapsed',
-        beakWidth: undefined,
-        beakHeight: undefined,
-        width: undefined,
-        height: undefined
-      });
-    }
-    this._async = new Async(this);
+    initializeFocusRects();
+
+    warnDeprecations('Coachmark', props, {
+      teachingBubbleRef: undefined,
+      collapsed: 'isCollapsed',
+      beakWidth: undefined,
+      beakHeight: undefined,
+      width: undefined,
+      height: undefined
+    });
+
     // Set defaults for state
     this.state = {
       isCollapsed: props.isCollapsed!,
@@ -171,6 +172,9 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
       isMouseInProximity: false,
       isMeasured: false
     };
+
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
   }
 
   private get _beakDirection(): RectangleEdge {
@@ -308,6 +312,11 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
     );
   }
 
+  public componentWillUnmount(): void {
+    this._async.dispose();
+    this._events.dispose();
+  }
+
   public componentWillReceiveProps(newProps: ICoachmarkProps): void {
     if (this.props.isCollapsed && !newProps.isCollapsed) {
       // The coachmark is about to open
@@ -319,21 +328,12 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
     return !shallowCompare(newProps, this.props) || !shallowCompare(newState, this.state);
   }
 
-  public componentWillUnmount() {
-    this._async.dispose();
-    this._disposables.forEach(dispose => dispose());
-  }
-
   public componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void {
     if (prevState.targetAlignment !== this.state.targetAlignment || prevState.targetPosition !== this.state.targetPosition) {
       this._setBeakPosition();
     }
-    if (prevProps.preventDismissOnLostFocus !== this.props.preventDismissOnLostFocus && !this._hasListeners) {
+    if (prevProps.preventDismissOnLostFocus !== this.props.preventDismissOnLostFocus) {
       this._addListeners();
-    } else {
-      if (this._hasListeners) {
-        this._removeListeners;
-      }
     }
   }
 
@@ -394,26 +394,19 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
     const { preventDismissOnLostFocus } = this.props;
     const currentDoc: Document = getDocument()!;
 
+    this._events.off();
+
     if (currentDoc) {
-      this._disposables.push(on(currentDoc.documentElement, 'keydown', this._onKeyDown, true));
-      this._hasListeners = true;
+      this._events.on(currentDoc, 'keydown', this._onKeyDown, true);
+
       if (!preventDismissOnLostFocus) {
-        this._disposables.push(
-          on(currentDoc.documentElement, 'click', this._dismissOnLostFocus, true),
-          on(currentDoc.documentElement, 'focus', this._dismissOnLostFocus, true)
-        );
-        this._hasListeners = true;
+        this._events.on(currentDoc, 'click', this._dismissOnLostFocus, true);
+        this._events.on(currentDoc, 'focus', this._dismissOnLostFocus, true);
       }
     }
   }
 
-  private _removeListeners() {
-    this._disposables.forEach((dispose: () => void) => dispose());
-    this._disposables = [];
-    this._hasListeners = false;
-  }
-
-  private _dismissOnLostFocus = (ev: Event) => {
+  private _dismissOnLostFocus(ev: Event) {
     const clickTarget = ev.target as HTMLElement;
     const clickedOutsideCallout =
       this._translateAnimationContainer.current && !elementContains(this._translateAnimationContainer.current, clickTarget);
@@ -422,7 +415,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
     if (clickedOutsideCallout && clickTarget !== target && !elementContains(target as HTMLElement, clickTarget)) {
       this.dismiss(ev);
     }
-  };
+  }
 
   private _onKeyDown = (e: any): void => {
     // Open coachmark if user presses ALT + C (arbitrary keypress for now)
@@ -599,15 +592,15 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
 
     // Take the initial measure out of the initial render to prevent
     // an unnecessary render.
-    this._setTargetElementRect();
+    this._async.setTimeout(() => {
+      this._setTargetElementRect();
 
-    // When the window resizes we want to async
-    // get the bounding client rectangle.
-    // Every time the event is triggered we want to
-    // setTimeout and then clear any previous instances
-    // of setTimeout.
-    this._disposables.push(
-      on(
+      // When the window resizes we want to async
+      // get the bounding client rectangle.
+      // Every time the event is triggered we want to
+      // setTimeout and then clear any previous instances
+      // of setTimeout.
+      this._events.on(
         window,
         'resize',
         (): void => {
@@ -623,30 +616,28 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
             }, 100)
           );
         }
-      )
-    );
+      );
+    }, 10);
 
     // Every time the document's mouse move is triggered
     // we want to check if inside of an element and
     // set the state with the result.
-    this._disposables.push(
-      on(document.documentElement, 'mousemove', (e: MouseEvent) => {
-        if (this.state.isCollapsed) {
-          const mouseY = e.clientY;
-          const mouseX = e.clientX;
-          this._setTargetElementRect();
-          const isMouseInProximity = this._isInsideElement(mouseX, mouseY, mouseProximityOffset);
+    this._events.on(document, 'mousemove', (e: MouseEvent) => {
+      if (this.state.isCollapsed) {
+        const mouseY = e.clientY;
+        const mouseX = e.clientX;
+        this._setTargetElementRect();
+        const isMouseInProximity = this._isInsideElement(mouseX, mouseY, mouseProximityOffset);
 
-          if (isMouseInProximity !== this.state.isMouseInProximity) {
-            this._openCoachmark();
-          }
+        if (isMouseInProximity !== this.state.isMouseInProximity) {
+          this._openCoachmark();
         }
+      }
 
-        if (this.props.onMouseMove) {
-          this.props.onMouseMove(e);
-        }
-      })
-    );
+      if (this.props.onMouseMove) {
+        this.props.onMouseMove(e);
+      }
+    });
   }
 
   private _setTargetElementRect(): void {

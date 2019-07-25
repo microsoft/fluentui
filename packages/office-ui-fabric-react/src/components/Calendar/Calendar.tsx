@@ -4,7 +4,7 @@ import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateV
 import { CalendarDay, ICalendarDay } from './CalendarDay';
 import { CalendarMonth, ICalendarMonth } from './CalendarMonth';
 import { compareDates, getDateRangeArray } from '../../utilities/dateMath/DateMath';
-import { css, initializeComponentRef, KeyCodes, getNativeProps, divProperties } from '../../Utilities';
+import { css, initializeComponentRef, initializeFocusRects, KeyCodes, getNativeProps, divProperties } from '../../Utilities';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
@@ -78,6 +78,7 @@ export class Calendar extends React.Component<ICalendarProps, ICalendarState> im
     super(props);
 
     initializeComponentRef(this);
+    initializeFocusRects();
 
     const currentDate = props.value && !isNaN(props.value.getTime()) ? props.value : props.today || new Date();
 
