@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, divProperties, getNativeProps } from '../../Utilities';
 import { IResizeGroupProps, ResizeGroupDirection } from './ResizeGroup.types';
+import { shallowCompare } from '@uifabric/utilities';
 
 const RESIZE_DELAY = 16;
 
@@ -186,6 +187,42 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     };
   }
 
+  function scaleDataBasedOnMeasurementsInCache(data: any, onReduceData: (prevData: any) => any, onGrowData?: (prevData: any) => any): any {
+    let scaledData = { ...data };
+    let measuredDimension;
+    let grow = true;
+    do {
+      measuredDimension = _measurementCache.getCachedMeasurement(scaledData);
+      if (measuredDimension === undefined) {
+        return { ...data };
+      }
+
+      if (grow && onGrowData && measuredDimension < _containerDimension!) {
+        const nextScaledData = onGrowData(scaledData);
+        if (nextScaledData === undefined) {
+          return scaledData;
+        }
+
+        scaledData = nextScaledData;
+      } else if (measuredDimension > _containerDimension!) {
+        if (grow) {
+          grow = false;
+        }
+
+        const nextScaledData = onReduceData(scaledData);
+        if (nextScaledData === undefined) {
+          return scaledData;
+        }
+
+        scaledData = nextScaledData;
+      } else {
+        break;
+      }
+    } while (grow || measuredDimension > _containerDimension!);
+
+    return scaledData;
+  }
+
   /**
    * Handles an update to the container width/eheight. Should only be called when we knew the previous container width/height.
    * @param newDimension - The new width/height of the container.
@@ -200,7 +237,12 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     onGrowData?: (prevData: any) => any
   ): IResizeGroupState {
     let nextState: IResizeGroupState;
-    if (newDimension > _containerDimension!) {
+    if (newDimension === _containerDimension!) {
+      nextState = {
+        dataToMeasure: undefined,
+        resizeDirection: undefined
+      };
+    } else if (newDimension > _containerDimension!) {
       if (onGrowData) {
         nextState = {
           resizeDirection: 'grow',
@@ -288,7 +330,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
   return {
     getNextState,
     shouldRenderDataForMeasurement,
-    getInitialResizeGroupState
+    getInitialResizeGroupState,
+    scaleDataBasedOnMeasurementsInCache
   };
 };
 
@@ -360,12 +403,47 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
   }
 
+  public shouldComponentUpdate(nextProps: IResizeGroupProps, nextState: IResizeGroupState) {
+    if (nextState.measureContainer === false) {
+      // If there is a state change just because of measureContainer going from true -> false and everything else
+      // is the same as before, we do not need to update.
+      if (shallowCompare(this.props, nextProps) && shallowCompare({ ...this.state, measureContainer: false }, nextState)) {
+        return false;
+      }
+    }
+    return !shallowCompare(this.props, nextProps) || !shallowCompare(this.state, nextState);
+  }
+
   public componentWillReceiveProps(nextProps: IResizeGroupProps): void {
-    this.setState({
-      dataToMeasure: { ...nextProps.data },
-      resizeDirection: 'grow',
-      measureContainer: true // Receiving new props means the parent might rerender and the root width/height might change
-    });
+    let scaledData = undefined;
+
+    if (
+      nextProps.data.cacheKey &&
+      nextProps.data.cacheKey === this.props.data.cacheKey &&
+      this.props.onGrowData === nextProps.onGrowData &&
+      this.props.onReduceData === nextProps.onReduceData
+    ) {
+      // the props have changed, but without affecting scaling. So, lets reapply the scaling we have done previously,
+      // to old props to the new props. This will help us render the new props instantaneously instead of rendering them hidden.
+      scaledData = this._nextResizeGroupStateProvider.scaleDataBasedOnMeasurementsInCache(
+        nextProps.data,
+        nextProps.onReduceData,
+        nextProps.onGrowData
+      );
+    }
+
+    if (scaledData && this.state.renderedData && scaledData.cacheKey === this.state.renderedData.cacheKey) {
+      this.setState({
+        renderedData: scaledData,
+        measureContainer: true
+      });
+    } else {
+      this.setState({
+        dataToMeasure: { ...nextProps.data },
+        resizeDirection: 'grow',
+        measureContainer: true // Receiving new props means the parent might rerender and the root width/height might change
+      });
+    }
   }
 
   public componentDidUpdate(prevProps: IResizeGroupProps) {

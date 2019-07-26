@@ -1305,6 +1305,7 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     getNextState: (props: IResizeGroupProps, currentState: IResizeGroupState, getElementToMeasureDimension: () => number, newContainerDimension?: number | undefined) => IResizeGroupState | undefined;
     shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
+    scaleDataBasedOnMeasurementsInCache: (data: any, onReduceData: (prevData: any) => any, onGrowData?: ((prevData: any) => any) | undefined) => any;
 };
 
 // @public
@@ -8422,6 +8423,8 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     remeasure(): void;
     // (undocumented)
     render(): JSX.Element;
+    // (undocumented)
+    shouldComponentUpdate(nextProps: IResizeGroupProps, nextState: IResizeGroupState): boolean;
     }
 
 // @public (undocumented)
