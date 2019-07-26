@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, DelayedRender, getNativeProps, divProperties } from '../../Utilities';
+import { classNamesFunction, DelayedRender, getNativeProps, divProperties, Async, initializeComponentRef } from '../../Utilities';
 import { IShimmerProps, IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
 
@@ -17,41 +17,50 @@ const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 /**
  * {@docCategory Shimmer}
  */
-export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
+export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
   public static defaultProps: IShimmerProps = {
     isDataLoaded: false
   };
 
   private _classNames: { [key in keyof IShimmerStyles]: string };
-  private _lastTimeoutId: number | undefined;
+  private _lastTimeoutId: number;
+  private _async: Async;
 
   constructor(props: IShimmerProps) {
     super(props);
 
+    initializeComponentRef(this);
+
     this.state = {
       contentLoaded: props.isDataLoaded
     };
+
+    this._async = new Async(this);
   }
 
-  public componentWillReceiveProps(nextProps: IShimmerProps): void {
-    const { isDataLoaded } = nextProps;
+  public componentDidUpdate(prevProps: IShimmerProps): void {
+    const { isDataLoaded } = this.props;
 
-    if (this._lastTimeoutId !== undefined) {
-      this._async.clearTimeout(this._lastTimeoutId);
-      this._lastTimeoutId = undefined;
-    }
-    if (isDataLoaded) {
-      this._lastTimeoutId = this._async.setTimeout(() => {
+    this._async.clearTimeout(this._lastTimeoutId);
+
+    if (isDataLoaded !== prevProps.isDataLoaded) {
+      // Removing the shimmerWrapper div from the DOM only after the fade out animation completed.
+      if (isDataLoaded) {
+        this._lastTimeoutId = this._async.setTimeout(() => {
+          this.setState({
+            contentLoaded: isDataLoaded
+          });
+        }, TRANSITION_ANIMATION_INTERVAL);
+      } else {
         this.setState({
           contentLoaded: isDataLoaded
         });
-        this._lastTimeoutId = undefined;
-      }, TRANSITION_ANIMATION_INTERVAL);
-    } else {
-      this.setState({
-        contentLoaded: isDataLoaded
-      });
+      }
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   public render(): JSX.Element {
