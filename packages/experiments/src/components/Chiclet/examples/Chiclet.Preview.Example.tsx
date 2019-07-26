@@ -5,14 +5,12 @@ const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
 export const ChicletPreviewExample: React.FunctionComponent<{}> = () => {
   const Prev: React.FunctionComponent<{}> = props => {
-    return <img src="https://kbdevstorage1.blob.core.windows.net/asset-blobs/19666_en_1" {...props} />;
+    return <img src="http://placehold.it/100x100" {...props} />;
   };
   return (
     <Chiclet
       url={SAMPLE_URL}
       title={'WordTest with a really long title that will wrap around to the second line.docx'}
-      image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg"
-      itemType="docx"
       size={ChicletSize.medium}
       preview={Prev}
     />
