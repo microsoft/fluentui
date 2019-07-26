@@ -1,0 +1,8 @@
+{
+  "comment": "Panel: fix shrinking of the footer and make header not shrink.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "vibraga@microsoft.com",
+  "commit": "30a61f806742f24cfdced1f3d508779420e1587c",
+  "date": "2019-07-26T01:19:07.617Z"
+}
