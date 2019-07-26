@@ -4,12 +4,9 @@ import { Chiclet, ChicletSize } from '@uifabric/experiments/lib/Chiclet';
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
 export const ChicletPreviewExample: React.FunctionComponent<{}> = () => {
-  const Prev: React.FunctionComponent<{ className: string }> = props => {
-    const { className } = props;
-
-    return <img src="https://kbdevstorage1.blob.core.windows.net/asset-blobs/19666_en_1" />;
+  const Prev: React.FunctionComponent<{}> = props => {
+    return <img src="https://kbdevstorage1.blob.core.windows.net/asset-blobs/19666_en_1" {...props} />;
   };
-
   return (
     <Chiclet
       url={SAMPLE_URL}
