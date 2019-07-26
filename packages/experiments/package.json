@@ -53,8 +53,8 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/azure-themes": "^6.0.4",
-    "@uifabric/file-type-icons": "^6.5.3",
-    "@uifabric/fluent-theme": "^0.16.17",
+    "@uifabric/file-type-icons": "^6.5.4",
+    "@uifabric/fluent-theme": "^0.16.18",
     "@uifabric/foundation": "^0.8.2",
     "@uifabric/icons": "^6.5.4",
     "@uifabric/merge-styles": "^6.19.3",
