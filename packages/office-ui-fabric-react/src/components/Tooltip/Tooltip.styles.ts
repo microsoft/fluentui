@@ -2,10 +2,11 @@ import { ITooltipStyleProps, ITooltipStyles } from './Tooltip.types';
 import { AnimationClassNames } from '../../Styling';
 
 export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
-  const { className, gapSpace = 0, maxWidth, theme } = props;
+  const { className, beakHeight = 16, gapSpace = 0, maxWidth, theme } = props;
   const { palette, fonts, effects } = theme;
 
-  const tooltipGapSpace = -15 - gapSpace;
+  // The -4 is added so that hidden area doesn't overlap with the Tooltip target.
+  const tooltipGapSpace = -(beakHeight + gapSpace - 4);
 
   return {
     root: [
