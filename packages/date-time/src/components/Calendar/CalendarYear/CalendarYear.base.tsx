@@ -445,6 +445,18 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
     };
   }
 
+  private static _getState = (props: ICalendarYearProps) => {
+    const { selectedYear, navigatedYear } = props;
+    const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
+    const fromYear = Math.floor(rangeYear / 10) * 10;
+
+    return {
+      fromYear: fromYear,
+      navigatedYear: navigatedYear,
+      selectedYear: selectedYear
+    };
+  };
+
   constructor(props: ICalendarYearProps) {
     super(props);
     this.state = CalendarYearBase._getState(props);
@@ -471,18 +483,6 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
       </div>
     );
   }
-
-  private static _getState = (props: ICalendarYearProps) => {
-    const { selectedYear, navigatedYear } = props;
-    const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
-    const fromYear = Math.floor(rangeYear / 10) * 10;
-
-    return {
-      fromYear: fromYear,
-      navigatedYear: navigatedYear,
-      selectedYear: selectedYear
-    };
-  };
 
   private _onNavNext = () => {
     const previousFromYear = this.state.fromYear;

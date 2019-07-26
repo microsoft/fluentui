@@ -307,6 +307,7 @@ export interface IWeeklyDayPicker {
 
 // @public (undocumented)
 export interface IWeeklyDayPickerProps extends IBaseProps_2<IWeeklyDayPicker> {
+    animationDirection?: AnimationDirection;
     className?: string;
     componentRef?: IRefObject_2<IWeeklyDayPicker>;
     dateTimeFormatter?: ICalendarFormatDateCallbacks;
