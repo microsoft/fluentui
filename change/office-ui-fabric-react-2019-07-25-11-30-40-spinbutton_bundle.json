@@ -1,8 +1,0 @@
-{
-  "comment": "removing BaseComponent from SpinButton",
-  "type": "minor",
-  "packageName": "office-ui-fabric-react",
-  "email": "aneeshak@microsoft.com",
-  "commit": "a93e3a7945c3df21cf9f6664f5a6a9442e5731bd",
-  "date": "2019-07-25T18:30:40.914Z"
-}

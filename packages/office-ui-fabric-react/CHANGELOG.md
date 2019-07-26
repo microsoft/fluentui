@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 25 Jul 2019 12:27:19 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Jul 2019 12:28:52 GMT and should not be manually modified.
+
+## 7.17.0
+Fri, 26 Jul 2019 12:28:52 GMT
+
+### Minor changes
+
+- ShimmeredDetailsList: enables additional logic to be executed before rendering the default shimmer row. (vibraga@microsoft.com)
+,- removing BaseComponent from SpinButton (aneeshak@microsoft.com)
+
+### Patches
+
+- Added aria label to demo page for custom picker (susunda@microsoft.com)
 
 ## 7.16.0
 Thu, 25 Jul 2019 12:27:19 GMT

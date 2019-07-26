@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 26 Jul 2019 12:28:52 GMT",
+      "tag": "office-ui-fabric-react_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added aria label to demo page for custom picker",
+            "author": "susunda@microsoft.com",
+            "commit": "68ea0bec1c98e56038683fc464e0002222e9a772"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "ShimmeredDetailsList: enables additional logic to be executed before rendering the default shimmer row.",
+            "author": "vibraga@microsoft.com",
+            "commit": "8804a82d1b57c5393942b39e0cc83b6826a24b29"
+          },
+          {
+            "comment": "removing BaseComponent from SpinButton",
+            "author": "aneeshak@microsoft.com",
+            "commit": "a93e3a7945c3df21cf9f6664f5a6a9442e5731bd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Jul 2019 12:27:19 GMT",
       "tag": "office-ui-fabric-react_v7.16.0",
       "version": "7.16.0",
