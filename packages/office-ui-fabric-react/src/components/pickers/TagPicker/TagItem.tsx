@@ -48,7 +48,7 @@ export const TagItemBase = (props: ITagItemProps) => {
         disabled={disabled}
         iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
         className={classNames.close}
-        ariaLabel={removeButtonAriaLabel}
+        ariaLabel={removeButtonAriaLabel || 'Remove'}
       />
     </div>
   );
