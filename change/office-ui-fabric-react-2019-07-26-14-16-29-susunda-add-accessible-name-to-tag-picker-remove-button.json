@@ -1,0 +1,8 @@
+{
+  "comment": "Added aria label to remove button next to selected tag item",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "susunda@microsoft.com",
+  "commit": "1ec4da2daa2fc8a5b39453a6be7ea261da8468c9",
+  "date": "2019-07-26T21:16:29.148Z"
+}
