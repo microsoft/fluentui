@@ -8423,7 +8423,6 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     remeasure(): void;
     // (undocumented)
     render(): JSX.Element;
-    // (undocumented)
     shouldComponentUpdate(nextProps: IResizeGroupProps, nextState: IResizeGroupState): boolean;
     }
 

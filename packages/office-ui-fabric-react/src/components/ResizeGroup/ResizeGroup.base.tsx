@@ -187,6 +187,14 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     };
   }
 
+  /**
+   * Scale the given data based on the measurements already in cache and based on the current container dimension
+   * This is useful to optimize changes to Resize group props which do not affect scaling. In that case,
+   * we could avoid measuring the resize group.
+   * @param data - The initial data point to start measuring.
+   * @param onReduceData - Function that transforms the data into something that should render with less width/height.
+   * @param onGrowData - Function that transforms the data into something that may take up more space when rendering.
+   */
   function scaleDataBasedOnMeasurementsInCache(data: any, onReduceData: (prevData: any) => any, onGrowData?: (prevData: any) => any): any {
     let scaledData = { ...data };
     let measuredDimension;
@@ -403,6 +411,11 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     this._events.on(window, 'resize', this._async.debounce(this._onResize, RESIZE_DELAY, { leading: true }));
   }
 
+  /**
+   * Normal shallow comparison of props and state except for one optimization.
+   * When the only change in both props and state is that the measureContainer part of the state
+   * changed from true to false, we do not need to re-render.
+   */
   public shouldComponentUpdate(nextProps: IResizeGroupProps, nextState: IResizeGroupState) {
     if (nextState.measureContainer === false) {
       // If there is a state change just because of measureContainer going from true -> false and everything else
@@ -415,7 +428,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   }
 
   public componentWillReceiveProps(nextProps: IResizeGroupProps): void {
-    let scaledData = undefined;
+    let scaledNewData = undefined;
 
     if (
       nextProps.data.cacheKey &&
@@ -424,17 +437,20 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
       this.props.onReduceData === nextProps.onReduceData
     ) {
       // the props have changed, but without affecting scaling. So, lets reapply the scaling we have done previously,
-      // to old props to the new props. This will help us render the new props instantaneously instead of rendering them hidden.
-      scaledData = this._nextResizeGroupStateProvider.scaleDataBasedOnMeasurementsInCache(
+      // to old props to the new props.
+      scaledNewData = this._nextResizeGroupStateProvider.scaleDataBasedOnMeasurementsInCache(
         nextProps.data,
         nextProps.onReduceData,
         nextProps.onGrowData
       );
     }
 
-    if (scaledData && this.state.renderedData && scaledData.cacheKey === this.state.renderedData.cacheKey) {
+    // If the scaledNewData's cacheKey is same as that of rendered data's cacheKey, that means it should be ok for us to
+    // render the new scaled data directly. We will still measure the container to see if it changed.
+    // This will help us prevent a render when we just measure the new data hidden.
+    if (scaledNewData && this.state.renderedData && scaledNewData.cacheKey === this.state.renderedData.cacheKey) {
       this.setState({
-        renderedData: scaledData,
+        renderedData: scaledNewData,
         measureContainer: true
       });
     } else {
