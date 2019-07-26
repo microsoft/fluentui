@@ -1,0 +1,8 @@
+{
+  "comment": "Pivot: align pivot link text in relation to the whole pivot tab.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "vibraga@microsoft.com",
+  "commit": "a96b13bc6fc9482af6eb693a59d66d2b09663148",
+  "date": "2019-07-26T01:55:19.376Z"
+}
