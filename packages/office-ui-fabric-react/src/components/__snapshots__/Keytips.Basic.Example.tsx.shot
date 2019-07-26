@@ -190,7 +190,9 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
             >
               <span
                 className=
@@ -342,7 +344,9 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
             >
               <span
                 className=
@@ -494,7 +498,9 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
             >
               <span
                 className=
