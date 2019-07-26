@@ -4,8 +4,6 @@ import * as renderer from 'react-test-renderer';
 import { ChicletXsmall } from './ChicletXsmall';
 import { ChicletCard } from './ChicletCard';
 import { IChicletCardProps } from './ChicletCard.types';
-import { mergeStyles } from '../../Styling';
-import { mount } from 'enzyme';
 
 describe('Chiclet', () => {
   it('renders Xsmall chiclet with a title, icon, onClick, and url', () => {
@@ -63,27 +61,8 @@ describe('Chiclet', () => {
 
     expect(tree).toMatchSnapshot();
   });
-});
 
-describe('Class Change', () => {
-  it('should change the classname', () => {
-    const test = mergeStyles({
-      maxWidth: '100%'
-    });
-    const Prev: React.FunctionComponent<{ className: string }> = props => {
-      const { className } = props;
-
-      return <img src="http://placehold.it/100x100" className={className} />;
-    };
-
-    const component = renderer.create(<Prev className={test} />);
-
-    const tree = component.toJSON();
-
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('should have the correct styling', () => {
+  it('should set className on preview', () => {
     const chicletCardProps: IChicletCardProps = {
       url: 'contoso.sharepoint.com',
       title: 'My Daily Notes',
@@ -91,19 +70,14 @@ describe('Class Change', () => {
       onClick: () => alert('test')
     };
 
-    const Prev: React.FunctionComponent<{}> = props => {
+    const Preview: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = props => {
       return <img src="http://placehold.it/100x100" {...props} />;
     };
 
-    const component = mount(<ChicletCard {...chicletCardProps} preview={Prev} />);
-    const root = component.getDOMNode() as HTMLElement;
-    const prev = root.getElementsByClassName('ms-ChicletCard-preview')[0];
-    const innerPrev = prev.firstChild as HTMLElement;
+    const component = renderer.create(<ChicletCard {...chicletCardProps} preview={<Preview />} />);
 
-    const style = getComputedStyle(innerPrev);
+    const tree = component.toJSON();
 
-    expect(style.height).toBe('126px');
-    expect(style.width).toBe('100%');
-    expect(style.objectFit).toBe('contain');
+    expect(tree).toMatchSnapshot();
   });
 });

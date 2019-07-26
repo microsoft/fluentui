@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction } from '../../Utilities';
+import { css, classNamesFunction } from '../../Utilities';
 import { IChicletCardStyles, IChicletCardStyleProps } from './ChicletCard.types';
 import { IChicletCardProps } from './ChicletCard.types';
 import { Image } from 'office-ui-fabric-react/lib/Image';
@@ -43,12 +43,12 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
   }
 
   private _renderPreview(): JSX.Element {
-    const { image, imageAlt, preview: Preview } = this.props;
+    const { image, imageAlt, preview } = this.props;
 
     return (
       <div className={this._classNames.preview}>
-        {Preview ? (
-          <Preview className={customPreviewStyling} />
+        {preview ? ( // render custom preview
+          React.cloneElement(preview, { className: css(preview.props.className, customPreviewStyling) })
         ) : (
           <Image
             width={PREVIEW_IMAGE_WIDTH}

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { css, classNamesFunction } from '../../Utilities';
 import { IChicletCardStyles, IChicletCardStyleProps, IChicletCardProps } from './ChicletCard.types';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 import { mergeStyles } from '../../Styling';
@@ -9,13 +9,13 @@ const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardSty
 const PREVIEW_IMAGE_WIDTH = '198px';
 const PREVIEW_IMAGE_HEIGHT = '122px';
 
-const customPreviewStyling = mergeStyles({
+const customPreviewStyling = mergeStyles('ms-ChicletCard-preview-custom', {
   height: 126,
   width: '100%',
   objectFit: 'contain'
 });
 
-export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
+export class ChicletCardBase extends React.Component<IChicletCardProps, {}> {
   private _classNames: { [key in keyof IChicletCardStyles]: string };
 
   public render(): JSX.Element {
@@ -42,12 +42,12 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
   }
 
   private _renderPreview(): JSX.Element {
-    const { image, imageAlt, preview: Preview } = this.props;
+    const { image, imageAlt, preview } = this.props;
 
     return (
       <div className={this._classNames.preview}>
-        {Preview ? (
-          <Preview className={customPreviewStyling} />
+        {preview ? ( // render custom preview
+          React.cloneElement(preview, { className: css(preview.props.className, customPreviewStyling) })
         ) : (
           <Image
             width={PREVIEW_IMAGE_WIDTH}
