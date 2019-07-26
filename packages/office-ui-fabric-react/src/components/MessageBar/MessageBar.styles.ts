@@ -5,7 +5,8 @@ import {
   HighContrastSelector,
   ScreenWidthMaxSmall,
   getScreenSelector,
-  getGlobalClassNames
+  getGlobalClassNames,
+  getFocusStyle
 } from '../../Styling';
 import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
 
@@ -84,21 +85,31 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     }
   };
 
-  const dismissalAndExpandStyle: IStyle = {
-    flexShrink: 0,
-    width: 32,
-    height: 32,
-    padding: '8px 12px',
-    selectors: {
-      '& .ms-Button-icon': dismissalAndExpandIconStyle,
-      ':hover': {
-        backgroundColor: 'transparent'
+  const dismissalAndExpandStyle: IStyle = [
+    getFocusStyle(theme, {
+      inset: 1,
+      highContrastStyle: {
+        outlineOffset: '-2px',
+        outlineColor: 'Highlight'
       },
-      ':active': {
-        backgroundColor: 'transparent'
+      borderColor: 'transparent'
+    }),
+    {
+      flexShrink: 0,
+      width: 32,
+      height: 32,
+      padding: '8px 12px',
+      selectors: {
+        '& .ms-Button-icon': dismissalAndExpandIconStyle,
+        ':hover': {
+          backgroundColor: 'transparent'
+        },
+        ':active': {
+          backgroundColor: 'transparent'
+        }
       }
     }
-  };
+  ];
 
   return {
     root: [
