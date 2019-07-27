@@ -159,6 +159,12 @@ export interface ISemanticColors extends ISemanticTextColors {
   inputBorderHovered: string;
 
   /**
+   * The border color of a large input control that isnt hovered or focused but that contains user input.
+   * Such as textbox in populated state
+   */
+  inputBorderHasInput: string;
+
+  /**
    * The background color of an input, e.g. textbox background.
    */
   inputBackground: string;
@@ -183,6 +189,21 @@ export interface ISemanticColors extends ISemanticTextColors {
    * The alternate focus border color for elements that already have a border; e.g. text field borders on focus.
    */
   inputFocusBorderAlt: string;
+
+  /**
+   * The color for disabled non user inputted content ; e.g. SearchBox magnifying glass in disabled state.
+   */
+  disabledHelper: string;
+
+  /**
+   * The color for non user inputted content ; e.g. SearchBox magnifying glass in rest state.
+   */
+  inputHelper: string;
+
+  /**
+   * The color for hovered non user inputted content ; e.g. SearchBox magnifying glass in hovered state.
+   */
+  inputHelperHover: string;
 
   //// Buttons
 
