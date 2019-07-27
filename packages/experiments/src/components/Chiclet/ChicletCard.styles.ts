@@ -2,7 +2,7 @@ import { normalize } from '../../Styling';
 import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
 
 export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => {
-  const { theme, className, imageProvided } = props;
+  const { theme, className } = props;
   const { palette } = theme;
 
   return {
@@ -13,6 +13,7 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
       {
         display: 'flex',
         flexWrap: 'wrap',
+        overflow: 'hidden',
         WebkitFontSmoothing: 'antialiased',
         backgroundColor: palette.white,
         borderRadius: 2,
@@ -29,35 +30,15 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
       },
       className
     ],
-    icon: [
-      imageProvided && {
-        height: 24,
-        left: 10,
-        bottom: 10,
-        position: 'absolute'
-      },
-      !imageProvided && {
-        width: 190,
-        height: 80,
-        // revisit
-        backgroundColor: theme.palette.neutralLight
-      }
-    ],
     preview: [
+      'ms-ChicletCard-preview',
       {
-        height: 122,
-        width: 198,
-        padding: '2px 0px 2px 2px'
-      },
-      imageProvided && {
-        position: 'relative',
-        backgroundColor: palette.white,
-        display: 'block'
-      },
-      !imageProvided && {
         display: 'flex',
+        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: theme.palette.neutralLight
+        height: 126,
+        width: 198,
+        backgroundColor: palette.white
       }
     ],
     info: [

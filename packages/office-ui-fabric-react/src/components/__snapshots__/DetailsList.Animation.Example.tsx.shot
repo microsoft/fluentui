@@ -1130,12 +1130,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 {
                                   padding-right: 8px;
                                 }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
-                                }
                             data-automation-key="column1"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -1191,12 +1185,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 }
                                 {
                                   padding-right: 8px;
-                                }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
@@ -1573,12 +1561,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 {
                                   padding-right: 8px;
                                 }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
-                                }
                             data-automation-key="column1"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -1634,12 +1616,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 }
                                 {
                                   padding-right: 8px;
-                                }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
@@ -2016,12 +1992,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 {
                                   padding-right: 8px;
                                 }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
-                                }
                             data-automation-key="column1"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -2077,12 +2047,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 }
                                 {
                                   padding-right: 8px;
-                                }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
@@ -2459,12 +2423,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 {
                                   padding-right: 8px;
                                 }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
-                                }
                             data-automation-key="column1"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -2520,12 +2478,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 }
                                 {
                                   padding-right: 8px;
-                                }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
@@ -2902,12 +2854,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 {
                                   padding-right: 8px;
                                 }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
-                                }
                             data-automation-key="column1"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -2963,12 +2909,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 }
                                 {
                                   padding-right: 8px;
-                                }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
@@ -3345,12 +3285,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 {
                                   padding-right: 8px;
                                 }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
-                                }
                             data-automation-key="column1"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -3406,12 +3340,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 }
                                 {
                                   padding-right: 8px;
-                                }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
@@ -3788,12 +3716,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 {
                                   padding-right: 8px;
                                 }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
-                                }
                             data-automation-key="column1"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -3849,12 +3771,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 }
                                 {
                                   padding-right: 8px;
-                                }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
@@ -4231,12 +4147,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 {
                                   padding-right: 8px;
                                 }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
-                                }
                             data-automation-key="column1"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -4292,12 +4202,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 }
                                 {
                                   padding-right: 8px;
-                                }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
@@ -4674,12 +4578,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 {
                                   padding-right: 8px;
                                 }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
-                                }
                             data-automation-key="column1"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -4735,12 +4633,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 }
                                 {
                                   padding-right: 8px;
-                                }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
@@ -5117,12 +5009,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 {
                                   padding-right: 8px;
                                 }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
-                                }
                             data-automation-key="column1"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -5178,12 +5064,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                 }
                                 {
                                   padding-right: 8px;
-                                }
-                                {
-                                  animation-duration: 0.367s;
-                                  animation-fill-mode: both;
-                                  animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
-                                  animation-timing-function: cubic-bezier(.1,.9,.2,1);
                                 }
                             data-automation-key="column2"
                             data-automationid="DetailsRowCell"
