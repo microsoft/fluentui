@@ -27,7 +27,7 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
 
   function _onLoad(): void {
     rootElement = rootElement || document.getElementById('content');
-    console.log('onLoad');
+
     ReactDOM.render(
       <Fabric>
         <Router onNewRouteLoaded={_scrollAnchorLink}>{_getRoutes()}</Router>
