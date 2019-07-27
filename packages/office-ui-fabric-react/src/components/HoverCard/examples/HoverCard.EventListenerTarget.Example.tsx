@@ -12,13 +12,6 @@ const classNames = mergeStyleSets({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
-  },
-  target: {
-    fontWeight: '600',
-    display: 'inline-block',
-    border: '1px dashed #605e5c',
-    padding: 5,
-    borderRadius: 2
   }
 });
 
