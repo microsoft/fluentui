@@ -124,7 +124,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       id: hoverCardId,
       trapFocus: !!trapFocus,
       firstFocus: setInitialFocus || openMode === OpenCardMode.hotKey,
-      targetElement: this._getTargetElement(),
+      targetElement: this._getTargetElement(this.props.target),
       onEnter: this._cardOpen,
       onLeave: this._childDismissEvent
     };
@@ -146,9 +146,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     );
   }
 
-  private _getTargetElement(): HTMLElement | undefined {
-    const { target } = this.props;
-
+  private _getTargetElement(target: HTMLElement | string | null | undefined): HTMLElement | undefined {
     switch (typeof target) {
       case 'string':
         return getDocument()!.querySelector(target as string) as HTMLElement;
@@ -158,21 +156,6 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
 
       default:
         return this._hoverCard.current || undefined;
-    }
-  }
-
-  private _getEventListenerElement(): HTMLElement | undefined {
-    const { eventListenerTarget } = this.props;
-
-    switch (typeof eventListenerTarget) {
-      case 'string':
-        return getDocument()!.querySelector(eventListenerTarget as string) as HTMLElement;
-
-      case 'object':
-        return eventListenerTarget as HTMLElement;
-
-      default:
-        return this._getTargetElement();
     }
   }
 
@@ -266,8 +249,8 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
   };
 
   private _setEventListeners = (): void => {
-    const { trapFocus, instantOpenOnClick } = this.props;
-    const target = this._getEventListenerElement();
+    const { trapFocus, instantOpenOnClick, eventListenerTarget } = this.props;
+    const target = eventListenerTarget ? this._getTargetElement(eventListenerTarget) : this._getTargetElement(this.props.target);
     const nativeEventDismiss = this._nativeDismissEvent;
 
     // target can be undefined if ref isn't available, only assign
