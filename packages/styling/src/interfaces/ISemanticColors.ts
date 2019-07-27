@@ -203,7 +203,7 @@ export interface ISemanticColors extends ISemanticTextColors {
   /**
    * The color for hovered non user inputted content ; e.g. SearchBox magnifying glass in hovered state.
    */
-  inputHelperHover: string;
+  inputHelperHovered: string;
 
   //// Buttons
 
