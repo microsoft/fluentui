@@ -1,0 +1,8 @@
+{
+  "comment": "Fix cell animations so they only trigger on cell key changes",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "tmichon@microsoft.com",
+  "commit": "d380472ca36a47aea323781ff94d87dbec4b3c0b",
+  "date": "2019-07-26T01:15:26.884Z"
+}
