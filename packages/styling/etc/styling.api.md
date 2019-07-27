@@ -474,7 +474,6 @@ export interface ISemanticColors extends ISemanticTextColors {
     buttonBorderDisabled: string;
     defaultStateBackground: string;
     disabledBackground: string;
-    disabledHelper: string;
     errorBackground: string;
     focusBorder: string;
     inputBackground: string;
@@ -486,6 +485,7 @@ export interface ISemanticColors extends ISemanticTextColors {
     inputFocusBorderAlt: string;
     inputForegroundChecked: string;
     inputHelper: string;
+    inputHelperDisabled: string;
     inputHelperHovered: string;
     listBackground: string;
     listHeaderBackgroundHovered: string;

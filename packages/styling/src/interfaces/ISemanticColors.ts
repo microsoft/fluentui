@@ -193,7 +193,7 @@ export interface ISemanticColors extends ISemanticTextColors {
   /**
    * The color for disabled non user inputted content ; e.g. SearchBox magnifying glass in disabled state.
    */
-  disabledHelper: string;
+  inputHelperDisabled: string;
 
   /**
    * The color for non user inputted content ; e.g. SearchBox magnifying glass in rest state.
