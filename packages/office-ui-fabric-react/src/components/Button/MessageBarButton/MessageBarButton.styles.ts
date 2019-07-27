@@ -1,8 +1,7 @@
 import { IButtonStyles } from '../Button.types';
-import { ITheme, concatStyleSets } from '../../../Styling';
+import { ITheme, concatStyleSets, getFocusStyle } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
-import { getFocusStyle } from '@uifabric/styling';
 
 export const getStyles = memoizeFunction(
   (theme: ITheme, customStyles?: IButtonStyles, focusInset?: string, focusColor?: string): IButtonStyles => {
