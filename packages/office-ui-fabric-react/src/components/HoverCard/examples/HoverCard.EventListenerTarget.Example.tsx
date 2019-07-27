@@ -28,14 +28,10 @@ interface IHoverCardExampleState {
 }
 
 export class HoverCardEventListenerTargetExample extends React.Component<{}, IHoverCardExampleState> {
-  constructor() {
-    super({});
-
-    this.state = {
-      target: null,
-      eventListenerTarget: null
-    };
-  }
+  public state = {
+    target: null,
+    eventListenerTarget: null
+  };
 
   public render() {
     const plainCardProps: IPlainCardProps = {
