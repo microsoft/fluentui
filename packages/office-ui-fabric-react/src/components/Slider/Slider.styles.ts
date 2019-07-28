@@ -32,8 +32,8 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   const sliderRestActiveSectionColor = semanticColors.smallInputBorder;
   const sliderRestInactiveSectionColor = semanticColors.buttonBackgroundChecked;
 
-  const sliderDisabledActiveSectionColor = semanticColors.variantBorderHovered;
-  const sliderDisabledInactiveSectionColor = semanticColors.variantBorder;
+  const sliderDisabledActiveSectionColor = semanticColors.disabledBodyText;
+  const sliderDisabledInactiveSectionColor = semanticColors.bodyDivider;
 
   const sliderThumbBackgroundColor = semanticColors.inputBackground;
   const sliderThumbBorderColor = semanticColors.smallInputBorder;
