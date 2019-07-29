@@ -146,7 +146,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     );
   }
 
-  private _getTargetElement(target: HTMLElement | string | null | undefined): HTMLElement | undefined {
+  private _getTargetElement(target?: HTMLElement | string | null): HTMLElement | undefined {
     switch (typeof target) {
       case 'string':
         return getDocument()!.querySelector(target as string) as HTMLElement;

@@ -12,6 +12,10 @@ const classNames = mergeStyleSets({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+
+  textField: {
+    paddingRight: 200
   }
 });
 
@@ -35,10 +39,12 @@ export class HoverCardEventListenerTargetExample extends React.Component<{}, IHo
       <Fabric>
         <p>
           Using the target to tag hover card on the right side of Emoji icon, and using eventListenerTarget to launch the card only when
-          hover over text field, hover over icon doesn't trigger card open.
+          hovering over the text field, hovering over the icon doesn't trigger card open.
         </p>
         <span ref={this._setTarget}>
-          <span ref={this._setEventListenerTarget}>Hover Zone</span>
+          <span ref={this._setEventListenerTarget} className={classNames.textField}>
+            Hover Zone
+          </span>
           <IconButton iconProps={{ iconName: 'Emoji2' }} title={'Emoji'} />
           <HoverCard
             plainCardProps={plainCardProps}

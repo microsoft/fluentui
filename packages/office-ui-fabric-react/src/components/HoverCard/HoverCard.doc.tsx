@@ -49,7 +49,7 @@ export const HoverCardPageProps: IDocPageProps = {
       view: <HoverCardInstantDismissExample />
     },
     {
-      title: 'Example 5: HoverCard using eventListenderTarget to trigger card open',
+      title: 'Example 5: HoverCard using eventListenerTarget to trigger card open',
       code: HoverCardEventListenerTargetExampleCode,
       codepenJS: HoverCardEventListenerTargetExampleCodepen,
       view: <HoverCardEventListenerTargetExample />

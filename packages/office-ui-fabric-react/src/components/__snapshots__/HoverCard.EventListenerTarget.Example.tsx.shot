@@ -23,10 +23,16 @@ exports[`Component Examples renders HoverCard.EventListenerTarget.Example.tsx co
       }
 >
   <p>
-    Using the target to tag hover card on the right side of Emoji icon, and using eventListenerTarget to launch the card only when hover over text field, hover over icon doesn't trigger card open.
+    Using the target to tag hover card on the right side of Emoji icon, and using eventListenerTarget to launch the card only when hovering over the text field, hovering over the icon doesn't trigger card open.
   </p>
   <span>
-    <span>
+    <span
+      className=
+
+          {
+            padding-right: 200px;
+          }
+    >
       Hover Zone
     </span>
     <button
