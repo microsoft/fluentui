@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Add customization section to Themes and Typography pages",
+  "comment": "Add customization section to Typography pages",
   "packageName": "@uifabric/fabric-website",
   "email": "naethell@microsoft.com",
   "commit": "68361da1ab491641dc11bdf38447074eb360e680",
