@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 24 Jul 2019 12:22:28 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jul 2019 12:22:47 GMT and should not be manually modified.
+
+## 6.195.6
+Mon, 29 Jul 2019 12:22:47 GMT
+
+### Patches
+
+- split calendarMonth into three rows
 
 ## 6.195.5
 Wed, 24 Jul 2019 12:22:28 GMT

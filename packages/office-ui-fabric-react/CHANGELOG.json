@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.195.6",
+      "tag": "office-ui-fabric-react_v6.195.6",
+      "date": "Mon, 29 Jul 2019 12:22:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "split calendarMonth into three rows",
+            "author": "Qianqian Li <lqq201194@163.com>",
+            "commit": "f2aa33ba91f6f646ab5b609fc084b7723dc46af3"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.195.5",
       "tag": "office-ui-fabric-react_v6.195.5",
       "date": "Wed, 24 Jul 2019 12:22:28 GMT",
