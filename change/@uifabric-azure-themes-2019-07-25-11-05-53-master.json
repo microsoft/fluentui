@@ -1,8 +1,0 @@
-{
-  "comment": "Fix Typo in Azure Themes README",
-  "type": "patch",
-  "packageName": "@uifabric/azure-themes",
-  "email": "email not defined",
-  "commit": "f1282642e050ec6295c97e189165011705da22b2",
-  "date": "2019-07-25T18:05:53.123Z"
-}

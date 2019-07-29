@@ -47,15 +47,15 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "@uifabric/azure-themes": "^7.0.4",
-    "@uifabric/experiments": "^7.8.1",
+    "@uifabric/azure-themes": "^7.0.5",
+    "@uifabric/experiments": "^7.9.0",
     "@uifabric/file-type-icons": "^7.0.6",
     "@uifabric/foundation": "^7.0.3",
     "@uifabric/set-version": "^7.0.1",
     "@uifabric/styling": "^7.3.1",
     "@uifabric/theme-samples": "^7.0.3",
     "@uifabric/utilities": "^7.0.7",
-    "office-ui-fabric-react": "^7.17.0",
+    "office-ui-fabric-react": "^7.18.0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 23 Jul 2019 16:33:51 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jul 2019 12:26:00 GMT and should not be manually modified.
+
+## 7.9.0
+Mon, 29 Jul 2019 12:26:00 GMT
+
+### Minor changes
+
+- Chiclet: add preview prop and its styling and don't do icon lookup for preview (t-stcar@microsoft.com)
 
 ## 7.8.1
 Tue, 23 Jul 2019 16:33:51 GMT

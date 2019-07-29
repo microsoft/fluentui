@@ -1,8 +1,0 @@
-{
-  "comment": "Shimmer: refactor out the BaseComponent and deprecated React lifecycle methods.",
-  "type": "minor",
-  "packageName": "office-ui-fabric-react",
-  "email": "vibraga@microsoft.com",
-  "commit": "ac681c3ff6dd6361f22494c1f95e995758dcf573",
-  "date": "2019-07-24T01:38:27.931Z"
-}
