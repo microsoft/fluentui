@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 24 Jun 2019 23:14:19 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jul 2019 11:15:19 GMT and should not be manually modified.
+
+## 5.135.2
+Mon, 29 Jul 2019 11:15:19 GMT
+
+### Patches
+
+- Panel: Change click listener to mousedown listener so that Panels aren't dismissed on mouseup (cherrypick of #5948).
 
 ## 5.135.1
 Mon, 24 Jun 2019 23:14:19 GMT
