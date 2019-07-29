@@ -4845,7 +4845,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
     cardOpenDelay?: number;
     className?: string;
     componentRef?: IRefObject<IHoverCard>;
-    eventListenerTarget?: HTMLElement;
+    eventListenerTarget?: HTMLElement | string | null;
     expandedCardOpenDelay?: number;
     expandingCardProps?: IExpandingCardProps;
     instantOpenOnClick?: boolean;
