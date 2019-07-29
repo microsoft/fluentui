@@ -5,8 +5,8 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
   const { className, beakWidth = 16, gapSpace = 0, maxWidth, theme } = props;
   const { palette, fonts, effects } = theme;
 
-  // The -4 is added so that hidden area doesn't overlap with the Tooltip target.
-  const tooltipGapSpace = -(beakWidth + gapSpace - 4);
+  // The math here is done to account for the 45 degree rotation of the beak
+  const tooltipGapSpace = -(Math.sqrt((beakWidth * beakWidth) / 2) + gapSpace);
 
   return {
     root: [
