@@ -20,6 +20,16 @@ const getCellText = (item: any, column: IColumn): string => {
  * {@docCategory DetailsList}
  */
 export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps> {
+  private _cellValueKeys: {
+    [columnKey: string]: string | undefined;
+  };
+
+  constructor(props: IDetailsRowFieldsProps) {
+    super(props);
+
+    this._cellValueKeys = {};
+  }
+
   public render(): JSX.Element {
     const {
       columns,
@@ -31,8 +41,11 @@ export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps
       itemIndex,
       onRenderItemColumn,
       getCellValueKey,
-      cellsByColumn
+      cellsByColumn,
+      enableUpdateAnimations
     } = this.props;
+
+    const cellValueKeys = this._cellValueKeys;
 
     return (
       <div className={rowClassNames.fields} data-automationid="DetailsRowFields" role="presentation">
@@ -41,20 +54,32 @@ export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps
             typeof column.calculatedWidth === 'undefined'
               ? 'auto'
               : column.calculatedWidth +
-                cellStyleProps.cellLeftPadding +
-                cellStyleProps.cellRightPadding +
-                (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0);
+              cellStyleProps.cellLeftPadding +
+              cellStyleProps.cellRightPadding +
+              (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0);
 
           const { onRender = onRenderItemColumn, getValueKey = getCellValueKey } = column;
           const cellContentsRender =
             cellsByColumn && column.key in cellsByColumn
               ? cellsByColumn[column.key]
               : onRender && !shimmer
-              ? onRender(item, itemIndex, column)
-              : getCellText(item, column);
+                ? onRender(item, itemIndex, column)
+                : getCellText(item, column);
+
+          const previousValueKey = cellValueKeys[column.key];
+
+          const cellValueKey = enableUpdateAnimations && getValueKey ? getValueKey(item, itemIndex, column) : undefined;
+
+          let showAnimation = false;
+
+          if (cellValueKey !== undefined && previousValueKey !== undefined && cellValueKey !== previousValueKey) {
+            showAnimation = true;
+          }
+
+          cellValueKeys[column.key] = cellValueKey;
 
           // generate a key that auto-dirties when content changes, to force the container to re-render, to trigger animation
-          const key = getValueKey ? getValueKey(item, itemIndex, column) : column.key + itemIndex;
+          const key = `${column.key}${cellValueKey !== undefined ? `-${cellValueKey}` : ''}`;
           return (
             <div
               key={key}
@@ -68,7 +93,7 @@ export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps
                 shimmer && rowClassNames.shimmer,
                 rowClassNames.cell,
                 column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded,
-                rowClassNames.cellAnimation
+                showAnimation && rowClassNames.cellAnimation
               )}
               style={{ width }}
               data-automationid="DetailsRowCell"

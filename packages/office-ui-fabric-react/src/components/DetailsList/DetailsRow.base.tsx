@@ -242,6 +242,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
         onRenderItemColumn={onRenderItemColumn}
         shimmer={shimmer}
         getCellValueKey={getCellValueKey}
+        enableUpdateAnimations={enableUpdateAnimations}
       />
     );
 
