@@ -1,6 +1,48 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 14 Jun 2019 03:04:18 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jul 2019 12:21:49 GMT and should not be manually modified.
+
+## 6.81.1
+Mon, 22 Jul 2019 12:21:49 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).
+
+## 6.81.0
+Fri, 19 Jul 2019 12:22:57 GMT
+
+### Minor changes
+
+- Change media tile to show metadata only on hover
+
+## 6.80.0
+Tue, 16 Jul 2019 17:14:30 GMT
+
+### Minor changes
+
+- Chiclet: Add x-small variant
+
+## 6.79.2
+Wed, 03 Jul 2019 12:21:43 GMT
+
+### Patches
+
+- Filter out disallowed props from Tile root element
+
+## 6.79.1
+Thu, 27 Jun 2019 17:53:08 GMT
+
+### Patches
+
+- Updates to tileslist, list and marquee selection
+
+## 6.79.0
+Thu, 20 Jun 2019 12:20:14 GMT
+
+### Minor changes
+
+- Removing charting from deps.
 
 ## 6.78.9
 Fri, 14 Jun 2019 03:04:18 GMT

@@ -74,11 +74,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone1"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={0}
     data-selection-index={0}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -159,6 +157,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -230,6 +229,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -336,7 +336,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -542,11 +543,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone5"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={1}
     data-selection-index={1}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -627,6 +626,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -698,6 +698,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -804,7 +805,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -1010,11 +1012,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone9"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={2}
     data-selection-index={2}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1095,6 +1095,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1166,6 +1167,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1272,7 +1274,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -1478,11 +1481,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone13"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={3}
     data-selection-index={3}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1563,6 +1564,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1634,6 +1636,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1740,7 +1743,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -1946,11 +1950,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone17"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={4}
     data-selection-index={4}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2031,6 +2033,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2102,6 +2105,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2208,7 +2212,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -2414,11 +2419,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone21"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={5}
     data-selection-index={5}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2499,6 +2502,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2570,6 +2574,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2676,7 +2681,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -2882,11 +2888,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone25"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={6}
     data-selection-index={6}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2967,6 +2971,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3038,6 +3043,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3144,7 +3150,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -3350,11 +3357,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone29"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={7}
     data-selection-index={7}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3435,6 +3440,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3506,6 +3512,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3612,7 +3619,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -3818,11 +3826,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone33"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={8}
     data-selection-index={8}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3903,6 +3909,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3974,6 +3981,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -4080,7 +4088,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={
@@ -4286,11 +4295,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
         }
     data-automationid="DetailsRow"
     data-focuszone-id="FocusZone37"
-    data-is-draggable={false}
     data-is-focusable={true}
     data-item-index={9}
     data-selection-index={9}
-    draggable={false}
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4371,6 +4378,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -4442,6 +4450,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -4548,7 +4557,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-        data-automation-key="link"
+
+        data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
         style={

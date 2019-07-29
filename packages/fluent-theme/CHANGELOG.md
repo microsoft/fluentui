@@ -1,6 +1,50 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Wed, 12 Jun 2019 22:15:55 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Jul 2019 12:22:12 GMT and should not be manually modified.
+
+## 0.16.18
+Fri, 26 Jul 2019 12:22:12 GMT
+
+### Patches
+
+- SearchBox: Updates border, background, and text colors to semanticColors.
+
+## 0.16.17
+Mon, 22 Jul 2019 12:21:49 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).
+
+## 0.16.16
+Mon, 08 Jul 2019 20:48:15 GMT
+
+### Patches
+
+- SearchBox: Updates border, icon, and background color states per fluent toolkit
+
+## 0.16.15
+Wed, 26 Jun 2019 21:46:08 GMT
+
+### Patches
+
+- ColorPicker: Updates ColorPicker component to match fluent toolkit
+- Updated ContextualMenu styles to match fluent toolkit
+- Tooltip: Updates box shadow to match toolkit
+
+## 0.16.14
+Wed, 26 Jun 2019 12:23:39 GMT
+
+### Patches
+
+- Spinner: updated margin size
+
+## 0.16.13
+Mon, 24 Jun 2019 23:08:57 GMT
+
+### Patches
+
+- Updated margin to match toolkit
 
 ## 0.16.12
 Wed, 12 Jun 2019 22:15:55 GMT

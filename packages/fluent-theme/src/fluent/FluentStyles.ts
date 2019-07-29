@@ -31,6 +31,7 @@ import { RatingStyles } from './styles/Rating.styles';
 import { SearchBoxStyles } from './styles/SearchBox.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
+import { SpinnerStyles } from './styles/Spinner.styles';
 import { SuggestionItemStyles, SuggestionsStyles } from './styles/PickerSuggestions.styles';
 import { SwatchColorPickerStyles } from './styles/SwatchColorPicker.styles';
 import { TagItemStyles } from './styles/TagPicker.styles';
@@ -163,6 +164,9 @@ export const FluentStyles: any = {
   },
   SpinButton: {
     styles: SpinButtonStyles
+  },
+  Spinner: {
+    styles: SpinnerStyles
   },
   Suggestions: {
     styles: SuggestionsStyles

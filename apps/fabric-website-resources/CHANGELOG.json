@@ -2,6 +2,77 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.19.1",
+      "tag": "@uifabric/fabric-website-resources_v6.19.1",
+      "date": "Mon, 22 Jul 2019 12:21:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).",
+            "author": "Makoto Morimoto <humbertomakotomorimoto@gmail.com>",
+            "commit": "541b30dfa57d13e783a46f02ed510caba6679b5d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^1.1.5` to `^1.1.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^6.0.3` to `^6.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.6` to `^6.23.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.16` to `^0.16.17`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^6.5.3` to `^6.5.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.19.2` to `^6.19.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.50.2` to `^6.50.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^0.1.8` to `^0.1.9`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.5` to `^6.41.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.15.0` to `^6.15.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.11` to `^6.0.12`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.195.3` to `^6.195.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.19.0",
+      "tag": "@uifabric/fabric-website-resources_v6.19.0",
+      "date": "Wed, 10 Jul 2019 00:26:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add DetailsList animation example page",
+            "author": "inateeg <inateeg@microsoft.com>",
+            "commit": "8d4164cbf6ce9566e00c3362b907f90ba89df04e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.194.0` to `^6.195.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.5",
       "tag": "@uifabric/fabric-website-resources_v6.18.5",
       "date": "Wed, 12 Jun 2019 22:15:55 GMT",

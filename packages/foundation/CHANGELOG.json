@@ -2,6 +2,31 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.8.2",
+      "tag": "@uifabric/foundation_v0.8.2",
+      "date": "Mon, 22 Jul 2019 12:21:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).",
+            "author": "Makoto Morimoto <humbertomakotomorimoto@gmail.com>",
+            "commit": "541b30dfa57d13e783a46f02ed510caba6679b5d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.50.2` to `^6.50.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.5` to `^6.41.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.11` to `^6.0.12`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.8.1",
       "tag": "@uifabric/foundation_v0.8.1",
       "date": "Wed, 12 Jun 2019 22:15:55 GMT",

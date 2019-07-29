@@ -44,7 +44,7 @@ module.exports.createPublicFlightConfigTask = function() {
     // Produces date string of the form yyyyMMdd, e.g. 20180701
     let today = date.getFullYear() + ('0' + (date.getMonth() + 1)).slice(-2) + ('0' + date.getDate()).slice(-2);
 
-    let configsToGenerate = ['fabric-website-prod', 'fabric-website-df'];
+    let configsToGenerate = ['fabric-website-v6-prod', 'fabric-website-v6-df'];
 
     let configData = {
       version: process.env.BUILD_BUILDNUMBER || '0',

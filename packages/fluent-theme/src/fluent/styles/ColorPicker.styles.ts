@@ -45,7 +45,8 @@ export const ColorRectangleStyles = (props: IColorRectangleStyleProps): Partial<
   return {
     root: {
       border: `1px solid ${palette.neutralLighter}`,
-      borderRadius: effects.roundedCorner2
+      borderRadius: effects.roundedCorner2,
+      marginBottom: 8
     },
     thumb: {
       borderColor: palette.neutralTertiary,

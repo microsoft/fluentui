@@ -1,6 +1,34 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 14 Jun 2019 03:04:18 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jul 2019 12:21:49 GMT and should not be manually modified.
+
+## 6.23.7
+Mon, 22 Jul 2019 12:21:49 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).
+
+## 6.23.6
+Fri, 28 Jun 2019 12:22:28 GMT
+
+### Patches
+
+- Renamed instances of "Microsoft UI Fabric" to "UI Fabric"
+
+## 6.23.5
+Mon, 24 Jun 2019 23:08:57 GMT
+
+### Patches
+
+- Export to codepen should use fabric@6
+
+## 6.23.4
+Fri, 21 Jun 2019 03:41:09 GMT
+
+### Patches
+
+- ColorPalette: fix missing react code breaking rendering
 
 ## 6.23.3
 Fri, 14 Jun 2019 03:04:18 GMT

@@ -219,7 +219,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                   display: flex;
                   flex-direction: column;
                   left: auto;
-                  max-height: 768px;
                   overflow-x: hidden;
                   overflow-y: auto;
                   pointer-events: auto;
@@ -403,7 +402,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                     display: flex;
                     flex-direction: column;
                     flex-grow: 1;
-                    max-height: 768px;
                     overflow-y: hidden;
                   }
             >
@@ -458,7 +456,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                 className=
                     ms-Panel-scrollableContent
                     {
-                      height: 768px;
                       overflow-y: auto;
                     }
                 data-is-scrollable={true}

@@ -48,17 +48,13 @@ const fabricUsageIcons = [
   { src: fabricUsageIconBaseUrl + 'teams_48x1.svg', title: 'Teams' }
 ];
 
-const fabricVersionOptions: IContextualMenuItem[] = [
-  {
-    key: '6',
-    text: 'Fabric 6',
-    checked: true
-  },
-  {
-    key: '5',
-    text: 'Fabric 5'
-  }
-];
+const CURRENT_VERSION = '6';
+const VERSIONS = ['7', '6', '5'];
+const fabricVersionOptions: IContextualMenuItem[] = VERSIONS.map(version => ({
+  key: version,
+  text: 'Fabric ' + version,
+  checked: version === CURRENT_VERSION
+}));
 
 interface IRenderLinkOptions {
   disabled?: boolean;
@@ -129,8 +125,8 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           </div>
           <div className={this._classNames.oneFourth}>
             <p>
-              Together, we’ve created Microsoft UI Fabric, a collection of UX frameworks you can use to build Fluent experiences that fit
-              seamlessly into a broad range of Microsoft products.
+              Together, we’ve created UI Fabric, a collection of UX frameworks you can use to build Fluent experiences that fit seamlessly
+              into a broad range of Microsoft products.
             </p>
             <p>Connect with the cross-platform styles, controls and resources you need to do amazing things.</p>
             <p>{this._renderLink('#/get-started', 'Get started', { isCTA: true, dark: false })}</p>
@@ -340,9 +336,9 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
   };
 
   private _onVersionMenuClick = (event: any, item: IContextualMenuItem): void => {
-    if (item.key === '5') {
-      // Reload the page to switch to version 5
-      location.href = `${location.protocol}//${location.host}${location.pathname}?fabricVer=5`;
+    if (item.key !== CURRENT_VERSION) {
+      // Reload the page to switch versions
+      location.href = `${location.protocol}//${location.host}${location.pathname}?fabricVer=${item.key}`;
     }
   };
 }

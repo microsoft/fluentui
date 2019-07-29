@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Wed, 12 Jun 2019 22:15:55 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jul 2019 12:21:49 GMT and should not be manually modified.
+
+## 0.8.2
+Mon, 22 Jul 2019 12:21:49 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).
 
 ## 0.8.1
 Wed, 12 Jun 2019 22:15:55 GMT

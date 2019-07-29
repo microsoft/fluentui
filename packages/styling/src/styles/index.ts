@@ -11,4 +11,5 @@ export { ThemeSettingName, getTheme, loadTheme, createTheme, registerOnThemeChan
 export * from './CommonStyles';
 export * from './GeneralStyles';
 export * from './getFadedOverflowStyle';
+export * from './getPlaceholderStyles';
 export * from './zIndexes';
