@@ -26,8 +26,12 @@ steps:
     displayName: check change
 
   - script: |
+      npm run validate-change-files
+    displayName: 'Validates change files'
+
+  - script: |
       npm run buildfast
-    displayName: build ci
+    displayName: build fast
 
   - script: |
       npm run vrtest
