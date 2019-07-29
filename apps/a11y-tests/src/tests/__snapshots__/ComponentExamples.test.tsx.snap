@@ -1250,7 +1250,49 @@ Array [
 
 exports[`a11y test checks accessibility of DetailsList (DetailsList.CustomFooter.Example) 1`] = `Array []`;
 
-exports[`a11y test checks accessibility of DetailsList (DetailsList.CustomGroupHeaders.Example) 1`] = `Array []`;
+exports[`a11y test checks accessibility of DetailsList (DetailsList.CustomGroupHeaders.Example) 1`] = `
+Array [
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".cellIsGroupExpander-8",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<div class=\\"ms-DetailsHeader-cell cellIsGroupExpander-8\\" data-is-focusable=\\"true\\" aria-expanded=\\"true\\" role=\\"button\\"><i data-icon-name=\\"ChevronRightMed\\" role=\\"presentation\\" aria-hidden=\\"true\\" class=\\"ms-DetailsHeader-collapseButton collapseButton-33\\"></i></div>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- Element has a value attribute and the value attribute is empty.
+- Element has no value attribute or the value attribute is empty.
+- Element does not have inner text that is visible to screen readers.
+- aria-label attribute does not exist or is empty.
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty.
+- Element's default semantics were not overridden with role=\\"presentation\\".
+- Element's default semantics were not overridden with role=\\"none\\".
+- Element has no title attribute or the title attribute is empty.",
+      "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "ruleId": "button-name",
+    "ruleIndex": 15,
+  },
+]
+`;
 
 exports[`a11y test checks accessibility of DetailsList (DetailsList.CustomRows.Example) 1`] = `Array []`;
 
@@ -1260,7 +1302,49 @@ exports[`a11y test checks accessibility of DetailsList (DetailsList.DragDrop.Exa
 
 exports[`a11y test checks accessibility of DetailsList (DetailsList.Grouped.Example) 1`] = `Array []`;
 
-exports[`a11y test checks accessibility of DetailsList (DetailsList.Grouped.Large.Example) 1`] = `Array []`;
+exports[`a11y test checks accessibility of DetailsList (DetailsList.Grouped.Large.Example) 1`] = `
+Array [
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".cellIsGroupExpander-8",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<div class=\\"ms-DetailsHeader-cell cellIsGroupExpander-8\\" data-is-focusable=\\"true\\" aria-expanded=\\"true\\" role=\\"button\\"><i data-icon-name=\\"ChevronRightMed\\" role=\\"presentation\\" aria-hidden=\\"true\\" class=\\"ms-DetailsHeader-collapseButton collapseButton-33\\"></i></div>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- Element has a value attribute and the value attribute is empty.
+- Element has no value attribute or the value attribute is empty.
+- Element does not have inner text that is visible to screen readers.
+- aria-label attribute does not exist or is empty.
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty.
+- Element's default semantics were not overridden with role=\\"presentation\\".
+- Element's default semantics were not overridden with role=\\"none\\".
+- Element has no title attribute or the title attribute is empty.",
+      "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "ruleId": "button-name",
+    "ruleIndex": 15,
+  },
+]
+`;
 
 exports[`a11y test checks accessibility of DetailsList (DetailsList.NavigatingFocus.Example) 1`] = `Array []`;
 
