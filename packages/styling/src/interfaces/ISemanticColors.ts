@@ -159,12 +159,6 @@ export interface ISemanticColors extends ISemanticTextColors {
   inputBorderHovered: string;
 
   /**
-   * The border color of a large input control that isnt hovered or focused but that contains user input.
-   * Such as textbox in populated state
-   */
-  inputBorderHasInput: string;
-
-  /**
    * The background color of an input, e.g. textbox background.
    */
   inputBackground: string;
