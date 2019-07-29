@@ -26,7 +26,7 @@
     "checkchange": "node ./scripts/node_modules/beachball/bin/beachball.js check -b origin/5.0",
     "update-snapshots": "cd packages/office-ui-fabric-react && npm run update-snapshots",
     "publish:beachball": "node ./scripts/node_modules/beachball/bin/beachball.js publish",
-    "validate-change-files": "node ./scripts/validate-change-files"
+    "validate-change-files": "node ./scripts/tasks/validate-change-files.js"
   },
   "license": "MIT",
   "devDependencies": {

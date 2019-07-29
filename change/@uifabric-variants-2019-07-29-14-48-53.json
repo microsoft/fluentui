@@ -1,0 +1,8 @@
+{
+  "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).",
+  "type": "patch",
+  "packageName": "@uifabric/variants",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "0a5428e056d9754aa4cc47598d0e9b218aac1633",
+  "date": "2019-07-29T21:48:53.065Z"
+}
