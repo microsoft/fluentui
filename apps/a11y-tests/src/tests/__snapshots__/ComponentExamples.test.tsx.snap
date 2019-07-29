@@ -3897,6 +3897,8 @@ exports[`a11y test checks accessibility of GroupedList (GroupedList.Custom.Examp
 
 exports[`a11y test checks accessibility of HoverCard (HoverCard.Basic.Example) 1`] = `Array []`;
 
+exports[`a11y test checks accessibility of HoverCard (HoverCard.EventListenerTarget.Example) 1`] = `Array []`;
+
 exports[`a11y test checks accessibility of HoverCard (HoverCard.InstantDismiss.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of HoverCard (HoverCard.PlainCard.Example) 1`] = `Array []`;
