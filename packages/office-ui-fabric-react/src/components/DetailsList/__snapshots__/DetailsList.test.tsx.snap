@@ -4658,6 +4658,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 }
             data-is-focusable={true}
             onClick={[Function]}
+            role="button"
           >
             <i
               aria-hidden={true}

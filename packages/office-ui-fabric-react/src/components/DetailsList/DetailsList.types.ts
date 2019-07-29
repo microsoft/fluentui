@@ -322,6 +322,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * Whether to animate updates
    */
   enableUpdateAnimations?: boolean;
+
+  /**
+   * Aria-label to be passed in to toggle all groups button
+   */
+  ariaLabelForToggleAllGroupsButton?: string;
 }
 
 /**

@@ -3372,6 +3372,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     ariaLabelForListHeader?: string;
     ariaLabelForSelectAllCheckbox?: string;
     ariaLabelForSelectionColumn?: string;
+    ariaLabelForToggleAllGroupsButton?: string;
     cellStyleProps?: ICellStyleProps;
     checkboxCellClassName?: string;
     checkboxVisibility?: CheckboxVisibility;
