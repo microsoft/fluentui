@@ -42,25 +42,11 @@ function run() {
         console.log('Example: install-run-rush.js build --to myproject');
         process.exit(1);
     }
-
-    if (validateDisallowedCommands(packageBinArgs)) {
-      install_run_1.runWithErrorAndStatusCode(() => {
-          const version = getRushVersion();
-          console.log(`The rush.json configuration requests Rush version ${version}`);
-          return install_run_1.installAndRun(PACKAGE_NAME, version, 'rush', packageBinArgs);
-      });
-    }
+    install_run_1.runWithErrorAndStatusCode(() => {
+        const version = getRushVersion();
+        console.log(`The rush.json configuration requests Rush version ${version}`);
+        return install_run_1.installAndRun(PACKAGE_NAME, version, 'rush', packageBinArgs);
+    });
 }
-
-function validateDisallowedCommands(packagebinArgs) {
-  if (packageBinArgs[0] === 'change') {
-    console.log('This branch no longer uses "rush change" to create change files');
-    console.log('To create change files, please run ');
-    return false;
-  }
-
-  return true;
-}
-
 run();
 //# sourceMappingURL=install-run-rush.js.map
