@@ -189,7 +189,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
 
   /**
    * Scale the given data based on the measurements already in cache and based on the current container dimension
-   * This is useful to optimize changes to Resize group props which do not affect scaling. In that case,
+   * This is useful to optimize changes to ResizeGroup props which do not affect scaling. In that case,
    * we could avoid measuring the resize group.
    * @param data - The initial data point to start measuring.
    * @param onReduceData - Function that transforms the data into something that should render with less width/height.
@@ -205,26 +205,22 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
         return { ...data };
       }
 
+      const nextScaledData;
       if (grow && onGrowData && measuredDimension < _containerDimension!) {
-        const nextScaledData = onGrowData(scaledData);
-        if (nextScaledData === undefined) {
-          return scaledData;
-        }
-
-        scaledData = nextScaledData;
+        nextScaledData = onGrowData(scaledData);
       } else if (measuredDimension > _containerDimension!) {
         if (grow) {
           grow = false;
         }
-
-        const nextScaledData = onReduceData(scaledData);
-        if (nextScaledData === undefined) {
-          return scaledData;
-        }
-
-        scaledData = nextScaledData;
+        nextScaledData = onReduceData(scaledData);
       } else {
         break;
+      }
+
+      if (nextScaledData == undefined) {
+        return scaledData;
+      } else {
+        scaledData = nextScaledData;
       }
     } while (grow || measuredDimension > _containerDimension!);
 
@@ -419,7 +415,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   public shouldComponentUpdate(nextProps: IResizeGroupProps, nextState: IResizeGroupState) {
     if (nextState.measureContainer === false) {
       // If there is a state change just because of measureContainer going from true -> false and everything else
-      // is the same as before, we do not need to update.
+      // is the same as before, we do not need to re-render
       if (shallowCompare(this.props, nextProps) && shallowCompare({ ...this.state, measureContainer: false }, nextState)) {
         return false;
       }
@@ -436,7 +432,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
       this.props.onGrowData === nextProps.onGrowData &&
       this.props.onReduceData === nextProps.onReduceData
     ) {
-      // the props have changed, but without affecting scaling. So, lets reapply the scaling we have done previously,
+      // The props have changed, but without affecting scaling. So, lets reapply the scaling we have done previously,
       // to old props to the new props.
       scaledNewData = this._nextResizeGroupStateProvider.scaleDataBasedOnMeasurementsInCache(
         nextProps.data,
