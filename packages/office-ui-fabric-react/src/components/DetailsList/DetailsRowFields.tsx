@@ -29,8 +29,15 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
     itemIndex,
     onRenderItemColumn,
     getCellValueKey,
-    cellsByColumn
+    cellsByColumn,
+    enableUpdateAnimations
   } = props;
+
+  const cellValueKeysRef = React.useRef<{
+    [columnKey: string]: string | undefined;
+  }>();
+
+  const cellValueKeys = cellValueKeysRef.current || (cellValueKeysRef.current = {});
 
   return (
     <div className={rowClassNames.fields} data-automationid="DetailsRowFields" role="presentation">
@@ -51,8 +58,20 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
             ? onRender(item, itemIndex, column)
             : getCellText(item, column);
 
+        const previousValueKey = cellValueKeys[column.key];
+
+        const cellValueKey = enableUpdateAnimations && getValueKey ? getValueKey(item, itemIndex, column) : undefined;
+
+        let showAnimation = false;
+
+        if (cellValueKey !== undefined && previousValueKey !== undefined && cellValueKey !== previousValueKey) {
+          showAnimation = true;
+        }
+
+        cellValueKeys[column.key] = cellValueKey;
+
         // generate a key that auto-dirties when content changes, to force the container to re-render, to trigger animation
-        const key = getValueKey ? getValueKey(item, itemIndex, column) : column.key + itemIndex;
+        const key = `${column.key}${cellValueKey !== undefined ? `-${cellValueKey}` : ''}`;
         return (
           <div
             key={key}
@@ -64,7 +83,7 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
               column.isRowHeader && rowClassNames.isRowHeader,
               rowClassNames.cell,
               column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded,
-              rowClassNames.cellAnimation
+              showAnimation && rowClassNames.cellAnimation
             )}
             style={{ width }}
             data-automationid="DetailsRowCell"

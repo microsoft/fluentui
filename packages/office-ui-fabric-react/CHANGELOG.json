@@ -2,6 +2,98 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 29 Jul 2019 12:26:00 GMT",
+      "tag": "office-ui-fabric-react_v7.18.0",
+      "version": "7.18.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Shimmer: refactor out the BaseComponent and deprecated React lifecycle methods.",
+            "author": "vibraga@microsoft.com",
+            "commit": "ac681c3ff6dd6361f22494c1f95e995758dcf573"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix cell animations so they only trigger on cell key changes",
+            "author": "tmichon@microsoft.com",
+            "commit": "d380472ca36a47aea323781ff94d87dbec4b3c0b"
+          },
+          {
+            "comment": "Panel: fix shrinking of the footer and make header not shrink.",
+            "author": "vibraga@microsoft.com",
+            "commit": "30a61f806742f24cfdced1f3d508779420e1587c"
+          },
+          {
+            "comment": "Pivot: align pivot link text in relation to the whole pivot tab.",
+            "author": "vibraga@microsoft.com",
+            "commit": "a96b13bc6fc9482af6eb693a59d66d2b09663148"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jul 2019 12:28:52 GMT",
+      "tag": "office-ui-fabric-react_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added aria label to demo page for custom picker",
+            "author": "susunda@microsoft.com",
+            "commit": "68ea0bec1c98e56038683fc464e0002222e9a772"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "ShimmeredDetailsList: enables additional logic to be executed before rendering the default shimmer row.",
+            "author": "vibraga@microsoft.com",
+            "commit": "8804a82d1b57c5393942b39e0cc83b6826a24b29"
+          },
+          {
+            "comment": "removing BaseComponent from SpinButton",
+            "author": "aneeshak@microsoft.com",
+            "commit": "a93e3a7945c3df21cf9f6664f5a6a9442e5731bd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Jul 2019 12:27:19 GMT",
+      "tag": "office-ui-fabric-react_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ChoiceGroup: updating IChoiceOption to accept input attributes",
+            "author": "dzearing@microsoft.com",
+            "commit": "b8e2f97a56b821785b575f0eb9c909b73c7be5ab"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Jul 2019 12:27:56 GMT",
+      "tag": "office-ui-fabric-react_v7.15.0",
+      "version": "7.15.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Facepile: Fix narrator not announcing coauthor position",
+            "author": "tabrumle@microsoft.com",
+            "commit": "490254bd74dabc3338735164ec109f4076007309"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "split calendarMonth into three rows",
+            "author": "Qianqian.Li@microsoft.com",
+            "commit": "b5ca3ec0de972c59a154e74acde9d47a99b0e253"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2019 16:33:51 GMT",
       "tag": "office-ui-fabric-react_v7.14.1",
       "version": "7.14.1",

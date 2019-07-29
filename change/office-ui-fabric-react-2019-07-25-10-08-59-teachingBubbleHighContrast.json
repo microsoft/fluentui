@@ -1,0 +1,8 @@
+{
+  "comment": "TeachingBubble: Fix primary button high contrast styling issues.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "5824e529e3e143bad4ea5c257140a38d82524926",
+  "date": "2019-07-25T17:08:59.289Z"
+}
