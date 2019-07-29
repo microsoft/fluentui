@@ -119,10 +119,10 @@ export interface ITooltipStyleProps {
   gapSpace?: number;
 
   /**
-   * The height of the Callout's beak
+   * The width of the Callout's beak
    * @defaultvalue 16
    */
-  beakHeight?: number;
+  beakWidth?: number;
 }
 
 /**
