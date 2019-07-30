@@ -22,10 +22,8 @@ export async function transpile(model: ITextModel): Promise<ITranspiledOutput> {
 }
 
 /**
- * Evaluates the code given after transforming it. Since eval will need a div element to insert the result into,
- * divId is the id of the div element where the result will be inserted.
+ * Tranforms the code since the given code might have unsupported imports and then evals the code.
  *
- * @export
  * @param {code} string
  * @param {divId} string
  * @returns {string | undefined}

@@ -38,6 +38,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   private _classNames: IProcessedStyleSet<IExampleCardStyles>;
   private readonly canRenderLiveEditor: boolean;
   private Editor: React.LazyExoticComponent<React.FunctionComponent<IEditorProps>>;
+  private editorModule: typeof import('@uifabric/tsx-editor/lib/index');
 
   constructor(props: IExampleCardProps) {
     super(props);
@@ -82,7 +83,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
           const exampleCardContent =
             this.props.isCodeVisible && this.canRenderLiveEditor ? (
-              <EditorPreview id={this.props.title.replace(' ', '')} />
+              <EditorPreview className={classNames.example} id={this.props.title.replace(' ', '')} />
             ) : (
               <div className={classNames.example} data-is-scrollable={isScrollable}>
                 {children}
@@ -180,19 +181,17 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     }
   }
   private _editorOnChange = (editor: ITextModel) => {
-    import('@uifabric/tsx-editor').then(editorModule => {
-      editorModule.transpile(editor).then((output: ITranspiledOutput) => {
-        if (output.outputString) {
-          const evalCodeError = editorModule.evalCode(output.outputString, this.props.title.replace(' ', ''));
-          this.setState({
-            error: evalCodeError || undefined
-          });
-        } else {
-          this.setState({
-            error: output.error
-          });
-        }
-      });
+    this.editorModule.transpile(editor).then((output: ITranspiledOutput) => {
+      if (output.outputString) {
+        const evalCodeError = this.editorModule.evalCode(output.outputString, this.props.title.replace(' ', ''));
+        this.setState({
+          error: evalCodeError || undefined
+        });
+      } else {
+        this.setState({
+          error: output.error
+        });
+      }
     });
   };
 
@@ -207,6 +206,9 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   private _onToggleCodeClick = () => {
     if (this.canRenderLiveEditor && !this.Editor) {
       this.Editor = React.lazy(() => import('@uifabric/tsx-editor/lib/components/Editor'));
+      import('@uifabric/tsx-editor').then(editorModule => {
+        this.editorModule = editorModule;
+      });
     }
     if (this.props.onToggleEditor) {
       if (this.props.isCodeVisible) {
