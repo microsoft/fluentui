@@ -2,6 +2,28 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "5.135.3",
+      "tag": "office-ui-fabric-react_v5.135.3",
+      "date": "Tue, 30 Jul 2019 11:14:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Makoto Morimoto <humbertomakotomorimoto@gmail.com>",
+            "commit": "0a5428e056d9754aa4cc47598d0e9b218aac1633",
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798)."
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=5.34.2 <6.0.0` to `>=5.34.3 <6.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=5.11.6 <6.0.0` to `>=5.11.7 <6.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.135.2",
       "tag": "office-ui-fabric-react_v5.135.2",
       "date": "Mon, 29 Jul 2019 11:15:19 GMT",

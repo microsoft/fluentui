@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 19 Nov 2018 12:25:13 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jul 2019 11:14:55 GMT and should not be manually modified.
+
+## 5.45.3
+Tue, 30 Jul 2019 11:14:55 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).
 
 ## 5.45.2
 Mon, 19 Nov 2018 12:25:13 GMT

@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 29 Jul 2019 11:15:19 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jul 2019 11:14:55 GMT and should not be manually modified.
+
+## 5.135.3
+Tue, 30 Jul 2019 11:14:55 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).
 
 ## 5.135.2
 Mon, 29 Jul 2019 11:15:19 GMT

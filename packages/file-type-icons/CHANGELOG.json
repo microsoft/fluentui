@@ -2,6 +2,20 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "version": "5.0.2",
+      "tag": "@uifabric/file-type-icons_v5.0.2",
+      "date": "Tue, 30 Jul 2019 11:14:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Makoto Morimoto <humbertomakotomorimoto@gmail.com>",
+            "commit": "0a5428e056d9754aa4cc47598d0e9b218aac1633",
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798)."
+          }
+        ]
+      }
+    },
+    {
       "version": "5.0.1",
       "tag": "@uifabric/file-type-icons_v5.0.1",
       "date": "Wed, 11 Jul 2018 13:26:02 GMT",
