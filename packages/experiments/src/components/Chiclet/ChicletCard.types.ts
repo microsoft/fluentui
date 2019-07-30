@@ -49,11 +49,6 @@ export interface IChicletCardStyleProps {
   theme: ITheme;
 
   /**
-   * Whether image is provided
-   */
-  imageProvided?: boolean;
-
-  /**
    * Accept footer prop.
    */
   footerProvided?: boolean;

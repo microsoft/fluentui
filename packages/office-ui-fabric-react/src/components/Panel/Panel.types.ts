@@ -94,7 +94,8 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   onDismiss?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
 
   /**
-   * A callback function which is called after the Panel is dismissed and the animation is complete.
+   * A callback function which is called **after** the Panel is dismissed and the animation is complete.
+   * (If you need to update the Panel's `isOpen` prop in response to a dismiss event, use `onDismiss` instead.)
    */
   onDismissed?: () => void;
 

@@ -1,0 +1,8 @@
+{
+  "comment": "Tooltip: Fixing hidden hover area overlapping with Tooltip targets.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "03c6fe8e6c0f89a33071dd0bc30cf2831fe48f41",
+  "date": "2019-07-26T23:11:58.519Z"
+}

@@ -61,4 +61,23 @@ describe('Chiclet', () => {
 
     expect(tree).toMatchSnapshot();
   });
+
+  it('should set className on preview', () => {
+    const chicletCardProps: IChicletCardProps = {
+      url: 'contoso.sharepoint.com',
+      title: 'My Daily Notes',
+      itemType: 'docx',
+      onClick: () => alert('test')
+    };
+
+    const Preview: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = props => {
+      return <img src="http://placehold.it/100x100" {...props} />;
+    };
+
+    const component = renderer.create(<ChicletCard {...chicletCardProps} preview={<Preview />} />);
+
+    const tree = component.toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

@@ -1,8 +1,0 @@
-{
-  "comment": "ShimmeredDetailsList: enables additional logic to be executed before rendering the default shimmer row.",
-  "type": "minor",
-  "packageName": "office-ui-fabric-react",
-  "email": "vibraga@microsoft.com",
-  "commit": "8804a82d1b57c5393942b39e0cc83b6826a24b29",
-  "date": "2019-07-25T02:12:32.942Z"
-}
