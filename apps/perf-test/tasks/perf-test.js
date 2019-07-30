@@ -2,30 +2,13 @@
 
 const fs = require('fs');
 const path = require('path');
-const puppeteer = require('puppeteer');
-const generateFlamegraph = require('./flamegraph/generateFlamegraph');
+const flamegrill = require('flamegrill');
 const scenarioNames = require('../src/scenarioNames');
 const { argv } = require('@uifabric/build').just;
 
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
 // Wiki: https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing
 const iterationsDefault = 5000;
-
-// Chrome command for running similarly configured instance of Chrome as puppeteer is configured here:
-// "C:\Program Files (x86)\Google\Chrome\Application\chrome" --no-sandbox --js-flags=" --logfile=C:\git\perf\output\chrome.log --prof --jitless --no-opt" --user-data-dir="C:\git\perf\user" http://localhost:4322
-
-// Current commands to run:
-//    yarn buildto perf-test
-//    From apps/perf-test directory:
-//      To build and run perf-test:
-//        npm run just perf-test
-//      To just run perf tests:
-//        npm run just run-perf-test
-// Arguments:
-//    scenarios: comma separated list of scenario names to execute
-//    iterations: number of iterations to run for each scenario
-// Example:
-//    npm run just perf-test -- --scenarios SplitButton,SplitButtonNew --iterations 1000
 
 // TODO:
 //  - Results Analysis
@@ -125,27 +108,10 @@ const urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/index.html`
   : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/index.html';
 
-const logPath = path.join(__dirname, '../logfiles');
-const logFilePath = path.join(logPath, '/puppeteer.log');
-const resultsPath = path.join(__dirname, '../dist');
+const outDir = path.join(__dirname, '../dist');
+const tempDir = path.join(__dirname, '../logfiles');
 
 module.exports = async function getPerfRegressions() {
-  if (!fs.existsSync(logPath)) {
-    console.log(`Making logfile directory ${logFilePath}...`);
-    fs.mkdirSync(logPath);
-  }
-
-  const logfileContents = fs.readdirSync(logPath);
-
-  if (logfileContents.length > 0) {
-    console.log(`Unexpected logfiles already present in ${logPath}`);
-    logfileContents.forEach(logFile => {
-      const logFilePath = path.join(logPath, logFile);
-      console.log(`Deleting ${logFilePath}`);
-      fs.unlinkSync(logFilePath);
-    });
-  }
-
   const iterationsArgv = /** @type {number} */ (argv().iterations);
   const iterationsArg = Number.isInteger(iterationsArgv) && iterationsArgv;
   const iterations = iterationsArg || iterationsDefault;
@@ -163,61 +129,42 @@ module.exports = async function getPerfRegressions() {
     }
   });
 
-  const scenarios = scenariosArg.length > 0 ? scenariosArg : scenariosAvailable;
+  const scenarioList = scenariosArg.length > 0 ? scenariosArg : scenariosAvailable;
 
-  console.log(`\nRunning ${iterations} iterations for each of these scenarios: ${scenarios}\n`);
-
-  // const extraV8Flags = '--log-source-code --log-timer-events';
-  // const extraV8Flags = '--log-source-code';
-  const extraV8Flags = '';
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: [
-      '--flag-switches-begin',
-      '--no-sandbox',
-      '--js-flags=--logfile=' + logFilePath + ' --prof --jitless --no-opt ' + extraV8Flags,
-      '--flag-switches-end'
-    ]
+  const scenarios = [];
+  scenarioList.forEach(scenario => {
+    if (!scenariosAvailable.includes(scenario)) {
+      throw new Error(`Invalid scenario: ${scenario}.`);
+    }
+    scenarios.push({
+      name: scenario,
+      reference: `${urlForMaster}?scenario=${scenario}&iterations=${iterations}`,
+      scenario: `${urlForDeploy}?scenario=${scenario}&iterations=${iterations}`
+    });
   });
 
-  // A log file is made for each new tab/page.
-  // Make an initial page here to force generation of initial system logs that we are not concerned with.
-  // This allows us to associate newly created log files with tests as we run each scenario in a new tab.
-  await browser.newPage();
+  console.log(`\nRunning ${iterations} iterations for each of these scenarios: ${scenarioList}\n`);
 
-  // TODO: Need to decide whether it's ok to run tests in parallel. Variance from results seems to indicate
-  // not, but then again other things outside of our control will also affect CPU load and results.
-  // Run tests sequentially for now, at least as a chance of getting more consistent results when run locally.
-  const testResults = [];
+  if (!fs.existsSync(tempDir)) {
+    console.log(`Making temp directory ${tempDir}...`);
+    fs.mkdirSync(tempDir);
+  }
 
-  for (const scenario of scenarios) {
-    let logfileMaster = await runPerfTest(browser, urlForMaster, scenario, iterations, logPath);
-    let logfilePR = await runPerfTest(browser, urlForDeploy, scenario, iterations, logPath);
+  const logfileContents = fs.readdirSync(tempDir);
 
-    let outfileMaster = path.join(resultsPath, `${scenario}_master.html`);
-    let outfilePR = path.join(resultsPath, `${scenario}_pr.html`);
-
-    testResults.push({
-      scenario: scenarioNames[scenario] || scenario,
-      logfileMaster,
-      outfileMaster,
-      logfilePR,
-      outfilePR
+  if (logfileContents.length > 0) {
+    console.log(`Unexpected files already present in ${tempDir}`);
+    logfileContents.forEach(logFile => {
+      const logFilePath = path.join(tempDir, logFile);
+      console.log(`Deleting ${logFilePath}`);
+      fs.unlinkSync(logFilePath);
     });
   }
 
-  console.log('testResults: ' + JSON.stringify(testResults));
+  const scenarioConfig = { outDir, tempDir };
+  const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
 
-  // Clean up
-  await browser.close();
-
-  // Serialize a bunch of async generation of flamegraphs
-  for (const result of testResults) {
-    await generateFlamegraph(result.logfileMaster, result.outfileMaster);
-    await generateFlamegraph(result.logfilePR, result.outfilePR);
-  }
-
-  const comment = createTestSummary(testResults);
+  const comment = createTestSummary(scenarioResults);
 
   // TODO: determine status according to perf numbers
   const status = 'success';
@@ -226,59 +173,19 @@ module.exports = async function getPerfRegressions() {
   console.log(`Writing comment to file:\n${comment}`);
 
   // Write results to file
-  fs.writeFileSync(path.join(resultsPath, 'perfCounts.html'), comment);
+  fs.writeFileSync(path.join(outDir, 'perfCounts.html'), comment);
 
   console.log(`##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.html`);
   console.log(`##vso[task.setvariable variable=PerfCommentStatus;]${status}`);
 };
 
 /**
- *
- * @param {*} browser Launched puppeteer instance.
- * @param {string} baseUrl Base URL supporting 'scenario' and 'iterations' query parameters.
- * @param {string} scenarioName Name of scenario that will be used with baseUrl.
- * @param {number} iterations Number of iterations to run.
- * @param {string} logPath Absolute path to output log profiles.
- */
-async function runPerfTest(browser, baseUrl, scenarioName, iterations, logPath) {
-  const testUrl = `${baseUrl}?scenario=${scenarioName}&iterations=${iterations}`;
-  const logFilesBefore = fs.readdirSync(logPath);
-
-  const page = await browser.newPage();
-
-  // Default timeout is 30 seconds. This is good for most tests except for problematic components like DocumentCardTitle.
-  // Disable timeout for now and tweak to a maximum setting once server condtiions are better known.
-  page.setDefaultTimeout(0);
-
-  const logFilesAfter = fs.readdirSync(logPath);
-
-  const testLogFile = arr_diff(logFilesBefore, logFilesAfter);
-
-  if (testLogFile.length !== 1) {
-    // We have to be able to identify log file associated with tab. Throw error if we can't.
-    throw new Error(`Could not determine log file for ${baseUrl}. Log files detected: [ ${testLogFile} ]`);
-  }
-
-  console.log(`Starting test for ${scenarioName} at ${testUrl}`);
-
-  console.time('Ran perf test in');
-  await page.goto(testUrl);
-  console.timeEnd('Ran perf test in');
-
-  console.log('testLogFile: ' + testLogFile[0]);
-
-  await page.close();
-
-  return path.join(logPath, testLogFile[0]);
-}
-
-/**
  * Create test summary based on test results.
  */
 function createTestSummary(testResults) {
   testResults.forEach(testResult => {
-    testResult.numTicksMaster = getTicks(testResult.outfileMaster);
-    testResult.numTicksPR = getTicks(testResult.outfilePR);
+    testResult.numTicksReference = getTicks(testResult.outfileReference);
+    testResult.numTicks = getTicks(testResult.outfile);
   });
 
   const result = `Component Perf Analysis:
@@ -292,9 +199,9 @@ function createTestSummary(testResults) {
       .map(
         testResult =>
           `<tr>
-            <td>${testResult.scenario}</td>
-            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfileMaster)}">${testResult.numTicksMaster}</a></td>
-            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfilePR)}">${testResult.numTicksPR}</a></td>
+            <td>${scenarioNames[testResult.name] || testResult.name}</td>
+            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfileReference)}">${testResult.numTicksReference}</a></td>
+            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfile)}">${testResult.numTicks}</a></td>
            </tr>`
       )
       .join('\n')
@@ -326,39 +233,4 @@ function getTicks(resultsFile) {
     console.log('Could not read numTicks from ' + resultsFile);
     return 'n/a';
   }
-}
-
-/**
- * Array diff utility that returns a list of elements that are not present in both arrays.
- *
- * @param {Array} a1 First array
- * @param {Array} a2 Second array
- */
-function arr_diff(a1, a2) {
-  var a = [],
-    diff = [];
-
-  for (var i = 0; i < a1.length; i++) {
-    a[a1[i]] = true;
-  }
-
-  for (var i = 0; i < a2.length; i++) {
-    if (a[a2[i]]) {
-      delete a[a2[i]];
-    } else {
-      a[a2[i]] = true;
-    }
-  }
-
-  for (var k in a) {
-    diff.push(k);
-  }
-
-  return diff;
-}
-
-if (require.main === module) {
-  // Can paste "testResults" console output here for testing.
-  const results = [];
-  createTestSummary(results);
 }
