@@ -1305,7 +1305,7 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     getNextState: (props: IResizeGroupProps, currentState: IResizeGroupState, getElementToMeasureDimension: () => number, newContainerDimension?: number | undefined) => IResizeGroupState | undefined;
     shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
-    scaleDataBasedOnMeasurementsInCache: (data: any, onReduceData: (prevData: any) => any, onGrowData?: ((prevData: any) => any) | undefined) => any;
+    scaleDataBasedOnMeasurementsInCache: (props: IResizeGroupProps) => any;
 };
 
 // @public
