@@ -90,7 +90,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >
@@ -150,6 +150,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
                       height: 42px;
                     }
@@ -199,10 +200,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -236,7 +233,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
@@ -913,7 +910,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >
@@ -973,6 +970,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
                       height: 42px;
                     }
@@ -1022,10 +1020,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -1059,7 +1053,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
@@ -1715,11 +1709,9 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       }
   data-automationid="DetailsRow"
   data-focuszone-id="FocusZone12"
-  data-is-draggable={false}
   data-is-focusable={true}
   data-item-index={0}
   data-selection-index={0}
-  draggable={false}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -1783,6 +1775,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       aria-checked={false}
       className=
           ms-DetailsRow-check
+          ms-Check-checkHost
 
           {
             -moz-osx-font-smoothing: grayscale;
@@ -1827,10 +1820,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             top: 1px;
             z-index: 1;
           }
-          &:hover {
-            opacity: 1;
-          }
-
       data-automationid="DetailsRowCheck"
       data-selection-toggle={true}
       role="checkbox"
@@ -1862,7 +1851,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
               right: 1px;
               top: 1px;
             }
-            $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+            .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
               opacity: 1;
             }
       >
@@ -2220,7 +2209,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >
@@ -2280,6 +2269,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
                       height: 42px;
                     }
@@ -2329,10 +2319,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -2366,7 +2352,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
@@ -3043,7 +3029,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >
@@ -3103,6 +3089,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
                       height: 42px;
                     }
@@ -3152,10 +3139,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -3189,7 +3172,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >

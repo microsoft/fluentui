@@ -1,6 +1,71 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jul 2019 12:27:56 GMT and should not be manually modified.
+
+## 7.3.1
+Wed, 24 Jul 2019 12:27:56 GMT
+
+### Patches
+
+- Removing react dependency in @uifabric/styling library. (Humberto.Morimoto@microsoft.com)
+
+## 7.3.0
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Minor changes
+
+- Adding Georgian and Armenian font for Segoe UI Web (marygans@microsoft.com)
+,- Export default effects (joschect@microsoft.com)
+
+## 7.2.1
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.2.0
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Minor changes
+
+- Adding Georgian and Armenian font for Segoe UI Web (marygans@microsoft.com)
+
+## 7.1.1
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.1.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+- Semantic Slots: added successText.
+- Add `font-display: 'swap'` when registering font face'
+
+## 7.0.3
+Wed, 26 Jun 2019 12:23:41 GMT
+
+### Patches
+
+- Add getPlaceholderStyles to return style object based on browser used
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
 
 ## 6.49.0
 Wed, 12 Jun 2019 00:42:26 GMT

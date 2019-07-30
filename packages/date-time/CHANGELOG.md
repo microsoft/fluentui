@@ -1,6 +1,70 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+
+## 7.1.7
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Patches
+
+- fixing issue where buttons don't hide if they have focus, adding touch for navigation (jolore@microsoft.com)
+,- Improve how to get the min query string (elcraig@microsoft.com)
+
+## 7.1.6
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.1.4
+Thu, 04 Jul 2019 12:29:39 GMT
+
+### Patches
+
+- fix date conversion for weeklydaypicker (jolore@microsoft.com)
+
+## 7.1.3
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.1.2
+Wed, 26 Jun 2019 12:23:41 GMT
+
+### Patches
+
+- update snapshots
+
+## 7.1.1
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- fixing min/max date being ignored
+
+## 7.1.0
+Mon, 17 Jun 2019 12:26:51 GMT
+
+### Minor changes
+
+- adding new weekdaypicker component, refactoring calendardaygrid out of calendarday to share with new component
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
 
 ## 6.3.3
 Wed, 12 Jun 2019 00:42:26 GMT

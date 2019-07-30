@@ -28,8 +28,14 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
 
   /**
    * Optional custom renderer for the coin
+   * @deprecated Use `onRenderPersonaCoin` for custom rendering instead
    */
   onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
+
+  /**
+   * Optional custom renderer for the coin
+   */
+  onRenderPersonaCoin?: IRenderFunction<IPersonaSharedProps>;
 
   /**
    * If true, adds the css class 'is-fadeIn' to the image.
@@ -87,6 +93,12 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
    * @defaultvalue PersonaPresence.none
    */
   presence?: PersonaPresence;
+
+  /**
+   * This flag can be used to signal the persona is out of office.
+   * This will change the way the presence icon looks for statuses that support dual-presence.
+   */
+  isOutOfOffice?: boolean;
 
   /**
    * Secondary text to display, usually the role of the user.
@@ -320,29 +332,9 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
 /**
  * {@docCategory Persona}
  */
-export interface IPersonaPresenceStyleProps {
-  /**
-   * Theme provided by High-Order Component.
-   */
-  theme: ITheme;
-
-  /**
-   * Custom class name.
-   */
-  className?: string;
-
-  /**
-   * Presence of the person to display - will not display presence if undefined.
-   * @defaultvalue PersonaPresence.none
-   */
-  presence?: PersonaPresence;
-
-  /**
-   * Decides the size of the control.
-   * @defaultvalue PersonaSize.size48
-   */
-  size?: PersonaSize;
-}
+export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> &
+  Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size'> &
+  Pick<IPersonaProps, 'className'>;
 
 /**
  * {@docCategory Persona}

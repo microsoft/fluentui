@@ -1,13 +1,41 @@
 import * as React from 'react';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack } from '../Stack';
-import { IStackStyles, IStackTokens } from '../Stack.types';
-import { IStackItemStyles } from '../StackItem/StackItem.types';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette, Slider, Stack, IStackStyles, IStackTokens, IStackItemStyles } from 'office-ui-fabric-react';
 
 export interface IExampleState {
   stackWidth: number;
 }
+
+// Non-mutating styles definition
+const stackItemStyles: IStackItemStyles = {
+  root: {
+    alignItems: 'center',
+    background: DefaultPalette.themePrimary,
+    color: DefaultPalette.white,
+    display: 'flex',
+    height: 50,
+    justifyContent: 'center',
+    overflow: 'hidden'
+  }
+};
+const nonShrinkingStackItemStyles: IStackItemStyles = {
+  root: {
+    alignItems: 'center',
+    background: DefaultPalette.themePrimary,
+    color: DefaultPalette.white,
+    display: 'flex',
+    height: 50,
+    justifyContent: 'center',
+    overflow: 'hidden',
+    width: 500
+  }
+};
+
+// Tokens definition
+const outerStackTokens: IStackTokens = { childrenGap: 5 };
+const innerStackTokens: IStackTokens = {
+  childrenGap: 5,
+  padding: 10
+};
 
 export class HorizontalStackShrinkExample extends React.Component<{}, IExampleState> {
   constructor(props: {}) {
@@ -18,41 +46,13 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
   }
 
   public render(): JSX.Element {
+    // Mutating styles definition
     const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
         overflow: 'hidden',
         width: `${this.state.stackWidth}%`
       }
-    };
-    const stackItemStyles: IStackItemStyles = {
-      root: {
-        alignItems: 'center',
-        background: DefaultPalette.themePrimary,
-        color: DefaultPalette.white,
-        display: 'flex',
-        height: 50,
-        justifyContent: 'center',
-        overflow: 'hidden'
-      }
-    };
-    const nonShrinkingStackItemStyles: IStackItemStyles = {
-      root: {
-        alignItems: 'center',
-        background: DefaultPalette.themePrimary,
-        color: DefaultPalette.white,
-        display: 'flex',
-        height: 50,
-        justifyContent: 'center',
-        overflow: 'hidden',
-        width: 500
-      }
-    };
-
-    const outerStackTokens: IStackTokens = { childrenGap: 5 };
-    const innerStackTokens: IStackTokens = {
-      childrenGap: 5,
-      padding: 10
     };
 
     return (

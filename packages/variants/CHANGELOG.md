@@ -1,6 +1,27 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+
+## 7.0.3
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
 
 ## 6.14.3
 Wed, 12 Jun 2019 00:42:26 GMT

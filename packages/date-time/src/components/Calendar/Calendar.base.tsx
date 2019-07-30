@@ -221,7 +221,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
               today={this.props.today}
               highlightCurrentMonth={highlightCurrentMonth!}
               highlightSelectedMonth={highlightSelectedMonth!}
-              onHeaderSelect={this._onHeaderSelect}
+              onHeaderSelect={onHeaderSelect}
               navigationIcons={navigationIcons!}
               dateTimeFormatter={this.props.dateTimeFormatter!}
               minDate={minDate}

@@ -2,18 +2,28 @@ import * as React from 'react';
 import { IDetailsListProps } from './DetailsList.types';
 import { IDetailsRowProps } from './DetailsRow.types';
 import { IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, Omit } from '../../Utilities';
 
 /**
  * ShimmeredDetailsList props interface
  * {@docCategory DetailsList}
  */
-export interface IShimmeredDetailsListProps extends IDetailsListProps {
+export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'styles'> {
+  /**
+   * DetailsList styles to pass through.
+   */
+  detailsListStyles?: IDetailsListProps['styles'];
+
   /**
    * Boolean flag to control when to render placeholders vs real items.
    * It's up to the consumer app to know when fetching of the data is done to toggle this prop.
    */
   enableShimmer?: boolean;
+
+  /**
+   * Aria label for shimmer. Set on grid while shimmer is enabled.
+   */
+  ariaLabelForShimmer?: string;
 
   /**
    * Determines whether to remove a fading out to bottom overlay over the shimmering items
@@ -23,14 +33,26 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
 
   /**
    * Custom placeholder renderer to be used when in need to override the default placeholder of a DetailsRow.
-   * An argument is passed to leverage the calculated column measurements done by DetailsList.
+   * `rowProps` argument is passed to leverage the calculated column measurements done by DetailsList
+   * or you can use the optional arguments of item `index` and `defaultRender` to execute additional
+   * logic before rendering the default placeholder.
    */
-  onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React.ReactNode;
+  onRenderCustomPlaceholder?: (
+    rowProps: IDetailsRowProps,
+    index?: number,
+    defaultRender?: (props: IDetailsRowProps) => React.ReactNode
+  ) => React.ReactNode;
+
+  /**
+   * Custom styles to override the styles specific to the ShimmeredDetailsList root area.
+   * @deprecated Use `styles` prop instead. Any value provided will be ignored.
+   */
+  shimmerOverlayStyles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
 
   /**
    * Custom styles to override the styles specific to the ShimmeredDetailsList root area.
    */
-  shimmerOverlayStyles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
+  styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
 
   /**
    * Number of shimmer placeholder lines to render.

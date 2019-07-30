@@ -51,6 +51,9 @@ export function createFontStyles(localeCode: string | null): IFontStyles;
 export function createTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
 
 // @public (undocumented)
+export const DefaultEffects: IEffects;
+
+// @public (undocumented)
 export const DefaultFontStyles: IFontStyles;
 
 // @public (undocumented)
@@ -132,6 +135,9 @@ export function getIcon(name?: string): IIconRecord | undefined;
 
 // @public
 export function getIconClassName(name: string): string;
+
+// @public
+export function getPlaceholderStyles(styles: IStyle): IStyle;
 
 // @public (undocumented)
 export function getScreenSelector(min: number, max: number): string;
@@ -269,9 +275,7 @@ export namespace IconFontSizes {
 
 export { ICSPSettings }
 
-// Warning: (ae-internal-missing-underscore) The name "IEffects" should be prefixed with an underscore because the declaration is marked as @internal
-// 
-// @internal
+// @public
 export interface IEffects {
     elevation16: string;
     elevation4: string;
@@ -432,8 +436,6 @@ export { IRawStyle }
 // @public (undocumented)
 export interface IScheme {
     disableGlobalClassNames: boolean;
-    // Warning: (ae-incompatible-release-tags) The symbol "effects" is marked as @public, but its signature references "IEffects" which is marked as @internal
-    // 
     // (undocumented)
     effects: IEffects;
     // (undocumented)
@@ -542,6 +544,7 @@ export interface ISemanticTextColors {
     primaryButtonTextDisabled: string;
     primaryButtonTextHovered: string;
     primaryButtonTextPressed: string;
+    successText: string;
     warningText: string;
 }
 
@@ -679,7 +682,6 @@ export namespace ZIndexes {
 // Warnings were encountered during analysis:
 // 
 // lib/interfaces/ITheme.d.ts:68:5 - (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
-// lib/interfaces/ITheme.d.ts:69:5 - (ae-incompatible-release-tags) The symbol "effects" is marked as @public, but its signature references "IEffects" which is marked as @internal
 // lib/interfaces/ITheme.d.ts:70:5 - (ae-incompatible-release-tags) The symbol "schemes" is marked as @public, but its signature references "ISchemeNames" which is marked as @internal
 // lib/styles/PulsingBeaconAnimationStyles.d.ts:6:5 - (ae-forgotten-export) The symbol "_continuousPulseAnimationDouble" needs to be exported by the entry point index.d.ts
 // lib/styles/PulsingBeaconAnimationStyles.d.ts:7:5 - (ae-forgotten-export) The symbol "_continuousPulseAnimationSingle" needs to be exported by the entry point index.d.ts

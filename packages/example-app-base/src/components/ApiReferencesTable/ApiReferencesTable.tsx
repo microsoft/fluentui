@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRenderFunction, getDocument } from 'office-ui-fabric-react/lib/Utilities';
+import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import {
   DetailsList,
   DetailsRow,
@@ -16,6 +16,7 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 import { ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { IApiInterfaceProperty, IApiEnumProperty, IMethod } from './ApiReferencesTableSet.types';
 import { Markdown } from '../Markdown/index';
+import { getCurrentUrl } from '../../utilities/getCurrentUrl';
 
 export interface IApiReferencesTableProps {
   title?: string;
@@ -126,8 +127,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       };
     }
 
-    const doc = getDocument();
-    this._baseUrl = doc ? document.location.href : '';
+    this._baseUrl = getCurrentUrl();
 
     this._defaultColumns = [
       {
@@ -259,11 +259,11 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     const { properties, isEnum, isClass } = this.state;
 
     return (
-      <Stack gap={MEDIUM_GAP_SIZE}>
-        <Stack gap={SMALL_GAP_SIZE}>
+      <Stack tokens={{ childrenGap: MEDIUM_GAP_SIZE }}>
+        <Stack tokens={{ childrenGap: SMALL_GAP_SIZE }}>
           {this._renderTitle()}
           {(description || (extendsTokens && extendsTokens.length > 0)) && (
-            <Stack gap={XSMALL_GAP_SIZE}>
+            <Stack tokens={{ childrenGap: XSMALL_GAP_SIZE }}>
               {this._renderDescription()}
               {this._renderExtends()}
             </Stack>
@@ -278,6 +278,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
                 items={properties}
                 columns={isEnum ? this._enumColumns : this._defaultColumns}
                 onRenderRow={this._onRenderRow}
+                onShouldVirtualize={this._onShouldVirtualize}
               />
             )}
       </Stack>
@@ -347,13 +348,17 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     return textElements;
   }
 
+  private _onShouldVirtualize = (): boolean => {
+    return false;
+  };
+
   private _renderClass(): JSX.Element | undefined {
     const { properties, methods } = this.state;
 
     return (
-      <Stack gap={MEDIUM_GAP_SIZE}>
+      <Stack tokens={{ childrenGap: MEDIUM_GAP_SIZE }}>
         {properties && properties.length > 0 && (
-          <Stack gap={SMALL_GAP_SIZE}>
+          <Stack tokens={{ childrenGap: SMALL_GAP_SIZE }}>
             <Text variant={'medium'}>Members</Text>
             <DetailsList
               selectionMode={SelectionMode.none}
@@ -361,11 +366,12 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
               items={properties}
               columns={this._defaultColumns}
               onRenderRow={this._onRenderRow}
+              onShouldVirtualize={this._onShouldVirtualize}
             />
           </Stack>
         )}
         {methods && methods.length > 0 && (
-          <Stack gap={SMALL_GAP_SIZE}>
+          <Stack tokens={{ childrenGap: SMALL_GAP_SIZE }}>
             <Text variant={'medium'}>Methods</Text>
             <DetailsList
               selectionMode={SelectionMode.none}
@@ -373,6 +379,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
               items={methods}
               columns={this._methodColumns}
               onRenderRow={this._onRenderRow}
+              onShouldVirtualize={this._onShouldVirtualize}
             />
           </Stack>
         )}

@@ -14,13 +14,6 @@ const ButtonTheme = {
         }
       }
     },
-    Stack: {
-      styles: {
-        root: {
-          background: 'lightblue'
-        }
-      }
-    },
     Text: {
       styles: {
         root: {
@@ -33,7 +26,6 @@ const ButtonTheme = {
 
 const getButtonStyles: IButtonComponent['styles'] = {
   icon: ButtonTheme.scopedSettings.Icon.styles.root,
-  stack: ButtonTheme.scopedSettings.Stack.styles.root,
   content: ButtonTheme.scopedSettings.Text.styles.root
 };
 

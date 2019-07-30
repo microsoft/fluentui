@@ -1,3 +1,5 @@
+// @ts-check
+
 const cp = require('child_process');
 
 function getCurrentHash() {
@@ -26,16 +28,19 @@ const baseBranch = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
   ? process.env.SYSTEM_PULLREQUEST_TARGETBRANCH.replace(/^refs\/heads\//, '')
   : 'master';
 
-module.exports = {
+// https://github.com/screener-io/screener-storybook#config-options
+const config = {
   projectRepo: 'OfficeDev/office-ui-fabric-react',
   storybookConfigDir: '.storybook',
   apiKey: process.env.SCREENER_API_KEY,
   resolution: '1024x768',
-  baseBranch:
-    (process.env.TRAVIS_PULL_REQUEST !== 'false' && process.env.TRAVIS_BRANCH) || 'fabric-7',
+  baseBranch,
   failureExitCode: 0,
   alwaysAcceptBaseBranch: true,
-  ...(process.env.BUILD_SOURCEBRANCH.indexOf('refs/pull') > -1
+  ...(process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.indexOf('refs/pull') > -1
     ? { commit: getCurrentHash() }
     : null)
 };
+console.log('Screener config: ' + JSON.stringify({ ...config, apiKey: '...' }, null, 2));
+
+module.exports = config;

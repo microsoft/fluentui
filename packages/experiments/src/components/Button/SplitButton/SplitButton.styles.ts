@@ -1,11 +1,11 @@
-import { HighContrastSelector } from '../../../Styling';
+import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 import { ISplitButtonComponent, ISplitButtonStylesReturnType, ISplitButtonTokenReturnType } from './SplitButton.types';
 
 const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
-  const { effects, palette, semanticColors } = theme;
+  const { effects, semanticColors } = theme;
   return {
-    backgroundColor: palette.white,
-    backgroundColorHovered: palette.neutralLighter,
+    backgroundColor: semanticColors.buttonBackground,
+    backgroundColorHovered: semanticColors.buttonBackgroundHovered,
     backgroundColorPressed: semanticColors.buttonBackgroundPressed,
     borderColor: semanticColors.buttonBorder,
     borderColorHovered: semanticColors.buttonBorder,
@@ -15,6 +15,7 @@ const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButton
     color: semanticColors.buttonText,
     contentPadding: '0px 19px',
     dividerColor: semanticColors.menuDivider,
+    highContrastDividerColor: 'Window',
     minHeight: 35,
     minWidth: 0,
     secondaryPadding: '0px 10px'
@@ -22,18 +23,19 @@ const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButton
 };
 
 const primaryTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
-  const { palette, semanticColors } = theme;
+  const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.primaryButtonBackground,
     backgroundColorHovered: semanticColors.primaryButtonBackgroundHovered,
     backgroundColorPressed: semanticColors.primaryButtonBackgroundPressed,
     borderWidth: 0,
     color: semanticColors.primaryButtonText,
-    dividerColor: palette.white,
+    dividerColor: semanticColors.primaryButtonText,
     highContrastBackgroundColor: 'WindowText',
     highContrastBackgroundColorHovered: 'Highlight',
     highContrastBackgroundColorPressed: 'Highlight',
-    highContrastColor: 'Window'
+    highContrastColor: 'Window',
+    highContrastDividerColor: 'WindowText'
   };
 };
 
@@ -48,7 +50,12 @@ const disabledTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBu
     borderColorPressed: semanticColors.buttonBorderDisabled,
     color: semanticColors.disabledText,
     dividerColor: semanticColors.menuDivider,
-    highContrastColor: 'GrayText'
+    highContrastBackgroundColor: 'Window',
+    highContrastBackgroundColorHovered: 'Window',
+    highContrastBackgroundColorPressed: 'Window',
+    highContrastBorderColor: 'GrayText',
+    highContrastColor: 'GrayText',
+    highContrastDividerColor: 'GrayText'
   };
 };
 
@@ -58,28 +65,39 @@ export const SplitButtonTokens: ISplitButtonComponent['tokens'] = (props, theme)
   props.disabled && disabledTokens
 ];
 
+const GlobalClassNames = {
+  msSplitButton: 'ms-SplitButton'
+};
+
 export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme, tokens): ISplitButtonStylesReturnType => {
   const { semanticColors } = theme;
 
-  return {
-    root: {
-      borderRadius: tokens.borderRadius,
-      boxSizing: 'border-box',
-      display: 'inline-flex',
-      zIndex: 1,
+  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
-      selectors: {
-        [HighContrastSelector]: {
-          borderColor: 'transparent'
-        },
-        ':hover': {
-          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered
-        },
-        ':active': {
-          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed
+  return {
+    root: [
+      globalClassNames.msSplitButton,
+      {
+        borderRadius: tokens.borderRadius,
+        boxSizing: 'border-box',
+        display: 'inline-flex',
+        flexDirection: 'row',
+        justifyContent: 'stretch',
+        zIndex: 1,
+
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'transparent'
+          },
+          ':hover': {
+            borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered
+          },
+          ':active': {
+            borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed
+          }
         }
       }
-    },
+    ],
     button: {
       borderBottomLeftRadius: tokens.borderRadius,
       borderBottomRightRadius: '0px',
@@ -137,13 +155,15 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       borderRightWidth: 0,
       borderTopWidth: props.primaryActionDisabled ? 0 : tokens.borderWidth,
       boxSizing: 'border-box',
+      display: 'inline-flex',
+      flexDirection: 'column',
       height: 'auto',
       width: 'auto',
 
       selectors: {
         [HighContrastSelector]: {
-          backgroundColor: tokens.highContrastBackgroundColor,
-          borderColor: tokens.highContrastColor
+          backgroundColor: tokens.highContrastDividerColor,
+          borderColor: tokens.highContrastBorderColor
         },
         ':hover': {
           borderColor: tokens.borderColorHovered
@@ -158,7 +178,13 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       display: 'inline-block',
       height: '100%',
       margin: '7px 0px',
-      width: '1px'
+      width: '1px',
+
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: tokens.highContrastDividerColor
+        }
+      }
     },
     menuButton: {
       borderBottomLeftRadius: '0px',

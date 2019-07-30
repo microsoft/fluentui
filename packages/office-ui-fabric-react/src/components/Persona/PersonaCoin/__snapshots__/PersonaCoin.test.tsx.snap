@@ -125,6 +125,7 @@ exports[`Persona renders Persona children correctly 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -319,6 +320,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -519,6 +521,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -695,6 +698,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1035,6 +1039,21 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               background-color: WindowText;
               border-color: Window;
             }
+            &:after {
+              background-color: #C43148;
+              content: "";
+              height: 2px;
+              left: 0px;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%) rotate(-45deg);
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:after {
+              background-color: Window;
+              left: 2px;
+              width: calc(100% - 4px);
+            }
             &:before {
               border-radius: 50%;
               border: 2px solid #C43148;
@@ -1046,27 +1065,12 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               top: 0px;
               width: 100%;
             }
-            &:after {
-              background-color: #C43148;
-              content: "";
-              height: 2px;
-              left: 0px;
-              position: absolute;
-              top: 50%;
-              transform: translateY(-50%) rotate(-45deg);
-              width: 100%;
-            }
             @media screen and (-ms-high-contrast: active){&:before {
               border-color: Window;
               height: calc(100% - 2px);
               left: 1px;
               top: 1px;
               width: calc(100% - 2px);
-            }
-            @media screen and (-ms-high-contrast: active){&:after {
-              background-color: Window;
-              left: 2px;
-              width: calc(100% - 4px);
             }
       >
         <i
@@ -1128,6 +1132,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1155,6 +1160,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1183,6 +1189,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1211,6 +1218,195 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        Available at 4:00pm
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Persona renders Persona which calls onRenderPersonaCoin callback with custom render 1`] = `
+<div
+  className=
+      ms-Persona
+      ms-Persona--size100
+      ms-Persona--blocked
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        align-items: center;
+        box-shadow: none;
+        box-sizing: border-box;
+        color: #323130;
+        display: flex;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        min-width: 100px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        position: relative;
+      }
+      & .contextualHost {
+        display: none;
+      }
+      &:hover $primaryText {
+        color: #201f1e;
+      }
+>
+  <i
+    aria-hidden={true}
+    className=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: inline-block;
+          font-family: "FabricMDL2Icons-1";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+    data-icon-name="Dictionary"
+    role="presentation"
+  >
+    
+  </i>
+  <div
+    className=
+        ms-Persona-details
+        {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          min-width: 0px;
+          padding-bottom: 0;
+          padding-left: 16px;
+          padding-right: 24px;
+          padding-top: 0;
+          text-align: left;
+          width: 100%;
+        }
+  >
+    <div
+      className=
+          ms-Persona-primaryText
+          {
+            color: #323130;
+            font-size: 20px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+      dir="auto"
+    >
+      <div
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        Swapnil Vaibhav
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona-secondaryText
+          {
+            color: #605e5c;
+            font-size: 14px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+      dir="auto"
+    >
+      <div
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        Software Engineer
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona-tertiaryText
+          {
+            color: #605e5c;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+      dir="auto"
+    >
+      <div
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+      >
+        In a meeting
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona-optionalText
+          {
+            color: #605e5c;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+          }
+      dir="auto"
+    >
+      <div
+        className=
+            ms-TooltipHost
+            {
+              display: inline;
+            }
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1354,6 +1550,21 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               background-color: WindowText;
               border-color: Window;
             }
+            &:after {
+              background-color: #C43148;
+              content: "";
+              height: 2px;
+              left: 0px;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%) rotate(-45deg);
+              width: 100%;
+            }
+            @media screen and (-ms-high-contrast: active){&:after {
+              background-color: Window;
+              left: 2px;
+              width: calc(100% - 4px);
+            }
             &:before {
               border-radius: 50%;
               border: 2px solid #C43148;
@@ -1365,27 +1576,12 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               top: 0px;
               width: 100%;
             }
-            &:after {
-              background-color: #C43148;
-              content: "";
-              height: 2px;
-              left: 0px;
-              position: absolute;
-              top: 50%;
-              transform: translateY(-50%) rotate(-45deg);
-              width: 100%;
-            }
             @media screen and (-ms-high-contrast: active){&:before {
               border-color: Window;
               height: calc(100% - 2px);
               left: 1px;
               top: 1px;
               width: calc(100% - 2px);
-            }
-            @media screen and (-ms-high-contrast: active){&:after {
-              background-color: Window;
-              left: 2px;
-              width: calc(100% - 4px);
             }
       >
         <i
@@ -1447,6 +1643,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1474,6 +1671,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1502,6 +1700,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1530,6 +1729,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >

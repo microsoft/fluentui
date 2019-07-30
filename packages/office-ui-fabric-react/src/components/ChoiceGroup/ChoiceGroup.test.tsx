@@ -10,7 +10,7 @@ import { IChoiceGroupOption, IChoiceGroup } from './ChoiceGroup.types';
 import { merge, resetIds } from '../../Utilities';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
-  { key: '1', text: '1', 'data-automation-id': 'auto1' } as IChoiceGroupOption,
+  { key: '1', text: '1', 'data-automation-id': 'auto1', autoFocus: true } as IChoiceGroupOption,
   { key: '2', text: '2' },
   { key: '3', text: '3' }
 ];

@@ -40,6 +40,7 @@ export interface IThemeDesignerColorPickerProps {
 
 export interface IThemeDesignerColorPickerState {
   isColorPickerVisible: boolean;
+  editingColorStr?: string;
 }
 
 export class ThemeDesignerColorPicker extends React.Component<IThemeDesignerColorPickerProps, IThemeDesignerColorPickerState> {
@@ -57,6 +58,7 @@ export class ThemeDesignerColorPicker extends React.Component<IThemeDesignerColo
   }
 
   public render() {
+    const { editingColorStr = this.props.color.str } = this.state;
     return (
       <div>
         <Stack horizontal horizontalAlign={'space-between'} gap={20}>
@@ -69,15 +71,13 @@ export class ThemeDesignerColorPicker extends React.Component<IThemeDesignerColo
               style={{ backgroundColor: this.props.color.str }}
               onClick={this._updateColorPickerVisible}
             />
-            <TextField id="textfield" className={textBoxClassName} value={this.props.color.str} onChange={this._onTextFieldValueChange} />
+            <TextField id="textfield" className={textBoxClassName} value={editingColorStr} onChange={this._onTextFieldValueChange} />
           </Stack>
         </Stack>
         {this.state.isColorPickerVisible && (
-          <div>
-            <Callout gapSpace={10} target={this._colorPickerRef.current} setInitialFocus={true} onDismiss={this._onCalloutDismiss}>
-              <ColorPicker color={this.props.color} onChange={this._onColorPickerChange} alphaSliderHidden={true} />
-            </Callout>
-          </div>
+          <Callout gapSpace={10} target={this._colorPickerRef.current} setInitialFocus={true} onDismiss={this._onCalloutDismiss}>
+            <ColorPicker color={this.props.color} onChange={this._onColorPickerChange} alphaSliderHidden={true} />
+          </Callout>
         )}
       </div>
     );
@@ -88,8 +88,12 @@ export class ThemeDesignerColorPicker extends React.Component<IThemeDesignerColo
   }
 
   private _onTextFieldValueChange(ev: any, newValue: string | undefined) {
-    if (newValue) {
-      this.props.onColorChange(getColorFromString(newValue!));
+    const newColor = getColorFromString(newValue!);
+    if (newColor) {
+      this.props.onColorChange(newColor);
+      this.setState({ editingColorStr: undefined });
+    } else {
+      this.setState({ editingColorStr: newValue });
     }
   }
 

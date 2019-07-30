@@ -1,12 +1,6 @@
 {
   "copyTo": {
-    "dist": [
-      "./index.html",
-      "./node_modules/react/umd/react.development.js",
-      "./node_modules/react/umd/react.production.min.js",
-      "./node_modules/react-dom/umd/react-dom.development.js",
-      "./node_modules/react-dom/umd/react-dom.production.min.js"
-    ],
+    "dist": ["@uifabric/example-app-base/index.html", "react/umd/react.development.js", "react-dom/umd/react-dom.development.js"],
     "dist/sass": [
       "office-ui-fabric-core/dist/sass/**/*",
       "./src/common/_highContrast.scss",
@@ -17,16 +11,8 @@
       "./src/common/_themeVariables.scss",
       "./src/common/ThemingSass.scss"
     ],
-    "dist/css": [
-      "office-ui-fabric-core/dist/css/**/*"
-    ],
-    "lib": [
-      "./src/**/docs/*",
-      "./src/docs/*"
-    ],
-    "lib-commonjs": [
-      "./src/**/docs/*",
-      "./src/docs/*"
-    ]
+    "dist/css": ["office-ui-fabric-core/dist/css/**/*"],
+    "lib": ["./src/**/docs/*", "./src/docs/*"],
+    "lib-commonjs": ["./src/**/docs/*", "./src/docs/*"]
   }
 }

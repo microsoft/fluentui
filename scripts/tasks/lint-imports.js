@@ -1,19 +1,37 @@
+// @ts-check
+
+const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
+const findConfig = require('../find-config');
+const { readConfig } = require('../read-config');
 const importStatementGlobalRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/gm;
 const importStatementRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/;
-const pkgNameRegex = /^(@[a-z\-]+\/[a-z\-]+)\/|([a-z\-]+)\//;
+const pkgNameRegex = /^(@[a-z\-]+\/[a-z\-]+)|([a-z\-]+)/;
 
-module.exports = function() {
+/**
+ * @typedef {{
+ *   count: number;
+ *   matches: { [key: string]: string }
+ * }} ImportErrorGroup
+ *
+ * @typedef {{
+ *   totalImportKeywords: number;
+ *   totalImportStatements: number;
+ *   pathNotFile: ImportErrorGroup;
+ *   pathRelative: ImportErrorGroup;
+ * }} ImportErrors
+ */
+
+function lintImports() {
   const path = require('path');
   const fs = require('fs');
-  const chalk = require('chalk');
-  const findConfig = require('../find-config');
-  const readConfig = require('../read-config');
+  const chalk = require('chalk').default;
+  const findGitRoot = require('../monorepo/findGitRoot');
 
+  const gitRoot = findGitRoot();
   const sourcePath = path.resolve(process.cwd(), 'src');
-  const nodeModulesPath = path.resolve(process.cwd(), 'node_modules');
-  const rushJsonPath = findConfig('rush.json');
-  const rootFolder = path.dirname(rushJsonPath);
-  const rush = readConfig(rushJsonPath);
+  const cwdNodeModulesPath = path.resolve(process.cwd(), 'node_modules');
+  const nodeModulesPath = path.resolve(gitRoot, 'node_modules');
+  const rootFolder = gitRoot;
 
   const allowRelativeImportExamples = [
     // These were added to reduce the initial ramifications of disabling relative imports across all examples,
@@ -55,6 +73,7 @@ module.exports = function() {
     'Persona.CustomCoinRender.Example.tsx',
     'Persona.CustomRender.Example.tsx',
     'Persona.UnknownPersona.Example.tsx',
+    'Persona.Presence.Example.tsx',
     'Picker.CustomResult.Example.tsx',
     'Pivot.Fabric.Example.tsx',
     'SelectedPeopleList.Basic.Example.tsx',
@@ -89,20 +108,16 @@ module.exports = function() {
     'TilesList.Media.Example.tsx'
   ];
 
-  if (!rush) {
-    throw new Error('lint-imports: unable to find rush.json');
-  }
+  const packagesInfo = getAllPackageInfo();
 
-  const rushPackages = rush.projects.map(project => project.packageName);
-
-  const currentRushPackage = rush.projects.find(project => {
-    return path.normalize(project.projectFolder) === path.normalize(path.relative(rootFolder, process.cwd()));
-  }).packageName;
+  const currentPackageJson = readConfig(findConfig('package.json'));
+  const currentMonorepoPackage = currentPackageJson.name;
 
   return lintSource();
 
   function lintSource() {
     const files = _getFiles(sourcePath, /\.(ts|tsx)$/i);
+    /** @type {ImportErrors} */
     const importErrors = {
       totalImportKeywords: 0,
       totalImportStatements: 0,
@@ -152,6 +167,7 @@ module.exports = function() {
    *
    * @param {string} dir - starting folder path.
    * @param {RegExp} extentionPattern - extension regex to match.
+   * @param {string[]} [fileList] - cumulative array of files
    * @returns array of matching files.
    */
   function _getFiles(dir, extentionPattern, fileList) {
@@ -174,6 +190,11 @@ module.exports = function() {
     return fileList;
   }
 
+  /**
+   * @param {string} filePath
+   * @param {ImportErrors} importErrors
+   * @param {boolean} allowRelativeImports
+   */
   function _evaluateFile(filePath, importErrors, allowRelativeImports) {
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
@@ -200,13 +221,23 @@ module.exports = function() {
     }
   }
 
+  /**
+   * @param {string} filePath
+   * @param {string} importPath
+   * @param {ImportErrors} importErrors
+   * @param {boolean} allowRelativeImports
+   */
   function _evaluateImport(filePath, importPath, importErrors, allowRelativeImports) {
     let fullImportPath;
     let pathIsRelative = false;
+
     if (importPath.indexOf('.') === 0) {
       // import is a file path. is this a file?
       fullImportPath = _evaluateImportPath(path.dirname(filePath), importPath);
       pathIsRelative = true;
+    } else if (packagesInfo[importPath]) {
+      // skip the full import of packages within the monorepo
+      return;
     } else {
       const pkgNameMatch = importPath.match(pkgNameRegex);
       if (pkgNameMatch === null) {
@@ -217,14 +248,17 @@ module.exports = function() {
 
       const pkgName = pkgNameMatch[1] || pkgNameMatch[2];
 
-      // we don't evaluate imports of non rush packages
-      if (rushPackages.indexOf(pkgName) === -1) return;
+      // we don't evaluate imports of non monorepo packages
+      if (!Object.keys(packagesInfo).includes(pkgName)) {
+        return;
+      }
 
-      if (pkgName === currentRushPackage) {
+      if (pkgName === currentMonorepoPackage) {
         const importPathWithoutPkgName = importPath.substring(pkgName.length + 1 /* 1 is for '/' */);
         fullImportPath = _evaluateImportPath(process.cwd(), './' + importPathWithoutPkgName);
       } else {
-        fullImportPath = _evaluateImportPath(nodeModulesPath, './' + importPath);
+        fullImportPath =
+          _evaluateImportPath(nodeModulesPath, './' + importPath) || _evaluateImportPath(cwdNodeModulesPath, './' + importPath);
       }
     }
 
@@ -243,6 +277,10 @@ module.exports = function() {
     }
   }
 
+  /**
+   * @param {string} filePath
+   * @param {string} importPath
+   */
   function _evaluateImportPath(filePath, importPath) {
     const fullImportPath = path.resolve(filePath, importPath);
     const extensions = ['.ts', '.tsx', '.js', ''];
@@ -258,6 +296,10 @@ module.exports = function() {
     return undefined;
   }
 
+  /**
+   * @param {ImportErrorGroup} pathNotFile
+   * @param {ImportErrorGroup} pathRelative
+   */
   function reportFilePathErrors(pathNotFile, pathRelative) {
     if (pathNotFile.count) {
       console.error(
@@ -269,8 +311,6 @@ module.exports = function() {
       for (const filePath in pathNotFile.matches) {
         console.error(`  ${filePath}: ${chalk.inverse(pathNotFile.matches[filePath])}`);
       }
-
-      return true;
     }
 
     if (pathRelative.count) {
@@ -283,10 +323,10 @@ module.exports = function() {
       for (const filePath in pathRelative.matches) {
         console.error(`  ${filePath}: ${chalk.inverse(pathRelative.matches[filePath])}`);
       }
-
-      return true;
     }
 
-    return false;
+    return pathNotFile.count > 0 || pathRelative.count > 0;
   }
-};
+}
+
+module.exports = lintImports;

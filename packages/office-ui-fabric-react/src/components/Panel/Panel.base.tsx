@@ -123,6 +123,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       isLightDismiss,
       isHiddenOnDismiss,
       layerProps,
+      overlayProps,
       type,
       styles,
       theme,
@@ -154,8 +155,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       hasCloseButton,
       headerClassName,
       isAnimating,
-      isFooterAtBottom,
       isFooterSticky,
+      isFooterAtBottom,
       isOnRightSide,
       isOpen,
       isHiddenOnDismiss,
@@ -166,7 +167,14 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
 
     let overlay;
     if (isBlocking && isOpen) {
-      overlay = <Overlay className={_classNames.overlay} isDarkThemed={false} onClick={isLightDismiss ? onLightDismissClick : undefined} />;
+      overlay = (
+        <Overlay
+          className={_classNames.overlay}
+          isDarkThemed={false}
+          onClick={isLightDismiss ? onLightDismissClick : undefined}
+          {...overlayProps}
+        />
+      );
     }
 
     const header = onRenderHeader(this.props, this._onRenderHeader, headerTextId);

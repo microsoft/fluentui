@@ -104,6 +104,10 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
           this._registerResizeObserver();
         }
       }
+
+      if (!!newSkipViewportMeasures) {
+        this._updateViewport();
+      }
     }
 
     public componentWillUnmount(): void {
@@ -116,12 +120,11 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
 
     public render(): JSX.Element {
       const { viewport } = this.state;
-      const { skipViewportMeasures } = this.props as IWithViewportProps;
-      const isViewportVisible = skipViewportMeasures || (viewport!.width > 0 && viewport!.height > 0);
+      const newViewport = viewport!.width > 0 && viewport!.height > 0 ? viewport : undefined;
 
       return (
         <div className="ms-Viewport" ref={this._root} style={{ minWidth: 1, minHeight: 1 }}>
-          {isViewportVisible && <ComposedComponent ref={this._updateComposedComponentRef} viewport={viewport} {...this.props as any} />}
+          <ComposedComponent ref={this._updateComposedComponentRef} viewport={newViewport} {...this.props as any} />
         </div>
       );
     }

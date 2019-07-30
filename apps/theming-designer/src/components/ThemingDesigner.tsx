@@ -1,22 +1,20 @@
 import * as React from 'react';
 import { AccessibilityChecker } from './AccessibilityChecker';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { BaseSlots, IThemeRules, ThemeGenerator, themeRulesStandardCreator } from 'office-ui-fabric-react/lib/ThemeGenerator';
+import { BaseSlots, IThemeRules, FabricSlots, ThemeGenerator, themeRulesStandardCreator } from 'office-ui-fabric-react/lib/ThemeGenerator';
 import { createTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { FabricPalette } from './FabricPalette';
+import { ThemeSlots } from './ThemeSlots';
 import { getColorFromString, IColor } from 'office-ui-fabric-react/lib/Color';
 import { Header } from './Header';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { Samples } from './Samples/index';
-import { SemanticSlots } from './SemanticSlots';
 import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
-import { Text, Pivot, PivotItem } from 'office-ui-fabric-react';
+import { Text } from 'office-ui-fabric-react';
 import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
 import { MainPanelWidth } from '../shared/MainPanelStyles';
-import { TitleText } from '../shared/Typography';
 
 export interface IThemingDesignerState {
   primaryColor: IColor;
@@ -64,17 +62,17 @@ const Main = (props: IStackProps) => (
     disableShrink
     className={mergeStyles({
       minWidth: MainPanelWidth,
-      overflow: 'scroll',
-      marginTop: '35px'
+      overflow: 'scroll'
     })}
     {...props}
   />
 );
 
-let colorChangeTimeout: number;
-
 export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
-  constructor(props: any) {
+  private _colorChangeTimeout: number;
+  private _fabricPaletteColorChangeTimeout: number;
+
+  constructor(props: {}) {
     super(props);
 
     this.state = this._buildInitialState();
@@ -114,20 +112,37 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
               <Samples backgroundColor={this.state.backgroundColor.str} textColor={this.state.textColor.str} />
             </ThemeProvider>
             <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
-            <TitleText>Theme Slots</TitleText>
-            <Pivot>
-              <PivotItem headerText="Fabric palette slots">
-                <FabricPalette themeRules={this.state.themeRules} />
-              </PivotItem>
-              <PivotItem headerText="Semantic slots">
-                <SemanticSlots theme={this.state.theme} />
-              </PivotItem>
-            </Pivot>
+            <ThemeSlots
+              theme={this.state.theme}
+              themeRules={this.state.themeRules}
+              onFabricPaletteColorChange={this._onFabricPaletteColorChange}
+            />
           </Main>
         </Content>
       </Page>
     );
   }
+
+  private _onFabricPaletteColorChange = (newColor: IColor | undefined, fabricSlot: FabricSlots) => {
+    if (this._fabricPaletteColorChangeTimeout) {
+      this._async.clearTimeout(this._fabricPaletteColorChangeTimeout);
+    }
+    if (!this.state.themeRules) {
+      return;
+    }
+    this._fabricPaletteColorChangeTimeout = this._async.setTimeout(() => {
+      const { themeRules } = this.state;
+      if (themeRules) {
+        const currentIsDark = isDark(themeRules[FabricSlots[fabricSlot]].color!);
+        ThemeGenerator.setSlot(themeRules[FabricSlots[fabricSlot]], newColor, currentIsDark, true, true);
+        if (currentIsDark !== isDark(themeRules[FabricSlots[fabricSlot]].color!)) {
+          // isInverted got swapped, so need to refresh slots with new shading rules
+          ThemeGenerator.insureSlots(themeRules, currentIsDark);
+        }
+      }
+      this.setState({ themeRules: themeRules }, this._makeNewTheme);
+    }, 20);
+  };
 
   private _onPrimaryColorPickerChange = (newColor: IColor | undefined) => {
     this._onColorChange(this.state.primaryColor, BaseSlots.primaryColor, newColor);
@@ -156,8 +171,8 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
   };
 
   private _onColorChange = (colorToChange: IColor, baseSlot: BaseSlots, newColor: IColor | undefined) => {
-    if (colorChangeTimeout) {
-      clearTimeout(colorChangeTimeout);
+    if (this._colorChangeTimeout) {
+      this._async.clearTimeout(this._colorChangeTimeout);
     }
     if (newColor) {
       if (colorToChange === this.state.primaryColor) {
@@ -169,7 +184,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
       } else {
         return;
       }
-      colorChangeTimeout = this._async.setTimeout(() => {
+      this._colorChangeTimeout = this._async.setTimeout(() => {
         const themeRules = this.state.themeRules;
         if (themeRules) {
           const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);

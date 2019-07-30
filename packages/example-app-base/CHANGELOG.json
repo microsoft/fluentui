@@ -2,6 +2,226 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Mon, 22 Jul 2019 12:28:42 GMT",
+      "tag": "@uifabric/example-app-base_v7.1.6",
+      "version": "7.1.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add a way to get settings from query or session storage",
+            "author": "elcraig@microsoft.com",
+            "commit": "17b31ca8739504e1d4c7b7dcaa725091254d0eb5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/example-app-base_v7.1.5",
+      "version": "7.1.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Allowing example title to show completely even when it goes past one line.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "d4f8fb07f1043d4ecbc2200623e7ac8befd8aa82"
+          },
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          },
+          {
+            "comment": "Fix API reference tables' flash of content on scroll",
+            "author": "706967+KevinTCoughlin@users.noreply.github.com",
+            "commit": "6d4359e282aa292691f661ff655fe5b1b42b21eb"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          },
+          {
+            "comment": "bumping versions to match what was published already",
+            "author": "kchau@microsoft.com",
+            "commit": "75e4ad16a2e6a54672e4929a9e003c7fd6f6ae52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/example-app-base_v7.1.3",
+      "version": "7.1.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.3",
+      "tag": "@uifabric/example-app-base_v7.1.3",
+      "date": "Mon, 01 Jul 2019 18:51:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adds react-app-polyfill",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "40245650abdfb17e9f1cd6472f3671380237bcc2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.2` to `^7.6.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.2",
+      "tag": "@uifabric/example-app-base_v7.1.2",
+      "date": "Thu, 27 Jun 2019 18:25:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing a variety of problems related to style recalculations.",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "880264578d390878abde534f400849931dc4816b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.0` to `^7.6.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.1",
+      "tag": "@uifabric/example-app-base_v7.1.1",
+      "date": "Thu, 20 Jun 2019 12:27:38 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Renamed instances of \"Microsoft UI Fabric\" to \"UI Fabric\"",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "c13e7dcffebfffdb65c6e35165b1ebecad1380ae"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.2` to `^7.4.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.0",
+      "tag": "@uifabric/example-app-base_v7.1.0",
+      "date": "Wed, 19 Jun 2019 12:27:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adds conditional logic to the render of specific regions on the page to enable use of the examples on docs.microsoft portal for OUFR.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "bac4e15786b93efb5868db397ae7c0d20ad3800c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.1` to `^7.4.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.4",
+      "tag": "@uifabric/example-app-base_v7.0.4",
+      "date": "Tue, 18 Jun 2019 12:26:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ColorPalette: fix missing react code breaking rendering",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "92abe8370a935219acf554c2f9454ae4a8f7735d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.3.0` to `^7.4.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.3",
+      "tag": "@uifabric/example-app-base_v7.0.3",
+      "date": "Fri, 14 Jun 2019 12:26:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix export to codepen in fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d4f0a437e0a2fc823c5334097312f77f6f67a1f3"
+          },
+          {
+            "comment": "Fix missing assets in production build.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "e1bebe54dd798847060baaf4a52956c2f6dd866b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.1` to `^7.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.2",
+      "tag": "@uifabric/example-app-base_v7.0.2",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.0.0",
       "tag": "@uifabric/example-app-base_v7.0.0",
       "date": "Wed, 12 Jun 2019 00:42:26 GMT",

@@ -1,11 +1,12 @@
 import * as React from 'react';
 
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { TagPicker, IBasePicker, ITag } from 'office-ui-fabric-react/lib/Pickers';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
-const exampleStyles: any = exampleStylesImport;
+const rootClass = mergeStyles({
+  maxWidth: 500
+});
 
 const _testTags: ITag[] = [
   'black',
@@ -29,7 +30,7 @@ export interface ITagPickerDemoPageState {
   isPickerDisabled?: boolean;
 }
 
-export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageState> {
+export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPageState> {
   // All pickers extend from BasePicker specifying the item type.
   private _picker = React.createRef<IBasePicker<ITag>>();
 
@@ -42,9 +43,9 @@ export class TagPickerBasicExample extends BaseComponent<{}, ITagPickerDemoPageS
 
   public render() {
     return (
-      <div>
+      <div className={rootClass}>
         <Checkbox
-          className={exampleStyles.exampleCheckbox}
+          styles={{ root: { margin: '10px 0' } }}
           label="Disable Tag Picker"
           checked={this.state.isPickerDisabled}
           onChange={this._onDisabledButtonClick}

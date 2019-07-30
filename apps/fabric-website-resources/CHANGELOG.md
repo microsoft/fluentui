@@ -1,6 +1,64 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+
+## 7.2.2
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+,- Replace fluent customizations with default ones. (vibraga@microsoft.com)
+
+## 7.2.0
+Wed, 03 Jul 2019 12:30:55 GMT
+
+### Minor changes
+
+- Add DetailsList animation example page (inateeg@microsoft.com)
+
+## 7.1.1
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.1.0
+Wed, 26 Jun 2019 12:23:41 GMT
+
+### Minor changes
+
+- Add a new theme package dependancy and surface it to the example pages theme dropdown.
+
+## 7.0.4
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- Update website for Fabric 7
+
+## 7.0.3
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Patches
+
+- Get rid of references to _exampleStyles.scss
+- AppDefinition: fixes urls to align to the ones on the website.
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
 
 ## 6.18.4
 Wed, 12 Jun 2019 00:42:26 GMT

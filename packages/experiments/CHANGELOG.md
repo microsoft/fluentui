@@ -1,6 +1,163 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jul 2019 12:26:00 GMT and should not be manually modified.
+
+## 7.9.0
+Mon, 29 Jul 2019 12:26:00 GMT
+
+### Minor changes
+
+- Chiclet: add preview prop and its styling and don't do icon lookup for preview (t-stcar@microsoft.com)
+
+## 7.8.1
+Tue, 23 Jul 2019 16:33:51 GMT
+
+### Patches
+
+- Chiclet: Url is now a required prop and two test files are combined into one (t-stcar@microsoft.com)
+
+## 7.8.0
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Minor changes
+
+- Refactor out BaseComponent from Tile (706967+KevinTCoughlin@users.noreply.github.com)
+,- Tile: Add ability for screen reader to read selected state. (Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Button: Updating Button styles to use corresponding semanticColors instead of palette. (Humberto.Morimoto@microsoft.com)
+,- Improve how to get the min query string (elcraig@microsoft.com)
+
+## 7.7.0
+Fri, 19 Jul 2019 12:25:58 GMT
+
+### Minor changes
+
+- Chiclet: removes imageHeight and imageWidth props (t-stcar@microsoft.com)
+
+## 7.6.2
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+,- Remove fluent customizations. (vibraga@microsoft.com)
+
+## 7.6.0
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Minor changes
+
+- Change media tile to show metadata only on hover (jocobb@microsoft.com)
+
+### Patches
+
+- Button: Updating Button styles to use corresponding semanticColors instead of palette. (Humberto.Morimoto@microsoft.com)
+
+## 7.5.0
+Fri, 12 Jul 2019 12:29:52 GMT
+
+### Minor changes
+
+- Add screener tests for media tiles (jocobb@microsoft.com)
+
+### Patches
+
+- Chiclet: adjust xsmall chiclet title height (natalie.ethell@microsoft.com)
+
+## 7.4.2
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- Update names in floatingSuggestons + expose needed functionality for UnifiedPicker t (mhuan13@gmail.com)
+
+## 7.4.1
+Wed, 03 Jul 2019 12:30:55 GMT
+
+### Patches
+
+- Filter out disallowed props from Tile root element (tmichon@microsoft.com)
+
+## 7.4.0
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Minor changes
+
+- Button: Renaming BaseButton to Actionable, extending Button from Actionable and removing content and icon from Actionable types.
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.3.0
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Minor changes
+
+-  Button: Removing Stack usage from vanilla Button's slots and view to improve perf.
+- Chiclet: Add x-small variant
+
+### Patches
+
+- Button example updated.
+
+## 7.2.3
+Tue, 25 Jun 2019 12:26:09 GMT
+
+### Patches
+
+- Updates to tileslist, list and marquee selection
+
+## 7.2.2
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- Button: Adding focus tests for Button, MenuButton and SplitButton.
+
+## 7.2.1
+Fri, 21 Jun 2019 12:27:05 GMT
+
+### Patches
+
+- update snapshots due to Tooltip bug fix
+
+## 7.2.0
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Minor changes
+
+- Removing charting from dependencies.
+
+## 7.1.1
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- Button: Getting anchor native props if href prop is specified.
+
+## 7.1.0
+Fri, 14 Jun 2019 15:54:00 GMT
+
+### Minor changes
+
+- Major bumping the foundation package.
+
+## 7.0.3
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
 
 ## 7.0.0
 Wed, 12 Jun 2019 00:42:26 GMT

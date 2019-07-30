@@ -7,7 +7,7 @@ exports[`Component Examples renders DatePicker.Bounded.Example.tsx correctly 1`]
   <p>
     When date boundaries are set (via minDate and maxDate props) the DatePicker will not allow
 out-of-bounds dates to be picked or entered. In this example, the allowed dates are
-Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
+Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
   </p>
   <div
     className=
@@ -146,6 +146,15 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
                     opacity: 1;
                   }
                   &:-ms-input-placeholder {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #605e5c;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    opacity: 1;
+                  }
+                  &::-ms-input-placeholder {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     color: #605e5c;

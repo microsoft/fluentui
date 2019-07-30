@@ -1,6 +1,365 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jul 2019 12:26:00 GMT and should not be manually modified.
+
+## 7.18.0
+Mon, 29 Jul 2019 12:26:00 GMT
+
+### Minor changes
+
+- Shimmer: refactor out the BaseComponent and deprecated React lifecycle methods. (vibraga@microsoft.com)
+
+### Patches
+
+- Fix cell animations so they only trigger on cell key changes (tmichon@microsoft.com)
+,- Panel: fix shrinking of the footer and make header not shrink. (vibraga@microsoft.com)
+,- Pivot: align pivot link text in relation to the whole pivot tab. (vibraga@microsoft.com)
+
+## 7.17.0
+Fri, 26 Jul 2019 12:28:52 GMT
+
+### Minor changes
+
+- ShimmeredDetailsList: enables additional logic to be executed before rendering the default shimmer row. (vibraga@microsoft.com)
+,- removing BaseComponent from SpinButton (aneeshak@microsoft.com)
+
+### Patches
+
+- Added aria label to demo page for custom picker (susunda@microsoft.com)
+
+## 7.16.0
+Thu, 25 Jul 2019 12:27:19 GMT
+
+### Minor changes
+
+- ChoiceGroup: updating IChoiceOption to accept input attributes (dzearing@microsoft.com)
+
+## 7.15.0
+Wed, 24 Jul 2019 12:27:56 GMT
+
+### Minor changes
+
+- split calendarMonth into three rows (Qianqian.Li@microsoft.com)
+
+### Patches
+
+- Facepile: Fix narrator not announcing coauthor position (tabrumle@microsoft.com)
+
+## 7.14.1
+Tue, 23 Jul 2019 16:33:51 GMT
+
+### Patches
+
+- Tooltip: Updates box-shadow to match fluent web toolkit (v-mare@microsoft.com)
+,- Rating: fix aria-label in `readOnly` mode and when use half stars. (vibraga@microsoft.com)
+,- Spinner: Updating label font size and position in respect to spinner to match fluent toolkit (v-mare@microsoft.com)
+,- ColorPicker: Updates margin bottom of the color rectangle to match web fluent toolkit. (v-mare@microsoft.com)
+,- Multiselect ComboBox options should respect disabled setting (elcraig@microsoft.com)
+,- making mousemove event bind to capture phase to work inside Layers and Callouts (jolore@microsoft.com)
+
+## 7.14.0
+Mon, 22 Jul 2019 21:37:45 GMT
+
+### Minor changes
+
+- support to add custom attributes on SpinButton and ComboBox components (pagaur@microsoft.com)
+,- Details____ general cleanup (elcraig@microsoft.com)
+
+## 7.13.0
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Minor changes
+
+- Refactor out BaseComponent from List components (706967+KevinTCoughlin@users.noreply.github.com)
+,- Nav: Add ability for screen reader to read selected state. (Humberto.Morimoto@microsoft.com)
+,- DetailsList: Remove unnecessary BaseComponent and class component usage (elcraig@microsoft.com)
+
+### Patches
+
+- Panel: remove window.innerHeight from styles (kakje@microsoft.com)
+,- fix the layer example so the panel dismisses properly (joschect@microsoft.com)
+,- DetailsList and Check styling optimizations (elcraig@microsoft.com)
+
+## 7.12.0
+Fri, 19 Jul 2019 12:25:58 GMT
+
+### Minor changes
+
+- Tooltip: render tooltip only after the delay and make sure if provided `closeDelay` is bigger than `delay` not to flash the Tooltip. (vibraga@microsoft.com)
+
+## 7.11.1
+Thu, 18 Jul 2019 12:27:48 GMT
+
+### Patches
+
+- Panel: Making padding not change with screen width to match toolkit. (Humberto.Morimoto@microsoft.com)
+
+## 7.11.0
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Minor changes
+
+- Add new ways for callers to control the behavior of the combo box. (reedpa@microsoft.com)
+,- ChoiceGroupOption: move the inline styles into getStyles function to allow override. (vibraga@microsoft.com)
+
+### Patches
+
+- prevent header and footer in panel from shrinking (nidurak@microsoft.com)
+,- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+,- Rating: ensure rating gets updated even when it has value of 0. (vibraga@microsoft.com)
+,- GroupedList: Using level to determine nestingDepth when it is given. (Humberto.Morimoto@microsoft.com)
+,- DropDown: Adding null check in onPositioned call. (Humberto.Morimoto@microsoft.com)
+
+## 7.10.0
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Minor changes
+
+- Dialog: Deprecating componentRef prop. (Humberto.Morimoto@microsoft.com)
+,- Tooltip: Rendering hidden hoverable area to allow for interaction with Tooltips. (Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Panel: remove window.innerHeight from styles (kakje@microsoft.com)
+
+## 7.9.0
+Fri, 12 Jul 2019 12:29:52 GMT
+
+### Minor changes
+
+- GroupedList: Refactor out BaseComponent in favor of React.Component and React.FunctionComponent (706967+KevinTCoughlin@users.noreply.github.com)
+,- Dropdown: adds an `onRenderLabel` custom renderer prop. (vibraga@microsoft.com)
+
+### Patches
+
+- Update to progressBar indicator description label font size to match design toolkti spec. (marygans@microsoft.com)
+
+## 7.8.2
+Thu, 11 Jul 2019 12:29:51 GMT
+
+### Patches
+
+- Pivot: updating white hover background color(#9595) (marygans@microsoft.com)
+,- Pass disabled state to labels in ChoiceGroup, Dropdown, Slider and SpinButton. (vibraga@microsoft.com)
+,- Tooltip: Fixing 'persist on scroll' issues. (humbertomakotomorimoto@gmail.com)
+,- DetailsRow: pass aria-label attribute to each row's checkbox. (vibraga@microsoft.com)
+,- Only clear selection in MarqueeSelection when starting a new marquee (tmichon@microsoft.com)
+,- Utilities: reuse an exisiting clamp function. (vibraga@microsoft.com)
+
+## 7.8.1
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- Dropdown: set aria-hidden to true on the ChevronDown icon so that it is not picked up by the screen reader (natalie.ethell@microsoft.com)
+,- Button: Fixing CompoundButton and SplitButton high contrast mode styling. (humbertomakotomorimoto@gmail.com)
+,- FocusTrapZone: Updating overview description to indicate restriction of website interaction. (Humberto.Morimoto@microsoft.com)
+,- Nav: fixes focus border in High Contrast mode. (vibraga@microsoft.com)
+,- Pickers: replace empty string with undefined. (vibraga@microsoft.com)
+
+## 7.8.0
+Tue, 09 Jul 2019 17:34:38 GMT
+
+### Minor changes
+
+- Panel: Adding Overlay props. (Humberto.Morimoto@microsoft.com)
+,- Modal: Adding overlayProps as a prop. (Humberto.Morimoto@microsoft.com)
+,- Adding tooltipHostProps as a prop to the Breadcrumb component. (Heather.HoaglundBiron@microsoft.com)
+,- "FocusZone: Add setFocusAlignment public method to Force horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on the last horizontal motion." (nasabek@microsoft.com)
+,- User should use onRenderPersonaCoin for custom rendering. When this is set, this custom rendering will be used. (22574161+gingeroun@users.noreply.github.com)
+
+## 7.7.2
+Mon, 08 Jul 2019 12:27:04 GMT
+
+### Patches
+
+- Fix mock Date class (rezha@microsoft.com)
+
+## 7.7.1
+Thu, 04 Jul 2019 12:29:39 GMT
+
+### Patches
+
+- SearchBox: allow passing in id for input (elcraig@microsoft.com)
+,- Breadcrumb: Adding overflowAriaLabel to examples. (Humberto.Morimoto@microsoft.com)
+,- Button: Updating example to make it less confusing to screen readers. (Humberto.Morimoto@microsoft.com)
+
+## 7.7.0
+Wed, 03 Jul 2019 12:30:55 GMT
+
+### Minor changes
+
+- SplitButton: add in props to control splitbutton menu button (joschect@microsoft.com)
+,- Callout: add support for RefObject as target (joschect@microsoft.com)
+
+### Patches
+
+- Revert "BaseFloatingItem: fix tests + remove redundant state  (#9500)" (miclo@microsoft.com)
+,- Announced: fix QuickActions example to reset Announced message (naethell@microsoft.com)
+,- update snapshots and update extended picker tests (joschect@microsoft.com)
+
+## 7.6.3
+Mon, 01 Jul 2019 18:51:43 GMT
+
+### Patches
+
+- Prettier change
+- adds react-app-polyfill
+- Fix tests for BasePicker + remove redundant state
+
+## 7.6.2
+Fri, 28 Jun 2019 12:27:34 GMT
+
+### Patches
+
+- Replaced SCSS in favour of CSS in JS in List Basic Example
+- Added interfaces for List Ghosting Example
+- GroupedList: Fix "Show All" not rendering all items in a group
+- Removed scss usage from List example.
+- GroupedList: Updated header text color on hover and updated snapshots.
+- Layer: remove the usage of viewport width and height to fix layout issues on mobile browsers
+- Removed used Rating SCSS file
+
+## 7.6.1
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Patches
+
+- Prettier changes.
+- Avoid marking DetailsRow as non-draggable unless backed by DragDropEvents
+- Addressing a variety of problems related to style recalculations.
+- Panel: Overflowing header text should word break and wrap by default
+- Add placeholder as TextArea property, allows placeholder in multiline TextField
+
+## 7.6.0
+Wed, 26 Jun 2019 21:48:30 GMT
+
+### Minor changes
+
+- BasePicker would only reveal suggestions on type or click, shifting focus. Now shows for click, not shifting focus as well.
+
+## 7.5.3
+Wed, 26 Jun 2019 12:23:41 GMT
+
+### Patches
+
+- Panel: move windowHeight from classNames into inline styles to prevent unnecessary className recalculations, respect isFooterAtBottom prop
+- TextField: Add condition for Edge browser to detect placeholder styles
+
+## 7.5.2
+Tue, 25 Jun 2019 12:26:09 GMT
+
+### Patches
+
+- Updates to tileslist, list and marquee selection
+
+## 7.5.1
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- FocusZone: fixed keyboard navigation when checkForNoWrap prop enabled.
+- Dropdown:Bring back breakpoint for small screen sizes
+- Coachmark: fixes beacon color props not being passed to styles.
+
+## 7.5.0
+Fri, 21 Jun 2019 12:27:05 GMT
+
+### Minor changes
+
+- Adds dual presence to PersonaPresence
+- Slider: onChanged is fired after a delay following keydown events.
+
+### Patches
+
+- Tooltip: add onKeyDown handler to dismiss on escape
+- Combobox: Fix styles so that RootChecked works
+- Don't expand ComboBox flyout on touch when disabled.
+- TooltipHost: fix the closeDelay Tooltip bug where a user could not interact with the Tooltip because it would close.
+
+## 7.4.3
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- DetailsList: add aria-hidden to checkbox labels
+
+## 7.4.2
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Patches
+
+- Make more examples exportable to codepen
+
+## 7.4.1
+Tue, 18 Jun 2019 19:00:04 GMT
+
+### Patches
+
+- Facepile: Introducing OnRenderPersona and OnRenderPersonaCoin to override default implementation of Persona and PersonaCoin. 
+- Tooltip: reverts commit 210fbabee 
+
+## 7.4.0
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Minor changes
+
+- DetailsList accessibility now reports 0 rows while placeholder data is being displayed. Also added a prop to ShimmeredDetailsList to specify aria label (such as a "loading data" message) while shimmer is being displayed.
+
+### Patches
+
+- Prevent the callout from being dismissed when the mouse is pressed inside, but then moved outside (while keeping pressed) and released. 
+- Only run KeytipManager update when relevant keytip props have changed in KeytipData.
+
+## 7.3.0
+Mon, 17 Jun 2019 12:26:51 GMT
+
+### Minor changes
+
+- exposing datemath function to calculate beginning of week
+- ShimmeredDetailsList: fixes issue where fading overlay was not removed when real item passed.
+
+### Patches
+
+- Removing getClassNames method from SwatchColorPicker.base.tsx which improves perf. by about 10% because of memoization
+- Stack: Improving examples so that they have better performance and removing anti-patterns from them.
+- Tooltip: Improving performance by wrapping Callout inside with a DelayedRender so that nothing renders until after the delay's done and only if the mouse's still over the tooltip area."
+- Updates some documentation links.
+
+## 7.2.0
+Fri, 14 Jun 2019 15:54:00 GMT
+
+### Minor changes
+
+- Major bumping the foundation package.
+
+## 7.1.1
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Set context menu width when using a split button to calculation of total width minus the width of the split menu button
+- Coachmark: Bottom position coachmarks shouldn't be hidden/cut off by other elements on the page.
+- Updated DetailsList example code to provide getKey prop, needed to make seelction work correctly when sorting and filtering are enabled.
+- Fix missing assets in production build.
+
+## 7.1.0
+Thu, 13 Jun 2019 12:20:34 GMT
+
+### Minor changes
+
+- HoverCard: Handle target being null in the case of unset ref
+
+### Patches
+
+- withViewport: Render composed component regardless of viewport height and width
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
 
 ## 7.0.0
 Wed, 12 Jun 2019 00:42:26 GMT

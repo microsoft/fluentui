@@ -1,5 +1,5 @@
 /** @jsx withSlots */
-import { ContextualMenu, Stack, Text } from 'office-ui-fabric-react';
+import { ContextualMenu, Text } from 'office-ui-fabric-react';
 import { withSlots, getSlots } from '../../../Foundation';
 import { Icon } from '../../../utilities/factoryComponents';
 
@@ -35,15 +35,14 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
   } = props;
 
   const Slots = getSlots<ISplitButtonProps, ISplitButtonSlots>(props, {
-    root: Stack,
+    root: 'span',
     button: Button,
     menuButton: MenuButton,
-    stack: Stack,
     icon: Icon,
     content: Text,
     menu: ContextualMenu,
     menuIcon: Icon,
-    splitDividerContainer: Stack,
+    splitDividerContainer: 'span',
     splitDivider: 'span'
   });
 
@@ -60,13 +59,28 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     color,
     colorHovered,
     colorPressed,
+    highContrastBackgroundColor,
+    highContrastBackgroundColorHovered,
+    highContrastBackgroundColorPressed,
+    highContrastBorderColor,
+    highContrastBorderColorHovered,
+    highContrastBorderColorPressed,
+    highContrastColor,
+    highContrastColorHovered,
+    highContrastColorPressed,
+    highContrastIconColor,
+    highContrastIconColorHovered,
+    highContrastIconColorPressed,
+    iconColor,
+    iconColorHovered,
+    iconColorPressed,
     ...nonColoredButtonTokens
   } = splitButtonTokens;
   const buttonTokens = primaryActionDisabled ? { contentPadding, contentPaddingFocused, ...nonColoredButtonTokens } : tokens;
   const menuButtonTokens = { contentPadding: secondaryPadding, ...splitButtonTokens };
 
   return (
-    <Slots.root horizontal as="span" verticalAlign="stretch">
+    <Slots.root>
       <Slots.button
         primary={primary}
         disabled={primaryActionDisabled || disabled}

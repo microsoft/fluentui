@@ -2,8 +2,10 @@
 
 `CalendarView`
 
-### Library
+### Source code
 
-[UI Fabric Android](https://github.com/OfficeDev/ui-fabric-android)
+[CalendarView](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/java/com/microsoft/officeuifabric/calendar/CalendarView.kt)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/CalendarViewActivity.kt)
+### Sample code
+
+[CalendarView demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/CalendarViewActivity.kt)

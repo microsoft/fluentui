@@ -2,12 +2,18 @@
 import { IAppDefinition } from '@uifabric/example-app-base';
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'Fabric - React',
+  appTitle: 'UI Fabric - Lists',
 
   testPages: [],
   examplePages: [
     {
-      links: []
+      links: [
+        {
+          component: require<any>('./pages/StaticListPage').StaticListPage,
+          name: 'StaticList',
+          url: '#/StaticList'
+        }
+      ]
     }
   ],
   headerLinks: [

@@ -1,6 +1,6 @@
 // @ts-check
 
-const { task, series, parallel, condition, option, argv, logger, addResolvePath } = require('just-scripts');
+const { task, series, parallel, condition, option, argv, addResolvePath } = require('just-scripts');
 
 const path = require('path');
 const fs = require('fs');
@@ -18,7 +18,7 @@ const prettier = require('./tasks/prettier');
 const bundleSizeCollect = require('./tasks/bundle-size-collect');
 const checkForModifiedFiles = require('./tasks/check-for-modified-files');
 const generateVersionFiles = require('./tasks/generate-version-files');
-const perfTest = require('./tasks/perf-test');
+const generatePackageManifestTask = require('./tasks/generate-package-manifest');
 
 module.exports = function preset() {
   // this add s a resolve path for the build tooling deps like TS from the scripts folder
@@ -53,7 +53,7 @@ module.exports = function preset() {
   task('bundle-size-collect', bundleSizeCollect);
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
-  task('perf-test', perfTest);
+  task('generate-package-manifest', generatePackageManifestTask);
   task('ts', () => {
     return argv().commonjs
       ? 'ts:commonjs-only'
@@ -65,10 +65,7 @@ module.exports = function preset() {
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
 
-  // Special case build for the serializer, which needs to absolutely run typescript and jest serially.
-  task('build-jest-serializer-merge-styles', series('ts', 'jest'));
-
-  task('build:node-lib', series('clean', 'copy', series(condition('validate', () => !argv().min), 'ts:commonjs-only')));
+  task('build:node-lib', series('clean', 'copy', series(condition('validate', () => !argv().min), 'ts:commonjs-only'))).cached();
 
   task(
     'build',
@@ -81,5 +78,7 @@ module.exports = function preset() {
         series('ts', parallel(condition('webpack', () => !argv().min), condition('lint-imports', () => !argv().min)))
       )
     )
-  );
+  ).cached();
+
+  task('no-op', () => {}).cached();
 };

@@ -11,6 +11,9 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
       theme.fonts.medium,
       normalize,
       {
+        display: 'flex',
+        flexWrap: 'wrap',
+        overflow: 'hidden',
         WebkitFontSmoothing: 'antialiased',
         backgroundColor: palette.white,
         borderRadius: 2,
@@ -27,23 +30,15 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
       },
       className
     ],
-    icon: [
-      {
-        height: 24,
-        left: 10,
-        bottom: 10,
-        position: 'absolute'
-      }
-    ],
     preview: [
+      'ms-ChicletCard-preview',
       {
-        float: 'left',
-        height: 122,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 126,
         width: 198,
-        position: 'relative',
-        backgroundColor: palette.white,
-        display: 'block',
-        padding: '2px 0px 2px 2px'
+        backgroundColor: palette.white
       }
     ],
     info: [
@@ -66,7 +61,7 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         color: palette.neutralPrimary,
         letterSpacing: 'normal',
         textAlign: 'left',
-        height: 41, // Two lines of text, making sure the third line is hidden
+        height: 37, // Two lines of text, making sure the third line is hidden
         width: 363,
         lineHeight: '1.25',
         overflow: 'hidden',

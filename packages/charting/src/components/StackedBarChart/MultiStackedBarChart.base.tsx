@@ -227,6 +227,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         if (hideNumber) {
           validChartData!.map((point: IChartDataPoint) => {
             const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+            const checkSimilarLegends = actions.filter((leg: ILegend) => leg.title === point.legend! && leg.color === color);
+            if (checkSimilarLegends!.length > 0) {
+              return;
+            }
             const legend: ILegend = {
               title: point.legend!,
               color: color,
@@ -246,6 +250,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       } else {
         validChartData!.map((point: IChartDataPoint) => {
           const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+          const checkSimilarLegends = actions.filter((leg: ILegend) => leg.title === point.legend! && leg.color === color);
+          if (checkSimilarLegends!.length > 0) {
+            return;
+          }
           const legend: ILegend = {
             title: point.legend!,
             color: color,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
+import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles, Target } from './Callout.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
   Async,
@@ -79,6 +79,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   private _hasListeners = false;
   private _maxHeight: number | undefined;
   private _blockResetHeight: boolean;
+  private _isMouseDownOnPopup: boolean;
 
   private _async: Async;
   private _disposables: (() => void)[] = [];
@@ -190,7 +191,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       hideOverflow = !!finalHeight,
       backgroundColor,
       calloutMaxHeight,
-      onScroll
+      onScroll,
+      shouldRestoreFocus = true
     } = this.props;
     target = this._getTarget();
     const { positions } = this.state;
@@ -240,8 +242,10 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
             className={this._classNames.calloutMain}
             onDismiss={this.dismiss}
             onScroll={onScroll}
-            shouldRestoreFocus={true}
+            shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
+            onMouseDown={this._mouseDownOnPopup}
+            onMouseUp={this._mouseUpOnPopup}
           >
             {children}
           </Popup>
@@ -303,6 +307,12 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     const target = ev.target as HTMLElement;
     const isEventTargetOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
 
+    // If mouse is pressed down on callout but moved outside then released, don't dismiss the callout.
+    if (isEventTargetOutsideCallout && this._isMouseDownOnPopup) {
+      this._isMouseDownOnPopup = false;
+      return;
+    }
+
     if (
       (!this._target && isEventTargetOutsideCallout) ||
       (ev.target !== this._targetWindow &&
@@ -323,8 +333,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       this._disposables.push(
         on(this._targetWindow, 'scroll', this._dismissOnScroll, true),
         on(this._targetWindow, 'resize', this._dismissOnResize, true),
-        on(this._targetWindow.document.documentElement as any, 'focus', this._dismissOnLostFocus, true), // FABRIC7TODO remove any
-        on(this._targetWindow.document.documentElement as any, 'click', this._dismissOnLostFocus, true) // FABRIC7TODO remove any
+        on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true),
+        on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true)
       );
       this._hasListeners = true;
     }, 0);
@@ -464,7 +474,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     return true;
   }
 
-  private _setTargetWindowAndElement(target: Element | string | MouseEvent | IPoint | null): void {
+  private _setTargetWindowAndElement(target: Target): void {
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
@@ -472,15 +482,18 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
-        this._target = target;
+        this._target = target as MouseEvent;
       } else if ((target as Element).getBoundingClientRect) {
         const targetElement: Element = target as Element;
         this._targetWindow = getWindow(targetElement)!;
-        this._target = target;
+        this._target = target as Element;
+      } else if ((target as React.RefObject<Element>).current !== undefined) {
+        this._target = (target as React.RefObject<Element>).current;
+        this._targetWindow = getWindow(this._target)!;
         // HTMLImgElements can have x and y values. The check for it being a point must go last.
       } else {
         this._targetWindow = getWindow()!;
-        this._target = target;
+        this._target = target as IPoint;
       }
     } else {
       this._targetWindow = getWindow()!;
@@ -513,8 +526,16 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     }
   }
 
-  private _getTarget(props: ICalloutProps = this.props): Element | string | MouseEvent | IPoint | null {
+  private _getTarget(props: ICalloutProps = this.props): Target {
     const { target } = props;
     return target!;
   }
+
+  private _mouseDownOnPopup = () => {
+    this._isMouseDownOnPopup = true;
+  };
+
+  private _mouseUpOnPopup = () => {
+    this._isMouseDownOnPopup = false;
+  };
 }

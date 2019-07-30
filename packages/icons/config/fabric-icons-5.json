@@ -10,6 +10,38 @@
   },
   "glyphs": [
     {
+      "name": "Giftbox",
+      "unicode": "EC1F"
+    },
+    {
+      "name": "VisualStudioLogo",
+      "unicode": "EC22"
+    },
+    {
+      "name": "HomeGroup",
+      "unicode": "EC26"
+    },
+    {
+      "name": "ExcelLogoInverse",
+      "unicode": "EC28"
+    },
+    {
+      "name": "WordLogoInverse",
+      "unicode": "EC29"
+    },
+    {
+      "name": "PowerPointLogoInverse",
+      "unicode": "EC2A"
+    },
+    {
+      "name": "Cafe",
+      "unicode": "EC32"
+    },
+    {
+      "name": "SpeedHigh",
+      "unicode": "EC4A"
+    },
+    {
       "name": "Commitments",
       "unicode": "EC4D"
     },
@@ -24,6 +56,10 @@
     {
       "name": "MicOff",
       "unicode": "EC54"
+    },
+    {
+      "name": "PlaybackRate1x",
+      "unicode": "EC57"
     },
     {
       "name": "EdgeLogo",
@@ -132,6 +168,10 @@
     {
       "name": "Photo2Remove",
       "unicode": "ECAC"
+    },
+    {
+      "name": "Calories",
+      "unicode": "ECAD"
     },
     {
       "name": "POI",
@@ -368,46 +408,6 @@
     {
       "name": "VoicemailForward",
       "unicode": "ED87"
-    },
-    {
-      "name": "VoicemailReply",
-      "unicode": "ED88"
-    },
-    {
-      "name": "Waffle",
-      "unicode": "ED89"
-    },
-    {
-      "name": "RemoveEvent",
-      "unicode": "ED8A"
-    },
-    {
-      "name": "EventInfo",
-      "unicode": "ED8B"
-    },
-    {
-      "name": "ForwardEvent",
-      "unicode": "ED8C"
-    },
-    {
-      "name": "WipePhone",
-      "unicode": "ED8D"
-    },
-    {
-      "name": "AddOnlineMeeting",
-      "unicode": "ED8E"
-    },
-    {
-      "name": "JoinOnlineMeeting",
-      "unicode": "ED8F"
-    },
-    {
-      "name": "RemoveLink",
-      "unicode": "ED90"
-    },
-    {
-      "name": "PeopleBlock",
-      "unicode": "ED91"
     }
   ]
 }

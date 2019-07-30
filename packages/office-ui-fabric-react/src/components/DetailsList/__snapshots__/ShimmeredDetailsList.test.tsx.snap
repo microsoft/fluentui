@@ -31,22 +31,13 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
           min-height: 38px;
           word-break: break-word;
         }
-        &:after {
-          background-image: linear-gradient(to bottom, transparent 30%, rgba(255,255,255,.4) 65%,#ffffff 100%);
-          bottom: 0px;
-          content: "";
-          left: 0px;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
     data-automationid="DetailsList"
     data-is-scrollable="false"
   >
     <div
       aria-colcount={1}
       aria-readonly="true"
-      aria-rowcount={11}
+      aria-rowcount={-1}
       role="grid"
     >
       <div
@@ -159,6 +150,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
                       height: 42px;
                     }
@@ -208,10 +200,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -245,7 +233,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
@@ -357,7 +345,20 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
             role="presentation"
           >
             <div
-              className="ms-List"
+              className=
+                  ms-List
+                  {
+                    position: relative;
+                  }
+                  &:after {
+                    background-image: linear-gradient(to bottom, transparent 30%, rgba(255,255,255,.4) 65%,#ffffff 100%);
+                    bottom: 0px;
+                    content: "";
+                    left: 0px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                  }
               role="presentation"
             >
               <div

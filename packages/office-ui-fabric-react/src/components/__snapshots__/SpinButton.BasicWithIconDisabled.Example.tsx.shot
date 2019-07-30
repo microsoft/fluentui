@@ -62,7 +62,6 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
               box-shadow: none;
               box-sizing: border-box;
               color: #a19f9d;
-              cursor: default;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;

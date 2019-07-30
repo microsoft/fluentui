@@ -33,7 +33,7 @@ import {
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { Callout, ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
+import { Callout, ICalloutContentStyleProps, ICalloutContentStyles, Target } from '../../Callout';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor } from './ContextualMenuItemWrapper/index';
 import { IProcessedStyleSet, mergeStyleSets } from '../../Styling';
@@ -41,8 +41,12 @@ import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './Cont
 
 import { getItemStyles } from './ContextualMenu.classNames';
 
-const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
-const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
+const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>({
+  disableCaching: true
+});
+const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>({
+  disableCaching: true
+});
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
@@ -1170,7 +1174,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     }
   };
 
-  private _setTargetWindowAndElement(target: Element | string | MouseEvent | IPoint): void {
+  private _setTargetWindowAndElement(target: Target): void {
     if (target) {
       if (typeof target === 'string') {
         const currentDoc: Document = getDocument()!;
@@ -1178,14 +1182,17 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         this._targetWindow = getWindow()!;
       } else if ((target as MouseEvent).stopPropagation) {
         this._targetWindow = getWindow((target as MouseEvent).toElement as HTMLElement)!;
-        this._target = target;
+        this._target = target as MouseEvent;
       } else if ((target as IPoint).x !== undefined && (target as IPoint).y !== undefined) {
         this._targetWindow = getWindow()!;
-        this._target = target;
+        this._target = target as IPoint;
+      } else if ((target as React.RefObject<Element>).current !== undefined) {
+        this._target = (target as React.RefObject<Element>).current;
+        this._targetWindow = getWindow(this._target)!;
       } else {
         const targetElement: Element = target as Element;
         this._targetWindow = getWindow(targetElement)!;
-        this._target = target;
+        this._target = target as Element;
       }
     } else {
       this._targetWindow = getWindow()!;

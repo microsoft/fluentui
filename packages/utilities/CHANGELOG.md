@@ -1,6 +1,50 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+
+## 7.0.7
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.0.6
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.0.5
+Thu, 27 Jun 2019 22:14:22 GMT
+
+### Patches
+
+- Utilities: Update implementation for raising a click event to support IE
+
+## 7.0.4
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Patches
+
+- Adding a null check in the case a stylesheet instance is not avaiable or old.
+- The `getClassNames` function now returns memoized classnames, resulting in improved performance in high repeat scenarios (like lists rendering checks.) Reintroduction of #8761.
+- Add placeholder as TextArea property
+
+## 7.0.3
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
 
 ## 7.0.0
 Wed, 12 Jun 2019 00:42:26 GMT

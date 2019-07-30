@@ -1,11 +1,24 @@
 pr: none
 trigger: none
 
+# Customize build number to include major version
+# Example: v7_20190626.1
+name: 'v7_$(Date:yyyyMMdd)$(Rev:.r)'
+
 variables:
   - group: 'Github and NPM secrets'
 
 pool:
   vmImage: 'Ubuntu 16.04'
+
+schedules:
+  # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
+  # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
+  - cron: '0 12 * * 1-5'
+    displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
+    branches:
+      include:
+        - master
 
 steps:
   - task: NodeTool@0
@@ -20,16 +33,18 @@ steps:
     displayName: Authenticate git for pushes
 
   - script: |
-      node common/scripts/install-run-rush.js install --bypass-policy
-    displayName: rush install
+      yarn
+    displayName: yarn
+
+  # TODO: disable this step until a proper fix to this is found
+  #       root cause: this step is generating a set of changes that are not checked in and not accounted for in the change files
+  # - script: |
+  #     npm run generate-version-files
+  #   displayName: npm run generate-version-files
 
   - script: |
-      npm run generate-version-files
-    displayName: npm run generate-version-files
-
-  - script: |
-      node common/scripts/install-run-rush.js build --production --verbose
-    displayName: rush build (Create production build)
+      yarn build --production
+    displayName: yarn build (Create production build)
 
   - script: |
       echo Making $(Build.ArtifactStagingDirectory)/api &&
@@ -66,7 +81,7 @@ steps:
     displayName: 'Publish Artifact: Fabric'
 
   - script: |
-      node ./common/scripts/install-run-rush.js publish -a -p -b master -n $(npmToken) --add-commit-details --set-access-level public
+      npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
     displayName: 'Publish Change Requests and Bump Versions'
 
   - script: |
@@ -105,3 +120,16 @@ steps:
       artifactName: 'fabric-website-resources'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Fabric Website Resources'
+
+  - script: |
+      yarn workspace @uifabric/build just generate-package-manifest
+    displayName: 'Generates a package manifest'
+
+  - task: AzureUpload@1
+    displayName: Upload Package Manifest
+    inputs:
+      SourcePath: 'package-manifest.json'
+      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+      storage: fabricweb
+      ContainerName: 'fabric'
+      BlobPrefix: 'package-manifest/latest'

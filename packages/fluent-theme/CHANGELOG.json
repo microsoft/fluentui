@@ -2,6 +2,137 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/fluent-theme_v7.0.4",
+      "version": "7.0.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/fluent-theme_v7.0.3",
+      "version": "7.0.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Jul 2019 12:28:00 GMT",
+      "tag": "@uifabric/fluent-theme_v7.0.3",
+      "version": "7.0.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Fixing CompoundButton and SplitButton high contrast mode styling.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "c0c16b62a94e508a551b84dd03fce418b1c07c69"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Jul 2019 12:30:55 GMT",
+      "tag": "@uifabric/fluent-theme_v7.0.2",
+      "version": "7.0.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "No comment",
+            "author": "nishikaza@berkeley.edu",
+            "commit": "9716916a8b30fa006c4261f714899949ecddce29"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.2",
+      "tag": "@uifabric/fluent-theme_v7.0.2",
+      "date": "Fri, 14 Jun 2019 12:26:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix missing assets in production build.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "e1bebe54dd798847060baaf4a52956c2f6dd866b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.1` to `^7.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.1",
+      "tag": "@uifabric/fluent-theme_v7.0.1",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.11",
       "tag": "@uifabric/fluent-theme_v0.16.11",
       "date": "Wed, 12 Jun 2019 00:42:26 GMT",
