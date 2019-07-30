@@ -239,6 +239,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
           <div
             className={classNames.cellIsGroupExpander}
             onClick={this._onToggleCollapseAll}
+            onKeyDown={this._onKeyDown}
             data-is-focusable={true}
             aria-label={ariaLabelForToggleAllGroupsButton}
             aria-expanded={!isAllCollapsed}
@@ -812,6 +813,12 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       });
     }
   }
+
+  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
+      this._onToggleCollapseAll;
+    }
+  };
 
   private _onToggleCollapseAll = (): void => {
     const { onToggleCollapseAll } = this.props;
