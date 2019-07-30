@@ -3550,6 +3550,8 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     columns: IColumn[];
     columnStartIndex: number;
     compact?: boolean;
+    // (undocumented)
+    enableUpdateAnimations?: boolean;
     item: any;
     itemIndex: number;
     rowClassNames: {

@@ -1,22 +1,29 @@
 import { ISearchBoxStyleProps, ISearchBoxStyles } from 'office-ui-fabric-react/lib/SearchBox';
 
 export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBoxStyles> => {
-  const { theme, hasFocus, hasInput, underlined } = props;
-  const { effects, palette } = theme;
+  const { theme, hasFocus, hasInput, underlined, disabled } = props;
+  const { effects, palette, semanticColors } = theme;
+
+  const inputIcon = palette.themeDarkAlt;
+  const inputIconAlt = palette.neutralSecondary;
+  const inputIconAltHovered = palette.neutralPrimary;
+  const inputIconDisabled = palette.neutralTertiary;
+  const inputBorderHasInput = palette.neutralSecondary;
+  const inputBackgroundHovered = palette.neutralLighter;
 
   return {
     root: [
       {
         borderRadius: effects.roundedCorner2,
-        borderColor: palette.neutralTertiary,
+        borderColor: semanticColors.inputBorder,
         paddingTop: 0,
         paddingBottom: 0,
         selectors: {
           ':hover ': {
-            borderColor: palette.neutralPrimary
+            borderColor: semanticColors.inputBorderHovered
           },
           ':active': {
-            borderColor: palette.themePrimary
+            borderColor: semanticColors.inputFocusBorderAlt
           }
         }
       },
@@ -32,17 +39,17 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
           }
         },
       hasInput && {
-        borderColor: palette.neutralSecondary
+        borderColor: inputBorderHasInput
       },
       hasFocus && {
-        borderColor: palette.themePrimary
+        borderColor: semanticColors.inputFocusBorderAlt
       },
       underlined && {
         borderRadius: 0
       }
     ],
     iconContainer: {
-      color: palette.themeDarkAlt
+      color: disabled ? inputIconDisabled : inputIcon
     },
     field: {
       paddingLeft: 6
@@ -51,13 +58,13 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
       padding: 0,
       selectors: {
         '&:hover .ms-Button': {
-          backgroundColor: palette.neutralLighter
+          backgroundColor: inputBackgroundHovered
         },
         '&:hover .ms-Button-icon': {
-          color: palette.neutralPrimary
+          color: inputIconAltHovered
         },
         '.ms-Button-icon': {
-          color: palette.neutralSecondary
+          color: inputIconAlt
         }
       }
     }

@@ -157,7 +157,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -229,7 +228,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -336,7 +334,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -626,7 +623,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -698,7 +694,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -805,7 +800,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1095,7 +1089,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1167,7 +1160,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1274,7 +1266,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1564,7 +1555,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1636,7 +1626,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1743,7 +1732,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2033,7 +2021,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2105,7 +2092,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2212,7 +2198,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2502,7 +2487,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2574,7 +2558,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2681,7 +2664,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2971,7 +2953,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3043,7 +3024,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3150,7 +3130,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3440,7 +3419,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3512,7 +3490,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3619,7 +3596,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3909,7 +3885,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3981,7 +3956,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -4088,7 +4062,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -4378,7 +4351,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -4450,7 +4422,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="link"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -4557,7 +4528,6 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
-
         data-automation-key="defaultButton"
         data-automationid="DetailsRowCell"
         role="gridcell"

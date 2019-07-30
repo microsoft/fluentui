@@ -2,6 +2,20 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.18",
+      "tag": "@uifabric/fluent-theme_v0.16.18",
+      "date": "Fri, 26 Jul 2019 12:22:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: Updates border, background, and text colors to semanticColors.",
+            "author": "Maxwell Rediker <13246181+maxwellred@users.noreply.github.com>",
+            "commit": "8b776519a764ad5a8606d1220d6ca845532fc719"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.17",
       "tag": "@uifabric/fluent-theme_v0.16.17",
       "date": "Mon, 22 Jul 2019 12:21:49 GMT",
