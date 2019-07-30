@@ -1,8 +1,0 @@
-{
-  "comment": "Separate the anchor for the card from card's hover target",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "'xingwa@microsoft.com'",
-  "commit": "9938d08014ea69685c161670049f22d4aef20ca9",
-  "date": "2019-07-27T02:56:02.505Z"
-}
