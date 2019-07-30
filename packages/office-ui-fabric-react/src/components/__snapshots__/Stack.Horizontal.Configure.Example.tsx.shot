@@ -116,7 +116,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-top: 0px;
                   word-wrap: break-word;
                 }
-            htmlFor="Slider0"
+            htmlFor="Slider2"
           >
             Number of items:
           </label>
@@ -146,7 +146,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     display: flex;
                     flex-grow: 1;
                     height: 28px;
-                    line-height: 28px;
                     outline: transparent;
                     padding-bottom: 0;
                     padding-left: 8px;
@@ -233,7 +232,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     width: 16px;
                   }
               data-is-focusable={true}
-              id="Slider0"
+              id="Slider2"
               onKeyDown={[Function]}
               onMouseDown={[Function]}
               onTouchStart={[Function]}
@@ -256,9 +255,11 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     }
               >
                 <span
+                  aria-labelledby="tooltipHost0"
                   className=
                       ms-Slider-thumb
 
+                  id="targetButton1"
                   style={
                     Object {
                       "left": "13.793103448275861%",
@@ -317,17 +318,16 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-size: 14px;
                     font-weight: 600;
                     line-height: 1;
-                    margin-bottom: 0;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 0;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     overflow-wrap: break-word;
                     padding-bottom: 5px;
                     padding-left: 0;
                     padding-right: 0;
                     padding-top: 5px;
                     white-space: nowrap;
-                    width: 40px;
                     word-wrap: break-word;
                   }
             >
@@ -403,7 +403,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                     outline: 1px solid ActiveBorder;
                   }
-              id="checkbox-1"
+              id="checkbox-3"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -434,7 +434,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     right: 0px;
                     top: 0px;
                   }
-              htmlFor="checkbox-1"
+              htmlFor="checkbox-3"
             >
               <div
                 className=
@@ -541,7 +541,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                     outline: 1px solid ActiveBorder;
                   }
-              id="checkbox-2"
+              id="checkbox-4"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -572,7 +572,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     right: 0px;
                     top: 0px;
                   }
-              htmlFor="checkbox-2"
+              htmlFor="checkbox-4"
             >
               <div
                 className=
@@ -739,7 +739,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                     outline: 1px solid ActiveBorder;
                   }
-              id="checkbox-3"
+              id="checkbox-5"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -770,7 +770,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     right: 0px;
                     top: 0px;
                   }
-              htmlFor="checkbox-3"
+              htmlFor="checkbox-5"
             >
               <div
                 className=
@@ -877,7 +877,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                     outline: 1px solid ActiveBorder;
                   }
-              id="checkbox-4"
+              id="checkbox-6"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -908,7 +908,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     right: 0px;
                     top: 0px;
                   }
-              htmlFor="checkbox-4"
+              htmlFor="checkbox-6"
             >
               <div
                 className=
@@ -1022,7 +1022,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     padding-top: 0px;
                     word-wrap: break-word;
                   }
-              htmlFor="Slider5"
+              htmlFor="Slider9"
             >
               Container width:
             </label>
@@ -1052,7 +1052,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       display: flex;
                       flex-grow: 1;
                       height: 28px;
-                      line-height: 28px;
                       outline: transparent;
                       padding-bottom: 0;
                       padding-left: 8px;
@@ -1139,7 +1138,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       width: 16px;
                     }
                 data-is-focusable={true}
-                id="Slider5"
+                id="Slider9"
                 onKeyDown={[Function]}
                 onMouseDown={[Function]}
                 onTouchStart={[Function]}
@@ -1162,9 +1161,11 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       }
                 >
                   <span
+                    aria-labelledby="tooltipHost7"
                     className=
                         ms-Slider-thumb
 
+                    id="targetButton8"
                     style={
                       Object {
                         "left": "100%",
@@ -1223,17 +1224,16 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       font-size: 14px;
                       font-weight: 600;
                       line-height: 1;
-                      margin-bottom: 0;
-                      margin-left: 8px;
-                      margin-right: 8px;
-                      margin-top: 0;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       overflow-wrap: break-word;
                       padding-bottom: 5px;
                       padding-left: 0;
                       padding-right: 0;
                       padding-top: 5px;
                       white-space: nowrap;
-                      width: 40px;
                       word-wrap: break-word;
                     }
               >
@@ -1339,7 +1339,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-top: 0px;
                   word-wrap: break-word;
                 }
-            htmlFor="Slider6"
+            htmlFor="Slider12"
           >
             Horizontal gap between items:
           </label>
@@ -1369,7 +1369,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     display: flex;
                     flex-grow: 1;
                     height: 28px;
-                    line-height: 28px;
                     outline: transparent;
                     padding-bottom: 0;
                     padding-left: 8px;
@@ -1456,7 +1455,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     width: 16px;
                   }
               data-is-focusable={true}
-              id="Slider6"
+              id="Slider12"
               onKeyDown={[Function]}
               onMouseDown={[Function]}
               onTouchStart={[Function]}
@@ -1479,9 +1478,11 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     }
               >
                 <span
+                  aria-labelledby="tooltipHost10"
                   className=
                       ms-Slider-thumb
 
+                  id="targetButton11"
                   style={
                     Object {
                       "left": "0%",
@@ -1540,17 +1541,16 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-size: 14px;
                     font-weight: 600;
                     line-height: 1;
-                    margin-bottom: 0;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 0;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     overflow-wrap: break-word;
                     padding-bottom: 5px;
                     padding-left: 0;
                     padding-right: 0;
                     padding-top: 5px;
                     white-space: nowrap;
-                    width: 40px;
                     word-wrap: break-word;
                   }
             >
@@ -1596,7 +1596,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-top: 0px;
                   word-wrap: break-word;
                 }
-            htmlFor="Slider7"
+            htmlFor="Slider15"
           >
             Vertical gap between items:
           </label>
@@ -1626,7 +1626,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     display: flex;
                     flex-grow: 1;
                     height: 28px;
-                    line-height: 28px;
                     outline: transparent;
                     padding-bottom: 0;
                     padding-left: 8px;
@@ -1713,7 +1712,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     width: 16px;
                   }
               data-is-focusable={true}
-              id="Slider7"
+              id="Slider15"
               onKeyDown={[Function]}
               onMouseDown={[Function]}
               onTouchStart={[Function]}
@@ -1736,9 +1735,11 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     }
               >
                 <span
+                  aria-labelledby="tooltipHost13"
                   className=
                       ms-Slider-thumb
 
+                  id="targetButton14"
                   style={
                     Object {
                       "left": "0%",
@@ -1797,17 +1798,16 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-size: 14px;
                     font-weight: 600;
                     line-height: 1;
-                    margin-bottom: 0;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 0;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     overflow-wrap: break-word;
                     padding-bottom: 5px;
                     padding-left: 0;
                     padding-right: 0;
                     padding-top: 5px;
                     white-space: nowrap;
-                    width: 40px;
                     word-wrap: break-word;
                   }
             >
@@ -1890,7 +1890,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-top: 0px;
                   word-wrap: break-word;
                 }
-            htmlFor="Slider8"
+            htmlFor="Slider18"
           >
             Left padding:
           </label>
@@ -1920,7 +1920,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     display: flex;
                     flex-grow: 1;
                     height: 28px;
-                    line-height: 28px;
                     outline: transparent;
                     padding-bottom: 0;
                     padding-left: 8px;
@@ -2007,7 +2006,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     width: 16px;
                   }
               data-is-focusable={true}
-              id="Slider8"
+              id="Slider18"
               onKeyDown={[Function]}
               onMouseDown={[Function]}
               onTouchStart={[Function]}
@@ -2030,9 +2029,11 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     }
               >
                 <span
+                  aria-labelledby="tooltipHost16"
                   className=
                       ms-Slider-thumb
 
+                  id="targetButton17"
                   style={
                     Object {
                       "left": "0%",
@@ -2091,17 +2092,16 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-size: 14px;
                     font-weight: 600;
                     line-height: 1;
-                    margin-bottom: 0;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 0;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     overflow-wrap: break-word;
                     padding-bottom: 5px;
                     padding-left: 0;
                     padding-right: 0;
                     padding-top: 5px;
                     white-space: nowrap;
-                    width: 40px;
                     word-wrap: break-word;
                   }
             >
@@ -2147,7 +2147,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-top: 0px;
                   word-wrap: break-word;
                 }
-            htmlFor="Slider9"
+            htmlFor="Slider21"
           >
             Right padding:
           </label>
@@ -2177,7 +2177,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     display: flex;
                     flex-grow: 1;
                     height: 28px;
-                    line-height: 28px;
                     outline: transparent;
                     padding-bottom: 0;
                     padding-left: 8px;
@@ -2264,7 +2263,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     width: 16px;
                   }
               data-is-focusable={true}
-              id="Slider9"
+              id="Slider21"
               onKeyDown={[Function]}
               onMouseDown={[Function]}
               onTouchStart={[Function]}
@@ -2287,9 +2286,11 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     }
               >
                 <span
+                  aria-labelledby="tooltipHost19"
                   className=
                       ms-Slider-thumb
 
+                  id="targetButton20"
                   style={
                     Object {
                       "left": "0%",
@@ -2348,17 +2349,16 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-size: 14px;
                     font-weight: 600;
                     line-height: 1;
-                    margin-bottom: 0;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 0;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     overflow-wrap: break-word;
                     padding-bottom: 5px;
                     padding-left: 0;
                     padding-right: 0;
                     padding-top: 5px;
                     white-space: nowrap;
-                    width: 40px;
                     word-wrap: break-word;
                   }
             >
@@ -2441,7 +2441,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-top: 0px;
                   word-wrap: break-word;
                 }
-            htmlFor="Slider10"
+            htmlFor="Slider24"
           >
             Top padding:
           </label>
@@ -2471,7 +2471,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     display: flex;
                     flex-grow: 1;
                     height: 28px;
-                    line-height: 28px;
                     outline: transparent;
                     padding-bottom: 0;
                     padding-left: 8px;
@@ -2558,7 +2557,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     width: 16px;
                   }
               data-is-focusable={true}
-              id="Slider10"
+              id="Slider24"
               onKeyDown={[Function]}
               onMouseDown={[Function]}
               onTouchStart={[Function]}
@@ -2581,9 +2580,11 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     }
               >
                 <span
+                  aria-labelledby="tooltipHost22"
                   className=
                       ms-Slider-thumb
 
+                  id="targetButton23"
                   style={
                     Object {
                       "left": "0%",
@@ -2642,17 +2643,16 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-size: 14px;
                     font-weight: 600;
                     line-height: 1;
-                    margin-bottom: 0;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 0;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     overflow-wrap: break-word;
                     padding-bottom: 5px;
                     padding-left: 0;
                     padding-right: 0;
                     padding-top: 5px;
                     white-space: nowrap;
-                    width: 40px;
                     word-wrap: break-word;
                   }
             >
@@ -2698,7 +2698,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-top: 0px;
                   word-wrap: break-word;
                 }
-            htmlFor="Slider11"
+            htmlFor="Slider27"
           >
             Bottom padding:
           </label>
@@ -2728,7 +2728,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     display: flex;
                     flex-grow: 1;
                     height: 28px;
-                    line-height: 28px;
                     outline: transparent;
                     padding-bottom: 0;
                     padding-left: 8px;
@@ -2815,7 +2814,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     width: 16px;
                   }
               data-is-focusable={true}
-              id="Slider11"
+              id="Slider27"
               onKeyDown={[Function]}
               onMouseDown={[Function]}
               onTouchStart={[Function]}
@@ -2838,9 +2837,11 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     }
               >
                 <span
+                  aria-labelledby="tooltipHost25"
                   className=
                       ms-Slider-thumb
 
+                  id="targetButton26"
                   style={
                     Object {
                       "left": "0%",
@@ -2899,17 +2900,16 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-size: 14px;
                     font-weight: 600;
                     line-height: 1;
-                    margin-bottom: 0;
-                    margin-left: 8px;
-                    margin-right: 8px;
-                    margin-top: 0;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     overflow-wrap: break-word;
                     padding-bottom: 5px;
                     padding-left: 0;
                     padding-right: 0;
                     padding-top: 5px;
                     white-space: nowrap;
-                    width: 40px;
                     word-wrap: break-word;
                   }
             >
@@ -2986,15 +2986,15 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown12"
-          id="Dropdown12-label"
+          htmlFor="Dropdown28"
+          id="Dropdown28-label"
         >
           Horizontal alignment:
         </label>
         <div
-          aria-describedby="Dropdown12-option"
+          aria-describedby="Dropdown28-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown12-label"
+          aria-labelledby="Dropdown28-label"
           className=
               ms-Dropdown
               {
@@ -3082,7 +3082,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 border-color: #a4262c;
               }
           data-is-focusable={true}
-          id="Dropdown12"
+          id="Dropdown28"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -3126,7 +3126,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            id="Dropdown12-option"
+            id="Dropdown28-option"
             role="option"
           >
             <span>
@@ -3214,15 +3214,15 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown13"
-          id="Dropdown13-label"
+          htmlFor="Dropdown29"
+          id="Dropdown29-label"
         >
           Vertical alignment:
         </label>
         <div
-          aria-describedby="Dropdown13-option"
+          aria-describedby="Dropdown29-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown13-label"
+          aria-labelledby="Dropdown29-label"
           className=
               ms-Dropdown
               {
@@ -3310,7 +3310,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 border-color: #a4262c;
               }
           data-is-focusable={true}
-          id="Dropdown13"
+          id="Dropdown29"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -3354,7 +3354,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            id="Dropdown13-option"
+            id="Dropdown29-option"
             role="option"
           >
             <span>
@@ -3458,7 +3458,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
                 outline: 1px solid ActiveBorder;
               }
-          id="checkbox-14"
+          id="checkbox-30"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -3489,7 +3489,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 right: 0px;
                 top: 0px;
               }
-          htmlFor="checkbox-14"
+          htmlFor="checkbox-30"
         >
           <div
             className=
@@ -3616,8 +3616,8 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   padding-top: 5px;
                   word-wrap: break-word;
                 }
-            htmlFor="TextField15"
-            id="TextFieldLabel17"
+            htmlFor="TextField31"
+            id="TextFieldLabel33"
           >
             Enter a space-separated list of empty children (e.g. 1 2 3):
           </label>
@@ -3654,7 +3654,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           >
             <input
               aria-invalid={false}
-              aria-labelledby="TextFieldLabel17"
+              aria-labelledby="TextFieldLabel33"
               className=
                   ms-TextField-field
                   {
@@ -3716,7 +3716,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     font-weight: 400;
                     opacity: 1;
                   }
-              id="TextField15"
+              id="TextField31"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}

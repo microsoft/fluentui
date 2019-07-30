@@ -60,7 +60,7 @@ exports[`Component Examples renders Stack.Horizontal.Wrap.Example.tsx correctly 
             padding-top: 0px;
             word-wrap: break-word;
           }
-      htmlFor="Slider0"
+      htmlFor="Slider2"
     >
       Change the stack width to see how child items wrap onto multiple rows:
     </label>
@@ -90,7 +90,6 @@ exports[`Component Examples renders Stack.Horizontal.Wrap.Example.tsx correctly 
               display: flex;
               flex-grow: 1;
               height: 28px;
-              line-height: 28px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 8px;
@@ -177,7 +176,7 @@ exports[`Component Examples renders Stack.Horizontal.Wrap.Example.tsx correctly 
               width: 16px;
             }
         data-is-focusable={true}
-        id="Slider0"
+        id="Slider2"
         onKeyDown={[Function]}
         onMouseDown={[Function]}
         onTouchStart={[Function]}
@@ -200,9 +199,11 @@ exports[`Component Examples renders Stack.Horizontal.Wrap.Example.tsx correctly 
               }
         >
           <span
+            aria-labelledby="tooltipHost0"
             className=
                 ms-Slider-thumb
 
+            id="targetButton1"
             style={
               Object {
                 "left": "100%",
@@ -261,17 +262,16 @@ exports[`Component Examples renders Stack.Horizontal.Wrap.Example.tsx correctly 
               font-size: 14px;
               font-weight: 600;
               line-height: 1;
-              margin-bottom: 0;
-              margin-left: 8px;
-              margin-right: 8px;
-              margin-top: 0;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               overflow-wrap: break-word;
               padding-bottom: 5px;
               padding-left: 0;
               padding-right: 0;
               padding-top: 5px;
               white-space: nowrap;
-              width: 40px;
               word-wrap: break-word;
             }
       >

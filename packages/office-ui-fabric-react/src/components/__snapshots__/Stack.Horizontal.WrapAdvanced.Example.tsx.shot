@@ -96,7 +96,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 padding-top: 0px;
                 word-wrap: break-word;
               }
-          htmlFor="Slider0"
+          htmlFor="Slider2"
         >
           Stack width:
         </label>
@@ -126,7 +126,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   display: flex;
                   flex-grow: 1;
                   height: 28px;
-                  line-height: 28px;
                   outline: transparent;
                   padding-bottom: 0;
                   padding-left: 8px;
@@ -213,7 +212,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   width: 16px;
                 }
             data-is-focusable={true}
-            id="Slider0"
+            id="Slider2"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
             onTouchStart={[Function]}
@@ -236,9 +235,11 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   }
             >
               <span
+                aria-labelledby="tooltipHost0"
                 className=
                     ms-Slider-thumb
 
+                id="targetButton1"
                 style={
                   Object {
                     "left": "100%",
@@ -297,17 +298,16 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   font-size: 14px;
                   font-weight: 600;
                   line-height: 1;
-                  margin-bottom: 0;
-                  margin-left: 8px;
-                  margin-right: 8px;
-                  margin-top: 0;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   overflow-wrap: break-word;
                   padding-bottom: 5px;
                   padding-left: 0;
                   padding-right: 0;
                   padding-top: 5px;
                   white-space: nowrap;
-                  width: 40px;
                   word-wrap: break-word;
                 }
           >
@@ -369,7 +369,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 padding-top: 0px;
                 word-wrap: break-word;
               }
-          htmlFor="Slider1"
+          htmlFor="Slider5"
         >
           Container height:
         </label>
@@ -399,7 +399,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   display: flex;
                   flex-grow: 1;
                   height: 28px;
-                  line-height: 28px;
                   outline: transparent;
                   padding-bottom: 0;
                   padding-left: 8px;
@@ -486,7 +485,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   width: 16px;
                 }
             data-is-focusable={true}
-            id="Slider1"
+            id="Slider5"
             onKeyDown={[Function]}
             onMouseDown={[Function]}
             onTouchStart={[Function]}
@@ -509,9 +508,11 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   }
             >
               <span
+                aria-labelledby="tooltipHost3"
                 className=
                     ms-Slider-thumb
 
+                id="targetButton4"
                 style={
                   Object {
                     "left": "74.87437185929649%",
@@ -570,17 +571,16 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   font-size: 14px;
                   font-weight: 600;
                   line-height: 1;
-                  margin-bottom: 0;
-                  margin-left: 8px;
-                  margin-right: 8px;
-                  margin-top: 0;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   overflow-wrap: break-word;
                   padding-bottom: 5px;
                   padding-left: 0;
                   padding-right: 0;
                   padding-top: 5px;
                   white-space: nowrap;
-                  width: 40px;
                   word-wrap: break-word;
                 }
           >
@@ -656,15 +656,15 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown2"
-          id="Dropdown2-label"
+          htmlFor="Dropdown6"
+          id="Dropdown6-label"
         >
           Horizontal alignment:
         </label>
         <div
-          aria-describedby="Dropdown2-option"
+          aria-describedby="Dropdown6-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown2-label"
+          aria-labelledby="Dropdown6-label"
           className=
               ms-Dropdown
               {
@@ -752,7 +752,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 border-color: #a4262c;
               }
           data-is-focusable={true}
-          id="Dropdown2"
+          id="Dropdown6"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -796,7 +796,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            id="Dropdown2-option"
+            id="Dropdown6-option"
             role="option"
           >
             <span>
@@ -885,15 +885,15 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown3"
-          id="Dropdown3-label"
+          htmlFor="Dropdown7"
+          id="Dropdown7-label"
         >
           Vertical alignment:
         </label>
         <div
-          aria-describedby="Dropdown3-option"
+          aria-describedby="Dropdown7-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown3-label"
+          aria-labelledby="Dropdown7-label"
           className=
               ms-Dropdown
               {
@@ -981,7 +981,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 border-color: #a4262c;
               }
           data-is-focusable={true}
-          id="Dropdown3"
+          id="Dropdown7"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -1025,7 +1025,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            id="Dropdown3-option"
+            id="Dropdown7-option"
             role="option"
           >
             <span>
@@ -1114,15 +1114,15 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="Dropdown4"
-          id="Dropdown4-label"
+          htmlFor="Dropdown8"
+          id="Dropdown8-label"
         >
           Overflow:
         </label>
         <div
-          aria-describedby="Dropdown4-option"
+          aria-describedby="Dropdown8-option"
           aria-expanded="false"
-          aria-labelledby="Dropdown4-label"
+          aria-labelledby="Dropdown8-label"
           className=
               ms-Dropdown
               {
@@ -1210,7 +1210,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 border-color: #a4262c;
               }
           data-is-focusable={true}
-          id="Dropdown4"
+          id="Dropdown8"
           onBlur={[Function]}
           onChange={[Function]}
           onClick={[Function]}
@@ -1254,7 +1254,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
-            id="Dropdown4-option"
+            id="Dropdown8-option"
             role="option"
           >
             <span>

@@ -296,6 +296,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             // the zeroOffsetPercent denotes where the tick mark should go
             this._getStyleUsingOffsetPercent(vertical, i)
           }
+          key={i}
         />
       );
     }
