@@ -119,7 +119,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                 <TooltipHost
                   content={'' + value}
                   id={this._hostId}
-                  calloutProps={{ gapSpace: 5, beakWidth: 8, target: `#${this._buttonId}` }}
+                  calloutProps={{ gapSpace: 5, beakWidth: 8, target: `#${this._buttonId}`, doNotLayer: true }}
                 >
                   <span
                     ref={this._thumb}

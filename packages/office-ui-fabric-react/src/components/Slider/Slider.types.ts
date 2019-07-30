@@ -134,16 +134,6 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
 
   /**
 
-   * Optional flag to indicate snaps on movement of thumb.
-
-   * @defaultvalue false
-
-   */
-
-  snaps?: boolean;
-
-  /**
-
    * Optional flag to indicate whether to have tick marks
 
    * @defaultvalue false
