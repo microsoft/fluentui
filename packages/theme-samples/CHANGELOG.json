@@ -2,6 +2,28 @@
   "name": "@uifabric/theme-samples",
   "entries": [
     {
+      "version": "0.1.9",
+      "tag": "@uifabric/theme-samples_v0.1.9",
+      "date": "Mon, 22 Jul 2019 12:21:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).",
+            "author": "Makoto Morimoto <humbertomakotomorimoto@gmail.com>",
+            "commit": "541b30dfa57d13e783a46f02ed510caba6679b5d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.15.0` to `^6.15.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.195.3` to `^6.195.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.8",
       "tag": "@uifabric/theme-samples_v0.1.8",
       "date": "Wed, 12 Jun 2019 22:15:55 GMT",

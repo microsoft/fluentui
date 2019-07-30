@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ITileProps, TileSize } from './Tile.types';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
-import { ISize, css, BaseComponent, getId } from '../../Utilities';
+import { ISize, css, BaseComponent, getId, getNativeProps, divProperties } from '../../Utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signal.scss';
 import * as CheckStylesModule from 'office-ui-fabric-react/lib/components/Check/Check.scss';
@@ -151,6 +151,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       href,
       onClick,
       isFluentStyling,
+      nameplateOnlyOnHover,
       ...divProps
     } = this.props;
 
@@ -181,7 +182,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         {itemName || itemActivity
           ? this._onRenderNameplate({
               name: itemName,
-              activity: itemActivity
+              activity: itemActivity,
+              onlyOnHover: !!nameplateOnlyOnHover
             })
           : null}
       </>
@@ -204,7 +206,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     return (
       <div
         aria-selected={isSelected}
-        {...divProps}
+        {...getNativeProps(divProps, divProperties)}
         aria-labelledby={ariaLabel ? this._labelId : this._nameId}
         aria-describedby={descriptionAriaLabel ? this._descriptionId : this._activityId}
         className={css('ms-Tile', className, TileStyles.tile, {
@@ -289,16 +291,24 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     ) : null;
   }
 
-  private _onRenderNameplate({ name, activity }: { name: React.ReactNode; activity: React.ReactNode }): JSX.Element {
+  private _onRenderNameplate({
+    name,
+    activity,
+    onlyOnHover
+  }: {
+    name: React.ReactNode;
+    activity: React.ReactNode;
+    onlyOnHover: boolean;
+  }): JSX.Element {
     return (
-      <span key="nameplate" className={css('ms-Tile-nameplate', TileStyles.nameplate)}>
+      <span key="nameplate" className={css('ms-Tile-nameplate', TileStyles.nameplate, { [TileStyles.onlyOnHover]: onlyOnHover })}>
         {name ? (
-          <span id={this._nameId} className={css('ms-Tile-name', TileStyles.name)}>
+          <span id={this._nameId} className={css('ms-Tile-name', TileStyles.name, { [TileStyles.onlyOnHover]: onlyOnHover })}>
             {name}
           </span>
         ) : null}
         {activity ? (
-          <span id={this._activityId} className={css('ms-Tile-activity', TileStyles.activity)}>
+          <span id={this._activityId} className={css('ms-Tile-activity', TileStyles.activity, { [TileStyles.onlyOnHover]: onlyOnHover })}>
             {activity}
           </span>
         ) : null}

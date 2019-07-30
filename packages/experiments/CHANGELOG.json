@@ -2,6 +2,103 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.81.1",
+      "tag": "@uifabric/experiments_v6.81.1",
+      "date": "Mon, 22 Jul 2019 12:21:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).",
+            "author": "Makoto Morimoto <humbertomakotomorimoto@gmail.com>",
+            "commit": "541b30dfa57d13e783a46f02ed510caba6679b5d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^6.0.3` to `^6.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.5.2` to `^6.5.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.16` to `^0.16.17`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.8.1` to `^0.8.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^6.5.3` to `^6.5.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.19.2` to `^6.19.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.50.2` to `^6.50.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^0.1.8` to `^0.1.9`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.5` to `^6.41.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.15.0` to `^6.15.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.195.3` to `^6.195.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.6` to `^6.23.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.11` to `^6.0.12`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.81.0",
+      "tag": "@uifabric/experiments_v6.81.0",
+      "date": "Fri, 19 Jul 2019 12:22:57 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Change media tile to show metadata only on hover",
+            "author": "Jonathon Cobb <jocobb@microsoft.com>",
+            "commit": "e7680d66c8d8a2b058d3a4d146fd59918a4b79c0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.80.0",
+      "tag": "@uifabric/experiments_v6.80.0",
+      "date": "Tue, 16 Jul 2019 17:14:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Chiclet: Add x-small variant",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "f489307becc66fe9ddf57d3cd50a67e077b7f1a5"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.79.2",
+      "tag": "@uifabric/experiments_v6.79.2",
+      "date": "Wed, 03 Jul 2019 12:21:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Filter out disallowed props from Tile root element",
+            "author": "Thomas Michon <tmichon@microsoft.com>",
+            "commit": "d32ed2055aba03efe71448c7523ca363b1f7dee1"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.79.1",
       "tag": "@uifabric/experiments_v6.79.1",
       "date": "Thu, 27 Jun 2019 17:53:08 GMT",

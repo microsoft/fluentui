@@ -1,6 +1,89 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 28 Jun 2019 12:22:28 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jul 2019 12:22:47 GMT and should not be manually modified.
+
+## 6.195.6
+Mon, 29 Jul 2019 12:22:47 GMT
+
+### Patches
+
+- split calendarMonth into three rows
+
+## 6.195.5
+Wed, 24 Jul 2019 12:22:28 GMT
+
+### Patches
+
+- Panel: move windowHeight from classNames into inline styles to prevent unnecessary className recalculations, respect isFooterAtBottom prop
+- Panel: remove window.innerHeight from styles
+
+## 6.195.4
+Mon, 22 Jul 2019 12:21:49 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).
+
+## 6.195.3
+Tue, 16 Jul 2019 12:23:13 GMT
+
+### Patches
+
+- TextField: Add condition for Edge browser to detect placeholder styles
+
+## 6.195.2
+Mon, 15 Jul 2019 12:21:21 GMT
+
+### Patches
+
+- FocusZone: Add setFocusAlignment public method to Force horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on the last horizontal motion.
+
+## 6.195.1
+Thu, 11 Jul 2019 12:23:15 GMT
+
+### Patches
+
+- Only clear selection in MarqueeSelection when starting a new marquee
+
+## 6.195.0
+Wed, 10 Jul 2019 00:26:15 GMT
+
+### Minor changes
+
+- Add optional DetailsRow sliding animation on cell content update
+
+### Patches
+
+- Dropdown: set aria-hidden to true on the ChevronDown icon so that it is not picked up by the screen reader
+
+## 6.194.0
+Mon, 08 Jul 2019 20:48:15 GMT
+
+### Minor changes
+
+- Adding toopltipHostProps as a prop to the Breadcrumb component.
+
+### Patches
+
+- Tooltip: fix closeDelay bug
+
+## 6.193.1
+Wed, 03 Jul 2019 23:18:43 GMT
+
+### Patches
+
+- Layer: remove the usage of viewport width and height to fix layout issues on mobile browsers
+
+## 6.193.0
+Tue, 02 Jul 2019 12:21:32 GMT
+
+### Minor changes
+
+- withViewport: Recalculate viewport dimensions if skipViewportMeasures has become falsey to avoid truncated lists
+
+### Patches
+
+- Avoid marking DetailsRow as non-draggable unless backed by DragDropEvents
 
 ## 6.192.1
 Fri, 28 Jun 2019 12:22:28 GMT

@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 28 Jun 2019 12:22:28 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jul 2019 12:21:49 GMT and should not be manually modified.
+
+## 6.41.6
+Mon, 22 Jul 2019 12:21:49 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).
+
+## 6.41.5
+Thu, 11 Jul 2019 12:23:15 GMT
+
+### Patches
+
+- Utilities: Update implementation for raising a click event to support IE
 
 ## 6.41.4
 Fri, 28 Jun 2019 12:22:28 GMT

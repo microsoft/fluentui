@@ -1236,7 +1236,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     }
 
 // @public (undocumented)
-export class FocusZone extends React.Component<IFocusZoneProps, {}> implements IFocusZone {
+export class FocusZone extends React.Component<IFocusZoneProps> implements IFocusZone {
     constructor(props: IFocusZoneProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1251,6 +1251,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     static getOuterZones(): number;
     // (undocumented)
     render(): JSX.Element;
+    setFocusAlignment(point: IPoint): void;
     }
 
 // @public (undocumented)
@@ -1791,6 +1792,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
     // (undocumented)
     theme?: ITheme;
+    tooltipHostProps?: ITooltipHostProps;
 }
 
 // @public (undocumented)
@@ -2588,6 +2590,7 @@ export interface IColumn {
     data?: any;
     fieldName?: string;
     filterAriaLabel?: string;
+    getValueKey?: (item?: any, index?: number, column?: IColumn) => string;
     groupAriaLabel?: string;
     headerClassName?: string;
     iconClassName?: string;
@@ -3344,8 +3347,10 @@ export interface IDetailsItemProps {
     columns?: IColumn[];
     groupNestingDepth?: number;
     indentWidth?: number | undefined;
+    rowWidth?: number;
     selection?: ISelection | undefined;
     selectionMode?: SelectionMode | undefined;
+    // @deprecated
     viewport?: IViewport | undefined;
 }
 
@@ -3381,7 +3386,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     dragDropEvents?: IDragDropEvents;
     // @deprecated
     enableShimmer?: boolean;
+    enableUpdateAnimations?: boolean;
     enterModalSelectionOnTouch?: boolean;
+    getCellValueKey?: (item?: any, index?: number, column?: IColumn) => string;
     getGroupHeight?: IGroupedListProps['getGroupHeight'];
     getKey?: (item: any, index?: number) => string;
     getRowAriaDescribedBy?: (item: any) => string;
@@ -3472,7 +3479,7 @@ export interface IDetailsRow {
 }
 
 // @public (undocumented)
-export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
+export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
     cellsByColumn?: {
         [columnKey: string]: React.ReactNode;
     };
@@ -3484,6 +3491,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     componentRef?: IRefObject<IDetailsRow>;
     dragDropEvents?: IDragDropEvents;
     dragDropHelper?: IDragDropHelper;
+    enableUpdateAnimations?: boolean;
     eventsToRegister?: {
         eventName: string;
         callback: (item?: any, index?: number, event?: any) => void;
@@ -3542,6 +3550,8 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     columns: IColumn[];
     columnStartIndex: number;
     compact?: boolean;
+    // (undocumented)
+    enableUpdateAnimations?: boolean;
     item: any;
     itemIndex: number;
     rowClassNames: {
@@ -3550,6 +3560,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
         shimmerIconPlaceholder: string;
         shimmer: string;
         cell: string;
+        cellAnimation: string;
         cellPadded: string;
         cellUnpadded: string;
         fields: string;
@@ -3601,12 +3612,15 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
     className?: string;
     compact?: boolean;
     cellStyleProps?: ICellStyleProps;
+    enableUpdateAnimations?: boolean;
 };
 
 // @public (undocumented)
 export interface IDetailsRowStyles {
     // (undocumented)
     cell: IStyle;
+    // (undocumented)
+    cellAnimation: IStyle;
     // (undocumented)
     cellMeasurer: IStyle;
     // (undocumented)
@@ -4523,6 +4537,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
 export interface IFocusZone {
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
+    setFocusAlignment(point: IPoint): void;
 }
 
 // @public
@@ -5650,7 +5665,7 @@ export interface IOverlayStyles {
 }
 
 // @public
-export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
+export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
 
 // @public (undocumented)
 export interface IPage<T = any> {

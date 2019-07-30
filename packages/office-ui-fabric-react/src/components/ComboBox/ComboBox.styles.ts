@@ -1,4 +1,14 @@
-import { FontSizes, FontWeights, IRawStyle, ITheme, concatStyleSets, getFocusStyle, HighContrastSelector } from '../../Styling';
+import {
+  FontSizes,
+  FontWeights,
+  IRawStyle,
+  ITheme,
+  concatStyleSets,
+  getFocusStyle,
+  HighContrastSelector,
+  IStyle,
+  getPlaceholderStyles
+} from '../../Styling';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
 import { IButtonStyles } from '../../Button';
@@ -201,6 +211,18 @@ export const getStyles = memoizeFunction(
     const ComboBoxCalloutBorderColor = palette.neutralLight;
     const ComboBoxOptionHeaderTextColor = semanticColors.menuHeader;
     const ComboBoxOptionDividerBorderColor = semanticColors.bodyDivider;
+
+    // placeholder style variables
+    const placeholderStyles: IStyle = {
+      color: semanticColors.inputPlaceholderText
+    };
+    const hoverPlaceholderStyles: IStyle = {
+      color: palette.neutralPrimary
+    };
+    const disabledPlaceholderStyles: IStyle = {
+      color: semanticColors.disabledText
+    };
+
     const ComboBoxRootHighContrastFocused = {
       color: 'HighlightText',
       borderColor: 'Highlight',
@@ -252,13 +274,6 @@ export const getStyles = memoizeFunction(
               display: 'inline-block',
               marginBottom: '8px'
             },
-            input: {
-              selectors: {
-                '::-ms-clear': {
-                  display: 'none'
-                }
-              }
-            },
             '&.is-open': {
               borderColor: ComboBoxRootBorderColorFocused,
               selectors: {
@@ -272,6 +287,7 @@ export const getStyles = memoizeFunction(
       rootHovered: {
         borderColor: ComboBoxRootBorderColorHovered,
         selectors: {
+          '.ms-ComboBox-Input': [{ color: palette.neutralDark }, getPlaceholderStyles(hoverPlaceholderStyles)],
           [HighContrastSelector]: {
             color: 'HighlightText',
             borderColor: 'Highlight',
@@ -304,20 +320,28 @@ export const getStyles = memoizeFunction(
 
       rootDisallowFreeForm: {},
 
-      input: {
-        backgroundColor: ComboBoxRootBackground,
-        color: ComboBoxRootTextColor,
-        boxSizing: 'border-box',
-        width: '100%',
-        height: '28px',
-        borderStyle: 'none',
-        outline: 'none',
-        font: 'inherit',
-        textOverflow: 'ellipsis',
-        padding: '0'
-      },
+      input: [
+        getPlaceholderStyles(placeholderStyles),
+        {
+          backgroundColor: ComboBoxRootBackground,
+          color: ComboBoxRootTextColor,
+          boxSizing: 'border-box',
+          width: '100%',
+          height: '28px',
+          borderStyle: 'none',
+          outline: 'none',
+          font: 'inherit',
+          textOverflow: 'ellipsis',
+          padding: '0',
+          selectors: {
+            '::-ms-clear': {
+              display: 'none'
+            }
+          }
+        }
+      ],
 
-      inputDisabled: getDisabledStyles(theme),
+      inputDisabled: [getDisabledStyles(theme), getPlaceholderStyles(disabledPlaceholderStyles)],
       errorMessage: {
         color: ComboBoxRootColorErrored
       },

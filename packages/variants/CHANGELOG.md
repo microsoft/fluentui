@@ -1,6 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Thu, 20 Jun 2019 12:20:14 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jul 2019 12:21:49 GMT and should not be manually modified.
+
+## 6.15.1
+Mon, 22 Jul 2019 12:21:49 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).
 
 ## 6.15.0
 Thu, 20 Jun 2019 12:20:14 GMT

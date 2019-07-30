@@ -26,7 +26,7 @@ const COLUMNS: IColumn[] = [
     onRender: item => <Link href={item.url}>{item.url}</Link>
   },
   {
-    key: 'link',
+    key: 'defaultButton',
     name: 'Link',
     fieldName: 'url',
     minWidth: 100,

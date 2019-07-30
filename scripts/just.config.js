@@ -13,6 +13,7 @@ const { ts } = require('./tasks/ts');
 const { tslint } = require('./tasks/tslint');
 const { webpack, webpackDevServer } = require('./tasks/webpack');
 const { verifyApiExtractor, updateApiExtractor } = require('./tasks/api-extractor');
+const { validateChangeFiles } = require('./tasks/validate-change-files');
 const lintImports = require('./tasks/lint-imports');
 const prettier = require('./tasks/prettier');
 const bundleSizeCollect = require('./tasks/bundle-size-collect');
@@ -53,6 +54,7 @@ module.exports = function preset() {
   task('bundle-size-collect', bundleSizeCollect);
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
+  task('validate-change-files', validateChangeFiles);
   task('perf-test', perfTest);
   task('ts', () => {
     return argv().commonjs

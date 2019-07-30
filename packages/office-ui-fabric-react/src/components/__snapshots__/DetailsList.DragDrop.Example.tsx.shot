@@ -313,11 +313,30 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                   display: none;
                 }
                 &::placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   color: #666666;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   color: #666666;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #666666;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField1"
@@ -456,11 +475,30 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                   display: none;
                 }
                 &::placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   color: #666666;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   color: #666666;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  opacity: 1;
+                }
+                &::-ms-input-placeholder {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #666666;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField4"
@@ -572,7 +610,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
               role="row"
               style={
                 Object {
-                  "minWidth": 0,
+                  "minWidth": 100,
                 }
               }
             >
@@ -1190,7 +1228,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 100,
                             }
                           }
                         >
@@ -1592,7 +1630,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 100,
                             }
                           }
                         >
@@ -1994,7 +2032,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 100,
                             }
                           }
                         >
@@ -2396,7 +2434,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 100,
                             }
                           }
                         >
@@ -2798,7 +2836,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 100,
                             }
                           }
                         >
@@ -3200,7 +3238,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 100,
                             }
                           }
                         >
@@ -3602,7 +3640,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 100,
                             }
                           }
                         >
@@ -4004,7 +4042,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 100,
                             }
                           }
                         >
@@ -4406,7 +4444,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 100,
                             }
                           }
                         >
@@ -4808,7 +4846,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                           role="row"
                           style={
                             Object {
-                              "minWidth": 0,
+                              "minWidth": 100,
                             }
                           }
                         >

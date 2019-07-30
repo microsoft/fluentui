@@ -1,6 +1,27 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 24 Jun 2019 23:08:57 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jul 2019 12:21:49 GMT and should not be manually modified.
+
+## 6.19.6
+Mon, 22 Jul 2019 12:21:49 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).
+
+## 6.19.5
+Wed, 10 Jul 2019 00:26:15 GMT
+
+### Patches
+
+- DetailsList cell update animation
+
+## 6.19.4
+Mon, 08 Jul 2019 20:48:15 GMT
+
+### Patches
+
+- Fix version selector some more
 
 ## 6.19.3
 Mon, 24 Jun 2019 23:08:57 GMT

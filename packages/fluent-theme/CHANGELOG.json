@@ -2,6 +2,67 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.18",
+      "tag": "@uifabric/fluent-theme_v0.16.18",
+      "date": "Fri, 26 Jul 2019 12:22:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: Updates border, background, and text colors to semanticColors.",
+            "author": "Maxwell Rediker <13246181+maxwellred@users.noreply.github.com>",
+            "commit": "8b776519a764ad5a8606d1220d6ca845532fc719"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.17",
+      "tag": "@uifabric/fluent-theme_v0.16.17",
+      "date": "Mon, 22 Jul 2019 12:21:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).",
+            "author": "Makoto Morimoto <humbertomakotomorimoto@gmail.com>",
+            "commit": "541b30dfa57d13e783a46f02ed510caba6679b5d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.19.2` to `^6.19.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.50.2` to `^6.50.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.15.0` to `^6.15.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.195.3` to `^6.195.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.16",
+      "tag": "@uifabric/fluent-theme_v0.16.16",
+      "date": "Mon, 08 Jul 2019 20:48:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: Updates border, icon, and background color states per fluent toolkit",
+            "author": "Maxwell Rediker <13246181+maxwellred@users.noreply.github.com>",
+            "commit": "c169eb2fea2edf8c8f404e83a8866215ec7bfee2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.193.1` to `^6.194.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.15",
       "tag": "@uifabric/fluent-theme_v0.16.15",
       "date": "Wed, 26 Jun 2019 21:46:08 GMT",

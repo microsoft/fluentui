@@ -1,6 +1,20 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Wed, 12 Jun 2019 22:15:55 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Jul 2019 12:22:12 GMT and should not be manually modified.
+
+## 6.5.4
+Fri, 26 Jul 2019 12:22:12 GMT
+
+### Patches
+
+- Cherry-picked adding in 'multiple.png' from Fabric 7 in order to use icon du
+
+## 6.5.3
+Mon, 22 Jul 2019 12:21:49 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom (backport of #9798).
 
 ## 6.5.2
 Wed, 12 Jun 2019 22:15:55 GMT
