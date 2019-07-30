@@ -616,12 +616,12 @@ describe('ResizeGroup', () => {
     result = provider.scaleDataBasedOnMeasurementsInCache(getNewResizeGroupProps(1)); // starting size: 20
     expect(result).toEqual(dataArray[2]); // will go through dimensions 20 -> 30 -> 40 -> 30
 
-    // set the container size as 30.
+    // set the container size as 40.
     provider.getNextState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 40);
     result = provider.scaleDataBasedOnMeasurementsInCache(getNewResizeGroupProps(1));
     expect(result).toEqual(dataArray[3]); // will go through 20 -> 30 -> 40
 
-    // set the container size as 40.
+    // set the container size as 60.
     provider.getNextState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 60);
     result = provider.scaleDataBasedOnMeasurementsInCache(getNewResizeGroupProps(1));
     expect(result).toEqual(dataArray[4]); // will go through 20 -> 30 -> 40 -> 50, will not grow after 50
