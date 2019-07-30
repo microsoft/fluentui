@@ -14,6 +14,7 @@ import { hiddenContentStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styl
 
 // tslint:disable-next-line:no-any
 const styles: any = stylesImport;
+const screenReaderTextStyles = mergeStyles(hiddenContentStyle);
 
 export enum SuggestionItemType {
   header,
@@ -93,7 +94,6 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   public render(): JSX.Element {
     const { className, headerItemsProps, footerItemsProps, suggestionsAvailableAlertText } = this.props;
 
-    const screenReaderTextStyles = mergeStyles(hiddenContentStyle);
     const shouldAlertSuggestionsAvailableText =
       this.state.suggestions && this.state.suggestions.length > 0 && suggestionsAvailableAlertText;
 
