@@ -1,8 +1,0 @@
-{
-  "comment": "Tooltip: render tooltip only after the delay and make sure if provided `closeDelay` is bigger than `delay` not to flash the Tooltip.",
-  "type": "minor",
-  "packageName": "office-ui-fabric-react",
-  "email": "vibraga@microsoft.com",
-  "commit": "28b4e28c52a8d8b6554dd8d83316c954e15d4b1e",
-  "date": "2019-07-17T22:51:10.132Z"
-}

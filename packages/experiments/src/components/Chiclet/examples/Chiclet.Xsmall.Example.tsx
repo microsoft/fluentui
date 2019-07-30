@@ -8,6 +8,7 @@ export const ChicletXsmallExample: React.FunctionComponent<{}> = () => {
     <Chiclet
       url={SAMPLE_URL}
       title={'WordTest with a long title that will wrap around to the second line but not the third line'}
+      image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_16x1_5.svg"
       itemType="docx"
       size={ChicletSize.xSmall}
     />

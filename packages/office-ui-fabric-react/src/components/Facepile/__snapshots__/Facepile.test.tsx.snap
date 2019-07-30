@@ -39,6 +39,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
       role="listbox"
     >
       <li
+        aria-label="Annie Lindqvist"
         className=
             ms-Facepile-member
             {
@@ -52,6 +53,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
         role="option"
       >
         <div
+          aria-hidden={true}
           className=
               ms-Facepile-itemButton
               ms-Facepile-person
@@ -78,7 +80,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
           data-is-focusable={true}
           onMouseMove={[Function]}
           onMouseOut={[Function]}
-          role="option"
           title="Annie Lindqvist"
         >
           <div
@@ -161,6 +162,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
         </div>
       </li>
       <li
+        aria-label="Aaron Reid"
         className=
             ms-Facepile-member
             {
@@ -174,6 +176,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
         role="option"
       >
         <div
+          aria-hidden={true}
           className=
               ms-Facepile-itemButton
               ms-Facepile-person
@@ -200,7 +203,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
           data-is-focusable={true}
           onMouseMove={[Function]}
           onMouseOut={[Function]}
-          role="option"
           title="Aaron Reid"
         >
           <div
@@ -283,6 +285,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
         </div>
       </li>
       <li
+        aria-label="Alex Lundberg"
         className=
             ms-Facepile-member
             {
@@ -296,6 +299,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
         role="option"
       >
         <button
+          aria-hidden={true}
           className=
               ms-Button
               ms-Facepile-itemButton
@@ -364,7 +368,6 @@ exports[`Facepile renders Facepile correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseUp={[Function]}
-          role="option"
           title="Alex Lundberg"
           type="button"
         >

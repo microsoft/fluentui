@@ -1,6 +1,20 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jul 2019 12:27:56 GMT and should not be manually modified.
+
+## 7.2.9
+Wed, 24 Jul 2019 12:27:56 GMT
+
+### Patches
+
+- Update colors implementation info (elcraig@microsoft.com)
+
+## 7.2.8
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Patches
+
+- Fix IE 11 incompatible syntax (elcraig@microsoft.com)
 
 ## 7.2.7
 Wed, 17 Jul 2019 18:58:57 GMT

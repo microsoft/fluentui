@@ -2,6 +2,20 @@
   "name": "@uifabric/prettier-rules",
   "entries": [
     {
+      "date": "Mon, 22 Jul 2019 12:28:42 GMT",
+      "tag": "@uifabric/prettier-rules_v7.0.3",
+      "version": "7.0.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "moving to lerna",
+            "author": "kchau@microsoft.com",
+            "commit": "181d2d537ec5feaaed43f35412d6f2d8b523d690"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jul 2019 18:58:57 GMT",
       "tag": "@uifabric/prettier-rules_v7.0.3",
       "version": "7.0.3",

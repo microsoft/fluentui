@@ -1236,6 +1236,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   >
                     Apr
                   </button>
+                </div>
+                <div
+                  role="row"
+                >
                   <button
                     aria-label="May 2000"
                     aria-selected={false}
@@ -1288,6 +1292,10 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
                   >
                     Aug
                   </button>
+                </div>
+                <div
+                  role="row"
+                >
                   <button
                     aria-label="September 2000"
                     aria-selected={false}

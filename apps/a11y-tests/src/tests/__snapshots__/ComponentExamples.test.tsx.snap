@@ -1598,7 +1598,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<div class=\\"ms-BasePicker-text\\" role=\\"list\\">",
+              "text": "<div class=\\"ms-BasePicker-text\\" role=\\"list\\"><div class=\\"to-3\\" data-is-focusable=\\"true\\">To:</div><input aria-label=\\"People Picker\\" class=\\"ms-BasePicker-input\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\" autocomplete=\\"off\\" role=\\"combobox\\" value=\\"\\" autocapitalize=\\"off\\" data-lpignore=\\"true\\"></div>",
             },
           },
         },
@@ -1611,38 +1611,6 @@ Array [
     },
     "ruleId": "aria-required-children",
     "ruleIndex": 8,
-  },
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "input",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<input aria-label=\\"People Picker\\" class=\\"ms-BasePicker-input\\" aria-owns=\\"suggestion-list\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\" autocomplete=\\"off\\" role=\\"combobox\\" value=\\"\\" autocapitalize=\\"off\\" data-lpignore=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-owns=\\"suggestion-list\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-owns=\\"suggestion-list\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
   },
 ]
 `;
@@ -1667,7 +1635,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<div class=\\"ms-BasePicker-text\\" role=\\"list\\">",
+              "text": "<div class=\\"ms-BasePicker-text\\" role=\\"list\\"><div class=\\"to-3\\" data-is-focusable=\\"true\\">To:</div><input aria-label=\\"People Picker\\" class=\\"ms-BasePicker-input\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\" autocomplete=\\"off\\" role=\\"combobox\\" value=\\"\\" autocapitalize=\\"off\\" data-lpignore=\\"true\\"></div>",
             },
           },
         },
@@ -1681,6 +1649,13 @@ Array [
     "ruleId": "aria-required-children",
     "ruleIndex": 8,
   },
+]
+`;
+
+exports[`a11y test checks accessibility of Facepile (Facepile.AddFace.Example) 1`] = `Array []`;
+
+exports[`a11y test checks accessibility of Facepile (Facepile.Basic.Example) 1`] = `
+Array [
   Object {
     "kind": "fail",
     "level": "error",
@@ -1688,7 +1663,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "input",
+            "fullyQualifiedName": "button",
             "kind": "element",
           },
         ],
@@ -1699,7 +1674,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<input aria-label=\\"People Picker\\" class=\\"ms-BasePicker-input\\" aria-owns=\\"suggestion-list\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\" autocomplete=\\"off\\" role=\\"combobox\\" value=\\"\\" autocapitalize=\\"off\\" data-lpignore=\\"true\\">",
+              "text": "<button type=\\"button\\" data-is-focusable=\\"true\\" aria-hidden=\\"true\\" title=\\"Alex Lundberg\\" class=\\"ms-Button ms-Facepile-itemButton ms-Facepile-person ms-Button--facepile itemButton-19\\">",
             },
           },
         },
@@ -1707,20 +1682,51 @@ Array [
     ],
     "message": Object {
       "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-owns=\\"suggestion-list\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-owns=\\"suggestion-list\\".",
+- Focusable content should be disabled or be removed from the DOM.",
+      "text": "Fix all of the following: Focusable content should be disabled or be removed from the DOM.",
     },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
+    "ruleId": "aria-hidden-focus",
+    "ruleIndex": 6,
   },
 ]
 `;
 
-exports[`a11y test checks accessibility of Facepile (Facepile.AddFace.Example) 1`] = `Array []`;
-
-exports[`a11y test checks accessibility of Facepile (Facepile.Basic.Example) 1`] = `Array []`;
-
-exports[`a11y test checks accessibility of Facepile (Facepile.Overflow.Example) 1`] = `Array []`;
+exports[`a11y test checks accessibility of Facepile (Facepile.Overflow.Example) 1`] = `
+Array [
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "button",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" data-is-focusable=\\"true\\" aria-hidden=\\"true\\" title=\\"Alex Lundberg\\" class=\\"ms-Button ms-Facepile-itemButton ms-Facepile-person ms-Button--facepile itemButton-19\\">",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix all of the following:
+- Focusable content should be disabled or be removed from the DOM.",
+      "text": "Fix all of the following: Focusable content should be disabled or be removed from the DOM.",
+    },
+    "ruleId": "aria-hidden-focus",
+    "ruleIndex": 6,
+  },
+]
+`;
 
 exports[`a11y test checks accessibility of FloatingPicker/PeoplePicker (FloatingPeoplePicker.Basic.Example) 1`] = `Array []`;
 
@@ -3640,6 +3646,8 @@ exports[`a11y test checks accessibility of GroupedList (GroupedList.Basic.Exampl
 exports[`a11y test checks accessibility of GroupedList (GroupedList.Custom.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of HoverCard (HoverCard.Basic.Example) 1`] = `Array []`;
+
+exports[`a11y test checks accessibility of HoverCard (HoverCard.EventListenerTarget.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of HoverCard (HoverCard.InstantDismiss.Example) 1`] = `Array []`;
 
@@ -6318,7 +6326,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-Rating-button ratingButton-18 ms-Rating--small ratingStarIsSmall-7\\" id=\\"Rating15-star-0\\" disabled=\\"\\" role=\\"presentation\\" type=\\"button\\">",
+              "text": "<button class=\\"ms-Rating-button ratingButton-6 ms-Rating--small ratingStarIsSmall-7\\" id=\\"Rating15-star-0\\" role=\\"presentation\\" type=\\"button\\">",
             },
           },
         },
@@ -6350,7 +6358,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-Rating-button ratingButton-18 ms-Rating--small ratingStarIsSmall-7\\" id=\\"Rating15-star-1\\" disabled=\\"\\" role=\\"presentation\\" type=\\"button\\">",
+              "text": "<button class=\\"ms-Rating-button ratingButton-6 ms-Rating--small ratingStarIsSmall-7\\" id=\\"Rating15-star-1\\" role=\\"presentation\\" type=\\"button\\">",
             },
           },
         },
@@ -6382,7 +6390,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-Rating-button ratingButton-18 ms-Rating--small ratingStarIsSmall-7\\" id=\\"Rating15-star-2\\" data-is-current=\\"true\\" disabled=\\"\\" role=\\"presentation\\" type=\\"button\\">",
+              "text": "<button class=\\"ms-Rating-button ratingButton-6 ms-Rating--small ratingStarIsSmall-7\\" id=\\"Rating15-star-2\\" data-is-current=\\"true\\" role=\\"presentation\\" type=\\"button\\">",
             },
           },
         },
@@ -6414,7 +6422,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-Rating-button ratingButton-18 ms-Rating--small ratingStarIsSmall-7\\" id=\\"Rating15-star-3\\" disabled=\\"\\" role=\\"presentation\\" type=\\"button\\">",
+              "text": "<button class=\\"ms-Rating-button ratingButton-6 ms-Rating--small ratingStarIsSmall-7\\" id=\\"Rating15-star-3\\" role=\\"presentation\\" type=\\"button\\">",
             },
           },
         },
@@ -6446,7 +6454,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-Rating-button ratingButton-18 ms-Rating--small ratingStarIsSmall-7\\" id=\\"Rating15-star-4\\" disabled=\\"\\" role=\\"presentation\\" type=\\"button\\">",
+              "text": "<button class=\\"ms-Rating-button ratingButton-6 ms-Rating--small ratingStarIsSmall-7\\" id=\\"Rating15-star-4\\" role=\\"presentation\\" type=\\"button\\">",
             },
           },
         },
@@ -6619,6 +6627,70 @@ Array [
     },
     "ruleId": "aria-allowed-role",
     "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "#Rating12-star-0 > span",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<span id=\\"RatingLabel13-2.5\\" class=\\"ms-Rating-labelText labelText-9\\">2.5 of 5 stars selected</span>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- Document has multiple static elements with the same id attribute.",
+      "text": "Fix any of the following: Document has multiple static elements with the same id attribute.",
+    },
+    "ruleId": "duplicate-id",
+    "ruleIndex": 20,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "#Rating15-star-0 > span",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<span id=\\"RatingLabel16-2.5\\" class=\\"ms-Rating-labelText labelText-9\\">2.5 of 5 stars selected</span>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- Document has multiple static elements with the same id attribute.",
+      "text": "Fix any of the following: Document has multiple static elements with the same id attribute.",
+    },
+    "ruleId": "duplicate-id",
+    "ruleIndex": 20,
   },
 ]
 `;
