@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "ChoiceGroup: fix focusing on options and general cleanup",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "e0eac43d64115bca62712ac742d7dd6258672cf9",
+  "date": "2019-07-30T23:24:33.133Z"
+}
