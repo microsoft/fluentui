@@ -10,7 +10,7 @@ import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
 import { CodeSnippet } from '../CodeSnippet/index';
-import { ITextModel, transformExample, ITranspiledOutput, IEditorPreviewProps, IEditorProps } from '@uifabric/tsx-editor';
+import { ITextModel, transformExample, ITranspiledOutput, IEditorProps, EditorPreview } from '@uifabric/tsx-editor';
 import { getSetting } from '../../index2';
 
 export interface IExampleCardState {
@@ -38,7 +38,6 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   private _classNames: IProcessedStyleSet<IExampleCardStyles>;
   private readonly canRenderLiveEditor: boolean;
   private Editor: React.LazyExoticComponent<React.FunctionComponent<IEditorProps>>;
-  private EditorPreview: React.LazyExoticComponent<(props: IEditorPreviewProps) => JSX.Element>;
 
   constructor(props: IExampleCardProps) {
     super(props);
@@ -48,6 +47,12 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     };
     this.canRenderLiveEditor =
       getSetting('useEditor') === '1' && !isIE11() && transformExample(props.code!, 'placeholder').error === undefined;
+
+    if (this.canRenderLiveEditor) {
+      import('office-ui-fabric-react').then(Fabric => {
+        (window as any).Fabric = Fabric;
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -74,11 +79,14 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
           const { subComponentStyles } = classNames;
           const { codeButtons: codeButtonStyles } = subComponentStyles;
 
-          const exampleCardContent = (
-            <div className={classNames.example} data-is-scrollable={isScrollable}>
-              {children}
-            </div>
-          );
+          const exampleCardContent =
+            this.props.isCodeVisible && this.canRenderLiveEditor ? (
+              <EditorPreview id={this.props.title.replace(' ', '')} />
+            ) : (
+              <div className={classNames.example} data-is-scrollable={isScrollable}>
+                {children}
+              </div>
+            );
 
           const exampleCard = (
             <div className={css(classNames.root, isCodeVisible && 'is-codeVisible')}>
@@ -132,26 +140,17 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                   </div>
                 ))}
 
-              {(!isCodeVisible || !this.canRenderLiveEditor) &&
-                (activeCustomizations ? (
-                  <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
-                    <Customizer {...activeCustomizations}>
-                      <ThemeProvider scheme={_schemes[schemeIndex]}>
-                        <Stack styles={regionStyles}>
-                          {this.canRenderLiveEditor ? (
-                            <React.Suspense fallback={<div>Loading...</div>}>
-                              <this.EditorPreview error={this.state.error} id={this.props.title.replace(' ', '')} />
-                            </React.Suspense>
-                          ) : (
-                            exampleCardContent
-                          )}
-                        </Stack>
-                      </ThemeProvider>
-                    </Customizer>
-                  </CustomizerContext.Provider>
-                ) : (
-                  exampleCardContent
-                ))}
+              {activeCustomizations ? (
+                <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
+                  <Customizer {...activeCustomizations}>
+                    <ThemeProvider scheme={_schemes[schemeIndex]}>
+                      <Stack styles={regionStyles}>{exampleCardContent}</Stack>
+                    </ThemeProvider>
+                  </Customizer>
+                </CustomizerContext.Provider>
+              ) : (
+                exampleCardContent
+              )}
 
               {this._getDosAndDonts()}
             </div>
@@ -180,10 +179,10 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     }
   }
   private _editorOnChange = (editor: ITextModel) => {
-    import('@uifabric/tsx-editor').then(tsxEditor => {
-      tsxEditor.transpile(editor).then((output: ITranspiledOutput) => {
+    import('@uifabric/tsx-editor').then(editorModule => {
+      editorModule.transpile(editor).then((output: ITranspiledOutput) => {
         if (output.outputString) {
-          const evalCodeError = tsxEditor.evalCode(output.outputString, this.props.title.replace(' ', ''));
+          const evalCodeError = editorModule.evalCode(output.outputString, this.props.title.replace(' ', ''));
           this.setState({
             error: evalCodeError || undefined
           });
@@ -205,9 +204,8 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   };
 
   private _onToggleCodeClick = () => {
-    if (this.canRenderLiveEditor && !this.Editor && !this.EditorPreview) {
+    if (this.canRenderLiveEditor && !this.Editor) {
       this.Editor = React.lazy(() => import('@uifabric/tsx-editor/lib/components/Editor'));
-      this.EditorPreview = React.lazy(() => import('@uifabric/tsx-editor/lib/components/EditorPreview'));
     }
     if (this.props.onToggleEditor) {
       if (this.props.isCodeVisible) {
