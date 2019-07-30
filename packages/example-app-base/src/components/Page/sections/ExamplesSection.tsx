@@ -32,7 +32,7 @@ export const ExamplesSection: React.StatelessComponent<IExamplesSectionProps> = 
             const { view, ...exampleProps } = example;
             return (
               <div key={example.title + '-key'} className={styles.subSection}>
-                <ExampleCard {...exampleProps} onToggleEditor={handleEditorToggle} isCodeVisible={exampleProps.title === activeEditorTitle}>
+                <ExampleCard {...exampleProps} onToggleEditor={setActiveEditorTitle} isCodeVisible={exampleProps.title === activeEditorTitle}>
                   {view}
                 </ExampleCard>
               </div>
