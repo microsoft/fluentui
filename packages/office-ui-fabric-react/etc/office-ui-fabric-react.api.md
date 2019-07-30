@@ -494,7 +494,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 }
 
 // Warning: (ae-forgotten-export) The symbol "ICalloutState" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     // (undocumented)
@@ -657,7 +657,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     static defaultProps: IComboBoxProps;
     dismissMenu: () => void;
     // Warning: (ae-unresolved-inheritdoc-base) The @inheritDoc tag needs a TSDoc declaration reference; signature matching is not supported yet
-    //
+    // 
     // (undocumented)
     focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
     // (undocumented)
@@ -2842,7 +2842,7 @@ export interface IContextualMenuItem {
     data?: any;
     disabled?: boolean;
     // Warning: (ae-forgotten-export) The symbol "IMenuItemClassNames" needs to be exported by the entry point index.d.ts
-    //
+    // 
     // @deprecated
     getItemClassNames?: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string, dividerClassName?: string, iconClassName?: string, subMenuClassName?: string, primaryDisabled?: boolean) => IMenuItemClassNames;
     getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
@@ -2942,7 +2942,7 @@ export interface IContextualMenuListProps {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IWithResponsiveModeState" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public
 export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
     alignTargetEdge?: boolean;
@@ -2962,7 +2962,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
     // Warning: (ae-forgotten-export) The symbol "IContextualMenuClassNames" needs to be exported by the entry point index.d.ts
-    //
+    // 
     // @deprecated
     getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
     hidden?: boolean;
@@ -3740,7 +3740,7 @@ export interface IDialogFooterStyles {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IAccessiblePopupProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
     // @deprecated
@@ -3843,7 +3843,7 @@ export interface IDocumentCardActions {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardActionsBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActionsBase> {
     actions: IButtonProps[];
@@ -3886,7 +3886,7 @@ export interface IDocumentCardActivityPerson {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardActivityBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivityBase> {
     activity: string;
@@ -3925,7 +3925,7 @@ export interface IDocumentCardDetails {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardDetailsBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardDetailsProps extends React.Props<DocumentCardDetailsBase> {
     className?: string;
@@ -3984,7 +3984,7 @@ export interface IDocumentCardLocation {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardLocationBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocationBase> {
     ariaLabel?: string;
@@ -4014,7 +4014,7 @@ export interface IDocumentCardLogo {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardLogoBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogoBase> {
     className?: string;
@@ -4114,7 +4114,7 @@ export interface IDocumentCardStatus {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardStatusBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardStatusProps extends React.Props<DocumentCardStatusBase> {
     className?: string;
@@ -4156,7 +4156,7 @@ export interface IDocumentCardTitle {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardTitleBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitleBase> {
     className?: string;
@@ -4358,7 +4358,7 @@ export interface IExpandingCard {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IBaseCardProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public
 export interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExpandingCardStyles, IExpandingCardStyleProps> {
     compactCardHeight?: number;
@@ -4377,7 +4377,7 @@ export interface IExpandingCardState {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IBaseCardStyleProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IExpandingCardStyleProps extends IBaseCardStyleProps {
     compactCardHeight?: number;
@@ -4387,7 +4387,7 @@ export interface IExpandingCardStyleProps extends IBaseCardStyleProps {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IBaseCardStyles" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IExpandingCardStyles extends IBaseCardStyles {
     compactCard?: IStyle;
@@ -5719,7 +5719,7 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
 }
 
 // Warning: (ae-forgotten-export) The symbol "PanelBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     className?: string;
@@ -6884,7 +6884,7 @@ export interface ISpinButtonProps {
     keytipProps?: IKeytipProps;
     label?: string;
     // Warning: (ae-forgotten-export) The symbol "Position" needs to be exported by the entry point index.d.ts
-    //
+    // 
     // (undocumented)
     labelPosition?: Position;
     max?: number;
@@ -7500,16 +7500,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     value?: string;
 }
 
-// Warning: (ae-internal-missing-underscore) The name "ITextFieldSnapshot" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export interface ITextFieldSnapshot {
-    selection?: [number | null, number | null];
-}
-
-// Warning: (ae-internal-missing-underscore) The name "ITextFieldState" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
+// @public (undocumented)
 export interface ITextFieldState {
     errorMessage: string | JSX.Element;
     isFocused: boolean;
@@ -7783,7 +7774,7 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IKeytipDataProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public
 export class KeytipData extends React.Component<IKeytipDataProps & IRenderComponent<{}>, {}> {
     // (undocumented)
@@ -7811,7 +7802,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     // (undocumented)
     getCurrentSequence(): string;
     // Warning: (ae-forgotten-export) The symbol "KeytipTree" needs to be exported by the entry point index.d.ts
-    //
+    // 
     // (undocumented)
     getKeytipTree(): KeytipTree;
     processInput(key: string, ev?: React.KeyboardEvent<HTMLElement>): void;
@@ -7853,7 +7844,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     }
 
 // Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export class LayerHost extends React.Component<ILayerHostProps> {
     // (undocumented)
@@ -9187,9 +9178,6 @@ export const Text: React.StatelessComponent<ITextProps>;
 // @public (undocumented)
 export const TextField: React.StatelessComponent<ITextFieldProps>;
 
-// Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldState" which is marked as @internal
-// Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldSnapshot" which is marked as @internal
-//
 // @public (undocumented)
 export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState> implements ITextField {
     constructor(props: ITextFieldProps);
@@ -9353,10 +9341,6 @@ export * from "@uifabric/foundation";
 export * from "@uifabric/icons";
 export * from "@uifabric/styling";
 export * from "@uifabric/utilities";
-
-// Warnings were encountered during analysis:
-//
-// lib/components/ColorPicker/ColorPicker.base.d.ts:8:9 - (ae-forgotten-export) The symbol "IRGBHex" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

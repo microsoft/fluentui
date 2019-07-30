@@ -19,7 +19,7 @@ const classNames = mergeStyleSets({
   }
 });
 
-interface IHoverCardExampleState {
+export interface IHoverCardExampleState {
   target: HTMLElement | null;
   eventListenerTarget: HTMLElement | null;
 }
