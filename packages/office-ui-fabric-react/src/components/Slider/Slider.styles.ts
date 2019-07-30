@@ -118,7 +118,6 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         background: 'transparent',
         border: 'none',
         flexGrow: 1,
-        // lineHeight: 28,
         display: 'flex',
         alignItems: 'center',
         selectors: {
@@ -329,8 +328,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       classNames.valueLabel,
       {
         flexShrink: 1,
-        // width: 30,
-        lineHeight: '1' // using a string here meaning it's relative to the size of the font
+        lineHeight: '1'
       },
       vertical
         ? {
@@ -339,9 +337,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
             width: 40
           }
         : {
-            // margin: '0 8px',
             whiteSpace: 'nowrap'
-            // width: 40
           }
     ]
   };
