@@ -43,7 +43,7 @@ export function transformExample(example: string, id: string) {
    * error since the import is not supported.
    */
   while ((temp = importPattern.exec(example))) {
-    if (!/office-ui-fabric-react/.test(temp[0])) {
+    if (!/^office-ui-fabric-react/.test(temp[0])) {
       output.error = 'error: unsupported imports';
     } else {
       imports.push(temp[0]);
@@ -60,25 +60,21 @@ export function transformExample(example: string, id: string) {
     temp = identifierPattern.exec(imp);
     if (temp !== null) {
       temp[0].split(',').forEach((ident: string) => {
-        ident.replace('\n', '');
-        ident.replace(' ', '');
-        identifiers.push(ident);
+        identifiers.push(ident.replace(/\s/g, ''));
       });
     }
     example = example.replace(imp, '');
   });
 
   // If there are exports in the code then they will be removed since they are not supported.
-  while (/export/.test(example)) {
-    example = example.replace('export', '');
-  }
+  example = example.replace(/^export /gm, '');
 
   /**
    * adding line to render React and adding identifiers.
    */
   example =
     'const {' +
-    identifiers.map((identifier: string) => identifier) +
+    identifiers.join(', ') +
     ', Fabric } = window.Fabric;\n' +
     example +
     `
