@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 29 Jul 2019 12:26:00 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jul 2019 12:28:32 GMT and should not be manually modified.
+
+## 7.18.1
+Tue, 30 Jul 2019 12:28:32 GMT
+
+### Patches
+
+- TeachingBubble: Fix primary button high contrast styling issues. (Humberto.Morimoto@microsoft.com)
+,- Dropdown: Panel now dismisses in small widths (bhdev@outlook.com)
+,- Separate the anchor for the card from card's hover target ('xingwa@microsoft.com')
 
 ## 7.18.0
 Mon, 29 Jul 2019 12:26:00 GMT

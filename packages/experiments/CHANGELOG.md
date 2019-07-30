@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 29 Jul 2019 12:26:00 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jul 2019 12:28:32 GMT and should not be manually modified.
+
+## 7.9.1
+Tue, 30 Jul 2019 12:28:32 GMT
+
+### Patches
+
+- Button: Making Button variants themable by using createComponent instead of wrappers. (Humberto.Morimoto@microsoft.com)
 
 ## 7.9.0
 Mon, 29 Jul 2019 12:26:00 GMT
