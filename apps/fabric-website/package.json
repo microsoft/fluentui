@@ -40,7 +40,7 @@
     "react-dom": "~16.6.3",
     "react-highlight": "0.10.0",
     "write-file-webpack-plugin": "^4.1.0",
-    "@uifabric/build": "*"
+    "@uifabric/build": "6.0.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
@@ -55,7 +55,7 @@
     "@uifabric/theme-samples": "^0.1.9",
     "react-app-polyfill": "~1.0.1",
     "json-loader": "^0.5.7",
-    "office-ui-fabric-react": "^6.195.6",
+    "office-ui-fabric-react": "^6.196.0",
     "tslib": "^1.7.1",
     "whatwg-fetch": "2.0.4"
   }

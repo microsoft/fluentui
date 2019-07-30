@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 29 Jul 2019 12:22:47 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jul 2019 12:22:57 GMT and should not be manually modified.
+
+## 6.196.0
+Tue, 30 Jul 2019 12:22:57 GMT
+
+### Minor changes
+
+- Adding tooltipHostProps as a prop to the Breadcrumb component. (Heather.HoaglundBiron@microsoft.com)
+,- "FocusZone: Add setFocusAlignment public method to Force horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on the last horizontal motion." (nasabek@microsoft.com)
+
+### Patches
+
+- Fix cell animations so they only trigger on cell key changes (tmichon@microsoft.com)
 
 ## 6.195.6
 Mon, 29 Jul 2019 12:22:47 GMT

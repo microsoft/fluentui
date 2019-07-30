@@ -40,7 +40,7 @@
     "react": "~16.6.3",
     "react-dom": "~16.6.3",
     "react-test-renderer": "^16.3.0",
-    "@uifabric/build": "*"
+    "@uifabric/build": "6.0.0"
   },
   "dependencies": {
     "@uifabric/set-version": "^1.1.3"

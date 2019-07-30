@@ -22,7 +22,7 @@
     "@types/jest": "23.0.0",
     "@uifabric/prettier-rules": "^1.0.2",
     "@uifabric/tslint-rules": "^1.0.2",
-    "@uifabric/build": "*"
+    "@uifabric/build": "6.0.0"
   },
   "dependencies": {
     "tslib": "^1.7.1"
