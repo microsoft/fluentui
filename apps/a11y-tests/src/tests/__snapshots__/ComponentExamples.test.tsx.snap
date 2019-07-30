@@ -1598,7 +1598,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<div class=\\"ms-BasePicker-text\\" role=\\"list\\">",
+              "text": "<div class=\\"ms-BasePicker-text\\" role=\\"list\\"><div class=\\"to-3\\" data-is-focusable=\\"true\\">To:</div><input aria-label=\\"People Picker\\" class=\\"ms-BasePicker-input\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\" autocomplete=\\"off\\" role=\\"combobox\\" value=\\"\\" autocapitalize=\\"off\\" data-lpignore=\\"true\\"></div>",
             },
           },
         },
@@ -1611,38 +1611,6 @@ Array [
     },
     "ruleId": "aria-required-children",
     "ruleIndex": 8,
-  },
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "input",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<input aria-label=\\"People Picker\\" class=\\"ms-BasePicker-input\\" aria-owns=\\"suggestion-list\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\" autocomplete=\\"off\\" role=\\"combobox\\" value=\\"\\" autocapitalize=\\"off\\" data-lpignore=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-owns=\\"suggestion-list\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-owns=\\"suggestion-list\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
   },
 ]
 `;
@@ -1667,7 +1635,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<div class=\\"ms-BasePicker-text\\" role=\\"list\\">",
+              "text": "<div class=\\"ms-BasePicker-text\\" role=\\"list\\"><div class=\\"to-3\\" data-is-focusable=\\"true\\">To:</div><input aria-label=\\"People Picker\\" class=\\"ms-BasePicker-input\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\" autocomplete=\\"off\\" role=\\"combobox\\" value=\\"\\" autocapitalize=\\"off\\" data-lpignore=\\"true\\"></div>",
             },
           },
         },
@@ -1680,38 +1648,6 @@ Array [
     },
     "ruleId": "aria-required-children",
     "ruleIndex": 8,
-  },
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "input",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<input aria-label=\\"People Picker\\" class=\\"ms-BasePicker-input\\" aria-owns=\\"suggestion-list\\" aria-expanded=\\"false\\" aria-haspopup=\\"true\\" autocomplete=\\"off\\" role=\\"combobox\\" value=\\"\\" autocapitalize=\\"off\\" data-lpignore=\\"true\\">",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-owns=\\"suggestion-list\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-owns=\\"suggestion-list\\".",
-    },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
   },
 ]
 `;
