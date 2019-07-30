@@ -211,9 +211,9 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     }
     if (this.props.onToggleEditor) {
       if (this.props.isCodeVisible) {
-        this.props.onToggleEditor('', this.Editor);
+        this.props.onToggleEditor('');
       } else {
-        this.props.onToggleEditor(this.props.title, this.Editor);
+        this.props.onToggleEditor(this.props.title);
       }
     }
   };
