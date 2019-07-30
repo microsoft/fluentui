@@ -1552,7 +1552,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="name"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1666,7 +1665,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modified"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1723,7 +1721,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modifiedby"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1780,7 +1777,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="filesize"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2157,7 +2153,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="name"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2271,7 +2266,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modified"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2328,7 +2322,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modifiedby"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2385,7 +2378,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="filesize"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2762,7 +2754,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="name"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2876,7 +2867,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modified"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2933,7 +2923,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modifiedby"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2990,7 +2979,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="filesize"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3367,7 +3355,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="name"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3481,7 +3468,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modified"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3538,7 +3524,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modifiedby"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3595,7 +3580,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="filesize"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3972,7 +3956,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="name"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4086,7 +4069,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modified"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4143,7 +4125,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modifiedby"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4200,7 +4181,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="filesize"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4577,7 +4557,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="name"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4691,7 +4670,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modified"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4748,7 +4726,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modifiedby"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4805,7 +4782,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="filesize"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -5182,7 +5158,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="name"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -5296,7 +5271,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modified"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -5353,7 +5327,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modifiedby"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -5410,7 +5383,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="filesize"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -5787,7 +5759,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="name"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -5901,7 +5872,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modified"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -5958,7 +5928,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modifiedby"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -6015,7 +5984,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="filesize"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -6392,7 +6360,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="name"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -6506,7 +6473,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modified"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -6563,7 +6529,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modifiedby"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -6620,7 +6585,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="filesize"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -6997,7 +6961,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="name"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -7111,7 +7074,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modified"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -7168,7 +7130,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="modifiedby"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -7225,7 +7186,6 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="filesize"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
