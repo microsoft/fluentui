@@ -2,10 +2,11 @@ import { ITooltipStyleProps, ITooltipStyles } from './Tooltip.types';
 import { AnimationClassNames } from '../../Styling';
 
 export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
-  const { className, gapSpace = 0, maxWidth, theme } = props;
+  const { className, beakWidth = 16, gapSpace = 0, maxWidth, theme } = props;
   const { palette, fonts, effects } = theme;
 
-  const tooltipGapSpace = -15 - gapSpace;
+  // The math here is done to account for the 45 degree rotation of the beak
+  const tooltipGapSpace = -(Math.sqrt((beakWidth * beakWidth) / 2) + gapSpace);
 
   return {
     root: [

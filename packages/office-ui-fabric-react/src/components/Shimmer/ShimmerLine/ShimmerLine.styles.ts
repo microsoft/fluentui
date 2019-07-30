@@ -33,6 +33,7 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
         borderTopStyle: 'solid',
         borderBottomStyle: 'solid',
         borderColor: semanticColors.bodyBackground,
+        borderWidth: 0,
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'Window',

@@ -238,6 +238,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         columnStartIndex={showCheckbox ? 1 : 0}
         onRenderItemColumn={onRenderItemColumn}
         getCellValueKey={getCellValueKey}
+        enableUpdateAnimations={enableUpdateAnimations}
       />
     );
 

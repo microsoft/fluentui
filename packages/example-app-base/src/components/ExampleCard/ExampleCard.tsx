@@ -50,6 +50,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
     if (this.canRenderLiveEditor) {
       import('office-ui-fabric-react').then(Fabric => {
+        // tslint:disable-next-line: no-any
         (window as any).Fabric = Fabric;
       });
     }

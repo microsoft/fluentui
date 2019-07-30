@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { Button } from './Button';
-import { IButtonComponent, IButtonTokenReturnType } from './Button.types';
-import { ButtonVariantsType } from './ButtonVariants.types';
+import { createComponent } from '@uifabric/foundation';
+import { useButtonState as state } from '../Button.state';
+import { ButtonStyles as styles } from '../Button.styles';
+import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from '../Button.types';
+import { ButtonView } from '../Button.view';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { palette, semanticColors } = theme;
@@ -12,13 +14,19 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     backgroundColorPressed: semanticColors.buttonBackgroundPressed,
     borderRadius: 0,
     borderWidth: 0,
+    childrenGap: 8,
     contentPadding: '0px 8px',
     color: semanticColors.buttonText,
     colorHovered: semanticColors.buttonTextHovered,
     colorPressed: semanticColors.buttonTextPressed,
+    cursor: 'pointer',
     highContrastBorderColor: 'transparent',
     highContrastBorderColorHovered: 'transparent',
     highContrastBorderColorPressed: 'transparent',
+    highContrastColorHovered: 'Highlight',
+    highContrastColorPressed: 'Highlight',
+    highContrastIconColorHovered: 'Highlight',
+    highContrastIconColorPressed: 'Highlight',
     iconColor: semanticColors.buttonText,
     iconColorHovered: palette.themeDarkAlt,
     iconColorPressed: palette.themeDark,
@@ -38,19 +46,27 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
     color: semanticColors.buttonTextDisabled,
     colorHovered: semanticColors.buttonTextDisabled,
     colorPressed: semanticColors.buttonTextDisabled,
+    cursor: 'default',
+    highContrastColor: 'GrayText',
+    highContrastColorHovered: 'GrayText',
+    highContrastColorPressed: 'GrayText',
+    highContrastIconColor: 'GrayText',
+    highContrastIconColorHovered: 'GrayText',
+    highContrastIconColorPressed: 'GrayText',
     iconColor: semanticColors.disabledBodySubtext,
     iconColorHovered: semanticColors.disabledBodySubtext,
     iconColorPressed: semanticColors.disabledBodySubtext
   };
 };
 
-export const CommandBarButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
+const CommandBarButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
   baseTokens,
   props.disabled && disabledTokens
 ];
 
-export const CommandBarButton: ButtonVariantsType = props => {
-  const { text, iconProps, ...rest } = props;
-
-  return <Button content={text} icon={iconProps} tokens={CommandBarButtonTokens} {...rest} />;
-};
+export const CommandBarButton: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
+  displayName: 'CommandBarButton',
+  state,
+  styles,
+  tokens: CommandBarButtonTokens
+});

@@ -195,7 +195,7 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         }
       }
     ],
-    linkContent: [classNames.linkContent],
+    linkContent: [classNames.linkContent, { flex: '0 1 100%' }],
     text: [
       classNames.text,
       {
