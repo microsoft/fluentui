@@ -300,8 +300,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
         />
       );
     }
-    console.log(ticks);
-    // return html here
     return ticks;
   }
 
