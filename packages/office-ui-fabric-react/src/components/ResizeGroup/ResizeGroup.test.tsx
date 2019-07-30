@@ -154,6 +154,131 @@ describe('ResizeGroup', () => {
       expect(measuredElementWidthStub.callCount).toEqual(0);
     });
 
+    it('Scales data correctly when all measurements are in cache', () => {
+      const dataArray = [{ cacheKey: '1' }, { cacheKey: '2' }, { cacheKey: '3' }, { cacheKey: '4' }, { cacheKey: '5' }];
+
+      const measurementCache = getMeasurementCache();
+      measurementCache.addMeasurementToCache(dataArray[0], 10);
+      measurementCache.addMeasurementToCache(dataArray[1], 20);
+      measurementCache.addMeasurementToCache(dataArray[2], 30);
+      measurementCache.addMeasurementToCache(dataArray[3], 40);
+      measurementCache.addMeasurementToCache(dataArray[4], 50);
+      const provider = getNextResizeGroupStateProvider(measurementCache);
+
+      const resizeGroupState: IResizeGroupState = {};
+      const measuredElementWidthStub = sinon.stub();
+      const resizeGroupProps = getRequiredResizeGroupProps();
+
+      function getNewResizeGroupProps(index: number) {
+        return {
+          data: dataArray[index],
+          onReduceData: (data: any) => {
+            const i = dataArray.findIndex(el => data.cacheKey === el.cacheKey);
+            if (i > 0) {
+              return dataArray[i - 1];
+            } else {
+              return undefined;
+            }
+          },
+          onGrowData: (data: any) => {
+            const i = dataArray.findIndex(el => data.cacheKey === el.cacheKey);
+            if (i >= 0 && i < dataArray.length) {
+              return dataArray[i + 1];
+            } else {
+              return undefined;
+            }
+          },
+          onRenderData: sinon.stub()
+        };
+      }
+
+      let result;
+      // set the container size as 32.
+      provider.getNextState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 32);
+      result = provider.scaleDataBasedOnMeasurementsInCache(getNewResizeGroupProps(1)); // starting size: 20
+      expect(result).toEqual(dataArray[2]); // will go through dimensions 20 -> 30 -> 40 -> 30
+
+      // set the container size as 30.
+      provider.getNextState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 40);
+      result = provider.scaleDataBasedOnMeasurementsInCache(getNewResizeGroupProps(1));
+      expect(result).toEqual(dataArray[3]); // will go through 20 -> 30 -> 40
+
+      // set the container size as 40.
+      provider.getNextState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 60);
+      result = provider.scaleDataBasedOnMeasurementsInCache(getNewResizeGroupProps(1));
+      expect(result).toEqual(dataArray[4]); // will go through 20 -> 30 -> 40 -> 50, will not grow after 50
+
+      // set the container size as 25.
+      provider.getNextState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 25);
+      result = provider.scaleDataBasedOnMeasurementsInCache(getNewResizeGroupProps(4)); // starting size: 50
+      expect(result).toEqual(dataArray[1]); // will go through 50 -> 40 -> 30 -> 20
+
+      // set the container size as 5.
+      provider.getNextState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 5);
+      result = provider.scaleDataBasedOnMeasurementsInCache(getNewResizeGroupProps(4)); // starting size: 50
+      expect(result).toEqual(dataArray[0]); // will go through 50 -> 40 -> 30 -> 20 -> 10, cannot shrink more.
+    });
+
+    it('Returns original data when not all measurements are in cache', () => {
+      const dataArray = [{ cacheKey: '1' }, { cacheKey: '2' }, { cacheKey: '3' }, { cacheKey: '4' }, { cacheKey: '5' }];
+
+      const measurementCache = getMeasurementCache();
+
+      // dataArray[2] is absent from the cache.
+      measurementCache.addMeasurementToCache(dataArray[0], 10);
+      measurementCache.addMeasurementToCache(dataArray[1], 20);
+      measurementCache.addMeasurementToCache(dataArray[3], 40);
+      measurementCache.addMeasurementToCache(dataArray[4], 50);
+      const provider = getNextResizeGroupStateProvider(measurementCache);
+
+      const resizeGroupState: IResizeGroupState = {};
+      const measuredElementWidthStub = sinon.stub();
+      const resizeGroupProps = getRequiredResizeGroupProps();
+
+      function getNewResizeGroupProps(index: number) {
+        return {
+          data: dataArray[index],
+          onReduceData: (data: any) => {
+            const i = dataArray.findIndex(el => data.cacheKey === el.cacheKey);
+            if (i > 0) {
+              return dataArray[i - 1];
+            } else {
+              return undefined;
+            }
+          },
+          onGrowData: (data: any) => {
+            const i = dataArray.findIndex(el => data.cacheKey === el.cacheKey);
+            if (i >= 0 && i < dataArray.length) {
+              return dataArray[i + 1];
+            } else {
+              return undefined;
+            }
+          }
+        };
+      }
+      let result;
+
+      // set the container size as 32.
+      provider.getNextState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 32);
+      result = provider.scaleDataBasedOnMeasurementsInCache(getNewResizeGroupProps(1)); // starting size: 20
+      expect(result).toEqual(dataArray[1]); // will try to grow to 30, but will not find it in cache.
+
+      // set the container size as 25
+      provider.getNextState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 25);
+      result = provider.scaleDataBasedOnMeasurementsInCache(getNewResizeGroupProps(0)); // starting size: 10
+      expect(result).toEqual(dataArray[0]); // will go from 10 -> 20 -> 30, but will not find it in cache.
+
+      // set the container size as 25
+      provider.getNextState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 25);
+      result = provider.scaleDataBasedOnMeasurementsInCache(getNewResizeGroupProps(3)); // starting size: 40
+      expect(result).toEqual(dataArray[3]); // will go from 40 -> 30 but will not find it in cache.
+
+      // set the container size as 45
+      provider.getNextState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 45);
+      result = provider.scaleDataBasedOnMeasurementsInCache(getNewResizeGroupProps(4)); // starting size: 50
+      expect(result).toEqual(dataArray[3]); // will go from 50 -> 40, will find it in cache.
+    });
+
     it('sets dataToMeasure when the current data is in the cache but the onReduceData result is not in the cache', () => {
       const dataArray = [{ cacheKey: '5' }, { cacheKey: '4' }];
 

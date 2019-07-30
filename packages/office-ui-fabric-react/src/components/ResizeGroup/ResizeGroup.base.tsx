@@ -195,40 +195,63 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    * @param onReduceData - Function that transforms the data into something that should render with less width/height.
    * @param onGrowData - Function that transforms the data into something that may take up more space when rendering.
    */
-  function scaleDataBasedOnMeasurementsInCache(data: any, onReduceData: (prevData: any) => any, onGrowData?: (prevData: any) => any): any {
+  function scaleDataBasedOnMeasurementsInCache(props: IResizeGroupProps): any {
+    const { data, onReduceData, onGrowData } = props;
+
+    if (_containerDimension === undefined) {
+      return { ...data };
+    }
+
     let scaledData = { ...data };
     let measuredDimension;
     let grow = true;
+
     do {
       measuredDimension = _measurementCache.getCachedMeasurement(scaledData);
       if (measuredDimension === undefined) {
         return { ...data };
       }
 
-      const nextScaledData;
-      if (grow && onGrowData && measuredDimension < _containerDimension!) {
-        nextScaledData = onGrowData(scaledData);
-      } else if (measuredDimension > _containerDimension!) {
+      let nextScaledData: any;
+      if (measuredDimension < _containerDimension) {
+        if (grow && onGrowData) {
+          // We will try to grow the data until it does not fit the container.
+          // No need to worry even if the next scaling step does not fit, we will shrink it then !
+          nextScaledData = onGrowData(scaledData);
+        } else {
+          // We cannot grow the data and scaledData actually fits in the container.
+          // Lets return this.
+          return scaledData;
+        }
+      } else if (measuredDimension > _containerDimension) {
         if (grow) {
+          // We are out of bounds now. We need to next shrink to fit the data inside the container.
+          // The grow flag is useful in letting us not be stuck in an infinite loop:
+          // grow, shrink, grow, shrink etc.
           grow = false;
         }
+
         nextScaledData = onReduceData(scaledData);
       } else {
-        break;
+        // measuredDimension == _containerDimension
+        return scaledData;
       }
 
-      if (nextScaledData == undefined) {
+      // We don't want to get stuck in an infinite render loop when there are no more
+      // scaling steps, so implementations of onGrowData/onReduceData should return undefined when
+      // there are no more scaling states to apply.
+      if (nextScaledData === undefined) {
         return scaledData;
       } else {
         scaledData = nextScaledData;
       }
-    } while (grow || measuredDimension > _containerDimension!);
+    } while (grow || measuredDimension > _containerDimension);
 
     return scaledData;
   }
 
   /**
-   * Handles an update to the container width/eheight. Should only be called when we knew the previous container width/height.
+   * Handles an update to the container width/height. Should only be called when we knew the previous container width/height.
    * @param newDimension - The new width/height of the container.
    * @param fullDimensionData - The initial data passed in as a prop to resizeGroup.
    * @param renderedData - The data that was rendered prior to the container size changing.
@@ -432,13 +455,9 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
       this.props.onGrowData === nextProps.onGrowData &&
       this.props.onReduceData === nextProps.onReduceData
     ) {
-      // The props have changed, but without affecting scaling. So, lets reapply the scaling we have done previously,
-      // to old props to the new props.
-      scaledNewData = this._nextResizeGroupStateProvider.scaleDataBasedOnMeasurementsInCache(
-        nextProps.data,
-        nextProps.onReduceData,
-        nextProps.onGrowData
-      );
+      // The props have changed, but without affecting scaling. So, lets reapply the scaling we have done
+      // to old props previously, to the new props.
+      scaledNewData = this._nextResizeGroupStateProvider.scaleDataBasedOnMeasurementsInCache(nextProps);
     }
 
     // If the scaledNewData's cacheKey is same as that of rendered data's cacheKey, that means it should be ok for us to
