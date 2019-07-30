@@ -188,7 +188,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     this.setState({ themeIndex: value.key as number });
   };
   private _onToggleCodeClick = () => {
-    if (!this.Editor && !this.EditorPreview) {
+    if (this.canRenderLiveEditor && !this.Editor && !this.EditorPreview) {
       this.Editor = React.lazy(() => import('@uifabric/tsx-editor/lib/components/Editor'));
       this.EditorPreview = React.lazy(() => import('@uifabric/tsx-editor/lib/components/EditorPreview'));
     }
