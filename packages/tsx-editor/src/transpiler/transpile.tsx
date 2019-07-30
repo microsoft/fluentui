@@ -24,9 +24,9 @@ export async function transpile(model: ITextModel): Promise<ITranspiledOutput> {
 /**
  * Tranforms the code since the given code might have unsupported imports and then evals the code.
  *
- * @param {code} string
- * @param {divId} string
- * @returns {string | undefined}
+ * @param code - Code to transform and eval
+ * @param divId - `id` of the `div` element where the example will be rendered into after transforming
+ * @returns Returns undefined if the transform was successful, or the error message if it was unsuccessful.
  */
 export function evalCode(code: string, divId: string): string | undefined {
   try {
