@@ -90,8 +90,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       {
         display: 'block',
         position: 'relative',
-        color: semanticColors.bodyText,
-        backgroundColor: semanticColors.bodyBackground
+        color: semanticColors.bodyText
       },
       isExpanded && 'is-expanded',
       isSelected && 'is-selected',
@@ -130,15 +129,15 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       },
       !isDisabled && {
         selectors: {
-          '.ms-Nav-compositeLink:hover &': {
-            backgroundColor: palette.neutralLighterAlt,
+          '$compositeLink:hover &': {
+            backgroundColor: semanticColors.bodyBackgroundHovered,
             color: semanticColors.bodyText
           }
         }
       },
       isSelected && {
         color: palette.themePrimary,
-        backgroundColor: palette.neutralLighter,
+        backgroundColor: semanticColors.bodyBackgroundChecked,
         selectors: {
           '&:after': {
             borderLeft: `2px solid ${palette.themePrimary}`,
