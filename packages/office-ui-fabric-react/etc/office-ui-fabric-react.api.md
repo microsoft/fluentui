@@ -2075,6 +2075,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
     preventDismissOnScroll?: boolean;
     role?: string;
     setInitialFocus?: boolean;
+    shouldRestoreFocus?: boolean;
     style?: React.CSSProperties;
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
@@ -2692,6 +2693,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
     // @deprecated
     onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
+    onMenuDismiss?: () => void;
     onMenuDismissed?: () => void;
     onMenuOpen?: () => void;
     onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
@@ -2701,6 +2703,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
     options: IComboBoxOption[];
     persistMenu?: boolean;
     scrollSelectedToTop?: boolean;
+    shouldRestoreFocus?: boolean;
     styles?: Partial<IComboBoxStyles>;
     text?: string;
     theme?: ITheme;
