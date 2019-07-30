@@ -10,7 +10,7 @@ export const CalloutContentStyles = (props: ICalloutContentStyleProps): Partial<
       borderWidth: 0,
       boxShadow: effects.elevation16,
       selectors: {
-        '&.ms-Tooltip': {
+        '&.ms-Tooltip, &.ms-ComboBox-callout': {
           boxShadow: effects.elevation8
         }
       }
