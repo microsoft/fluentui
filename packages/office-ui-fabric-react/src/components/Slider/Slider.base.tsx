@@ -65,7 +65,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       theme,
       originFromZero,
       marks,
-      thumblabel
+      thumbLabel
     } = this.props;
     const value = this.value;
     const renderedValue = this.renderedValue;
@@ -114,8 +114,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               {originFromZero && (
                 <span className={css(classNames.zeroTick)} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
               )}
-              {typeof marks === 'boolean' && marks && this._addTickmarks(css(classNames.regularTick))}
-              {thumblabel ? (
+              {marks && this._addTickmarks(css(classNames.regularTick))}
+              {thumbLabel ? (
                 <TooltipHost
                   content={'' + value}
                   id={this._hostId}
@@ -167,7 +167,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               )}
             </div>
           </div>
-          {showValue && !thumblabel && (
+          {showValue && !thumbLabel && (
             <Label className={classNames.valueLabel} disabled={disabled}>
               {valueFormat ? valueFormat(value!) : value}
             </Label>
@@ -281,7 +281,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     return currentPosition;
   }
 
-  private _addTickmarks(cssRegularTickClassNames: string | undefined) {
+  private _addTickmarks(cssRegularTickClassNames: string | undefined): [] {
     const { min, max, step, vertical } = this.props;
     if (min === undefined || max === undefined || step === undefined) {
       return [];
