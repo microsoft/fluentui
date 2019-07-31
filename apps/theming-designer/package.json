@@ -17,7 +17,7 @@
     "@types/webpack-env": "1.13.0",
     "@uifabric/prettier-rules": ">=1.0.2 <2.0.0",
     "@uifabric/tslint-rules": ">=1.0.2 <2.0.0",
-    "@uifabric/build": "*"
+    "@uifabric/build": "6.0.0"
   },
   "dependencies": {
     "@uifabric/react-cards": "0.5.2",
@@ -29,7 +29,7 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "es6-promise": "^4.1.0",
     "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": ">=6.195.6 <7.0.0",
+    "office-ui-fabric-react": ">=6.196.0 <7.0.0",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",
     "typescript": "2.8.4",

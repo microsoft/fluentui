@@ -23,7 +23,7 @@ async function testComponent(component: { name: string; pageName: string; elem: 
 
     // Match the 'errors' section with snapshot
     expect(dehydrateSarifReport(sarifReport)).toMatchSnapshot();
-  });
+  }, 20000);
 }
 
 function getControlAndPageName(exampleFilePath: string): [string, string] {

@@ -2,6 +2,20 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Wed, 31 Jul 2019 12:20:38 GMT",
+      "tag": "@uifabric/fluent-theme_v0.16.19",
+      "version": "0.16.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SwatchColorPicker: updated web fluent styles per toolkit",
+            "author": "v-mare@microsoft.com",
+            "commit": "5fe6ef45a1f1d0a972a8da017f6035402827d8c8"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.18",
       "tag": "@uifabric/fluent-theme_v0.16.18",
       "date": "Fri, 26 Jul 2019 12:22:12 GMT",
