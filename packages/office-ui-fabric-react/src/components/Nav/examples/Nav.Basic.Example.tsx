@@ -9,6 +9,7 @@ export const NavBasicExample: React.StatelessComponent = () => {
       collapsedStateText="collapsed"
       selectedKey="key3"
       expandButtonAriaLabel="Expand or collapse"
+      selectedAriaLabel="Selected"
       styles={{
         root: {
           width: 208,

@@ -113,6 +113,11 @@ export interface INavProps {
    * @deprecated Removed at v1.0.0.
    **/
   collapsedStateText?: string;
+
+  /**
+   * (Optional) The nav link selected state aria label.
+   */
+  selectedAriaLabel?: string;
 }
 
 /**

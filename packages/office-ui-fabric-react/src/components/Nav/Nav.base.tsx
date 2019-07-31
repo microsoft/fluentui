@@ -74,11 +74,12 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   };
 
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number): JSX.Element {
-    const { styles, groups, theme, onRenderLink = this._onRenderLink, linkAs: LinkAs = ActionButton } = this.props;
+    const { styles, groups, theme, onRenderLink = this._onRenderLink, linkAs: LinkAs = ActionButton, selectedAriaLabel } = this.props;
     const isLinkWithIcon = link.icon || link.iconProps;
+    const isSelectedLink = this._isLinkSelected(link);
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      isSelected: this._isLinkSelected(link),
+      isSelected: isSelectedLink,
       isDisabled: link.disabled,
       isButtonEntry: link.onClick && !link.forceAnchor,
       leftPadding: _indentationSize * nestingLevel + _baseIndent + (isLinkWithIcon ? 0 : 24),
@@ -87,7 +88,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
-
+    const selectedStateAriaLabel = isSelectedLink && selectedAriaLabel ? selectedAriaLabel : undefined;
     return (
       <LinkAs
         className={classNames.link}
@@ -99,7 +100,15 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
         target={link.target}
         rel={rel}
         disabled={link.disabled}
-        aria-label={link.ariaLabel}
+        aria-label={
+          link.ariaLabel && selectedStateAriaLabel
+            ? `${link.ariaLabel} ${selectedStateAriaLabel}`
+            : selectedStateAriaLabel
+            ? selectedStateAriaLabel
+            : link.ariaLabel
+            ? link.ariaLabel
+            : undefined
+        }
       >
         {onRenderLink(link, this._onRenderLink)}
       </LinkAs>
