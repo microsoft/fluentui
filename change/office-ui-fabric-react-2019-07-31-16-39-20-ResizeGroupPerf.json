@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Optimizing ResizeGroup rendering when its dimensions do not change",
+  "packageName": "office-ui-fabric-react",
+  "email": "kushaly@microsoft.com",
+  "commit": "384719c04df3edd9134c958575773f7bee1c0188",
+  "date": "2019-07-31T23:39:20.233Z"
+}
