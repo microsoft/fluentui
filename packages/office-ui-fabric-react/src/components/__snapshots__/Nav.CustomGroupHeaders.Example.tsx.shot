@@ -76,7 +76,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               className=
                   ms-Nav-compositeLink
                   {
-                    background-color: #ffffff;
                     color: #323130;
                     display: block;
                     position: relative;
@@ -168,8 +167,8 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     @media screen and (-ms-high-contrast: active){&:focus {
                       border-color: WindowText;
                     }
-                    .ms-Nav-compositeLink:hover & {
-                      background-color: #faf9f8;
+                    $compositeLink:hover & {
+                      background-color: #f3f2f1;
                       color: #323130;
                     }
                 data-is-focusable={true}
@@ -229,7 +228,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               className=
                   ms-Nav-compositeLink
                   {
-                    background-color: #ffffff;
                     color: #323130;
                     display: block;
                     position: relative;
@@ -321,8 +319,8 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     @media screen and (-ms-high-contrast: active){&:focus {
                       border-color: WindowText;
                     }
-                    .ms-Nav-compositeLink:hover & {
-                      background-color: #faf9f8;
+                    $compositeLink:hover & {
+                      background-color: #f3f2f1;
                       color: #323130;
                     }
                 data-is-focusable={true}
@@ -418,7 +416,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               className=
                   ms-Nav-compositeLink
                   {
-                    background-color: #ffffff;
                     color: #323130;
                     display: block;
                     position: relative;
@@ -510,8 +507,8 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     @media screen and (-ms-high-contrast: active){&:focus {
                       border-color: WindowText;
                     }
-                    .ms-Nav-compositeLink:hover & {
-                      background-color: #faf9f8;
+                    $compositeLink:hover & {
+                      background-color: #f3f2f1;
                       color: #323130;
                     }
                 data-is-focusable={true}
@@ -571,7 +568,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               className=
                   ms-Nav-compositeLink
                   {
-                    background-color: #ffffff;
                     color: #323130;
                     display: block;
                     position: relative;
@@ -663,8 +659,8 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     @media screen and (-ms-high-contrast: active){&:focus {
                       border-color: WindowText;
                     }
-                    .ms-Nav-compositeLink:hover & {
-                      background-color: #faf9f8;
+                    $compositeLink:hover & {
+                      background-color: #f3f2f1;
                       color: #323130;
                     }
                 data-is-focusable={true}

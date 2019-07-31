@@ -460,6 +460,8 @@ export interface ISemanticColors extends ISemanticTextColors {
     accentButtonBackground: string;
     blockingBackground: string;
     bodyBackground: string;
+    bodyBackgroundChecked: string;
+    bodyBackgroundHovered: string;
     bodyDivider: string;
     bodyFrameBackground: string;
     bodyFrameDivider: string;
