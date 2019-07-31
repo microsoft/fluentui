@@ -201,6 +201,11 @@ export interface ICalendarDayGridStyleProps {
 
 export interface ICalendarDayGridStyles {
   /**
+   * The style for the root div
+   */
+  wrapper?: IStyle;
+
+  /**
    * The style for the table containing the grid
    */
   table?: IStyle;
@@ -244,6 +249,9 @@ export interface ICalendarDayGridStyles {
    * The style to apply to the individual button element that matches the "today" parameter
    */
   dayIsToday?: IStyle;
+
+  firstTransitionWeek?: IStyle;
+  lastTransitionWeek?: IStyle;
 
   /**
    * The styles to apply to days for rounded corners. Can apply multiple to round multiple corners

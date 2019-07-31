@@ -15,6 +15,8 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
     }
   }
 
+  const headerAnimationStyle: IRawStyle = animateBackwards !== undefined ? AnimationStyles.fadeIn200 : {};
+
   return {
     root: [
       normalize,
@@ -31,7 +33,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
     currentItemButton: [
       getFocusStyle(theme, { inset: -1 }),
       {
-        ...animationStyle,
+        ...headerAnimationStyle,
         fontSize: FontSizes.medium,
         fontWeight: FontWeights.semibold,
         textAlign: 'left',
