@@ -129,7 +129,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       },
       !isDisabled && {
         selectors: {
-          '$compositeLink:hover &': {
+          '.ms-Nav-compositeLink:hover &': {
             backgroundColor: semanticColors.bodyBackgroundHovered,
             color: semanticColors.bodyText
           }

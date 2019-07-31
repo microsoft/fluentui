@@ -1,5 +1,4 @@
 import { INavStyleProps, INavStyles } from 'office-ui-fabric-react/lib/Nav';
-import { FontWeights } from '@uifabric/styling';
 
 export const NavStyles = (props: INavStyleProps): Partial<INavStyles> => {
   const { theme, isDisabled, isSelected } = props;
