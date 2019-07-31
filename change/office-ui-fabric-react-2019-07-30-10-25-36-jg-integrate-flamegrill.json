@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Perf Test: Integrate Flamegrill",
-  "packageName": "office-ui-fabric-react",
-  "email": "jagore@microsoft.com",
-  "commit": "000006950e016d8a48ba10d5034836a6aa706156",
-  "date": "2019-07-30T17:25:36.259Z"
-}

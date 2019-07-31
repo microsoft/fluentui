@@ -43,7 +43,7 @@ export function transformExample(example: string, id: string) {
    * error since the import is not supported.
    */
   while ((temp = importPattern.exec(example))) {
-    if (!/^office-ui-fabric-react/.test(temp[0])) {
+    if (!/office-ui-fabric-react/.test(temp[0])) {
       output.error = 'error: unsupported imports';
     } else {
       imports.push(temp[0]);

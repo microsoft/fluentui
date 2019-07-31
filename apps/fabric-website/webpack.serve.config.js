@@ -1,6 +1,7 @@
 let path = require('path');
 let resources = require('../../scripts/webpack/webpack-resources');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 const devServerConfig = {
   inline: true,
@@ -27,7 +28,8 @@ module.exports = resources.createServeConfig({
     new MonacoWebpackPlugin({
       // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
       languages: ['typescript']
-    })
+    }),
+    new BundleAnalyzerPlugin()
   ],
 
   resolve: {
