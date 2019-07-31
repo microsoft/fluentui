@@ -22,19 +22,19 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   private _classNames: { [key in keyof ICheckboxStyles]: string };
 
   public static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState {
-    if (props.indeterminate !== undefined && state.isIndeterminate) {
+    if (!props.defaultIndeterminate && state.isIndeterminate) {
       return {
         ...state,
         isIndeterminate: !!props.indeterminate
       };
-    } else {
-      if (props.checked !== undefined) {
-        return {
-          ...state,
-          isChecked: !!props.checked
-        };
-      }
     }
+    if (props.checked !== undefined) {
+      return {
+        ...state,
+        isChecked: !!props.checked
+      };
+    }
+
     return state;
   }
 
@@ -57,7 +57,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     this._id = this.props.id || getId('checkbox-');
     this.state = {
       isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked),
-      isIndeterminate: !!(props.indeterminate !== undefined ? props.indeterminate : props.defaultIndeterminate)
+      isIndeterminate: !!(props.defaultIndeterminate ? props.defaultIndeterminate : props.indeterminate)
     };
   }
 
@@ -84,11 +84,12 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       ariaSetSize,
       keytipProps,
       title,
-      indeterminate
+      indeterminate,
+      defaultIndeterminate
     } = this.props;
 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
-    const isIndeterminate = indeterminate === undefined ? this.state.isIndeterminate : indeterminate;
+    const isIndeterminate = !!(defaultIndeterminate ? this.state.isIndeterminate : indeterminate);
     const isReversed = boxSide !== 'start' ? true : false;
 
     this._classNames = getClassNames(styles!, {
@@ -167,21 +168,23 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   };
 
   private _onChange = (ev: React.FormEvent<HTMLElement>): void => {
-    const { disabled, onChange, removeIndeterminate } = this.props;
+    const { disabled, onChange, removeIndeterminate, indeterminate, defaultIndeterminate } = this.props;
     const { isChecked, isIndeterminate } = this.state;
 
     if (!disabled) {
-      if (isIndeterminate) {
-        if (removeIndeterminate) {
+      if (!isIndeterminate) {
+        if (onChange) {
+          onChange(ev, !isChecked);
+        }
+        if (this.props.checked === undefined) {
+          this.setState({ isChecked: !isChecked });
+        }
+      } else {
+        if (defaultIndeterminate) {
+          this.setState({ isIndeterminate: false });
+        } else if (removeIndeterminate && indeterminate) {
           removeIndeterminate();
         }
-        this.setState({ isIndeterminate: false });
-      }
-      if (onChange) {
-        onChange(ev, !isChecked);
-      }
-      if (this.props.checked === undefined) {
-        this.setState({ isChecked: !isChecked });
       }
     }
   };

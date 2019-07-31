@@ -125,12 +125,11 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 
   /**
    * Optional controlled indeterminate visual state for checkbox. Use this if you want to control
-   * the indeterminate state. Setting indeterminate state takes visual precedence
+   * indeterminate state. Setting indeterminate state takes visual precedence
    * over checked or defaultChecked props given but does not affect checked state.
-   * This is should not be a toggleable state.
-   * On load the checkbox will receive indeterminate visual state
-   * and after the first user click it should be removed
-   * by your supplied removeIndeterminate callback function exposing the true state of the checkbox.
+   * This is should not be a toggleable state. On load the checkbox will receive indeterminate visual state
+   * and after the first user click it should be removed by your supplied removeIndeterminate callback
+   * function exposing the true state of the checkbox.
    */
   indeterminate?: boolean;
 
@@ -138,14 +137,15 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * Optional uncontrolled indeterminate visual state for checkbox. Use this if you want an uncontrolled
    * indeterminate state. Setting indeterminate state takes visual precedence
    * over checked or defaultChecked props given but does not affect checked state.
-   * This is not a toggleable state.
-   * On load the checkbox will receive indeterminate visual state
+   * Uncontrolled defaultIndeterminate props will take precedence over controlled indeterminate props if both are given.
+   * This is not a toggleable state. On load the checkbox will receive indeterminate visual state
    * and after the first user click it will be removed exposing the true state of the checkbox.
    */
   defaultIndeterminate?: boolean;
 
   /**
-   * Callback that is called to remove indeterminate visual state.
+   * User provided callback that is called to remove indeterminate visual state when opting to
+   * use the controlled indeterminate prop.
    */
   removeIndeterminate?: () => void;
 }
