@@ -115,6 +115,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       }
     ],
     weekRow: rowAnimationStyle,
+    weekDayLabelCell: AnimationStyles.fadeIn200,
     weekNumberCell: {
       margin: 0,
       padding: 0,

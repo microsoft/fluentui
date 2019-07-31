@@ -35,6 +35,13 @@ export interface IDayInfo {
 
 export interface ICalendarDayGridState {
   activeDescendantId?: string;
+
+  /**
+   * Weeks is a 2D array. Weeks[0] contains the last week of the prior range,
+   * Weeks[weeks.length - 1] contains first week of next range. These are for transition states.
+   *
+   * Weeks[1... weeks.length - 2] contains the actual visible data
+   */
   weeks?: IDayInfo[][];
   animateBackwards?: boolean;
 }
@@ -113,7 +120,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
             {weeks!
               .slice(1, weeks!.length - 1)
               .map((week: IDayInfo[], weekIndex: number) => this.renderRow(classNames, week, weekIndex, classNames.weekRow))}
-            {this.renderRow(classNames, weeks![weeks!.length - 1], weeks!.length, classNames.lastTransitionWeek, 'presentation')}
+            {this.renderRow(classNames, weeks![weeks!.length - 1], -2, classNames.lastTransitionWeek, 'presentation')}
           </tbody>
         </table>
       </FocusZone>
@@ -128,22 +135,34 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
   }
 
   private renderMonthHeaderRow = (classNames: IProcessedStyleSet<ICalendarDayGridStyles>): JSX.Element => {
-    const { showWeekNumbers, strings, firstDayOfWeek, allFocusable } = this.props;
+    const { showWeekNumbers, strings, firstDayOfWeek, allFocusable, weeksToShow } = this.props;
+    const { weeks } = this.state;
+    let dayLabels = strings.shortDays.slice();
+    let firstOfMonthIndex = weeks![1].findIndex(day => day.originalDate.getDate() === 1);
+    if (weeksToShow === 1 && firstOfMonthIndex >= 0) {
+      // if we only show one week, replace the header with short month name
+      dayLabels[firstOfMonthIndex] = strings.shortMonths[weeks![1][firstOfMonthIndex].originalDate.getMonth()];
+    }
+
     return (
       <tr>
         {showWeekNumbers && <th className={classNames.dayCell} />}
-        {strings.shortDays.map((val: string, index: number) => (
-          <th
-            className={classNames.dayCell}
-            scope="col"
-            key={index}
-            title={strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK]}
-            aria-label={strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK]}
-            data-is-focusable={allFocusable ? true : undefined}
-          >
-            {strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK]}
-          </th>
-        ))}
+        {dayLabels.map((val: string, index: number) => {
+          const i = (index + firstDayOfWeek) % DAYS_IN_WEEK;
+          const label = index === firstOfMonthIndex ? strings.days[i] + ' ' + dayLabels[i] : strings.days[i];
+          return (
+            <th
+              className={css(classNames.dayCell, classNames.weekDayLabelCell)}
+              scope="col"
+              key={dayLabels[i] + ' ' + index}
+              title={label}
+              aria-label={label}
+              data-is-focusable={allFocusable ? true : undefined}
+            >
+              {dayLabels[i]}
+            </th>
+          );
+        })}
       </tr>
     );
   };
@@ -162,7 +181,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     const titleString = weekNumbers ? strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex]) : '';
 
     return (
-      <tr role={ariaRole} className={rowClassName} key={weekNumbers ? weekNumbers[weekIndex] : weekIndex + '_' + week[0].key}>
+      <tr role={ariaRole} className={rowClassName} key={weekIndex + '_' + week[0].key}>
         {showWeekNumbers && weekNumbers && (
           <th className={classNames.weekNumberCell} key={weekIndex} title={titleString} aria-label={titleString} scope="row">
             <span>{weekNumbers[weekIndex]}</span>

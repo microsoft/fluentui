@@ -226,6 +226,11 @@ export interface ICalendarDayGridStyles {
   weekRow?: IStyle;
 
   /**
+   * The style to apply to the column headers above the weeks
+   */
+  weekDayLabelCell?: IStyle;
+
+  /**
    * The style to apply to grid cells for week numbers
    */
   weekNumberCell?: IStyle;
@@ -250,7 +255,14 @@ export interface ICalendarDayGridStyles {
    */
   dayIsToday?: IStyle;
 
+  /**
+   * The style applied to the first placeholder week used during transitions
+   */
   firstTransitionWeek?: IStyle;
+
+  /**
+   * The style applied to the last placeholder week used during transitions
+   */
   lastTransitionWeek?: IStyle;
 
   /**
