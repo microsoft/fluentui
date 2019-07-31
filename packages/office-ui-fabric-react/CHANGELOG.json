@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 31 Jul 2019 12:26:17 GMT",
+      "tag": "office-ui-fabric-react_v7.19.0",
+      "version": "7.19.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "[BaseExtendedPicker] Only add aria-owns tag when the picker is expanded",
+            "author": "andrescb@microsoft.com",
+            "commit": "2d761ca83281964abfa1de77f2dc42bd753cf90e"
+          },
+          {
+            "comment": "Tooltip: Fixing hidden hover area overlapping with Tooltip targets.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "03c6fe8e6c0f89a33071dd0bc30cf2831fe48f41"
+          },
+          {
+            "comment": "Perf Test: Integrate Flamegrill",
+            "author": "jagore@microsoft.com",
+            "commit": "000006950e016d8a48ba10d5034836a6aa706156"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Commandbar: Expose dataDidRender method",
+            "author": "joschect@microsoft.com",
+            "commit": "3b8c6b3f7017f8135a59dea6510fc59c089588a2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jul 2019 12:28:32 GMT",
       "tag": "office-ui-fabric-react_v7.18.1",
       "version": "7.18.1",
