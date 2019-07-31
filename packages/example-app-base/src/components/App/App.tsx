@@ -19,12 +19,15 @@ const getClassNames = classNamesFunction<IAppStyleProps, IAppStyles>();
 
 @withResponsiveMode
 export class AppBase extends React.Component<IAppProps, IAppState> {
-  public state: IAppState = { isMenuVisible: false };
   private _classNames: IProcessedStyleSet<IAppStyles>;
   private _showOnlyExamples: boolean;
 
   constructor(props: IAppProps) {
     super(props);
+
+    this.state = {
+      isMenuVisible: false
+    };
 
     this._showOnlyExamples = showOnlyExamples();
   }
@@ -34,7 +37,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
   }
 
   public render(): JSX.Element {
-    const { appDefinition, styles, responsiveMode = ResponsiveMode.xLarge, theme } = this.props;
+    const { appDefinition, isNextVersion, styles, responsiveMode = ResponsiveMode.xLarge, theme } = this.props;
     const { customizations } = appDefinition;
     const { isMenuVisible } = this.state;
 
@@ -63,6 +66,9 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
               sideLinks={appDefinition.headerLinks}
               isMenuVisible={isMenuVisible}
               onIsMenuVisibleChanged={this._onIsMenuVisibleChanged}
+              onCurrentVersionSelected={this._onCurrentVersionSelected}
+              onNextVersionSelected={this._onNextVersionSelected}
+              isNextVersion={isNextVersion}
               styles={classNames.subComponentStyles.header}
             />
           </div>
@@ -127,6 +133,16 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
         )}
       </>
     );
+  };
+
+  private _onCurrentVersionSelected = (): void => {
+    const { toggleNextVersion } = this.props;
+    toggleNextVersion(false);
+  };
+
+  private _onNextVersionSelected = (): void => {
+    const { toggleNextVersion } = this.props;
+    toggleNextVersion(true);
   };
 }
 

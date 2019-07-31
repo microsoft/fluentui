@@ -10,11 +10,13 @@ export const nextExamplePages: IAppLink[] = [
   }
 ];
 
-export const AppDefinitionNext: IAppDefinition = AppDefinition;
+export const AppDefinitionNext: IAppDefinition = JSON.parse(JSON.stringify(AppDefinition));
 
-for (const sectionPage in AppDefinition.examplePages) {
-  for (const examplePage in AppDefinition.examplePages[sectionPage].links) {
-    AppDefinition.examplePages[sectionPage].links[examplePage] = replaceNextPages(
+const sectionsNumber = AppDefinitionNext.examplePages.length;
+for (let sectionPage = 0; sectionPage < sectionsNumber; sectionPage++) {
+  const examplesNumber = AppDefinitionNext.examplePages[sectionPage].links.length;
+  for (let examplePage = 0; examplePage < examplesNumber; examplePage++) {
+    AppDefinitionNext.examplePages[sectionPage].links[examplePage] = replaceNextPages(
       AppDefinition.examplePages[sectionPage].links[examplePage]
     );
   }

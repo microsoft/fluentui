@@ -100,6 +100,8 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
   };
 
   private _getOptionMenuItems(): IContextualMenuItem[] {
+    const { isNextVersion, onCurrentVersionSelected, onNextVersionSelected } = this.props;
+
     return [
       {
         key: 'isRTL',
@@ -111,7 +113,10 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
         key: 'version',
         name: 'Version to use',
         subMenuProps: {
-          items: [{ key: 'currentVersion', name: 'Current' }, { key: 'nextVersion', name: 'Next' }]
+          items: [
+            { key: 'currentVersion', name: 'Current', onClick: onCurrentVersionSelected, canCheck: true, isChecked: !isNextVersion },
+            { key: 'nextVersion', name: 'Next', onClick: onNextVersionSelected, canCheck: true, isChecked: isNextVersion }
+          ]
         }
       }
     ];

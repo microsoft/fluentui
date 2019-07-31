@@ -18,7 +18,33 @@ mergeStyles({
   }
 });
 
-export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage: React.StatelessComponent) {
+interface IDemoAppProps {
+  getRoutes: (isNextVersion: boolean, toggleNextVersion: (value: boolean) => void) => JSX.Element[];
+  scrollAnchorLink: () => void;
+}
+
+const DemoApp = (props: IDemoAppProps): JSX.Element => {
+  const [isNextVersion, setNextVersion] = React.useState(false);
+
+  const _toggleNextVersion = (value: boolean): void => {
+    console.log(`Is it the next version? ${value}`);
+    setNextVersion(value);
+  };
+
+  const { getRoutes, scrollAnchorLink } = props;
+
+  return (
+    <Fabric>
+      <Router onNewRouteLoaded={scrollAnchorLink}>{getRoutes(isNextVersion, _toggleNextVersion)}</Router>
+    </Fabric>
+  );
+};
+
+export function createDemoApp(
+  appDefinition: IAppDefinition,
+  gettingStartedPage: React.StatelessComponent,
+  appDefinitionNext?: IAppDefinition
+) {
   let rootElement: HTMLElement | null;
 
   function _scrollAnchorLink(): void {
@@ -28,26 +54,36 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
   function _onLoad(): void {
     rootElement = rootElement || document.getElementById('content');
 
-    ReactDOM.render(
-      <Fabric>
-        <Router onNewRouteLoaded={_scrollAnchorLink}>{_getRoutes()}</Router>
-      </Fabric>,
-      rootElement
-    );
+    ReactDOM.render(<DemoApp getRoutes={_getRoutes} scrollAnchorLink={_scrollAnchorLink} />, rootElement);
   }
 
-  function _getRoutes(): JSX.Element[] {
-    const routes = appDefinition.testPages.map((page: IAppLink) => <Route key={page.key} path={page.url} component={page.component} />);
-    const appRoutes: JSX.Element[] = [];
+  function _getRoutes(isNextVersion: boolean, toggleNextVersion: (value: boolean) => void): JSX.Element[] {
+    const routes = (appDefinitionNext && isNextVersion ? appDefinitionNext : appDefinition).testPages.map((page: IAppLink) => (
+      <Route key={page.key} path={page.url} component={page.component} />
+    ));
 
-    appDefinition.examplePages.forEach((group: IAppLinkGroup) => {
-      appRoutes.push(..._getRoutesFromLinks(group.links));
-    });
+    const appRoutes: JSX.Element[] = [];
+    if (appDefinitionNext && isNextVersion) {
+      appDefinitionNext.examplePages.forEach((group: IAppLinkGroup) => {
+        appRoutes.push(..._getRoutesFromLinks(group.links));
+      });
+    } else {
+      appDefinition.examplePages.forEach((group: IAppLinkGroup) => {
+        appRoutes.push(..._getRoutesFromLinks(group.links));
+      });
+    }
 
     // Default route.
     appRoutes.push(<Route key="gettingstarted" component={gettingStartedPage} />);
 
-    const App: React.StatelessComponent<IAppProps> = props => <AppBase appDefinition={appDefinition} {...props} />;
+    const App: React.StatelessComponent<IAppProps> = props => (
+      <AppBase
+        appDefinition={appDefinitionNext && isNextVersion ? appDefinitionNext : appDefinition}
+        isNextVersion={isNextVersion}
+        toggleNextVersion={toggleNextVersion}
+        {...props}
+      />
+    );
 
     routes.push(
       <Route key="app" component={App}>

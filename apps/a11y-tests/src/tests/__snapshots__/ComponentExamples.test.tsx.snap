@@ -646,6 +646,274 @@ Fix any of the following:
 
 exports[`a11y test checks accessibility of Button (Button.Toggle.Example) 1`] = `Array []`;
 
+exports[`a11y test checks accessibility of Button/next (Button.Example) 1`] = `
+Array [
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".css-13",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" role=\\"button\\" tabindex=\\"0\\" class=\\"ms-Button css-13\\"><i data-icon-name=\\"PeopleAdd\\" role=\\"presentation\\" aria-hidden=\\"true\\" class=\\"ms-Button-icon root-15\\"></i></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix all of the following:
+- Element is in tab order and does not have accessible text.
+
+Fix any of the following:
+- Element has a value attribute and the value attribute is empty.
+- Element has no value attribute or the value attribute is empty.
+- Element does not have inner text that is visible to screen readers.
+- aria-label attribute does not exist or is empty.
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty.
+- Element's default semantics were not overridden with role=\\"presentation\\".
+- Element's default semantics were not overridden with role=\\"none\\".
+- Element has no title attribute or the title attribute is empty.",
+      "text": "Fix all of the following: Element is in tab order and does not have accessible text. Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "ruleId": "button-name",
+    "ruleIndex": 15,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".css-16",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" role=\\"button\\" disabled=\\"\\" aria-disabled=\\"true\\" class=\\"ms-Button css-16\\"><i data-icon-name=\\"Phone\\" role=\\"presentation\\" aria-hidden=\\"true\\" class=\\"ms-Button-icon root-18\\"></i></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- Element has a value attribute and the value attribute is empty.
+- Element has no value attribute or the value attribute is empty.
+- Element does not have inner text that is visible to screen readers.
+- aria-label attribute does not exist or is empty.
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty.
+- Element's default semantics were not overridden with role=\\"presentation\\".
+- Element's default semantics were not overridden with role=\\"none\\".
+- Element has no title attribute or the title attribute is empty.",
+      "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "ruleId": "button-name",
+    "ruleIndex": 15,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".css-19",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" role=\\"button\\" tabindex=\\"0\\" class=\\"ms-Button css-19\\"><i data-icon-name=\\"FontSize\\" role=\\"presentation\\" aria-hidden=\\"true\\" class=\\"ms-Button-icon root-21\\"></i></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix all of the following:
+- Element is in tab order and does not have accessible text.
+
+Fix any of the following:
+- Element has a value attribute and the value attribute is empty.
+- Element has no value attribute or the value attribute is empty.
+- Element does not have inner text that is visible to screen readers.
+- aria-label attribute does not exist or is empty.
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty.
+- Element's default semantics were not overridden with role=\\"presentation\\".
+- Element's default semantics were not overridden with role=\\"none\\".
+- Element has no title attribute or the title attribute is empty.",
+      "text": "Fix all of the following: Element is in tab order and does not have accessible text. Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "ruleId": "button-name",
+    "ruleIndex": 15,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".css-22",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" role=\\"button\\" disabled=\\"\\" aria-disabled=\\"true\\" class=\\"ms-Button css-22\\"><i data-icon-name=\\"Attach\\" role=\\"presentation\\" aria-hidden=\\"true\\" class=\\"ms-Button-icon root-18\\"></i></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- Element has a value attribute and the value attribute is empty.
+- Element has no value attribute or the value attribute is empty.
+- Element does not have inner text that is visible to screen readers.
+- aria-label attribute does not exist or is empty.
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty.
+- Element's default semantics were not overridden with role=\\"presentation\\".
+- Element's default semantics were not overridden with role=\\"none\\".
+- Element has no title attribute or the title attribute is empty.",
+      "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "ruleId": "button-name",
+    "ruleIndex": 15,
+  },
+]
+`;
+
+exports[`a11y test checks accessibility of Button/next (Button.Keytips.Example) 1`] = `
+Array [
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "button[aria-describedby=\\"ktp-layer-id\\\\ ktp-1-a\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" role=\\"button\\" aria-describedby=\\"ktp-layer-id ktp-1-a\\" data-ktp-target=\\"ktp-1-a\\" data-ktp-execute-target=\\"ktp-1-a\\" tabindex=\\"0\\" class=\\"ms-Button css-3\\"><span class=\\"css-4\\">Button with keytip</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix all of the following:
+- Invalid ARIA attribute value: aria-describedby=\\"ktp-layer-id ktp-1-a\\".",
+      "text": "Fix all of the following: Invalid ARIA attribute value: aria-describedby=\\"ktp-layer-id ktp-1-a\\".",
+    },
+    "ruleId": "aria-valid-attr-value",
+    "ruleIndex": 12,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".css-8",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" role=\\"button\\" aria-expanded=\\"false\\" class=\\"ms-Button ms-MenuButton css-8\\" aria-describedby=\\"ktp-layer-id ktp-1-b\\" data-ktp-target=\\"ktp-1-b\\" data-ktp-execute-target=\\"ktp-1-b\\" tabindex=\\"0\\">",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix all of the following:
+- Invalid ARIA attribute value: aria-describedby=\\"ktp-layer-id ktp-1-b\\".",
+      "text": "Fix all of the following: Invalid ARIA attribute value: aria-describedby=\\"ktp-layer-id ktp-1-b\\".",
+    },
+    "ruleId": "aria-valid-attr-value",
+    "ruleIndex": 12,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".css-19",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" role=\\"button\\" aria-expanded=\\"false\\" class=\\"ms-Button ms-MenuButton css-19\\" aria-describedby=\\"ktp-layer-id ktp-2\\" data-ktp-target=\\"ktp-2\\" data-ktp-execute-target=\\"ktp-2\\" tabindex=\\"0\\" aria-label=\\"Split Button with keytip\\">",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix all of the following:
+- Invalid ARIA attribute value: aria-describedby=\\"ktp-layer-id ktp-2\\".",
+      "text": "Fix all of the following: Invalid ARIA attribute value: aria-describedby=\\"ktp-layer-id ktp-2\\".",
+    },
+    "ruleId": "aria-valid-attr-value",
+    "ruleIndex": 12,
+  },
+]
+`;
+
 exports[`a11y test checks accessibility of Calendar (Calendar.Button.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of Calendar (Calendar.Inline.Example) 1`] = `

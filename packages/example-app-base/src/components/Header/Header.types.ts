@@ -9,6 +9,10 @@ export interface IHeaderProps {
   isMenuVisible: boolean;
   onIsMenuVisibleChanged?: (isMenuVisible: boolean) => void;
 
+  isNextVersion: boolean;
+  onCurrentVersionSelected?: () => void;
+  onNextVersionSelected?: () => void;
+
   isLargeDown?: boolean;
 
   /** Theme provided by higher-order component. */
