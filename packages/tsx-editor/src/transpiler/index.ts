@@ -1,2 +1,2 @@
-export * from './exampleTransform';
 export * from './transpile';
+export * from './exampleTransform';

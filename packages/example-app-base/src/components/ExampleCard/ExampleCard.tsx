@@ -10,8 +10,11 @@ import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
 import { CodeSnippet } from '../CodeSnippet/index';
-import { ITextModel, transformExample, ITranspiledOutput, IEditorProps, EditorPreview } from '@uifabric/tsx-editor';
+import { ITextModel, ITranspiledOutput, IEditorProps } from '@uifabric/tsx-editor';
+import { EditorPreview } from '@uifabric/tsx-editor/lib/components/EditorPreview';
+import { transformExample } from '@uifabric/tsx-editor/lib/transpiler/exampleTransform';
 import { getSetting } from '../../index2';
+import * as tsxEditorModule from '@uifabric/tsx-editor';
 
 export interface IExampleCardState {
   schemeIndex: number;
@@ -38,7 +41,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   private _classNames: IProcessedStyleSet<IExampleCardStyles>;
   private readonly canRenderLiveEditor: boolean;
   private Editor: React.LazyExoticComponent<React.FunctionComponent<IEditorProps>>;
-  private editorModule: typeof import('@uifabric/tsx-editor/lib/index');
+  private editorModule: typeof tsxEditorModule;
 
   constructor(props: IExampleCardProps) {
     super(props);
@@ -205,8 +208,8 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
   private _onToggleCodeClick = () => {
     if (this.canRenderLiveEditor && !this.Editor) {
-      this.Editor = React.lazy(() => import('@uifabric/tsx-editor/lib/components/Editor'));
-      import('@uifabric/tsx-editor').then(editorModule => {
+      this.Editor = React.lazy(() => import(/* webpackChunkName: 'tsx-editor' */ '@uifabric/tsx-editor/lib/components/Editor'));
+      import(/* webpackChunkName: 'tsx-editor' */ '@uifabric/tsx-editor').then(editorModule => {
         this.editorModule = editorModule;
       });
     }
