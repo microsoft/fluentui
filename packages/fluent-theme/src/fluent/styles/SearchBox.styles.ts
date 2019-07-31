@@ -8,7 +8,6 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
   const inputIconAlt = palette.neutralSecondary;
   const inputIconAltHovered = palette.neutralPrimary;
   const inputIconDisabled = palette.neutralTertiary;
-  const inputBorderHasInput = palette.neutralSecondary;
   const inputBackgroundHovered = palette.neutralLighter;
 
   return {
@@ -38,9 +37,6 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
             }
           }
         },
-      hasInput && {
-        borderColor: inputBorderHasInput
-      },
       hasFocus && {
         borderColor: semanticColors.inputFocusBorderAlt
       },
