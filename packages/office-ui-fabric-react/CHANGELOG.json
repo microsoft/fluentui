@@ -2,6 +2,46 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 30 Jul 2019 12:22:57 GMT",
+      "tag": "office-ui-fabric-react_v6.196.0",
+      "version": "6.196.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding tooltipHostProps as a prop to the Breadcrumb component.",
+            "author": "Heather.HoaglundBiron@microsoft.com",
+            "commit": "0e7737eb466ec78bea0f7174049499aa792fbddb"
+          },
+          {
+            "comment": "\"FocusZone: Add setFocusAlignment public method to Force horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on the last horizontal motion.\"",
+            "author": "nasabek@microsoft.com",
+            "commit": "0ed9f55c26856af8bbef7356f222570a1c40c114"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix cell animations so they only trigger on cell key changes",
+            "author": "tmichon@microsoft.com",
+            "commit": "0e1fd098c2d62a6ca0dcb0d9fb57362f13816d78"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.195.6",
+      "tag": "office-ui-fabric-react_v6.195.6",
+      "date": "Mon, 29 Jul 2019 12:22:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "split calendarMonth into three rows",
+            "author": "Qianqian Li <lqq201194@163.com>",
+            "commit": "f2aa33ba91f6f646ab5b609fc084b7723dc46af3"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.195.5",
       "tag": "office-ui-fabric-react_v6.195.5",
       "date": "Wed, 24 Jul 2019 12:22:28 GMT",

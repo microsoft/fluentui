@@ -21,6 +21,6 @@
     "todo-app": "^6.0.0"
   },
   "devDependencies": {
-    "@uifabric/build": "*"
+    "@uifabric/build": "6.0.0"
   }
 }

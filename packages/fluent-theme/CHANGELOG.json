@@ -2,6 +2,34 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Wed, 31 Jul 2019 12:20:38 GMT",
+      "tag": "@uifabric/fluent-theme_v0.16.19",
+      "version": "0.16.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SwatchColorPicker: updated web fluent styles per toolkit",
+            "author": "v-mare@microsoft.com",
+            "commit": "5fe6ef45a1f1d0a972a8da017f6035402827d8c8"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.18",
+      "tag": "@uifabric/fluent-theme_v0.16.18",
+      "date": "Fri, 26 Jul 2019 12:22:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: Updates border, background, and text colors to semanticColors.",
+            "author": "Maxwell Rediker <13246181+maxwellred@users.noreply.github.com>",
+            "commit": "8b776519a764ad5a8606d1220d6ca845532fc719"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.17",
       "tag": "@uifabric/fluent-theme_v0.16.17",
       "date": "Mon, 22 Jul 2019 12:21:49 GMT",

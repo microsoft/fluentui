@@ -1,6 +1,20 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Mon, 22 Jul 2019 12:21:49 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Jul 2019 12:20:38 GMT and should not be manually modified.
+
+## 0.16.19
+Wed, 31 Jul 2019 12:20:38 GMT
+
+### Patches
+
+- SwatchColorPicker: updated web fluent styles per toolkit (v-mare@microsoft.com)
+
+## 0.16.18
+Fri, 26 Jul 2019 12:22:12 GMT
+
+### Patches
+
+- SearchBox: Updates border, background, and text colors to semanticColors.
 
 ## 0.16.17
 Mon, 22 Jul 2019 12:21:49 GMT

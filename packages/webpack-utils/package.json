@@ -21,7 +21,7 @@
     "@uifabric/prettier-rules": "^1.0.2",
     "@uifabric/tslint-rules": "^1.0.2",
     "webpack": "4.29.5",
-    "@uifabric/build": "*"
+    "@uifabric/build": "6.0.0"
   },
   "dependencies": {
     "loader-utils": "^1.1.0",
