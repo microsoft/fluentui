@@ -1,8 +1,0 @@
-{
-  "comment": "SwatchColorPicker: updated web fluent styles per toolkit",
-  "type": "patch",
-  "packageName": "@uifabric/fluent-theme",
-  "email": "v-mare@microsoft.com",
-  "commit": "5fe6ef45a1f1d0a972a8da017f6035402827d8c8",
-  "date": "2019-07-30T17:14:41.582Z"
-}
