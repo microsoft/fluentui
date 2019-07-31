@@ -11,8 +11,8 @@ export const getStyles = memoizeFunction(
         getFocusStyle(theme, {
           inset: 1,
           highContrastStyle: {
-            outlineOffset: '-2px',
-            outlineColor: 'Highlight'
+            outlineOffset: '-4px',
+            outlineColor: 'ActiveBorder'
           },
           borderColor: 'transparent'
         }),
