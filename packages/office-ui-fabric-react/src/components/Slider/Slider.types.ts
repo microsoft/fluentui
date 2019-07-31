@@ -127,7 +127,6 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
   /**
    * Optional flag to render the thumbLabel.
    */
-
   thumbLabel?: boolean;
 
   /**
