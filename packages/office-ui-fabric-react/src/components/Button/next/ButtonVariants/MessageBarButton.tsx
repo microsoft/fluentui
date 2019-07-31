@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createComponent, ITokenFunction } from '../../../Foundation';
+import { createComponent, ITokenFunction } from '../../../../Foundation';
 import { useButtonState as state } from '../Button.state';
 import { ButtonStyles as styles, ButtonTokens } from '../Button.styles';
 import { IButtonComponent, IButtonProps, IButtonTokenReturnType, IButtonTokens, IButtonViewProps } from '../Button.types';

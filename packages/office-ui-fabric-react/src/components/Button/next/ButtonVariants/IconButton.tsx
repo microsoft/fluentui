@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { createComponent } from '../../../Foundation';
-import { FontWeights } from '../../../Styling';
+import { createComponent } from '../../../../Foundation';
+import { FontWeights } from '../../../../Styling';
 import { useButtonState as state } from '../Button.state';
 import { ButtonStyles as styles } from '../Button.styles';
 import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from '../Button.types';

@@ -106,6 +106,13 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
         name: `Render in ${this._isRTLEnabled ? 'LTR' : 'RTL'}`,
         iconProps: { iconName: 'Settings' },
         onClick: this._onRTLToggled
+      },
+      {
+        key: 'version',
+        name: 'Version to use',
+        subMenuProps: {
+          items: [{ key: 'currentVersion', name: 'Current' }, { key: 'nextVersion', name: 'Next' }]
+        }
       }
     ];
   }

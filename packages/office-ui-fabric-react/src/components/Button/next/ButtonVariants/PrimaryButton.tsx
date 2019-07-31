@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createComponent } from '../../../Foundation';
+import { createComponent } from '../../../../Foundation';
 import { useButtonState as state } from '../Button.state';
 import {
   baseTokens,

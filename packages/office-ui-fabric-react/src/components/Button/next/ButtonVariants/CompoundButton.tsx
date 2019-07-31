@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { createComponent, IComponent, IComponentStyles, IStylesFunction, ITokenFunction } from '../../../Foundation';
+import { createComponent, IComponent, IComponentStyles, IStylesFunction, ITokenFunction } from '../../../../Foundation';
 import { Text, ITextStyles } from 'office-ui-fabric-react';
 import { parseGap } from 'office-ui-fabric-react/lib/components/Stack/StackUtils';
-import { HighContrastSelector } from '../../../Styling';
+import { HighContrastSelector } from '../../../../Styling';
 import { useButtonState as state } from '../Button.state';
 import { ButtonStyles, ButtonTokens } from '../Button.styles';
 import {

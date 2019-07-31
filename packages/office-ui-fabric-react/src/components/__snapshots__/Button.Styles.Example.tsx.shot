@@ -1,0 +1,3325 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Button.Styles.Example.tsx correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 32px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
+  <div
+    className=
+        ms-Stack
+        {
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          height: auto;
+          padding-bottom: 8px;
+          padding-left: 8px;
+          padding-right: 8px;
+          padding-top: 8px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 16px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div>
+      <div
+        className=
+            ms-Stack
+            {
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: column;
+              flex-wrap: nowrap;
+              height: auto;
+              width: auto;
+            }
+            & > * {
+              text-overflow: ellipsis;
+            }
+            & > *:not(:first-child) {
+              margin-top: 12px;
+            }
+            & > *:not(.ms-StackItem) {
+              flex-shrink: 1;
+            }
+      >
+        <div
+          className=
+              ms-Stack
+              {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                height: auto;
+                width: auto;
+              }
+              & > * {
+                text-overflow: ellipsis;
+              }
+              & > *:not(:first-child) {
+                margin-left: 12px;
+              }
+              & > *:not(.ms-StackItem) {
+                flex-shrink: 0;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #E20000;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #E20000;
+                    display: flex;
+                    fill: #E20000;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: inherit;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Button Theme: Red Icon and Text
+            </span>
+          </button>
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #323130;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: purple;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Slot Theme: Purple Text
+            </span>
+          </button>
+        </div>
+        <div
+          className=
+              ms-Stack
+              {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                height: auto;
+                width: auto;
+              }
+              & > * {
+                text-overflow: ellipsis;
+              }
+              & > *:not(:first-child) {
+                margin-left: 12px;
+              }
+              & > *:not(.ms-StackItem) {
+                flex-shrink: 0;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #E20000;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #323130;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: inherit;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Button Styles Object: Red Text (root)
+            </span>
+          </button>
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #323130;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #E20000;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Button Styles Object: Red Text (content)
+            </span>
+          </button>
+        </div>
+        <div
+          className=
+              ms-Stack
+              {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                height: auto;
+                width: auto;
+              }
+              & > * {
+                text-overflow: ellipsis;
+              }
+              & > *:not(:first-child) {
+                margin-left: 12px;
+              }
+              & > *:not(.ms-StackItem) {
+                flex-shrink: 0;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: pink ;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: inherit;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Button Styles Object: Pink Icon
+            </span>
+          </button>
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: pink ;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: inherit;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Icon Styles Object: Pink Icon
+            </span>
+          </button>
+        </div>
+        <div
+          className=
+              ms-Stack
+              {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                height: auto;
+                width: auto;
+              }
+              & > * {
+                text-overflow: ellipsis;
+              }
+              & > *:not(:first-child) {
+                margin-left: 12px;
+              }
+              & > *:not(.ms-StackItem) {
+                flex-shrink: 0;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #323130;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #8F6800;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Button Styles Function: Golden Brown Content
+            </span>
+          </button>
+        </div>
+        <div
+          className=
+              ms-Stack
+              {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                height: auto;
+                width: auto;
+              }
+              & > * {
+                text-overflow: ellipsis;
+              }
+              & > *:not(:first-child) {
+                margin-left: 12px;
+              }
+              & > *:not(.ms-StackItem) {
+                flex-shrink: 0;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #E20000;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: purple;
+                    display: flex;
+                    fill: #E20000;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: inherit;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Button Styles Function: Purple Icon via Button Theme
+            </span>
+          </button>
+        </div>
+        <div
+          className=
+              ms-Stack
+              {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                height: auto;
+                width: auto;
+              }
+              & > * {
+                text-overflow: ellipsis;
+              }
+              & > *:not(:first-child) {
+                margin-left: 12px;
+              }
+              & > *:not(.ms-StackItem) {
+                flex-shrink: 0;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #323130;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #8F6800;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Content Styles Function: Golden Brown Text
+            </span>
+          </button>
+        </div>
+        <div
+          className=
+              ms-Stack
+              {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                height: auto;
+                width: auto;
+              }
+              & > * {
+                text-overflow: ellipsis;
+              }
+              & > *:not(:first-child) {
+                margin-left: 12px;
+              }
+              & > *:not(.ms-StackItem) {
+                flex-shrink: 0;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #323130;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #E20000;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Content Styles Function: Red Text via Content Theme
+            </span>
+          </button>
+        </div>
+        <div
+          className=
+              ms-Stack
+              {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                height: auto;
+                width: auto;
+              }
+              & > * {
+                text-overflow: ellipsis;
+              }
+              & > *:not(:first-child) {
+                margin-left: 12px;
+              }
+              & > *:not(.ms-StackItem) {
+                flex-shrink: 0;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #8F6800;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: inherit;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Icon Styles Function: Golden Brown Icon
+            </span>
+          </button>
+        </div>
+        <div
+          className=
+              ms-Stack
+              {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                height: auto;
+                width: auto;
+              }
+              & > * {
+                text-overflow: ellipsis;
+              }
+              & > *:not(:first-child) {
+                margin-left: 12px;
+              }
+              & > *:not(.ms-StackItem) {
+                flex-shrink: 0;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #E20000;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: inherit;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Icon Styles Function: Red Icon via Icon Theme
+            </span>
+          </button>
+        </div>
+        <div
+          className=
+              ms-Stack
+              {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                height: auto;
+                width: auto;
+              }
+              & > * {
+                text-overflow: ellipsis;
+              }
+              & > *:not(:first-child) {
+                margin-left: 12px;
+              }
+              & > *:not(.ms-StackItem) {
+                flex-shrink: 0;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                button-classname
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: inherit;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Button Classname
+            </span>
+          </button>
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  icon-classname
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #323130;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: inherit;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Icon Classname
+            </span>
+          </button>
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <span
+              className=
+                  content-classname
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: inherit;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Content Classname
+            </span>
+          </button>
+          <div
+            className=
+                root-classname
+                {
+                  display: inline-flex;
+                }
+          >
+            <button
+              aria-expanded={false}
+              className=
+                  ms-Button
+                  ms-MenuButton
+                  root-classname
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    align-items: center;
+                    background-color: #ffffff;
+                    border-color: #8a8886;
+                    border-radius: 2px;
+                    border-style: solid;
+                    border-width: 1px;
+                    box-sizing: border-box;
+                    color: #323130;
+                    cursor: pointer;
+                    display: inline-flex;
+                    flex-direction: row;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 600;
+                    justify-content: center;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    min-height: 32px;
+                    min-width: 0px;
+                    outline: transparent;
+                    overflow: hidden;
+                    padding-bottom: 0px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    padding-top: 0px;
+                    position: relative;
+                    text-align: center;
+                    text-decoration: none;
+                    user-select: none;
+                    vertical-align: baseline;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus:after {
+                    border: 1px solid #ffffff;
+                    bottom: 2px;
+                    content: "";
+                    left: 2px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 2px;
+                    top: 2px;
+                    z-index: 1;
+                  }
+                  & > * {
+                    margin-left: 4px 4px;
+                    text-overflow: ellipsis;
+                  }
+                  & > *:not(:first-child) {
+                    margin-left: 8px;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    border-width: 1px;
+                  }
+                  &:hover {
+                    background-color: #f3f2f1;
+                    border-color: #8a8886;
+                    color: #201f1e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:active {
+                    background-color: #edebe9;
+                    border-color: #8a8886;
+                    color: #201f1e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active {
+                    border-color: Highlight;
+                    color: Highlight;
+                  }
+                  &:hover .ms-Button-icon {
+                    color: #201f1e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                    color: Highlight;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #201f1e;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                    color: Highlight;
+                  }
+                  .ms-Fabric--isFocusVisible &:focus {
+                    border-style: solid;
+                  }
+              onClick={[Function]}
+              onKeyDown={[Function]}
+              role="button"
+              tabIndex={0}
+              type="button"
+            >
+              <i
+                aria-hidden={true}
+                className=
+                    ms-Button-icon
+                    icon-classname
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #323130;
+                      display: flex;
+                      fill: #323130;
+                      font-family: "FabricMDL2Icons-3";
+                      font-size: 16px;
+                      font-style: normal;
+                      font-weight: 400;
+                      speak: none;
+                    }
+                data-icon-name="PeopleAdd"
+                role="presentation"
+              >
+                
+              </i>
+              <span
+                className=
+                    content-classname
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: inherit;
+                      display: inline;
+                      font-family: inherit;
+                      font-size: 14px;
+                      font-weight: 600;
+                      moz-osx-font-smoothing: grayscale;
+                      overflow: visible;
+                      webkit-font-smoothing: antialiased;
+                    }
+              >
+                All Classnames
+              </span>
+              <div
+                className=
+
+                    {
+                      height: auto;
+                      width: auto;
+                    }
+              >
+                <i
+                  aria-hidden={true}
+                  className=
+                      menuIcon-classname
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        display: inline-block;
+                        font-family: "FabricMDL2Icons";
+                        font-size: 12px;
+                        font-style: normal;
+                        font-weight: normal;
+                        padding-top: 5px;
+                        speak: none;
+                      }
+                  data-icon-name="ChevronDown"
+                  role="presentation"
+                >
+                  
+                </i>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div
+          className=
+              ms-Stack
+              {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                height: auto;
+                width: auto;
+              }
+              & > * {
+                text-overflow: ellipsis;
+              }
+              & > *:not(:first-child) {
+                margin-left: 12px;
+              }
+              & > *:not(.ms-StackItem) {
+                flex-shrink: 0;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: blue;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: inherit;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Icon ClassName Overrides Button Styles: Blue Icon
+            </span>
+          </button>
+        </div>
+        <div
+          className=
+              ms-Stack
+              {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                height: auto;
+                width: auto;
+              }
+              & > * {
+                text-overflow: ellipsis;
+              }
+              & > *:not(:first-child) {
+                margin-left: 12px;
+              }
+              & > *:not(.ms-StackItem) {
+                flex-shrink: 0;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #323130;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: blue;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Text ClassName: Blue Text
+            </span>
+          </button>
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #323130;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #E20000;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Text Styles Overrides ClassName: Red Text
+            </span>
+          </button>
+        </div>
+        <div
+          className=
+              ms-Stack
+              {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                height: auto;
+                width: auto;
+              }
+              & > * {
+                text-overflow: ellipsis;
+              }
+              & > *:not(:first-child) {
+                margin-left: 12px;
+              }
+              & > *:not(.ms-StackItem) {
+                flex-shrink: 0;
+              }
+        >
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: blue;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: inherit;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Icon ClassName: Blue Icon
+            </span>
+          </button>
+          <button
+            className=
+                ms-Button
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  align-items: center;
+                  background-color: #ffffff;
+                  border-color: #8a8886;
+                  border-radius: 2px;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  color: #323130;
+                  cursor: pointer;
+                  display: inline-flex;
+                  flex-direction: row;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  justify-content: center;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  min-height: 32px;
+                  min-width: 100px;
+                  outline: transparent;
+                  overflow: hidden;
+                  padding-bottom: 0px;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  padding-top: 0px;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  vertical-align: baseline;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 2px;
+                  content: "";
+                  left: 2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 2px;
+                  top: 2px;
+                  z-index: 1;
+                }
+                & > * {
+                  margin-left: 4px 4px;
+                  text-overflow: ellipsis;
+                }
+                & > *:not(:first-child) {
+                  margin-left: 8px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-width: 1px;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:active {
+                  background-color: #edebe9;
+                  border-color: #8a8886;
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active {
+                  border-color: Highlight;
+                  color: Highlight;
+                }
+                &:hover .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+                  color: Highlight;
+                }
+                &:active .ms-Button-icon {
+                  color: #201f1e;
+                }
+                @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+                  color: Highlight;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  border-style: solid;
+                }
+            onClick={[Function]}
+            role="button"
+            tabIndex={0}
+            type="button"
+          >
+            <i
+              aria-hidden={true}
+              className=
+                  ms-Button-icon
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #E20000;
+                    display: flex;
+                    fill: #323130;
+                    font-family: "FabricMDL2Icons-3";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: 400;
+                    speak: none;
+                  }
+              data-icon-name="PeopleAdd"
+              role="presentation"
+            >
+              
+            </i>
+            <span
+              className=
+
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: inherit;
+                    display: inline;
+                    font-family: inherit;
+                    font-size: 14px;
+                    font-weight: 600;
+                    moz-osx-font-smoothing: grayscale;
+                    overflow: visible;
+                    webkit-font-smoothing: antialiased;
+                  }
+            >
+              Icon Styles Overrides ClassName: Red Icon
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
