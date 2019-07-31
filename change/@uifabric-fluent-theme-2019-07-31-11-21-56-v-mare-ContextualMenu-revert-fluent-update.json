@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ContextualMenu: Reverts splitPrimary button hover state back to highlighting whole button",
+  "packageName": "@uifabric/fluent-theme",
+  "email": "v-mare@microsoft.com",
+  "commit": "fdbeb24dc9ba95c0a99f8fc5834cf0c7ca7d3eb8",
+  "date": "2019-07-31T18:21:56.836Z"
+}
