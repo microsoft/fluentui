@@ -27,7 +27,7 @@
     "@uifabric/tslint-rules": "^1.0.2",
     "react": "~16.6.3",
     "react-dom": "~16.6.3",
-    "@uifabric/build": "*"
+    "@uifabric/build": "6.0.0"
   },
   "dependencies": {
     "@uifabric/styling": "^6.50.3",
