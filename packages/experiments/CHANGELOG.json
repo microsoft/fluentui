@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 30 Jul 2019 12:28:32 GMT",
+      "tag": "@uifabric/experiments_v7.9.1",
+      "version": "7.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Making Button variants themable by using createComponent instead of wrappers.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "26e11f6c58861799d22dfb6f4f73f31451aef10f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jul 2019 12:26:00 GMT",
       "tag": "@uifabric/experiments_v7.9.0",
       "version": "7.9.0",

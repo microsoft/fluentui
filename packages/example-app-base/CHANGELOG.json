@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Tue, 30 Jul 2019 12:28:32 GMT",
+      "tag": "@uifabric/example-app-base_v7.1.7",
+      "version": "7.1.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace the usage of deprecated Stack props to remove the console warnings.",
+            "author": "vibraga@microsoft.com",
+            "commit": "27bfb358747142756e67a315e61dc7e412cd772d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jul 2019 12:28:42 GMT",
       "tag": "@uifabric/example-app-base_v7.1.6",
       "version": "7.1.6",

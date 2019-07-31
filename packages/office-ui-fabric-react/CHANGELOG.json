@@ -2,6 +2,61 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 31 Jul 2019 12:26:17 GMT",
+      "tag": "office-ui-fabric-react_v7.19.0",
+      "version": "7.19.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "[BaseExtendedPicker] Only add aria-owns tag when the picker is expanded",
+            "author": "andrescb@microsoft.com",
+            "commit": "2d761ca83281964abfa1de77f2dc42bd753cf90e"
+          },
+          {
+            "comment": "Tooltip: Fixing hidden hover area overlapping with Tooltip targets.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "03c6fe8e6c0f89a33071dd0bc30cf2831fe48f41"
+          },
+          {
+            "comment": "Perf Test: Integrate Flamegrill",
+            "author": "jagore@microsoft.com",
+            "commit": "000006950e016d8a48ba10d5034836a6aa706156"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Commandbar: Expose dataDidRender method",
+            "author": "joschect@microsoft.com",
+            "commit": "3b8c6b3f7017f8135a59dea6510fc59c089588a2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jul 2019 12:28:32 GMT",
+      "tag": "office-ui-fabric-react_v7.18.1",
+      "version": "7.18.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: Fix primary button high contrast styling issues.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "5824e529e3e143bad4ea5c257140a38d82524926"
+          },
+          {
+            "comment": "Dropdown: Panel now dismisses in small widths",
+            "author": "bhdev@outlook.com",
+            "commit": "82c0400c4cba9279d0ba28084af0b8f73311f551"
+          },
+          {
+            "comment": "Separate the anchor for the card from card's hover target",
+            "author": "'xingwa@microsoft.com'",
+            "commit": "9938d08014ea69685c161670049f22d4aef20ca9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jul 2019 12:26:00 GMT",
       "tag": "office-ui-fabric-react_v7.18.0",
       "version": "7.18.0",

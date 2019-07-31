@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Replace the usage of deprecated Stack props to remove the console warnings.",
-  "packageName": "@uifabric/example-app-base",
-  "email": "vibraga@microsoft.com",
-  "commit": "27bfb358747142756e67a315e61dc7e412cd772d",
-  "date": "2019-07-27T01:53:25.231Z"
-}
