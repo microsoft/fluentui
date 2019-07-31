@@ -418,8 +418,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: Highlight;
-                    outline-offset: -2px;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -734,8 +734,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: Highlight;
-                    outline-offset: -2px;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -875,8 +875,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: Highlight;
-                    outline-offset: -2px;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -1198,8 +1198,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: Highlight;
-                    outline-offset: -2px;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -1315,8 +1315,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: Highlight;
-                    outline-offset: -2px;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -1629,8 +1629,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                       border: none;
                       bottom: -2px;
                       left: -2px;
-                      outline-color: Highlight;
-                      outline-offset: -2px;
+                      outline-color: ActiveBorder;
+                      outline-offset: -4px;
                       right: -2px;
                       top: -2px;
                     }
@@ -1746,8 +1746,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                       border: none;
                       bottom: -2px;
                       left: -2px;
-                      outline-color: Highlight;
-                      outline-offset: -2px;
+                      outline-color: ActiveBorder;
+                      outline-offset: -4px;
                       right: -2px;
                       top: -2px;
                     }
@@ -2062,8 +2062,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                       border: none;
                       bottom: -2px;
                       left: -2px;
-                      outline-color: Highlight;
-                      outline-offset: -2px;
+                      outline-color: ActiveBorder;
+                      outline-offset: -4px;
                       right: -2px;
                       top: -2px;
                     }
@@ -2189,8 +2189,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: Highlight;
-                    outline-offset: -2px;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -2491,8 +2491,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                   border: none;
                   bottom: -2px;
                   left: -2px;
-                  outline-color: Highlight;
-                  outline-offset: -2px;
+                  outline-color: ActiveBorder;
+                  outline-offset: -4px;
                   right: -2px;
                   top: -2px;
                 }
@@ -2645,8 +2645,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: Highlight;
-                    outline-offset: -2px;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -2762,8 +2762,8 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: Highlight;
-                    outline-offset: -2px;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
