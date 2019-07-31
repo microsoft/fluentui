@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "cherrypicked changes made to tooltip to fix bug",
-  "packageName": "@uifabric/azure-themes",
-  "email": "t-mashia@microsoft.com",
-  "commit": "d8452b42e34f2c163b1011a2ae5c0a749e7b6e4b",
-  "date": "2019-07-31T19:07:27.794Z"
-}
