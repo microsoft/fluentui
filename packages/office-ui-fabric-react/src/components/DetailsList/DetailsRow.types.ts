@@ -169,7 +169,7 @@ export interface IDetailsRowBaseProps
   /**
    * DOM element into which to render row field
    */
-  rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
+  rowFieldsAs?: React.ComponentType<IDetailsRowFieldsProps>;
 
   /**
    * Overriding class name

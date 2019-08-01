@@ -2,6 +2,93 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 30 Jul 2019 12:28:32 GMT",
+      "tag": "@uifabric/experiments_v7.9.1",
+      "version": "7.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Making Button variants themable by using createComponent instead of wrappers.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "26e11f6c58861799d22dfb6f4f73f31451aef10f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jul 2019 12:26:00 GMT",
+      "tag": "@uifabric/experiments_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Chiclet: add preview prop and its styling and don't do icon lookup for preview",
+            "author": "t-stcar@microsoft.com",
+            "commit": "a3d0f0f26d4cac14c5f3561c640d25918822d89f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jul 2019 16:33:51 GMT",
+      "tag": "@uifabric/experiments_v7.8.1",
+      "version": "7.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chiclet: Url is now a required prop and two test files are combined into one",
+            "author": "t-stcar@microsoft.com",
+            "commit": "7147dbd40fc5b52da42714379c6f832d215eaaed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jul 2019 12:28:42 GMT",
+      "tag": "@uifabric/experiments_v7.8.0",
+      "version": "7.8.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Updating Button styles to use corresponding semanticColors instead of palette.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": ""
+          },
+          {
+            "comment": "Improve how to get the min query string",
+            "author": "elcraig@microsoft.com",
+            "commit": "17b31ca8739504e1d4c7b7dcaa725091254d0eb5"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Refactor out BaseComponent from Tile",
+            "author": "706967+KevinTCoughlin@users.noreply.github.com",
+            "commit": "ad4bc7b67d858e082b281482f419848aad120abe"
+          },
+          {
+            "comment": "Tile: Add ability for screen reader to read selected state.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "284ca631afe83fc5ec56b4c221691bd85ad341f8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Jul 2019 12:25:58 GMT",
+      "tag": "@uifabric/experiments_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Chiclet: removes imageHeight and imageWidth props",
+            "author": "t-stcar@microsoft.com",
+            "commit": "7852d0520f5ee54d4dacbb8fcc22f1b748dac9b6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jul 2019 18:58:57 GMT",
       "tag": "@uifabric/experiments_v7.6.2",
       "version": "7.6.2",

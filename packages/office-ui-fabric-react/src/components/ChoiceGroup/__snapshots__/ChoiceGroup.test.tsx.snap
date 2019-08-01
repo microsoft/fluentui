@@ -88,6 +88,7 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
 
         >
           <input
+            autoFocus={true}
             checked={false}
             className=
                 ms-ChoiceField-input
@@ -532,6 +533,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
 
         >
           <input
+            autoFocus={true}
             checked={false}
             className=
                 ms-ChoiceField-input

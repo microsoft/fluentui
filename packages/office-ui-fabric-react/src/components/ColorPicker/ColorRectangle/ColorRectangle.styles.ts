@@ -10,7 +10,7 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
       'ms-ColorPicker-colorRect',
       {
         position: 'relative',
-        marginBottom: 10,
+        marginBottom: 8,
         border: `1px solid ${palette.neutralLighter}`,
         borderRadius: effects.roundedCorner2,
         selectors: {
