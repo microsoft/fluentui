@@ -3367,8 +3367,6 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     ariaLabelForListHeader?: string;
     ariaLabelForSelectAllCheckbox?: string;
     ariaLabelForSelectionColumn?: string;
-    // (undocumented)
-    ariaLabelForToggleAllGroupsButton?: string;
     cellStyleProps?: ICellStyleProps;
     checkboxCellClassName?: string;
     checkboxVisibility?: CheckboxVisibility;
@@ -3379,6 +3377,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     compact?: boolean;
     componentRef?: IRefObject<IDetailsList>;
     constrainMode?: ConstrainMode;
+    detailsHeaderProps?: IDetailsHeaderProps;
     disableSelectionZone?: boolean;
     dragDropEvents?: IDragDropEvents;
     enableUpdateAnimations?: boolean;
@@ -4777,7 +4776,6 @@ export interface IGroupHeaderStyles {
 
 // @public (undocumented)
 export interface IGroupRenderProps {
-    ariaLabelForToggleAllGroupsButton?: string;
     collapseAllVisibility?: CollapseAllVisibility;
     footerProps?: IGroupFooterProps;
     getGroupItemLimit?: (group: IGroup) => number;

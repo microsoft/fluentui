@@ -239,11 +239,6 @@ export interface IGroupRenderProps {
    * @defaultvalue false
    */
   showEmptyGroups?: boolean;
-
-  /**
-   * String that allows for an aria-label to be passed in
-   */
-  ariaLabelForToggleAllGroupsButton?: string;
 }
 
 /**
