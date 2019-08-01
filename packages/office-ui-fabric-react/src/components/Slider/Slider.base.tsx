@@ -281,7 +281,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     return currentPosition;
   }
 
-  private _addTickmarks(cssRegularTickClassNames: string | undefined): [] {
+  private _addTickmarks(cssRegularTickClassNames: string | undefined): JSX.Element[] {
     const { min, max, step, vertical } = this.props;
     if (min === undefined || max === undefined || step === undefined) {
       return [];
@@ -296,7 +296,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             // the zeroOffsetPercent denotes where the tick mark should go
             this._getStyleUsingOffsetPercent(vertical, i)
           }
-          key={i}
         />
       );
     }
