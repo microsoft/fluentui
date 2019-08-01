@@ -100,6 +100,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       this.floatingPicker.current && this.floatingPicker.current.currentSelectedSuggestionIndex !== -1
         ? 'sug-' + this.floatingPicker.current.currentSelectedSuggestionIndex
         : undefined;
+    const isExpanded = this.floatingPicker.current ? this.floatingPicker.current.isSuggestionsShown : false;
 
     return (
       <div
@@ -122,8 +123,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
                   onClick={this.onInputClick}
                   onInputValueChange={this.onInputChange}
                   aria-activedescendant={activeDescendant}
-                  aria-owns="suggestion-list"
-                  aria-expanded={this.floatingPicker.current ? this.floatingPicker.current.isSuggestionsShown : false}
+                  aria-owns={isExpanded ? 'suggestion-list' : undefined}
+                  aria-expanded={isExpanded}
                   aria-haspopup="true"
                   autoCapitalize="off"
                   autoComplete="off"

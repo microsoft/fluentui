@@ -54,16 +54,20 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
       classNames.preview,
       {
         // @todo: change value for width according to redline
-        width: 60
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 60,
+        width: 59
       }
     ],
     info: [
       classNames.info,
       {
+        // @todo: change values for height and width according to redline
         display: 'flex',
         flexWrap: 'wrap',
         marginLeft: 10,
-        // @todo: change values for height and width according to redline
         width: 170,
         height: 63
       },

@@ -59,6 +59,21 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     color,
     colorHovered,
     colorPressed,
+    highContrastBackgroundColor,
+    highContrastBackgroundColorHovered,
+    highContrastBackgroundColorPressed,
+    highContrastBorderColor,
+    highContrastBorderColorHovered,
+    highContrastBorderColorPressed,
+    highContrastColor,
+    highContrastColorHovered,
+    highContrastColorPressed,
+    highContrastIconColor,
+    highContrastIconColorHovered,
+    highContrastIconColorPressed,
+    iconColor,
+    iconColorHovered,
+    iconColorPressed,
     ...nonColoredButtonTokens
   } = splitButtonTokens;
   const buttonTokens = primaryActionDisabled ? { contentPadding, contentPaddingFocused, ...nonColoredButtonTokens } : tokens;

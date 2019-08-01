@@ -3,7 +3,10 @@ import { IconButton } from '../../Button';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
-  BaseComponent,
+  initializeComponentRef,
+  initializeFocusRects,
+  warnMutuallyExclusive,
+  Async,
   getId,
   KeyCodes,
   customizable,
@@ -49,7 +52,7 @@ export type DefaultProps = Required<
 type ISpinButtonInternalProps = ISpinButtonProps & DefaultProps;
 
 @customizable('SpinButton', ['theme', 'styles'], true)
-export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
+export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
   public static defaultProps: DefaultProps = {
     step: 1,
     min: 0,
@@ -61,6 +64,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     decrementButtonIcon: { iconName: 'ChevronDownSmall' }
   };
 
+  private _async: Async;
   private _input = React.createRef<HTMLInputElement>();
   private _inputId: string;
   private _labelId: string;
@@ -76,7 +80,10 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   constructor(props: ISpinButtonProps) {
     super(props);
 
-    this._warnMutuallyExclusive({
+    initializeComponentRef(this);
+    initializeFocusRects();
+
+    warnMutuallyExclusive('SpinButton', props, {
       value: 'defaultValue'
     });
 
@@ -92,11 +99,16 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       keyboardSpinDirection: KeyboardSpinDirection.notSpinning
     };
 
+    this._async = new Async(this);
     this._currentStepFunctionHandle = -1;
     this._labelId = getId('Label');
     this._inputId = getId('input');
     this._spinningByMouse = false;
     this._valueToValidate = undefined;
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   /**
