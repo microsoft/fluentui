@@ -72,16 +72,14 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
     ],
     description: [
       {
+        display: 'flex',
+        alignItems: 'center',
         padding: '0px 16px 0px 16px',
         fontSize: 12,
-        fontWeight: 'normal',
-        fontStyle: 'normal',
-        fontStretch: 'normal',
         lineHeight: '1.33',
-        letterSpacing: 'normal',
         textAlign: 'left',
         color: '#797671', // @todo: get theme from designers
-        width: 248,
+        width: infoWidth,
         height: 16,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
