@@ -133,7 +133,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * Optional flag to indicate whether to have tick marks
    * @defaultvalue false
    */
-  marks?: boolean;
+  showThumbTooltip?: boolean;
 }
 
 /**

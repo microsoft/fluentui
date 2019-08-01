@@ -64,7 +64,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       styles,
       theme,
       originFromZero,
-      marks,
+      showThumbTooltip,
       thumbLabel
     } = this.props;
     const value = this.value;
@@ -114,7 +114,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               {originFromZero && (
                 <span className={css(classNames.zeroTick)} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
               )}
-              {marks && this._addTickmarks(css(classNames.regularTick))}
+              {showThumbTooltip && this._addTickmarks(css(classNames.regularTick))}
               {thumbLabel ? (
                 <TooltipHost
                   content={'' + value}
