@@ -32,7 +32,7 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
           defaultValue={2}
           showValue={true}
           onChange={(value: number) => console.log(value)}
-          marks
+          showThumbTooltip
           thumbLabel
         />
         <Slider label="Disabled example" min={50} max={500} step={50} defaultValue={300} showValue={true} disabled={true} />
