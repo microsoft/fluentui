@@ -657,6 +657,38 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
+            "fullyQualifiedName": "button[aria-label=\\"June\\\\ 2016\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"June 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jan</button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
             "fullyQualifiedName": "button[aria-label=\\"July\\\\ 2016\\"]",
             "kind": "element",
           },
@@ -668,7 +700,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"July 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jan</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"July 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Feb</button>",
             },
           },
         },
@@ -700,7 +732,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"August 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Feb</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"August 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Mar</button>",
             },
           },
         },
@@ -732,7 +764,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"September 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Mar</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"September 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Apr</button>",
             },
           },
         },
@@ -764,7 +796,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"October 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Apr</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"October 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">May</button>",
             },
           },
         },
@@ -796,7 +828,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"November 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">May</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"November 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jun</button>",
             },
           },
         },
@@ -828,7 +860,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"December 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jun</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"December 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jul</button>",
             },
           },
         },
@@ -860,7 +892,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"January 2017\\" aria-selected=\\"true\\" data-is-focusable=\\"true\\" type=\\"button\\">Jul</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"January 2017\\" aria-selected=\\"true\\" data-is-focusable=\\"true\\" type=\\"button\\">Aug</button>",
             },
           },
         },
@@ -892,7 +924,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"February 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Aug</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"February 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Sep</button>",
             },
           },
         },
@@ -924,7 +956,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"March 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Sep</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"March 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Oct</button>",
             },
           },
         },
@@ -956,7 +988,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"April 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Oct</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"April 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Nov</button>",
             },
           },
         },
@@ -988,39 +1020,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"May 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Nov</button>",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix any of the following:
-- ARIA role gridcell  is not allowed for given element.",
-      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
-    },
-    "ruleId": "aria-allowed-role",
-    "ruleIndex": 3,
-  },
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "button[aria-label=\\"June\\\\ 2017\\"]",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"June 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Dec</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"May 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Dec</button>",
             },
           },
         },

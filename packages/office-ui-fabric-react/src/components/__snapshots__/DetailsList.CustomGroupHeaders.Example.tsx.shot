@@ -382,7 +382,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                 }
             data-is-focusable={true}
             onClick={[Function]}
-            onKeyDown={[Function]}
             role="button"
           >
             <i

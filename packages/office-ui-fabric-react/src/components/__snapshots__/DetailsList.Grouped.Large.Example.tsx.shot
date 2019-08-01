@@ -382,7 +382,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                 }
             data-is-focusable={true}
             onClick={[Function]}
-            onKeyDown={[Function]}
             role="button"
           >
             <i

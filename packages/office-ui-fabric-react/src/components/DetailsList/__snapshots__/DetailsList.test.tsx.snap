@@ -4673,7 +4673,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 }
             data-is-focusable={true}
             onClick={[Function]}
-            onKeyDown={[Function]}
             role="button"
           >
             <i
