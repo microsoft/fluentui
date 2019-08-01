@@ -19,11 +19,11 @@ const descriptionStyle = mergeStyles({
   fontWeight: 'normal',
   fontStyle: 'normal',
   fontStretch: 'normal',
-  lineHeight: 1,
+  lineHeight: 1.33,
   letterSpacing: 'normal',
   textAlign: 'left',
   color: '#797671',
-  width: 248,
+  width: '100%',
   height: 16,
   whiteSpace: 'nowrap',
   textOverflow: 'ellipsis'
