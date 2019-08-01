@@ -2,7 +2,7 @@ import { transformExample } from './exampleTransform';
 import * as fs from 'fs';
 import * as path from 'path';
 
-describe('codepen transform', () => {
+describe('example transform', () => {
   function transformFile(file: string) {
     const filename = path.resolve(__dirname, './examples/' + file);
     const fileContents = fs.readFileSync(filename).toString();
