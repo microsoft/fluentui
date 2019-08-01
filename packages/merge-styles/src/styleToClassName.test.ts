@@ -151,6 +151,8 @@ describe('styleToClassName', () => {
     expect(_stylesheet.getRules()).toEqual('.css-0{-webkit-font-smoothing:none;}');
   });
 
+  // TODO: It may not be valid to pass a previously registered rule into styleToClassName
+  // since mergeStyles/mergeStyleSets should probably do this in the resolution code.
   it('can expand previously defined rules', () => {
     const className = styleToClassName({ background: 'red' });
     const newClassName = styleToClassName(className, { color: 'white' });

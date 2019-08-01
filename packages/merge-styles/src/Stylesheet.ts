@@ -47,6 +47,34 @@ export interface IStyleSheetConfig {
   defaultPrefix?: string;
 
   /**
+   * Default units to set on number based properties. This allows
+   * for simple unit switching between PX and REM based units.
+   * If your page operates on PX, there is no change required. Default:
+   * {
+   *   default: 'px';
+   *   overrides: {
+   *     lineHeight: '',
+   *     flex: '',
+   *     animationDuration: 's',
+   *   }
+   * }
+   */
+  units?: {
+    default: string;
+    overrides: {
+      [key: string]: string;
+    };
+  };
+
+  /**
+   * Defines the default direction of rules for auto-rtlifying things.
+   * While typically this is represented as a DIR attribute in the markup,
+   * the DIR is not enough to control whether padding goes on the left or
+   * right. Use this to set the default direction when rules are registered.
+   */
+  rtl?: boolean;
+
+  /**
    * Default 'namespace' to attach before the className.
    */
   namespace?: string;
@@ -117,6 +145,14 @@ export class Stylesheet {
     }
 
     return _stylesheet;
+  }
+
+  /**
+   * Sets the singleton instance.
+   * @param stylesheet
+   */
+  public static setInstance(stylesheet: Stylesheet): void {
+    _stylesheet = stylesheet;
   }
 
   constructor(config?: IStyleSheetConfig) {
