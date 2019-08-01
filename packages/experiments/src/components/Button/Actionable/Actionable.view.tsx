@@ -1,23 +1,21 @@
 /** @jsx withSlots */
-import { Text, KeytipData } from 'office-ui-fabric-react';
-import { withSlots, getSlots } from '../../Foundation';
-import { getNativeProps, anchorProperties, buttonProperties } from '../../Utilities';
-import { Icon } from '../../utilities/factoryComponents';
+import { KeytipData } from 'office-ui-fabric-react';
+import { withSlots, getSlots } from '../../../Foundation';
+import { getNativeProps, anchorProperties, buttonProperties } from '../../../Utilities';
 
-import { IButtonComponent, IButtonProps, IButtonSlots, IButtonViewProps } from './Button.types';
-import { IActionableRootElements } from './Actionable/Actionable.types';
+import { IActionableProps, IActionableRootElements, IActionableSlots, IActionableViewProps } from './Actionable.types';
+import { IButtonComponent } from '../Button.types';
 
-export const ButtonView: IButtonComponent['view'] = props => {
-  const { icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
+export const ActionableView: IButtonComponent['view'] = props => {
+  const { children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
 
   const { slotType, htmlType, propertiesType } = _deriveRootType(props);
 
+  // TODO: 'href' is anchor property... consider getNativeProps by root type
   const buttonProps = { ...getNativeProps(rest, propertiesType) };
 
-  const Slots = getSlots<IButtonProps, IButtonSlots>(props, {
-    root: slotType,
-    icon: Icon,
-    content: Text
+  const Slots = getSlots<IActionableProps, IActionableSlots>(props, {
+    root: slotType
   });
 
   const _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
@@ -43,8 +41,6 @@ export const ButtonView: IButtonComponent['view'] = props => {
       aria-label={ariaLabel}
       ref={buttonRef}
     >
-      {icon && <Slots.icon />}
-      {content && <Slots.content />}
       {children}
     </Slots.root>
   );
@@ -58,13 +54,13 @@ export const ButtonView: IButtonComponent['view'] = props => {
   );
 };
 
-interface IButtonRootType {
+interface IActionableRootType {
   slotType: IActionableRootElements;
   htmlType: 'link' | 'button';
   propertiesType: string[];
 }
 
-function _deriveRootType(props: IButtonViewProps): IButtonRootType {
+function _deriveRootType(props: IActionableViewProps): IActionableRootType {
   return !!props.href
     ? { slotType: 'a', htmlType: 'link', propertiesType: anchorProperties }
     : { slotType: 'button', htmlType: 'button', propertiesType: buttonProperties };
