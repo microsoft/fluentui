@@ -10,11 +10,11 @@ import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
 import { CodeSnippet } from '../CodeSnippet/index';
-import { ITextModel, ITranspiledOutput, IEditorProps } from '@uifabric/tsx-editor';
+import { ITextModel, ITranspiledOutput } from '@uifabric/tsx-editor';
 import { EditorPreview } from '@uifabric/tsx-editor/lib/components/EditorPreview';
 import { transformExample } from '@uifabric/tsx-editor/lib/transpiler/exampleTransform';
-import { getSetting } from '../../index2';
 import * as tsxEditorModule from '@uifabric/tsx-editor';
+import { getSetting } from '../../index2';
 
 export interface IExampleCardState {
   schemeIndex: number;
@@ -40,7 +40,6 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   private _themeOptions: IDropdownOption[];
   private _classNames: IProcessedStyleSet<IExampleCardStyles>;
   private readonly canRenderLiveEditor: boolean;
-  private Editor: React.LazyExoticComponent<React.FunctionComponent<IEditorProps>>;
   private editorModule: typeof tsxEditorModule;
 
   constructor(props: IExampleCardProps) {
@@ -136,10 +135,20 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
               {isCodeVisible &&
                 (this.canRenderLiveEditor ? (
-                  <React.Suspense fallback={<div>Loading...</div>}>
-                    <this.Editor code={code!} onChange={this._editorOnChange} width={'auto'} height={500} language="typescript" />
-                  </React.Suspense>
+                  // <React.Suspense fallback={<div>Loading...</div>}>
+                  this.editorModule ? (
+                    <this.editorModule.Editor
+                      code={code!}
+                      onChange={this._editorOnChange}
+                      width={'auto'}
+                      height={500}
+                      language="typescript"
+                    />
+                  ) : (
+                    <div>Loading...</div>
+                  )
                 ) : (
+                  // </React.Suspense>
                   <div className={classNames.code}>
                     <CodeSnippet language="tsx">{code}</CodeSnippet>
                   </div>
@@ -183,6 +192,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
       );
     }
   }
+
   private _editorOnChange = (editor: ITextModel) => {
     this.editorModule.transpile(editor).then((output: ITranspiledOutput) => {
       if (output.outputString) {
@@ -207,10 +217,11 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   };
 
   private _onToggleCodeClick = () => {
-    if (this.canRenderLiveEditor && !this.Editor) {
-      this.Editor = React.lazy(() => import(/* webpackChunkName: 'tsx-editor' */ '@uifabric/tsx-editor/lib/components/Editor'));
-      import(/* webpackChunkName: 'tsx-editor' */ '@uifabric/tsx-editor').then(editorModule => {
-        this.editorModule = editorModule;
+    if (this.canRenderLiveEditor && !this.editorModule) {
+      // this.Editor = React.lazy(() => import('@uifabric/tsx-editor/lib/components/Editor'));
+      require.ensure(['@uifabric/tsx-editor'], require => {
+        this.editorModule = require('@uifabric/tsx-editor');
+        this.forceUpdate();
       });
     }
     if (this.props.onToggleEditor) {
