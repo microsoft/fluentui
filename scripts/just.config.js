@@ -18,6 +18,7 @@ const prettier = require('./tasks/prettier');
 const bundleSizeCollect = require('./tasks/bundle-size-collect');
 const checkForModifiedFiles = require('./tasks/check-for-modified-files');
 const generateVersionFiles = require('./tasks/generate-version-files');
+const generatePackageManifestTask = require('./tasks/generate-package-manifest');
 
 module.exports = function preset() {
   // this add s a resolve path for the build tooling deps like TS from the scripts folder
@@ -52,6 +53,7 @@ module.exports = function preset() {
   task('bundle-size-collect', bundleSizeCollect);
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
+  task('generate-package-manifest', generatePackageManifestTask);
   task('ts', () => {
     return argv().commonjs
       ? 'ts:commonjs-only'

@@ -143,7 +143,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       if (this._scrollableSurface && ev.button === 0 && this._root.current) {
         this._selectedIndicies = {};
         this._preservedIndicies = undefined;
-        this._events.on(window, 'mousemove', this._onAsyncMouseMove);
+        this._events.on(window, 'mousemove', this._onAsyncMouseMove, true);
         this._events.on(this._scrollableParent, 'scroll', this._onAsyncMouseMove);
         this._events.on(window, 'click', this._onMouseUp, true);
 

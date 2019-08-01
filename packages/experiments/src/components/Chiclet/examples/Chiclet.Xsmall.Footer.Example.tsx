@@ -43,7 +43,16 @@ export const ChicletXsmallFooterExample: React.FunctionComponent<{}> = () => {
   const attachIconProp: IIconProps = { iconName: 'Attach' };
   const footer = <FooterComponent buttonProps={footerButtonProps} attachProps={attachIconProp} />;
 
-  return <Chiclet url={SAMPLE_URL} title="Quarterly Results.docx" itemType="docx" size={ChicletSize.xSmall} footer={footer} />;
+  return (
+    <Chiclet
+      url={SAMPLE_URL}
+      title="Quarterly Results.docx"
+      image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_16x1_5.svg"
+      itemType="docx"
+      size={ChicletSize.xSmall}
+      footer={footer}
+    />
+  );
 };
 
 export class FooterComponent extends React.Component<IFooterComponent, {}> {

@@ -1,6 +1,14 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+
+## 7.1.7
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Patches
+
+- fixing issue where buttons don't hide if they have focus, adding touch for navigation (jolore@microsoft.com)
+,- Improve how to get the min query string (elcraig@microsoft.com)
 
 ## 7.1.6
 Wed, 17 Jul 2019 18:58:57 GMT

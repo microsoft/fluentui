@@ -152,6 +152,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
                       height: 42px;
                     }
@@ -201,10 +202,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -238,7 +235,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
@@ -1014,7 +1011,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -1381,6 +1378,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
+                                          ms-Check-checkHost
 
                                           {
                                             -moz-osx-font-smoothing: grayscale;
@@ -1425,10 +1423,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                             top: 1px;
                                             z-index: 1;
                                           }
-                                          &:hover {
-                                            opacity: 1;
-                                          }
-
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
@@ -1460,7 +1454,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               right: 1px;
                                               top: 1px;
                                             }
-                                            $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                            .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                               opacity: 1;
                                             }
                                       >
@@ -1595,7 +1589,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -1652,7 +1645,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -1826,6 +1818,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
+                                          ms-Check-checkHost
 
                                           {
                                             -moz-osx-font-smoothing: grayscale;
@@ -1870,10 +1863,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                             top: 1px;
                                             z-index: 1;
                                           }
-                                          &:hover {
-                                            opacity: 1;
-                                          }
-
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
@@ -1905,7 +1894,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               right: 1px;
                                               top: 1px;
                                             }
-                                            $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                            .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                               opacity: 1;
                                             }
                                       >
@@ -2040,7 +2029,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2097,7 +2085,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2271,6 +2258,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
+                                          ms-Check-checkHost
 
                                           {
                                             -moz-osx-font-smoothing: grayscale;
@@ -2315,10 +2303,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                             top: 1px;
                                             z-index: 1;
                                           }
-                                          &:hover {
-                                            opacity: 1;
-                                          }
-
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
@@ -2350,7 +2334,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               right: 1px;
                                               top: 1px;
                                             }
-                                            $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                            .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                               opacity: 1;
                                             }
                                       >
@@ -2485,7 +2469,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2542,7 +2525,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2716,6 +2698,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
+                                          ms-Check-checkHost
 
                                           {
                                             -moz-osx-font-smoothing: grayscale;
@@ -2760,10 +2743,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                             top: 1px;
                                             z-index: 1;
                                           }
-                                          &:hover {
-                                            opacity: 1;
-                                          }
-
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
@@ -2795,7 +2774,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               right: 1px;
                                               top: 1px;
                                             }
-                                            $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                            .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                               opacity: 1;
                                             }
                                       >
@@ -2930,7 +2909,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2987,7 +2965,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -3161,6 +3138,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
+                                          ms-Check-checkHost
 
                                           {
                                             -moz-osx-font-smoothing: grayscale;
@@ -3205,10 +3183,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                             top: 1px;
                                             z-index: 1;
                                           }
-                                          &:hover {
-                                            opacity: 1;
-                                          }
-
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
@@ -3240,7 +3214,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               right: 1px;
                                               top: 1px;
                                             }
-                                            $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                            .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                               opacity: 1;
                                             }
                                       >
@@ -3375,7 +3349,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -3432,7 +3405,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -3606,6 +3578,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
+                                          ms-Check-checkHost
 
                                           {
                                             -moz-osx-font-smoothing: grayscale;
@@ -3650,10 +3623,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                             top: 1px;
                                             z-index: 1;
                                           }
-                                          &:hover {
-                                            opacity: 1;
-                                          }
-
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
@@ -3685,7 +3654,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               right: 1px;
                                               top: 1px;
                                             }
-                                            $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                            .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                               opacity: 1;
                                             }
                                       >
@@ -3820,7 +3789,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -3877,7 +3845,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -4051,6 +4018,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
+                                          ms-Check-checkHost
 
                                           {
                                             -moz-osx-font-smoothing: grayscale;
@@ -4095,10 +4063,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                             top: 1px;
                                             z-index: 1;
                                           }
-                                          &:hover {
-                                            opacity: 1;
-                                          }
-
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
@@ -4130,7 +4094,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               right: 1px;
                                               top: 1px;
                                             }
-                                            $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                            .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                               opacity: 1;
                                             }
                                       >
@@ -4265,7 +4229,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -4322,7 +4285,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -4496,6 +4458,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
+                                          ms-Check-checkHost
 
                                           {
                                             -moz-osx-font-smoothing: grayscale;
@@ -4540,10 +4503,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                             top: 1px;
                                             z-index: 1;
                                           }
-                                          &:hover {
-                                            opacity: 1;
-                                          }
-
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
@@ -4575,7 +4534,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               right: 1px;
                                               top: 1px;
                                             }
-                                            $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                            .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                               opacity: 1;
                                             }
                                       >
@@ -4710,7 +4669,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -4767,7 +4725,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -4941,6 +4898,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
+                                          ms-Check-checkHost
 
                                           {
                                             -moz-osx-font-smoothing: grayscale;
@@ -4985,10 +4943,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                             top: 1px;
                                             z-index: 1;
                                           }
-                                          &:hover {
-                                            opacity: 1;
-                                          }
-
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
@@ -5020,7 +4974,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               right: 1px;
                                               top: 1px;
                                             }
-                                            $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                            .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                               opacity: 1;
                                             }
                                       >
@@ -5155,7 +5109,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -5212,7 +5165,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -5386,6 +5338,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       aria-label="Row checkbox"
                                       className=
                                           ms-DetailsRow-check
+                                          ms-Check-checkHost
 
                                           {
                                             -moz-osx-font-smoothing: grayscale;
@@ -5430,10 +5383,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                             top: 1px;
                                             z-index: 1;
                                           }
-                                          &:hover {
-                                            opacity: 1;
-                                          }
-
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
@@ -5465,7 +5414,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               right: 1px;
                                               top: 1px;
                                             }
-                                            $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                            .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                                               opacity: 1;
                                             }
                                       >
@@ -5600,7 +5549,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="name"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -5657,7 +5605,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="value"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"

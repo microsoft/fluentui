@@ -183,7 +183,9 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -332,7 +334,9 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -557,7 +561,9 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -706,7 +712,9 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -917,7 +925,9 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -1068,7 +1078,9 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -1230,7 +1242,9 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -1467,7 +1481,9 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -1616,7 +1632,9 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -1837,7 +1855,9 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -1999,7 +2019,9 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -2209,7 +2231,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -2358,7 +2382,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -2578,7 +2604,9 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -2740,7 +2768,9 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -2939,7 +2969,9 @@ exports[`Pivot supports JSX expressions 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=
@@ -3099,7 +3131,9 @@ exports[`Pivot supports JSX expressions 1`] = `
           <span
             className=
                 ms-Pivot-linkContent
-
+                {
+                  flex: 0 1 100%;
+                }
           >
             <span
               className=

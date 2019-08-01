@@ -1,6 +1,21 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jul 2019 12:27:56 GMT and should not be manually modified.
+
+## 7.3.1
+Wed, 24 Jul 2019 12:27:56 GMT
+
+### Patches
+
+- Removing react dependency in @uifabric/styling library. (Humberto.Morimoto@microsoft.com)
+
+## 7.3.0
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Minor changes
+
+- Adding Georgian and Armenian font for Segoe UI Web (marygans@microsoft.com)
+,- Export default effects (joschect@microsoft.com)
 
 ## 7.2.1
 Wed, 17 Jul 2019 18:58:57 GMT

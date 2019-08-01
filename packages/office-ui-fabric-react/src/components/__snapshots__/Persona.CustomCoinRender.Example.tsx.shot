@@ -56,9 +56,6 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
-          color: #201f1e;
-        }
     style={
       Object {
         "height": 72,
@@ -196,6 +193,9 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
+            }
+            &:hover {
+              color: #201f1e;
             }
         dir="auto"
       >

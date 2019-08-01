@@ -56,9 +56,6 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
         & .contextualHost {
           display: none;
         }
-        &:hover $primaryText {
-          color: #201f1e;
-        }
   >
     <div
       className=
@@ -225,6 +222,9 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
+            }
+            &:hover {
+              color: #201f1e;
             }
         dir="auto"
       >
