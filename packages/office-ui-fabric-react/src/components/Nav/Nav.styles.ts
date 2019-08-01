@@ -45,7 +45,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     rightPadding = 20
   } = props;
 
-  const { palette, semanticColors } = theme;
+  const { palette, semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -53,7 +53,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     root: [
       classNames.root,
       className,
-      theme.fonts.medium,
+      fonts.medium,
       {
         overflowY: 'auto',
         userSelect: 'none',
@@ -153,7 +153,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     chevronButton: [
       classNames.chevronButton,
       getFocusStyle(theme),
-      theme.fonts.small,
+      fonts.small,
       {
         display: 'block',
         textAlign: 'left',
@@ -182,7 +182,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         }
       },
       isGroup && {
-        fontSize: theme.fonts.large.fontSize,
+        fontSize: fonts.large.fontSize,
         width: '100%',
         height: `${navHeight}px`,
         borderBottom: `1px solid ${semanticColors.bodyDivider}`
@@ -222,7 +222,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         left: '8px',
         height: `${navHeight}px`,
         lineHeight: `${navHeight}px`,
-        fontSize: '12px',
+        fontSize: fonts.small.fontSize,
         transition: 'transform .1s linear'
       },
       isExpanded && {

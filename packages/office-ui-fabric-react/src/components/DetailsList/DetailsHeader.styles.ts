@@ -87,7 +87,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
   return {
     root: [
       classNames.root,
-      theme.fonts.small,
+      fonts.small,
       {
         display: 'inline-block',
         background: colors.headerBackgroundColor,
@@ -302,7 +302,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         position: 'absolute',
         top: 22,
         left: -7.5,
-        fontSize: 16,
+        fontSize: fonts.mediumPlus.fontSize,
         color: palette.themePrimary,
         overflow: 'visible',
         zIndex: 10

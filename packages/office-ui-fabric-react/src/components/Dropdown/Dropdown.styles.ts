@@ -183,8 +183,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     dropdown: [
       globalClassnames.dropdown,
       normalize,
+      fonts.medium,
       {
-        ...theme.fonts.medium,
         color: palette.neutralPrimary,
         borderColor: palette.neutralSecondary,
         position: 'relative',
