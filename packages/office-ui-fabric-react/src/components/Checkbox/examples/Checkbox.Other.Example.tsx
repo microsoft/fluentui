@@ -67,7 +67,7 @@ export class CheckboxOtherExamples extends React.Component<{}, ICheckboxOtherExa
         <Checkbox
           label="Controlled Indeterminate Uncontrolled check Checkbox"
           styles={checkboxStyles}
-          removeIndeterminate={this._indeterRemove}
+          onRemoveIndeterminate={this._indeterRemove}
           indeterminate={isIndeter}
           defaultChecked
         />

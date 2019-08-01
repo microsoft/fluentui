@@ -24,18 +24,15 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   public static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState {
     if (!props.defaultIndeterminate && state.isIndeterminate) {
       return {
-        ...state,
         isIndeterminate: !!props.indeterminate
       };
     }
     if (props.checked !== undefined) {
       return {
-        ...state,
         isChecked: !!props.checked
       };
     }
-
-    return state;
+    return {};
   }
 
   /**
@@ -50,7 +47,8 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
 
     if (process.env.NODE_ENV !== 'production') {
       warnMutuallyExclusive('Checkbox', props, {
-        checked: 'defaultChecked'
+        checked: 'defaultChecked',
+        indeterminate: 'defaultIndeterminate'
       });
     }
 
@@ -141,6 +139,10 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     );
   }
 
+  public get indeterminate(): boolean {
+    return this.state.isIndeterminate!;
+  }
+
   public get checked(): boolean {
     return this.state.isChecked!;
   }
@@ -168,7 +170,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   };
 
   private _onChange = (ev: React.FormEvent<HTMLElement>): void => {
-    const { disabled, onChange, removeIndeterminate, indeterminate, defaultIndeterminate } = this.props;
+    const { disabled, onChange, onRemoveIndeterminate } = this.props;
     const { isChecked, isIndeterminate } = this.state;
 
     if (!disabled) {
@@ -180,10 +182,11 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
           this.setState({ isChecked: !isChecked });
         }
       } else {
-        if (defaultIndeterminate) {
+        if (onRemoveIndeterminate) {
+          onRemoveIndeterminate();
+        }
+        if (this.props.indeterminate === undefined) {
           this.setState({ isIndeterminate: false });
-        } else if (removeIndeterminate && indeterminate) {
-          removeIndeterminate();
         }
       }
     }
