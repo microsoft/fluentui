@@ -492,7 +492,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"

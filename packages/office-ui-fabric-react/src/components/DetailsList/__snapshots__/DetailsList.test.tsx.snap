@@ -521,7 +521,6 @@ exports[`DetailsList renders List correctly 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -1705,7 +1704,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -2295,7 +2293,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -3265,7 +3262,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -4464,7 +4460,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -4916,7 +4911,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -5043,7 +5037,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             onMouseDownCapture={[Function]}
-                            role="presentation"
                           >
                             <div
                               className=
@@ -5657,7 +5650,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             onMouseDownCapture={[Function]}
-                            role="presentation"
                           >
                             <div
                               className=

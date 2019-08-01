@@ -11,7 +11,6 @@ exports[`Nav renders Nav correctly 1`] = `
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
-  role="presentation"
 >
   <nav
     className=

@@ -733,7 +733,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -1554,7 +1553,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -2854,7 +2852,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -3675,7 +3672,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"

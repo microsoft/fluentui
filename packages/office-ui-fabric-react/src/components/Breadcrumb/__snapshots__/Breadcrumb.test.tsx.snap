@@ -44,7 +44,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <ol
             className=
@@ -441,7 +440,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <ol
             className=
@@ -844,7 +842,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <ol
             className=
@@ -1160,7 +1157,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <ol
             className=
@@ -1563,7 +1559,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <ol
             className=
@@ -1877,7 +1872,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <ol
             className=
@@ -2102,7 +2096,6 @@ exports[`Breadcrumb renders empty breadcrumb 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <ol
             className=
