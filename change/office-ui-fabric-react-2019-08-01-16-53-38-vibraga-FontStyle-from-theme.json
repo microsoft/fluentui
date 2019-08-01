@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Replace the usage of `FontSizes` variable with font styles pulled from the theme object and minor cleanup.",
+  "packageName": "office-ui-fabric-react",
+  "email": "vibraga@microsoft.com",
+  "commit": "94f9a344ec8204f2646c8c8fc4f5a60cdc316be0",
+  "date": "2019-08-01T23:53:38.055Z"
+}
