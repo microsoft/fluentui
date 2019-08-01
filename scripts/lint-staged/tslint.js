@@ -1,11 +1,10 @@
 // @ts-check
 
-const execSync = require('../exec-sync');
+const { spawnSync } = require('child_process');
 const path = require('path');
-const fs = require('fs');
 const msCustomRulesMain = require.resolve('tslint-microsoft-contrib');
 const rulesPath = path.dirname(msCustomRulesMain);
-const tslintPath = 'node ' + path.resolve(__dirname, '../node_modules/tslint/lib/tslintCli');
+const tslintPath = require.resolve('tslint/lib/tslintCli.js');
 
 const files = process.argv.slice(2);
 
@@ -65,6 +64,8 @@ function runTsLintOnFilesGroupedPerPackage(filesGroupedByPackage) {
       continue;
     }
 
-    execSync(`${tslintPath} --config ${tslintConfig} -t stylish -r ${rulesPath} ${filteredFiles.join(' ')}`);
+    spawnSync(process.execPath, [tslintPath, '--config', tslintConfig, '-t', 'stylish', '-r', rulesPath, ...filteredFiles], {
+      stdio: 'inherit'
+    });
   }
 }

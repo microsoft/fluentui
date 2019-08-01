@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Button: Creating separate Actionable view to improve perf of Actionable, small perf improvements and perf scenario updates.",
+  "packageName": "@uifabric/experiments",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "b83bcc1af7a91f2ceb7966aea79a495b6330e166",
+  "date": "2019-07-30T00:22:55.492Z"
+}

@@ -311,6 +311,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   mpt: {
     extensions: ['mpt']
   },
+  multiple: {},
   one: {
     extensions: ['one'] // this is a format for exported single - file notebook pages
   },

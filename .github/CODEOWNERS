@@ -22,7 +22,7 @@ webpack.config.js @kenotron @ecraig12345
 webpack.serve.config.js @kenotron @ecraig12345
 jest.config.js @kenotron @ecraig12345
 tsconfig.json @kenotron @ecraig12345
-rush.json @kenotron @ecraig12345
+lerna.json @kenotron @ecraig12345
 LICENSE @kenotron @ecraig12345
 azure-pipelines.yml @ecraig12345 @kenotron
 .appveyor.yml @kenotron @ecraig12345
@@ -34,7 +34,7 @@ azure-pipelines.yml @ecraig12345 @kenotron
 
 #### Apps
 # component-demo/
-fabric-website/ @jordandrako @ecraig12345 @Jahnp
+fabric-website/ @ecraig12345 @Jahnp
 fabric-website-resources/ @ecraig12345
 perf-test/ @JasonGore
 # ssr-tests/
@@ -46,7 +46,7 @@ Controls/web.tsx @Vitalius1 @natalieethell
 packages/charting/ @Raghurk
 packages/codepen-loader/ @ecraig12345 @kenotron
 packages/foundation/ @JasonGore
-packages/example-app-base/ @ecraig12345 @jordandrako
+packages/example-app-base/ @ecraig12345
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
 # packages/jest-serializer-merge-styles/

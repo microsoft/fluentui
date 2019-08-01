@@ -6,7 +6,7 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
   const { palette } = theme;
 
   let totalWidth = isDayPickerVisible && isMonthPickerVisible ? 440 : 220;
-  if (showWeekNumbers) {
+  if (showWeekNumbers && isDayPickerVisible) {
     totalWidth += 30;
   }
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, css, KeyCodes } from '@uifabric/utilities';
+import { BaseComponent, classNamesFunction, css, KeyCodes, getRTL } from '@uifabric/utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { IWeeklyDayPickerProps, IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles } from './WeeklyDayPicker.types';
 import {
@@ -69,6 +69,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
 
   private _dayGrid = React.createRef<ICalendarDayGrid>();
   private _focusOnUpdate: boolean;
+  private _initialTouchX: number | undefined;
 
   constructor(props: IWeeklyDayPickerProps) {
     super(props);
@@ -96,7 +97,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
     });
 
     return (
-      <div className={classNames.root} onKeyDown={this._onWrapperKeyDown}>
+      <div className={classNames.root} onKeyDown={this._onWrapperKeyDown} onTouchStart={this._onTouchStart} onTouchMove={this._onTouchMove}>
         {this.renderPreviousWeekNavigationButton(classNames)}
         <CalendarDayGrid
           styles={styles}
@@ -250,5 +251,27 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
           break;
       }
     };
+  };
+
+  private _onTouchStart = (ev: React.TouchEvent<HTMLDivElement>) => {
+    const touch = ev.touches[0];
+    if (touch) {
+      this._initialTouchX = touch.clientX;
+    }
+  };
+
+  private _onTouchMove = (ev: React.TouchEvent<HTMLDivElement>) => {
+    const isRtl = getRTL();
+    const touch = ev.touches[0];
+    if (touch && this._initialTouchX !== undefined && touch.clientX !== this._initialTouchX) {
+      if ((touch.clientX - this._initialTouchX) * (isRtl ? -1 : 1) < 0) {
+        // swipe right
+        this._onSelectNextWeek();
+      } else {
+        // swipe left
+        this._onSelectPrevWeek();
+      }
+      this._initialTouchX = undefined;
+    }
   };
 }

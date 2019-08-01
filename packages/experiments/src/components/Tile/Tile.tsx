@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ITileProps, TileSize } from './Tile.types';
 import { Check } from 'office-ui-fabric-react/lib/Check';
 import { SELECTION_CHANGE } from 'office-ui-fabric-react/lib/Selection';
-import { ISize, css, BaseComponent, getId, getNativeProps, divProperties } from '../../Utilities';
+import { ISize, css, initializeComponentRef, getId, getNativeProps, divProperties, EventGroup } from '../../Utilities';
 import * as TileStylesModule from './Tile.scss';
 import * as SignalStylesModule from '../signals/Signal.scss';
 import * as CheckStylesModule from 'office-ui-fabric-react/lib/components/Check/Check.scss';
@@ -62,15 +62,18 @@ export const TileLayoutSizes: {
  * @class Tile
  * @extends {React.Component<ITileProps, ITileState>}
  */
-export class Tile extends BaseComponent<ITileProps, ITileState> {
+export class Tile extends React.Component<ITileProps, ITileState> {
   private _nameId: string;
   private _activityId: string;
   private _labelId: string;
   private _descriptionId: string;
+  private _events: EventGroup;
 
   // tslint:disable-next-line:no-any
   constructor(props: ITileProps, context: any) {
     super(props, context);
+
+    initializeComponentRef(this);
 
     this._nameId = getId('Tile-name');
     this._activityId = getId('Tile-activity');
@@ -86,6 +89,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       isSelected: isSelected,
       isModal: isModal
     };
+
+    this._events = new EventGroup(this);
   }
 
   public componentWillReceiveProps(nextProps: ITileProps): void {
@@ -128,6 +133,10 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     }
   }
 
+  public componentWillUnmount(): void {
+    this._events.dispose();
+  }
+
   public render(): JSX.Element {
     const {
       children,
@@ -151,6 +160,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       href,
       onClick,
       isFluentStyling,
+      ariaLabelSelected,
+      nameplateOnlyOnHover,
       ...divProps
     } = this.props;
 
@@ -158,12 +169,12 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
 
     const isSelectable = !!selection && selectionIndex > -1;
     const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
-
+    const ariaLabelWithSelectState = isSelected && ariaLabelSelected ? `${ariaLabel}, ${ariaLabelSelected}` : ariaLabel;
     const content = (
       <>
         {ariaLabel ? (
           <span key="label" id={this._labelId} className={css('ms-Tile-label', TileStylesModule.label)}>
-            {ariaLabel}
+            {ariaLabelWithSelectState}
           </span>
         ) : null}
         {background
@@ -181,7 +192,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         {itemName || itemActivity
           ? this._onRenderNameplate({
               name: itemName,
-              activity: itemActivity
+              activity: itemActivity,
+              onlyOnHover: !!nameplateOnlyOnHover
             })
           : null}
       </>
@@ -206,7 +218,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         aria-selected={isSelected}
         {...getNativeProps(divProps, divProperties)}
         aria-labelledby={ariaLabel ? this._labelId : this._nameId}
-        aria-describedby={descriptionAriaLabel ? this._descriptionId : this._activityId}
+        aria-describedby={ariaLabelWithSelectState ? this._descriptionId : this._activityId}
         className={css('ms-Tile', className, TileStyles.tile, {
           [`ms-Tile--isSmall ${TileStyles.isSmall}`]: tileSize === 'small',
           [`ms-Tile--isLarge ${TileStyles.isLarge}`]: tileSize === 'large',
@@ -289,16 +301,24 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     ) : null;
   }
 
-  private _onRenderNameplate({ name, activity }: { name: React.ReactNode; activity: React.ReactNode }): JSX.Element {
+  private _onRenderNameplate({
+    name,
+    activity,
+    onlyOnHover
+  }: {
+    name: React.ReactNode;
+    activity: React.ReactNode;
+    onlyOnHover: boolean;
+  }): JSX.Element {
     return (
-      <span key="nameplate" className={css('ms-Tile-nameplate', TileStyles.nameplate)}>
+      <span key="nameplate" className={css('ms-Tile-nameplate', TileStyles.nameplate, { [TileStyles.onlyOnHover]: onlyOnHover })}>
         {name ? (
-          <span id={this._nameId} className={css('ms-Tile-name', TileStyles.name)}>
+          <span id={this._nameId} className={css('ms-Tile-name', TileStyles.name, { [TileStyles.onlyOnHover]: onlyOnHover })}>
             {name}
           </span>
         ) : null}
         {activity ? (
-          <span id={this._activityId} className={css('ms-Tile-activity', TileStyles.activity)}>
+          <span id={this._activityId} className={css('ms-Tile-activity', TileStyles.activity, { [TileStyles.onlyOnHover]: onlyOnHover })}>
             {activity}
           </span>
         ) : null}

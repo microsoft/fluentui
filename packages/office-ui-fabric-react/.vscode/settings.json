@@ -34,9 +34,9 @@
   // Controls after how many characters the editor will wrap to the next line. Setting this to 0 turns on viewport width wrapping
   "editor.wrappingColumn": 140,
   "tslint.enable": true,
-  "tslint.rulesDirectory": "../../common/node_modules/tslint-microsoft-contrib",
+  "tslint.rulesDirectory": "../../node_modules/tslint-microsoft-contrib",
   // Defines space handling after opening and before closing JSX expression braces. Requires TypeScript >= 2.0.6.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
   "editor.formatOnSave": true,
-  "typescript.tsdk": "../../common/node_modules/typescript/lib"
+  "typescript.tsdk": "../../node_modules/typescript/lib"
 }

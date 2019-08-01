@@ -215,6 +215,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
             enterModalSelectionOnTouch={true}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+            checkButtonAriaLabel="Row checkbox"
           />
         </MarqueeSelection>
       </Fabric>

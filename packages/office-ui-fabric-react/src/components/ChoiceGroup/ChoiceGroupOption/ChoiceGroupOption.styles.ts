@@ -88,7 +88,7 @@ function getImageWrapperStyle(isSelectedImageWrapper: boolean, className?: strin
 }
 
 export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOptionStyles => {
-  const { theme, hasIcon, hasImage, checked, disabled, imageIsLarge, focused } = props;
+  const { theme, hasIcon, hasImage, checked, disabled, imageIsLarge, focused, imageSize } = props;
   const { palette, semanticColors } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -355,6 +355,10 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     ],
     innerField: [
       classNames.innerField,
+      hasImage && {
+        height: imageSize!.height, // using non-null assertion because we have a default in `ChoiceGroupOptionBase` class.
+        width: imageSize!.width
+      },
       (hasIcon || hasImage) && {
         position: 'relative',
         display: 'inline-block',
@@ -395,6 +399,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         margin: '4px 8px',
         height: labelWrapperLineHeight * 2,
         lineHeight: labelWrapperLineHeight,
+        maxWidth: imageSize!.width * 2, // using non-null assertion because we have a default in `ChoiceGroupOptionBase` class.
         overflow: 'hidden',
         whiteSpace: 'pre-wrap',
         textOverflow: 'ellipsis',

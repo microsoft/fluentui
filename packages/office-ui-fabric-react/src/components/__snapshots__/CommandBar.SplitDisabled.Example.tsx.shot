@@ -110,11 +110,25 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       border-top-right-radius: 0;
                       border: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+                      -ms-high-contrast-adjust: none;
+                      background-color: WindowText;
+                      color: Window;
+                    }
                     & .ms-Button--primary + .ms-Button {
                       border: none;
                     }
                     @media screen and (-ms-high-contrast: active){& {
                       border: none;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
+                      background-color: Highlight;
+                      color: Window;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
+                      background-color: Window;
+                      border-color: GrayText;
+                      color: GrayText;
                     }
                     &:focus {
                       outline: none!important;
@@ -466,11 +480,19 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       border-top-right-radius: 0;
                       border: none;
                     }
+                    @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+                      -ms-high-contrast-adjust: none;
+                      background-color: WindowText;
+                      color: Window;
+                    }
                     & .ms-Button--primary + .ms-Button {
                       border: none;
                     }
                     @media screen and (-ms-high-contrast: active){& {
+                      background-color: Window;
+                      border-color: GrayText;
                       border: none;
+                      color: GrayText;
                     }
                 data-automation-id="uploadButton"
                 data-is-focusable={true}
@@ -693,6 +715,11 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         }
                         &:active .ms-Button-icon {
                           color: #323130;
+                        }
+                        @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+                          background-color: Window;
+                          border-color: GrayText;
+                          color: GrayText;
                         }
                     data-is-focusable={false}
                     disabled={false}

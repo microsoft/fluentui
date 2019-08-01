@@ -57,6 +57,11 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   onDismiss?: () => void;
 
   /**
+   * Custom render function for the label.
+   */
+  onRenderLabel?: IRenderFunction<IDropdownProps>;
+
+  /**
    * Optional custom renderer for placeholder text
    */
   onRenderPlaceholder?: IRenderFunction<IDropdownProps>;

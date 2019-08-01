@@ -27,6 +27,7 @@ export const BreadcrumbBasicExample: React.FunctionComponent = () => {
           { text: 'This is folder 5 another', key: 'f5', onClick: _onBreadcrumbItemClicked, isCurrentItem: true }
         ]}
         ariaLabel="Breadcrumb with no maxDisplayedItems"
+        overflowAriaLabel="More links"
       />
 
       <Label styles={labelStyles}>With Custom Divider Icon</Label>
@@ -41,6 +42,7 @@ export const BreadcrumbBasicExample: React.FunctionComponent = () => {
         ]}
         dividerAs={_getCustomDivider}
         ariaLabel="Breadcrumb with custom divider icon"
+        overflowAriaLabel="More links"
       />
 
       <Label styles={labelStyles}>With maxDisplayedItems set to three</Label>
@@ -94,8 +96,8 @@ export const BreadcrumbBasicExample: React.FunctionComponent = () => {
         ]}
         maxDisplayedItems={2}
         overflowIndex={1}
-        overflowAriaLabel="More items"
         ariaLabel="Breadcrumb with maxDisplayedItems set to 2 and overflowIndex set to 1"
+        overflowAriaLabel="More links"
       />
     </div>
   );

@@ -9,6 +9,7 @@ import {
   IDetailsRowProps,
   DetailsRow
 } from 'office-ui-fabric-react/lib/DetailsList';
+import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
@@ -62,9 +63,12 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
   private _selection: Selection;
   private _detailsList = React.createRef<IDetailsList>();
   private _textField = React.createRef<ITextField>();
+  private _async: Async;
 
   constructor(props: {}) {
     super(props);
+
+    this._async = new Async(this);
 
     // Populate with items for demos.
     if (_items.length === 0) {
@@ -90,6 +94,20 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
       dialogContent: undefined,
       announced: undefined
     };
+  }
+
+  public componentDidUpdate(prevState: IAnnouncedQuickActionsExampleState) {
+    if (prevState.announced !== this.state.announced && this.state.announced !== undefined) {
+      this._async.setTimeout(() => {
+        this.setState({
+          announced: undefined
+        });
+      }, 2000);
+    }
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   public render(): JSX.Element {
@@ -170,7 +188,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
 
     this.setState({
       items: [...items],
-      announced: <Announced message="Item deleted" />
+      announced: <Announced message="Item deleted" aria-live="assertive" />
     });
     return;
   };
@@ -197,7 +215,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
       this.setState({
         renameDialogOpen: false,
         items: [...items],
-        announced: <Announced message="Item renamed" />
+        announced: <Announced message="Item renamed" aria-live="assertive" />
       });
     } else {
       return;
