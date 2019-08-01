@@ -321,7 +321,12 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * Whether to animate updates
    */
   enableUpdateAnimations?: boolean;
-  ariaLabelForToggleAllGroupsButton?: string;
+
+  /**
+   * Optional override properties to render details header. The definition for IDetailsHeaderProps
+   * can be found under the DetailsHeader component.
+   */
+  detailsHeaderProps?: IDetailsHeaderProps;
 }
 
 /**
