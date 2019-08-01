@@ -524,6 +524,8 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     focus(): void;
     // (undocumented)
     static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState;
+    // (undocumented)
+    readonly indeterminate: boolean;
     render(): JSX.Element;
 }
 
@@ -2101,6 +2103,7 @@ export interface ICellStyleProps {
 export interface ICheckbox {
     checked: boolean;
     focus: () => void;
+    indeterminate: boolean;
 }
 
 // @public
@@ -2123,8 +2126,8 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     keytipProps?: IKeytipProps;
     label?: string;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
+    onRemoveIndeterminate?: () => void;
     onRenderLabel?: IRenderFunction<ICheckboxProps>;
-    removeIndeterminate?: () => void;
     styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
     theme?: ITheme;
 }
