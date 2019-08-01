@@ -137,8 +137,8 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
   private renderMonthHeaderRow = (classNames: IProcessedStyleSet<ICalendarDayGridStyles>): JSX.Element => {
     const { showWeekNumbers, strings, firstDayOfWeek, allFocusable, weeksToShow } = this.props;
     const { weeks } = this.state;
-    let dayLabels = strings.shortDays.slice();
-    let firstOfMonthIndex = weeks![1].findIndex(day => day.originalDate.getDate() === 1);
+    const dayLabels = strings.shortDays.slice();
+    const firstOfMonthIndex = weeks![1].findIndex((day: IDayInfo) => day.originalDate.getDate() === 1);
     if (weeksToShow === 1 && firstOfMonthIndex >= 0) {
       // if we only show one week, replace the header with short month name
       dayLabels[firstOfMonthIndex] = strings.shortMonths[weeks![1][firstOfMonthIndex].originalDate.getMonth()];
