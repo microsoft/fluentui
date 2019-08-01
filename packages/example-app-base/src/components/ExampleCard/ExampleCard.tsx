@@ -10,7 +10,7 @@ import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
 import { CodeSnippet } from '../CodeSnippet/index';
-import { ITextModel, ITranspiledOutput, IEditorProps } from '@uifabric/tsx-editor';
+import { ITextModel, ITranspiledOutput } from '@uifabric/tsx-editor';
 import { EditorPreview } from '@uifabric/tsx-editor/lib/components/EditorPreview';
 import { transformExample } from '@uifabric/tsx-editor/lib/transpiler/exampleTransform';
 import * as tsxEditorModule from '@uifabric/tsx-editor';
@@ -40,7 +40,6 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   private _themeOptions: IDropdownOption[];
   private _classNames: IProcessedStyleSet<IExampleCardStyles>;
   private readonly canRenderLiveEditor: boolean;
-  private Editor: React.FunctionComponent<IEditorProps>;
   private editorModule: typeof tsxEditorModule;
 
   constructor(props: IExampleCardProps) {
@@ -137,7 +136,17 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
               {isCodeVisible &&
                 (this.canRenderLiveEditor ? (
                   // <React.Suspense fallback={<div>Loading...</div>}>
-                  <this.Editor code={code!} onChange={this._editorOnChange} width={'auto'} height={500} language="typescript" />
+                  this.editorModule ? (
+                    <this.editorModule.Editor
+                      code={code!}
+                      onChange={this._editorOnChange}
+                      width={'auto'}
+                      height={500}
+                      language="typescript"
+                    />
+                  ) : (
+                    <div>Loading...</div>
+                  )
                 ) : (
                   // </React.Suspense>
                   <div className={classNames.code}>
@@ -208,11 +217,11 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   };
 
   private _onToggleCodeClick = () => {
-    if (this.canRenderLiveEditor && !this.Editor) {
+    if (this.canRenderLiveEditor && !this.editorModule) {
       // this.Editor = React.lazy(() => import('@uifabric/tsx-editor/lib/components/Editor'));
       require.ensure(['@uifabric/tsx-editor'], require => {
         this.editorModule = require('@uifabric/tsx-editor');
-        this.Editor = this.editorModule.Editor;
+        this.forceUpdate();
       });
     }
     if (this.props.onToggleEditor) {
