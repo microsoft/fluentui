@@ -306,6 +306,11 @@ export interface IButtonProps
    * yet unknown docs
    */
   defaultRender?: any;
+
+  /**
+   * Optional props to exclude from on splitButtonContainer
+   */
+  excludedSplitButtonContainerProps?: string[];
 }
 
 /**

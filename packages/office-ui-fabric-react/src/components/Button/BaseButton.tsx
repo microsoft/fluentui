@@ -21,6 +21,7 @@ import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames }
 import { KeytipData } from '../../KeytipData';
 import { memoizeFunction } from '@uifabric/utilities';
 import { IKeytipProps } from '../Keytip/Keytip.types';
+import { merge } from '../../Utilities';
 
 /**
  * {@docCategory Button}
@@ -482,7 +483,17 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onRenderSplitButtonContent(tag: any, buttonProps: IButtonProps): JSX.Element {
-    const { styles = {}, disabled, allowDisabledFocus, checked, getSplitButtonClassNames, primaryDisabled, menuProps, toggle } = this.props;
+    const {
+      styles = {},
+      disabled,
+      allowDisabledFocus,
+      checked,
+      getSplitButtonClassNames,
+      primaryDisabled,
+      menuProps,
+      toggle,
+      excludedSplitButtonContainerProps
+    } = this.props;
     let { keytipProps } = this.props;
 
     const classNames = getSplitButtonClassNames
@@ -500,7 +511,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
-    const containerProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, [], ['disabled']);
+    const excludedProps = merge(['disabled'], excludedSplitButtonContainerProps);
+    const containerProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, [], excludedProps);
 
     const SplitButton = (keytipAttributes?: any): JSX.Element => (
       <div
