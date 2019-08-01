@@ -6,11 +6,11 @@ import { mergeStyles } from '../../Styling';
 
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
 
-const PREVIEW_IMAGE_WIDTH = '198px';
-const PREVIEW_IMAGE_HEIGHT = '122px';
+const PREVIEW_IMAGE_WIDTH = '181px';
+const PREVIEW_IMAGE_HEIGHT = '112px';
 
 const customPreviewStyling = mergeStyles('ms-ChicletCard-preview-custom', {
-  height: 126,
+  height: 112,
   width: '100%',
   objectFit: 'contain'
 });

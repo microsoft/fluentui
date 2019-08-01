@@ -4,6 +4,8 @@ import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types'
 export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => {
   const { theme, className } = props;
   const { palette } = theme;
+  const previewWidth = ((1 / 3) * 100).toString() + '%';
+  const infoWidth = ((2 / 3) * 100).toString() + '%';
 
   return {
     root: [
@@ -18,8 +20,8 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         backgroundColor: palette.white,
         borderRadius: 2,
         boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.3)',
-        width: 600,
-        height: 126,
+        width: 576,
+        height: 112,
         userSelect: 'none',
         position: 'relative',
         selectors: {
@@ -36,8 +38,8 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: 126,
-        width: 198,
+        height: 112,
+        width: previewWidth,
         backgroundColor: palette.white
       }
     ],
@@ -48,7 +50,7 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         height: '100%',
         overflow: 'hidden',
         wordWrap: 'break-word',
-        width: 400
+        width: infoWidth
       }
     ],
     title: [
