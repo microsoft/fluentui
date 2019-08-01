@@ -1,5 +1,5 @@
 /** @jsx withSlots */
-import { ContextualMenu, DirectionalHint, Stack, Text } from 'office-ui-fabric-react';
+import { ContextualMenu, DirectionalHint, Text } from 'office-ui-fabric-react';
 import { withSlots, getSlots } from '../../../Foundation';
 import { Icon } from '../../../utilities/factoryComponents';
 
@@ -33,6 +33,7 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
     button: Button,
     icon: Icon,
     content: Text,
+    menuArea: 'div',
     menu: ContextualMenu,
     menuIcon: Icon
   });
@@ -48,9 +49,9 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
         {...rest}
       >
         {children}
-        <Stack.Item>
+        <Slots.menuArea>
           <Slots.menuIcon iconName="ChevronDown" />
-        </Stack.Item>
+        </Slots.menuArea>
       </Slots.button>
       {expanded && (
         <Slots.menu

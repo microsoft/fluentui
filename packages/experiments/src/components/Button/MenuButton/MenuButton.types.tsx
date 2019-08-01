@@ -1,4 +1,4 @@
-import { IComponent, IComponentStyles, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
+import { IComponent, IComponentStyles, IHTMLSlot, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 import { IContextualMenuSlot, IIconSlot } from '../../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../../Utilities';
 import { IButton, IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps, INativeButtonProps } from '../Button.types';
@@ -33,6 +33,11 @@ export interface IMenuButtonSlots extends IButtonSlots {
    * Defines the button that is going to be rendered.
    */
   button?: IButtonSlot;
+
+  /**
+   * Defines the section on the right of the MenuButton that contains the menu icon.
+   */
+  menuArea?: IHTMLSlot;
 
   /**
    * Defines the contextual menu that appears when you click on the MenuButton.
