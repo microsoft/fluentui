@@ -5,7 +5,7 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { List } from 'office-ui-fabric-react/lib/List';
-import { ITheme, mergeStyleSets, getTheme, getFocusStyle, DefaultFontStyles, FontSizes } from '@uifabric/styling';
+import { ITheme, mergeStyleSets, getTheme, getFocusStyle, FontSizes } from '@uifabric/styling';
 
 export type IExampleItem = { name: string; thumbnail: string; description: string };
 
@@ -52,7 +52,7 @@ const classNames: IListBasicExampleClassObject = mergeStyleSets({
     flexGrow: 1
   },
   itemName: [
-    DefaultFontStyles.xLarge,
+    theme.fonts.xLarge,
     {
       whiteSpace: 'nowrap',
       overflow: 'hidden',

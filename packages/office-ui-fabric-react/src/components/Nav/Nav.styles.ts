@@ -1,15 +1,6 @@
 import { INavStyleProps, INavStyles } from './Nav.types';
 import { IButtonStyles } from '../../Button';
-import {
-  AnimationClassNames,
-  DefaultFontStyles,
-  getFocusStyle,
-  FontSizes,
-  FontWeights,
-  ZIndexes,
-  getGlobalClassNames,
-  HighContrastSelector
-} from '../../Styling';
+import { AnimationClassNames, getFocusStyle, ZIndexes, getGlobalClassNames, HighContrastSelector } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Nav',
@@ -162,10 +153,9 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     chevronButton: [
       classNames.chevronButton,
       getFocusStyle(theme),
+      theme.fonts.small,
       {
         display: 'block',
-        fontWeight: FontWeights.regular,
-        fontSize: FontSizes.small,
         textAlign: 'left',
         lineHeight: `${navHeight}px`,
         margin: '5px 0',
@@ -191,27 +181,23 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
           }
         }
       },
-      isGroup && [
-        {
-          width: '100%',
-          height: `${navHeight}px`,
-          borderBottom: `1px solid ${semanticColors.bodyDivider}`
-        },
-        DefaultFontStyles.large
-      ],
-      isLink && [
-        {
-          display: 'block',
-          width: `${leftPaddingExpanded - 2}px`,
-          height: `${navHeight - 2}px`,
-          position: 'absolute',
-          top: '1px',
-          left: `${position}px`,
-          zIndex: ZIndexes.Nav,
-          padding: 0,
-          margin: 0
-        }
-      ],
+      isGroup && {
+        fontSize: theme.fonts.large.fontSize,
+        width: '100%',
+        height: `${navHeight}px`,
+        borderBottom: `1px solid ${semanticColors.bodyDivider}`
+      },
+      isLink && {
+        display: 'block',
+        width: `${leftPaddingExpanded - 2}px`,
+        height: `${navHeight - 2}px`,
+        position: 'absolute',
+        top: '1px',
+        left: `${position}px`,
+        zIndex: ZIndexes.Nav,
+        padding: 0,
+        margin: 0
+      },
       isSelected && {
         color: palette.themePrimary,
         backgroundColor: palette.neutralLighterAlt,
