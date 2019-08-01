@@ -2,6 +2,107 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Mon, 22 Jul 2019 12:28:42 GMT",
+      "tag": "@uifabric/react-cards_v0.107.6",
+      "version": "0.107.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Card: Importing from office-ui-fabric-react directly instead of from office-ui-fabric-react/lib/...",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": ""
+          },
+          {
+            "comment": "Improve how to get the min query string",
+            "author": "elcraig@microsoft.com",
+            "commit": "17b31ca8739504e1d4c7b7dcaa725091254d0eb5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/react-cards_v0.107.5",
+      "version": "0.107.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/react-cards_v0.107.4",
+      "version": "0.107.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Card: Importing from office-ui-fabric-react directly instead of from office-ui-fabric-react/lib/...",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "a0ff67e977da9e8ee92d55506efe5ce4e766a44d"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.107.3",
+      "tag": "@uifabric/react-cards_v0.107.3",
+      "date": "Mon, 01 Jul 2019 18:51:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adds react-app-polyfill",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "40245650abdfb17e9f1cd6472f3671380237bcc2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.3.0` to `^7.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^7.0.3` to `^7.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.5` to `^7.0.6`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.2` to `^7.6.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.2` to `^7.1.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.2` to `^7.0.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.107.2",
       "tag": "@uifabric/react-cards_v0.107.2",
       "date": "Thu, 27 Jun 2019 18:25:04 GMT",

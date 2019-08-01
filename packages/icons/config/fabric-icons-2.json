@@ -10,6 +10,30 @@
   },
   "glyphs": [
     {
+      "name": "FontDecrease",
+      "unicode": "E8E7"
+    },
+    {
+      "name": "FontIncrease",
+      "unicode": "E8E8"
+    },
+    {
+      "name": "FontSize",
+      "unicode": "E8E9"
+    },
+    {
+      "name": "CellPhone",
+      "unicode": "E8EA"
+    },
+    {
+      "name": "RepeatOne",
+      "unicode": "E8ED"
+    },
+    {
+      "name": "RepeatAll",
+      "unicode": "E8EE"
+    },
+    {
       "name": "Calculator",
       "unicode": "E8EF"
     },
@@ -230,6 +254,10 @@
       "unicode": "E949"
     },
     {
+      "name": "CalculatorPercentage",
+      "unicode": "E94C"
+    },
+    {
       "name": "CalculatorEqualTo",
       "unicode": "E94E"
     },
@@ -380,34 +408,6 @@
     {
       "name": "Cloudy",
       "unicode": "E9BF"
-    },
-    {
-      "name": "PartlyCloudyDay",
-      "unicode": "E9C0"
-    },
-    {
-      "name": "PartlyCloudyNight",
-      "unicode": "E9C1"
-    },
-    {
-      "name": "ClearNight",
-      "unicode": "E9C2"
-    },
-    {
-      "name": "RainShowersDay",
-      "unicode": "E9C3"
-    },
-    {
-      "name": "Rain",
-      "unicode": "E9C4"
-    },
-    {
-      "name": "Thunderstorms",
-      "unicode": "E9C6"
-    },
-    {
-      "name": "RainSnow",
-      "unicode": "E9C7"
     }
   ]
 }

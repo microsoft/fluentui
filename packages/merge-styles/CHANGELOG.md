@@ -1,6 +1,24 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Thu, 27 Jun 2019 18:25:04 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+
+## 7.2.0
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Minor changes
+
+- Changed initial default style injection to insert at the start of head by default, rather than at the end. This lets user specified stylesheets have preference by default, but also added support to insert styles in a specific part of the `HEAD` element. Just create a placeholder `<style data-merge-styles/>` element within the head, and styles will be injected after that placeholder. (vibraga@microsoft.com)
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.1.1
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- Re-use style nodes in IE11 to prevent unpredictable cascading
 
 ## 7.1.0
 Thu, 27 Jun 2019 18:25:04 GMT

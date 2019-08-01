@@ -10,6 +10,34 @@
   },
   "glyphs": [
     {
+      "name": "PartlyCloudyDay",
+      "unicode": "E9C0"
+    },
+    {
+      "name": "PartlyCloudyNight",
+      "unicode": "E9C1"
+    },
+    {
+      "name": "ClearNight",
+      "unicode": "E9C2"
+    },
+    {
+      "name": "RainShowersDay",
+      "unicode": "E9C3"
+    },
+    {
+      "name": "Rain",
+      "unicode": "E9C4"
+    },
+    {
+      "name": "Thunderstorms",
+      "unicode": "E9C6"
+    },
+    {
+      "name": "RainSnow",
+      "unicode": "E9C7"
+    },
+    {
       "name": "Snow",
       "unicode": "E9C8"
     },
@@ -242,6 +270,10 @@
       "unicode": "EA47"
     },
     {
+      "name": "ClearSelectionMirrored",
+      "unicode": "EA48"
+    },
+    {
       "name": "ClosePaneMirrored",
       "unicode": "EA49"
     },
@@ -376,38 +408,6 @@
     {
       "name": "MultiSelectMirrored",
       "unicode": "EA98"
-    },
-    {
-      "name": "Broom",
-      "unicode": "EA99"
-    },
-    {
-      "name": "Cocktails",
-      "unicode": "EA9D"
-    },
-    {
-      "name": "Wines",
-      "unicode": "EABF"
-    },
-    {
-      "name": "Articles",
-      "unicode": "EAC1"
-    },
-    {
-      "name": "Cycling",
-      "unicode": "EAC7"
-    },
-    {
-      "name": "DietPlanNotebook",
-      "unicode": "EAC8"
-    },
-    {
-      "name": "Pill",
-      "unicode": "EACB"
-    },
-    {
-      "name": "ExerciseTracker",
-      "unicode": "EACC"
     }
   ]
 }

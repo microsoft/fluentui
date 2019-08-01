@@ -10,6 +10,94 @@
   },
   "glyphs": [
     {
+      "name": "MobileReport",
+      "unicode": "F18A"
+    },
+    {
+      "name": "ScaleVolume",
+      "unicode": "F18C"
+    },
+    {
+      "name": "HardDriveGroup",
+      "unicode": "F18F"
+    },
+    {
+      "name": "FastMode",
+      "unicode": "F19A"
+    },
+    {
+      "name": "ToggleLeft",
+      "unicode": "F19E"
+    },
+    {
+      "name": "ToggleRight",
+      "unicode": "F19F"
+    },
+    {
+      "name": "TriangleShape",
+      "unicode": "F1A7"
+    },
+    {
+      "name": "RectangleShape",
+      "unicode": "F1A9"
+    },
+    {
+      "name": "CubeShape",
+      "unicode": "F1AA"
+    },
+    {
+      "name": "Trophy2",
+      "unicode": "F1AE"
+    },
+    {
+      "name": "BucketColor",
+      "unicode": "F1B6"
+    },
+    {
+      "name": "BucketColorFill",
+      "unicode": "F1B7"
+    },
+    {
+      "name": "Taskboard",
+      "unicode": "F1C2"
+    },
+    {
+      "name": "SingleColumn",
+      "unicode": "F1D3"
+    },
+    {
+      "name": "DoubleColumn",
+      "unicode": "F1D4"
+    },
+    {
+      "name": "TripleColumn",
+      "unicode": "F1D5"
+    },
+    {
+      "name": "ColumnLeftTwoThirds",
+      "unicode": "F1D6"
+    },
+    {
+      "name": "ColumnRightTwoThirds",
+      "unicode": "F1D7"
+    },
+    {
+      "name": "AccessLogoFill",
+      "unicode": "F1DB"
+    },
+    {
+      "name": "AnalyticsLogo",
+      "unicode": "F1DE"
+    },
+    {
+      "name": "AnalyticsQuery",
+      "unicode": "F1DF"
+    },
+    {
+      "name": "NewAnalyticsQuery",
+      "unicode": "F1E0"
+    },
+    {
       "name": "AnalyticsReport",
       "unicode": "F1E1"
     },
@@ -266,6 +354,10 @@
       "unicode": "F285"
     },
     {
+      "name": "Signin",
+      "unicode": "F286"
+    },
+    {
       "name": "DocumentApproval",
       "unicode": "F28B"
     },
@@ -316,98 +408,6 @@
     {
       "name": "BranchSearch",
       "unicode": "F297"
-    },
-    {
-      "name": "BranchShelveset",
-      "unicode": "F298"
-    },
-    {
-      "name": "RawSource",
-      "unicode": "F299"
-    },
-    {
-      "name": "MergeDuplicate",
-      "unicode": "F29A"
-    },
-    {
-      "name": "RowsGroup",
-      "unicode": "F29B"
-    },
-    {
-      "name": "RowsChild",
-      "unicode": "F29C"
-    },
-    {
-      "name": "Deploy",
-      "unicode": "F29D"
-    },
-    {
-      "name": "Redeploy",
-      "unicode": "F29E"
-    },
-    {
-      "name": "ServerEnviroment",
-      "unicode": "F29F"
-    },
-    {
-      "name": "VisioDiagram",
-      "unicode": "F2A0"
-    },
-    {
-      "name": "HighlightMappedShapes",
-      "unicode": "F2A1"
-    },
-    {
-      "name": "TextCallout",
-      "unicode": "F2A2"
-    },
-    {
-      "name": "IconSetsFlag",
-      "unicode": "F2A4"
-    },
-    {
-      "name": "VisioLogo",
-      "unicode": "F2A7"
-    },
-    {
-      "name": "VisioLogoFill",
-      "unicode": "F2A8"
-    },
-    {
-      "name": "VisioDocument",
-      "unicode": "F2A9"
-    },
-    {
-      "name": "TimelineProgress",
-      "unicode": "F2AA"
-    },
-    {
-      "name": "TimelineDelivery",
-      "unicode": "F2AB"
-    },
-    {
-      "name": "Backlog",
-      "unicode": "F2AC"
-    },
-    {
-      "name": "TeamFavorite",
-      "unicode": "F2AD"
-    },
-    {
-      "name": "TaskGroup",
-      "unicode": "F2AE"
-    },
-    {
-      "name": "TaskGroupMirrored",
-      "unicode": "F2AF"
-    },
-    {
-      "name": "ScopeTemplate",
-      "unicode": "F2B0"
-    },
-    {
-      "name": "AssessmentGroupTemplate",
-      "unicode": "F2B1"
     }
   ]
 }

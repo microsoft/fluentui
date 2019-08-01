@@ -99,7 +99,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
             role="row"
             style={
               Object {
-                "minWidth": 0,
+                "minWidth": 800,
               }
             }
           >
@@ -212,10 +212,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        opacity: 1;
-                      }
-
                   data-automationid="DetailsRowCheck"
                   data-is-focusable={true}
                   data-selection-toggle={true}
@@ -1242,7 +1238,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -1344,10 +1340,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -1921,7 +1913,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -2023,10 +2015,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -2600,7 +2588,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -2702,10 +2690,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -3279,7 +3263,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -3381,10 +3365,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -3958,7 +3938,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -4060,10 +4040,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -4637,7 +4613,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -4739,10 +4715,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -5316,7 +5288,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -5418,10 +5390,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -5995,7 +5963,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -6097,10 +6065,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -6674,7 +6638,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -6776,10 +6740,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -7353,7 +7313,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 800,
                           }
                         }
                       >
@@ -7455,10 +7415,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"

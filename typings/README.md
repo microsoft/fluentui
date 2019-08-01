@@ -16,6 +16,6 @@ The `custom-global` types are not referenced by default in most projects. To add
 to `tsconfig.json` `compilerOptions`:
 
 ```js
-"typeRoots": ["node_modules/@types", "../../typings"],
+"typeRoots": ["../../node_modules/@types", "../../typings"],
 "types": ["custom-global"] // and any other types you reference
 ```

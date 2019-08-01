@@ -1,6 +1,35 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Thu, 27 Jun 2019 18:25:04 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+
+## 0.107.6
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Patches
+
+- Card: Importing from office-ui-fabric-react directly instead of from office-ui-fabric-react/lib/... (Humberto.Morimoto@microsoft.com)
+,- Improve how to get the min query string (elcraig@microsoft.com)
+
+## 0.107.5
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 0.107.4
+Sat, 13 Jul 2019 22:20:41 GMT
+
+### Patches
+
+- Card: Importing from office-ui-fabric-react directly instead of from office-ui-fabric-react/lib/... (Humberto.Morimoto@microsoft.com)
+
+## 0.107.3
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
 
 ## 0.107.2
 Thu, 27 Jun 2019 18:25:04 GMT

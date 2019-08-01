@@ -1,6 +1,55 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 27 Jun 2019 22:14:22 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jul 2019 12:27:56 GMT and should not be manually modified.
+
+## 7.2.9
+Wed, 24 Jul 2019 12:27:56 GMT
+
+### Patches
+
+- Update colors implementation info (elcraig@microsoft.com)
+
+## 7.2.8
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Patches
+
+- Fix IE 11 incompatible syntax (elcraig@microsoft.com)
+
+## 7.2.7
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.2.5
+Tue, 09 Jul 2019 17:34:38 GMT
+
+### Patches
+
+- Fix website version selection and delete stray Animate file (elcraig@microsoft.com)
+
+## 7.2.4
+Wed, 03 Jul 2019 12:30:55 GMT
+
+### Patches
+
+- DetailsList cell update animation (inateeg@microsoft.com)
+
+## 7.2.3
+Tue, 02 Jul 2019 12:29:06 GMT
+
+### Patches
+
+- Add pivot for Fabric Icons page
+
+## 7.2.2
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
 
 ## 7.2.1
 Thu, 27 Jun 2019 22:14:22 GMT

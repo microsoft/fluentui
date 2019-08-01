@@ -121,7 +121,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
             role="row"
             style={
               Object {
-                "minWidth": 0,
+                "minWidth": 100,
               }
             }
           >
@@ -232,10 +232,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        opacity: 1;
-                      }
-
                   data-automationid="DetailsRowCheck"
                   data-is-focusable={true}
                   data-selection-toggle={true}
@@ -613,7 +609,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -715,10 +711,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -991,7 +983,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -1093,10 +1085,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -1369,7 +1357,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -1471,10 +1459,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -1747,7 +1731,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -1849,10 +1833,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -2125,7 +2105,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -2227,10 +2207,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -2503,7 +2479,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -2605,10 +2581,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -2881,7 +2853,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -2983,10 +2955,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -3259,7 +3227,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -3361,10 +3329,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -3637,7 +3601,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -3739,10 +3703,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"
@@ -4015,7 +3975,7 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                         role="row"
                         style={
                           Object {
-                            "minWidth": 0,
+                            "minWidth": 100,
                           }
                         }
                       >
@@ -4117,10 +4077,6 @@ exports[`Component Examples renders HoverCard.Basic.Example.tsx correctly 1`] = 
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
-
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
                             role="checkbox"

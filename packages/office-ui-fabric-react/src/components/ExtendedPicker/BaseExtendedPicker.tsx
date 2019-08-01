@@ -13,6 +13,7 @@ const styles: any = stylesImport;
 
 export interface IBaseExtendedPickerState<T> {
   queryString: string | null;
+  selectedItems: T[] | null;
   suggestionItems: T[] | null;
 }
 
@@ -34,7 +35,12 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
     this.state = {
       queryString: '',
-      suggestionItems: this.props.suggestionItems ? (this.props.suggestionItems as T[]) : null
+      suggestionItems: this.props.suggestionItems ? (this.props.suggestionItems as T[]) : null,
+      selectedItems: this.props.defaultSelectedItems
+        ? (this.props.defaultSelectedItems as T[])
+        : this.props.selectedItems
+        ? (this.props.selectedItems as T[])
+        : null
     };
 
     this.floatingPickerProps = this.props.floatingPickerProps;
@@ -43,11 +49,14 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
   // tslint:disable-next-line:no-any
   public get items(): any {
-    return this.selectedItemsList.current ? this.selectedItemsList.current.items : null;
+    return this.state.selectedItems
+      ? this.state.selectedItems
+      : this.selectedItemsList.current
+      ? this.selectedItemsList.current.items
+      : null;
   }
 
   public componentDidMount(): void {
-    super.componentDidMount();
     this.forceUpdate();
   }
 
@@ -58,6 +67,10 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
 
     if (newProps.selectedItemsListProps) {
       this.selectedItemsListProps = newProps.selectedItemsListProps;
+    }
+
+    if (newProps.selectedItems) {
+      this.setState({ selectedItems: newProps.selectedItems });
     }
   }
 
@@ -87,6 +100,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       this.floatingPicker.current && this.floatingPicker.current.currentSelectedSuggestionIndex !== -1
         ? 'sug-' + this.floatingPicker.current.currentSelectedSuggestionIndex
         : undefined;
+    const isExpanded = this.floatingPicker.current ? this.floatingPicker.current.isSuggestionsShown : false;
 
     return (
       <div
@@ -109,8 +123,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
                   onClick={this.onInputClick}
                   onInputValueChange={this.onInputChange}
                   aria-activedescendant={activeDescendant}
-                  aria-owns="suggestion-list"
-                  aria-expanded={this.floatingPicker.current ? this.floatingPicker.current.isSuggestionsShown : false}
+                  aria-owns={isExpanded ? 'suggestion-list' : undefined}
+                  aria-expanded={isExpanded}
                   aria-haspopup="true"
                   autoCapitalize="off"
                   autoComplete="off"

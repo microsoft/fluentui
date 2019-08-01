@@ -7,7 +7,8 @@ import {
   FontSizes,
   FontWeights,
   ZIndexes,
-  getGlobalClassNames
+  getGlobalClassNames,
+  HighContrastSelector
 } from '../../Styling';
 
 const GlobalClassNames = {
@@ -116,14 +117,24 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         paddingLeft: leftPadding,
         paddingRight: rightPadding,
         color: semanticColors.bodyText,
-        selectors: !isDisabled
-          ? {
-              '.ms-Nav-compositeLink:hover &': {
-                backgroundColor: palette.neutralLighterAlt,
-                color: semanticColors.bodyText
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'transparent',
+            selectors: {
+              ':focus': {
+                borderColor: 'WindowText'
               }
             }
-          : {}
+          }
+        }
+      },
+      !isDisabled && {
+        selectors: {
+          '.ms-Nav-compositeLink:hover &': {
+            backgroundColor: palette.neutralLighterAlt,
+            color: semanticColors.bodyText
+          }
+        }
       },
       isSelected && {
         color: palette.themePrimary,

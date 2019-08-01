@@ -28,7 +28,7 @@ function loadReferences(): IAppLink[] {
 }
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'Fabric - React',
+  appTitle: 'UI Fabric - React',
   customizations: AppCustomizations,
   testPages: [
     {
@@ -137,6 +137,12 @@ export const AppDefinition: IAppDefinition = {
               key: 'DetailsList - Advanced',
               name: 'DetailsList - Advanced',
               url: '#/examples/detailslist/variablerowheights'
+            },
+            {
+              component: require<any>('./components/pages/DetailsList/DetailsListAnimationPage').DetailsListAnimationPage,
+              key: 'DetailsList - Animation',
+              name: 'DetailsList - Animation',
+              url: '#/examples/detailslist/animation'
             },
             {
               component: require<any>('./components/pages/DetailsList/DetailsListCompactPage').DetailsListCompactPage,

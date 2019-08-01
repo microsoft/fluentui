@@ -7,6 +7,7 @@ import { ILayerProps } from '../../Layer';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 import { IContextualMenuProps } from '../../ContextualMenu';
+import { IOverlayProps } from '../../Overlay';
 
 export interface IDragOptions {
   /**
@@ -89,9 +90,14 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
   onDismissed?: () => any;
 
   /**
-   * Props to be passed through to Layer
+   * Defines an optional set of props to be passed through to Layer
    */
   layerProps?: ILayerProps;
+
+  /**
+   * Defines an optional set of props to be passed through to Overlay
+   */
+  overlay?: IOverlayProps;
 
   /**
    * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).

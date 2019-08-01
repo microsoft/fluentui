@@ -90,7 +90,7 @@ exports[`DetailsList renders List correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 100,
             }
           }
         >
@@ -201,10 +201,6 @@ exports[`DetailsList renders List correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -683,7 +679,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 500,
             }
           }
         >
@@ -794,10 +790,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -1872,7 +1864,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 100,
             }
           }
         >
@@ -1983,10 +1975,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -2466,7 +2454,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 900,
             }
           }
         >
@@ -2577,10 +2565,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -3439,7 +3423,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 500,
             }
           }
         >
@@ -3550,10 +3534,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -4642,7 +4622,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 100,
             }
           }
         >
@@ -5304,7 +5284,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -5487,7 +5467,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -5918,7 +5898,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -6101,7 +6081,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
@@ -6284,7 +6264,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >

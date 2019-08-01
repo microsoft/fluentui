@@ -90,7 +90,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 200,
             }
           }
         >
@@ -203,10 +203,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -741,7 +737,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -796,6 +792,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -843,10 +840,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 top: 1px;
                                 z-index: 1;
                               }
-                              &:hover {
-                                opacity: 1;
-                              }
-
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
                           role="checkbox"
@@ -1231,7 +1224,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -1286,6 +1279,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1333,10 +1327,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 top: 1px;
                                 z-index: 1;
                               }
-                              &:hover {
-                                opacity: 1;
-                              }
-
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
                           role="checkbox"
@@ -1721,7 +1711,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -1776,6 +1766,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1823,10 +1814,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 top: 1px;
                                 z-index: 1;
                               }
-                              &:hover {
-                                opacity: 1;
-                              }
-
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
                           role="checkbox"
@@ -2211,7 +2198,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -2266,6 +2253,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2313,10 +2301,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 top: 1px;
                                 z-index: 1;
                               }
-                              &:hover {
-                                opacity: 1;
-                              }
-
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
                           role="checkbox"
@@ -2701,7 +2685,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -2756,6 +2740,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2803,10 +2788,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 top: 1px;
                                 z-index: 1;
                               }
-                              &:hover {
-                                opacity: 1;
-                              }
-
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
                           role="checkbox"
@@ -3191,7 +3172,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -3246,6 +3227,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3293,10 +3275,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 top: 1px;
                                 z-index: 1;
                               }
-                              &:hover {
-                                opacity: 1;
-                              }
-
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
                           role="checkbox"
@@ -3681,7 +3659,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -3736,6 +3714,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3783,10 +3762,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 top: 1px;
                                 z-index: 1;
                               }
-                              &:hover {
-                                opacity: 1;
-                              }
-
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
                           role="checkbox"
@@ -4171,7 +4146,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -4226,6 +4201,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -4273,10 +4249,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 top: 1px;
                                 z-index: 1;
                               }
-                              &:hover {
-                                opacity: 1;
-                              }
-
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
                           role="checkbox"
@@ -4661,7 +4633,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -4716,6 +4688,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -4763,10 +4736,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 top: 1px;
                                 z-index: 1;
                               }
-                              &:hover {
-                                opacity: 1;
-                              }
-
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
                           role="checkbox"

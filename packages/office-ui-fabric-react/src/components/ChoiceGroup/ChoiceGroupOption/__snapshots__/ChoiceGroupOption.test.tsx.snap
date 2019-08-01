@@ -864,16 +864,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
+                max-width: 64px;
                 overflow: hidden;
                 position: relative;
                 text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
-          style={
-            Object {
-              "maxWidth": 64,
-            }
-          }
         >
           <span
             className="ms-ChoiceFieldLabel"
@@ -1093,16 +1089,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
+                max-width: 64px;
                 overflow: hidden;
                 position: relative;
                 text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
-          style={
-            Object {
-              "maxWidth": 64,
-            }
-          }
         >
           <span
             className="ms-ChoiceFieldLabel"
@@ -1320,16 +1312,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
+                max-width: 64px;
                 overflow: hidden;
                 position: relative;
                 text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
-          style={
-            Object {
-              "maxWidth": 64,
-            }
-          }
         >
           <span
             className="ms-ChoiceFieldLabel"
@@ -1523,16 +1511,12 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 margin-left: 8px;
                 margin-right: 8px;
                 margin-top: 4px;
+                max-width: 64px;
                 overflow: hidden;
                 position: relative;
                 text-overflow: ellipsis;
                 white-space: pre-wrap;
               }
-          style={
-            Object {
-              "maxWidth": 64,
-            }
-          }
         >
           <span
             className="ms-ChoiceFieldLabel"

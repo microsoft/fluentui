@@ -13,7 +13,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
   <div
     className=
         ms-DetailsList
-        is-fixed
         is-horizontalConstrained
         {
           -moz-osx-font-smoothing: grayscale;
@@ -91,7 +90,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 200,
             }
           }
         >
@@ -204,10 +203,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -399,7 +394,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             role="columnheader"
             style={
               Object {
-                "width": 220,
+                "width": 120,
               }
             }
           >
@@ -589,7 +584,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             role="columnheader"
             style={
               Object {
-                "width": 220,
+                "width": 120,
               }
             }
           >
@@ -854,7 +849,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -909,6 +904,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -956,10 +952,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                 top: 1px;
                                 z-index: 1;
                               }
-                              &:hover {
-                                opacity: 1;
-                              }
-
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
                           role="checkbox"
@@ -1122,7 +1114,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -1178,7 +1170,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -1288,7 +1280,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -1343,6 +1335,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1390,10 +1383,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                 top: 1px;
                                 z-index: 1;
                               }
-                              &:hover {
-                                opacity: 1;
-                              }
-
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
                           role="checkbox"
@@ -1556,7 +1545,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -1612,7 +1601,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -1722,7 +1711,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -1777,6 +1766,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1824,10 +1814,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                 top: 1px;
                                 z-index: 1;
                               }
-                              &:hover {
-                                opacity: 1;
-                              }
-
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
                           role="checkbox"
@@ -1990,7 +1976,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -2046,7 +2032,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -2156,7 +2142,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -2211,6 +2197,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2258,10 +2245,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                 top: 1px;
                                 z-index: 1;
                               }
-                              &:hover {
-                                opacity: 1;
-                              }
-
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
                           role="checkbox"
@@ -2424,7 +2407,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -2480,7 +2463,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -2590,7 +2573,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       role="row"
                       style={
                         Object {
-                          "minWidth": 0,
+                          "minWidth": 200,
                         }
                       }
                     >
@@ -2645,6 +2628,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       >
                         <div
                           aria-checked={false}
+                          aria-label="Row checkbox"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2692,10 +2676,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                                 top: 1px;
                                 z-index: 1;
                               }
-                              &:hover {
-                                opacity: 1;
-                              }
-
                           data-automationid="DetailsRowCheck"
                           data-selection-toggle={true}
                           role="checkbox"
@@ -2858,7 +2838,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -2914,7 +2894,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                           role="gridcell"
                           style={
                             Object {
-                              "width": 220,
+                              "width": 120,
                             }
                           }
                         >
@@ -3078,6 +3058,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             className=
                 ms-DetailsRow-check
                 ms-DetailsRow-check--isDisabled
+                ms-Check-checkHost
                 {
                   visibility: hidden;
                 }
@@ -3123,9 +3104,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                   right: 1px;
                   top: 1px;
                   z-index: 1;
-                }
-                &:hover {
-                  opacity: 1;
                 }
           />
         </div>
@@ -3189,7 +3167,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             role="gridcell"
             style={
               Object {
-                "width": 220,
+                "width": 120,
               }
             }
           >
@@ -3249,7 +3227,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             role="gridcell"
             style={
               Object {
-                "width": 220,
+                "width": 120,
               }
             }
           >

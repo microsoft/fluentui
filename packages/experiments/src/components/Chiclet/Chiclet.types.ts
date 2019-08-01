@@ -24,12 +24,12 @@ export interface IChicletProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Sharing link.
    */
-  url?: string;
+  url: string;
 
   /**
    * File title to render for the component.
    */
-  title?: string;
+  title: string;
 
   /**
    * Chiclet size to render
@@ -37,24 +37,19 @@ export interface IChicletProps extends React.HTMLAttributes<HTMLElement> {
   size?: ChicletSize;
 
   /**
-   * Description to render for the component.
+   * Description to render for the component in place of the url.
    */
   description?: React.ReactElement<JSX.Element>;
+
+  /**
+   * Preview to render for the component.
+   */
+  preview?: React.ReactElement<HTMLElement>;
 
   /**
    * Image to render for the component.
    */
   image?: string;
-
-  /**
-   * Image Width to render for the component.
-   */
-  imageWidth?: number | string;
-
-  /**
-   * Image Height to render for the component.
-   */
-  imageHeight?: number | string;
 
   /**
    * Alternate image to render for the component.

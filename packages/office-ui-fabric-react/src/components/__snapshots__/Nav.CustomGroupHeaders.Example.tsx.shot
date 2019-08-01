@@ -162,6 +162,12 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     &:active .ms-Button-icon {
                       color: #004578;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: transparent;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:focus {
+                      border-color: WindowText;
+                    }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #faf9f8;
                       color: #323130;
@@ -308,6 +314,12 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     }
                     &:active .ms-Button-icon {
                       color: #004578;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: transparent;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:focus {
+                      border-color: WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #faf9f8;
@@ -492,6 +504,12 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     &:active .ms-Button-icon {
                       color: #004578;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: transparent;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:focus {
+                      border-color: WindowText;
+                    }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #faf9f8;
                       color: #323130;
@@ -638,6 +656,12 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     }
                     &:active .ms-Button-icon {
                       color: #004578;
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: transparent;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:focus {
+                      border-color: WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
                       background-color: #faf9f8;

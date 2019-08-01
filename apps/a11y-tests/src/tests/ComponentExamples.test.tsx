@@ -2,9 +2,11 @@ import * as React from 'react';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as glob from 'glob';
+import * as puppeteer from 'puppeteer';
+import * as os from 'os';
 import { getSarifReport } from '../getSarifReport';
-import { SarifLog } from 'axe-sarif-converter/dist/sarif/sarif-log';
-import { Result } from 'axe-sarif-converter/dist/sarif/sarif-2.0.0';
+import { SarifLog } from 'axe-sarif-converter';
+import { Result } from 'sarif';
 
 const ReactDOM = require('react-dom');
 
@@ -13,10 +15,14 @@ function dehydrateSarifReport(report: SarifLog): Result[] {
   return report.runs[0]!.results!.filter(item => item.level === 'error');
 }
 
-/* tslint:disable-next-line:no-any */
-async function testComponent(component: { name: string; pageName: string; elem: React.ReactElement<any> }) {
+async function testComponent(
+  browserPromise: Promise<puppeteer.Browser>,
+  /* tslint:disable-next-line:no-any */
+  component: { name: string; pageName: string; elem: React.ReactElement<any> }
+) {
   it(`checks accessibility of ${component.name} (${component.pageName})`, async () => {
-    const sarifReport: SarifLog = await getSarifReport(component.elem);
+    const browser = await browserPromise;
+    const sarifReport: SarifLog = await getSarifReport(browser, component.elem);
     const errors = dehydrateSarifReport(sarifReport);
 
     // Save the report into `dist/reports` folder (only when there're errors)
@@ -42,7 +48,11 @@ const excludedExampleFiles: string[] = ['Keytips.Basic.Example', 'List.Basic.Exa
 declare const global: any;
 
 describe('a11y test', () => {
+  const RealDate = Date;
   const constantDate = new Date(Date.UTC(2017, 0, 6, 4, 41, 20));
+  const browserPromise = puppeteer.launch({
+    userDataDir: path.resolve(os.tmpdir(), 'oufr-a11y-test-profile')
+  });
 
   beforeAll(() => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
@@ -62,11 +72,11 @@ describe('a11y test', () => {
     // Prevent random and time elements from failing repeated tests.
     global.Date = class {
       public static now() {
-        return constantDate;
+        return new RealDate(constantDate);
       }
 
       constructor() {
-        return constantDate;
+        return new RealDate(constantDate);
       }
     };
 
@@ -75,10 +85,13 @@ describe('a11y test', () => {
     });
   });
 
+  afterAll(async () => {
+    (await browserPromise).close();
+  });
+
   const files: string[] = [];
-  const exampleFiles: string[] = glob.sync(
-    path.resolve(process.cwd(), `node_modules/office-ui-fabric-react/lib-commonjs/components/**/examples/*Example*.js`)
-  );
+  const oufrPath = path.dirname(require.resolve('office-ui-fabric-react/package.json'));
+  const exampleFiles: string[] = glob.sync(path.join(oufrPath, `lib-commonjs/components/**/examples/*Example*.js`));
   files.push(...exampleFiles);
 
   files
@@ -92,7 +105,7 @@ describe('a11y test', () => {
         .filter(key => typeof componentModule[key] === 'function')
         .forEach(key => {
           const ComponentUnderTest: React.ComponentClass = componentModule[key];
-          testComponent({
+          testComponent(browserPromise, {
             name: controlName,
             pageName: pageName,
             elem: <ComponentUnderTest />

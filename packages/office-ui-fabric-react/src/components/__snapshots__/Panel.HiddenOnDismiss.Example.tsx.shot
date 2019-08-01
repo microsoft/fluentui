@@ -233,11 +233,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
             onBlur={[Function]}
             onFocus={[Function]}
             onFocusCapture={[Function]}
-            style={
-              Object {
-                "maxHeight": 768,
-              }
-            }
+            style={Object {}}
           >
             <div
               data-is-visible={true}
@@ -402,31 +398,18 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                     flex-grow: 1;
                     overflow-y: hidden;
                   }
-              style={
-                Object {
-                  "maxHeight": 768,
-                }
-              }
             >
               <div
                 className=
                     ms-Panel-header
                     {
-                      flex-grow: 0;
+                      flex-shrink: 0;
                       margin-bottom: 14px;
                       margin-left: 0;
                       margin-right: 0;
                       margin-top: 14px;
                       padding-left: 16px;
                       padding-right: 16px;
-                    }
-                    @media screen and (min-width: 640px){& {
-                      padding-left: 32px;
-                      padding-right: 32px;
-                    }
-                    @media screen and (min-width: 1366px){& {
-                      padding-left: 40px;
-                      padding-right: 40px;
                     }
                     @media (min-width: 1024px){& {
                       margin-top: 30px;
@@ -466,11 +449,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                       overflow-y: auto;
                     }
                 data-is-scrollable={true}
-                style={
-                  Object {
-                    "maxHeight": 768,
-                  }
-                }
               >
                 <div
                   className=
@@ -480,14 +458,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         padding-bottom: 20px;
                         padding-left: 16px;
                         padding-right: 16px;
-                      }
-                      @media screen and (min-width: 640px){& {
-                        padding-left: 32px;
-                        padding-right: 32px;
-                      }
-                      @media screen and (min-width: 1366px){& {
-                        padding-left: 40px;
-                        padding-right: 40px;
                       }
                 >
                   <span>

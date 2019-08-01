@@ -2,6 +2,129 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Wed, 24 Jul 2019 12:27:56 GMT",
+      "tag": "@uifabric/date-time_v7.1.7",
+      "version": "7.1.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update Date-time readme",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "440e00c27ba3c162d6d2145b80ae578684d366b0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Jul 2019 12:28:42 GMT",
+      "tag": "@uifabric/date-time_v7.1.7",
+      "version": "7.1.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing issue where buttons don't hide if they have focus, adding touch for navigation",
+            "author": "jolore@microsoft.com",
+            "commit": "c32b92aa6da7e582a87ed1e2f9426a5409850af9"
+          },
+          {
+            "comment": "Improve how to get the min query string",
+            "author": "elcraig@microsoft.com",
+            "commit": "17b31ca8739504e1d4c7b7dcaa725091254d0eb5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
+      "tag": "@uifabric/date-time_v7.1.6",
+      "version": "7.1.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
+            "author": "makotom@microsoft.com",
+            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+          }
+        ],
+        "none": [
+          {
+            "comment": "get rid of npx",
+            "author": "kchau@microsoft.com",
+            "commit": "472993033369aa470e59197a534045c02c24e852"
+          },
+          {
+            "comment": "bumping versions to match what was published already",
+            "author": "kchau@microsoft.com",
+            "commit": "75e4ad16a2e6a54672e4929a9e003c7fd6f6ae52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
+      "tag": "@uifabric/date-time_v7.1.4",
+      "version": "7.1.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "Use resolves for all package paths",
+            "author": "kchau@microsoft.com",
+            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
+          },
+          {
+            "comment": "adding build cache",
+            "author": "kchau@microsoft.com",
+            "commit": "babf367fa3a2f05d6689b9ea0a0cdb765b282380"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Jul 2019 12:29:39 GMT",
+      "tag": "@uifabric/date-time_v7.1.4",
+      "version": "7.1.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix date conversion for weeklydaypicker",
+            "author": "jolore@microsoft.com",
+            "commit": "f1273794e8c4402a86656689185bc7deb01151e4"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.1.3",
+      "tag": "@uifabric/date-time_v7.1.3",
+      "date": "Mon, 01 Jul 2019 18:51:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adds react-app-polyfill",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "40245650abdfb17e9f1cd6472f3671380237bcc2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.5` to `^7.0.6`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.6.2` to `^7.6.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.1.2` to `^7.1.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.2` to `^7.0.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.2",
       "tag": "@uifabric/date-time_v7.1.2",
       "date": "Wed, 26 Jun 2019 12:23:41 GMT",

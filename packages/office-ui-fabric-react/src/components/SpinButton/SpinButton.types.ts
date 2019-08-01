@@ -7,6 +7,7 @@ import { KeyboardSpinDirection } from './SpinButton';
 import { IButtonStyles } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
 import { IRefObject } from '../../Utilities';
+import { IButtonProps } from '../Button/Button.types';
 
 /**
  * {@docCategory SpinButton}
@@ -234,6 +235,16 @@ export interface ISpinButtonProps {
    * Optional keytip for this spin button
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Optional input props on spin button
+   */
+  inputProps?: React.InputHTMLAttributes<HTMLElement | HTMLInputElement>;
+
+  /**
+   * Optional iconButton props on spin button
+   */
+  iconButtonProps?: IButtonProps;
 }
 
 /**
@@ -288,6 +299,7 @@ export interface ISpinButtonStyles {
 
   /**
    * Style for the label text
+   * @deprecated Disabled styles taken care by `Label` component.
    */
   labelDisabled: IStyle;
 

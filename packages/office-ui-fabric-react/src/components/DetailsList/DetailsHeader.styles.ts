@@ -149,11 +149,9 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       }
     ],
 
-    cellWrapperPadded: [
-      {
-        paddingRight: cellStyleProps.cellExtraRightPadding + cellStyleProps.cellRightPadding
-      }
-    ],
+    cellWrapperPadded: {
+      paddingRight: cellStyleProps.cellExtraRightPadding + cellStyleProps.cellRightPadding
+    },
 
     cellIsCheck: [
       cellStyles,
@@ -193,24 +191,20 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       }
     ],
 
-    cellIsActionable: [
-      {
-        selectors: {
-          ':hover': {
-            color: semanticColors.bodyText,
-            background: semanticColors.listHeaderBackgroundHovered
-          },
-          ':active': {
-            background: semanticColors.listHeaderBackgroundPressed
-          }
+    cellIsActionable: {
+      selectors: {
+        ':hover': {
+          color: semanticColors.bodyText,
+          background: semanticColors.listHeaderBackgroundHovered
+        },
+        ':active': {
+          background: semanticColors.listHeaderBackgroundPressed
         }
       }
-    ],
-    cellIsEmpty: [
-      {
-        textOverflow: 'clip'
-      }
-    ],
+    },
+    cellIsEmpty: {
+      textOverflow: 'clip'
+    },
 
     cellSizer: [
       classNames.cellSizer,
@@ -249,60 +243,54 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       }
     ],
 
-    cellIsResizing: [classNames.isResizing],
+    cellIsResizing: classNames.isResizing,
 
-    cellSizerStart: [
-      {
-        margin: '0 -8px'
-      }
-    ],
+    cellSizerStart: {
+      margin: '0 -8px'
+    },
 
-    cellSizerEnd: [
-      {
-        margin: 0,
-        marginLeft: -16
-      }
-    ],
+    cellSizerEnd: {
+      margin: 0,
+      marginLeft: -16
+    },
 
     collapseButton: [
       classNames.collapseButton,
+      {
+        transformOrigin: '50% 50%',
+        transition: 'transform .1s linear'
+      },
       isAllCollapsed
         ? [
             classNames.isCollapsed,
             {
-              transform: 'rotate(0deg)',
-              transformOrigin: '50% 50%',
-              transition: 'transform .1s linear'
+              transform: 'rotate(0deg)'
             }
           ]
         : {
-            transform: 'rotate(90deg)',
-            transformOrigin: '50% 50%',
-            transition: 'transform .1s linear'
+            transform: 'rotate(90deg)'
           }
     ],
 
     checkTooltip: classNames.checkTooltip,
 
-    sizingOverlay: [
-      isSizing && {
-        position: 'absolute',
-        left: 0,
-        top: 0,
-        right: 0,
-        bottom: 0,
-        cursor: 'ew-resize',
-        background: 'rgba(255, 255, 255, 0)',
-        selectors: {
-          [HighContrastSelector]: {
-            background: 'transparent',
-            MsHighContrastAdjust: 'none'
-          }
+    sizingOverlay: isSizing && {
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      right: 0,
+      bottom: 0,
+      cursor: 'ew-resize',
+      background: 'rgba(255, 255, 255, 0)',
+      selectors: {
+        [HighContrastSelector]: {
+          background: 'transparent',
+          MsHighContrastAdjust: 'none'
         }
       }
-    ],
+    },
 
-    accessibleLabel: [hiddenContentStyle],
+    accessibleLabel: hiddenContentStyle,
 
     dropHintCircleStyle: [
       classNames.dropHintCircleStyle,
@@ -352,11 +340,9 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       }
     ],
 
-    dropHintStyle: [
-      {
-        display: 'inline-block',
-        position: 'absolute'
-      }
-    ]
+    dropHintStyle: {
+      display: 'inline-block',
+      position: 'absolute'
+    }
   };
 };
