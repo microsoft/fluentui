@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 30 Jul 2019 12:22:57 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Aug 2019 12:23:00 GMT and should not be manually modified.
+
+## 6.197.0
+Thu, 01 Aug 2019 12:23:00 GMT
+
+### Minor changes
+
+- Add new ways for callers to control the behavior of the combo box. (reedpa@microsoft.com)
+,- Nav: Add ability for screen reader to read selected state. (Humberto.Morimoto@microsoft.com)
 
 ## 6.196.0
 Tue, 30 Jul 2019 12:22:57 GMT

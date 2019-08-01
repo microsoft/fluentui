@@ -1,6 +1,15 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Wed, 31 Jul 2019 12:20:38 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Aug 2019 12:23:00 GMT and should not be manually modified.
+
+## 0.16.20
+Thu, 01 Aug 2019 12:23:00 GMT
+
+### Patches
+
+- ComboBox: Updated colors for borders, text, backgrounds, and font sizes per web fluent toolkit. (v-mare@microsoft.com)
+,- ContextualMenu: Reverts splitPrimary button hover state back to highlighting whole button (v-mare@microsoft.com)
+,- Searchbox: Removed hasInput border (v-mare@microsoft.com)
 
 ## 0.16.19
 Wed, 31 Jul 2019 12:20:38 GMT

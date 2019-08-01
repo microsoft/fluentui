@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Searchbox: Removed hasInput border",
-  "packageName": "@uifabric/fluent-theme",
-  "email": "v-mare@microsoft.com",
-  "commit": "786a9b6f2aabe27be42fd1331ef0895c94ccbc1c",
-  "date": "2019-07-31T20:47:09.920Z"
-}

@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 01 Aug 2019 12:23:00 GMT",
+      "tag": "office-ui-fabric-react_v6.197.0",
+      "version": "6.197.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add new ways for callers to control the behavior of the combo box.",
+            "author": "reedpa@microsoft.com",
+            "commit": "18ce710a7314d56c569c4c115d24e1507345c011"
+          },
+          {
+            "comment": "Nav: Add ability for screen reader to read selected state.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "284ca631afe83fc5ec56b4c221691bd85ad341f8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jul 2019 12:22:57 GMT",
       "tag": "office-ui-fabric-react_v6.196.0",
       "version": "6.196.0",

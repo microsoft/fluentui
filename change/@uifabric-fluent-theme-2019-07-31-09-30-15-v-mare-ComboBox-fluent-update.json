@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ComboBox: Updated colors for borders, text, backgrounds, and font sizes per web fluent toolkit.",
-  "packageName": "@uifabric/fluent-theme",
-  "email": "v-mare@microsoft.com",
-  "commit": "015ed5ccda811488c37d8868acf3eca3239d5fb5",
-  "date": "2019-07-31T16:30:15.959Z"
-}

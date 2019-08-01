@@ -2,6 +2,30 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Thu, 01 Aug 2019 12:23:00 GMT",
+      "tag": "@uifabric/fluent-theme_v0.16.20",
+      "version": "0.16.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: Updated colors for borders, text, backgrounds, and font sizes per web fluent toolkit.",
+            "author": "v-mare@microsoft.com",
+            "commit": "015ed5ccda811488c37d8868acf3eca3239d5fb5"
+          },
+          {
+            "comment": "ContextualMenu: Reverts splitPrimary button hover state back to highlighting whole button",
+            "author": "v-mare@microsoft.com",
+            "commit": "fdbeb24dc9ba95c0a99f8fc5834cf0c7ca7d3eb8"
+          },
+          {
+            "comment": "Searchbox: Removed hasInput border",
+            "author": "v-mare@microsoft.com",
+            "commit": "786a9b6f2aabe27be42fd1331ef0895c94ccbc1c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Jul 2019 12:20:38 GMT",
       "tag": "@uifabric/fluent-theme_v0.16.19",
       "version": "0.16.19",

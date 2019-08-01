@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 22 Jul 2019 12:21:49 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Aug 2019 12:23:00 GMT and should not be manually modified.
+
+## 6.82.0
+Thu, 01 Aug 2019 12:23:00 GMT
+
+### Minor changes
+
+- Tile: Add ability for screen reader to read selected state. (Humberto.Morimoto@microsoft.com)
 
 ## 6.81.1
 Mon, 22 Jul 2019 12:21:49 GMT

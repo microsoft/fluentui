@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 01 Aug 2019 12:23:00 GMT",
+      "tag": "@uifabric/experiments_v6.82.0",
+      "version": "6.82.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Tile: Add ability for screen reader to read selected state.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "284ca631afe83fc5ec56b4c221691bd85ad341f8"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.81.1",
       "tag": "@uifabric/experiments_v6.81.1",
       "date": "Mon, 22 Jul 2019 12:21:49 GMT",
