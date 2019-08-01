@@ -44,6 +44,17 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
   defaultValue?: number;
 
   /**
+   * the left thumb
+   * @defaultvalue 2
+   */
+  valueLeft?: number;
+
+  /**
+   * the Rught thumb
+   * @defaultvalue 8
+   */
+  valueRight?: number;
+  /**
    * The initial value of the Slider. Use this if you intend to pass in a new value as a result of onChange events.
    * This value is mutually exclusive to defaultValue. Use one or the other.
    */
