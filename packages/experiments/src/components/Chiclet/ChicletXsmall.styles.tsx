@@ -81,6 +81,7 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         // @todo: change values for height and width according to redline
         width: 170,
         height: 15,
+        paddingBottom: 1,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis'

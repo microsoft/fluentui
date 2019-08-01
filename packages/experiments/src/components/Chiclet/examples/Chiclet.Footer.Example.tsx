@@ -26,7 +26,8 @@ const footerStyle = mergeStyles({
 
 const activitiesStyle = mergeStyles({
   paddingLeft: 16,
-  paddingBottom: 8
+  paddingBottom: 8,
+  color: 'gray120'
 });
 
 const actionsStyle = mergeStyles({
