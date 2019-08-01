@@ -1,0 +1,8 @@
+{
+  "comment": "Persona: Fix styles issue caused by unnecessary nesting",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "cliff.koh@microsoft.com",
+  "commit": "080f2b1f3ca771b92c51704e2948f79567d86b29",
+  "date": "2019-07-25T20:59:00.496Z"
+}
