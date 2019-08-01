@@ -110,6 +110,18 @@ export interface ITooltipStyleProps {
    * Maximum width of tooltip.
    */
   maxWidth?: string;
+
+  /**
+   * The gap between the Callout and the target
+   * @defaultvalue 0
+   */
+  gapSpace?: number;
+
+  /**
+   * The width of the Callout's beak
+   * @defaultvalue 16
+   */
+  beakWidth?: number;
 }
 
 /**

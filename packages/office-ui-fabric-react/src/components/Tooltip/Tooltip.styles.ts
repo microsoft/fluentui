@@ -2,9 +2,11 @@ import { ITooltipStyleProps, ITooltipStyles, TooltipDelay } from './Tooltip.type
 import { AnimationClassNames } from '../../Styling';
 
 export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
-  const { className, delay, maxWidth, theme } = props;
+  const { className, delay, beakWidth=16, gapSpace = 0, maxWidth, theme } = props;
   const { palette, fonts } = theme;
 
+  // The math here is done to account for the 45 degree rotation of the beak
+  const tooltipGapSpace = -(Math.sqrt((beakWidth * beakWidth) / 2) + gapSpace);
   return {
     root: [
       'ms-Tooltip',
@@ -14,7 +16,17 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
         background: palette.white,
         padding: '8px',
         animationDelay: '300ms',
-        maxWidth: maxWidth
+        maxWidth: maxWidth,
+        selectors: {
+          ':after': {
+            content: `''`,
+            position: 'absolute',
+            bottom: tooltipGapSpace,
+            left: tooltipGapSpace,
+            right: tooltipGapSpace,
+            top: tooltipGapSpace
+          }
+        }
       },
       delay === TooltipDelay.zero && {
         animationDelay: '0s'

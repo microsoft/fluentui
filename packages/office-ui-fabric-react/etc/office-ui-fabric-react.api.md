@@ -7713,8 +7713,10 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
 
 // @public (undocumented)
 export interface ITooltipStyleProps {
+    beakWidth?: number;
     className?: string;
     delay?: TooltipDelay;
+    gapSpace?: number;
     maxWidth?: string;
     theme: ITheme;
 }
