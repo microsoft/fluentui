@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from '@uifabric/experiments';
+import { Button } from '../Button';
 import { createTheme, Stack } from 'office-ui-fabric-react';
 
 const tokens = {

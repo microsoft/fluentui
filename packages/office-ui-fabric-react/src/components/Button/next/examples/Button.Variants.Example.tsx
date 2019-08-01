@@ -67,8 +67,8 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
           <ButtonStack>
             <Stack horizontal verticalAlign="center">
               <Text>Icon Button:</Text>
-              <IconButton icon={{ iconName: 'Emoji2' }} />
-              <IconButton disabled icon={{ iconName: 'Emoji2' }} />
+              <IconButton icon={{ iconName: 'Emoji2' }} ariaLabel="Icon button" />
+              <IconButton disabled icon={{ iconName: 'Emoji2' }} ariaLabel="Disabled icon button" />
             </Stack>
           </ButtonStack>
           <ButtonStack>

@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Button, MenuButton, IMenuButtonProps } from '@uifabric/experiments';
+import { Button } from '../Button';
+import { MenuButton } from '../MenuButton/MenuButton';
+import { IMenuButtonProps } from '../MenuButton/MenuButton.types';
 import { createTheme, mergeStyles, Stack } from 'office-ui-fabric-react';
 
 const testTheme = createTheme({

@@ -37,7 +37,7 @@ export interface IAppDefinition {
 export interface IAppProps extends IWithResponsiveModeState {
   appDefinition: IAppDefinition;
 
-  toggleNextVersion: (value: boolean) => void;
+  toggleNextVersion?: (value: boolean) => void;
 
   isNextVersion: boolean;
 

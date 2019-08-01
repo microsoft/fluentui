@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from '@uifabric/experiments';
+import { Button } from '../Button';
 import { Icon, CommandBar, Stack, Text } from 'office-ui-fabric-react';
 
 const tokens = {
@@ -39,10 +39,10 @@ export class ButtonExample extends React.Component<{}, {}> {
               <Button primary disabled content="Disabled primary button" onClick={alertClicked} />
             </ButtonStack>
             <ButtonStack>
-              <Button icon="PeopleAdd" circular />
-              <Button icon="Phone" circular disabled />
-              <Button icon="FontSize" circular primary />
-              <Button icon="Attach" circular primary disabled />
+              <Button icon="PeopleAdd" circular ariaLabel="Default circular button" />
+              <Button icon="Phone" circular disabled ariaLabel="Disabled default circular button" />
+              <Button icon="FontSize" circular primary ariaLabel="Primary circular button" />
+              <Button icon="Attach" circular primary disabled ariaLabel="Disabled primary circular button" />
             </ButtonStack>
             <ButtonStack>
               <Button content="Button as an anchor: Go to Bing" href="http://bing.com" target="_blank" title="Let us bing!" />

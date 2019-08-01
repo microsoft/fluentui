@@ -137,12 +137,12 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
 
   private _onCurrentVersionSelected = (): void => {
     const { toggleNextVersion } = this.props;
-    toggleNextVersion(false);
+    toggleNextVersion && toggleNextVersion(false);
   };
 
   private _onNextVersionSelected = (): void => {
     const { toggleNextVersion } = this.props;
-    toggleNextVersion(true);
+    toggleNextVersion && toggleNextVersion(true);
   };
 }
 

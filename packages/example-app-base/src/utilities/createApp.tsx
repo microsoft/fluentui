@@ -48,7 +48,7 @@ export function createApp(
       appDefinition.headerLinks = headerLinks;
     }
 
-    const renderApp = (props: {}) => <App appDefinition={appDefinition} {...props} />;
+    const renderApp = (props: {}) => <App appDefinition={appDefinition} isNextVersion={false} {...props} />;
 
     ReactDOM.render(
       <Fabric>

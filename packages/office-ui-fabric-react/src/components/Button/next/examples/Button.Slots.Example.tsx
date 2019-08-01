@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { Stack, IStackProps, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { IMenuButtonProps, IMenuButtonStyles, IMenuButtonTokens, MenuButton } from '@uifabric/experiments/lib/MenuButton';
-import { ISplitButtonProps, ISplitButtonTokens, SplitButton } from '@uifabric/experiments/lib/SplitButton';
+import { MenuButton } from '../MenuButton/MenuButton';
+import { IMenuButtonProps, IMenuButtonStyles, IMenuButtonTokens } from '../MenuButton/MenuButton.types';
+import { SplitButton } from '../SplitButton/SplitButton';
+import { ISplitButtonProps, ISplitButtonTokens } from '../SplitButton/SplitButton.types';
 
 interface IRibbonMenuButtonProps extends IMenuButtonProps {
   vertical?: boolean;
@@ -157,7 +159,7 @@ export class ButtonSlotsExample extends React.Component<{}, {}> {
         </Stack>
         <Text>Vertical Buttons</Text>
         <Stack horizontal verticalAlign="stretch" tokens={stackTokens}>
-          <RibbonSplitMenuButton vertical icon="Microphone" content="Dictate" menu={menuProps} />
+          <RibbonSplitMenuButton vertical icon="Microphone" content="Dictate" menu={menuProps} ariaLabel="Begin dictation" />
           <RibbonMenuButton vertical icon="MarkAsProtected" content="Sensitivity" menu={menuProps} />
         </Stack>
       </Stack>

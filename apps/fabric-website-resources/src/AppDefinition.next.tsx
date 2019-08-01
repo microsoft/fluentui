@@ -12,6 +12,8 @@ export const nextExamplePages: IAppLink[] = [
 
 export const AppDefinitionNext: IAppDefinition = JSON.parse(JSON.stringify(AppDefinition));
 
+AppDefinitionNext.appTitle = 'UI Fabric - React 8 Beta';
+
 const sectionsNumber = AppDefinitionNext.examplePages.length;
 for (let sectionPage = 0; sectionPage < sectionsNumber; sectionPage++) {
   const examplesNumber = AppDefinitionNext.examplePages[sectionPage].links.length;

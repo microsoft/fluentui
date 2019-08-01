@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from '../index';
+import { Button } from 'office-ui-fabric-react/lib/Button.next';
 import { Stack, IStackTokens } from 'office-ui-fabric-react';
 
 export interface IButtonToggleExampleState {
@@ -45,6 +45,7 @@ export class ButtonToggleExample extends React.Component<{}, IButtonToggleExampl
           icon={defaultCircularButtonToggled ? 'VolumeDisabled' : 'Volume3'}
           checked={defaultCircularButtonToggled}
           onClick={this._onDefaultCircularButtonClicked}
+          ariaLabel="Default circular toggle button"
         />
         <Button
           circular
@@ -52,6 +53,7 @@ export class ButtonToggleExample extends React.Component<{}, IButtonToggleExampl
           icon={primaryCircularButtonToggled ? 'VolumeDisabled' : 'Volume3'}
           checked={primaryCircularButtonToggled}
           onClick={this._onPrimaryCircularButtonClicked}
+          ariaLabel="Primary circular toggle button"
         />
       </Stack>
     );
