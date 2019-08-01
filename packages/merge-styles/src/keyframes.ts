@@ -1,3 +1,4 @@
+import { getStyleOptions } from './StyleOptionsState';
 import { Stylesheet } from './Stylesheet';
 import { serializeRuleEntries } from './styleToClassName';
 
@@ -14,7 +15,7 @@ export function keyframes(timeline: { [key: string]: {} }): string {
 
   for (const prop in timeline) {
     if (timeline.hasOwnProperty(prop)) {
-      rulesArray.push(prop, '{', serializeRuleEntries(timeline[prop]), '}');
+      rulesArray.push(prop, '{', serializeRuleEntries(getStyleOptions(), timeline[prop]), '}');
     }
   }
   const rules = rulesArray.join('');

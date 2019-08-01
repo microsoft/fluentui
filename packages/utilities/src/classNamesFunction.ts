@@ -1,5 +1,6 @@
-import { mergeStyleSets, IStyleSet, IProcessedStyleSet, Stylesheet } from '@uifabric/merge-styles';
+import { mergeStyleSetsWithOptions, IStyleSet, IProcessedStyleSet, Stylesheet } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
+import { getRTL } from './rtl';
 
 const MAX_CACHE_COUNT = 50;
 let _memoizedClassNames = 0;
@@ -56,6 +57,9 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     styleProps: TStyleProps = {} as TStyleProps
   ): IProcessedStyleSet<TStyleSet> => {
     let current: Map<any, any> = map;
+    const { theme } = styleProps as any;
+    const rtl = (theme && theme.rtl) || getRTL();
+
     const disableCaching = options.disableCaching;
 
     // On reset of our stylesheet, reset memoized cache.
@@ -74,7 +78,7 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
       if (styleFunctionOrObject === undefined) {
         (current as any)[RetVal] = {} as IProcessedStyleSet<TStyleSet>;
       } else {
-        (current as any)[RetVal] = mergeStyleSets((typeof styleFunctionOrObject === 'function'
+        (current as any)[RetVal] = mergeStyleSetsWithOptions({ rtl: !!rtl }, (typeof styleFunctionOrObject === 'function'
           ? styleFunctionOrObject(styleProps)
           : styleFunctionOrObject) as IStyleSet<TStyleSet>);
       }

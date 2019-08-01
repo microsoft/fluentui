@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "mergeStyles and mergeStyleSets have a companion method which accepts options for setting RTL",
+  "packageName": "@uifabric/merge-styles",
+  "email": "jdh@microsoft.com",
+  "commit": "db3504b65c6363d9d840d58076a31abe8bade56a",
+  "date": "2019-08-02T18:42:57.671Z"
+}

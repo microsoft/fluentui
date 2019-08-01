@@ -6,9 +6,9 @@ export { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet, Omit } from './IS
 
 export { ICSSRule, IFontFace, IFontWeight, IRawFontStyle, IRawStyleBase } from './IRawStyleBase';
 
-export { mergeStyles } from './mergeStyles';
+export { mergeStyles, mergeStylesWithOptions } from './mergeStyles';
 
-export { mergeStyleSets } from './mergeStyleSets';
+export { mergeStyleSets, mergeStyleSetsWithOptions } from './mergeStyleSets';
 
 export { concatStyleSets } from './concatStyleSets';
 
@@ -18,6 +18,6 @@ export { keyframes } from './keyframes';
 
 export { IStyleSheetConfig, ICSPSettings, InjectionMode, Stylesheet } from './Stylesheet';
 
-export { setRTL } from './transforms/rtlifyRules';
+export { setRTL } from './StyleOptionsState';
 
 import './version';

@@ -47,6 +47,14 @@ export interface IStyleSheetConfig {
   defaultPrefix?: string;
 
   /**
+   * Defines the default direction of rules for auto-rtlifying things.
+   * While typically this is represented as a DIR attribute in the markup,
+   * the DIR is not enough to control whether padding goes on the left or
+   * right. Use this to set the default direction when rules are registered.
+   */
+  rtl?: boolean;
+
+  /**
    * Default 'namespace' to attach before the className.
    */
   namespace?: string;
