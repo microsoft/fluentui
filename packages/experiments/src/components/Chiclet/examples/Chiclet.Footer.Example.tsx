@@ -15,26 +15,26 @@ export class FooterComponent extends React.Component<IFooterComponent, {}> {
 }
 
 const footerStyle = mergeStyles({
+  display: 'flex',
+  position: 'absolute',
+  alignItems: 'flex-end',
+  justifyContent: 'flex-start',
   height: 36,
-  paddingLeft: 11
+  width: '100%',
+  bottom: 0
 });
 
 const activitiesStyle = mergeStyles({
-  width: 184,
-  lineHeight: 1.83,
-  float: 'left',
-  paddingTop: 18,
-  paddingBottom: 12,
-  marginTop: 0
+  paddingLeft: 16,
+  paddingBottom: 8
 });
 
 const actionsStyle = mergeStyles({
-  paddingRight: 6,
-  position: 'relative'
+  display: 'flex',
+  marginLeft: 'auto'
 });
 
 const actionStyle = mergeStyles({
-  float: 'right',
   cursor: 'pointer',
   width: 32,
   height: 36,
@@ -85,3 +85,19 @@ function _renderFooter(buttonProps: IButtonProps[], activities: string): React.R
     </div>
   );
 }
+
+/**
+ * <Text variant="small" className={activitiesStyle}>
+        {activities}
+      </Text>
+      <div className={actionsStyle}>
+        {buttonProps &&
+          buttonProps.map((buttonProp: IButtonProps, index: number) => {
+            return (
+              <div className={actionStyle} key={index}>
+                <IconButton {...buttonProp} />
+              </div>
+            );
+          })}
+      </div>
+ */

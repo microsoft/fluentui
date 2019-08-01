@@ -1,17 +1,21 @@
 import * as React from 'react';
 import { css, classNamesFunction } from '../../Utilities';
 import { IChicletCardStyles, IChicletCardStyleProps, IChicletCardProps } from './ChicletCard.types';
-import { Image } from 'office-ui-fabric-react/lib/Image';
 import { mergeStyles } from '../../Styling';
 
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
 
-const PREVIEW_IMAGE_WIDTH = '181px';
-const PREVIEW_IMAGE_HEIGHT = '112px';
-
 const customPreviewStyling = mergeStyles('ms-ChicletCard-preview-custom', {
-  height: 112,
+  display: 'flex',
   width: '100%',
+  height: '100%',
+  justifyContent: 'center',
+  alignItems: 'center',
+  objectFit: 'contain'
+});
+
+const imageStyling = mergeStyles({
+  maxHeight: '100%',
   objectFit: 'contain'
 });
 
@@ -49,13 +53,7 @@ export class ChicletCardBase extends React.Component<IChicletCardProps, {}> {
         {preview ? ( // render custom preview
           React.cloneElement(preview, { className: css(preview.props.className, customPreviewStyling) })
         ) : (
-          <Image
-            width={PREVIEW_IMAGE_WIDTH}
-            height={PREVIEW_IMAGE_HEIGHT}
-            src={image}
-            role="presentation"
-            alt={imageAlt ? imageAlt : undefined}
-          />
+          <img className={imageStyling} src={image} role="presentation" alt={imageAlt ? imageAlt : undefined} />
         )}
       </div>
     );

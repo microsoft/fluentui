@@ -55,7 +55,7 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
     ],
     title: [
       {
-        padding: '9px 26px 5px 11px',
+        padding: '16px 16px 4px 16px',
         fontSize: 16,
         fontWeight: 'normal',
         fontStyle: 'normal',
@@ -63,8 +63,8 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         color: palette.neutralPrimary,
         letterSpacing: 'normal',
         textAlign: 'left',
-        height: 37, // Two lines of text, making sure the third line is hidden
-        width: 363,
+        maxHeight: 37, // Two lines of text, making sure the third line is hidden
+        width: infoWidth,
         lineHeight: '1.25',
         overflow: 'hidden',
         wordWrap: 'break-word'
@@ -72,7 +72,7 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
     ],
     description: [
       {
-        padding: '0px 16px 17px 11px',
+        padding: '0px 16px 0px 16px',
         fontSize: 12,
         fontWeight: 'normal',
         fontStyle: 'normal',

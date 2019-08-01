@@ -19,7 +19,7 @@ const descriptionStyle = mergeStyles({
   fontWeight: 'normal',
   fontStyle: 'normal',
   fontStretch: 'normal',
-  lineHeight: 1.33,
+  lineHeight: 1,
   letterSpacing: 'normal',
   textAlign: 'left',
   color: '#797671',
