@@ -218,7 +218,8 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
   private _onToggleCodeClick = () => {
     if (this.canRenderLiveEditor && !this.editorModule) {
-      // this.Editor = React.lazy(() => import('@uifabric/tsx-editor/lib/components/Editor'));
+      // This delay imports the module since React.lazy was breaking the code splitting
+      // ForceUpdate is needed to avoid a run-time error since it could be undefined
       require.ensure(['@uifabric/tsx-editor'], require => {
         this.editorModule = require('@uifabric/tsx-editor');
         this.forceUpdate();
