@@ -27,7 +27,6 @@ const DemoApp = (props: IDemoAppProps): JSX.Element => {
   const [isNextVersion, setNextVersion] = React.useState(false);
 
   const _toggleNextVersion = (value: boolean): void => {
-    console.log(`Is it the next version? ${value}`);
     setNextVersion(value);
   };
 

@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { Button } from '../Button';
-import { MenuButton } from '../MenuButton/MenuButton';
-import { IMenuButtonProps } from '../MenuButton/MenuButton.types';
 import { createTheme, mergeStyles, Stack } from 'office-ui-fabric-react';
+import { Button, MenuButton, IMenuButtonProps } from 'office-ui-fabric-react/lib/Button.next';
 
 const testTheme = createTheme({
   semanticColors: {

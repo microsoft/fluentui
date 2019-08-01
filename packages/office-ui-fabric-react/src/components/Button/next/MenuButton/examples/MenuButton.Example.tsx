@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { MenuButton, IMenuButtonProps } from '@uifabric/experiments';
 import { Stack, Text } from 'office-ui-fabric-react';
+import { MenuButton, IMenuButtonProps } from 'office-ui-fabric-react/lib/Button.next';
 
 const menuProps: IMenuButtonProps['menu'] = {
   items: [

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button } from '../Button';
 import { Icon, CommandBar, Stack, Text } from 'office-ui-fabric-react';
+import { Button } from 'office-ui-fabric-react/lib/Button.next';
 
 const tokens = {
   sectionStack: {

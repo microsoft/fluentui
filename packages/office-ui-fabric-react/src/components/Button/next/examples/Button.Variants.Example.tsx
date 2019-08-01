@@ -1,10 +1,18 @@
 import * as React from 'react';
 import { Stack, Text } from 'office-ui-fabric-react';
-import { ActionButton, CommandBarButton, CompoundButton, DefaultButton, IconButton, MessageBarButton, PrimaryButton } from '../index';
-import { Actionable } from '../Actionable/Actionable';
-import { MenuButton } from '../MenuButton/MenuButton';
-import { SplitButton } from '../SplitButton/SplitButton';
-import { ISplitButtonProps } from '../SplitButton/SplitButton.types';
+import {
+  Actionable,
+  ActionButton,
+  CommandBarButton,
+  CompoundButton,
+  DefaultButton,
+  IconButton,
+  MenuButton,
+  MessageBarButton,
+  PrimaryButton,
+  SplitButton,
+  ISplitButtonProps
+} from 'office-ui-fabric-react/lib/Button.next';
 
 const tokens = {
   sectionStack: {
