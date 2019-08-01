@@ -32,7 +32,7 @@ const _getDisabledStyles = memoizeFunction(
 
 export const getArrowButtonStyles = memoizeFunction(
   (theme: ITheme, isUpArrow: boolean, customSpecificArrowStyles?: Partial<IButtonStyles>): IButtonStyles => {
-    const { palette, effects, fonts } = theme;
+    const { palette, effects } = theme;
 
     // TODO: after updating the semanticColor slots all this need to be reevaluated.
     const ArrowButtonTextColor = palette.neutralSecondary;
