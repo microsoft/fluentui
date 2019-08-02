@@ -3375,7 +3375,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     compact?: boolean;
     componentRef?: IRefObject<IDetailsList>;
     constrainMode?: ConstrainMode;
-    detailsHeaderProps?: IDetailsHeaderProps;
+    detailsHeaderProps?: Partial<IDetailsHeaderProps>;
     disableSelectionZone?: boolean;
     dragDropEvents?: IDragDropEvents;
     enableUpdateAnimations?: boolean;
