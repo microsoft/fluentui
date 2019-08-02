@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 30 Jul 2019 12:28:32 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Aug 2019 12:33:29 GMT and should not be manually modified.
+
+## 7.10.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- MenuButton: Removing use of StackItem to improve performance. (Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Button: Creating separate Actionable view to improve perf of Actionable, small perf improvements and perf scenario updates. (Humberto.Morimoto@microsoft.com)
 
 ## 7.9.1
 Tue, 30 Jul 2019 12:28:32 GMT

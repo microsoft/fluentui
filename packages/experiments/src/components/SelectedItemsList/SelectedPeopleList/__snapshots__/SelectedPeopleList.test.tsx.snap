@@ -218,9 +218,6 @@ Array [
               & .contextualHost {
                 display: none;
               }
-              &:hover $primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -301,6 +298,9 @@ Array [
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+                  }
+                  &:hover {
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     color: HighlightText;
@@ -716,9 +716,6 @@ Array [
               & .contextualHost {
                 display: none;
               }
-              &:hover $primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -799,6 +796,9 @@ Array [
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+                  }
+                  &:hover {
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     color: HighlightText;

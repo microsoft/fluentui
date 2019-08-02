@@ -2,6 +2,34 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 02 Aug 2019 12:33:29 GMT",
+      "tag": "@uifabric/experiments_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Creating separate Actionable view to improve perf of Actionable, small perf improvements and perf scenario updates.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "b83bcc1af7a91f2ceb7966aea79a495b6330e166"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Experiments snapshot",
+            "author": "cliff.koh@microsoft.com",
+            "commit": "68e92fda0699006a704575a93cb55335230a4ba6"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "MenuButton: Removing use of StackItem to improve performance.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "86861599655f59191d65fb7d844a4943f4ade6ca"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jul 2019 12:28:32 GMT",
       "tag": "@uifabric/experiments_v7.9.1",
       "version": "7.9.1",
