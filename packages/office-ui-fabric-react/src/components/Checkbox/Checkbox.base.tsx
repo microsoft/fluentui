@@ -21,7 +21,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   private _id: string;
   private _classNames: { [key in keyof ICheckboxStyles]: string };
 
-  public static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState {
+  public static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState | null {
     if (!props.defaultIndeterminate && state.isIndeterminate) {
       return {
         isIndeterminate: !!props.indeterminate
@@ -32,7 +32,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
         isChecked: !!props.checked
       };
     }
-    return {};
+    return null;
   }
 
   /**
@@ -55,7 +55,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     this._id = this.props.id || getId('checkbox-');
     this.state = {
       isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked),
-      isIndeterminate: !!(props.defaultIndeterminate ? props.defaultIndeterminate : props.indeterminate)
+      isIndeterminate: !!(props.indeterminate !== undefined ? props.indeterminate : props.defaultIndeterminate)
     };
   }
 
@@ -82,12 +82,11 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       ariaSetSize,
       keytipProps,
       title,
-      indeterminate,
-      defaultIndeterminate
+      indeterminate
     } = this.props;
 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
-    const isIndeterminate = !!(defaultIndeterminate ? this.state.isIndeterminate : indeterminate);
+    const isIndeterminate = !!(indeterminate === undefined ? this.state.isIndeterminate : indeterminate);
     const isReversed = boxSide !== 'start' ? true : false;
 
     this._classNames = getClassNames(styles!, {
