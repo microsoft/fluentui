@@ -25,21 +25,21 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        padding-bottom: 1px;
+        padding-bottom: 0;
         padding-left: 4px;
         padding-right: 0;
-        padding-top: 1px;
+        padding-top: 0;
       }
       @media screen and (-ms-high-contrast: active){& {
         border: 1px solid WindowText;
       }
       &:hover {
-        border-color: #201f1e;
+        border-color: #323130;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
       }
-      &:hover $iconContainer {
+      &:hover .ms-SearchBox-iconContainer {
         color: #005a9e;
       }
   onFocusCapture={[Function]}
@@ -158,21 +158,21 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         margin-left: 0px;
         margin-right: 0px;
         margin-top: 0px;
-        padding-bottom: 1px;
+        padding-bottom: 0;
         padding-left: 4px;
         padding-right: 0;
-        padding-top: 1px;
+        padding-top: 0;
       }
       @media screen and (-ms-high-contrast: active){& {
         border: 1px solid WindowText;
       }
       &:hover {
-        border-color: #201f1e;
+        border-color: #323130;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
       }
-      &:hover $iconContainer {
+      &:hover .ms-SearchBox-iconContainer {
         color: #005a9e;
       }
   onFocusCapture={[Function]}
