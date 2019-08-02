@@ -59,6 +59,9 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
         (window as any).Fabric = Fabric;
       });
     }
+
+    if (props.isCodeVisible !== undefined && !props.onToggleEditor === undefined) {
+    }
   }
 
   public render(): JSX.Element {
@@ -228,7 +231,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
         this.forceUpdate();
       });
     }
-    if (this.props.onToggleEditor !== undefined && this.props.onToggleEditor) {
+    if (this.props.isCodeVisible !== undefined && this.props.onToggleEditor !== undefined) {
       if (this.props.isCodeVisible) {
         this.props.onToggleEditor('');
       } else {
