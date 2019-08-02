@@ -5,7 +5,7 @@ import { IEditorProps } from './Editor.types';
 export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProps) => {
   const ref = React.useRef<HTMLDivElement>(null);
   const { width, height, onChange, language, code } = props;
-  const style = { width, height, border: 'thin solid rgb(161, 159, 157)', borderTop: 'none' };
+  const style = { width, height };
 
   React.useEffect(() => {
     monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
