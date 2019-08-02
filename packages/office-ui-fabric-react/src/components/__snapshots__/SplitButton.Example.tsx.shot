@@ -441,8 +441,14 @@ exports[`Component Examples renders SplitButton.Example.tsx correctly 1`] = `
               >
                 <div
                   className=
-
+                      ms-StackItem
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        flex-shrink: 0;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: auto;
                         width: auto;
                       }
@@ -847,8 +853,14 @@ exports[`Component Examples renders SplitButton.Example.tsx correctly 1`] = `
               >
                 <div
                   className=
-
+                      ms-StackItem
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        flex-shrink: 0;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: auto;
                         width: auto;
                       }
@@ -1254,8 +1266,14 @@ exports[`Component Examples renders SplitButton.Example.tsx correctly 1`] = `
               >
                 <div
                   className=
-
+                      ms-StackItem
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        flex-shrink: 0;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: auto;
                         width: auto;
                       }
@@ -1666,8 +1684,14 @@ exports[`Component Examples renders SplitButton.Example.tsx correctly 1`] = `
               >
                 <div
                   className=
-
+                      ms-StackItem
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        flex-shrink: 0;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: auto;
                         width: auto;
                       }
@@ -2078,8 +2102,14 @@ exports[`Component Examples renders SplitButton.Example.tsx correctly 1`] = `
               >
                 <div
                   className=
-
+                      ms-StackItem
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        flex-shrink: 0;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: auto;
                         width: auto;
                       }
@@ -2487,8 +2517,14 @@ exports[`Component Examples renders SplitButton.Example.tsx correctly 1`] = `
               >
                 <div
                   className=
-
+                      ms-StackItem
                       {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        flex-shrink: 0;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 14px;
+                        font-weight: 400;
                         height: auto;
                         width: auto;
                       }

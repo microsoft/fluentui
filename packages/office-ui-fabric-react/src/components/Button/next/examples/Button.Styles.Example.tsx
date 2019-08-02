@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createTheme, mergeStyles, Stack } from 'office-ui-fabric-react';
-import { Button, MenuButton, IMenuButtonProps } from 'office-ui-fabric-react/lib/Button.next';
+import { Button } from 'office-ui-fabric-react/lib/Button.next';
+import { MenuButton, IMenuButtonProps } from 'office-ui-fabric-react/lib/MenuButton';
 
 const testTheme = createTheme({
   semanticColors: {
@@ -46,7 +47,7 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
 );
 
 // tslint:disable:jsx-no-lambda
-export class ButtonStylesExample extends React.Component<{}, {}> {
+export class ButtonStylesExample extends React.Component {
   public render(): JSX.Element {
     const testClassName = mergeStyles({ color: 'blue' });
 

@@ -23,7 +23,7 @@ const testTheme = createTheme({
 });
 
 // tslint:disable:jsx-no-lambda
-export class ButtonTokensExample extends React.Component<{}, {}> {
+export class ButtonTokensExample extends React.Component {
   public render(): JSX.Element {
     return (
       <Stack disableShrink horizontal tokens={tokens.buttonStack}>

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Icon, CommandBar, Stack, Text } from 'office-ui-fabric-react';
-import { Button } from 'office-ui-fabric-react/lib/Button.next';
+import { Icon, Stack, Text } from 'office-ui-fabric-react';
+import { Button } from 'office-ui-fabric-react/lib/components/Button/next/Button';
 
 const tokens = {
   sectionStack: {
@@ -25,8 +25,7 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   </Stack>
 );
 
-// tslint:disable:jsx-no-lambda
-export class ButtonExample extends React.Component<{}, {}> {
+export class ButtonExample extends React.Component {
   public render(): JSX.Element {
     return (
       <Stack tokens={tokens.sectionStack}>
@@ -63,7 +62,6 @@ export class ButtonExample extends React.Component<{}, {}> {
                 <Icon iconName="Upload" />
               </Button>
             </ButtonStack>
-            <CommandBar items={[{ key: '0', text: 'Button 1', iconProps: { iconName: 'Upload' } }]} />
           </Stack>
         </Stack>
       </Stack>

@@ -12,15 +12,15 @@ import { ButtonToggleExample } from './examples/Button.Toggle.Example';
 import { ButtonTokensExample } from './examples/Button.Tokens.Example';
 import { ButtonVariantsExample } from './examples/Button.Variants.Example';
 
-const ButtonExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Example.tsx') as string;
-const MenuButtonExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/MenuButton/examples/MenuButton.Example.tsx') as string;
-const SplitButtonExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/SplitButton/examples/SplitButton.Example.tsx') as string;
-const ButtonKeytipsExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Keytips.Example.tsx') as string;
-const ButtonSlotsExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Slots.Example.tsx') as string;
-const ButtonStylesExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Styles.Example.tsx') as string;
-const ButtonToggleExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Toggle.Example.tsx') as string;
-const ButtonTokensExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Tokens.Example.tsx') as string;
-const ButtonVariantsExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Variants.Example.tsx') as string;
+const ButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/next/examples/Button.Example.tsx') as string;
+const MenuButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/next/MenuButton/examples/MenuButton.Example.tsx') as string;
+const SplitButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/next/SplitButton/examples/SplitButton.Example.tsx') as string;
+const ButtonKeytipsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/next/examples/Button.Keytips.Example.tsx') as string;
+const ButtonSlotsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/next/examples/Button.Slots.Example.tsx') as string;
+const ButtonStylesExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/next/examples/Button.Styles.Example.tsx') as string;
+const ButtonToggleExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/next/examples/Button.Toggle.Example.tsx') as string;
+const ButtonTokensExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/next/examples/Button.Tokens.Example.tsx') as string;
+const ButtonVariantsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/next/examples/Button.Variants.Example.tsx') as string;
 
 /**
  * Exports a function because the documentation of this page requires some interactivity that is passed in here as a prop

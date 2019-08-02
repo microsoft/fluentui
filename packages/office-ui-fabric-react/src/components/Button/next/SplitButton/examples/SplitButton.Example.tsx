@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Stack } from 'office-ui-fabric-react';
-import { SplitButton, ISplitButtonProps } from 'office-ui-fabric-react/lib/Button.next';
+import { SplitButton, ISplitButtonProps } from 'office-ui-fabric-react/lib/SplitButton';
 
 const menuProps: ISplitButtonProps['menu'] = {
   items: [
@@ -38,7 +38,7 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   </Stack>
 );
 
-export class SplitButtonExample extends React.Component<{}, {}> {
+export class SplitButtonExample extends React.Component {
   public render(): JSX.Element {
     return (
       <Stack tokens={tokens.sectionStack}>

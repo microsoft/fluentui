@@ -1,1 +1,1 @@
-export * from './components/Button/index.next';
+export * from './components/Button/next/index';

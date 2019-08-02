@@ -1,14 +1,7 @@
 import * as React from 'react';
 import { Stack, IStackTokens, Text } from 'office-ui-fabric-react';
-import {
-  MenuButton,
-  IMenuButtonProps,
-  IMenuButtonStyles,
-  IMenuButtonTokens,
-  SplitButton,
-  ISplitButtonProps,
-  ISplitButtonTokens
-} from 'office-ui-fabric-react/lib/Button.next';
+import { MenuButton, IMenuButtonProps, IMenuButtonStyles, IMenuButtonTokens } from 'office-ui-fabric-react/lib/MenuButton';
+import { SplitButton, ISplitButtonProps, ISplitButtonTokens } from 'office-ui-fabric-react/lib/SplitButton';
 
 interface IRibbonMenuButtonProps extends IMenuButtonProps {
   vertical?: boolean;
@@ -152,7 +145,7 @@ const RibbonSplitMenuButton: React.SFC<ISplitRibbonMenuButtonProps> = props => {
   return <SplitButton {...mergedProps} />;
 };
 
-export class ButtonSlotsExample extends React.Component<{}, {}> {
+export class ButtonSlotsExample extends React.Component {
   public render(): JSX.Element {
     const stackTokens: IStackTokens = { childrenGap: 10 };
 

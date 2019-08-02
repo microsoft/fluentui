@@ -1,18 +1,17 @@
 import * as React from 'react';
 import { Stack, Text } from 'office-ui-fabric-react';
+import { Actionable } from 'office-ui-fabric-react/lib/Actionable';
 import {
-  Actionable,
   ActionButton,
   CommandBarButton,
   CompoundButton,
   DefaultButton,
   IconButton,
-  MenuButton,
   MessageBarButton,
-  PrimaryButton,
-  SplitButton,
-  ISplitButtonProps
-} from 'office-ui-fabric-react/lib/Button.next';
+  PrimaryButton
+} from 'office-ui-fabric-react/lib/ButtonVariants';
+import { MenuButton } from 'office-ui-fabric-react/lib/MenuButton';
+import { SplitButton, ISplitButtonProps } from 'office-ui-fabric-react/lib/SplitButton';
 
 const tokens = {
   sectionStack: {
@@ -29,22 +28,21 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   </Stack>
 );
 
-// tslint:disable:jsx-no-lambda
-export class ButtonVariantsExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    const menuProps: ISplitButtonProps['menu'] = {
-      items: [
-        {
-          key: 'a',
-          name: 'Item a'
-        },
-        {
-          key: 'b',
-          name: 'Item b'
-        }
-      ]
-    };
+const menuProps: ISplitButtonProps['menu'] = {
+  items: [
+    {
+      key: 'a',
+      name: 'Item a'
+    },
+    {
+      key: 'b',
+      name: 'Item b'
+    }
+  ]
+};
 
+export class ButtonVariantsExample extends React.Component {
+  public render(): JSX.Element {
     return (
       <Stack tokens={tokens.sectionStack}>
         <Stack tokens={tokens.buttonStack}>

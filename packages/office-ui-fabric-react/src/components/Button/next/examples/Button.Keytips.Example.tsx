@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Stack, IStackTokens } from 'office-ui-fabric-react';
 import { buildKeytipConfigMap, IKeytipConfig, IKeytipConfigMap } from 'office-ui-fabric-react/lib/utilities/keytips/index';
-import { Button, MenuButton, IMenuButtonProps, SplitButton } from 'office-ui-fabric-react/lib/Button.next';
+import { Button } from 'office-ui-fabric-react/lib/Button.next';
+import { MenuButton, IMenuButtonProps } from 'office-ui-fabric-react/lib/MenuButton';
+import { SplitButton } from 'office-ui-fabric-react/lib/SplitButton';
 
 const btnExecute = (el: HTMLElement) => {
   el.click();
@@ -83,8 +85,7 @@ const menuProps: IMenuButtonProps['menu'] = {
   shouldFocusOnMount: true
 };
 
-// tslint:disable:jsx-no-lambda
-export class ButtonKeytipsExample extends React.Component<{}, {}> {
+export class ButtonKeytipsExample extends React.Component {
   public render(): JSX.Element {
     const stackTokens: IStackTokens = { childrenGap: 12 };
 

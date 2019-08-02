@@ -646,172 +646,7 @@ Fix any of the following:
 
 exports[`a11y test checks accessibility of Button (Button.Toggle.Example) 1`] = `Array []`;
 
-exports[`a11y test checks accessibility of Button/next (Button.Example) 1`] = `
-Array [
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": ".css-13",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" role=\\"button\\" tabindex=\\"0\\" class=\\"ms-Button css-13\\"><i data-icon-name=\\"PeopleAdd\\" role=\\"presentation\\" aria-hidden=\\"true\\" class=\\"ms-Button-icon root-15\\"></i></button>",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Element is in tab order and does not have accessible text.
-
-Fix any of the following:
-- Element has a value attribute and the value attribute is empty.
-- Element has no value attribute or the value attribute is empty.
-- Element does not have inner text that is visible to screen readers.
-- aria-label attribute does not exist or is empty.
-- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty.
-- Element's default semantics were not overridden with role=\\"presentation\\".
-- Element's default semantics were not overridden with role=\\"none\\".
-- Element has no title attribute or the title attribute is empty.",
-      "text": "Fix all of the following: Element is in tab order and does not have accessible text. Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
-    },
-    "ruleId": "button-name",
-    "ruleIndex": 15,
-  },
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": ".css-16",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" role=\\"button\\" disabled=\\"\\" aria-disabled=\\"true\\" class=\\"ms-Button css-16\\"><i data-icon-name=\\"Phone\\" role=\\"presentation\\" aria-hidden=\\"true\\" class=\\"ms-Button-icon root-18\\"></i></button>",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix any of the following:
-- Element has a value attribute and the value attribute is empty.
-- Element has no value attribute or the value attribute is empty.
-- Element does not have inner text that is visible to screen readers.
-- aria-label attribute does not exist or is empty.
-- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty.
-- Element's default semantics were not overridden with role=\\"presentation\\".
-- Element's default semantics were not overridden with role=\\"none\\".
-- Element has no title attribute or the title attribute is empty.",
-      "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
-    },
-    "ruleId": "button-name",
-    "ruleIndex": 15,
-  },
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": ".css-19",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" role=\\"button\\" tabindex=\\"0\\" class=\\"ms-Button css-19\\"><i data-icon-name=\\"FontSize\\" role=\\"presentation\\" aria-hidden=\\"true\\" class=\\"ms-Button-icon root-21\\"></i></button>",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix all of the following:
-- Element is in tab order and does not have accessible text.
-
-Fix any of the following:
-- Element has a value attribute and the value attribute is empty.
-- Element has no value attribute or the value attribute is empty.
-- Element does not have inner text that is visible to screen readers.
-- aria-label attribute does not exist or is empty.
-- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty.
-- Element's default semantics were not overridden with role=\\"presentation\\".
-- Element's default semantics were not overridden with role=\\"none\\".
-- Element has no title attribute or the title attribute is empty.",
-      "text": "Fix all of the following: Element is in tab order and does not have accessible text. Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
-    },
-    "ruleId": "button-name",
-    "ruleIndex": 15,
-  },
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": ".css-22",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" role=\\"button\\" disabled=\\"\\" aria-disabled=\\"true\\" class=\\"ms-Button css-22\\"><i data-icon-name=\\"Attach\\" role=\\"presentation\\" aria-hidden=\\"true\\" class=\\"ms-Button-icon root-18\\"></i></button>",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix any of the following:
-- Element has a value attribute and the value attribute is empty.
-- Element has no value attribute or the value attribute is empty.
-- Element does not have inner text that is visible to screen readers.
-- aria-label attribute does not exist or is empty.
-- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty.
-- Element's default semantics were not overridden with role=\\"presentation\\".
-- Element's default semantics were not overridden with role=\\"none\\".
-- Element has no title attribute or the title attribute is empty.",
-      "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
-    },
-    "ruleId": "button-name",
-    "ruleIndex": 15,
-  },
-]
-`;
+exports[`a11y test checks accessibility of Button/next (Button.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of Button/next (Button.Keytips.Example) 1`] = `
 Array [
@@ -914,10 +749,56 @@ Array [
 ]
 `;
 
+exports[`a11y test checks accessibility of Button/next (Button.Slots.Example) 1`] = `Array []`;
+
+exports[`a11y test checks accessibility of Button/next (Button.Styles.Example) 1`] = `Array []`;
+
+exports[`a11y test checks accessibility of Button/next (Button.Toggle.Example) 1`] = `Array []`;
+
+exports[`a11y test checks accessibility of Button/next (Button.Tokens.Example) 1`] = `Array []`;
+
+exports[`a11y test checks accessibility of Button/next (Button.Variants.Example) 1`] = `Array []`;
+
+exports[`a11y test checks accessibility of Button/next/MenuButton (MenuButton.Example) 1`] = `Array []`;
+
+exports[`a11y test checks accessibility of Button/next/SplitButton (SplitButton.Example) 1`] = `Array []`;
+
 exports[`a11y test checks accessibility of Calendar (Calendar.Button.Example) 1`] = `Array []`;
 
 exports[`a11y test checks accessibility of Calendar (Calendar.Inline.Example) 1`] = `
 Array [
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "button[aria-label=\\"June\\\\ 2016\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"June 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jan</button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
   Object {
     "kind": "fail",
     "level": "error",
@@ -936,7 +817,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"July 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jan</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"July 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Feb</button>",
             },
           },
         },
@@ -968,7 +849,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"August 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Feb</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"August 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Mar</button>",
             },
           },
         },
@@ -1000,7 +881,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"September 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Mar</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"September 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Apr</button>",
             },
           },
         },
@@ -1032,7 +913,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"October 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Apr</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"October 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">May</button>",
             },
           },
         },
@@ -1064,7 +945,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"November 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">May</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"November 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jun</button>",
             },
           },
         },
@@ -1096,7 +977,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"December 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jun</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"December 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jul</button>",
             },
           },
         },
@@ -1128,7 +1009,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"January 2017\\" aria-selected=\\"true\\" data-is-focusable=\\"true\\" type=\\"button\\">Jul</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"January 2017\\" aria-selected=\\"true\\" data-is-focusable=\\"true\\" type=\\"button\\">Aug</button>",
             },
           },
         },
@@ -1160,7 +1041,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"February 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Aug</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"February 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Sep</button>",
             },
           },
         },
@@ -1192,7 +1073,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"March 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Sep</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"March 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Oct</button>",
             },
           },
         },
@@ -1224,7 +1105,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"April 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Oct</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"April 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Nov</button>",
             },
           },
         },
@@ -1256,39 +1137,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"May 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Nov</button>",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix any of the following:
-- ARIA role gridcell  is not allowed for given element.",
-      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
-    },
-    "ruleId": "aria-allowed-role",
-    "ruleIndex": 3,
-  },
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": "button[aria-label=\\"June\\\\ 2017\\"]",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"June 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Dec</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"May 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Dec</button>",
             },
           },
         },
