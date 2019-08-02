@@ -1,0 +1,8 @@
+{
+  "comment": "finishing up the slide animation to apply to calendar and month and year pickers, and allow consumer to specify direction",
+  "type": "minor",
+  "packageName": "@uifabric/date-time",
+  "email": "jolore@microsoft.com",
+  "commit": "a10caf8c33e725c3e61c8f3f7b434dd74551302b",
+  "date": "2019-07-18T22:55:47.955Z"
+}
