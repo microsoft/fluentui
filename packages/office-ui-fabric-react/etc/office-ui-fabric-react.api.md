@@ -6763,6 +6763,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     componentRef?: IRefObject<ISlider>;
     defaultValue?: number;
     disabled?: boolean;
+    enableMarks?: boolean;
     label?: string;
     max?: number;
     min?: number;
@@ -6774,7 +6775,6 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     step?: number;
     styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
     theme?: ITheme;
-    thumbLabel?: boolean;
     value?: number;
     valueFormat?: (value: number) => string;
     vertical?: boolean;

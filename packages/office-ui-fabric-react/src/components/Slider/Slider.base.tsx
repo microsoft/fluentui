@@ -84,7 +84,15 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       theme: theme!
     });
     const divButtonProps = buttonProps ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties) : undefined;
-
+    const theButton = (
+      <span
+        ref={this._thumb}
+        className={classNames.thumb}
+        style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)}
+        id={this._buttonId}
+        aria-labelledby={this._hostId}
+      />
+    );
     return (
       <div className={classNames.root}>
         {label && (
@@ -121,22 +129,10 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                   id={this._hostId}
                   calloutProps={{ gapSpace: 5, beakWidth: 8, target: `#${this._buttonId}`, doNotLayer: true }}
                 >
-                  <span
-                    ref={this._thumb}
-                    className={classNames.thumb}
-                    style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)}
-                    id={this._buttonId}
-                    aria-labelledby={this._hostId}
-                  />
+                  {theButton}
                 </TooltipHost>
               ) : (
-                <span
-                  ref={this._thumb}
-                  className={classNames.thumb}
-                  style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)}
-                  id={this._buttonId}
-                  aria-labelledby={this._hostId}
-                />
+                theButton
               )}
               {originFromZero ? (
                 <>
@@ -296,6 +292,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             // the zeroOffsetPercent denotes where the tick mark should go
             this._getStyleUsingOffsetPercent(vertical, i)
           }
+          key={i}
         />
       );
     }
