@@ -146,7 +146,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                     />
                   ) : (
                     <div style={{ height: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                      <Spinner>size={SpinnerSize.large}</Spinner>
+                      <Spinner size={SpinnerSize.large}>Loading editor...</Spinner>
                     </div>
                   )
                 ) : (
