@@ -12,20 +12,25 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
     opacity: 1
   };
 
+  const inputIconAlt = palette.neutralSecondary;
+  const inputIconAltHovered = palette.neutralPrimary;
+  const inputBorderDisabled = palette.neutralLighter;
+  const inputBackgroundHovered = palette.neutralLighter;
+  const inputBackgroundDisabled = palette.neutralLighter;
+
   return {
     root: [
       'ms-SearchBox',
       fonts.medium,
       normalize,
       {
-        color: palette.neutralPrimary,
+        color: semanticColors.inputText,
         backgroundColor: semanticColors.inputBackground,
         display: 'flex',
         flexDirection: 'row',
         flexWrap: 'nowrap',
         alignItems: 'stretch',
-        // The 1px top and bottom padding ensure the input field does not overlap the border
-        padding: '1px 0 1px 4px',
+        padding: '0 0 0 4px',
         borderRadius: effects.roundedCorner2,
         border: `1px solid ${semanticColors.inputBorder}`,
         height: 32,
@@ -34,25 +39,36 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
             border: '1px solid WindowText'
           },
           ':hover': {
-            borderColor: palette.neutralDark,
+            borderColor: semanticColors.inputBorderHovered,
             selectors: {
               [HighContrastSelector]: {
                 borderColor: 'Highlight'
               }
             }
           },
-          ':hover $iconContainer': {
-            color: palette.themeDark
+          ':hover .ms-SearchBox-iconContainer': {
+            color: semanticColors.inputIconHovered
           }
         }
       },
+      !hasFocus &&
+        hasInput && {
+          selectors: {
+            '.ms-SearchBox-iconContainer': {
+              width: 4
+            },
+            '.ms-SearchBox-icon': {
+              opacity: 0
+            }
+          }
+        },
       hasFocus && [
         'is-active',
         {
-          borderColor: palette.themePrimary,
+          borderColor: semanticColors.inputFocusBorderAlt,
           selectors: {
             ':hover': {
-              borderColor: palette.themePrimary
+              borderColor: semanticColors.inputFocusBorderAlt
             },
             [HighContrastSelector]: {
               borderColor: 'Highlight'
@@ -63,8 +79,8 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       disabled && [
         'is-disabled',
         {
-          borderColor: palette.neutralLighter,
-          backgroundColor: palette.neutralLighter,
+          borderColor: inputBorderDisabled,
+          backgroundColor: inputBackgroundDisabled,
           pointerEvents: 'none',
           cursor: 'default'
         }
@@ -73,6 +89,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         'is-underlined',
         {
           borderWidth: '0 0 1px 0',
+          borderRadius: 0,
           // Underlined SearchBox has a larger padding left to vertically align with the waffle in product
           padding: '1px 0 1px 8px'
         }
@@ -94,14 +111,14 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         fontSize: 16,
         width: 32,
         textAlign: 'center',
-        color: palette.themePrimary,
+        color: semanticColors.inputIcon,
         cursor: 'text'
       },
       hasFocus && {
         width: 4
       },
       disabled && {
-        color: palette.neutralTertiary
+        color: semanticColors.inputIconDisabled
       },
       !disableAnimation && {
         transition: `width ${AnimationVariables.durationValue1}`
@@ -128,8 +145,18 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         cursor: 'pointer',
         flexBasis: '32px',
         flexShrink: 0,
-        padding: 1,
-        color: palette.themePrimary
+        padding: 0,
+        selectors: {
+          '&:hover .ms-Button': {
+            backgroundColor: inputBackgroundHovered
+          },
+          '&:hover .ms-Button-icon': {
+            color: inputIconAltHovered
+          },
+          '.ms-Button-icon': {
+            color: inputIconAlt
+          }
+        }
       }
     ],
     field: [
@@ -143,7 +170,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         fontWeight: 'inherit',
         fontFamily: 'inherit',
         fontSize: 'inherit',
-        color: palette.neutralPrimary,
+        color: semanticColors.inputText,
         flex: '1 1 0px',
         // The default implicit value of 'auto' prevents the input from shrinking. Setting min-width to
         // 0px allows the input element to shrink to fit the container.
@@ -160,7 +187,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         }
       },
       disabled && {
-        color: palette.neutralTertiary
+        color: semanticColors.disabledText
       }
     ]
   };
