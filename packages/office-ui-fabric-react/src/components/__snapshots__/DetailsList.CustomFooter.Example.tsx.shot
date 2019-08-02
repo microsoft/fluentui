@@ -1108,7 +1108,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -1165,7 +1164,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -1541,7 +1539,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -1598,7 +1595,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -1974,7 +1970,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -2031,7 +2026,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -2407,7 +2401,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -2464,7 +2457,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -2840,7 +2832,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="column1"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -2897,7 +2888,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="column2"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -3171,7 +3161,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                 {
                   padding-right: 8px;
                 }
-
             data-automation-key="column1"
             data-automationid="DetailsRowCell"
             role="gridcell"
@@ -3232,7 +3221,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                 {
                   padding-right: 8px;
                 }
-
             data-automation-key="column2"
             data-automationid="DetailsRowCell"
             role="gridcell"

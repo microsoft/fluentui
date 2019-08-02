@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Fri, 02 Aug 2019 12:33:29 GMT",
+      "tag": "@uifabric/date-time_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "finishing up the slide animation to apply to calendar and month and year pickers, and allow consumer to specify direction",
+            "author": "jolore@microsoft.com",
+            "commit": "a10caf8c33e725c3e61c8f3f7b434dd74551302b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jul 2019 12:27:56 GMT",
       "tag": "@uifabric/date-time_v7.1.7",
       "version": "7.1.7",

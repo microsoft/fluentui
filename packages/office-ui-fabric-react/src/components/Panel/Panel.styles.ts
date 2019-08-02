@@ -300,7 +300,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       {
         margin: '14px 0',
         // Ensure that title doesn't shrink if screen is too small
-        flexGrow: 0,
+        flexShrink: 0,
         selectors: {
           [`@media (min-width: ${ScreenWidthMinXLarge}px)`]: {
             marginTop: '30px'
@@ -345,7 +345,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.footer,
       {
         // Ensure that footer doesn't shrink if screen is too small
-        flexGrow: 1,
         flexShrink: 0,
         borderTop: '1px solid transparent',
         transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction2}`

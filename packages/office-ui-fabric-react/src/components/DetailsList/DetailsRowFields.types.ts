@@ -56,4 +56,6 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
    * Style properties to customize cell render output.
    */
   cellStyleProps?: ICellStyleProps;
+
+  enableUpdateAnimations?: boolean;
 }

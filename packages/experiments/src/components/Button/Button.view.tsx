@@ -12,7 +12,6 @@ export const ButtonView: IButtonComponent['view'] = props => {
 
   const { slotType, htmlType, propertiesType } = _deriveRootType(props);
 
-  // TODO: 'href' is anchor property... consider getNativeProps by root type
   const buttonProps = { ...getNativeProps(rest, propertiesType) };
 
   const Slots = getSlots<IButtonProps, IButtonSlots>(props, {
@@ -44,8 +43,8 @@ export const ButtonView: IButtonComponent['view'] = props => {
       aria-label={ariaLabel}
       ref={buttonRef}
     >
-      <Slots.icon />
-      <Slots.content />
+      {icon && <Slots.icon />}
+      {content && <Slots.content />}
       {children}
     </Slots.root>
   );
