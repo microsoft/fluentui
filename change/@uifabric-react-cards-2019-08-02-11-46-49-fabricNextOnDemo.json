@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "Toggle for examples of \"next\" version to be shown on demo page.",
   "packageName": "@uifabric/react-cards",
   "email": "Humberto.Morimoto@microsoft.com",
