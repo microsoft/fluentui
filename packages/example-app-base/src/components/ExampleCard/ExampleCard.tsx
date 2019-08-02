@@ -145,9 +145,13 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                       language="typescript"
                     />
                   ) : (
-                    <div style={{ height: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                      <Spinner size={SpinnerSize.large}>Loading editor...</Spinner>
-                    </div>
+                    <Stack
+                      horizontalAlign="center"
+                      verticalAlign="center"
+                      styles={{ root: { height: 500, border: 'thin solid rgb(161, 159, 157)', borderTop: 'none' } }}
+                    >
+                      <Spinner size={SpinnerSize.large} label="Loading editor..." />
+                    </Stack>
                   )
                 ) : (
                   <div className={classNames.code}>
