@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
-import { styled, Customizer, classNamesFunction, css, isIE11, CustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
+import { styled, Customizer, classNamesFunction, css, isIE11, CustomizerContext, warn } from 'office-ui-fabric-react/lib/Utilities';
 import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
@@ -58,6 +58,10 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
         // tslint:disable-next-line: no-any
         (window as any).Fabric = Fabric;
       });
+    }
+
+    if (props.isCodeVisible !== undefined && props.onToggleEditor === undefined && process.env.NODE_ENV !== 'production') {
+      warn('erro: Missing onToggleEditor prop.');
     }
   }
 
