@@ -1,8 +1,8 @@
 {
   "type": "minor",
-  "comment": "Cleanup",
+  "comment": "Fixes issues on the ticks",
   "packageName": "office-ui-fabric-react",
-  "email": "email not defined",
+  "email": "sneharoy321@gmail.com",
   "commit": "12f671666b77ad7186a06064e9c0d5ac60ca9e5a",
   "date": "2019-07-31T15:43:04.716Z"
 }
