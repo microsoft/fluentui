@@ -10,6 +10,8 @@ initializeIcons();
 mkdirp.sync(path.resolve(__dirname, '../dist/reports'));
 
 // Mock Date class
+// Note: In order to ensure that test output is consistent, locale-specific time is used instead of UTC.
+//       As Fabric controls (DatePicker, Calendar, etc) display local date and time.
 const RealDate = Date;
 const constantDate = new Date(2017, 0, 6, 4, 41, 20);
 
@@ -23,7 +25,7 @@ global.Date = class {
   }
 };
 
-// Ensure test output is consistent across machine locale and time zone config.
+// Use locale string instead of UTC string to ensure consistent display.
 const mockToLocaleString = () => {
   return constantDate.toLocaleString();
 };
