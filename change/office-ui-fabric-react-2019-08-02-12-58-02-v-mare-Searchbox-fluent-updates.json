@@ -1,0 +1,8 @@
+{
+  "comment": "Searchbox: Updated fluent styles. Added semantic colors.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "8a905c9fc7e915ef576dc4231e5742f0577f102e",
+  "date": "2019-08-02T19:58:02.974Z"
+}
