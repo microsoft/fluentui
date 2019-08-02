@@ -1777,7 +1777,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "button[aria-label=\\"December\\\\ 2016\\"]",
+            "fullyQualifiedName": "button[aria-label=\\"January\\\\ 2017\\"]",
             "kind": "element",
           },
         ],
