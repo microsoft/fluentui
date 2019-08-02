@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Publish tsx-editor",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "elcraig@microsoft.com",
+  "commit": "e3369223a335f8d0f71b5f18579a2d9704ad4cb0",
+  "date": "2019-08-02T09:04:48.311Z"
+}

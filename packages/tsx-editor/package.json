@@ -5,7 +5,6 @@
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "private": true,
   "sideEffects": [
     "lib/version.js"
   ],
