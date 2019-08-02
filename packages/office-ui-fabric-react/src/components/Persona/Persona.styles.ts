@@ -65,14 +65,6 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         selectors: {
           '.contextualHost': {
             display: 'none'
-          },
-
-          ':hover': {
-            selectors: {
-              $primaryText: {
-                color: palette.neutralDark
-              }
-            }
           }
         }
       },
@@ -215,7 +207,12 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       {
         color: palette.neutralPrimary,
         fontWeight: FontWeights.regular,
-        fontSize: FontSizes.medium
+        fontSize: FontSizes.medium,
+        selectors: {
+          ':hover': {
+            color: palette.neutralDark
+          }
+        }
       },
 
       showSecondaryText && {

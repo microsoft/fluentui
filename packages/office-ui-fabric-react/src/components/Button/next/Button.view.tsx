@@ -43,8 +43,8 @@ export const ButtonView: IButtonComponent['view'] = props => {
       aria-label={ariaLabel}
       ref={buttonRef}
     >
-      <Slots.icon />
-      <Slots.content />
+      {icon && <Slots.icon />}
+      {content && <Slots.content />}
       {children}
     </Slots.root>
   );

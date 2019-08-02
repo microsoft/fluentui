@@ -1,6 +1,27 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 30 Jul 2019 12:28:32 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Aug 2019 12:33:29 GMT and should not be manually modified.
+
+## 7.19.1
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Patches
+
+- Persona: Fix styles issue caused by unnecessary nesting (cliff.koh@microsoft.com)
+,- Remove extra export of SelectionMode (jdh@microsoft.com)
+
+## 7.19.0
+Wed, 31 Jul 2019 12:26:17 GMT
+
+### Minor changes
+
+- Commandbar: Expose dataDidRender method (joschect@microsoft.com)
+
+### Patches
+
+- [BaseExtendedPicker] Only add aria-owns tag when the picker is expanded (andrescb@microsoft.com)
+,- Tooltip: Fixing hidden hover area overlapping with Tooltip targets. (Humberto.Morimoto@microsoft.com)
+,- Perf Test: Integrate Flamegrill (jagore@microsoft.com)
 
 ## 7.18.1
 Tue, 30 Jul 2019 12:28:32 GMT

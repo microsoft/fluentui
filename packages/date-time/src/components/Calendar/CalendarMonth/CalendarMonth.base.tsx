@@ -24,6 +24,8 @@ const getClassNames = classNamesFunction<ICalendarMonthStyleProps, ICalendarMont
 
 export interface ICalendarMonthState {
   isYearPickerVisible?: boolean;
+  animateBackwards?: boolean;
+  previousNavigatedDate?: Date;
 }
 
 export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalendarMonthState> {
@@ -39,11 +41,34 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
   private _calendarYearRef = React.createRef<ICalendarYear>();
   private _focusOnUpdate: boolean;
 
+  public static getDerivedStateFromProps(props: ICalendarMonthProps, state: ICalendarMonthState): ICalendarMonthState {
+    const previousYear = state.previousNavigatedDate ? state.previousNavigatedDate.getFullYear() : undefined;
+    const nextYear = props.navigatedDate.getFullYear();
+    if (!previousYear) {
+      return {};
+    }
+
+    if (previousYear < nextYear) {
+      return {
+        animateBackwards: false,
+        previousNavigatedDate: props.navigatedDate
+      };
+    } else if (previousYear > nextYear) {
+      return {
+        animateBackwards: true,
+        previousNavigatedDate: props.navigatedDate
+      };
+    }
+
+    return {};
+  }
+
   constructor(props: ICalendarMonthProps) {
     super(props);
 
     this.state = {
-      isYearPickerVisible: false
+      isYearPickerVisible: false,
+      previousNavigatedDate: props.navigatedDate
     };
   }
 
@@ -70,7 +95,8 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
       allFocusable,
       highlightCurrentMonth,
       highlightSelectedMonth,
-      onHeaderSelect
+      onHeaderSelect,
+      animationDirection
     } = this.props;
 
     // using "!" to mark as non-null since we have a default value if it is undefined, but typescript doesn't recognize it as non-null
@@ -87,15 +113,16 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
       className: className,
       hasHeaderClickCallback: !!onHeaderSelect,
       highlightCurrent: highlightCurrentMonth,
-      highlightSelected: highlightSelectedMonth
+      highlightSelected: highlightSelectedMonth,
+      animateBackwards: this.state.animateBackwards,
+      animationDirection: animationDirection
     });
 
     if (this.state.isYearPickerVisible) {
       // use navigated date for the year picker
-      const currentSelectedDate = navigatedDate ? navigatedDate.getFullYear() : undefined;
       return (
         <CalendarYear
-          key={'calendarYear_' + (currentSelectedDate && currentSelectedDate.toString())}
+          key={'calendarYear'}
           minYear={minDate ? minDate.getFullYear() : undefined}
           maxYear={maxDate ? maxDate.getFullYear() : undefined}
           onSelectYear={this._onSelectYear}
@@ -112,6 +139,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
           styles={styles}
           highlightCurrentYear={highlightCurrentMonth}
           highlightSelectedYear={highlightSelectedMonth}
+          animationDirection={animationDirection}
         />
       );
     }
@@ -125,6 +153,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
       <div className={classNames.root}>
         <div className={classNames.headerContainer}>
           <button
+            key={dateFormatter.formatYear(navigatedDate)}
             className={classNames.currentItemButton}
             onClick={this._onHeaderSelect}
             onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
@@ -177,7 +206,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
             {rowIndexes.map((rowNum: number) => {
               const monthsForRow = strings.shortMonths.slice(rowNum * MONTHS_PER_ROW, (rowNum + 1) * MONTHS_PER_ROW);
               return (
-                <div key={'monthRow_' + rowNum} role="row" className={classNames.buttonRow}>
+                <div key={'monthRow_' + rowNum + navigatedDate.getFullYear()} role="row" className={classNames.buttonRow}>
                   {monthsForRow.map((month: string, index: number) => {
                     const monthIndex = rowNum * MONTHS_PER_ROW + index;
                     const indexedMonth = setMonth(navigatedDate, monthIndex);

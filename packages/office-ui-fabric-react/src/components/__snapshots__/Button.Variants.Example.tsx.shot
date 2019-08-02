@@ -132,25 +132,7 @@ exports[`Component Examples renders Button.Variants.Example.tsx correctly 1`] = 
         role="button"
         tabIndex={0}
         type="button"
-      >
-        <span
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                color: inherit;
-                display: inline;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                moz-osx-font-smoothing: grayscale;
-                webkit-font-smoothing: antialiased;
-              }
-        >
-          Actionable
-        </span>
-      </button>
+      />
       <button
         aria-disabled={true}
         className=
@@ -220,25 +202,7 @@ exports[`Component Examples renders Button.Variants.Example.tsx correctly 1`] = 
         onClick={[Function]}
         role="button"
         type="button"
-      >
-        <span
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                color: inherit;
-                display: inline;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                moz-osx-font-smoothing: grayscale;
-                webkit-font-smoothing: antialiased;
-              }
-        >
-          Disabled Actionable
-        </span>
-      </button>
+      />
     </div>
     <div
       className=
@@ -2939,14 +2903,8 @@ exports[`Component Examples renders Button.Variants.Example.tsx correctly 1`] = 
           </span>
           <div
             className=
-                ms-StackItem
+
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  flex-shrink: 0;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   height: auto;
                   width: auto;
                 }
@@ -3112,14 +3070,8 @@ exports[`Component Examples renders Button.Variants.Example.tsx correctly 1`] = 
           </span>
           <div
             className=
-                ms-StackItem
+
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  flex-shrink: 0;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   height: auto;
                   width: auto;
                 }
@@ -3284,14 +3236,8 @@ exports[`Component Examples renders Button.Variants.Example.tsx correctly 1`] = 
           </span>
           <div
             className=
-                ms-StackItem
+
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  flex-shrink: 0;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   height: auto;
                   width: auto;
                 }
@@ -3459,14 +3405,8 @@ exports[`Component Examples renders Button.Variants.Example.tsx correctly 1`] = 
           </span>
           <div
             className=
-                ms-StackItem
+
                 {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  flex-shrink: 0;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   height: auto;
                   width: auto;
                 }
@@ -3846,14 +3786,8 @@ exports[`Component Examples renders Button.Variants.Example.tsx correctly 1`] = 
           >
             <div
               className=
-                  ms-StackItem
+
                   {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    flex-shrink: 0;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
                     height: auto;
                     width: auto;
                   }
@@ -4234,14 +4168,8 @@ exports[`Component Examples renders Button.Variants.Example.tsx correctly 1`] = 
           >
             <div
               className=
-                  ms-StackItem
+
                   {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    flex-shrink: 0;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
                     height: auto;
                     width: auto;
                   }
@@ -4623,14 +4551,8 @@ exports[`Component Examples renders Button.Variants.Example.tsx correctly 1`] = 
           >
             <div
               className=
-                  ms-StackItem
+
                   {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    flex-shrink: 0;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
                     height: auto;
                     width: auto;
                   }
@@ -5017,14 +4939,8 @@ exports[`Component Examples renders Button.Variants.Example.tsx correctly 1`] = 
           >
             <div
               className=
-                  ms-StackItem
+
                   {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    flex-shrink: 0;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
                     height: auto;
                     width: auto;
                   }
@@ -5389,14 +5305,8 @@ exports[`Component Examples renders Button.Variants.Example.tsx correctly 1`] = 
           >
             <div
               className=
-                  ms-StackItem
+
                   {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    flex-shrink: 0;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
                     height: auto;
                     width: auto;
                   }
@@ -5780,14 +5690,8 @@ exports[`Component Examples renders Button.Variants.Example.tsx correctly 1`] = 
           >
             <div
               className=
-                  ms-StackItem
+
                   {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    flex-shrink: 0;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
                     height: auto;
                     width: auto;
                   }

@@ -1788,24 +1788,6 @@ exports[`Component Examples renders Button.Example.tsx correctly 1`] = `
           tabIndex={0}
           type="button"
         >
-          <i
-            aria-hidden={true}
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  font-family: "FabricMDL2Icons";
-                  font-style: normal;
-                  font-weight: normal;
-                  speak: none;
-                }
-            data-icon-name="Download"
-            role="presentation"
-          >
-            
-          </i>
           <span
             className=
 

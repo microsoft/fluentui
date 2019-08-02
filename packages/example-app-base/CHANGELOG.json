@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Fri, 02 Aug 2019 12:33:29 GMT",
+      "tag": "@uifabric/example-app-base_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Website changes to work with monaco editor state management",
+            "author": "t-nikaz@microsoft.com",
+            "commit": "0843c196be248757bd1fff674f900346490cd206"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jul 2019 12:28:32 GMT",
       "tag": "@uifabric/example-app-base_v7.1.7",
       "version": "7.1.7",
