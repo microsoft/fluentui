@@ -1,6 +1,4 @@
 {
-  "sizeTolerance": "1024",
-  "trackingEntity": "Asset",
   "devopsDropFolderName": "drop",
   "devopsWebpackStatsArtifactName": "bundlesizes.json"
 }
