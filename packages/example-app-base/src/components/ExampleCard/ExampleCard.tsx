@@ -17,7 +17,7 @@ import * as tsxEditorModule from '@uifabric/tsx-editor';
 import { getSetting } from '../../index2';
 
 export interface IExampleCardState {
-  isCodeVisible?: boolean;
+  isCodeVisible?: boolean; // only used if props.isCodeVisible and props.onToggleEditor are undefined
   schemeIndex: number;
   themeIndex: number;
   error?: string;
@@ -68,7 +68,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   public render(): JSX.Element {
     const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme } = this.props;
     const { schemeIndex, themeIndex } = this.state;
-    const isCodeVisible = this.props.isCodeVisible === undefined ? this.state.isCodeVisible : this.props.isCodeVisible;
+    const { isCodeVisible = this.state.isCodeVisible } = this.props;
 
     return (
       <AppCustomizationsContext.Consumer>
