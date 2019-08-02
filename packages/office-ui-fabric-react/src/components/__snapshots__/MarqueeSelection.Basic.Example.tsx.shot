@@ -23,12 +23,12 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           position: relative;
         }
         &:hover .ms-Checkbox-checkbox {
-          background: #106ebe;
-          border-color: #106ebe;
+          background: #005a9e;
+          border-color: #005a9e;
         }
         &:focus .ms-Checkbox-checkbox {
-          background: #106ebe;
-          border-color: #106ebe;
+          background: #005a9e;
+          border-color: #005a9e;
         }
         & .ms-Checkbox-checkbox {
           background: #0078d4;
