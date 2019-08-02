@@ -59,9 +59,6 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
         (window as any).Fabric = Fabric;
       });
     }
-
-    if (props.isCodeVisible !== undefined && !props.onToggleEditor === undefined) {
-    }
   }
 
   public render(): JSX.Element {
