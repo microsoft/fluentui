@@ -15,6 +15,7 @@ import { EditorPreview } from '@uifabric/tsx-editor/lib/components/EditorPreview
 import { transformExample } from '@uifabric/tsx-editor/lib/transpiler/exampleTransform';
 import * as tsxEditorModule from '@uifabric/tsx-editor';
 import { getSetting } from '../../index2';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react';
 
 export interface IExampleCardState {
   schemeIndex: number;
@@ -135,7 +136,6 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
               {isCodeVisible &&
                 (this.canRenderLiveEditor ? (
-                  // <React.Suspense fallback={<div>Loading...</div>}>
                   this.editorModule ? (
                     <this.editorModule.Editor
                       code={code!}
@@ -145,10 +145,11 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                       language="typescript"
                     />
                   ) : (
-                    <div>Loading...</div>
+                    <div style={{ height: '500px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                      <Spinner>size={SpinnerSize.large}</Spinner>
+                    </div>
                   )
                 ) : (
-                  // </React.Suspense>
                   <div className={classNames.code}>
                     <CodeSnippet language="tsx">{code}</CodeSnippet>
                   </div>
