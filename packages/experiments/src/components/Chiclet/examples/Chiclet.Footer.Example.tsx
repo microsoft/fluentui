@@ -3,6 +3,8 @@ import { Chiclet, ChicletSize } from '@uifabric/experiments';
 import { IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
+import { FontWeights } from '@uifabric/styling';
+import { NeutralColors } from '@uifabric/fluent-theme';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
@@ -27,11 +29,13 @@ const footerStyle = mergeStyles({
 const activitiesStyle = mergeStyles({
   paddingLeft: 16,
   paddingBottom: 8,
-  color: 'gray120'
+  fontWeight: FontWeights.semibold,
+  color: NeutralColors.gray120
 });
 
 const actionsStyle = mergeStyles({
   display: 'flex',
+  fontSize: 16,
   marginLeft: 'auto'
 });
 
@@ -86,19 +90,3 @@ function _renderFooter(buttonProps: IButtonProps[], activities: string): React.R
     </div>
   );
 }
-
-/**
- * <Text variant="small" className={activitiesStyle}>
-        {activities}
-      </Text>
-      <div className={actionsStyle}>
-        {buttonProps &&
-          buttonProps.map((buttonProp: IButtonProps, index: number) => {
-            return (
-              <div className={actionStyle} key={index}>
-                <IconButton {...buttonProp} />
-              </div>
-            );
-          })}
-      </div>
- */

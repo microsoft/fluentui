@@ -1,9 +1,12 @@
 import { normalize } from '../../Styling';
 import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
+import { FontWeights } from '@uifabric/styling';
+import { NeutralColors } from '@uifabric/fluent-theme';
 
 export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => {
   const { theme, className } = props;
   const { palette } = theme;
+
   const previewWidth = ((1 / 3) * 100).toString() + '%';
   const infoWidth = ((2 / 3) * 100).toString() + '%';
 
@@ -57,14 +60,13 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
       {
         padding: '16px 16px 4px 16px',
         fontSize: 16,
-        fontWeight: 'normal',
+        fontWeight: FontWeights.semibold,
         fontStyle: 'normal',
         fontStretch: 'normal',
-        color: palette.neutralPrimary,
+        color: 'gray160',
         letterSpacing: 'normal',
         textAlign: 'left',
         maxHeight: 37, // Two lines of text, making sure the third line is hidden
-        width: infoWidth,
         lineHeight: '1.25',
         overflow: 'hidden',
         wordWrap: 'break-word'
@@ -76,11 +78,10 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         alignItems: 'center',
         padding: '0px 16px 0px 16px',
         fontSize: 12,
+        fontWeight: FontWeights.semibold,
         lineHeight: '1.33',
         textAlign: 'left',
-        color: '#797671', // @todo: get theme from designers
-        width: infoWidth,
-        height: 16,
+        color: NeutralColors.gray120,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis'

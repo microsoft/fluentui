@@ -91,7 +91,6 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
       classNames.title,
       {
         fontSize: theme.fonts.medium.fontSize,
-        color: palette.neutralPrimary,
         letterSpacing: 'normal',
         textAlign: 'left',
         width: 170,

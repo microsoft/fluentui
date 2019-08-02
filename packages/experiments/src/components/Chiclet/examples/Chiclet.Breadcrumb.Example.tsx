@@ -5,6 +5,7 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react/lib/Tooltip';
 import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
+import { FontWeights } from '@uifabric/styling';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
@@ -16,15 +17,11 @@ const chevronStyle = mergeStyles({
 
 const descriptionStyle = mergeStyles({
   fontSize: 12,
-  fontWeight: 'normal',
-  fontStyle: 'normal',
-  fontStretch: 'normal',
-  lineHeight: 1.33,
-  letterSpacing: 'normal',
+  fontWeight: FontWeights.semibold,
+  lineHeight: 14,
   textAlign: 'left',
   color: '#797671',
-  width: '100%',
-  height: 16,
+  maxWidth: '100%',
   whiteSpace: 'nowrap',
   textOverflow: 'ellipsis'
 });
