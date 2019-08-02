@@ -203,6 +203,9 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-overflow: ellipsis;
                     white-space: nowrap;
                   }
+                  &:hover {
+                    color: #201f1e;
+                  }
               dir="auto"
             />
             <div
@@ -899,6 +902,9 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+                  }
+                  &:hover {
+                    color: #201f1e;
                   }
               dir="auto"
             />
@@ -1657,6 +1663,9 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-overflow: ellipsis;
                     white-space: nowrap;
                   }
+                  &:hover {
+                    color: #201f1e;
+                  }
               dir="auto"
             />
             <div
@@ -2357,6 +2366,9 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+                  }
+                  &:hover {
+                    color: #201f1e;
                   }
               dir="auto"
             />
@@ -3117,6 +3129,9 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-overflow: ellipsis;
                     white-space: nowrap;
                   }
+                  &:hover {
+                    color: #201f1e;
+                  }
               dir="auto"
             />
             <div
@@ -3801,6 +3816,9 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+                  }
+                  &:hover {
+                    color: #201f1e;
                   }
               dir="auto"
             />
@@ -4547,6 +4565,9 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-overflow: ellipsis;
                     white-space: nowrap;
                   }
+                  &:hover {
+                    color: #201f1e;
+                  }
               dir="auto"
             />
             <div
@@ -5243,6 +5264,9 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+                  }
+                  &:hover {
+                    color: #201f1e;
                   }
               dir="auto"
             />
@@ -5981,6 +6005,9 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                 overflow: hidden;
                 text-overflow: ellipsis;
                 white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
               }
           dir="auto"
         />
@@ -6776,6 +6803,9 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     text-overflow: ellipsis;
                     white-space: nowrap;
                   }
+                  &:hover {
+                    color: #201f1e;
+                  }
               dir="auto"
             />
             <div
@@ -7516,6 +7546,9 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+                  }
+                  &:hover {
+                    color: #201f1e;
                   }
               dir="auto"
             />

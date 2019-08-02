@@ -151,6 +151,9 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+            &:hover {
+              color: #201f1e;
+            }
         dir="auto"
       >
         <div
@@ -354,6 +357,9 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
+            }
+            &:hover {
+              color: #201f1e;
             }
         dir="auto"
       >

@@ -218,9 +218,12 @@ Array [
               & .contextualHost {
                 display: none;
               }
+<<<<<<< HEAD
               & .ms-Persona-primaryText {
                 color: #201f1e;
               }
+=======
+>>>>>>> bcff13c600201473f2f6a025fde0b72007aa0f69
         >
           <div
             className=
@@ -301,6 +304,9 @@ Array [
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+                  }
+                  &:hover {
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     color: HighlightText;
@@ -716,9 +722,12 @@ Array [
               & .contextualHost {
                 display: none;
               }
+<<<<<<< HEAD
               & .ms-Persona-primaryText {
                 color: #201f1e;
               }
+=======
+>>>>>>> bcff13c600201473f2f6a025fde0b72007aa0f69
         >
           <div
             className=
@@ -799,6 +808,9 @@ Array [
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+                  }
+                  &:hover {
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     color: HighlightText;

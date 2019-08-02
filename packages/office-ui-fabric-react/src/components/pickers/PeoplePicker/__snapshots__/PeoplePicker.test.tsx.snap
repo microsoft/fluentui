@@ -370,6 +370,9 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                        &:hover {
+                          color: #201f1e;
+                        }
                     dir="auto"
                   >
                     <div

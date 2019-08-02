@@ -431,6 +431,9 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                        &:hover {
+                          color: #201f1e;
+                        }
                     dir="auto"
                   >
                     <div

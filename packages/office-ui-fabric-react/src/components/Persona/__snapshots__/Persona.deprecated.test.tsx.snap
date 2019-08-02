@@ -139,6 +139,9 @@ exports[`Persona renders Persona correctly with image 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+          &:hover {
+            color: #201f1e;
+          }
       dir="auto"
     >
       <div
@@ -315,6 +318,9 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+          }
+          &:hover {
+            color: #201f1e;
           }
       dir="auto"
     >
@@ -507,6 +513,9 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
+          }
+          &:hover {
+            color: #201f1e;
           }
       dir="auto"
     />
