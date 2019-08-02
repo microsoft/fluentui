@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "adding prop on baseButton to allow user to avoid propagating all props on div element of split button container but meant to be applied on split menu button.",
+  "packageName": "office-ui-fabric-react",
+  "email": "pagaur@microsoft.com",
+  "commit": "56706417eb5510ac5128b1ec690da302d3bb2f45",
+  "date": "2019-08-02T00:35:32.295Z"
+}
