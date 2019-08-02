@@ -657,7 +657,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -668,7 +668,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -689,7 +689,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(2) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(2) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -700,7 +700,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -721,7 +721,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(3) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(3) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -732,7 +732,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -753,7 +753,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(4) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(4) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -764,7 +764,39 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(5) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -796,7 +828,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button ms-DatePicker-day--today undefined\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"true\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button ms-DatePicker-day--today undefined\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"true\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -817,7 +849,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(6) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(7) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -828,7 +860,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -849,7 +881,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(7) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -860,7 +892,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -881,7 +913,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(2) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -892,7 +924,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -913,7 +945,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(2) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(3) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -924,7 +956,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -945,7 +977,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(3) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(4) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -956,7 +988,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -977,7 +1009,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(4) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(5) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -988,7 +1020,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1009,7 +1041,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(5) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(6) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1020,7 +1052,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1041,7 +1073,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(6) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(7) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1052,7 +1084,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1073,7 +1105,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(7) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1084,7 +1116,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1105,7 +1137,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(2) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1116,7 +1148,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1137,7 +1169,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(2) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(3) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1148,7 +1180,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1169,7 +1201,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(3) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(4) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1180,7 +1212,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1201,7 +1233,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(4) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(5) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1212,7 +1244,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1233,7 +1265,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(5) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(6) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1244,7 +1276,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1265,7 +1297,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(6) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(7) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1276,7 +1308,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1297,7 +1329,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(7) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1308,7 +1340,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1329,7 +1361,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(2) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1340,7 +1372,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1361,7 +1393,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(2) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(3) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1372,7 +1404,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1393,7 +1425,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(3) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(4) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1404,7 +1436,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1425,7 +1457,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(4) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(5) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1436,7 +1468,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1457,7 +1489,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(5) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(6) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1468,7 +1500,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1489,7 +1521,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(6) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(7) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1500,7 +1532,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1521,7 +1553,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(7) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(5) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1532,7 +1564,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1553,7 +1585,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(5) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(5) > .ms-DatePicker-day--infocus:nth-child(2) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1564,7 +1596,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1585,7 +1617,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(5) > .ms-DatePicker-day--infocus:nth-child(2) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(5) > .ms-DatePicker-day--infocus:nth-child(3) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1596,7 +1628,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1617,7 +1649,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(5) > .ms-DatePicker-day--infocus:nth-child(3) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": ".ms-DatePicker-day--outfocus:nth-child(4) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1628,7 +1660,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1649,7 +1681,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": ".ms-DatePicker-day--outfocus:nth-child(4) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": ".ms-DatePicker-day--outfocus:nth-child(5) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1660,7 +1692,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1681,7 +1713,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": ".ms-DatePicker-day--outfocus:nth-child(5) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": ".ms-DatePicker-day--outfocus:nth-child(6) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1692,7 +1724,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -1713,7 +1745,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": ".ms-DatePicker-day--outfocus:nth-child(6) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": ".ms-DatePicker-day--outfocus:nth-child(7) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -1724,39 +1756,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
-            },
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "markdown": "Fix any of the following:
-- ARIA role gridcell  is not allowed for given element.",
-      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
-    },
-    "ruleId": "aria-allowed-role",
-    "ruleIndex": 3,
-  },
-  Object {
-    "kind": "fail",
-    "level": "error",
-    "locations": Array [
-      Object {
-        "logicalLocations": Array [
-          Object {
-            "fullyQualifiedName": ".ms-DatePicker-day--outfocus:nth-child(7) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
-            "kind": "element",
-          },
-        ],
-        "physicalLocation": Object {
-          "artifactLocation": Object {
-            "index": 0,
-            "uri": "about:blank",
-          },
-          "region": Object {
-            "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -2161,7 +2161,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 5\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -2172,7 +2172,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 5, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">5</span></button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
