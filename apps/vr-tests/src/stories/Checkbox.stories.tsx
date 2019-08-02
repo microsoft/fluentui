@@ -78,9 +78,9 @@ storiesOf('Checkbox Indeterminate', module)
       defaultChecked
     />
   ))
-  .addStory('Controlled Indeterminate checkbox without removeIndeterminate callback', () => (
+  .addStory('Controlled Indeterminate checkbox without onChange callback', () => (
     <Checkbox
-      label="Controlled Indeterminate checkbox without removeIndeterminate callback"
+      label="Controlled Indeterminate checkbox without onChange callback"
       indeterminate={true}
     />
   ))
