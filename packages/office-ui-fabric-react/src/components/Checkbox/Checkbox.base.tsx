@@ -170,7 +170,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   };
 
   private _onChange = (ev: React.FormEvent<HTMLElement>): void => {
-    const { disabled, onChange, onRemoveIndeterminate } = this.props;
+    const { disabled, onChange } = this.props;
     const { isChecked, isIndeterminate } = this.state;
 
     if (!disabled) {
@@ -182,8 +182,8 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
           this.setState({ isChecked: !isChecked });
         }
       } else {
-        if (onRemoveIndeterminate) {
-          onRemoveIndeterminate();
+        if (onChange) {
+          onChange(ev, isChecked, !this.props.indeterminate);
         }
         if (this.props.indeterminate === undefined) {
           this.setState({ isIndeterminate: false });

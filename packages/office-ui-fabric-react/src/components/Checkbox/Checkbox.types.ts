@@ -58,9 +58,9 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   disabled?: boolean;
 
   /**
-   * Callback that is called when the checked value has changed.
+   * Callback that is called when the checked value has changed. However, if the Checkbox has a controlled indeterminate state, this is called when the indeterminate value has changed.
    */
-  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
+  onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean, wasIndeterminate?: boolean) => void;
 
   /**
    * Optional input props that will be mixed into the input element, *before* other props are applied. This allows
@@ -145,12 +145,6 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * and after the user's first click it will be removed exposing the true state of the checkbox.
    */
   defaultIndeterminate?: boolean;
-
-  /**
-   * User provided callback that is called to remove indeterminate visual state when opting to
-   * use the controlled indeterminate prop.
-   */
-  onRemoveIndeterminate?: () => void;
 }
 
 /**

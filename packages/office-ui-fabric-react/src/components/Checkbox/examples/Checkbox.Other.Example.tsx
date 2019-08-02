@@ -4,6 +4,7 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 export interface ICheckboxOtherExamplesState {
   isChecked: boolean;
   isChecked2: boolean;
+  isChecked3: boolean;
   isIndeter: boolean;
 }
 
@@ -11,11 +12,12 @@ export class CheckboxOtherExamples extends React.Component<{}, ICheckboxOtherExa
   public state: ICheckboxOtherExamplesState = {
     isChecked: false,
     isChecked2: false,
+    isChecked3: false,
     isIndeter: true
   };
 
   public render(): JSX.Element {
-    const { isChecked, isChecked2, isIndeter } = this.state;
+    const { isChecked, isChecked2, isChecked3, isIndeter } = this.state;
 
     const checkboxStyles = () => {
       return {
@@ -67,15 +69,15 @@ export class CheckboxOtherExamples extends React.Component<{}, ICheckboxOtherExa
         <Checkbox
           label="Controlled Indeterminate Uncontrolled check Checkbox"
           styles={checkboxStyles}
-          onRemoveIndeterminate={this._indeterRemove}
+          onChange={this._onControlledIndeterminateChange}
           indeterminate={isIndeter}
-          defaultChecked
+          checked={isChecked2}
         />
 
         <Checkbox
           label="Uncontrolled Indeterminate Controlled Check Checkbox"
           styles={checkboxStyles}
-          checked={isChecked2}
+          checked={isChecked3}
           onChange={this._onControlledCheckboxChange2}
           defaultIndeterminate
         />
@@ -87,12 +89,16 @@ export class CheckboxOtherExamples extends React.Component<{}, ICheckboxOtherExa
     );
   }
 
-  private _indeterRemove = () => {
-    this.setState({ isIndeter: false });
-  };
-
   private _onCheckboxChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean) => {
     console.log(`The option has been changed to ${isChecked}.`);
+  };
+
+  private _onControlledIndeterminateChange = (ev: React.FormEvent<HTMLElement>, checked: boolean, indeterminate: boolean): void => {
+    if (this.state.isIndeter) {
+      this.setState({ isIndeter: indeterminate! });
+    } else {
+      this.setState({ isChecked2: checked! });
+    }
   };
 
   private _onControlledCheckboxChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
@@ -100,7 +106,7 @@ export class CheckboxOtherExamples extends React.Component<{}, ICheckboxOtherExa
   };
 
   private _onControlledCheckboxChange2 = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
-    this.setState({ isChecked2: checked! });
+    this.setState({ isChecked3: checked! });
   };
 
   private _renderLabelWithLink = () => {
