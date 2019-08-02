@@ -44,10 +44,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
   let firstTransitionRowAnimationStyle: IRawStyle = {};
   let lastTransitionRowAnimationStyle: IRawStyle = {};
   if (animateBackwards !== undefined) {
-    if (animationDirection === AnimationDirection.Horizontal) {
-      firstTransitionRowAnimationStyle = animateBackwards ? { animationName: '' } : AnimationStyles.slideLeftOut20;
-      lastTransitionRowAnimationStyle = animateBackwards ? AnimationStyles.slideRightOut20 : { animationName: '' };
-    } else {
+    if (animationDirection !== AnimationDirection.Horizontal) {
       firstTransitionRowAnimationStyle = animateBackwards ? { animationName: '' } : AnimationStyles.slideUpOut20;
       lastTransitionRowAnimationStyle = animateBackwards ? AnimationStyles.slideDownOut20 : { animationName: '' };
     }
