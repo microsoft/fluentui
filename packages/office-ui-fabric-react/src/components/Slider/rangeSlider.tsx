@@ -211,11 +211,11 @@ export class RangeSlider extends BaseComponent<ISliderProps, ISliderState> imple
     return renderedValueRight;
   }
 
-  private _getAriaValueText = (valueLeft: number | undefined, valueRight: number | undefined): string | undefined => {
-    if (this.props.ariaValueText && valueLeft !== undefined && valueRight !== undefined) {
-      return this.props.ariaValueText(this.value);
-    }
-  };
+  // private _getAriaValueText = (valueLeft: number | undefined, valueRight: number | undefined): string | undefined => {
+  //   if (this.props.ariaValueText && valueLeft !== undefined && valueRight !== undefined) {
+  //     return this.props.ariaValueText(this.value);
+  //   }
+  // };
 
   private _getStyleUsingOffsetPercent(vertical: boolean | undefined, thumbOffsetPercent: number): any {
     const direction: string = vertical ? 'bottom' : getRTL() ? 'right' : 'left';
