@@ -4,16 +4,10 @@ import { IEditorProps } from './Editor.types';
 
 export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProps) => {
   const ref = React.useRef<HTMLDivElement>(null);
-  const { width, height, onChange, code, language } = props;
+  const { width, height, onChange, language, code } = props;
   const style = { width, height };
 
   React.useEffect(() => {
-    const editor = monaco.editor.create(ref.current!, {
-      model: monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('file:///main.tsx')),
-      value: code,
-      language
-    });
-
     monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
       allowNonTsExtensions: true,
       target: monaco.languages.typescript.ScriptTarget.ES5,
@@ -23,8 +17,20 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       experimentalDecorators: true,
       preserveConstEnums: true,
       outDir: 'lib',
-      module: monaco.languages.typescript.ModuleKind.CommonJS,
+      module: monaco.languages.typescript.ModuleKind.ESNext,
       lib: ['es5', 'dom']
+    });
+
+    monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: true });
+
+    const model = monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('file:///main.tsx'));
+
+    onChange(model);
+
+    const editor = monaco.editor.create(ref.current!, {
+      model: model,
+      value: code,
+      language
     });
 
     editor.onDidChangeModelContent(() => {
@@ -39,3 +45,5 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
 
   return <div ref={ref} style={style} />;
 };
+
+export default Editor;

@@ -22,6 +22,12 @@ import { ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 import { ITheme } from '@uifabric/styling';
 import * as React from 'react';
 
+// @public (undocumented)
+export enum AnimationDirection {
+    Horizontal = 0,
+    Vertical = 1
+}
+
 // @public
 export const Calendar: React.FunctionComponent<ICalendarProps>;
 
@@ -103,6 +109,7 @@ export interface ICalendarIconStrings {
 // @public (undocumented)
 export interface ICalendarMonthProps extends IBaseProps_2<ICalendarMonth> {
     allFocusable?: boolean;
+    animationDirection?: AnimationDirection;
     className?: string;
     componentRef?: IRefObject_2<ICalendarMonth>;
     dateTimeFormatter?: ICalendarFormatDateCallbacks;
@@ -300,6 +307,7 @@ export interface IWeeklyDayPicker {
 
 // @public (undocumented)
 export interface IWeeklyDayPickerProps extends IBaseProps_2<IWeeklyDayPicker> {
+    animationDirection?: AnimationDirection;
     className?: string;
     componentRef?: IRefObject_2<IWeeklyDayPicker>;
     dateTimeFormatter?: ICalendarFormatDateCallbacks;
