@@ -272,7 +272,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           }
         }
       },
-      props.disabled && {
+      disabled && {
         background: theme.palette.neutralLight,
         selectors: {
           [HighContrastSelector]: {
@@ -280,7 +280,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           }
         }
       },
-      props.vertical
+      vertical
         ? {
             width: '16px',
             height: '1px',
@@ -304,7 +304,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           }
         }
       },
-      props.disabled && {
+      disabled! && {
         background: theme.palette.neutralLight,
         selectors: {
           [HighContrastSelector]: {
@@ -312,7 +312,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           }
         }
       },
-      props.vertical
+      vertical
         ? {
             width: '16px',
             height: '1px',
