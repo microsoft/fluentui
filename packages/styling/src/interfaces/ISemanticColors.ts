@@ -184,6 +184,21 @@ export interface ISemanticColors extends ISemanticTextColors {
    */
   inputFocusBorderAlt: string;
 
+  /**
+   * The color for disabled icon ; e.g. SearchBox magnifying glass in disabled state.
+   */
+  inputIconDisabled: string;
+
+  /**
+   * The color for icon ; e.g. SearchBox magnifying glass in rest state.
+   */
+  inputIcon: string;
+
+  /**
+   * The color for hovered icon ; e.g. SearchBox magnifying glass in hovered state.
+   */
+  inputIconHovered: string;
+
   //// Buttons
 
   /**
