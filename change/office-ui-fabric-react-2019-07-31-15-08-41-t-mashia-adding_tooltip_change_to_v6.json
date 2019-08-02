@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Cherry pick PR #9775: Tooltip: Rendering hidden hoverable area to allow for interaction with Tooltips; and PR#9960: Tooltip: Fixing hidden hover area overlapping with Tooltip targets.",
-  "packageName": "office-ui-fabric-react",
-  "email": "t-mashia@microsoft.com",
-  "commit": "94ce4724ad93ba7b4e187bcf1ba8c3c8be706944",
-  "date": "2019-07-31T22:08:41.866Z"
-}

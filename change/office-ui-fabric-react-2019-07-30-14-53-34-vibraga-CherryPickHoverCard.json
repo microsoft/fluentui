@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Cherry pick: Separate the anchor for the card from card's hover target.",
-  "packageName": "office-ui-fabric-react",
-  "email": "vibraga@microsoft.com",
-  "commit": "93ec5087d7fcf5c1b7c8ea0a20551b1ce7f43345",
-  "date": "2019-07-30T21:53:30.131Z"
-}

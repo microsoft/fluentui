@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 01 Aug 2019 12:23:00 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Aug 2019 12:23:14 GMT and should not be manually modified.
+
+## 6.198.0
+Fri, 02 Aug 2019 12:23:14 GMT
+
+### Minor changes
+
+- Cherry pick: Separate the anchor for the card from card's hover target. (vibraga@microsoft.com)
+
+### Patches
+
+- Cherry pick PR #9775: Tooltip: Rendering hidden hoverable area to allow for interaction with Tooltips; and PR#9960: Tooltip: Fixing hidden hover area overlapping with Tooltip targets. (t-mashia@microsoft.com)
 
 ## 6.197.0
 Thu, 01 Aug 2019 12:23:00 GMT
