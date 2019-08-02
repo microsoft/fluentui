@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 02 Aug 2019 12:33:29 GMT",
+      "tag": "office-ui-fabric-react_v7.19.1",
+      "version": "7.19.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Persona: Fix styles issue caused by unnecessary nesting",
+            "author": "cliff.koh@microsoft.com",
+            "commit": "080f2b1f3ca771b92c51704e2948f79567d86b29"
+          },
+          {
+            "comment": "Remove extra export of SelectionMode",
+            "author": "jdh@microsoft.com",
+            "commit": "5feb2bba90ab5c4eb9a2cabd14ae0fc268df518f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Jul 2019 12:26:17 GMT",
       "tag": "office-ui-fabric-react_v7.19.0",
       "version": "7.19.0",

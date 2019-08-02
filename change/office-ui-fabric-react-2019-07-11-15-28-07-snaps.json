@@ -1,0 +1,8 @@
+{
+  "comment": "Slider: Add new prop to snap while moving.",
+  "type": "minor",
+  "packageName": "office-ui-fabric-react",
+  "email": "t-snroy@microsoft.com",
+  "commit": "2bd5d8c0252e2276b969661abd2361b6cc542992",
+  "date": "2019-07-11T22:28:07.054Z"
+}

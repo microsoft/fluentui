@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Fri, 02 Aug 2019 12:33:29 GMT",
+      "tag": "@uifabric/utilities_v7.0.7",
+      "version": "7.0.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "addding dynamic import and patching ts",
+            "author": "esteban.230@hotmail.com",
+            "commit": "400f6f3ea28aacfd8f65435a8cc3dac391576a42"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jul 2019 12:28:42 GMT",
       "tag": "@uifabric/utilities_v7.0.7",
       "version": "7.0.7",
