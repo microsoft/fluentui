@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Toggle for examples of \"next\" version to be shown on demo page.",
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "624df1563e44190a2811cd49060fe7b9af0a8606",
+  "date": "2019-08-02T18:46:12.816Z"
+}
