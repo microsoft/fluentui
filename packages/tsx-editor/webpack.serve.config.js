@@ -1,10 +1,7 @@
 const path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
-const webpack = resources.webpack;
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
-
-const PACKAGE_NAME = require('./package.json').name;
 
 module.exports = resources.createServeConfig({
   entry: './src/demo/index.tsx',

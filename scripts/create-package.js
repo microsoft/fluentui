@@ -176,7 +176,6 @@ function makePackage(error) {
     return;
   }
 
-  fs.mkdirSync(`${packagePath}/.vscode`);
   fs.mkdirSync(`${packagePath}/config`);
   fs.mkdirSync(`${packagePath}/src`);
   fs.mkdirSync(`${packagePath}/src/common`);

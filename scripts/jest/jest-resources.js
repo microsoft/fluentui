@@ -9,20 +9,37 @@ module.exports = {
     rootDir: 'lib',
     testRegex: '(/__tests__/.*|\\.(test|spec))\\.js$'
   }),
-  createConfig: customConfig =>
+  /**
+   * @param {*} customConfig Custom jest config
+   * @param {boolean} [useMonaco] If true, include options that make monaco-editor work in tests
+   */
+  createConfig: (customConfig, useMonaco) =>
     merge(
       {
         moduleNameMapper: {
           'ts-jest': resolve.sync('ts-jest'),
-          '\\.(scss)$': path.resolve(__dirname, 'jest-style-mock.js'),
+          '\\.(css|scss)$': path.resolve(__dirname, 'jest-style-mock.js'),
           KeyCodes: path.resolve(__dirname, 'jest-mock.js')
         },
 
         transform: {
-          '.(ts|tsx)': resolve.sync('ts-jest/dist')
+          '\\.(ts|tsx)': resolve.sync('ts-jest/dist'),
+          ...(useMonaco
+            ? {
+                'monaco-editor': path.join(__dirname, 'monaco-transform.js')
+              }
+            : {})
         },
 
-        transformIgnorePatterns: ['/node_modules/', '/lib-commonjs/', '\\.js$'],
+        transformIgnorePatterns: useMonaco
+          ? [
+              '/lib-commonjs/',
+              // Ignore all node_modules except ones with monaco-editor in the path (using negative lookahead)
+              '/node_modules/(?!monaco-editor)',
+              // Ignore all JS files except ones with monaco-editor in the path (using negative lookbehind)
+              '(?<!monaco-editor/.*)\\.js$'
+            ]
+          : ['/lib-commonjs/', '/node_modules/', '\\.js$'],
 
         reporters: [path.resolve(__dirname, './jest-reporter.js')],
 

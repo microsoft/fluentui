@@ -1,4 +1,8 @@
-import * as monaco from 'monaco-editor';
+// Import the minimal version of the editor
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
+// Add TS features (done as a side effect of the import)
+import 'monaco-editor/esm/vs/language/typescript/monaco.contribution';
+
 import * as React from 'react';
 import { IEditorProps } from './Editor.types';
 
