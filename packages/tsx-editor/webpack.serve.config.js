@@ -7,14 +7,6 @@ const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const PACKAGE_NAME = require('./package.json').name;
 
 module.exports = resources.createServeConfig({
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      }
-    ]
-  },
   entry: './src/demo/index.tsx',
 
   output: {
