@@ -6,6 +6,7 @@ import { prefixRules } from './transforms/prefixRules';
 import { provideUnits } from './transforms/provideUnits';
 import { rtlifyRules } from './transforms/rtlifyRules';
 import { extractRules, IRuleSet } from './extractRules';
+import { IStyleOptions } from './IStyleOptions';
 
 const DISPLAY_NAME = 'displayName';
 
@@ -15,10 +16,9 @@ function getDisplayName(rules?: { [key: string]: IRawStyle }): string | undefine
   return rootStyle ? (rootStyle as IRawStyle).displayName : undefined;
 }
 
-function getKeyForRules(rules: IRuleSet): string | undefined {
-  const serialized: string[] = [];
+function getKeyForRules(options: IStyleOptions, rules: IRuleSet): string | undefined {
+  const serialized: string[] = [options.rtl ? 'rtl' : 'ltr'];
   let hasProps = false;
-
   for (const selector of rules.__order) {
     serialized.push(selector);
     const rulesForSelector = rules[selector];
@@ -30,11 +30,10 @@ function getKeyForRules(rules: IRuleSet): string | undefined {
       }
     }
   }
-
   return hasProps ? serialized.join('') : undefined;
 }
 
-export function serializeRuleEntries(ruleEntries: { [key: string]: string | number }): string {
+export function serializeRuleEntries(options: IStyleOptions, ruleEntries: { [key: string]: string | number }): string {
   if (!ruleEntries) {
     return '';
   }
@@ -51,7 +50,7 @@ export function serializeRuleEntries(ruleEntries: { [key: string]: string | numb
   for (let i = 0; i < allEntries.length; i += 2) {
     kebabRules(allEntries, i);
     provideUnits(allEntries, i);
-    rtlifyRules(allEntries, i);
+    rtlifyRules(options, allEntries, i);
     prefixRules(allEntries, i);
   }
 
@@ -70,12 +69,10 @@ export interface IRegistration {
   rulesToInsert: string[];
 }
 
-export function styleToRegistration(...args: IStyle[]): IRegistration | undefined {
+export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): IRegistration | undefined {
   const rules: IRuleSet = extractRules(args);
 
-  // TODO: calc rtl here.
-
-  const key = getKeyForRules(rules);
+  const key = getKeyForRules(options, rules);
 
   if (key) {
     const stylesheet = Stylesheet.getInstance();
@@ -90,7 +87,7 @@ export function styleToRegistration(...args: IStyle[]): IRegistration | undefine
       const rulesToInsert: string[] = [];
 
       for (const selector of rules.__order) {
-        rulesToInsert.push(selector, serializeRuleEntries(rules[selector]));
+        rulesToInsert.push(selector, serializeRuleEntries(options, rules[selector]));
       }
       registration.rulesToInsert = rulesToInsert;
     }
@@ -126,8 +123,8 @@ export function applyRegistration(registration: IRegistration): void {
   }
 }
 
-export function styleToClassName(...args: IStyle[]): string {
-  const registration = styleToRegistration(...args);
+export function styleToClassName(options: IStyleOptions, ...args: IStyle[]): string {
+  const registration = styleToRegistration(options, ...args);
   if (registration) {
     applyRegistration(registration);
 

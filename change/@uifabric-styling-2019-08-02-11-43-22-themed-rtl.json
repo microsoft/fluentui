@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add optional rtl property to IScheme",
+  "packageName": "@uifabric/styling",
+  "email": "jdh@microsoft.com",
+  "commit": "db3504b65c6363d9d840d58076a31abe8bade56a",
+  "date": "2019-08-02T18:43:16.485Z"
+}

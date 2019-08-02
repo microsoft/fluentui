@@ -50,14 +50,14 @@ export interface IStyleSheetConfig {
    * Default units to set on number based properties. This allows
    * for simple unit switching between PX and REM based units.
    * If your page operates on PX, there is no change required. Default:
-   * {
+   * \{
    *   default: 'px';
-   *   overrides: {
+   *   overrides: \{
    *     lineHeight: '',
    *     flex: '',
    *     animationDuration: 's',
-   *   }
-   * }
+   *   \}
+   * \}
    */
   units?: {
     default: string;
@@ -149,7 +149,8 @@ export class Stylesheet {
 
   /**
    * Sets the singleton instance.
-   * @param stylesheet
+   *
+   * @param stylesheet - stylesheet to use as singleton
    */
   public static setInstance(stylesheet: Stylesheet): void {
     _stylesheet = stylesheet;

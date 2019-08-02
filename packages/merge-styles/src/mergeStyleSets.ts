@@ -1,8 +1,6 @@
-import { extractStyleParts } from './extractStyleParts';
-import { concatStyleSets } from './concatStyleSets';
-import { IStyle } from './IStyle';
-import { styleToRegistration, applyRegistration } from './styleToClassName';
-import { IStyleSet, IProcessedStyleSet, IConcatenatedStyleSet } from './IStyleSet';
+import { IProcessedStyleSet, IStyleSet } from './IStyleSet';
+import { mergeStyleSetsWithOptions } from './mergeStyleSetsWithOptions';
+import { getStyleOptions } from './StyleOptionsState';
 
 /**
  * Takes in one or more style set objects, each consisting of a set of areas,
@@ -92,47 +90,5 @@ export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | 
  * @param styleSets - One or more style sets to be merged.
  */
 export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | false | null>): IProcessedStyleSet<any> {
-  // tslint:disable-next-line:no-any
-  const classNameSet: IProcessedStyleSet<any> = { subComponentStyles: {} };
-  const classMap: { [key: string]: string } = {};
-
-  const styleSet = styleSets[0];
-
-  if (!styleSet && styleSets.length <= 1) {
-    return { subComponentStyles: {} };
-  }
-
-  const concatenatedStyleSet = concatStyleSets(...styleSets);
-
-  const registrations = [];
-
-  for (const styleSetArea in concatenatedStyleSet) {
-    if (concatenatedStyleSet.hasOwnProperty(styleSetArea)) {
-      if (styleSetArea === 'subComponentStyles') {
-        classNameSet.subComponentStyles = (concatenatedStyleSet as IConcatenatedStyleSet<any>).subComponentStyles || {};
-        continue;
-      }
-
-      const styles: IStyle = (concatenatedStyleSet as any)[styleSetArea];
-
-      const { classes, objects } = extractStyleParts(styles);
-      const registration = styleToRegistration({ displayName: styleSetArea }, objects);
-
-      registrations.push(registration);
-
-      if (registration) {
-        classMap[styleSetArea] = registration.className;
-        // as any cast not needed in ts >=2.9
-        (classNameSet as any)[styleSetArea] = classes.concat([registration.className]).join(' ');
-      }
-    }
-  }
-
-  for (const registration of registrations) {
-    if (registration) {
-      applyRegistration(registration, classMap);
-    }
-  }
-
-  return classNameSet;
+  return mergeStyleSetsWithOptions(getStyleOptions(), ...styleSets);
 }

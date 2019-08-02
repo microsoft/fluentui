@@ -1,21 +1,148 @@
-import { mergeStyleSets } from './mergeStyleSets';
-import { IStyleSet, IProcessedStyleSet } from './IStyleSet';
-import { Stylesheet } from './Stylesheet';
+import { concatStyleSets } from './concatStyleSets';
+import { extractStyleParts } from './extractStyleParts';
+import { IStyle } from './IStyle';
+import { IStyleOptions } from './IStyleOptions';
+import { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet } from './IStyleSet';
+import { applyRegistration, styleToRegistration } from './styleToClassName';
 
-export interface IMergeStyleSetsOptions {
-  rtl?: boolean;
-}
+/**
+ * Accepts a set of options, as well as one or more style set objects,
+ * each consisting of a set of areas, each which will produce a class name.
+ * Using this is analogous to calling `mergeStyles` for each property in
+ * the object, but ensures we maintain the set ordering when multiple
+ * style sets are merged.
+ *
+ * @param options - Set of options to be used when calculating styles.
+ * @param styleSet - The first style set to be merged and reigstered.
+ */
+export function mergeStyleSetsWithOptions<TStyleSet extends IStyleSet<TStyleSet>>(
+  options: IStyleOptions,
+  styleSet: TStyleSet | false | null | undefined
+): IProcessedStyleSet<TStyleSet>;
+
+/**
+ * Accepts a set of options, as well as one or more style set objects,
+ * each consisting of a set of areas, each which will produce a class name.
+ * Using this is analogous to calling `mergeStyles` for each property in
+ * the object, but ensures we maintain the set ordering when multiple
+ * style sets are merged.
+ *
+ * @param options - Set of options to be used when calculating styles.
+ * @param styleSet1 - The first style set to be merged.
+ * @param styleSet2 - The second style set to be merged.
+ */
+export function mergeStyleSetsWithOptions<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(
+  options: IStyleOptions,
+  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet2: TStyleSet2 | false | null | undefined
+): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
+
+/**
+ * Accepts a set of options, as well as one or more style set objects,
+ * each consisting of a set of areas, each which will produce a class name.
+ * Using this is analogous to calling `mergeStyles` for each property in
+ * the object, but ensures we maintain the set ordering when multiple
+ * style sets are merged.
+ *
+ * @param options - Set of options to be used when calculating styles.
+ * @param styleSet1 - The first style set to be merged.
+ * @param styleSet2 - The second style set to be merged.
+ * @param styleSet3 - The third style set to be merged.
+ */
+export function mergeStyleSetsWithOptions<
+  TStyleSet1 extends IStyleSet<TStyleSet1>,
+  TStyleSet2 extends IStyleSet<TStyleSet2>,
+  TStyleSet3 extends IStyleSet<TStyleSet3>
+>(
+  options: IStyleOptions,
+  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet2: TStyleSet2 | false | null | undefined,
+  styleSet3: TStyleSet3 | false | null | undefined
+): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+
+/**
+ * Accepts a set of options, as well as one or more style set objects,
+ * each consisting of a set of areas, each which will produce a class name.
+ * Using this is analogous to calling `mergeStyles` for each property in
+ * the object, but ensures we maintain the set ordering when multiple
+ * style sets are merged.
+ *
+ * @param options - Set of options to be used when calculating styles.
+ * @param styleSet1 - The first style set to be merged.
+ * @param styleSet2 - The second style set to be merged.
+ * @param styleSet3 - The third style set to be merged.
+ * @param styleSet4 - The fourth style set to be merged.
+ */
+export function mergeStyleSetsWithOptions<
+  TStyleSet1 extends IStyleSet<TStyleSet1>,
+  TStyleSet2 extends IStyleSet<TStyleSet2>,
+  TStyleSet3 extends IStyleSet<TStyleSet3>,
+  TStyleSet4 extends IStyleSet<TStyleSet4>
+>(
+  options: IStyleOptions,
+  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet2: TStyleSet2 | false | null | undefined,
+  styleSet3: TStyleSet3 | false | null | undefined,
+  styleSet4: TStyleSet4 | false | null | undefined
+): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
+
+/**
+ * Accepts a set of options, as well as one or more style set objects,
+ * each consisting of a set of areas, each which will produce a class name.
+ * Using this is analogous to calling `mergeStyles` for each property in
+ * the object, but ensures we maintain the set ordering when multiple
+ * style sets are merged.
+ *
+ * @param options - Set of options to be used when calculating styles.
+ * @param styleSets - One or more style sets to be merged.
+ */
+export function mergeStyleSetsWithOptions(
+  options: IStyleOptions,
+  ...styleSets: Array<IStyleSet<any> | undefined | false | null>
+): IProcessedStyleSet<any>;
 
 export function mergeStyleSetsWithOptions<TStyleSet extends IStyleSet<TStyleSet>>(
-  options: IMergeStyleSetsOptions,
-  ...styleSets: (TStyleSet | false | null | undefined)[]
-): IProcessedStyleSet<TStyleSet> {
-  const { rtl } = options;
-  const stylesheet = Stylesheet.getInstance();
+  options: IStyleOptions,
+  ...styleSets: Array<IStyleSet<any> | undefined | false | null>
+): IProcessedStyleSet<any> {
+  // tslint:disable-next-line:no-any
+  const classNameSet: IProcessedStyleSet<any> = { subComponentStyles: {} };
 
-  if (typeof rtl !== undefined) {
-    stylesheet.setConfig({ rtl });
+  const styleSet = styleSets[0];
+
+  if (!styleSet && styleSets.length <= 1) {
+    return { subComponentStyles: {} };
   }
 
-  return mergeStyleSets(...styleSets) as IProcessedStyleSet<TStyleSet>;
+  const concatenatedStyleSet = concatStyleSets(...styleSets);
+
+  const registrations = [];
+
+  for (const styleSetArea in concatenatedStyleSet) {
+    if (concatenatedStyleSet.hasOwnProperty(styleSetArea)) {
+      if (styleSetArea === 'subComponentStyles') {
+        classNameSet.subComponentStyles = (concatenatedStyleSet as IConcatenatedStyleSet<any>).subComponentStyles || {};
+        continue;
+      }
+
+      const styles: IStyle = (concatenatedStyleSet as any)[styleSetArea];
+
+      const { classes, objects } = extractStyleParts(styles);
+      const registration = styleToRegistration(options, { displayName: styleSetArea }, objects);
+
+      registrations.push(registration);
+
+      if (registration) {
+        classNameSet[styleSetArea] = classes.concat([registration.className]).join(' ');
+      }
+    }
+  }
+
+  for (const registration of registrations) {
+    if (registration) {
+      applyRegistration(registration);
+    }
+  }
+
+  return classNameSet;
 }

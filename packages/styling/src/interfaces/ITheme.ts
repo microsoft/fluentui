@@ -18,7 +18,7 @@ export type ISchemeNames = 'default' | 'neutral' | 'soft' | 'strong';
  * {@docCategory IScheme}
  */
 export interface IScheme {
-  rtl: boolean;
+  rtl?: boolean;
   palette: IPalette;
   fonts: IFontStyles;
   semanticColors: ISemanticColors;

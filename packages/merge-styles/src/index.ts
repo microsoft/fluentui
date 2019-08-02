@@ -8,7 +8,11 @@ export { ICSSRule, IFontFace, IFontWeight, IRawFontStyle, IRawStyleBase } from '
 
 export { mergeStyles } from './mergeStyles';
 
+export { mergeStylesWithOptions } from './mergeStylesWithOptions';
+
 export { mergeStyleSets } from './mergeStyleSets';
+
+export { mergeStyleSetsWithOptions } from './mergeStyleSetsWithOptions';
 
 export { concatStyleSets } from './concatStyleSets';
 
@@ -18,6 +22,6 @@ export { keyframes } from './keyframes';
 
 export { IStyleSheetConfig, ICSPSettings, InjectionMode, Stylesheet } from './Stylesheet';
 
-export { setRTL } from './transforms/rtlifyRules';
+export { setRTL } from './StyleOptionsState';
 
 import './version';

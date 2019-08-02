@@ -408,6 +408,13 @@ export interface IStyleSheetConfig {
     injectionMode?: InjectionMode;
     namespace?: string;
     onInsertRule?: (rule: string) => void;
+    rtl?: boolean;
+    units?: {
+        default: string;
+        overrides: {
+            [key: string]: string;
+        };
+    };
 }
 
 // @public
@@ -433,6 +440,26 @@ export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleS
 // @public
 export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | false | null>): IProcessedStyleSet<any>;
 
+// Warning: (ae-forgotten-export) The symbol "IStyleOptions" needs to be exported by the entry point index.d.ts
+// 
+// @public
+export function mergeStyleSetsWithOptions<TStyleSet extends IStyleSet<TStyleSet>>(options: IStyleOptions, styleSet: TStyleSet | false | null | undefined): IProcessedStyleSet<TStyleSet>;
+
+// @public
+export function mergeStyleSetsWithOptions<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(options: IStyleOptions, styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
+
+// @public
+export function mergeStyleSetsWithOptions<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>>(options: IStyleOptions, styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+
+// @public
+export function mergeStyleSetsWithOptions<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>>(options: IStyleOptions, styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
+
+// @public
+export function mergeStyleSetsWithOptions(options: IStyleOptions, ...styleSets: Array<IStyleSet<any> | undefined | false | null>): IProcessedStyleSet<any>;
+
+// @public
+export function mergeStylesWithOptions(options: IStyleOptions, ...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
+
 // Warning: (ae-forgotten-export) The symbol "Diff" needs to be exported by the entry point index.d.ts
 // 
 // @public (undocumented)
@@ -457,6 +484,7 @@ export class Stylesheet {
     // (undocumented)
     resetKeys(): void;
     setConfig(config?: IStyleSheetConfig): void;
+    static setInstance(stylesheet: Stylesheet): void;
     }
 
 
