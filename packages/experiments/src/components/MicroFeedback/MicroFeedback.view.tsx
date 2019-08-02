@@ -1,7 +1,6 @@
 /** @jsx withSlots */
 import { Callout, IconButton, FocusZone, FocusZoneDirection, List, Stack, Text } from 'office-ui-fabric-react';
-import { Button } from '../Button/Button';
-import { IButtonTokens } from '../Button/Button.types';
+import { Button, IButtonTokens } from 'office-ui-fabric-react/lib/Button.next';
 import { withSlots, getSlots } from '../../Foundation';
 
 import { IMicroFeedbackComponent, IMicroFeedbackProps, IMicroFeedbackSlots, IMicroFeedbackQuestion } from './MicroFeedback.types';

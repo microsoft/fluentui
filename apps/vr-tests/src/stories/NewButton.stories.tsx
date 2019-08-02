@@ -3,22 +3,20 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
+import { Stack, Text } from 'office-ui-fabric-react';
+import { Actionable } from 'office-ui-fabric-react/lib/Actionable';
+import { Button, IButtonProps } from 'office-ui-fabric-react/lib/Button.next';
 import {
-  Actionable,
   ActionButton,
-  Button,
-  IButtonProps,
   CommandBarButton,
   CompoundButton,
   DefaultButton,
   IconButton,
-  MenuButton,
-  IMenuButtonProps,
   MessageBarButton,
-  PrimaryButton,
-  SplitButton
-} from '@uifabric/experiments';
-import { Stack, Text } from 'office-ui-fabric-react';
+  PrimaryButton
+} from 'office-ui-fabric-react/lib/ButtonVariants';
+import { MenuButton, IMenuButtonProps } from 'office-ui-fabric-react/lib/MenuButton';
+import { SplitButton } from 'office-ui-fabric-react/lib/SplitButton';
 
 const baseProps: IButtonProps = {
   icon: 'AddFriend',

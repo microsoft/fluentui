@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MenuButton } from '@uifabric/experiments';
+import { MenuButton } from 'office-ui-fabric-react/lib/MenuButton';
 
 const menuProps = {
   items: [

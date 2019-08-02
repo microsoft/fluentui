@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button } from '@uifabric/experiments';
+import { DefaultButton } from 'office-ui-fabric-react/lib/ButtonVariants';
 
-const scenario = <Button content="I am a button" />;
+const scenario = <DefaultButton content="I am a button" />;
 
 export default scenario;

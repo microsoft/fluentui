@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button } from '@uifabric/experiments';
 import { IStackProps, Stack } from 'office-ui-fabric-react';
+import { Button } from 'office-ui-fabric-react/lib/Button.next';
 
 const stackProps: IStackProps = { tokens: { childrenGap: 16 }, padding: 8, maxWidth: 400 };
 

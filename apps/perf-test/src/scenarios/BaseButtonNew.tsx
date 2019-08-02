@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Actionable } from '@uifabric/experiments';
+import { Actionable } from 'office-ui-fabric-react/lib/Actionable';
 
 const scenario = <Actionable>I am a button</Actionable>;
 

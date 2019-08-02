@@ -3,7 +3,6 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFullWidth } from '../utilities';
-import { Button, IButtonStyles, IButtonTokens } from '@uifabric/experiments';
 import {
   Card,
   ICardStyles,
@@ -25,6 +24,7 @@ import {
   Text,
   ITextStyles
 } from 'office-ui-fabric-react';
+import { Button, IButtonStyles, IButtonTokens } from 'office-ui-fabric-react/lib/Button.next';
 
 const cardClicked = (): void => {
   /** no-impl **/

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Toggle as NewToggle } from '@uifabric/experiments';
 import {
   BaseButton,
   DefaultButton,
@@ -13,7 +14,10 @@ import {
   createTheme,
   DocumentCardTitle
 } from 'office-ui-fabric-react';
-import { Actionable, Button as NewButton, MenuButton, SplitButton, Toggle as NewToggle } from '@uifabric/experiments';
+import { Actionable } from 'office-ui-fabric-react/lib/Actionable';
+import { Button as NewButton } from 'office-ui-fabric-react/lib/Button.next';
+import { MenuButton } from 'office-ui-fabric-react/lib/MenuButton';
+import { SplitButton } from 'office-ui-fabric-react/lib/SplitButton';
 
 const defaultTheme = createTheme({});
 

@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { ActionButton, Button, IButtonStyles, IButtonTokens, Persona } from '@uifabric/experiments';
 import { Card, ICardTokens, ICardItemTokens, ICardSectionStyles, ICardSectionTokens } from '@uifabric/react-cards';
 import { FontWeights } from '@uifabric/styling';
-import { Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
+import { Icon, IIconStyles, Image, Persona, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
+import { Button, IButtonStyles, IButtonTokens } from 'office-ui-fabric-react/lib/Button.next';
+import { ActionButton } from 'office-ui-fabric-react/lib/ButtonVariants';
 
 const alertClicked = (): void => {
   alert('Clicked');
