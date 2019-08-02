@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "MenuButton: Removing use of StackItem to improve performance.",
-  "packageName": "@uifabric/experiments",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "86861599655f59191d65fb7d844a4943f4ade6ca",
-  "date": "2019-07-30T22:39:42.555Z"
-}

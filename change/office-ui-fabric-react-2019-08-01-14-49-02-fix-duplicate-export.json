@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove extra export of SelectionMode",
-  "packageName": "office-ui-fabric-react",
-  "email": "jdh@microsoft.com",
-  "commit": "5feb2bba90ab5c4eb9a2cabd14ae0fc268df518f",
-  "date": "2019-08-01T21:49:02.562Z"
-}

@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Fri, 02 Aug 2019 12:33:29 GMT",
+      "tag": "@uifabric/styling_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Semantic Colors: Changing and adding a few colors that target input controls.",
+            "author": "v-mare@microsoft.com",
+            "commit": "b7600d1ce37e659f4d567053917313f06a94d029"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jul 2019 12:27:56 GMT",
       "tag": "@uifabric/styling_v7.3.1",
       "version": "7.3.1",
