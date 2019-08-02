@@ -108,7 +108,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    *  Optional flag to decide that thumb will snap to closest value onChange.
    * @defaultvalue false
    */
-  snaps?: boolean;
+  snapToStep?: boolean;
 
   /**
    * Optional className to attach to the slider root element.
