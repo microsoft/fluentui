@@ -17,6 +17,7 @@ import * as tsxEditorModule from '@uifabric/tsx-editor';
 import { getSetting } from '../../index2';
 
 export interface IExampleCardState {
+  isCodeVisible?: boolean;
   schemeIndex: number;
   themeIndex: number;
   error?: string;
@@ -45,6 +46,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   constructor(props: IExampleCardProps) {
     super(props);
     this.state = {
+      isCodeVisible: false,
       schemeIndex: 0,
       themeIndex: 0
     };
@@ -60,8 +62,9 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   }
 
   public render(): JSX.Element {
-    const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme, isCodeVisible } = this.props;
+    const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme } = this.props;
     const { schemeIndex, themeIndex } = this.state;
+    const isCodeVisible = this.props.isCodeVisible === undefined ? this.state.isCodeVisible : this.props.isCodeVisible;
 
     return (
       <AppCustomizationsContext.Consumer>
@@ -84,7 +87,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
           const { codeButtons: codeButtonStyles } = subComponentStyles;
 
           const exampleCardContent =
-            this.props.isCodeVisible && this.canRenderLiveEditor ? (
+            isCodeVisible && this.canRenderLiveEditor ? (
               <EditorPreview className={classNames.example} id={this.props.title.replace(' ', '')} />
             ) : (
               <div className={classNames.example} data-is-scrollable={isScrollable}>
@@ -225,12 +228,16 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
         this.forceUpdate();
       });
     }
-    if (this.props.onToggleEditor) {
+    if (this.props.onToggleEditor !== undefined && this.props.onToggleEditor) {
       if (this.props.isCodeVisible) {
         this.props.onToggleEditor('');
       } else {
         this.props.onToggleEditor(this.props.title);
       }
+    } else {
+      this.setState({
+        isCodeVisible: !this.state.isCodeVisible
+      });
     }
   };
 }
