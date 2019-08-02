@@ -657,7 +657,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "button[aria-label=\\"June\\\\ 2016\\"]",
+            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -668,7 +668,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"June 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jan</button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -689,7 +689,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "button[aria-label=\\"July\\\\ 2016\\"]",
+            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(2) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -700,7 +700,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"July 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Feb</button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -721,7 +721,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "button[aria-label=\\"August\\\\ 2016\\"]",
+            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(3) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -732,7 +732,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"August 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Mar</button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -753,7 +753,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "button[aria-label=\\"September\\\\ 2016\\"]",
+            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(4) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -764,7 +764,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"September 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Apr</button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -785,7 +785,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "button[aria-label=\\"October\\\\ 2016\\"]",
+            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(5) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -796,7 +796,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"October 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">May</button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -817,7 +817,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "button[aria-label=\\"November\\\\ 2016\\"]",
+            "fullyQualifiedName": ".ms-DatePicker-day--today",
             "kind": "element",
           },
         ],
@@ -828,7 +828,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"November 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jun</button>",
+              "text": "<button class=\\"ms-DatePicker-day-button ms-DatePicker-day--today undefined\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"true\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -849,7 +849,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "button[aria-label=\\"December\\\\ 2016\\"]",
+            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(7) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
             "kind": "element",
           },
         ],
@@ -860,7 +860,903 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"December 2016\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jul</button>",
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(2) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(3) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(4) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(5) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(6) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(2) > .ms-DatePicker-day--infocus:nth-child(7) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(2) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(3) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(4) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(5) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(6) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(3) > .ms-DatePicker-day--infocus:nth-child(7) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(2) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(3) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(4) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(5) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(6) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(4) > .ms-DatePicker-day--infocus:nth-child(7) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(5) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(5) > .ms-DatePicker-day--infocus:nth-child(2) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(5) > .ms-DatePicker-day--infocus:nth-child(3) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".ms-DatePicker-day--outfocus:nth-child(4) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".ms-DatePicker-day--outfocus:nth-child(5) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".ms-DatePicker-day--outfocus:nth-child(6) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": ".ms-DatePicker-day--outfocus:nth-child(7) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
             },
           },
         },
@@ -892,7 +1788,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"January 2017\\" aria-selected=\\"true\\" data-is-focusable=\\"true\\" type=\\"button\\">Aug</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"January 2017\\" aria-selected=\\"true\\" data-is-focusable=\\"true\\" type=\\"button\\">Jan</button>",
             },
           },
         },
@@ -924,7 +1820,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"February 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Sep</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"February 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Feb</button>",
             },
           },
         },
@@ -956,7 +1852,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"March 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Oct</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"March 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Mar</button>",
             },
           },
         },
@@ -988,7 +1884,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"April 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Nov</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"April 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Apr</button>",
             },
           },
         },
@@ -1020,7 +1916,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"May 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Dec</button>",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"May 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">May</button>",
             },
           },
         },
@@ -1041,7 +1937,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": "table",
+            "fullyQualifiedName": "button[aria-label=\\"June\\\\ 2017\\"]",
             "kind": "element",
           },
         ],
@@ -1052,19 +1948,243 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<table class=\\"ms-DatePicker-table\\" aria-readonly=\\"true\\" aria-multiselectable=\\"false\\" aria-labelledby=\\"DatePickerDay-monthAndYear2\\" aria-activedescendant=\\"DatePickerDay-active0\\" role=\\"grid\\">",
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"June 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jun</button>",
             },
           },
         },
       },
     ],
     "message": Object {
-      "markdown": "Fix all of the following:
-- Invalid ARIA attribute value: aria-activedescendant=\\"DatePickerDay-active0\\".",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-activedescendant=\\"DatePickerDay-active0\\".",
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
     },
-    "ruleId": "aria-valid-attr-value",
-    "ruleIndex": 12,
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "button[aria-label=\\"July\\\\ 2017\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"July 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Jul</button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "button[aria-label=\\"August\\\\ 2017\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"August 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Aug</button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "button[aria-label=\\"September\\\\ 2017\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"September 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Sep</button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "button[aria-label=\\"October\\\\ 2017\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"October 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Oct</button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "button[aria-label=\\"November\\\\ 2017\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"November 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Nov</button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "button[aria-label=\\"December\\\\ 2017\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button role=\\"gridcell\\" class=\\"ms-DatePicker-monthOption\\" aria-label=\\"December 2017\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" type=\\"button\\">Dec</button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- ARIA role gridcell  is not allowed for given element.",
+      "text": "Fix any of the following: ARIA role gridcell  is not allowed for given element.",
+    },
+    "ruleId": "aria-allowed-role",
+    "ruleIndex": 3,
+  },
+  Object {
+    "kind": "fail",
+    "level": "error",
+    "locations": Array [
+      Object {
+        "logicalLocations": Array [
+          Object {
+            "fullyQualifiedName": "tr:nth-child(1) > .ms-DatePicker-day--infocus:nth-child(1) > .ms-DatePicker-day-button[aria-label=\\"January\\\\ 6\\\\,\\\\ 2017\\"][aria-readonly=\\"true\\"]",
+            "kind": "element",
+          },
+        ],
+        "physicalLocation": Object {
+          "artifactLocation": Object {
+            "index": 0,
+            "uri": "about:blank",
+          },
+          "region": Object {
+            "snippet": Object {
+              "text": "<button class=\\"ms-DatePicker-day-button\\" role=\\"gridcell\\" aria-label=\\"January 6, 2017\\" id=\\"DatePickerDay-active0\\" aria-readonly=\\"true\\" aria-selected=\\"false\\" data-is-focusable=\\"true\\" aria-disabled=\\"false\\" type=\\"button\\"><span aria-hidden=\\"true\\">6</span></button>",
+            },
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "markdown": "Fix any of the following:
+- Document has multiple elements referenced with ARIA with the same id attribute: DatePickerDay-active0.",
+      "text": "Fix any of the following: Document has multiple elements referenced with ARIA with the same id attribute: DatePickerDay-active0.",
+    },
+    "ruleId": "duplicate-id-aria",
+    "ruleIndex": 22,
   },
 ]
 `;
