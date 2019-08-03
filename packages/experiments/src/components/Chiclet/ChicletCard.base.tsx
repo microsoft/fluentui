@@ -14,11 +14,6 @@ const customPreviewStyling = mergeStyles('ms-ChicletCard-preview-custom', {
   objectFit: 'contain'
 });
 
-const imageStyling = mergeStyles({
-  maxHeight: '100%',
-  objectFit: 'contain'
-});
-
 export class ChicletCardBase extends React.Component<IChicletCardProps, {}> {
   private _classNames: { [key in keyof IChicletCardStyles]: string };
 
@@ -53,7 +48,7 @@ export class ChicletCardBase extends React.Component<IChicletCardProps, {}> {
         {preview ? ( // render custom preview
           React.cloneElement(preview, { className: css(preview.props.className, customPreviewStyling) })
         ) : (
-          <img className={imageStyling} src={image} role="presentation" alt={imageAlt ? imageAlt : undefined} />
+          <img width={'auto'} height={'100%'} src={image} role="presentation" alt={imageAlt ? imageAlt : undefined} />
         )}
       </div>
     );

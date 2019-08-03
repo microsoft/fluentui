@@ -50,13 +50,9 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
         }
   >
     <img
-      className=
-
-          {
-            max-height: 100%;
-            object-fit: contain;
-          }
+      height="100%"
       role="presentation"
+      width="auto"
     />
   </div>
   <div
@@ -89,7 +85,6 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
             padding-right: 16px;
             padding-top: 16px;
             text-align: left;
-            width: 66.66666666666666%;
             word-wrap: break-word;
           }
     >
@@ -104,7 +99,6 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
             display: flex;
             font-size: 12px;
             font-weight: 600;
-            height: 16px;
             line-height: 1.33;
             overflow: hidden;
             padding-bottom: 0px;
@@ -114,7 +108,6 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
             text-align: left;
             text-overflow: ellipsis;
             white-space: nowrap;
-            width: 66.66666666666666%;
           }
     >
       contoso.sharepoint.com
@@ -220,7 +213,9 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
       className=
           ms-ChicletXsmall-title
           {
+            color: #323130;
             font-size: 14px;
+            font-weight: 600;
             height: 35px;
             letter-spacing: normal;
             line-height: 1.25;
@@ -236,7 +231,9 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
       className=
 
           {
+            color: #797775;
             font-size: 12px;
+            font-weight: 600;
             height: 15px;
             overflow: hidden;
             padding-bottom: 1px;
@@ -348,7 +345,9 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
       className=
           ms-ChicletXsmall-title
           {
+            color: #323130;
             font-size: 14px;
+            font-weight: 600;
             height: 35px;
             letter-spacing: normal;
             line-height: 1.25;
@@ -364,7 +363,9 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
       className=
 
           {
+            color: #797775;
             font-size: 12px;
+            font-weight: 600;
             height: 15px;
             overflow: hidden;
             padding-bottom: 1px;
@@ -477,7 +478,9 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
       className=
           ms-ChicletXsmall-title
           {
+            color: #323130;
             font-size: 14px;
+            font-weight: 600;
             height: 35px;
             letter-spacing: normal;
             line-height: 1.25;
@@ -493,7 +496,9 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
       className=
 
           {
+            color: #797775;
             font-size: 12px;
+            font-weight: 600;
             height: 15px;
             overflow: hidden;
             padding-bottom: 1px;
@@ -601,7 +606,6 @@ exports[`Chiclet should set className on preview 1`] = `
             padding-right: 16px;
             padding-top: 16px;
             text-align: left;
-            width: 66.66666666666666%;
             word-wrap: break-word;
           }
     >
@@ -616,7 +620,6 @@ exports[`Chiclet should set className on preview 1`] = `
             display: flex;
             font-size: 12px;
             font-weight: 600;
-            height: 16px;
             line-height: 1.33;
             overflow: hidden;
             padding-bottom: 0px;
@@ -626,7 +629,6 @@ exports[`Chiclet should set className on preview 1`] = `
             text-align: left;
             text-overflow: ellipsis;
             white-space: nowrap;
-            width: 66.66666666666666%;
           }
     >
       contoso.sharepoint.com

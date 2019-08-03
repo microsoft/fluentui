@@ -1,5 +1,7 @@
 import { normalize, getGlobalClassNames } from '../../Styling';
 import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
+import { FontWeights } from '@uifabric/styling';
+import { NeutralColors } from '@uifabric/fluent-theme';
 
 const GlobalClassNames = {
   root: 'ms-ChicletXsmall',
@@ -81,6 +83,8 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         // @todo: change values for height and width according to redline
         width: 170,
         height: 15,
+        fontWeight: FontWeights.semibold,
+        color: NeutralColors.gray120,
         paddingBottom: 1,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
@@ -93,6 +97,8 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         fontSize: theme.fonts.medium.fontSize,
         letterSpacing: 'normal',
         textAlign: 'left',
+        fontWeight: FontWeights.semibold,
+        color: palette.neutralPrimary,
         width: 170,
         height: 35, // Two lines of text, making sure the third line is hidden
         lineHeight: '1.25',

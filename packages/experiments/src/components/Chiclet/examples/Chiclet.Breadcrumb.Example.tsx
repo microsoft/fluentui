@@ -60,7 +60,7 @@ export class ChicletBreadcrumbExample extends React.Component {
 
   private _onRenderItem(item: IBreadcrumbItem): JSX.Element {
     return (
-      <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} className={descriptionStyle}>
+      <TooltipHost overflowMode={TooltipOverflowMode.Parent} className={descriptionStyle}>
         {item.text}
       </TooltipHost>
     );

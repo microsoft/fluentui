@@ -61,9 +61,9 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         padding: '16px 16px 4px 16px',
         fontSize: 16,
         fontWeight: FontWeights.semibold,
+        color: palette.neutralPrimary,
         fontStyle: 'normal',
         fontStretch: 'normal',
-        color: 'gray160',
         letterSpacing: 'normal',
         textAlign: 'left',
         maxHeight: 37, // Two lines of text, making sure the third line is hidden
