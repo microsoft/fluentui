@@ -31,10 +31,10 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
-          padding-bottom: 0;
+          padding-bottom: 1px;
           padding-left: 4px;
           padding-right: 0;
-          padding-top: 0;
+          padding-top: 1px;
           pointer-events: none;
         }
         @media screen and (-ms-high-contrast: active){& {
