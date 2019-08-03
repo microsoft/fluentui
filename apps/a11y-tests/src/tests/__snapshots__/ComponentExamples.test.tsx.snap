@@ -8110,7 +8110,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<label class=\\"ms-Label titleLabel-18\\" for=\\"Slider1\\">Disabled example</label>",
+              "text": "<label class=\\"ms-Label titleLabel-18\\" for=\\"Slider2\\">Disabled example</label>",
             },
           },
         },
