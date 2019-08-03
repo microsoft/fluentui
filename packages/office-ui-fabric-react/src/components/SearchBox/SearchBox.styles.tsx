@@ -1,4 +1,4 @@
-import { HighContrastSelector, AnimationVariables, normalize, IStyle } from '../../Styling';
+import { HighContrastSelector, AnimationVariables, normalize, IStyle, getGlobalClassNames } from '../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 import { getPlaceholderStyles, getGlobalClassNames } from '../../Styling';
 
@@ -10,9 +10,19 @@ const GlobalClassNames = {
   field: 'ms-SearchBox-field'
 };
 
+const GlobalClassNames = {
+  root: 'ms-SearchBox',
+  icon: 'ms-SearchBox-icon',
+  iconContainer: 'ms-SearchBox-iconContainer',
+  clearButton: 'ms-SearchBox-clearButton',
+  field: 'ms-SearchBox-field'
+};
+
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   const { theme, underlined, disabled, hasFocus, className, hasInput, disableAnimation } = props;
   const { palette, fonts, semanticColors, effects } = theme;
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   // placeholder style constants
@@ -39,7 +49,8 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         flexDirection: 'row',
         flexWrap: 'nowrap',
         alignItems: 'stretch',
-        padding: '0 0 0 4px',
+        // The 1px top and bottom padding ensure the input field does not overlap the border
+        padding: '1px 0 1px 4px',
         borderRadius: effects.roundedCorner2,
         border: `1px solid ${semanticColors.inputBorder}`,
         height: 32,
