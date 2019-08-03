@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "updating editor model to work with HTML5",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "nishikaza@berkeley.edu",
+  "commit": "0a35d9a1b95295a65cbbccbe34601d14091748d4",
+  "date": "2019-08-03T04:42:16.256Z"
+}
