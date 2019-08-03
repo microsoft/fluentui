@@ -146,6 +146,8 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
     code: [
       {
         backgroundColor: NeutralColors.gray20,
+        border: '1px solid ' + NeutralColors.gray90,
+        borderTop: 0,
         selectors: {
           pre: [
             {
@@ -154,11 +156,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
               transition: `all ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
             },
             // Collapse code blocks by default
-            isCodeVisible ? { maxHeight: 480, minHeight: 120 } : { maxHeight: 0 },
-            isCodeVisible && {
-              border: '1px solid ' + NeutralColors.gray90,
-              borderTop: 0
-            }
+            isCodeVisible ? { maxHeight: 480, minHeight: 120 } : { maxHeight: 0 }
           ],
           code: {
             display: 'block',

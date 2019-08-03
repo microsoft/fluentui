@@ -1,8 +1,0 @@
-{
-  "comment": "Website changes to work with monaco editor state management",
-  "type": "minor",
-  "packageName": "@uifabric/example-app-base",
-  "email": "t-nikaz@microsoft.com",
-  "commit": "0843c196be248757bd1fff674f900346490cd206",
-  "date": "2019-07-11T00:15:36.021Z"
-}

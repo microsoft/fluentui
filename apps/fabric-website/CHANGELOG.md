@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 24 Jul 2019 12:27:56 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Aug 2019 12:33:29 GMT and should not be manually modified.
+
+## 7.3.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- Website changes to work with monaco editor state management (t-nikaz@microsoft.com)
 
 ## 7.2.9
 Wed, 24 Jul 2019 12:27:56 GMT

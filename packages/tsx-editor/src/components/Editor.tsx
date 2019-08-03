@@ -31,7 +31,10 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
     const editor = monaco.editor.create(ref.current!, {
       model: model,
       value: code,
-      language
+      language,
+      minimap: {
+        enabled: false
+      }
     });
 
     editor.onDidChangeModelContent(() => {
