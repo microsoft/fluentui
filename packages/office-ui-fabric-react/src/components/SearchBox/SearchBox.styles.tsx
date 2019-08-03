@@ -1,10 +1,20 @@
-import { HighContrastSelector, AnimationVariables, normalize, IStyle } from '../../Styling';
+import { HighContrastSelector, AnimationVariables, normalize, IStyle, getGlobalClassNames } from '../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 import { getPlaceholderStyles } from '@uifabric/styling';
+
+const GlobalClassNames = {
+  root: 'ms-SearchBox',
+  icon: 'ms-SearchBox-icon',
+  iconContainer: 'ms-SearchBox-iconContainer',
+  clearButton: 'ms-SearchBox-clearButton',
+  field: 'ms-SearchBox-field'
+};
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   const { theme, underlined, disabled, hasFocus, className, hasInput, disableAnimation } = props;
   const { palette, fonts, semanticColors, effects } = theme;
+
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   // placeholder style constants
   const placeholderStyles: IStyle = {
@@ -20,7 +30,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
 
   return {
     root: [
-      'ms-SearchBox',
+      classNames.root,
       fonts.medium,
       normalize,
       {
@@ -30,7 +40,8 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         flexDirection: 'row',
         flexWrap: 'nowrap',
         alignItems: 'stretch',
-        padding: '0 0 0 4px',
+        // The 1px top and bottom padding ensure the input field does not overlap the border
+        padding: '1px 0 1px 4px',
         borderRadius: effects.roundedCorner2,
         border: `1px solid ${semanticColors.inputBorder}`,
         height: 32,
@@ -102,7 +113,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       className
     ],
     iconContainer: [
-      'ms-SearchBox-iconContainer',
+      classNames.iconContainer,
       {
         display: 'flex',
         flexDirection: 'column',
@@ -125,7 +136,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       }
     ],
     icon: [
-      'ms-SearchBox-icon',
+      classNames.icon,
       {
         opacity: 1
       },
@@ -137,7 +148,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       }
     ],
     clearButton: [
-      'ms-SearchBox-clearButton',
+      classNames.clearButton,
       {
         display: 'flex',
         flexDirection: 'row',
@@ -160,7 +171,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       }
     ],
     field: [
-      'ms-SearchBox-field',
+      classNames.field,
       normalize,
       getPlaceholderStyles(placeholderStyles),
       {
