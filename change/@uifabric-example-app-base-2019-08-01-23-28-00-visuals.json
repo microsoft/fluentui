@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "updated style to add spinner for loading editor",
   "packageName": "@uifabric/example-app-base",
   "email": "t-nikaz@microsoft.com",
