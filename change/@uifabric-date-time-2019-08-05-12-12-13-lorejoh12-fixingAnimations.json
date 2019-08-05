@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fixing broken IE11 by removing findIndex call, fixing the weeklydaypicker not rerendering when passed new initial date",
+  "packageName": "@uifabric/date-time",
+  "email": "jolore@microsoft.com",
+  "commit": "3e3a88e08225630c5e19cf648610ff7f85e5cf1f",
+  "date": "2019-08-05T19:12:13.555Z"
+}
