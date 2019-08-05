@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 05 Aug 2019 12:33:41 GMT",
+      "tag": "office-ui-fabric-react_v7.20.0",
+      "version": "7.20.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Slider: Add new prop to snap while moving.",
+            "author": "t-snroy@microsoft.com",
+            "commit": "2bd5d8c0252e2276b969661abd2361b6cc542992"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Aug 2019 12:33:29 GMT",
       "tag": "office-ui-fabric-react_v7.19.1",
       "version": "7.19.1",
