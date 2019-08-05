@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Mon, 05 Aug 2019 12:33:41 GMT",
+      "tag": "@uifabric/example-app-base_v7.2.1",
+      "version": "7.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updated style to add spinner for loading editor",
+            "author": "t-nikaz@microsoft.com",
+            "commit": "6539ca2b3e21e98cf2909fcdb4157020569cf2f6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Aug 2019 12:33:29 GMT",
       "tag": "@uifabric/example-app-base_v7.2.0",
       "version": "7.2.0",
