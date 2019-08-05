@@ -66,7 +66,7 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         fontStretch: 'normal',
         letterSpacing: 'normal',
         textAlign: 'left',
-        maxHeight: 37, // Two lines of text, making sure the third line is hidden
+        maxHeight: 37,
         lineHeight: '1.25',
         overflow: 'hidden',
         wordWrap: 'break-word'
