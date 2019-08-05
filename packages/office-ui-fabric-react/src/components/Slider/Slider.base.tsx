@@ -163,7 +163,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               )}
             </div>
           </div>
-          {showValue && (
+          {showValue && !showThumbTooltip && (
             <Label className={classNames.valueLabel} disabled={disabled}>
               {valueFormat ? valueFormat(value!) : value}
             </Label>
