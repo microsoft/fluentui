@@ -347,9 +347,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     & .contextualHost {
                       display: none;
                     }
-                    & .ms-Persona-primaryText {
-                      color: #201f1e;
-                    }
               >
                 <div
                   className=

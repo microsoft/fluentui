@@ -31,9 +31,6 @@ exports[`Persona renders Persona children correctly 1`] = `
       & .contextualHost {
         display: none;
       }
-      & .ms-Persona-primaryText {
-        color: #201f1e;
-      }
 >
   <div
     className=
@@ -213,9 +210,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
       }
       & .contextualHost {
         display: none;
-      }
-      & .ms-Persona-primaryText {
-        color: #201f1e;
       }
 >
   <div
@@ -408,9 +402,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
       }
       & .contextualHost {
         display: none;
-      }
-      & .ms-Persona-primaryText {
-        color: #201f1e;
       }
 >
   <div
@@ -613,9 +604,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       & .contextualHost {
         display: none;
       }
-      & .ms-Persona-primaryText {
-        color: #201f1e;
-      }
 >
   <div
     className=
@@ -792,9 +780,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       }
       & .contextualHost {
         display: none;
-      }
-      & .ms-Persona-primaryText {
-        color: #201f1e;
       }
 >
   <div
@@ -973,9 +958,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       }
       & .contextualHost {
         display: none;
-      }
-      & .ms-Persona-primaryText {
-        color: #201f1e;
       }
 >
   <div
@@ -1279,9 +1261,6 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
       & .contextualHost {
         display: none;
       }
-      & .ms-Persona-primaryText {
-        color: #201f1e;
-      }
 >
   <i
     aria-hidden={true}
@@ -1469,9 +1448,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       }
       & .contextualHost {
         display: none;
-      }
-      & .ms-Persona-primaryText {
-        color: #201f1e;
       }
 >
   <div

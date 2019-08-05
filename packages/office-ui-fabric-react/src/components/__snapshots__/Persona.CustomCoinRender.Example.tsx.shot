@@ -56,9 +56,6 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
         & .contextualHost {
           display: none;
         }
-        & .ms-Persona-primaryText {
-          color: #201f1e;
-        }
     style={
       Object {
         "height": 72,

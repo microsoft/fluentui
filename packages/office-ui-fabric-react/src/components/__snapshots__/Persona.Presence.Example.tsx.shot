@@ -132,9 +132,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -283,9 +280,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -418,9 +412,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -580,9 +571,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -814,9 +802,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -983,9 +968,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -1136,9 +1118,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -1317,9 +1296,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -1592,9 +1568,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -1743,9 +1716,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -1878,9 +1848,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -2042,9 +2009,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -2278,9 +2242,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -2447,9 +2408,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -2600,9 +2558,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -2782,9 +2737,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -3058,9 +3010,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -3209,9 +3158,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -3344,9 +3290,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -3500,9 +3443,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -3728,9 +3668,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -3897,9 +3834,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -4050,9 +3984,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -4225,9 +4156,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -4494,9 +4422,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -4645,9 +4570,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -4780,9 +4702,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -4942,9 +4861,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -5176,9 +5092,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -5345,9 +5258,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -5498,9 +5408,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -5679,9 +5586,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -5912,9 +5816,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
           & .contextualHost {
             display: none;
           }
-          & .ms-Persona-primaryText {
-            color: #201f1e;
-          }
     >
       <div
         className=
@@ -6086,9 +5987,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
           & .contextualHost {
             display: none;
           }
-          & .ms-Persona-primaryText {
-            color: #201f1e;
-          }
     >
       <div
         className=
@@ -6244,9 +6142,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
           }
           & .contextualHost {
             display: none;
-          }
-          & .ms-Persona-primaryText {
-            color: #201f1e;
           }
     >
       <div
@@ -6433,9 +6328,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
           }
           & .contextualHost {
             display: none;
-          }
-          & .ms-Persona-primaryText {
-            color: #201f1e;
           }
     >
       <div
@@ -6714,9 +6606,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -6883,9 +6772,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -7036,9 +6922,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -7211,9 +7094,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -7458,9 +7338,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -7627,9 +7504,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               & .contextualHost {
                 display: none;
               }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
-              }
         >
           <div
             className=
@@ -7780,9 +7654,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div
@@ -7961,9 +7832,6 @@ exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] =
               }
               & .contextualHost {
                 display: none;
-              }
-              & .ms-Persona-primaryText {
-                color: #201f1e;
               }
         >
           <div

@@ -52,9 +52,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         & .contextualHost {
           display: none;
         }
-        & .ms-Persona-primaryText {
-          color: #201f1e;
-        }
   >
     <div
       className=
@@ -258,9 +255,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         }
         & .contextualHost {
           display: none;
-        }
-        & .ms-Persona-primaryText {
-          color: #201f1e;
         }
   >
     <div
