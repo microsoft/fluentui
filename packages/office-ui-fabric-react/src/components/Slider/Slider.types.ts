@@ -100,15 +100,8 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
 
   /**
    * Optional flag to render the Slider as disabled.
-   * @defaultvalue false
    */
   disabled?: boolean;
-
-  /**
-   * Optional flag to decide that thumb will snap to closest value while moving the slider
-   * @defaultvalue false
-   */
-  snapToStep?: boolean;
 
   /**
    * Optional className to attach to the slider root element.
@@ -130,6 +123,17 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * @defaultvalue false
    */
   originFromZero?: boolean;
+
+  /**
+   * Optional flag to display tick marks on each step
+   */
+  showThumbTooltip?: boolean;
+
+  /**
+   * Optional flag to indicate whether to have tick marks
+   * @defaultvalue false
+   */
+  enableMarks?: boolean;
 }
 
 /**
@@ -200,4 +204,9 @@ export interface ISliderStyles {
    * Style set for tick on 0 on number line. This element only shows up when originFromZero prop is true.
    */
   zeroTick: IStyle;
+
+  /**
+   * Style set for tick on number line. This element only shows up when marks prop is true.
+   */
+  regularTick: IStyle;
 }

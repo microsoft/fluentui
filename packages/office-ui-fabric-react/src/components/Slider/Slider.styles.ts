@@ -17,7 +17,8 @@ const GlobalClassNames = {
   valueLabel: 'ms-Slider-value',
   showValue: 'ms-Slider-showValue',
   showTransitions: 'ms-Slider-showTransitions',
-  zeroTick: 'ms-Slider-zeroTick'
+  zeroTick: 'ms-Slider-zeroTick',
+  regularTick: 'ms-Slider-regularTick'
 };
 
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
@@ -117,7 +118,6 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         background: 'transparent',
         border: 'none',
         flexGrow: 1,
-        lineHeight: 28,
         display: 'flex',
         alignItems: 'center',
         selectors: {
@@ -272,7 +272,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           }
         }
       },
-      props.disabled && {
+      disabled && {
         background: theme.palette.neutralLight,
         selectors: {
           [HighContrastSelector]: {
@@ -280,7 +280,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           }
         }
       },
-      props.vertical
+      vertical
         ? {
             width: '16px',
             height: '1px',
@@ -292,12 +292,43 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
             transform: 'translateY(-6px)'
           }
     ],
+
+    regularTick: [
+      classNames.regularTick,
+      {
+        position: 'absolute',
+        background: theme.palette.neutralTertiaryAlt,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'WindowText'
+          }
+        }
+      },
+      disabled! && {
+        background: theme.palette.neutralLight,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'GrayText'
+          }
+        }
+      },
+      vertical
+        ? {
+            width: '16px',
+            height: '1px',
+            transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
+          }
+        : {
+            width: '1px',
+            height: '12px',
+            transform: 'translateY(0px)'
+          }
+    ],
     valueLabel: [
       classNames.valueLabel,
       {
         flexShrink: 1,
-        width: 30,
-        lineHeight: '1' // using a string here meaning it's relative to the size of the font
+        lineHeight: '1'
       },
       vertical
         ? {
@@ -306,9 +337,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
             width: 40
           }
         : {
-            margin: '0 8px',
-            whiteSpace: 'nowrap',
-            width: 40
+            whiteSpace: 'nowrap'
           }
     ]
   };
