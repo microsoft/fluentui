@@ -208,6 +208,20 @@ module.exports = {
 
     config.entry = createEntryWithPolyfill(config.entry, config);
     return config;
+  },
+
+  createMonacoConfig(customConfig) {
+    const config = {
+      entry: {
+        'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
+        'ts.worker': 'monaco-editor/esm/vs/language/typescript/ts.worker'
+      },
+
+      output: {
+        globalObject: 'self'
+      }
+    };
+    return merge(config, customConfig);
   }
 };
 

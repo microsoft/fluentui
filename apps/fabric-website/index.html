@@ -109,6 +109,17 @@
         isDogfood = true;
       }
 
+      function getWorkerUrl(moduleId, label) {
+        if (label === 'typescript' || label === 'javascript') {
+          return './ts.worker.bundle.js';
+        }
+        return './editor.worker.bundle.js';
+      }
+
+      self.MonacoEnvironment = {
+        getWorkerUrl: getWorkerUrl
+      };
+
       // If the site is hosted, load the flight config script for production or dogfood
       if (devhost !== null) {
         if (devhost === '') {
@@ -143,7 +154,19 @@
         loadScripts(configScript, function() {
           if (window.Flight) {
             appPath += window.Flight.baseCDNUrl;
-
+            self.MonacoEnvironment.getWorkerUrl = function(workerId, label) {
+              return (
+                'data:text/javascript;charset=utf-8,' +
+                encodeURIComponent(
+                  'self.MonacoEnvironment = { baseUrl: "' +
+                    window.Flight.baseCDNUrl +
+                    '" };' +
+                    "importScripts('" +
+                    getWorkerUrl(workerId, label).replace('./', window.Flight.baseCDNUrl) +
+                    "');"
+                )
+              );
+            };
             loadAppScripts(appPath);
           }
         });
