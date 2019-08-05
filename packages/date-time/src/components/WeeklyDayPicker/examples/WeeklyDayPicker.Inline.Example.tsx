@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { WeeklyDayPicker, DateRangeType, DayOfWeek } from '@uifabric/date-time';
+import { WeeklyDayPicker, DateRangeType, DayOfWeek, addDays } from '@uifabric/date-time';
 
 import * as styles from './WeeklyDayPicker.Example.scss';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 const DayPickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
@@ -20,7 +21,7 @@ const DayPickerStrings = {
 };
 
 export interface IWeeklyDayPickerInlineExampleState {
-  selectedDate?: Date | null;
+  selectedDate?: Date;
 }
 
 export interface IWeeklyDayPickerInlineExampleProps {
@@ -47,7 +48,7 @@ export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPick
     super(props);
 
     this.state = {
-      selectedDate: null
+      selectedDate: new Date()
     };
 
     this._onSelectDate = this._onSelectDate.bind(this);
@@ -89,7 +90,14 @@ export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPick
           minDate={this.props.minDate}
           maxDate={this.props.maxDate}
           restrictedDates={this.props.restrictedDates}
+          initialDate={this.state.selectedDate}
         />
+        {this.props.showNavigateButtons && (
+          <div>
+            <DefaultButton className={styles.button} onClick={this._goPrevious} text="Previous" />
+            <DefaultButton className={styles.button} onClick={this._goNext} text="Next" />
+          </div>
+        )}
       </div>
     );
   }
@@ -101,4 +109,16 @@ export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPick
       };
     });
   }
+
+  private _goPrevious = () => {
+    if (this.state && this.state.selectedDate) {
+      this._onSelectDate(addDays(this.state.selectedDate, -1));
+    }
+  };
+
+  private _goNext = () => {
+    if (this.state && this.state.selectedDate) {
+      this._onSelectDate(addDays(this.state.selectedDate, 1));
+    }
+  };
 }
