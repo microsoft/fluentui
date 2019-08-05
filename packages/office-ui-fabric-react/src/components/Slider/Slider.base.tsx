@@ -3,6 +3,7 @@ import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
+import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 
 export interface ISliderState {
   value?: number;
@@ -28,6 +29,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   private _thumb = React.createRef<HTMLSpanElement>();
   private _id: string;
   private _onKeyDownTimer = -1;
+  private _hostId: string = getId('tooltipHost');
+  private _buttonId: string = getId('targetButton');
 
   constructor(props: ISliderProps) {
     super(props);
@@ -60,7 +63,9 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       valueFormat,
       styles,
       theme,
-      originFromZero
+      originFromZero,
+      enableMarks,
+      showThumbTooltip
     } = this.props;
     const value = this.value;
     const renderedValue = this.renderedValue;
@@ -79,7 +84,15 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       theme: theme!
     });
     const divButtonProps = buttonProps ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties) : undefined;
-
+    const theButton = (
+      <span
+        ref={this._thumb}
+        className={classNames.thumb}
+        style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)}
+        id={this._buttonId}
+        aria-labelledby={this._hostId}
+      />
+    );
     return (
       <div className={classNames.root}>
         {label && (
