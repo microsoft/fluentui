@@ -15,6 +15,7 @@ import { EditorPreview } from '@uifabric/tsx-editor/lib/components/EditorPreview
 import { transformExample } from '@uifabric/tsx-editor/lib/transpiler/exampleTransform';
 import * as tsxEditorModule from '@uifabric/tsx-editor';
 import { getSetting } from '../../index2';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react';
 
 export interface IExampleCardState {
   schemeIndex: number;
@@ -132,26 +133,27 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                   )}
                 </div>
               </div>
-
-              {isCodeVisible &&
-                (this.canRenderLiveEditor ? (
-                  this.editorModule ? (
-                    <this.editorModule.Editor
-                      code={code!}
-                      onChange={this._editorOnChange}
-                      width={'auto'}
-                      height={500}
-                      language="typescript"
-                    />
+              {isCodeVisible && (
+                <div className={classNames.code}>
+                  {this.canRenderLiveEditor ? (
+                    this.editorModule ? (
+                      <this.editorModule.Editor
+                        code={code!}
+                        onChange={this._editorOnChange}
+                        width={'auto'}
+                        height={500}
+                        language="typescript"
+                      />
+                    ) : (
+                      <Stack horizontalAlign="center" verticalAlign="center" styles={{ root: { height: 500 } }}>
+                        <Spinner size={SpinnerSize.large} label="Loading editor..." />
+                      </Stack>
+                    )
                   ) : (
-                    <div>Loading...</div>
-                  )
-                ) : (
-                  <div className={classNames.code}>
                     <CodeSnippet language="tsx">{code}</CodeSnippet>
-                  </div>
-                ))}
-
+                  )}
+                </div>
+              )}
               {activeCustomizations ? (
                 <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
                   <Customizer {...activeCustomizations}>
