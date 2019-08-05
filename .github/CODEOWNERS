@@ -125,6 +125,7 @@ Popup/ @JasonGore
 ProgressIndicator/ @aneeshack4
 Rating/ @jdhuntington
 ResizeGroup/ @micahgodbolt
+ScrollablePane/ @tharshada
 SearchBox/ @ecraig12345
 Separator/ @natalieethell
 Shimmer/ @Vitalius1 @atneik
@@ -133,6 +134,7 @@ Slider/ @aneeshack4
 SpinButton/ @aneeshack4
 Spinner/ @aneeshack4
 Stack/  @khmakoto @kkjeer
+Sticky/ @tharshada
 SwatchColorPicker/ @ecraig12345
 TeachingBubble/ @micahgodbolt
 Text/ @natalieethell

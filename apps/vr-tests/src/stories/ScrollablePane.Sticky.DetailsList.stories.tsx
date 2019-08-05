@@ -30,18 +30,28 @@ import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const classNames = mergeStyleSets({
   wrapper: {
-    height: '80vh',
+    height: '860px',
     position: 'relative'
   },
   filter: {
-    paddingBottom: 20,
+    padding: '0 32px 20px 32px',
     maxWidth: 300
   },
   header: {
-    margin: 0
+    margin: 0,
+    padding: '0 32px'
   },
   row: {
     display: 'inline-block'
+  },
+  list: {
+    padding: '0 32px'
+  },
+  stickyDetailsHeader: {
+    padding: '0 32px'
+  },
+  stickyDetailsFooter: {
+    padding: '0 32px'
   }
 });
 
@@ -125,7 +135,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<
     return (
       <div
         style={{
-          height: '80vh',
+          height: '860px',
           position: 'relative',
           maxHeight: 'inherit',
           width: '900px'
@@ -155,22 +165,24 @@ export class ScrollablePaneDetailsListExample extends React.Component<
               >
                 <h1 className={classNames.header}>Item list</h1>
               </Sticky>
-              <MarqueeSelection selection={this._selection}>
-                <DetailsList
-                  items={items}
-                  columns={this._columns}
-                  setKey="set"
-                  layoutMode={DetailsListLayoutMode.justified}
-                  constrainMode={ConstrainMode.unconstrained}
-                  onRenderDetailsHeader={onRenderDetailsHeader}
-                  onRenderDetailsFooter={onRenderDetailsFooter}
-                  selection={this._selection}
-                  selectionPreservedOnEmptyClick={true}
-                  ariaLabelForSelectionColumn="Toggle selection"
-                  ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-                  onItemInvoked={_onItemInvoked}
-                />
-              </MarqueeSelection>
+              <div className={classNames.list}>
+                <MarqueeSelection selection={this._selection}>
+                  <DetailsList
+                    items={items}
+                    columns={this._columns}
+                    setKey="set"
+                    layoutMode={DetailsListLayoutMode.justified}
+                    constrainMode={ConstrainMode.unconstrained}
+                    onRenderDetailsHeader={onRenderDetailsHeader}
+                    onRenderDetailsFooter={onRenderDetailsFooter}
+                    selection={this._selection}
+                    selectionPreservedOnEmptyClick={true}
+                    ariaLabelForSelectionColumn="Toggle selection"
+                    ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+                    onItemInvoked={_onItemInvoked}
+                  />
+                </MarqueeSelection>
+              </div>
             </ScrollablePane>
           </div>
         </Fabric>
@@ -203,6 +215,7 @@ function onRenderDetailsHeader(
       isScrollSynced={true}
       order={3}
       stickyBackgroundColor={getTheme().palette.white}
+      stickyClassName={classNames.stickyDetailsHeader}
     >
       {defaultRender!({
         ...props,
@@ -224,6 +237,7 @@ function onRenderDetailsFooter(
       isScrollSynced={true}
       order={1}
       stickyBackgroundColor={getTheme().palette.white}
+      stickyClassName={classNames.stickyDetailsFooter}
     >
       <div className={classNames.row}>
         <DetailsRow
@@ -261,6 +275,12 @@ storiesOf('ScrollablePane-Sticky Details List', module)
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', cropTo)
+        .executeScript(`${getElement}.scrollLeft=99999`)
+        .snapshot(
+          'scroll horizontally to see if header and footer are aligned for zero vertical scroll',
+          cropTo
+        )
+        .executeScript(`${getElement}.scrollLeft=0`)
         .executeScript(`${getElement}.scrollTop=2`)
         .snapshot('scroll down by a small amount so that the first row is still visible', cropTo)
         .executeScript(`${getElement}.scrollLeft=500`)
@@ -268,19 +288,25 @@ storiesOf('ScrollablePane-Sticky Details List', module)
           'scroll horizontally to see if header and footer are aligned for non-zero scroll',
           cropTo
         )
+        .executeScript(`${getElement}.scrollTop=100`)
+        .executeScript(`${getElement}.scrollLeft=99999`)
+        .snapshot(
+          'scroll horizontally to see if header and footer are aligned for non-zero scroll (1)',
+          cropTo
+        )
         .executeScript(`${getElement}.scrollLeft=0`)
         .snapshot('scroll horizontally to see if header and footer are aligned', cropTo)
         .executeScript(`${getElement}.scrollTop=999999`)
         .executeScript(`${getElement}.scrollLeft=500`)
         .snapshot(
-          'scroll horizontally to see if header and footer are aligned for non-zero scroll (1)',
+          'scroll horizontally to see if header and footer are aligned for non-zero scroll (2)',
           cropTo
         )
         .executeScript(`${getElement}.scrollLeft=0`)
         .snapshot('scroll down to the bottom', cropTo)
         .executeScript(`${getElement}.scrollTop=0`)
         .snapshot('scroll up to the top', cropTo)
-        .executeScript(`${getElement}.scrollLeft=500`)
+        .executeScript(`${getElement}.scrollLeft=99999`)
         .snapshot('scroll left', cropTo)
         .end()}
     >
@@ -301,7 +327,7 @@ storiesOf('ScrollablePane-Sticky Details List', module)
       scrollablePaneProps={scrollablePaneProps}
     />
   ))
-  .addStory('ScrollablePane Details List with sticky header & footer (2)', () => (
+  .addStory('ScrollablePane Details List with sticky header & footer (3)', () => (
     <ScrollablePaneDetailsListExample
       itemCount={200}
       numberOfColumns={6}

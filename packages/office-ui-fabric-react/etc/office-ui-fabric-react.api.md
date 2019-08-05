@@ -6331,7 +6331,6 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
     className?: string;
     componentRef?: IRefObject<IScrollablePane>;
     initialScrollPosition?: number;
-    // (undocumented)
     optimizeForPerformace?: boolean;
     scrollbarVisibility?: ScrollbarVisibility;
     stickyFooterContainerBehavior?: StickyContainerBehaviorType;
@@ -8538,7 +8537,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     // (undocumented)
     usePlaceholderForSticky: () => boolean;
     // (undocumented)
-    verifyStickyContainerBehavior: (stickyContainerPosition: StickyPositionType, stickyContainerBehavior: StickyContainerBehaviorType) => boolean;
+    verifyStickyContainerBehavior: (stickyContainerPosition: StickyPositionType, stickyContainerBehavior: "Default" | "StickyOnScroll" | "StickyAlways") => boolean;
 }
 
 // @public (undocumented)
@@ -8882,14 +8881,17 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     readonly stickyContentTop: HTMLDivElement | null;
     // (undocumented)
     syncScroll: (container: HTMLElement) => void;
-}
+    }
 
 // @public (undocumented)
-export enum StickyContainerBehaviorType {
-    Default = 0,
-    StickyAlways = 2,
-    StickyOnScroll = 1
-}
+export const StickyContainerBehaviorType: {
+    Default: "Default";
+    StickyOnScroll: "StickyOnScroll";
+    StickyAlways: "StickyAlways";
+};
+
+// @public (undocumented)
+export type StickyContainerBehaviorType = typeof StickyContainerBehaviorType[keyof typeof StickyContainerBehaviorType];
 
 // @public (undocumented)
 export enum StickyPositionType {

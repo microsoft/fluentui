@@ -45,10 +45,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     this.state = {
       stickyTopHeight: 0,
       stickyBottomHeight: 0,
-      scrollbarWidth: scrollbarVisibility === ScrollbarVisibility.always ? this._getScrollbarHeightFromLocalStorage() || 0 : 0,
-      scrollbarHeight: scrollbarVisibility === ScrollbarVisibility.always ? this._getScrollbarHeightFromLocalStorage() || 0 : 0
+      scrollbarWidth: scrollbarVisibility === ScrollbarVisibility.always ? this._getScrollbarHeightFromLocalStorage() : 0,
+      scrollbarHeight: scrollbarVisibility === ScrollbarVisibility.always ? this._getScrollbarHeightFromLocalStorage() : 0
     };
-    this._scrollLeft = this._scrollTop = 0;
+    this._scrollLeft = 0;
+    this._scrollTop = 0;
     this._notifyThrottled = this._async.throttle(this.notifySubscribers, 50);
   }
 
@@ -73,7 +74,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     if (scrollbarVisibility === ScrollbarVisibility.always) {
       // after first render, scrollbars are visible
       // it is needed to position stickyContainers correctly
-      let scrollbarHeight: number | undefined = this._getScrollbarHeightFromLocalStorage();
+      let scrollbarHeight: number = this._getScrollbarHeightFromLocalStorage();
       if (!scrollbarHeight) {
         scrollbarHeight = this._getScrollbarHeight();
         this._storeScrollbarHeightInLocalStorage(scrollbarHeight);
@@ -419,8 +420,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
           }
         });
 
-        const sortBasedOnOrder: boolean = this._sortBasedOnOrder();
-        const stickyListSorted = this._sortStickyList(stickyList, sortBasedOnOrder).filter(item => {
+        const stickyListSorted = this._sortStickyList(stickyList).filter(item => {
           const stickyContent = isStickyAboveContainer ? item.stickyContentTop : item.stickyContentBottom;
           if (stickyContent) {
             return stickyChildrenElements.indexOf(stickyContent) > -1;
@@ -430,7 +430,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         // Get first element that has a distance from top that is further than our sticky that is being added
         let targetStickyToAppendBefore: Sticky | undefined = undefined;
         for (const i in stickyListSorted) {
-          if (this._isTargetContainer(stickyListSorted[i], sticky, sortBasedOnOrder)) {
+          if (this._isTargetContainer(stickyListSorted[i], sticky)) {
             targetStickyToAppendBefore = stickyListSorted[i];
             break;
           }
@@ -515,14 +515,14 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     return contentContainer ? contentContainer.offsetHeight - contentContainer.clientHeight : 0;
   }
 
-  private _getScrollbarHeightFromLocalStorage(): number | undefined {
+  private _getScrollbarHeightFromLocalStorage(): number {
     if (typeof window !== 'undefined' && 'localStorage' in window) {
       const scrollbarHeight = Number(window.localStorage.getItem(ScrollablePaneBase._scrollbarHeightKey));
       if (!!scrollbarHeight && !isNaN(scrollbarHeight)) {
         return scrollbarHeight;
       }
     }
-    return undefined;
+    return 0;
   }
 
   private _storeScrollbarHeightInLocalStorage(scrollbarHeight: number) {
@@ -560,8 +560,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       : !!this.stickyBelow && !!sticky.stickyContentBottom && this.stickyBelow.contains(sticky.stickyContentBottom);
   }
 
-  private _sortStickyList(stickyList: Sticky[], sortBasedOnOrder: boolean): Sticky[] {
-    if (sortBasedOnOrder) {
+  private _sortStickyList(stickyList: Sticky[]): Sticky[] {
+    if (this._sortBasedOnOrder()) {
       return stickyList.sort((a, b) => {
         return (a.props.order || 0) - (b.props.order || 0);
       });
@@ -572,8 +572,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     }
   }
 
-  private _isTargetContainer(a: Sticky, b: Sticky, sortBasedOnOrder: boolean): boolean {
-    return sortBasedOnOrder
+  private _isTargetContainer(a: Sticky, b: Sticky): boolean {
+    return this._sortBasedOnOrder()
       ? (a.props.order || 0) > (b.props.order || 0)
       : (a.state.distanceFromTop || 0) >= (b.state.distanceFromTop || 0);
   }

@@ -20,8 +20,11 @@ import { mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
 
 const classNames = mergeStyleSets({
   wrapper: {
-    height: '80vh',
+    height: '860px',
     position: 'relative'
+  },
+  list: {
+    padding: '0 32px'
   },
   detailsListRows: {
     selectors: {
@@ -31,14 +34,21 @@ const classNames = mergeStyleSets({
     }
   },
   filter: {
-    paddingBottom: 20,
-    maxWidth: 300
+    maxWidth: 300,
+    padding: '0 32px 20px 32px'
   },
   header: {
-    margin: 0
+    margin: 0,
+    padding: '0 32px'
   },
   row: {
     display: 'inline-block'
+  },
+  stickyDetailsHeader: {
+    padding: '0 32px'
+  },
+  stickyDetailsFooter: {
+    padding: '0 32px'
   }
 });
 
@@ -125,23 +135,25 @@ export class ScrollablePaneStickyOptimizedDetailsList extends React.Component<{}
           <Sticky stickyPosition={StickyPositionType.Header} order={2} stickyBackgroundColor={stickyBackgroundColor}>
             <h1 className={classNames.header}>Item list</h1>
           </Sticky>
-          <MarqueeSelection selection={this._selection}>
-            <DetailsList
-              className={classNames.detailsListRows}
-              items={items}
-              columns={this._columns}
-              setKey="set"
-              layoutMode={DetailsListLayoutMode.justified}
-              constrainMode={ConstrainMode.unconstrained}
-              onRenderDetailsHeader={onRenderDetailsHeader}
-              onRenderDetailsFooter={onRenderDetailsFooter}
-              selection={this._selection}
-              selectionPreservedOnEmptyClick={true}
-              ariaLabelForSelectionColumn="Toggle selection"
-              ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-              onItemInvoked={_onItemInvoked}
-            />
-          </MarqueeSelection>
+          <div className={classNames.list}>
+            <MarqueeSelection selection={this._selection}>
+              <DetailsList
+                className={classNames.detailsListRows}
+                items={items}
+                columns={this._columns}
+                setKey="set"
+                layoutMode={DetailsListLayoutMode.justified}
+                constrainMode={ConstrainMode.unconstrained}
+                onRenderDetailsHeader={onRenderDetailsHeader}
+                onRenderDetailsFooter={onRenderDetailsFooter}
+                selection={this._selection}
+                selectionPreservedOnEmptyClick={true}
+                ariaLabelForSelectionColumn="Toggle selection"
+                ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+                onItemInvoked={_onItemInvoked}
+              />
+            </MarqueeSelection>
+          </div>
         </ScrollablePane>
       </div>
     );
@@ -160,7 +172,13 @@ function _onItemInvoked(item: IScrollablePaneDetailsListExampleItem): void {
 
 function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element {
   return (
-    <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true} order={3} stickyBackgroundColor={getTheme().palette.white}>
+    <Sticky
+      stickyPosition={StickyPositionType.Header}
+      isScrollSynced={true}
+      order={3}
+      stickyBackgroundColor={getTheme().palette.white}
+      stickyClassName={classNames.stickyDetailsHeader}
+    >
       {defaultRender!({
         ...props,
         onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost {...tooltipHostProps} />
@@ -171,7 +189,13 @@ function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRend
 
 function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRenderFunction<IDetailsFooterProps>): JSX.Element {
   return (
-    <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true} order={1} stickyBackgroundColor={getTheme().palette.white}>
+    <Sticky
+      stickyPosition={StickyPositionType.Footer}
+      isScrollSynced={true}
+      order={1}
+      stickyBackgroundColor={getTheme().palette.white}
+      stickyClassName={classNames.stickyDetailsFooter}
+    >
       <div className={classNames.row}>
         <DetailsRow
           className={classNames.detailsListRows}

@@ -197,11 +197,12 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (!scrollablePane) {
       return {};
     }
-    const usePlaceholderForSticky = scrollablePane.usePlaceholderForSticky();
-    const isVisible = isSticky ? (this.canStickyTop && usePlaceholderForSticky) || (this.canStickyBottom && usePlaceholderForSticky) : true;
+    const isVisible = isSticky
+      ? this._usePlaceholderForSticky(this.canStickyTop) || this._usePlaceholderForSticky(this.canStickyBottom)
+      : true;
     return {
       backgroundColor: this.props.stickyBackgroundColor || this._getBackground(),
-      overflow: isSticky ? 'hidden' : '',
+      overflow: isSticky ? 'hidden' : undefined,
       visibility: isVisible ? 'visible' : 'hidden'
     };
   }
@@ -250,9 +251,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (!scrollablePane) {
       return false;
     }
-    const usePlaceholderForSticky = scrollablePane.usePlaceholderForSticky();
-    const usePlaceholderForStickyContentTop = this.canStickyTop && usePlaceholderForSticky;
-    const usePlaceholderForStickyContentBottom = this.canStickyBottom && usePlaceholderForSticky;
+    const usePlaceholderForStickyContentTop = this._usePlaceholderForSticky(this.canStickyTop);
+    const usePlaceholderForStickyContentBottom = this._usePlaceholderForSticky(this.canStickyBottom);
     return (
       (usePlaceholderForStickyContentTop && _isOffsetHeightDifferent(this._nonStickyContent, this._stickyContentTop)) ||
       (usePlaceholderForStickyContentBottom && _isOffsetHeightDifferent(this._nonStickyContent, this._stickyContentBottom)) ||
@@ -263,9 +263,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _getNonStickyPlaceholderHeightAndWidth(): React.CSSProperties {
     const { isStickyTop, isStickyBottom } = this.state;
-    const usePlaceholderForSticky = this.context.scrollablePane.usePlaceholderForSticky();
-    const usePlaceholderForStickyTop = this.canStickyTop && usePlaceholderForSticky;
-    const usePlaceholderForStickyBottom = this.canStickyBottom && usePlaceholderForSticky;
+    const usePlaceholderForStickyTop = this._usePlaceholderForSticky(this.canStickyTop);
+    const usePlaceholderForStickyBottom = this._usePlaceholderForSticky(this.canStickyBottom);
     if ((isStickyTop && usePlaceholderForStickyTop) || (isStickyBottom && usePlaceholderForStickyBottom)) {
       let height = 0,
         width = 0;
@@ -299,6 +298,10 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     } else {
       return {};
     }
+  }
+
+  private _usePlaceholderForSticky(canSticky: boolean): boolean {
+    return canSticky && this.context.scrollablePane.usePlaceholderForSticky();
   }
 
   private _onScrollEvent = (container: HTMLElement, footerStickyContainer: HTMLElement): void => {
