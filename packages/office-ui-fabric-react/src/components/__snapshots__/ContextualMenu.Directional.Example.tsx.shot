@@ -43,6 +43,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
           }
     >
       <input
+        aria-label="Show beak"
         checked={false}
         className=
 
@@ -65,6 +66,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
         type="checkbox"
       />
       <label
+        aria-hidden="true"
         className=
             ms-Checkbox-label
             {
