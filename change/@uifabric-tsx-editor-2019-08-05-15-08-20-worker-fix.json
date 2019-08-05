@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fixing webpack loading for monaco editor",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "nishikaza@berkeley.edu",
+  "commit": "d28afae4a96b417fa9812a3527d199284e1e4dd2",
+  "date": "2019-08-05T22:08:20.511Z"
+}

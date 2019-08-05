@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fixing webpack loading for monaco editor",
+  "packageName": "@uifabric/fabric-website",
+  "email": "nishikaza@berkeley.edu",
+  "commit": "d28afae4a96b417fa9812a3527d199284e1e4dd2",
+  "date": "2019-08-05T22:08:07.344Z"
+}
