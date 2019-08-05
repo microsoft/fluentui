@@ -9,14 +9,51 @@ import { ICalendarDayGrid } from '../../CalendarDayGrid/CalendarDayGrid.types';
 
 const getClassNames = classNamesFunction<ICalendarDayStyleProps, ICalendarDayStyles>();
 
-export class CalendarDayBase extends BaseComponent<ICalendarDayProps, {}> {
+export interface ICalendarDayState {
+  previousNavigatedDate?: Date;
+  animateBackwards?: boolean;
+}
+
+export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarDayState> {
   private _dayGrid = React.createRef<ICalendarDayGrid>();
+
+  public static getDerivedStateFromProps(props: ICalendarDayProps, state: ICalendarDayState): ICalendarDayState {
+    const { dateTimeFormatter, strings } = props;
+
+    const previousDate = state && state.previousNavigatedDate;
+    const nextDate = props.navigatedDate;
+    if (!previousDate) {
+      return {
+        previousNavigatedDate: props.navigatedDate
+      };
+    }
+
+    if (dateTimeFormatter.formatMonthYear(previousDate, strings) !== dateTimeFormatter.formatMonthYear(nextDate, strings)) {
+      if (previousDate < nextDate) {
+        return {
+          animateBackwards: false,
+          previousNavigatedDate: props.navigatedDate
+        };
+      } else if (previousDate > nextDate) {
+        return {
+          animateBackwards: true,
+          previousNavigatedDate: props.navigatedDate
+        };
+      }
+    }
+
+    return {
+      previousNavigatedDate: props.navigatedDate
+    };
+  }
 
   public constructor(props: ICalendarDayProps) {
     super(props);
 
     this._onSelectNextMonth = this._onSelectNextMonth.bind(this);
     this._onSelectPrevMonth = this._onSelectPrevMonth.bind(this);
+
+    this.state = {};
   }
 
   public render(): JSX.Element {
@@ -34,7 +71,8 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, {}> {
       restrictedDates,
       onNavigateDate,
       showWeekNumbers,
-      dateRangeType
+      dateRangeType,
+      animationDirection
     } = this.props;
     const dayPickerId = getId();
     const monthAndYearId = getId();
@@ -43,13 +81,16 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, {}> {
       theme: theme!,
       className: className,
       headerIsClickable: !!onHeaderSelect,
-      showWeekNumbers: showWeekNumbers
+      showWeekNumbers: showWeekNumbers,
+      animateBackwards: this.state.animateBackwards,
+      animationDirection: animationDirection
     });
 
     return (
       <div className={classNames.root} id={dayPickerId}>
         <div className={classNames.header}>
           <button
+            key={dateTimeFormatter.formatMonthYear(navigatedDate, strings)}
             aria-live="polite"
             aria-relevant="text"
             aria-atomic="true"

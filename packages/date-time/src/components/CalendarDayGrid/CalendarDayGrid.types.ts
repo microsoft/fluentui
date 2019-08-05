@@ -1,5 +1,12 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { ICalendarStrings, DayOfWeek, FirstWeekOfYear, DateRangeType, ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
+import {
+  ICalendarStrings,
+  DayOfWeek,
+  FirstWeekOfYear,
+  DateRangeType,
+  ICalendarFormatDateCallbacks,
+  AnimationDirection
+} from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
 
 export interface ICalendarDayGrid {
@@ -148,6 +155,11 @@ export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
    * @defaultvalue true
    */
   lightenDaysOutsideNavigatedMonth?: boolean;
+
+  /**
+   * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
+   */
+  animationDirection?: AnimationDirection;
 }
 
 export interface ICalendarDayGridStyleProps {
@@ -175,9 +187,24 @@ export interface ICalendarDayGridStyleProps {
    * Whether to show days outside the selected month with lighter styles
    */
   lightenDaysOutsideNavigatedMonth?: boolean;
+
+  /**
+   * Whether grid entering animation should be forwards or backwards
+   */
+  animateBackwards?: boolean;
+
+  /**
+   * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
+   */
+  animationDirection?: AnimationDirection;
 }
 
 export interface ICalendarDayGridStyles {
+  /**
+   * The style for the root div
+   */
+  wrapper?: IStyle;
+
   /**
    * The style for the table containing the grid
    */
@@ -192,6 +219,16 @@ export interface ICalendarDayGridStyles {
    * The style to apply to grid cells for days in the selected range
    */
   daySelected?: IStyle;
+
+  /**
+   * The style to apply to row around weeks
+   */
+  weekRow?: IStyle;
+
+  /**
+   * The style to apply to the column headers above the weeks
+   */
+  weekDayLabelCell?: IStyle;
 
   /**
    * The style to apply to grid cells for week numbers
@@ -217,6 +254,16 @@ export interface ICalendarDayGridStyles {
    * The style to apply to the individual button element that matches the "today" parameter
    */
   dayIsToday?: IStyle;
+
+  /**
+   * The style applied to the first placeholder week used during transitions
+   */
+  firstTransitionWeek?: IStyle;
+
+  /**
+   * The style applied to the last placeholder week used during transitions
+   */
+  lastTransitionWeek?: IStyle;
 
   /**
    * The styles to apply to days for rounded corners. Can apply multiple to round multiple corners

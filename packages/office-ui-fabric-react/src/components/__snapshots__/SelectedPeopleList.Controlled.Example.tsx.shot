@@ -347,9 +347,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     & .contextualHost {
                       display: none;
                     }
-                    &:hover $primaryText {
-                      color: #201f1e;
-                    }
               >
                 <div
                   className=
@@ -430,6 +427,9 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                           overflow: hidden;
                           text-overflow: ellipsis;
                           white-space: nowrap;
+                        }
+                        &:hover {
+                          color: #201f1e;
                         }
                     dir="auto"
                   >

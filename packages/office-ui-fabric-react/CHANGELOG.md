@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 31 Jul 2019 12:26:17 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Aug 2019 12:33:29 GMT and should not be manually modified.
+
+## 7.19.1
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Patches
+
+- Persona: Fix styles issue caused by unnecessary nesting (cliff.koh@microsoft.com)
+,- Remove extra export of SelectionMode (jdh@microsoft.com)
 
 ## 7.19.0
 Wed, 31 Jul 2019 12:26:17 GMT

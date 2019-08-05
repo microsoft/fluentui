@@ -1,5 +1,5 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from '../Calendar.types';
+import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks, AnimationDirection } from '../Calendar.types';
 import { ITheme } from '@uifabric/styling';
 import { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
@@ -111,6 +111,11 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
    * @defaultvalue false
    */
   yearPickerHidden?: boolean;
+
+  /**
+   * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
+   */
+  animationDirection?: AnimationDirection;
 }
 
 export interface ICalendarMonthStyleProps extends ICalendarPickerStyleProps {}

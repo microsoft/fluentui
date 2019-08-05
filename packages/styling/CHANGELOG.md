@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 24 Jul 2019 12:27:56 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Aug 2019 12:33:29 GMT and should not be manually modified.
+
+## 7.4.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- Semantic Colors: Changing and adding a few colors that target input controls. (v-mare@microsoft.com)
 
 ## 7.3.1
 Wed, 24 Jul 2019 12:27:56 GMT
