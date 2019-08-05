@@ -93,9 +93,9 @@ export class CheckboxOtherExamples extends React.Component<{}, ICheckboxOtherExa
     console.log(`The option has been changed to ${isChecked}.`);
   };
 
-  private _onControlledIndeterminateChange = (ev: React.FormEvent<HTMLElement>, checked: boolean, indeterminate: boolean): void => {
+  private _onControlledIndeterminateChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
     if (this.state.isIndeter) {
-      this.setState({ isIndeter: indeterminate! });
+      this.setState({ isIndeter: false });
     } else {
       this.setState({ isChecked2: checked! });
     }

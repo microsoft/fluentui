@@ -182,7 +182,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
         }
       } else {
         if (onChange) {
-          onChange(ev, isChecked, !this.props.indeterminate);
+          onChange(ev, isChecked);
         }
         if (this.props.indeterminate === undefined) {
           this.setState({ isIndeterminate: false });
