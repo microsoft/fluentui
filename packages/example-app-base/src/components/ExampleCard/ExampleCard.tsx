@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
-import { styled, Customizer, classNamesFunction, css, isIE11, CustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
+import { styled, Customizer, classNamesFunction, css, isIE11, CustomizerContext, warn } from 'office-ui-fabric-react/lib/Utilities';
 import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
@@ -18,6 +18,7 @@ import { getSetting } from '../../index2';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react';
 
 export interface IExampleCardState {
+  isCodeVisible?: boolean; // only used if props.isCodeVisible and props.onToggleEditor are undefined
   schemeIndex: number;
   themeIndex: number;
   error?: string;
@@ -46,6 +47,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   constructor(props: IExampleCardProps) {
     super(props);
     this.state = {
+      isCodeVisible: false,
       schemeIndex: 0,
       themeIndex: 0
     };
@@ -58,11 +60,16 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
         (window as any).Fabric = Fabric;
       });
     }
+
+    if (props.isCodeVisible !== undefined && props.onToggleEditor === undefined && process.env.NODE_ENV !== 'production') {
+      warn('ExampleCard: the onToggleEditor prop is required if isCodeVisible is set. Otherwise the show/hide code button will not work.');
+    }
   }
 
   public render(): JSX.Element {
-    const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme, isCodeVisible } = this.props;
+    const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme } = this.props;
     const { schemeIndex, themeIndex } = this.state;
+    const { isCodeVisible = this.state.isCodeVisible } = this.props;
 
     return (
       <AppCustomizationsContext.Consumer>
@@ -85,7 +92,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
           const { codeButtons: codeButtonStyles } = subComponentStyles;
 
           const exampleCardContent =
-            this.props.isCodeVisible && this.canRenderLiveEditor ? (
+            isCodeVisible && this.canRenderLiveEditor ? (
               <EditorPreview className={classNames.example} id={this.props.title.replace(' ', '')} />
             ) : (
               <div className={classNames.example} data-is-scrollable={isScrollable}>
@@ -225,12 +232,16 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
         this.forceUpdate();
       });
     }
-    if (this.props.onToggleEditor) {
+    if (this.props.isCodeVisible !== undefined && this.props.onToggleEditor !== undefined) {
       if (this.props.isCodeVisible) {
         this.props.onToggleEditor('');
       } else {
         this.props.onToggleEditor(this.props.title);
       }
+    } else {
+      this.setState({
+        isCodeVisible: !this.state.isCodeVisible
+      });
     }
   };
 }
