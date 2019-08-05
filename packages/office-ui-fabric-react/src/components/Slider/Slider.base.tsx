@@ -120,9 +120,20 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
           >
             <div ref={this._sliderLine} className={classNames.line}>
               {originFromZero && (
-                <span className={css(classNames.zeroTick)} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
+                <span className={classNames.zeroTick} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
               )}
-              <span ref={this._thumb} className={classNames.thumb} style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)} />
+              {enableMarks && this._addTickmarks(classNames.regularTick)}
+              {showThumbTooltip ? (
+                <TooltipHost
+                  content={'' + value}
+                  id={this._hostId}
+                  calloutProps={{ gapSpace: 5, beakWidth: 8, target: `#${this._buttonId}`, doNotLayer: true }}
+                >
+                  {theButton}
+                </TooltipHost>
+              ) : (
+                theButton
+              )}
               {originFromZero ? (
                 <>
                   <span
@@ -152,7 +163,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               )}
             </div>
           </div>
-          {showValue && (
+          {showValue && !showThumbTooltip && (
             <Label className={classNames.valueLabel} disabled={disabled}>
               {valueFormat ? valueFormat(value!) : value}
             </Label>
@@ -265,9 +276,31 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     }
     return currentPosition;
   }
-  private _updateValue(value: number, renderedValue: number): void {
-    const { step } = this.props;
 
+  private _addTickmarks(cssRegularTickClassNames: string | undefined): JSX.Element[] {
+    const { min, max, step, vertical } = this.props;
+    if (min === undefined || max === undefined || step === undefined) {
+      return [];
+    }
+    const ticks = [];
+    for (let i = 0; i <= 100; i += (100 * step) / (max - min)) {
+      // += number is basically the distance between each tick
+      ticks.push(
+        <span
+          className={cssRegularTickClassNames}
+          style={
+            // the zeroOffsetPercent denotes where the tick mark should go
+            this._getStyleUsingOffsetPercent(vertical, i)
+          }
+          key={i}
+        />
+      );
+    }
+    return ticks;
+  }
+
+  private _updateValue(value: number, renderedValue: number): void {
+    const { step, snapToStep } = this.props;
     let numDec = 0;
     if (isFinite(step!)) {
       while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
@@ -278,6 +311,10 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     // Make sure value has correct number of decimal places based on number of decimals in step
     const roundedValue = parseFloat(value.toFixed(numDec));
     const valueChanged = roundedValue !== this.state.value;
+
+    if (snapToStep) {
+      renderedValue = roundedValue;
+    }
 
     this.setState(
       {
