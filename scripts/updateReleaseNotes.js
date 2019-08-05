@@ -305,7 +305,7 @@ async function updateReleaseNotes() {
     let hasBeenReleased = releasesByTag.has(tag);
 
     if (hasBeenReleased && !(argv.patch || argv.patchAll)) {
-      continue; // nothing to do
+      return; // nothing to do
     }
 
     const entryInfo = `${entry.name} ${entry.version}`;
