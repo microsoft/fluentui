@@ -955,11 +955,11 @@ export const DetailsRowGlobalClassNames: {
     root: string;
     compact: string;
     cell: string;
+    cellAnimation: string;
     cellCheck: string;
     check: string;
     cellMeasurer: string;
     listCellFirstChild: string;
-    isFocusable: string;
     isContentUnselectable: string;
     isSelected: string;
     isCheckVisible: string;
