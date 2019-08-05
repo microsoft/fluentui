@@ -1,7 +1,6 @@
 import { normalize } from '../../Styling';
 import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
 import { FontWeights } from '@uifabric/styling';
-import { NeutralColors } from '@uifabric/fluent-theme';
 
 export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => {
   const { theme, className } = props;
@@ -81,7 +80,7 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         fontWeight: FontWeights.semibold,
         lineHeight: '1.33',
         textAlign: 'left',
-        color: NeutralColors.gray120,
+        color: palette.neutralSecondary,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis'

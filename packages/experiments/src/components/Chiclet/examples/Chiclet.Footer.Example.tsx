@@ -4,7 +4,6 @@ import { IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
 import { FontWeights } from '@uifabric/styling';
-import { NeutralColors } from '@uifabric/fluent-theme';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
@@ -29,8 +28,7 @@ const footerStyle = mergeStyles({
 const activitiesStyle = mergeStyles({
   paddingLeft: 16,
   paddingBottom: 8,
-  fontWeight: FontWeights.semibold,
-  color: NeutralColors.gray120
+  fontWeight: FontWeights.semibold
 });
 
 const actionsStyle = mergeStyles({

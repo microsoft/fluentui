@@ -95,7 +95,7 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
 
           {
             align-items: center;
-            color: #797775;
+            color: #605e5c;
             display: flex;
             font-size: 12px;
             font-weight: 600;
@@ -231,7 +231,7 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
       className=
 
           {
-            color: #797775;
+            color: #605e5c;
             font-size: 12px;
             font-weight: 600;
             height: 15px;
@@ -363,7 +363,7 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
       className=
 
           {
-            color: #797775;
+            color: #605e5c;
             font-size: 12px;
             font-weight: 600;
             height: 15px;
@@ -496,7 +496,7 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
       className=
 
           {
-            color: #797775;
+            color: #605e5c;
             font-size: 12px;
             font-weight: 600;
             height: 15px;
@@ -616,7 +616,7 @@ exports[`Chiclet should set className on preview 1`] = `
 
           {
             align-items: center;
-            color: #797775;
+            color: #605e5c;
             display: flex;
             font-size: 12px;
             font-weight: 600;

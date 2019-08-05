@@ -1,7 +1,6 @@
 import { normalize, getGlobalClassNames } from '../../Styling';
 import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
 import { FontWeights } from '@uifabric/styling';
-import { NeutralColors } from '@uifabric/fluent-theme';
 
 const GlobalClassNames = {
   root: 'ms-ChicletXsmall',
@@ -84,7 +83,7 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         width: 170,
         height: 15,
         fontWeight: FontWeights.semibold,
-        color: NeutralColors.gray120,
+        color: palette.neutralSecondary,
         paddingBottom: 1,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
