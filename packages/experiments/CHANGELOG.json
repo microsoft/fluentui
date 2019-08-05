@@ -2,6 +2,76 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 02 Aug 2019 12:33:29 GMT",
+      "tag": "@uifabric/experiments_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Creating separate Actionable view to improve perf of Actionable, small perf improvements and perf scenario updates.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "b83bcc1af7a91f2ceb7966aea79a495b6330e166"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Experiments snapshot",
+            "author": "cliff.koh@microsoft.com",
+            "commit": "68e92fda0699006a704575a93cb55335230a4ba6"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "MenuButton: Removing use of StackItem to improve performance.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "86861599655f59191d65fb7d844a4943f4ade6ca"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jul 2019 12:28:32 GMT",
+      "tag": "@uifabric/experiments_v7.9.1",
+      "version": "7.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Making Button variants themable by using createComponent instead of wrappers.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "26e11f6c58861799d22dfb6f4f73f31451aef10f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jul 2019 12:26:00 GMT",
+      "tag": "@uifabric/experiments_v7.9.0",
+      "version": "7.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Chiclet: add preview prop and its styling and don't do icon lookup for preview",
+            "author": "t-stcar@microsoft.com",
+            "commit": "a3d0f0f26d4cac14c5f3561c640d25918822d89f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jul 2019 16:33:51 GMT",
+      "tag": "@uifabric/experiments_v7.8.1",
+      "version": "7.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chiclet: Url is now a required prop and two test files are combined into one",
+            "author": "t-stcar@microsoft.com",
+            "commit": "7147dbd40fc5b52da42714379c6f832d215eaaed"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jul 2019 12:28:42 GMT",
       "tag": "@uifabric/experiments_v7.8.0",
       "version": "7.8.0",

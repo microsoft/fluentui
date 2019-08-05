@@ -1,6 +1,98 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 22 Jul 2019 21:37:45 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Aug 2019 12:33:41 GMT and should not be manually modified.
+
+## 7.20.0
+Mon, 05 Aug 2019 12:33:41 GMT
+
+### Minor changes
+
+- Slider: Add new prop to snap while moving. (t-snroy@microsoft.com)
+
+## 7.19.1
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Patches
+
+- Persona: Fix styles issue caused by unnecessary nesting (cliff.koh@microsoft.com)
+,- Remove extra export of SelectionMode (jdh@microsoft.com)
+
+## 7.19.0
+Wed, 31 Jul 2019 12:26:17 GMT
+
+### Minor changes
+
+- Commandbar: Expose dataDidRender method (joschect@microsoft.com)
+
+### Patches
+
+- [BaseExtendedPicker] Only add aria-owns tag when the picker is expanded (andrescb@microsoft.com)
+,- Tooltip: Fixing hidden hover area overlapping with Tooltip targets. (Humberto.Morimoto@microsoft.com)
+,- Perf Test: Integrate Flamegrill (jagore@microsoft.com)
+
+## 7.18.1
+Tue, 30 Jul 2019 12:28:32 GMT
+
+### Patches
+
+- TeachingBubble: Fix primary button high contrast styling issues. (Humberto.Morimoto@microsoft.com)
+,- Dropdown: Panel now dismisses in small widths (bhdev@outlook.com)
+,- Separate the anchor for the card from card's hover target ('xingwa@microsoft.com')
+
+## 7.18.0
+Mon, 29 Jul 2019 12:26:00 GMT
+
+### Minor changes
+
+- Shimmer: refactor out the BaseComponent and deprecated React lifecycle methods. (vibraga@microsoft.com)
+
+### Patches
+
+- Fix cell animations so they only trigger on cell key changes (tmichon@microsoft.com)
+,- Panel: fix shrinking of the footer and make header not shrink. (vibraga@microsoft.com)
+,- Pivot: align pivot link text in relation to the whole pivot tab. (vibraga@microsoft.com)
+
+## 7.17.0
+Fri, 26 Jul 2019 12:28:52 GMT
+
+### Minor changes
+
+- ShimmeredDetailsList: enables additional logic to be executed before rendering the default shimmer row. (vibraga@microsoft.com)
+,- removing BaseComponent from SpinButton (aneeshak@microsoft.com)
+
+### Patches
+
+- Added aria label to demo page for custom picker (susunda@microsoft.com)
+
+## 7.16.0
+Thu, 25 Jul 2019 12:27:19 GMT
+
+### Minor changes
+
+- ChoiceGroup: updating IChoiceOption to accept input attributes (dzearing@microsoft.com)
+
+## 7.15.0
+Wed, 24 Jul 2019 12:27:56 GMT
+
+### Minor changes
+
+- split calendarMonth into three rows (Qianqian.Li@microsoft.com)
+
+### Patches
+
+- Facepile: Fix narrator not announcing coauthor position (tabrumle@microsoft.com)
+
+## 7.14.1
+Tue, 23 Jul 2019 16:33:51 GMT
+
+### Patches
+
+- Tooltip: Updates box-shadow to match fluent web toolkit (v-mare@microsoft.com)
+,- Rating: fix aria-label in `readOnly` mode and when use half stars. (vibraga@microsoft.com)
+,- Spinner: Updating label font size and position in respect to spinner to match fluent toolkit (v-mare@microsoft.com)
+,- ColorPicker: Updates margin bottom of the color rectangle to match web fluent toolkit. (v-mare@microsoft.com)
+,- Multiselect ComboBox options should respect disabled setting (elcraig@microsoft.com)
+,- making mousemove event bind to capture phase to work inside Layers and Callouts (jolore@microsoft.com)
 
 ## 7.14.0
 Mon, 22 Jul 2019 21:37:45 GMT

@@ -27,6 +27,12 @@ export interface IExampleCardProps {
 
   /** Optional override styles */
   styles?: IStyleFunctionOrObject<IExampleCardStyleProps, IExampleCardStyles>;
+
+  /** On click handler to ensure only one code editor instance is shown at once */
+  onToggleEditor?: (card: string) => void;
+
+  /** Whether code example is visible */
+  isCodeVisible?: boolean;
 }
 
 export type IExampleCardStyleProps = Pick<IExampleCardProps, 'isRightAligned' | 'isScrollable' | 'theme'> & {

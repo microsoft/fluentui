@@ -1,4 +1,33 @@
 {
   "name": "@uifabric/tsx-editor",
-  "entries": []
+  "entries": [
+    {
+      "date": "Mon, 05 Aug 2019 12:33:41 GMT",
+      "tag": "@uifabric/tsx-editor_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "N/A",
+            "author": "nishikaza@berkeley.edu",
+            "commit": "884bc1d22b25f8e73d2dd6f332e54709e66ddc09"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Aug 2019 12:33:29 GMT",
+      "tag": "@uifabric/tsx-editor_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Publish tsx-editor",
+            "author": "elcraig@microsoft.com",
+            "commit": "e3369223a335f8d0f71b5f18579a2d9704ad4cb0"
+          }
+        ]
+      }
+    }
+  ]
 }

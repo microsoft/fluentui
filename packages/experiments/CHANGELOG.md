@@ -1,6 +1,38 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Aug 2019 12:33:29 GMT and should not be manually modified.
+
+## 7.10.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- MenuButton: Removing use of StackItem to improve performance. (Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Button: Creating separate Actionable view to improve perf of Actionable, small perf improvements and perf scenario updates. (Humberto.Morimoto@microsoft.com)
+
+## 7.9.1
+Tue, 30 Jul 2019 12:28:32 GMT
+
+### Patches
+
+- Button: Making Button variants themable by using createComponent instead of wrappers. (Humberto.Morimoto@microsoft.com)
+
+## 7.9.0
+Mon, 29 Jul 2019 12:26:00 GMT
+
+### Minor changes
+
+- Chiclet: add preview prop and its styling and don't do icon lookup for preview (t-stcar@microsoft.com)
+
+## 7.8.1
+Tue, 23 Jul 2019 16:33:51 GMT
+
+### Patches
+
+- Chiclet: Url is now a required prop and two test files are combined into one (t-stcar@microsoft.com)
 
 ## 7.8.0
 Mon, 22 Jul 2019 12:28:42 GMT

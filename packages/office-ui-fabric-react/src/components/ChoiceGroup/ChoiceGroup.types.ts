@@ -81,7 +81,7 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
 /**
  * {@docCategory ChoiceGroup}
  */
-export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * A required key to uniquely identify the option.
    */

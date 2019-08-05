@@ -894,7 +894,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -1270,7 +1269,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -1647,7 +1645,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -2023,7 +2020,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -2400,7 +2396,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -2776,7 +2771,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -3153,7 +3147,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -3529,7 +3522,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -3906,7 +3898,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -4282,7 +4273,6 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"

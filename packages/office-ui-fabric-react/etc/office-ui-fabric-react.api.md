@@ -2190,7 +2190,7 @@ export interface IChoiceGroup {
 }
 
 // @public (undocumented)
-export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
     ariaLabel?: string;
     checked?: boolean;
     disabled?: boolean;
@@ -2775,6 +2775,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
     buttonAs?: IComponentAs<IButtonProps>;
     className?: string;
     componentRef?: IRefObject<ICommandBar>;
+    dataDidRender?: (renderedData: any) => void;
     farItems?: ICommandBarItemProps[];
     items: ICommandBarItemProps[];
     onDataGrown?: (movedItem: ICommandBarItemProps) => void;
@@ -3539,6 +3540,8 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     columns: IColumn[];
     columnStartIndex: number;
     compact?: boolean;
+    // (undocumented)
+    enableUpdateAnimations?: boolean;
     item: any;
     itemIndex: number;
     rowClassNames: {
@@ -4832,6 +4835,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
     cardOpenDelay?: number;
     className?: string;
     componentRef?: IRefObject<IHoverCard>;
+    eventListenerTarget?: HTMLElement | string | null;
     expandedCardOpenDelay?: number;
     expandingCardProps?: IExpandingCardProps;
     instantOpenOnClick?: boolean;
@@ -6601,7 +6605,7 @@ export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'sty
     ariaLabelForShimmer?: string;
     detailsListStyles?: IDetailsListProps['styles'];
     enableShimmer?: boolean;
-    onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React.ReactNode;
+    onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps, index?: number, defaultRender?: (props: IDetailsRowProps) => React.ReactNode) => React.ReactNode;
     removeFadingOverlay?: boolean;
     shimmerLines?: number;
     // @deprecated
@@ -6772,6 +6776,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
     originFromZero?: boolean;
     showValue?: boolean;
+    snapToStep?: boolean;
     step?: number;
     styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
     theme?: ITheme;
@@ -7675,6 +7680,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
 
 // @public (undocumented)
 export interface ITooltipStyleProps {
+    beakWidth?: number;
     className?: string;
     // @deprecated
     delay?: TooltipDelay;
@@ -8679,10 +8685,12 @@ export enum Shade {
 export const Shimmer: React.StatelessComponent<IShimmerProps>;
 
 // @public (undocumented)
-export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
+export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
     constructor(props: IShimmerProps);
     // (undocumented)
-    componentWillReceiveProps(nextProps: IShimmerProps): void;
+    componentDidUpdate(prevProps: IShimmerProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: IShimmerProps;
     // (undocumented)
@@ -8693,11 +8701,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
 export const ShimmerCircle: React.StatelessComponent<IShimmerCircleProps>;
 
 // @public (undocumented)
-export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
-    constructor(props: IShimmerCircleProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ShimmerCircleBase: React.FunctionComponent<IShimmerCircleProps>;
 
 // @public (undocumented)
 export const ShimmeredDetailsList: React.StatelessComponent<IShimmeredDetailsListProps>;
@@ -8720,13 +8724,7 @@ export enum ShimmerElementsDefaultHeights {
 export const ShimmerElementsGroup: React.StatelessComponent<IShimmerElementsGroupProps>;
 
 // @public (undocumented)
-export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGroupProps, {}> {
-    constructor(props: IShimmerElementsGroupProps);
-    // (undocumented)
-    static defaultProps: IShimmerElementsGroupProps;
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ShimmerElementsGroupBase: React.FunctionComponent<IShimmerElementsGroupProps>;
 
 // @public
 export enum ShimmerElementType {
@@ -8739,21 +8737,13 @@ export enum ShimmerElementType {
 export const ShimmerGap: React.StatelessComponent<IShimmerGapProps>;
 
 // @public (undocumented)
-export class ShimmerGapBase extends BaseComponent<IShimmerGapProps, {}> {
-    constructor(props: IShimmerGapProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ShimmerGapBase: React.FunctionComponent<IShimmerGapProps>;
 
 // @public (undocumented)
 export const ShimmerLine: React.StatelessComponent<IShimmerLineProps>;
 
 // @public (undocumented)
-export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
-    constructor(props: IShimmerLineProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ShimmerLineBase: React.FunctionComponent<IShimmerLineProps>;
 
 // @public (undocumented)
 export const sizeBoolean: (size: PersonaSize) => {
@@ -8792,9 +8782,11 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 }
 
 // @public (undocumented)
-export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
+export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
     constructor(props: ISpinButtonProps);
     componentWillReceiveProps(newProps: ISpinButtonProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: DefaultProps;
     // (undocumented)
