@@ -7,7 +7,8 @@ import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
  * {@docCategory Slider}
  */
 export interface ISlider {
-  value: number | undefined;
+  valueLeft: number | undefined;
+  valueRight: number | undefined;
 
   focus: () => void;
 }
@@ -41,7 +42,8 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * The initial value of the Slider. Use this if you intend for the Slider to be an uncontrolled component.
    * This value is mutually exclusive to value. Use one or the other.
    */
-  defaultValue?: number;
+  defaultValueLeft?: number;
+  defaultValueRight?: number;
 
   /**
    * the left thumb
@@ -54,11 +56,11 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * @defaultvalue 8
    */
   valueRight?: number;
-  /**
-   * The initial value of the Slider. Use this if you intend to pass in a new value as a result of onChange events.
-   * This value is mutually exclusive to defaultValue. Use one or the other.
-   */
-  value?: number;
+  // /**
+  //  * The initial value of the Slider. Use this if you intend to pass in a new value as a result of onChange events.
+  //  * This value is mutually exclusive to defaultValue. Use one or the other.
+  //  */
+  // value?: number;
 
   /**
    * The min value of the Slider

@@ -6,22 +6,19 @@ import { Label } from '../../Label';
 
 export interface ISliderState {
   valueLeft?: number;
-  valueRight?: number;
   renderedValueLeft?: number;
+  valueRight?: number;
   renderedValueRight?: number;
 }
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
-export class RangeSlider extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
-  value: number;
+export class RangeSlider2 extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
     step: 1,
     min: 0,
     max: 10,
-    valueLeft: 2,
-    valueRight: 7,
     showValue: true,
     disabled: false,
     vertical: false,
@@ -38,14 +35,16 @@ export class RangeSlider extends BaseComponent<ISliderProps, ISliderState> imple
     super(props);
 
     this._warnMutuallyExclusive({
-      value: 'defaultValue'
+      valueLeft: 'defaultValueLeft',
+      valueRight: 'defaultValueRight'
     });
 
     this._id = getId('Slider');
 
-    const valueLeft = props.valueLeft !== undefined ? props.valueLeft : props.defaultValue !== undefined ? props.defaultValue : props.min;
+    const valueLeft =
+      props.valueLeft !== undefined ? props.valueLeft : props.defaultValueLeft !== undefined ? props.defaultValueLeft : props.min;
     const valueRight =
-      props.valueRight !== undefined ? props.valueRight : props.defaultValue !== undefined ? props.defaultValue : props.min;
+      props.valueLeft !== undefined ? props.valueRight : props.defaultValueRight !== undefined ? props.defaultValueRight : props.min;
 
     this.state = {
       valueLeft: valueLeft,
@@ -75,8 +74,8 @@ export class RangeSlider extends BaseComponent<ISliderProps, ISliderState> imple
     const valueRight = this.valueRight;
     const renderedValueLeft = this.renderedValueLeft;
     const renderedValueRight = this.renderedValueRight;
-    const thumbOffsetPercentLeft: number = min === max ? 0 : ((renderedValueLeft! - min!) / (max! - min!)) * 100;
-    const thumbOffsetPercentRight: number = min === max ? 0 : ((renderedValueRight! - min!) / (max! - min!)) * 100;
+    const leftThumbOffsetPercent: number = min === max ? 0 : ((renderedValueLeft! - min!) / (max! - min!)) * 100;
+    const rightThumbOffsetPercent: number = min === max ? 0 : ((renderedValueRight! - min!) / (max! - min!)) * 100;
     const zeroOffsetPercent: number = min! >= 0 ? 0 : (-min! / (max! - min!)) * 100;
     const lengthString = vertical ? 'height' : 'width';
     const onMouseDownProp: {} = disabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
@@ -101,11 +100,10 @@ export class RangeSlider extends BaseComponent<ISliderProps, ISliderState> imple
         )}
         <div className={classNames.container}>
           <div
-            aria-valueLeft={valueLeft}
-            aria-valueRight={valueRight}
+            aria-valuenow={valueLeft} // FIX ThiS FOR RIGHT SIDE TOO BUT LATER...
             aria-valuemin={min}
             aria-valuemax={max}
-            // aria-valuetext={this._getAriaValueText(valueLeft)} ComE BACK TO LATER
+            aria-valuetext={this._getAriaValueText(valueLeft)} // ALSO FIX LATER
             aria-label={ariaLabel || label}
             aria-disabled={disabled}
             {...onMouseDownProp}
@@ -125,43 +123,41 @@ export class RangeSlider extends BaseComponent<ISliderProps, ISliderState> imple
               <span
                 ref={this._thumb}
                 className={classNames.thumb}
-                style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercentLeft)}
+                style={this._getStyleUsingOffsetPercent(vertical, leftThumbOffsetPercent)}
               />
               <span
                 ref={this._thumb}
                 className={classNames.thumb}
-                style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercentRight)}
+                style={this._getStyleUsingOffsetPercent(vertical, rightThumbOffsetPercent)}
               />
               {originFromZero ? (
                 <>
-                  {' '}
-                  {/* UGHHH FIX ISSUES LATER */}
                   <span
                     className={css(classNames.lineContainer, classNames.inactiveSection)}
-                    style={{ [lengthString]: Math.min(thumbOffsetPercentLeft, zeroOffsetPercent) + '%' }}
+                    style={{ [lengthString]: Math.min(leftThumbOffsetPercent, rightThumbOffsetPercent, zeroOffsetPercent) + '%' }}
                   />
                   <span
                     className={css(classNames.lineContainer, classNames.activeSection)}
-                    style={{ [lengthString]: Math.abs(zeroOffsetPercent - thumbOffsetPercentLeft) + '%' }}
+                    style={{ [lengthString]: Math.abs(zeroOffsetPercent - leftThumbOffsetPercent) + '%' }}
                   />
                   <span
                     className={css(classNames.lineContainer, classNames.inactiveSection)}
-                    style={{ [lengthString]: Math.min(100 - thumbOffsetPercentLeft, 100 - zeroOffsetPercent) + '%' }}
+                    style={{ [lengthString]: Math.min(100 - leftThumbOffsetPercent, 100 - zeroOffsetPercent) + '%' }}
                   />
                 </>
               ) : (
                 <>
                   <span
                     className={css(classNames.lineContainer, classNames.inactiveSection)}
-                    style={{ [lengthString]: 100 - thumbOffsetPercentLeft + '%' }}
+                    style={{ [lengthString]: Math.min(leftThumbOffsetPercent, rightThumbOffsetPercent) + '%' }}
                   />
                   <span
                     className={css(classNames.lineContainer, classNames.activeSection)}
-                    style={{ [lengthString]: thumbOffsetPercentRight - thumbOffsetPercentLeft + '%' }}
+                    style={{ [lengthString]: Math.abs(leftThumbOffsetPercent - rightThumbOffsetPercent) + '%' }}
                   />
                   <span
                     className={css(classNames.lineContainer, classNames.inactiveSection)}
-                    style={{ [lengthString]: 100 - thumbOffsetPercentRight + '%' }}
+                    style={{ [lengthString]: 100 - rightThumbOffsetPercent + '%' }}
                   />
                 </>
               )}
@@ -170,6 +166,7 @@ export class RangeSlider extends BaseComponent<ISliderProps, ISliderState> imple
           {showValue && (
             <Label className={classNames.valueLabel} disabled={disabled}>
               {valueFormat ? valueFormat(valueLeft!) : valueLeft}
+              {valueFormat ? valueFormat(valueRight!) : valueRight}
             </Label>
           )}
         </div>
@@ -207,15 +204,16 @@ export class RangeSlider extends BaseComponent<ISliderProps, ISliderState> imple
   }
 
   private get renderedValueRight(): number | undefined {
+    // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`. Fall back to `value`.
     const { renderedValueRight = this.valueRight } = this.state;
     return renderedValueRight;
   }
 
-  // private _getAriaValueText = (valueLeft: number | undefined, valueRight: number | undefined): string | undefined => {
-  //   if (this.props.ariaValueText && valueLeft !== undefined && valueRight !== undefined) {
-  //     return this.props.ariaValueText(this.value);
-  //   }
-  // };
+  private _getAriaValueText = (value: number | undefined): string | undefined => {
+    if (this.props.ariaValueText && value !== undefined) {
+      return this.props.ariaValueText(value);
+    }
+  };
 
   private _getStyleUsingOffsetPercent(vertical: boolean | undefined, thumbOffsetPercent: number): any {
     const direction: string = vertical ? 'bottom' : getRTL() ? 'right' : 'left';
@@ -260,33 +258,25 @@ export class RangeSlider extends BaseComponent<ISliderProps, ISliderState> imple
 
     let currentValueLeft: number | undefined;
     let renderedValueLeft: number | undefined;
-
-    // The value shouldn't be bigger than max or be smaller than min.
-    if (currentSteps! > Math.floor(steps)) {
-      renderedValueLeft = currentValueLeft = max as number;
-    } else if (currentSteps! < 0) {
-      renderedValueLeft = currentValueLeft = min as number;
-    } else {
-      renderedValueLeft = min! + step! * currentSteps!;
-      currentValueLeft = min! + step! * Math.round(currentSteps!);
-    }
-
-    this._updateLeftValue(currentValueLeft, renderedValueLeft);
-
     let currentValueRight: number | undefined;
     let renderedValueRight: number | undefined;
 
     // The value shouldn't be bigger than max or be smaller than min.
     if (currentSteps! > Math.floor(steps)) {
+      renderedValueLeft = currentValueLeft = max as number;
       renderedValueRight = currentValueRight = max as number;
     } else if (currentSteps! < 0) {
       renderedValueRight = currentValueRight = min as number;
+      renderedValueLeft = currentValueLeft = min as number;
     } else {
+      renderedValueLeft = min! + step! * currentSteps!;
       renderedValueRight = min! + step! * currentSteps!;
-      currentValueRight = min! + step! * Math.round(currentSteps!);
+      currentValueLeft = min! + step! * Math.round(currentSteps!);
+      currentValueRight = currentValueLeft;
     }
 
-    this._updateRightValue(currentValueRight, renderedValueRight);
+    this._updateValue(currentValueLeft, renderedValueLeft);
+    this._updateValue(currentValueRight, renderedValueRight);
 
     if (!suppressEventCancelation) {
       event.preventDefault();
@@ -308,8 +298,7 @@ export class RangeSlider extends BaseComponent<ISliderProps, ISliderState> imple
     }
     return currentPosition;
   }
-
-  private _updateLeftValue(value: number, renderedValueLeft: number): void {
+  private _updateValue(value: number, renderedValue: number): void {
     const { step } = this.props;
 
     let numDec = 0;
@@ -318,9 +307,6 @@ export class RangeSlider extends BaseComponent<ISliderProps, ISliderState> imple
         numDec++;
       }
     }
-
-    console.log(renderedValueLeft + ' this is the left rendered value');
-    console.log(this.valueLeft + ' this is the left value');
 
     // Make sure value has correct number of decimal places based on number of decimals in step
     const roundedValue = parseFloat(value.toFixed(numDec));
@@ -328,38 +314,12 @@ export class RangeSlider extends BaseComponent<ISliderProps, ISliderState> imple
 
     this.setState(
       {
-        valueLeft: roundedValue,
-        renderedValueLeft
+        value: roundedValue,
+        renderedValue
       },
       () => {
         if (valueChanged && this.props.onChange) {
-          this.props.onChange(this.state.valueLeft as number);
-        }
-      }
-    );
-  }
-  private _updateRightValue(value: number, renderedValueRight: number): void {
-    const { step } = this.props;
-
-    let numDec = 0;
-    if (isFinite(step!)) {
-      while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
-        numDec++;
-      }
-    }
-
-    // Make sure value has correct number of decimal places based on number of decimals in step
-    const roundedValue = parseFloat(value.toFixed(numDec));
-    const valueChanged = roundedValue !== this.state.valueRight;
-
-    this.setState(
-      {
-        valueRight: roundedValue,
-        renderedValueRight
-      },
-      () => {
-        if (valueChanged && this.props.onChange) {
-          this.props.onChange(this.state.valueRight as number);
+          this.props.onChange(this.state.value as number);
         }
       }
     );
@@ -368,21 +328,20 @@ export class RangeSlider extends BaseComponent<ISliderProps, ISliderState> imple
   private _onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
     // Disable renderedValue override.
     this.setState({
-      renderedValueLeft: undefined,
-      renderedValueRight: undefined
+      renderedValue: undefined
     });
 
     if (this.props.onChanged) {
-      this.props.onChanged(event, this.state.valueLeft as number);
-      this.props.onChanged(event, this.state.valueRight as number);
+      this.props.onChanged(event, this.state.value as number);
     }
 
     this._events.off();
   };
 
   private _onKeyDown = (event: KeyboardEvent): void => {
+    let value: number | undefined = this.state.value;
     const { max, min, step } = this.props;
-    let value: number | undefined = this.state.valueLeft;
+
     let diff: number | undefined = 0;
 
     switch (event.which) {
@@ -415,46 +374,9 @@ export class RangeSlider extends BaseComponent<ISliderProps, ISliderState> imple
         return;
     }
 
-    let newValue: number = Math.min(max as number, Math.max(min as number, value! + diff!));
+    const newValue: number = Math.min(max as number, Math.max(min as number, value! + diff!));
 
-    this._updateLeftValue(newValue, newValue);
-
-    value = this.state.valueRight;
-    diff = 0;
-
-    switch (event.which) {
-      case getRTLSafeKeyCode(KeyCodes.left):
-      case KeyCodes.down:
-        diff = -(step as number);
-
-        this._clearOnKeyDownTimer();
-        this._setOnKeyDownTimer(event);
-
-        break;
-      case getRTLSafeKeyCode(KeyCodes.right):
-      case KeyCodes.up:
-        diff = step;
-
-        this._clearOnKeyDownTimer();
-        this._setOnKeyDownTimer(event);
-
-        break;
-
-      case KeyCodes.home:
-        value = min;
-        break;
-
-      case KeyCodes.end:
-        value = max;
-        break;
-
-      default:
-        return;
-    }
-
-    newValue = Math.min(max as number, Math.max(min as number, value! + diff!));
-
-    this._updateRightValue(newValue, newValue);
+    this._updateValue(newValue, newValue);
 
     event.preventDefault();
     event.stopPropagation();
@@ -467,7 +389,7 @@ export class RangeSlider extends BaseComponent<ISliderProps, ISliderState> imple
   private _setOnKeyDownTimer = (event: KeyboardEvent): void => {
     this._onKeyDownTimer = this._async.setTimeout(() => {
       if (this.props.onChanged) {
-        this.props.onChanged(event, this.state.valueLeft as number);
+        this.props.onChanged(event, this.state.value as number);
       }
     }, ONKEYDOWN_TIMEOUT_DURATION);
   };
