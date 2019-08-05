@@ -90,6 +90,14 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
   onDataGrown?: (movedItem: ICommandBarItemProps) => void;
 
   /**
+   * Function to be called every time data is rendered. It provides the data that was actually rendered.
+   * A use case would be adding telemetry when a particular control is shown in an overflow well or
+   * dropped as a result of onReduceData or to count the number of renders that an implementation of
+   * onReduceData triggers.
+   */
+  dataDidRender?: (renderedData: any) => void;
+
+  /**
    * Additional css class to apply to the command bar
    * @defaultvalue undefined
    */

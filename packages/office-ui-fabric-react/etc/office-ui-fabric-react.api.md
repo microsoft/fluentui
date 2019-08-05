@@ -2780,6 +2780,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
     buttonAs?: IComponentAs<IButtonProps>;
     className?: string;
     componentRef?: IRefObject<ICommandBar>;
+    dataDidRender?: (renderedData: any) => void;
     farItems?: ICommandBarItemProps[];
     items: ICommandBarItemProps[];
     onDataGrown?: (movedItem: ICommandBarItemProps) => void;
