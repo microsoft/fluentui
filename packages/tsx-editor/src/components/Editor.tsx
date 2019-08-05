@@ -23,7 +23,8 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
 
     monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: true });
 
-    const model = monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('file:///main.tsx'));
+    // Creating proxy URL for JSX support since HTML5 does not allow pages loaded on file:// to create web workers
+    const model = monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('https://developer.microsoft.com/main.tsx'));
 
     onChange(model);
 
