@@ -49,7 +49,10 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
       themeIndex: 0
     };
     this.canRenderLiveEditor =
-      getSetting('useEditor') === '1' && !isIE11() && transformExample(props.code!, 'placeholder').error === undefined;
+      getSetting('useEditor') === '1' &&
+      !isIE11() &&
+      typeof importScripts !== 'undefined' &&
+      transformExample(props.code!, 'placeholder').error === undefined;
 
     if (this.canRenderLiveEditor) {
       import('office-ui-fabric-react').then(Fabric => {
