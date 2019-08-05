@@ -116,7 +116,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
               aria-posinset={ariaPositionInSet}
               aria-setsize={ariaSetSize}
             />
-            <label aria-hidden="true" className={this._classNames.label} htmlFor={this._id}>
+            <label className={this._classNames.label} htmlFor={this._id}>
               <div className={this._classNames.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
                 <Icon iconName="CheckMark" {...checkmarkIconProps} className={this._classNames.checkmark} />
               </div>
@@ -172,6 +172,10 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   private _onRenderLabel = (props: ICheckboxProps): JSX.Element | null => {
     const { label } = props;
 
-    return label ? <span className={this._classNames.text}>{label}</span> : null;
+    return label ? (
+      <span aria-hidden="true" className={this._classNames.text}>
+        {label}
+      </span>
+    ) : null;
   };
 }

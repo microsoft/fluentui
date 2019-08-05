@@ -59,7 +59,6 @@ exports[`Component Examples renders Modal.Modeless.Example.tsx correctly 1`] = `
       type="checkbox"
     />
     <label
-      aria-hidden="true"
       className=
           ms-Checkbox-label
           {
@@ -132,6 +131,7 @@ exports[`Component Examples renders Modal.Modeless.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {

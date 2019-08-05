@@ -66,7 +66,6 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
         type="checkbox"
       />
       <label
-        aria-hidden="true"
         className=
             ms-Checkbox-label
             {
@@ -139,6 +138,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
           </i>
         </div>
         <span
+          aria-hidden="true"
           className=
               ms-Checkbox-text
               {

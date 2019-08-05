@@ -412,7 +412,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               type="checkbox"
             />
             <label
-              aria-hidden="true"
               className=
                   ms-Checkbox-label
                   {
@@ -485,6 +484,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
@@ -553,7 +553,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               type="checkbox"
             />
             <label
-              aria-hidden="true"
               className=
                   ms-Checkbox-label
                   {
@@ -626,6 +625,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
@@ -694,7 +694,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               type="checkbox"
             />
             <label
-              aria-hidden="true"
               className=
                   ms-Checkbox-label
                   {
@@ -767,6 +766,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
@@ -834,7 +834,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               type="checkbox"
             />
             <label
-              aria-hidden="true"
               className=
                   ms-Checkbox-label
                   {
@@ -907,6 +906,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
@@ -1239,7 +1239,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             type="checkbox"
           />
           <label
-            aria-hidden="true"
             className=
                 ms-Checkbox-label
                 {
@@ -1318,6 +1317,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               </i>
             </div>
             <span
+              aria-hidden="true"
               className=
                   ms-Checkbox-text
                   {
@@ -2196,7 +2196,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 type="checkbox"
               />
               <label
-                aria-hidden="true"
                 className=
                     ms-Checkbox-label
                     {
@@ -2269,6 +2268,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   </i>
                 </div>
                 <span
+                  aria-hidden="true"
                   className=
                       ms-Checkbox-text
                       {
