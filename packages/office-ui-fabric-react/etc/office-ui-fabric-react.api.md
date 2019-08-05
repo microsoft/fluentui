@@ -2125,7 +2125,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
     keytipProps?: IKeytipProps;
     label?: string;
-    onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean, wasIndeterminate?: boolean) => void;
+    onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
     onRenderLabel?: IRenderFunction<ICheckboxProps>;
     styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
     theme?: ITheme;
