@@ -48,16 +48,7 @@ export const useCollapsibleSectionState: ICollapsibleSectionComponent['state'] =
 
   const _onRootKeyDown = useCallback((ev: React.KeyboardEvent<Element>) => {
     const rootKey = getRTL() ? KeyCodes.right : KeyCodes.left;
-
-    // If left/right keypress originates from text input or text area inside collapsible section,
-    // ignore the event.
-    if (
-      ev.which === rootKey &&
-      ev.target !== titleElementRef.current &&
-      titleElementRef.current &&
-      !(ev.target instanceof HTMLTextAreaElement) &&
-      !(ev.target instanceof HTMLInputElement && ev.target.type === 'text')
-    ) {
+    if (ev.which === rootKey && ev.target !== titleElementRef.current && titleElementRef.current) {
       titleElementRef.current.focus();
       ev.preventDefault();
       ev.stopPropagation();
