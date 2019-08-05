@@ -39,7 +39,9 @@ export function transformExample(example: string, id: string) {
     while ((temp = constNamePattern.exec(example))) {
       className = temp[0];
     }
-    if (className !== undefined) className = className.replace('var ', '');
+    if (className !== undefined) {
+      className = className.replace('var ', '');
+    }
   }
 
   /**
