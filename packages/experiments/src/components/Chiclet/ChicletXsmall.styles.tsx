@@ -58,7 +58,7 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: 60,
+        height: 64,
         width: 59
       }
     ],
