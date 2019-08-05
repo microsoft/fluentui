@@ -24,6 +24,7 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
           showValue={true}
           onChange={(value: number) => console.log(value)}
         />
+<<<<<<< HEAD
         <Slider
           label="Tick example"
           min={1}
@@ -35,6 +36,8 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
           showThumbTooltip
           enableMarks
         />
+=======
+>>>>>>> parent of bf1842847... Slider: Add new prop to snap to nearest value on change. (#9779)
         <Slider label="Disabled example" min={50} max={500} step={50} defaultValue={300} showValue={true} disabled={true} />
         <Slider
           label="Controlled example"

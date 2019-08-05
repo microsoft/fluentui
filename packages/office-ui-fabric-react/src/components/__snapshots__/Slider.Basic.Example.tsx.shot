@@ -283,6 +283,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
   <div
     className=
         ms-Slider
+<<<<<<< HEAD
         ms-Slider-enabled
         ms-Slider-row
         {
@@ -692,6 +693,8 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
   <div
     className=
         ms-Slider
+=======
+>>>>>>> parent of bf1842847... Slider: Add new prop to snap to nearest value on change. (#9779)
         ms-Slider-disabled
         ms-Slider-row
         {
@@ -731,10 +734,14 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             color: GrayText;
           }
 <<<<<<< HEAD
+<<<<<<< HEAD
       htmlFor="Slider8"
 =======
       htmlFor="Slider2"
 >>>>>>> master
+=======
+      htmlFor="Slider1"
+>>>>>>> parent of bf1842847... Slider: Add new prop to snap to nearest value on change. (#9779)
     >
       Disabled example
     </label>
@@ -806,10 +813,14 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             }
         data-is-focusable={false}
 <<<<<<< HEAD
+<<<<<<< HEAD
         id="Slider8"
 =======
         id="Slider2"
 >>>>>>> master
+=======
+        id="Slider1"
+>>>>>>> parent of bf1842847... Slider: Add new prop to snap to nearest value on change. (#9779)
         role="slider"
       >
         <div
@@ -952,10 +963,14 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             word-wrap: break-word;
           }
 <<<<<<< HEAD
+<<<<<<< HEAD
       htmlFor="Slider11"
 =======
       htmlFor="Slider3"
 >>>>>>> master
+=======
+      htmlFor="Slider2"
+>>>>>>> parent of bf1842847... Slider: Add new prop to snap to nearest value on change. (#9779)
     >
       Controlled example
     </label>
@@ -1072,10 +1087,14 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             }
         data-is-focusable={true}
 <<<<<<< HEAD
+<<<<<<< HEAD
         id="Slider11"
 =======
         id="Slider3"
 >>>>>>> master
+=======
+        id="Slider2"
+>>>>>>> parent of bf1842847... Slider: Add new prop to snap to nearest value on change. (#9779)
         onKeyDown={[Function]}
         onMouseDown={[Function]}
         onTouchStart={[Function]}
@@ -1217,10 +1236,14 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             word-wrap: break-word;
           }
 <<<<<<< HEAD
+<<<<<<< HEAD
       htmlFor="Slider14"
 =======
       htmlFor="Slider4"
 >>>>>>> master
+=======
+      htmlFor="Slider3"
+>>>>>>> parent of bf1842847... Slider: Add new prop to snap to nearest value on change. (#9779)
     >
       Example with formatted value
     </label>
@@ -1337,10 +1360,14 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             }
         data-is-focusable={true}
 <<<<<<< HEAD
+<<<<<<< HEAD
         id="Slider14"
 =======
         id="Slider4"
 >>>>>>> master
+=======
+        id="Slider3"
+>>>>>>> parent of bf1842847... Slider: Add new prop to snap to nearest value on change. (#9779)
         onKeyDown={[Function]}
         onMouseDown={[Function]}
         onTouchStart={[Function]}
@@ -1482,10 +1509,14 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             word-wrap: break-word;
           }
 <<<<<<< HEAD
+<<<<<<< HEAD
       htmlFor="Slider17"
 =======
       htmlFor="Slider5"
 >>>>>>> master
+=======
+      htmlFor="Slider4"
+>>>>>>> parent of bf1842847... Slider: Add new prop to snap to nearest value on change. (#9779)
     >
       Origin from zero
     </label>
@@ -1602,10 +1633,14 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             }
         data-is-focusable={true}
 <<<<<<< HEAD
+<<<<<<< HEAD
         id="Slider17"
 =======
         id="Slider5"
 >>>>>>> master
+=======
+        id="Slider4"
+>>>>>>> parent of bf1842847... Slider: Add new prop to snap to nearest value on change. (#9779)
         onKeyDown={[Function]}
         onMouseDown={[Function]}
         onTouchStart={[Function]}
