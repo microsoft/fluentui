@@ -561,7 +561,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   }
 
   private _sortStickyList(stickyList: Sticky[]): Sticky[] {
-    let stickyListCopy: Sticky[] = [...stickyList];
+    const stickyListCopy: Sticky[] = [...stickyList];
     if (this._sortBasedOnOrder()) {
       return stickyListCopy.sort((a, b) => {
         return (a.props.order || 0) - (b.props.order || 0);
