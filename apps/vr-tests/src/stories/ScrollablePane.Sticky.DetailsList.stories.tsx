@@ -283,7 +283,7 @@ storiesOf('ScrollablePane-Sticky Details List', module)
         .executeScript(`${getElement}.scrollLeft=0`)
         .executeScript(`${getElement}.scrollTop=2`)
         .snapshot('scroll down by a small amount so that the first row is still visible', cropTo)
-        .executeScript(`${getElement}.scrollLeft=500`)
+        .executeScript(`${getElement}.scrollLeft=50`)
         .snapshot(
           'scroll horizontally to see if header and footer are aligned for non-zero scroll',
           cropTo
@@ -297,7 +297,7 @@ storiesOf('ScrollablePane-Sticky Details List', module)
         .executeScript(`${getElement}.scrollLeft=0`)
         .snapshot('scroll horizontally to see if header and footer are aligned', cropTo)
         .executeScript(`${getElement}.scrollTop=999999`)
-        .executeScript(`${getElement}.scrollLeft=500`)
+        .executeScript(`${getElement}.scrollLeft=50`)
         .snapshot(
           'scroll horizontally to see if header and footer are aligned for non-zero scroll (2)',
           cropTo
