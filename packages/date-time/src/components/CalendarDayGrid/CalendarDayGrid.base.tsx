@@ -35,7 +35,15 @@ export interface IDayInfo {
 
 export interface ICalendarDayGridState {
   activeDescendantId?: string;
+
+  /**
+   * Weeks is a 2D array. Weeks[0] contains the last week of the prior range,
+   * Weeks[weeks.length - 1] contains first week of next range. These are for transition states.
+   *
+   * Weeks[1... weeks.length - 2] contains the actual visible data
+   */
   weeks?: IDayInfo[][];
+  animateBackwards?: boolean;
 }
 
 export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, ICalendarDayGridState> {
@@ -54,25 +62,50 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
   }
 
   public componentWillReceiveProps(nextProps: ICalendarDayGridProps): void {
+    const weeks = this._getWeeks(nextProps);
+    let isBackwards = undefined;
+
+    if (this.state.weeks) {
+      const previousDate = this.state.weeks[0][0].originalDate;
+      const nextDate = weeks[0][0].originalDate;
+      if (previousDate < nextDate) {
+        isBackwards = false;
+      } else if (previousDate > nextDate) {
+        isBackwards = true;
+      }
+    }
+
     this.setState({
-      weeks: this._getWeeks(nextProps)
+      weeks: weeks,
+      animateBackwards: isBackwards
     });
   }
 
   public render(): JSX.Element {
-    const { activeDescendantId, weeks } = this.state;
-    const { styles, theme, className, dateRangeType, showWeekNumbers, labelledBy, lightenDaysOutsideNavigatedMonth } = this.props;
+    const { activeDescendantId, weeks, animateBackwards } = this.state;
+    const {
+      styles,
+      theme,
+      className,
+      dateRangeType,
+      showWeekNumbers,
+      labelledBy,
+      lightenDaysOutsideNavigatedMonth,
+      animationDirection
+    } = this.props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
       className: className,
       dateRangeType: dateRangeType,
       showWeekNumbers: showWeekNumbers,
-      lightenDaysOutsideNavigatedMonth: lightenDaysOutsideNavigatedMonth === undefined ? true : lightenDaysOutsideNavigatedMonth
+      lightenDaysOutsideNavigatedMonth: lightenDaysOutsideNavigatedMonth === undefined ? true : lightenDaysOutsideNavigatedMonth,
+      animationDirection: animationDirection,
+      animateBackwards: animateBackwards
     });
 
     return (
-      <FocusZone>
+      <FocusZone className={classNames.wrapper}>
         <table
           className={classNames.table}
           aria-readonly="true"
@@ -83,7 +116,11 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
         >
           <tbody>
             {this.renderMonthHeaderRow(classNames)}
-            {weeks!.map((week: IDayInfo[], weekIndex: number) => this.renderWeekRow(classNames, week, weekIndex))}
+            {this.renderRow(classNames, weeks![0], -1, classNames.firstTransitionWeek, 'presentation')}
+            {weeks!
+              .slice(1, weeks!.length - 1)
+              .map((week: IDayInfo[], weekIndex: number) => this.renderRow(classNames, week, weekIndex, classNames.weekRow))}
+            {this.renderRow(classNames, weeks![weeks!.length - 1], -2, classNames.lastTransitionWeek, 'presentation')}
           </tbody>
         </table>
       </FocusZone>
@@ -98,27 +135,45 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
   }
 
   private renderMonthHeaderRow = (classNames: IProcessedStyleSet<ICalendarDayGridStyles>): JSX.Element => {
-    const { showWeekNumbers, strings, firstDayOfWeek, allFocusable } = this.props;
+    const { showWeekNumbers, strings, firstDayOfWeek, allFocusable, weeksToShow } = this.props;
+    const { weeks } = this.state;
+    const dayLabels = strings.shortDays.slice();
+    const firstOfMonthIndex = weeks![1].findIndex((day: IDayInfo) => day.originalDate.getDate() === 1);
+    if (weeksToShow === 1 && firstOfMonthIndex >= 0) {
+      // if we only show one week, replace the header with short month name
+      dayLabels[firstOfMonthIndex] = strings.shortMonths[weeks![1][firstOfMonthIndex].originalDate.getMonth()];
+    }
+
     return (
       <tr>
         {showWeekNumbers && <th className={classNames.dayCell} />}
-        {strings.shortDays.map((val: string, index: number) => (
-          <th
-            className={classNames.dayCell}
-            scope="col"
-            key={index}
-            title={strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK]}
-            aria-label={strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK]}
-            data-is-focusable={allFocusable ? true : undefined}
-          >
-            {strings.shortDays[(index + firstDayOfWeek) % DAYS_IN_WEEK]}
-          </th>
-        ))}
+        {dayLabels.map((val: string, index: number) => {
+          const i = (index + firstDayOfWeek) % DAYS_IN_WEEK;
+          const label = index === firstOfMonthIndex ? strings.days[i] + ' ' + dayLabels[i] : strings.days[i];
+          return (
+            <th
+              className={css(classNames.dayCell, classNames.weekDayLabelCell)}
+              scope="col"
+              key={dayLabels[i] + ' ' + index}
+              title={label}
+              aria-label={label}
+              data-is-focusable={allFocusable ? true : undefined}
+            >
+              {dayLabels[i]}
+            </th>
+          );
+        })}
       </tr>
     );
   };
 
-  private renderWeekRow = (classNames: IProcessedStyleSet<ICalendarDayGridStyles>, week: IDayInfo[], weekIndex: number): JSX.Element => {
+  private renderRow = (
+    classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
+    week: IDayInfo[],
+    weekIndex: number,
+    rowClassName?: string,
+    ariaRole?: string
+  ): JSX.Element => {
     const { showWeekNumbers, firstDayOfWeek, firstWeekOfYear, navigatedDate, strings } = this.props;
     const { weeks } = this.state;
     const weekNumbers = showWeekNumbers ? getWeekNumbersInMonth(weeks!.length, firstDayOfWeek, firstWeekOfYear, navigatedDate) : null;
@@ -126,7 +181,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     const titleString = weekNumbers ? strings.weekNumberFormatString && format(strings.weekNumberFormatString, weekNumbers[weekIndex]) : '';
 
     return (
-      <tr key={weekNumbers ? weekNumbers[weekIndex] : weekIndex}>
+      <tr role={ariaRole} className={rowClassName} key={weekIndex + '_' + week[0].key}>
         {showWeekNumbers && weekNumbers && (
           <th className={classNames.weekNumberCell} key={weekIndex} title={titleString} aria-label={titleString} scope="row">
             <span>{weekNumbers[weekIndex]}</span>
@@ -232,7 +287,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     const isInCurrentView =
       this.state.weeks &&
       nextDate &&
-      this.state.weeks.some((week: IDayInfo[]) => {
+      this.state.weeks.slice(1, this.state.weeks.length - 1).some((week: IDayInfo[]) => {
         return week.some((day: IDayInfo) => {
           return compareDates(day.originalDate, nextDate!);
         });
@@ -328,6 +383,9 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       date.setDate(date.getDate() - 1);
     }
 
+    // add the transition week as last week of previous range
+    date = addDays(date, -DAYS_IN_WEEK);
+
     // a flag to indicate whether all days of the week are outside the month
     let isAllDaysOfWeekOutOfMonth = false;
 
@@ -368,10 +426,10 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       }
 
       // We append the condition of the loop depending upon the showSixWeeksByDefault prop.
-      shouldGetWeeks = weeksToShow ? weekIndex < weeksToShow : !isAllDaysOfWeekOutOfMonth;
-      if (shouldGetWeeks) {
-        weeks.push(week);
-      }
+      shouldGetWeeks = weeksToShow ? weekIndex < weeksToShow + 1 : !isAllDaysOfWeekOutOfMonth || weekIndex === 0;
+
+      // we don't check shouldGetWeeks before pushing because we want to add one extra week for transition state
+      weeks.push(week);
     }
 
     return weeks;

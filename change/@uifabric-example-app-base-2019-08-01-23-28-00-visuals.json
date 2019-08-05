@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "updated style to add spinner for loading editor",
+  "packageName": "@uifabric/example-app-base",
+  "email": "t-nikaz@microsoft.com",
+  "commit": "6539ca2b3e21e98cf2909fcdb4157020569cf2f6",
+  "date": "2019-08-02T06:28:00.159Z"
+}

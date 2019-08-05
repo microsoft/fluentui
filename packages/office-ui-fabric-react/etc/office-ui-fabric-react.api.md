@@ -6787,6 +6787,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
     originFromZero?: boolean;
     showValue?: boolean;
+    snapToStep?: boolean;
     step?: number;
     styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
     theme?: ITheme;

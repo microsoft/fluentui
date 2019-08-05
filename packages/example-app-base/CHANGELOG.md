@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 30 Jul 2019 12:28:32 GMT and should not be manually modified.
+This log was last generated on Fri, 02 Aug 2019 12:33:29 GMT and should not be manually modified.
+
+## 7.2.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- Website changes to work with monaco editor state management (t-nikaz@microsoft.com)
 
 ## 7.1.7
 Tue, 30 Jul 2019 12:28:32 GMT
