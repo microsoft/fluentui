@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Initial implementation of clickable legends",
+  "packageName": "@uifabric/charting",
+  "email": "atgupta@microsoft.com",
+  "commit": "98ff6951712d70a787f19dab3b48ab94ef7d107a",
+  "date": "2019-08-06T21:57:58.370Z"
+}
