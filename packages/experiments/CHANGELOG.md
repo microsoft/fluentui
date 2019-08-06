@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 02 Aug 2019 12:33:29 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Aug 2019 12:32:07 GMT and should not be manually modified.
+
+## 7.10.1
+Tue, 06 Aug 2019 12:32:07 GMT
+
+### Patches
+
+- Ignore left/right keypress from inner text input/textarea (rezha@microsoft.com)
 
 ## 7.10.0
 Fri, 02 Aug 2019 12:33:29 GMT
