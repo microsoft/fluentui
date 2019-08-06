@@ -1,6 +1,5 @@
-import { normalize, getGlobalClassNames } from '../../Styling';
+import { normalize, getGlobalClassNames, FontWeights } from '../../Styling';
 import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
-import { FontWeights } from '@uifabric/styling';
 
 const GlobalClassNames = {
   root: 'ms-ChicletXsmall',

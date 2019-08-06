@@ -1,6 +1,5 @@
-import { normalize } from '../../Styling';
+import { normalize, FontWeights } from '../../Styling';
 import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
-import { FontWeights } from '@uifabric/styling';
 
 export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => {
   const { theme, className } = props;
