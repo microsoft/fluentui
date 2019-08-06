@@ -2,7 +2,6 @@ import { IDetailsRowStyleProps, IDetailsRowStyles, ICellStyleProps } from './Det
 import {
   AnimationClassNames,
   AnimationStyles,
-  FontSizes,
   HighContrastSelector,
   IStyle,
   getFocusStyle,
@@ -61,7 +60,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     enableUpdateAnimations
   } = props;
 
-  const { neutralPrimary, white, neutralSecondary, neutralLighter, neutralLight, neutralDark, neutralQuaternaryAlt } = theme.palette;
+  const { palette, fonts } = theme;
+  const { neutralPrimary, white, neutralSecondary, neutralLighter, neutralLight, neutralDark, neutralQuaternaryAlt } = palette;
   const { focusBorder } = theme.semanticColors;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -367,7 +367,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       classNames.isRowHeader,
       {
         color: colors.defaultHeaderText,
-        fontSize: FontSizes.medium
+        fontSize: fonts.medium.fontSize
       },
       isSelected && {
         color: colors.selectedHeaderText,

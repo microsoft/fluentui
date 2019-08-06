@@ -1,19 +1,21 @@
 import { IButtonStyles } from './Button.types';
 import { memoizeFunction } from '../../Utilities';
-import { HighContrastSelector, ITheme, IRawStyle, getFocusStyle, FontSizes, hiddenContentStyle } from '../../Styling';
+import { HighContrastSelector, ITheme, IRawStyle, getFocusStyle, hiddenContentStyle } from '../../Styling';
 
 const noOutline: IRawStyle = {
   outline: 0
 };
 
-const iconStyle = {
-  fontSize: FontSizes.icon,
-  margin: '0 4px',
-  height: '16px',
-  lineHeight: '16px',
-  textAlign: 'center',
-  verticalAlign: 'middle',
-  flexShrink: 0
+const iconStyle = (fontSize?: string | number): IRawStyle => {
+  return {
+    fontSize: fontSize,
+    margin: '0 4px',
+    height: '16px',
+    lineHeight: '16px',
+    textAlign: 'center',
+    verticalAlign: 'middle',
+    flexShrink: 0
+  };
 };
 
 /**
@@ -23,7 +25,7 @@ const iconStyle = {
  */
 export const getStyles = memoizeFunction(
   (theme: ITheme): IButtonStyles => {
-    const { semanticColors, effects } = theme;
+    const { semanticColors, effects, fonts } = theme;
 
     const border = semanticColors.buttonBorder;
     const disabledBackground = semanticColors.disabledBackground;
@@ -103,14 +105,9 @@ export const getStyles = memoizeFunction(
         flexGrow: 1
       },
 
-      icon: iconStyle,
+      icon: iconStyle(fonts.mediumPlus.fontSize),
 
-      menuIcon: [
-        iconStyle,
-        {
-          fontSize: FontSizes.small
-        }
-      ],
+      menuIcon: iconStyle(fonts.small.fontSize),
 
       label: {
         margin: '0 4px',
