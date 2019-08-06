@@ -1,5 +1,5 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
-import { FontSizes, HighContrastSelector, getGlobalClassNames } from '../../Styling';
+import { HighContrastSelector, getGlobalClassNames } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
 const GlobalClassNames = {
@@ -16,7 +16,7 @@ const MS_CHECKBOX_TRANSITION_TIMING = 'cubic-bezier(.4, 0, .23, 1)';
 
 export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
   const { className, theme, reversed, checked, disabled, isUsingCustomLabelRender } = props;
-  const { semanticColors, effects, palette } = theme;
+  const { semanticColors, effects, palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -112,25 +112,23 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       ],
       className
     ],
-    input: [
-      {
-        position: 'absolute',
-        background: 'none',
+    input: {
+      position: 'absolute',
+      background: 'none',
 
-        opacity: 0,
-        selectors: {
-          [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
-            outline: '1px solid ' + theme.palette.neutralSecondary,
-            outlineOffset: '2px',
-            selectors: {
-              [HighContrastSelector]: {
-                outline: '1px solid ActiveBorder'
-              }
+      opacity: 0,
+      selectors: {
+        [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
+          outline: '1px solid ' + theme.palette.neutralSecondary,
+          outlineOffset: '2px',
+          selectors: {
+            [HighContrastSelector]: {
+              outline: '1px solid ActiveBorder'
             }
           }
         }
       }
-    ],
+    },
     label: [
       classNames.label,
       theme.fonts.medium,
@@ -232,7 +230,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       classNames.text,
       {
         color: disabled ? checkboxTextColorDisabled : checkboxTextColor,
-        fontSize: FontSizes.medium,
+        fontSize: fonts.medium.fontSize,
         lineHeight: '20px'
       },
       !reversed

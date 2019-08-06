@@ -1,6 +1,31 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 29 Jul 2019 12:26:00 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Aug 2019 12:32:07 GMT and should not be manually modified.
+
+## 7.10.1
+Tue, 06 Aug 2019 12:32:07 GMT
+
+### Patches
+
+- Ignore left/right keypress from inner text input/textarea (rezha@microsoft.com)
+
+## 7.10.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- MenuButton: Removing use of StackItem to improve performance. (Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Button: Creating separate Actionable view to improve perf of Actionable, small perf improvements and perf scenario updates. (Humberto.Morimoto@microsoft.com)
+
+## 7.9.1
+Tue, 30 Jul 2019 12:28:32 GMT
+
+### Patches
+
+- Button: Making Button variants themable by using createComponent instead of wrappers. (Humberto.Morimoto@microsoft.com)
 
 ## 7.9.0
 Mon, 29 Jul 2019 12:26:00 GMT

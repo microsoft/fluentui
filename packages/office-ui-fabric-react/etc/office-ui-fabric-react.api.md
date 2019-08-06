@@ -2775,6 +2775,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
     buttonAs?: IComponentAs<IButtonProps>;
     className?: string;
     componentRef?: IRefObject<ICommandBar>;
+    dataDidRender?: (renderedData: any) => void;
     farItems?: ICommandBarItemProps[];
     items: ICommandBarItemProps[];
     onDataGrown?: (movedItem: ICommandBarItemProps) => void;
@@ -4834,6 +4835,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
     cardOpenDelay?: number;
     className?: string;
     componentRef?: IRefObject<IHoverCard>;
+    eventListenerTarget?: HTMLElement | string | null;
     expandedCardOpenDelay?: number;
     expandingCardProps?: IExpandingCardProps;
     instantOpenOnClick?: boolean;
@@ -6768,6 +6770,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
     originFromZero?: boolean;
     showValue?: boolean;
+    snapToStep?: boolean;
     step?: number;
     styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
     theme?: ITheme;
@@ -7670,6 +7673,7 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
 
 // @public (undocumented)
 export interface ITooltipStyleProps {
+    beakWidth?: number;
     className?: string;
     // @deprecated
     delay?: TooltipDelay;

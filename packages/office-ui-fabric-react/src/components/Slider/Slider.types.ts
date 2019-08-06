@@ -100,8 +100,15 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
 
   /**
    * Optional flag to render the Slider as disabled.
+   * @defaultvalue false
    */
   disabled?: boolean;
+
+  /**
+   * Optional flag to decide that thumb will snap to closest value while moving the slider
+   * @defaultvalue false
+   */
+  snapToStep?: boolean;
 
   /**
    * Optional className to attach to the slider root element.

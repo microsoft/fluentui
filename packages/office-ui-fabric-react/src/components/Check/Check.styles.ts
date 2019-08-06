@@ -1,5 +1,5 @@
 import { ICheckStyleProps, ICheckStyles } from './Check.types';
-import { HighContrastSelector, IStyle, getGlobalClassNames } from '../../Styling';
+import { HighContrastSelector, IStyle, getGlobalClassNames, IconFontSizes } from '../../Styling';
 import { getRTL } from '../../Utilities';
 
 export const CheckGlobalClassNames = {
@@ -13,7 +13,7 @@ export const CheckGlobalClassNames = {
 export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
   const { height = props.checkBoxHeight || '18px', checked, className, theme } = props;
 
-  const { palette, semanticColors } = theme;
+  const { palette, semanticColors, fonts } = theme;
   const isRTL = getRTL();
 
   const classNames = getGlobalClassNames(CheckGlobalClassNames, theme);
@@ -32,7 +32,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      fonts.medium,
       {
         // lineHeight currently needs to be a string to output without 'px'
         lineHeight: '1',
@@ -107,7 +107,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
       {
         opacity: 0,
         color: palette.neutralSecondary,
-        fontSize: '16px',
+        fontSize: IconFontSizes.medium,
         left: isRTL ? '-0.5px' : '.5px', // for centering the check icon inside the circle.
 
         selectors: {

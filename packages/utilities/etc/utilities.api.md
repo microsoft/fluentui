@@ -753,6 +753,9 @@ export type ISettingsMap<T> = {
 // @public (undocumented)
 export const IsFocusVisibleClassName = "ms-Fabric--isFocusVisible";
 
+// @public (undocumented)
+export const isIE11: () => boolean;
+
 // @public
 export const isIOS: () => boolean;
 

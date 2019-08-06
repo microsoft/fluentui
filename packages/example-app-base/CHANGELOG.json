@@ -2,6 +2,69 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Tue, 06 Aug 2019 12:32:07 GMT",
+      "tag": "@uifabric/example-app-base_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tsx editor - Code not showing fix",
+            "author": "esteban.230@hotmail.com",
+            "commit": "44e2d8acf95bbb8f7ca92c8564bd80902a344709"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Tsx-editor: Adding error bar",
+            "author": "esteban.230@hotmail.com",
+            "commit": "aec752dc11f9e83488fd46e96fa943a95a1500d3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Aug 2019 12:33:41 GMT",
+      "tag": "@uifabric/example-app-base_v7.2.1",
+      "version": "7.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updated style to add spinner for loading editor",
+            "author": "t-nikaz@microsoft.com",
+            "commit": "6539ca2b3e21e98cf2909fcdb4157020569cf2f6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Aug 2019 12:33:29 GMT",
+      "tag": "@uifabric/example-app-base_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Website changes to work with monaco editor state management",
+            "author": "t-nikaz@microsoft.com",
+            "commit": "0843c196be248757bd1fff674f900346490cd206"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jul 2019 12:28:32 GMT",
+      "tag": "@uifabric/example-app-base_v7.1.7",
+      "version": "7.1.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace the usage of deprecated Stack props to remove the console warnings.",
+            "author": "vibraga@microsoft.com",
+            "commit": "27bfb358747142756e67a315e61dc7e412cd772d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jul 2019 12:28:42 GMT",
       "tag": "@uifabric/example-app-base_v7.1.6",
       "version": "7.1.6",

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { IRectangle } from 'office-ui-fabric-react/lib/Utilities';
-import { ITheme, FontSizes, getTheme, mergeStyleSets } from '@uifabric/styling';
+import { ITheme, getTheme, mergeStyleSets } from '@uifabric/styling';
 
 export interface IListGridExampleProps {
   items: any[];
@@ -18,7 +18,8 @@ interface IListGridExampleClassObject {
 }
 
 const theme: ITheme = getTheme();
-const borderColour: string = '1px solid ' + theme.palette.white;
+const { palette, fonts } = theme;
+
 const classNames: IListGridExampleClassObject = mergeStyleSets({
   listGridExample: {
     overflow: 'hidden',
@@ -30,7 +31,7 @@ const classNames: IListGridExampleClassObject = mergeStyleSets({
     outline: 'none',
     position: 'relative',
     float: 'left',
-    background: theme.palette.neutralLighter,
+    background: palette.neutralLighter,
     selectors: {
       'focus:after': {
         content: '',
@@ -40,7 +41,7 @@ const classNames: IListGridExampleClassObject = mergeStyleSets({
         top: 2,
         bottom: 2,
         boxSizing: 'border-box',
-        border: borderColour
+        border: `1px solid ${palette.white}`
       }
     }
   },
@@ -62,7 +63,7 @@ const classNames: IListGridExampleClassObject = mergeStyleSets({
     bottom: 0,
     left: 0,
     width: '100%',
-    fontSize: FontSizes.small,
+    fontSize: fonts.small.fontSize,
     boxSizing: 'border-box'
   },
   listGridExampleImage: {

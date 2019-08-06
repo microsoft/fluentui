@@ -1,6 +1,20 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Aug 2019 12:32:07 GMT and should not be manually modified.
+
+## 7.2.1
+Tue, 06 Aug 2019 12:32:07 GMT
+
+### Patches
+
+- fixing broken IE11 by removing findIndex call, fixing the weeklydaypicker not rerendering when passed new initial date (jolore@microsoft.com)
+
+## 7.2.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- finishing up the slide animation to apply to calendar and month and year pickers, and allow consumer to specify direction (jolore@microsoft.com)
 
 ## 7.1.7
 Mon, 22 Jul 2019 12:28:42 GMT

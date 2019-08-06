@@ -1,8 +1,0 @@
-{
-  "comment": "Dropdown: Panel now dismisses in small widths",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "bhdev@outlook.com",
-  "commit": "82c0400c4cba9279d0ba28084af0b8f73311f551",
-  "date": "2019-07-26T20:41:47.151Z"
-}
