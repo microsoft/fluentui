@@ -2,6 +2,27 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Tue, 06 Aug 2019 12:32:07 GMT",
+      "tag": "@uifabric/tsx-editor_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updating editor model to work with HTML5",
+            "author": "nishikaza@berkeley.edu",
+            "commit": "0a35d9a1b95295a65cbbccbe34601d14091748d4"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Tsx-editor: Adding error bar",
+            "author": "esteban.230@hotmail.com",
+            "commit": "aec752dc11f9e83488fd46e96fa943a95a1500d3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Aug 2019 12:33:41 GMT",
       "tag": "@uifabric/tsx-editor_v0.1.1",
       "version": "0.1.1",
