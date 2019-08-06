@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Chiclet: Medium chiclet is styled according to redlines and xSmall Chiclet url displays properly",
+  "packageName": "@uifabric/experiments",
+  "email": "t-stcar@microsoft.com",
+  "commit": "195a5ca8ad9acca8c3562d6797f7d86b95654c87",
+  "date": "2019-08-03T00:33:17.583Z"
+}
