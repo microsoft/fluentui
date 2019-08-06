@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 02 Aug 2019 12:33:29 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Aug 2019 12:32:07 GMT and should not be manually modified.
+
+## 7.20.1
+Tue, 06 Aug 2019 12:32:07 GMT
+
+### Patches
+
+- Replace the usage of `FontSizes` variable with font styles pulled from the theme object and minor cleanup. (vibraga@microsoft.com)
+
+## 7.20.0
+Mon, 05 Aug 2019 12:33:41 GMT
+
+### Minor changes
+
+- Slider: Add new prop to snap while moving. (t-snroy@microsoft.com)
 
 ## 7.19.1
 Fri, 02 Aug 2019 12:33:29 GMT

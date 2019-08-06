@@ -15,7 +15,7 @@ const REMOVE_BUTTON_SIZE = 24;
 export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePickerItemSelectedStyles {
   const { className, theme, selected, invalid, disabled } = props;
 
-  const { palette, semanticColors } = theme;
+  const { palette, semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -57,7 +57,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
 
   const personaCoinInitialsStyles: IStyle = [
     invalid && {
-      fontSize: 20 // does not exist on the FontSizes type ramp.
+      fontSize: fonts.xLarge.fontSize
     }
   ];
 

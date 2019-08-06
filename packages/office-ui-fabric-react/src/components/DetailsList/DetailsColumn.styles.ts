@@ -38,7 +38,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     transitionDurationDrop
   } = props;
 
-  const { semanticColors, palette } = theme;
+  const { semanticColors, palette, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const colors = {
@@ -66,7 +66,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
   return {
     root: [
       getCellStyles(props),
-      theme.fonts.small,
+      fonts.small,
       isActionable && [
         classNames.isActionable,
         {
@@ -134,7 +134,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
         color: colors.dropdownChevronForegroundColor,
         paddingLeft: 6,
         verticalAlign: 'middle',
-        fontSize: 12 // TODO needs to be updated after type ramp reconcile
+        fontSize: fonts.small.fontSize
       }
     ],
 
@@ -166,7 +166,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         fontWeight: FontWeights.semibold,
-        fontSize: 14
+        fontSize: fonts.medium.fontSize
       },
       isIconOnly && {
         selectors: {
