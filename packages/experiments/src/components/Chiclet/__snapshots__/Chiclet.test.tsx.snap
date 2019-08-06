@@ -51,7 +51,6 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
   >
     <img
       height="100%"
-      role="presentation"
       width="auto"
     />
   </div>
@@ -157,7 +156,7 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
         {
           align-items: center;
           display: flex;
-          height: 60px;
+          height: 64px;
           justify-content: center;
           width: 59px;
         }
@@ -194,7 +193,6 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
             }
         onError={[Function]}
         onLoad={[Function]}
-        role="presentation"
       />
     </div>
   </div>
@@ -289,7 +287,7 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
         {
           align-items: center;
           display: flex;
-          height: 60px;
+          height: 64px;
           justify-content: center;
           width: 59px;
         }
@@ -326,7 +324,6 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
             }
         onError={[Function]}
         onLoad={[Function]}
-        role="presentation"
       />
     </div>
   </div>
@@ -421,7 +418,7 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
         {
           align-items: center;
           display: flex;
-          height: 60px;
+          height: 64px;
           justify-content: center;
           width: 59px;
         }
@@ -458,7 +455,6 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
             }
         onError={[Function]}
         onLoad={[Function]}
-        role="presentation"
         src="https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg"
       />
     </div>
