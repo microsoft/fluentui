@@ -390,6 +390,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-label="Shadow around items"
               className=
 
                   {
@@ -483,6 +484,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
@@ -529,6 +531,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-label="Prevent item overflow"
               className=
 
                   {
@@ -622,6 +625,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
@@ -668,6 +672,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-label="Shrink items"
               className=
 
                   {
@@ -761,6 +766,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
@@ -806,6 +812,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-label="Wrap items"
               className=
 
                   {
@@ -899,6 +906,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 </i>
               </div>
               <span
+                aria-hidden="true"
                 className=
                     ms-Checkbox-text
                     {
@@ -1208,6 +1216,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               }
         >
           <input
+            aria-label="Automatic height (based on items)"
             className=
 
                 {
@@ -1308,6 +1317,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               </i>
             </div>
             <span
+              aria-hidden="true"
               className=
                   ms-Checkbox-text
                   {
@@ -2164,6 +2174,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   }
             >
               <input
+                aria-label="Hide empty children"
                 className=
 
                     {
@@ -2257,6 +2268,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   </i>
                 </div>
                 <span
+                  aria-hidden="true"
                   className=
                       ms-Checkbox-text
                       {

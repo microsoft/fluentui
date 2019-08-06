@@ -34,6 +34,7 @@ exports[`Component Examples renders Modal.Basic.Example.tsx correctly 1`] = `
         }
   >
     <input
+      aria-label="Is draggable"
       checked={false}
       className=
 
@@ -128,6 +129,7 @@ exports[`Component Examples renders Modal.Basic.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
