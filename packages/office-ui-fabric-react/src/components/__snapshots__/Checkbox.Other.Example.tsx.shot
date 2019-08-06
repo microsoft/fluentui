@@ -13,6 +13,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         }
   >
     <input
+      aria-label="Uncontrolled checkbox"
       className=
 
           {
@@ -119,6 +120,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -144,6 +146,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         }
   >
     <input
+      aria-label="Uncontrolled checkbox with defaultChecked true"
       className=
 
           {
@@ -264,6 +267,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -289,6 +293,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
   >
     <input
       aria-disabled={true}
+      aria-label="Disabled uncontrolled checkbox"
       className=
 
           {
@@ -377,6 +382,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -406,6 +412,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
   >
     <input
       aria-disabled={true}
+      aria-label="Disabled uncontrolled checkbox with defaultChecked true"
       className=
 
           {
@@ -496,6 +503,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -523,6 +531,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         }
   >
     <input
+      aria-label="Controlled checkbox"
       checked={false}
       className=
 
@@ -630,6 +639,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -655,6 +665,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         }
   >
     <input
+      aria-label="Checkbox rendered with boxSide \\"end\\" test"
       className=
 
           {
@@ -763,6 +774,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -787,6 +799,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         }
   >
     <input
+      aria-label="Persona Checkbox"
       className=
 
           {
