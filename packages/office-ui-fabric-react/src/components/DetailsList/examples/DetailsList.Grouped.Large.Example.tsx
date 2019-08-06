@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DetailsList, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsHeader, DetailsList, IColumn, IDetailsHeaderProps, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
 
 interface IDetailsListGroupedLargeExampleItem {
   key: string;
@@ -49,10 +49,12 @@ export class DetailsListGroupedLargeExample extends React.Component<{}, {}> {
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         ariaLabelForSelectionColumn="Toggle selection"
         checkButtonAriaLabel="Row checkbox"
-        detailsHeaderProps={{
-          ariaLabelForToggleAllGroupsButton: 'Toggle selection'
-        }}
+        onRenderDetailsHeader={this._onRenderDetailsHeader}
       />
     );
+  }
+
+  private _onRenderDetailsHeader(props: IDetailsHeaderProps) {
+    return <DetailsHeader {...props} ariaLabelForToggleAllGroupsButton={'Toggle selection'} />;
   }
 }

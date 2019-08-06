@@ -321,12 +321,6 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * Whether to animate updates
    */
   enableUpdateAnimations?: boolean;
-
-  /**
-   * Optional override properties to render details header. The definition for IDetailsHeaderProps
-   * can be found under the DetailsHeader component.
-   */
-  detailsHeaderProps?: Partial<IDetailsHeaderProps>;
 }
 
 /**

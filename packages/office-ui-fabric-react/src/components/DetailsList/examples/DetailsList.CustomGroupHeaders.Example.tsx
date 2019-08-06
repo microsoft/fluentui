@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { DetailsList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsHeader, DetailsList, IDetailsHeaderProps, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, createGroups, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { DEFAULT_ROW_HEIGHTS } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRow.styles';
@@ -64,13 +64,14 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         checkButtonAriaLabel="Row checkbox"
-        detailsHeaderProps={{
-          ariaLabelForToggleAllGroupsButton: 'Toggle selection'
-        }}
+        onRenderDetailsHeader={this._onRenderDetailsHeader}
       />
     );
   }
 
+  private _onRenderDetailsHeader(props: IDetailsHeaderProps) {
+    return <DetailsHeader {...props} ariaLabelForToggleAllGroupsButton={'Toggle selection'} />;
+  }
   private _onRenderGroupHeader = (props: IGroupDividerProps): JSX.Element => {
     return (
       <div className={classNames.headerAndFooter}>
