@@ -33,7 +33,7 @@ export class Rule extends Lint.Rules.AbstractRule {
     },
     optionExamples: [[true, { modulesWithBannedImports: [['lodash', 'pull'], ['lodash', 'pullAll']] }]],
     type: 'functionality',
-    typescriptOnly: true
+    typescriptOnly: false
   };
 
   public static FAILURE_STRING = 'Import statement forbidden';
