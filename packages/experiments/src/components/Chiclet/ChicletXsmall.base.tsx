@@ -50,7 +50,7 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
         {preview ? ( // render custom preview
           React.cloneElement(preview, { className: css(preview.props.className, customPreviewStyling) })
         ) : (
-          <Image width={PREVIEW_IMAGE_WIDTH} height={PREVIEW_IMAGE_HEIGHT} src={image} alt={imageAlt ? imageAlt : undefined} />
+          <img width={PREVIEW_IMAGE_WIDTH} height={PREVIEW_IMAGE_HEIGHT} src={image} alt={imageAlt ? imageAlt : undefined} />
         )}
       </div>
     );
