@@ -84,10 +84,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                   vertical-align: top;
                   white-space: nowrap;
                 }
-                &:hover $check {
+                &:hover .ms-DetailsHeader-check {
                   opacity: 1;
                 }
-                & ms-TooltipHost $checkTooltip {
+                & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                   display: block;
                 }
             data-automationid="DetailsHeader"
@@ -151,7 +151,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
             >
               <span
                 className=
-
+                    ms-DetailsHeader-checkTooltip
 
               >
                 <div
@@ -160,6 +160,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                   aria-label="Toggle selection"
                   className=
                       ms-DetailsRow-check
+                      ms-DetailsHeader-check
                       ms-DetailsRow-check--isHeader
                       ms-Check-checkHost
                       {
@@ -511,7 +512,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                     opacity: 1;
                     transition: opacity 0.3s linear;
                   }
-                  &$cellIsResizing:after {
+                  &.is-resizing:after {
                     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                     opacity: 1;
                     transition: opacity 0.3s linear;
@@ -701,7 +702,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                     opacity: 1;
                     transition: opacity 0.3s linear;
                   }
-                  &$cellIsResizing:after {
+                  &.is-resizing:after {
                     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                     opacity: 1;
                     transition: opacity 0.3s linear;
@@ -891,7 +892,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                     opacity: 1;
                     transition: opacity 0.3s linear;
                   }
-                  &$cellIsResizing:after {
+                  &.is-resizing:after {
                     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                     opacity: 1;
                     transition: opacity 0.3s linear;
@@ -1081,7 +1082,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                     opacity: 1;
                     transition: opacity 0.3s linear;
                   }
-                  &$cellIsResizing:after {
+                  &.is-resizing:after {
                     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                     opacity: 1;
                     transition: opacity 0.3s linear;
@@ -1220,10 +1221,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -1895,10 +1896,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -2570,10 +2571,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -3245,10 +3246,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -3920,10 +3921,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -4595,10 +4596,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -5270,10 +5271,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -5945,10 +5946,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -6620,10 +6621,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -7295,10 +7296,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"

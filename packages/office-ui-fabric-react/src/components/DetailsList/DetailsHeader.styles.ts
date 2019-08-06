@@ -24,7 +24,9 @@ const GlobalClassNames = {
   cellTitle: 'ms-DetailsHeader-cellTitle',
   cellName: 'ms-DetailsHeader-cellName',
   filterChevron: 'ms-DetailsHeader-filterChevron',
-  gripperBarVertical: 'ms-DetailsColumn-gripperBarVertical'
+  gripperBarVertical: 'ms-DetailsColumn-gripperBarVertical',
+  checkTooltip: 'ms-DetailsHeader-checkTooltip',
+  check: 'ms-DetailsHeader-check'
 };
 
 export const HEADER_HEIGHT = 42;
@@ -104,10 +106,10 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         cursor: 'default',
         userSelect: 'none',
         selectors: {
-          '&:hover $check': {
+          [`&:hover .${classNames.check}`]: {
             opacity: 1
           },
-          [`${classNames.tooltipHost} $checkTooltip`]: {
+          [`& .${classNames.tooltipHost} .${classNames.checkTooltip}`]: {
             display: 'block'
           }
         }
@@ -115,7 +117,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       isAllSelected && classNames.isAllSelected,
       isSelectAllHidden && {
         selectors: {
-          $cell$cellIsCheck: {
+          [`& .${classNames.cellIsCheck}`]: {
             visibility: 'hidden'
           }
         }
@@ -124,14 +126,19 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       className
     ],
 
-    check: {
-      height: HEADER_HEIGHT,
-      selectors: {
-        [`.${IsFocusVisibleClassName} &:focus`]: {
-          opacity: 1
+    check: [
+      classNames.check,
+      {
+        height: HEADER_HEIGHT
+      },
+      {
+        selectors: {
+          [`.${IsFocusVisibleClassName} &:focus`]: {
+            opacity: 1
+          }
         }
       }
-    },
+    ],
 
     cellWrapperPadded: {
       paddingRight: cellStyleProps.cellExtraRightPadding + cellStyleProps.cellRightPadding
@@ -217,7 +224,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
           },
           ':focus:after': cellSizerFadeInStyles,
           ':hover:after': cellSizerFadeInStyles,
-          '&$cellIsResizing:after': [
+          [`&.${classNames.isResizing}:after`]: [
             cellSizerFadeInStyles,
             {
               boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.4)'
@@ -256,7 +263,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
           }
     ],
 
-    checkTooltip: [],
+    checkTooltip: classNames.checkTooltip,
 
     sizingOverlay: isSizing && {
       position: 'absolute',

@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Updating styles to not use $ syntax.",
+  "packageName": "@uifabric/experiments",
+  "email": "dzearing@microsoft.com",
+  "commit": "de03449faca7e6256e3863892a1c465721fd0ec4",
+  "date": "2019-08-05T05:28:51.349Z"
+}
