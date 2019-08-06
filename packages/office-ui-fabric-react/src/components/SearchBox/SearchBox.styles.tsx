@@ -157,12 +157,16 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         flexBasis: '32px',
         flexShrink: 0,
         padding: 0,
+        margin: '-1px 0px',
         selectors: {
           '&:hover .ms-Button': {
             backgroundColor: inputBackgroundHovered
           },
           '&:hover .ms-Button-icon': {
             color: inputIconAltHovered
+          },
+          '.ms-Button': {
+            borderRadius: 0
           },
           '.ms-Button-icon': {
             color: inputIconAlt
