@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fillin",
+  "comment": "Passing farItems directly to _onRenderData instead of including it in commandBarData. This fixes a bug in Microsoft's BAF version of CommandBar where its searchBox far item would lose characters when the user types fast, except in cases where we force the farItems array to never change. The rationale for fixing this way: Resizing does not affect farItems, so we shouldn't need to supply farItems data to the ResizeGroup, nor to its cacheKey.",
   "packageName": "office-ui-fabric-react",
   "email": "email not defined",
   "commit": "be86439717e210486c5e5dc814c424cbeb0297da",
