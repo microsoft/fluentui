@@ -32,6 +32,10 @@ export interface IFolderCoverProps extends IBaseProps, React.HTMLAttributes<HTML
    */
   metadata?: React.ReactNode;
   /**
+   * Support fluent color, yellow folder cover.
+   */
+  isFluent?: boolean;
+  /**
    * The children to pass into the content area of the folder cover.
    */
   children?: React.Props<{}>['children'] | ((childrenProps: IFolderCoverChildrenProps) => JSX.Element | null);
