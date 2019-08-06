@@ -92,8 +92,8 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
           const { codeButtons: codeButtonStyles } = subComponentStyles;
 
           const exampleCardContent =
-            isCodeVisible && this.canRenderLiveEditor ? (
-              <EditorPreview className={classNames.example} id={this.props.title.replace(' ', '')} />
+            this.props.isCodeVisible && this.canRenderLiveEditor ? (
+              <EditorPreview error={this.state.error} className={classNames.example} id={this.props.title.replace(' ', '')} />
             ) : (
               <div className={classNames.example} data-is-scrollable={isScrollable}>
                 {children}
@@ -202,10 +202,10 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
   private _editorOnChange = (editor: ITextModel) => {
     this.editorModule.transpile(editor).then((output: ITranspiledOutput) => {
-      if (output.outputString) {
+      if (output.outputString !== undefined) {
         const evalCodeError = this.editorModule.evalCode(output.outputString, this.props.title.replace(' ', ''));
         this.setState({
-          error: evalCodeError || undefined
+          error: evalCodeError
         });
       } else {
         this.setState({
