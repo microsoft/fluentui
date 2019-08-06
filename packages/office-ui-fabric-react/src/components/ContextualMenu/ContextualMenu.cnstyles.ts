@@ -1,6 +1,5 @@
 import {
   concatStyleSets,
-  FontSizes,
   getFocusStyle,
   HighContrastSelector,
   IRawStyle,
@@ -213,7 +212,7 @@ export const getMenuItemStyles = memoizeFunction(
         display: 'inline-block',
         verticalAlign: 'middle',
         flexShrink: '0',
-        fontSize: FontSizes.small, // 12px
+        fontSize: IconFontSizes.small, // 12px
         selectors: {
           ':hover': {
             color: palette.neutralPrimary
@@ -222,7 +221,7 @@ export const getMenuItemStyles = memoizeFunction(
             color: palette.neutralPrimary
           },
           [MediumScreenSelector]: {
-            fontSize: FontSizes.icon // 16px
+            fontSize: IconFontSizes.medium // 16px
           }
         }
       },

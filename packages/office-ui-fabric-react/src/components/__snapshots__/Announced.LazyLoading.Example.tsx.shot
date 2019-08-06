@@ -170,7 +170,6 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
           ms-ProgressIndicator-itemName
           {
             color: #323130;
-            font-size: 14px;
             line-height: 20px;
             overflow: hidden;
             padding-top: 4px;
