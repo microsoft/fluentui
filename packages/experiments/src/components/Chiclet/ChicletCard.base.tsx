@@ -11,7 +11,8 @@ const customPreviewStyling = mergeStyles('ms-ChicletCard-preview-custom', {
   height: '100%',
   justifyContent: 'center',
   alignItems: 'center',
-  objectFit: 'contain'
+  objectFit: 'contain',
+  overflow: 'hidden'
 });
 
 export class ChicletCardBase extends React.Component<IChicletCardProps, {}> {

@@ -60,6 +60,9 @@ export const getStyles = (styleProps: IChicletCardStyleProps): IChicletCardStyle
         alignItems: 'center',
         height: 64,
         width: 59
+      },
+      !footerProvided && {
+        marginBottom: 4
       }
     ],
     info: [
