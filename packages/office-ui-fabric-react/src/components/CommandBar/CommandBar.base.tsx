@@ -21,10 +21,6 @@ export interface ICommandBarData {
    */
   overflowItems: ICommandBarItemProps[];
   /**
-   * Items being rendered on the far side
-   */
-  farItems: ICommandBarItemProps[] | undefined;
-  /**
    * Length of original overflowItems to ensure that they are not moved into primary region on resize
    */
   minimumOverflowItems: number;
@@ -61,7 +57,6 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       primaryItems: [...items],
       overflowItems: [...overflowItems!],
       minimumOverflowItems: [...overflowItems!].length, // for tracking
-      farItems,
       cacheKey: ''
     };
 
@@ -74,7 +69,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         data={commandBarData}
         onReduceData={onReduceData}
         onGrowData={onGrowData}
-        onRenderData={this._onRenderData}
+        onRenderData={this._onRenderData(farItems)}
         dataDidRender={dataDidRender}
       />
     );
@@ -90,7 +85,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     this._resizeGroup.current && this._resizeGroup.current.remeasure();
   }
 
-  private _onRenderData = (data: ICommandBarData): JSX.Element => {
+  private _onRenderData = (farItems: ICommandBarItemProps[] | undefined) => (data: ICommandBarData): JSX.Element => {
     return (
       <FocusZone
         className={css(this._classNames.root)}
@@ -111,12 +106,12 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         />
 
         {/*Secondary Items*/}
-        {data.farItems && (
+        {farItems && (
           <OverflowSet
             className={css(this._classNames.secondarySet)}
             doNotContainWithinFocusZone={true}
             role={'presentation'}
-            items={data.farItems}
+            items={farItems}
             onRenderItem={this._onRenderItem}
             onRenderOverflowButton={nullRender}
           />
@@ -202,17 +197,16 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   };
 
   private _computeCacheKey(data: ICommandBarData): string {
-    const { primaryItems, farItems = [], overflowItems } = data;
+    const { primaryItems, overflowItems } = data;
     const returnKey = (acc: string, current: ICommandBarItemProps): string => {
       const { cacheKey = current.key } = current;
       return acc + cacheKey;
     };
 
     const primaryKey = primaryItems.reduce(returnKey, '');
-    const farKey = farItems.reduce(returnKey, '');
     const overflowKey = !!overflowItems.length ? 'overflow' : '';
 
-    return [primaryKey, farKey, overflowKey].join(' ');
+    return [primaryKey, overflowKey].join(' ');
   }
 
   private _onReduceData = (data: ICommandBarData): ICommandBarData | undefined => {
