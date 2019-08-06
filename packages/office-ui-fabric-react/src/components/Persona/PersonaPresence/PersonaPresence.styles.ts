@@ -1,5 +1,5 @@
 import { IPersonaPresenceStyleProps, IPersonaPresenceStyles, PersonaPresence, PersonaSize } from '../Persona.types';
-import { FontSizes, HighContrastSelector, getGlobalClassNames, IRawStyle } from '../../../Styling';
+import { HighContrastSelector, getGlobalClassNames, IRawStyle } from '../../../Styling';
 import { personaPresenceSize, presenceBoolean, sizeBoolean } from '../PersonaConsts';
 
 const GlobalClassNames = {
@@ -9,7 +9,7 @@ const GlobalClassNames = {
 
 export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceStyles => {
   const { theme } = props;
-  const { semanticColors } = theme;
+  const { semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -184,7 +184,7 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
       classNames.presenceIcon,
       {
         color: semanticColors.bodyBackground,
-        fontSize: '6px',
+        fontSize: '6px', // exception case where we don't have an available theme.fonts variable to match it.
         lineHeight: personaPresenceSize.size12,
         verticalAlign: 'top',
 
@@ -196,17 +196,17 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
       },
 
       size.isSize56 && {
-        fontSize: '8px',
+        fontSize: '8px', // exception case where we don't have an available theme.fonts variable to match it.
         lineHeight: personaPresenceSize.size16
       },
 
       size.isSize72 && {
-        fontSize: FontSizes.small,
+        fontSize: fonts.small.fontSize,
         lineHeight: personaPresenceSize.size20
       },
 
       size.isSize100 && {
-        fontSize: FontSizes.medium,
+        fontSize: fonts.medium.fontSize,
         lineHeight: personaPresenceSize.size28
       },
 

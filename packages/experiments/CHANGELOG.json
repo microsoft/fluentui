@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 06 Aug 2019 12:32:07 GMT",
+      "tag": "@uifabric/experiments_v7.10.1",
+      "version": "7.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ignore left/right keypress from inner text input/textarea",
+            "author": "rezha@microsoft.com",
+            "commit": "1bf48c5c0a3e3e9ee566d4f5df2253bbeab0dec9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Aug 2019 12:33:29 GMT",
       "tag": "@uifabric/experiments_v7.10.0",
       "version": "7.10.0",

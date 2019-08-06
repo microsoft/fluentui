@@ -26,6 +26,19 @@ export class WeeklyDayPickerPage extends React.Component<{}, {}> {
                 showGoToToday={true}
               />
             </ExampleCard>
+            <ExampleCard
+              title="Inline WeeklyDayPicker with externally controlled date"
+              code={WeeklyDayPickerInlineExampleCode}
+              codepenJS={WeeklyDayPickerInlineExampleCodepen}
+            >
+              <WeeklyDayPickerInlineExample
+                isMonthPickerVisible={false}
+                dateRangeType={DateRangeType.Day}
+                autoNavigateOnSelection={false}
+                showGoToToday={true}
+                showNavigateButtons={true}
+              />
+            </ExampleCard>
           </div>
         }
         propertiesTables={

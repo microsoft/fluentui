@@ -1,14 +1,5 @@
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from './DetailsHeader.types';
-import {
-  getFocusStyle,
-  focusClear,
-  IStyle,
-  getGlobalClassNames,
-  HighContrastSelector,
-  hiddenContentStyle,
-  ITheme,
-  FontSizes
-} from '../../Styling';
+import { getFocusStyle, focusClear, IStyle, getGlobalClassNames, HighContrastSelector, hiddenContentStyle, ITheme } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { ICellStyleProps } from './DetailsRow.types';
@@ -75,7 +66,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     cellStyleProps = DEFAULT_CELL_STYLE_PROPS
   } = props;
 
-  const { semanticColors, palette } = theme;
+  const { semanticColors, palette, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const colors = {
@@ -96,7 +87,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
   return {
     root: [
       classNames.root,
-      theme.fonts.small,
+      fonts.small,
       {
         display: 'inline-block',
         background: colors.headerBackgroundColor,
@@ -168,7 +159,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontSize: FontSizes.small,
+        fontSize: fonts.small.fontSize,
         padding: 0,
         border: 'none',
         width: GROUP_EXPANDER_WIDTH, // align with GroupedList's first expandIcon cell width.
@@ -311,7 +302,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         position: 'absolute',
         top: 22,
         left: -7.5,
-        fontSize: 16,
+        fontSize: fonts.mediumPlus.fontSize,
         color: palette.themePrimary,
         overflow: 'visible',
         zIndex: 10

@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 06 Aug 2019 12:32:07 GMT",
+      "tag": "office-ui-fabric-react_v7.20.1",
+      "version": "7.20.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace the usage of `FontSizes` variable with font styles pulled from the theme object and minor cleanup.",
+            "author": "vibraga@microsoft.com",
+            "commit": "94f9a344ec8204f2646c8c8fc4f5a60cdc316be0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Aug 2019 12:33:41 GMT",
       "tag": "office-ui-fabric-react_v7.20.0",
       "version": "7.20.0",
