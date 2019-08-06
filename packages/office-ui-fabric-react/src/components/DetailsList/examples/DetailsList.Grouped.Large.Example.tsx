@@ -49,6 +49,7 @@ export class DetailsListGroupedLargeExample extends React.Component<{}, {}> {
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         ariaLabelForSelectionColumn="Toggle selection"
         checkButtonAriaLabel="Row checkbox"
+        useReducedRowRenderer={true}
       />
     );
   }

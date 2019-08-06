@@ -105,6 +105,7 @@ export class DetailsListGroupedExample extends React.Component<{}, IDetailsListG
           }}
           onRenderItemColumn={this._onRenderColumn}
           compact={isCompactMode}
+          useReducedRowRenderer={true}
         />
       </div>
     );

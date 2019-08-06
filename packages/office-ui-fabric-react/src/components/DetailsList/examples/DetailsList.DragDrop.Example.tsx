@@ -96,6 +96,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
             checkButtonAriaLabel="Row checkbox"
+            useReducedRowRenderer={true}
           />
         </MarqueeSelection>
       </div>

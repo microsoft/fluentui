@@ -50,6 +50,7 @@ export class DetailsListCustomFooterExample extends React.Component<{}, {}> {
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         checkButtonAriaLabel="Row checkbox"
         onRenderDetailsFooter={this._onRenderDetailsFooter}
+        useReducedRowRenderer={true}
       />
     );
   }

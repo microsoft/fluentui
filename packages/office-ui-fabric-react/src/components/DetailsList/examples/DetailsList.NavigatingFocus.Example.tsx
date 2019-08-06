@@ -46,6 +46,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         checkButtonAriaLabel="Row checkbox"
+        useReducedRowRenderer={true}
       />
     );
   }

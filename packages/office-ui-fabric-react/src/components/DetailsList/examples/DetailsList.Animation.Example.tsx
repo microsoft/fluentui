@@ -84,6 +84,7 @@ export class DetailsListAnimationExample extends React.Component<{}, IDetailsLis
           onItemInvoked={this._onItemInvoked}
           enableUpdateAnimations={true}
           getCellValueKey={this._getCellValueKey}
+          useReducedRowRenderer={true}
         />
       </Fabric>
     );
