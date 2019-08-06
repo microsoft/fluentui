@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 06 Aug 2019 12:22:01 GMT",
+      "tag": "office-ui-fabric-react_v6.199.0",
+      "version": "6.199.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Commandbar: Expose dataDidRender method",
+            "author": "joschect@microsoft.com",
+            "commit": "3b8c6b3f7017f8135a59dea6510fc59c089588a2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Aug 2019 12:23:14 GMT",
       "tag": "office-ui-fabric-react_v6.198.0",
       "version": "6.198.0",

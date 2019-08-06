@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 02 Aug 2019 12:23:14 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Aug 2019 12:22:01 GMT and should not be manually modified.
+
+## 6.199.0
+Tue, 06 Aug 2019 12:22:01 GMT
+
+### Minor changes
+
+- Commandbar: Expose dataDidRender method (joschect@microsoft.com)
 
 ## 6.198.0
 Fri, 02 Aug 2019 12:23:14 GMT
