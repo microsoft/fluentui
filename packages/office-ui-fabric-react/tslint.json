@@ -1,10 +1,16 @@
 {
   "extends": ["@uifabric/tslint-rules"],
+  "rulesDirectory": "lintCustom",
   "rules": {
     "deprecation": false,
     "jsx-ban-props": false,
     "no-any": false,
     "typedef": [false],
-    "import-blacklist": [true, { "../../Styling": ["FontSizes"] }]
+    "custom-import-blacklist": [
+      true,
+      {
+        "modulesWithBannedImports": [[".*styling.*", "^FontSizes$", "DefaultFontStyles"]]
+      }
+    ]
   }
 }
