@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "moving the async clearTimeout call inside the if check to prevent accidentally clearing the timeout unless we're going to be making a new one",
+  "packageName": "office-ui-fabric-react",
+  "email": "jolore@microsoft.com",
+  "commit": "3d86fbe7148e6cf4722d12aeb85ae113263efa32",
+  "date": "2019-08-06T23:08:26.938Z"
+}
