@@ -507,7 +507,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
               padding-top: 0px;
               word-wrap: break-word;
             }
-        htmlFor="Slider4"
+        htmlFor="Slider6"
       >
         Number of Personas:
       </label>
@@ -537,7 +537,6 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                 display: flex;
                 flex-grow: 1;
                 height: 28px;
-                line-height: 28px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 8px;
@@ -624,7 +623,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                 width: 16px;
               }
           data-is-focusable={true}
-          id="Slider4"
+          id="Slider6"
           onKeyDown={[Function]}
           onMouseDown={[Function]}
           onTouchStart={[Function]}
@@ -647,9 +646,11 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                 }
           >
             <span
+              aria-labelledby="tooltipHost4"
               className=
                   ms-Slider-thumb
 
+              id="targetButton5"
               style={
                 Object {
                   "left": "50%",
@@ -708,17 +709,16 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                 font-size: 14px;
                 font-weight: 600;
                 line-height: 1;
-                margin-bottom: 0;
-                margin-left: 8px;
-                margin-right: 8px;
-                margin-top: 0;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
                 overflow-wrap: break-word;
                 padding-bottom: 5px;
                 padding-left: 0;
                 padding-right: 0;
                 padding-top: 5px;
                 white-space: nowrap;
-                width: 40px;
                 word-wrap: break-word;
               }
         >
@@ -756,15 +756,15 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Dropdown5"
-        id="Dropdown5-label"
+        htmlFor="Dropdown7"
+        id="Dropdown7-label"
       >
         Persona Size:
       </label>
       <div
-        aria-describedby="Dropdown5-option"
+        aria-describedby="Dropdown7-option"
         aria-expanded="false"
-        aria-labelledby="Dropdown5-label"
+        aria-labelledby="Dropdown7-label"
         className=
             ms-Dropdown
             {
@@ -852,7 +852,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
               border-color: #a4262c;
             }
         data-is-focusable={true}
-        id="Dropdown5"
+        id="Dropdown7"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
@@ -896,7 +896,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
-          id="Dropdown5-option"
+          id="Dropdown7-option"
           role="option"
         >
           <span>
@@ -999,7 +999,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
             }
-        id="checkbox-6"
+        id="checkbox-8"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
@@ -1030,7 +1030,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
               right: 0px;
               top: 0px;
             }
-        htmlFor="checkbox-6"
+        htmlFor="checkbox-8"
       >
         <div
           className=

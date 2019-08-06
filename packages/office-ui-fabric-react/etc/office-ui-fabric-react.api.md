@@ -6763,14 +6763,15 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     componentRef?: IRefObject<ISlider>;
     defaultValue?: number;
     disabled?: boolean;
+    enableMarks?: boolean;
     label?: string;
     max?: number;
     min?: number;
     onChange?: (value: number) => void;
     onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
     originFromZero?: boolean;
+    showThumbTooltip?: boolean;
     showValue?: boolean;
-    snapToStep?: boolean;
     step?: number;
     styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
     theme?: ITheme;
@@ -6801,6 +6802,7 @@ export interface ISliderStyles {
     inactiveSection: IStyle;
     line: IStyle;
     lineContainer: IStyle;
+    regularTick: IStyle;
     root: IStyle;
     slideBox: IStyle;
     thumb: IStyle;

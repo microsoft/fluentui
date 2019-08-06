@@ -3,6 +3,7 @@ import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
+import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 
 export interface ISliderState {
   value?: number;
@@ -28,6 +29,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   private _thumb = React.createRef<HTMLSpanElement>();
   private _id: string;
   private _onKeyDownTimer = -1;
+  private _hostId: string = getId('tooltipHost');
+  private _buttonId: string = getId('targetButton');
 
   constructor(props: ISliderProps) {
     super(props);
@@ -60,7 +63,9 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       valueFormat,
       styles,
       theme,
-      originFromZero
+      originFromZero,
+      enableMarks,
+      showThumbTooltip
     } = this.props;
     const value = this.value;
     const renderedValue = this.renderedValue;
@@ -79,7 +84,15 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       theme: theme!
     });
     const divButtonProps = buttonProps ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties) : undefined;
-
+    const theButton = (
+      <span
+        ref={this._thumb}
+        className={classNames.thumb}
+        style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)}
+        id={this._buttonId}
+        aria-labelledby={this._hostId}
+      />
+    );
     return (
       <div className={classNames.root}>
         {label && (
@@ -107,9 +120,20 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
           >
             <div ref={this._sliderLine} className={classNames.line}>
               {originFromZero && (
-                <span className={css(classNames.zeroTick)} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
+                <span className={classNames.zeroTick} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
               )}
-              <span ref={this._thumb} className={classNames.thumb} style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)} />
+              {enableMarks && this._addTickmarks(classNames.regularTick)}
+              {showThumbTooltip ? (
+                <TooltipHost
+                  content={'' + value}
+                  id={this._hostId}
+                  calloutProps={{ gapSpace: 5, beakWidth: 8, target: `#${this._buttonId}`, doNotLayer: true }}
+                >
+                  {theButton}
+                </TooltipHost>
+              ) : (
+                theButton
+              )}
               {originFromZero ? (
                 <>
                   <span
@@ -139,7 +163,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               )}
             </div>
           </div>
-          {showValue && (
+          {showValue && !showThumbTooltip && (
             <Label className={classNames.valueLabel} disabled={disabled}>
               {valueFormat ? valueFormat(value!) : value}
             </Label>
@@ -252,8 +276,32 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     }
     return currentPosition;
   }
+
+  private _addTickmarks(cssRegularTickClassNames: string | undefined): JSX.Element[] {
+    const { min, max, step, vertical } = this.props;
+    if (min === undefined || max === undefined || step === undefined) {
+      return [];
+    }
+    const ticks = [];
+    for (let i = 0; i <= 100; i += (100 * step) / (max - min)) {
+      // += number is basically the distance between each tick
+      ticks.push(
+        <span
+          className={cssRegularTickClassNames}
+          style={
+            // the zeroOffsetPercent denotes where the tick mark should go
+            this._getStyleUsingOffsetPercent(vertical, i)
+          }
+          key={i}
+        />
+      );
+    }
+    return ticks;
+  }
+
   private _updateValue(value: number, renderedValue: number): void {
-    const { step, snapToStep } = this.props;
+    const { step } = this.props;
+
     let numDec = 0;
     if (isFinite(step!)) {
       while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
@@ -264,10 +312,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     // Make sure value has correct number of decimal places based on number of decimals in step
     const roundedValue = parseFloat(value.toFixed(numDec));
     const valueChanged = roundedValue !== this.state.value;
-
-    if (snapToStep) {
-      renderedValue = roundedValue;
-    }
 
     this.setState(
       {
