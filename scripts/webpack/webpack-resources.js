@@ -218,7 +218,8 @@ module.exports = {
       },
 
       output: {
-        globalObject: 'self'
+        globalObject: 'self',
+        filename: '[name].bundle.js'
       }
     };
     return merge(config, customConfig);

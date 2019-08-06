@@ -11,38 +11,55 @@ const outputConfig = {
   filename: 'fabric-sitev5.js'
 };
 
-module.exports = resources.createServeConfig(
-  resources.createMonacoConfig({
-    entry: './src/root.tsx',
+const entryConfig = {
+  main: './src/root.tsx'
+};
 
-    output: outputConfig,
+const externalsConfig = {
+  react: 'React',
+  'react-dom': 'ReactDOM'
+};
 
-    devServer: devServerConfig,
+const resolveConfig = {
+  alias: {
+    '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
+    '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
+    '@uifabric/example-app-base$': path.resolve(__dirname, '../../packages/example-app-base/src'),
+    'office-ui-fabric-react$': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
+    'office-ui-fabric-react/src': path.join(__dirname, '../../packages/office-ui-fabric-react/src'),
+    'office-ui-fabric-react/lib': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
+    '@uifabric/example-app-base$': path.join(__dirname, '../../packages/example-app-base/src'),
+    'Props.ts.js': 'Props',
+    'Example.tsx.js': 'Example'
+  }
+};
 
-    externals: {
-      react: 'React',
-      'react-dom': 'ReactDOM'
-    },
+const regularConfig = {
+  entry: entryConfig,
 
-    // plugins: [
-    //   new MonacoWebpackPlugin({
-    //     // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
-    //     languages: ['typescript']
-    //   })
-    // ],
+  output: outputConfig,
 
-    resolve: {
-      alias: {
-        '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
-        '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
-        '@uifabric/example-app-base$': path.resolve(__dirname, '../../packages/example-app-base/src'),
-        'office-ui-fabric-react$': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
-        'office-ui-fabric-react/src': path.join(__dirname, '../../packages/office-ui-fabric-react/src'),
-        'office-ui-fabric-react/lib': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
-        '@uifabric/example-app-base$': path.join(__dirname, '../../packages/example-app-base/src'),
-        'Props.ts.js': 'Props',
-        'Example.tsx.js': 'Example'
-      }
-    }
-  })
-);
+  devServer: devServerConfig,
+
+  externals: externalsConfig,
+
+  resolve: resolveConfig
+};
+
+const monacoConfig = resources.createMonacoConfig({
+  devServer: devServerConfig,
+
+  externals: externalsConfig,
+
+  // plugins: [
+  //   new MonacoWebpackPlugin({
+  //     // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
+  //     languages: ['typescript']
+  //   })
+  // ],
+
+  resolve: resolveConfig
+});
+
+// Workaround for supporting multiple outputs per configuration using the multi-compiler
+module.exports = [resources.createServeConfig(regularConfig), resources.createServeConfig(monacoConfig)];

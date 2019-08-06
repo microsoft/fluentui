@@ -5,7 +5,7 @@ module.exports = function(env) {
   const isDogfoodArg = env && !env.production;
   const isProductionArg = env && env.production;
   const now = Date.now();
-  const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+  // const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
   // Production defaults
   let minFileNamePart = '';
@@ -33,12 +33,12 @@ module.exports = function(env) {
           chunkFilename: `${entryPointName}-${version}-[name]-${now}${minFileNamePart}.js`
         },
 
-        plugins: [
-          new MonacoWebpackPlugin({
-            // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
-            languages: ['typescript']
-          })
-        ],
+        // plugins: [
+        //   new MonacoWebpackPlugin({
+        //     // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
+        //     languages: ['typescript']
+        //   })
+        // ],
 
         resolve: {
           alias: {
