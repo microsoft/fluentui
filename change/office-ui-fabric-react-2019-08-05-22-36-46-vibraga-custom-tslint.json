@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Custom tslint rule to disallow certain imports from specified modules through regex patterns.",
+  "packageName": "office-ui-fabric-react",
+  "email": "vibraga@microsoft.com",
+  "commit": "70a94f596d95fb9a5215c217965714ceca5150c5",
+  "date": "2019-08-06T05:36:46.207Z"
+}
