@@ -2,6 +2,27 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Tue, 06 Aug 2019 12:32:07 GMT",
+      "tag": "@uifabric/example-app-base_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tsx editor - Code not showing fix",
+            "author": "esteban.230@hotmail.com",
+            "commit": "44e2d8acf95bbb8f7ca92c8564bd80902a344709"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Tsx-editor: Adding error bar",
+            "author": "esteban.230@hotmail.com",
+            "commit": "aec752dc11f9e83488fd46e96fa943a95a1500d3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Aug 2019 12:33:41 GMT",
       "tag": "@uifabric/example-app-base_v7.2.1",
       "version": "7.2.1",

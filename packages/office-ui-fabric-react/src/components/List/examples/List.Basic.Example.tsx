@@ -5,7 +5,7 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { List } from 'office-ui-fabric-react/lib/List';
-import { ITheme, mergeStyleSets, getTheme, getFocusStyle, DefaultFontStyles, FontSizes } from '@uifabric/styling';
+import { ITheme, mergeStyleSets, getTheme, getFocusStyle } from '@uifabric/styling';
 
 export type IExampleItem = { name: string; thumbnail: string; description: string };
 
@@ -28,6 +28,7 @@ interface IListBasicExampleClassObject {
 }
 
 const theme: ITheme = getTheme();
+const { palette, semanticColors, fonts } = theme;
 
 const classNames: IListBasicExampleClassObject = mergeStyleSets({
   itemCell: [
@@ -36,10 +37,10 @@ const classNames: IListBasicExampleClassObject = mergeStyleSets({
       minHeight: 54,
       padding: 10,
       boxSizing: 'border-box',
-      borderBottom: `1px solid ${theme.semanticColors.bodyDivider}`,
+      borderBottom: `1px solid ${semanticColors.bodyDivider}`,
       display: 'flex',
       selectors: {
-        '&:hover': { background: theme.palette.neutralLight }
+        '&:hover': { background: palette.neutralLight }
       }
     }
   ],
@@ -52,7 +53,7 @@ const classNames: IListBasicExampleClassObject = mergeStyleSets({
     flexGrow: 1
   },
   itemName: [
-    DefaultFontStyles.xLarge,
+    fonts.xLarge,
     {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
@@ -60,15 +61,15 @@ const classNames: IListBasicExampleClassObject = mergeStyleSets({
     }
   ],
   itemIndex: {
-    fontSize: FontSizes.small,
-    color: theme.palette.neutralTertiary,
+    fontSize: fonts.small.fontSize,
+    color: palette.neutralTertiary,
     marginBottom: 10
   },
   chevron: {
     alignSelf: 'center',
     marginLeft: 10,
-    color: theme.palette.neutralTertiary,
-    fontSize: FontSizes.large,
+    color: palette.neutralTertiary,
+    fontSize: fonts.large.fontSize,
     flexShrink: 0
   }
 });

@@ -2,7 +2,6 @@ import { IDropdownStyles, IDropdownStyleProps } from './Dropdown.types';
 import { IStyleFunction, IsFocusVisibleClassName } from '../../Utilities';
 import { RectangleEdge } from '../../utilities/positioning';
 import {
-  FontSizes,
   FontWeights,
   HighContrastSelector,
   IRawStyle,
@@ -87,7 +86,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   }
 
   const globalClassnames = getGlobalClassNames(GlobalClassNames, theme);
-  const { palette, semanticColors, effects } = theme;
+  const { palette, semanticColors, effects, fonts } = theme;
 
   const rootHoverFocusActiveSelectorNeutralDarkMixin: IStyle = {
     color: semanticColors.menuItemTextHovered
@@ -184,8 +183,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     dropdown: [
       globalClassnames.dropdown,
       normalize,
+      fonts.medium,
       {
-        ...theme.fonts.medium,
         color: palette.neutralPrimary,
         borderColor: palette.neutralSecondary,
         position: 'relative',
@@ -294,7 +293,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ],
     caretDown: [
       globalClassnames.caretDown,
-      { color: palette.neutralSecondary, fontSize: FontSizes.small, pointerEvents: 'none' },
+      { color: palette.neutralSecondary, fontSize: fonts.small.fontSize, pointerEvents: 'none' },
       disabled && { color: semanticColors.disabledText, selectors: { [HighContrastSelector]: { color: 'GrayText' } } }
     ],
     errorMessage: { color: semanticColors.errorText, ...theme.fonts.small, paddingTop: 5 },
@@ -333,7 +332,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     dropdownItemHeader: [
       globalClassnames.dropdownItemHeader,
       {
-        ...theme.fonts.medium,
+        ...fonts.medium,
         fontWeight: FontWeights.semibold,
         color: semanticColors.menuHeader,
         background: 'none',

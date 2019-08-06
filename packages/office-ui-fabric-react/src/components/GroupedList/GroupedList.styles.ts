@@ -1,5 +1,5 @@
 import { IGroupedListStyleProps, IGroupedListStyles } from './GroupedList.types';
-import { getGlobalClassNames, FontSizes, AnimationVariables } from '../../Styling';
+import { getGlobalClassNames, AnimationVariables } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-GroupedList',
@@ -21,10 +21,9 @@ export const getStyles = (props: IGroupedListStyleProps): IGroupedListStyles => 
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         position: 'relative',
-        fontSize: FontSizes.small,
         selectors: {
           [`.${classNames.listCell}`]: {
             minHeight: 38 // be consistent with DetailsList styles
@@ -49,10 +48,8 @@ export const getStyles = (props: IGroupedListStyleProps): IGroupedListStyles => 
         transition: `background-color ${AnimationVariables.durationValue2} ${beziers.easeInOutSine}`
       }
     ],
-    groupIsDropping: [
-      {
-        backgroundColor: palette.neutralLight
-      }
-    ]
+    groupIsDropping: {
+      backgroundColor: palette.neutralLight
+    }
   };
 };
