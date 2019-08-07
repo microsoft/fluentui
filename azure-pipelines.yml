@@ -69,11 +69,12 @@ steps:
       githubDescription: 'Click "Details" to go to the Deployed Site'
       githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: './apps/a11y-tests/dist/reports'
-      artifactName: 'CodeAnalysisLogs'
-    displayName: publish sarif a11y reports
+  # a11y-tests disabled until occasional local and CI timeout issue can be resolved.
+  #- task: PublishBuildArtifacts@1
+  #  inputs:
+  #    pathtoPublish: './apps/a11y-tests/dist/reports'
+  #    artifactName: 'CodeAnalysisLogs'
+  #  displayName: publish sarif a11y reports
 
   - script: |
       git config --global user.email "fabrictactical@microsoft.com"
