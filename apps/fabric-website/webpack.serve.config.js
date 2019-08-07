@@ -1,34 +1,24 @@
 let path = require('path');
 let resources = require('../../scripts/webpack/webpack-resources');
-const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
-const devServerConfig = {
-  inline: true,
-  port: 4321
-};
-
-const outputConfig = {
-  filename: 'fabric-sitev5.js'
-};
+let entryPointName = 'fabric-sitev5';
 
 module.exports = resources.createServeConfig({
-  entry: './src/root.tsx',
+  entry: {
+    [entryPointName]: './src/root.tsx',
+    'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
+    'ts.worker': 'monaco-editor/esm/vs/language/typescript/ts.worker.js'
+  },
 
-  output: outputConfig,
-
-  devServer: devServerConfig,
+  output: {
+    globalObject: 'self', // required for monaco--see https://github.com/webpack/webpack/issues/6642
+    chunkFilename: `${entryPointName}-[name].js`
+  },
 
   externals: {
     react: 'React',
     'react-dom': 'ReactDOM'
   },
-
-  plugins: [
-    new MonacoWebpackPlugin({
-      // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
-      languages: ['typescript']
-    })
-  ],
 
   resolve: {
     alias: {

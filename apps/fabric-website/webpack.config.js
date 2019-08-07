@@ -5,7 +5,6 @@ module.exports = function(env) {
   const isDogfoodArg = env && !env.production;
   const isProductionArg = env && env.production;
   const now = Date.now();
-  const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
   // Production defaults
   let minFileNamePart = '';
@@ -19,25 +18,19 @@ module.exports = function(env) {
     minFileNamePart = '.min';
   }
 
-  return resources.createConfig(
-    entryPointName,
-    isProductionArg,
-    {
+  return (
+    resources.createConfig(entryPointName, isProductionArg, {
       entry: {
-        [entryPointName]: './lib/root.js'
+        [entryPointName]: './lib/root.js',
+        'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
+        'ts.worker': 'monaco-editor/esm/vs/language/typescript/ts.worker.js'
       },
 
       output: {
         publicPath: publicPath,
+        globalObject: 'self', // required for monaco--see https://github.com/webpack/webpack/issues/6642
         chunkFilename: `${entryPointName}-${version}-[name]-${now}${minFileNamePart}.js`
       },
-
-      plugins: [
-        new MonacoWebpackPlugin({
-          // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
-          languages: ['typescript']
-        })
-      ],
 
       resolve: {
         alias: {
@@ -49,7 +42,7 @@ module.exports = function(env) {
           '@uifabric/api-docs/lib': path.join(__dirname, '../../packages/api-docs/lib')
         }
       }
-    },
-    isProductionArg /* only production */
-  );
+    }),
+    isProductionArg
+  ); /* only production */
 };
