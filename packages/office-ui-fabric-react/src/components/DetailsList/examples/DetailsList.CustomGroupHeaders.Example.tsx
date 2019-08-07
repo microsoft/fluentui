@@ -72,6 +72,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
   private _onRenderDetailsHeader(props: IDetailsHeaderProps) {
     return <DetailsHeader {...props} ariaLabelForToggleAllGroupsButton={'Toggle selection'} />;
   }
+
   private _onRenderGroupHeader = (props: IGroupDividerProps): JSX.Element => {
     return (
       <div className={classNames.headerAndFooter}>
