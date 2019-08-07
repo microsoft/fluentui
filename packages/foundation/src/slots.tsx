@@ -41,8 +41,7 @@ export function withSlots<P>(
   if (slotType.isSlot) {
     // TODO: There is something weird going on here with children embedded in props vs. rest args.
     // Comment out these lines to see. Make sure this function is doing the right things.
-    const numChildren = React.Children.count(children);
-    if (numChildren === 0) {
+    if (children.length === 0) {
       return slotType(props);
     }
 
