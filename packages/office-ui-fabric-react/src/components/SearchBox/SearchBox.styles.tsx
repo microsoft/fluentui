@@ -1,11 +1,10 @@
-import { HighContrastSelector, AnimationVariables, normalize, IStyle, getGlobalClassNames } from '../../Styling';
+import { HighContrastSelector, AnimationVariables, normalize, IStyle, getGlobalClassNames, getPlaceholderStyles } from '../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
-import { getPlaceholderStyles } from '@uifabric/styling';
 
 const GlobalClassNames = {
   root: 'ms-SearchBox',
-  icon: 'ms-SearchBox-icon',
   iconContainer: 'ms-SearchBox-iconContainer',
+  icon: 'ms-SearchBox-icon',
   clearButton: 'ms-SearchBox-clearButton',
   field: 'ms-SearchBox-field'
 };
@@ -13,7 +12,6 @@ const GlobalClassNames = {
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   const { theme, underlined, disabled, hasFocus, className, hasInput, disableAnimation } = props;
   const { palette, fonts, semanticColors, effects } = theme;
-
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   // placeholder style constants
@@ -57,8 +55,8 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
               }
             }
           },
-          ':hover .ms-SearchBox-iconContainer': {
-            color: semanticColors.inputIconHovered
+          [`:hover .${classNames.iconContainer}`]: {
+            color: palette.themeDark
           }
         }
       },

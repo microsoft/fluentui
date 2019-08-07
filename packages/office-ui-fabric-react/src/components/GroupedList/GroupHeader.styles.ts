@@ -63,15 +63,15 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
             background: semanticColors.listItemBackgroundHovered,
             color: semanticColors.actionLinkHovered
           },
-          ':hover $check': {
+          [`&:hover .${classNames.check}`]: {
             opacity: 1
           },
-          [`.${IsFocusVisibleClassName} &:focus $check`]: {
+          [`.${IsFocusVisibleClassName} &:focus .${classNames.check}`]: {
             opacity: 1
           },
           [`:global(.${classNames.group}.${classNames.isDropping})`]: {
             selectors: {
-              '> $root $dropIcon': {
+              [`& > .${classNames.root} .${classNames.dropIcon}`]: {
                 transition: `transform ${AnimationVariables.durationValue4} ${beziers.easeOutCirc} opacity ${
                   AnimationVariables.durationValue1
                 } ${beziers.easeOutSine}`,
@@ -80,7 +80,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
                 transform: `rotate(0.2deg) scale(1);` // rotation prevents jittery motion in IE
               },
 
-              $check: {
+              [`.${classNames.check}`]: {
                 opacity: 0
               }
             }
@@ -95,7 +95,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
             ':hover': {
               background: semanticColors.listItemBackgroundCheckedHovered
             },
-            $check: {
+            [`${classNames.check}`]: {
               opacity: 1
             }
           }
