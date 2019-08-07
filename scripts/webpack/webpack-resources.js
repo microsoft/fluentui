@@ -210,7 +210,7 @@ module.exports = {
     return config;
   },
 
-  createMonacoConfig(customConfig) {
+  createMonacoConfig() {
     const config = {
       entry: {
         'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
@@ -222,7 +222,7 @@ module.exports = {
         filename: '[name].bundle.js'
       }
     };
-    return merge(config, customConfig);
+    return config;
   }
 };
 

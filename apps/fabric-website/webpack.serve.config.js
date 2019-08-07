@@ -1,5 +1,6 @@
 let path = require('path');
 let resources = require('../../scripts/webpack/webpack-resources');
+const merge = require('../../scripts/tasks/merge');
 // const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 const devServerConfig = {
@@ -46,7 +47,7 @@ const regularConfig = {
   resolve: resolveConfig
 };
 
-const monacoConfig = resources.createMonacoConfig({
+const monacoConfig = merge(resources.createMonacoConfig(), {
   devServer: devServerConfig,
 
   externals: externalsConfig,

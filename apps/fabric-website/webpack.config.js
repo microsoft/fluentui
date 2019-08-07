@@ -5,6 +5,8 @@ module.exports = function(env) {
   const isDogfoodArg = env && !env.production;
   const isProductionArg = env && env.production;
   const now = Date.now();
+  const merge = require('../../scripts/tasks/merge');
+
   // const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
   // Production defaults
@@ -19,39 +21,39 @@ module.exports = function(env) {
     minFileNamePart = '.min';
   }
 
-  return resources.createConfig(
-    resources.createMonacoConfig(
-      entryPointName,
-      isProductionArg,
-      {
-        entry: {
-          [entryPointName]: './lib/root.js'
-        },
-
-        output: {
-          publicPath: publicPath,
-          chunkFilename: `${entryPointName}-${version}-[name]-${now}${minFileNamePart}.js`
-        },
-
-        // plugins: [
-        //   new MonacoWebpackPlugin({
-        //     // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
-        //     languages: ['typescript']
-        //   })
-        // ],
-
-        resolve: {
-          alias: {
-            '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
-            '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
-            'office-ui-fabric-react$': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
-            'office-ui-fabric-react/src': path.join(__dirname, '../../packages/office-ui-fabric-react/src'),
-            'office-ui-fabric-react/lib': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
-            '@uifabric/api-docs/lib': path.join(__dirname, '../../packages/api-docs/lib')
-          }
-        }
+  const config = resources.createConfig(
+    entryPointName,
+    isProductionArg,
+    {
+      entry: {
+        [entryPointName]: './lib/root.js'
       },
-      isProductionArg /* only production */
-    )
+
+      output: {
+        publicPath: publicPath,
+        chunkFilename: `${entryPointName}-${version}-[name]-${now}${minFileNamePart}.js`
+      },
+
+      // plugins: [
+      //   new MonacoWebpackPlugin({
+      //     // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
+      //     languages: ['typescript']
+      //   })
+      // ],
+
+      resolve: {
+        alias: {
+          '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
+          '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
+          'office-ui-fabric-react$': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
+          'office-ui-fabric-react/src': path.join(__dirname, '../../packages/office-ui-fabric-react/src'),
+          'office-ui-fabric-react/lib': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
+          '@uifabric/api-docs/lib': path.join(__dirname, '../../packages/api-docs/lib')
+        }
+      }
+    },
+    isProductionArg /* only production */
   );
+  console.log(config);
+  return merge(resources.createMonacoConfig(), config[0]);
 };
