@@ -149,7 +149,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       if (this.state.selectionState.isSelected !== newSelectionState.isSelected) {
         return true;
       }
-      return shallowCompare(this.props, nextProps);
+      return !shallowCompare(this.props, nextProps);
     } else {
       return true;
     }

@@ -15,20 +15,21 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@microsoft/load-themed-styles": "^1.7.13",
     "@types/es6-promise": "0.0.32",
     "@types/mocha": "2.2.39",
     "@types/webpack-env": "1.13.9",
-    "@microsoft/load-themed-styles": "^1.7.13",
+    "@uifabric/build": "^7.0.0",
     "@uifabric/fabric-website-resources": "^7.2.2",
     "@uifabric/prettier-rules": "^7.0.3",
+    "just-scripts-utils": "^0.8.3",
     "mocha": "^3.3.0",
     "office-ui-fabric-react": "^7.21.0",
     "raw-loader": "^0.5.1",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
-    "webpack": "4.29.5",
-    "@uifabric/build": "^7.0.0"
+    "webpack": "4.29.5"
   },
   "dependencies": {
     "es6-promise": "^4.1.0",
