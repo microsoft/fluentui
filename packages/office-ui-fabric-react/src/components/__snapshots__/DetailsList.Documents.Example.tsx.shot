@@ -631,10 +631,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     vertical-align: top;
                     white-space: nowrap;
                   }
-                  &:hover $check {
+                  &:hover .ms-DetailsHeader-check {
                     opacity: 1;
                   }
-                  & ms-TooltipHost $checkTooltip {
+                  & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                     display: block;
                   }
               data-automationid="DetailsHeader"
@@ -782,7 +782,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             overflow: hidden;
                             text-overflow: ellipsis;
                           }
-                          & $nearIcon {
+                          & .ms-DetailsColumn-nearIcon {
                             padding-left: 0px;
                           }
                       id="header5-column1-name"
@@ -1079,7 +1079,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       opacity: 1;
                       transition: opacity 0.3s linear;
                     }
-                    &$cellIsResizing:after {
+                    &.is-resizing:after {
                       box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                       opacity: 1;
                       transition: opacity 0.3s linear;
@@ -1270,7 +1270,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       opacity: 1;
                       transition: opacity 0.3s linear;
                     }
-                    &$cellIsResizing:after {
+                    &.is-resizing:after {
                       box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                       opacity: 1;
                       transition: opacity 0.3s linear;
@@ -1405,10 +1405,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               &:hover .is-row-header {
                                 color: #201f1e;
                               }
-                              &:hover $check {
+                              &:hover .ms-DetailsRow-check {
                                 opacity: 1;
                               }
-                              .ms-Fabric--isFocusVisible &:focus $check {
+                              .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -1492,7 +1492,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1564,10 +1563,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -1624,10 +1622,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1724,10 +1721,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               &:hover .is-row-header {
                                 color: #201f1e;
                               }
-                              &:hover $check {
+                              &:hover .ms-DetailsRow-check {
                                 opacity: 1;
                               }
-                              .ms-Fabric--isFocusVisible &:focus $check {
+                              .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -1811,7 +1808,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -1883,10 +1879,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -1943,10 +1938,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2043,10 +2037,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               &:hover .is-row-header {
                                 color: #201f1e;
                               }
-                              &:hover $check {
+                              &:hover .ms-DetailsRow-check {
                                 opacity: 1;
                               }
-                              .ms-Fabric--isFocusVisible &:focus $check {
+                              .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -2130,7 +2124,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2202,10 +2195,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -2262,10 +2254,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2362,10 +2353,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               &:hover .is-row-header {
                                 color: #201f1e;
                               }
-                              &:hover $check {
+                              &:hover .ms-DetailsRow-check {
                                 opacity: 1;
                               }
-                              .ms-Fabric--isFocusVisible &:focus $check {
+                              .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -2449,7 +2440,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2521,10 +2511,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -2581,10 +2570,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2681,10 +2669,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               &:hover .is-row-header {
                                 color: #201f1e;
                               }
-                              &:hover $check {
+                              &:hover .ms-DetailsRow-check {
                                 opacity: 1;
                               }
-                              .ms-Fabric--isFocusVisible &:focus $check {
+                              .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -2768,7 +2756,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -2840,10 +2827,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -2900,10 +2886,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3000,10 +2985,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               &:hover .is-row-header {
                                 color: #201f1e;
                               }
-                              &:hover $check {
+                              &:hover .ms-DetailsRow-check {
                                 opacity: 1;
                               }
-                              .ms-Fabric--isFocusVisible &:focus $check {
+                              .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -3087,7 +3072,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3159,10 +3143,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -3219,10 +3202,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3319,10 +3301,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               &:hover .is-row-header {
                                 color: #201f1e;
                               }
-                              &:hover $check {
+                              &:hover .ms-DetailsRow-check {
                                 opacity: 1;
                               }
-                              .ms-Fabric--isFocusVisible &:focus $check {
+                              .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -3406,7 +3388,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3478,10 +3459,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -3538,10 +3518,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3638,10 +3617,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               &:hover .is-row-header {
                                 color: #201f1e;
                               }
-                              &:hover $check {
+                              &:hover .ms-DetailsRow-check {
                                 opacity: 1;
                               }
-                              .ms-Fabric--isFocusVisible &:focus $check {
+                              .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -3725,7 +3704,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3797,10 +3775,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -3857,10 +3834,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -3957,10 +3933,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               &:hover .is-row-header {
                                 color: #201f1e;
                               }
-                              &:hover $check {
+                              &:hover .ms-DetailsRow-check {
                                 opacity: 1;
                               }
-                              .ms-Fabric--isFocusVisible &:focus $check {
+                              .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -4044,7 +4020,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4116,10 +4091,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -4176,10 +4150,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4276,10 +4249,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                               &:hover .is-row-header {
                                 color: #201f1e;
                               }
-                              &:hover $check {
+                              &:hover .ms-DetailsRow-check {
                                 opacity: 1;
                               }
-                              .ms-Fabric--isFocusVisible &:focus $check {
+                              .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -4363,7 +4336,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 8px;
                                   }
-
                               data-automation-key="column1"
                               data-automationid="DetailsRowCell"
                               role="gridcell"
@@ -4435,10 +4407,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column2"
                               data-automationid="DetailsRowCell"
                               role="rowheader"
@@ -4495,10 +4466,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                                   {
                                     padding-right: 32px;
                                   }
-                                  &.$checkCell {
+                                  &.ms-DetailsRow-cellCheck {
                                     padding-right: 0px;
                                   }
-
                               data-automation-key="column3"
                               data-automationid="DetailsRowCell"
                               role="gridcell"

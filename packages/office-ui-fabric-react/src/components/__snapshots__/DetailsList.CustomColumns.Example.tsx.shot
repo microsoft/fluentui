@@ -75,10 +75,10 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover $check {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
-              & ms-TooltipHost $checkTooltip {
+              & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                 display: block;
               }
           data-automationid="DetailsHeader"
@@ -142,7 +142,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
           >
             <span
               className=
-
+                  ms-DetailsHeader-checkTooltip
 
             >
               <div
@@ -151,6 +151,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                 aria-label="Toggle selection"
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
                     ms-Check-checkHost
                     {
@@ -587,10 +588,10 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -864,7 +865,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -1004,10 +1004,10 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -1281,7 +1281,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -1421,10 +1420,10 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -1698,7 +1697,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -1838,10 +1836,10 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -2115,7 +2113,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -2255,10 +2252,10 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -2532,7 +2529,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -2672,10 +2668,10 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -2949,7 +2945,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -3089,10 +3084,10 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -3366,7 +3361,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -3506,10 +3500,10 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -3783,7 +3777,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -3923,10 +3916,10 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -4200,7 +4193,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"
@@ -4340,10 +4332,10 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           &:hover .is-row-header {
                             color: #201f1e;
                           }
-                          &:hover $check {
+                          &:hover .ms-DetailsRow-check {
                             opacity: 1;
                           }
-                          .ms-Fabric--isFocusVisible &:focus $check {
+                          .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
@@ -4617,7 +4609,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                               {
                                 padding-right: 8px;
                               }
-
                           data-automation-key="thumbnail"
                           data-automationid="DetailsRowCell"
                           role="gridcell"

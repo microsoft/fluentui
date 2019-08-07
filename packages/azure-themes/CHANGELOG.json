@@ -2,6 +2,20 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Mon, 29 Jul 2019 12:26:00 GMT",
+      "tag": "@uifabric/azure-themes_v7.0.5",
+      "version": "7.0.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Typo in Azure Themes README",
+            "author": "email not defined",
+            "commit": "f1282642e050ec6295c97e189165011705da22b2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jul 2019 12:28:42 GMT",
       "tag": "@uifabric/azure-themes_v7.0.4",
       "version": "7.0.4",

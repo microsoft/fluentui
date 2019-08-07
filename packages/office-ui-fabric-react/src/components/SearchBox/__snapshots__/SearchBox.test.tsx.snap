@@ -39,7 +39,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
       }
-      &:hover $iconContainer {
+      &:hover .ms-SearchBox-iconContainer {
         color: #005a9e;
       }
   onFocusCapture={[Function]}
@@ -172,7 +172,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
       }
-      &:hover $iconContainer {
+      &:hover .ms-SearchBox-iconContainer {
         color: #005a9e;
       }
   onFocusCapture={[Function]}
