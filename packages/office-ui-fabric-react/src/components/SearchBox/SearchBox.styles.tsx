@@ -1,5 +1,6 @@
 import { HighContrastSelector, AnimationVariables, normalize, IStyle, getPlaceholderStyles, getGlobalClassNames } from '../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
+import { getRTL } from '@uifabric/utilities';
 
 const GlobalClassNames = {
   root: 'ms-SearchBox',
@@ -163,9 +164,13 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           '&:hover .ms-Button-icon': {
             color: inputIconAltHovered
           },
-          '.ms-Button': {
-            borderRadius: 0
-          },
+          '.ms-Button': getRTL()
+            ? {
+                borderRadius: '1px 0 0 1px'
+              }
+            : {
+                borderRadius: '0 1px 1px 0'
+              },
           '.ms-Button-icon': {
             color: inputIconAlt
           }
