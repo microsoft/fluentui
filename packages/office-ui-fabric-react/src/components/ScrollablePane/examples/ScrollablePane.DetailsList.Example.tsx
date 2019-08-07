@@ -125,7 +125,6 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, IScrol
               ariaLabelForSelectionColumn="Toggle selection"
               ariaLabelForSelectAllCheckbox="Toggle selection for all items"
               onItemInvoked={_onItemInvoked}
-              useReducedRowRenderer={true}
             />
           </MarqueeSelection>
         </ScrollablePane>
