@@ -19,7 +19,7 @@ module.exports = function(env) {
     minFileNamePart = '.min';
   }
 
-  return resources.createConfig(
+  const config = resources.createConfig(
     entryPointName,
     isProductionArg,
     {
@@ -52,4 +52,6 @@ module.exports = function(env) {
     },
     isProductionArg /* only production */
   );
+  console.log(config);
+  return config;
 };

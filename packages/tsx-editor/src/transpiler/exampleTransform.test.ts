@@ -21,6 +21,6 @@ describe('example transform', () => {
 
   it('returns an error from relative imports', () => {
     const result = transformFile('relativeImport.txt');
-    expect(result.error).toBe('Error while transforming example: unsupported imports.');
+    expect(result.error).toBe("Error while transforming example: Unsupported import - import '../../fake.scss';.");
   });
 });

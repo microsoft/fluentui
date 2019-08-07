@@ -1,10 +1,21 @@
-const exampleData = require('!raw-loader!office-ui-fabric-react/lib/utilities/exampleData');
-const peopleExampleData = require('!raw-loader!office-ui-fabric-react/lib/components/ExtendedPicker/examples/PeopleExampleData');
-const testImages = require('!raw-loader!office-ui-fabric-react/lib/common/TestImages');
 export interface ITransformedExample {
   output?: string;
   error?: string;
 }
+
+interface IExampleData {
+  [key: string]: string;
+  exampleData: string;
+  TestImages: string;
+  PeopleExampleData: string;
+}
+
+const exampleDataFiles: IExampleData = {
+  exampleData: require('!raw-loader!office-ui-fabric-react/lib/utilities/exampleData'),
+  TestImages: require('!raw-loader!office-ui-fabric-react/lib/common/TestImages'),
+  PeopleExampleData: require('!raw-loader!office-ui-fabric-react/lib/components/ExtendedPicker/examples/PeopleExampleData'),
+  FacepileExampleData: require('!raw-loader!office-ui-fabric-react/lib/components/Facepile/examples/FacepileExampleData')
+};
 
 export function transformExample(example: string, id: string) {
   /**
@@ -13,7 +24,6 @@ export function transformExample(example: string, id: string) {
    * identifierPattern - pattern to get all identifiers from the imports
    * importPattern - pattern to get all imports even if they have multilines
    */
-
   const classNamePattern = new RegExp('(?![var ])(.*)(?= = \\/\\*\\* @class \\*\\/ \\(function \\(_super\\))', 'g');
   const constNamePattern = new RegExp('(?![export var ])(.*)(?= = function)', 'g');
   const identifierPattern = new RegExp('(?![import {])([\\s\\S]*)(?=})');
@@ -50,17 +60,16 @@ export function transformExample(example: string, id: string) {
    * error since the import is not supported.
    */
   while ((temp = importPattern.exec(example))) {
-    if (/\/exampleData/.test(temp[0])) {
-      example = example + exampleData;
-      example = example.replace(temp[0], '');
-    } else if (/\/PeopleExampleData/.test(temp[0])) {
-      example = example + peopleExampleData;
-      example = example.replace(temp[0], '');
-    } else if (/\/TestImages/.test(temp[0])) {
-      example = example + testImages;
-      example = example.replace(temp[0], '');
-    } else if (!/office-ui-fabric-react/.test(temp[0])) {
-      output.error = 'Error while transforming example: unsupported imports.';
+    let foundExampleImport = false;
+    for (const filename of Object.keys(exampleDataFiles)) {
+      if (temp[0].indexOf('/' + filename) !== -1) {
+        example += `\n${exampleDataFiles[filename]}`;
+        example = example.replace(temp[0], '');
+        foundExampleImport = true;
+      }
+    }
+    if (!foundExampleImport && !/office-ui-fabric-react/.test(temp[0])) {
+      output.error = `Error while transforming example: Unsupported import - ${temp[0]}.`;
     } else {
       imports.push(temp[0]);
     }
@@ -74,7 +83,6 @@ export function transformExample(example: string, id: string) {
    */
   imports.forEach((imp: string) => {
     temp = identifierPattern.exec(imp);
-    console.log(imp);
     if (temp !== null) {
       temp[0].split(',').forEach((ident: string) => {
         identifiers.push(ident.replace(/\s/g, ''));
@@ -89,18 +97,14 @@ export function transformExample(example: string, id: string) {
   /**
    * adding line to render React and adding identifiers.
    */
-  example =
-    'const {' +
-    identifiers.join(', ') +
-    ', Fabric } = window.Fabric;\n' +
-    example +
-    `
+  example = `const {
+    ${identifiers.join(', ')}, Fabric } = window.Fabric;\n
+    ${example}
     ReactDOM.render(
       React.createElement(Fabric, null, React.createElement(${className}, null)),
       document.getElementById('${id}')
     );
     `;
   output.output = example;
-  console.log(example);
   return output;
 }
