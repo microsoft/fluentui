@@ -37,15 +37,9 @@
     </div>
 
     <script type="text/javascript">
-      var isLocal = window.location.hostname === 'localhost' || window.location.hostname.indexOf('ngrok.io') > -1;
-      var isDogfood = false;
-      var isProduction = false;
-
-      // Query params
-      var dogfoodParam = getParameterByName('isDogfood');
-      var productionParam = getParameterByName('isProduction');
+      var isLocal = location.hostname === 'localhost' || location.hostname.indexOf('ngrok.io') > -1;
+      var isProduction = location.hostname === 'developer.microsoft.com' || getParameterByName('isProduction');
       var devhost = getParameterByName('devhost');
-
       var entryPointFilename = 'fabric-sitev5';
       var appPath = '';
       var Flight = {};
@@ -54,18 +48,10 @@
       // variants of the Monaco workers.
       var jsSuffix = '.min.js';
 
-      // Determine production or staging/dogfood
-      if (location.hostname === 'developer.microsoft.com' || productionParam) {
-        isProduction = true;
-      } else if (location.hostname === 'developer.microsoft-tst.com' || dogfoodParam) {
-        isDogfood = true;
-      }
-
       // If the site is hosted, load the flight config script for production or dogfood
       if (devhost !== null) {
         if (devhost === '') {
-          var loc = window.location;
-          devhost = loc.protocol + '//' + loc.host + loc.pathname.replace('index.html', '');
+          devhost = location.origin + location.pathname.replace('homepage.htm', '');
         }
         appPath = devhost;
         Flight.baseCDNUrl = devhost;
@@ -99,7 +85,7 @@
           }
         });
       } else {
-        appPath = window.location.origin + '/';
+        appPath = location.origin + '/';
         loadAppScripts();
       }
 
@@ -169,7 +155,7 @@
 
       function getParameterByName(name, url) {
         if (!url) {
-          url = window.location.href;
+          url = location.href;
         }
         name = name.replace(/[\[\]]/g, '\\$&');
         var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),

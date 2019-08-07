@@ -28,30 +28,21 @@
 </div>
 
 <script type="text/javascript">
-  var isDogfood = false;
-  var isProduction = false;
+  var isProduction = location.hostname === 'developer.microsoft.com';
   var devhost = getParameterByName('devhost');
   var entryPointFilename = 'fabric-sitev5';
   var appPath = '';
   var Flight = {};
   var jsSuffix = '.min.js';
 
-  if (location.hostname === 'developer.microsoft.com') {
-    isProduction = true;
-  } else if (location.hostname === 'developer.microsoft-tst.com') {
-    isDogfood = true;
-  }
-
   if (devhost !== null) {
     if (devhost === '') {
-      var loc = window.location;
-      devhost = loc.protocol + '//' + loc.host + loc.pathname.replace('homepage.htm', '');
+      devhost = location.origin + location.pathname.replace('homepage.htm', '');
     }
     appPath = devhost;
     Flight.baseCDNUrl = devhost;
     loadAppScripts();
   } else {
-    // Update as new fabric versions and its documentation are supported
     var fabricVersions = [5, 6, 7];
 
     var fabricVersion = Number(
@@ -139,7 +130,7 @@
 
   function getParameterByName(name, url) {
     if (!url) {
-      url = window.location.href;
+      url = location.href;
     }
     name = name.replace(/[\[\]]/g, '\\$&');
     var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
