@@ -7505,16 +7505,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     value?: string;
 }
 
-// Warning: (ae-internal-missing-underscore) The name "ITextFieldSnapshot" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export interface ITextFieldSnapshot {
-    selection?: [number | null, number | null];
-}
-
-// Warning: (ae-internal-missing-underscore) The name "ITextFieldState" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
+// @public (undocumented)
 export interface ITextFieldState {
     errorMessage: string | JSX.Element;
     isFocused: boolean;
@@ -9194,9 +9185,6 @@ export const Text: React.StatelessComponent<ITextProps>;
 // @public (undocumented)
 export const TextField: React.StatelessComponent<ITextFieldProps>;
 
-// Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldState" which is marked as @internal
-// Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldSnapshot" which is marked as @internal
-//
 // @public (undocumented)
 export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState> implements ITextField {
     constructor(props: ITextFieldProps);
@@ -9360,10 +9348,6 @@ export * from "@uifabric/foundation";
 export * from "@uifabric/icons";
 export * from "@uifabric/styling";
 export * from "@uifabric/utilities";
-
-// Warnings were encountered during analysis:
-//
-// lib/components/ColorPicker/ColorPicker.base.d.ts:8:9 - (ae-forgotten-export) The symbol "IRGBHex" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
