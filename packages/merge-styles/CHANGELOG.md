@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Aug 2019 12:32:28 GMT and should not be manually modified.
+
+## 7.3.0
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Minor changes
+
+- Updating styles to not use $ syntax. (dzearing@microsoft.com)
 
 ## 7.2.0
 Wed, 17 Jul 2019 18:58:57 GMT

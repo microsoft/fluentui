@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Checkbox: Fix for an accessibility bug where checkbox labels were read at two different locations in Narrator's scan mode",
-  "packageName": "office-ui-fabric-react",
-  "email": "kisiebel@microsoft.com",
-  "commit": "7f603fcee030101df5460919af34b01c19ac6421",
-  "date": "2019-08-05T19:11:50.956Z"
-}

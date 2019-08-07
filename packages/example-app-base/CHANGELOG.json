@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Wed, 07 Aug 2019 12:32:28 GMT",
+      "tag": "@uifabric/example-app-base_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating styles to not use $ syntax.",
+            "author": "dzearing@microsoft.com",
+            "commit": "de03449faca7e6256e3863892a1c465721fd0ec4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Aug 2019 12:32:07 GMT",
       "tag": "@uifabric/example-app-base_v7.3.0",
       "version": "7.3.0",

@@ -1,6 +1,14 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 06 Aug 2019 12:32:07 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Aug 2019 12:32:28 GMT and should not be manually modified.
+
+## 7.11.0
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Minor changes
+
+- Chiclet: Medium chiclet is styled according to redlines and xSmall Chiclet url displays properly (t-stcar@microsoft.com)
+,- Updating styles to not use $ syntax. (dzearing@microsoft.com)
 
 ## 7.10.1
 Tue, 06 Aug 2019 12:32:07 GMT

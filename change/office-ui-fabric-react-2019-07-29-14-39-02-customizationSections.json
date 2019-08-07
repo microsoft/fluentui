@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add customization section to Themes page",
-  "packageName": "office-ui-fabric-react",
-  "email": "naethell@microsoft.com",
-  "commit": "68361da1ab491641dc11bdf38447074eb360e680",
-  "date": "2019-07-29T21:39:02.920Z"
-}

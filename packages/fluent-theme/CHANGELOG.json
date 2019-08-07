@@ -2,6 +2,20 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Wed, 07 Aug 2019 12:32:28 GMT",
+      "tag": "@uifabric/fluent-theme_v7.1.0",
+      "version": "7.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating styles to not use $ syntax.",
+            "author": "dzearing@microsoft.com",
+            "commit": "de03449faca7e6256e3863892a1c465721fd0ec4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jul 2019 18:58:57 GMT",
       "tag": "@uifabric/fluent-theme_v7.0.4",
       "version": "7.0.4",
