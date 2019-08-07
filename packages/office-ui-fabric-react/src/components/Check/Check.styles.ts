@@ -55,8 +55,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
             background: semanticColors.bodyBackground
           },
 
-          // Always use the global class name for this, or it won't work.
-          [`.${CheckGlobalClassNames.checkHost}:hover &, .${CheckGlobalClassNames.checkHost}:focus &, &:hover, &:focus`]: {
+          [`.${classNames.checkHost}:hover &, .${classNames.checkHost}:focus &, &:hover, &:focus`]: {
             opacity: 1
           }
         }
@@ -135,6 +134,6 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
       }
     ],
 
-    checkHost: [{}]
+    checkHost: classNames.checkHost
   };
 };

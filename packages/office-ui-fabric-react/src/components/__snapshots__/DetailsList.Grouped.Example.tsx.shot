@@ -469,10 +469,10 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                   vertical-align: top;
                   white-space: nowrap;
                 }
-                &:hover $check {
+                &:hover .ms-DetailsHeader-check {
                   opacity: 1;
                 }
-                & ms-TooltipHost $checkTooltip {
+                & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                   display: block;
                 }
             data-automationid="DetailsHeader"
@@ -536,7 +536,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
             >
               <span
                 className=
-
+                    ms-DetailsHeader-checkTooltip
 
               >
                 <div
@@ -545,6 +545,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                   aria-label="Toggle selection"
                   className=
                       ms-DetailsRow-check
+                      ms-DetailsHeader-check
                       ms-DetailsRow-check--isHeader
                       ms-Check-checkHost
                       {
@@ -972,7 +973,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                     opacity: 1;
                     transition: opacity 0.3s linear;
                   }
-                  &$cellIsResizing:after {
+                  &.is-resizing:after {
                     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                     opacity: 1;
                     transition: opacity 0.3s linear;
@@ -1242,19 +1243,19 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                   background: #f3f2f1;
                                   color: #201f1e;
                                 }
-                                &:hover $check {
+                                &:hover .ms-GroupHeader-check {
                                   opacity: 1;
                                 }
-                                .ms-Fabric--isFocusVisible &:focus $check {
+                                .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
                                   opacity: 1;
                                 }
-                                .ms-GroupedList-group.is-dropping > $root $dropIcon {
+                                & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
                                   opacity: 1;
                                   transform: rotate(0.2deg) scale(1);
                                   transition-delay: 0.367s;
                                   transition: transform 0.467s cubic-bezier(0.075, 0.820, 0.165, 1.000) opacity 0.167s cubic-bezier(0.390, 0.575, 0.565, 1.000);
                                 }
-                                .ms-GroupedList-group.is-dropping $check {
+                                .ms-GroupedList-group.is-dropping .ms-GroupHeader-check {
                                   opacity: 0;
                                 }
                             data-is-focusable={true}
@@ -1642,10 +1643,10 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         &:hover .is-row-header {
                                           color: #201f1e;
                                         }
-                                        &:hover $check {
+                                        &:hover .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
-                                        .ms-Fabric--isFocusVisible &:focus $check {
+                                        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
                                     data-automationid="DetailsRow"
@@ -2090,10 +2091,10 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         &:hover .is-row-header {
                                           color: #201f1e;
                                         }
-                                        &:hover $check {
+                                        &:hover .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
-                                        .ms-Fabric--isFocusVisible &:focus $check {
+                                        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
                                     data-automationid="DetailsRow"
@@ -2528,19 +2529,19 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                   background: #f3f2f1;
                                   color: #201f1e;
                                 }
-                                &:hover $check {
+                                &:hover .ms-GroupHeader-check {
                                   opacity: 1;
                                 }
-                                .ms-Fabric--isFocusVisible &:focus $check {
+                                .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
                                   opacity: 1;
                                 }
-                                .ms-GroupedList-group.is-dropping > $root $dropIcon {
+                                & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
                                   opacity: 1;
                                   transform: rotate(0.2deg) scale(1);
                                   transition-delay: 0.367s;
                                   transition: transform 0.467s cubic-bezier(0.075, 0.820, 0.165, 1.000) opacity 0.167s cubic-bezier(0.390, 0.575, 0.565, 1.000);
                                 }
-                                .ms-GroupedList-group.is-dropping $check {
+                                .ms-GroupedList-group.is-dropping .ms-GroupHeader-check {
                                   opacity: 0;
                                 }
                             data-is-focusable={true}
@@ -2910,19 +2911,19 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                   background: #f3f2f1;
                                   color: #201f1e;
                                 }
-                                &:hover $check {
+                                &:hover .ms-GroupHeader-check {
                                   opacity: 1;
                                 }
-                                .ms-Fabric--isFocusVisible &:focus $check {
+                                .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
                                   opacity: 1;
                                 }
-                                .ms-GroupedList-group.is-dropping > $root $dropIcon {
+                                & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
                                   opacity: 1;
                                   transform: rotate(0.2deg) scale(1);
                                   transition-delay: 0.367s;
                                   transition: transform 0.467s cubic-bezier(0.075, 0.820, 0.165, 1.000) opacity 0.167s cubic-bezier(0.390, 0.575, 0.565, 1.000);
                                 }
-                                .ms-GroupedList-group.is-dropping $check {
+                                .ms-GroupedList-group.is-dropping .ms-GroupHeader-check {
                                   opacity: 0;
                                 }
                             data-is-focusable={true}
@@ -3310,10 +3311,10 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         &:hover .is-row-header {
                                           color: #201f1e;
                                         }
-                                        &:hover $check {
+                                        &:hover .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
-                                        .ms-Fabric--isFocusVisible &:focus $check {
+                                        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
                                     data-automationid="DetailsRow"
@@ -3758,10 +3759,10 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         &:hover .is-row-header {
                                           color: #201f1e;
                                         }
-                                        &:hover $check {
+                                        &:hover .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
-                                        .ms-Fabric--isFocusVisible &:focus $check {
+                                        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
                                     data-automationid="DetailsRow"
@@ -4206,10 +4207,10 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         &:hover .is-row-header {
                                           color: #201f1e;
                                         }
-                                        &:hover $check {
+                                        &:hover .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
-                                        .ms-Fabric--isFocusVisible &:focus $check {
+                                        .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                           opacity: 1;
                                         }
                                     data-automationid="DetailsRow"

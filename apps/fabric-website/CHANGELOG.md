@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 02 Aug 2019 12:33:29 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Aug 2019 12:32:28 GMT and should not be manually modified.
+
+## 7.3.1
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Patches
+
+- Add customization section to Typography pages (naethell@microsoft.com)
+,- Fix Keytips demo page by adding a KeytipLayer (keyou@microsoft.com)
 
 ## 7.3.0
 Fri, 02 Aug 2019 12:33:29 GMT

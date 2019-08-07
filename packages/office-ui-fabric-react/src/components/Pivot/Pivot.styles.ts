@@ -212,7 +212,7 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
       classNames.icon,
       {
         selectors: {
-          '& + $text': {
+          [`& + ${classNames.text}`]: {
             marginLeft: '4px'
           }
         }

@@ -47,7 +47,7 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
-          &:hover $iconContainer {
+          &:hover .ms-SearchBox-iconContainer {
             color: #005a9e;
           }
       onFocusCapture={[Function]}
