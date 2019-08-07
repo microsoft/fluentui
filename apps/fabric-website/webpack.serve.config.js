@@ -1,3 +1,5 @@
+// @ts-check
+
 const path = require('path');
 const resources = require('@uifabric/build/webpack/webpack-resources');
 const { addMonacoConfig } = require('@uifabric/tsx-editor/scripts/monaco-webpack');
@@ -27,7 +29,6 @@ module.exports = resources.createServeConfig(
         'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
         'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
         'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
-        '@uifabric/example-app-base$': path.resolve(__dirname, '../../packages/example-app-base/src'),
         'Props.ts.js': 'Props',
         'Example.tsx.js': 'Example'
       }

@@ -1,3 +1,5 @@
+// @ts-check
+
 module.exports = function(env) {
   const path = require('path');
   const resources = require('@uifabric/build/webpack/webpack-resources');
@@ -9,7 +11,7 @@ module.exports = function(env) {
   // Production defaults
   let minFileNamePart = '';
   const entryPointName = 'fabric-sitev5';
-  const publicPath = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
+  let publicPath = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
 
   // Dogfood overrides
   if (!isProductionArg) {
