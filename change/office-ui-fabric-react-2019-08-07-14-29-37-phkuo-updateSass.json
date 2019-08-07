@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Update SASS variables using script",
+  "packageName": "office-ui-fabric-react",
+  "email": "phkuo@microsoft.com",
+  "commit": "3e6195306eab5525e259e73230c08d9fc91228d1",
+  "date": "2019-08-07T21:29:37.066Z"
+}
