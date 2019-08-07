@@ -623,7 +623,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
           data-is-focusable={false}
           data-sizer-index={dropHintIndex}
           className={classNames.dropHintCaretStyle}
-          iconName={'CaretUpSolid8'}
+          iconName={'CaretDownSolid8'}
         />
         <div
           key={`dropHintLineKey`}
