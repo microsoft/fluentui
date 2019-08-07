@@ -153,12 +153,6 @@ export const getStyles = memoizeFunction(
         float: 'right',
         marginLeft: LABEL_MARGIN
       },
-      labelWrapperTop: {
-        marginBottom: LABEL_MARGIN
-      },
-      labelWrapperBottom: {
-        marginTop: LABEL_MARGIN
-      },
       icon: {
         padding: '0 5px',
         fontSize: IconFontSizes.large
@@ -168,7 +162,6 @@ export const getStyles = memoizeFunction(
       },
       label: {
         pointerEvents: 'none',
-        padding: 0,
         // centering the label with the icon by forcing the exact same height as the icon.
         lineHeight: IconFontSizes.large
       },
