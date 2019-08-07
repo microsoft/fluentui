@@ -1063,7 +1063,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
-                                      title="Row checkbox"
                                     >
                                       <div
                                         className=
@@ -1473,7 +1472,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
-                                      title="Row checkbox"
                                     >
                                       <div
                                         className=
@@ -1883,7 +1881,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
-                                      title="Row checkbox"
                                     >
                                       <div
                                         className=
@@ -2293,7 +2290,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
-                                      title="Row checkbox"
                                     >
                                       <div
                                         className=
@@ -2703,7 +2699,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
-                                      title="Row checkbox"
                                     >
                                       <div
                                         className=
@@ -3113,7 +3108,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
-                                      title="Row checkbox"
                                     >
                                       <div
                                         className=
@@ -3523,7 +3517,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
-                                      title="Row checkbox"
                                     >
                                       <div
                                         className=
@@ -3933,7 +3926,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
-                                      title="Row checkbox"
                                     >
                                       <div
                                         className=
@@ -4343,7 +4335,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
-                                      title="Row checkbox"
                                     >
                                       <div
                                         className=
@@ -4753,7 +4744,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       data-automationid="DetailsRowCheck"
                                       data-selection-toggle={true}
                                       role="checkbox"
-                                      title="Row checkbox"
                                     >
                                       <div
                                         className=

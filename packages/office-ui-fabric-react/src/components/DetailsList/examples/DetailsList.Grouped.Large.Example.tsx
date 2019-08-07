@@ -48,7 +48,6 @@ export class DetailsListGroupedLargeExample extends React.Component<{}, {}> {
         columns={this._columns}
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         ariaLabelForSelectionColumn="Toggle selection"
-        checkButtonAriaLabel="Row checkbox"
         onRenderDetailsHeader={this._onRenderDetailsHeader}
       />
     );
