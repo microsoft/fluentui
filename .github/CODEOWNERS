@@ -28,6 +28,7 @@ azure-pipelines.yml @ecraig12345 @kenotron
 .appveyor.yml @kenotron @ecraig12345
 .npmrc @kenotron @ecraig12345
 .npmignore @kenotron @ecraig12345
+sizeauditor.json @aftab-hassan
 
 #### Deprecated API Files
 *.api.ts @natalieethell

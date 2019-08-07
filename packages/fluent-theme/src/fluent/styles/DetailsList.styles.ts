@@ -1,6 +1,6 @@
 import { ICheckStyleProps, ICheckStyles } from 'office-ui-fabric-react/lib/Check';
-import { IDetailsRowStyleProps, IDetailsRowStyles } from 'office-ui-fabric-react/lib/DetailsList';
-import { FontWeights } from '@uifabric/styling';
+import { IDetailsRowStyleProps, IDetailsRowStyles, DetailsRowGlobalClassNames } from 'office-ui-fabric-react/lib/DetailsList';
+import { FontWeights, getGlobalClassNames } from '@uifabric/styling';
 
 export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
   const { theme, checked } = props;
@@ -15,8 +15,8 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
 export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetailsRowStyles> => {
   const { theme, isSelected } = props;
   const { palette } = theme;
-
   const { neutralPrimary, neutralSecondary, neutralLight, neutralQuaternaryAlt } = palette;
+  const classNames = getGlobalClassNames(DetailsRowGlobalClassNames, theme);
 
   return {
     root: [
@@ -28,7 +28,7 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
       },
       {
         selectors: {
-          ':focus $check': {
+          [`:focus .${classNames.check}`]: {
             opacity: 1
           }
         }

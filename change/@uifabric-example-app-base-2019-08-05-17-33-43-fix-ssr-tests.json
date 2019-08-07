@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "getQueryParam gracefully falls back when window is not defined",
+  "packageName": "@uifabric/example-app-base",
+  "email": "jdh@microsoft.com",
+  "commit": "4bdb5e699873847d33d72849ffc69ba8f1d761b3",
+  "date": "2019-08-06T00:33:43.788Z"
+}

@@ -5,7 +5,8 @@ import {
   HighContrastSelector,
   ScreenWidthMaxSmall,
   getScreenSelector,
-  getGlobalClassNames
+  getGlobalClassNames,
+  IconFontSizes
 } from '../../Styling';
 import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
 
@@ -72,7 +73,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const dismissalAndExpandIconStyle: IStyle = {
-    fontSize: 10,
+    fontSize: IconFontSizes.xSmall,
     height: 10,
     lineHeight: '10px',
     color: palette.neutralPrimary,
@@ -146,7 +147,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     iconContainer: [
       classNames.iconContainer,
       {
-        fontSize: 16,
+        fontSize: IconFontSizes.medium,
         minWidth: 16,
         minHeight: 16,
         display: 'flex',

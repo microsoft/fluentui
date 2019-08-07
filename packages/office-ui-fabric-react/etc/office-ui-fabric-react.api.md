@@ -951,6 +951,23 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 export const DetailsRowCheck: React.FunctionComponent<IDetailsRowCheckProps>;
 
 // @public (undocumented)
+export const DetailsRowGlobalClassNames: {
+    root: string;
+    compact: string;
+    cell: string;
+    cellAnimation: string;
+    cellCheck: string;
+    check: string;
+    cellMeasurer: string;
+    listCellFirstChild: string;
+    isContentUnselectable: string;
+    isSelected: string;
+    isCheckVisible: string;
+    isRowHeader: string;
+    fields: string;
+};
+
+// @public (undocumented)
 export const Dialog: React.StatelessComponent<IDialogProps>;
 
 // @public (undocumented)
