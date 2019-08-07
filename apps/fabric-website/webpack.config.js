@@ -1,15 +1,15 @@
 module.exports = function(env) {
   const path = require('path');
-  const resources = require('../../scripts/webpack/webpack-resources');
+  const resources = require('@uifabric/build/webpack/webpack-resources');
+  const { addMonacoConfig } = require('@uifabric/tsx-editor/scripts/monaco-webpack');
   const version = require('./package.json').version;
-  const isDogfoodArg = env && !env.production;
   const isProductionArg = env && env.production;
   const now = Date.now();
 
   // Production defaults
   let minFileNamePart = '';
-  let entryPointName = 'fabric-sitev5';
-  let publicPath = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
+  const entryPointName = 'fabric-sitev5';
+  const publicPath = 'https://static2.sharepointonline.com/files/fabric/fabric-website/dist/';
 
   // Dogfood overrides
   if (!isProductionArg) {
@@ -18,8 +18,10 @@ module.exports = function(env) {
     minFileNamePart = '.min';
   }
 
-  return (
-    resources.createConfig(entryPointName, isProductionArg, {
+  return resources.createConfig(
+    entryPointName,
+    isProductionArg,
+    addMonacoConfig({
       entry: {
         [entryPointName]: './lib/root.js',
         'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
@@ -36,10 +38,10 @@ module.exports = function(env) {
         alias: {
           '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
           '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
-          'office-ui-fabric-react$': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
-          'office-ui-fabric-react/src': path.join(__dirname, '../../packages/office-ui-fabric-react/src'),
-          'office-ui-fabric-react/lib': path.join(__dirname, '../../packages/office-ui-fabric-react/lib'),
-          '@uifabric/api-docs/lib': path.join(__dirname, '../../packages/api-docs/lib')
+          'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
+          'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
+          'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
+          '@uifabric/api-docs/lib': path.resolve(__dirname, '../../packages/api-docs/lib')
         }
       }
     }),
