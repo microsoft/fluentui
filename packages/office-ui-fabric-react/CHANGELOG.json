@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 07 Aug 2019 12:32:28 GMT",
+      "tag": "office-ui-fabric-react_v7.21.0",
+      "version": "7.21.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add customization section to Themes page",
+            "author": "naethell@microsoft.com",
+            "commit": "68361da1ab491641dc11bdf38447074eb360e680"
+          },
+          {
+            "comment": "Checkbox: Fix for an accessibility bug where checkbox labels were read at two different locations in Narrator's scan mode",
+            "author": "kisiebel@microsoft.com",
+            "commit": "7f603fcee030101df5460919af34b01c19ac6421"
+          },
+          {
+            "comment": "moving the async clearTimeout call inside the if check to prevent accidentally clearing the timeout unless we're going to be making a new one",
+            "author": "jolore@microsoft.com",
+            "commit": "3d86fbe7148e6cf4722d12aeb85ae113263efa32"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Updating styles to not use $ syntax.",
+            "author": "dzearing@microsoft.com",
+            "commit": "de03449faca7e6256e3863892a1c465721fd0ec4"
+          },
+          {
+            "comment": "Initial implementation of clickable legends",
+            "author": "atgupta@microsoft.com",
+            "commit": "487dcfe10316285edb13a5201d11f7edf961a6d2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Aug 2019 12:32:07 GMT",
       "tag": "office-ui-fabric-react_v7.20.1",
       "version": "7.20.1",

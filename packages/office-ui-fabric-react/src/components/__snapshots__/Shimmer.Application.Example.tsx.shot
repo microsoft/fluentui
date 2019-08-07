@@ -253,10 +253,10 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                     vertical-align: top;
                     white-space: nowrap;
                   }
-                  &:hover $check {
+                  &:hover .ms-DetailsHeader-check {
                     opacity: 1;
                   }
-                  & ms-TooltipHost $checkTooltip {
+                  & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                     display: block;
                   }
               data-automationid="DetailsHeader"
@@ -402,7 +402,7 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                             overflow: hidden;
                             text-overflow: ellipsis;
                           }
-                          & $nearIcon {
+                          & .ms-DetailsColumn-nearIcon {
                             padding-left: 0px;
                           }
                       id="header1-thumbnail-name"

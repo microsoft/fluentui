@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 07 Aug 2019 12:32:28 GMT",
+      "tag": "@uifabric/experiments_v7.11.0",
+      "version": "7.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Chiclet: Medium chiclet is styled according to redlines and xSmall Chiclet url displays properly",
+            "author": "t-stcar@microsoft.com",
+            "commit": "195a5ca8ad9acca8c3562d6797f7d86b95654c87"
+          },
+          {
+            "comment": "Updating styles to not use $ syntax.",
+            "author": "dzearing@microsoft.com",
+            "commit": "de03449faca7e6256e3863892a1c465721fd0ec4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Aug 2019 12:32:07 GMT",
       "tag": "@uifabric/experiments_v7.10.1",
       "version": "7.10.1",
