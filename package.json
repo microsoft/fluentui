@@ -39,7 +39,7 @@
     "dom-test": "cd apps/dom-tests && just-scripts jest-dom-with-webpack"
   },
   "devDependencies": {
-    "beachball": "^1.11.0",
+    "beachball": "^1.11.6",
     "lerna": "^3.15.0",
     "lint-staged": "^7.0.5"
   },

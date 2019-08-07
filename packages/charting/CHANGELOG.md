@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Aug 2019 12:32:28 GMT and should not be manually modified.
+
+## 0.134.0
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Minor changes
+
+- Initial implementation of clickable legends (atgupta@microsoft.com)
 
 ## 0.133.5
 Mon, 22 Jul 2019 12:28:42 GMT

@@ -9,16 +9,19 @@ export interface ITranspiledOutput {
 }
 
 export async function transpile(model: ITextModel): Promise<ITranspiledOutput> {
-  const makeWorker = await monaco.languages.typescript.getTypeScriptWorker();
-  const worker: TypeScriptWorker = await makeWorker(model.uri);
-  const output: EmitOutput = await worker.getEmitOutput(model.uri.toString());
   const transpiledOutput: ITranspiledOutput = { error: undefined, outputString: undefined };
-  if (output.outputFiles[0]) {
+  try {
+    const makeWorker = await monaco.languages.typescript.getTypeScriptWorker();
+    const worker: TypeScriptWorker = await makeWorker(model.uri);
+    const output: EmitOutput = await worker.getEmitOutput(model.uri.toString());
+
     transpiledOutput.outputString = output.outputFiles[0].text;
-  } else {
-    transpiledOutput.error = 'Could not transpile code';
+
+    return transpiledOutput;
+  } catch (ex) {
+    transpiledOutput.error = ex.message;
+    return transpiledOutput;
   }
-  return transpiledOutput;
 }
 
 /**
