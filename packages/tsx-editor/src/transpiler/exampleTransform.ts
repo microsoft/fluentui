@@ -13,8 +13,7 @@ interface IExampleData {
 const exampleDataFiles: IExampleData = {
   exampleData: require('!raw-loader!office-ui-fabric-react/lib/utilities/exampleData'),
   TestImages: require('!raw-loader!office-ui-fabric-react/lib/common/TestImages'),
-  PeopleExampleData: require('!raw-loader!office-ui-fabric-react/lib/components/ExtendedPicker/examples/PeopleExampleData'),
-  FacepileExampleData: require('!raw-loader!office-ui-fabric-react/lib/components/Facepile/examples/FacepileExampleData')
+  PeopleExampleData: require('!raw-loader!office-ui-fabric-react/lib/components/ExtendedPicker/examples/PeopleExampleData')
 };
 
 export function transformExample(example: string, id: string) {
@@ -68,9 +67,10 @@ export function transformExample(example: string, id: string) {
         foundExampleImport = true;
       }
     }
-    if (!foundExampleImport && !/office-ui-fabric-react/.test(temp[0])) {
+    if (!/office-ui-fabric-react/.test(temp[0]) && !foundExampleImport) {
       output.error = `Error while transforming example: Unsupported import - ${temp[0]}.`;
-    } else {
+      console.log(output.error);
+    } else if (!foundExampleImport) {
       imports.push(temp[0]);
     }
   }
@@ -106,5 +106,6 @@ export function transformExample(example: string, id: string) {
     );
     `;
   output.output = example;
+  console.log(example);
   return output;
 }
