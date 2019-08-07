@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Initial implementation of clickable legends",
+  "packageName": "office-ui-fabric-react",
+  "email": "atgupta@microsoft.com",
+  "commit": "487dcfe10316285edb13a5201d11f7edf961a6d2",
+  "date": "2019-08-06T22:23:24.694Z"
+}
