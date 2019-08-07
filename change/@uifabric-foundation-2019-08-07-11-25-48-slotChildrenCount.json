@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Replacing React.Children.count() call with children.length as children is guaranteed to be an array and the .count() call creates small perf overhead.",
+  "packageName": "@uifabric/foundation",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "db6ed75fdcb3d8b0fa2f9f9f0777cfcf322b26cf",
+  "date": "2019-08-07T18:25:48.326Z"
+}
