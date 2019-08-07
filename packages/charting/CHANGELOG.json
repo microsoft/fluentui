@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 07 Aug 2019 12:32:28 GMT",
+      "tag": "@uifabric/charting_v0.134.0",
+      "version": "0.134.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Initial implementation of clickable legends",
+            "author": "atgupta@microsoft.com",
+            "commit": "98ff6951712d70a787f19dab3b48ab94ef7d107a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jul 2019 12:28:42 GMT",
       "tag": "@uifabric/charting_v0.133.5",
       "version": "0.133.5",

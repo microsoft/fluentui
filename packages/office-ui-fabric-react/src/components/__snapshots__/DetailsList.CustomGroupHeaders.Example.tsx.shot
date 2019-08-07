@@ -75,10 +75,10 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover $check {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
-              & ms-TooltipHost $checkTooltip {
+              & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                 display: block;
               }
           data-automationid="DetailsHeader"
@@ -142,7 +142,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
           >
             <span
               className=
-
+                  ms-DetailsHeader-checkTooltip
 
             >
               <div
@@ -151,6 +151,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                 aria-label="Toggle selection"
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
                     ms-Check-checkHost
                     {
@@ -332,6 +333,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
           </label>
           <div
             aria-expanded={true}
+            aria-label="Toggle selection"
             className=
                 ms-DetailsHeader-cell
                 {
@@ -382,6 +384,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                 }
             data-is-focusable={true}
             onClick={[Function]}
+            role="button"
           >
             <i
               aria-hidden={true}
@@ -577,7 +580,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                   opacity: 1;
                   transition: opacity 0.3s linear;
                 }
-                &$cellIsResizing:after {
+                &.is-resizing:after {
                   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                   opacity: 1;
                   transition: opacity 0.3s linear;
@@ -924,10 +927,10 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
-                                      &:hover $check {
+                                      &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
-                                      .ms-Fabric--isFocusVisible &:focus $check {
+                                      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
@@ -1210,7 +1213,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="thumbnail"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -1309,10 +1311,10 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
-                                      &:hover $check {
+                                      &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
-                                      .ms-Fabric--isFocusVisible &:focus $check {
+                                      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
@@ -1595,7 +1597,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="thumbnail"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -1694,10 +1695,10 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
-                                      &:hover $check {
+                                      &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
-                                      .ms-Fabric--isFocusVisible &:focus $check {
+                                      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
@@ -1980,7 +1981,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="thumbnail"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2079,10 +2079,10 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
-                                      &:hover $check {
+                                      &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
-                                      .ms-Fabric--isFocusVisible &:focus $check {
+                                      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
@@ -2365,7 +2365,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="thumbnail"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2464,10 +2463,10 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
-                                      &:hover $check {
+                                      &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
-                                      .ms-Fabric--isFocusVisible &:focus $check {
+                                      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
@@ -2750,7 +2749,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="thumbnail"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -2849,10 +2847,10 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
-                                      &:hover $check {
+                                      &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
-                                      .ms-Fabric--isFocusVisible &:focus $check {
+                                      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
@@ -3135,7 +3133,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="thumbnail"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -3234,10 +3231,10 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
-                                      &:hover $check {
+                                      &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
-                                      .ms-Fabric--isFocusVisible &:focus $check {
+                                      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
@@ -3520,7 +3517,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="thumbnail"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -3619,10 +3615,10 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
-                                      &:hover $check {
+                                      &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
-                                      .ms-Fabric--isFocusVisible &:focus $check {
+                                      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
@@ -3905,7 +3901,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="thumbnail"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -4004,10 +3999,10 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
-                                      &:hover $check {
+                                      &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
-                                      .ms-Fabric--isFocusVisible &:focus $check {
+                                      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
@@ -4290,7 +4285,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="thumbnail"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"
@@ -4389,10 +4383,10 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       &:hover .is-row-header {
                                         color: #201f1e;
                                       }
-                                      &:hover $check {
+                                      &:hover .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
-                                      .ms-Fabric--isFocusVisible &:focus $check {
+                                      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
@@ -4675,7 +4669,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                           {
                                             padding-right: 8px;
                                           }
-
                                       data-automation-key="thumbnail"
                                       data-automationid="DetailsRowCell"
                                       role="gridcell"

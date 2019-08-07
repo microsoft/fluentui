@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { ITheme, mergeStyleSets, getTheme, DefaultFontStyles, FontSizes, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme, mergeStyleSets, getTheme, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 
 export type IExampleItem = { name: string; thumbnail: string };
 
@@ -21,6 +21,8 @@ interface IListGhostingExampleClassObject {
 }
 
 const theme: ITheme = getTheme();
+const { palette, semanticColors, fonts } = theme;
+
 const classNames: IListGhostingExampleClassObject = mergeStyleSets({
   container: {
     overflow: 'auto',
@@ -32,10 +34,10 @@ const classNames: IListGhostingExampleClassObject = mergeStyleSets({
       minHeight: 54,
       padding: 10,
       boxSizing: 'border-box',
-      borderBottom: `1px solid ${theme.semanticColors.bodyDivider}`,
+      borderBottom: `1px solid ${semanticColors.bodyDivider}`,
       display: 'flex',
       selectors: {
-        '&:hover': { background: theme.palette.neutralLight }
+        '&:hover': { background: palette.neutralLight }
       }
     }
   ],
@@ -48,7 +50,7 @@ const classNames: IListGhostingExampleClassObject = mergeStyleSets({
     flexGrow: 1
   },
   itemName: [
-    DefaultFontStyles.xLarge,
+    fonts.xLarge,
     {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
@@ -56,15 +58,15 @@ const classNames: IListGhostingExampleClassObject = mergeStyleSets({
     }
   ],
   itemIndex: {
-    fontSize: FontSizes.small,
-    color: theme.palette.neutralTertiary,
+    fontSize: fonts.small.fontSize,
+    color: palette.neutralTertiary,
     marginBottom: 10
   },
   chevron: {
     alignSelf: 'center',
     marginLeft: 10,
-    color: theme.palette.neutralTertiary,
-    fontSize: FontSizes.large,
+    color: palette.neutralTertiary,
+    fontSize: fonts.large.fontSize,
     flexShrink: 0
   }
 });

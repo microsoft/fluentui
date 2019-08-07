@@ -184,12 +184,14 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
             >
               <span
                 className=
                     ms-Pivot-icon
-                    & + $text {
+                    & + ms-Pivot-text {
                       margin-left: 4px;
                     }
               >
@@ -371,12 +373,14 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
             >
               <span
                 className=
                     ms-Pivot-icon
-                    & + $text {
+                    & + ms-Pivot-text {
                       margin-left: 4px;
                     }
               >
@@ -547,12 +551,14 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
             >
               <span
                 className=
                     ms-Pivot-icon
-                    & + $text {
+                    & + ms-Pivot-text {
                       margin-left: 4px;
                     }
               >
@@ -711,12 +717,14 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
             >
               <span
                 className=
                     ms-Pivot-icon
-                    & + $text {
+                    & + ms-Pivot-text {
                       margin-left: 4px;
                     }
               >
@@ -900,12 +908,14 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               <span
                 className=
                     ms-Pivot-linkContent
-
+                    {
+                      flex: 0 1 100%;
+                    }
               >
                 <span
                   className=
                       ms-Pivot-icon
-                      & + $text {
+                      & + ms-Pivot-text {
                         margin-left: 4px;
                       }
                 >

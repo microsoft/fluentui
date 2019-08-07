@@ -78,7 +78,6 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             }
             & .ms-ChoiceFieldLabel {
               display: inline-block;
-              font-size: 14px;
               padding-left: 26px;
             }
       >
@@ -88,6 +87,7 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
 
         >
           <input
+            autoFocus={true}
             checked={false}
             className=
                 ms-ChoiceField-input
@@ -217,7 +217,6 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             }
             & .ms-ChoiceFieldLabel {
               display: inline-block;
-              font-size: 14px;
               padding-left: 26px;
             }
       >
@@ -355,7 +354,6 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             }
             & .ms-ChoiceFieldLabel {
               display: inline-block;
-              font-size: 14px;
               padding-left: 26px;
             }
       >
@@ -522,7 +520,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             }
             & .ms-ChoiceFieldLabel {
               display: inline-block;
-              font-size: 14px;
               padding-left: 26px;
             }
       >
@@ -532,6 +529,7 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
 
         >
           <input
+            autoFocus={true}
             checked={false}
             className=
                 ms-ChoiceField-input
@@ -661,7 +659,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             }
             & .ms-ChoiceFieldLabel {
               display: inline-block;
-              font-size: 14px;
               padding-left: 26px;
             }
       >
@@ -799,7 +796,6 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             }
             & .ms-ChoiceFieldLabel {
               display: inline-block;
-              font-size: 14px;
               padding-left: 26px;
             }
       >

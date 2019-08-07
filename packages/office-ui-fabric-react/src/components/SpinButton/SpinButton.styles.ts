@@ -1,9 +1,7 @@
-import { FontSizes, IRawStyle, ITheme, concatStyleSets, HighContrastSelector } from '../../Styling';
-
+import { IRawStyle, ITheme, concatStyleSets, HighContrastSelector, IconFontSizes } from '../../Styling';
 import { IButtonStyles } from '../../Button';
 import { ISpinButtonStyles } from './SpinButton.types';
 import { memoizeFunction } from '../../Utilities';
-import { IconFontSizes } from '../../Styling';
 
 const ARROW_BUTTON_WIDTH = 23;
 const ARROW_BUTTON_ICON_SIZE = 8;
@@ -121,7 +119,7 @@ export const getArrowButtonStyles = memoizeFunction(
 
 export const getStyles = memoizeFunction(
   (theme: ITheme, customStyles?: Partial<ISpinButtonStyles>): ISpinButtonStyles => {
-    const { palette, semanticColors, effects } = theme;
+    const { palette, semanticColors, effects, fonts } = theme;
 
     const SpinButtonRootBorderColor = semanticColors.inputBorder;
     const SpinButtonRootBorderColorHovered = semanticColors.inputBorderHovered;
@@ -136,7 +134,7 @@ export const getStyles = memoizeFunction(
     const defaultStyles: ISpinButtonStyles = {
       root: {
         outline: 'none',
-        fontSize: FontSizes.medium,
+        fontSize: fonts.medium.fontSize,
         width: '100%',
         minWidth: 86
       },
@@ -209,7 +207,7 @@ export const getStyles = memoizeFunction(
         borderStyle: 'none',
         flex: 1,
         margin: 0,
-        fontSize: FontSizes.medium,
+        fontSize: fonts.medium.fontSize,
         color: SpinButtonInputTextColor,
         height: '100%',
         padding: '0 8px',

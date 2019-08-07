@@ -74,7 +74,8 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       ariaPositionInSet,
       ariaSetSize,
       keytipProps,
-      title
+      title,
+      label
     } = this.props;
 
     const isChecked = checked === undefined ? this.state.isChecked : checked;
@@ -109,7 +110,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
               onFocus={this._onFocus}
               onBlur={this._onBlur}
               aria-disabled={disabled}
-              aria-label={ariaLabel}
+              aria-label={ariaLabel || label}
               aria-labelledby={ariaLabelledBy}
               aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
               aria-posinset={ariaPositionInSet}
@@ -171,6 +172,10 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
   private _onRenderLabel = (props: ICheckboxProps): JSX.Element | null => {
     const { label } = props;
 
-    return label ? <span className={this._classNames.text}>{label}</span> : null;
+    return label ? (
+      <span aria-hidden="true" className={this._classNames.text}>
+        {label}
+      </span>
+    ) : null;
   };
 }

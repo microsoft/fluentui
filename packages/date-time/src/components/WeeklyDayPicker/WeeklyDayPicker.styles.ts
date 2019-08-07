@@ -21,6 +21,7 @@ export const styles = (props: IWeeklyDayPickerStyleProps): IWeeklyDayPickerStyle
         padding: 12,
         boxSizing: 'content-box',
         display: 'flex',
+        alignItems: 'center',
         flexDirection: 'row'
       },
       className
@@ -40,7 +41,6 @@ export const styles = (props: IWeeklyDayPickerStyleProps): IWeeklyDayPickerStyle
         minWidth: 12,
         height: 0,
         overflow: 'hidden',
-        alignSelf: 'flex-end',
         padding: 0,
         margin: 0,
         border: 'none',

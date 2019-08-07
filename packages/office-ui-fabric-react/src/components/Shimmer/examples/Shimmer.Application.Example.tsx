@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { IColumn, buildColumns, SelectionMode, Toggle } from 'office-ui-fabric-react/lib/index';
 import { ShimmeredDetailsList } from 'office-ui-fabric-react/lib/ShimmeredDetailsList';
@@ -33,9 +33,10 @@ export interface IShimmerApplicationExampleState {
   isDataLoaded?: boolean;
 }
 
-export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplicationExampleState> {
+export class ShimmerApplicationExample extends React.Component<{}, IShimmerApplicationExampleState> {
   private _lastIntervalId: number;
   private _lastIndexWithData: number;
+  private _async: Async;
 
   constructor(props: {}) {
     super(props);
@@ -45,6 +46,12 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
       columns: _buildColumns(),
       isDataLoaded: false
     };
+
+    this._async = new Async(this);
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   public render(): JSX.Element {
