@@ -121,49 +121,14 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         display: 'flex',
         alignItems: 'center',
         selectors: {
-          ':active $activeSection': slideBoxActiveSectionStyles,
-          ':hover $activeSection': slideBoxActiveSectionStyles,
-          ':active $inactiveSection': slideBoxInactiveSectionStyles,
-          ':hover $inactiveSection': slideBoxInactiveSectionStyles,
-          ':active $thumb': slideBoxActiveThumbStyles,
-          ':hover $thumb': slideBoxActiveThumbStyles,
-          ':active $zeroTick': slideBoxActiveZeroTickStyles,
-          ':hover $zeroTick': slideBoxActiveZeroTickStyles,
-          $thumb: [
-            {
-              borderWidth: 2,
-              borderStyle: 'solid',
-              borderColor: sliderThumbBorderColor,
-              borderRadius: 10,
-              boxSizing: 'border-box',
-              background: sliderThumbBackgroundColor,
-              display: 'block',
-              width: 16,
-              height: 16,
-              position: 'absolute'
-            },
-            vertical
-              ? {
-                  left: -6,
-                  margin: '0 auto',
-                  transform: 'translateY(8px)'
-                }
-              : {
-                  top: -6,
-                  transform: getRTL() ? 'translateX(50%)' : 'translateX(-50%)'
-                },
-            showTransitions && {
-              transition: `left ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
-            },
-            disabled && {
-              borderColor: sliderThumbDisabledBorderColor,
-              selectors: {
-                [HighContrastSelector]: {
-                  borderColor: 'GrayText'
-                }
-              }
-            }
-          ]
+          [`:active .${classNames.activeSection}`]: slideBoxActiveSectionStyles,
+          [`:hover .${classNames.activeSection}`]: slideBoxActiveSectionStyles,
+          [`:active .${classNames.inactiveSection}`]: slideBoxInactiveSectionStyles,
+          [`:hover .${classNames.inactiveSection}`]: slideBoxInactiveSectionStyles,
+          [`:active .${classNames.thumb}`]: slideBoxActiveThumbStyles,
+          [`:hover .${classNames.thumb}`]: slideBoxActiveThumbStyles,
+          [`:active .${classNames.zeroTick}`]: slideBoxActiveZeroTickStyles,
+          [`:hover .${classNames.zeroTick}`]: slideBoxActiveZeroTickStyles
         }
       },
       vertical
@@ -180,29 +145,47 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       ...[showValue ? classNames.showValue : undefined],
       ...[showTransitions ? classNames.showTransitions : undefined]
     ],
-    thumb: [classNames.thumb],
+    thumb: [
+      classNames.thumb,
+      {
+        borderWidth: 2,
+        borderStyle: 'solid',
+        borderColor: sliderThumbBorderColor,
+        borderRadius: 10,
+        boxSizing: 'border-box',
+        background: sliderThumbBackgroundColor,
+        display: 'block',
+        width: 16,
+        height: 16,
+        position: 'absolute'
+      },
+      vertical
+        ? {
+            left: -6,
+            margin: '0 auto',
+            transform: 'translateY(8px)'
+          }
+        : {
+            top: -6,
+            transform: getRTL() ? 'translateX(50%)' : 'translateX(-50%)'
+          },
+      showTransitions && {
+        transition: `left ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
+      },
+      disabled && {
+        borderColor: sliderThumbDisabledBorderColor,
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'GrayText'
+          }
+        }
+      }
+    ],
     line: [
       classNames.line,
       {
         display: 'flex',
-        position: 'relative',
-        selectors: {
-          $lineContainer: [
-            {
-              borderRadius: 4,
-              boxSizing: 'border-box'
-            },
-            vertical
-              ? {
-                  width: 4,
-                  height: '100%'
-                }
-              : {
-                  height: 4,
-                  width: '100%'
-                }
-          ]
-        }
+        position: 'relative'
       },
       vertical
         ? {
@@ -215,7 +198,21 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
             width: '100%'
           }
     ],
-    lineContainer: [{}],
+    lineContainer: [
+      {
+        borderRadius: 4,
+        boxSizing: 'border-box'
+      },
+      vertical
+        ? {
+            width: 4,
+            height: '100%'
+          }
+        : {
+            height: 4,
+            width: '100%'
+          }
+    ],
     activeSection: [
       classNames.activeSection,
       {

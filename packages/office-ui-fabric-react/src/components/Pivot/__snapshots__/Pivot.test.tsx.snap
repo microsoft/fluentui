@@ -1249,7 +1249,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             <span
               className=
                   ms-Pivot-icon
-                  & + $text {
+                  & + ms-Pivot-text {
                     margin-left: 4px;
                   }
             >

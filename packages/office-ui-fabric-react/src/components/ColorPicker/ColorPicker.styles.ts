@@ -32,8 +32,8 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
       }
     ],
     tableHeader: [
+      theme.fonts.small,
       {
-        ...theme.fonts.small,
         selectors: {
           td: {
             paddingBottom: 4

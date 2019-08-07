@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Tue, 06 Aug 2019 12:32:07 GMT",
+      "tag": "@uifabric/date-time_v7.2.1",
+      "version": "7.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixing broken IE11 by removing findIndex call, fixing the weeklydaypicker not rerendering when passed new initial date",
+            "author": "jolore@microsoft.com",
+            "commit": "3e3a88e08225630c5e19cf648610ff7f85e5cf1f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Aug 2019 12:33:29 GMT",
       "tag": "@uifabric/date-time_v7.2.0",
       "version": "7.2.0",
