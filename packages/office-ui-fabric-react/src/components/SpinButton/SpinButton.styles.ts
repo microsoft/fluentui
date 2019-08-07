@@ -153,6 +153,8 @@ export const getStyles = memoizeFunction(
         float: 'right',
         marginLeft: LABEL_MARGIN
       },
+      labelWrapperTop: {},
+      labelWrapperBottom: {},
       icon: {
         padding: '0 5px',
         fontSize: IconFontSizes.large

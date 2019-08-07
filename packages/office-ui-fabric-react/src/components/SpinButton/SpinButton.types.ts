@@ -273,6 +273,16 @@ export interface ISpinButtonStyles {
   labelWrapperEnd: IStyle;
 
   /**
+   * Style override when the label is positioned at the top.
+   */
+  labelWrapperTop: IStyle;
+
+  /**
+   * Style override when the label is positioned at the bottom.
+   */
+  labelWrapperBottom: IStyle;
+
+  /**
    * Style for the icon.
    */
   icon: IStyle;
