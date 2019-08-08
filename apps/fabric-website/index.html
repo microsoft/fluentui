@@ -51,7 +51,7 @@
       // If the site is hosted, load the flight config script for production or dogfood
       if (devhost !== null) {
         if (devhost === '') {
-          devhost = location.origin + location.pathname.replace('homepage.htm', '');
+          devhost = location.origin + location.pathname.replace('index.html', '');
         }
         appPath = devhost;
         Flight.baseCDNUrl = devhost;
