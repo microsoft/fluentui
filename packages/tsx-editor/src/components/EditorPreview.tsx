@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react';
+// Component-level imports help reduce amount of parsing done by jest/etc
+import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
 
 export interface IEditorPreviewProps {
   id: string;

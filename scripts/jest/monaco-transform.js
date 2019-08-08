@@ -6,5 +6,6 @@ const babelJest = require('babel-jest');
 // and JS files, which may not be possible. And doing the transform in a separate build step is awkward.)
 module.exports = babelJest.createTransformer({
   babelrc: false,
-  plugins: ['@babel/plugin-syntax-dynamic-import', '@babel/plugin-transform-modules-commonjs']
+  // Also tried @babel/plugin-syntax-dynamic-import, but that didn't actually transform the imports?
+  plugins: ['@babel/plugin-proposal-dynamic-import', '@babel/plugin-transform-modules-commonjs']
 });
