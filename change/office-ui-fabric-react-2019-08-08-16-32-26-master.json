@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding Optional parameter to DocumentCardPreview for managing the item limit",
+  "packageName": "office-ui-fabric-react",
+  "email": "cimon.tremblay@osedea.com",
+  "commit": "0e02b9f982ea0772317a9b87d7bc7b66d572d052",
+  "date": "2019-08-08T20:32:26.477Z"
+}
