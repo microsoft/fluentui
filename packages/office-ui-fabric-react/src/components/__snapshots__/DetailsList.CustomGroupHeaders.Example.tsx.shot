@@ -334,6 +334,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
           </label>
           <div
             aria-expanded={true}
+            aria-label="Toggle selection"
             className=
                 ms-DetailsHeader-cell
                 {
@@ -384,6 +385,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                 }
             data-is-focusable={true}
             onClick={[Function]}
+            role="button"
           >
             <i
               aria-hidden={true}

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Cherry pick PR #10056, DetailsList: Assign button role to group toggle element if aria-label provided.",
+  "packageName": "office-ui-fabric-react",
+  "email": "t-mashia@microsoft.com",
+  "commit": "4f3345ede208e9b1a15d31e18adcd057f79fe580",
+  "date": "2019-08-07T22:55:26.473Z"
+}
