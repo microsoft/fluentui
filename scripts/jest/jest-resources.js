@@ -23,7 +23,7 @@ module.exports = {
           '\\.(ts|tsx)': resolve.sync('ts-jest/dist')
         },
 
-        transformIgnorePatterns: ['/lib-commonjs/', '/node_modules/', '\\.js$'],
+        transformIgnorePatterns: ['/node_modules/', '/lib-commonjs/', '\\.js$'],
 
         reporters: [path.resolve(__dirname, './jest-reporter.js')],
 
