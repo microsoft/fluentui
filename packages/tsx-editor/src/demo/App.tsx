@@ -1,6 +1,13 @@
 import React from 'react';
 import { PrimaryButton, Stack, Label, mergeStyleSets } from 'office-ui-fabric-react';
 import { ITextModel } from '../components/Editor.types';
+import { EditorPreview } from '../components';
+
+import * as fabricModule from 'office-ui-fabric-react';
+
+(window as any).Fabric = fabricModule; // tslint:disable-line:no-any
+
+const example = require('!raw-loader!../transpiler/examples/class.txt');
 
 interface ITranspiledOutput {
   outputString?: string;
@@ -38,9 +45,9 @@ export class App extends React.Component {
 
     return (
       <div>
-        <PrimaryButton onClick={this.buttonClicked} />
+        <PrimaryButton text="Show/hide editor" onClick={this.buttonClicked} />
         {!this.state.editorHidden && editor}
-        <div id="output" />
+        <EditorPreview id="output" error={this.state.error} />
       </div>
     );
   }
@@ -50,7 +57,7 @@ export class App extends React.Component {
       const { evalCode, transpile } = require('../transpiler/transpile');
       transpile(editor).then((output: ITranspiledOutput) => {
         if (output.outputString) {
-          const evalCodeError = evalCode(output.outputString);
+          const evalCodeError = evalCode(output.outputString, 'output');
           if (evalCodeError) {
             this.setState({
               error: evalCodeError.error
@@ -80,7 +87,7 @@ export class App extends React.Component {
                 <Label>Typescript + React editor</Label>
               </div>
               <React.Suspense fallback={<div>Loading...</div>}>
-                <Editor width={800} height={500} code="console.log('hello world');" language="typescript" onChange={this.onChange} />
+                <Editor width={800} height={500} code={example} language="typescript" onChange={this.onChange} />
               </React.Suspense>
             </div>
           ),

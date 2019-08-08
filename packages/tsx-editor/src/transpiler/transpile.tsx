@@ -1,4 +1,4 @@
-import * as monaco from 'monaco-editor';
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import { TypeScriptWorker, EmitOutput } from './monacoTypescriptWorker.d';
 import { ITextModel } from '../components/Editor.types';
 import { transformExample } from './exampleTransform';
