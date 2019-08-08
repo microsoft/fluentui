@@ -149,9 +149,6 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
             },
             [`:hover .${classNames.checkmark}`]: {
               opacity: '0'
-            },
-            [`:hover .${classNames.checkbox}`]: {
-              borderColor: checkboxBorderIndeterminateColor
             }
           }
         },
@@ -232,8 +229,11 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         /* in case the icon is bigger than the box */
         overflow: 'hidden',
         selectors: {
-          ':after': indeterminateDotStyles
+          ':after': indeterminate ? indeterminateDotStyles : null
         }
+      },
+      indeterminate && {
+        borderColor: checkboxBorderIndeterminateColor
       },
       !reversed
         ? // this margin on the checkbox is for backwards compat.
