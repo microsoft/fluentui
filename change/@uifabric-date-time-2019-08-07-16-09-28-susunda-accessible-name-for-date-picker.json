@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Moves aria-label to same element as role=combobox on the datepicker as required by the aria docs",
+  "packageName": "@uifabric/date-time",
+  "email": "susunda@microsoft.com",
+  "commit": "0e3ed9ae44d851bed560587b2876fea575d38a41",
+  "date": "2019-08-07T23:09:28.420Z"
+}

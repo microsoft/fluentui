@@ -1,0 +1,8 @@
+{
+  "comment": "Moved role, aria-label, and aria-expanded to the same element as per aria requirements",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "susunda@microsoft.com",
+  "commit": "2e43b295d4172624fc7ba2c1e904726a57d6d2b4",
+  "date": "2019-07-24T21:58:21.348Z"
+}
