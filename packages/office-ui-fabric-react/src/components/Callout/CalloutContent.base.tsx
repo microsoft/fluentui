@@ -366,7 +366,6 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
 
   private _updatePosition(): void {
     // Try to update the target, page might have changed
-    console.log('here');
     this._setTargetWindowAndElement(this._getTarget());
 
     const { positions } = this.state;
