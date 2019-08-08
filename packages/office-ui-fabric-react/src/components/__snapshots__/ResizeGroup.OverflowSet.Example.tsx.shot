@@ -3381,6 +3381,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
     >
       <input
         aria-checked="false"
+        aria-label="Enable caching"
         checked={false}
         className=
 
@@ -3476,6 +3477,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </i>
         </div>
         <span
+          aria-hidden="true"
           className=
               ms-Checkbox-text
               {
@@ -3522,6 +3524,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
     >
       <input
         aria-checked="false"
+        aria-label="Set onGrowData"
         checked={false}
         className=
 
@@ -3617,6 +3620,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </i>
         </div>
         <span
+          aria-hidden="true"
           className=
               ms-Checkbox-text
               {
@@ -3663,6 +3667,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
     >
       <input
         aria-checked="false"
+        aria-label="Buttons checked"
         checked={false}
         className=
 
@@ -3758,6 +3763,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           </i>
         </div>
         <span
+          aria-hidden="true"
           className=
               ms-Checkbox-text
               {

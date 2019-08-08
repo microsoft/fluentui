@@ -8099,7 +8099,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": ".titleLabel-18",
+            "fullyQualifiedName": ".titleLabel-19",
             "kind": "element",
           },
         ],
@@ -8110,7 +8110,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<label class=\\"ms-Label titleLabel-18\\" for=\\"Slider2\\">Disabled example</label>",
+              "text": "<label class=\\"ms-Label titleLabel-19\\" for=\\"Slider2\\">Disabled example</label>",
             },
           },
         },
@@ -8131,7 +8131,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": ".valueLabel-19",
+            "fullyQualifiedName": ".valueLabel-20",
             "kind": "element",
           },
         ],
@@ -8142,7 +8142,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<label class=\\"ms-Label ms-Slider-value valueLabel-19\\">300</label>",
+              "text": "<label class=\\"ms-Label ms-Slider-value valueLabel-20\\">300</label>",
             },
           },
         },
@@ -8168,7 +8168,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": ".titleLabel-18",
+            "fullyQualifiedName": ".titleLabel-19",
             "kind": "element",
           },
         ],
@@ -8179,7 +8179,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<label class=\\"ms-Label titleLabel-18\\" for=\\"Slider1\\">Disabled</label>",
+              "text": "<label class=\\"ms-Label titleLabel-19\\" for=\\"Slider1\\">Disabled</label>",
             },
           },
         },
@@ -8200,7 +8200,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": ".valueLabel-19",
+            "fullyQualifiedName": ".valueLabel-20",
             "kind": "element",
           },
         ],
@@ -8211,7 +8211,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<label class=\\"ms-Label ms-Slider-value valueLabel-19\\">300</label>",
+              "text": "<label class=\\"ms-Label ms-Slider-value valueLabel-20\\">300</label>",
             },
           },
         },
@@ -8314,7 +8314,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": ".titleLabel-32",
+            "fullyQualifiedName": ".titleLabel-33",
             "kind": "element",
           },
         ],
@@ -8325,7 +8325,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<label class=\\"ms-Label titleLabel-32\\" for=\\"Slider5\\">Container height:</label>",
+              "text": "<label class=\\"ms-Label titleLabel-33\\" for=\\"Slider5\\">Container height:</label>",
             },
           },
         },
@@ -8346,7 +8346,7 @@ Array [
       Object {
         "logicalLocations": Array [
           Object {
-            "fullyQualifiedName": ".valueLabel-33",
+            "fullyQualifiedName": ".valueLabel-34",
             "kind": "element",
           },
         ],
@@ -8357,7 +8357,7 @@ Array [
           },
           "region": Object {
             "snippet": Object {
-              "text": "<label class=\\"ms-Label ms-Slider-value valueLabel-33\\">200</label>",
+              "text": "<label class=\\"ms-Label ms-Slider-value valueLabel-34\\">200</label>",
             },
           },
         },

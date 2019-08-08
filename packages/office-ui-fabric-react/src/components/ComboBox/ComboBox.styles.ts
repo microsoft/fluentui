@@ -1,5 +1,4 @@
 import {
-  FontSizes,
   FontWeights,
   IRawStyle,
   ITheme,
@@ -157,7 +156,7 @@ export const getOptionStyles = memoizeFunction(
 
 export const getCaretDownButtonStyles = memoizeFunction(
   (theme: ITheme, customStyles?: Partial<IButtonStyles>): IButtonStyles => {
-    const { semanticColors } = theme;
+    const { semanticColors, fonts } = theme;
 
     const caretButtonTextColor = semanticColors.bodySubtext;
     const caretButtonTextColorHoveredChecked = semanticColors.buttonTextChecked;
@@ -168,7 +167,7 @@ export const getCaretDownButtonStyles = memoizeFunction(
     const styles: IButtonStyles = {
       root: {
         color: caretButtonTextColor,
-        fontSize: FontSizes.small,
+        fontSize: fonts.small.fontSize,
         position: 'absolute',
         // The negative positioning accounts for the 1px root border now that box-sizing is border-box
         top: '-1px',
@@ -188,7 +187,7 @@ export const getCaretDownButtonStyles = memoizeFunction(
         }
       },
       icon: {
-        fontSize: FontSizes.small
+        fontSize: fonts.small.fontSize
       },
       rootHovered: {
         backgroundColor: caretButtonBackgroundHovered,

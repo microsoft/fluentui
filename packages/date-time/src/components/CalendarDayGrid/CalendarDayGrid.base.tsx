@@ -1,5 +1,16 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, classNamesFunction, find } from '@uifabric/utilities';
+import {
+  BaseComponent,
+  KeyCodes,
+  css,
+  getId,
+  getRTL,
+  getRTLSafeKeyCode,
+  format,
+  classNamesFunction,
+  find,
+  findIndex
+} from '@uifabric/utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import {
   addDays,
@@ -116,11 +127,11 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
         >
           <tbody>
             {this.renderMonthHeaderRow(classNames)}
-            {this.renderRow(classNames, weeks![0], -1, classNames.firstTransitionWeek, 'presentation')}
+            {this.renderRow(classNames, weeks![0], -1, classNames.firstTransitionWeek, 'presentation', true /*aria-hidden*/)}
             {weeks!
               .slice(1, weeks!.length - 1)
               .map((week: IDayInfo[], weekIndex: number) => this.renderRow(classNames, week, weekIndex, classNames.weekRow))}
-            {this.renderRow(classNames, weeks![weeks!.length - 1], -2, classNames.lastTransitionWeek, 'presentation')}
+            {this.renderRow(classNames, weeks![weeks!.length - 1], -2, classNames.lastTransitionWeek, 'presentation', true /*aria-hidden*/)}
           </tbody>
         </table>
       </FocusZone>
@@ -138,7 +149,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     const { showWeekNumbers, strings, firstDayOfWeek, allFocusable, weeksToShow } = this.props;
     const { weeks } = this.state;
     const dayLabels = strings.shortDays.slice();
-    const firstOfMonthIndex = weeks![1].findIndex((day: IDayInfo) => day.originalDate.getDate() === 1);
+    const firstOfMonthIndex = findIndex(weeks![1], (day: IDayInfo) => day.originalDate.getDate() === 1);
     if (weeksToShow === 1 && firstOfMonthIndex >= 0) {
       // if we only show one week, replace the header with short month name
       dayLabels[firstOfMonthIndex] = strings.shortMonths[weeks![1][firstOfMonthIndex].originalDate.getMonth()];
@@ -172,7 +183,8 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     week: IDayInfo[],
     weekIndex: number,
     rowClassName?: string,
-    ariaRole?: string
+    ariaRole?: string,
+    ariaHidden?: boolean
   ): JSX.Element => {
     const { showWeekNumbers, firstDayOfWeek, firstWeekOfYear, navigatedDate, strings } = this.props;
     const { weeks } = this.state;
@@ -187,7 +199,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
             <span>{weekNumbers[weekIndex]}</span>
           </th>
         )}
-        {week.map((day: IDayInfo, dayIndex: number) => this.renderDayCells(classNames, day, dayIndex, weekIndex))}
+        {week.map((day: IDayInfo, dayIndex: number) => this.renderDayCells(classNames, day, dayIndex, weekIndex, ariaHidden))}
       </tr>
     );
   };
@@ -196,7 +208,8 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
     day: IDayInfo,
     dayIndex: number,
-    weekIndex: number
+    weekIndex: number,
+    ariaHidden?: boolean
   ): JSX.Element => {
     const { navigatedDate, dateTimeFormatter, allFocusable, strings } = this.props;
     const { activeDescendantId, weeks } = this.state;
@@ -216,23 +229,25 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
           !day.isInMonth && classNames.dayOutsideNavigatedMonth
         )}
         ref={(element: HTMLTableCellElement) => this._setDayCellRef(element, day, isNavigatedDate)}
-        onClick={day.isInBounds ? day.onSelected : undefined}
-        onMouseOver={this.onMouseOverDay(day)}
-        onMouseDown={this.onMouseDownDay(day)}
-        onMouseUp={this.onMouseUpDay(day)}
-        onMouseOut={this.onMouseOutDay(day)}
+        aria-hidden={ariaHidden}
+        onClick={day.isInBounds && !ariaHidden ? day.onSelected : undefined}
+        onMouseOver={!ariaHidden ? this.onMouseOverDay(day) : undefined}
+        onMouseDown={!ariaHidden ? this.onMouseDownDay(day) : undefined}
+        onMouseUp={!ariaHidden ? this.onMouseUpDay(day) : undefined}
+        onMouseOut={!ariaHidden ? this.onMouseOutDay(day) : undefined}
       >
         <button
           key={day.key + 'button'}
+          aria-hidden={ariaHidden}
           className={css(classNames.dayButton, day.isToday && classNames.dayIsToday)}
-          onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
+          onKeyDown={!ariaHidden ? this._onDayKeyDown(day.originalDate, weekIndex, dayIndex) : undefined}
           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
           id={isNavigatedDate ? activeDescendantId : undefined}
           aria-selected={day.isInBounds ? day.isSelected : undefined}
-          data-is-focusable={allFocusable || (day.isInBounds ? true : undefined)}
+          data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
           ref={(element: HTMLButtonElement) => this._setDayRef(element, day, isNavigatedDate)}
           disabled={!allFocusable && !day.isInBounds}
-          aria-disabled={!day.isInBounds}
+          aria-disabled={!ariaHidden && !day.isInBounds}
           type="button"
           role="gridcell" // create grid structure
           aria-readonly={true} // prevent grid from being "editable"

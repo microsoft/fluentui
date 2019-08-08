@@ -26,9 +26,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
         }
   >
     <div
-      aria-expanded={false}
       aria-haspopup="true"
-      role="combobox"
     >
       <div
         className=
@@ -95,6 +93,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                 }
           >
             <input
+              aria-expanded={false}
               aria-invalid={false}
               aria-label="Select a date"
               className=
@@ -170,6 +169,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
               placeholder="Select a date..."
               readOnly={true}
               required={false}
+              role="combobox"
               type="text"
               value=""
             />
@@ -227,9 +227,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
         }
   >
     <div
-      aria-expanded={false}
       aria-haspopup="true"
-      role="combobox"
     >
       <div
         className=
@@ -328,6 +326,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                 }
           >
             <input
+              aria-expanded={false}
               aria-invalid={false}
               aria-label="Select a date"
               aria-labelledby="TextFieldLabel9"
@@ -404,6 +403,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
               placeholder="Select a date..."
               readOnly={true}
               required={false}
+              role="combobox"
               type="text"
               value=""
             />

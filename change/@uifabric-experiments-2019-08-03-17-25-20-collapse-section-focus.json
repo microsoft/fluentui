@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Ignore left/right keypress from inner text input/textarea",
-  "packageName": "@uifabric/experiments",
-  "email": "rezha@microsoft.com",
-  "commit": "1bf48c5c0a3e3e9ee566d4f5df2253bbeab0dec9",
-  "date": "2019-08-04T00:25:20.493Z"
-}

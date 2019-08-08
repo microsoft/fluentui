@@ -34,6 +34,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
 >
   <input
     aria-checked="false"
+    aria-label="Standard checkbox"
     className=
 
         {
@@ -128,6 +129,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       </i>
     </div>
     <span
+      aria-hidden="true"
       className=
           ms-Checkbox-text
           {
