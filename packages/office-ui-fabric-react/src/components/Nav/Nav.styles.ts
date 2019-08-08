@@ -172,11 +172,11 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
           },
           '&:hover': {
             color: semanticColors.bodyText,
-            backgroundColor: palette.neutralLighterAlt
+            backgroundColor: semanticColors.bodyBackgroundHovered
           },
           '$compositeLink:hover &': {
             color: semanticColors.bodyText,
-            backgroundColor: palette.neutralLighterAlt
+            backgroundColor: semanticColors.bodyBackgroundHovered
           }
         }
       },

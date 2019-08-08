@@ -2,7 +2,7 @@ import { INavStyleProps, INavStyles } from 'office-ui-fabric-react/lib/Nav';
 
 export const NavStyles = (props: INavStyleProps): Partial<INavStyles> => {
   const { theme, isDisabled, isSelected, isGroup, isLink, navHeight = 44 } = props;
-  const { palette } = theme;
+  const { palette, semanticColors } = theme;
 
   return {
     link: [
@@ -13,17 +13,25 @@ export const NavStyles = (props: INavStyleProps): Partial<INavStyles> => {
       !isDisabled && {
         selectors: {
           '.ms-Nav-compositeLink:hover &': {
-            backgroundColor: palette.neutralLighter
+            backgroundColor: semanticColors.bodyBackgroundHovered
           }
         }
       },
       isSelected && {
-        backgroundColor: palette.neutralLight
+        backgroundColor: semanticColors.bodyBackgroundChecked
       }
     ],
     chevronButton: [
       {
-        lineHeight: `${navHeight}px`
+        lineHeight: `${navHeight}px`,
+        selectors: {
+          '&:hover': {
+            backgroundColor: semanticColors.bodyBackgroundHovered
+          },
+          '$compositeLink:hover &': {
+            backgroundColor: semanticColors.bodyBackgroundHovered
+          }
+        }
       },
       isGroup && {
         height: navHeight

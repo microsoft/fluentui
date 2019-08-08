@@ -23,7 +23,15 @@ export const NavStyles = (props: INavStyleProps): Partial<INavStyles> => {
     ],
     chevronButton: [
       {
-        lineHeight: `${navHeight}px`
+        lineHeight: `${navHeight}px`,
+        selectors: {
+          '&:hover': {
+            backgroundColor: palette.neutralLighterAlt
+          },
+          '$compositeLink:hover &': {
+            backgroundColor: palette.neutralLighterAlt
+          }
+        }
       },
       isGroup && {
         height: navHeight
