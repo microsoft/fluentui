@@ -149,7 +149,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     }
 
     // Ensure positioning is recalculated when we are about to show a persisted menu.
-    if (!newProps.hidden && newProps.hidden !== this.props.hidden) {
+    if (this._didPositionPropsChanges(newProps, this.props)) {
       this._maxHeight = undefined;
       // Target might have been updated while hidden.
       this._setTargetWindowAndElement(newTarget);
@@ -366,6 +366,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
 
   private _updatePosition(): void {
     // Try to update the target, page might have changed
+    console.log('here');
     this._setTargetWindowAndElement(this._getTarget());
 
     const { positions } = this.state;
@@ -524,6 +525,11 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         }
       });
     }
+  }
+
+  // Whether or not the current positions should be reset
+  private _didPositionPropsChanges(newProps: ICalloutProps, oldProps: ICalloutProps): boolean {
+    return (!newProps.hidden && newProps.hidden !== this.props.hidden) || newProps.directionalHint !== this.props.directionalHint;
   }
 
   private _getTarget(props: ICalloutProps = this.props): Target {
