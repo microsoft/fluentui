@@ -129,19 +129,6 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-            &:after {
-              border-radius: 2px;
-              box-sizing: border-box;
-              content: "";
-              height: 0px;
-              left: 10px;
-              position: absolute;
-              right: 0px;
-              transition-duration: 200ms;
-              transition-property: border-width, border, border-color;
-              transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-              width: 0px;
-            }
             @media screen and (-ms-high-contrast: active){& {
               background: Highlight;
               border-color: Highlight;
