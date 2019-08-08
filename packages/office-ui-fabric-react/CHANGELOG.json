@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 08 Aug 2019 12:32:41 GMT",
+      "tag": "office-ui-fabric-react_v7.22.0",
+      "version": "7.22.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DetailsList: Assign button role to group toggle element if aria-label provided.",
+            "author": "t-mashia@microsoft.com",
+            "commit": "7b098972ab47604f5352c3fc8407be69d92a5177"
+          },
+          {
+            "comment": "Update SASS variables using script",
+            "author": "phkuo@microsoft.com",
+            "commit": "3e6195306eab5525e259e73230c08d9fc91228d1"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Moved role, aria-label, and aria-expanded to the same element as per aria requirements",
+            "author": "susunda@microsoft.com",
+            "commit": "2e43b295d4172624fc7ba2c1e904726a57d6d2b4"
+          },
+          {
+            "comment": "DetailsRow should only re-render if a prop is detected to have changed.",
+            "author": "megreid115@gmail.com",
+            "commit": "00bda91a359c9efbefd855bcf2bfaa09a031536e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Aug 2019 12:32:28 GMT",
       "tag": "office-ui-fabric-react_v7.21.0",
       "version": "7.21.0",

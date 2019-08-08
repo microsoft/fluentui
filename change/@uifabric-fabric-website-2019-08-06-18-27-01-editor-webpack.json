@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update webpack configs to make Monaco work cross-domain",
-  "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com",
-  "commit": "3e6d5375a58386bc28819855d98c0c1a6b2d790f",
-  "date": "2019-08-07T01:27:01.417Z"
-}
