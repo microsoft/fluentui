@@ -1,4 +1,6 @@
-const { merge } = require('@uifabric/build/tasks/merge');
+// @ts-check
+
+const merge = require('@uifabric/build/tasks/merge');
 
 function addMonacoConfig(config) {
   return merge(
