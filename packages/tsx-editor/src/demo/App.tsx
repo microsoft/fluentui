@@ -1,7 +1,6 @@
 import React from 'react';
 import { PrimaryButton, Stack, Label, mergeStyleSets } from 'office-ui-fabric-react';
-import { ITextModel } from '../components/Editor.types';
-import { EditorPreview } from '../components';
+import { EditorPreview, ITextModel } from '../components/index';
 
 import * as fabricModule from 'office-ui-fabric-react';
 
