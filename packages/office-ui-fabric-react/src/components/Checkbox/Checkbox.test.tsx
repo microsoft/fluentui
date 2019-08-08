@@ -19,7 +19,7 @@ class ExampleComponent extends React.Component {
     checkedState2: false
   };
 
-  render() {
+  public render(): JSX.Element {
     return (
       <React.Fragment>
         <Checkbox indeterminate={this.state.indeterminateState} checked={this.state.checkedState} onChange={this._onControlledChange} />
