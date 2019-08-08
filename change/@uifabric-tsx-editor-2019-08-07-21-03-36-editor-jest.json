@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Import a more minimal version of editor",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "elcraig@microsoft.com",
+  "commit": "16e485d2f4f1b48aec3895d6a9fd5b57a3380335",
+  "date": "2019-08-08T04:03:36.062Z"
+}
