@@ -1,3 +1,14 @@
+/**
+ * classNamePattern - pattern to find the name of the class that should render
+ * constNamePattern - pattern to find the name of the const that should render
+ * identifierPattern - pattern to get all identifiers from the imports
+ * importPattern - pattern to get all imports even if they have multilines
+ */
+export const classNamePattern = new RegExp('(?![var ])(.*)(?= = \\/\\*\\* @class \\*\\/ \\(function \\(_super\\))', 'g');
+export const constNamePattern = new RegExp('(?![export var ])(.*)(?= = function)', 'g');
+export const identifierPattern = new RegExp('(?![import {])([\\s\\S]*)(?=})');
+export const importPattern = new RegExp("(?:import)([\\s\\S]+?)';", 'g');
+
 export interface ITransformedExample {
   output?: string;
   error?: string;
@@ -17,21 +28,19 @@ const exampleDataFiles: IExampleData = {
 };
 
 export function transformExample(example: string, id: string) {
-  /**
-   * classNamePattern - pattern to find the name of the class that should render
-   * constNamePattern - pattern to find the name of the const that should render
-   * identifierPattern - pattern to get all identifiers from the imports
-   * importPattern - pattern to get all imports even if they have multilines
-   */
-  const classNamePattern = new RegExp('(?![var ])(.*)(?= = \\/\\*\\* @class \\*\\/ \\(function \\(_super\\))', 'g');
-  const constNamePattern = new RegExp('(?![export var ])(.*)(?= = function)', 'g');
-  const identifierPattern = new RegExp('(?![import {])([\\s\\S]*)(?=})');
-  const importPattern = new RegExp("(?:import)(.[\\s\\S]+?)';", 'g');
+  // RegExp need to reset because of global flag
+  classNamePattern.lastIndex = 0;
+  constNamePattern.lastIndex = 0;
+  identifierPattern.lastIndex = 0;
+  importPattern.lastIndex = 0;
+
   const identifiers: string[] = [];
   const imports: string[] = [];
   let temp;
   let className;
   const output: ITransformedExample = { output: undefined, error: undefined };
+
+  console.log(example);
 
   example = example.replace("import * as React from 'react';", '');
 
@@ -97,8 +106,7 @@ export function transformExample(example: string, id: string) {
   /**
    * adding line to render React and adding identifiers.
    */
-  example = `const {
-    ${identifiers.join(', ')}, Fabric } = window.Fabric;\n
+  example = `const { ${identifiers.join(', ')}, Fabric } = window.Fabric;\n
     ${example}
     ReactDOM.render(
       React.createElement(Fabric, null, React.createElement(${className}, null)),
