@@ -4,6 +4,7 @@ module.exports = function(env) {
   const path = require('path');
   const resources = require('@uifabric/build/webpack/webpack-resources');
   const { addMonacoConfig } = require('@uifabric/tsx-editor/scripts/monaco-webpack');
+  // @ts-ignore
   const version = require('./package.json').version;
   const isProductionArg = env && env.production;
   const now = Date.now();
@@ -25,14 +26,11 @@ module.exports = function(env) {
     isProductionArg,
     addMonacoConfig({
       entry: {
-        [entryPointName]: './lib/root.js',
-        'editor.worker': 'monaco-editor/esm/vs/editor/editor.worker.js',
-        'ts.worker': 'monaco-editor/esm/vs/language/typescript/ts.worker.js'
+        [entryPointName]: './lib/root.js'
       },
 
       output: {
         publicPath: publicPath,
-        globalObject: 'self', // required for monaco--see https://github.com/webpack/webpack/issues/6642
         chunkFilename: `${entryPointName}-${version}-[name]-${now}${minFileNamePart}.js`
       },
 
@@ -47,6 +45,6 @@ module.exports = function(env) {
         }
       }
     }),
-    isProductionArg
-  ); /* only production */
+    /* only production */ isProductionArg
+  );
 };
