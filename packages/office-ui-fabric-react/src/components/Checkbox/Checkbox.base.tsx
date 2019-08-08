@@ -82,6 +82,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       ariaSetSize,
       keytipProps,
       title,
+      label,
       indeterminate
     } = this.props;
 

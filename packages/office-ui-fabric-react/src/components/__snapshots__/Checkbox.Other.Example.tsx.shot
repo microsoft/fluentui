@@ -990,7 +990,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span>
-        This is a
+        This is a 
         <a
           href="https://www.microsoft.com"
         >
@@ -1037,6 +1037,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
   >
     <input
       aria-checked="mixed"
+      aria-label="Controlled Indeterminate Uncontrolled check Checkbox"
       checked={false}
       className=
 
@@ -1150,6 +1151,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -1200,6 +1202,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
   >
     <input
       aria-checked="mixed"
+      aria-label="Uncontrolled Indeterminate Controlled Check Checkbox"
       checked={false}
       className=
 
@@ -1313,6 +1316,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -1339,6 +1343,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
     <input
       aria-checked="mixed"
       aria-disabled={true}
+      aria-label="Disabled Controlled Indeterminate Checkbox"
       className=
 
           {
@@ -1455,6 +1460,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
@@ -1484,6 +1490,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
     <input
       aria-checked="mixed"
       aria-disabled={true}
+      aria-label="Disabled Uncontrolled Indeterminate Checkbox"
       className=
 
           {
@@ -1600,6 +1607,7 @@ exports[`Component Examples renders Checkbox.Other.Example.tsx correctly 1`] = `
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {

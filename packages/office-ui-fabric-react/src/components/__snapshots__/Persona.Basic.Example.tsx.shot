@@ -1605,7 +1605,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           word-wrap: break-word;
         }
   >
-    Size 48 Persona (default)
+    Size 48 Persona (default) 
   </label>
   <div
     className=
@@ -1919,7 +1919,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           word-wrap: break-word;
         }
   >
-    Size 56 Persona (default)
+    Size 56 Persona (default) 
   </label>
   <div
     className=

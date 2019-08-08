@@ -821,11 +821,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
-<<<<<<< HEAD
               aria-checked="false"
-=======
               aria-label="Wrap items"
->>>>>>> master
               className=
 
                   {
@@ -1237,11 +1234,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               }
         >
           <input
-<<<<<<< HEAD
             aria-checked="true"
-=======
             aria-label="Automatic height (based on items)"
->>>>>>> master
             className=
 
                 {
@@ -2203,11 +2197,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   }
             >
               <input
-<<<<<<< HEAD
                 aria-checked="false"
-=======
                 aria-label="Hide empty children"
->>>>>>> master
                 className=
 
                     {
