@@ -21,6 +21,16 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       lib: ['es5', 'dom']
     });
 
+    fetch('https://unpkg.com/office-ui-fabric-react/dist/office-ui-fabric-react.d.ts').then(response => {
+      response.text().then(fabricTypings => {
+        console.log(fabricTypings);
+        monaco.languages.typescript.typescriptDefaults.addExtraLib(
+          fabricTypings,
+          'node_modules/@types/external/office-ui-fabric-react.d.ts'
+        );
+      });
+    });
+
     monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: true });
 
     // Creating proxy URL for JSX support since HTML5 does not allow pages loaded on file:// to create web workers
