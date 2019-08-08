@@ -3,7 +3,7 @@ let path = require('path');
 
 const config = {
   ...createConfig({
-    setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
+    setupFiles: [path.join(__dirname, 'config', 'tests.js')],
 
     moduleNameMapper: {
       'office-ui-fabric-react/lib/(.*)$': 'office-ui-fabric-react/lib-commonjs/$1',
@@ -12,10 +12,8 @@ const config = {
     },
 
     transform: {
-      'monaco-editor': path.join(__dirname, 'monaco-transform.js')
+      'monaco-editor': path.join(__dirname, 'config', 'monaco-transform.js')
     },
-
-    runInBand: true,
 
     snapshotSerializers: [resolveMergeStylesSerializer()]
   }),
