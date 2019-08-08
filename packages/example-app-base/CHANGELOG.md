@@ -1,6 +1,14 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 07 Aug 2019 12:32:28 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2019 12:32:41 GMT and should not be manually modified.
+
+## 7.4.1
+Thu, 08 Aug 2019 12:32:41 GMT
+
+### Patches
+
+- getQueryParam gracefully falls back when window is not defined (jdh@microsoft.com)
+,- Add check for monaco global in example card (elcraig@microsoft.com)
 
 ## 7.4.0
 Wed, 07 Aug 2019 12:32:28 GMT

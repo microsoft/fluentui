@@ -41,10 +41,10 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             margin-right: 0px;
             margin-top: 0px;
             overflow-wrap: break-word;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
             pointer-events: none;
             word-wrap: break-word;
           }
@@ -448,10 +448,10 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             margin-right: 0px;
             margin-top: 0px;
             overflow-wrap: break-word;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
             pointer-events: none;
             word-wrap: break-word;
           }

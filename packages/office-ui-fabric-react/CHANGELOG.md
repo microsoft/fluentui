@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 07 Aug 2019 12:32:28 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2019 12:32:41 GMT and should not be manually modified.
+
+## 7.22.0
+Thu, 08 Aug 2019 12:32:41 GMT
+
+### Minor changes
+
+- DetailsList: Assign button role to group toggle element if aria-label provided. (t-mashia@microsoft.com)
+,- Update SASS variables using script (phkuo@microsoft.com)
+
+### Patches
+
+- Moved role, aria-label, and aria-expanded to the same element as per aria requirements (susunda@microsoft.com)
+,- DetailsRow should only re-render if a prop is detected to have changed. (megreid115@gmail.com)
 
 ## 7.21.0
 Wed, 07 Aug 2019 12:32:28 GMT
