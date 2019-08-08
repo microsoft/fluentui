@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Make monaco work with jest",
-  "packageName": "@uifabric/example-app-base",
-  "email": "elcraig@microsoft.com",
-  "commit": "ff3773943818888baf66be33649335026cf62f33",
-  "date": "2019-08-02T09:03:03.041Z"
-}
