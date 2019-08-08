@@ -231,7 +231,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
       this.setState({
         selectedIndices: indices,
-        currentOptions: newProps.options
+        currentOptions: newProps.options,
+        suggestedDisplayValue: undefined
       });
     }
   }
