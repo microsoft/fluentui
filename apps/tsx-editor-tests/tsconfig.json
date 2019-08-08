@@ -17,7 +17,6 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": ["es5", "dom"],
-    "types": ["jest", "jest-environment-puppeteer"],
     "paths": {
       "@uifabric/tsx-editor-tests/lib/*": ["./src/*"],
       "@uifabric/tsx-editor-tests": ["./src"]

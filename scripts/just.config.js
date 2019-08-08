@@ -21,7 +21,7 @@ const generateVersionFiles = require('./tasks/generate-version-files');
 const generatePackageManifestTask = require('./tasks/generate-package-manifest');
 
 module.exports = function preset() {
-  // this add s a resolve path for the build tooling deps like TS from the scripts folder
+  // this adds a resolve path for the build tooling deps like TS from the scripts folder
   addResolvePath(__dirname);
 
   option('production');
@@ -36,8 +36,8 @@ module.exports = function preset() {
 
   task('clean', clean);
   task('copy', copy);
-  task('jest', jest);
-  task('jest-watch', jestWatch);
+  task('jest', jest());
+  task('jest-watch', jestWatch());
   task('sass', sass);
   task('ts:commonjs', ts.commonjs);
   task('ts:esm', ts.esm);

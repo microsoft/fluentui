@@ -12,7 +12,7 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start": "just-scripts dev",
+    "start": "just-scripts jest-watch",
     "start-test": "just-scripts jest-watch",
     "update-snapshots": "just-scripts jest -u",
     "just": "just-scripts"
