@@ -12,7 +12,7 @@ import {
 } from './DocumentCardPreview.types';
 
 // Constant for how many documents to show
-const PREVIEW_DOCUMENTS_TO_DISPLAY_NUMBER = 3;
+const PREVIEW_DOCUMENTS_TO_DISPLAY_DEFAULT_NUMBER = 3;
 const getClassNames = classNamesFunction<IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles>();
 
 /**
@@ -81,17 +81,18 @@ export class DocumentCardPreviewBase extends BaseComponent<IDocumentCardPreviewP
   }
 
   private _renderPreviewList = (previewImages: IDocumentCardPreviewImage[]): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> => {
-    const { getOverflowDocumentCountText, previewDocumentsToDisplayNumber = PREVIEW_DOCUMENTS_TO_DISPLAY_NUMBER } = this.props;
+    const { getOverflowDocumentCountText, previewDocumentsToDisplayNumber = PREVIEW_DOCUMENTS_TO_DISPLAY_DEFAULT_NUMBER } = this.props;
 
     // Determine how many documents we won't be showing
     const overflowDocumentCount = previewImages.length - previewDocumentsToDisplayNumber;
 
     // Determine the overflow text that will be rendered after the preview list.
-    const overflowText = overflowDocumentCount
-      ? getOverflowDocumentCountText
-        ? getOverflowDocumentCountText(overflowDocumentCount)
-        : '+' + overflowDocumentCount
-      : null;
+    const overflowText =
+      overflowDocumentCount > 0
+        ? getOverflowDocumentCountText
+          ? getOverflowDocumentCountText(overflowDocumentCount)
+          : '+' + overflowDocumentCount
+        : null;
 
     // Create list items for the documents to be shown
     const fileListItems = previewImages.slice(0, previewDocumentsToDisplayNumber).map((file, fileIndex) => (
