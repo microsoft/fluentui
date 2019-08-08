@@ -1,6 +1,68 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 30 Jul 2019 12:28:32 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2019 12:32:41 GMT and should not be manually modified.
+
+## 7.22.0
+Thu, 08 Aug 2019 12:32:41 GMT
+
+### Minor changes
+
+- DetailsList: Assign button role to group toggle element if aria-label provided. (t-mashia@microsoft.com)
+,- Update SASS variables using script (phkuo@microsoft.com)
+
+### Patches
+
+- Moved role, aria-label, and aria-expanded to the same element as per aria requirements (susunda@microsoft.com)
+,- DetailsRow should only re-render if a prop is detected to have changed. (megreid115@gmail.com)
+
+## 7.21.0
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Minor changes
+
+- Updating styles to not use $ syntax. (dzearing@microsoft.com)
+,- Initial implementation of clickable legends (atgupta@microsoft.com)
+
+### Patches
+
+- Add customization section to Themes page (naethell@microsoft.com)
+,- Checkbox: Fix for an accessibility bug where checkbox labels were read at two different locations in Narrator's scan mode (kisiebel@microsoft.com)
+,- moving the async clearTimeout call inside the if check to prevent accidentally clearing the timeout unless we're going to be making a new one (jolore@microsoft.com)
+
+## 7.20.1
+Tue, 06 Aug 2019 12:32:07 GMT
+
+### Patches
+
+- Replace the usage of `FontSizes` variable with font styles pulled from the theme object and minor cleanup. (vibraga@microsoft.com)
+
+## 7.20.0
+Mon, 05 Aug 2019 12:33:41 GMT
+
+### Minor changes
+
+- Slider: Add new prop to snap while moving. (t-snroy@microsoft.com)
+
+## 7.19.1
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Patches
+
+- Persona: Fix styles issue caused by unnecessary nesting (cliff.koh@microsoft.com)
+,- Remove extra export of SelectionMode (jdh@microsoft.com)
+
+## 7.19.0
+Wed, 31 Jul 2019 12:26:17 GMT
+
+### Minor changes
+
+- Commandbar: Expose dataDidRender method (joschect@microsoft.com)
+
+### Patches
+
+- [BaseExtendedPicker] Only add aria-owns tag when the picker is expanded (andrescb@microsoft.com)
+,- Tooltip: Fixing hidden hover area overlapping with Tooltip targets. (Humberto.Morimoto@microsoft.com)
+,- Perf Test: Integrate Flamegrill (jagore@microsoft.com)
 
 ## 7.18.1
 Tue, 30 Jul 2019 12:28:32 GMT

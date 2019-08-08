@@ -24,7 +24,17 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
           showValue={true}
           onChange={(value: number) => console.log(value)}
         />
-        <Slider label="Disabled example" min={50} max={500} step={50} defaultValue={300} showValue={true} disabled={true} />
+        <Slider
+          label="Snapping slider example"
+          min={0}
+          max={50}
+          step={10}
+          defaultValue={20}
+          showValue={true}
+          onChange={(value: number) => console.log(value)}
+          snapToStep
+        />
+        <Slider label="Disabled example" min={50} max={500} step={50} defaultValue={300} showValue={true} disabled />
         <Slider
           label="Controlled example"
           max={10}

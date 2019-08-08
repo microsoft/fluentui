@@ -42,8 +42,13 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     className=
         ms-DocumentCardPreview
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
           border-bottom: 1px solid #edebe9;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
           overflow: hidden;
           position: relative;
         }
@@ -75,7 +80,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             }
             & a {
               color: #201f1e;
-              font-size: 12px;
               text-decoration: none;
             }
             & a:hover {
@@ -316,7 +320,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
 
             {
               display: block;
-              font-size: 12px;
               padding-bottom: 8px;
               padding-left: 16px;
               padding-right: 16px;
@@ -332,9 +335,13 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
     className=
         ms-DocumentCardLocation
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           color: #323130;
           display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
+          font-weight: 400;
           overflow: hidden;
           padding-bottom: 8px;
           padding-left: 16px;
