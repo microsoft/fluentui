@@ -82,7 +82,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       !disabled && [
         !checked && {
           selectors: {
-            ':hover .ms-Checkbox-checkbox': {
+            [`:hover .${classNames.checkbox}`]: {
               borderColor: checkboxBorderHoveredColor,
               selectors: {
                 [HighContrastSelector]: {
@@ -90,8 +90,8 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
                 }
               }
             },
-            ':focus .ms-Checkbox-checkbox': { borderColor: checkboxBorderHoveredColor },
-            ':hover .ms-Checkbox-checkmark': {
+            [`:focus .${classNames.checkbox}`]: { borderColor: checkboxBorderHoveredColor },
+            [`:hover .${classNames.checkmark}`]: {
               color: checkmarkFontColorHovered,
               opacity: '1',
               selectors: {
@@ -105,34 +105,34 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         checked &&
           !indeterminate && {
             selectors: {
-              ':hover .ms-Checkbox-checkbox': {
+              [`:hover .${classNames.checkbox}`]: {
                 background: checkboxBackgroundCheckedHovered,
                 borderColor: checkboxBorderColorCheckedHovered
               },
-              ':focus .ms-Checkbox-checkbox': {
+              [`:focus .${classNames.checkbox}`]: {
                 background: checkboxBackgroundCheckedHovered,
                 borderColor: checkboxBorderColorCheckedHovered
               },
-              '.ms-Checkbox-checkbox': {
+              [`.${classNames.checkbox}`]: {
                 background: checkboxBorderColorChecked,
                 borderColor: checkboxBorderColorChecked
               },
               [HighContrastSelector]: {
                 selectors: {
-                  ':hover .ms-Checkbox-checkbox': {
+                  [`:hover .${classNames.checkbox}`]: {
                     background: 'Window',
                     borderColor: 'Highlight'
                   },
-                  ':focus .ms-Checkbox-checkbox': {
+                  [`:focus .${classNames.checkbox}`]: {
                     background: 'Highlight'
                   },
-                  ':focus:hover .ms-Checkbox-checkbox': {
+                  [`:focus:hover .${classNames.checkbox}`]: {
                     background: 'Highlight'
                   },
-                  ':focus:hover .ms-Checkbox-checkmark': {
+                  [`:focus:hover .${classNames.checkmark}`]: {
                     color: 'Window'
                   },
-                  ':hover .ms-Checkbox-checkmark': {
+                  [`:hover .${classNames.checkmark}`]: {
                     color: 'Highlight'
                   }
                 }
@@ -141,24 +141,24 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
           },
         indeterminate && {
           selectors: {
-            ':hover .ms-Checkbox-checkbox, :hover .ms-Checkbox-checkbox:after': {
+            [`:hover .${classNames.checkbox}, :hover .${classNames.checkbox}:after`]: {
               borderColor: checkboxBorderIndeterminateHoveredColor
             },
-            ':focus .ms-Checkbox-checkbox': {
+            [`:focus .${classNames.checkbox}`]: {
               borderColor: checkboxBorderIndeterminateHoveredColor
             },
-            ':hover .ms-Checkbox-checkmark': {
+            [`:hover .${classNames.checkmark}`]: {
               opacity: '0'
             },
-            '.ms-Checkbox-checkbox': {
+            [`:hover .${classNames.checkbox}`]: {
               borderColor: checkboxBorderIndeterminateColor
             }
           }
         },
         {
           selectors: {
-            ':hover .ms-Checkbox-text': { color: checkboxHoveredTextColor },
-            ':focus .ms-Checkbox-text': { color: checkboxHoveredTextColor }
+            [`:hover .${classNames.text}`]: { color: checkboxHoveredTextColor },
+            [`:focus .${classNames.text}`]: { color: checkboxHoveredTextColor }
           }
         }
       ],
