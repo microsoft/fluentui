@@ -22,7 +22,6 @@ export interface IScrollablePaneState {
 const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollablePaneStyles>();
 
 export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollablePaneState> implements IScrollablePane {
-  private static readonly _scrollbarHeightKey = 'ScrollablePaneBase_ScrollbarHeight';
   private _scrollLeft: number;
   private _scrollTop: number;
   private _isMounted: boolean;
@@ -41,12 +40,12 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     super(props);
     this._subscribers = new Set<Function>();
     this._stickies = new Set<Sticky>();
-    const { scrollbarVisibility } = this.props;
+
     this.state = {
       stickyTopHeight: 0,
       stickyBottomHeight: 0,
-      scrollbarWidth: scrollbarVisibility === ScrollbarVisibility.always ? this._getScrollbarHeightFromLocalStorage() : 0,
-      scrollbarHeight: scrollbarVisibility === ScrollbarVisibility.always ? this._getScrollbarHeightFromLocalStorage() : 0
+      scrollbarWidth: 0,
+      scrollbarHeight: 0
     };
     this._scrollLeft = 0;
     this._scrollTop = 0;
@@ -74,15 +73,12 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     if (scrollbarVisibility === ScrollbarVisibility.always) {
       // after first render, scrollbars are visible
       // it is needed to position stickyContainers correctly
-      let scrollbarHeight: number = this._getScrollbarHeightFromLocalStorage();
-      if (!scrollbarHeight) {
-        scrollbarHeight = this._getScrollbarHeight();
-        this._storeScrollbarHeightInLocalStorage(scrollbarHeight);
-      }
+      const scrollbarHeight: number = this._getScrollbarHeight();
+      const scrollbarWidth: number = this._getScrollbarWidth();
 
       this.setState({
         scrollbarHeight: scrollbarHeight,
-        scrollbarWidth: scrollbarHeight
+        scrollbarWidth: scrollbarWidth
       });
     }
     if (this._stickies.size) {
@@ -513,22 +509,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   private _getScrollbarHeight(): number {
     const { contentContainer } = this;
     return contentContainer ? contentContainer.offsetHeight - contentContainer.clientHeight : 0;
-  }
-
-  private _getScrollbarHeightFromLocalStorage(): number {
-    if (typeof window !== 'undefined' && 'localStorage' in window) {
-      const scrollbarHeight = Number(window.localStorage.getItem(ScrollablePaneBase._scrollbarHeightKey));
-      if (!!scrollbarHeight && !isNaN(scrollbarHeight)) {
-        return scrollbarHeight;
-      }
-    }
-    return 0;
-  }
-
-  private _storeScrollbarHeightInLocalStorage(scrollbarHeight: number) {
-    if (typeof window !== 'undefined' && 'localStorage' in window) {
-      window.localStorage.setItem(ScrollablePaneBase._scrollbarHeightKey, scrollbarHeight.toString());
-    }
   }
 
   private _onScroll = () => {
