@@ -43,6 +43,11 @@ export interface IDocumentCardPreviewProps extends IBaseProps<{}> {
    * Optional override class name
    */
   className?: string;
+
+  /**
+   * Minimum number of documents to display before adding the overflow text
+   */
+  previewDocumentsToDisplayNumber?: number;
 }
 
 /**
