@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    // Compile to esnext (for easier async/await debugging) since this will only run in Chromium
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "lib": ["es5", "dom"],
+    "types": ["jest", "jest-environment-puppeteer"],
+    "paths": {
+      "@uifabric/tsx-editor-tests/lib/*": ["./src/*"],
+      "@uifabric/tsx-editor-tests": ["./src"]
+    }
+  },
+  "include": ["src"]
+}

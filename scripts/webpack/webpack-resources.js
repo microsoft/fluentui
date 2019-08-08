@@ -30,7 +30,7 @@ function validateEnv() {
 
 function shouldPrepend(config) {
   const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
-  const excludedProjects = ['perf-test', 'test-bundles'];
+  const excludedProjects = ['perf-test', 'test-bundles', 'tsx-editor-tests'];
   const exportedAsBundle = config.output && (config.output.libraryTarget === 'umd' || config.output.libraryTarget === 'var');
   const hasReactAsDependency =
     (packageJson.dependencies && Object.keys(packageJson.dependencies).includes('react')) ||

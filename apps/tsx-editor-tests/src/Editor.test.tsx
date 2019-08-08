@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api.d';
-import Editor from './Editor';
-import { setUpMonaco } from '../common/testUtilities';
-import { transpile } from '../transpiler/index';
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
+import { Editor, transpile } from '@uifabric/tsx-editor';
+import { setUpMonaco } from './testUtilities';
 
 describe('Editor', () => {
   let wrapper: ReactWrapper;
@@ -26,7 +25,7 @@ describe('Editor', () => {
       model = m;
     }
 
-    wrapper = mount(<Editor width={500} height={500} language="typescript" code="" onChange={onChange} />);
+    wrapper = mount(<Editor width={500} height={500} language="typescript" code="const foo: string = 'hi';" onChange={onChange} />);
     // jest.runAllImmediates();
     // jest.runAllTicks();
     // jest.runOnlyPendingTimers();
