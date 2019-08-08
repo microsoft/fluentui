@@ -40,8 +40,6 @@ export function transformExample(example: string, id: string) {
   let className;
   const output: ITransformedExample = { output: undefined, error: undefined };
 
-  console.log(example);
-
   example = example.replace("import * as React from 'react';", '');
 
   /**
@@ -78,7 +76,6 @@ export function transformExample(example: string, id: string) {
     }
     if (!/office-ui-fabric-react/.test(temp[0]) && !foundExampleImport) {
       output.error = `Error while transforming example: Unsupported import - ${temp[0]}.`;
-      console.log(output.error);
     } else if (!foundExampleImport) {
       imports.push(temp[0]);
     }
@@ -114,6 +111,5 @@ export function transformExample(example: string, id: string) {
     );
     `;
   output.output = example;
-  console.log(example);
   return output;
 }

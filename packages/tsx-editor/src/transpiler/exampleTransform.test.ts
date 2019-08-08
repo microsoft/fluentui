@@ -41,7 +41,7 @@ describe('example transform', () => {
 
   it('detects class names', () => {
     const classNamePatternCopy = new RegExp(classNamePattern.source);
-    //This is needed to get rid of the global flag from the RegExp
+    // This is needed to get rid of the global flag from the RegExp
     expect(`var SpinButtonBasicExample = /** @class */ (function (_super) {
       __extends(SpinButtonBasicExample, _super);
       function SpinButtonBasicExample() {
@@ -49,7 +49,11 @@ describe('example transform', () => {
       }
       SpinButtonBasicExample.prototype.render = function () {
           return (React.createElement("div", { style: { width: '400px' } },
-              React.createElement(SpinButton, { defaultValue: "0", label: 'Basic SpinButton:', min: 0, max: 100, step: 1, iconProps: { iconName: 'IncreaseIndentLegacy' }, incrementButtonAriaLabel: 'Increase value by 1', decrementButtonAriaLabel: 'Decrease value by 1' })));
+              React.createElement(SpinButton, { defaultValue: "0",
+              label: 'Basic SpinButton:', min: 0, max: 100, step: 1,
+               iconProps: { iconName: 'IncreaseIndentLegacy' },
+               incrementButtonAriaLabel: 'Increase value by 1',
+               decrementButtonAriaLabel: 'Decrease value by 1' })));
       };
       return SpinButtonBasicExample;
   }(React.Component));
@@ -60,14 +64,21 @@ describe('example transform', () => {
           return _super !== null && _super.apply(this, arguments) || this;
       }
       ButtonDefaultExample.prototype.render = function () {
-          var _a = this.props, disabled = _a.disabled, checked = _a.checked;
+          var _a = this.props, disabled = _a.disabled,
+          checked = _a.checked;
           return (React.createElement("div", { className: css(classNames.twoup) },
               React.createElement("div", null,
                   React.createElement(Label, null, "Standard"),
-                  React.createElement(DefaultButton, { "data-automation-id": "test", allowDisabledFocus: true, disabled: disabled, checked: checked, text: "Standard Button", onClick: this._alertClicked })),
+                  React.createElement(DefaultButton,
+                    { "data-automation-id": "test", allowDisabledFocus: true,
+                    disabled: disabled, checked: checked,
+                    text: "Standard Button", onClick: this._alertClicked })),
               React.createElement("div", null,
                   React.createElement(Label, null, "Primary"),
-                  React.createElement(PrimaryButton, { "data-automation-id": "test", disabled: disabled, checked: checked, text: "Primary Button", onClick: this._alertClicked, allowDisabledFocus: true }))));
+                  React.createElement(PrimaryButton, {
+                    "data-automation-id": "test", disabled: disabled,
+                    checked: checked, text: "Primary Button",
+                    onClick: this._alertClicked, allowDisabledFocus: true }))));
       };
       ButtonDefaultExample.prototype._alertClicked = function () {
           alert('Clicked');
@@ -76,7 +87,8 @@ describe('example transform', () => {
   }(React.Component));
   { ButtonDefaultExample };
       ReactDOM.render(
-        React.createElement(Fabric, null, React.createElement(ButtonDefaultExample, null)),
+        React.createElement(Fabric, null,
+          React.createElement(ButtonDefaultExample, null)),
         document.getElementById('DefaultButton')
       );`).toMatch(classNamePatternCopy);
     expect(`import * as React from 'react';
@@ -100,12 +112,23 @@ describe('example transform', () => {
     expect(`var stackTokens = { childrenGap: 20 };
     var DropdownBasicExample = function () {
         return (React.createElement(Stack, { tokens: stackTokens },
-            React.createElement(Dropdown, { placeholder: "Select an option", label: "Basic uncontrolled example", options: options, styles: dropdownStyles }),
-            React.createElement(Dropdown, { label: "Disabled example with defaultSelectedKey", defaultSelectedKey: "broccoli", options: options, disabled: true, styles: dropdownStyles }),
-            React.createElement(Dropdown, { placeholder: "Select options", label: "Multi-select uncontrolled example", defaultSelectedKeys: ['apple', 'banana', 'grape'], multiSelect: true, options: options, styles: dropdownStyles })));
+            React.createElement(Dropdown, { placeholder: "Select an option",
+            label: "Basic uncontrolled example",
+            options: options, styles: dropdownStyles }),
+            React.createElement(Dropdown, {
+              label: "Disabled example with defaultSelectedKey",
+              defaultSelectedKey: "broccoli", options: options,
+              disabled: true, styles: dropdownStyles }),
+            React.createElement(Dropdown, {
+              placeholder: "Select options",
+              label: "Multi-select uncontrolled example",
+              defaultSelectedKeys: ['apple', 'banana', 'grape'],
+              multiSelect: true, options: options,
+              styles: dropdownStyles })));
     };
         ReactDOM.render(
-          React.createElement(Fabric, null, React.createElement(DropdownBasicExample, null)),
+          React.createElement(Fabric, null,
+          React.createElement(DropdownBasicExample, null)),
           document.getElementById('BasicDropdowns')
         );`).toMatch(constNamePatternCopy);
     expect(`var SpinButtonBasicExample = /** @class */ (function (_super) {
@@ -115,7 +138,12 @@ describe('example transform', () => {
       }
       SpinButtonBasicExample.prototype.render = function () {
           return (React.createElement("div", { style: { width: '400px' } },
-              React.createElement(SpinButton, { defaultValue: "0", label: 'Basic SpinButton:', min: 0, max: 100, step: 1, iconProps: { iconName: 'IncreaseIndentLegacy' }, incrementButtonAriaLabel: 'Increase value by 1', decrementButtonAriaLabel: 'Decrease value by 1' })));
+              React.createElement(SpinButton, { defaultValue: "0",
+              label: 'Basic SpinButton:', min: 0,
+              max: 100, step: 1, iconProps: {
+                iconName: 'IncreaseIndentLegacy' },
+                incrementButtonAriaLabel: 'Increase value by 1',
+                decrementButtonAriaLabel: 'Decrease value by 1' })));
       };
       return SpinButtonBasicExample;
   }(React.Component));
