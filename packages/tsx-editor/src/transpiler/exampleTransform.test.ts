@@ -35,7 +35,7 @@ describe('example transform', () => {
   });
 
   it('returns an error from relative imports in code that was transpiled', () => {
-    const result = transformFile('relativeImportTranspiled.txt');
+    const result = transformFile('realtiveImportTranspiled.txt');
     expect(result.error).toBe("Error while transforming example: Unsupported import - import '../../fake.scss';.");
   });
 
@@ -126,21 +126,12 @@ describe('example transform', () => {
       function SpinButtonBasicExample() {
           return _super !== null && _super.apply(this, arguments) || this;
       }
-      SpinButtonBasicExample.prototype.render = function () {
-        return (React.createElement("div", { style: { width: '400px' } },
-          React.createElement(SpinButton, { defaultValue: "0",
-          label: 'Basic SpinButton:', min: 0,
-          max: 100, step: 1, iconProps: {
-            iconName: 'IncreaseIndentLegacy' },
-            incrementButtonAriaLabel: 'Increase value by 1',
-            decrementButtonAriaLabel: 'Decrease value by 1' })));
-      };
       return SpinButtonBasicExample;
       }(React.Component));
       export { SpinButtonBasicExample };`).not.toMatch(constNamePatternCopy);
   });
 
-  it.only('detects imports', () => {
+  it('detects imports', () => {
     const importPatternCopy = new RegExp(importPattern.source);
     expect(`import { exampleData } from '../../exampleData';`).toMatch(importPatternCopy);
     expect(`import { Label, Stack, Button } from 'office-ui-fabric-react';`).toMatch(importPatternCopy);
