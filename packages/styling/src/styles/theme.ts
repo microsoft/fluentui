@@ -14,7 +14,6 @@ let _theme: ITheme = createTheme({
   disableGlobalClassNames: false
 });
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
-loadTheme(_theme);
 
 export const ThemeSettingName = 'theme';
 
