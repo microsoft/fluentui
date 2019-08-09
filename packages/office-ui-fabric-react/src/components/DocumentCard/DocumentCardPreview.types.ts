@@ -45,7 +45,8 @@ export interface IDocumentCardPreviewProps extends IBaseProps<{}> {
   className?: string;
 
   /**
-   * Minimum number of documents to display before adding the overflow text
+   * Maximum number of documents to display before adding the overflow text
+   * @DefaultValue 3
    */
   previewDocumentsToDisplayNumber?: number;
 }

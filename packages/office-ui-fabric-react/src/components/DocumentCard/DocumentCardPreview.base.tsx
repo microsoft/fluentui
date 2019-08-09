@@ -21,6 +21,12 @@ const getClassNames = classNamesFunction<IDocumentCardPreviewStyleProps, IDocume
 export class DocumentCardPreviewBase extends BaseComponent<IDocumentCardPreviewProps, any> {
   private _classNames: IProcessedStyleSet<IDocumentCardPreviewStyles>;
 
+  // Set default property to previewDocumentsToDisplayNumber.
+  // Currently not visible by Typescript because of HOC wrapper used to display this component
+  public static defaultProps: Partial<IDocumentCardPreviewProps> = {
+    previewDocumentsToDisplayNumber: PREVIEW_DOCUMENTS_TO_DISPLAY_DEFAULT_NUMBER
+  };
+
   public render(): JSX.Element {
     const { previewImages, styles, theme, className } = this.props;
     let style, preview;
