@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 09 Aug 2019 12:31:50 GMT",
+      "tag": "office-ui-fabric-react_v7.22.1",
+      "version": "7.22.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Spinbutton: removed additional top and bottom margin styling overriding Label's styling and causes alignment inconsistencies with textbox, combobox, etc.",
+            "author": "marygans@microsoft.com",
+            "commit": "7b9e8d198b5a8d0808916bda2ffc47287b752dd9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2019 12:32:41 GMT",
       "tag": "office-ui-fabric-react_v7.22.0",
       "version": "7.22.0",

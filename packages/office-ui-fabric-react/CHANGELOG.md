@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 08 Aug 2019 12:32:41 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Aug 2019 12:31:50 GMT and should not be manually modified.
+
+## 7.22.1
+Fri, 09 Aug 2019 12:31:50 GMT
+
+### Patches
+
+- Spinbutton: removed additional top and bottom margin styling overriding Label's styling and causes alignment inconsistencies with textbox, combobox, etc. (marygans@microsoft.com)
 
 ## 7.22.0
 Thu, 08 Aug 2019 12:32:41 GMT

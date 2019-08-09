@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Spinbutton: removed additional top and bottom margin styling overriding Label's styling and causes alignment inconsistencies with textbox, combobox, etc.",
-  "packageName": "office-ui-fabric-react",
-  "email": "marygans@microsoft.com",
-  "commit": "7b9e8d198b5a8d0808916bda2ffc47287b752dd9",
-  "date": "2019-08-07T23:29:27.819Z"
-}
