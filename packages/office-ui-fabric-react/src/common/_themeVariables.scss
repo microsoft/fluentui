@@ -71,6 +71,15 @@ $ms-font-xLargeFontWeight: "[theme:xLargeFontWeight, default: 100]";
     font-size: $ms-font-xLargeFontSize;
     font-weight: $ms-font-xLargeFontWeight;
 }
+$ms-font-xLargePlusFontFamily: "[theme:xLargePlusFontFamily, default: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif]";
+$ms-font-xLargePlusMozOsxFontSmoothing: "[theme:xLargePlusMozOsxFontSmoothing, default: grayscale]";
+$ms-font-xLargePlusWebkitFontSmoothing: "[theme:xLargePlusWebkitFontSmoothing, default: antialiased]";
+$ms-font-xLargePlusFontSize: "[theme:xLargePlusFontSize, default: 21px]";
+$ms-font-xLargePlusFontWeight: "[theme:xLargePlusFontWeight, default: 100]";
+@mixin xLargePlusFontBasic {
+    font-size: $ms-font-xLargePlusFontSize;
+    font-weight: $ms-font-xLargePlusFontWeight;
+}
 $ms-font-xxLargeFontFamily: "[theme:xxLargeFontFamily, default: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif]";
 $ms-font-xxLargeMozOsxFontSmoothing: "[theme:xxLargeMozOsxFontSmoothing, default: grayscale]";
 $ms-font-xxLargeWebkitFontSmoothing: "[theme:xxLargeWebkitFontSmoothing, default: antialiased]";
@@ -79,6 +88,15 @@ $ms-font-xxLargeFontWeight: "[theme:xxLargeFontWeight, default: 100]";
 @mixin xxLargeFontBasic {
     font-size: $ms-font-xxLargeFontSize;
     font-weight: $ms-font-xxLargeFontWeight;
+}
+$ms-font-xxLargePlusFontFamily: "[theme:xxLargePlusFontFamily, default: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif]";
+$ms-font-xxLargePlusMozOsxFontSmoothing: "[theme:xxLargePlusMozOsxFontSmoothing, default: grayscale]";
+$ms-font-xxLargePlusWebkitFontSmoothing: "[theme:xxLargePlusWebkitFontSmoothing, default: antialiased]";
+$ms-font-xxLargePlusFontSize: "[theme:xxLargePlusFontSize, default: 28px]";
+$ms-font-xxLargePlusFontWeight: "[theme:xxLargePlusFontWeight, default: 100]";
+@mixin xxLargePlusFontBasic {
+    font-size: $ms-font-xxLargePlusFontSize;
+    font-weight: $ms-font-xxLargePlusFontWeight;
 }
 $ms-font-superLargeFontFamily: "[theme:superLargeFontFamily, default: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif]";
 $ms-font-superLargeMozOsxFontSmoothing: "[theme:superLargeMozOsxFontSmoothing, default: grayscale]";
