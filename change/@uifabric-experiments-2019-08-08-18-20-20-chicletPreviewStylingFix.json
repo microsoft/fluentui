@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Chiclet: Preview image no longer overflows",
+  "packageName": "@uifabric/experiments",
+  "email": "t-stcar@microsoft.com",
+  "commit": "c55d6b287597f8f874678777df218a73c7271324",
+  "date": "2019-08-09T01:20:20.476Z"
+}
