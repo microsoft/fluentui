@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fix font theme variable values for legacy-load-theme",
+  "packageName": "@uifabric/styling",
+  "email": "phkuo@microsoft.com",
+  "commit": "321af43b33cab1c3111bdddcf4b008a872d84f95",
+  "date": "2019-08-09T00:44:55.664Z"
+}
