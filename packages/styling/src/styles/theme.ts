@@ -72,7 +72,6 @@ export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): 
  */
 export function loadTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
   _theme = createTheme(theme, depComments);
-
   // Invoke the legacy method of theming the page as well.
   legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors, ..._theme.effects, ..._loadFonts(_theme) });
 
@@ -100,7 +99,11 @@ function _loadFonts(theme: ITheme): { [name: string]: string } {
     const font = theme.fonts[fontName];
     for (const propName of Object.keys(font)) {
       const name = 'ms-font-' + fontName + '-' + propName;
-      lines[name] = `"[theme:${name}, default: ${font[propName]}]"`;
+      let value = font[propName];
+      if (propName === 'fontSize' && value.indexOf('px') < 0) {
+        value += 'px';
+      }
+      lines[name] = value;
     }
   }
   return lines;
