@@ -1,14 +1,21 @@
 import { ITextComponent, ITextStyles, ITextStylesReturnType, ITextProps } from './Text.types';
 
-import { ITheme } from '../../Styling';
+import { getGlobalClassNames, ITheme } from '../../Styling';
+
+const GlobalClassNames = {
+  msText: 'ms-Text'
+};
 
 export const TextStyles: ITextComponent['styles'] = (props: ITextProps, theme: ITheme): ITextStylesReturnType => {
   const { as, className, block, nowrap, variant } = props;
   const { fonts } = theme;
   const variantObject = fonts[variant || 'medium'];
 
+  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
+
   return {
     root: [
+      globalClassNames.msText,
       theme.fonts.medium,
       {
         display: block ? (as === 'td' ? 'table-cell' : 'block') : 'inline',

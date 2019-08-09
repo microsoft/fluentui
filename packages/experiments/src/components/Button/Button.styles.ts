@@ -193,7 +193,8 @@ export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonT
 
 const GlobalClassNames = {
   msButton: 'ms-Button',
-  msButtonIcon: 'ms-Button-icon'
+  msButtonIcon: 'ms-Button-icon',
+  msButtonContent: 'ms-Button-content'
 };
 
 export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
@@ -333,11 +334,14 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
         }
       }
     ],
-    content: {
-      fontFamily: tokens.textFamily,
-      fontSize: tokens.textSize,
-      fontWeight: tokens.textWeight,
-      overflow: 'visible'
-    }
+    content: [
+      globalClassNames.msButtonContent,
+      {
+        fontFamily: tokens.textFamily,
+        fontSize: tokens.textSize,
+        fontWeight: tokens.textWeight,
+        overflow: 'visible'
+      }
+    ]
   };
 };

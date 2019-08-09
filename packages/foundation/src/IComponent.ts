@@ -104,6 +104,10 @@ export interface IComponentOptions<
   TStatics = {}
 > {
   /**
+   * Object that contains all the classNames
+   */
+  classNames?: string[];
+  /**
    * Display name to identify component in React hierarchy. This parameter is required for targeted component styling via theming.
    */
   displayName?: string;
@@ -111,6 +115,10 @@ export interface IComponentOptions<
    * List of fields which can be customized.
    */
   fields?: string[];
+  /**
+   * List of precedence states for a component to memoize styles.
+   */
+  precedenceList?: (keyof TComponentProps)[];
   /**
    * Styles prop to pass into component.
    */

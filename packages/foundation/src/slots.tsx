@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IStyle, mergeStyles } from '@uifabric/styling';
 import { memoizeFunction } from '@uifabric/utilities';
+import { memoizeStyles } from './memoizeStyles';
 import { assign } from './utilities';
 import { IFactoryOptions } from './IComponent';
 import {
@@ -132,6 +133,9 @@ export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots
       //  each closure as a different component (since it is a new instance) from the previous one and then forces a rerender of the entire
       //  slot subtree. For now, the only way to avoid this is to use withSlots, which bypasses the call to React.createElement.
       const slot: ISlots<Required<TComponentSlots>>[keyof TComponentSlots] = (componentProps, ...args: any[]) => {
+        // console.log('ComponentProps', componentProps);
+        // console.log('UserProps', userProps);
+        // console.log('MixedProps', mixedProps);
         if (args.length > 0) {
           // If React.createElement is being incorrectly used with slots, there will be additional arguments.
           // We can detect these additional arguments and error on their presence.
@@ -184,14 +188,16 @@ function _translateShorthand<TProps extends ValidProps, TShorthandProp extends V
  */
 function _constructFinalProps<TProps extends IProcessedSlotProps>(defaultStyles: IStyle, ...allProps: (TProps | undefined)[]): TProps {
   const finalProps: TProps = {} as any;
-  const classNames: (string | undefined)[] = [];
+  const classNames: string[] = [];
 
   for (const props of allProps) {
-    classNames.push(props && props.className);
+    if (props && props.className) {
+      classNames.push(props.className);
+    }
     assign(finalProps, ...(props as any));
   }
 
-  finalProps.className = mergeStyles(defaultStyles, classNames);
+  finalProps.className = memoizeStyles(defaultStyles, classNames);
 
   return finalProps;
 }

@@ -61,7 +61,10 @@ export const MenuButtonTokens: IMenuButtonComponent['tokens'] = (props, theme): 
 ];
 
 const GlobalClassNames = {
-  msMenuButton: 'ms-MenuButton'
+  msMenuButton: 'ms-MenuButton',
+  msMenuButtonContainer: 'ms-MenuButton-container',
+  msMenuButtonMenuArea: 'ms-MenuButton-menu-area',
+  msMenuButtonMenuIcon: 'ms-MenuButton-menu-icon'
 };
 
 export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, tokens): IMenuButtonStylesReturnType => {
@@ -70,9 +73,12 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
   const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
-    root: {
-      display: 'inline-flex'
-    },
+    root: [
+      globalClassNames.msMenuButtonContainer,
+      {
+        display: 'inline-flex'
+      }
+    ],
     button: [
       globalClassNames.msMenuButton,
       {
@@ -115,13 +121,19 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
       },
       className
     ],
-    menuArea: {
-      height: 'auto',
-      width: 'auto'
-    },
-    menuIcon: {
-      fontSize: tokens.menuIconSize,
-      paddingTop: '5px'
-    }
+    menuArea: [
+      globalClassNames.msMenuButtonMenuArea,
+      {
+        height: 'auto',
+        width: 'auto'
+      }
+    ],
+    menuIcon: [
+      globalClassNames.msMenuButtonMenuIcon,
+      {
+        fontSize: tokens.menuIconSize,
+        paddingTop: '5px'
+      }
+    ]
   };
 };

@@ -45,7 +45,7 @@ export const ActionableTokens: IActionableComponent['tokens'] = (props, theme): 
   props.disabled && disabledTokens
 ];
 
-const GlobalClassNames = {
+export const ActionableClassNames = {
   msActionable: 'ms-Actionable'
 };
 
@@ -54,7 +54,7 @@ export const ActionableStyles: IActionableComponent['styles'] = (props, theme, t
 
   const { rowGap, columnGap } = parseGap(tokens.childrenGap, theme);
 
-  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
+  const globalClassNames = getGlobalClassNames(ActionableClassNames, theme);
 
   return {
     root: [
