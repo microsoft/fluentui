@@ -72,6 +72,7 @@ export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): 
  */
 export function loadTheme(theme: IPartialTheme, depComments: boolean = false): ITheme {
   _theme = createTheme(theme, depComments);
+
   // Invoke the legacy method of theming the page as well.
   legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors, ..._theme.effects, ..._loadFonts(_theme) });
 
