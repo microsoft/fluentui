@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Changing the drop hint icon and it's position for list's column drag-drop",
-  "packageName": "@uifabric/example-app-base",
-  "email": "svaibhav@microsoft.com",
-  "commit": "41d0be951c2308f9eb9bc74c0398abfaf14363a9",
-  "date": "2019-08-08T20:01:06.830Z"
-}
