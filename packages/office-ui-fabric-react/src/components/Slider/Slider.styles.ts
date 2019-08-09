@@ -294,7 +294,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       classNames.regularTick,
       {
         position: 'absolute',
-        background: theme.palette.neutralTertiaryAlt,
+        background: '#fff',
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'WindowText'
@@ -317,7 +317,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           }
         : {
             width: '1px',
-            height: '12px',
+            height: '4px',
             transform: 'translateY(0px)'
           }
     ],
