@@ -1,0 +1,8 @@
+{
+  "comment": "Changing the drop hint icon and it's position for list's column drag-drop",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "svaibhav@microsoft.com",
+  "commit": "be00aecdfafda47cd7a0925e7637b2dd9dae6ef4",
+  "date": "2019-08-08T19:14:01.762Z"
+}
