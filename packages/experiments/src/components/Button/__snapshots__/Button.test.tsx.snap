@@ -341,7 +341,8 @@ exports[`Button renders a default Button as an anchor correctly 1`] = `
 >
   <span
     className=
-
+        ms-Text
+        ms-Button-content
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -485,7 +486,8 @@ exports[`Button renders a default Button with content and an icon correctly 1`] 
   </i>
   <span
     className=
-
+        ms-Text
+        ms-Button-content
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -608,7 +610,8 @@ exports[`Button renders a default Button with content correctly 1`] = `
 >
   <span
     className=
-
+        ms-Text
+        ms-Button-content
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -731,7 +734,8 @@ exports[`Button renders a default checked Button correctly 1`] = `
 >
   <span
     className=
-
+        ms-Text
+        ms-Button-content
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -1226,7 +1230,8 @@ exports[`Button renders a default disabled checked Button correctly 1`] = `
 >
   <span
     className=
-
+        ms-Text
+        ms-Button-content
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -1355,7 +1360,8 @@ exports[`Button renders a disabled default Button with content correctly 1`] = `
 >
   <span
     className=
-
+        ms-Text
+        ms-Button-content
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -1615,7 +1621,8 @@ exports[`Button renders a disabled primary Button with content correctly 1`] = `
 >
   <span
     className=
-
+        ms-Text
+        ms-Button-content
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -1877,7 +1884,8 @@ exports[`Button renders a primary Button as an anchor correctly 1`] = `
 >
   <span
     className=
-
+        ms-Text
+        ms-Button-content
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -2007,7 +2015,8 @@ exports[`Button renders a primary Button with content correctly 1`] = `
 >
   <span
     className=
-
+        ms-Text
+        ms-Button-content
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -2137,7 +2146,7 @@ exports[`Button renders a primary Button with custom content and icon right-alig
 >
   <span
     className=
-
+        ms-Text
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -2284,7 +2293,8 @@ exports[`Button renders a primary checked Button correctly 1`] = `
 >
   <span
     className=
-
+        ms-Text
+        ms-Button-content
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -2799,7 +2809,8 @@ exports[`Button renders a primary disabled checked Button correctly 1`] = `
 >
   <span
     className=
-
+        ms-Text
+        ms-Button-content
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;

@@ -4,6 +4,7 @@ exports[`Component Examples renders Stack.Horizontal.Grow.Example.tsx correctly 
 <div
   className=
       ms-Stack
+      tokens-changed
       {
         background: #71afe5;
         box-sizing: border-box;

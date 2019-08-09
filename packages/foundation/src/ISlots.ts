@@ -46,6 +46,7 @@ export interface ISlot<TProps> {
  */
 export type ISlotFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = (
   componentProps: TProps & IProcessedSlotProps,
+  mixedProps: TProps & IProcessedSlotProps | undefined,
   userProps: ISlotProp<TProps, TShorthandProp>,
   slotOptions: ISlotOptions<TProps> | undefined,
   defaultStyles: IStyle

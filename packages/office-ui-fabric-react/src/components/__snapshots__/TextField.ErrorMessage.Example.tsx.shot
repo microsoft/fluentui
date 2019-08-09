@@ -4,6 +4,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
 <div
   className=
       ms-Stack
+      tokens-changed
       {
         box-sizing: border-box;
         display: flex;

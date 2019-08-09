@@ -4,6 +4,7 @@ exports[`Component Examples renders Stack.Horizontal.Reversed.Example.tsx correc
 <div
   className=
       ms-Stack
+      tokens-changed
       {
         box-sizing: border-box;
         display: flex;
@@ -63,6 +64,7 @@ exports[`Component Examples renders Stack.Horizontal.Reversed.Example.tsx correc
   <div
     className=
         ms-Stack
+        tokens-changed
         {
           background: #71afe5;
           box-sizing: border-box;
@@ -102,6 +104,7 @@ exports[`Component Examples renders Stack.Horizontal.Reversed.Example.tsx correc
   <div
     className=
         ms-Stack
+        tokens-changed
         {
           background: #71afe5;
           box-sizing: border-box;
@@ -282,6 +285,7 @@ exports[`Component Examples renders Stack.Horizontal.Reversed.Example.tsx correc
   <div
     className=
         ms-Stack
+        tokens-changed
         {
           background: #71afe5;
           box-sizing: border-box;

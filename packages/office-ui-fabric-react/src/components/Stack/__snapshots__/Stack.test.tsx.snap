@@ -301,6 +301,7 @@ exports[`Stack renders horizontal Stack with a gap correctly 1`] = `
 <div
   className=
       ms-Stack
+      tokens-changed
       {
         box-sizing: border-box;
         display: flex;
@@ -755,6 +756,7 @@ exports[`Stack renders vertical Stack with a gap correctly 1`] = `
 <div
   className=
       ms-Stack
+      tokens-changed
       {
         box-sizing: border-box;
         display: flex;

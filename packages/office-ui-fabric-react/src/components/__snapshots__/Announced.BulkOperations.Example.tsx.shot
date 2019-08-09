@@ -4,6 +4,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
 <div
   className=
       ms-Stack
+      tokens-changed
       {
         box-sizing: border-box;
         display: flex;
@@ -24,7 +25,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
 >
   <span
     className=
-
+        ms-Text
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
@@ -41,7 +42,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
   </span>
   <span
     className=
-
+        ms-Text
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;

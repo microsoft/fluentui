@@ -94,6 +94,7 @@ exports[`PersonaCoin renders a coin with the initials JB 1`] = `
 >
   <span
     className=
+        ms-Text
         test-cn-initials
         {
           -moz-osx-font-smoothing: grayscale;
@@ -130,6 +131,7 @@ exports[`PersonaCoin renders a correct persona 1`] = `
 >
   <span
     className=
+        ms-Text
         test-cn-initials
         {
           -moz-osx-font-smoothing: grayscale;
@@ -166,6 +168,7 @@ exports[`PersonaCoin renders a red coin 1`] = `
 >
   <span
     className=
+        ms-Text
         test-cn-initials
         {
           -moz-osx-font-smoothing: grayscale;
@@ -400,6 +403,7 @@ exports[`PersonaCoin renders the coin with the provided image 1`] = `
 >
   <span
     className=
+        ms-Text
         test-cn-initials
         {
           -moz-osx-font-smoothing: grayscale;

@@ -3,7 +3,7 @@
 exports[`Text renders default Text correctly 1`] = `
 <span
   className=
-
+      ms-Text
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;

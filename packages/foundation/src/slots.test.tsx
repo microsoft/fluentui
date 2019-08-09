@@ -202,13 +202,20 @@ describe('createFactory', () => {
   };
 
   it(`passes componentProps without userProps`, () => {
-    const component = mount(createFactory<TComponentProps, any>(TestDiv)(componentProps, undefined, undefined, undefined) as JSX.Element);
+    const component = mount(createFactory<TComponentProps, any>(TestDiv)(
+      componentProps,
+      undefined,
+      undefined,
+      undefined,
+      undefined
+    ) as JSX.Element);
     expect(component.props()).toEqual({ ...componentProps, ...emptyClassName });
   });
 
   it(`passes userProp string as child`, () => {
     const component = mount(createFactory<TComponentProps, string>(TestDiv)(
       componentProps,
+      undefined,
       userPropString,
       undefined,
       undefined
@@ -217,13 +224,20 @@ describe('createFactory', () => {
   });
 
   it(`passes userProp integer as child`, () => {
-    const component = mount(createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined, undefined) as JSX.Element);
+    const component = mount(createFactory<TComponentProps, number>(TestDiv)(
+      componentProps,
+      undefined,
+      42,
+      undefined,
+      undefined
+    ) as JSX.Element);
     expect(component.props()).toEqual({ ...componentProps, children: 42, ...emptyClassName });
   });
 
   it(`passes userProp string as defaultProp`, () => {
     const component = mount(createFactory<TComponentProps, string>(TestDiv, factoryOptions)(
       componentProps,
+      undefined,
       userPropString,
       undefined,
       undefined
@@ -234,6 +248,7 @@ describe('createFactory', () => {
   it(`passes userProp integer as defaultProp`, () => {
     const component = mount(createFactory<TComponentProps, number>(TestDiv, factoryOptions)(
       componentProps,
+      undefined,
       42,
       undefined,
       undefined
@@ -245,6 +260,7 @@ describe('createFactory', () => {
     const component = mount(createFactory<TComponentProps>(TestDiv, factoryOptions)(
       componentProps,
       userProps,
+      userProps,
       undefined,
       undefined
     ) as JSX.Element);
@@ -254,6 +270,7 @@ describe('createFactory', () => {
   it('renders div and userProp integer as children', () => {
     const component = renderer.create(createFactory<TComponentProps, number>(TestDiv)(
       componentProps,
+      undefined,
       42,
       undefined,
       undefined
@@ -265,6 +282,7 @@ describe('createFactory', () => {
   it('renders div and userProp string as children', () => {
     const component = renderer.create(createFactory<TComponentProps, string>(TestDiv)(
       componentProps,
+      undefined,
       userPropString,
       undefined,
       undefined
@@ -276,6 +294,7 @@ describe('createFactory', () => {
   it('renders userProp span JSX with one prop', () => {
     const component = renderer.create(createFactory(TestDiv)(
       componentProps,
+      undefined,
       <span id="I should be the only prop in the output" />,
       undefined,
       undefined
@@ -287,6 +306,7 @@ describe('createFactory', () => {
   it('renders userProp span function without component props', () => {
     const component = renderer.create(createFactory(TestDiv)(
       componentProps,
+      undefined,
       undefined,
       {
         render: () => <span id="I should be the only prop in the output" />
@@ -301,6 +321,7 @@ describe('createFactory', () => {
     const component = renderer.create(createFactory(TestDiv)(
       componentProps,
       undefined,
+      undefined,
       {
         render: props => <span {...props} id="I should be present alongside componentProps" />
       },
@@ -313,6 +334,7 @@ describe('createFactory', () => {
   it('renders userProp span component with component props', () => {
     const component = renderer.create(createFactory(TestDiv)(
       componentProps,
+      undefined,
       { id: 'I should be present alongside componentProps' },
       { component: 'span' },
       undefined
@@ -331,7 +353,7 @@ describe('createFactory', () => {
       }
     };
 
-    createFactory(TestDiv, factoryOptions)(componentProps, renderProps, slotOptions, undefined);
+    createFactory(TestDiv, factoryOptions)(componentProps, renderProps, renderProps, slotOptions, undefined);
   });
 });
 

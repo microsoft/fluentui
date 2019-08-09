@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle, mergeStyles } from '@uifabric/styling';
+import { IStyle } from '@uifabric/styling';
 import { memoizeFunction } from '@uifabric/utilities';
 import { memoizeStyles } from './memoizeStyles';
 import { assign } from './utilities';
@@ -79,14 +79,14 @@ export function createFactory<TProps extends ValidProps, TShorthandProp extends 
 ): ISlotFactory<TProps, TShorthandProp> {
   const { defaultProp = 'children' } = options;
 
-  const result: ISlotFactory<TProps, TShorthandProp> = (componentProps, userProps, userSlotOptions, defaultStyles) => {
+  const result: ISlotFactory<TProps, TShorthandProp> = (componentProps, mixedProps, userProps, userSlotOptions, defaultStyles) => {
     // If they passed in raw JSX, just return that.
     if (React.isValidElement(userProps)) {
       return userProps;
     }
 
     const flattenedUserProps: TProps | undefined = _translateShorthand(defaultProp as string, userProps);
-    const finalProps = _constructFinalProps(defaultStyles, componentProps, flattenedUserProps);
+    const finalProps = _constructFinalProps(defaultStyles, mixedProps, componentProps, flattenedUserProps);
 
     if (userSlotOptions) {
       if (userSlotOptions.component) {
@@ -147,6 +147,7 @@ export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots
           slots[name],
           // TODO: this cast to any is hiding a relationship issue between the first two args
           componentProps as any,
+          mixedProps,
           mixedProps[name],
           mixedProps.slots && mixedProps.slots[name],
           // _defaultStyles should always be present, but a check for existence is added to make view tests easier to use.
@@ -186,7 +187,11 @@ function _translateShorthand<TProps extends ValidProps, TShorthandProp extends V
 /**
  * Helper function that constructs final styles and props given a series of props ordered by increasing priority.
  */
-function _constructFinalProps<TProps extends IProcessedSlotProps>(defaultStyles: IStyle, ...allProps: (TProps | undefined)[]): TProps {
+function _constructFinalProps<TProps extends IProcessedSlotProps>(
+  defaultStyles: IStyle,
+  mixedProps: TProps | undefined,
+  ...allProps: (TProps | undefined)[]
+): TProps {
   const finalProps: TProps = {} as any;
   const classNames: string[] = [];
 
@@ -197,7 +202,7 @@ function _constructFinalProps<TProps extends IProcessedSlotProps>(defaultStyles:
     assign(finalProps, ...(props as any));
   }
 
-  finalProps.className = memoizeStyles(defaultStyles, classNames);
+  finalProps.className = memoizeStyles(defaultStyles, mixedProps, classNames);
 
   return finalProps;
 }
@@ -216,16 +221,18 @@ function _renderSlot<
 >(
   ComponentType: TSlotComponent,
   componentProps: TSlotProps,
+  mixedProps: TSlotProps,
   userProps: ISlotProp<TSlotProps, TSlotShorthand>,
   slotOptions: ISlotOptions<TSlotProps> | undefined,
   defaultStyles: IStyle
 ): ReturnType<React.FunctionComponent> {
   if (ComponentType.create !== undefined) {
-    return ComponentType.create(componentProps, userProps, slotOptions, defaultStyles);
+    return ComponentType.create(componentProps, mixedProps, userProps, slotOptions, defaultStyles);
   } else {
     // TODO: need to resolve typing / generic issues passing through memoizeFunction. for now, cast to 'unknown'
     return ((defaultFactory(ComponentType) as unknown) as ISlotFactory<TSlotProps, TSlotShorthand>)(
       componentProps,
+      mixedProps,
       userProps,
       slotOptions,
       defaultStyles

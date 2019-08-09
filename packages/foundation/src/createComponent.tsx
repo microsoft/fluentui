@@ -68,7 +68,16 @@ export function createComponent<
     const theme = componentProps.theme || settings.theme;
 
     const tokens = _resolveTokens(componentProps, theme, options.tokens, settings.tokens, componentProps.tokens);
-    const styles = _resolveStyles(componentProps, theme, tokens, options.styles, settings.styles, componentProps.styles);
+
+    // If tokens have been specified by the user add an extra classname at the end to signify that it isn't the base styling (this is
+    // needed for styling memoization to work correctly).
+    let styles;
+    if (componentProps.tokens) {
+      const tokensChanged: any = { root: 'tokens-changed' };
+      styles = _resolveStyles(componentProps, theme, tokens, options.styles, settings.styles, componentProps.styles, tokensChanged);
+    } else {
+      styles = _resolveStyles(componentProps, theme, tokens, options.styles, settings.styles, componentProps.styles);
+    }
 
     const viewProps = {
       ...componentProps,

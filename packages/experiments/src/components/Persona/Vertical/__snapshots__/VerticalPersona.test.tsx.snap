@@ -34,7 +34,7 @@ exports[`VerticalPersona renders correctly with a text and secondary text 1`] = 
   >
     <span
       className=
-
+          ms-Text
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -52,6 +52,7 @@ exports[`VerticalPersona renders correctly with a text and secondary text 1`] = 
   </div>
   <span
     className=
+        ms-Text
         test-cn-text
         {
           -moz-osx-font-smoothing: grayscale;
@@ -75,6 +76,7 @@ exports[`VerticalPersona renders correctly with a text and secondary text 1`] = 
   </span>
   <span
     className=
+        ms-Text
         test-cn-secondaryText
         {
           -moz-osx-font-smoothing: grayscale;
@@ -134,7 +136,7 @@ exports[`VerticalPersona renders correctly with only a text 1`] = `
   >
     <span
       className=
-
+          ms-Text
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -152,6 +154,7 @@ exports[`VerticalPersona renders correctly with only a text 1`] = `
   </div>
   <span
     className=
+        ms-Text
         test-cn-text
         {
           -moz-osx-font-smoothing: grayscale;
@@ -210,7 +213,7 @@ exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
   >
     <span
       className=
-
+          ms-Text
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -228,6 +231,7 @@ exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
   </div>
   <span
     className=
+        ms-Text
         test-cn-text
         {
           -moz-osx-font-smoothing: grayscale;
@@ -251,6 +255,7 @@ exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
   </span>
   <span
     className=
+        ms-Text
         test-cn-secondaryText
         {
           -moz-osx-font-smoothing: grayscale;

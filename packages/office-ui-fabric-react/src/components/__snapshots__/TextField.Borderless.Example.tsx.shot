@@ -4,6 +4,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
 <div
   className=
       ms-Stack
+      tokens-changed
       {
         box-sizing: border-box;
         display: flex;
@@ -25,6 +26,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
   <div
     className=
         ms-Stack
+        tokens-changed
         {
           box-sizing: border-box;
           display: flex;
@@ -594,6 +596,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
   <div
     className=
         ms-Stack
+        tokens-changed
         {
           box-sizing: border-box;
           display: flex;
