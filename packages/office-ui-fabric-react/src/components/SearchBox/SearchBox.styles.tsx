@@ -64,10 +64,10 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       !hasFocus &&
         hasInput && {
           selectors: {
-            '.ms-SearchBox-iconContainer': {
+            [`:hover .${classNames.iconContainer}`]: {
               width: 4
             },
-            '.ms-SearchBox-icon': {
+            [`:hover .${classNames.icon}`]: {
               opacity: 0
             }
           }
