@@ -1066,15 +1066,15 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                         overflow: visible;
                         position: absolute;
                         speak: none;
-                        top: 22px;
+                        top: -13px;
                         z-index: 10;
                       }
-                  data-icon-name="CaretUpSolid8"
+                  data-icon-name="CaretDownSolid8"
                   data-is-focusable={false}
                   data-sizer-index={1}
                   role="presentation"
                 >
-                  
+                  
                 </i>
                 <div
                   aria-hidden={true}
@@ -1084,10 +1084,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                         background: #0078d4;
                         bottom: 0px;
                         display: none;
-                        height: 37px;
+                        height: 33px;
                         overflow: hidden;
                         position: absolute;
-                        top: -3px;
+                        top: 0px;
                         width: 1px;
                         z-index: 10;
                       }
