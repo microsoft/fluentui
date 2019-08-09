@@ -60,7 +60,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       showValue,
       buttonProps,
       vertical,
-      valueFormat,
       styles,
       theme,
       originFromZero,
@@ -165,11 +164,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               )}
             </div>
           </div>
-          {/* {showValue && !showThumbTooltip && (
-            <Label className={classNames.valueLabel} disabled={disabled}>
-              {valueFormat ? valueFormat(value!) : value}
-            </Label> */}
-          {/* )} */}
         </div>
       </div>
     ) as React.ReactElement<{}>;
