@@ -14,6 +14,7 @@ let _theme: ITheme = createTheme({
   disableGlobalClassNames: false
 });
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
+loadTheme(_theme);
 
 export const ThemeSettingName = 'theme';
 
@@ -99,7 +100,7 @@ function _loadFonts(theme: ITheme): { [name: string]: string } {
   for (const fontName of Object.keys(theme.fonts)) {
     const font = theme.fonts[fontName];
     for (const propName of Object.keys(font)) {
-      const name = 'ms-font-' + fontName + '-' + propName;
+      const name = fontName + propName.charAt(0).toUpperCase() + propName.slice(1);
       let value = font[propName];
       if (propName === 'fontSize' && value.indexOf('px') < 0) {
         value += 'px';
