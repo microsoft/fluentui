@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Allow callout to reposition after position prop is passed in",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "529fc8885913c2f188c9a3710b7c857a0d56a1c5",
+  "date": "2019-08-08T20:06:17.443Z"
+}
