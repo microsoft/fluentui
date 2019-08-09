@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 08 Aug 2019 12:22:20 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Aug 2019 12:22:20 GMT and should not be manually modified.
+
+## 6.200.0
+Fri, 09 Aug 2019 12:22:20 GMT
+
+### Minor changes
+
+- Run update-sass-theme-files to update SASS theme files (phkuo@microsoft.com)
 
 ## 6.199.1
 Thu, 08 Aug 2019 12:22:20 GMT

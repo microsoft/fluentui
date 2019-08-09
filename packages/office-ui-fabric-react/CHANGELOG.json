@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 09 Aug 2019 12:22:20 GMT",
+      "tag": "office-ui-fabric-react_v6.200.0",
+      "version": "6.200.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Run update-sass-theme-files to update SASS theme files",
+            "author": "phkuo@microsoft.com",
+            "commit": "a2d894c25f204abc69d0a3d59a7ccb661fe38c1e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2019 12:22:20 GMT",
       "tag": "office-ui-fabric-react_v6.199.1",
       "version": "6.199.1",

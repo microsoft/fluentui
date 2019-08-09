@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Run update-sass-theme-files to update SASS theme files",
-  "packageName": "office-ui-fabric-react",
-  "email": "phkuo@microsoft.com",
-  "commit": "a2d894c25f204abc69d0a3d59a7ccb661fe38c1e",
-  "date": "2019-08-08T22:21:26.220Z"
-}
