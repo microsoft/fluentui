@@ -42,6 +42,8 @@ exports[`Slider renders correctly 1`] = `
     htmlFor="Slider2"
   >
     I am a slider
+     : 
+    0
   </label>
   <div
     className=
@@ -157,7 +159,6 @@ exports[`Slider renders correctly 1`] = `
             }
       >
         <span
-          aria-labelledby="tooltipHost0"
           className=
               ms-Slider-thumb
               {
@@ -182,6 +183,7 @@ exports[`Slider renders correctly 1`] = `
             }
           }
         />
+        0
         <span
           className=
               ms-Slider-active
@@ -226,39 +228,9 @@ exports[`Slider renders correctly 1`] = `
             }
           }
         />
+        10
       </div>
     </div>
-    <label
-      className=
-          ms-Label
-          ms-Slider-value
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #323130;
-            display: block;
-            flex-shrink: 1;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 1;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            white-space: nowrap;
-            word-wrap: break-word;
-          }
-    >
-      0
-    </label>
   </div>
 </div>
 `;

@@ -78,7 +78,7 @@ describe('Slider', () => {
     expect(slider.current!.value).toEqual(0);
   });
 
-  it('should be able to handler zero value', () => {
+  it('should be able to handle zero value', () => {
     const slider = React.createRef<ISlider>();
 
     mount(<Slider label="slider" value={0} min={-100} max={100} componentRef={slider} />);
@@ -104,7 +104,7 @@ describe('Slider', () => {
     const valueFormat = (val: any) => `${val}%`;
     const component = mount(<Slider value={value} min={0} max={100} showValue={true} valueFormat={valueFormat} />);
 
-    expect(component.find('label.ms-Label.ms-Slider-value').text()).toEqual(valueFormat(value));
+    expect(component.find('.ms-Label ms-Slider-value valueLabel').text()).toEqual(valueFormat(value));
   });
 
   it('calls onChanged after keyboard event', () => {

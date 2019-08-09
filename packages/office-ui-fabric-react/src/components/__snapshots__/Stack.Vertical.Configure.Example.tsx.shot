@@ -120,6 +120,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             htmlFor="Slider2"
           >
             Number of items:
+             : 
+            5
           </label>
           <div
             className=
@@ -235,7 +237,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
               >
                 <span
-                  aria-labelledby="tooltipHost0"
                   className=
                       ms-Slider-thumb
                       {
@@ -260,6 +261,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                   }
                 />
+                1
                 <span
                   className=
                       ms-Slider-active
@@ -304,39 +306,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                   }
                 />
+                10
               </div>
             </div>
-            <label
-              className=
-                  ms-Label
-                  ms-Slider-value
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    box-shadow: none;
-                    box-sizing: border-box;
-                    color: #323130;
-                    display: block;
-                    flex-shrink: 1;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
-                    line-height: 1;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
-                    overflow-wrap: break-word;
-                    padding-bottom: 5px;
-                    padding-left: 0;
-                    padding-right: 0;
-                    padding-top: 5px;
-                    white-space: nowrap;
-                    word-wrap: break-word;
-                  }
-            >
-              5
-            </label>
           </div>
         </div>
         <div
@@ -1006,6 +978,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             htmlFor="Slider9"
           >
             Container height:
+             : 
+            200
           </label>
           <div
             className=
@@ -1069,7 +1043,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
               >
                 <span
-                  aria-labelledby="tooltipHost7"
                   className=
                       ms-Slider-thumb
                       {
@@ -1097,6 +1070,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                   }
                 />
+                1
                 <span
                   className=
                       ms-Slider-active
@@ -1143,42 +1117,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                   }
                 />
+                400
               </div>
             </div>
-            <label
-              className=
-                  ms-Label
-                  ms-Slider-value
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    box-shadow: none;
-                    box-sizing: border-box;
-                    color: #a19f9d;
-                    display: block;
-                    flex-shrink: 1;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
-                    line-height: 1;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
-                    overflow-wrap: break-word;
-                    padding-bottom: 5px;
-                    padding-left: 0;
-                    padding-right: 0;
-                    padding-top: 5px;
-                    white-space: nowrap;
-                    word-wrap: break-word;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    color: GrayText;
-                  }
-            >
-              200
-            </label>
           </div>
         </div>
         <div
@@ -1438,6 +1379,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             htmlFor="Slider13"
           >
             Vertical gap between items:
+             : 
+            0
           </label>
           <div
             className=
@@ -1553,7 +1496,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
               >
                 <span
-                  aria-labelledby="tooltipHost11"
                   className=
                       ms-Slider-thumb
                       {
@@ -1578,6 +1520,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                   }
                 />
+                0
                 <span
                   className=
                       ms-Slider-active
@@ -1622,39 +1565,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                   }
                 />
+                50
               </div>
             </div>
-            <label
-              className=
-                  ms-Label
-                  ms-Slider-value
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    box-shadow: none;
-                    box-sizing: border-box;
-                    color: #323130;
-                    display: block;
-                    flex-shrink: 1;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
-                    line-height: 1;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
-                    overflow-wrap: break-word;
-                    padding-bottom: 5px;
-                    padding-left: 0;
-                    padding-right: 0;
-                    padding-top: 5px;
-                    white-space: nowrap;
-                    word-wrap: break-word;
-                  }
-            >
-              0
-            </label>
           </div>
         </div>
         <div
@@ -2550,6 +2463,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             htmlFor="Slider22"
           >
             Left padding:
+             : 
+            0
           </label>
           <div
             className=
@@ -2665,7 +2580,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
               >
                 <span
-                  aria-labelledby="tooltipHost20"
                   className=
                       ms-Slider-thumb
                       {
@@ -2690,6 +2604,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                   }
                 />
+                0
                 <span
                   className=
                       ms-Slider-active
@@ -2734,39 +2649,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                   }
                 />
+                50
               </div>
             </div>
-            <label
-              className=
-                  ms-Label
-                  ms-Slider-value
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    box-shadow: none;
-                    box-sizing: border-box;
-                    color: #323130;
-                    display: block;
-                    flex-shrink: 1;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
-                    line-height: 1;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
-                    overflow-wrap: break-word;
-                    padding-bottom: 5px;
-                    padding-left: 0;
-                    padding-right: 0;
-                    padding-top: 5px;
-                    white-space: nowrap;
-                    word-wrap: break-word;
-                  }
-            >
-              0
-            </label>
           </div>
         </div>
         <div
@@ -2810,6 +2695,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             htmlFor="Slider25"
           >
             Right padding:
+             : 
+            0
           </label>
           <div
             className=
@@ -2925,7 +2812,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
               >
                 <span
-                  aria-labelledby="tooltipHost23"
                   className=
                       ms-Slider-thumb
                       {
@@ -2950,6 +2836,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                   }
                 />
+                0
                 <span
                   className=
                       ms-Slider-active
@@ -2994,39 +2881,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                   }
                 />
+                50
               </div>
             </div>
-            <label
-              className=
-                  ms-Label
-                  ms-Slider-value
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    box-shadow: none;
-                    box-sizing: border-box;
-                    color: #323130;
-                    display: block;
-                    flex-shrink: 1;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
-                    line-height: 1;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
-                    overflow-wrap: break-word;
-                    padding-bottom: 5px;
-                    padding-left: 0;
-                    padding-right: 0;
-                    padding-top: 5px;
-                    white-space: nowrap;
-                    word-wrap: break-word;
-                  }
-            >
-              0
-            </label>
           </div>
         </div>
       </div>
@@ -3108,6 +2965,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             htmlFor="Slider28"
           >
             Top padding:
+             : 
+            0
           </label>
           <div
             className=
@@ -3223,7 +3082,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
               >
                 <span
-                  aria-labelledby="tooltipHost26"
                   className=
                       ms-Slider-thumb
                       {
@@ -3248,6 +3106,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                   }
                 />
+                0
                 <span
                   className=
                       ms-Slider-active
@@ -3292,39 +3151,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                   }
                 />
+                50
               </div>
             </div>
-            <label
-              className=
-                  ms-Label
-                  ms-Slider-value
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    box-shadow: none;
-                    box-sizing: border-box;
-                    color: #323130;
-                    display: block;
-                    flex-shrink: 1;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
-                    line-height: 1;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
-                    overflow-wrap: break-word;
-                    padding-bottom: 5px;
-                    padding-left: 0;
-                    padding-right: 0;
-                    padding-top: 5px;
-                    white-space: nowrap;
-                    word-wrap: break-word;
-                  }
-            >
-              0
-            </label>
           </div>
         </div>
         <div
@@ -3368,6 +3197,8 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             htmlFor="Slider31"
           >
             Bottom padding:
+             : 
+            0
           </label>
           <div
             className=
@@ -3483,7 +3314,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
               >
                 <span
-                  aria-labelledby="tooltipHost29"
                   className=
                       ms-Slider-thumb
                       {
@@ -3508,6 +3338,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                   }
                 />
+                0
                 <span
                   className=
                       ms-Slider-active
@@ -3552,39 +3383,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
                   }
                 />
+                50
               </div>
             </div>
-            <label
-              className=
-                  ms-Label
-                  ms-Slider-value
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    box-shadow: none;
-                    box-sizing: border-box;
-                    color: #323130;
-                    display: block;
-                    flex-shrink: 1;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 600;
-                    line-height: 1;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
-                    overflow-wrap: break-word;
-                    padding-bottom: 5px;
-                    padding-left: 0;
-                    padding-right: 0;
-                    padding-top: 5px;
-                    white-space: nowrap;
-                    word-wrap: break-word;
-                  }
-            >
-              0
-            </label>
           </div>
         </div>
       </div>

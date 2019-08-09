@@ -90,14 +90,14 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
         className={classNames.thumb}
         style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)}
         id={this._buttonId}
-        aria-labelledby={this._hostId}
+        aria-labelledby={showThumbTooltip ? this._hostId : undefined}
       />
     );
     return (
       <div className={classNames.root}>
         {label && (
           <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })} disabled={disabled}>
-            {label}
+            {label} : {value}
           </Label>
         )}
         <div className={classNames.container}>
@@ -127,7 +127,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                 <TooltipHost
                   content={'' + value}
                   id={this._hostId}
-                  calloutProps={{ gapSpace: 5, beakWidth: 8, target: `#${this._buttonId}`, doNotLayer: true }}
+                  calloutProps={{ gapSpace: 5, beakWidth: 8, target: `#${this._buttonId}` }}
                 >
                   {theButton}
                 </TooltipHost>
@@ -151,6 +151,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                 </>
               ) : (
                 <>
+                  {min}
                   <span
                     className={css(classNames.lineContainer, classNames.activeSection)}
                     style={{ [lengthString]: thumbOffsetPercent + '%' }}
@@ -159,15 +160,16 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                     className={css(classNames.lineContainer, classNames.inactiveSection)}
                     style={{ [lengthString]: 100 - thumbOffsetPercent + '%' }}
                   />
+                  {max}
                 </>
               )}
             </div>
           </div>
-          {showValue && !showThumbTooltip && (
+          {/* {showValue && !showThumbTooltip && (
             <Label className={classNames.valueLabel} disabled={disabled}>
               {valueFormat ? valueFormat(value!) : value}
-            </Label>
-          )}
+            </Label> */}
+          {/* )} */}
         </div>
       </div>
     ) as React.ReactElement<{}>;
@@ -196,6 +198,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
   private _getAriaValueText = (value: number | undefined): string | undefined => {
     if (this.props.ariaValueText && value !== undefined) {
+      // console.log('this is aria' + value);
       return this.props.ariaValueText(value);
     }
   };

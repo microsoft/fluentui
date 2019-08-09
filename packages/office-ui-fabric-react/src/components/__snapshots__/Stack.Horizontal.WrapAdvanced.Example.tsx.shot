@@ -99,6 +99,8 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           htmlFor="Slider2"
         >
           Stack width:
+           : 
+          100
         </label>
         <div
           className=
@@ -214,7 +216,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   }
             >
               <span
-                aria-labelledby="tooltipHost0"
                 className=
                     ms-Slider-thumb
                     {
@@ -239,6 +240,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   }
                 }
               />
+              1
               <span
                 className=
                     ms-Slider-active
@@ -283,39 +285,9 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   }
                 }
               />
+              100
             </div>
           </div>
-          <label
-            className=
-                ms-Label
-                ms-Slider-value
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  box-shadow: none;
-                  box-sizing: border-box;
-                  color: #323130;
-                  display: block;
-                  flex-shrink: 1;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 600;
-                  line-height: 1;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  overflow-wrap: break-word;
-                  padding-bottom: 5px;
-                  padding-left: 0;
-                  padding-right: 0;
-                  padding-top: 5px;
-                  white-space: nowrap;
-                  word-wrap: break-word;
-                }
-          >
-            100
-          </label>
         </div>
       </div>
     </div>
@@ -375,6 +347,8 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           htmlFor="Slider5"
         >
           Container height:
+           : 
+          150
         </label>
         <div
           className=
@@ -490,7 +464,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   }
             >
               <span
-                aria-labelledby="tooltipHost3"
                 className=
                     ms-Slider-thumb
                     {
@@ -515,6 +488,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   }
                 }
               />
+              1
               <span
                 className=
                     ms-Slider-active
@@ -559,39 +533,9 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                   }
                 }
               />
+              200
             </div>
           </div>
-          <label
-            className=
-                ms-Label
-                ms-Slider-value
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  box-shadow: none;
-                  box-sizing: border-box;
-                  color: #323130;
-                  display: block;
-                  flex-shrink: 1;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 600;
-                  line-height: 1;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  overflow-wrap: break-word;
-                  padding-bottom: 5px;
-                  padding-left: 0;
-                  padding-right: 0;
-                  padding-top: 5px;
-                  white-space: nowrap;
-                  word-wrap: break-word;
-                }
-          >
-            150
-          </label>
         </div>
       </div>
     </div>

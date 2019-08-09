@@ -64,6 +64,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
       htmlFor="Slider2"
     >
       Basic
+       : 
+      2
     </label>
     <div
       className=
@@ -192,7 +194,6 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
               }
         >
           <span
-            aria-labelledby="tooltipHost0"
             className=
                 ms-Slider-thumb
                 {
@@ -221,6 +222,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
               }
             }
           />
+          1
           <span
             className=
                 ms-Slider-active
@@ -265,40 +267,9 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
               }
             }
           />
+          5
         </div>
       </div>
-      <label
-        className=
-            ms-Label
-            ms-Slider-value
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: block;
-              flex-shrink: 1;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 600;
-              line-height: 1;
-              margin-bottom: 0;
-              margin-left: auto;
-              margin-right: auto;
-              margin-top: 0;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              white-space: nowrap;
-              width: 40px;
-              word-wrap: break-word;
-            }
-      >
-        2
-      </label>
     </div>
   </div>
   <div
@@ -346,6 +317,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
       htmlFor="Slider5"
     >
       Disabled
+       : 
+      300
     </label>
     <div
       className=
@@ -422,7 +395,6 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
               }
         >
           <span
-            aria-labelledby="tooltipHost3"
             className=
                 ms-Slider-thumb
                 {
@@ -454,6 +426,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
               }
             }
           />
+          50
           <span
             className=
                 ms-Slider-active
@@ -500,43 +473,9 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
               }
             }
           />
+          500
         </div>
       </div>
-      <label
-        className=
-            ms-Label
-            ms-Slider-value
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #a19f9d;
-              display: block;
-              flex-shrink: 1;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 600;
-              line-height: 1;
-              margin-bottom: 0;
-              margin-left: auto;
-              margin-right: auto;
-              margin-top: 0;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              white-space: nowrap;
-              width: 40px;
-              word-wrap: break-word;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: GrayText;
-            }
-      >
-        300
-      </label>
     </div>
   </div>
   <div
@@ -581,6 +520,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
       htmlFor="Slider8"
     >
       Controlled
+       : 
+      0
     </label>
     <div
       className=
@@ -709,7 +650,6 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
               }
         >
           <span
-            aria-labelledby="tooltipHost6"
             className=
                 ms-Slider-thumb
                 {
@@ -738,6 +678,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
               }
             }
           />
+          0
           <span
             className=
                 ms-Slider-active
@@ -782,40 +723,9 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
               }
             }
           />
+          10
         </div>
       </div>
-      <label
-        className=
-            ms-Label
-            ms-Slider-value
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: block;
-              flex-shrink: 1;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 600;
-              line-height: 1;
-              margin-bottom: 0;
-              margin-left: auto;
-              margin-right: auto;
-              margin-top: 0;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              white-space: nowrap;
-              width: 40px;
-              word-wrap: break-word;
-            }
-      >
-        0
-      </label>
     </div>
   </div>
   <div
@@ -860,6 +770,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
       htmlFor="Slider11"
     >
       Formatted value
+       : 
+      0
     </label>
     <div
       className=
@@ -988,7 +900,6 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
               }
         >
           <span
-            aria-labelledby="tooltipHost9"
             className=
                 ms-Slider-thumb
                 {
@@ -1017,6 +928,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
               }
             }
           />
+          0
           <span
             className=
                 ms-Slider-active
@@ -1061,40 +973,9 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
               }
             }
           />
+          100
         </div>
       </div>
-      <label
-        className=
-            ms-Label
-            ms-Slider-value
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: block;
-              flex-shrink: 1;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 600;
-              line-height: 1;
-              margin-bottom: 0;
-              margin-left: auto;
-              margin-right: auto;
-              margin-top: 0;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              white-space: nowrap;
-              width: 40px;
-              word-wrap: break-word;
-            }
-      >
-        0%
-      </label>
     </div>
   </div>
   <div
@@ -1139,6 +1020,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
       htmlFor="Slider14"
     >
       Origin from zero
+       : 
+      5
     </label>
     <div
       className=
@@ -1286,7 +1169,6 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
             }
           />
           <span
-            aria-labelledby="tooltipHost12"
             className=
                 ms-Slider-thumb
                 {
@@ -1383,38 +1265,6 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
           />
         </div>
       </div>
-      <label
-        className=
-            ms-Label
-            ms-Slider-value
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #323130;
-              display: block;
-              flex-shrink: 1;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 600;
-              line-height: 1;
-              margin-bottom: 0;
-              margin-left: auto;
-              margin-right: auto;
-              margin-top: 0;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              white-space: nowrap;
-              width: 40px;
-              word-wrap: break-word;
-            }
-      >
-        5
-      </label>
     </div>
   </div>
 </div>
