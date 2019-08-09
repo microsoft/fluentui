@@ -56,8 +56,8 @@ describe('example transform', () => {
                decrementButtonAriaLabel: 'Decrease value by 1' })));
       };
       return SpinButtonBasicExample;
-  }(React.Component));
-  export { SpinButtonBasicExample };`).toMatch(classNamePatternCopy);
+      }(React.Component));
+      export { SpinButtonBasicExample };`).toMatch(classNamePatternCopy);
     expect(`var ButtonDefaultExample = /** @class */ (function (_super) {
       __extends(ButtonDefaultExample, _super);
       function ButtonDefaultExample() {
@@ -84,18 +84,13 @@ describe('example transform', () => {
           alert('Clicked');
       };
       return ButtonDefaultExample;
-  }(React.Component));
-  { ButtonDefaultExample };
-      ReactDOM.render(
-        React.createElement(Fabric, null,
-          React.createElement(ButtonDefaultExample, null)),
-        document.getElementById('DefaultButton')
-      );`).toMatch(classNamePatternCopy);
+      }(React.Component));
+      { ButtonDefaultExample };
+      return React.createElement("div");`).toMatch(classNamePatternCopy);
     expect(`import * as React from 'react';
-    import { Label } from 'office-ui-fabric-react/lib/Label';
-    export var LabelBasicExample = function () {
-        return (React.createElement("div", null,
-            React.createElement(Label, null, "I'm a Label")));
+      import { Label } from 'office-ui-fabric-react/lib/Label';
+      export var LabelBasicExample = function () {
+      return React.createElement("div");
     };
     `).not.toMatch(classNamePatternCopy);
   });
@@ -103,51 +98,46 @@ describe('example transform', () => {
   it('detects const names', () => {
     const constNamePatternCopy = new RegExp(constNamePattern.source);
     expect(`import * as React from 'react';
-    import { Label } from 'office-ui-fabric-react/lib/Label';
-    export var LabelBasicExample = function () {
-        return (React.createElement("div", null,
-            React.createElement(Label, null, "I'm a Label")));
-    };
+      import { Label } from 'office-ui-fabric-react/lib/Label';
+      export var LabelBasicExample = function () {
+          return React.createElement("div");
+        };
     `).toMatch(constNamePatternCopy);
     expect(`var stackTokens = { childrenGap: 20 };
-    var DropdownBasicExample = function () {
-        return (React.createElement(Stack, { tokens: stackTokens },
-            React.createElement(Dropdown, { placeholder: "Select an option",
-            label: "Basic uncontrolled example",
-            options: options, styles: dropdownStyles }),
-            React.createElement(Dropdown, {
-              label: "Disabled example with defaultSelectedKey",
-              defaultSelectedKey: "broccoli", options: options,
-              disabled: true, styles: dropdownStyles }),
-            React.createElement(Dropdown, {
-              placeholder: "Select options",
-              label: "Multi-select uncontrolled example",
-              defaultSelectedKeys: ['apple', 'banana', 'grape'],
-              multiSelect: true, options: options,
-              styles: dropdownStyles })));
-    };
-        ReactDOM.render(
-          React.createElement(Fabric, null,
-          React.createElement(DropdownBasicExample, null)),
-          document.getElementById('BasicDropdowns')
-        );`).toMatch(constNamePatternCopy);
+      var DropdownBasicExample = function () {
+      return (React.createElement(Stack, { tokens: stackTokens },
+      React.createElement(Dropdown, { placeholder: "Select an option",
+      label: "Basic uncontrolled example",
+      options: options, styles: dropdownStyles }),
+      React.createElement(Dropdown, {
+        label: "Disabled example with defaultSelectedKey",
+        defaultSelectedKey: "broccoli", options: options,
+        disabled: true, styles: dropdownStyles }),
+      React.createElement(Dropdown, {
+        placeholder: "Select options",
+        label: "Multi-select uncontrolled example",
+        defaultSelectedKeys: ['apple', 'banana', 'grape'],
+        multiSelect: true, options: options,
+        styles: dropdownStyles })));
+      };
+    return React.createElement("div");`).toMatch(constNamePatternCopy);
     expect(`var SpinButtonBasicExample = /** @class */ (function (_super) {
       __extends(SpinButtonBasicExample, _super);
       function SpinButtonBasicExample() {
           return _super !== null && _super.apply(this, arguments) || this;
       }
       SpinButtonBasicExample.prototype.render = function () {
-          return (React.createElement("div", { style: { width: '400px' } },
-              React.createElement(SpinButton, { defaultValue: "0",
-              label: 'Basic SpinButton:', min: 0,
-              max: 100, step: 1, iconProps: {
-                iconName: 'IncreaseIndentLegacy' },
-                incrementButtonAriaLabel: 'Increase value by 1',
-                decrementButtonAriaLabel: 'Decrease value by 1' })));
+        return (React.createElement("div", { style: { width: '400px' } },
+          React.createElement(SpinButton, { defaultValue: "0",
+          label: 'Basic SpinButton:', min: 0,
+          max: 100, step: 1, iconProps: {
+            iconName: 'IncreaseIndentLegacy' },
+            incrementButtonAriaLabel: 'Increase value by 1',
+            decrementButtonAriaLabel: 'Decrease value by 1' })));
       };
       return SpinButtonBasicExample;
-  }(React.Component));
-  export { SpinButtonBasicExample };`).not.toMatch(constNamePatternCopy);
+      }(React.Component));
+      export { SpinButtonBasicExample };`).not.toMatch(constNamePatternCopy);
   });
 
   it.only('detects imports', () => {
