@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 06 Aug 2019 12:22:01 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2019 12:22:20 GMT and should not be manually modified.
+
+## 6.199.1
+Thu, 08 Aug 2019 12:22:20 GMT
+
+### Patches
+
+- Cherry pick PR #10056, DetailsList: Assign button role to group toggle element if aria-label provided. (t-mashia@microsoft.com)
 
 ## 6.199.0
 Tue, 06 Aug 2019 12:22:01 GMT
