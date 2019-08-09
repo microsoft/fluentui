@@ -21,10 +21,19 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       lib: ['es5', 'dom']
     });
 
+    // Fetching Fabric typings to allow for intellisense in editor
+    fetch('https://unpkg.com/office-ui-fabric-react/dist/office-ui-fabric-react.d.ts').then(response => {
+      response.text().then(fabricTypings => {
+        monaco.languages.typescript.typescriptDefaults.addExtraLib(
+          fabricTypings,
+          'file:///node_modules/@types/office-ui-fabric-react/index.d.ts'
+        );
+      });
+    });
+
     monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: true });
 
-    // Creating proxy URL for JSX support since HTML5 does not allow pages loaded on file:// to create web workers
-    const model = monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('https://developer.microsoft.com/main.tsx'));
+    const model = monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('file:///main.tsx'));
 
     onChange(model);
 

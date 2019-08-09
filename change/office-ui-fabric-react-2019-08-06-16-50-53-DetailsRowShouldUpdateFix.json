@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsRow should only re-render if a prop is detected to have changed.",
-  "packageName": "office-ui-fabric-react",
-  "email": "megreid115@gmail.com",
-  "commit": "00bda91a359c9efbefd855bcf2bfaa09a031536e",
-  "date": "2019-08-06T23:50:53.659Z"
-}

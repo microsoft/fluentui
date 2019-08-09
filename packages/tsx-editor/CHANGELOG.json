@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Thu, 08 Aug 2019 12:32:41 GMT",
+      "tag": "@uifabric/tsx-editor_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "add editor config helper",
+            "author": "elcraig@microsoft.com",
+            "commit": "b36b034d883fb1e85b9e3da13eb87f281b3262e3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Aug 2019 12:32:07 GMT",
       "tag": "@uifabric/tsx-editor_v0.2.0",
       "version": "0.2.0",

@@ -1,6 +1,26 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 07 Aug 2019 12:32:28 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Aug 2019 12:31:50 GMT and should not be manually modified.
+
+## 7.22.1
+Fri, 09 Aug 2019 12:31:50 GMT
+
+### Patches
+
+- Spinbutton: removed additional top and bottom margin styling overriding Label's styling and causes alignment inconsistencies with textbox, combobox, etc. (marygans@microsoft.com)
+
+## 7.22.0
+Thu, 08 Aug 2019 12:32:41 GMT
+
+### Minor changes
+
+- DetailsList: Assign button role to group toggle element if aria-label provided. (t-mashia@microsoft.com)
+,- Update SASS variables using script (phkuo@microsoft.com)
+
+### Patches
+
+- Moved role, aria-label, and aria-expanded to the same element as per aria requirements (susunda@microsoft.com)
+,- DetailsRow should only re-render if a prop is detected to have changed. (megreid115@gmail.com)
 
 ## 7.21.0
 Wed, 07 Aug 2019 12:32:28 GMT
