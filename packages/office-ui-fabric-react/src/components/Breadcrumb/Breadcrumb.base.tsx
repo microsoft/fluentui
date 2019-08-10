@@ -156,7 +156,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     if (item.onClick || item.href) {
       return (
         <Link
-          as={'a'}
+          as={'as'}
           className={this._classNames.itemLink}
           href={item.href}
           aria-current={item.isCurrentItem ? 'page' : undefined}
