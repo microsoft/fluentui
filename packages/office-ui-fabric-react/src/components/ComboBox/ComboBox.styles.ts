@@ -12,6 +12,7 @@ import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
 import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
+import { FontSizes } from '@uifabric/styling';
 
 const ComboBoxHeight = 32;
 const ComboBoxLineHeight = 30;
@@ -218,8 +219,9 @@ export const getStyles = memoizeFunction(
     const ComboBoxRootBackground = semanticColors.bodyBackground;
     const ComboBoxRootTextColor = semanticColors.bodyText;
     const ComboBoxRootBorderColor = semanticColors.inputBorder;
-    const ComboBoxRootBorderColorHovered = semanticColors.inputBorderHovered;
-    const ComboBoxRootBorderColorFocused = semanticColors.inputFocusBorderAlt;
+    const ComboBoxRootBorderColorHovered = palette.themePrimary;
+    const ComboBoxRootBorderColorPressed = palette.themePrimary;
+    const ComboBoxRootBorderColorFocused = palette.neutralPrimary;
     const ComboBoxRootColorErrored = semanticColors.errorText;
     const ComboBoxOptionHeaderTextColor = semanticColors.menuHeader;
     const ComboBoxOptionDividerBorderColor = semanticColors.bodyDivider;
@@ -288,7 +290,7 @@ export const getStyles = memoizeFunction(
               marginBottom: '8px'
             },
             '&.is-open': {
-              borderColor: ComboBoxRootBorderColorFocused,
+              borderColor: ComboBoxRootBorderColor,
               selectors: {
                 [HighContrastSelector]: ComboBoxRootHighContrastFocused
               }
@@ -300,7 +302,7 @@ export const getStyles = memoizeFunction(
       rootHovered: {
         borderColor: ComboBoxRootBorderColorHovered,
         selectors: {
-          '.ms-ComboBox-Input': [{ color: palette.neutralDark }, getPlaceholderStyles(hoverPlaceholderStyles)],
+          '.ms-ComboBox-Input': [{ color: semanticColors.inputTextHovered }, getPlaceholderStyles(hoverPlaceholderStyles)],
           [HighContrastSelector]: {
             color: 'HighlightText',
             borderColor: 'Highlight',
@@ -311,7 +313,7 @@ export const getStyles = memoizeFunction(
       },
 
       rootPressed: {
-        borderColor: ComboBoxRootBorderColorFocused,
+        borderColor: ComboBoxRootBorderColorPressed,
         selectors: {
           [HighContrastSelector]: ComboBoxRootHighContrastFocused
         }
@@ -320,6 +322,9 @@ export const getStyles = memoizeFunction(
       rootFocused: {
         borderColor: ComboBoxRootBorderColorFocused,
         selectors: {
+          '.ms-ComboBox-Input': {
+            color: semanticColors.inputTextHovered
+          },
           [HighContrastSelector]: ComboBoxRootHighContrastFocused
         }
       },
@@ -356,7 +361,8 @@ export const getStyles = memoizeFunction(
 
       inputDisabled: [getDisabledStyles(theme), getPlaceholderStyles(disabledPlaceholderStyles)],
       errorMessage: {
-        color: ComboBoxRootColorErrored
+        color: ComboBoxRootColorErrored,
+        fontSize: FontSizes.smallPlus
       },
 
       callout: {
@@ -368,7 +374,12 @@ export const getStyles = memoizeFunction(
       },
 
       optionsContainer: {
-        display: 'block'
+        display: 'block',
+        selectors: {
+          '.ms-Checkbox:hover, .ms-Checkbox:hover:active': {
+            backgroundColor: 'transparent !important'
+          }
+        }
       },
 
       header: [
