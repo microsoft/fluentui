@@ -1,0 +1,8 @@
+{
+  "comment": "Combobox: Updated web fluent styles",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "d34680a0ad1c614942b9a2e6b127b04634635326",
+  "date": "2019-08-10T00:10:05.105Z"
+}
