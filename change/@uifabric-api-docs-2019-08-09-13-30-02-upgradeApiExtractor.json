@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Upgrade api-extractor-model",
-  "packageName": "@uifabric/api-docs",
-  "email": "naethell@microsoft.com",
-  "commit": "1f84eeff39abbeb9783b12aea439b2a517ad4d50",
-  "date": "2019-08-09T20:30:01.968Z"
-}
