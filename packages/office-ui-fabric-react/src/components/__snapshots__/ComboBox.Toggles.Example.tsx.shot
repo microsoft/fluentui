@@ -98,7 +98,7 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #0078d4;
+            border-color: #8a8886;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -115,7 +115,7 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
             top: -2px;
           }
           &:hover {
-            border-color: #323130;
+            border-color: #0078d4;
           }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
@@ -153,7 +153,10 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
             top: -2px;
           }
           &:focus {
-            border-color: #0078d4;
+            border-color: #323130;
+          }
+          &:focus .ms-ComboBox-Input {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:focus {
             -ms-high-contrast-adjust: none;
