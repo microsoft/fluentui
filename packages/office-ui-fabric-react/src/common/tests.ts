@@ -1,7 +1,7 @@
 /** Jest test setup file. */
 
 import { configure } from 'enzyme';
-import { initializeIcons } from '@uifabric/icons';
+import { initializeIcons } from 'office-ui-fabric-react/lib/Icons';
 import * as Adapter from 'enzyme-adapter-react-16';
 
 // Initialize icons.

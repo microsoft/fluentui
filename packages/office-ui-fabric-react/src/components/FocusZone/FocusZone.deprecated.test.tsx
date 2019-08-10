@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { setWarningCallback } from '@uifabric/utilities';
+import { setWarningCallback } from '../../Utilities';
 import { FocusZone } from './FocusZone';
 
 describe('FocusZone', () => {

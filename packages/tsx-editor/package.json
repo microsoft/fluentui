@@ -43,6 +43,7 @@
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-test-renderer": "^16.3.0",
+    "read-package-tree": "^5.3.1",
     "webpack-bundle-analyzer": "^3.0.4"
   },
   "dependencies": {
