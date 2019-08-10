@@ -131,6 +131,23 @@ describe('mergeStyleSets', () => {
     );
   });
 
+  it('can expand child selectors', () => {
+    mergeStyleSets({
+      a: {
+        selectors: {
+          ':hover': {
+            background: 'green'
+          }
+        }
+      }
+    });
+    // mergeStyleSets(({
+    //   a: {
+    //     '&:hover': {background: 'green'}
+    //   }} as any);
+    expect(_stylesheet.getRules()).toEqual('.a-0:hover{background:green;}');
+  });
+
   it('can expand child selectors with static class names', () => {
     const styles = mergeStyleSets({
       root: [

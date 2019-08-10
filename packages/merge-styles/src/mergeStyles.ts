@@ -7,7 +7,7 @@ import { extractStyleParts } from './extractStyleParts';
  *
  * @public
  */
-export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string {
+export function mergeStyles(...args: (any)[]): string {
   const { classes, objects } = extractStyleParts(args);
 
   if (objects.length) {

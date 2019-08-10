@@ -1,0 +1,4 @@
+{
+  "jest.debugMode": true,
+  "jest.pathToJest": "/Users/aneeshak/office-ui-fabric-react/node_modules/jest/bin/jest.js"
+}

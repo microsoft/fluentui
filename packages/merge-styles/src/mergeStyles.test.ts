@@ -44,6 +44,11 @@ describe('mergeStyles', () => {
     expect(mergeStyles('a', false, null, undefined, 'b')).toEqual('a b');
   });
 
+  it('can compile css classname with variables', () => {
+    const result1 = mergeStyles({ '--main-bg-color': 'coral' });
+    expect(_stylesheet.getRules()).toEqual('.css-0{--main-bg-color:coral;}');
+  });
+
   it('can join arrays of strings', () => {
     expect(mergeStyles(['a', 'b', 'c'], false, null, undefined)).toEqual('a b c');
   });
