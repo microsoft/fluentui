@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 07 Aug 2019 12:32:28 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Aug 2019 12:31:50 GMT and should not be manually modified.
+
+## 7.11.1
+Fri, 09 Aug 2019 12:31:50 GMT
+
+### Patches
+
+- Chiclet: Preview image no longer overflows (t-stcar@microsoft.com)
 
 ## 7.11.0
 Wed, 07 Aug 2019 12:32:28 GMT

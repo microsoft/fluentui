@@ -1,0 +1,8 @@
+{
+  "comment": "adding support for example data and workaround for lookbehinds in regex",
+  "type": "minor",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "esteban.230@hotmail.com",
+  "commit": "3a0a0f24e79ceb81380a3f61146db0d126101b2c",
+  "date": "2019-08-05T22:31:12.501Z"
+}

@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 09 Aug 2019 12:31:50 GMT",
+      "tag": "@uifabric/experiments_v7.11.1",
+      "version": "7.11.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Chiclet: Preview image no longer overflows",
+            "author": "t-stcar@microsoft.com",
+            "commit": "c55d6b287597f8f874678777df218a73c7271324"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Aug 2019 12:32:28 GMT",
       "tag": "@uifabric/experiments_v7.11.0",
       "version": "7.11.0",
