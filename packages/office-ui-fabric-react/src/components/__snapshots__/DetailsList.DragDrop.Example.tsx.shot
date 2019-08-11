@@ -1087,10 +1087,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                         background: #0078d4;
                         bottom: 0px;
                         display: none;
-                        height: 33px;
+                        height: 37px;
                         overflow: hidden;
                         position: absolute;
-                        top: 0px;
+                        top: 6px;
                         width: 1px;
                         z-index: 10;
                       }
