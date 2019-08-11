@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Moving the drag-drop caret icon on top of column divider to make if compatible with Sticky header",
+  "packageName": "office-ui-fabric-react",
+  "email": "svaibhav@microsoft.com",
+  "commit": "f92b1ee8a21054d1f57d0277d3fd0010d9d1b124",
+  "date": "2019-08-11T18:37:38.361Z"
+}
