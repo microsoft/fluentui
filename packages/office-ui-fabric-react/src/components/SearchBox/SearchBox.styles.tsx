@@ -1,6 +1,6 @@
 import { HighContrastSelector, AnimationVariables, normalize, IStyle, getPlaceholderStyles, getGlobalClassNames } from '../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
-import { getRTL } from '@uifabric/utilities';
+import { getRTL } from '../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-SearchBox',
