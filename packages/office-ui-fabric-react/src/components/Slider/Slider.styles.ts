@@ -28,7 +28,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   // Tokens
   const sliderInteractedActiveSectionColor = semanticColors.inputBackgroundCheckedHovered;
   const sliderHoverSectionColor = semanticColors.inputBackgroundChecked;
-  const sliderInteractedInactiveSectionColor = semanticColors.disabledBorderAlt;
+  const sliderInteractedInactiveSectionColor = semanticColors.inputBackgroundCheckedAlt;
   const sliderRestActiveSectionColor = semanticColors.smallInputBorder;
   const sliderRestInactiveSectionColor = semanticColors.disabledBorder;
 
