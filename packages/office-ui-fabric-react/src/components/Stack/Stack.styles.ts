@@ -7,7 +7,7 @@ const nameMap: { [key: string]: string } = {
   end: 'flex-end'
 };
 
-const GlobalClassNames = {
+export const StackClassNames = {
   root: 'ms-Stack',
   inner: 'ms-Stack-inner'
 };
@@ -15,7 +15,7 @@ const GlobalClassNames = {
 export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackStylesReturnType => {
   const { verticalFill, horizontal, reversed, gap, grow, wrap, horizontalAlign, verticalAlign, disableShrink, className } = props;
 
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const classNames = getGlobalClassNames(StackClassNames, theme);
 
   const childrenGap = tokens && tokens.childrenGap ? tokens.childrenGap : gap;
   const maxHeight = tokens && tokens.maxHeight ? tokens.maxHeight : props.maxHeight;

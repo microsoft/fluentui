@@ -60,7 +60,7 @@ export const MenuButtonTokens: IMenuButtonComponent['tokens'] = (props, theme): 
   props.primary && props.expanded && primaryExpandedTokens
 ];
 
-const GlobalClassNames = {
+export const MenuButtonClassNames = {
   msMenuButton: 'ms-MenuButton',
   msMenuButtonContainer: 'ms-MenuButton-container',
   msMenuButtonMenuArea: 'ms-MenuButton-menu-area',
@@ -70,7 +70,7 @@ const GlobalClassNames = {
 export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, tokens): IMenuButtonStylesReturnType => {
   const { className } = props;
 
-  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
+  const globalClassNames = getGlobalClassNames(MenuButtonClassNames, theme);
 
   return {
     root: [

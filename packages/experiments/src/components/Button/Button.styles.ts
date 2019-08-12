@@ -191,7 +191,7 @@ export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonT
   props.disabled && disabledTokens
 ];
 
-const GlobalClassNames = {
+export const ButtonClassNames = {
   msButton: 'ms-Button',
   msButtonIcon: 'ms-Button-icon',
   msButtonContent: 'ms-Button-content'
@@ -202,7 +202,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
 
   const { rowGap, columnGap } = parseGap(tokens.childrenGap, theme);
 
-  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
+  const globalClassNames = getGlobalClassNames(ButtonClassNames, theme);
 
   return {
     root: [

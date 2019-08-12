@@ -8,6 +8,7 @@ import {
   disabledTokens,
   enabledTokens,
   hrefTokens,
+  ButtonClassNames,
   ButtonStyles as styles
 } from '../Button.styles';
 import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from '../Button.types';
@@ -22,8 +23,12 @@ export const DefaultButtonTokens: IButtonComponent['tokens'] = (props, theme): I
   props.disabled && disabledTokens
 ];
 
+const classNames = Object.values(ButtonClassNames);
+
 export const DefaultButton: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
+  classNames,
   displayName: 'DefaultButton',
+  precedenceList: ['checked', 'disabled'],
   state,
   styles,
   tokens: DefaultButtonTokens

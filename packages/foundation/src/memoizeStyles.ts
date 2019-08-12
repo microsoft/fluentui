@@ -3,7 +3,7 @@ import { classNameToComponentDictionary, componentToPrecedenceListDictionary } f
 
 interface IClassNamesMapNode {
   className: string | null;
-  styles: IStyle | null;
+  styles: string | null;
   map: IStateToClassNameDictionary;
 }
 
@@ -71,8 +71,8 @@ function _traverseMap(current: IClassNamesMapNode, defaultStyles: IStyle, classN
   if (classNames.length === classNameIndex) {
     // If the current node make check on styles, else get a classname from mergeStyles, set that as the classname value for the
     // current node and return it.
-    if (current.className !== null) {
-      const currentNodeStyles = JSON.stringify(current.styles);
+    if (current.className !== null && current.styles !== null) {
+      const currentNodeStyles = current.styles;
       const componentStyles = JSON.stringify(defaultStyles);
       // If the styles of the current node are the same as the ones we are testing agains return memoized classname.
       // Else check if the current styles are the default ones.
@@ -85,14 +85,14 @@ function _traverseMap(current: IClassNamesMapNode, defaultStyles: IStyle, classN
         const className = mergeStyles(defaultStyles, classNames);
         if (componentStyles.length < currentNodeStyles.length) {
           current.className = className;
-          current.styles = defaultStyles;
+          current.styles = componentStyles;
         }
         return className;
       }
     } else {
       const className = mergeStyles(defaultStyles, classNames);
       current.className = className;
-      current.styles = defaultStyles;
+      current.styles = JSON.stringify(defaultStyles);
       return className;
     }
   }

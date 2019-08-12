@@ -9,6 +9,7 @@ import {
   primaryCheckedTokens,
   primaryCircularTokens,
   primaryEnabledTokens,
+  ButtonClassNames,
   ButtonStyles as styles
 } from '../Button.styles';
 import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from '../Button.types';
@@ -24,8 +25,12 @@ export const PrimaryButtonTokens: IButtonComponent['tokens'] = (props, theme): I
   props.disabled && disabledTokens
 ];
 
+const classNames = Object.values(ButtonClassNames);
+
 export const PrimaryButton: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
+  classNames,
   displayName: 'PrimaryButton',
+  precedenceList: ['checked', 'disabled'],
   state,
   styles,
   tokens: PrimaryButtonTokens

@@ -2,7 +2,7 @@ import { ITextComponent, ITextStyles, ITextStylesReturnType, ITextProps } from '
 
 import { getGlobalClassNames, ITheme } from '../../Styling';
 
-const GlobalClassNames = {
+export const TextClassNames = {
   msText: 'ms-Text'
 };
 
@@ -11,7 +11,7 @@ export const TextStyles: ITextComponent['styles'] = (props: ITextProps, theme: I
   const { fonts } = theme;
   const variantObject = fonts[variant || 'medium'];
 
-  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
+  const globalClassNames = getGlobalClassNames(TextClassNames, theme);
 
   return {
     root: [

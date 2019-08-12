@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { withSlots, createComponent, getSlots } from '../../Foundation';
 import { getNativeProps, htmlElementProperties, warnDeprecations } from '../../Utilities';
-import { styles } from './Stack.styles';
+import { StackClassNames, styles } from './Stack.styles';
 import { IStackComponent, IStackProps, IStackSlots } from './Stack.types';
 import { StackItem } from './StackItem/StackItem';
 import { IStackItemProps } from './StackItem/StackItem.types';
@@ -63,10 +63,14 @@ const StackStatics = {
   Item: StackItem
 };
 
+const classNames = Object.values(StackClassNames);
+
 export const Stack: React.StatelessComponent<IStackProps> & {
   Item: React.StatelessComponent<IStackItemProps>;
 } = createComponent(StackView, {
+  classNames,
   displayName: 'Stack',
+  precedenceList: [],
   styles,
   statics: StackStatics
 });

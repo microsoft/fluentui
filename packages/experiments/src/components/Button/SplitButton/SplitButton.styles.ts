@@ -65,14 +65,14 @@ export const SplitButtonTokens: ISplitButtonComponent['tokens'] = (props, theme)
   props.disabled && disabledTokens
 ];
 
-const GlobalClassNames = {
+export const SplitButtonClassNames = {
   msSplitButton: 'ms-SplitButton'
 };
 
 export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme, tokens): ISplitButtonStylesReturnType => {
   const { semanticColors } = theme;
 
-  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
+  const globalClassNames = getGlobalClassNames(SplitButtonClassNames, theme);
 
   return {
     root: [
