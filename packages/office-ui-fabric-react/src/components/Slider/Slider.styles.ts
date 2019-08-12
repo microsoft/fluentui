@@ -22,21 +22,21 @@ const GlobalClassNames = {
 
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   const { className, titleLabelClassName, theme, vertical, disabled, showTransitions, showValue } = props;
-  const { palette } = theme;
+  const { palette, semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   // Tokens
-  const sliderInteractedActiveSectionColor = palette.themePrimary;
-  const sliderInteractedInactiveSectionColor = palette.themeLight;
-  const sliderRestActiveSectionColor = palette.neutralSecondary;
+  const sliderInteractedActiveSectionColor = semanticColors.inputBackgroundChecked;
+  const sliderInteractedInactiveSectionColor = semanticColors.disabledBorderAlt;
+  const sliderRestActiveSectionColor = semanticColors.smallInputBorder;
   const sliderRestInactiveSectionColor = palette.neutralTertiaryAlt;
 
   const sliderDisabledActiveSectionColor = palette.neutralTertiary;
   const sliderDisabledInactiveSectionColor = palette.neutralLight;
 
-  const sliderThumbBackgroundColor = palette.white;
-  const sliderThumbBorderColor = palette.neutralSecondary;
-  const sliderThumbDisabledBorderColor = palette.neutralTertiaryAlt;
+  const sliderThumbBackgroundColor = semanticColors.inputBackground;
+  const sliderThumbBorderColor = semanticColors.smallInputBorder;
+  const sliderThumbDisabledBorderColor = semanticColors.disabledBorder;
 
   const slideBoxActiveSectionStyles = !disabled && {
     backgroundColor: sliderInteractedActiveSectionColor,

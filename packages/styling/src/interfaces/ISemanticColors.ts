@@ -99,6 +99,16 @@ export interface ISemanticColors extends ISemanticTextColors {
   disabledBackground: string;
 
   /**
+   * The default color for border of disabled controls; e.g. disabled slider border.
+   */
+  disabledBorder: string;
+
+  /**
+   * The alternate disabled border color for elements that are active e.g. slider borders.
+   */
+  disabledBorderAlt: string;
+
+  /**
    * The color of the outline around focused controls that don't already have a border; e.g. menu items
    */
   focusBorder: string;
