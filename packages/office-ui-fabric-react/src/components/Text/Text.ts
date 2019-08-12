@@ -9,7 +9,6 @@ const classNames = Object.values(TextClassNames);
 export const Text: React.StatelessComponent<ITextProps> = createComponent(TextView, {
   classNames,
   displayName: 'Text',
-  precedenceList: [],
   styles
 });
 

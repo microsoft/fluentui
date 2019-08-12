@@ -15,7 +15,6 @@ import {
 } from './IComponent';
 import { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
 
-export const componentToPrecedenceListDictionary: { [key: string]: (string | number | symbol)[] } = {};
 export const classNameToComponentDictionary: { [key: string]: string } = {};
 
 /**
@@ -91,11 +90,6 @@ export function createComponent<
   //       Need to weigh creating default factories on component creation vs. memoizing them on use in slots.tsx.
   if (defaultProp) {
     (result as ISlotCreator<TComponentProps, any>).create = createFactory(result, { defaultProp });
-  }
-
-  // If precedence list is present, add component to dictionary.
-  if (options.precedenceList) {
-    componentToPrecedenceListDictionary[result.displayName] = options.precedenceList;
   }
 
   // If className list is present, add each className to dictionary.

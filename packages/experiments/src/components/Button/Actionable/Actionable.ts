@@ -9,7 +9,6 @@ const classNames = Object.values(ActionableClassNames);
 export const Actionable: React.StatelessComponent<IActionableProps> = createComponent(ActionableView, {
   classNames,
   displayName: 'Actionable',
-  precedenceList: ['checked', 'disabled'],
   state,
   styles,
   tokens

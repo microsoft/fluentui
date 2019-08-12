@@ -9,7 +9,6 @@ const classNames = Object.values(ButtonClassNames);
 export const Button: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
   classNames,
   displayName: 'Button',
-  precedenceList: ['checked', 'disabled'],
   state,
   styles,
   tokens

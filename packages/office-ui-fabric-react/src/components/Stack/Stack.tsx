@@ -70,7 +70,6 @@ export const Stack: React.StatelessComponent<IStackProps> & {
 } = createComponent(StackView, {
   classNames,
   displayName: 'Stack',
-  precedenceList: [],
   styles,
   statics: StackStatics
 });

@@ -1,5 +1,5 @@
 import { IStyle, mergeStyles } from '@uifabric/styling';
-import { classNameToComponentDictionary, componentToPrecedenceListDictionary } from './createComponent';
+import { classNameToComponentDictionary } from './createComponent';
 import { IStyleBaseArray } from '@uifabric/merge-styles';
 
 interface IClassNamesMapNode {
@@ -13,7 +13,7 @@ interface IStateToClassNameDictionary {
 }
 
 interface IClassNamesMap {
-  [key: string]: IStateToClassNameDictionary;
+  [key: string]: IClassNamesMapNode;
 }
 
 const memoizedClassNamesMap: IClassNamesMap = {};
@@ -26,42 +26,21 @@ export function memoizeStyles<TProps extends any>(defaultStyles: IStyle, mixedPr
     // Memoize for cases where the defaultStyles have been passed a className and a precedence state list has been passed for the
     // component with tha className.
     // If the defaultStyles have been passed a className this should come as the first element of the array.
-    if (
-      className &&
-      classNameToComponentDictionary.hasOwnProperty(className) &&
-      componentToPrecedenceListDictionary.hasOwnProperty(classNameToComponentDictionary[className])
-    ) {
+    if (className && classNameToComponentDictionary.hasOwnProperty(className)) {
       const component = classNameToComponentDictionary[className];
       const componentPartKey = '(' + component + ')+(' + className + ')';
-      const precedenceList = componentToPrecedenceListDictionary[component];
 
       // If the (component + component part) key didn't exist in the memoized classnames map, then add it with a map of possible states
       // to null objects as its value.
       if (!memoizedClassNamesMap.hasOwnProperty(componentPartKey)) {
-        memoizedClassNamesMap[componentPartKey] = { default: { className: null, styles: null, map: {} } };
-        for (const state of precedenceList) {
-          memoizedClassNamesMap[componentPartKey][state.toString()] = { className: null, styles: null, map: {} };
-        }
-      }
-
-      // Check each state of the precedence list from right to left to get correct state key or get default state key otherwise.
-      let selectedState: string = 'default';
-      let selectedStateMap: IClassNamesMapNode = memoizedClassNamesMap[componentPartKey][selectedState];
-      if (mixedProps) {
-        for (let i = precedenceList.length - 1; i >= 0; i--) {
-          selectedState = precedenceList[i].toString();
-          if (mixedProps.hasOwnProperty(selectedState) && mixedProps[selectedState]) {
-            selectedStateMap = memoizedClassNamesMap[componentPartKey][selectedState];
-            break;
-          }
-        }
+        memoizedClassNamesMap[componentPartKey] = { className: null, styles: null, map: {} };
       }
 
       // Traverse map with sorted list of classnames and sorted list of tokenKeys to get classname and return.
       classNames.sort();
       return mixedProps && mixedProps.tokens
-        ? _traverseMap(selectedStateMap, defaultStyles, classNames, mixedProps.tokens)
-        : _traverseMap(selectedStateMap, defaultStyles, classNames);
+        ? _traverseMap(memoizedClassNamesMap[componentPartKey], defaultStyles, classNames, mixedProps.tokens)
+        : _traverseMap(memoizedClassNamesMap[componentPartKey], defaultStyles, classNames);
     }
   }
 

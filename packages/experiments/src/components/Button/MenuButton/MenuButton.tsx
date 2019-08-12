@@ -9,7 +9,6 @@ const classNames = Object.values(MenuButtonClassNames);
 export const MenuButton: React.StatelessComponent<IMenuButtonProps> = createComponent(MenuButtonView, {
   classNames,
   displayName: 'MenuButton',
-  precedenceList: ['checked', 'defaultExpanded', 'expanded', 'disabled'],
   state,
   styles,
   tokens

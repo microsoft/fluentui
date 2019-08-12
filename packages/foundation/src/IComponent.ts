@@ -116,10 +116,6 @@ export interface IComponentOptions<
    */
   fields?: string[];
   /**
-   * List of precedence states for a component to memoize styles.
-   */
-  precedenceList?: (keyof TComponentProps)[];
-  /**
    * Styles prop to pass into component.
    */
   styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;

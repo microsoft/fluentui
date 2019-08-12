@@ -10,7 +10,6 @@ const classNames = Object.values(SplitButtonClassNames);
 export const SplitButton: React.StatelessComponent<ISplitButtonProps> = createComponent(SplitButtonView, {
   classNames,
   displayName: 'SplitButton',
-  precedenceList: ['checked', 'defaultExpanded', 'expanded', 'primaryActionDisabled', 'disabled'],
   state,
   styles,
   tokens
