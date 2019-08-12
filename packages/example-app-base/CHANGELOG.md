@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 08 Aug 2019 12:32:41 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Aug 2019 12:30:25 GMT and should not be manually modified.
+
+## 7.5.0
+Mon, 12 Aug 2019 12:30:25 GMT
+
+### Minor changes
+
+- Adding import scripts check (esteban.230@hotmail.com)
 
 ## 7.4.1
 Thu, 08 Aug 2019 12:32:41 GMT

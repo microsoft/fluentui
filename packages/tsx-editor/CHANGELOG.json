@@ -2,6 +2,25 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Mon, 12 Aug 2019 12:30:25 GMT",
+      "tag": "@uifabric/tsx-editor_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding support for example data and workaround for lookbehinds in regex",
+            "author": "esteban.230@hotmail.com",
+            "commit": "3a0a0f24e79ceb81380a3f61146db0d126101b2c"
+          },
+          {
+            "comment": "using fetch API to bring in fabric typings to editor",
+            "author": "nishikaza@berkeley.edu",
+            "commit": "3f8cf613cae2fcf9892fbd338869932c1fea450a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2019 12:32:41 GMT",
       "tag": "@uifabric/tsx-editor_v0.2.0",
       "version": "0.2.0",
