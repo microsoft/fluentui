@@ -416,8 +416,8 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             className=
                 ms-Slider-regularTick
                 {
-                  background: #c8c6c4;
-                  height: 12px;
+                  background: #fff;
+                  height: 4px;
                   position: absolute;
                   transform: translateY(0px);
                   width: 1px;
@@ -435,8 +435,8 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             className=
                 ms-Slider-regularTick
                 {
-                  background: #c8c6c4;
-                  height: 12px;
+                  background: #fff;
+                  height: 4px;
                   position: absolute;
                   transform: translateY(0px);
                   width: 1px;
@@ -454,8 +454,8 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             className=
                 ms-Slider-regularTick
                 {
-                  background: #c8c6c4;
-                  height: 12px;
+                  background: #fff;
+                  height: 4px;
                   position: absolute;
                   transform: translateY(0px);
                   width: 1px;
@@ -473,8 +473,8 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             className=
                 ms-Slider-regularTick
                 {
-                  background: #c8c6c4;
-                  height: 12px;
+                  background: #fff;
+                  height: 4px;
                   position: absolute;
                   transform: translateY(0px);
                   width: 1px;
@@ -492,8 +492,8 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             className=
                 ms-Slider-regularTick
                 {
-                  background: #c8c6c4;
-                  height: 12px;
+                  background: #fff;
+                  height: 4px;
                   position: absolute;
                   transform: translateY(0px);
                   width: 1px;

@@ -24,7 +24,7 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
           onChange={(value: number) => console.log(value)}
         />
         <Slider
-          label="Tick example"
+          label="Marks example"
           min={1}
           max={5}
           step={1}

@@ -22,6 +22,17 @@ export const SliderVerticalExample: React.StatelessComponent = () => {
         vertical
       />
       <Slider // prettier-ignore
+        label="Marks"
+        min={1}
+        max={5}
+        step={1}
+        defaultValue={2}
+        showValue
+        vertical
+        enableMarks
+        showThumbTooltip
+      />
+      <Slider // prettier-ignore
         label="Disabled"
         min={50}
         max={500}
