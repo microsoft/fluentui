@@ -1,5 +1,5 @@
 {
-  "comment": "Searchbox: Updated fluent styles. Added semantic colors.",
+  "comment": "Searchbox: Updates styles to latest design specs and added semantic slots usage",
   "type": "patch",
   "packageName": "office-ui-fabric-react",
   "email": "v-mare@microsoft.com",
