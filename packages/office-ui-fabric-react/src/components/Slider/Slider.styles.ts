@@ -26,10 +26,11 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   // Tokens
-  const sliderInteractedActiveSectionColor = semanticColors.inputBackgroundChecked;
+  const sliderInteractedActiveSectionColor = semanticColors.inputBackgroundCheckedHovered;
+  const sliderHoverSectionColor = semanticColors.inputBackgroundChecked;
   const sliderInteractedInactiveSectionColor = semanticColors.disabledBorderAlt;
   const sliderRestActiveSectionColor = semanticColors.smallInputBorder;
-  const sliderRestInactiveSectionColor = palette.neutralTertiaryAlt;
+  const sliderRestInactiveSectionColor = semanticColors.disabledBorder;
 
   const sliderDisabledActiveSectionColor = palette.neutralTertiary;
   const sliderDisabledInactiveSectionColor = palette.neutralLight;
@@ -52,6 +53,15 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     selectors: {
       [HighContrastSelector]: {
         borderColor: 'Highlight'
+      }
+    }
+  };
+
+  const slideHoverSectionStyles = !disabled && {
+    backgroundColor: sliderHoverSectionColor,
+    selectors: {
+      [HighContrastSelector]: {
+        backgroundColor: 'Highlight'
       }
     }
   };
@@ -122,7 +132,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         alignItems: 'center',
         selectors: {
           [`:active .${classNames.activeSection}`]: slideBoxActiveSectionStyles,
-          [`:hover .${classNames.activeSection}`]: slideBoxActiveSectionStyles,
+          [`:hover .${classNames.activeSection}`]: slideHoverSectionStyles,
           [`:active .${classNames.inactiveSection}`]: slideBoxInactiveSectionStyles,
           [`:hover .${classNames.inactiveSection}`]: slideBoxInactiveSectionStyles,
           [`:active .${classNames.thumb}`]: slideBoxActiveThumbStyles,
