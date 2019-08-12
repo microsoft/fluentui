@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Changing breadcrumb items to links",
+  "packageName": "office-ui-fabric-react",
+  "email": "camontei@microsoft.com",
+  "commit": "67751de82592bd67fe8d91ba145576f012ae09a7",
+  "date": "2019-08-10T00:24:17.082Z"
+}

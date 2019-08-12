@@ -1,6 +1,13 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Aug 2019 12:30:25 GMT and should not be manually modified.
+
+## 7.0.5
+Mon, 12 Aug 2019 12:30:25 GMT
+
+### Patches
+
+- Upgrade api-extractor-model (naethell@microsoft.com)
 
 ## 7.0.4
 Wed, 17 Jul 2019 18:58:57 GMT

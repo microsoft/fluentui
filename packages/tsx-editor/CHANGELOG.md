@@ -1,6 +1,14 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Tue, 06 Aug 2019 12:32:07 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Aug 2019 12:30:25 GMT and should not be manually modified.
+
+## 0.3.0
+Mon, 12 Aug 2019 12:30:25 GMT
+
+### Minor changes
+
+- adding support for example data and workaround for lookbehinds in regex (esteban.230@hotmail.com)
+,- using fetch API to bring in fabric typings to editor (nishikaza@berkeley.edu)
 
 ## 0.2.0
 Tue, 06 Aug 2019 12:32:07 GMT

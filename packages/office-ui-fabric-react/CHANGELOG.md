@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 09 Aug 2019 12:31:50 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Aug 2019 12:30:25 GMT and should not be manually modified.
+
+## 7.22.2
+Mon, 12 Aug 2019 12:30:25 GMT
+
+### Patches
+
+- Allow callout to reposition after position prop is passed in (joschect@microsoft.com)
 
 ## 7.22.1
 Fri, 09 Aug 2019 12:31:50 GMT
