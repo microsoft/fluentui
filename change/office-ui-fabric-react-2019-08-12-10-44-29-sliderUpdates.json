@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Slider: update active pressed state color for slider border and thumb to match design toolkit spec. Updated palette references to sematic colors.",
+  "packageName": "office-ui-fabric-react",
+  "email": "marygans@microsoft.com",
+  "commit": "ce35d5fe311321a9f084cc0be326a2d5137a9935",
+  "date": "2019-08-12T17:44:17.411Z"
+}
