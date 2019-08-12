@@ -1,19 +1,39 @@
+/**
+ * classNamePattern - pattern to find the name of the class that should render
+ * constNamePattern - pattern to find the name of the const that should render
+ * identifierPattern - pattern to get all identifiers from the imports
+ * importPattern - pattern to get all imports even if they have multilines
+ */
+export const classNamePattern = new RegExp('(?![var ])(.*)(?= = \\/\\*\\* @class \\*\\/ \\(function \\(_super\\))', 'g');
+export const constNamePattern = new RegExp('(?![export var ])(.*)(?= = function)', 'g');
+export const identifierPattern = new RegExp('(?![import {])([\\s\\S]*)(?=})');
+export const importPattern = new RegExp("(?:import)([\\s\\S]+?)';", 'g');
+
 export interface ITransformedExample {
   output?: string;
   error?: string;
 }
 
+interface IExampleData {
+  [key: string]: string;
+  exampleData: string;
+  TestImages: string;
+  PeopleExampleData: string;
+}
+
+const exampleDataFiles: IExampleData = {
+  exampleData: require('!raw-loader!office-ui-fabric-react/lib/utilities/exampleData'),
+  TestImages: require('!raw-loader!office-ui-fabric-react/lib/common/TestImages'),
+  PeopleExampleData: require('!raw-loader!office-ui-fabric-react/lib/components/ExtendedPicker/examples/PeopleExampleData')
+};
+
 export function transformExample(example: string, id: string) {
-  /**
-   * classNamePattern - pattern to find the name of the class that should render
-   * constNamePattern - pattern to find the name of the const that should render
-   * identifierPattern - pattern to get all identifiers from the imports
-   * importPattern - pattern to get all imports even if they have multilines
-   */
-  const classNamePattern = new RegExp('(?<=var )(.*)(?= = /\\*\\* @class \\*/ \\(function \\(_super)', 'g');
-  const constNamePattern = new RegExp('(?<=var )(.*)(?= = function())', 'g');
-  const identifierPattern = new RegExp('(?<=import {)([\\s\\S]*)(?=})');
-  const importPattern = new RegExp("(?:import)([\\s\\S]*?)(?:';)", 'g');
+  // RegExp need to reset because of global flag
+  classNamePattern.lastIndex = 0;
+  constNamePattern.lastIndex = 0;
+  identifierPattern.lastIndex = 0;
+  importPattern.lastIndex = 0;
+
   const identifiers: string[] = [];
   const imports: string[] = [];
   let temp;
@@ -35,6 +55,9 @@ export function transformExample(example: string, id: string) {
     while ((temp = constNamePattern.exec(example))) {
       className = temp[0];
     }
+    if (className !== undefined) {
+      className = className.replace('var ', '');
+    }
   }
 
   /**
@@ -43,9 +66,17 @@ export function transformExample(example: string, id: string) {
    * error since the import is not supported.
    */
   while ((temp = importPattern.exec(example))) {
-    if (!/office-ui-fabric-react/.test(temp[0])) {
-      output.error = 'error: unsupported imports';
-    } else {
+    let foundExampleImport = false;
+    for (const filename of Object.keys(exampleDataFiles)) {
+      if (temp[0].indexOf('/' + filename) !== -1) {
+        example += `\n${exampleDataFiles[filename]}`;
+        example = example.replace(temp[0], '');
+        foundExampleImport = true;
+      }
+    }
+    if (!/office-ui-fabric-react/.test(temp[0]) && !foundExampleImport) {
+      output.error = `Error while transforming example: Unsupported import - ${temp[0]}.`;
+    } else if (!foundExampleImport) {
       imports.push(temp[0]);
     }
   }
@@ -72,12 +103,8 @@ export function transformExample(example: string, id: string) {
   /**
    * adding line to render React and adding identifiers.
    */
-  example =
-    'const {' +
-    identifiers.join(', ') +
-    ', Fabric } = window.Fabric;\n' +
-    example +
-    `
+  example = `const { ${identifiers.join(', ')}, Fabric } = window.Fabric;\n
+    ${example}
     ReactDOM.render(
       React.createElement(Fabric, null, React.createElement(${className}, null)),
       document.getElementById('${id}')

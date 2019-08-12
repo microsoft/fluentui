@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Pivot: pivot content (icon, text, count) should be consistently aligned via styling.",
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@microsoft.com",
+  "commit": "70ab625a39a61364decf37000310602a8d94c719",
+  "date": "2019-08-12T15:37:15.571Z"
+}

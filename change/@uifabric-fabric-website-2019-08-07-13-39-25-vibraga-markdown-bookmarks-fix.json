@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix some markdown bookmarks to enable click navigation to the bookmarked sections.",
-  "packageName": "@uifabric/fabric-website",
-  "email": "vibraga@microsoft.com",
-  "commit": "b8567798e866ede6bd95e5fcbc99f2f0cdcea830",
-  "date": "2019-08-07T20:39:25.269Z"
-}

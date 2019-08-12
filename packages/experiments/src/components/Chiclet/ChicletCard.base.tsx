@@ -6,13 +6,16 @@ import { mergeStyles } from '../../Styling';
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
 
 const customPreviewStyling = mergeStyles('ms-ChicletCard-preview-custom', {
-  display: 'flex',
+  height: 112,
   width: '100%',
+  objectFit: 'contain'
+});
+
+const imageStyling = mergeStyles({
+  maxWidth: '100%',
   height: '100%',
-  justifyContent: 'center',
-  alignItems: 'center',
-  objectFit: 'contain',
-  overflow: 'hidden'
+  overflow: 'hidden',
+  objectFit: 'contain'
 });
 
 export class ChicletCardBase extends React.Component<IChicletCardProps, {}> {
@@ -49,7 +52,7 @@ export class ChicletCardBase extends React.Component<IChicletCardProps, {}> {
         {preview ? ( // render custom preview
           React.cloneElement(preview, { className: css(preview.props.className, customPreviewStyling) })
         ) : (
-          <img width={'auto'} height={'100%'} src={image} alt={imageAlt ? imageAlt : undefined} />
+          <img className={imageStyling} src={image} alt={imageAlt ? imageAlt : undefined} />
         )}
       </div>
     );
