@@ -1,19 +1,10 @@
-import { HighContrastSelector, AnimationVariables, normalize, IStyle, getGlobalClassNames } from '../../Styling';
+import { HighContrastSelector, AnimationVariables, normalize, IStyle, getPlaceholderStyles, getGlobalClassNames } from '../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
-import { getPlaceholderStyles, getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-SearchBox',
   iconContainer: 'ms-SearchBox-iconContainer',
   icon: 'ms-SearchBox-icon',
-  clearButton: 'ms-SearchBox-clearButton',
-  field: 'ms-SearchBox-field'
-};
-
-const GlobalClassNames = {
-  root: 'ms-SearchBox',
-  icon: 'ms-SearchBox-icon',
-  iconContainer: 'ms-SearchBox-iconContainer',
   clearButton: 'ms-SearchBox-clearButton',
   field: 'ms-SearchBox-field'
 };
@@ -21,8 +12,6 @@ const GlobalClassNames = {
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   const { theme, underlined, disabled, hasFocus, className, hasInput, disableAnimation } = props;
   const { palette, fonts, semanticColors, effects } = theme;
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
-
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   // placeholder style constants
