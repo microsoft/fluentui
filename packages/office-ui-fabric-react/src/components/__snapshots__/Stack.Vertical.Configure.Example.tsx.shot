@@ -171,7 +171,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     z-index: 1;
                   }
                   &:active .ms-Slider-active {
-                    background-color: #0078d4;
+                    background-color: #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
                     background-color: Highlight;
@@ -195,13 +195,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     border-color: Highlight;
                   }
                   &:active .ms-Slider-thumb {
-                    border: 2px solid #0078d4;
+                    border: 2px solid #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
                     border-color: Highlight;
                   }
                   &:hover .ms-Slider-thumb {
-                    border: 2px solid #0078d4;
+                    border: 2px solid #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
                     border-color: Highlight;
@@ -1489,7 +1489,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     z-index: 1;
                   }
                   &:active .ms-Slider-active {
-                    background-color: #0078d4;
+                    background-color: #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
                     background-color: Highlight;
@@ -1513,13 +1513,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     border-color: Highlight;
                   }
                   &:active .ms-Slider-thumb {
-                    border: 2px solid #0078d4;
+                    border: 2px solid #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
                     border-color: Highlight;
                   }
                   &:hover .ms-Slider-thumb {
-                    border: 2px solid #0078d4;
+                    border: 2px solid #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
                     border-color: Highlight;
@@ -2601,7 +2601,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     z-index: 1;
                   }
                   &:active .ms-Slider-active {
-                    background-color: #0078d4;
+                    background-color: #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
                     background-color: Highlight;
@@ -2625,13 +2625,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     border-color: Highlight;
                   }
                   &:active .ms-Slider-thumb {
-                    border: 2px solid #0078d4;
+                    border: 2px solid #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
                     border-color: Highlight;
                   }
                   &:hover .ms-Slider-thumb {
-                    border: 2px solid #0078d4;
+                    border: 2px solid #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
                     border-color: Highlight;
@@ -2861,7 +2861,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     z-index: 1;
                   }
                   &:active .ms-Slider-active {
-                    background-color: #0078d4;
+                    background-color: #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
                     background-color: Highlight;
@@ -2885,13 +2885,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     border-color: Highlight;
                   }
                   &:active .ms-Slider-thumb {
-                    border: 2px solid #0078d4;
+                    border: 2px solid #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
                     border-color: Highlight;
                   }
                   &:hover .ms-Slider-thumb {
-                    border: 2px solid #0078d4;
+                    border: 2px solid #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
                     border-color: Highlight;
@@ -3159,7 +3159,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     z-index: 1;
                   }
                   &:active .ms-Slider-active {
-                    background-color: #0078d4;
+                    background-color: #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
                     background-color: Highlight;
@@ -3183,13 +3183,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     border-color: Highlight;
                   }
                   &:active .ms-Slider-thumb {
-                    border: 2px solid #0078d4;
+                    border: 2px solid #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
                     border-color: Highlight;
                   }
                   &:hover .ms-Slider-thumb {
-                    border: 2px solid #0078d4;
+                    border: 2px solid #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
                     border-color: Highlight;
@@ -3419,7 +3419,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     z-index: 1;
                   }
                   &:active .ms-Slider-active {
-                    background-color: #0078d4;
+                    background-color: #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-active {
                     background-color: Highlight;
@@ -3443,13 +3443,13 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     border-color: Highlight;
                   }
                   &:active .ms-Slider-thumb {
-                    border: 2px solid #0078d4;
+                    border: 2px solid #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-thumb {
                     border-color: Highlight;
                   }
                   &:hover .ms-Slider-thumb {
-                    border: 2px solid #0078d4;
+                    border: 2px solid #005a9e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-thumb {
                     border-color: Highlight;
