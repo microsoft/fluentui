@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 09 Aug 2019 12:22:20 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Aug 2019 12:22:01 GMT and should not be manually modified.
+
+## 6.200.1
+Mon, 12 Aug 2019 12:22:01 GMT
+
+### Patches
+
+- Changing the drop hint icon and it's position for list's column drag-drop (svaibhav@microsoft.com)
 
 ## 6.200.0
 Fri, 09 Aug 2019 12:22:20 GMT

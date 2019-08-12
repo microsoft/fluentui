@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 12 Aug 2019 12:22:01 GMT",
+      "tag": "office-ui-fabric-react_v6.200.1",
+      "version": "6.200.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing the drop hint icon and it's position for list's column drag-drop",
+            "author": "svaibhav@microsoft.com",
+            "commit": "41d0be951c2308f9eb9bc74c0398abfaf14363a9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Aug 2019 12:22:20 GMT",
       "tag": "office-ui-fabric-react_v6.200.0",
       "version": "6.200.0",
