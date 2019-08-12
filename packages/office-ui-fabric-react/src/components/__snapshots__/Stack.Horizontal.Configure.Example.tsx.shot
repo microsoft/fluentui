@@ -4,7 +4,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
 <div
   className=
       ms-Stack
-      tokens-changed
       {
         box-sizing: border-box;
         display: flex;
@@ -661,7 +660,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
       <div
         className=
             ms-Stack
-            tokens-changed
             {
               box-sizing: border-box;
               display: flex;
@@ -1264,7 +1262,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
   <div
     className=
         ms-Stack
-        tokens-changed
         {
           box-sizing: border-box;
           display: flex;
@@ -2958,7 +2955,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
   <div
     className=
         ms-Stack
-        tokens-changed
         {
           align-items: flex-end;
           box-sizing: border-box;
@@ -3770,7 +3766,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
   <div
     className=
         ms-Stack
-        tokens-changed
         {
           align-items: flex-start;
           background: #71afe5;

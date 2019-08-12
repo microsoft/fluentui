@@ -4,7 +4,6 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
 <div
   className=
       ms-Stack
-      tokens-changed
       {
         box-sizing: border-box;
         display: flex;

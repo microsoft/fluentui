@@ -4,7 +4,6 @@ exports[`Component Examples renders Stack.Horizontal.HorizontalAlign.Example.tsx
 <div
   className=
       ms-Stack
-      tokens-changed
       {
         box-sizing: border-box;
         display: flex;

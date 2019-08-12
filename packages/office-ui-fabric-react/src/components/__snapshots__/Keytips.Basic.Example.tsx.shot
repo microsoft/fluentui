@@ -533,7 +533,6 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
         <div
           className=
               ms-Stack
-              tokens-changed
               {
                 box-sizing: border-box;
                 display: flex;

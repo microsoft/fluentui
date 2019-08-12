@@ -4,7 +4,6 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
 <div
   className=
       ms-Stack
-      tokens-changed
       {
         box-sizing: border-box;
         display: flex;
@@ -286,7 +285,6 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
   <div
     className=
         ms-Stack
-        tokens-changed
         {
           background: #71afe5;
           display: flex;
@@ -328,7 +326,6 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
       <div
         className=
             ms-Stack
-            tokens-changed
             {
               background: #a19f9d;
               display: flex;
@@ -477,7 +474,6 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
       <div
         className=
             ms-Stack
-            tokens-changed
             {
               background: #605e5c;
               display: flex;

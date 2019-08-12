@@ -4,7 +4,6 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
 <div
   className=
       ms-Stack
-      tokens-changed
       {
         box-sizing: border-box;
         display: flex;
@@ -247,7 +246,6 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
     <div
       className=
           ms-Stack
-          tokens-changed
           {
             border: 1px solid black;
             display: flex;

@@ -66,7 +66,11 @@ export const SplitButtonTokens: ISplitButtonComponent['tokens'] = (props, theme)
 ];
 
 export const SplitButtonClassNames = {
-  msSplitButton: 'ms-SplitButton'
+  msSplitButton: 'ms-SplitButton',
+  msSplitButtonPrimaryActionButton: 'ms-SplitButton-primary-action-button',
+  msSplitButtonSplitDividerContainer: 'ms-SplitButton-split-divider-container',
+  msSplitButtonSplitDivider: 'ms-SplitButton-split-divider',
+  msSplitButtonMenuButton: 'ms-SplitButton-menu-button'
 };
 
 export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme, tokens): ISplitButtonStylesReturnType => {
@@ -98,106 +102,118 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
         }
       }
     ],
-    button: {
-      borderBottomLeftRadius: tokens.borderRadius,
-      borderBottomRightRadius: '0px',
-      borderTopLeftRadius: tokens.borderRadius,
-      borderTopRightRadius: '0px',
-      borderBottomWidth: tokens.borderWidth,
-      borderLeftWidth: tokens.borderWidth,
-      borderRightWidth: 0,
-      borderTopWidth: tokens.borderWidth,
-      minHeight: tokens.minHeight,
-      minWidth: tokens.minWidth,
+    button: [
+      globalClassNames.msSplitButtonPrimaryActionButton,
+      {
+        borderBottomLeftRadius: tokens.borderRadius,
+        borderBottomRightRadius: '0px',
+        borderTopLeftRadius: tokens.borderRadius,
+        borderTopRightRadius: '0px',
+        borderBottomWidth: tokens.borderWidth,
+        borderLeftWidth: tokens.borderWidth,
+        borderRightWidth: 0,
+        borderTopWidth: tokens.borderWidth,
+        minHeight: tokens.minHeight,
+        minWidth: tokens.minWidth,
 
-      selectors: {
-        '+ *': {
-          backgroundColor: props.primaryActionDisabled ? semanticColors.buttonBackgroundDisabled : tokens.backgroundColor
-        },
-        ':hover': {
-          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered,
+        selectors: {
+          '+ *': {
+            backgroundColor: props.primaryActionDisabled ? semanticColors.buttonBackgroundDisabled : tokens.backgroundColor
+          },
+          ':hover': {
+            borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered,
 
-          selectors: {
-            '+ *': {
-              backgroundColor: props.primaryActionDisabled ? semanticColors.buttonBackgroundDisabled : tokens.backgroundColorHovered,
+            selectors: {
+              '+ *': {
+                backgroundColor: props.primaryActionDisabled ? semanticColors.buttonBackgroundDisabled : tokens.backgroundColorHovered,
 
-              selectors: {
-                [HighContrastSelector]: {
-                  backgroundColor: tokens.highContrastBackgroundColorHovered
+                selectors: {
+                  [HighContrastSelector]: {
+                    backgroundColor: tokens.highContrastBackgroundColorHovered
+                  }
+                }
+              }
+            }
+          },
+          ':active': {
+            borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed,
+
+            selectors: {
+              '+ *': {
+                backgroundColor: props.primaryActionDisabled ? semanticColors.buttonBackgroundDisabled : tokens.backgroundColorPressed,
+
+                selectors: {
+                  [HighContrastSelector]: {
+                    backgroundColor: tokens.highContrastBackgroundColorPressed
+                  }
                 }
               }
             }
           }
-        },
-        ':active': {
-          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed,
+        }
+      }
+    ],
+    splitDividerContainer: [
+      globalClassNames.msSplitButtonSplitDividerContainer,
+      {
+        borderBottomColor: tokens.borderColor,
+        borderTopColor: tokens.borderColor,
+        borderStyle: 'solid',
+        borderBottomWidth: props.primaryActionDisabled ? 0 : tokens.borderWidth,
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        borderTopWidth: props.primaryActionDisabled ? 0 : tokens.borderWidth,
+        boxSizing: 'border-box',
+        display: 'inline-flex',
+        flexDirection: 'column',
+        height: 'auto',
+        width: 'auto',
 
-          selectors: {
-            '+ *': {
-              backgroundColor: props.primaryActionDisabled ? semanticColors.buttonBackgroundDisabled : tokens.backgroundColorPressed,
-
-              selectors: {
-                [HighContrastSelector]: {
-                  backgroundColor: tokens.highContrastBackgroundColorPressed
-                }
-              }
-            }
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: tokens.highContrastDividerColor,
+            borderColor: tokens.highContrastBorderColor
+          },
+          ':hover': {
+            borderColor: tokens.borderColorHovered
+          },
+          ':active': {
+            borderColor: tokens.borderColorPressed
           }
         }
       }
-    },
-    splitDividerContainer: {
-      borderBottomColor: tokens.borderColor,
-      borderTopColor: tokens.borderColor,
-      borderStyle: 'solid',
-      borderBottomWidth: props.primaryActionDisabled ? 0 : tokens.borderWidth,
-      borderLeftWidth: 0,
-      borderRightWidth: 0,
-      borderTopWidth: props.primaryActionDisabled ? 0 : tokens.borderWidth,
-      boxSizing: 'border-box',
-      display: 'inline-flex',
-      flexDirection: 'column',
-      height: 'auto',
-      width: 'auto',
+    ],
+    splitDivider: [
+      globalClassNames.msSplitButtonSplitDivider,
+      {
+        backgroundColor: props.primaryActionDisabled ? semanticColors.menuDivider : tokens.dividerColor,
+        display: 'inline-block',
+        height: '100%',
+        margin: '7px 0px',
+        width: '1px',
 
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: tokens.highContrastDividerColor,
-          borderColor: tokens.highContrastBorderColor
-        },
-        ':hover': {
-          borderColor: tokens.borderColorHovered
-        },
-        ':active': {
-          borderColor: tokens.borderColorPressed
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: tokens.highContrastDividerColor
+          }
         }
       }
-    },
-    splitDivider: {
-      backgroundColor: props.primaryActionDisabled ? semanticColors.menuDivider : tokens.dividerColor,
-      display: 'inline-block',
-      height: '100%',
-      margin: '7px 0px',
-      width: '1px',
-
-      selectors: {
-        [HighContrastSelector]: {
-          backgroundColor: tokens.highContrastDividerColor
-        }
+    ],
+    menuButton: [
+      globalClassNames.msSplitButtonMenuButton,
+      {
+        borderBottomLeftRadius: '0px',
+        borderBottomRightRadius: tokens.borderRadius,
+        borderTopLeftRadius: '0px',
+        borderTopRightRadius: tokens.borderRadius,
+        borderStyle: 'solid',
+        borderBottomWidth: tokens.borderWidth,
+        borderLeftWidth: 0,
+        borderRightWidth: tokens.borderWidth,
+        borderTopWidth: tokens.borderWidth,
+        boxSizing: 'border-box',
+        height: '100%'
       }
-    },
-    menuButton: {
-      borderBottomLeftRadius: '0px',
-      borderBottomRightRadius: tokens.borderRadius,
-      borderTopLeftRadius: '0px',
-      borderTopRightRadius: tokens.borderRadius,
-      borderStyle: 'solid',
-      borderBottomWidth: tokens.borderWidth,
-      borderLeftWidth: 0,
-      borderRightWidth: tokens.borderWidth,
-      borderTopWidth: tokens.borderWidth,
-      boxSizing: 'border-box',
-      height: '100%'
-    }
+    ]
   };
 };

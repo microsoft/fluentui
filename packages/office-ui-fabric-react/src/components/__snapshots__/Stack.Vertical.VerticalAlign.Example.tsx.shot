@@ -4,7 +4,6 @@ exports[`Component Examples renders Stack.Vertical.VerticalAlign.Example.tsx cor
 <div
   className=
       ms-Stack
-      tokens-changed
       {
         box-sizing: border-box;
         display: flex;
@@ -26,7 +25,6 @@ exports[`Component Examples renders Stack.Vertical.VerticalAlign.Example.tsx cor
   <div
     className=
         ms-Stack
-        tokens-changed
         {
           box-sizing: border-box;
           display: flex;
@@ -338,7 +336,6 @@ exports[`Component Examples renders Stack.Vertical.VerticalAlign.Example.tsx cor
   <div
     className=
         ms-Stack
-        tokens-changed
         {
           box-sizing: border-box;
           display: flex;

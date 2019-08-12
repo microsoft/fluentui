@@ -4,7 +4,6 @@ exports[`Component Examples renders Text.Wrap.Example.tsx correctly 1`] = `
 <div
   className=
       ms-Stack
-      tokens-changed
       {
         box-sizing: border-box;
         display: flex;
@@ -26,7 +25,6 @@ exports[`Component Examples renders Text.Wrap.Example.tsx correctly 1`] = `
   <div
     className=
         ms-Stack
-        tokens-changed
         {
           box-sizing: border-box;
           display: flex;
@@ -83,7 +81,6 @@ exports[`Component Examples renders Text.Wrap.Example.tsx correctly 1`] = `
   <div
     className=
         ms-Stack
-        tokens-changed
         {
           box-sizing: border-box;
           display: flex;

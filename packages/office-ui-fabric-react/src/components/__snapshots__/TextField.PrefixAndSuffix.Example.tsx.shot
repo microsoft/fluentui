@@ -4,7 +4,6 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
 <div
   className=
       ms-Stack
-      tokens-changed
       {
         box-sizing: border-box;
         display: flex;
@@ -26,7 +25,6 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
   <div
     className=
         ms-Stack
-        tokens-changed
         {
           box-sizing: border-box;
           display: flex;
@@ -434,7 +432,6 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
   <div
     className=
         ms-Stack
-        tokens-changed
         {
           box-sizing: border-box;
           display: flex;

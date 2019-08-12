@@ -4,7 +4,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
 <div
   className=
       ms-Stack
-      tokens-changed
       {
         box-sizing: border-box;
         display: flex;
@@ -600,7 +599,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
   <div
     className=
         ms-Stack
-        tokens-changed
         {
           box-sizing: border-box;
           display: flex;
@@ -1317,7 +1315,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
     <div
       className=
           ms-Stack
-          tokens-changed
           {
             align-items: flex-start;
             background: #71afe5;

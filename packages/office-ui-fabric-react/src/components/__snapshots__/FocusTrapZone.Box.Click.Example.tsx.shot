@@ -20,7 +20,6 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
   <div
     className=
         ms-Stack
-        tokens-changed
         {
           align-items: flex-start;
           border: 2px dashed transparent;

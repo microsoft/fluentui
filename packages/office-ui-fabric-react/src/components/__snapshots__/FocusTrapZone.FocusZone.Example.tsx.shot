@@ -20,7 +20,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
   <div
     className=
         ms-Stack
-        tokens-changed
         {
           align-items: flex-start;
           border: 2px solid transparent;
@@ -230,7 +229,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       <div
         className=
             ms-Stack
-            tokens-changed
             {
               border: 2px dashed #ababab;
               box-sizing: border-box;
@@ -728,7 +726,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       <div
         className=
             ms-Stack
-            tokens-changed
             {
               border: 2px dashed #ababab;
               box-sizing: border-box;

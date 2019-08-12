@@ -4,7 +4,6 @@ exports[`Component Examples renders Stack.Horizontal.Shrink.Example.tsx correctl
 <div
   className=
       ms-Stack
-      tokens-changed
       {
         box-sizing: border-box;
         display: flex;
@@ -286,7 +285,6 @@ exports[`Component Examples renders Stack.Horizontal.Shrink.Example.tsx correctl
   <div
     className=
         ms-Stack
-        tokens-changed
         {
           background: #71afe5;
           box-sizing: border-box;
