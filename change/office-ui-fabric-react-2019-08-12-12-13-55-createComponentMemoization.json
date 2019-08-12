@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Create component style memoization.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "271f3c89eb291121b4fbdaf440ecec6f0a5a025a",
+  "date": "2019-08-12T19:13:55.147Z"
+}
