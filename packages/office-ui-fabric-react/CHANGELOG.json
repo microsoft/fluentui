@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 12 Aug 2019 12:30:25 GMT",
+      "tag": "office-ui-fabric-react_v7.22.2",
+      "version": "7.22.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Allow callout to reposition after position prop is passed in",
+            "author": "joschect@microsoft.com",
+            "commit": "529fc8885913c2f188c9a3710b7c857a0d56a1c5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Aug 2019 12:31:50 GMT",
       "tag": "office-ui-fabric-react_v7.22.1",
       "version": "7.22.1",
