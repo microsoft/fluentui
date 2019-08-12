@@ -295,7 +295,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
           }
       htmlFor="Slider5"
     >
-      Tick example
+      Marks example
        : 
       2
     </label>
@@ -310,7 +310,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
     >
       <div
         aria-disabled={false}
-        aria-label="Tick example"
+        aria-label="Marks example"
         aria-valuemax={5}
         aria-valuemin={1}
         aria-valuenow={2}
