@@ -1,0 +1,8 @@
+{
+  "comment": "SwatchColorPicker: Updates web fluent styles per toolkit",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "0d638cff92219bbf7bc79115f6a4f948eade2632",
+  "date": "2019-08-12T17:50:27.687Z"
+}
