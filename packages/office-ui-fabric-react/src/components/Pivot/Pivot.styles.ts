@@ -192,7 +192,20 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         }
       }
     ],
-    linkContent: [classNames.linkContent, { flex: '0 1 100%' }],
+    linkContent: [
+      classNames.linkContent,
+      {
+        flex: '0 1 100%',
+        selectors: {
+          '& > * ': {
+            marginLeft: 4
+          },
+          '& > *:first-child': {
+            marginLeft: 0
+          }
+        }
+      }
+    ],
     text: [
       classNames.text,
       {
@@ -203,20 +216,10 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
     count: [
       classNames.count,
       {
-        marginLeft: '4px',
         display: 'inline-block',
         verticalAlign: 'top'
       }
     ],
-    icon: [
-      classNames.icon,
-      {
-        selectors: {
-          [`& + ${classNames.text}`]: {
-            marginLeft: '4px'
-          }
-        }
-      }
-    ]
+    icon: classNames.icon
   };
 };
