@@ -214,7 +214,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     inputBorderHovered: p.neutralPrimary,
     inputBackground: p.white,
     inputBackgroundChecked: p.themePrimary,
-    inputBackgroundCheckedAlt: p.themeLight,
+    inputBackgroundCheckedAlt: p.themeLighter,
     inputBackgroundCheckedHovered: p.themeDark,
     inputForegroundChecked: p.white,
     inputIcon: p.themePrimary,
