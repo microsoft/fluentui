@@ -11,7 +11,24 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
   public state: ISliderBasicExampleState = { value: 0 };
   public render(): JSX.Element {
     const stackTokens: IStackTokens = { childrenGap: 30 };
-
+    const marks = [
+      {
+        value: 0,
+        label: 'None'
+      },
+      {
+        value: 50,
+        label: '50°F'
+      },
+      {
+        value: 80,
+        label: '80°C'
+      },
+      {
+        value: 120,
+        label: '120°C'
+      }
+    ];
     return (
       <Stack tokens={stackTokens} styles={{ root: { maxWidth: 300 } }}>
         <Slider
@@ -25,14 +42,14 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
         />
         <Slider
           label="Marks example"
-          min={1}
-          max={5}
-          step={1}
+          min={0}
+          max={200}
+          step={10}
           defaultValue={2}
           showValue={true}
           onChange={(value: number) => console.log(value)}
           showThumbTooltip
-          enableMarks
+          enableMarks={marks}
         />
         <Slider label="Disabled example" min={50} max={500} step={50} defaultValue={300} showValue={true} disabled={true} />
         <Slider
