@@ -10,7 +10,7 @@ export interface ISliderBasicExampleState {
 export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleState> {
   public state: ISliderBasicExampleState = { value: 0 };
   public render(): JSX.Element {
-    const stackTokens: IStackTokens = { childrenGap: 20 };
+    const stackTokens: IStackTokens = { childrenGap: 30 };
 
     return (
       <Stack tokens={stackTokens} styles={{ root: { maxWidth: 300 } }}>
