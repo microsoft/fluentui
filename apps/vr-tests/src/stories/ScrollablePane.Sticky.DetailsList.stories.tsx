@@ -86,7 +86,7 @@ export interface IScrollablePaneDetailsListExampleProps {
 export class ScrollablePaneDetailsListExample extends React.Component<
   IScrollablePaneDetailsListExampleProps,
   IScrollablePaneDetailsListExampleState
-> {
+  > {
   private _selection: Selection;
   private _allItems: IScrollablePaneDetailsListExampleItem[];
   private _columns: IColumn[];
@@ -194,8 +194,8 @@ export class ScrollablePaneDetailsListExample extends React.Component<
     this.setState({
       items: text
         ? this._allItems.filter((item: IScrollablePaneDetailsListExampleItem) =>
-            hasText(item, text)
-          )
+          hasText(item, text)
+        )
         : this._allItems
     });
   };
@@ -278,6 +278,11 @@ storiesOf('ScrollablePane-Sticky Details List', module)
         .executeScript(`${getElement}.scrollLeft=99999`)
         .snapshot(
           'scroll horizontally to see if header and footer are aligned for zero vertical scroll',
+          cropTo
+        )
+        .executeScript(`${getElement}.scrollTop=50`)
+        .snapshot(
+          'scroll down so that header becomes sticky when horizontal scroll is non-zero',
           cropTo
         )
         .executeScript(`${getElement}.scrollLeft=0`)
