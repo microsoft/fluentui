@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Tue, 13 Aug 2019 12:23:03 GMT",
+      "tag": "@uifabric/styling_v6.50.4",
+      "version": "6.50.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix font SASS variables passed to legacyLoadTheme",
+            "author": "phkuo@microsoft.com",
+            "commit": "a088ce0ca3e156fc8d833479ae04823b4b834eea"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.50.3",
       "tag": "@uifabric/styling_v6.50.3",
       "date": "Mon, 22 Jul 2019 12:21:49 GMT",

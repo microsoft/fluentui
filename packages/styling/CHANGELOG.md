@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 22 Jul 2019 12:21:49 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Aug 2019 12:23:03 GMT and should not be manually modified.
+
+## 6.50.4
+Tue, 13 Aug 2019 12:23:03 GMT
+
+### Patches
+
+- fix font SASS variables passed to legacyLoadTheme (phkuo@microsoft.com)
 
 ## 6.50.3
 Mon, 22 Jul 2019 12:21:49 GMT

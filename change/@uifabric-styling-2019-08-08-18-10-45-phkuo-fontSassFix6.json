@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix font SASS variables passed to legacyLoadTheme",
-  "packageName": "@uifabric/styling",
-  "email": "phkuo@microsoft.com",
-  "commit": "a088ce0ca3e156fc8d833479ae04823b4b834eea",
-  "date": "2019-08-09T01:10:45.537Z"
-}
