@@ -102,7 +102,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
             className=
                 ms-Persona-initials
                 {
-                  background-color: #2D89EF;
+                  background-color: #4F6BED;
                   border-radius: 50%;
                   color: #ffffff;
                   font-size: 11px;
@@ -375,7 +375,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
             className=
                 ms-Persona-initials
                 {
-                  background-color: #2D89EF;
+                  background-color: #4F6BED;
                   border-radius: 50%;
                   color: #ffffff;
                   font-size: 11px;
@@ -533,7 +533,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
             className=
                 ms-Persona-initials
                 {
-                  background-color: #2D89EF;
+                  background-color: #4F6BED;
                   border-radius: 50%;
                   color: #ffffff;
                   font-size: 11px;
@@ -686,7 +686,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
             className=
                 ms-Persona-initials
                 {
-                  background-color: #00ABA9;
+                  background-color: #D13438;
                   border-radius: 50%;
                   color: #ffffff;
                   font-size: 11px;
@@ -807,7 +807,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
             className=
                 ms-Persona-initials
                 {
-                  background-color: #2D89EF;
+                  background-color: #4F6BED;
                   border-radius: 50%;
                   color: #ffffff;
                   font-size: 14px;
@@ -1045,7 +1045,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
             className=
                 ms-Persona-initials
                 {
-                  background-color: #2D89EF;
+                  background-color: #4F6BED;
                   border-radius: 50%;
                   color: #ffffff;
                   font-size: 11px;
@@ -1176,7 +1176,7 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
             className=
                 ms-Persona-initials
                 {
-                  background-color: #00ABA9;
+                  background-color: #D13438;
                   border-radius: 50%;
                   color: #ffffff;
                   font-size: 11px;
