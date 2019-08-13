@@ -392,6 +392,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 }
           >
             <input
+              aria-checked="false"
               aria-label="Shadow around items"
               className=
 
@@ -454,6 +455,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -532,6 +534,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 }
           >
             <input
+              aria-checked="false"
               aria-label="Prevent item overflow"
               className=
 
@@ -594,6 +597,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -732,6 +736,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 }
           >
             <input
+              aria-checked="false"
               aria-label="Wrap items"
               className=
 
@@ -794,6 +799,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -872,6 +878,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 }
           >
             <input
+              aria-checked="false"
               aria-label="Shrink items"
               className=
 
@@ -934,6 +941,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -3476,6 +3484,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
             }
       >
         <input
+          aria-checked="false"
           aria-label="Hide empty children"
           className=
 
@@ -3538,6 +3547,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   justify-content: center;
                   margin-right: 4px;
                   overflow: hidden;
+                  position: relative;
                   transition-duration: 200ms;
                   transition-property: background, border, border-color;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
