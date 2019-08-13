@@ -70,7 +70,8 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     return find(options, (value: IChoiceGroupOption) => value.key === key);
   }
 
-  public componentWillReceiveProps(newProps: IChoiceGroupProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IChoiceGroupProps): void {
     const newKeyChecked = this._getKeyChecked(newProps);
     const oldKeyChecked = this._getKeyChecked(this.props);
 

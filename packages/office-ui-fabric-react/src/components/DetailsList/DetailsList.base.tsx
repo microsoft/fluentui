@@ -210,7 +210,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     }
   }
 
-  public componentWillReceiveProps(newProps: IDetailsListProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IDetailsListProps): void {
     const {
       checkboxVisibility,
       items,
@@ -281,7 +282,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     }
   }
 
-  public componentWillUpdate(): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(): void {
     if (this._pendingForceUpdate) {
       this._forceListUpdates();
     }
