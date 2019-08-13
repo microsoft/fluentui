@@ -174,7 +174,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
             color: semanticColors.bodyText,
             backgroundColor: semanticColors.bodyBackgroundHovered
           },
-          '$compositeLink:hover &': {
+          [`.${classNames.compositeLink}:hover &`]: {
             color: semanticColors.bodyText,
             backgroundColor: semanticColors.bodyBackgroundHovered
           }

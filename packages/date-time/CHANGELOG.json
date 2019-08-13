@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Thu, 08 Aug 2019 12:32:41 GMT",
+      "tag": "@uifabric/date-time_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Moves aria-label to same element as role=combobox on the datepicker as required by the aria docs",
+            "author": "susunda@microsoft.com",
+            "commit": "0e3ed9ae44d851bed560587b2876fea575d38a41"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Aug 2019 12:32:07 GMT",
       "tag": "@uifabric/date-time_v7.2.1",
       "version": "7.2.1",

@@ -1,6 +1,22 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 02 Aug 2019 12:33:29 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2019 12:32:41 GMT and should not be manually modified.
+
+## 7.3.2
+Thu, 08 Aug 2019 12:32:41 GMT
+
+### Patches
+
+- Update webpack configs to make Monaco work cross-domain (elcraig@microsoft.com)
+,- Fix some markdown bookmarks to enable click navigation to the bookmarked sections. (vibraga@microsoft.com)
+
+## 7.3.1
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Patches
+
+- Add customization section to Typography pages (naethell@microsoft.com)
+,- Fix Keytips demo page by adding a KeytipLayer (keyou@microsoft.com)
 
 ## 7.3.0
 Fri, 02 Aug 2019 12:33:29 GMT

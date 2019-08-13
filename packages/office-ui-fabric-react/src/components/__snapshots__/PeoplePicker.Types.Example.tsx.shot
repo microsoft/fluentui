@@ -345,6 +345,8 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           }
     >
       <input
+        aria-checked="false"
+        aria-label="Disable People Picker"
         checked={false}
         className=
 
@@ -407,6 +409,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 justify-content: center;
                 margin-right: 4px;
                 overflow: hidden;
+                position: relative;
                 transition-duration: 200ms;
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -439,6 +442,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           </i>
         </div>
         <span
+          aria-hidden="true"
           className=
               ms-Checkbox-text
               {

@@ -19,8 +19,10 @@ storiesOf('Pivot', module)
   )
   .addStory('Root', () => (
     <Pivot>
-      <PivotItem headerText="My Files">Content</PivotItem>
-      <PivotItem headerText="Recent" />
+      <PivotItem headerText="My Files" itemIcon="Globe">
+        Content
+      </PivotItem>
+      <PivotItem headerText="Recent" itemIcon="Globe" itemCount={1} />
       <PivotItem headerText="Shared with me" />
     </Pivot>
   ))

@@ -20,7 +20,8 @@ const GlobalClassNames = {
   cellTitle: 'ms-DetailsHeader-cellTitle',
   cellName: 'ms-DetailsHeader-cellName',
   filterChevron: 'ms-DetailsHeader-filterChevron',
-  gripperBarVerticalStyle: 'ms-DetailsColumn-gripperBar'
+  gripperBarVerticalStyle: 'ms-DetailsColumn-gripperBar',
+  nearIcon: 'ms-DetailsColumn-nearIcon'
 };
 
 export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles => {
@@ -109,7 +110,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       left: 1
     },
 
-    nearIcon: nearIconStyle,
+    nearIcon: [classNames.nearIcon, nearIconStyle],
 
     sortIcon: [
       nearIconStyle,
@@ -170,7 +171,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       },
       isIconOnly && {
         selectors: {
-          $nearIcon: {
+          [`.${classNames.nearIcon}`]: {
             paddingLeft: 0
           }
         }

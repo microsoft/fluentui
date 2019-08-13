@@ -1,5 +1,5 @@
 const path = require('path');
-const resources = require('../../scripts/webpack/webpack-resources');
+const resources = require('@uifabric/build/webpack/webpack-resources');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 const BUNDLE_NAME = 'tsx-editor';

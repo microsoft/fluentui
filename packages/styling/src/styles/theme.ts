@@ -99,8 +99,12 @@ function _loadFonts(theme: ITheme): { [name: string]: string } {
   for (const fontName of Object.keys(theme.fonts)) {
     const font = theme.fonts[fontName];
     for (const propName of Object.keys(font)) {
-      const name = 'ms-font-' + fontName + '-' + propName;
-      lines[name] = `"[theme:${name}, default: ${font[propName]}]"`;
+      const name = fontName + propName.charAt(0).toUpperCase() + propName.slice(1);
+      let value = font[propName];
+      if (propName === 'fontSize' && value.indexOf('px') < 0) {
+        value += 'px';
+      }
+      lines[name] = value;
     }
   }
   return lines;

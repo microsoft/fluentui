@@ -26,9 +26,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
         }
   >
     <div
-      aria-expanded={false}
       aria-haspopup="true"
-      role="combobox"
     >
       <div
         className=
@@ -95,6 +93,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
                 }
           >
             <input
+              aria-expanded={false}
               aria-invalid={false}
               aria-label="Select a date"
               className=
@@ -168,6 +167,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               placeholder="Select a date..."
               readOnly={true}
               required={false}
+              role="combobox"
               type="text"
               value=""
             />
