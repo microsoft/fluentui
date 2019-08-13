@@ -2,7 +2,7 @@ import { INavStyleProps, INavStyles } from 'office-ui-fabric-react/lib/Nav';
 
 export const NavStyles = (props: INavStyleProps): Partial<INavStyles> => {
   const { theme, isDisabled, isSelected, isGroup, isLink, navHeight = 44 } = props;
-  const { palette, semanticColors } = theme;
+  const { semanticColors } = theme;
 
   return {
     link: [
