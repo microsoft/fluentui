@@ -186,6 +186,12 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
                 {
                   flex: 0 1 100%;
                 }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
             <span
               className=
@@ -337,6 +343,12 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
                 {
                   flex: 0 1 100%;
                 }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
             <span
               className=
@@ -354,7 +366,6 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
                   ms-Pivot-count
                   {
                     display: inline-block;
-                    margin-left: 4px;
                     vertical-align: top;
                   }
             >
@@ -564,6 +575,12 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
                 {
                   flex: 0 1 100%;
                 }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
             <span
               className=
@@ -714,6 +731,12 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -928,13 +951,18 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                 {
                   flex: 0 1 100%;
                 }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
             <span
               className=
                   ms-Pivot-count
                   {
                     display: inline-block;
-                    margin-left: 4px;
                     vertical-align: top;
                   }
             >
@@ -1081,6 +1109,12 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                 {
                   flex: 0 1 100%;
                 }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
             <span
               className=
@@ -1098,7 +1132,6 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                   ms-Pivot-count
                   {
                     display: inline-block;
-                    margin-left: 4px;
                     vertical-align: top;
                   }
             >
@@ -1245,13 +1278,17 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                 {
                   flex: 0 1 100%;
                 }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
             <span
               className=
                   ms-Pivot-icon
-                  & + ms-Pivot-text {
-                    margin-left: 4px;
-                  }
+
             >
               <i
                 aria-hidden={true}
@@ -1484,6 +1521,12 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
                 {
                   flex: 0 1 100%;
                 }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
             <span
               className=
@@ -1634,6 +1677,12 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -1858,6 +1907,12 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
                 {
                   flex: 0 1 100%;
                 }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
             <span
               className=
@@ -2021,6 +2076,12 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -2234,6 +2295,12 @@ exports[`Pivot renders link Pivot correctly 1`] = `
                 {
                   flex: 0 1 100%;
                 }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
             <span
               className=
@@ -2384,6 +2451,12 @@ exports[`Pivot renders link Pivot correctly 1`] = `
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -2607,6 +2680,12 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
                 {
                   flex: 0 1 100%;
                 }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
             <span
               className=
@@ -2770,6 +2849,12 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span
@@ -2972,6 +3057,12 @@ exports[`Pivot supports JSX expressions 1`] = `
                 {
                   flex: 0 1 100%;
                 }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
+                }
           >
             <span
               className=
@@ -3133,6 +3224,12 @@ exports[`Pivot supports JSX expressions 1`] = `
                 ms-Pivot-linkContent
                 {
                   flex: 0 1 100%;
+                }
+                & > *  {
+                  margin-left: 4px;
+                }
+                & > *:first-child {
+                  margin-left: 0px;
                 }
           >
             <span

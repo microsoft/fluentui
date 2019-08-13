@@ -33,6 +33,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
       }
 >
   <input
+    aria-checked="false"
     aria-label="Standard checkbox"
     className=
 
@@ -95,6 +96,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
             justify-content: center;
             margin-right: 4px;
             overflow: hidden;
+            position: relative;
             transition-duration: 200ms;
             transition-property: background, border, border-color;
             transition-timing-function: cubic-bezier(.4, 0, .23, 1);
