@@ -312,11 +312,11 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       vertical
         ? {
             width: '16px',
-            height: '1px',
+            height: '0px',
+            paddingBottom: '2px',
             transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
           }
         : {
-            width: '1px',
             height: '0px',
             transform: 'translateY(6px)'
           }

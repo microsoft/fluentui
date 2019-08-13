@@ -121,7 +121,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               {originFromZero && (
                 <span className={classNames.zeroTick} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
               )}
-              {/*typeof enableMarks === 'boolean' && */ enableMarks && this._addTickmarks(classNames.regularTick)}
+              {enableMarks && this._addTickmarks(classNames.regularTick)}
               {
                 <span>
                   <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 0)}>
