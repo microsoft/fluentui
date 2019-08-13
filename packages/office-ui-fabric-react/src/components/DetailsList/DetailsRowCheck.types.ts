@@ -81,6 +81,13 @@ export type IDetailsRowCheckStyleProps = Required<Pick<IDetailsRowCheckProps, 't
   Pick<IDetailsRowCheckProps, 'compact' | 'isHeader' | 'selected' | 'anySelected' | 'canSelect' | 'className'> & {
     /** Is checkbox visible */
     isVisible?: boolean;
+
+    /**
+     * Controls whether to use the global check host class name (if true) or the calculated one (if false).
+     * @deprecated This is a temporary measure in v6 *only* to opt in to fast checkbox styling.
+     * This prop does not exist in v7.
+     */
+    useGlobalCheckHostClass?: boolean;
   };
 
 /**

@@ -11,7 +11,7 @@ export const CheckGlobalClassNames = {
 };
 
 export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
-  const { checkBoxHeight = '18px', checked, className, theme } = props;
+  const { checkBoxHeight = '18px', checked, useGlobalCheckHostClass, className, theme } = props;
 
   const { palette, semanticColors } = theme;
   const isRTL = getRTL();
@@ -28,6 +28,8 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
     textAlign: 'center',
     verticalAlign: 'middle'
   };
+
+  const checkHostClass = useGlobalCheckHostClass ? CheckGlobalClassNames.checkHost : '$checkHost';
 
   return {
     root: [
@@ -55,8 +57,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
             background: semanticColors.bodyBackground
           },
 
-          // Always use the global class name for this, or it won't work.
-          [`.${CheckGlobalClassNames.checkHost}:hover &, .${CheckGlobalClassNames.checkHost}:focus &, &:hover, &:focus`]: {
+          [`.${checkHostClass}:hover &, .${checkHostClass}:focus &, &:hover, &:focus`]: {
             opacity: 1
           }
         }

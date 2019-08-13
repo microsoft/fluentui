@@ -2,9 +2,16 @@ import * as React from 'react';
 import { IDetailsRowCheckProps, IDetailsCheckboxProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
 import { css, styled, classNamesFunction } from '../../Utilities';
 import { Check, getCheck } from '../../Check';
+import { ICheckStyleProps, ICheckStyles } from '../Check/Check.types';
+import { getStyles as getCheckStyles } from '../Check/Check.styles';
 import { getStyles } from './DetailsRowCheck.styles';
 
-const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
+const getCheckClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>({
+  disableCaching: true
+});
+const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>({
+  disableCaching: true
+});
 
 const DetailsRowCheckBase: React.StatelessComponent<IDetailsRowCheckProps> = props => {
   const {
@@ -28,6 +35,14 @@ const DetailsRowCheckBase: React.StatelessComponent<IDetailsRowCheckProps> = pro
 
   const isPressed = isSelected || selected;
 
+  const checkStyles = useFastIcons ? undefined : getCheckStyles({ theme: theme! });
+
+  const checkClassNames = useFastIcons
+    ? undefined
+    : getCheckClassNames(checkStyles, {
+        theme: theme!
+      });
+
   const classNames = getClassNames(styles, {
     theme: theme!,
     canSelect,
@@ -36,7 +51,8 @@ const DetailsRowCheckBase: React.StatelessComponent<IDetailsRowCheckProps> = pro
     className,
     isHeader,
     isVisible,
-    compact
+    compact,
+    useGlobalCheckHostClass: useFastIcons
   });
 
   const detailsCheckboxProps: IDetailsCheckboxProps = {
@@ -48,7 +64,7 @@ const DetailsRowCheckBase: React.StatelessComponent<IDetailsRowCheckProps> = pro
     <div
       {...buttonProps}
       role="checkbox"
-      className={css(classNames.root, classNames.check)}
+      className={css(classNames.root, classNames.check, checkClassNames && checkClassNames.checkHost)}
       aria-checked={isPressed}
       data-selection-toggle={true}
       data-automationid="DetailsRowCheck"

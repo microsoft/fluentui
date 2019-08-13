@@ -11,7 +11,7 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckStyles => {
-  const { theme, className, isHeader, selected, anySelected, canSelect, compact, isVisible } = props;
+  const { theme, className, isHeader, selected, anySelected, canSelect, compact, isVisible, useGlobalCheckHostClass } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
   const { rowHeight, compactRowHeight } = DEFAULT_ROW_HEIGHTS;
 
@@ -27,7 +27,7 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
       isHeader && classNames.isHeader,
       getFocusStyle(theme),
       theme.fonts.small,
-      CheckGlobalClassNames.checkHost,
+      useGlobalCheckHostClass && CheckGlobalClassNames.checkHost,
       {
         display: 'flex',
         alignItems: 'center',
@@ -43,6 +43,13 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
         width: 40,
         padding: 0,
         margin: 0
+      },
+      useGlobalCheckHostClass && {
+        selectors: {
+          '&:hover': {
+            opacity: 1
+          }
+        }
       }
     ],
 

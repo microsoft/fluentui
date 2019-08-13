@@ -64,6 +64,13 @@ export interface ICheckStyleProps {
   checkBoxHeight?: string;
 
   checked?: boolean;
+
+  /**
+   * Controls whether to use the global check host class name (if true) or the old `$checkHost` (if false).
+   * @deprecated This is a temporary measure in v6 *only* to opt in to fast checkbox styling.
+   * This prop does not exist in v7.
+   */
+  useGlobalCheckHostClass?: boolean;
 }
 
 /**
@@ -87,8 +94,9 @@ export interface ICheckStyles {
 
   /**
    * Check host style
-   * @deprecated Not used directly within the component. Instead, use `CheckGlobalClassNames.checkHost` from
-   * `Check.styles.ts` to get the static class name to apply to the parent element of the Check.
+   * @deprecated If `useFastIcons` is true (default in 7), this is not used directly within the component.
+   * Instead, use `CheckGlobalClassNames.checkHost` from `Check.styles.ts` to get the static class name to
+   * apply to the parent element of the Check.
    */
   checkHost: IStyle;
 }

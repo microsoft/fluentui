@@ -9,7 +9,7 @@ const getClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
 export const CheckBase: React.StatelessComponent<ICheckProps> = props => {
   const { checked = false, className, theme, styles, useFastIcons } = props;
 
-  const classNames = getClassNames(styles!, { theme: theme!, className, checked });
+  const classNames = getClassNames(styles!, { theme: theme!, className, checked, useGlobalCheckHostClass: useFastIcons });
   const IconComponent = useFastIcons ? FontIcon : Icon;
 
   return (
