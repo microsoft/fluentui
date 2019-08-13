@@ -127,7 +127,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                   <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 0)}>
                     {min}
                   </span>
-                  <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 100)}>
+                  <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 99)}>
                     {max}
                   </span>
                 </span>

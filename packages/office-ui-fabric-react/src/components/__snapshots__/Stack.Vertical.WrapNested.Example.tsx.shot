@@ -179,6 +179,48 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                 width: 100%;
               }
         >
+          <span>
+            <span
+              className=
+                  ms-Slider-regularLabel
+                  {
+                    background: #c8c6c4;
+                    height: 0px;
+                    position: absolute;
+                    transform: translateY(6px);
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background-color: WindowText;
+                  }
+              style={
+                Object {
+                  "left": "0%",
+                }
+              }
+            >
+              1
+            </span>
+            <span
+              className=
+                  ms-Slider-regularLabel
+                  {
+                    background: #c8c6c4;
+                    height: 0px;
+                    position: absolute;
+                    transform: translateY(6px);
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background-color: WindowText;
+                  }
+              style={
+                Object {
+                  "left": "99%",
+                }
+              }
+            >
+              420
+            </span>
+          </span>
           <span
             className=
                 ms-Slider-thumb
@@ -204,7 +246,6 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
               }
             }
           />
-          1
           <span
             className=
                 ms-Slider-active
@@ -249,10 +290,10 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
               }
             }
           />
-          420
         </div>
       </div>
     </div>
+    <div />
   </div>
   <div
     className=

@@ -158,6 +158,48 @@ exports[`Slider renders correctly 1`] = `
               width: 100%;
             }
       >
+        <span>
+          <span
+            className=
+                ms-Slider-regularLabel
+                {
+                  background: #c8c6c4;
+                  height: 0px;
+                  position: absolute;
+                  transform: translateY(6px);
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background-color: WindowText;
+                }
+            style={
+              Object {
+                "left": "0%",
+              }
+            }
+          >
+            0
+          </span>
+          <span
+            className=
+                ms-Slider-regularLabel
+                {
+                  background: #c8c6c4;
+                  height: 0px;
+                  position: absolute;
+                  transform: translateY(6px);
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background-color: WindowText;
+                }
+            style={
+              Object {
+                "left": "99%",
+              }
+            }
+          >
+            10
+          </span>
+        </span>
         <span
           className=
               ms-Slider-thumb
@@ -183,7 +225,6 @@ exports[`Slider renders correctly 1`] = `
             }
           }
         />
-        0
         <span
           className=
               ms-Slider-active
@@ -228,9 +269,9 @@ exports[`Slider renders correctly 1`] = `
             }
           }
         />
-        10
       </div>
     </div>
   </div>
+  <div />
 </div>
 `;

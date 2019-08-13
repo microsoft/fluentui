@@ -324,6 +324,48 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                   width: 100%;
                 }
           >
+            <span>
+              <span
+                className=
+                    ms-Slider-regularLabel
+                    {
+                      background: #c8c6c4;
+                      height: 0px;
+                      position: absolute;
+                      transform: translateY(6px);
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background-color: WindowText;
+                    }
+                style={
+                  Object {
+                    "left": "0%",
+                  }
+                }
+              >
+                0
+              </span>
+              <span
+                className=
+                    ms-Slider-regularLabel
+                    {
+                      background: #c8c6c4;
+                      height: 0px;
+                      position: absolute;
+                      transform: translateY(6px);
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background-color: WindowText;
+                    }
+                style={
+                  Object {
+                    "left": "99%",
+                  }
+                }
+              >
+                30
+              </span>
+            </span>
             <span
               className=
                   ms-Slider-thumb
@@ -349,7 +391,6 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 }
               }
             />
-            0
             <span
               className=
                   ms-Slider-active
@@ -394,10 +435,10 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 }
               }
             />
-            30
           </div>
         </div>
       </div>
+      <div />
     </div>
     <div
       className=
@@ -556,6 +597,48 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                   width: 100%;
                 }
           >
+            <span>
+              <span
+                className=
+                    ms-Slider-regularLabel
+                    {
+                      background: #c8c6c4;
+                      height: 0px;
+                      position: absolute;
+                      transform: translateY(6px);
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background-color: WindowText;
+                    }
+                style={
+                  Object {
+                    "left": "0%",
+                  }
+                }
+              >
+                10
+              </span>
+              <span
+                className=
+                    ms-Slider-regularLabel
+                    {
+                      background: #c8c6c4;
+                      height: 0px;
+                      position: absolute;
+                      transform: translateY(6px);
+                    }
+                    @media screen and (-ms-high-contrast: active){& {
+                      background-color: WindowText;
+                    }
+                style={
+                  Object {
+                    "left": "99%",
+                  }
+                }
+              >
+                50
+              </span>
+            </span>
             <span
               className=
                   ms-Slider-thumb
@@ -581,7 +664,6 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 }
               }
             />
-            10
             <span
               className=
                   ms-Slider-active
@@ -626,10 +708,10 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
                 }
               }
             />
-            50
           </div>
         </div>
       </div>
+      <div />
     </div>
     <div
       className=
