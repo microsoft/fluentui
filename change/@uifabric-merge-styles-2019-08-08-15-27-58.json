@@ -1,8 +1,0 @@
-{
-  "comment": "Removing deprecated and buggy \"$\" reference feature, which has added perf overhead in all scenarios, replacing with simpler regex to replace ampersands in selectors with classnames.",
-  "type": "minor",
-  "packageName": "@uifabric/merge-styles",
-  "email": "dzearing@microsoft.com",
-  "commit": "",
-  "date": "2019-08-08T22:27:58.405Z"
-}

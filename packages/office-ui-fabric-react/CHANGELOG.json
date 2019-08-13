@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 13 Aug 2019 12:31:12 GMT",
+      "tag": "office-ui-fabric-react_v7.23.0",
+      "version": "7.23.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Checkbox: added indeterminate state",
+            "author": "v-mare@microsoft.com",
+            "commit": "67bf2ba2d4adaece4b763d6f1b0b8e42ea47ed9b"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Updating snpashots and styles which use $ syntax.",
+            "author": "dzearing@microsoft.com",
+            "commit": ""
+          },
+          {
+            "comment": "Changing breadcrumb items to links",
+            "author": "camontei@microsoft.com",
+            "commit": "67751de82592bd67fe8d91ba145576f012ae09a7"
+          },
+          {
+            "comment": "Pivot: pivot content (icon, text, count) should be consistently aligned via styling.",
+            "author": "dzearing@microsoft.com",
+            "commit": "70ab625a39a61364decf37000310602a8d94c719"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 12 Aug 2019 12:30:25 GMT",
       "tag": "office-ui-fabric-react_v7.22.2",
       "version": "7.22.2",

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 12 Aug 2019 12:30:25 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Aug 2019 12:31:12 GMT and should not be manually modified.
+
+## 7.5.1
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Patches
+
+- Updated snpashots and styles which use $ syntax. (dzearing@microsoft.com)
 
 ## 7.5.0
 Mon, 12 Aug 2019 12:30:25 GMT
