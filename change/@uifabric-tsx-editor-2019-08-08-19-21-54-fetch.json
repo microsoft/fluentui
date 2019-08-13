@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "using fetch API to bring in fabric typings to editor",
-  "packageName": "@uifabric/tsx-editor",
-  "email": "nishikaza@berkeley.edu",
-  "commit": "3f8cf613cae2fcf9892fbd338869932c1fea450a",
-  "date": "2019-08-09T02:21:54.663Z"
-}

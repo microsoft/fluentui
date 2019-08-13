@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 07 Aug 2019 12:32:28 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Aug 2019 12:31:12 GMT and should not be manually modified.
+
+## 0.134.1
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Patches
+
+- Fix donut chart transform when height and width props change (v-ragor@microsoft.com)
 
 ## 0.134.0
 Wed, 07 Aug 2019 12:32:28 GMT

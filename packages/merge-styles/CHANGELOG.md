@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 07 Aug 2019 12:32:28 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Aug 2019 12:31:12 GMT and should not be manually modified.
+
+## 7.4.0
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Minor changes
+
+- Removing deprecated and buggy "$" reference feature, which has added perf overhead in all scenarios, replacing with simpler regex to replace ampersands in selectors with classnames. (dzearing@microsoft.com)
 
 ## 7.3.0
 Wed, 07 Aug 2019 12:32:28 GMT

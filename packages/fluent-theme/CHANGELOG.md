@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Wed, 07 Aug 2019 12:32:28 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Aug 2019 12:31:12 GMT and should not be manually modified.
+
+## 7.1.1
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Patches
+
+- Updating snpashots and styles which use $ syntax. (dzearing@microsoft.com)
 
 ## 7.1.0
 Wed, 07 Aug 2019 12:32:28 GMT

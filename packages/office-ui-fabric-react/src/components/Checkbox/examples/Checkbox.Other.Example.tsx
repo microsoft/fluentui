@@ -3,15 +3,21 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
 export interface ICheckboxOtherExamplesState {
   isChecked: boolean;
+  isChecked2: boolean;
+  isChecked3: boolean;
+  isIndeter: boolean;
 }
 
 export class CheckboxOtherExamples extends React.Component<{}, ICheckboxOtherExamplesState> {
   public state: ICheckboxOtherExamplesState = {
-    isChecked: false
+    isChecked: false,
+    isChecked2: false,
+    isChecked3: false,
+    isIndeter: true
   };
 
   public render(): JSX.Element {
-    const { isChecked } = this.state;
+    const { isChecked, isChecked2, isChecked3, isIndeter } = this.state;
 
     const checkboxStyles = () => {
       return {
@@ -59,6 +65,26 @@ export class CheckboxOtherExamples extends React.Component<{}, ICheckboxOtherExa
         <Checkbox label='Checkbox rendered with boxSide "end" test' boxSide="end" styles={checkboxStyles} />
 
         <Checkbox label="Persona Checkbox" styles={checkboxStyles} onRenderLabel={this._renderLabelWithLink} />
+
+        <Checkbox
+          label="Controlled Indeterminate Uncontrolled check Checkbox"
+          styles={checkboxStyles}
+          onChange={this._onControlledIndeterminateChange}
+          indeterminate={isIndeter}
+          checked={isChecked2}
+        />
+
+        <Checkbox
+          label="Uncontrolled Indeterminate Controlled Check Checkbox"
+          styles={checkboxStyles}
+          checked={isChecked3}
+          onChange={this._onControlledCheckboxChange2}
+          defaultIndeterminate
+        />
+
+        <Checkbox label="Disabled Controlled Indeterminate Checkbox" styles={checkboxStyles} disabled={true} indeterminate={true} />
+
+        <Checkbox label="Disabled Uncontrolled Indeterminate Checkbox" styles={checkboxStyles} disabled={true} defaultIndeterminate />
       </div>
     );
   }
@@ -67,8 +93,20 @@ export class CheckboxOtherExamples extends React.Component<{}, ICheckboxOtherExa
     console.log(`The option has been changed to ${isChecked}.`);
   };
 
+  private _onControlledIndeterminateChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
+    if (this.state.isIndeter) {
+      this.setState({ isIndeter: false });
+    } else {
+      this.setState({ isChecked2: checked! });
+    }
+  };
+
   private _onControlledCheckboxChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ isChecked: checked! });
+  };
+
+  private _onControlledCheckboxChange2 = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({ isChecked3: checked! });
   };
 
   private _renderLabelWithLink = () => {

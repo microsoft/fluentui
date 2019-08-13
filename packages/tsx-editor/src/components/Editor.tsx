@@ -8,6 +8,16 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
   const style = { width, height };
 
   React.useEffect(() => {
+    // Fetching Fabric typings to allow for intellisense in editor
+    fetch('https://unpkg.com/office-ui-fabric-react/dist/office-ui-fabric-react.d.ts').then(response => {
+      response.text().then(fabricTypings => {
+        monaco.languages.typescript.typescriptDefaults.addExtraLib(
+          fabricTypings,
+          'file:///node_modules/@types/office-ui-fabric-react/index.d.ts'
+        );
+      });
+    });
+
     monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
       allowNonTsExtensions: true,
       target: monaco.languages.typescript.ScriptTarget.ES5,
@@ -18,17 +28,8 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       preserveConstEnums: true,
       outDir: 'lib',
       module: monaco.languages.typescript.ModuleKind.ESNext,
-      lib: ['es5', 'dom']
-    });
-
-    // Fetching Fabric typings to allow for intellisense in editor
-    fetch('https://unpkg.com/office-ui-fabric-react/dist/office-ui-fabric-react.d.ts').then(response => {
-      response.text().then(fabricTypings => {
-        monaco.languages.typescript.typescriptDefaults.addExtraLib(
-          fabricTypings,
-          'file:///node_modules/@types/office-ui-fabric-react/index.d.ts'
-        );
-      });
+      lib: ['es5', 'dom'],
+      noEmitOnError: true
     });
 
     monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: true });

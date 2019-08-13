@@ -406,6 +406,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-checked="false"
               aria-label="Shadow around items"
               className=
 
@@ -468,6 +469,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -547,6 +549,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-checked="false"
               aria-label="Prevent item overflow"
               className=
 
@@ -609,6 +612,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -688,6 +692,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-checked="false"
               aria-label="Shrink items"
               className=
 
@@ -750,6 +755,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -828,6 +834,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
           >
             <input
+              aria-checked="false"
               aria-label="Wrap items"
               className=
 
@@ -890,6 +897,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       justify-content: center;
                       margin-right: 4px;
                       overflow: hidden;
+                      position: relative;
                       transition-duration: 200ms;
                       transition-property: background, border, border-color;
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -1221,6 +1229,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 background: #005a9e;
                 border-color: #005a9e;
               }
+              & .ms-Checkbox-checkbox {
+                background: #0078d4;
+                border-color: #0078d4;
+              }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
                 background: Window;
                 border-color: Highlight;
@@ -1245,6 +1257,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
               }
         >
           <input
+            aria-checked="true"
             aria-label="Automatic height (based on items)"
             className=
 
@@ -1310,6 +1323,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     justify-content: center;
                     margin-right: 4px;
                     overflow: hidden;
+                    position: relative;
                     transition-duration: 200ms;
                     transition-property: background, border, border-color;
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -2219,6 +2233,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   }
             >
               <input
+                aria-checked="false"
                 aria-label="Hide empty children"
                 className=
 
@@ -2281,6 +2296,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         justify-content: center;
                         margin-right: 4px;
                         overflow: hidden;
+                        position: relative;
                         transition-duration: 200ms;
                         transition-property: background, border, border-color;
                         transition-timing-function: cubic-bezier(.4, 0, .23, 1);
