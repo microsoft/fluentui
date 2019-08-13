@@ -317,7 +317,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           }
         : {
             height: '0px',
-            transform: 'translateY(6px)'
+            transform: 'translateY(6px) translateX(-6px)'
           }
     ],
 

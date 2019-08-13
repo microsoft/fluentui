@@ -4,6 +4,7 @@ import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slide
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
+import { DirectionalHint } from '../Callout';
 
 export interface ISliderState {
   value?: number;
@@ -146,7 +147,12 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                 <TooltipHost
                   content={'' + value}
                   id={this._hostId}
-                  calloutProps={{ gapSpace: 5, beakWidth: 8, target: `#${this._buttonId}` }}
+                  calloutProps={{
+                    gapSpace: 5,
+                    beakWidth: 8,
+                    target: `#${this._buttonId}`,
+                    directionalHint: vertical ? DirectionalHint.rightCenter : DirectionalHint.topCenter
+                  }}
                 >
                   {theButton}
                 </TooltipHost>
