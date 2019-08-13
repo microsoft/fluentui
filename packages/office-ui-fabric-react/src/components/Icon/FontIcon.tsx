@@ -54,5 +54,5 @@ export const FontIcon: React.StatelessComponent<IFontIconProps> = props => {
  * @param ariaLabel - Label for the icon for the benefit of screen readers.
  */
 export const getFontIcon = memoizeFunction((iconName: string, className?: string, ariaLabel?: string) => {
-  return FontIcon({ iconName, className, 'aria-label': ariaLabel });
+  return FontIcon({ iconName, className, 'aria-label': ariaLabel })!;
 });

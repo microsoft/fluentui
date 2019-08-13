@@ -494,7 +494,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 }
 
 // Warning: (ae-forgotten-export) The symbol "ICalloutState" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     // (undocumented)
@@ -508,7 +508,7 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 export const Check: React.StatelessComponent<ICheckProps>;
 
 // @public (undocumented)
-export const CheckBase: React.FunctionComponent<ICheckProps>;
+export const CheckBase: React.StatelessComponent<ICheckProps>;
 
 // @public (undocumented)
 export const Checkbox: React.StatelessComponent<ICheckboxProps>;
@@ -652,7 +652,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     static defaultProps: IComboBoxProps;
     dismissMenu: () => void;
     // Warning: (ae-unresolved-inheritdoc-base) The @inheritDoc tag needs a TSDoc declaration reference; signature matching is not supported yet
-    //
+    // 
     // (undocumented)
     focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
     // (undocumented)
@@ -1267,11 +1267,17 @@ export const FocusZoneTabbableElements: {
 // @public (undocumented)
 export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
 
+// @public
+export const FontIcon: React.StatelessComponent<IFontIconProps>;
+
 // @public (undocumented)
 export function getAllSelectedOptions(options: ISelectableOption[], selectedIndices: number[]): ISelectableOption[];
 
 // @public (undocumented)
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
+
+// @public
+export const getCheck: (theme?: ITheme | undefined, checked?: boolean | undefined, className?: string | undefined) => JSX.Element;
 
 // @public
 export function getColorFromHSV(hsv: IHSV, a?: number): IColor;
@@ -1286,7 +1292,16 @@ export function getColorFromString(inputColor: string): IColor | undefined;
 export function getContrastRatio(color1: IColor, color2: IColor): number;
 
 // @public
+export const getFontIcon: (iconName: string, className?: string | undefined, ariaLabel?: string | undefined) => React.ReactElement<any>;
+
+// @public
 export function getFullColorString(color: IColor): string;
+
+// @public (undocumented)
+export const getIconContent: (iconName?: string | undefined) => {
+    children: string | undefined;
+    iconClassName: string | undefined;
+};
 
 // @public
 export const getMeasurementCache: () => {
@@ -2159,6 +2174,7 @@ export interface ICheckProps {
     componentRef?: IRefObject<ICheckProps>;
     styles?: IStyleFunctionOrObject<ICheckStyleProps, ICheckStyles>;
     theme?: ITheme;
+    useFastIcons?: boolean;
 }
 
 // @public (undocumented)
@@ -2168,11 +2184,14 @@ export interface ICheckStyleProps {
     checked?: boolean;
     className?: string;
     theme: ITheme;
+    // @deprecated
+    useGlobalCheckHostClass?: boolean;
 }
 
 // @public (undocumented)
 export interface ICheckStyles {
     check: IStyle;
+    // @deprecated
     checkHost: IStyle;
     circle: IStyle;
     root: IStyle;
@@ -2843,7 +2862,7 @@ export interface IContextualMenuItem {
     data?: any;
     disabled?: boolean;
     // Warning: (ae-forgotten-export) The symbol "IMenuItemClassNames" needs to be exported by the entry point index.d.ts
-    //
+    // 
     // @deprecated
     getItemClassNames?: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string, dividerClassName?: string, iconClassName?: string, subMenuClassName?: string, primaryDisabled?: boolean) => IMenuItemClassNames;
     getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
@@ -2943,7 +2962,7 @@ export interface IContextualMenuListProps {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IWithResponsiveModeState" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public
 export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
     alignTargetEdge?: boolean;
@@ -2963,7 +2982,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
     // Warning: (ae-forgotten-export) The symbol "IContextualMenuClassNames" needs to be exported by the entry point index.d.ts
-    //
+    // 
     // @deprecated
     getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
     hidden?: boolean;
@@ -3049,13 +3068,15 @@ export interface IContextualMenuSubComponentStyles {
     menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export enum IconType {
     // @deprecated
     Default = 100000,
+    // @deprecated
     default = 0,
     // @deprecated
     Image = 100001,
+    // @deprecated
     image = 1,
 }
 
@@ -3155,6 +3176,8 @@ export interface IDatePickerStyles {
 export interface IDetailsCheckboxProps {
     // (undocumented)
     checked: boolean;
+    // (undocumented)
+    theme?: ITheme;
 }
 
 // @public (undocumented)
@@ -3177,6 +3200,7 @@ export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumn
     updateDragInfo?: (props: {
         itemIndex: number;
     }, event?: MouseEvent) => void;
+    useFastIcons?: boolean;
 }
 
 // @public (undocumented)
@@ -3263,6 +3287,7 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
     selectAllVisibility?: SelectAllVisibility;
     styles?: IStyleFunctionOrObject<IDetailsHeaderStyleProps, IDetailsHeaderStyles>;
     theme?: ITheme;
+    useFastIcons?: boolean;
 }
 
 // @public (undocumented)
@@ -3431,6 +3456,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     shouldApplyApplicationRole?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsListStyleProps, IDetailsListStyles>;
     theme?: ITheme;
+    useFastIcons?: boolean;
     usePageCache?: boolean;
     useReducedRowRenderer?: boolean;
     viewport?: IViewport;
@@ -3510,6 +3536,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     shimmer?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
+    useFastIcons?: boolean;
     useReducedRowRenderer?: boolean;
 }
 
@@ -3528,11 +3555,13 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
     selected?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>;
     theme?: ITheme;
+    useFastIcons?: boolean;
 }
 
 // @public (undocumented)
 export type IDetailsRowCheckStyleProps = Required<Pick<IDetailsRowCheckProps, 'theme'>> & Pick<IDetailsRowCheckProps, 'compact' | 'isHeader' | 'selected' | 'anySelected' | 'canSelect' | 'className'> & {
     isVisible?: boolean;
+    useGlobalCheckHostClass?: boolean;
 };
 
 // @public (undocumented)
@@ -3741,7 +3770,7 @@ export interface IDialogFooterStyles {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IAccessiblePopupProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
     // @deprecated
@@ -3844,7 +3873,7 @@ export interface IDocumentCardActions {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardActionsBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardActionsProps extends React.ClassAttributes<DocumentCardActionsBase> {
     actions: IButtonProps[];
@@ -3887,7 +3916,7 @@ export interface IDocumentCardActivityPerson {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardActivityBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivityBase> {
     activity: string;
@@ -3926,7 +3955,7 @@ export interface IDocumentCardDetails {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardDetailsBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardDetailsProps extends React.Props<DocumentCardDetailsBase> {
     className?: string;
@@ -3985,7 +4014,7 @@ export interface IDocumentCardLocation {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardLocationBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardLocationProps extends React.ClassAttributes<DocumentCardLocationBase> {
     ariaLabel?: string;
@@ -4015,7 +4044,7 @@ export interface IDocumentCardLogo {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardLogoBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogoBase> {
     className?: string;
@@ -4115,7 +4144,7 @@ export interface IDocumentCardStatus {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardStatusBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardStatusProps extends React.Props<DocumentCardStatusBase> {
     className?: string;
@@ -4157,7 +4186,7 @@ export interface IDocumentCardTitle {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardTitleBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardTitleProps extends React.ClassAttributes<DocumentCardTitleBase> {
     className?: string;
@@ -4359,7 +4388,7 @@ export interface IExpandingCard {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IBaseCardProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public
 export interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExpandingCardStyles, IExpandingCardStyleProps> {
     compactCardHeight?: number;
@@ -4378,7 +4407,7 @@ export interface IExpandingCardState {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IBaseCardStyleProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IExpandingCardStyleProps extends IBaseCardStyleProps {
     compactCardHeight?: number;
@@ -4388,7 +4417,7 @@ export interface IExpandingCardStyleProps extends IBaseCardStyleProps {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IBaseCardStyles" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IExpandingCardStyles extends IBaseCardStyles {
     compactCard?: IStyle;
@@ -4569,6 +4598,12 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     // @deprecated
     rootProps?: React.HTMLAttributes<HTMLDivElement>;
     shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
+}
+
+// @public
+export interface IFontIconProps extends React.HTMLAttributes<HTMLElement> {
+    className?: string;
+    iconName?: string;
 }
 
 // @public
@@ -4921,10 +4956,12 @@ export interface IHSV {
 
 // @public (undocumented)
 export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement> {
+    // @deprecated
     ariaLabel?: string;
     iconName?: string;
+    // @deprecated
     iconType?: IconType;
-    imageErrorAs?: React.StatelessComponent<IImageProps> | React.ComponentClass<IImageProps>;
+    imageErrorAs?: React.ComponentType<IImageProps>;
     imageProps?: IImageProps;
     styles?: IStyleFunctionOrObject<IIconStyleProps, IIconStyles>;
     // (undocumented)
@@ -4963,6 +5000,12 @@ export interface IIconStyles {
 
 // @public (undocumented)
 export interface IImage {
+}
+
+// @public
+export interface IImageIconProps extends React.HTMLAttributes<HTMLElement> {
+    className?: string;
+    imageProps: IImageProps;
 }
 
 // @public (undocumented)
@@ -5311,6 +5354,9 @@ export enum ImageFit {
     cover = 2,
     none = 3,
 }
+
+// @public (undocumented)
+export const ImageIcon: React.StatelessComponent<IImageIconProps>;
 
 // @public (undocumented)
 export enum ImageLoadState {
@@ -5721,7 +5767,7 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
 }
 
 // Warning: (ae-forgotten-export) The symbol "PanelBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     className?: string;
@@ -6886,7 +6932,7 @@ export interface ISpinButtonProps {
     keytipProps?: IKeytipProps;
     label?: string;
     // Warning: (ae-forgotten-export) The symbol "Position" needs to be exported by the entry point index.d.ts
-    //
+    // 
     // (undocumented)
     labelPosition?: Position;
     max?: number;
@@ -7778,7 +7824,7 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IKeytipDataProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public
 export class KeytipData extends React.Component<IKeytipDataProps & IRenderComponent<{}>, {}> {
     // (undocumented)
@@ -7806,7 +7852,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     // (undocumented)
     getCurrentSequence(): string;
     // Warning: (ae-forgotten-export) The symbol "KeytipTree" needs to be exported by the entry point index.d.ts
-    //
+    // 
     // (undocumented)
     getKeytipTree(): KeytipTree;
     processInput(key: string, ev?: React.KeyboardEvent<HTMLElement>): void;
@@ -7848,7 +7894,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     }
 
 // Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export class LayerHost extends React.Component<ILayerHostProps> {
     // (undocumented)
