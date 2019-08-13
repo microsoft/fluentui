@@ -95,7 +95,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
   presence?: PersonaPresence;
 
   /**
-   * Presence title of the person to be shown as a tooltip on hover over the presence icon.
+   * Presence title to be shown as a tooltip on hover over the presence icon.
    */
   presenceTitle?: string;
 
