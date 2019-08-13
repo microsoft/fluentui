@@ -10,6 +10,10 @@ export interface ISliderState {
   renderedValue?: number;
 }
 
+export interface ISliderEnableMarksFormat {
+  value: number;
+  label?: string;
+}
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
@@ -124,12 +128,18 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               {enableMarks && this._addTickmarks(classNames.regularTick)}
               {
                 <span>
-                  <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 0)}>
-                    {min}
-                  </span>
-                  <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 99)}>
-                    {max}
-                  </span>
+                  {Array.isArray(enableMarks) ? (
+                    this._addLabels(classNames.regularLabel)
+                  ) : (
+                    <>
+                      <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 0)}>
+                        {min}
+                      </span>
+                      <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 99)}>
+                        {max}
+                      </span>
+                    </>
+                  )}
                 </span>
               }
               {showThumbTooltip ? (
@@ -281,6 +291,36 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
         break;
     }
     return currentPosition;
+  }
+
+  //returns an array of spans each span pertains to a custom label the user passes in
+  private _addLabels(cssRegularLabelClassNames: string | undefined): JSX.Element[] {
+    console.log('REACJED!!');
+    const { vertical, enableMarks, min, max } = this.props;
+    if (min === undefined || max === undefined) {
+      return [];
+    }
+    // enable marks if an array is an array of JSON with fields of value (denotes where) and label (denotes what to display)
+    const labels: JSX.Element[] = [];
+    if (Array.isArray(enableMarks)) {
+      for (let i = 0; i < enableMarks.length; i++) {
+        console.log(enableMarks[i].value);
+        console.log(enableMarks[i].label);
+        let currentLabel = (
+          <span
+            className={cssRegularLabelClassNames}
+            style={this._getStyleUsingOffsetPercent(vertical, ((enableMarks[i].value - min) / (max - min)) * 100)}
+            key={i}
+          >
+            {enableMarks[i].label}
+          </span>
+        );
+        console.log(labels);
+        labels.push(currentLabel);
+      }
+    }
+    console.log('returns label : ' + labels.toString);
+    return labels;
   }
 
   private _addTickmarks(cssRegularTickClassNames: string | undefined): JSX.Element[] {
