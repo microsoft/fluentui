@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 09 Aug 2019 12:31:50 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Aug 2019 12:31:12 GMT and should not be manually modified.
+
+## 7.11.2
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Patches
+
+- Updating snapshots. (dzearing@microsoft.com)
 
 ## 7.11.1
 Fri, 09 Aug 2019 12:31:50 GMT

@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Tue, 13 Aug 2019 12:31:12 GMT",
+      "tag": "@uifabric/example-app-base_v7.5.1",
+      "version": "7.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated snpashots and styles which use $ syntax.",
+            "author": "dzearing@microsoft.com",
+            "commit": ""
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 12 Aug 2019 12:30:25 GMT",
       "tag": "@uifabric/example-app-base_v7.5.0",
       "version": "7.5.0",

@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 13 Aug 2019 12:31:12 GMT",
+      "tag": "@uifabric/experiments_v7.11.2",
+      "version": "7.11.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots.",
+            "author": "dzearing@microsoft.com",
+            "commit": ""
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Aug 2019 12:31:50 GMT",
       "tag": "@uifabric/experiments_v7.11.1",
       "version": "7.11.1",
