@@ -1,0 +1,8 @@
+{
+  "comment": "Checkbox: added indeterminate state",
+  "type": "minor",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "67bf2ba2d4adaece4b763d6f1b0b8e42ea47ed9b",
+  "date": "2019-07-17T00:27:21.020Z"
+}

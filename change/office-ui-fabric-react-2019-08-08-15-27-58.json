@@ -1,0 +1,8 @@
+{
+  "comment": "Updating snpashots and styles which use $ syntax.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@microsoft.com",
+  "commit": "",
+  "date": "2019-08-08T22:27:58.406Z"
+}
