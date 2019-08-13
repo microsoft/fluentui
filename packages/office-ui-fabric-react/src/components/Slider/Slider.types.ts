@@ -133,7 +133,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * Optional flag to indicate whether to have tick marks
    * @defaultvalue false
    */
-  enableMarks?: boolean;
+  enableMarks?: boolean | [];
 }
 
 /**
@@ -206,7 +206,12 @@ export interface ISliderStyles {
   zeroTick: IStyle;
 
   /**
-   * Style set for tick on number line. This element only shows up when marks prop is true.
+   * Style set for tick on number line. This element only shows up when enableMarks prop is true.
    */
   regularTick: IStyle;
+
+  /**
+   * Style set for specified labels on number line. This element only shows up when enableMarks prop is true.
+   */
+  regularLabel: IStyle;
 }

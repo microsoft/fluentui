@@ -18,7 +18,8 @@ const GlobalClassNames = {
   showValue: 'ms-Slider-showValue',
   showTransitions: 'ms-Slider-showTransitions',
   zeroTick: 'ms-Slider-zeroTick',
-  regularTick: 'ms-Slider-regularTick'
+  regularTick: 'ms-Slider-regularTick',
+  regularLabel: 'ms-Slider-regularLabel'
 };
 
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
@@ -289,6 +290,37 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
             transform: 'translateY(-6px)'
           }
     ],
+    regularLabel: [
+      classNames.regularLabel,
+      {
+        position: 'absolute',
+        background: theme.palette.neutralTertiaryAlt,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'WindowText'
+          }
+        }
+      },
+      disabled && {
+        background: theme.palette.neutralLight,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'GrayText'
+          }
+        }
+      },
+      vertical
+        ? {
+            width: '16px',
+            height: '1px',
+            transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
+          }
+        : {
+            width: '1px',
+            height: '0px',
+            transform: 'translateY(6px)'
+          }
+    ],
 
     regularTick: [
       classNames.regularTick,
@@ -316,7 +348,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
             transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
           }
         : {
-            width: '1px',
+            width: '2px',
             height: '4px',
             transform: 'translateY(0px)'
           }

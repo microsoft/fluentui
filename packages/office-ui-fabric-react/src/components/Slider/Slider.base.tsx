@@ -121,7 +121,17 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               {originFromZero && (
                 <span className={classNames.zeroTick} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
               )}
-              {enableMarks && this._addTickmarks(classNames.regularTick)}
+              {/*typeof enableMarks === 'boolean' && */ enableMarks && this._addTickmarks(classNames.regularTick)}
+              {
+                <span>
+                  <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 0)}>
+                    {min}
+                  </span>
+                  <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 100)}>
+                    {max}
+                  </span>
+                </span>
+              }
               {showThumbTooltip ? (
                 <TooltipHost
                   content={'' + value}
@@ -150,7 +160,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                 </>
               ) : (
                 <>
-                  {min}
                   <span
                     className={css(classNames.lineContainer, classNames.activeSection)}
                     style={{ [lengthString]: thumbOffsetPercent + '%' }}
@@ -159,12 +168,12 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                     className={css(classNames.lineContainer, classNames.inactiveSection)}
                     style={{ [lengthString]: 100 - thumbOffsetPercent + '%' }}
                   />
-                  {max}
                 </>
               )}
             </div>
           </div>
         </div>
+        <div />
       </div>
     ) as React.ReactElement<{}>;
   }
