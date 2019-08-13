@@ -523,7 +523,9 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     // (undocumented)
     focus(): void;
     // (undocumented)
-    static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState;
+    static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState | null;
+    // (undocumented)
+    readonly indeterminate: boolean;
     render(): JSX.Element;
 }
 
@@ -949,6 +951,23 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
 // @public (undocumented)
 export const DetailsRowCheck: React.FunctionComponent<IDetailsRowCheckProps>;
+
+// @public (undocumented)
+export const DetailsRowGlobalClassNames: {
+    root: string;
+    compact: string;
+    cell: string;
+    cellAnimation: string;
+    cellCheck: string;
+    check: string;
+    cellMeasurer: string;
+    listCellFirstChild: string;
+    isContentUnselectable: string;
+    isSelected: string;
+    isCheckVisible: string;
+    isRowHeader: string;
+    fields: string;
+};
 
 // @public (undocumented)
 export const Dialog: React.StatelessComponent<IDialogProps>;
@@ -2102,6 +2121,7 @@ export interface ICellStyleProps {
 export interface ICheckbox {
     checked: boolean;
     focus: () => void;
+    indeterminate: boolean;
 }
 
 // @public
@@ -2117,7 +2137,9 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     className?: string;
     componentRef?: IRefObject<ICheckbox>;
     defaultChecked?: boolean;
+    defaultIndeterminate?: boolean;
     disabled?: boolean;
+    indeterminate?: boolean;
     inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
     keytipProps?: IKeytipProps;
     label?: string;
@@ -2129,7 +2151,9 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 
 // @public (undocumented)
 export interface ICheckboxState {
-    isChecked?: boolean;
+    isChecked?: boolean | undefined;
+    // (undocumented)
+    isIndeterminate?: boolean;
 }
 
 // @public (undocumented)
@@ -2140,6 +2164,8 @@ export interface ICheckboxStyleProps {
     className?: string;
     // (undocumented)
     disabled?: boolean;
+    // (undocumented)
+    indeterminate?: boolean;
     // (undocumented)
     isUsingCustomLabelRender: boolean;
     // (undocumented)
@@ -6771,6 +6797,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
     originFromZero?: boolean;
     showValue?: boolean;
+    snapToStep?: boolean;
     step?: number;
     styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
     theme?: ITheme;

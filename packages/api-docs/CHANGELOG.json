@@ -2,6 +2,20 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Mon, 12 Aug 2019 12:30:25 GMT",
+      "tag": "@uifabric/api-docs_v7.0.5",
+      "version": "7.0.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Upgrade api-extractor-model",
+            "author": "naethell@microsoft.com",
+            "commit": "1f84eeff39abbeb9783b12aea439b2a517ad4d50"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jul 2019 18:58:57 GMT",
       "tag": "@uifabric/api-docs_v7.0.4",
       "version": "7.0.4",

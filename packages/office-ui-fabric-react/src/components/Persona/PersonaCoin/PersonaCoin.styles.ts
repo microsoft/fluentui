@@ -1,5 +1,5 @@
 import { IPersonaCoinStyleProps, IPersonaCoinStyles, PersonaSize } from '../Persona.types';
-import { HighContrastSelector, FontSizes, FontWeights, getGlobalClassNames } from '../../../Styling';
+import { HighContrastSelector, FontWeights, getGlobalClassNames } from '../../../Styling';
 import { sizeBoolean, sizeToPixels } from '../PersonaConsts';
 
 const GlobalClassNames = {
@@ -23,7 +23,7 @@ const GlobalClassNames = {
 export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => {
   const { className, theme, coinSize } = props;
 
-  const { palette } = theme;
+  const { palette, fonts } = theme;
 
   const size = sizeBoolean(props.size as PersonaSize);
 
@@ -38,7 +38,7 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
   return {
     coin: [
       classNames.coin,
-      theme.fonts.medium,
+      fonts.medium,
       size.isSize8 && classNames.size8,
       size.isSize10 && classNames.size10,
       size.isSize16 && classNames.size16,
@@ -54,7 +54,7 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
     ],
 
     size10WithoutPresenceIcon: {
-      fontSize: '10px',
+      fontSize: fonts.xSmall.fontSize,
       position: 'absolute',
       top: '5px',
       right: 'auto',
@@ -111,7 +111,7 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
       {
         borderRadius: '50%',
         color: props.showUnknownPersonaCoin ? unknownPersonaFontColor : palette.white,
-        fontSize: FontSizes.large,
+        fontSize: fonts.large.fontSize,
         fontWeight: FontWeights.semibold,
         lineHeight: dimension === 48 ? 46 : dimension, // copying the logic for the dimensions; defaulted to 46 for size48
         height: dimension,
@@ -135,31 +135,31 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
       },
 
       dimension < 32 && {
-        fontSize: FontSizes.mini
+        fontSize: fonts.xSmall.fontSize
       },
 
       dimension >= 32 &&
         dimension < 40 && {
-          fontSize: FontSizes.medium
+          fontSize: fonts.medium.fontSize
         },
 
       dimension >= 40 &&
         dimension < 56 && {
-          fontSize: 16 // TODO needs to replaced after type ramp reconcile
+          fontSize: fonts.mediumPlus.fontSize
         },
 
       dimension >= 56 &&
         dimension < 72 && {
-          fontSize: 20 // TODO needs to replaced after type ramp reconcile
+          fontSize: fonts.xLarge.fontSize
         },
 
       dimension >= 72 &&
         dimension < 100 && {
-          fontSize: FontSizes.xxLarge
+          fontSize: fonts.xxLarge.fontSize
         },
 
       dimension >= 100 && {
-        fontSize: FontSizes.superLarge
+        fontSize: fonts.superLarge.fontSize
       }
     ]
   };

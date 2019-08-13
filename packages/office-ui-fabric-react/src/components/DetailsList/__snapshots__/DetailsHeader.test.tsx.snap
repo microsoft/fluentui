@@ -29,10 +29,10 @@ exports[`DetailsHeader can render 1`] = `
         vertical-align: top;
         white-space: nowrap;
       }
-      &:hover $check {
+      &:hover .ms-DetailsHeader-check {
         opacity: 1;
       }
-      & ms-TooltipHost $checkTooltip {
+      & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
         display: block;
       }
   data-automationid="DetailsHeader"
@@ -96,13 +96,14 @@ exports[`DetailsHeader can render 1`] = `
   >
     <span
       className=
-
+          ms-DetailsHeader-checkTooltip
 
     >
       <div
         aria-checked={false}
         className=
             ms-DetailsRow-check
+            ms-DetailsHeader-check
             ms-DetailsRow-check--isHeader
             ms-Check-checkHost
             {
@@ -431,7 +432,7 @@ exports[`DetailsHeader can render 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -645,7 +646,7 @@ exports[`DetailsHeader can render 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -858,7 +859,7 @@ exports[`DetailsHeader can render 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -908,13 +909,13 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         vertical-align: top;
         white-space: nowrap;
       }
-      &:hover $check {
+      &:hover .ms-DetailsHeader-check {
         opacity: 1;
       }
-      & ms-TooltipHost $checkTooltip {
+      & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
         display: block;
       }
-      & $cell$cellIsCheck {
+      & .ms-DetailsHeader-cellIsCheck {
         visibility: hidden;
       }
   data-automationid="DetailsHeader"
@@ -977,12 +978,13 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
   >
     <span
       className=
-
+          ms-DetailsHeader-checkTooltip
 
     >
       <div
         className=
             ms-DetailsRow-check
+            ms-DetailsHeader-check
             ms-DetailsRow-check--isDisabled
             ms-DetailsRow-check--isHeader
             ms-Check-checkHost
@@ -1211,7 +1213,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -1425,7 +1427,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -1638,7 +1640,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -1688,10 +1690,10 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         vertical-align: top;
         white-space: nowrap;
       }
-      &:hover $check {
+      &:hover .ms-DetailsHeader-check {
         opacity: 1;
       }
-      & ms-TooltipHost $checkTooltip {
+      & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
         display: block;
       }
   data-automationid="DetailsHeader"
@@ -1755,13 +1757,14 @@ exports[`DetailsHeader renders accessible labels 1`] = `
   >
     <span
       className=
-
+          ms-DetailsHeader-checkTooltip
 
     >
       <div
         aria-checked={false}
         className=
             ms-DetailsRow-check
+            ms-DetailsHeader-check
             ms-DetailsRow-check--isHeader
             ms-Check-checkHost
             {
@@ -2090,7 +2093,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -2328,7 +2331,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -2483,7 +2486,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         <i
           aria-hidden={true}
           className=
-
+              ms-DetailsColumn-nearIcon
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2504,7 +2507,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         <i
           aria-hidden={true}
           className=
-
+              ms-DetailsColumn-nearIcon
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2609,7 +2612,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;

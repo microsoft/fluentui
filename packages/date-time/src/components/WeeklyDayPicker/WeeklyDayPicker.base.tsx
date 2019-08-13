@@ -8,11 +8,12 @@ import {
   FirstWeekOfYear,
   ICalendarFormatDateCallbacks,
   ICalendarStrings,
-  ICalendarIconStrings
+  ICalendarIconStrings,
+  AnimationDirection
 } from '../Calendar/Calendar.types';
 import { CalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid';
 import { ICalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid.types';
-import { compareDatePart, getStartDateOfWeek, addDays } from '../../utilities/dateMath/DateMath';
+import { compareDatePart, getStartDateOfWeek, addDays, compareDates } from '../../utilities/dateMath/DateMath';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 const getClassNames = classNamesFunction<IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles>();
@@ -64,14 +65,31 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
     firstDayOfWeek: DayOfWeek.Sunday,
     strings: DEFAULT_STRINGS,
     navigationIcons: defaultIconStrings,
-    dateTimeFormatter: defaultDateTimeFormatterCallbacks
+    dateTimeFormatter: defaultDateTimeFormatterCallbacks,
+    animationDirection: AnimationDirection.Horizontal
   };
 
   private _dayGrid = React.createRef<ICalendarDayGrid>();
   private _focusOnUpdate: boolean;
   private _initialTouchX: number | undefined;
 
-  constructor(props: IWeeklyDayPickerProps) {
+  public static getDerivedStateFromProps(props: IWeeklyDayPickerProps, state: IWeeklyDayPickerState): IWeeklyDayPickerState {
+    const currentDate = props.initialDate && !isNaN(props.initialDate.getTime()) ? props.initialDate : props.today || new Date();
+
+    if (!compareDates(currentDate, state.selectedDate)) {
+      return {
+        selectedDate: currentDate,
+        navigatedDate: currentDate
+      };
+    }
+
+    return {
+      selectedDate: currentDate,
+      navigatedDate: state.navigatedDate
+    };
+  }
+
+  public constructor(props: IWeeklyDayPickerProps) {
     super(props);
     const currentDate = props.initialDate && !isNaN(props.initialDate.getTime()) ? props.initialDate : props.today || new Date();
 
@@ -89,7 +107,19 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
   }
 
   public render(): JSX.Element {
-    const { strings, dateTimeFormatter, firstDayOfWeek, minDate, maxDate, restrictedDates, today, styles, theme, className } = this.props;
+    const {
+      strings,
+      dateTimeFormatter,
+      firstDayOfWeek,
+      minDate,
+      maxDate,
+      restrictedDates,
+      today,
+      styles,
+      theme,
+      className,
+      animationDirection
+    } = this.props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -117,6 +147,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
           onNavigateDate={this._onNavigateDate}
           today={today}
           lightenDaysOutsideNavigatedMonth={false}
+          animationDirection={animationDirection}
         />
         {this.renderNextWeekNavigationButton(classNames)}
       </div>
