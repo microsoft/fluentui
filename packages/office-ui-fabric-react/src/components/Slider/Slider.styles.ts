@@ -311,6 +311,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       },
       vertical
         ? {
+            margin: '0 auto',
             height: '0px',
             transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
           }

@@ -295,7 +295,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
   //returns an array of spans each span pertains to a custom label the user passes in
   private _addLabels(cssRegularLabelClassNames: string | undefined): JSX.Element[] {
-    console.log('REACJED!!');
     const { vertical, enableMarks, min, max } = this.props;
     if (min === undefined || max === undefined) {
       return [];
@@ -304,8 +303,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     const labels: JSX.Element[] = [];
     if (Array.isArray(enableMarks)) {
       for (let i = 0; i < enableMarks.length; i++) {
-        console.log(enableMarks[i].value);
-        console.log(enableMarks[i].label);
         let currentLabel = (
           <span
             className={cssRegularLabelClassNames}
@@ -315,7 +312,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             {enableMarks[i].label}
           </span>
         );
-        console.log(labels);
         labels.push(currentLabel);
       }
     }
