@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 08 Aug 2019 12:32:41 GMT",
+      "tag": "@uifabric/fabric-website_v7.3.2",
+      "version": "7.3.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update webpack configs to make Monaco work cross-domain",
+            "author": "elcraig@microsoft.com",
+            "commit": "3e6d5375a58386bc28819855d98c0c1a6b2d790f"
+          },
+          {
+            "comment": "Fix some markdown bookmarks to enable click navigation to the bookmarked sections.",
+            "author": "vibraga@microsoft.com",
+            "commit": "b8567798e866ede6bd95e5fcbc99f2f0cdcea830"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Aug 2019 12:32:28 GMT",
       "tag": "@uifabric/fabric-website_v7.3.1",
       "version": "7.3.1",

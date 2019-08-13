@@ -2,7 +2,16 @@ import * as React from 'react';
 import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
-import { styled, Customizer, classNamesFunction, css, isIE11, CustomizerContext, warn } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  styled,
+  Customizer,
+  classNamesFunction,
+  css,
+  isIE11,
+  CustomizerContext,
+  warn,
+  getWindow
+} from 'office-ui-fabric-react/lib/Utilities';
 import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
@@ -18,7 +27,8 @@ import { getSetting } from '../../index2';
 import { Spinner, SpinnerSize } from 'office-ui-fabric-react';
 
 export interface IExampleCardState {
-  isCodeVisible?: boolean; // only used if props.isCodeVisible and props.onToggleEditor are undefined
+  /** only used if props.isCodeVisible and props.onToggleEditor are undefined */
+  isCodeVisible?: boolean;
   schemeIndex: number;
   themeIndex: number;
   error?: string;
@@ -51,8 +61,12 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
       schemeIndex: 0,
       themeIndex: 0
     };
+    const win = getWindow();
     this.canRenderLiveEditor =
-      getSetting('useEditor') === '1' && !isIE11() && transformExample(props.code!, 'placeholder').error === undefined;
+      !!(win && (win as any).MonacoEnvironment) && // tslint:disable-line:no-any
+      getSetting('useEditor') === '1' &&
+      !isIE11() &&
+      transformExample(props.code!, 'placeholder').error === undefined;
 
     if (this.canRenderLiveEditor) {
       import('office-ui-fabric-react').then(Fabric => {

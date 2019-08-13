@@ -2,6 +2,53 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Tue, 13 Aug 2019 12:31:12 GMT",
+      "tag": "@uifabric/example-app-base_v7.5.1",
+      "version": "7.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated snpashots and styles which use $ syntax.",
+            "author": "dzearing@microsoft.com",
+            "commit": ""
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Aug 2019 12:30:25 GMT",
+      "tag": "@uifabric/example-app-base_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding import scripts check",
+            "author": "esteban.230@hotmail.com",
+            "commit": "3a0a0f24e79ceb81380a3f61146db0d126101b2c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Aug 2019 12:32:41 GMT",
+      "tag": "@uifabric/example-app-base_v7.4.1",
+      "version": "7.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "getQueryParam gracefully falls back when window is not defined",
+            "author": "jdh@microsoft.com",
+            "commit": "4bdb5e699873847d33d72849ffc69ba8f1d761b3"
+          },
+          {
+            "comment": "Add check for monaco global in example card",
+            "author": "elcraig@microsoft.com",
+            "commit": "b36b034d883fb1e85b9e3da13eb87f281b3262e3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Aug 2019 12:32:28 GMT",
       "tag": "@uifabric/example-app-base_v7.4.0",
       "version": "7.4.0",

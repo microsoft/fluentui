@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Fri, 09 Aug 2019 12:31:50 GMT",
+      "tag": "@uifabric/styling_v7.4.1",
+      "version": "7.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix font theme variable values for legacy-load-theme",
+            "author": "phkuo@microsoft.com",
+            "commit": "321af43b33cab1c3111bdddcf4b008a872d84f95"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Aug 2019 12:33:29 GMT",
       "tag": "@uifabric/styling_v7.4.0",
       "version": "7.4.0",

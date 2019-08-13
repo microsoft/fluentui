@@ -3380,6 +3380,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           }
     >
       <input
+        aria-checked="false"
         aria-label="Enable caching"
         checked={false}
         className=
@@ -3443,6 +3444,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 justify-content: center;
                 margin-right: 4px;
                 overflow: hidden;
+                position: relative;
                 transition-duration: 200ms;
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -3521,6 +3523,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           }
     >
       <input
+        aria-checked="false"
         aria-label="Set onGrowData"
         checked={false}
         className=
@@ -3584,6 +3587,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 justify-content: center;
                 margin-right: 4px;
                 overflow: hidden;
+                position: relative;
                 transition-duration: 200ms;
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -3662,6 +3666,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           }
     >
       <input
+        aria-checked="false"
         aria-label="Buttons checked"
         checked={false}
         className=
@@ -3725,6 +3730,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 justify-content: center;
                 margin-right: 4px;
                 overflow: hidden;
+                position: relative;
                 transition-duration: 200ms;
                 transition-property: background, border, border-color;
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
