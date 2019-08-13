@@ -126,13 +126,13 @@ exports[`Component Examples renders Stack.Vertical.Shrink.Example.tsx correctly 
               background-color: Highlight;
             }
             &:active .ms-Slider-inactive {
-              background-color: #c7e0f4;
+              background-color: #deecf9;
             }
             @media screen and (-ms-high-contrast: active){&:active .ms-Slider-inactive {
               border-color: Highlight;
             }
             &:hover .ms-Slider-inactive {
-              background-color: #c7e0f4;
+              background-color: #deecf9;
             }
             @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-inactive {
               border-color: Highlight;
