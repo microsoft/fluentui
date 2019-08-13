@@ -200,10 +200,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    padding-bottom: 2px;
                     position: absolute;
                     transform: translateX(-6px);
-                    width: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -222,10 +220,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    padding-bottom: 2px;
                     position: absolute;
                     transform: translateX(-6px);
-                    width: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -590,10 +586,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    padding-bottom: 2px;
                     position: absolute;
                     transform: translateX(-6px);
-                    width: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -612,10 +606,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    padding-bottom: 2px;
                     position: absolute;
                     transform: translateX(-6px);
-                    width: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -850,10 +842,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #edebe9;
                     height: 0px;
-                    padding-bottom: 2px;
                     position: absolute;
                     transform: translateX(-6px);
-                    width: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: GrayText;
@@ -872,10 +862,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #edebe9;
                     height: 0px;
-                    padding-bottom: 2px;
                     position: absolute;
                     transform: translateX(-6px);
-                    width: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: GrayText;
@@ -1150,10 +1138,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    padding-bottom: 2px;
                     position: absolute;
                     transform: translateX(-6px);
-                    width: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -1172,10 +1158,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    padding-bottom: 2px;
                     position: absolute;
                     transform: translateX(-6px);
-                    width: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -1445,10 +1429,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    padding-bottom: 2px;
                     position: absolute;
                     transform: translateX(-6px);
-                    width: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -1467,10 +1449,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    padding-bottom: 2px;
                     position: absolute;
                     transform: translateX(-6px);
-                    width: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -1759,10 +1739,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    padding-bottom: 2px;
                     position: absolute;
                     transform: translateX(-6px);
-                    width: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -1781,10 +1759,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    padding-bottom: 2px;
                     position: absolute;
                     transform: translateX(-6px);
-                    width: 10px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
