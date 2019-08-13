@@ -505,7 +505,7 @@ export class Callout extends React.Component<ICalloutProps, ICalloutState> {
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 
 // @public (undocumented)
-export const Check: React.StatelessComponent<ICheckProps>;
+export const Check: React.FunctionComponent<ICheckProps>;
 
 // @public (undocumented)
 export const CheckBase: React.FunctionComponent<ICheckProps>;
@@ -873,6 +873,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     static defaultProps: {
         selectAllVisibility: SelectAllVisibility;
         collapseAllVisibility: CollapseAllVisibility;
+        useFastIcons: boolean;
     };
     focus(): boolean;
     // (undocumented)
@@ -897,6 +898,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         checkboxVisibility: CheckboxVisibility;
         isHeaderVisible: boolean;
         compact: boolean;
+        useFastIcons: boolean;
     };
     // (undocumented)
     focusIndex(index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;

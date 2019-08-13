@@ -74,6 +74,7 @@ export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumn
   /**
    * Whether to use fast icon and check components. The icons can't be targeted by customization
    * but are still customizable via class names.
+   * @defaultvalue true
    */
   useFastIcons?: boolean;
 }

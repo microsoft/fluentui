@@ -19,7 +19,7 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
     theme,
     compact,
     onRenderDetailsCheckbox,
-    useFastIcons, // must be removed from buttonProps
+    useFastIcons = true, // must be removed from buttonProps
     ...buttonProps
   } = props;
   const defaultCheckboxRender = useFastIcons ? _fastDefaultCheckboxRender : _defaultCheckboxRender;

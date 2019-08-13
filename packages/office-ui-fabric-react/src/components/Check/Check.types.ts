@@ -39,6 +39,7 @@ export interface ICheckProps {
   /**
    * Whether to use fast icon components. The icons can't be targeted by customization but are
    * still customizable via class names.
+   * @defaultvalue true
    */
   useFastIcons?: boolean;
 }

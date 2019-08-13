@@ -44,7 +44,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       styles,
       theme,
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
-      useFastIcons
+      useFastIcons = true
     } = this.props;
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
 

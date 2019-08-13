@@ -69,7 +69,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
     isHeaderVisible: true,
-    compact: false
+    compact: false,
+    useFastIcons: true
   };
 
   // References

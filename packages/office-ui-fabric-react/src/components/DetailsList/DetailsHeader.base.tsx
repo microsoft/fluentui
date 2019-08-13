@@ -26,7 +26,8 @@ const NO_COLUMNS: IColumn[] = [];
 export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {
   public static defaultProps = {
     selectAllVisibility: SelectAllVisibility.visible,
-    collapseAllVisibility: CollapseAllVisibility.visible
+    collapseAllVisibility: CollapseAllVisibility.visible,
+    useFastIcons: true
   };
 
   private _classNames: IClassNames<IDetailsHeaderStyles>;
