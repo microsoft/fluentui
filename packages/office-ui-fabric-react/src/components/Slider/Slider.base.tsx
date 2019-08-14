@@ -69,7 +69,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       theme,
       originFromZero,
       enableMarks,
-      showThumbTooltip
+      showThumbTooltip,
+      valueFormat
     } = this.props;
     const value = this.value;
     const renderedValue = this.renderedValue;
@@ -101,7 +102,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       <div className={classNames.root}>
         {label && (
           <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })} disabled={disabled}>
-            {label} : {value}
+            {label} : {valueFormat ? valueFormat(value!) : value}
           </Label>
         )}
         <div className={classNames.container}>
