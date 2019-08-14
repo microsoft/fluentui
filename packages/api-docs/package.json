@@ -14,6 +14,7 @@
     "@types/node": "^8.10.29",
     "@uifabric/build": "^7.0.0",
     "@uifabric/merge-styles": "^7.4.0",
+    "@uifabric/react-cards": "^0.107.6",
     "@uifabric/styling": "^7.4.1",
     "@uifabric/tslint-rules": "^7.0.3",
     "@uifabric/utilities": "^7.0.7",
