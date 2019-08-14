@@ -5,6 +5,7 @@ import { IBaseProps, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * @deprecated Icon type is inferred based on presence of `IIconProps.imageProps`
+ * {@docCategory Icon}
  */
 export enum IconType {
   /**
@@ -97,7 +98,7 @@ export interface IIconStyles {
 }
 
 /**
- * Props for a basic icon component which only supports font glyphs and isn't themeable.
+ * Props for a basic icon component which only supports font glyphs and can't be targeted by customizations.
  * {@docCategory Icon}
  */
 export interface IFontIconProps extends React.HTMLAttributes<HTMLElement> {
@@ -115,7 +116,7 @@ export interface IFontIconProps extends React.HTMLAttributes<HTMLElement> {
 
 /**
  * Props for a basic image icon component which doesn't directly provide image load error handling
- * and isn't themeable.
+ * and can't be targeted by customizations.
  * {@docCategory Icon}
  */
 export interface IImageIconProps extends React.HTMLAttributes<HTMLElement> {
