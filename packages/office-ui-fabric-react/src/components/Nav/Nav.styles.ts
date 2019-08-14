@@ -188,7 +188,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       },
       isLink && {
         display: 'block',
-        width: `${leftPaddingExpanded - 2}px`,
+        width: leftPaddingExpanded - 2,
         height: navHeight - 2,
         position: 'absolute',
         top: '1px',

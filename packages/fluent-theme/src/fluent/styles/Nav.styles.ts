@@ -12,7 +12,7 @@ export const NavStyles = (props: INavStyleProps): Partial<INavStyles> => {
       },
       !isDisabled && {
         selectors: {
-          '.ms-Nav-compositeLink:hover &': {
+          '.${classNames.compositeLink}:hover &': {
             backgroundColor: semanticColors.bodyBackgroundHovered
           }
         }
@@ -28,7 +28,7 @@ export const NavStyles = (props: INavStyleProps): Partial<INavStyles> => {
           '&:hover': {
             backgroundColor: semanticColors.bodyBackgroundHovered
           },
-          '$compositeLink:hover &': {
+          '.${classNames.compositeLink}:hover &': {
             backgroundColor: semanticColors.bodyBackgroundHovered
           }
         }
