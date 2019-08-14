@@ -214,7 +214,7 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                   }
               style={
                 Object {
-                  "left": "99%",
+                  "left": "100%",
                 }
               }
             >

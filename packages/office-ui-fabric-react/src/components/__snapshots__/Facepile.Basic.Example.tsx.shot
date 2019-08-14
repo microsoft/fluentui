@@ -661,7 +661,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                     }
                 style={
                   Object {
-                    "left": "99%",
+                    "left": "100%",
                   }
                 }
               >

@@ -200,7 +200,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    margin-bottom: 0;
+                    margin-bottom: 20px;
                     margin-left: auto;
                     margin-right: auto;
                     margin-top: 0;
@@ -224,7 +224,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    margin-bottom: 0;
+                    margin-bottom: 20px;
                     margin-left: auto;
                     margin-right: auto;
                     margin-top: 0;
@@ -236,7 +236,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   }
               style={
                 Object {
-                  "bottom": "99%",
+                  "bottom": "100%",
                 }
               }
             >
@@ -594,7 +594,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    margin-bottom: 0;
+                    margin-bottom: 20px;
                     margin-left: auto;
                     margin-right: auto;
                     margin-top: 0;
@@ -618,7 +618,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    margin-bottom: 0;
+                    margin-bottom: 20px;
                     margin-left: auto;
                     margin-right: auto;
                     margin-top: 0;
@@ -630,7 +630,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   }
               style={
                 Object {
-                  "bottom": "99%",
+                  "bottom": "100%",
                 }
               }
             >
@@ -858,7 +858,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #edebe9;
                     height: 0px;
-                    margin-bottom: 0;
+                    margin-bottom: 20px;
                     margin-left: auto;
                     margin-right: auto;
                     margin-top: 0;
@@ -882,7 +882,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #edebe9;
                     height: 0px;
-                    margin-bottom: 0;
+                    margin-bottom: 20px;
                     margin-left: auto;
                     margin-right: auto;
                     margin-top: 0;
@@ -894,7 +894,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   }
               style={
                 Object {
-                  "bottom": "99%",
+                  "bottom": "100%",
                 }
               }
             >
@@ -1162,7 +1162,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    margin-bottom: 0;
+                    margin-bottom: 20px;
                     margin-left: auto;
                     margin-right: auto;
                     margin-top: 0;
@@ -1186,7 +1186,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    margin-bottom: 0;
+                    margin-bottom: 20px;
                     margin-left: auto;
                     margin-right: auto;
                     margin-top: 0;
@@ -1198,7 +1198,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   }
               style={
                 Object {
-                  "bottom": "99%",
+                  "bottom": "100%",
                 }
               }
             >
@@ -1326,7 +1326,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
     >
       Formatted value
        : 
-      0
+      0%
     </label>
     <div
       className=
@@ -1461,7 +1461,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    margin-bottom: 0;
+                    margin-bottom: 20px;
                     margin-left: auto;
                     margin-right: auto;
                     margin-top: 0;
@@ -1485,7 +1485,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    margin-bottom: 0;
+                    margin-bottom: 20px;
                     margin-left: auto;
                     margin-right: auto;
                     margin-top: 0;
@@ -1497,7 +1497,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   }
               style={
                 Object {
-                  "bottom": "99%",
+                  "bottom": "100%",
                 }
               }
             >
@@ -1779,7 +1779,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    margin-bottom: 0;
+                    margin-bottom: 20px;
                     margin-left: auto;
                     margin-right: auto;
                     margin-top: 0;
@@ -1803,7 +1803,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
-                    margin-bottom: 0;
+                    margin-bottom: 20px;
                     margin-left: auto;
                     margin-right: auto;
                     margin-top: 0;
@@ -1815,7 +1815,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   }
               style={
                 Object {
-                  "bottom": "99%",
+                  "bottom": "100%",
                 }
               }
             >

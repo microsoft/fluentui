@@ -193,7 +193,7 @@ exports[`Slider renders correctly 1`] = `
                 }
             style={
               Object {
-                "left": "99%",
+                "left": "100%",
               }
             }
           >

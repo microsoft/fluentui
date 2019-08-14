@@ -250,7 +250,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                       }
                   style={
                     Object {
-                      "left": "99%",
+                      "left": "100%",
                     }
                   }
                 >
@@ -539,7 +539,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                       }
                   style={
                     Object {
-                      "left": "99%",
+                      "left": "100%",
                     }
                   }
                 >
