@@ -580,6 +580,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       ? this._classNames.dropdownItemDisabled
       : this._classNames.dropdownItem;
 
+    const { title = item.text } = item;
+
     return !this.props.multiSelect ? (
       <CommandButton
         id={id + '-list' + item.index}
@@ -595,7 +597,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
         ariaLabel={item.ariaLabel}
-        title={item.title ? item.title : item.text}
+        title={title}
       >
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>
