@@ -5347,7 +5347,7 @@ export enum ImageFit {
     none = 3
 }
 
-// @public (undocumented)
+// @public
 export const ImageIcon: React.FunctionComponent<IImageIconProps>;
 
 // @public (undocumented)
