@@ -549,8 +549,6 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     focus(): void;
     // (undocumented)
     render(): JSX.Element;
-    // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: IChoiceGroupProps): void;
 }
 
 // @public (undocumented)
