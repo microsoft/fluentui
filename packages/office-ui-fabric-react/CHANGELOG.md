@@ -1,6 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 12 Aug 2019 12:30:25 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Aug 2019 12:30:13 GMT and should not be manually modified.
+
+## 7.24.0
+Wed, 14 Aug 2019 12:30:13 GMT
+
+### Minor changes
+
+- ChoiceGroup: fix focusing on options and general cleanup (elcraig@microsoft.com)
+
+### Patches
+
+- Searchbox: Updates styles to latest design specs and added semantic slots usage. (v-mare@microsoft.com)
+
+## 7.23.0
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Minor changes
+
+- Checkbox: added indeterminate state (v-mare@microsoft.com)
+
+### Patches
+
+- Updating snpashots and styles which use $ syntax. (dzearing@microsoft.com)
+,- Changing breadcrumb items to links (camontei@microsoft.com)
+,- Pivot: pivot content (icon, text, count) should be consistently aligned via styling. (dzearing@microsoft.com)
 
 ## 7.22.2
 Mon, 12 Aug 2019 12:30:25 GMT

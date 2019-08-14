@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 13 Aug 2019 12:31:12 GMT",
+      "tag": "@uifabric/charting_v0.134.1",
+      "version": "0.134.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix donut chart transform when height and width props change",
+            "author": "v-ragor@microsoft.com",
+            "commit": "7c5619a4fdf31fdbb966a1e50c9cc12a2dcb0180"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Aug 2019 12:32:28 GMT",
       "tag": "@uifabric/charting_v0.134.0",
       "version": "0.134.0",

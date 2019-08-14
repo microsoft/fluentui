@@ -2,6 +2,20 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Tue, 13 Aug 2019 12:31:12 GMT",
+      "tag": "@uifabric/fluent-theme_v7.1.1",
+      "version": "7.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snpashots and styles which use $ syntax.",
+            "author": "dzearing@microsoft.com",
+            "commit": ""
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Aug 2019 12:32:28 GMT",
       "tag": "@uifabric/fluent-theme_v7.1.0",
       "version": "7.1.0",

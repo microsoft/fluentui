@@ -121,7 +121,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       font-weight: 600;
                     }
               >
-                <button
+                <a
                   className=
                       ms-Link
                       ms-Breadcrumb-itemLink
@@ -209,7 +209,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: #323130;
                       }
                   onClick={[Function]}
-                  type="button"
                 >
                   <div
                     className=
@@ -225,7 +224,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   >
                     Files
                   </div>
-                </button>
+                </a>
                 <i
                   aria-hidden={true}
                   className=
@@ -283,7 +282,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       font-weight: 600;
                     }
               >
-                <button
+                <a
                   className=
                       ms-Link
                       ms-Breadcrumb-itemLink
@@ -371,7 +370,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: #323130;
                       }
                   onClick={[Function]}
-                  type="button"
                 >
                   <div
                     className=
@@ -387,7 +385,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   >
                     This is folder 1
                   </div>
-                </button>
+                </a>
                 <i
                   aria-hidden={true}
                   className=
@@ -445,7 +443,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       font-weight: 600;
                     }
               >
-                <button
+                <a
                   className=
                       ms-Link
                       ms-Breadcrumb-itemLink
@@ -533,7 +531,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: #323130;
                       }
                   onClick={[Function]}
-                  type="button"
                 >
                   <div
                     className=
@@ -549,7 +546,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   >
                     This is folder 2 with a long name
                   </div>
-                </button>
+                </a>
                 <i
                   aria-hidden={true}
                   className=
@@ -607,7 +604,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       font-weight: 600;
                     }
               >
-                <button
+                <a
                   className=
                       ms-Link
                       ms-Breadcrumb-itemLink
@@ -695,7 +692,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: #323130;
                       }
                   onClick={[Function]}
-                  type="button"
                 >
                   <div
                     className=
@@ -711,7 +707,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   >
                     This is folder 3 long
                   </div>
-                </button>
+                </a>
                 <i
                   aria-hidden={true}
                   className=
@@ -769,7 +765,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       font-weight: 600;
                     }
               >
-                <button
+                <a
                   className=
                       ms-Link
                       ms-Breadcrumb-itemLink
@@ -857,7 +853,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: #323130;
                       }
                   onClick={[Function]}
-                  type="button"
                 >
                   <div
                     className=
@@ -873,7 +868,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   >
                     This is folder 4
                   </div>
-                </button>
+                </a>
                 <i
                   aria-hidden={true}
                   className=
@@ -931,7 +926,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       font-weight: 600;
                     }
               >
-                <button
+                <a
                   aria-current="page"
                   className=
                       ms-Link
@@ -1020,7 +1015,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: #323130;
                       }
                   onClick={[Function]}
-                  type="button"
                 >
                   <div
                     className=
@@ -1036,7 +1030,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   >
                     This is folder 5 another
                   </div>
-                </button>
+                </a>
               </li>
             </ol>
           </div>
@@ -1163,7 +1157,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       font-weight: 600;
                     }
               >
-                <button
+                <a
                   className=
                       ms-Link
                       ms-Breadcrumb-itemLink
@@ -1251,7 +1245,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: #323130;
                       }
                   onClick={[Function]}
-                  type="button"
                 >
                   <div
                     className=
@@ -1267,7 +1260,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   >
                     Files
                   </div>
-                </button>
+                </a>
                 <div
                   className=
                       ms-TooltipHost
@@ -1318,7 +1311,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       font-weight: 600;
                     }
               >
-                <button
+                <a
                   className=
                       ms-Link
                       ms-Breadcrumb-itemLink
@@ -1406,7 +1399,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: #323130;
                       }
                   onClick={[Function]}
-                  type="button"
                 >
                   <div
                     className=
@@ -1422,7 +1414,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   >
                     This is folder 1
                   </div>
-                </button>
+                </a>
                 <div
                   className=
                       ms-TooltipHost
@@ -1473,7 +1465,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       font-weight: 600;
                     }
               >
-                <button
+                <a
                   className=
                       ms-Link
                       ms-Breadcrumb-itemLink
@@ -1561,7 +1553,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: #323130;
                       }
                   onClick={[Function]}
-                  type="button"
                 >
                   <div
                     className=
@@ -1577,7 +1568,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   >
                     This is folder 2
                   </div>
-                </button>
+                </a>
                 <div
                   className=
                       ms-TooltipHost
@@ -1628,7 +1619,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       font-weight: 600;
                     }
               >
-                <button
+                <a
                   className=
                       ms-Link
                       ms-Breadcrumb-itemLink
@@ -1716,7 +1707,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: #323130;
                       }
                   onClick={[Function]}
-                  type="button"
                 >
                   <div
                     className=
@@ -1732,7 +1722,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   >
                     This is folder 3
                   </div>
-                </button>
+                </a>
                 <div
                   className=
                       ms-TooltipHost
@@ -1783,7 +1773,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       font-weight: 600;
                     }
               >
-                <button
+                <a
                   className=
                       ms-Link
                       ms-Breadcrumb-itemLink
@@ -1871,7 +1861,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: #323130;
                       }
                   onClick={[Function]}
-                  type="button"
                 >
                   <div
                     className=
@@ -1887,7 +1876,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   >
                     This is folder 4
                   </div>
-                </button>
+                </a>
                 <div
                   className=
                       ms-TooltipHost
@@ -1938,7 +1927,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       font-weight: 600;
                     }
               >
-                <button
+                <a
                   aria-current="page"
                   className=
                       ms-Link
@@ -2027,7 +2016,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         color: #323130;
                       }
                   onClick={[Function]}
-                  type="button"
                 >
                   <div
                     className=
@@ -2043,7 +2031,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   >
                     This is folder 5
                   </div>
-                </button>
+                </a>
               </li>
             </ol>
           </div>
