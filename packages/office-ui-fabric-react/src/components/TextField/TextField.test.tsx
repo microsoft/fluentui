@@ -638,6 +638,8 @@ describe('TextField onChange', () => {
     expectedValue = typeof expectedValue === 'string' ? expectedValue : changeValue;
 
     const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
+    // Fire input AND change events to more realistically test
+    ReactTestUtils.Simulate.input(inputDOM, mockEvent(changeValue));
     ReactTestUtils.Simulate.change(inputDOM, mockEvent(changeValue));
 
     expect(onChange).toHaveBeenCalledTimes(calls);
