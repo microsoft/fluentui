@@ -93,7 +93,8 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     this._events = new EventGroup(this);
   }
 
-  public componentWillReceiveProps(nextProps: ITileProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: ITileProps): void {
     const { selection, selectionIndex } = this.props;
 
     const { selection: nextSelection, selectionIndex: nextSelectionIndex = -1 } = nextProps;

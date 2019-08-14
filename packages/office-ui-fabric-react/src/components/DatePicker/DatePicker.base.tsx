@@ -86,7 +86,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     this._preventFocusOpeningPicker = false;
   }
 
-  public componentWillReceiveProps(nextProps: IDatePickerProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: IDatePickerProps): void {
     const { formatDate, value } = nextProps;
 
     if (

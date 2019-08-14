@@ -44,7 +44,8 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     };
   }
 
-  public componentWillReceiveProps(nextProps: IPersonaCoinProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: IPersonaCoinProps): void {
     if (nextProps.imageUrl !== this.props.imageUrl) {
       this.setState({
         isImageLoaded: false,

@@ -4,14 +4,16 @@ import { IRefObject } from '../../../Utilities';
 import { IChoiceGroupOption } from '../../ChoiceGroup/ChoiceGroup.types';
 
 /**
+ * @deprecated Use `IChoiceGroupOptionProps['onFocus']` directly
  * {@docCategory ChoiceGroup}
  */
-export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
+export type OnFocusCallback = IChoiceGroupOptionProps['onFocus'];
 
 /**
+ * @deprecated Use `IChoiceGroupOptionProps['onChange']` directly
  * {@docCategory ChoiceGroup}
  */
-export type OnChangeCallback = (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
+export type OnChangeCallback = IChoiceGroupOptionProps['onChange'];
 
 /**
  * {@docCategory ChoiceGroup}
@@ -26,12 +28,12 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   /**
    * A callback for receiving a notification when the choice has been changed.
    */
-  onChange?: OnChangeCallback;
+  onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
 
   /**
    * A callback for receiving a notification when the choice has received focus.
    */
-  onFocus?: OnFocusCallback;
+  onFocus?: (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
 
   /**
    * A callback for receiving a notification when the choice has lost focus.

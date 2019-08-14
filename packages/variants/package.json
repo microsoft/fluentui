@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.1",
-    "office-ui-fabric-react": "^7.23.0",
+    "office-ui-fabric-react": "^7.24.0",
     "tslib": "^1.7.1"
   }
 }
