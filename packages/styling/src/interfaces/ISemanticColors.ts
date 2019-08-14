@@ -174,14 +174,14 @@ export interface ISemanticColors extends ISemanticTextColors {
   inputBackgroundChecked: string;
 
   /**
-   * The alternate background color of a checked control, e.g. slider background, spinner background.
-   */
-  inputBackgroundCheckedAlt: string;
-
-  /**
    * The background of a checked and hovered control; e.g. checked checkbox's background color on hover.
    */
   inputBackgroundCheckedHovered: string;
+
+  /**
+   * The placeholder background color of a checked control, e.g. slider background, spinner background.
+   */
+  inputPlaceholderBackgroundChecked: string;
 
   /**
    * The foreground of a checked control; e.g. checked checkbox's checkmark color, checked toggle's thumb color,
