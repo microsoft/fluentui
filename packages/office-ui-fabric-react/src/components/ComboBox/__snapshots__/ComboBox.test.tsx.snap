@@ -58,19 +58,19 @@ exports[`ComboBox Renders correctly 1`] = `
           top: -2px;
         }
         &:hover {
-          border-color: #0078d4;
+          border-color: #323130;
         }
         &:hover .ms-ComboBox-Input {
           color: #201f1e;
         }
         &:hover .ms-ComboBox-Input::placeholder {
-          color: #323130;
+          color: #201f1e;
         }
         &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-          color: #323130;
+          color: #201f1e;
         }
         &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-          color: #323130;
+          color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           -ms-high-contrast-adjust: none;
@@ -96,7 +96,7 @@ exports[`ComboBox Renders correctly 1`] = `
           top: -2px;
         }
         &:focus {
-          border-color: #323130;
+          border-color: #0078d4;
         }
         &:focus .ms-ComboBox-Input {
           color: #201f1e;
@@ -366,19 +366,19 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
           top: -2px;
         }
         &:hover {
-          border-color: #0078d4;
+          border-color: #323130;
         }
         &:hover .ms-ComboBox-Input {
           color: #201f1e;
         }
         &:hover .ms-ComboBox-Input::placeholder {
-          color: #323130;
+          color: #201f1e;
         }
         &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-          color: #323130;
+          color: #201f1e;
         }
         &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-          color: #323130;
+          color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           -ms-high-contrast-adjust: none;
@@ -404,7 +404,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
           top: -2px;
         }
         &:focus {
-          border-color: #323130;
+          border-color: #0078d4;
         }
         &:focus .ms-ComboBox-Input {
           color: #201f1e;

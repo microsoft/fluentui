@@ -118,19 +118,19 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             top: -2px;
           }
           &:hover {
-            border-color: #0078d4;
+            border-color: #323130;
           }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -156,7 +156,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             top: -2px;
           }
           &:focus {
-            border-color: #323130;
+            border-color: #0078d4;
           }
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
@@ -453,19 +453,19 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             top: -2px;
           }
           &:hover {
-            border-color: #0078d4;
+            border-color: #323130;
           }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -491,7 +491,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             top: -2px;
           }
           &:focus {
-            border-color: #323130;
+            border-color: #0078d4;
           }
           &:focus .ms-ComboBox-Input {
             color: #201f1e;

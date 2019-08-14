@@ -117,19 +117,19 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               top: -2px;
             }
             &:hover {
-              border-color: #0078d4;
+              border-color: #323130;
             }
             &:hover .ms-ComboBox-Input {
               color: #201f1e;
             }
             &:hover .ms-ComboBox-Input::placeholder {
-              color: #323130;
+              color: #201f1e;
             }
             &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-              color: #323130;
+              color: #201f1e;
             }
             &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-              color: #323130;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               -ms-high-contrast-adjust: none;
@@ -155,7 +155,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               top: -2px;
             }
             &:focus {
-              border-color: #323130;
+              border-color: #0078d4;
             }
             &:focus .ms-ComboBox-Input {
               color: #201f1e;
@@ -584,19 +584,19 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             top: -2px;
           }
           &:hover {
-            border-color: #0078d4;
+            border-color: #323130;
           }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -622,7 +622,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             top: -2px;
           }
           &:focus {
-            border-color: #323130;
+            border-color: #0078d4;
           }
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
@@ -919,19 +919,19 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             top: -2px;
           }
           &:hover {
-            border-color: #0078d4;
+            border-color: #323130;
           }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -957,7 +957,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             top: -2px;
           }
           &:focus {
-            border-color: #323130;
+            border-color: #0078d4;
           }
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
@@ -1255,19 +1255,19 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             top: -2px;
           }
           &:hover {
-            border-color: #0078d4;
+            border-color: #323130;
           }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -1293,7 +1293,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             top: -2px;
           }
           &:focus {
-            border-color: #323130;
+            border-color: #0078d4;
           }
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
@@ -1633,9 +1633,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                       {
                         display: block;
                       }
-                      & .ms-Checkbox:hover, & .ms-Checkbox:hover:active {
-                        background-color: transparent !important;
-                      }
                   id="ComboBox15-list"
                   role="listbox"
                 >
@@ -1754,9 +1751,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
                         &:hover:active {
                           background-color: #edebe9;
                         }
@@ -1855,7 +1849,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border-width: 1px;
                           border: 1px solid transparent;
                           box-sizing: border-box;
-                          color: #000000;
+                          color: #201f1e;
                           cursor: pointer;
                           display: block;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1914,9 +1908,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Checkbox {
                           align-items: center;
                           display: flex;
-                        }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
                         }
                         &:hover:active {
                           background-color: #edebe9;
@@ -2065,9 +2056,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Checkbox {
                           align-items: center;
                           display: flex;
-                        }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
                         }
                         &:hover:active {
                           background-color: #edebe9;
@@ -2222,9 +2210,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Checkbox {
                           align-items: center;
                           display: flex;
-                        }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
                         }
                         &:hover:active {
                           background-color: #edebe9;
@@ -2429,9 +2414,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
                         &:hover:active {
                           background-color: #edebe9;
                         }
@@ -2590,9 +2572,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
                         &:hover:active {
                           background-color: #edebe9;
                         }
@@ -2733,9 +2712,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Checkbox {
                           align-items: center;
                           display: flex;
-                        }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
                         }
                         &:hover:active {
                           background-color: #edebe9;
@@ -2891,9 +2867,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
                         &:hover:active {
                           background-color: #edebe9;
                         }
@@ -3048,9 +3021,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
                         &:hover:active {
                           background-color: #edebe9;
                         }
@@ -3204,9 +3174,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         &.ms-Checkbox {
                           align-items: center;
                           display: flex;
-                        }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
                         }
                         &:hover:active {
                           background-color: #edebe9;
@@ -3588,8 +3555,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       className=
 
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             color: #a4262c;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 12px;
+            font-weight: 400;
           }
     >
       Oh no! This ComboBox has an error!
