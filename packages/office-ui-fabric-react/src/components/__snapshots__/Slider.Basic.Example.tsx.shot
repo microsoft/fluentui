@@ -188,7 +188,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                     background: #c8c6c4;
                     height: 0px;
                     position: absolute;
-                    transform: translateY(6px);
+                    transform: translateY(6px) translateX(-6px);
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -208,7 +208,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                     background: #c8c6c4;
                     height: 0px;
                     position: absolute;
-                    transform: translateY(6px);
+                    transform: translateY(6px) translateX(-6px);
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -338,7 +338,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
     >
       Marks example
        : 
-      2
+      20
     </label>
     <div
       className=
@@ -352,9 +352,9 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
       <div
         aria-disabled={false}
         aria-label="Marks example"
-        aria-valuemax={5}
-        aria-valuemin={1}
-        aria-valuenow={2}
+        aria-valuemax={100}
+        aria-valuemin={0}
+        aria-valuenow={20}
         className=
             ms-Slider-slideBox
             ms-Slider-showValue
@@ -487,7 +487,64 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                 }
             style={
               Object {
-                "left": "25%",
+                "left": "10%",
+              }
+            }
+          />
+          <span
+            className=
+                ms-Slider-regularTick
+                {
+                  background: #fff;
+                  height: 4px;
+                  position: absolute;
+                  transform: translateY(0px);
+                  width: 2px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background-color: WindowText;
+                }
+            style={
+              Object {
+                "left": "20%",
+              }
+            }
+          />
+          <span
+            className=
+                ms-Slider-regularTick
+                {
+                  background: #fff;
+                  height: 4px;
+                  position: absolute;
+                  transform: translateY(0px);
+                  width: 2px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background-color: WindowText;
+                }
+            style={
+              Object {
+                "left": "30%",
+              }
+            }
+          />
+          <span
+            className=
+                ms-Slider-regularTick
+                {
+                  background: #fff;
+                  height: 4px;
+                  position: absolute;
+                  transform: translateY(0px);
+                  width: 2px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background-color: WindowText;
+                }
+            style={
+              Object {
+                "left": "40%",
               }
             }
           />
@@ -525,7 +582,64 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                 }
             style={
               Object {
-                "left": "75%",
+                "left": "60%",
+              }
+            }
+          />
+          <span
+            className=
+                ms-Slider-regularTick
+                {
+                  background: #fff;
+                  height: 4px;
+                  position: absolute;
+                  transform: translateY(0px);
+                  width: 2px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background-color: WindowText;
+                }
+            style={
+              Object {
+                "left": "70%",
+              }
+            }
+          />
+          <span
+            className=
+                ms-Slider-regularTick
+                {
+                  background: #fff;
+                  height: 4px;
+                  position: absolute;
+                  transform: translateY(0px);
+                  width: 2px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background-color: WindowText;
+                }
+            style={
+              Object {
+                "left": "80%",
+              }
+            }
+          />
+          <span
+            className=
+                ms-Slider-regularTick
+                {
+                  background: #fff;
+                  height: 4px;
+                  position: absolute;
+                  transform: translateY(0px);
+                  width: 2px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background-color: WindowText;
+                }
+            style={
+              Object {
+                "left": "90%",
               }
             }
           />
@@ -556,7 +670,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                     background: #c8c6c4;
                     height: 0px;
                     position: absolute;
-                    transform: translateY(6px);
+                    transform: translateY(6px) translateX(-6px);
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -567,7 +681,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                 }
               }
             >
-              1
+              0°C
             </span>
             <span
               className=
@@ -576,18 +690,58 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                     background: #c8c6c4;
                     height: 0px;
                     position: absolute;
-                    transform: translateY(6px);
+                    transform: translateY(6px) translateX(-6px);
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
                   }
               style={
                 Object {
-                  "left": "99%",
+                  "left": "50%",
                 }
               }
             >
-              5
+              50°C
+            </span>
+            <span
+              className=
+                  ms-Slider-regularLabel
+                  {
+                    background: #c8c6c4;
+                    height: 0px;
+                    position: absolute;
+                    transform: translateY(6px) translateX(-6px);
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background-color: WindowText;
+                  }
+              style={
+                Object {
+                  "left": "80%",
+                }
+              }
+            >
+              80°C
+            </span>
+            <span
+              className=
+                  ms-Slider-regularLabel
+                  {
+                    background: #c8c6c4;
+                    height: 0px;
+                    position: absolute;
+                    transform: translateY(6px) translateX(-6px);
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    background-color: WindowText;
+                  }
+              style={
+                Object {
+                  "left": "100%",
+                }
+              }
+            >
+              100°C
             </span>
           </span>
           <div
@@ -624,7 +778,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
               id="targetButton4"
               style={
                 Object {
-                  "left": "25%",
+                  "left": "20%",
                 }
               }
             />
@@ -647,7 +801,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                 }
             style={
               Object {
-                "width": "25%",
+                "width": "20%",
               }
             }
           />
@@ -669,7 +823,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                 }
             style={
               Object {
-                "width": "75%",
+                "width": "80%",
               }
             }
           />
@@ -794,7 +948,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                     background: #edebe9;
                     height: 0px;
                     position: absolute;
-                    transform: translateY(6px);
+                    transform: translateY(6px) translateX(-6px);
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: GrayText;
@@ -814,7 +968,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                     background: #edebe9;
                     height: 0px;
                     position: absolute;
-                    transform: translateY(6px);
+                    transform: translateY(6px) translateX(-6px);
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: GrayText;
@@ -1072,7 +1226,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                     background: #c8c6c4;
                     height: 0px;
                     position: absolute;
-                    transform: translateY(6px);
+                    transform: translateY(6px) translateX(-6px);
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -1092,7 +1246,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                     background: #c8c6c4;
                     height: 0px;
                     position: absolute;
-                    transform: translateY(6px);
+                    transform: translateY(6px) translateX(-6px);
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -1345,7 +1499,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                     background: #c8c6c4;
                     height: 0px;
                     position: absolute;
-                    transform: translateY(6px);
+                    transform: translateY(6px) translateX(-6px);
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -1365,7 +1519,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                     background: #c8c6c4;
                     height: 0px;
                     position: absolute;
-                    transform: translateY(6px);
+                    transform: translateY(6px) translateX(-6px);
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -1637,7 +1791,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                     background: #c8c6c4;
                     height: 0px;
                     position: absolute;
-                    transform: translateY(6px);
+                    transform: translateY(6px) translateX(-6px);
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;
@@ -1657,7 +1811,7 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                     background: #c8c6c4;
                     height: 0px;
                     position: absolute;
-                    transform: translateY(6px);
+                    transform: translateY(6px) translateX(-6px);
                   }
                   @media screen and (-ms-high-contrast: active){& {
                     background-color: WindowText;

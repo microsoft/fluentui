@@ -244,7 +244,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           background: #c8c6c4;
                           height: 0px;
                           position: absolute;
-                          transform: translateY(6px);
+                          transform: translateY(6px) translateX(-6px);
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: WindowText;
@@ -264,7 +264,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           background: #c8c6c4;
                           height: 0px;
                           position: absolute;
-                          transform: translateY(6px);
+                          transform: translateY(6px) translateX(-6px);
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: WindowText;
@@ -1099,7 +1099,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           background: #edebe9;
                           height: 0px;
                           position: absolute;
-                          transform: translateY(6px);
+                          transform: translateY(6px) translateX(-6px);
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: GrayText;
@@ -1119,7 +1119,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           background: #edebe9;
                           height: 0px;
                           position: absolute;
-                          transform: translateY(6px);
+                          transform: translateY(6px) translateX(-6px);
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: GrayText;
@@ -1599,7 +1599,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           background: #c8c6c4;
                           height: 0px;
                           position: absolute;
-                          transform: translateY(6px);
+                          transform: translateY(6px) translateX(-6px);
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: WindowText;
@@ -1619,7 +1619,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           background: #c8c6c4;
                           height: 0px;
                           position: absolute;
-                          transform: translateY(6px);
+                          transform: translateY(6px) translateX(-6px);
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: WindowText;
@@ -2726,7 +2726,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           background: #c8c6c4;
                           height: 0px;
                           position: absolute;
-                          transform: translateY(6px);
+                          transform: translateY(6px) translateX(-6px);
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: WindowText;
@@ -2746,7 +2746,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           background: #c8c6c4;
                           height: 0px;
                           position: absolute;
-                          transform: translateY(6px);
+                          transform: translateY(6px) translateX(-6px);
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: WindowText;
@@ -2999,7 +2999,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           background: #c8c6c4;
                           height: 0px;
                           position: absolute;
-                          transform: translateY(6px);
+                          transform: translateY(6px) translateX(-6px);
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: WindowText;
@@ -3019,7 +3019,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           background: #c8c6c4;
                           height: 0px;
                           position: absolute;
-                          transform: translateY(6px);
+                          transform: translateY(6px) translateX(-6px);
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: WindowText;
@@ -3310,7 +3310,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           background: #c8c6c4;
                           height: 0px;
                           position: absolute;
-                          transform: translateY(6px);
+                          transform: translateY(6px) translateX(-6px);
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: WindowText;
@@ -3330,7 +3330,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           background: #c8c6c4;
                           height: 0px;
                           position: absolute;
-                          transform: translateY(6px);
+                          transform: translateY(6px) translateX(-6px);
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: WindowText;
@@ -3583,7 +3583,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           background: #c8c6c4;
                           height: 0px;
                           position: absolute;
-                          transform: translateY(6px);
+                          transform: translateY(6px) translateX(-6px);
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: WindowText;
@@ -3603,7 +3603,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                           background: #c8c6c4;
                           height: 0px;
                           position: absolute;
-                          transform: translateY(6px);
+                          transform: translateY(6px) translateX(-6px);
                         }
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: WindowText;

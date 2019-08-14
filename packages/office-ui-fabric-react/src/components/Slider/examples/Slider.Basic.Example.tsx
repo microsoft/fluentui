@@ -14,19 +14,19 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
     const marks = [
       {
         value: 0,
-        label: 'None'
+        label: '0°C'
       },
       {
-        value: 50,
-        label: '50°F'
+        value: 30,
+        label: '30°C'
       },
       {
         value: 80,
         label: '80°C'
       },
       {
-        value: 120,
-        label: '120°C'
+        value: 100,
+        label: '100°C'
       }
     ];
     return (
@@ -43,9 +43,9 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
         <Slider
           label="Marks example"
           min={0}
-          max={200}
+          max={100}
           step={10}
-          defaultValue={2}
+          defaultValue={20}
           showValue={true}
           onChange={(value: number) => console.log(value)}
           showThumbTooltip

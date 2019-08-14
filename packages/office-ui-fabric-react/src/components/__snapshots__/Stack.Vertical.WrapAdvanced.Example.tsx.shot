@@ -223,7 +223,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                         background: #c8c6c4;
                         height: 0px;
                         position: absolute;
-                        transform: translateY(6px);
+                        transform: translateY(6px) translateX(-6px);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;
@@ -243,7 +243,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                         background: #c8c6c4;
                         height: 0px;
                         position: absolute;
-                        transform: translateY(6px);
+                        transform: translateY(6px) translateX(-6px);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;
@@ -512,7 +512,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                         background: #c8c6c4;
                         height: 0px;
                         position: absolute;
-                        transform: translateY(6px);
+                        transform: translateY(6px) translateX(-6px);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;
@@ -532,7 +532,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                         background: #c8c6c4;
                         height: 0px;
                         position: absolute;
-                        transform: translateY(6px);
+                        transform: translateY(6px) translateX(-6px);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;

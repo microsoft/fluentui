@@ -6781,6 +6781,14 @@ export interface ISlider {
 }
 
 // @public (undocumented)
+export interface ISliderEnableMarksFormat {
+    // (undocumented)
+    label?: string;
+    // (undocumented)
+    value: number;
+}
+
+// @public (undocumented)
 export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     ariaLabel?: string;
     ariaValueText?: (value: number) => string;
@@ -6789,7 +6797,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     componentRef?: IRefObject<ISlider>;
     defaultValue?: number;
     disabled?: boolean;
-    enableMarks?: boolean;
+    enableMarks?: boolean | ISliderEnableMarksFormat[];
     label?: string;
     max?: number;
     min?: number;

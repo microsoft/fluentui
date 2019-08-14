@@ -200,6 +200,10 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
+                    margin-bottom: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 0;
                     position: absolute;
                     transform: translateX(-6px);
                   }
@@ -220,6 +224,10 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
+                    margin-bottom: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 0;
                     position: absolute;
                     transform: translateX(-6px);
                   }
@@ -586,6 +594,10 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
+                    margin-bottom: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 0;
                     position: absolute;
                     transform: translateX(-6px);
                   }
@@ -606,6 +618,10 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
+                    margin-bottom: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 0;
                     position: absolute;
                     transform: translateX(-6px);
                   }
@@ -842,6 +858,10 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #edebe9;
                     height: 0px;
+                    margin-bottom: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 0;
                     position: absolute;
                     transform: translateX(-6px);
                   }
@@ -862,6 +882,10 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #edebe9;
                     height: 0px;
+                    margin-bottom: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 0;
                     position: absolute;
                     transform: translateX(-6px);
                   }
@@ -1138,6 +1162,10 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
+                    margin-bottom: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 0;
                     position: absolute;
                     transform: translateX(-6px);
                   }
@@ -1158,6 +1186,10 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
+                    margin-bottom: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 0;
                     position: absolute;
                     transform: translateX(-6px);
                   }
@@ -1429,6 +1461,10 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
+                    margin-bottom: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 0;
                     position: absolute;
                     transform: translateX(-6px);
                   }
@@ -1449,6 +1485,10 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
+                    margin-bottom: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 0;
                     position: absolute;
                     transform: translateX(-6px);
                   }
@@ -1739,6 +1779,10 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
+                    margin-bottom: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 0;
                     position: absolute;
                     transform: translateX(-6px);
                   }
@@ -1759,6 +1803,10 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
                   {
                     background: #c8c6c4;
                     height: 0px;
+                    margin-bottom: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 0;
                     position: absolute;
                     transform: translateX(-6px);
                   }
