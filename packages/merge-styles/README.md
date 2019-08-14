@@ -87,7 +87,7 @@ let style = {
 };
 ```
 
-A **style set** represents a map of area to style object. When building a component, you need to generate a class name for each element that requires styling. You would defint this in a **style set**.
+A **style set** represents a map of area to style object. When building a component, you need to generate a class name for each element that requires styling. You would define this in a **style set**.
 
 ```tsx
 let styleSet = {
@@ -114,12 +114,11 @@ export interface IComponentClassNames {
 export const getClassNames = (): IComponentClassNames => {
   return mergeStyleSets({
     root: {
-        background: 'red'
-      }
-    ),
+      background: 'red'
+    },
 
     button: {
-      backgroundColor: 'green',
+      backgroundColor: 'green'
     },
 
     buttonIcon: {
