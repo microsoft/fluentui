@@ -1085,7 +1085,6 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                         left: -7.5px;
                         overflow: visible;
                         position: absolute;
-                        speak: none;
                         top: -18px;
                         z-index: 10;
                       }
