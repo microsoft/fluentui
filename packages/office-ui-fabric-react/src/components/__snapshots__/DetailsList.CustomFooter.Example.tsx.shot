@@ -736,7 +736,6 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"

@@ -758,7 +758,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDownCapture={[Function]}
-            role="presentation"
           >
             <div
               className="ms-SelectionZone"

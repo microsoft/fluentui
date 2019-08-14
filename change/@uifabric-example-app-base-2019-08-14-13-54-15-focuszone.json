@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix example issues from Accessibility Insights",
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com",
+  "commit": "66cfdbf1e5bf0b111cd0227342b973e443c2b8e4",
+  "date": "2019-08-14T20:54:15.075Z"
+}

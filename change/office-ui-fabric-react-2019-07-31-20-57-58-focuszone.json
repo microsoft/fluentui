@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "FocusZone: Remove role=presentation",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "f5823e6840f0aa1884b712d8572d2b7d0fc189c2",
+  "date": "2019-08-01T03:57:58.260Z"
+}

@@ -813,7 +813,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -940,7 +939,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             onMouseDownCapture={[Function]}
-                            role="presentation"
                           >
                             <button
                               aria-checked={false}
