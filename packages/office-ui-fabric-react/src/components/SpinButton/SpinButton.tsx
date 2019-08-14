@@ -367,7 +367,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
      * doesn't have onChange.
      *
      * TODO (Fabric 8?) - switch to just calling onChange (this is a breaking change for any tests,
-     * ours or 3rd-party, which simulate entering text in an autofill)
+     * ours or 3rd-party, which simulate entering text in a SpinButton)
      */
   }
 

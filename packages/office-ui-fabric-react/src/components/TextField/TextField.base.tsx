@@ -498,14 +498,15 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
           return null;
         }
 
-        // ONLY is this is an uncontrolled component, update the displayed value.
+        // ONLY if this is an uncontrolled component, update the displayed value.
         // (Controlled components must update the `value` prop from `onChange`.)
         return this._isControlled ? null : { uncontrolledValue: value };
       },
       () => {
-        // Don't call onChange unless the value actually changed
-        if (!isSameValue && this.props.onChange) {
-          this.props.onChange(event, value);
+        // If the value actually changed, call onChange (for either controlled or uncontrolled)
+        const { onChange } = this.props;
+        if (!isSameValue && onChange) {
+          onChange(event, value);
         }
       }
     );
