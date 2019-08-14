@@ -1,8 +1,0 @@
-{
-  "comment": "Searchbox: Updates styles to latest design specs and added semantic slots usage.",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "v-mare@microsoft.com",
-  "commit": "339fb254438cb74a0de7aa660c84109779883dcd",
-  "date": "2019-08-12T22:42:07.757Z"
-}

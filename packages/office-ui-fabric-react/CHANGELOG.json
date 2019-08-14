@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 14 Aug 2019 12:30:13 GMT",
+      "tag": "office-ui-fabric-react_v7.24.0",
+      "version": "7.24.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ChoiceGroup: fix focusing on options and general cleanup",
+            "author": "elcraig@microsoft.com",
+            "commit": "e0eac43d64115bca62712ac742d7dd6258672cf9"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Searchbox: Updates styles to latest design specs and added semantic slots usage.",
+            "author": "v-mare@microsoft.com",
+            "commit": "339fb254438cb74a0de7aa660c84109779883dcd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Aug 2019 12:31:12 GMT",
       "tag": "office-ui-fabric-react_v7.23.0",
       "version": "7.23.0",
