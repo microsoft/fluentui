@@ -3,8 +3,7 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { IRefObject, KeyCodes } from '../../Utilities';
-import { Autofill, IAutofillState } from './Autofill';
-import { IAutofill, IAutofillProps } from '../pickers';
+import { Autofill, IAutofillState, IAutofill, IAutofillProps } from './index';
 import { ReactWrapper, mount } from 'enzyme';
 import { mockEvent } from 'office-ui-fabric-react/lib/common/testUtilities';
 
