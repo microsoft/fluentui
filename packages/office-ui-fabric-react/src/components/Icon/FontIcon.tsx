@@ -22,7 +22,7 @@ export const getIconContent = memoizeFunction((iconName?: string) => {
 /**
  * Fast icon component which only supports font glyphs (not images) and can't be targeted by customizations.
  * To style the icon, use `className` or reference `ms-Icon` in CSS.
- * @docCategory {Icon}
+ * {@docCategory Icon}
  */
 export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
   const { iconName, className } = props;
