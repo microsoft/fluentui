@@ -294,6 +294,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       classNames.regularLabel,
       {
         position: 'absolute',
+
         background: theme.palette.neutralTertiaryAlt,
         selectors: {
           [HighContrastSelector]: {
@@ -313,6 +314,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         ? {
             margin: '0 auto',
             height: '0px',
+            marginBottom: '20px',
             transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
           }
         : {
