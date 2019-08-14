@@ -114,7 +114,8 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
   /**
    * Invoked when a component is receiving new props. This method is not called for the initial render.
    */
-  public componentWillReceiveProps(newProps: ISpinButtonProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: ISpinButtonProps): void {
     this._lastValidValue = this.state.value;
     let value: string = newProps.value ? newProps.value : String(newProps.min);
     if (newProps.defaultValue) {

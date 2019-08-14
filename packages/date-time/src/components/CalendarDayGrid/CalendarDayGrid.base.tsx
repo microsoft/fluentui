@@ -72,7 +72,8 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     this._onClose = this._onClose.bind(this);
   }
 
-  public componentWillReceiveProps(nextProps: ICalendarDayGridProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayGridProps): void {
     const weeks = this._getWeeks(nextProps);
     let isBackwards = undefined;
 
