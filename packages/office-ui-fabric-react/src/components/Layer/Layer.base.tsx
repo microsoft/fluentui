@@ -41,11 +41,13 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     }
   }
 
-  public componentWillMount(): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillMount(): void {
     this._layerElement = this._getLayerElement();
   }
 
-  public componentWillUpdate(): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(): void {
     if (!this._layerElement) {
       this._layerElement = this._getLayerElement();
     }
