@@ -16,7 +16,6 @@ describe('Autofill', () => {
   let component: ReactWrapper<IAutofillProps, IAutofillState, Autofill>;
 
   afterEach(() => {
-    jest.useRealTimers();
     component.unmount();
   });
 
