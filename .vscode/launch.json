@@ -25,7 +25,7 @@
       "program": "${workspaceRoot}/scripts/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
-      "args": ["-i", "--testPathPattern=${fileBasenameNoExtension}", "--watch"],
+      "args": ["-i", "--testPathPattern=\\b${fileBasenameNoExtension}", "--watch"],
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
