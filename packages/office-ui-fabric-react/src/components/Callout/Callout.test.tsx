@@ -1,7 +1,5 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
 
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
@@ -17,6 +15,10 @@ class CalloutContentWrapper extends React.Component<ICalloutProps, {}> {
 }
 
 describe('Callout', () => {
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   it('renders Callout correctly', () => {
     const createNodeMock = (el: React.ReactElement<{}>) => {
       return {
@@ -110,7 +112,8 @@ describe('Callout', () => {
     expect(threwException).toEqual(false);
   });
 
-  it('passes event to onDismiss prop', done => {
+  it('passes event to onDismiss prop', () => {
+    jest.useFakeTimers();
     let threwException = false;
     let gotEvent = false;
     const onDismiss = (ev?: any) => {
@@ -145,15 +148,8 @@ describe('Callout', () => {
     const focusTarget = document.querySelector('#focustarget') as HTMLButtonElement;
 
     // Move focus
-    setTimeout(() => {
-      try {
-        focusTarget.focus();
-        expect(gotEvent).toEqual(true);
-      } catch (e) {
-        done(e);
-      }
-
-      done();
-    }, 100);
+    jest.runAllTimers();
+    focusTarget.focus();
+    expect(gotEvent).toEqual(true);
   });
 });
