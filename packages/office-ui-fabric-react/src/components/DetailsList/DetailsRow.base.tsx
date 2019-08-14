@@ -182,6 +182,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       theme,
       styles,
       cellsByColumn,
+      focusZoneProps,
       groupNestingDepth
     } = this.props;
     const { columnMeasureInfo, isDropping } = this.state;
@@ -244,6 +245,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
     return (
       <FocusZone
+        {...focusZoneProps}
         {...getNativeProps(this.props, divProperties)}
         {...(typeof isDraggable === 'boolean'
           ? {

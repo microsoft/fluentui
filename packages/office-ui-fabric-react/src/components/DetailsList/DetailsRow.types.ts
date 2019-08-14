@@ -9,6 +9,7 @@ import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
+import { IFocusZoneProps } from '../../FocusZone';
 
 /**
  * {@docCategory DetailsList}
@@ -175,6 +176,11 @@ export interface IDetailsRowBaseProps
    * Overriding class name
    */
   className?: string;
+
+  /**
+   * Props that should be passed into the focus zone, will not override any default props
+   */
+  focusZoneProps: IFocusZoneProps;
 
   /** Whether to animate updates */
   enableUpdateAnimations?: boolean;
