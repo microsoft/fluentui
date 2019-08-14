@@ -11,9 +11,9 @@ export interface ISliderState {
   renderedValue?: number;
 }
 
-export interface ISliderEnableMarksFormat {
+export interface ISliderMarksArrayFormat {
   value: number;
-  label?: string;
+  label: string;
 }
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
@@ -218,7 +218,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
   private _getAriaValueText = (value: number | undefined): string | undefined => {
     if (this.props.ariaValueText && value !== undefined) {
-      // console.log('this is aria' + value);
       return this.props.ariaValueText(value);
     }
   };

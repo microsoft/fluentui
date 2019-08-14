@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SliderBase, ISliderEnableMarksFormat } from './Slider.base';
+import { SliderBase, ISliderMarksArrayFormat } from './Slider.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
@@ -133,7 +133,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * Optional flag to indicate whether to have tick marks
    * @defaultvalue false
    */
-  enableMarks?: boolean | ISliderEnableMarksFormat[];
+  enableMarks?: boolean | ISliderMarksArrayFormat[];
 }
 
 /**
