@@ -206,13 +206,13 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     border-color: Highlight;
                   }
                   &:active .ms-Slider-zeroTick {
-                    background-color: #c7e0f4;
+                    background-color: #deecf9;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
                   &:hover .ms-Slider-zeroTick {
-                    background-color: #c7e0f4;
+                    background-color: #deecf9;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
@@ -1131,13 +1131,13 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                       border-color: Highlight;
                     }
                     &:active .ms-Slider-zeroTick {
-                      background-color: #c7e0f4;
+                      background-color: #deecf9;
                     }
                     @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                       background-color: Highlight;
                     }
                     &:hover .ms-Slider-zeroTick {
-                      background-color: #c7e0f4;
+                      background-color: #deecf9;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                       background-color: Highlight;
@@ -1451,13 +1451,13 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     border-color: Highlight;
                   }
                   &:active .ms-Slider-zeroTick {
-                    background-color: #c7e0f4;
+                    background-color: #deecf9;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
                   &:hover .ms-Slider-zeroTick {
-                    background-color: #c7e0f4;
+                    background-color: #deecf9;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
@@ -1711,13 +1711,13 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     border-color: Highlight;
                   }
                   &:active .ms-Slider-zeroTick {
-                    background-color: #c7e0f4;
+                    background-color: #deecf9;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
                   &:hover .ms-Slider-zeroTick {
-                    background-color: #c7e0f4;
+                    background-color: #deecf9;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
@@ -2008,13 +2008,13 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     border-color: Highlight;
                   }
                   &:active .ms-Slider-zeroTick {
-                    background-color: #c7e0f4;
+                    background-color: #deecf9;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
                   &:hover .ms-Slider-zeroTick {
-                    background-color: #c7e0f4;
+                    background-color: #deecf9;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
@@ -2268,13 +2268,13 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     border-color: Highlight;
                   }
                   &:active .ms-Slider-zeroTick {
-                    background-color: #c7e0f4;
+                    background-color: #deecf9;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
                   &:hover .ms-Slider-zeroTick {
-                    background-color: #c7e0f4;
+                    background-color: #deecf9;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
@@ -2565,13 +2565,13 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     border-color: Highlight;
                   }
                   &:active .ms-Slider-zeroTick {
-                    background-color: #c7e0f4;
+                    background-color: #deecf9;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
                   &:hover .ms-Slider-zeroTick {
-                    background-color: #c7e0f4;
+                    background-color: #deecf9;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
@@ -2825,13 +2825,13 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     border-color: Highlight;
                   }
                   &:active .ms-Slider-zeroTick {
-                    background-color: #c7e0f4;
+                    background-color: #deecf9;
                   }
                   @media screen and (-ms-high-contrast: active){&:active .ms-Slider-zeroTick {
                     background-color: Highlight;
                   }
                   &:hover .ms-Slider-zeroTick {
-                    background-color: #c7e0f4;
+                    background-color: #deecf9;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover .ms-Slider-zeroTick {
                     background-color: Highlight;
