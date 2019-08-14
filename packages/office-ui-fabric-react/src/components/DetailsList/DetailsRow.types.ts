@@ -180,7 +180,7 @@ export interface IDetailsRowBaseProps
   /**
    * Props that should be passed into the focus zone, will not override any default props
    */
-  focusZoneProps: IFocusZoneProps;
+  focusZoneProps?: IFocusZoneProps;
 
   /** Whether to animate updates */
   enableUpdateAnimations?: boolean;
