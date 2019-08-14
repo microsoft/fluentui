@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "DetailsRow: add focuszone props for greater control",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "ad697338eec05c5194267359344be4167946a055",
+  "date": "2019-08-14T15:54:41.511Z"
+}
