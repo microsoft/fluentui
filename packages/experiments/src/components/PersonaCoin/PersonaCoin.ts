@@ -5,6 +5,7 @@ import { IPersonaCoinProps } from './PersonaCoin.types';
 import { PersonaCoinView } from './PersonaCoin.view';
 
 export const PersonaCoin: React.StatelessComponent<IPersonaCoinProps> = createComponent(PersonaCoinView, {
+  disableCaching: true,
   displayName: 'PersonaCoin',
   styles: PersonaCoinStyles,
   state: usePersonaCoinState

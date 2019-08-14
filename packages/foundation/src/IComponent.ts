@@ -104,6 +104,11 @@ export interface IComponentOptions<
   TStatics = {}
 > {
   /**
+   * Boolean prop that determines whether style memoization should be disabled or not.
+   * @defaultvalue false
+   */
+  disableCaching?: boolean;
+  /**
    * Display name to identify component in React hierarchy. This parameter is required for targeted component styling via theming.
    */
   displayName?: string;

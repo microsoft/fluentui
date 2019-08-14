@@ -191,7 +191,16 @@ function _constructFinalProps<TProps extends IProcessedSlotProps>(defaultStyles:
     assign(finalProps, ...(props as any));
   }
 
-  finalProps.className = mergeStyles(defaultStyles, classNames);
+  if (typeof defaultStyles === 'string') {
+    finalProps.className = defaultStyles;
+    for (const className of classNames) {
+      if (className) {
+        finalProps.className += ' ' + className;
+      }
+    }
+  } else {
+    finalProps.className = mergeStyles([defaultStyles], classNames);
+  }
 
   return finalProps;
 }
