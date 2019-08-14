@@ -22,25 +22,27 @@ const GlobalClassNames = {
 
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   const { className, titleLabelClassName, theme, vertical, disabled, showTransitions, showValue } = props;
-  const { palette, semanticColors } = theme;
+  const { semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  // Tokens
-  const sliderInteractedActiveSectionColor = semanticColors.inputBackgroundCheckedHovered;
-  const sliderHoverSectionColor = semanticColors.inputBackgroundChecked;
-  const sliderInteractedInactiveSectionColor = semanticColors.inputBackgroundCheckedAlt;
-  const sliderRestActiveSectionColor = semanticColors.smallInputBorder;
-  const sliderRestInactiveSectionColor = semanticColors.disabledBorder;
+  /** Tokens:
+   *   The word "active" in the token refers to the selected section of the slider
+   *   The word "inactive" in the token refers to the unselected section of the slider */
+  const pressedActiveSectionColor = semanticColors.inputBackgroundCheckedHovered;
+  const hoveredActiveSectionColor = semanticColors.inputBackgroundChecked;
+  const hoveredPressedinactiveSectionColor = semanticColors.inputPlaceholderBackgroundChecked;
+  const restActiveSectionColor = semanticColors.smallInputBorder;
+  const restInactiveSectionColor = semanticColors.disabledBorder;
 
-  const sliderDisabledActiveSectionColor = palette.neutralTertiary;
-  const sliderDisabledInactiveSectionColor = palette.neutralLight;
+  const disabledActiveSectionColor = semanticColors.disabledText;
+  const disabledInactiveSectionColor = semanticColors.disabledBackground;
 
-  const sliderThumbBackgroundColor = semanticColors.inputBackground;
-  const sliderThumbBorderColor = semanticColors.smallInputBorder;
-  const sliderThumbDisabledBorderColor = semanticColors.disabledBorder;
+  const thumbBackgroundColor = semanticColors.inputBackground;
+  const thumbBorderColor = semanticColors.smallInputBorder;
+  const thumbDisabledBorderColor = semanticColors.disabledBorder;
 
   const slideBoxActiveSectionStyles = !disabled && {
-    backgroundColor: sliderInteractedActiveSectionColor,
+    backgroundColor: pressedActiveSectionColor,
     selectors: {
       [HighContrastSelector]: {
         backgroundColor: 'Highlight'
@@ -49,7 +51,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   };
 
   const slideBoxInactiveSectionStyles = !disabled && {
-    backgroundColor: sliderInteractedInactiveSectionColor,
+    backgroundColor: hoveredPressedinactiveSectionColor,
     selectors: {
       [HighContrastSelector]: {
         borderColor: 'Highlight'
@@ -58,7 +60,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   };
 
   const slideHoverSectionStyles = !disabled && {
-    backgroundColor: sliderHoverSectionColor,
+    backgroundColor: hoveredActiveSectionColor,
     selectors: {
       [HighContrastSelector]: {
         backgroundColor: 'Highlight'
@@ -67,7 +69,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   };
 
   const slideBoxActiveThumbStyles = !disabled && {
-    border: `2px solid ${sliderInteractedActiveSectionColor}`,
+    border: `2px solid ${pressedActiveSectionColor}`,
     selectors: {
       [HighContrastSelector]: {
         borderColor: 'Highlight'
@@ -76,7 +78,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   };
 
   const slideBoxActiveZeroTickStyles = !props.disabled && {
-    backgroundColor: theme.palette.themeLight,
+    backgroundColor: semanticColors.inputPlaceholderBackgroundChecked,
     selectors: {
       [HighContrastSelector]: {
         backgroundColor: 'Highlight'
@@ -160,10 +162,10 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       {
         borderWidth: 2,
         borderStyle: 'solid',
-        borderColor: sliderThumbBorderColor,
+        borderColor: thumbBorderColor,
         borderRadius: 10,
         boxSizing: 'border-box',
-        background: sliderThumbBackgroundColor,
+        background: thumbBackgroundColor,
         display: 'block',
         width: 16,
         height: 16,
@@ -183,7 +185,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         transition: `left ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
       },
       disabled && {
-        borderColor: sliderThumbDisabledBorderColor,
+        borderColor: thumbDisabledBorderColor,
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'GrayText'
@@ -226,7 +228,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     activeSection: [
       classNames.activeSection,
       {
-        background: sliderRestActiveSectionColor,
+        background: restActiveSectionColor,
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'WindowText'
@@ -237,7 +239,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         transition: `width ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
       },
       disabled && {
-        background: sliderDisabledActiveSectionColor,
+        background: disabledActiveSectionColor,
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'GrayText',
@@ -249,7 +251,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     inactiveSection: [
       classNames.inactiveSection,
       {
-        background: sliderRestInactiveSectionColor,
+        background: restInactiveSectionColor,
         selectors: {
           [HighContrastSelector]: {
             border: '1px solid WindowText'
@@ -260,7 +262,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         transition: `width ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
       },
       disabled && {
-        background: sliderDisabledInactiveSectionColor,
+        background: disabledInactiveSectionColor,
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'GrayText'
@@ -272,7 +274,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       classNames.zeroTick,
       {
         position: 'absolute',
-        background: theme.palette.neutralTertiaryAlt,
+        background: semanticColors.disabledBorder,
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'WindowText'
@@ -280,7 +282,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         }
       },
       props.disabled && {
-        background: theme.palette.neutralLight,
+        background: semanticColors.disabledBackground,
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'GrayText'
