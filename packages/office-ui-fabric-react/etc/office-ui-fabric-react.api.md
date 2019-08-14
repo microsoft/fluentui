@@ -1866,7 +1866,6 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     // @deprecated
     description?: IStyle;
     disabled?: boolean;
-    excludedSplitButtonContainerProps?: string[];
     // Warning: (ae-forgotten-export) The symbol "IButtonClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, className: string, variantClassName: string, iconClassName: string | undefined, menuIconClassName: string | undefined, disabled: boolean, checked: boolean, expanded: boolean, isSplit: boolean | undefined, allowDisabledFocus: boolean) => IButtonClassNames;
     // Warning: (ae-forgotten-export) The symbol "ISplitButtonClassNames" needs to be exported by the entry point index.d.ts
@@ -1890,6 +1889,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     onRenderText?: IRenderFunction<IButtonProps>;
     persistMenu?: boolean;
     primary?: boolean;
+    primaryActionButtonProps?: IButtonProps;
     primaryDisabled?: boolean;
     // @deprecated
     rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;

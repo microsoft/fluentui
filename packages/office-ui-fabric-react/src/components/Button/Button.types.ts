@@ -308,9 +308,9 @@ export interface IButtonProps
   defaultRender?: any;
 
   /**
-   * Optional props to exclude from IButtonProps on splitButtonContainer
+   * Optional props to be applied on primary action button of SplitButton
    */
-  excludedSplitButtonContainerProps?: string[];
+  primaryActionButtonProps?: IButtonProps;
 }
 
 /**
