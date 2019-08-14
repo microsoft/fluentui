@@ -56,7 +56,7 @@
     "@uifabric/theme-samples": "^7.0.3",
     "json-loader": "^0.5.7",
     "monaco-editor-webpack-plugin": "^1.7.0",
-    "office-ui-fabric-react": "^7.23.0",
+    "office-ui-fabric-react": "^7.24.0",
     "tslib": "^1.7.1",
     "whatwg-fetch": "2.0.4"
   }

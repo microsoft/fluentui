@@ -544,7 +544,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     constructor(props: IChoiceGroupProps);
     readonly checkedOption: IChoiceGroupOption | undefined;
     // (undocumented)
-    static defaultProps: IChoiceGroupProps;
+    componentDidUpdate(prevProps: IChoiceGroupProps, prevState: IChoiceGroupState): void;
     // (undocumented)
     focus(): void;
     // (undocumented)
@@ -2218,6 +2218,7 @@ export interface IChoiceGroup {
 // @public (undocumented)
 export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
     ariaLabel?: string;
+    // @deprecated
     checked?: boolean;
     disabled?: boolean;
     iconProps?: IIconProps;
@@ -2243,8 +2244,8 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
     focused?: boolean;
     name?: string;
     onBlur?: (ev: React.FocusEvent<HTMLElement>, props?: IChoiceGroupOption) => void;
-    onChange?: OnChangeCallback;
-    onFocus?: OnFocusCallback;
+    onChange?: (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
+    onFocus?: (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
     required?: boolean;
     theme?: ITheme;
 }
@@ -2303,8 +2304,7 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
 
 // @public (undocumented)
 export interface IChoiceGroupState {
-    // (undocumented)
-    keyChecked: string | number;
+    keyChecked?: string | number;
     keyFocused?: string | number;
 }
 
@@ -2320,13 +2320,12 @@ export interface IChoiceGroupStyleProps {
 
 // @public (undocumented)
 export interface IChoiceGroupStyles {
-    // (undocumented)
+    // @deprecated
     applicationRole?: IStyle;
     // (undocumented)
     flexContainer?: IStyle;
     // (undocumented)
     label?: IStyle;
-    // (undocumented)
     root?: IStyle;
 }
 
@@ -8058,11 +8057,11 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
     };
 }
 
-// @public (undocumented)
-export type OnChangeCallback = (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
+// @public @deprecated (undocumented)
+export type OnChangeCallback = IChoiceGroupOptionProps['onChange'];
 
-// @public (undocumented)
-export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
+// @public @deprecated (undocumented)
+export type OnFocusCallback = IChoiceGroupOptionProps['onFocus'];
 
 // @public (undocumented)
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
