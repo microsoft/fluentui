@@ -131,6 +131,8 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
 
   /**
    * Optional flag to indicate whether to have tick marks
+   * Can add custom marks when setting enableMarks to an array of JSON that each contain a value property
+   * (denotes where) and a string label (denotes what to display for the indicated position)
    * @defaultvalue false
    */
   enableMarks?: boolean | ISliderMarksArrayFormat[];
