@@ -624,7 +624,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"

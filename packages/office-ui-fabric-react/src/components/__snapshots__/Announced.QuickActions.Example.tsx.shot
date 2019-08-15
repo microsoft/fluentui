@@ -1125,7 +1125,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDownCapture={[Function]}
-            role="presentation"
           >
             <div
               className="ms-SelectionZone"

@@ -1151,7 +1151,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDownCapture={[Function]}
-            role="presentation"
           >
             <div
               className="ms-SelectionZone"
@@ -1278,7 +1277,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                               onFocus={[Function]}
                               onKeyDown={[Function]}
                               onMouseDownCapture={[Function]}
-                              role="presentation"
                             >
                               <button
                                 aria-checked={false}
@@ -2564,7 +2562,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                               onFocus={[Function]}
                               onKeyDown={[Function]}
                               onMouseDownCapture={[Function]}
-                              role="presentation"
                             >
                               <button
                                 aria-checked={false}
@@ -2946,7 +2943,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                               onFocus={[Function]}
                               onKeyDown={[Function]}
                               onMouseDownCapture={[Function]}
-                              role="presentation"
                             >
                               <button
                                 aria-checked={false}

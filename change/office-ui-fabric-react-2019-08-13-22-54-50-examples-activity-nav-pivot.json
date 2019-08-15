@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ActivityItem, Nav, and Pivot example updates",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "835bb6c84cfa864bccd4b96d038b9ff5bca75c0c",
+  "date": "2019-08-14T05:54:50.511Z"
+}

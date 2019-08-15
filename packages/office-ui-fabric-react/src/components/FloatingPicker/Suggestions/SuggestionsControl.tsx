@@ -77,7 +77,8 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     this.scrollSelected();
   }
 
-  public componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void {
     if (newProps.suggestions) {
       this.setState({ suggestions: newProps.suggestions }, () => {
         this.resetSelectedItem();

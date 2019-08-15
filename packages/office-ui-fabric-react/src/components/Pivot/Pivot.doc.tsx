@@ -6,7 +6,6 @@ import { PivotIconCountExample } from './examples/Pivot.IconCount.Example';
 import { PivotLargeExample } from './examples/Pivot.Large.Example';
 import { PivotTabsExample } from './examples/Pivot.Tabs.Example';
 import { PivotTabsLargeExample } from './examples/Pivot.TabsLarge.Example';
-import { PivotFabricExample } from './examples/Pivot.Fabric.Example';
 import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
 import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
 import { PivotOverrideExample } from './examples/Pivot.Override.Example';
@@ -23,7 +22,6 @@ const PivotTabsExampleCode = require('!raw-loader!office-ui-fabric-react/src/com
 const PivotTabsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Tabs.Example.tsx') as string;
 const PivotTabsLargeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.TabsLarge.Example.tsx') as string;
 const PivotTabsLargeExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.TabsLarge.Example.tsx') as string;
-const PivotFabricExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Fabric.Example.tsx') as string;
 const PivotOnChangeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.OnChange.Example.tsx') as string;
 const PivotOnChangeExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.OnChange.Example.tsx') as string;
 const PivotIconCountExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.IconCount.Example.tsx') as string;
@@ -75,11 +73,6 @@ export const PivotPageProps: IDocPageProps = {
       code: PivotOnChangeExampleCode,
       codepenJS: PivotOnChangeExampleCodepen,
       view: <PivotOnChangeExample />
-    },
-    {
-      title: 'Rendering nested components within the Pivot',
-      code: PivotFabricExampleCode,
-      view: <PivotFabricExample />
     },
     {
       title: 'Show/Hide pivot item',

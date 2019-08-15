@@ -122,7 +122,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
   }
 
-  public componentWillMount() {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillMount() {
     this._setTargetWindowAndElement(this._getTarget());
   }
 
@@ -131,7 +132,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     this._disposables.forEach((dispose: () => void) => dispose());
   }
 
-  public componentWillUpdate(newProps: ICalloutProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(newProps: ICalloutProps): void {
     // If the target element changed, find the new one. If we are tracking target with class name, always find element because we
     // do not know if fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);

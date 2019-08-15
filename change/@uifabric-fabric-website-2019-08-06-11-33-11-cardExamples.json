@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Card: Showing examples on demo page and website",
+  "packageName": "@uifabric/fabric-website",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "6a6de09946ec1473cf7fcc483474e11384508c1f",
+  "date": "2019-08-06T18:32:59.813Z"
+}

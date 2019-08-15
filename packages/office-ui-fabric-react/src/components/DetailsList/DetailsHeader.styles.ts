@@ -307,7 +307,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       {
         display: 'none',
         position: 'absolute',
-        top: 22,
+        top: -18,
         left: -7.5,
         fontSize: fonts.mediumPlus.fontSize,
         color: palette.themePrimary,
@@ -322,7 +322,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         display: 'none',
         position: 'absolute',
         bottom: 0,
-        top: -3,
+        top: 6,
         overflow: 'hidden',
         height: 37,
         width: 1,

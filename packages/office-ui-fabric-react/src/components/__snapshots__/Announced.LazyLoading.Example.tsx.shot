@@ -241,7 +241,6 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className=

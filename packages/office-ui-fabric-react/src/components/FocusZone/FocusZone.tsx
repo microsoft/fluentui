@@ -212,7 +212,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     return (
       <Tag
-        role="presentation"
         aria-labelledby={ariaLabelledBy}
         aria-describedby={ariaDescribedBy}
         {...divProps}

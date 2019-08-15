@@ -224,7 +224,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className=
@@ -721,7 +720,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className=

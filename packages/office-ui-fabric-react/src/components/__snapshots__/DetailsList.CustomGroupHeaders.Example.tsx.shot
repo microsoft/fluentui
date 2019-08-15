@@ -623,7 +623,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"

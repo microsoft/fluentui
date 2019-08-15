@@ -94,7 +94,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     initializeFocusRects();
   }
 
-  public componentWillReceiveProps(nextProps: ITilesListProps<TItem>): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: ITilesListProps<TItem>): void {
     if (nextProps.items !== this.props.items) {
       this.setState({
         cells: this._getCells(nextProps.items)
@@ -102,7 +103,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     }
   }
 
-  public componentWillUpdate(nextProps: ITilesListProps<TItem>, nextState: ITilesListState<TItem>): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(nextProps: ITilesListProps<TItem>, nextState: ITilesListState<TItem>): void {
     if (nextState.cells !== this.state.cells) {
       this._pageSpecificationCache = undefined;
     }
