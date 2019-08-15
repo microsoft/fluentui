@@ -1,6 +1,17 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 13 Aug 2019 12:31:12 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+
+## 7.6.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+
+### Patches
+
+- Fix example issues from Accessibility Insights (elcraig@microsoft.com)
 
 ## 7.5.1
 Tue, 13 Aug 2019 12:31:12 GMT

@@ -10,7 +10,7 @@ exports[`Component Examples renders SearchBox.Underlined.Example.tsx correctly 1
         -webkit-font-smoothing: antialiased;
         align-items: stretch;
         background-color: #ffffff;
-        border-radius: 2px;
+        border-radius: 0px;
         border-width: 0 0 1px 0;
         border: 1px solid #8a8886;
         box-shadow: none;
@@ -36,7 +36,7 @@ exports[`Component Examples renders SearchBox.Underlined.Example.tsx correctly 1
         border: 1px solid WindowText;
       }
       &:hover {
-        border-color: #201f1e;
+        border-color: #323130;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;

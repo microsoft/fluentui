@@ -36,7 +36,6 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
-        role="presentation"
       >
         <div
           className=

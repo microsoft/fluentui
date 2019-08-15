@@ -2,6 +2,20 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2019 12:30:43 GMT",
+      "tag": "@uifabric/api-docs_v7.0.6",
+      "version": "7.0.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Card: Showing examples on demo page and website.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "6a6de09946ec1473cf7fcc483474e11384508c1f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 12 Aug 2019 12:30:25 GMT",
       "tag": "@uifabric/api-docs_v7.0.5",
       "version": "7.0.5",

@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2019 12:30:43 GMT",
+      "tag": "@uifabric/experiments_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9.",
+            "author": "jagore@microsoft.com",
+            "commit": "ce48383da2d27474122aef769af0c313e29281d0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Aug 2019 12:31:12 GMT",
       "tag": "@uifabric/experiments_v7.11.2",
       "version": "7.11.2",

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Nav, INavLink } from '../index';
+import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
 
-export const NavBasicExample: React.StatelessComponent = () => {
+export const NavBasicExample: React.FunctionComponent = () => {
   return (
     <Nav
       onLinkClick={_onLinkClick}
