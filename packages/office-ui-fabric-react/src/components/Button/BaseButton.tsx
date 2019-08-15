@@ -502,8 +502,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     assign(buttonProps, {
       onClick: undefined,
       tabIndex: -1,
-      'data-is-focusable': false,
-      ...primaryActionButtonProps
+      'data-is-focusable': false
     });
     const ariaDescribedBy = buttonProps.ariaDescription;
 
@@ -512,6 +511,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
 
     const containerProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, [], ['disabled']);
+
+    // Add additional props to apply on primary action button
+    if (primaryActionButtonProps) {
+      assign(buttonProps, { ...primaryActionButtonProps });
+    }
 
     const SplitButton = (keytipAttributes?: any): JSX.Element => (
       <div
