@@ -6848,6 +6848,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     originFromZero?: boolean;
     showThumbTooltip?: boolean;
     showValue?: boolean;
+    snapToStep?: boolean;
     step?: number;
     styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
     theme?: ITheme;
