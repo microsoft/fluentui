@@ -91,26 +91,12 @@ describe('Autofill', () => {
     const receivePropsUpdater = () => {
       return propsString;
     };
-    ReactDOM.render(
-      <Autofill
-        ref={(c: Autofill | null) => c && (autoFill = c)}
-        suggestedDisplayValue="hello"
-        updateValueInWillReceiveProps={receivePropsUpdater}
-      />,
-      baseNode
-    );
+    component = mount(<Autofill componentRef={autofillRef} suggestedDisplayValue="" updateValueInWillReceiveProps={receivePropsUpdater} />);
 
-    autoFillInput.value = 'hel';
-    ReactTestUtils.Simulate.input(autoFillInput);
-    ReactDOM.render(
-      <Autofill
-        ref={(c: Autofill | null) => c && (autoFill = c)}
-        suggestedDisplayValue="hello"
-        updateValueInWillReceiveProps={receivePropsUpdater}
-      />,
-      baseNode
-    );
+    ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('hel'));
+    component.setProps({ suggestedDisplayValue: 'hello' });
 
-    expect(autoFill.value).toBe('Updated');
+    expect(autofill.value).toBe('Updated');
+    expect(autofill.inputElement!.value).toBe('Updated');
   });
 });
