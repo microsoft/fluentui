@@ -64,8 +64,6 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: IAutofillProps): void {
-    let newValue;
-
     if (this.props.updateValueInWillReceiveProps) {
       const updatedInputValue = this.props.updateValueInWillReceiveProps();
       // Don't update if we have a null value or the value isn't changing
