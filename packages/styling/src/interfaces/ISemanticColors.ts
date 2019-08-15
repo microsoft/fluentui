@@ -99,6 +99,11 @@ export interface ISemanticColors extends ISemanticTextColors {
   disabledBackground: string;
 
   /**
+   * The default color for border of disabled controls; e.g. disabled slider, disabled toggle border.
+   */
+  disabledBorder: string;
+
+  /**
    * The color of the outline around focused controls that don't already have a border; e.g. menu items
    */
   focusBorder: string;
@@ -172,6 +177,11 @@ export interface ISemanticColors extends ISemanticTextColors {
    * The background of a checked and hovered control; e.g. checked checkbox's background color on hover.
    */
   inputBackgroundCheckedHovered: string;
+
+  /**
+   * The placeholder background color of a checked control, e.g. slider background, spinner background.
+   */
+  inputPlaceholderBackgroundChecked: string;
 
   /**
    * The foreground of a checked control; e.g. checked checkbox's checkmark color, checked toggle's thumb color,
