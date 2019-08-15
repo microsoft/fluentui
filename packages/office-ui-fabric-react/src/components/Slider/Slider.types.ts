@@ -136,6 +136,11 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * @defaultvalue false
    */
   enableMarks?: boolean | ISliderMarksArrayFormat[];
+  /**
+   *  Optional flag to decide that thumb will snap to closest value while moving the slider
+   *  @defaultvalue false
+   */
+  snapToStep?: boolean;
 }
 
 /**
