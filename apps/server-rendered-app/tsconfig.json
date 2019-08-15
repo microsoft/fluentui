@@ -12,12 +12,9 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": false,
-    "types": [
-      "webpack-env"
-    ],
+    "lib": ["es5", "dom"],
+    "types": ["webpack-env"],
     "paths": {}
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

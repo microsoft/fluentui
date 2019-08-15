@@ -9,6 +9,9 @@ export interface IAutofillState {
 const SELECTION_FORWARD = 'forward';
 const SELECTION_BACKWARD = 'backward';
 
+/**
+ * {@docCategory Autofill}
+ */
 export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> implements IAutofill {
   public static defaultProps = {
     enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[]
@@ -59,7 +62,8 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     return this._inputElement.current;
   }
 
-  public componentWillReceiveProps(nextProps: IAutofillProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: IAutofillProps): void {
     let newValue;
 
     if (this.props.updateValueInWillReceiveProps) {
@@ -108,7 +112,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   public render(): JSX.Element {
     const { displayValue } = this.state;
 
-    const nativeProps = getNativeProps(this.props, inputProperties);
+    const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
     return (
       <input
         {...nativeProps}
@@ -118,6 +122,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
         autoComplete={'off'}
         onCompositionStart={this._onCompositionStart}
         onCompositionEnd={this._onCompositionEnd}
+        // TODO (Fabric 8?) - switch to calling only onChange. See notes in TextField._onInputChange.
         onChange={this._onChanged}
         onInput={this._onInputChanged}
         onKeyDown={this._onKeyDown}
@@ -156,7 +161,8 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     const isKorean = (ev.nativeEvent as any).locale === 'ko';
     // Due to timing, this needs to be async, otherwise no text will be selected.
     this._async.setTimeout(() => {
-      const updatedInputValue = isKorean ? this.value : inputValue;
+      // Call getCurrentInputValue here again since there can be a race condition where this value has changed during the async call
+      const updatedInputValue = isKorean ? this.value : this._getCurrentInputValue();
       this._updateValue(updatedInputValue);
     }, 0);
   };
@@ -227,10 +233,10 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    * Autofill should never be set to true if the value is composing. Once compositionEnd is called, then
    * it should be completed.
    * See https://developer.mozilla.org/en-US/docs/Web/API/CompositionEvent for more information on composition.
-   * @param newValue
-   * @param oldValue
-   * @param isComposing if true then the text is actively being composed and it has not completed.
-   * @param isComposed if the text is a composed text value.
+   * @param newValue - new input value
+   * @param oldValue - old input value
+   * @param isComposing - if true then the text is actively being composed and it has not completed.
+   * @param isComposed - if the text is a composed text value.
    */
   private _tryEnableAutofill(newValue: string, oldValue: string, isComposing?: boolean, isComposed?: boolean): void {
     if (
@@ -253,7 +259,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
   /**
    * Updates the current input value as well as getting a new display value.
-   * @param newValue The new value from the input
+   * @param newValue - The new value from the input
    */
   private _updateValue = (newValue: string) => {
     // Only proceed if the value is nonempty and is different from the old value
@@ -274,8 +280,8 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
    * Returns a string that should be used as the display value.
    * It evaluates this based on whether or not the suggested value starts with the input value
    * and whether or not autofill is enabled.
-   * @param inputValue the value that the input currently has.
-   * @param suggestedDisplayValue the possible full value
+   * @param inputValue - the value that the input currently has.
+   * @param suggestedDisplayValue - the possible full value
    */
   private _getDisplayValue(inputValue: string, suggestedDisplayValue?: string): string {
     let displayValue = inputValue;
@@ -295,5 +301,6 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
 /**
  *  @deprecated do not use.
+ * {@docCategory Autofill}
  */
 export class BaseAutoFill extends Autofill {}

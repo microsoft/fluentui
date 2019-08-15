@@ -1,21 +1,14 @@
 // tslint:disable:no-any
-import * as React from 'react';
-import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
+import { IAppDefinition } from '@uifabric/example-app-base';
 import { AppCustomizations } from './customizations';
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'Fabric - React',
+  appTitle: 'UI Fabric - Experiments',
   customizations: AppCustomizations,
   testPages: [],
   examplePages: [
     {
       links: [
-        {
-          component: require<any>('../components/Announced/AnnouncedPage').AnnouncedPage,
-          key: 'Announced',
-          name: 'Announced',
-          url: '#/examples/announced'
-        },
         {
           component: require<any>('../components/Button/ButtonPage').ButtonPage,
           key: 'Button',
@@ -41,12 +34,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/foldercover'
         },
         {
-          component: require<any>('../components/Form/FormPage').FormPage,
-          key: 'Form',
-          name: 'Form',
-          url: '#/examples/form'
-        },
-        {
           component: require<any>('../components/FileTypeIcon/FileTypeIconPage').FileTypeIconPage,
           key: 'FileTypeIcon',
           name: 'FileTypeIcon',
@@ -57,6 +44,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'LayoutGroup',
           name: 'LayoutGroup',
           url: '#/examples/layoutgroup'
+        },
+        {
+          component: require<any>('../components/MicroFeedback/MicroFeedbackPage').MicroFeedbackPage,
+          key: 'MicroFeedback',
+          name: 'MicroFeedback',
+          url: '#/examples/microfeedback'
         },
         {
           component: require<any>('../components/Pagination/PaginationPage').PaginationPage,
@@ -77,12 +70,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/persona'
         },
         {
-          component: require<any>('../components/Separator/SeparatorPage').SeparatorPage,
-          key: 'Separator',
-          name: 'Separator',
-          url: '#/examples/separator'
-        },
-        {
           component: require<any>('../components/signals/SignalsPage').SignalsPage,
           key: 'Signals',
           name: 'Signals',
@@ -99,18 +86,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'Slots',
           name: 'Slots',
           url: '#/examples/slots'
-        },
-        {
-          component: require<any>('../components/Stack/StackPage').StackPage,
-          key: 'Stack',
-          name: 'Stack',
-          url: '#/examples/stack'
-        },
-        {
-          component: require<any>('../components/Text/TextPage').TextPage,
-          key: 'Text',
-          name: 'Text',
-          url: '#/examples/text'
         },
         {
           component: require<any>('../components/Tile/TilePage').TilePage,
@@ -131,12 +106,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/toggle'
         },
         {
-          component: require<any>('../components/Shimmer/ShimmerPage').ShimmerPage,
-          key: 'Shimmer',
-          name: 'Shimmer',
-          url: '#/examples/shimmer'
-        },
-        {
           component: require<any>('../components/VirtualizedList/VirtualizedListPage').VirtualizedListPage,
           key: 'VirtualizedList',
           name: 'VirtualizedList',
@@ -147,6 +116,13 @@ export const AppDefinition: IAppDefinition = {
           key: 'StaticList',
           name: 'StaticList',
           url: '#/examples/staticlist'
+        },
+        {
+          component: require<any>('../components/SelectedItemsList/SelectedPeopleList/SelectedPeopleListPage').SelectedPeopleListPage,
+          key: 'SelectedPeopleList',
+          name: 'SelectedPeopleList',
+          url: '#examples/selectedpeoplelist',
+          category: 'Data Collections'
         },
         {
           component: require<any>('../components/fluent/examplePages/FluentThemePage').FluentThemePage,
@@ -178,5 +154,3 @@ export const AppDefinition: IAppDefinition = {
     }
   ]
 };
-
-export const App = (props: IAppProps) => <AppBase appDefinition={AppDefinition} {...props} />;

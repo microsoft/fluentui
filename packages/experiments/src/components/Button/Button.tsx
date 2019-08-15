@@ -1,15 +1,14 @@
-import * as React from 'react';
 import { createComponent } from '../../Foundation';
-import { IButtonProps, IButtonViewProps, IButtonStyles } from './Button.types';
-import { ButtonState as state } from './Button.state';
-import { ButtonView as view } from './Button.view';
-import { getButtonStyles as styles } from './Button.styles';
+import { useButtonState as state } from './Button.state';
+import { ButtonStyles as styles, ButtonTokens as tokens } from './Button.styles';
+import { IButtonProps } from './Button.types';
+import { ButtonView } from './Button.view';
 
-export const Button: React.StatelessComponent<IButtonProps> = createComponent<IButtonProps, IButtonViewProps, IButtonStyles>({
+export const Button: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
   displayName: 'Button',
-  styles,
   state,
-  view
+  styles,
+  tokens
 });
 
 export default Button;

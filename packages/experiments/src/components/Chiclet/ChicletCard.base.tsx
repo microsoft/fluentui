@@ -1,54 +1,42 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { css, classNamesFunction } from '../../Utilities';
 import { IChicletCardStyles, IChicletCardStyleProps, IChicletCardProps } from './ChicletCard.types';
-import { Image } from 'office-ui-fabric-react/lib/Image';
+import { mergeStyles } from '../../Styling';
 
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
 
-const ASSET_CDN_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/assets';
+const customPreviewStyling = mergeStyles('ms-ChicletCard-preview-custom', {
+  height: 112,
+  width: '100%',
+  objectFit: 'contain'
+});
 
-const PREVIEW_IMAGE_WIDTH = '198px';
-const PREVIEW_IMAGE_HEIGHT = '122px';
+const imageStyling = mergeStyles({
+  maxWidth: '100%',
+  height: '100%',
+  overflow: 'hidden',
+  objectFit: 'contain'
+});
 
-export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
-  public static defaultProps: IChicletCardProps = {
-    imageWidth: PREVIEW_IMAGE_WIDTH,
-    imageHeight: PREVIEW_IMAGE_HEIGHT
-  };
-
+export class ChicletCardBase extends React.Component<IChicletCardProps, {}> {
   private _classNames: { [key in keyof IChicletCardStyles]: string };
 
   public render(): JSX.Element {
-    const {
-      title,
-      itemType,
-      description,
-      image,
-      imageWidth,
-      imageHeight,
-      imageAlt,
-      url,
-      onClick,
-      className,
-      footer,
-      theme,
-      styles
-    } = this.props;
+    const { title, description, url, onClick, className, footer, theme, styles } = this.props;
+
     const actionable = onClick ? true : false;
 
     this._classNames = getClassNames(styles, { theme: theme!, className });
 
     // if this element is actionable it should have an aria role
-    const role = actionable ? (onClick ? 'button' : 'link') : undefined;
+    const role = onClick ? 'button' : 'link';
     const tabIndex = actionable ? 0 : undefined;
 
-    const preview = this._renderPreviewImage(image, imageHeight, imageWidth, itemType, imageAlt);
-
     return (
-      <div tabIndex={tabIndex} role={role} onClick={actionable ? this._onClick : undefined} className={this._classNames.root}>
-        <div className={this._classNames.preview}>{preview}</div>
+      <div tabIndex={tabIndex} role={role} onClick={onClick} className={this._classNames.root}>
+        {this._renderPreview()}
         <div className={this._classNames.info}>
-          <div className={this._classNames.title}>{title ? title : null}</div>
+          <div className={this._classNames.title}>{title}</div>
           <div className={this._classNames.description}>{description ? description : url}</div>
           {footer}
         </div>
@@ -56,65 +44,17 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
     );
   }
 
-  private _renderPreviewImage(
-    imageUrl?: string,
-    imageHeight?: string,
-    imageWidth?: string,
-    itemType?: string,
-    imageAlt?: string
-  ): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
-    let image;
-    if (imageUrl) {
-      image = <Image width={imageWidth} height={imageHeight} src={imageUrl} role="presentation" alt={imageAlt ? imageAlt : undefined} />;
-    } else {
-      image = (
-        <Image
-          width={PREVIEW_IMAGE_WIDTH}
-          height={PREVIEW_IMAGE_HEIGHT}
-          src={
-            itemType
-              ? `${ASSET_CDN_BASE_URL}/brand-icons/document/svg/` + itemType + `_48x1.svg`
-              : undefined /* @todo: this will be replaced by something built by the design team */
-          }
-          role="presentation"
-          alt={imageAlt ? imageAlt : undefined}
-        />
-      );
-    }
-
-    let src;
-    if (itemType !== null) {
-      src = `${ASSET_CDN_BASE_URL}/brand-icons/product/svg/` + itemType + `_16x1_5.svg`;
-    }
-    let icon = <img className={this._classNames.icon} src={src} />;
-    switch (
-      itemType // for "hero" apps, we'll use the app icons
-    ) {
-      case 'word':
-      case 'docx':
-        icon = <img className={this._classNames.icon} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/word_16x1_5.svg`} />;
-        break;
-      case 'powerpoint':
-      case 'pptx':
-        icon = <img className={this._classNames.icon} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/powerpoint_16x1_5.svg`} />;
-        break;
-      case 'excel':
-        icon = <img className={this._classNames.icon} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/excel_16x1_5.svg`} />;
-        break;
-    }
+  private _renderPreview(): JSX.Element {
+    const { image, imageAlt, preview } = this.props;
 
     return (
-      <div>
-        {image}
-        {icon}
+      <div className={this._classNames.preview}>
+        {preview ? ( // render custom preview
+          React.cloneElement(preview, { className: css(preview.props.className, customPreviewStyling) })
+        ) : (
+          <img className={imageStyling} src={image} alt={imageAlt ? imageAlt : undefined} />
+        )}
       </div>
     );
   }
-
-  private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { onClick } = this.props;
-    if (onClick) {
-      onClick(ev);
-    }
-  };
 }

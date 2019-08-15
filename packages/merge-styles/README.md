@@ -7,13 +7,13 @@ The library was built for speed and size; the entire package is 2.62k gzipped. I
 Simple usage:
 
 ```
-import { mergeStyles, mergeStyleSet } from '@uifabric/merge-styles';
+import { mergeStyles, mergeStyleSets } from '@uifabric/merge-styles';
 
 // Produces 'css-0' class name which can be used anywhere
 mergeStyles({ background: 'red' });
 
 // Produces a class map for a bunch of rules all at once
-mergeStyleSet({
+mergeStyleSets({
   root: { background: 'red' },
   child: { background: 'green' }
 });
@@ -57,7 +57,7 @@ The api surfaces consists of 3 methods and a handful of interfaces:
 
 `mergeStyles(..args[]: IStyle[]): string` - Takes in one or more style objects, merges them in the right order, and produces a single css class name which can be injected into any component.
 
-`mergeStyleSet(...args[]: IStyleSet[]): { [key: string]: string }` - Takes in one or more style set objects, each consisting of a set of areas, each which will produce a class name. Using this is analogous to calling mergeStyles for each property in the object, but ensures we maintain the set ordering when multiple style sets are merged.
+`mergeStyleSets(...args[]: IStyleSet[]): { [key: string]: string }` - Takes in one or more style set objects, each consisting of a set of areas, each which will produce a class name. Using this is analogous to calling mergeStyles for each property in the object, but ensures we maintain the set ordering when multiple style sets are merged.
 
 `concatStyleSet(...args[]: IStyleSet[]): IStyleSet` - In some cases you simply need to combine style sets, without actually generating class names (it is costs in performance to generate class names.) This tool returns a single set merging many together.
 
@@ -87,7 +87,7 @@ let style = {
 };
 ```
 
-A **style set** represents a map of area to style object. When building a component, you need to generate a class name for each element that requires styling. You would defint this in a **style set**.
+A **style set** represents a map of area to style object. When building a component, you need to generate a class name for each element that requires styling. You would define this in a **style set**.
 
 ```tsx
 let styleSet = {
@@ -114,12 +114,11 @@ export interface IComponentClassNames {
 export const getClassNames = (): IComponentClassNames => {
   return mergeStyleSets({
     root: {
-        background: 'red'
-      }
-    ),
+      background: 'red'
+    },
 
     button: {
-      backgroundColor: 'green',
+      backgroundColor: 'green'
     },
 
     buttonIcon: {
@@ -281,20 +280,34 @@ Produces:
 }
 ```
 
-In some cases, you may need to alter a child area by interacting with the parent. For example, when the parent is hovered, change the child background. You can reference the areas defined in the style set using $ tokens:
+In some cases, you may need to alter a child area by interacting with the parent. For example, when the parent is hovered, change the child background. We recommend using global, non-changing static classnames
+to target the parent elements:
 
 ```tsx
+const classNames = {
+  root: 'Foo-root',
+  child: 'Foo-child'
+};
+
 mergeStyleSets({
-  root: {
-    selectors: {
-      ':hover $thumb': { background: 'lightgreen' }
+  root: [classNames.root, { background: 'lightgreen' }],
+
+  child: [
+    classNames.child,
+    {
+      selectors: {
+        [`.${classNames.root}:hover &`]: {
+          background: 'green'
+        }
+      }
     }
-   }
-  thumb: { background: 'green' }
+  ]
 });
 ```
 
-The `$thumb` reference in the selector on root will be replaced with the class name generated for thumb.
+The important part here is that the selector does not have any mutable information. In the example above,
+if `classNames.root` were dynamic, it would require the rule to be re-registered when it mutates, which
+would be a performance hit.
 
 ## Custom class names
 
@@ -339,7 +352,7 @@ In the following example, the root class generated will be different depending o
 
 ```tsx
 export const getClassNames = (isToggled: boolean): IComponentClassNames => {
-  return mergeStyleSet({
+  return mergeStyleSets({
     root: [
       {
         background: 'red'
@@ -378,7 +391,7 @@ Resolving the class names on every render can be an unwanted expense especially 
 import { memoizeFunction } from '@uifabric/utilities';
 
 export const getClassNames = memoizeFunction((isToggled: boolean) => {
-  return mergeStyleSet({
+  return mergeStyleSets({
     // ...
   });
 });
@@ -424,6 +437,20 @@ export const getClassNames = () => {
   });
 };
 ```
+
+## Controlling where styles are injected
+
+By default `merge-styles` will initially inject a `style` element into the document head as the first node and then append and new `style` elements as next sibling to the previous one added.
+
+In some cases you may want to control where styles are injected to ensure some stylesheets are more specific than others. To do this, you can add a placeholder `style` element in the head with `data-merge-styles` attribute:
+
+```html
+<head>
+  <style data-merge-styles></style>
+</head>
+```
+
+Merge styles will ensure that any generated styles are added after the placeholder.
 
 ## Server-side rendering
 

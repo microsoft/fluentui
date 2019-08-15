@@ -1,58 +1,71 @@
-/** @jsx createElementWrapper */
-import { IButtonComponent, IButtonSlots, IButtonViewProps } from './Button.types';
-import { Stack } from '../../Stack';
-import { ContextualMenu } from 'office-ui-fabric-react';
-import { getNativeProps, buttonProperties } from '../../Utilities';
-import { Icon, Text } from '../../utilities/factoryComponents';
-import { createElementWrapper, getSlots } from '../../utilities/slots';
+/** @jsx withSlots */
+import { Text, KeytipData } from 'office-ui-fabric-react';
+import { withSlots, getSlots } from '../../Foundation';
+import { getNativeProps, anchorProperties, buttonProperties } from '../../Utilities';
+import { Icon } from '../../utilities/factoryComponents';
+
+import { IButtonComponent, IButtonProps, IButtonSlots, IButtonViewProps } from './Button.types';
+import { IActionableRootElements } from './Actionable/Actionable.types';
 
 export const ButtonView: IButtonComponent['view'] = props => {
-  const { classNames, menu: Menu, children, content, icon, expanded, disabled, onMenuDismiss, menuTarget, ...rest } = props;
+  const { icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
 
-  // TODO: 'href' is anchor property... consider getNativeProps by root type
-  const buttonProps = { ...getNativeProps(rest, buttonProperties), href: props.href };
+  const { slotType, htmlType, propertiesType } = _deriveRootType(props);
 
-  const Slots = getSlots<typeof props, IButtonSlots>(props, {
-    root: _deriveRootType(props),
-    stack: Stack,
+  const buttonProps = { ...getNativeProps(rest, propertiesType) };
+
+  const Slots = getSlots<IButtonProps, IButtonSlots>(props, {
+    root: slotType,
     icon: Icon,
-    content: Text,
-    menu: ContextualMenu,
-    menuIcon: Icon
+    content: Text
   });
 
-  return (
+  const _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
+    if (!disabled && onClick) {
+      onClick(ev);
+
+      if (ev.defaultPrevented) {
+        return;
+      }
+    }
+  };
+
+  const Button = (keytipAttributes?: any): JSX.Element => (
     <Slots.root
-      type="button" // stack doesn't take in native button props
+      type={htmlType}
       role="button"
+      onClick={_onClick}
       {...buttonProps}
+      {...keytipAttributes}
+      disabled={disabled && !allowDisabledFocus}
       aria-disabled={disabled}
+      tabIndex={!disabled || allowDisabledFocus ? 0 : undefined}
+      aria-label={ariaLabel}
+      ref={buttonRef}
     >
-      <Slots.stack horizontal as="span" gap={8} verticalAlign="center" horizontalAlign="center">
-        {icon && <Slots.icon />}
-        {content && <Slots.content />}
-        {children}
-        {Menu && (
-          <Stack.Item>
-            <Slots.menuIcon iconName="ChevronDown" />
-          </Stack.Item>
-        )}
-      </Slots.stack>
-      {expanded && Menu && <Slots.menu target={menuTarget} onDismiss={onMenuDismiss} items={[]} />}
+      {icon && <Slots.icon />}
+      {content && <Slots.content />}
+      {children}
     </Slots.root>
+  );
+
+  return keytipProps ? (
+    <KeytipData keytipProps={keytipProps} disabled={disabled && !allowDisabledFocus}>
+      {(keytipAttributes: any): JSX.Element => Button(keytipAttributes)}
+    </KeytipData>
+  ) : (
+    Button()
   );
 };
 
-// TODO: test with split button approach.
-//        should split button be another component?
-//        can Button's slots be manipulated to create an HOC split button?
-// { split && (
-// <Slot as='span' userProps={splitContainer}>
-//   <Slot as={Divider} userProps={divider} />
-//   <Slot as={Icon} userProps={menuChevron} />
-// </Slot>
-// )}
+interface IButtonRootType {
+  slotType: IActionableRootElements;
+  htmlType: 'link' | 'button';
+  propertiesType: string[];
+}
 
-function _deriveRootType(props: IButtonViewProps): keyof JSX.IntrinsicElements {
-  return !!props.href ? 'a' : 'button';
+function _deriveRootType(props: IButtonViewProps): IButtonRootType {
+  return !!props.href
+    ? { slotType: 'a', htmlType: 'link', propertiesType: anchorProperties }
+    : { slotType: 'button', htmlType: 'button', propertiesType: buttonProperties };
 }

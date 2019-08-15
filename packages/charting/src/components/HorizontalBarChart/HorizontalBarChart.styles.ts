@@ -1,3 +1,4 @@
+import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { IHorizontalBarChartStyleProps, IHorizontalBarChartStyles } from './HorizontalBarChart.types';
 
 export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps): IHorizontalBarChartStyles => {
@@ -22,11 +23,21 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       height: '8px',
       marginBottom: '11px'
     },
+    barWrapper: {
+      stroke: theme.palette.white,
+      strokeWidth: 2
+    },
     chartTitle: {
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: '5px',
       fontSize: '12px'
+    },
+    chartDataText: {
+      fontWeight: FontWeights.bold
+    },
+    chartDataTextDenominator: {
+      fontWeight: FontWeights.semibold
     },
     hoverCardTextStyles: {
       ...theme.fonts.medium,
@@ -36,7 +47,7 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       color: color !== '' ? `${color}` : palette.black,
       fontSize: '28px',
       fontFamily: 'Segoe UI',
-      fontWeight: 'bold',
+      fontWeight: FontWeights.bold,
       lineHeight: '31px'
     },
     hoverCardRoot: {
@@ -44,6 +55,15 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       paddingRight: '22px',
       paddingTop: '15px',
       paddingBottom: '8px'
+    },
+    triangle: {
+      width: '0',
+      height: '0',
+      borderLeft: '4px solid transparent',
+      borderRight: '4px solid transparent',
+      borderTop: '8px solid',
+      borderTopColor: palette.blue,
+      marginBottom: '4px'
     }
   };
 };

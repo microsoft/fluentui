@@ -1,3 +1,5 @@
+// @ts-check
+
 /**
  * Script to update all versions and dependencies within the repo.
  *
@@ -6,30 +8,43 @@
  * node update-package-versions.js "6.0.0-alpha" ">=6.0.0-0 <7.0.0-0"
  */
 
-const fs = require('fs');
 const path = require('path');
-const chalk = require('chalk');
-const readConfig = require('./read-config');
+const process = require('process');
+const chalk = require('chalk').default;
+const getAllPackageInfo = require('./monorepo/getAllPackageInfo');
+const writeConfig = require('./write-config');
 
-const rushPackages = readConfig('rush.json');
-if (!rushPackages) {
-  console.error('Could not find rush.json');
-  return;
-}
+const allPackages = getAllPackageInfo();
 const newVersion = process.argv[2];
 const newDep = process.argv[3] || newVersion;
 
-for (const package of rushPackages.projects) {
-  let packagePath = path.resolve('..', package.projectFolder, 'package.json');
-  let packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf8'));
+function help() {
+  console.error('update-package-versions.js - usage:\n  node update-package-versions.js "6.0.0-alpha" ">=6.0.0-0 <7.0.0-0"');
+}
 
-  console.log(`Updating ${chalk.magenta(package.packageName)} from ${chalk.grey(packageJson.version)} to ${chalk.green(newVersion)}.`);
+if (!allPackages) {
+  help();
+  console.error('Could not find get all the packages');
+  process.exit(1);
+}
+
+if (!newVersion || !newDep) {
+  help();
+  console.error('Must specify newVersion and newDep');
+  process.exit(1);
+}
+
+for (const name of Object.keys(allPackages)) {
+  const info = allPackages[name];
+  const packageJson = info.packageJson;
+
+  console.log(`Updating ${chalk.magenta(name)} from ${chalk.grey(packageJson.version)} to ${chalk.green(newVersion)}.`);
 
   packageJson.version = newVersion;
 
   function updateDependencies(deps) {
     for (const dependency in deps) {
-      if (rushPackages.projects.find(pkg => pkg.packageName === dependency)) {
+      if (Object.keys(allPackages).find(name => name === dependency)) {
         console.log(`  Updating deps ${dependency}`);
 
         deps[dependency] = newDep;
@@ -40,5 +55,5 @@ for (const package of rushPackages.projects) {
   updateDependencies(packageJson.dependencies);
   updateDependencies(packageJson.devDependencies);
 
-  fs.writeFileSync(packagePath, JSON.stringify(packageJson, null, 2), 'utf8');
+  writeConfig(info.packagePath, packageJson);
 }

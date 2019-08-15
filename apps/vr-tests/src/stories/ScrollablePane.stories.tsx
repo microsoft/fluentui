@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { Fabric, ScrollablePane, StickyPositionType, Sticky } from 'office-ui-fabric-react';
@@ -48,7 +48,9 @@ storiesOf('ScrollablePane', module)
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .executeScript("document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 9999")
+        .executeScript(
+          "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 9999"
+        )
         .snapshot('scrolled', { cropTo: '.testWrapper' })
         .end()}
     >
@@ -65,7 +67,10 @@ storiesOf('ScrollablePane', module)
       }}
     >
       <Fabric>
-        <ScrollablePane className="scrollablePaneDefaultExample" style={{ maxWidth: '400px', border: '1px solid #edebe9' }}>
+        <ScrollablePane
+          className="scrollablePaneDefaultExample"
+          style={{ maxWidth: '400px', border: '1px solid #edebe9' }}
+        >
           {contentAreas.map(ele => {
             return ele;
           })}

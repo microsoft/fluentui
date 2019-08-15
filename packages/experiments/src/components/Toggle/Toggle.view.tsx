@@ -1,30 +1,39 @@
-import * as React from 'react';
+/** @jsx withSlots */
 import { KeytipData } from 'office-ui-fabric-react/lib/KeytipData';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { IToggleComponent } from './Toggle.types';
+import { Label } from '../../utilities/factoryComponents';
+
+import { withSlots, getSlots } from '../../Foundation';
 import { inputProperties, getNativeProps } from '../../Utilities';
+import { IToggleComponent, IToggleProps, IToggleSlots } from './Toggle.types';
 
 export const ToggleView: IToggleComponent['view'] = props => {
-  const { as: RootType = 'div', label, text, ariaLabel, checked, disabled, onChange, keytipProps, onClick, toggleButtonRef } = props;
-  const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
+  const { as: RootType = 'div', label, ariaLabel, checked, disabled, onChange, keytipProps, onClick, toggleButtonRef } = props;
+  const toggleNativeProps = getNativeProps(props, inputProperties, ['defaultChecked']);
+
+  const Slots = getSlots<IToggleProps, IToggleSlots>(props, {
+    root: RootType,
+    label: Label,
+    container: 'div',
+    pill: 'button',
+    thumb: 'div',
+    text: Label
+  });
+
+  // TODO: need to fix this._id usage. should _id come from state?
+  // const id = this._id;
+  const id = undefined;
 
   return (
-    <RootType className={props.classNames.root}>
-      {label && (
-        <Label htmlFor={this._id} className={props.classNames.label}>
-          {label}
-        </Label>
-      )}
-
-      <div className={props.classNames.container}>
+    <Slots.root>
+      <Slots.label htmlFor={id}>{label}</Slots.label>
+      <Slots.container>
         <KeytipData keytipProps={keytipProps} ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']} disabled={disabled}>
           {(keytipAttributes: any): JSX.Element => (
-            <button
+            <Slots.pill
               {...toggleNativeProps}
               {...keytipAttributes}
-              className={props.classNames.pill}
               disabled={disabled}
-              id={this._id}
+              id={id}
               type="button"
               role="switch" // ARIA 1.1 definition; "checkbox" in ARIA 1.0
               ref={toggleButtonRef}
@@ -35,12 +44,12 @@ export const ToggleView: IToggleComponent['view'] = props => {
               onChange={onChange}
               onClick={onClick}
             >
-              <div className={props.classNames.thumb} />
-            </button>
+              <Slots.thumb />
+            </Slots.pill>
           )}
         </KeytipData>
-        {text && <Label className={props.classNames.text}>{text}</Label>}
-      </div>
-    </RootType>
+        <Slots.text />
+      </Slots.container>
+    </Slots.root>
   );
 };

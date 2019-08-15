@@ -1,7 +1,7 @@
 import { fontFace, IFontWeight } from '@uifabric/merge-styles';
 import { IFontStyles } from '../interfaces/index';
 import { createFontStyles, FontWeights, LocalizedFontFamilies, LocalizedFontNames } from './fonts';
-import { getLanguage } from '@uifabric/utilities';
+import { getLanguage, getWindow } from '@uifabric/utilities';
 import { IFabricConfig } from '../interfaces/IFabricConfig';
 
 // Default urls.
@@ -19,7 +19,8 @@ function _registerFontFace(fontFamily: string, url: string, fontWeight?: IFontWe
     fontFamily,
     src: localFontSrc + `url('${url}.woff2') format('woff2'),` + `url('${url}.woff') format('woff')`,
     fontWeight,
-    fontStyle: 'normal'
+    fontStyle: 'normal',
+    fontDisplay: 'swap'
   });
 }
 
@@ -52,6 +53,8 @@ export function registerDefaultFontFaces(baseUrl: string): void {
     _registerFontFaceSet(fontUrl, LocalizedFontNames.Vietnamese, 'segoeui-vietnamese');
     _registerFontFaceSet(fontUrl, LocalizedFontNames.WestEuropean, 'segoeui-westeuropean', 'segoeui', 'Segoe UI');
     _registerFontFaceSet(fontUrl, LocalizedFontFamilies.Selawik, 'selawik', 'selawik');
+    _registerFontFaceSet(fontUrl, LocalizedFontNames.Armenian, 'segoeui-armenian');
+    _registerFontFaceSet(fontUrl, LocalizedFontNames.Georgian, 'segoeui-georgian');
 
     // Leelawadee UI (Thai) does not have a 'light' weight, so we override
     // the font-face generated above to use the 'semilight' weight instead.
@@ -67,7 +70,7 @@ export function registerDefaultFontFaces(baseUrl: string): void {
  * Reads the fontBaseUrl from window.FabricConfig.fontBaseUrl or falls back to a default.
  */
 function _getFontBaseUrl(): string {
-  let win = typeof window !== 'undefined' ? window : undefined;
+  let win = getWindow();
 
   // tslint:disable-next-line:no-string-literal no-any
   let fabricConfig: IFabricConfig = win ? win['FabricConfig'] : undefined;

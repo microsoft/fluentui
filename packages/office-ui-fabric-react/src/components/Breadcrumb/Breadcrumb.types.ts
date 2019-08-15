@@ -1,9 +1,22 @@
 import * as React from 'react';
-import { BreadcrumbBase, IBreadCrumbData } from './Breadcrumb.base';
 import { IIconProps } from '../../Icon';
 import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { ITheme, IStyle } from '../../Styling';
+import { IFocusZoneProps } from '../../FocusZone';
+import { ITooltipHostProps } from '../../Tooltip';
 
+/**
+ * {@docCategory Breadcrumb}
+ */
+export interface IBreadcrumbData {
+  props: IBreadcrumbProps;
+  renderedItems: IBreadcrumbItem[];
+  renderedOverflowItems: IBreadcrumbItem[];
+}
+
+/**
+ * {@docCategory Breadcrumb}
+ */
 export interface IBreadcrumb {
   /**
    * Sets focus to the first breadcrumb link.
@@ -11,7 +24,10 @@ export interface IBreadcrumb {
   focus(): void;
 }
 
-export interface IBreadcrumbProps extends React.ClassAttributes<BreadcrumbBase> {
+/**
+ * {@docCategory Breadcrumb}
+ */
+export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -47,7 +63,7 @@ export interface IBreadcrumbProps extends React.ClassAttributes<BreadcrumbBase> 
    * Method to call when reducing the length of the breadcrumb.
    * Return undefined to never reduce breadcrumb length
    */
-  onReduceData?: (data: IBreadCrumbData) => IBreadCrumbData | undefined;
+  onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
 
   /**
    * Aria label to place on the navigation landmark for breadcrumb
@@ -66,8 +82,21 @@ export interface IBreadcrumbProps extends React.ClassAttributes<BreadcrumbBase> 
 
   styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
   theme?: ITheme;
+
+  /**
+   * Focuszone props that will get passed through to the root focus zone.
+   */
+  focusZoneProps?: IFocusZoneProps;
+
+  /**
+   * TooltipHost props that will get passed through to overflow tooltips.
+   */
+  tooltipHostProps?: ITooltipHostProps;
 }
 
+/**
+ * {@docCategory Breadcrumb}
+ */
 export interface IBreadcrumbItem {
   /**
    * Text to display to the user for the breadcrumb
@@ -96,6 +125,9 @@ export interface IBreadcrumbItem {
   isCurrentItem?: boolean;
 }
 
+/**
+ * {@docCategory Breadcrumb}
+ */
 export interface IDividerAsProps extends IIconProps {
   /**
    * Optional breadcrumb item corresponds to left of the divider to be passed for custom rendering.
@@ -104,10 +136,17 @@ export interface IDividerAsProps extends IIconProps {
   item?: IBreadcrumbItem;
 }
 
+/**
+ * {@docCategory Breadcrumb}
+ */
 export interface IBreadcrumbStyleProps {
   className?: string;
   theme: ITheme;
 }
+
+/**
+ * {@docCategory Breadcrumb}
+ */
 export interface IBreadcrumbStyles {
   root: IStyle;
   list: IStyle;

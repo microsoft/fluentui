@@ -2,8 +2,14 @@ import { DirectionalHint } from '../../../common/DirectionalHint';
 import { IRefObject, IBaseProps, IPoint, IRectangle } from '../../../Utilities';
 import { IPositionedData } from '../../../utilities/positioning';
 
+/**
+ * {@docCategory PositioningContainer}
+ */
 export interface IPositioningContainer {}
 
+/**
+ * {@docCategory PositioningContainer}
+ */
 export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer> {
   /**
    * All props for your component are to be defined here.
@@ -162,5 +168,8 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
   positioningContainerMaxHeight?: number;
 }
 
-/** @deprecated Use `IPositioningContainerProps` */
+/**
+ * @deprecated Use `IPositioningContainerProps`
+ * {@docCategory PositioningContainer}
+ */
 export type IPositioningContainerTypes = IPositioningContainerProps;

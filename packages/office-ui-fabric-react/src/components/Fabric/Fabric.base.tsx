@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { BaseComponent, getNativeProps, divProperties, classNamesFunction, getWindow, isDirectionalKeyCode } from '../../Utilities';
+import { getNativeProps, on, divProperties, classNamesFunction, getWindow, isDirectionalKeyCode } from '../../Utilities';
 import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 
-export class FabricBase extends BaseComponent<
+export class FabricBase extends React.Component<
   IFabricProps,
   {
     isFocusVisible: boolean;
   }
 > {
   private _rootElement = React.createRef<HTMLDivElement>();
+  private _disposables: (() => void)[] = [];
 
   constructor(props: IFabricProps) {
     super(props);
@@ -19,11 +20,14 @@ export class FabricBase extends BaseComponent<
   }
 
   public render() {
+    const { className } = this.props;
+
     const classNames = getClassNames(getStyles, {
-      ...(this.props as IFabricStyleProps),
-      ...this.state
+      theme: this.props.theme!,
+      className,
+      isFocusVisible: this.state.isFocusVisible
     });
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     return <div {...divProps} className={classNames.root} ref={this._rootElement} />;
   }
@@ -32,9 +36,12 @@ export class FabricBase extends BaseComponent<
     const win = getWindow(this._rootElement.current);
 
     if (win) {
-      this._events.on(win, 'mousedown', this._onMouseDown, true);
-      this._events.on(win, 'keydown', this._onKeyDown, true);
+      this._disposables.push(on(win, 'mousedown', this._onMouseDown, true), on(win, 'keydown', this._onKeyDown, true));
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._disposables.forEach((dispose: () => void) => dispose());
   }
 
   private _onMouseDown = (ev: MouseEvent): void => {

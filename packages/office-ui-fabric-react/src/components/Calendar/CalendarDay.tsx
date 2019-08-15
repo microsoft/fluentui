@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, IRefObject, findIndex } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, IRefObject, findIndex, find } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
@@ -31,7 +31,7 @@ export interface IDayInfo {
   isToday: boolean;
   isSelected: boolean;
   isInBounds: boolean;
-  onSelected: () => void;
+  onSelected: (ev: React.SyntheticEvent<HTMLElement>) => void;
 }
 
 export interface ICalendarDay {
@@ -58,6 +58,7 @@ export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
   showSixWeeksByDefault?: boolean;
   minDate?: Date;
   maxDate?: Date;
+  restrictedDates?: Date[];
   workWeekDays?: DayOfWeek[];
   showCloseButton?: boolean;
   allFocusable?: boolean;
@@ -89,7 +90,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     this._onClose = this._onClose.bind(this);
   }
 
-  public componentWillReceiveProps(nextProps: ICalendarDayProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayProps): void {
     this.setState({
       weeks: this._getWeeks(nextProps)
     });
@@ -166,12 +168,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 onClick={prevMonthInBounds ? this._onSelectPrevMonth : undefined}
                 onKeyDown={prevMonthInBounds ? this._onPrevMonthKeyDown : undefined}
                 aria-controls={dayPickerId}
-                aria-label={
+                title={
                   strings.prevMonthAriaLabel
                     ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()]
                     : undefined
                 }
                 role="button"
+                type="button"
               >
                 <Icon iconName={leftNavigationIcon} />
               </button>
@@ -184,12 +187,13 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 onClick={nextMonthInBounds ? this._onSelectNextMonth : undefined}
                 onKeyDown={nextMonthInBounds ? this._onNextMonthKeyDown : undefined}
                 aria-controls={dayPickerId}
-                aria-label={
+                title={
                   strings.nextMonthAriaLabel
                     ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()]
                     : undefined
                 }
                 role="button"
+                type="button"
               >
                 <Icon iconName={rightNavigationIcon} />
               </button>
@@ -198,8 +202,9 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                   className={css('ms-DatePicker-closeButton js-closeButton', styles.closeButton)}
                   onClick={this._onClose}
                   onKeyDown={this._onCloseButtonKeyDown}
-                  aria-label={strings.closeButtonAriaLabel}
+                  title={strings.closeButtonAriaLabel}
                   role="button"
+                  type="button"
                 >
                   <Icon iconName={closeNavigationIcon} />
                 </button>
@@ -222,7 +227,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                 {strings.shortDays.map((val, index) => (
                   <th
                     className={css('ms-DatePicker-weekday', styles.weekday)}
-                    role="gridcell"
+                    role="columnheader"
                     scope="col"
                     key={index}
                     title={strings.days[(index + firstDayOfWeek) % DAYS_IN_WEEK]}
@@ -266,6 +271,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     return (
                       <td
                         key={day.key}
+                        onClick={day.isInBounds ? day.onSelected : undefined}
                         className={css(
                           styles.dayWrapper,
                           'ms-DatePicker-day',
@@ -308,20 +314,22 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                       >
                         <button
                           key={day.key + 'button'}
+                          onClick={day.isInBounds ? day.onSelected : undefined}
                           className={css(styles.day, 'ms-DatePicker-day-button', {
                             ['ms-DatePicker-day--disabled ' + styles.dayIsDisabled]: !day.isInBounds,
                             ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday
                           })}
-                          role={'button'}
+                          role="gridcell"
                           onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
-                          onClick={day.isInBounds ? day.onSelected : undefined}
                           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
                           id={isNavigatedDate ? activeDescendantId : undefined}
+                          aria-readonly={true}
                           aria-selected={day.isInBounds ? day.isSelected : undefined}
                           data-is-focusable={allFocusable || (day.isInBounds ? true : undefined)}
                           ref={element => this._setDayRef(element, day, isNavigatedDate)}
                           disabled={!allFocusable && !day.isInBounds}
                           aria-disabled={!day.isInBounds}
+                          type="button"
                         >
                           <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
                         </button>
@@ -490,7 +498,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   private _onDayKeyDown = (originalDate: Date, weekIndex: number, dayIndex: number): ((ev: React.KeyboardEvent<HTMLElement>) => void) => {
     return (ev: React.KeyboardEvent<HTMLElement>): void => {
       if (ev.which === KeyCodes.enter) {
-        this._onSelectDate(originalDate);
+        this._onSelectDate(originalDate, ev);
       } else {
         this._navigateMonthEdge(ev, originalDate, weekIndex, dayIndex);
       }
@@ -646,7 +654,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
   }
 
-  private _onSelectDate = (selectedDate: Date): void => {
+  private _onSelectDate = (selectedDate: Date, ev: React.SyntheticEvent<HTMLElement>): void => {
     const {
       onSelectDate,
       dateRangeType,
@@ -658,10 +666,17 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       workWeekDays
     } = this.props;
 
+    if (ev) {
+      ev.stopPropagation();
+    }
+
     let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays);
     if (dateRangeType !== DateRangeType.Day) {
       dateRange = this._getBoundedDateRange(dateRange, minDate, maxDate);
     }
+    dateRange = dateRange.filter(d => {
+      return !this._getIsRestrictedDate(d);
+    });
 
     if (onSelectDate) {
       onSelectDate(selectedDate, dateRange);
@@ -772,7 +787,10 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
           isToday: compareDates(todaysDate, date),
           isSelected: isInDateRangeArray(date, selectedDates),
           onSelected: this._onSelectDate.bind(this, originalDate),
-          isInBounds: (minDate ? compareDatePart(minDate, date) < 1 : true) && (maxDate ? compareDatePart(date, maxDate) < 1 : true)
+          isInBounds:
+            (minDate ? compareDatePart(minDate, date) < 1 : true) &&
+            (maxDate ? compareDatePart(date, maxDate) < 1 : true) &&
+            !this._getIsRestrictedDate(date)
         };
 
         week.push(dayInfo);
@@ -792,6 +810,17 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     }
 
     return weeks;
+  }
+
+  private _getIsRestrictedDate(date: Date): boolean {
+    const { restrictedDates } = this.props;
+    if (!restrictedDates) {
+      return false;
+    }
+    const restrictedDate = find(restrictedDates, rd => {
+      return compareDates(rd, date);
+    });
+    return restrictedDate ? true : false;
   }
 
   private _getBoundedDateRange(dateRange: Date[], minDate?: Date, maxDate?: Date): Date[] {

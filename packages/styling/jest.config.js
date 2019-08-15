@@ -1,3 +1,3 @@
-let { createConfig } = require('../../scripts/tasks/jest-resources');
+let { createConfig } = require('@uifabric/build/jest/jest-resources');
 
 module.exports = createConfig();

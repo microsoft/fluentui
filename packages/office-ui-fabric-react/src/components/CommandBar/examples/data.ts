@@ -35,7 +35,8 @@ export const items = [
       iconName: 'Upload'
     },
     href: 'https://dev.office.com/fabric',
-    ['data-automation-id']: 'uploadButton'
+    'data-automation-id': 'uploadButton',
+    target: '_blank'
   },
   {
     key: 'share',
@@ -83,6 +84,7 @@ export const farItems = [
   {
     key: 'sort',
     name: 'Sort',
+    ariaLabel: 'Sort',
     iconProps: {
       iconName: 'SortLines'
     },
@@ -91,6 +93,7 @@ export const farItems = [
   {
     key: 'tile',
     name: 'Grid view',
+    ariaLabel: 'Grid view',
     iconProps: {
       iconName: 'Tiles'
     },
@@ -100,6 +103,7 @@ export const farItems = [
   {
     key: 'info',
     name: 'Info',
+    ariaLabel: 'Info',
     iconProps: {
       iconName: 'Info'
     },

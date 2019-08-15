@@ -6,34 +6,34 @@ import { mount, ReactWrapper } from 'enzyme';
 import { Rating } from './Rating';
 
 describe('Rating', () => {
-  it('Renders Rating correctly', () => {
+  it('renders correctly.', () => {
     const component = renderer.create(<Rating />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('Can change rating.', () => {
-    const rating = mount(<Rating rating={2} />);
-
-    _checkState(rating, 1, '100%');
-    _checkState(rating, 2, '100%');
-    _checkState(rating, 3, '0%');
-    _checkState(rating, 4, '0%');
-    _checkState(rating, 5, '0%');
-
-    rating
-      .find('.ms-Rating-button')
-      .at(0)
-      .simulate('focus');
+  it('can change rating.', () => {
+    const rating = mount(<Rating />);
 
     _checkState(rating, 1, '100%');
     _checkState(rating, 2, '0%');
     _checkState(rating, 3, '0%');
     _checkState(rating, 4, '0%');
     _checkState(rating, 5, '0%');
+
+    rating
+      .find('.ms-Rating-button')
+      .at(1)
+      .simulate('focus');
+
+    _checkState(rating, 1, '100%');
+    _checkState(rating, 2, '100%');
+    _checkState(rating, 3, '0%');
+    _checkState(rating, 4, '0%');
+    _checkState(rating, 5, '0%');
   });
 
-  it('Clamps input rating to allowed range.', () => {
+  it('clamps input rating to allowed range.', () => {
     const rating = mount(<Rating rating={10} />);
 
     expect(rating.find('.ms-Rating-button').length).toEqual(5);
@@ -45,7 +45,7 @@ describe('Rating', () => {
     _checkState(rating, 5, '100%');
   });
 
-  it('Half star is displayed when 2.5 value is passed.', () => {
+  it('displays half star when 2.5 value is passed.', () => {
     const rating = mount(<Rating rating={2.5} />);
 
     _checkState(rating, 1, '100%');
@@ -55,7 +55,7 @@ describe('Rating', () => {
     _checkState(rating, 5, '0%');
   });
 
-  it('When rating is disabled cannot change rating', () => {
+  it('can not change when disabled.', () => {
     const rating = mount(<Rating disabled={true} />);
     const ratingButtons = rating.find('.ms-Rating-button');
 
@@ -63,6 +63,17 @@ describe('Rating', () => {
       expect(ratingButtons.at(i).prop('disabled')).toEqual(true);
     }
   });
+});
+
+it('behaves correctly when controlled with allowZeroStars enabled', () => {
+  const rating = mount(<Rating rating={3} allowZeroStars />);
+  rating.setProps({ rating: 0 });
+
+  _checkState(rating, 1, '0%');
+  _checkState(rating, 2, '0%');
+  _checkState(rating, 3, '0%');
+  _checkState(rating, 4, '0%');
+  _checkState(rating, 5, '0%');
 });
 
 function _checkState(rating: ReactWrapper, ratingToCheck: number, state: string) {

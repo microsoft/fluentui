@@ -16,8 +16,7 @@ exports[`ProgressIndicator renders ProgressIndicator correctly 1`] = `
     className=
         ms-ProgressIndicator-itemName
         {
-          color: #333333;
-          font-size: 14px;
+          color: #323130;
           line-height: 20px;
           overflow: hidden;
           padding-top: 4px;
@@ -44,7 +43,7 @@ exports[`ProgressIndicator renders ProgressIndicator correctly 1`] = `
       className=
           ms-ProgressIndicator-progressTrack
           {
-            background-color: #eaeaea;
+            background-color: #edebe9;
             height: 2px;
             position: absolute;
             width: 100%;
@@ -82,8 +81,8 @@ exports[`ProgressIndicator renders ProgressIndicator correctly 1`] = `
     className=
         ms-ProgressIndicator-itemDescription
         {
-          color: #666666;
-          font-size: 11px;
+          color: #605e5c;
+          font-size: 12px;
           line-height: 18px;
         }
   >
@@ -108,8 +107,7 @@ exports[`ProgressIndicator renders React content 1`] = `
     className=
         ms-ProgressIndicator-itemName
         {
-          color: #333333;
-          font-size: 14px;
+          color: #323130;
           line-height: 20px;
           overflow: hidden;
           padding-top: 4px;
@@ -138,7 +136,7 @@ exports[`ProgressIndicator renders React content 1`] = `
       className=
           ms-ProgressIndicator-progressTrack
           {
-            background-color: #eaeaea;
+            background-color: #edebe9;
             height: 2px;
             position: absolute;
             width: 100%;
@@ -153,7 +151,7 @@ exports[`ProgressIndicator renders React content 1`] = `
           {
             animation: keyframes 0%{left:-30%;}100%{left:100%;} 3s infinite;
             background-color: #0078d4;
-            background: linear-gradient(to right, #eaeaea 0%, #0078d4 50%, #eaeaea 100%);
+            background: linear-gradient(to right, #edebe9 0%, #0078d4 50%, #edebe9 100%);
             height: 2px;
             min-width: 33%;
             position: absolute;
@@ -176,8 +174,8 @@ exports[`ProgressIndicator renders React content 1`] = `
     className=
         ms-ProgressIndicator-itemDescription
         {
-          color: #666666;
-          font-size: 11px;
+          color: #605e5c;
+          font-size: 12px;
           line-height: 18px;
         }
   >
@@ -204,8 +202,7 @@ exports[`ProgressIndicator renders indeterminate ProgressIndicator correctly 1`]
     className=
         ms-ProgressIndicator-itemName
         {
-          color: #333333;
-          font-size: 14px;
+          color: #323130;
           line-height: 20px;
           overflow: hidden;
           padding-top: 4px;
@@ -232,7 +229,7 @@ exports[`ProgressIndicator renders indeterminate ProgressIndicator correctly 1`]
       className=
           ms-ProgressIndicator-progressTrack
           {
-            background-color: #eaeaea;
+            background-color: #edebe9;
             height: 2px;
             position: absolute;
             width: 100%;
@@ -247,7 +244,7 @@ exports[`ProgressIndicator renders indeterminate ProgressIndicator correctly 1`]
           {
             animation: keyframes 0%{left:-30%;}100%{left:100%;} 3s infinite;
             background-color: #0078d4;
-            background: linear-gradient(to right, #eaeaea 0%, #0078d4 50%, #eaeaea 100%);
+            background: linear-gradient(to right, #edebe9 0%, #0078d4 50%, #edebe9 100%);
             height: 2px;
             min-width: 33%;
             position: absolute;
@@ -270,8 +267,8 @@ exports[`ProgressIndicator renders indeterminate ProgressIndicator correctly 1`]
     className=
         ms-ProgressIndicator-itemDescription
         {
-          color: #666666;
-          font-size: 11px;
+          color: #605e5c;
+          font-size: 12px;
           line-height: 18px;
         }
   >
@@ -309,7 +306,7 @@ exports[`ProgressIndicator renders with no label or description 1`] = `
       className=
           ms-ProgressIndicator-progressTrack
           {
-            background-color: #eaeaea;
+            background-color: #edebe9;
             height: 2px;
             position: absolute;
             width: 100%;
@@ -324,7 +321,7 @@ exports[`ProgressIndicator renders with no label or description 1`] = `
           {
             animation: keyframes 0%{left:-30%;}100%{left:100%;} 3s infinite;
             background-color: #0078d4;
-            background: linear-gradient(to right, #eaeaea 0%, #0078d4 50%, #eaeaea 100%);
+            background: linear-gradient(to right, #edebe9 0%, #0078d4 50%, #edebe9 100%);
             height: 2px;
             min-width: 33%;
             position: absolute;
@@ -362,8 +359,7 @@ exports[`ProgressIndicator renders with no progress 1`] = `
     className=
         ms-ProgressIndicator-itemName
         {
-          color: #333333;
-          font-size: 14px;
+          color: #323130;
           line-height: 20px;
           overflow: hidden;
           padding-top: 4px;
@@ -377,8 +373,8 @@ exports[`ProgressIndicator renders with no progress 1`] = `
     className=
         ms-ProgressIndicator-itemDescription
         {
-          color: #666666;
-          font-size: 11px;
+          color: #605e5c;
+          font-size: 12px;
           line-height: 18px;
         }
   >

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { EventGroup } from '../../Utilities';
+import { EventGroup, getDocument } from '../../Utilities';
 import { IDragDropHelper, IDragDropTarget, IDragDropOptions, IDragDropEvent, IDragDropContext } from './interfaces';
 import { ISelection } from '../../utilities/selection/interfaces';
 
@@ -32,21 +32,22 @@ export class DragDropHelper implements IDragDropHelper {
   };
   private _events: EventGroup;
   private _lastId: number;
+  private _initialized: boolean;
 
   constructor(params: IDragDropHelperParams) {
     this._selection = params.selection;
     this._dragEnterCounts = {};
     this._activeTargets = {};
     this._lastId = 0;
-
-    this._events = new EventGroup(this);
-    // clear drag data when mouse up, use capture event to ensure it will be run
-    this._events.on(document.body, 'mouseup', this._onMouseUp.bind(this), true);
-    this._events.on(document, 'mouseup', this._onDocumentMouseUp.bind(this), true);
+    // To make this class cheap to create, which allows simplifying some logic elsewhere,
+    // only initialize the event group and global event handlers as needed.
+    this._initialized = false;
   }
 
   public dispose(): void {
-    this._events.dispose();
+    if (this._events) {
+      this._events.dispose();
+    }
   }
 
   public subscribe(
@@ -57,6 +58,20 @@ export class DragDropHelper implements IDragDropHelper {
     key: string;
     dispose(): void;
   } {
+    if (!this._initialized) {
+      this._events = new EventGroup(this);
+
+      const doc = getDocument();
+
+      // clear drag data when mouse up, use capture event to ensure it will be run
+      if (doc) {
+        this._events.on(doc.body, 'mouseup', this._onMouseUp.bind(this), true);
+        this._events.on(doc, 'mouseup', this._onDocumentMouseUp.bind(this), true);
+      }
+
+      this._initialized = true;
+    }
+
     const { key = `${++this._lastId}` } = dragDropOptions;
 
     const handlers: {
@@ -175,7 +190,9 @@ export class DragDropHelper implements IDragDropHelper {
             options.onDragStart(options.context.data, options.context.index, this._selection.getSelection(), event);
           }
           this._isDragging = true;
-          event.dataTransfer.setData('id', root.id);
+          if (event.dataTransfer) {
+            event.dataTransfer.setData('id', root.id);
+          }
         };
 
         events.on(root, 'dragstart', onDragStart);
@@ -268,7 +285,9 @@ export class DragDropHelper implements IDragDropHelper {
    * clear drag data when mouse up outside of the document
    */
   private _onDocumentMouseUp(event: MouseEvent): void {
-    if (event.target === document.documentElement) {
+    const doc = getDocument();
+
+    if (doc && event.target === doc.documentElement) {
       this._onMouseUp(event);
     }
   }

@@ -7,10 +7,6 @@ import {
   IColorSliderStyles
 } from 'office-ui-fabric-react/lib/ColorPicker';
 
-import { NeutralColors } from '../FluentColors';
-import { Depths } from '../FluentDepths';
-import { fluentBorderRadius } from './styleConstants';
-
 export const ColorPickerStyles = (props: IColorPickerStyleProps): Partial<IColorPickerStyles> => {
   return {
     input: {
@@ -44,29 +40,32 @@ export const ColorPickerStyles = (props: IColorPickerStyleProps): Partial<IColor
 
 export const ColorRectangleStyles = (props: IColorRectangleStyleProps): Partial<IColorRectangleStyles> => {
   const { theme } = props;
-  const { palette } = theme;
+  const { palette, effects } = theme;
 
   return {
     root: {
       border: `1px solid ${palette.neutralLighter}`,
-      borderRadius: fluentBorderRadius
+      borderRadius: effects.roundedCorner2
     },
     thumb: {
-      borderColor: NeutralColors.gray80,
-      boxShadow: Depths.depth8
+      borderColor: palette.neutralTertiary,
+      boxShadow: effects.elevation8
     }
   };
 };
 
 export const ColorSliderStyles = (props: IColorSliderStyleProps): Partial<IColorSliderStyles> => {
+  const { theme } = props;
+  const { palette, effects } = theme;
+
   return {
     root: {
-      borderRadius: fluentBorderRadius,
+      borderRadius: effects.roundedCorner2,
       marginBottom: 8
     },
     sliderThumb: {
-      borderColor: NeutralColors.gray80,
-      boxShadow: Depths.depth8
+      borderColor: palette.neutralTertiary,
+      boxShadow: effects.elevation8
     }
   };
 };

@@ -1,6 +1,62 @@
 # Change Log - @uifabric/jest-serializer-merge-styles
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+
+## 7.0.4
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 7.0.3
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 6.0.10
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Patches
+
+- Update and dedupe React deps.
+
+## 6.0.9
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.0.8
+Tue, 02 Apr 2019 00:38:15 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.0.7
+Tue, 15 Jan 2019 13:36:45 GMT
+
+### Patches
+
+- Keyframes no longer cause merge-styles jest serialization to throw an exception.
 
 ## 6.0.6
 Mon, 08 Oct 2018 12:24:15 GMT

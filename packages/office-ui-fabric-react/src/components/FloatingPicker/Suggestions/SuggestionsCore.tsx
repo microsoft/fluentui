@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, css, autobind } from '../../../Utilities';
+import { BaseComponent, css } from '../../../Utilities';
 import { ISuggestionItemProps, SuggestionsItem, ISuggestionModel } from '../../../Pickers';
 import { ISuggestionsCoreProps } from './Suggestions.types';
 import * as stylesImport from './SuggestionsCore.scss';
@@ -13,9 +13,7 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
   public currentIndex: number;
   public currentSuggestion: ISuggestionModel<T> | undefined;
   protected _selectedElement: HTMLDivElement;
-  private SuggestionsItemOfProperType: new (props: ISuggestionItemProps<T>) => SuggestionsItem<T> = SuggestionsItem as new (
-    props: ISuggestionItemProps<T>
-  ) => SuggestionsItem<T>;
+  private SuggestionsItemOfProperType: new (props: ISuggestionItemProps<T>) => SuggestionsItem<T> = SuggestionsItem;
 
   constructor(suggestionsProps: ISuggestionsCoreProps<T>) {
     super(suggestionsProps);
@@ -174,19 +172,17 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
     }
   }
 
-  @autobind
-  private _onClickTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
+  private _onClickTypedSuggestionsItem = (item: T, index: number): ((ev: React.MouseEvent<HTMLElement>) => void) => {
     return (ev: React.MouseEvent<HTMLElement>): void => {
       this.props.onSuggestionClick(ev, item, index);
     };
-  }
+  };
 
-  @autobind
-  private _onRemoveTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
+  private _onRemoveTypedSuggestionsItem = (item: T, index: number): ((ev: React.MouseEvent<HTMLElement>) => void) => {
     return (ev: React.MouseEvent<HTMLElement>): void => {
       const onSuggestionRemove = this.props.onSuggestionRemove!;
       onSuggestionRemove(ev, item, index);
       ev.stopPropagation();
     };
-  }
+  };
 }

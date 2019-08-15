@@ -10,6 +10,110 @@
   },
   "glyphs": [
     {
+      "name": "ChartXAngle",
+      "unicode": "F514"
+    },
+    {
+      "name": "ChartYAngle",
+      "unicode": "F515"
+    },
+    {
+      "name": "Combobox",
+      "unicode": "F516"
+    },
+    {
+      "name": "LineSpacing",
+      "unicode": "F517"
+    },
+    {
+      "name": "Padding",
+      "unicode": "F518"
+    },
+    {
+      "name": "PaddingTop",
+      "unicode": "F519"
+    },
+    {
+      "name": "PaddingBottom",
+      "unicode": "F51A"
+    },
+    {
+      "name": "PaddingLeft",
+      "unicode": "F51B"
+    },
+    {
+      "name": "PaddingRight",
+      "unicode": "F51C"
+    },
+    {
+      "name": "NavigationFlipper",
+      "unicode": "F51D"
+    },
+    {
+      "name": "AlignJustify",
+      "unicode": "F51E"
+    },
+    {
+      "name": "TextOverflow",
+      "unicode": "F51F"
+    },
+    {
+      "name": "VisualsFolder",
+      "unicode": "F520"
+    },
+    {
+      "name": "VisualsStore",
+      "unicode": "F521"
+    },
+    {
+      "name": "PictureCenter",
+      "unicode": "F522"
+    },
+    {
+      "name": "PictureFill",
+      "unicode": "F523"
+    },
+    {
+      "name": "PicturePosition",
+      "unicode": "F524"
+    },
+    {
+      "name": "PictureStretch",
+      "unicode": "F525"
+    },
+    {
+      "name": "PictureTile",
+      "unicode": "F526"
+    },
+    {
+      "name": "Slider",
+      "unicode": "F527"
+    },
+    {
+      "name": "SliderHandleSize",
+      "unicode": "F528"
+    },
+    {
+      "name": "DefaultRatio",
+      "unicode": "F529"
+    },
+    {
+      "name": "NumberSequence",
+      "unicode": "F52A"
+    },
+    {
+      "name": "GUID",
+      "unicode": "F52B"
+    },
+    {
+      "name": "ReportAdd",
+      "unicode": "F52C"
+    },
+    {
+      "name": "DashboardAdd",
+      "unicode": "F52D"
+    },
+    {
       "name": "MapPinSolid",
       "unicode": "F52E"
     },
@@ -304,110 +408,6 @@
     {
       "name": "DeleteRows",
       "unicode": "F64F"
-    },
-    {
-      "name": "DeleteRowsMirrored",
-      "unicode": "F650"
-    },
-    {
-      "name": "DeleteTable",
-      "unicode": "F651"
-    },
-    {
-      "name": "VersionControlPush",
-      "unicode": "F664"
-    },
-    {
-      "name": "StackedColumnChart2",
-      "unicode": "F666"
-    },
-    {
-      "name": "TripleColumnWide",
-      "unicode": "F66E"
-    },
-    {
-      "name": "QuadColumn",
-      "unicode": "F66F"
-    },
-    {
-      "name": "WhiteBoardApp16",
-      "unicode": "F673"
-    },
-    {
-      "name": "WhiteBoardApp32",
-      "unicode": "F674"
-    },
-    {
-      "name": "InsertSignatureLine",
-      "unicode": "F677"
-    },
-    {
-      "name": "ArrangeByFrom",
-      "unicode": "F678"
-    },
-    {
-      "name": "Phishing",
-      "unicode": "F679"
-    },
-    {
-      "name": "CreateMailRule",
-      "unicode": "F67A"
-    },
-    {
-      "name": "PublishCourse",
-      "unicode": "F699"
-    },
-    {
-      "name": "DictionaryRemove",
-      "unicode": "F69A"
-    },
-    {
-      "name": "UserRemove",
-      "unicode": "F69B"
-    },
-    {
-      "name": "UserEvent",
-      "unicode": "F69C"
-    },
-    {
-      "name": "Encryption",
-      "unicode": "F69D"
-    },
-    {
-      "name": "D365TalentLearn",
-      "unicode": "F6BB"
-    },
-    {
-      "name": "D365TalentInsight",
-      "unicode": "F6BC"
-    },
-    {
-      "name": "D365TalentHRCore",
-      "unicode": "F6BD"
-    },
-    {
-      "name": "BacklogList",
-      "unicode": "F6BF"
-    },
-    {
-      "name": "ButtonControl",
-      "unicode": "F6C0"
-    },
-    {
-      "name": "TableGroup",
-      "unicode": "F6D9"
-    },
-    {
-      "name": "MountainClimbing",
-      "unicode": "F6DB"
-    },
-    {
-      "name": "TagUnknown",
-      "unicode": "F6DF"
-    },
-    {
-      "name": "TagUnknownMirror",
-      "unicode": "F6E0"
     }
   ]
 }

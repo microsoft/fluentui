@@ -1,4 +1,3 @@
-
 @import '~office-ui-fabric-react/src/common/common';
 
 .tile {
@@ -27,10 +26,20 @@
 
   &.selected {
     background-color: $ms-color-neutralLight;
+
+    &.isFluentStyling {
+      .name {
+        font-weight: $ms-font-weight-semibold;
+      }
+    }
   }
 
   @include focus(true) {
     background-color: $ms-color-neutralLighter;
+
+    &.isFluentStyling {
+      background-color: transparent;
+    }
 
     &.selected {
       background-color: $ms-color-neutralQuaternaryAlt; // Todo need a color variable.
@@ -42,6 +51,10 @@
 
     &.selected {
       outline: 1px solid $ms-color-themePrimary;
+
+      &.isFluentStyling {
+        outline: 1px solid $ms-color-neutralSecondary;
+      }
     }
   }
 
@@ -87,13 +100,18 @@
 }
 
 .link {
+  border: none;
+  background: transparent;
+
   @include focus-clear();
 
   position: absolute;
+  padding: 0;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
+  width: 100%;
   text-decoration: none;
   color: inherit;
   overflow: hidden;
@@ -101,7 +119,6 @@
   flex-direction: column;
   align-items: stretch;
   align-content: stretch;
-  text-decoration: none;
 
   pointer-events: none;
 }
@@ -259,6 +276,10 @@
 
     .link:hover & {
       text-decoration: underline;
+
+      .isFluentStyling & {
+        text-decoration: none;
+      }
     }
   }
 
@@ -334,7 +355,7 @@
   justify-content: center;
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-s;
-  color: #767676;
+  color: $ms-color-neutralSecondary;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -352,11 +373,41 @@
 
 .hasBackgroundFrame {
   .name {
-    justify-content: flex-start;
+    display: block;
+    @include LTR {
+      justify-content: left;
+    }
+    @include RTL {
+      justify-content: right;
+    }
+
+    &,
+    .isLarge .isSmall & {
+      font-size: $ms-font-size-m;
+      height: auto;
+      padding-top: 6px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      line-height: $ms-font-size-m + 8px;
+    }
   }
 
   .activity {
-    justify-content: flex-start;
+    font-size: $ms-font-size-s;
+    display: block;
+    @include LTR {
+      justify-content: left;
+      text-align: left;
+    }
+    @include RTL {
+      justify-content: left;
+      text-align: left;
+    }
+
+    height: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: $ms-font-size-s + 8px;
   }
 }
 
@@ -366,18 +417,62 @@
       position: absolute;
       content: '';
       display: block;
-      top: -12px;
+      top: -4px;
       bottom: 0;
       left: 0;
       right: 0;
-      background-image: linear-gradient(to top, rgba(#000, 0.65) 0%, rgba(#000, 0.65 * 0.85) 55%, rgba(#000, 0.65 * 0.30) 80%, rgba(#000, 0) 100%);
+      background-image: linear-gradient(
+        to top,
+        rgba(#000, 0.65) 0%,
+        rgba(#000, 0.65 * 0.85) 55%,
+        rgba(#000, 0.65 * 0.3) 80%,
+        rgba(#000, 0) 100%
+      );
       z-index: -1;
       transition: opacity 0.2s linear;
       opacity: 0;
     }
   }
 
+  .onlyOnHover {
+    .name {
+      opacity: 0;
+      transition: transform 0.25s ease-out, opacity 0.2s linear, color 0.2s linear;
+      transform: translateY(1rem);
+    }
+
+    .activity {
+      opacity: 0;
+      transition: transform 0.25s ease-out, opacity 0.2s linear, color 0.2s linear;
+      transform: translateY(1rem);
+    }
+  }
+
+  &:hover,
+  &.selected {
+    .name.onlyOnHover {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+
+    .activity.onlyOnHover {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+
   &.showBackground {
+    &:hover,
+    &.selected {
+      .onlyOnHover.nameplate:before {
+        opacity: 1;
+      }
+    }
+
+    .nameplate:not(.onlyOnHover):before {
+      opacity: 1;
+    }
+
     .name {
       color: $ms-color-white;
       text-shadow: 0.5px 0.5px 2px rgba(#000, 0.55);
@@ -386,12 +481,6 @@
     .activity {
       color: $ms-color-white;
       text-shadow: 0.5px 0.5px 2px rgba(#000, 0.55);
-    }
-
-    .nameplate {
-      &:before {
-        opacity: 1;
-      }
     }
   }
 }

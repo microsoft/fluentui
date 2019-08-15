@@ -2,18 +2,59 @@
 
 exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`] = `
 <div
-  className="ms-FocusZoneTabbableExample"
+  className=
+      ms-Stack
+      {
+        align-items: flex-start;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 20px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
 >
   <div
-    className="ms-Row"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone0"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
   >
     <div
-      className="ms-FocusZone"
-      data-focuszone-id="FocusZone0"
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onMouseDownCapture={[Function]}
-      role="presentation"
+      className=
+          ms-Stack
+          {
+            align-items: center;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            height: auto;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-left: 20px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
     >
       <span>
         Circular Tabbable FocusZone: 
@@ -25,11 +66,11 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
-              border-radius: 0px;
-              border: 1px solid transparent;
+              background-color: #ffffff;
+              border-radius: 2px;
+              border: 1px solid #8a8886;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -52,14 +93,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 2px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -76,16 +117,16 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               top: 0px;
             }
             &:hover {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #f3f2f1;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
             &:active {
-              background-color: #c8c8c8;
-              color: #212121;
+              background-color: #edebe9;
+              color: #201f1e;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -139,11 +180,11 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
-              border-radius: 0px;
-              border: 1px solid transparent;
+              background-color: #ffffff;
+              border-radius: 2px;
+              border: 1px solid #8a8886;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -166,14 +207,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 2px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -190,16 +231,16 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               top: 0px;
             }
             &:hover {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #f3f2f1;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
             &:active {
-              background-color: #c8c8c8;
-              color: #212121;
+              background-color: #edebe9;
+              color: #201f1e;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -249,10 +290,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
       <div
         className=
             ms-TextField
-            ms-FocusZoneTabbableExample-textField
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -262,9 +307,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               padding-right: 0px;
               padding-top: 0px;
               position: relative;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              border-width: 2px;
+              width: 200px;
             }
       >
         <div
@@ -278,9 +321,11 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                 {
                   align-items: stretch;
                   background: #ffffff;
-                  border: 1px solid #a6a6a6;
+                  border-radius: 2px;
+                  border: 1px solid #8a8886;
                   box-shadow: none;
                   box-sizing: border-box;
+                  cursor: text;
                   display: flex;
                   flex-direction: row;
                   height: 32px;
@@ -295,7 +340,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   position: relative;
                 }
                 &:hover {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -303,17 +348,22 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
           >
             <input
               aria-invalid={false}
+              aria-label="FocusZone TextField"
               className=
                   ms-TextField-field
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     background-color: transparent;
                     background: none;
                     border-radius: 0px;
                     border: none;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
+                    font-weight: 400;
                     margin-bottom: 0px;
                     margin-left: 0px;
                     margin-right: 0px;
@@ -321,8 +371,8 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     min-width: 0px;
                     outline: 0px;
                     padding-bottom: 0;
-                    padding-left: 12px;
-                    padding-right: 12px;
+                    padding-left: 8px;
+                    padding-right: 8px;
                     padding-top: 0;
                     text-overflow: ellipsis;
                     width: 100%;
@@ -334,11 +384,30 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     display: none;
                   }
                   &::placeholder {
-                    color: #666666;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #605e5c;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     opacity: 1;
                   }
                   &:-ms-input-placeholder {
-                    color: #666666;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #605e5c;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    opacity: 1;
+                  }
+                  &::-ms-input-placeholder {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #605e5c;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     opacity: 1;
                   }
               id="TextField7"
@@ -346,8 +415,9 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               onChange={[Function]}
               onFocus={[Function]}
               onInput={[Function]}
+              placeholder="FocusZone TextField"
               type="text"
-              value="FocusZone TextField"
+              value=""
             />
           </div>
         </div>
@@ -359,11 +429,11 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
-              border-radius: 0px;
-              border: 1px solid transparent;
+              background-color: #ffffff;
+              border-radius: 2px;
+              border: 1px solid #8a8886;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -386,14 +456,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 2px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -410,16 +480,16 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               top: 0px;
             }
             &:hover {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #f3f2f1;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
             &:active {
-              background-color: #c8c8c8;
-              color: #212121;
+              background-color: #edebe9;
+              color: #201f1e;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -459,7 +529,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     margin-right: 4px;
                     margin-top: 0;
                   }
-              id="id__9"
+              id="id__10"
             >
               Button 3
             </div>
@@ -487,7 +557,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -499,6 +569,33 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               left: -2px;
               right: -2px;
               top: -2px;
+            }
+            & .ms-Button--default {
+              border-bottom-right-radius: 0;
+              border-right: none;
+              border-top-right-radius: 0;
+            }
+            & .ms-Button--primary {
+              border-bottom-right-radius: 0;
+              border-top-right-radius: 0;
+              border: none;
+            }
+            @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+              -ms-high-contrast-adjust: none;
+              background-color: WindowText;
+              color: Window;
+            }
+            & .ms-Button--primary + .ms-Button {
+              border: none;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
+              background-color: Highlight;
+              color: Window;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
+              background-color: Window;
+              border-color: GrayText;
+              color: GrayText;
             }
             &:focus {
               outline: none!important;
@@ -525,11 +622,11 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
-                  border-radius: 0px;
-                  border: 1px solid transparent;
+                  background-color: #ffffff;
+                  border-radius: 2px;
+                  border: 1px solid #8a8886;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -552,14 +649,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 2px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 2px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 2px;
+                  top: 2px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -576,16 +673,16 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   top: 0px;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
                 }
                 &:active {
-                  background-color: #c8c8c8;
-                  color: #212121;
+                  background-color: #edebe9;
+                  color: #201f1e;
                 }
             data-is-focusable={false}
             onKeyDown={[Function]}
@@ -625,7 +722,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__12"
+                  id="id__13"
                 >
                   Create account
                 </div>
@@ -639,15 +736,21 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             className=
                 ms-Button
                 {
-                  background-color: #f4f4f4;
+                  background-color: transparent;
+                  border-bottom-right-radius: 2px;
+                  border-left: none;
                   border-radius: 0px;
-                  border: 0px;
+                  border-top-right-radius: 2px;
+                  border: 1px solid #8a8886;
                   box-sizing: border-box;
                   color: #ffffff;
                   cursor: pointer;
                   display: inline-block;
                   height: auto;
+                  margin-bottom: 0px;
                   margin-left: -1px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 6px;
                   padding-left: 6px;
@@ -660,7 +763,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   width: 32px;
                 }
                 &:hover {
-                  background-color: #eaeaea;
+                  background-color: #edebe9;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
@@ -694,7 +797,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #333333;
+                      color: #323130;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -719,10 +822,11 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             </div>
           </button>
           <span
+            aria-hidden={true}
             className=
 
                 {
-                  background-color: #c8c8c8;
+                  background-color: #c8c6c4;
                   bottom: 8px;
                   position: absolute;
                   right: 31px;
@@ -735,15 +839,37 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
     </div>
   </div>
   <div
-    className="ms-Row"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone19"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
   >
     <div
-      className="ms-FocusZone"
-      data-focuszone-id="FocusZone18"
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onMouseDownCapture={[Function]}
-      role="presentation"
+      className=
+          ms-Stack
+          {
+            align-items: center;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            height: auto;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-left: 20px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
     >
       <span>
         Input Only FocusZone: 
@@ -755,11 +881,11 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
-              border-radius: 0px;
-              border: 1px solid transparent;
+              background-color: #ffffff;
+              border-radius: 2px;
+              border: 1px solid #8a8886;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -782,14 +908,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 2px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -806,16 +932,16 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               top: 0px;
             }
             &:hover {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #f3f2f1;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
             &:active {
-              background-color: #c8c8c8;
-              color: #212121;
+              background-color: #edebe9;
+              color: #201f1e;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -855,7 +981,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     margin-right: 4px;
                     margin-top: 0;
                   }
-              id="id__19"
+              id="id__20"
             >
               Button 1
             </div>
@@ -869,11 +995,11 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
-              border-radius: 0px;
-              border: 1px solid transparent;
+              background-color: #ffffff;
+              border-radius: 2px;
+              border: 1px solid #8a8886;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -896,14 +1022,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 2px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -920,16 +1046,16 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               top: 0px;
             }
             &:hover {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #f3f2f1;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
             &:active {
-              background-color: #c8c8c8;
-              color: #212121;
+              background-color: #edebe9;
+              color: #201f1e;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -969,7 +1095,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     margin-right: 4px;
                     margin-top: 0;
                   }
-              id="id__22"
+              id="id__23"
             >
               Button 2
             </div>
@@ -979,10 +1105,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
       <div
         className=
             ms-TextField
-            ms-FocusZoneTabbableExample-textField
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -992,9 +1122,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               padding-right: 0px;
               padding-top: 0px;
               position: relative;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              border-width: 2px;
+              width: 200px;
             }
       >
         <div
@@ -1008,9 +1136,11 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                 {
                   align-items: stretch;
                   background: #ffffff;
-                  border: 1px solid #a6a6a6;
+                  border-radius: 2px;
+                  border: 1px solid #8a8886;
                   box-shadow: none;
                   box-sizing: border-box;
+                  cursor: text;
                   display: flex;
                   flex-direction: row;
                   height: 32px;
@@ -1025,7 +1155,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   position: relative;
                 }
                 &:hover {
-                  border-color: #333333;
+                  border-color: #323130;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
@@ -1033,17 +1163,22 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
           >
             <input
               aria-invalid={false}
+              aria-label="FocusZone TextField"
               className=
                   ms-TextField-field
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     background-color: transparent;
                     background: none;
                     border-radius: 0px;
                     border: none;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
+                    font-weight: 400;
                     margin-bottom: 0px;
                     margin-left: 0px;
                     margin-right: 0px;
@@ -1051,8 +1186,8 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     min-width: 0px;
                     outline: 0px;
                     padding-bottom: 0;
-                    padding-left: 12px;
-                    padding-right: 12px;
+                    padding-left: 8px;
+                    padding-right: 8px;
                     padding-top: 0;
                     text-overflow: ellipsis;
                     width: 100%;
@@ -1064,20 +1199,40 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     display: none;
                   }
                   &::placeholder {
-                    color: #666666;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #605e5c;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     opacity: 1;
                   }
                   &:-ms-input-placeholder {
-                    color: #666666;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #605e5c;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     opacity: 1;
                   }
-              id="TextField25"
+                  &::-ms-input-placeholder {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #605e5c;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    opacity: 1;
+                  }
+              id="TextField26"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
               onInput={[Function]}
+              placeholder="FocusZone TextField"
               type="text"
-              value="FocusZone TextField"
+              value=""
             />
           </div>
         </div>
@@ -1089,11 +1244,11 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
-              border-radius: 0px;
-              border: 1px solid transparent;
+              background-color: #ffffff;
+              border-radius: 2px;
+              border: 1px solid #8a8886;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1116,14 +1271,14 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 2px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1140,16 +1295,16 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               top: 0px;
             }
             &:hover {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #f3f2f1;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
             &:active {
-              background-color: #c8c8c8;
-              color: #212121;
+              background-color: #edebe9;
+              color: #201f1e;
             }
         data-is-focusable={true}
         onClick={[Function]}
@@ -1189,7 +1344,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     margin-right: 4px;
                     margin-top: 0;
                   }
-              id="id__27"
+              id="id__29"
             >
               Button 3
             </div>

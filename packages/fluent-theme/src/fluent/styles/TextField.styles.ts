@@ -1,50 +1,46 @@
 import { ITextFieldStyleProps, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
-import { fluentBorderRadius } from './styleConstants';
-import { NeutralColors, SharedColors } from '../FluentColors';
 
 export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextFieldStyles> => {
   const { focused, disabled, hasErrorMessage, multiline, theme } = props;
-  const { palette } = theme;
+  const { palette, effects } = theme;
 
   return {
     fieldGroup: [
       {
-        borderRadius: fluentBorderRadius
+        borderRadius: effects.roundedCorner2,
+        borderColor: palette.neutralSecondaryAlt
       },
-      !focused &&
-        !disabled &&
-        !hasErrorMessage && {
-          borderColor: NeutralColors.gray80,
-          selectors: {
-            ':hover': {
-              borderColor: palette.neutralPrimary
-            }
-          }
-        },
       hasErrorMessage && [
         {
-          borderColor: SharedColors.red10,
+          borderColor: palette.red,
           selectors: {
             '&:focus, &:hover': {
-              borderColor: SharedColors.red20
+              borderColor: palette.redDark
             }
           }
         },
         focused && {
-          borderColor: SharedColors.red20
+          borderColor: palette.redDark
         }
       ]
     ],
-    field: {
-      color: palette.neutralDark,
-      padding: !multiline ? '0 8px' : '6px 8px',
-      selectors: {
-        '::placeholder': [disabled && { color: palette.neutralTertiary }],
-        ':-ms-input-placeholder': [disabled && { color: palette.neutralTertiary }]
+    field: [
+      !disabled && {
+        color: palette.neutralDark
+      },
+      {
+        padding: !multiline ? '0 8px' : '6px 8px',
+        selectors: {
+          '::placeholder': [disabled && { color: palette.neutralTertiary }],
+          ':-ms-input-placeholder': [disabled && { color: palette.neutralTertiary }]
+        }
       }
+    ],
+    wrapper: {
+      borderColor: palette.neutralSecondaryAlt // For underlined and borderless TextFields
     },
     errorMessage: {
-      color: SharedColors.red20
+      color: palette.redDark
     }
   };
 };

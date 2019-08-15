@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Fix async patterns in tests",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "09a0bbca1887a3a4695306ef64abf97986efbd1e",
+  "date": "2019-08-14T00:47:43.645Z"
+}

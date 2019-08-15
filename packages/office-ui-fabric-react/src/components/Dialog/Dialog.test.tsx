@@ -2,19 +2,39 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import { mount } from 'enzyme';
-
 import { DialogBase } from './Dialog.base';
 import { DialogContent } from './DialogContent';
 import { DialogType } from './DialogContent.types'; // for express fluent assertions
 
-/* tslint:disable:no-unused-expression */ describe('Dialog', () => {
+describe('Dialog', () => {
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   it('renders Dialog correctly', () => {
     const component = renderer.create(<DialogContent />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('Fires dismissed after closing', done => {
+  it('renders Dialog with a jsx title', () => {
+    const component = renderer.create(
+      <DialogContent
+        type={DialogType.normal}
+        title={
+          <div>
+            <span>I am span 1</span>
+            <span>I am span 2</span>
+          </div>
+        }
+      />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Fires dismissed after closing', () => {
+    jest.useFakeTimers();
     let dismissedCalled = false;
 
     const handleDismissed = () => {
@@ -27,17 +47,10 @@ import { DialogType } from './DialogContent.types'; // for express fluent assert
     wrapper.setProps({ hidden: true });
     wrapper.update();
 
-    // give time for update to complete
-    setTimeout(() => {
-      try {
-        expect(document.querySelector('[role="dialog"]')).toBeNull();
-        expect(dismissedCalled).toEqual(true);
-      } catch (e) {
-        done(e);
-      }
-      wrapper.unmount();
-      done();
-    }, 300);
+    jest.runAllTimers();
+    expect(document.querySelector('[role="dialog"]')).toBeNull();
+    expect(dismissedCalled).toEqual(true);
+    wrapper.unmount();
   });
 
   it('Properly attaches auto-generated aria attributes IDs', () => {

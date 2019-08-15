@@ -3,7 +3,14 @@ import { DialogFooterBase } from './DialogFooter.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory Dialog}
+ */
 export interface IDialogFooter {}
+
+/**
+ * {@docCategory Dialog}
+ */
 export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
   /**
    * Gets the component ref.
@@ -26,6 +33,9 @@ export interface IDialogFooterProps extends React.Props<DialogFooterBase> {
   className?: string;
 }
 
+/**
+ * {@docCategory Dialog}
+ */
 export interface IDialogFooterStyleProps {
   /**
    * Accept theme prop.
@@ -38,6 +48,9 @@ export interface IDialogFooterStyleProps {
   className?: string;
 }
 
+/**
+ * {@docCategory Dialog}
+ */
 export interface IDialogFooterStyles {
   /**
    * Style for the actions element.

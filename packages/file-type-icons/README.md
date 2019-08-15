@@ -4,7 +4,6 @@
 
 Fabric File Type Icons includes a collection of icons to represent file types.
 
-
 # Getting started
 
 If you are using Fabric React components, you can make all file type icons available by calling the `initializeFileTypeIcons` function from the `@uifabric/file-type-icons` package:
@@ -29,6 +28,16 @@ import { getFileTypeIconProps } from '@uifabric/file-type-icons';
 
 <Icon {...getFileTypeIconProps({extension: 'docx', size: 16}) />
 ```
+
+# Fluent file type icons
+
+You can use the new Fluent file type icons as they become available by passing the following path to `initializeFileTypeIcons`:
+
+```tsx
+initializeFileTypeIcons('https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/');
+```
+
+In Fabric 7, the new Fluent file type icons will be the default.
 
 # Notes
 

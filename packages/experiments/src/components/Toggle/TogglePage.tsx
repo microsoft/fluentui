@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, Markdown, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { ToggleExample } from './examples/Toggle.Example';
 const ToggleExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Toggle/examples/Toggle.Example.tsx') as string;
 
-import { ToggleStyleVarsInterfaceExample } from './examples/Toggle.StyleVarsInterface.Example';
-const ToggleStyleVarsInterfaceExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Toggle/examples/Toggle.StyleVarsInterface.Example.tsx') as string;
+import { ToggleTokensObjectExample } from './examples/Toggle.Tokens.Object.Example';
+const ToggleTokensObjectExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Toggle/examples/Toggle.Tokens.Object.Example.tsx') as string;
 
-import { ToggleStyleVarsFunctionExample } from './examples/Toggle.StyleVarsFunction.Example';
-const ToggleStyleVarsFunctionExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Toggle/examples/Toggle.StyleVarsFunction.Example.tsx') as string;
+import { ToggleTokensFunctionExample } from './examples/Toggle.Tokens.Function.Example';
+const ToggleTokensFunctionExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Toggle/examples/Toggle.Tokens.Function.Example.tsx') as string;
 
 export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -21,25 +21,21 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Default Toggles" code={ToggleExampleCode}>
               <ToggleExample />
             </ExampleCard>
-            <ExampleCard title="Toggle components when modifying style variables" code={ToggleStyleVarsInterfaceExampleCode}>
-              <ToggleStyleVarsInterfaceExample />
+            <ExampleCard title="Toggle components with token objects" code={ToggleTokensObjectExampleCode}>
+              <ToggleTokensObjectExample />
             </ExampleCard>
-            <ExampleCard title="Toggle components when sending a function as style variables" code={ToggleStyleVarsFunctionExampleCode}>
-              <ToggleStyleVarsFunctionExample />
+            <ExampleCard title="Toggle components with token functions" code={ToggleTokensFunctionExampleCode}>
+              <ToggleTokensFunctionExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
           <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Toggle/Toggle.types.ts')]} />
         }
-        overview={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleOverview.md')}</PageMarkdown>
-        }
+        overview={<Markdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleOverview.md')}</Markdown>}
         bestPractices={<div />}
-        dos={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDos.md')}</PageMarkdown>}
-        donts={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDonts.md')}</PageMarkdown>
-        }
+        dos={<Markdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDos.md')}</Markdown>}
+        donts={<Markdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDonts.md')}</Markdown>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

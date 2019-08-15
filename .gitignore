@@ -62,15 +62,10 @@ drop/
 
 # Visual Studio Temp Project
 .vs/
-bin/
-*.suo
-*.csproj.user
-*.userosscache
 *.sublime-project
 *.sublime-workspace
 .idea
 /.settings/
-OneDrive.sln.ide/*
 
 # NPM Install Temp
 __temp/
@@ -115,5 +110,22 @@ gulp-cache
 
 # NPM debug logs
 npm-debug.log.*
-
+shrinkwrap.yaml
 package-lock.json
+
+*.swp
+
+# Temporary files
+*~
+*swp
+*swo
+
+# Fabric website
+apps/fabric-website/flights/
+
+# Rush files - since we are moving away from it
+/common
+rush.json
+
+# package manifest
+/package-manifest.json

@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
+import { FocusZone, Text } from 'office-ui-fabric-react';
 import { CollapsibleSection } from '@uifabric/experiments/lib/CollapsibleSection';
-import { Text } from '@uifabric/experiments/lib/Text';
 
 import { lorem } from '@uifabric/example-app-base';
 
@@ -88,14 +87,7 @@ class CollapsibleSectionFolder extends React.Component<{ indent?: number }, {}> 
     for (let i = 0; i < randomFolderCount; i++) {
       const randomFolder = Math.floor(Math.random() * _folderItems.length);
       this._folders.push(
-        <CollapsibleSection
-          key={i}
-          defaultCollapsed={true}
-          titleProps={{
-            text: _folderItems[randomFolder]
-          }}
-          indent={this.props.indent}
-        >
+        <CollapsibleSection key={i} defaultCollapsed={true} title={_folderItems[randomFolder]} indent={this.props.indent}>
           <CollapsibleSectionFolder indent={(this.props.indent || 0) + 1} />
           {this._files}
         </CollapsibleSection>

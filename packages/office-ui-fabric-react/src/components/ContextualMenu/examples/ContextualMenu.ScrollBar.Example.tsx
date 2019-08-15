@@ -20,7 +20,6 @@ export class ContextualMenuWithScrollBarExample extends React.Component<
     return (
       <div>
         <DefaultButton
-          id="ContextualMenuWithScrollBarExample"
           text="Click for ContextualMenu"
           menuProps={{
             shouldFocusOnMount: true,

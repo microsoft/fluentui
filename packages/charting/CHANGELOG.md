@@ -1,6 +1,205 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 14 Nov 2018 13:34:01 GMT and should not be manually modified.
+This log was last generated on Tue, 13 Aug 2019 12:31:12 GMT and should not be manually modified.
+
+## 0.134.1
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Patches
+
+- Fix donut chart transform when height and width props change (v-ragor@microsoft.com)
+
+## 0.134.0
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Minor changes
+
+- Initial implementation of clickable legends (atgupta@microsoft.com)
+
+## 0.133.5
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Patches
+
+- Improve how to get the min query string (elcraig@microsoft.com)
+
+## 0.133.4
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+
+## 0.133.2
+Wed, 10 Jul 2019 12:28:00 GMT
+
+### Patches
+
+- FIx linechart issue when consumer didn't sent height and width for the chart (v-ragor@microsoft.com)
+
+## 0.133.1
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 0.133.0
+Thu, 27 Jun 2019 22:14:22 GMT
+
+### Minor changes
+
+- Bisected the height to the chart and legends
+
+## 0.132.0
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Minor changes
+
+- Fixing peer deps.
+
+## 0.131.3
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- Add data viz separator for HorizontalBarChart 
+
+## 0.131.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Resolved the issue of the legends repeating even with same color and legend
+- Fix missing assets in production build.
+
+## 0.131.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+- Fix verticalBarChart x-axis description cut off issue
+
+## 0.30.3
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Patches
+
+- Render demo app with Markdown instead of PageMarkdown
+- Update and dedupe React deps.
+
+## 0.30.2
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- Fix LineChart does not display properly in FireFox browser
+
+## 0.30.1
+Fri, 07 Jun 2019 12:21:48 GMT
+
+### Patches
+
+- Data Viz 'Legends' is not accessible using keyboard tab navigation 
+
+## 0.30.0
+Mon, 03 Jun 2019 23:04:02 GMT
+
+### Minor changes
+
+- Add benchmark triangle for HorizontalBarChart
+
+## 0.29.2
+Thu, 30 May 2019 12:22:06 GMT
+
+### Patches
+
+- Fix charting build
+
+## 0.29.1
+Tue, 21 May 2019 12:20:44 GMT
+
+### Patches
+
+- Use shared demo app bootstrapping code
+
+## 0.29.0
+Thu, 16 May 2019 17:34:08 GMT
+
+### Minor changes
+
+- Rotated the x-axis text for date values
+
+## 0.28.14
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 0.28.13
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Patches
+
+- Remove nonexistent related links from docs
+
+## 0.28.12
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 0.28.11
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- Replace custom high contrast selector with constant
+
+## 0.28.10
+Tue, 26 Mar 2019 12:32:51 GMT
+
+### Patches
+
+- Remove IE 11-incompatible constructs
+
+## 0.28.9
+Thu, 21 Mar 2019 12:36:29 GMT
+
+### Patches
+
+- "added the background color and opacity for legends in the high contrast mode "
+
+## 0.28.8
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Add type annotations based on update to "styled"
+
+## 0.28.7
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- Add saparator 2px for data segments
+
+## 0.28.6
+Wed, 06 Feb 2019 13:38:06 GMT
+
+### Patches
+
+- office ui fabric charting package, legend related changes 
+
+## 0.28.5
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Basic conversions from componentWillReceiveProps to getDerivedStateFromProps
 
 ## 0.28.4
 Wed, 14 Nov 2018 13:34:01 GMT

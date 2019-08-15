@@ -1,12 +1,29 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Fabric, CompactPeoplePicker, ListPeoplePicker, NormalPeoplePicker, IPersonaProps, PersonaPresence } from 'office-ui-fabric-react';
+import {
+  Fabric,
+  CompactPeoplePicker,
+  ListPeoplePicker,
+  NormalPeoplePicker,
+  IPersonaProps,
+  PersonaPresence
+} from 'office-ui-fabric-react';
 
 import { TestImages } from '../common/TestImages';
 
+const overflowPersona: IPersonaProps & { key: string | number } = {
+  key: 2,
+  imageUrl: TestImages.personaMale,
+  imageInitials: 'AR',
+  text: 'Aaron Reid Lundberg Kolar Lundberg Lindqvist Kolar Reid',
+  secondaryText: 'Designer',
+  tertiaryText: 'In a meeting',
+  optionalText: 'Available at 4:00pm',
+  presence: PersonaPresence.busy
+};
 const people: (IPersonaProps & { key: string | number })[] = [
   {
     key: 1,
@@ -206,6 +223,23 @@ storiesOf('PeoplePicker', module)
           className={'ms-PeoplePicker'}
           pickerSuggestionsProps={suggestionProps}
           defaultSelectedItems={[people[2]]}
+        />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
+  .addStory(
+    'Normal Overflow selected',
+    () => (
+      <Fabric>
+        <NormalPeoplePicker
+          onResolveSuggestions={getPeople}
+          onEmptyInputFocus={getPeople}
+          getTextFromItem={getTextFromItem}
+          className={'ms-PeoplePicker'}
+          pickerSuggestionsProps={suggestionProps}
+          styles={{ root: { maxWidth: 200 } }}
+          defaultSelectedItems={[people[1], overflowPersona]}
         />
       </Fabric>
     ),

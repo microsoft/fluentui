@@ -3,11 +3,6 @@ import { IToggleStyleProps, IToggleStyles } from 'office-ui-fabric-react/lib/Tog
 
 export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> => {
   const { disabled, checked, theme } = props;
-
-  if (!theme) {
-    throw new Error('Theme is undefined or null in Fluent theme Toggle getStyles function.');
-  }
-
   const { palette } = theme;
 
   return {

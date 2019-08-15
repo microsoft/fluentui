@@ -1,4 +1,5 @@
 import { ILegendsStyles, ILegendStyleProps } from './Legends.types';
+import { HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
   const { className, theme } = props;
@@ -19,6 +20,12 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       margin: props.overflow ? '16px 0px 16px 16px' : ''
     },
     rect: {
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: props.colorOnSelectedState,
+          opacity: props.colorOnSelectedState === palette.white ? '0.6' : ''
+        }
+      },
       width: '12px',
       height: '12px',
       backgroundColor: props.colorOnSelectedState,

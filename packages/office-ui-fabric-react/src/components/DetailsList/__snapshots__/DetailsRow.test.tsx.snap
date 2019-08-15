@@ -19,7 +19,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -51,30 +51,34 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background: #ffffff;
-                border-bottom: 1px solid #eaeaea;
+                border-bottom: 1px solid #edebe9;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover $check {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
-              & ms-TooltipHost $checkTooltip {
+              & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                 display: block;
               }
           data-automationid="DetailsHeader"
@@ -86,7 +90,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >
@@ -100,9 +104,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -127,7 +131,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
@@ -138,16 +142,18 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           >
             <span
               className=
-
+                  ms-DetailsHeader-checkTooltip
 
             >
               <div
                 aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -165,7 +171,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -179,7 +185,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -189,16 +195,12 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -232,27 +234,32 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-circle
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 18px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -269,21 +276,26 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-check
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 16px;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -314,12 +326,12 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -344,18 +356,18 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -385,7 +397,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header0-key-name "
+                aria-labelledby="header0-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -410,7 +422,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -426,6 +438,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -446,12 +460,12 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -476,18 +490,18 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -517,7 +531,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header0-name-name "
+                aria-labelledby="header0-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -542,7 +556,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -558,6 +572,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -578,12 +594,12 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -608,18 +624,18 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -649,7 +665,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header0-value-name "
+                aria-labelledby="header0-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -674,7 +690,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -690,6 +706,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -712,6 +730,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -722,7 +743,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -829,7 +849,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -861,30 +881,34 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background: #ffffff;
-                border-bottom: 1px solid #eaeaea;
+                border-bottom: 1px solid #edebe9;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover $check {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
-              & ms-TooltipHost $checkTooltip {
+              & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                 display: block;
               }
           data-automationid="DetailsHeader"
@@ -896,7 +920,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >
@@ -910,9 +934,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -937,7 +961,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
@@ -948,16 +972,18 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           >
             <span
               className=
-
+                  ms-DetailsHeader-checkTooltip
 
             >
               <div
                 aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -975,7 +1001,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -989,7 +1015,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -999,16 +1025,12 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -1042,27 +1064,32 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-circle
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 18px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -1079,21 +1106,26 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-check
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 16px;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -1124,12 +1156,12 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -1154,18 +1186,18 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -1195,7 +1227,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-key-name "
+                aria-labelledby="header9-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1220,7 +1252,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -1236,6 +1268,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -1256,12 +1290,12 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -1286,18 +1320,18 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -1327,7 +1361,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-name-name "
+                aria-labelledby="header9-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1352,7 +1386,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -1368,6 +1402,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -1388,12 +1424,12 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -1418,18 +1454,18 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -1459,7 +1495,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-value-name "
+                aria-labelledby="header9-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1484,7 +1520,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -1500,6 +1536,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -1522,6 +1560,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -1532,7 +1573,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -1627,6 +1667,9 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
   className=
       ms-FocusZone
       ms-DetailsRow
+      &:focus {
+        outline: none;
+      }
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -1635,9 +1678,9 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         animation-name: keyframes from{opacity:0;}to{opacity:1;};
         animation-timing-function: cubic-bezier(.1,.25,.75,.9);
         background: #ffffff;
-        border-bottom: 1px solid #f4f4f4;
+        border-bottom: 1px solid #f3f2f1;
         box-sizing: border-box;
-        color: #666666;
+        color: #605e5c;
         display: inline-flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 12px;
@@ -1658,7 +1701,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         border: 0;
       }
       .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #666666;
+        border: 1px solid #605e5c;
         bottom: 1px;
         content: "";
         left: 1px;
@@ -1668,22 +1711,27 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         top: 1px;
         z-index: 1;
       }
-      ms-List-cell:first-child &:before {
+      .ms-List-cell:first-child &:before {
         display: none;
       }
       &:hover {
-        background: #f4f4f4;
+        background: #f3f2f1;
+        color: #323130;
       }
-      &:hover $check {
+      &:hover .is-row-header {
+        color: #201f1e;
+      }
+      &:hover .ms-DetailsRow-check {
+        opacity: 1;
+      }
+      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
         opacity: 1;
       }
   data-automationid="DetailsRow"
   data-focuszone-id="FocusZone12"
-  data-is-draggable={false}
   data-is-focusable={true}
   data-item-index={0}
   data-selection-index={0}
-  draggable={false}
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -1720,7 +1768,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #666666;
+          border: 1px solid #605e5c;
           bottom: 0px;
           content: "";
           left: 0px;
@@ -1740,21 +1788,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         & [data-is-focusable='true']::-moz-focus-inner {
           border: 0;
         }
-        &$shimmer {
-          border-bottom: 17.5px solid #ffffff;
-          border-left: 12px solid #ffffff;
-          border-right: 32px solid #ffffff;
-          border-top: 17.5px solid #ffffff;
-          padding-bottom: 0px;
-          padding-left: 0px;
-          padding-right: 0px;
-          padding-top: 0px;
-        }
-        &$shimmerIconPlaceholder {
-          border-bottom: 13px solid #ffffff;
-          border-right: 8px solid #ffffff;
-          border-top: 13px solid #ffffff;
-        }
     data-selection-toggle={true}
     role="gridcell"
   >
@@ -1762,6 +1795,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       aria-checked={false}
       className=
           ms-DetailsRow-check
+          ms-Check-checkHost
 
           {
             -moz-osx-font-smoothing: grayscale;
@@ -1790,7 +1824,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             padding-top: 0px;
             position: relative;
             vertical-align: top;
-            width: 40px;
+            width: 48px;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -1800,16 +1834,12 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             bottom: 1px;
             content: "";
             left: 1px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: 1px;
             top: 1px;
             z-index: 1;
           }
-          &:hover {
-            opacity: 1;
-          }
-
       data-automationid="DetailsRowCheck"
       data-selection-toggle={true}
       role="checkbox"
@@ -1841,27 +1871,32 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
               right: 1px;
               top: 1px;
             }
-            $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+            .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
               opacity: 1;
             }
       >
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-Check-circle
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #c8c8c8;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
-                font-size: 18px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
+                font-size: 18px;
                 height: 18px;
                 left: 0px;
                 position: absolute;
-                speak: none;
                 text-align: center;
                 top: 0px;
                 vertical-align: middle;
@@ -1878,21 +1913,26 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-Check-check
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #c8c8c8;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
-                font-size: 16px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
+                font-size: 16px;
                 height: 18px;
                 left: .5px;
                 opacity: 0;
                 position: absolute;
-                speak: none;
                 text-align: center;
                 top: 0px;
                 vertical-align: middle;
@@ -1944,7 +1984,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #666666;
+            border: 1px solid #605e5c;
             bottom: 0px;
             content: "";
             left: 0px;
@@ -1963,21 +2003,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           }
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
-          }
-          &$shimmer {
-            border-bottom: 17.5px solid #ffffff;
-            border-left: 12px solid #ffffff;
-            border-right: 32px solid #ffffff;
-            border-top: 17.5px solid #ffffff;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-          }
-          &$shimmerIconPlaceholder {
-            border-bottom: 13px solid #ffffff;
-            border-right: 8px solid #ffffff;
-            border-top: 13px solid #ffffff;
           }
           {
             padding-right: 8px;
@@ -2015,7 +2040,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #666666;
+            border: 1px solid #605e5c;
             bottom: 0px;
             content: "";
             left: 0px;
@@ -2034,21 +2059,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           }
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
-          }
-          &$shimmer {
-            border-bottom: 17.5px solid #ffffff;
-            border-left: 12px solid #ffffff;
-            border-right: 32px solid #ffffff;
-            border-top: 17.5px solid #ffffff;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-          }
-          &$shimmerIconPlaceholder {
-            border-bottom: 13px solid #ffffff;
-            border-right: 8px solid #ffffff;
-            border-top: 13px solid #ffffff;
           }
           {
             padding-right: 8px;
@@ -2086,7 +2096,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #666666;
+            border: 1px solid #605e5c;
             bottom: 0px;
             content: "";
             left: 0px;
@@ -2105,21 +2115,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           }
           & [data-is-focusable='true']::-moz-focus-inner {
             border: 0;
-          }
-          &$shimmer {
-            border-bottom: 17.5px solid #ffffff;
-            border-left: 12px solid #ffffff;
-            border-right: 32px solid #ffffff;
-            border-top: 17.5px solid #ffffff;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
-          }
-          &$shimmerIconPlaceholder {
-            border-bottom: 13px solid #ffffff;
-            border-right: 8px solid #ffffff;
-            border-top: 13px solid #ffffff;
           }
           {
             padding-right: 8px;
@@ -2173,7 +2168,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -2205,30 +2200,34 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background: #ffffff;
-                border-bottom: 1px solid #eaeaea;
+                border-bottom: 1px solid #edebe9;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover $check {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
-              & ms-TooltipHost $checkTooltip {
+              & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                 display: block;
               }
           data-automationid="DetailsHeader"
@@ -2240,7 +2239,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >
@@ -2254,9 +2253,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -2281,7 +2280,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
@@ -2292,16 +2291,18 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           >
             <span
               className=
-
+                  ms-DetailsHeader-checkTooltip
 
             >
               <div
                 aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -2319,7 +2320,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -2333,7 +2334,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -2343,16 +2344,12 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -2386,27 +2383,32 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-circle
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 18px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -2423,21 +2425,26 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-check
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 16px;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -2468,12 +2475,12 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -2498,18 +2505,18 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -2539,7 +2546,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header3-key-name "
+                aria-labelledby="header3-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2564,7 +2571,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -2580,6 +2587,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -2600,12 +2609,12 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -2630,18 +2639,18 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -2671,7 +2680,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header3-name-name "
+                aria-labelledby="header3-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2696,7 +2705,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -2712,6 +2721,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -2732,12 +2743,12 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -2762,18 +2773,18 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -2803,7 +2814,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header3-value-name "
+                aria-labelledby="header3-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2828,7 +2839,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -2844,6 +2855,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -2866,6 +2879,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -2876,7 +2892,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -2983,7 +2998,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -3015,30 +3030,34 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background: #ffffff;
-                border-bottom: 1px solid #eaeaea;
+                border-bottom: 1px solid #edebe9;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover $check {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
-              & ms-TooltipHost $checkTooltip {
+              & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                 display: block;
               }
           data-automationid="DetailsHeader"
@@ -3050,7 +3069,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 24,
             }
           }
         >
@@ -3064,9 +3083,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -3091,7 +3110,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
@@ -3102,16 +3121,18 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           >
             <span
               className=
-
+                  ms-DetailsHeader-checkTooltip
 
             >
               <div
                 aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -3129,7 +3150,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -3143,7 +3164,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -3153,16 +3174,12 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -3196,27 +3213,32 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-circle
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 18px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -3233,21 +3255,26 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-check
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 16px;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -3278,12 +3305,12 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -3308,18 +3335,18 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -3349,7 +3376,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header6-key-name "
+                aria-labelledby="header6-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3374,7 +3401,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -3390,6 +3417,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -3410,12 +3439,12 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -3440,18 +3469,18 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -3481,7 +3510,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header6-name-name "
+                aria-labelledby="header6-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3506,7 +3535,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -3522,6 +3551,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -3542,12 +3573,12 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -3572,18 +3603,18 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -3613,7 +3644,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header6-value-name "
+                aria-labelledby="header6-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3638,7 +3669,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -3654,6 +3685,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -3676,6 +3709,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -3686,7 +3722,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"

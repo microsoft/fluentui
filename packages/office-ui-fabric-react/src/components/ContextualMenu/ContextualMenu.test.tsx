@@ -1,14 +1,17 @@
 import * as React from 'react';
-import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
+import * as renderer from 'react-test-renderer';
+// Have to import this separately for mock purposes
+import * as Utilities from '../../Utilities';
 
-import { IContextualMenuProps, IContextualMenuStyles } from './ContextualMenu.types';
+import { IContextualMenuProps, IContextualMenuStyles, IContextualMenu } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
+import { DefaultButton, IButton } from 'office-ui-fabric-react/lib/Button';
 
 describe('ContextualMenu', () => {
   afterEach(() => {
@@ -18,7 +21,29 @@ describe('ContextualMenu', () => {
         i--;
       }
     }
+    jest.useRealTimers();
+    jest.restoreAllMocks();
   });
+
+  /**
+   * Needed to make initial focus work: mock focusFirstChild to mark all child elements as visible,
+   * then call the real version.
+   */
+  function mockFocusFirstChild() {
+    const realFocusFirstChild = Utilities.focusFirstChild;
+    jest.spyOn(Utilities, 'focusFirstChild').mockImplementation((rootElement: HTMLElement) => {
+      function markAllVisible(element: Element) {
+        (element as any).isVisible = true;
+        if (element.children.length) {
+          for (let i = 0; i < element.children.length; i++) {
+            markAllVisible(element.children[i]);
+          }
+        }
+      }
+      markAllVisible(rootElement);
+      return realFocusFirstChild(rootElement);
+    });
+  }
 
   it('allows setting aria-label per ContextualMenuItem', () => {
     const items: IContextualMenuItem[] = [{ text: 'Later Today', key: 'Today', secondaryText: '7:00 PM', ariaLabel: 'foo' }];
@@ -508,16 +533,16 @@ describe('ContextualMenu', () => {
     expect(menuItems.length).toEqual(3);
 
     menuItems[0].focus();
-    expect(document.activeElement.textContent).toEqual('TestText 1');
-    expect(document.activeElement.className.split(' ')).not.toContain('is-disabled');
+    expect(document.activeElement!.textContent).toEqual('TestText 1');
+    expect(document.activeElement!.className.split(' ')).not.toContain('is-disabled');
 
     menuItems[1].focus();
-    expect(document.activeElement.textContent).toEqual('TestText 2');
-    expect(document.activeElement.className.split(' ')).toContain('is-disabled');
+    expect(document.activeElement!.textContent).toEqual('TestText 2');
+    expect(document.activeElement!.className.split(' ')).toContain('is-disabled');
 
     menuItems[2].focus();
-    expect(document.activeElement.textContent).toEqual('TestText 3');
-    expect(document.activeElement.className.split(' ')).toContain('is-disabled');
+    expect(document.activeElement!.textContent).toEqual('TestText 3');
+    expect(document.activeElement!.className.split(' ')).toContain('is-disabled');
   });
 
   it('cannot click on disabled items', () => {
@@ -711,16 +736,12 @@ describe('ContextualMenu', () => {
         expect(linkSelfTarget.getAttribute('rel')).toBeNull();
       });
 
-      describe('when the target is _blank and there is no rel specified', () => {
-        it('should default a rel to prevent clickjacking', () => {
-          expect(linkBlankTarget.getAttribute('rel')).toEqual('nofollow noopener noreferrer');
-        });
+      it('when the target is _blank and no rel is specified, defaults a rel to prevent clickjacking', () => {
+        expect(linkBlankTarget.getAttribute('rel')).toEqual('nofollow noopener noreferrer');
       });
 
-      describe('when the target is _blank and there is a rel specified', () => {
-        it('should use the specified rel', () => {
-          expect(linkBlankTargetAndRel.getAttribute('rel')).toEqual('test');
-        });
+      it('when the target is _blank and rel is specified, uses the specified rel', () => {
+        expect(linkBlankTargetAndRel.getAttribute('rel')).toEqual('test');
       });
     });
 
@@ -738,7 +759,9 @@ describe('ContextualMenu', () => {
     expect(menuList).toBeNull();
   });
 
-  it('correctly focuses the first element', done => {
+  it('correctly focuses the first element', () => {
+    jest.useFakeTimers();
+    mockFocusFirstChild();
     const items: IContextualMenuItem[] = [
       {
         text: 'TestText 1',
@@ -751,23 +774,16 @@ describe('ContextualMenu', () => {
       }
     ];
 
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+    ReactTestUtils.renderIntoDocument(<ContextualMenu items={items} />);
+    jest.runAllTimers();
 
-    new Promise<any>(resolve => {
-      let focusedItem;
-      for (let i = 0; i < 20; i++) {
-        focusedItem = document.querySelector('.testkey1')!.firstChild;
-        if (focusedItem === document.activeElement) {
-          break;
-        }
-      }
-      expect(document.activeElement).toEqual(focusedItem);
-      done();
-      resolve();
-    }).catch(done());
+    const focusedItem = document.querySelector('.testkey1')!.firstChild;
+    expect(document.activeElement).toEqual(focusedItem);
   });
 
-  it('will not focus the first element when shouldFocusOnMount is false', done => {
+  it('will not focus the first element when shouldFocusOnMount is false', () => {
+    jest.useFakeTimers();
+    mockFocusFirstChild();
     const items: IContextualMenuItem[] = [
       {
         text: 'TestText 1',
@@ -781,21 +797,14 @@ describe('ContextualMenu', () => {
     ];
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} shouldFocusOnMount={true} />);
-    new Promise(resolve => {
-      let focusedItem;
-      for (let i = 0; i < 20; i++) {
-        focusedItem = document.querySelector('.testkey1')!.firstChild;
-        if (focusedItem === document.activeElement) {
-          break;
-        }
-      }
-      expect(document.activeElement).not.toEqual(focusedItem);
-      done();
-      resolve();
-    }).catch(done);
+    jest.runAllTimers();
+
+    const focusedItem = document.querySelector('.testkey1')!.firstChild;
+    expect(document.activeElement).toEqual(focusedItem);
   });
 
-  it('Hover correctly focuses the second element', done => {
+  it('Correctly focuses the second element on hover', () => {
+    jest.useFakeTimers();
     const items: IContextualMenuItem[] = [
       {
         text: 'TestText 1',
@@ -810,26 +819,13 @@ describe('ContextualMenu', () => {
     ];
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+    jest.runAllTimers();
 
-    new Promise<any>(resolve => {
-      let focusedItem;
-      for (let i = 0; i < 20; i++) {
-        focusedItem = document.querySelector('.testkey2')!.firstChild;
-
-        if (focusedItem) {
-          const focusedItemElement = focusedItem as HTMLElement;
-          const eventObject = document.createEvent('Events');
-          eventObject.initEvent('mouseenter', true, false);
-          focusedItemElement.dispatchEvent(eventObject);
-        }
-        if (focusedItem === document.activeElement) {
-          break;
-        }
-      }
-      expect(document.activeElement).toEqual(focusedItem);
-      done();
-      resolve();
-    }).catch(done());
+    const itemToFocus = document.querySelector('.testkey2')!.firstChild as HTMLElement;
+    ReactTestUtils.Simulate.mouseMove(itemToFocus);
+    ReactTestUtils.Simulate.mouseEnter(itemToFocus);
+    jest.runAllTimers();
+    expect(document.activeElement).toEqual(itemToFocus);
   });
 
   it('merges callout classNames', () => {
@@ -915,6 +911,128 @@ describe('ContextualMenu', () => {
     ReactTestUtils.Simulate.click(menuItem);
 
     expect(customRenderer).toHaveBeenCalledTimes(2);
+  });
+
+  describe('ContextualMenu snapshot', () => {
+    it('ContextualMenu should be present in DOM when hidden (snapshot)', () => {
+      // Mock createPortal to capture its component hierarchy in snapshot output.
+      const ReactDOM = require('react-dom');
+      const createPortal = ReactDOM.createPortal;
+      ReactDOM.createPortal = jest.fn(element => {
+        return element;
+      });
+      const buttonRef = React.createRef<IButton>();
+      const component = renderer.create(
+        <DefaultButton
+          persistMenu={true}
+          componentRef={buttonRef}
+          menuProps={{
+            items: [
+              {
+                text: 'Test1',
+                key: 'Test1',
+                subMenuProps: {
+                  items: [
+                    {
+                      text: 'Test2',
+                      key: 'Test2',
+                      className: 'SubMenuClass'
+                    }
+                  ]
+                }
+              }
+            ],
+            hidden: false
+          }}
+        />
+      );
+      buttonRef.current!.openMenu();
+      buttonRef.current!.dismissMenu();
+      const tree = component.toJSON();
+      expect(tree).toMatchSnapshot();
+
+      ReactDOM.createPortal = createPortal;
+    });
+  });
+
+  describe('ContextualMenu with hidden prop tests', () => {
+    const contextualItem = React.createRef<IContextualMenuRenderItem>();
+    const contextualMenu = React.createRef<IContextualMenu>();
+    const button = React.createRef<IButton>();
+    const menu: IContextualMenuItem[] = [
+      {
+        text: 'Test1',
+        key: 'Test1',
+        componentRef: contextualItem,
+        subMenuProps: {
+          items: [
+            {
+              text: 'Test2',
+              key: 'Test2',
+              className: 'SubMenuClass'
+            },
+            {
+              text: 'Test3',
+              key: 'Test3',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
+      }
+    ];
+
+    beforeEach(() => {
+      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
+        <DefaultButton
+          persistMenu={true}
+          componentRef={button}
+          menuProps={{
+            items: menu,
+            hidden: false,
+            componentRef: contextualMenu
+          }}
+        />
+      );
+    });
+
+    it('ContextualMenu should be present in DOM when hidden', () => {
+      button.current!.openMenu();
+      button.current!.dismissMenu();
+      expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
+    });
+
+    it('Submenu should not be shown when ContextualMenu is hidden', () => {
+      // 1. Open parent menu
+      button.current!.openMenu();
+      expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
+
+      // 2. Open sub menu
+      contextualItem.current!.openSubMenu();
+      expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+
+      // 3. Dismiss parent menu - sub menu should disappear from DOM.
+      // Submenus are not persisted using the hidden prop as of now
+      button.current!.dismissMenu();
+      expect(document.querySelector('.SubMenuClass')).toEqual(null);
+    });
+
+    it('Submenu should not be shown by default when ContextualMenu is shown', () => {
+      // 1. Open parent menu
+      button.current!.openMenu();
+      expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
+
+      // 2. Open sub menu
+      contextualItem.current!.openSubMenu();
+      expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+
+      // 3. Dismiss parent menu - sub menu should disappear from DOM.
+      button.current!.dismissMenu();
+      expect(document.querySelector('.SubMenuClass')).toEqual(null);
+
+      // 4. Reopen parent menu - sub menu should not be present by default
+      button.current!.openMenu();
+      expect(document.querySelector('.SubMenuClass')).toEqual(null);
+    });
   });
 
   describe('canAnyMenuItemsCheck', () => {

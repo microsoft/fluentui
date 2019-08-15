@@ -1,45 +1,53 @@
 import * as React from 'react';
-import { AnimationCell } from './AnimationCell/AnimationCell';
 import * as stylesImport from './Table.module.scss';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 const styles: any = stylesImport;
 
 export interface ITableProps {
-  content: any;
-  isAnimation?: boolean;
+  content: ITableContent;
   responsive?: boolean;
 }
 
-export interface ITableState {
-  currentBreakpoint: string;
+export interface ITableContent {
+  headers: string[];
+  data: ITableCell[][];
 }
 
-export class Table extends React.Component<ITableProps, ITableState> {
-  // Set mobile breakpoint to Screen XL
-  private MOBILE_BREAKPOINT = 1024;
+export interface ITableCell {
+  value: string;
+  className?: string;
+  html?: string;
+}
 
+export interface ITableState {
+  currentBreakpoint?: 'mobile' | 'desktop';
+}
+
+// Set mobile breakpoint to Screen XL
+const MOBILE_BREAKPOINT = 1024;
+
+export class Table extends React.Component<ITableProps, ITableState> {
   constructor(props: ITableProps) {
     super(props);
-    this.state = {
-      currentBreakpoint: ''
-    };
+    this.state = {};
   }
 
-  // Set component event handler resize and bind component events
   public componentDidMount(): void {
-    this._windowEventHandler = this._windowEventHandler.bind(this);
-    window.addEventListener('resize', this._windowEventHandler);
-    this._windowEventHandler();
+    window.addEventListener('resize', this._handleResize);
+    this._handleResize();
+  }
+
+  public componentWillUnmount(): void {
+    window.removeEventListener('resize', this._handleResize);
   }
 
   public render(): JSX.Element {
     let { content } = this.props;
-    return this.state.currentBreakpoint === 'mobile' && this.props.responsive
-      ? this._renderMobile(content)
-      : this._renderDesktop(content);
+    return this.state.currentBreakpoint === 'mobile' && this.props.responsive ? this._renderMobile(content) : this._renderDesktop(content);
   }
 
-  // Render Table cell.  Cell content is either cell's value property, or cell's html property (if value is an empty string)
-  private _renderCell(cell, index): JSX.Element {
+  /** Render Table cell.  Cell content is either cell's value property, or cell's html property (if value is an empty string) */
+  private _renderCell(cell: ITableCell, index: number): JSX.Element {
     return cell.value.length ? (
       <td className={cell.className} key={index}>
         {cell.value}
@@ -49,10 +57,9 @@ export class Table extends React.Component<ITableProps, ITableState> {
     );
   }
 
-  // Render Desktop view
-  private _renderDesktop(content): JSX.Element {
+  private _renderDesktop(content: ITableContent): JSX.Element {
     return (
-      <table className={`${styles.table} ` + (this.props.isAnimation ? 'docs_animationsTable_body' : '')}>
+      <table className={styles.table}>
         <thead>
           <tr>
             {content.headers.map((heading, headingIndex) => (
@@ -62,32 +69,19 @@ export class Table extends React.Component<ITableProps, ITableState> {
         </thead>
         <tbody>
           {content.data.map((row, rowIndex) => (
-            <tr key={rowIndex}>
-              {row.map((cell, cellIndex) => this._renderCell(cell, cellIndex))}
-              {this.props.isAnimation && (
-                <td className={styles.animCell}>
-                  <AnimationCell data={row} />
-                </td>
-              )}
-            </tr>
+            <tr key={rowIndex}>{row.map((cell, cellIndex) => this._renderCell(cell, cellIndex))}</tr>
           ))}
         </tbody>
       </table>
     );
   }
 
-  // Render Mobile view
-  private _renderMobile(content): JSX.Element {
+  private _renderMobile(content: ITableContent): JSX.Element {
     const headers = this.props.content.headers;
     return (
       <div>
         {content.data.map((row, rowIndex) => (
-          <table
-            className={
-              `${styles.tableMobile} ${styles.table} ` + (this.props.isAnimation ? 'docs_animationsTable_body' : '')
-            }
-            key={rowIndex}
-          >
+          <table className={css(styles.tableMobile, styles.table)} key={rowIndex}>
             <tbody>
               {row.map((cell, cellIndex) => (
                 <tr key={cellIndex}>
@@ -95,14 +89,6 @@ export class Table extends React.Component<ITableProps, ITableState> {
                   {this._renderCell(cell, cellIndex)}
                 </tr>
               ))}
-              {this.props.isAnimation && (
-                <tr>
-                  <td>Animation</td>
-                  <td>
-                    <AnimationCell data={row} />
-                  </td>
-                </tr>
-              )}
             </tbody>
           </table>
         ))}
@@ -110,23 +96,19 @@ export class Table extends React.Component<ITableProps, ITableState> {
     );
   }
 
-  // Capitalize the first letter of a string
+  /** Capitalize the first letter of a string */
   private _capitalizeFirstLetter(str: string): string {
-    return str.charAt(0).toUpperCase() + str.slice(1);
+    return str[0].toUpperCase() + str.slice(1);
   }
 
-  // Check current window size and set state if current size is different from state
-  private _windowEventHandler(): void {
-    let currSize = this._getWindowSize();
-    if (this.state.currentBreakpoint !== currSize) {
+  /** Check current window size and set state if current size is different from state */
+  private _handleResize = () => {
+    const currBreakpoint = window.innerWidth < MOBILE_BREAKPOINT ? 'mobile' : 'desktop';
+
+    if (this.state.currentBreakpoint !== currBreakpoint) {
       this.setState({
-        currentBreakpoint: currSize
+        currentBreakpoint: currBreakpoint
       });
     }
-  }
-
-  // Check and return window size
-  private _getWindowSize(): string {
-    return window.innerWidth < this.MOBILE_BREAKPOINT ? 'mobile' : 'desktop';
-  }
+  };
 }

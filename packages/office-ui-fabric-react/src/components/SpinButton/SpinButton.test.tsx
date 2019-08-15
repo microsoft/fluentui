@@ -1,28 +1,38 @@
-import { Promise } from 'es6-promise';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { SpinButton } from './SpinButton';
-import { KeyCodes } from '../../Utilities';
+import { ISpinButton } from './SpinButton.types';
+import { KeyCodes, resetIds } from '../../Utilities';
+import { mockEvent, renderIntoDocument } from '../../common/testUtilities';
 
 describe('SpinButton', () => {
-  function renderIntoDocument(element: React.ReactElement<any>): HTMLElement {
-    const component = ReactTestUtils.renderIntoDocument(element);
-    const renderedDOM: Element = ReactDOM.findDOMNode(component as React.ReactInstance) as Element;
-    return renderedDOM as HTMLElement;
-  }
+  beforeEach(() => {
+    resetIds();
+  });
 
-  function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData {
-    const target: EventTarget = { value: targetValue } as HTMLInputElement;
-    const event: ReactTestUtils.SyntheticEventData = { target };
-    return event;
-  }
+  afterEach(() => {
+    if ((setTimeout as any).mock) {
+      jest.useRealTimers();
+    }
+  });
 
   it('renders SpinButton correctly', () => {
     const component = renderer.create(<SpinButton label="label" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('SpinButton allows value updates when no props are defined', () => {
+    const ref = React.createRef<ISpinButton>();
+    const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="label" componentRef={ref} />);
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    ReactTestUtils.Simulate.keyDown(inputDOM, {
+      which: KeyCodes.up
+    });
+    expect(inputDOM.value).toEqual('1');
+    expect(ref.current!.value).toEqual('1');
   });
 
   it('renders SpinButton correctly with values that the user passes in', () => {
@@ -515,14 +525,12 @@ describe('SpinButton', () => {
   });
 
   it('should stop spinning if text field is focused while actively spinning', () => {
+    jest.useFakeTimers();
+
     const exampleLabelValue = 'SpinButton';
     const exampleMinValue = 2;
     const exampleMaxValue = 22;
     const exampleDefaultValue = '12';
-
-    function delay(millisecond: number): Promise<string> {
-      return new Promise<string>(resolve => setTimeout(resolve, millisecond));
-    }
 
     const renderedDOM: HTMLElement = renderIntoDocument(
       <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
@@ -532,15 +540,21 @@ describe('SpinButton', () => {
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
     const buttonDOM: Element = renderedDOM.getElementsByClassName('ms-UpButton')[0];
 
-    expect(buttonDOM.tagName).toEqual('BUTTON');
+    expect(buttonDOM).toBeTruthy();
 
+    // start spinning
     ReactTestUtils.Simulate.mouseDown(buttonDOM, {
       type: 'mousedown',
       clientX: 0,
       clientY: 0
     });
+    // spin again
+    jest.runOnlyPendingTimers();
+    // spin again
+    jest.runOnlyPendingTimers();
 
-    delay(500).then(() => ReactTestUtils.Simulate.focus(inputDOM));
+    ReactTestUtils.Simulate.focus(inputDOM);
+    jest.runAllTimers();
 
     const currentValue = inputDOM.value;
     expect(currentValue).not.toEqual('2');
@@ -636,5 +650,15 @@ describe('SpinButton', () => {
     ReactTestUtils.Simulate.input(inputDOM, mockEvent(String(exampleChangedValue)));
     ReactTestUtils.Simulate.keyDown(inputDOM, { which: KeyCodes.enter });
     expect(onValidate).toHaveBeenCalledTimes(2);
+  });
+
+  it('allows adding a custom aria-describedby id to the input', () => {
+    const customId = 'customAriaDescriptionId';
+    const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label="label" ariaDescribedBy={customId} />);
+
+    const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
+
+    const ariaDescribedByAttribute = inputDOM.getAttribute('aria-describedby');
+    expect(ariaDescribedByAttribute).toMatch(new RegExp('\\b' + customId + '\\b'));
   });
 });

@@ -3,8 +3,11 @@ import * as React from 'react';
 import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { HorizontalBarChartBasicExample } from './examples/HorizontalBarChart.Basic.Example';
+import { HorizontalBarChartBenchmarkExample } from './examples/HorizontalBarChart.Benchmark.Example';
 
 const HorizontalBarChartBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/HorizontalBarChart/examples/HorizontalBarChart.Basic.Example.tsx') as string;
+
+const HorizontalBarChartBenchmarkExampleCode = require('!raw-loader!@uifabric/charting/src/components/HorizontalBarChart/examples/HorizontalBarChart.Benchmark.Example.tsx') as string;
 
 export class HorizontalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -16,6 +19,9 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
           <div>
             <ExampleCard title="HorizontalBarChart basic" code={HorizontalBarChartBasicExampleCode}>
               <HorizontalBarChartBasicExample />
+            </ExampleCard>
+            <ExampleCard title="HorizontalBarChart with benchmark" code={HorizontalBarChartBenchmarkExampleCode}>
+              <HorizontalBarChartBenchmarkExample />
             </ExampleCard>
           </div>
         }
@@ -44,7 +50,6 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
             </ul>
           </div>
         }
-        related={<a href="https://dev.office.com/fabric-js/Components/HorizontalBarChart/HorizontalBarChart.html">Fabric JS</a>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

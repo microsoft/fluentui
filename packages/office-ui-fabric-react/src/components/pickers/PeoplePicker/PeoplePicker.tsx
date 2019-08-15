@@ -15,15 +15,25 @@ import { PeoplePickerItemSuggestion } from './PeoplePickerItems/PeoplePickerItem
 import { IPeoplePickerItemSelectedProps } from './PeoplePickerItems/PeoplePickerItem.types';
 import { getStyles } from '../BasePicker.styles';
 
-/** PeoplePicker props interface which renders Personas as items. */
+/**
+ * PeoplePicker props interface which renders Personas as items.
+ * {@docCategory PeoplePicker}
+ * */
 export interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {}
 
+/**
+ * {@docCategory PeoplePicker}
+ */
 export class BasePeoplePicker extends BasePicker<IPersonaProps, IPeoplePickerProps> {}
 
+/**
+ * {@docCategory PeoplePicker}
+ */
 export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, IPeoplePickerProps> {}
 
 /**
  * Standard People Picker.
+ * {@docCategory PeoplePicker}
  */
 export class NormalPeoplePickerBase extends BasePeoplePicker {
   /** Default props for NormalPeoplePicker. */
@@ -38,6 +48,7 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
 
 /**
  * Compact layout. It uses personas without secondary text when displaying search results.
+ * {@docCategory PeoplePicker}
  */
 export class CompactPeoplePickerBase extends BasePeoplePicker {
   /** Default props for CompactPeoplePicker. */
@@ -52,6 +63,7 @@ export class CompactPeoplePickerBase extends BasePeoplePicker {
 
 /**
  * MemberList layout. The selected people show up below the search box.
+ * {@docCategory PeoplePicker}
  */
 export class ListPeoplePickerBase extends MemberListPeoplePicker {
   /** Default props for ListPeoplePicker. */
@@ -64,12 +76,18 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
   };
 }
 
+/**
+ * {@docCategory PeoplePicker}
+ */
 export interface IGenericItem {
   primaryText: string;
   imageInitials: string;
   ValidationState: ValidationState;
 }
 
+/**
+ * {@docCategory PeoplePicker}
+ */
 export function createGenericItem(name: string, currentValidationState: ValidationState): IGenericItem & { key: React.Key } {
   const personaToConvert = {
     key: name,

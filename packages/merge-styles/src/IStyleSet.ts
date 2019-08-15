@@ -3,6 +3,9 @@ import { IStyleFunctionOrObject, IStyleFunction } from './IStyleFunction';
 
 export type Diff<T extends keyof any, U extends keyof any> = ({ [P in T]: P } & { [P in U]: never } & { [x: string]: never })[T];
 
+/**
+ * {@docCategory Omit}
+ */
 export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 
 /**
@@ -34,5 +37,9 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
  * into a class name. Additionally, all subComponentStyles are style functions.
  */
 export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = { [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string } & {
-  subComponentStyles: { [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<TStyleSet['subComponentStyles'][P]> };
+  subComponentStyles: {
+    [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<
+      TStyleSet['subComponentStyles'] extends infer J ? (P extends keyof J ? J[P] : never) : never
+    >
+  };
 };

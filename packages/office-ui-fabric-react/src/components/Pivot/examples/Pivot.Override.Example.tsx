@@ -18,13 +18,13 @@ export class PivotOverrideExample extends React.Component<any, any> {
     return (
       <div>
         <Pivot selectedKey={`${this.state.selectedKey}`}>
-          <PivotItem linkText="My Files" itemKey="0">
+          <PivotItem headerText="My Files" itemKey="0">
             <Label>Pivot #1</Label>
           </PivotItem>
-          <PivotItem linkText="Recent" itemKey="1">
+          <PivotItem headerText="Recent" itemKey="1">
             <Label>Pivot #2</Label>
           </PivotItem>
-          <PivotItem linkText="Shared with me" itemKey="2">
+          <PivotItem headerText="Shared with me" itemKey="2">
             <Label>Pivot #3</Label>
           </PivotItem>
         </Pivot>

@@ -3,15 +3,20 @@ import { IFontStyles } from './IFontStyles';
 import { ISemanticColors } from './ISemanticColors';
 import { ISpacing } from './ISpacing';
 import { IEffects } from './IEffects';
+import { IRawStyle } from '@uifabric/merge-styles';
 
 /**
  * @internal
  * Predefined scheme identifiers.
  * Schemes are is still in an experimental phase.
  * This interface's naming and values are not finalized and are subject to change.
+ * {@docCategory IScheme}
  */
 export type ISchemeNames = 'default' | 'neutral' | 'soft' | 'strong';
 
+/**
+ * {@docCategory IScheme}
+ */
 export interface IScheme {
   palette: IPalette;
   fonts: IFontStyles;
@@ -39,6 +44,9 @@ export interface IScheme {
   effects: IEffects;
 }
 
+/**
+ * {@docCategory ITheme}
+ */
 export interface ITheme extends IScheme {
   /**
    * @internal
@@ -49,9 +57,22 @@ export interface ITheme extends IScheme {
   schemes?: { [P in ISchemeNames]?: IScheme };
 }
 
+/**
+ * {@docCategory ITheme}
+ */
 export type IPartialTheme = {
-  [P in keyof Pick<
-    ITheme,
-    'palette' | 'fonts' | 'semanticColors' | 'isInverted' | 'disableGlobalClassNames' | 'spacing' | 'schemes' | 'effects'
-  >]?: Partial<ITheme[P]>
+  palette?: Partial<IPalette>;
+  fonts?: Partial<IFontStyles>;
+
+  /**
+   * Use this property to specify font property defaults.
+   */
+  defaultFontStyle?: IRawStyle;
+
+  semanticColors?: Partial<ISemanticColors>;
+  isInverted?: boolean;
+  disableGlobalClassNames?: boolean;
+  spacing?: Partial<ISpacing>;
+  effects?: Partial<IEffects>;
+  schemes?: { [P in ISchemeNames]?: IScheme };
 };

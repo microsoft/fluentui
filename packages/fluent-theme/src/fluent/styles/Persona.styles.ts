@@ -1,7 +1,6 @@
 import { IPersonaStyleProps, IPersonaStyles, PersonaSize, sizeBoolean } from 'office-ui-fabric-react/lib/Persona';
 import { FontSizes } from '../FluentType';
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { NeutralColors } from '../FluentColors';
 
 export const PersonaStyles = (props: IPersonaStyleProps): Partial<IPersonaStyles> => {
   const size = sizeBoolean(props.size as PersonaSize);
@@ -19,15 +18,8 @@ export const PersonaStyles = (props: IPersonaStyleProps): Partial<IPersonaStyles
         fontSize: FontSizes.size16
       }
     ],
-    secondaryText: {
-      color: NeutralColors.gray120
-    },
     tertiaryText: {
-      fontSize: FontSizes.size14,
-      color: NeutralColors.gray120
-    },
-    optionalText: {
-      color: NeutralColors.gray120
+      fontSize: FontSizes.size14
     }
   };
 };

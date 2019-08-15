@@ -11,7 +11,7 @@ exports[`Layer renders Layer correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -25,13 +25,6 @@ exports[`Layer renders Layer correctly 1`] = `
         }
         & textarea {
           font-family: inherit;
-        }
-        button {
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          overflow: visible;
         }
     onBlur={[Function]}
     onChange={[Function]}

@@ -6,6 +6,9 @@ import { getStyles } from './TagItemSuggestion.styles';
 
 const getClassNames = classNamesFunction<ITagItemSuggestionStyleProps, ITagItemSuggestionStyles>();
 
+/**
+ * {@docCategory TagPicker}
+ */
 export const TagItemSuggestionBase = (props: ITagItemSuggestionProps) => {
   const { styles, theme, children } = props;
 

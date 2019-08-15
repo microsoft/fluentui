@@ -3,9 +3,9 @@ import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { mount, ReactWrapper } from 'enzyme';
 import { KeytipLayerBase } from './KeytipLayer.base';
 import { IKeytipProps } from '../../Keytip';
-import { find, EventGroup } from '../../Utilities';
+import { find } from '../../Utilities';
 import { KeytipTree } from './KeytipTree';
-import { KTP_FULL_PREFIX, KTP_SEPARATOR, KeytipEvents } from '../../utilities/keytips/KeytipConstants';
+import { KTP_FULL_PREFIX, KTP_SEPARATOR } from '../../utilities/keytips/KeytipConstants';
 import { KeytipTransitionModifier } from '../../utilities/keytips/IKeytipTransitionKey';
 
 describe('KeytipLayer', () => {
@@ -55,10 +55,6 @@ describe('KeytipLayer', () => {
     content: 'G',
     keySequences: ['g']
   };
-
-  function delay(millisecond: number): Promise<void> {
-    return new Promise<void>(resolve => setTimeout(resolve, millisecond));
-  }
 
   function getKeytip(keytips: IKeytipProps[], content: string): IKeytipProps | undefined {
     return find(keytips, (keytip: IKeytipProps) => {
@@ -342,6 +338,8 @@ describe('KeytipLayer', () => {
 
   describe('event listeners', () => {
     beforeEach(() => {
+      jest.useFakeTimers();
+
       // Add keytips to the manager
       ktpMgr.keytips = [
         { keytip: keytipB, uniqueID: uniqueIdB },
@@ -357,21 +355,22 @@ describe('KeytipLayer', () => {
       ktpTree = layerRef.current!.getKeytipTree();
     });
 
+    afterEach(() => {
+      jest.useRealTimers();
+    });
+
     it('keytipAdded event delay-shows a keytip if the current keytip is its parent', () => {
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
       // Add a child under B
-      EventGroup.raise(ktpMgr, KeytipEvents.KEYTIP_ADDED, {
-        keytip: {
-          content: 'X',
-          keySequences: ['b', 'x']
-        },
-        uniqueID: 'my-unique-id'
+      ktpMgr.register({
+        content: 'X',
+        keySequences: ['b', 'x']
       });
-      delay(750).then(() => {
-        const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
-        expect(visibleKeytips).toHaveLength(1);
-        expect(getKeytip(visibleKeytips, 'X')).toBeDefined();
-      });
+      jest.runAllTimers();
+
+      const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
+      expect(visibleKeytips).toHaveLength(1);
+      expect(getKeytip(visibleKeytips, 'X')).toBeDefined();
     });
   });
 });

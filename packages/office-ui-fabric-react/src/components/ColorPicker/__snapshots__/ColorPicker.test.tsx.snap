@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ColorPicker renders ColorPicker correctly 1`] = `
+exports[`ColorPicker renders correctly 1`] = `
 <div
   className=
       ms-ColorPicker
@@ -28,7 +28,9 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
       className=
           ms-ColorPicker-colorRect
           {
-            margin-bottom: 10px;
+            border-radius: 2px;
+            border: 1px solid #f3f2f1;
+            margin-bottom: 8px;
             position: relative;
           }
           @media screen and (-ms-high-contrast: active){& {
@@ -37,7 +39,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
       onMouseDown={[Function]}
       style={
         Object {
-          "backgroundColor": "#ff0000",
+          "backgroundColor": "#0080ff",
           "minHeight": 220,
           "minWidth": 220,
         }
@@ -73,18 +75,29 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
             {
               background: white;
               border-radius: 50%;
-              border: 1px solid rgba(255,255,255,.8);
-              box-shadow: 0 0 15px -5px black;
+              border: 1px solid #8a8886;
+              box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
               height: 20px;
               position: absolute;
               transform: translate(-50%, -50%);
               width: 20px;
             }
+            &:before {
+              border-radius: 50%;
+              border: 2px solid #ffffff;
+              bottom: 0px;
+              box-sizing: border-box;
+              content: "";
+              left: 0px;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+            }
         style={
           Object {
-            "backgroundColor": "#FFFFFF",
-            "left": "0%",
-            "top": "0%",
+            "backgroundColor": "#abcdef",
+            "left": "28%",
+            "top": "6%",
           }
         }
       />
@@ -94,10 +107,11 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
           ms-ColorPicker-slider
           is-hue
           {
-            border: 1px solid #eaeaea;
+            border-radius: 2px;
+            border: 1px solid #edebe9;
             box-sizing: border-box;
             height: 20px;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             position: relative;
           }
       onMouseDown={[Function]}
@@ -126,8 +140,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
             {
               background: white;
               border-radius: 50%;
-              border: 1px solid rgba(255,255,255,.8);
-              box-shadow: 0 0 15px -5px black;
+              border: 1px solid #8a8886;
+              box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
               height: 20px;
               position: absolute;
               top: 50%;
@@ -136,7 +150,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
             }
         style={
           Object {
-            "left": "0%",
+            "left": "58.4958217270195%",
           }
         }
       />
@@ -146,10 +160,11 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
           ms-ColorPicker-slider
           is-alpha
           {
-            border: 1px solid #eaeaea;
+            border-radius: 2px;
+            border: 1px solid #edebe9;
             box-sizing: border-box;
             height: 20px;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             position: relative;
           }
       onMouseDown={[Function]}
@@ -172,7 +187,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
             }
         style={
           Object {
-            "background": "linear-gradient(to right, transparent 0, #ffffff 100%)",
+            "background": "linear-gradient(to right, transparent 0, #abcdef 100%)",
           }
         }
       />
@@ -183,8 +198,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
             {
               background: white;
               border-radius: 50%;
-              border: 1px solid rgba(255,255,255,.8);
-              box-shadow: 0 0 15px -5px black;
+              border: 1px solid #8a8886;
+              box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
               height: 20px;
               position: absolute;
               top: 50%;
@@ -207,6 +222,9 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
             table-layout: fixed;
             width: 100%;
           }
+          & tbody td:last-of-type .ms-ColorPicker-input {
+            padding-right: 0px;
+          }
     >
       <thead>
         <tr
@@ -218,6 +236,9 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
+              }
+              & td {
+                padding-bottom: 4px;
               }
         >
           <td
@@ -251,9 +272,14 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                   ms-TextField
                   ms-ColorPicker-input
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     border: none;
                     box-shadow: none;
                     box-sizing: border-box;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 30px;
                     margin-bottom: 0px;
                     margin-left: 0px;
@@ -266,11 +292,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     position: relative;
                     width: 100%;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    border-width: 2px;
-                  }
                   &.ms-TextField {
-                    padding-right: 2px;
+                    padding-right: 4px;
                   }
                   & .ms-TextField-field {
                     min-width: auto;
@@ -292,9 +315,11 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                       {
                         align-items: stretch;
                         background: #ffffff;
-                        border: 1px solid #a6a6a6;
+                        border-radius: 2px;
+                        border: 1px solid #8a8886;
                         box-shadow: none;
                         box-sizing: border-box;
+                        cursor: text;
                         display: flex;
                         flex-direction: row;
                         height: 32px;
@@ -309,7 +334,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                         position: relative;
                       }
                       &:hover {
-                        border-color: #333333;
+                        border-color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -321,14 +346,18 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     className=
                         ms-TextField-field
                         {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
                           background-color: transparent;
                           background: none;
                           border-radius: 0px;
                           border: none;
                           box-shadow: none;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                           font-size: 14px;
+                          font-weight: 400;
                           margin-bottom: 0px;
                           margin-left: 0px;
                           margin-right: 0px;
@@ -336,8 +365,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                           min-width: 0px;
                           outline: 0px;
                           padding-bottom: 0;
-                          padding-left: 12px;
-                          padding-right: 12px;
+                          padding-left: 8px;
+                          padding-right: 8px;
                           padding-top: 0;
                           text-overflow: ellipsis;
                           width: 100%;
@@ -349,11 +378,30 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                           display: none;
                         }
                         &::placeholder {
-                          color: #666666;
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
                           opacity: 1;
                         }
                         &:-ms-input-placeholder {
-                          color: #666666;
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          opacity: 1;
+                        }
+                        &::-ms-input-placeholder {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
                           opacity: 1;
                         }
                     id="TextField0"
@@ -363,7 +411,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     onInput={[Function]}
                     spellCheck={false}
                     type="text"
-                    value="ffffff"
+                    value="abcdef"
                   />
                 </div>
               </div>
@@ -381,9 +429,14 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                   ms-TextField
                   ms-ColorPicker-input
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     border: none;
                     box-shadow: none;
                     box-sizing: border-box;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 30px;
                     margin-bottom: 0px;
                     margin-left: 0px;
@@ -396,11 +449,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     position: relative;
                     width: 100%;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    border-width: 2px;
-                  }
                   &.ms-TextField {
-                    padding-right: 2px;
+                    padding-right: 4px;
                   }
                   & .ms-TextField-field {
                     min-width: auto;
@@ -422,9 +472,11 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                       {
                         align-items: stretch;
                         background: #ffffff;
-                        border: 1px solid #a6a6a6;
+                        border-radius: 2px;
+                        border: 1px solid #8a8886;
                         box-shadow: none;
                         box-sizing: border-box;
+                        cursor: text;
                         display: flex;
                         flex-direction: row;
                         height: 32px;
@@ -439,7 +491,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                         position: relative;
                       }
                       &:hover {
-                        border-color: #333333;
+                        border-color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -451,14 +503,18 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     className=
                         ms-TextField-field
                         {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
                           background-color: transparent;
                           background: none;
                           border-radius: 0px;
                           border: none;
                           box-shadow: none;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                           font-size: 14px;
+                          font-weight: 400;
                           margin-bottom: 0px;
                           margin-left: 0px;
                           margin-right: 0px;
@@ -466,8 +522,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                           min-width: 0px;
                           outline: 0px;
                           padding-bottom: 0;
-                          padding-left: 12px;
-                          padding-right: 12px;
+                          padding-left: 8px;
+                          padding-right: 8px;
                           padding-top: 0;
                           text-overflow: ellipsis;
                           width: 100%;
@@ -479,21 +535,40 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                           display: none;
                         }
                         &::placeholder {
-                          color: #666666;
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
                           opacity: 1;
                         }
                         &:-ms-input-placeholder {
-                          color: #666666;
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
                           opacity: 1;
                         }
-                    id="TextField2"
+                        &::-ms-input-placeholder {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          opacity: 1;
+                        }
+                    id="TextField3"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
                     spellCheck={false}
                     type="text"
-                    value="255"
+                    value="171"
                   />
                 </div>
               </div>
@@ -511,9 +586,14 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                   ms-TextField
                   ms-ColorPicker-input
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     border: none;
                     box-shadow: none;
                     box-sizing: border-box;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 30px;
                     margin-bottom: 0px;
                     margin-left: 0px;
@@ -526,11 +606,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     position: relative;
                     width: 100%;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    border-width: 2px;
-                  }
                   &.ms-TextField {
-                    padding-right: 2px;
+                    padding-right: 4px;
                   }
                   & .ms-TextField-field {
                     min-width: auto;
@@ -552,9 +629,11 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                       {
                         align-items: stretch;
                         background: #ffffff;
-                        border: 1px solid #a6a6a6;
+                        border-radius: 2px;
+                        border: 1px solid #8a8886;
                         box-shadow: none;
                         box-sizing: border-box;
+                        cursor: text;
                         display: flex;
                         flex-direction: row;
                         height: 32px;
@@ -569,7 +648,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                         position: relative;
                       }
                       &:hover {
-                        border-color: #333333;
+                        border-color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -581,14 +660,18 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     className=
                         ms-TextField-field
                         {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
                           background-color: transparent;
                           background: none;
                           border-radius: 0px;
                           border: none;
                           box-shadow: none;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                           font-size: 14px;
+                          font-weight: 400;
                           margin-bottom: 0px;
                           margin-left: 0px;
                           margin-right: 0px;
@@ -596,8 +679,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                           min-width: 0px;
                           outline: 0px;
                           padding-bottom: 0;
-                          padding-left: 12px;
-                          padding-right: 12px;
+                          padding-left: 8px;
+                          padding-right: 8px;
                           padding-top: 0;
                           text-overflow: ellipsis;
                           width: 100%;
@@ -609,21 +692,40 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                           display: none;
                         }
                         &::placeholder {
-                          color: #666666;
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
                           opacity: 1;
                         }
                         &:-ms-input-placeholder {
-                          color: #666666;
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
                           opacity: 1;
                         }
-                    id="TextField4"
+                        &::-ms-input-placeholder {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          opacity: 1;
+                        }
+                    id="TextField6"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
                     spellCheck={false}
                     type="text"
-                    value="255"
+                    value="205"
                   />
                 </div>
               </div>
@@ -641,9 +743,14 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                   ms-TextField
                   ms-ColorPicker-input
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     border: none;
                     box-shadow: none;
                     box-sizing: border-box;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 30px;
                     margin-bottom: 0px;
                     margin-left: 0px;
@@ -656,11 +763,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     position: relative;
                     width: 100%;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    border-width: 2px;
-                  }
                   &.ms-TextField {
-                    padding-right: 2px;
+                    padding-right: 4px;
                   }
                   & .ms-TextField-field {
                     min-width: auto;
@@ -682,9 +786,11 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                       {
                         align-items: stretch;
                         background: #ffffff;
-                        border: 1px solid #a6a6a6;
+                        border-radius: 2px;
+                        border: 1px solid #8a8886;
                         box-shadow: none;
                         box-sizing: border-box;
+                        cursor: text;
                         display: flex;
                         flex-direction: row;
                         height: 32px;
@@ -699,7 +805,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                         position: relative;
                       }
                       &:hover {
-                        border-color: #333333;
+                        border-color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -711,14 +817,18 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     className=
                         ms-TextField-field
                         {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
                           background-color: transparent;
                           background: none;
                           border-radius: 0px;
                           border: none;
                           box-shadow: none;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                           font-size: 14px;
+                          font-weight: 400;
                           margin-bottom: 0px;
                           margin-left: 0px;
                           margin-right: 0px;
@@ -726,8 +836,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                           min-width: 0px;
                           outline: 0px;
                           padding-bottom: 0;
-                          padding-left: 12px;
-                          padding-right: 12px;
+                          padding-left: 8px;
+                          padding-right: 8px;
                           padding-top: 0;
                           text-overflow: ellipsis;
                           width: 100%;
@@ -739,21 +849,40 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                           display: none;
                         }
                         &::placeholder {
-                          color: #666666;
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
                           opacity: 1;
                         }
                         &:-ms-input-placeholder {
-                          color: #666666;
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
                           opacity: 1;
                         }
-                    id="TextField6"
+                        &::-ms-input-placeholder {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          opacity: 1;
+                        }
+                    id="TextField9"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
                     onInput={[Function]}
                     spellCheck={false}
                     type="text"
-                    value="255"
+                    value="239"
                   />
                 </div>
               </div>
@@ -771,9 +900,14 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                   ms-TextField
                   ms-ColorPicker-input
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     border: none;
                     box-shadow: none;
                     box-sizing: border-box;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 30px;
                     margin-bottom: 0px;
                     margin-left: 0px;
@@ -786,11 +920,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     position: relative;
                     width: 100%;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    border-width: 2px;
-                  }
                   &.ms-TextField {
-                    padding-right: 2px;
+                    padding-right: 4px;
                   }
                   & .ms-TextField-field {
                     min-width: auto;
@@ -812,9 +943,11 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                       {
                         align-items: stretch;
                         background: #ffffff;
-                        border: 1px solid #a6a6a6;
+                        border-radius: 2px;
+                        border: 1px solid #8a8886;
                         box-shadow: none;
                         box-sizing: border-box;
+                        cursor: text;
                         display: flex;
                         flex-direction: row;
                         height: 32px;
@@ -829,7 +962,7 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                         position: relative;
                       }
                       &:hover {
-                        border-color: #333333;
+                        border-color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -841,14 +974,18 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                     className=
                         ms-TextField-field
                         {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
                           background-color: transparent;
                           background: none;
                           border-radius: 0px;
                           border: none;
                           box-shadow: none;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                           font-size: 14px;
+                          font-weight: 400;
                           margin-bottom: 0px;
                           margin-left: 0px;
                           margin-right: 0px;
@@ -856,8 +993,8 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                           min-width: 0px;
                           outline: 0px;
                           padding-bottom: 0;
-                          padding-left: 12px;
-                          padding-right: 12px;
+                          padding-left: 8px;
+                          padding-right: 8px;
                           padding-top: 0;
                           text-overflow: ellipsis;
                           width: 100%;
@@ -869,14 +1006,33 @@ exports[`ColorPicker renders ColorPicker correctly 1`] = `
                           display: none;
                         }
                         &::placeholder {
-                          color: #666666;
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
                           opacity: 1;
                         }
                         &:-ms-input-placeholder {
-                          color: #666666;
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
                           opacity: 1;
                         }
-                    id="TextField8"
+                        &::-ms-input-placeholder {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #605e5c;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 14px;
+                          font-weight: 400;
+                          opacity: 1;
+                        }
+                    id="TextField12"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}

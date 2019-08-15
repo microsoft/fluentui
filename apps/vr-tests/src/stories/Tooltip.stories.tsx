@@ -1,6 +1,6 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator, FabricDecoratorFixedWidth } from '../utilities';
 import { TooltipHost } from 'office-ui-fabric-react';
@@ -45,7 +45,9 @@ storiesOf('Tooltip - Multiple', module)
       <TooltipHost content="I am the outer tooltip">
         <div id="outerTooltip">I am the outer tooltip text</div>
         <div id="innerTooltip" style={{ padding: '20px' }}>
-          <TooltipHost content="I am the inner tooltip">and I am the inner tooltip text</TooltipHost>
+          <TooltipHost content="I am the inner tooltip">
+            and I am the inner tooltip text
+          </TooltipHost>
         </div>
       </TooltipHost>
     </div>

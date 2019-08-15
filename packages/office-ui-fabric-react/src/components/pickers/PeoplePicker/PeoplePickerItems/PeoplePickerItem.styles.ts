@@ -1,4 +1,5 @@
 import { getGlobalClassNames, getFocusStyle, HighContrastSelector, IStyle } from '../../../../Styling';
+import { ButtonGlobalClassNames } from '../../../Button/BaseButton.classNames';
 import { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from './PeoplePickerItem.types';
 
 const GlobalClassNames = {
@@ -9,18 +10,19 @@ const GlobalClassNames = {
   isInvalid: 'is-invalid'
 };
 
-const REMOVE_BUTTON_SIZE = 28;
+const REMOVE_BUTTON_SIZE = 24;
 
 export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePickerItemSelectedStyles {
-  const { className, theme, selected, invalid } = props;
+  const { className, theme, selected, invalid, disabled } = props;
 
-  const { palette } = theme;
+  const { palette, semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const personaPrimaryTextStyles: IStyle = [
     selected &&
-      !invalid && {
+      !invalid &&
+      !disabled && {
         color: palette.white,
         selectors: {
           [HighContrastSelector]: {
@@ -28,34 +30,41 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
           }
         }
       },
-    invalid &&
-      !selected && {
-        color: palette.redDark,
-        borderBottom: `2px dotted ${palette.redDark}`,
-        selectors: {
-          '$root:hover &': {
-            // override Persona root:hover selector
-            color: palette.redDark
-          }
+    ((invalid && !selected) || (invalid && selected && disabled)) && {
+      color: palette.redDark,
+      borderBottom: `2px dotted ${palette.redDark}`,
+      selectors: {
+        [`.${classNames.root}:hover &`]: {
+          // override Persona root:hover selector
+          color: palette.redDark
         }
-      },
+      }
+    },
     invalid &&
-      selected && {
+      selected &&
+      !disabled && {
         color: palette.white,
         borderBottom: `2px dotted ${palette.white}`
+      },
+    disabled && {
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText'
+        }
       }
+    }
   ];
 
   const personaCoinInitialsStyles: IStyle = [
     invalid && {
-      fontSize: 20 // does not exist on the FontSizes type ramp.
+      fontSize: fonts.xLarge.fontSize
     }
   ];
 
   return {
     root: [
       classNames.root,
-      getFocusStyle(theme, -2),
+      getFocusStyle(theme, { inset: -2 }),
       {
         borderRadius: 15,
         display: 'inline-flex',
@@ -66,31 +75,32 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
         userSelect: 'none',
         maxWidth: 300,
         verticalAlign: 'middle',
+        minWidth: 0,
         selectors: {
           ':hover': {
-            background: !selected ? palette.neutralLight : ''
+            background: !selected && !disabled ? palette.neutralLight : ''
           },
-          [HighContrastSelector]: {
-            border: '1px solid WindowText'
-          }
+          [HighContrastSelector]: [{ border: '1px solid WindowText' }, disabled && { borderColor: 'GrayText' }]
         }
       },
-      selected && [
-        classNames.isSelected,
-        {
-          background: palette.themePrimary,
-          selectors: {
-            [HighContrastSelector]: {
-              borderColor: 'HighLight',
-              background: 'Highlight',
-              MsHighContrastAdjust: 'none'
+      selected &&
+        !disabled && [
+          classNames.isSelected,
+          {
+            background: palette.themePrimary,
+            selectors: {
+              [HighContrastSelector]: {
+                borderColor: 'HighLight',
+                background: 'Highlight',
+                MsHighContrastAdjust: 'none'
+              }
             }
           }
-        }
-      ],
+        ],
       invalid && [classNames.isInvalid],
       invalid &&
-        selected && {
+        selected &&
+        !disabled && {
           background: palette.redDark
         },
       className
@@ -110,6 +120,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
       classNames.removeButton,
       {
         borderRadius: 15,
+        color: palette.neutralPrimary,
         flex: '0 0 auto',
         width: REMOVE_BUTTON_SIZE,
         height: REMOVE_BUTTON_SIZE,
@@ -129,6 +140,10 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
               color: palette.white,
               background: palette.themeDark
             },
+            ':active': {
+              color: palette.white,
+              background: palette.themeDarker
+            },
             [HighContrastSelector]: {
               color: 'HighlightText'
             }
@@ -138,10 +153,20 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
           selectors: {
             ':hover': {
               background: palette.red
+            },
+            ':active': {
+              background: palette.redDark
             }
           }
         }
-      ]
+      ],
+      disabled && {
+        selectors: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+            color: semanticColors.buttonText
+          }
+        }
+      }
     ],
     subComponentStyles: {
       persona: {

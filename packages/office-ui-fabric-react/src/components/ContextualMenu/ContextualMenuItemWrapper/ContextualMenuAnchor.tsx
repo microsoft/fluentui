@@ -1,12 +1,21 @@
 import * as React from 'react';
-import { anchorProperties, getNativeProps } from '../../../Utilities';
+import { anchorProperties, getNativeProps, memoizeFunction } from '../../../Utilities';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../../KeytipData';
 import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
 import { ContextualMenuItem } from '../ContextualMenuItem';
+import { IKeytipDataProps } from '../../KeytipData/KeytipData.types';
+import { IKeytipProps } from '../../Keytip/Keytip.types';
 
 export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
   private _anchor = React.createRef<HTMLAnchorElement>();
+
+  private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
+    return {
+      ...keytipProps,
+      hasMenu: true
+    };
+  });
 
   public render() {
     const {
@@ -32,22 +41,19 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
 
     const subMenuId = this._getSubMenuId(item);
     const itemHasSubmenu = hasSubmenu(item);
-    const nativeProps = getNativeProps(item, anchorProperties);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLAnchorElement>>(item, anchorProperties);
     const disabled = isItemDisabled(item);
     const { itemProps } = item;
 
     let { keytipProps } = item;
     if (keytipProps && itemHasSubmenu) {
-      keytipProps = {
-        ...keytipProps,
-        hasMenu: true
-      };
+      keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
     return (
       <div>
-        <KeytipData keytipProps={item.keytipProps} ariaDescribedBy={(nativeProps as any)['aria-describedby']} disabled={disabled}>
-          {(keytipAttributes: any): JSX.Element => (
+        <KeytipData keytipProps={item.keytipProps} ariaDescribedBy={nativeProps['aria-describedby']} disabled={disabled}>
+          {(keytipAttributes: IKeytipDataProps): JSX.Element => (
             <a
               {...nativeProps}
               {...keytipAttributes}
@@ -68,7 +74,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
               onMouseEnter={this._onItemMouseEnter}
               onMouseLeave={this._onItemMouseLeave}
               onMouseMove={this._onItemMouseMove}
-              onKeyDown={itemHasSubmenu ? this._onItemKeyDown : null}
+              onKeyDown={itemHasSubmenu ? this._onItemKeyDown : undefined}
             >
               <ChildrenRenderer
                 componentRef={item.componentRef}

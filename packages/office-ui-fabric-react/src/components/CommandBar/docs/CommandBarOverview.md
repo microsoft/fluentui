@@ -1,19 +1,19 @@
 CommandBar is a surface that houses commands that operate on the content of
-the window, panel, or parent region it resides above. They are one of the most
+the window, panel, or parent region it resides above. CommandBars are one of the most
 visible and recognizable ways to surface commands, and can be an intuitive
-method for interacting with content on the page. However, if overloaded or
+method for interacting with content on the page; however, if overloaded or
 poorly organized, they can be difficult to use and hide valuable commands from
-your user. CommandBars can also display a search box for finding content; hold
-simple commands as well as menus; and display the status of ongoing actions.
+your user. CommandBars can also display a search box for finding content, hold
+simple commands as well as menus, or display the status of ongoing actions.
 
-Commands should be sorted in order of importance, from left to right or right
-to left depending on the culture. Secondarily, organize commands in logical
-groupingsfor easier recall. CommandBars work best when they display no more
-than 5-7 commands. This helps usersquickly find your most valuable features.
-If you need to show more commands, consider using theoverflow menu. If you
-need to render status, or viewing controls, these go on the right side ofthe
-CommandBar (or left side if in a left to right experience). Do not display
-more than 2-3 itemson the right side as it will make the overall CommandBar
+Commands should be sorted in order of importance, from left-to-right or right-to-left
+depending on the culture. Secondarily, organize commands in logical
+groupings for easier recall. CommandBars work best when they display no more
+than 5-7 commands. This helps users quickly find your most valuable features.
+If you need to show more commands, consider using the overflow menu. If you
+need to render status or viewing controls, these go on the right side of the
+CommandBar (or left side if in a left-to-right experience). Do not display
+more than 2-3 items on the right side as it will make the overall CommandBar
 difficult to parse.
 
 All command items should have an icon and a label. Commands can render as

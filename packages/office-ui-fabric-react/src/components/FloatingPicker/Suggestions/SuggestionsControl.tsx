@@ -28,19 +28,19 @@ export interface ISuggestionsControlState<T> {
 
 export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeaderFooterItemProps, {}> {
   public render(): JSX.Element {
-    const { renderItem, onExecute, isSelected, id } = this.props;
+    const { renderItem, onExecute, isSelected, id, className } = this.props;
     return onExecute ? (
       <div
         id={id}
         onClick={onExecute}
-        className={css('ms-Suggestions-sectionButton', styles.actionButton, {
+        className={css('ms-Suggestions-sectionButton', className, styles.actionButton, {
           ['is-selected ' + styles.buttonSelected]: isSelected
         })}
       >
         {renderItem()}
       </div>
     ) : (
-      <div id={id} className={css('ms-Suggestions-section', styles.suggestionsTitle)}>
+      <div id={id} className={css('ms-Suggestions-section', className, styles.suggestionsTitle)}>
         {renderItem()}
       </div>
     );
@@ -77,7 +77,8 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     this.scrollSelected();
   }
 
-  public componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void {
     if (newProps.suggestions) {
       this.setState({ suggestions: newProps.suggestions }, () => {
         this.resetSelectedItem();
@@ -267,13 +268,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   protected _renderSuggestions(): JSX.Element {
     const TypedSuggestions = this.SuggestionsOfProperType;
 
-    return (
-      <TypedSuggestions
-        ref={this._resolveRef('_suggestions')}
-        {...this.props as ISuggestionsCoreProps<T>}
-        suggestions={this.state.suggestions}
-      />
-    );
+    return <TypedSuggestions ref={this._resolveRef('_suggestions')} {...this.props} suggestions={this.state.suggestions} />;
   }
 
   /**

@@ -12,6 +12,8 @@ export const getStyles = (props: IChoiceGroupStyleProps): IChoiceGroupStyles => 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
+    // TODO (Fabric 8?) - merge className back into `root` and apply root style to
+    // the actual root role=application element
     applicationRole: className,
     root: [
       classNames.root,

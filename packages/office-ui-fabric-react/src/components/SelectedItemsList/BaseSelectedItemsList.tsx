@@ -4,12 +4,12 @@ import { Selection } from '../../Selection';
 
 import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
 
-export interface IBaseSelectedItemsListState {
+export interface IBaseSelectedItemsListState<T = any> {
   // tslint:disable-next-line:no-any
-  items?: any;
+  items: T[];
 }
 
-export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends BaseComponent<P, IBaseSelectedItemsListState>
+export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends BaseComponent<P, IBaseSelectedItemsListState<T>>
   implements IBaseSelectedItemsList<T> {
   protected root: HTMLElement;
   protected selection: Selection;
@@ -65,11 +65,23 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     }
   };
 
-  public removeItem = (item: ISelectedItemProps<T>): void => {
+  public removeItem = (item: T): void => {
     const { items } = this.state;
     const index: number = items.indexOf(item);
 
     this.removeItemAt(index);
+  };
+
+  public replaceItem = (itemToReplace: T, itemsToReplaceWith: T[]): void => {
+    const { items } = this.state;
+    const index: number = items.indexOf(itemToReplace);
+    if (index > -1) {
+      const newItems = items
+        .slice(0, index)
+        .concat(itemsToReplaceWith)
+        .concat(items.slice(index + 1));
+      this.updateItems(newItems);
+    }
   };
 
   // tslint:disable-next-line:no-any
@@ -128,7 +140,8 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     return this.selection.getSelection() as T[];
   }
 
-  public componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(newProps: P, newState: IBaseSelectedItemsListState): void {
     if (newState.items && newState.items !== this.state.items) {
       this.selection.setItems(newState.items);
     }
@@ -138,11 +151,12 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     this.selection.setItems(this.state.items);
   }
 
-  public componentWillReceiveProps(newProps: P): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: P): void {
     const newItems = newProps.selectedItems;
 
     if (newItems) {
-      this.setState({ items: newProps.selectedItems });
+      this.setState({ items: newItems });
     }
 
     if (newProps.selection) {

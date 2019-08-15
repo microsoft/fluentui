@@ -5,6 +5,9 @@ exports[`OverflowSet snapshot tests basicSnapshot 1`] = `
   className=
       ms-FocusZone
       ms-OverflowSet
+      &:focus {
+        outline: none;
+      }
       {
         display: flex;
         flex-wrap: nowrap;
@@ -24,6 +27,9 @@ exports[`OverflowSet snapshot tests snapshot with classname 1`] = `
       ms-FocusZone
       ms-OverflowSet
       foobar
+      &:focus {
+        outline: none;
+      }
       {
         display: flex;
         flex-wrap: nowrap;
@@ -43,6 +49,9 @@ exports[`OverflowSet snapshot tests snapshot with classname and vertical layout 
       ms-FocusZone
       ms-OverflowSet
       foobar
+      &:focus {
+        outline: none;
+      }
       {
         display: flex;
         flex-direction: column;

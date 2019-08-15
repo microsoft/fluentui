@@ -1,18 +1,31 @@
 import * as React from 'react';
-import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getStyles, IButtonBasicExampleStyleProps, IButtonBasicExampleStyles } from './Button.Basic.Example.styles';
-import { ActionButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { ActionButton, css, classNamesFunction, IButtonProps, IStyle } from 'office-ui-fabric-react';
+
+type IButtonBasicExampleStyleProps = {};
+
+interface IButtonBasicExampleStyles {
+  example?: IStyle;
+}
+
+const exampleStyles: IButtonBasicExampleStyles = {
+  example: [
+    'ms-BasicButtonsExample',
+    {
+      selectors: {
+        '.ms-Button': {
+          margin: '10px 0'
+        }
+      }
+    }
+  ]
+};
+
+const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+const classNames = getClassNames(exampleStyles, {});
 
 export class ButtonActionExample extends React.Component<IButtonProps> {
-  public constructor(props: {}) {
-    super(props);
-  }
-
   public render(): JSX.Element {
     const { disabled, checked } = this.props;
-
-    const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
-    const classNames = getClassNames(getStyles, {});
 
     return (
       <div className={css(classNames.example)}>

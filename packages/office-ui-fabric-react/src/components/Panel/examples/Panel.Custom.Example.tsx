@@ -1,27 +1,23 @@
-import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import * as React from 'react';
 
-export class PanelCustomExample extends React.Component<
-  {},
-  {
-    showPanel: boolean;
-  }
-> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      showPanel: false
-    };
-  }
+export interface IPanelCustomExampleState {
+  showPanel: boolean;
+}
 
-  public render(): JSX.Element {
+export class PanelCustomExample extends React.Component<{}, IPanelCustomExampleState> {
+  public state = {
+    showPanel: false
+  };
+
+  public render() {
     return (
       <div>
         <DefaultButton text="Open Panel" secondaryText="Opens the Sample Panel" onClick={this._showPanel} />
         <Panel
           isOpen={this.state.showPanel}
-          onDismiss={this._closePanel}
+          onDismiss={this._hidePanel}
           type={PanelType.custom}
           customWidth="888px"
           headerText="Custom Panel with custom 888px width"
@@ -32,11 +28,11 @@ export class PanelCustomExample extends React.Component<
     );
   }
 
-  private _showPanel = (): void => {
+  private _showPanel = () => {
     this.setState({ showPanel: true });
   };
 
-  private _closePanel = (): void => {
+  private _hidePanel = () => {
     this.setState({ showPanel: false });
   };
 }

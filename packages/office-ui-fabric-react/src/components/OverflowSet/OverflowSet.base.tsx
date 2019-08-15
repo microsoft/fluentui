@@ -42,13 +42,13 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     if (doNotContainWithinFocusZone) {
       Tag = 'div';
       uniqueComponentProps = {
-        ...getNativeProps(this.props, divProperties),
+        ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties),
         ref: this._divContainer
       };
     } else {
       Tag = FocusZone;
       uniqueComponentProps = {
-        ...getNativeProps(this.props, divProperties),
+        ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties),
         ...focusZoneProps,
         componentRef: this._focusZone,
         direction: vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal
@@ -116,7 +116,8 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     this._unregisterPersistedKeytips();
   }
 
-  public componentWillUpdate() {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate() {
     this._unregisterPersistedKeytips();
   }
 
@@ -171,7 +172,9 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
           const persistedKeytip: IKeytipProps = {
             content: keytip.content,
             keySequences: keytip.keySequences,
-            disabled: keytip.disabled || !!(overflowItem.disabled || overflowItem.isDisabled)
+            disabled: keytip.disabled || !!(overflowItem.disabled || overflowItem.isDisabled),
+            hasDynamicChildren: keytip.hasDynamicChildren,
+            hasMenu: keytip.hasMenu
           };
 
           if (keytip.hasDynamicChildren || this._getSubMenuForItem(overflowItem)) {

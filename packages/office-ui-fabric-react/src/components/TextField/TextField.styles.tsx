@@ -1,4 +1,12 @@
-import { AnimationClassNames, FontSizes, getGlobalClassNames, HighContrastSelector, IStyle, normalize } from '../../Styling';
+import {
+  AnimationClassNames,
+  getGlobalClassNames,
+  HighContrastSelector,
+  IStyle,
+  normalize,
+  getPlaceholderStyles,
+  IconFontSizes
+} from '../../Styling';
 import { ILabelStyles, ILabelStyleProps } from '../../Label';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
@@ -24,21 +32,31 @@ const globalClassNames = {
 };
 
 function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles> {
-  const { underlined, disabled } = props;
+  const { underlined, disabled, focused, theme } = props;
+  const { palette, fonts } = theme;
+
   return () => ({
     root: [
       underlined &&
         disabled && {
-          color: props.theme.palette.neutralTertiary
+          color: palette.neutralTertiary
         },
       underlined && {
-        fontSize: FontSizes.medium,
+        fontSize: fonts.medium.fontSize,
         marginRight: 8,
         paddingLeft: 12,
         paddingRight: 0,
         lineHeight: '22px',
         height: 32
-      }
+      },
+      underlined &&
+        focused && {
+          selectors: {
+            [HighContrastSelector]: {
+              height: 31 // -1px to prevent jumpiness in HC with the increased border-width to 2px
+            }
+          }
+        }
     ]
   });
 }
@@ -57,28 +75,42 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     hasIcon,
     resizable,
     hasErrorMessage,
-    iconClass,
     inputClassName,
     autoAdjustHeight
   } = props;
 
-  const { semanticColors, palette } = theme;
+  const { semanticColors, effects, fonts } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
   const fieldPrefixSuffix: IStyle = {
-    background: palette.neutralLighter,
-    color: palette.neutralSecondary,
+    background: semanticColors.disabledBackground, // Suffix/Prefix are not editable so the disabled slot perfectly fits.
+    color: !disabled ? semanticColors.inputPlaceholderText : semanticColors.disabledText,
     display: 'flex',
     alignItems: 'center',
     padding: '0 10px',
     lineHeight: 1,
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
+    flexShrink: 0
+  };
+
+  // placeholder style constants
+  const placeholderStyles: IStyle = [
+    fonts.medium,
+    {
+      color: semanticColors.inputPlaceholderText,
+      opacity: 1
+    }
+  ];
+
+  const disabledPlaceholderStyles: IStyle = {
+    color: semanticColors.disabledText
   };
 
   return {
     root: [
       classNames.root,
+      fonts.medium,
       required && classNames.required,
       disabled && classNames.disabled,
       focused && classNames.active,
@@ -87,29 +119,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       underlined && classNames.underlined,
       normalize,
       {
-        position: 'relative',
-        selectors: {
-          [HighContrastSelector]: {
-            borderWidth: 2
-          }
-        }
+        position: 'relative'
       },
-      focused && {
-        borderColor: semanticColors.inputFocusBorderAlt
-      },
-      underlined &&
-        !focused && {
-          border: `0px solid ${semanticColors.inputBorder}`
-        },
-      underlined &&
-        !disabled &&
-        !focused && {
-          selectors: {
-            ':hover': {
-              borderColor: semanticColors.inputBorderHovered
-            }
-          }
-        },
       className
     ],
     wrapper: [
@@ -118,27 +129,21 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         display: 'flex',
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
-        borderBottomColor: 'inherit',
+        borderBottomColor: semanticColors.inputBorder,
         width: '100%'
-      },
-      hasErrorMessage && {
-        borderColor: semanticColors.errorText,
-        selectors: {
-          '&:focus, &:hover': {
-            borderColor: semanticColors.errorText
-          }
-        }
       },
       hasErrorMessage &&
         underlined &&
         !disabled && {
-          borderBottom: `1px solid ${semanticColors.errorText}`,
+          borderBottomColor: semanticColors.errorText,
           selectors: {
-            ':focus': {
-              borderBottom: `1px solid ${semanticColors.errorText}`
-            },
             ':hover': {
-              borderBottom: `1px solid ${semanticColors.errorText}`
+              borderBottomColor: semanticColors.errorText,
+              selectors: {
+                [HighContrastSelector]: {
+                  borderBottomColor: 'Highlight'
+                }
+              }
             }
           }
         },
@@ -147,12 +152,15 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           borderBottomColor: semanticColors.disabledBackground
         },
       underlined &&
-        !disabled && {
+        !disabled &&
+        !focused &&
+        !hasErrorMessage && {
           selectors: {
             ':hover': {
+              borderBottomColor: semanticColors.inputBorderHovered,
               selectors: {
                 [HighContrastSelector]: {
-                  borderColor: 'Highlight'
+                  borderBottomColor: 'Highlight'
                 }
               }
             }
@@ -160,9 +168,11 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         },
       underlined &&
         focused && {
+          borderBottomColor: !hasErrorMessage ? semanticColors.inputFocusBorderAlt : semanticColors.errorText,
           selectors: {
             [HighContrastSelector]: {
-              borderColor: 'Highlight'
+              borderBottomWidth: 2,
+              borderBottomColor: 'Highlight'
             }
           }
         }
@@ -172,7 +182,9 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       normalize,
       {
         border: `1px solid ${semanticColors.inputBorder}`,
-        background: semanticColors.bodyBackground,
+        borderRadius: effects.roundedCorner2,
+        background: semanticColors.inputBackground,
+        cursor: 'text',
         height: 32,
         display: 'flex',
         flexDirection: 'row',
@@ -194,8 +206,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         display: 'flex'
       },
       borderless && {
-        borderColor: 'transparent',
-        borderWidth: 0
+        border: 'none'
       },
       !focused &&
         !disabled && {
@@ -216,13 +227,22 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       },
       disabled && {
         backgroundColor: semanticColors.disabledBackground,
-        borderColor: semanticColors.disabledBackground
+        borderColor: semanticColors.disabledBackground,
+        cursor: 'default'
       },
       underlined && {
         flex: '1 1 0px',
-        borderWidth: 0,
+        border: 'none',
         textAlign: 'left'
       },
+      underlined &&
+        focused && {
+          selectors: {
+            [HighContrastSelector]: {
+              height: 31 // -1px to prevent jumpiness in HC with the increased border-width to 2px
+            }
+          }
+        },
       underlined &&
         disabled && {
           backgroundColor: 'transparent'
@@ -248,21 +268,28 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
               position: 'absolute',
               top: -5,
               right: -10
+            },
+            [HighContrastSelector]: {
+              selectors: {
+                ':after': {
+                  right: -14 // moving the * 4 pixel to right to alleviate border clipping in HC mode.
+                }
+              }
             }
           }
         }
     ],
     field: [
+      fonts.medium,
       classNames.field,
       normalize,
       {
-        fontSize: FontSizes.medium,
         borderRadius: 0,
         border: 'none',
         background: 'none',
         backgroundColor: 'transparent',
-        color: semanticColors.bodyText,
-        padding: '0 12px',
+        color: semanticColors.inputText,
+        padding: '0 8px',
         width: '100%',
         minWidth: 0,
         textOverflow: 'ellipsis',
@@ -271,17 +298,10 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           '&:active, &:focus, &:hover': { outline: 0 },
           '::-ms-clear': {
             display: 'none'
-          },
-          '::placeholder': {
-            color: semanticColors.inputPlaceholderText,
-            opacity: 1
-          },
-          ':-ms-input-placeholder': {
-            color: semanticColors.inputPlaceholderText,
-            opacity: 1
           }
         }
       },
+      getPlaceholderStyles(placeholderStyles),
       multiline &&
         !resizable && [
           classNames.unresizable,
@@ -294,6 +314,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         lineHeight: 17,
         flexGrow: 1,
         paddingTop: 6,
+        paddingBottom: 6,
         overflow: 'auto',
         width: '100%'
       },
@@ -308,25 +329,35 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         hasIcon && {
           paddingRight: 40
         },
-      disabled && {
-        backgroundColor: 'transparent',
-        borderColor: 'transparent'
-      },
+      disabled && [
+        {
+          backgroundColor: 'transparent',
+          borderColor: 'transparent',
+          color: semanticColors.disabledText
+        },
+        getPlaceholderStyles(disabledPlaceholderStyles)
+      ],
       underlined && {
         textAlign: 'left'
       },
-      underlined &&
-        disabled && {
-          backgroundColor: 'transparent',
-          color: semanticColors.disabledText
-        },
-      focused && {
-        selectors: {
-          [HighContrastSelector]: {
-            padding: '0 11px 0 11px'
+      focused &&
+        !borderless && {
+          selectors: {
+            [HighContrastSelector]: {
+              paddingLeft: 11,
+              paddingRight: 11
+            }
           }
-        }
-      },
+        },
+      focused &&
+        multiline &&
+        !borderless && {
+          selectors: {
+            [HighContrastSelector]: {
+              paddingTop: 4 // take into consideration the 2px increased border-width (not when borderless).
+            }
+          }
+        },
       inputClassName
     ],
     icon: [
@@ -341,22 +372,24 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         bottom: 5,
         right: 8,
         top: 'auto',
-        fontSize: 16,
+        fontSize: IconFontSizes.medium,
         lineHeight: 18
       },
-      iconClass
+      disabled && {
+        color: semanticColors.disabledText
+      }
     ],
     description: [
       classNames.description,
       {
         color: semanticColors.bodySubtext,
-        fontSize: FontSizes.xSmall
+        fontSize: fonts.xSmall.fontSize
       }
     ],
     errorMessage: [
       classNames.errorMessage,
       AnimationClassNames.slideDownIn20,
-      theme.fonts.small,
+      fonts.small,
       {
         color: semanticColors.errorText,
         margin: 0,

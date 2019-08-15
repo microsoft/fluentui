@@ -1,13 +1,15 @@
 import * as React from 'react';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { Calendar, ICalendarStrings } from '../../Calendar';
 import { DatePicker } from './DatePicker';
 import { DatePickerBase } from './DatePicker.base';
 import { IDatePickerStrings } from './DatePicker.types';
-import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
+import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import { resetIds } from '../../Utilities';
-import { Callout } from '../Callout/Callout';
+import { resetIds, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
+import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 
 describe('DatePicker', () => {
   beforeEach(() => {
@@ -34,6 +36,43 @@ describe('DatePicker', () => {
     expect(wrapper.state('isDatePickerShown')).toBe(false);
   });
 
+  // if isDatePickerShown is not set, the DatePicker should not
+  // be rendered and therefore aria-owns should not exist
+  it('should not render DatePicker when isDatePickerShown is not set', () => {
+    const datePicker = mount(<DatePickerBase />);
+    datePicker.setState({ isDatePickerShown: false });
+
+    expect(datePicker.getDOMNode().getAttribute('aria-owns')).toBeNull();
+  });
+
+  // if isDatePickerShown is set, the DatePicker should be rendered
+  // and aria-owns should exist
+  it('should render DatePicker when isDatePickerShown is set', () => {
+    const datePicker = mount(<DatePickerBase />);
+    datePicker.setState({ isDatePickerShown: true });
+
+    expect(
+      datePicker
+        .find('[aria-owns]')
+        .getDOMNode()
+        .getAttribute('aria-owns')
+    ).toBeDefined();
+  });
+
+  // if isDatePickerShown is set, the DatePicker should be rendered
+  // and the calloutId should exist in the DOM
+  it('should render DatePicker and calloutId must exist in the DOM when isDatePickerShown is set', () => {
+    const datePicker = mount(<DatePickerBase />);
+    datePicker.setState({ isDatePickerShown: true });
+
+    const calloutId = datePicker
+      .find('[aria-owns]')
+      .getDOMNode()
+      .getAttribute('aria-owns');
+
+    expect(datePicker.find(`#${calloutId}`).exists()).toBe(true);
+  });
+
   it('should not open DatePicker when disabled, with label', () => {
     const wrapper = mount(<DatePickerBase disabled label="label" />);
     wrapper.find('i').simulate('click');
@@ -55,12 +94,52 @@ describe('DatePicker', () => {
     datePicker.unmount();
   });
 
+  // @todo: usage of document.querySelector is incorrectly testing DOM mounted by previous tests and needs to be fixed.
+  it.skip('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
+    const onSelectDate = jest.fn();
+    const datePicker = mount(<DatePickerBase allowTextInput={true} onSelectDate={onSelectDate} />);
+
+    datePicker.setState({ isDatePickerShown: true });
+    ReactTestUtils.Simulate.click(document.querySelector('.ms-DatePicker-day--today') as HTMLButtonElement);
+
+    expect(onSelectDate).toHaveBeenCalledTimes(1);
+
+    datePicker.unmount();
+  });
+
   it('should set "Calendar" as the Callout\'s aria-label', () => {
     const datePicker = shallow(<DatePickerBase />);
     datePicker.setState({ isDatePickerShown: true });
     const calloutProps = datePicker.find(Callout).props();
 
     expect(calloutProps.ariaLabel).toBe('Calendar');
+  });
+
+  it('should close parent Callout if Esc is pressed', () => {
+    const menu = (props: any) => {
+      return (
+        <Callout {...props}>
+          <DatePicker />
+        </Callout>
+      );
+    };
+    const wrapper = mount(
+      <PrimaryButton
+        menuAs={menu}
+        menuProps={{
+          items: []
+        }}
+      />
+    );
+    wrapper.simulate('click');
+    let callout = wrapper.find(Callout);
+    expect(callout.exists()).toBe(true);
+
+    const datePicker = wrapper.find(DatePickerBase);
+    datePicker.simulate('keydown', { which: KeyCodes.escape });
+
+    callout = wrapper.find(Callout);
+    expect(callout.exists()).toBe(false);
   });
 
   describe('when Calendar properties are not specified', () => {

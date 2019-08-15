@@ -1,110 +1,96 @@
 import * as React from 'react';
+import { CommandButton } from 'office-ui-fabric-react/lib/Button';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
 import {
-  CommandButton,
-  css,
+  styled,
   Customizer,
-  Dropdown,
-  getThemedContext,
-  ICustomizerContext,
-  ICustomizerProps,
-  IDropdownOption,
-  IDropdownStyles,
-  ISchemeNames,
-  ITheme
-} from 'office-ui-fabric-react';
-import { IThemeProviderProps, ThemeProvider } from '@uifabric/foundation';
-import './ExampleCard.scss';
-import { ExampleCardComponent, IExampleCardComponent } from './ExampleCardComponent';
-import { Highlight } from '../Highlight/Highlight';
+  classNamesFunction,
+  css,
+  isIE11,
+  CustomizerContext,
+  warn,
+  getWindow
+} from 'office-ui-fabric-react/lib/Utilities';
+import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
 import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
-
-export interface IExampleCardProps {
-  /* Example Title */
-  title: string;
-  /* Experimental Component? */
-  isOptIn?: boolean;
-  /* Example Code as a string */
-  code?: string;
-  /* Children of the Example */
-  children?: React.ReactNode;
-  /* Example is Right-Aligned ? */
-  isRightAligned?: boolean;
-  /* Example dos */
-  dos?: JSX.Element;
-  /* Example don'ts */
-  donts?: JSX.Element;
-  /* Example is scrollable ? */
-  isScrollable?: boolean;
-  /* JS string for Codepen portion of Example */
-  codepenJS?: string;
-}
+import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
+import { getStyles } from './ExampleCard.styles';
+import { CodeSnippet } from '../CodeSnippet/index';
+import { ITextModel, ITranspiledOutput } from '@uifabric/tsx-editor';
+import { EditorPreview } from '@uifabric/tsx-editor/lib/components/EditorPreview';
+import { transformExample } from '@uifabric/tsx-editor/lib/transpiler/exampleTransform';
+import * as tsxEditorModule from '@uifabric/tsx-editor';
+import { getSetting } from '../../index2';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react';
 
 export interface IExampleCardState {
+  /** only used if props.isCodeVisible and props.onToggleEditor are undefined */
   isCodeVisible?: boolean;
   schemeIndex: number;
   themeIndex: number;
+  error?: string;
 }
 
+const getClassNames = classNamesFunction<IExampleCardStyleProps, IExampleCardStyles>();
 const _schemes: ISchemeNames[] = ['default', 'strong', 'soft', 'neutral'];
 const _schemeOptions: IDropdownOption[] = _schemes.map((item: string, index: number) => ({
   key: index,
   text: 'Scheme: ' + item
 }));
-
-// tslint:disable-next-line:typedef
-const regionStyles: IExampleCardComponent['styles'] = props => ({
+const regionStyles: IStackComponent['styles'] = (props, theme) => ({
   root: {
-    backgroundColor: props.theme.semanticColors.bodyBackground,
-    color: props.theme.semanticColors.bodyText
+    backgroundColor: theme.semanticColors.bodyBackground,
+    color: theme.semanticColors.bodyText
   }
 });
 
-// Match styling of button tabs
-const dropdownStyles: Partial<IDropdownStyles> = {
-  caretDownWrapper: {
-    top: '6px'
-  },
-  title: [
-    {
-      alignItems: 'center',
-      display: 'flex',
-      height: 40,
-      width: 150
-    },
-    'ExampleCard-themeDropdown'
-  ]
-};
-
-export class ExampleCard extends React.Component<IExampleCardProps, IExampleCardState> {
+export class ExampleCardBase extends React.Component<IExampleCardProps, IExampleCardState> {
   private _themeCustomizations: IExampleCardCustomizations[] | undefined;
   private _themeOptions: IDropdownOption[];
+  private _classNames: IProcessedStyleSet<IExampleCardStyles>;
+  private readonly canRenderLiveEditor: boolean;
+  private editorModule: typeof tsxEditorModule;
 
   constructor(props: IExampleCardProps) {
     super(props);
-
     this.state = {
       isCodeVisible: false,
       schemeIndex: 0,
       themeIndex: 0
     };
+    const win = getWindow();
+    this.canRenderLiveEditor =
+      !!(win && (win as any).MonacoEnvironment) && // tslint:disable-line:no-any
+      getSetting('useEditor') === '1' &&
+      !isIE11() &&
+      transformExample(props.code!, 'placeholder').error === undefined;
 
-    this._onToggleCodeClick = this._onToggleCodeClick.bind(this);
+    if (this.canRenderLiveEditor) {
+      import('office-ui-fabric-react').then(Fabric => {
+        // tslint:disable-next-line: no-any
+        (window as any).Fabric = Fabric;
+      });
+    }
+
+    if (props.isCodeVisible !== undefined && props.onToggleEditor === undefined && process.env.NODE_ENV !== 'production') {
+      warn('ExampleCard: the onToggleEditor prop is required if isCodeVisible is set. Otherwise the show/hide code button will not work.');
+    }
   }
 
   public render(): JSX.Element {
-    const { title, code, children, isRightAligned = false, isScrollable = true, codepenJS } = this.props;
-    const { isCodeVisible, schemeIndex, themeIndex } = this.state;
-
-    const rootClass = 'ExampleCard' + (this.state.isCodeVisible ? ' is-codeVisible' : '');
+    const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme } = this.props;
+    const { schemeIndex, themeIndex } = this.state;
+    const { isCodeVisible = this.state.isCodeVisible } = this.props;
 
     return (
       <AppCustomizationsContext.Consumer>
         {(context: IAppCustomizations) => {
-          const { exampleCardCustomizations } = context;
+          const { exampleCardCustomizations, hideSchemes } = context;
           const activeCustomizations =
             exampleCardCustomizations && exampleCardCustomizations[themeIndex] && exampleCardCustomizations[themeIndex].customizations;
-
           if (exampleCardCustomizations !== this._themeCustomizations) {
             this._themeCustomizations = exampleCardCustomizations;
             this._themeOptions = exampleCardCustomizations
@@ -114,51 +100,89 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
                 }))
               : [];
           }
+          const styleProps: IExampleCardStyleProps = { isRightAligned, isScrollable, theme, isCodeVisible };
+          const classNames = (this._classNames = getClassNames(styles, styleProps));
+          const { subComponentStyles } = classNames;
+          const { codeButtons: codeButtonStyles } = subComponentStyles;
 
-          const exampleCardContent = (
-            <div
-              className={css('ExampleCard-example', {
-                'is-right-aligned': isRightAligned,
-                'is-scrollable': isScrollable
-              })}
-              data-is-scrollable={isScrollable}
-            >
-              {children}
-            </div>
-          );
+          const exampleCardContent =
+            this.props.isCodeVisible && this.canRenderLiveEditor ? (
+              <EditorPreview error={this.state.error} className={classNames.example} id={this.props.title.replace(' ', '')} />
+            ) : (
+              <div className={classNames.example} data-is-scrollable={isScrollable}>
+                {children}
+              </div>
+            );
 
           const exampleCard = (
-            <div className={rootClass}>
-              <div className="ExampleCard-header">
-                <span className="ExampleCard-title">{title}</span>
-                <div className="ExampleCard-toggleButtons">
-                  {codepenJS && <CodepenComponent jsContent={codepenJS} />}
-                  {exampleCardCustomizations && (
-                    <Dropdown defaultSelectedKey={0} onChange={this._onThemeChange} options={this._themeOptions} styles={dropdownStyles} />
+            <div className={css(classNames.root, isCodeVisible && 'is-codeVisible')}>
+              <div className={classNames.header}>
+                <span className={classNames.title}>{title}</span>
+                <div className={classNames.toggleButtons}>
+                  {codepenJS && (
+                    <CodepenComponent jsContent={codepenJS} styles={{ subComponentStyles: { button: subComponentStyles.codeButtons } }} />
                   )}
 
                   {exampleCardCustomizations && (
-                    <Dropdown defaultSelectedKey={0} onChange={this._onSchemeChange} options={_schemeOptions} styles={dropdownStyles} />
+                    <Dropdown
+                      defaultSelectedKey={0}
+                      onChange={this._onThemeChange}
+                      options={this._themeOptions}
+                      styles={subComponentStyles.dropdowns}
+                    />
+                  )}
+
+                  {exampleCardCustomizations && !hideSchemes && (
+                    <Dropdown
+                      defaultSelectedKey={0}
+                      onChange={this._onSchemeChange}
+                      options={_schemeOptions}
+                      styles={subComponentStyles.dropdowns}
+                    />
                   )}
 
                   {code && (
                     <CommandButton
                       iconProps={{ iconName: 'Embed' }}
                       onClick={this._onToggleCodeClick}
-                      className={css('ExampleCard-codeButton', isCodeVisible && 'is-active')}
+                      checked={isCodeVisible}
+                      // TODO: fix once button has full styling support
+                      styles={typeof codeButtonStyles === 'function' ? codeButtonStyles({}) : codeButtonStyles}
                     >
                       {isCodeVisible ? 'Hide code' : 'Show code'}
                     </CommandButton>
                   )}
                 </div>
               </div>
-
-              <div className="ExampleCard-code">{isCodeVisible && <Highlight>{code}</Highlight>}</div>
-
+              {isCodeVisible && (
+                <div className={classNames.code}>
+                  {this.canRenderLiveEditor ? (
+                    this.editorModule ? (
+                      <this.editorModule.Editor
+                        code={code!}
+                        onChange={this._editorOnChange}
+                        width={'auto'}
+                        height={500}
+                        language="typescript"
+                      />
+                    ) : (
+                      <Stack horizontalAlign="center" verticalAlign="center" styles={{ root: { height: 500 } }}>
+                        <Spinner size={SpinnerSize.large} label="Loading editor..." />
+                      </Stack>
+                    )
+                  ) : (
+                    <CodeSnippet language="tsx">{code}</CodeSnippet>
+                  )}
+                </div>
+              )}
               {activeCustomizations ? (
-                <ThemeProvider scheme={_schemes[schemeIndex]}>
-                  <ExampleCardComponent styles={regionStyles}>{exampleCardContent}</ExampleCardComponent>
-                </ThemeProvider>
+                <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
+                  <Customizer {...activeCustomizations}>
+                    <ThemeProvider scheme={_schemes[schemeIndex]}>
+                      <Stack styles={regionStyles}>{exampleCardContent}</Stack>
+                    </ThemeProvider>
+                  </Customizer>
+                </CustomizerContext.Provider>
               ) : (
                 exampleCardContent
               )}
@@ -166,22 +190,22 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
               {this._getDosAndDonts()}
             </div>
           );
-
-          return activeCustomizations ? <Customizer {...activeCustomizations}>{exampleCard}</Customizer> : exampleCard;
+          return exampleCard;
         }}
       </AppCustomizationsContext.Consumer>
     );
   }
 
   private _getDosAndDonts(): JSX.Element | void {
+    const classNames = this._classNames;
     if (this.props.dos && this.props.donts) {
       return (
-        <div className="ExampleCard-dosAndDonts">
-          <div className="ExampleCard-dos">
+        <div className={classNames.dosAndDonts}>
+          <div className={classNames.dos}>
             <h4>Do</h4>
             {this.props.dos}
           </div>
-          <div className="ExampleCard-donts">
+          <div className={classNames.donts}>
             <h4>Do not</h4>
             {this.props.donts}
           </div>
@@ -189,6 +213,21 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
       );
     }
   }
+
+  private _editorOnChange = (editor: ITextModel) => {
+    this.editorModule.transpile(editor).then((output: ITranspiledOutput) => {
+      if (output.outputString !== undefined) {
+        const evalCodeError = this.editorModule.evalCode(output.outputString, this.props.title.replace(' ', ''));
+        this.setState({
+          error: evalCodeError
+        });
+      } else {
+        this.setState({
+          error: output.error
+        });
+      }
+    });
+  };
 
   private _onSchemeChange = (ev: React.MouseEvent<HTMLDivElement>, value: IDropdownOption) => {
     this.setState({ schemeIndex: value.key as number });
@@ -198,9 +237,32 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     this.setState({ themeIndex: value.key as number });
   };
 
-  private _onToggleCodeClick(): void {
-    this.setState({
-      isCodeVisible: !this.state.isCodeVisible
-    });
-  }
+  private _onToggleCodeClick = () => {
+    if (this.canRenderLiveEditor && !this.editorModule) {
+      // This delay imports the module since React.lazy was breaking the code splitting
+      // ForceUpdate is needed to avoid a run-time error since it could be undefined
+      require.ensure(['@uifabric/tsx-editor'], require => {
+        this.editorModule = require('@uifabric/tsx-editor');
+        this.forceUpdate();
+      });
+    }
+    if (this.props.isCodeVisible !== undefined && this.props.onToggleEditor !== undefined) {
+      if (this.props.isCodeVisible) {
+        this.props.onToggleEditor('');
+      } else {
+        this.props.onToggleEditor(this.props.title);
+      }
+    } else {
+      this.setState({
+        isCodeVisible: !this.state.isCodeVisible
+      });
+    }
+  };
 }
+export const ExampleCard: React.StatelessComponent<IExampleCardProps> = styled<
+  IExampleCardProps,
+  IExampleCardStyleProps,
+  IExampleCardStyles
+>(ExampleCardBase, getStyles, undefined, {
+  scope: 'ExampleCard'
+});

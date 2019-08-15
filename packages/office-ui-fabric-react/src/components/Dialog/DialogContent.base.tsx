@@ -35,14 +35,16 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
       title,
       type,
       styles,
-      theme
+      theme,
+      draggableHeaderClassName
     } = this.props;
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
       isLargeHeader: type === DialogType.largeHeader,
-      isClose: type === DialogType.close
+      isClose: type === DialogType.close,
+      draggableHeaderClassName
     });
 
     const groupings = this._groupChildren();
@@ -96,7 +98,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
     };
 
     React.Children.map(this.props.children, child => {
-      if (typeof child === 'object' && child !== null && child.type === DialogFooterType) {
+      if (typeof child === 'object' && child !== null && (child as any).type === DialogFooterType) {
         groupings.footers.push(child);
       } else {
         groupings.contents.push(child);

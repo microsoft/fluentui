@@ -39,6 +39,8 @@ export class SpinButtonCustomStyledExample extends React.Component<any, any> {
           min={0}
           max={100}
           step={1}
+          incrementButtonAriaLabel={'Increase value by 1'}
+          decrementButtonAriaLabel={'Decrease value by 1'}
         />
       </div>
     );

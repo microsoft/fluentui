@@ -22,9 +22,55 @@ function getDisplayName(rules?: { [key: string]: IRawStyle }): string | undefine
   return rootStyle ? (rootStyle as IRawStyle).displayName : undefined;
 }
 
+const globalSelectorRegExp = /\:global\((.+?)\)/g;
+
+type ReplacementInfo = [number, number, string];
+
+/**
+ * Finds comma separated selectors in a :global() e.g. ":global(.class1, .class2, .class3)"
+ * and wraps them each in their own global ":global(.class1), :global(.class2), :global(.class3)"
+ *
+ * @param selectorWithGlobals The selector to process
+ * @returns The updated selector
+ */
+function expandCommaSeparatedGlobals(selectorWithGlobals: string): string {
+  // We the selector does not have a :global() we can shortcut
+  if (!globalSelectorRegExp.test(selectorWithGlobals)) {
+    return selectorWithGlobals;
+  }
+
+  const replacementInfo: ReplacementInfo[] = [];
+
+  const findGlobal = /\:global\((.+?)\)/g;
+  let match = null;
+  // Create a result list for global selectors so we can replace them.
+  while ((match = findGlobal.exec(selectorWithGlobals))) {
+    // Only if the found selector is a comma separated list we'll process it.
+    if (match[1].indexOf(',') > -1) {
+      replacementInfo.push([
+        match.index,
+        match.index + match[0].length,
+        // Wrap each of the found selectors in :global()
+        match[1]
+          .split(',')
+          .map((v: string) => `:global(${v.trim()})`)
+          .join(', ')
+      ]);
+    }
+  }
+
+  // Replace the found selectors with their wrapped variants in reverse order
+  return replacementInfo.reverse().reduce((selector: string, [matchIndex, matchEndIndex, replacement]: ReplacementInfo) => {
+    const prefix = selector.slice(0, matchIndex);
+    const suffix = selector.slice(matchEndIndex);
+
+    return prefix + replacement + suffix;
+  }, selectorWithGlobals);
+}
+
 function expandSelector(newSelector: string, currentSelector: string): string {
-  if (newSelector.indexOf(':global(') === 0) {
-    return newSelector.replace(/:global\(|\)$/g, '');
+  if (newSelector.indexOf(':global(') >= 0) {
+    return newSelector.replace(globalSelectorRegExp, '$1');
   } else if (newSelector.indexOf(':') === 0) {
     return currentSelector + newSelector;
   } else if (newSelector.indexOf('&') < 0) {
@@ -70,7 +116,9 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
                 newSelector = newSelector + '{' + currentSelector;
                 extractRules([selectorValue], rules, newSelector);
               } else if (newSelector.indexOf(',') > -1) {
-                const commaSeparatedSelectors = newSelector.split(/,/g).map((s: string) => s.trim());
+                const commaSeparatedSelectors = expandCommaSeparatedGlobals(newSelector)
+                  .split(/,/g)
+                  .map((s: string) => s.trim());
                 extractRules(
                   [selectorValue],
                   rules,
@@ -192,7 +240,7 @@ export function styleToRegistration(...args: IStyle[]): IRegistration | undefine
   }
 }
 
-export function applyRegistration(registration: IRegistration, classMap?: { [key: string]: string }): void {
+export function applyRegistration(registration: IRegistration): void {
   const stylesheet = Stylesheet.getInstance();
   const { className, key, args, rulesToInsert } = registration;
 
@@ -203,18 +251,7 @@ export function applyRegistration(registration: IRegistration, classMap?: { [key
       if (rules) {
         let selector = rulesToInsert[i];
 
-        // Fix selector using map.
-        selector = selector.replace(
-          /(&)|\$([\w-]+)\b/g,
-          (match: string, amp: string, cn: string): string => {
-            if (amp) {
-              return '.' + registration.className;
-            } else if (cn) {
-              return '.' + ((classMap && classMap[cn]) || cn);
-            }
-            return '';
-          }
-        );
+        selector = selector.replace(/&/g, '.' + registration.className);
 
         // Insert. Note if a media query, we must close the query with a final bracket.
         const processedRule = `${selector}{${rules}}${selector.indexOf('@') === 0 ? '}' : ''}`;

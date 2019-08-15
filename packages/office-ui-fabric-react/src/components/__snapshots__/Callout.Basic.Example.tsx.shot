@@ -18,11 +18,11 @@ exports[`Component Examples renders Callout.Basic.Example.tsx correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #f4f4f4;
-            border-radius: 0px;
-            border: 1px solid transparent;
+            background-color: #ffffff;
+            border-radius: 2px;
+            border: 1px solid #8a8886;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -45,14 +45,14 @@ exports[`Component Examples renders Callout.Basic.Example.tsx correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 2px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 2px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 2px;
+            top: 2px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -69,19 +69,18 @@ exports[`Component Examples renders Callout.Basic.Example.tsx correctly 1`] = `
             top: 0px;
           }
           &:hover {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
           &:active {
-            background-color: #c8c8c8;
-            color: #212121;
+            background-color: #edebe9;
+            color: #201f1e;
           }
       data-is-focusable={true}
-      id="toggleCallout"
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}
@@ -119,7 +118,7 @@ exports[`Component Examples renders Callout.Basic.Example.tsx correctly 1`] = `
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__0"
+            id="id__2"
           >
             Show callout
           </div>
@@ -137,7 +136,7 @@ exports[`Component Examples renders Callout.Basic.Example.tsx correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #333333;
+            color: #323130;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
@@ -151,13 +150,6 @@ exports[`Component Examples renders Callout.Basic.Example.tsx correctly 1`] = `
           }
           & textarea {
             font-family: inherit;
-          }
-          button {
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow: visible;
           }
       onBlur={[Function]}
       onChange={[Function]}
@@ -205,10 +197,8 @@ exports[`Component Examples renders Callout.Basic.Example.tsx correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                border-color: #eaeaea;
-                border-style: solid;
-                border-width: 1px;
-                box-shadow: 0 0 5px 0px rgba(0,0,0,0.4);
+                border-radius: 2px;
+                box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
                 box-sizing: border-box;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -225,7 +215,6 @@ exports[`Component Examples renders Callout.Basic.Example.tsx correctly 1`] = `
                 border: 0px;
               }
           hidden={true}
-          role="alertdialog"
           style={
             Object {
               "filter": "opacity(0)",
@@ -233,7 +222,97 @@ exports[`Component Examples renders Callout.Basic.Example.tsx correctly 1`] = `
             }
           }
           tabIndex={-1}
-        />
+        >
+          <div
+            aria-describedby="callout-description1"
+            aria-labelledby="callout-label0"
+            className=
+                ms-Callout-main
+                {
+                  background-color: #ffffff;
+                  border-radius: 2px;
+                  overflow-x: hidden;
+                  overflow-y: auto;
+                  position: relative;
+                }
+            onKeyDown={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            role="alertdialog"
+            style={
+              Object {
+                "maxHeight": 752,
+                "outline": "none",
+                "overflowY": undefined,
+              }
+            }
+          >
+            <div
+              className="ms-CalloutExample-header"
+            >
+              <p
+                className="ms-CalloutExample-title"
+                id="callout-label0"
+              >
+                All of your favorite people
+              </p>
+            </div>
+            <div
+              className="ms-CalloutExample-inner"
+            >
+              <div
+                className="ms-CalloutExample-content"
+              >
+                <p
+                  className="ms-CalloutExample-subText"
+                  id="callout-description1"
+                >
+                  Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+                </p>
+              </div>
+              <div
+                className="ms-CalloutExample-actions"
+              >
+                <a
+                  className=
+                      ms-Link
+                      ms-CalloutExample-link
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #0078d4;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: inherit;
+                        font-weight: inherit;
+                        outline: none;
+                        text-decoration: none;
+                      }
+                      .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #605e5c inset;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
+                      }
+                      &:active, &:hover, &:active:hover {
+                        color: #004578;
+                        text-decoration: underline;
+                      }
+                      &:focus {
+                        color: #0078d4;
+                      }
+                  href="http://microsoft.com"
+                  onClick={[Function]}
+                  target="_blank"
+                >
+                  Go to microsoft
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </span>

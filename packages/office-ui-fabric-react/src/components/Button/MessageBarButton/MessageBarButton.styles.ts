@@ -8,18 +8,8 @@ export const getStyles = memoizeFunction(
     const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
     const messageBarButtonStyles: IButtonStyles = {
       root: {
-        backgroundColor: theme.palette.neutralQuaternaryAlt,
-        color: theme.palette.neutralPrimary
-      },
-
-      rootHovered: {
-        backgroundColor: theme.palette.neutralTertiaryAlt,
-        color: theme.palette.neutralDark
-      },
-
-      rootPressed: {
-        backgroundColor: theme.palette.neutralTertiary,
-        color: theme.palette.neutralDark
+        height: 24,
+        borderColor: theme.palette.neutralTertiaryAlt
       }
     };
 

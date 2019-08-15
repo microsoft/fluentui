@@ -1,14 +1,6 @@
 import { INavStyleProps, INavStyles } from './Nav.types';
 import { IButtonStyles } from '../../Button';
-import {
-  AnimationClassNames,
-  DefaultFontStyles,
-  getFocusStyle,
-  FontSizes,
-  FontWeights,
-  ZIndexes,
-  getGlobalClassNames
-} from '../../Styling';
+import { AnimationClassNames, getFocusStyle, ZIndexes, getGlobalClassNames, HighContrastSelector } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Nav',
@@ -44,6 +36,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     isGroup,
     isLink,
     isSelected,
+    isDisabled,
     isButtonEntry,
     navHeight = 36,
     position,
@@ -52,7 +45,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     rightPadding = 20
   } = props;
 
-  const { palette, semanticColors } = theme;
+  const { palette, semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -60,7 +53,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     root: [
       classNames.root,
       className,
-      theme.fonts.medium,
+      fonts.medium,
       {
         overflowY: 'auto',
         userSelect: 'none',
@@ -79,6 +72,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         margin: '0 4px',
         overflow: 'hidden',
         verticalAlign: 'middle',
+        textAlign: 'left',
         textOverflow: 'ellipsis'
       }
     ],
@@ -91,7 +85,11 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         backgroundColor: semanticColors.bodyBackground
       },
       isExpanded && 'is-expanded',
-      isSelected && 'is-selected'
+      isSelected && 'is-selected',
+      isDisabled && 'is-disabled',
+      isDisabled && {
+        color: semanticColors.disabledText
+      }
     ],
     link: [
       classNames.link,
@@ -109,6 +107,19 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         overflow: 'hidden',
         paddingLeft: leftPadding,
         paddingRight: rightPadding,
+        color: semanticColors.bodyText,
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'transparent',
+            selectors: {
+              ':focus': {
+                borderColor: 'WindowText'
+              }
+            }
+          }
+        }
+      },
+      !isDisabled && {
         selectors: {
           '.ms-Nav-compositeLink:hover &': {
             backgroundColor: palette.neutralLighterAlt,
@@ -132,6 +143,9 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
           }
         }
       },
+      isDisabled && {
+        color: semanticColors.disabledText
+      },
       isButtonEntry && {
         color: palette.themePrimary
       }
@@ -139,10 +153,9 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     chevronButton: [
       classNames.chevronButton,
       getFocusStyle(theme),
+      fonts.small,
       {
         display: 'block',
-        fontWeight: FontWeights.regular,
-        fontSize: FontSizes.small,
         textAlign: 'left',
         lineHeight: `${navHeight}px`,
         margin: '5px 0',
@@ -162,33 +175,29 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
             color: semanticColors.bodyText,
             backgroundColor: palette.neutralLighterAlt
           },
-          '$compositeLink:hover &': {
+          [`.${classNames.compositeLink}:hover &`]: {
             color: semanticColors.bodyText,
             backgroundColor: palette.neutralLighterAlt
           }
         }
       },
-      isGroup && [
-        {
-          width: '100%',
-          height: `${navHeight}px`,
-          borderBottom: `1px solid ${semanticColors.bodyDivider}`
-        },
-        DefaultFontStyles.large
-      ],
-      isLink && [
-        {
-          display: 'block',
-          width: `${leftPaddingExpanded - 2}px`,
-          height: `${navHeight - 2}px`,
-          position: 'absolute',
-          top: '1px',
-          left: `${position}px`,
-          zIndex: ZIndexes.Nav,
-          padding: 0,
-          margin: 0
-        }
-      ],
+      isGroup && {
+        fontSize: fonts.large.fontSize,
+        width: '100%',
+        height: `${navHeight}px`,
+        borderBottom: `1px solid ${semanticColors.bodyDivider}`
+      },
+      isLink && {
+        display: 'block',
+        width: `${leftPaddingExpanded - 2}px`,
+        height: `${navHeight - 2}px`,
+        position: 'absolute',
+        top: '1px',
+        left: `${position}px`,
+        zIndex: ZIndexes.Nav,
+        padding: 0,
+        margin: 0
+      },
       isSelected && {
         color: palette.themePrimary,
         backgroundColor: palette.neutralLighterAlt,
@@ -213,7 +222,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         left: '8px',
         height: `${navHeight}px`,
         lineHeight: `${navHeight}px`,
-        fontSize: '12px',
+        fontSize: fonts.small.fontSize,
         transition: 'transform .1s linear'
       },
       isExpanded && {

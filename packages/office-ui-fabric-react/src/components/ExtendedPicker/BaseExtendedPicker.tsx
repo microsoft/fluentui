@@ -60,7 +60,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     this.forceUpdate();
   }
 
-  public componentWillReceiveProps(newProps: P): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: P): void {
     if (newProps.floatingPickerProps) {
       this.floatingPickerProps = newProps.floatingPickerProps;
     }
@@ -100,6 +101,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       this.floatingPicker.current && this.floatingPicker.current.currentSelectedSuggestionIndex !== -1
         ? 'sug-' + this.floatingPicker.current.currentSelectedSuggestionIndex
         : undefined;
+    const isExpanded = this.floatingPicker.current ? this.floatingPicker.current.isSuggestionsShown : false;
 
     return (
       <div
@@ -122,8 +124,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
                   onClick={this.onInputClick}
                   onInputValueChange={this.onInputChange}
                   aria-activedescendant={activeDescendant}
-                  aria-owns="suggestion-list"
-                  aria-expanded={this.floatingPicker.current ? this.floatingPicker.current.isSuggestionsShown : false}
+                  aria-owns={isExpanded ? 'suggestion-list' : undefined}
+                  aria-expanded={isExpanded}
                   aria-haspopup="true"
                   autoCapitalize="off"
                   autoComplete="off"
@@ -135,7 +137,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
             </div>
           </SelectionZone>
         </FocusZone>
-        {this.renderSuggestions()}
+        {this.renderFloatingPicker()}
       </div>
     );
   }
@@ -149,27 +151,31 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     return itemLimit === undefined || this.items.length < itemLimit;
   }
 
-  protected renderSuggestions(): JSX.Element {
-    const onRenderFloatingPicker = this.props.onRenderFloatingPicker;
-    return onRenderFloatingPicker({
-      componentRef: this.floatingPicker,
-      onChange: this._onSuggestionSelected,
-      inputElement: this.input.current ? this.input.current.inputElement : undefined,
-      selectedItems: this.items,
-      suggestionItems: this.props.suggestionItems ? this.props.suggestionItems : undefined,
-      ...this.floatingPickerProps
-    });
+  protected renderFloatingPicker(): JSX.Element {
+    const FloatingPicker: React.ComponentType<IBaseFloatingPickerProps<T>> = this.props.onRenderFloatingPicker;
+    return (
+      <FloatingPicker
+        componentRef={this.floatingPicker}
+        onChange={this._onSuggestionSelected}
+        inputElement={this.input.current ? this.input.current.inputElement : undefined}
+        selectedItems={this.items}
+        suggestionItems={this.props.suggestionItems ? this.props.suggestionItems : undefined}
+        {...this.floatingPickerProps}
+      />
+    );
   }
 
   protected renderSelectedItemsList(): JSX.Element {
-    const onRenderSelectedItems = this.props.onRenderSelectedItems;
-    return onRenderSelectedItems({
-      componentRef: this.selectedItemsList,
-      selection: this.selection,
-      selectedItems: this.props.selectedItems ? this.props.selectedItems : undefined,
-      onItemsDeleted: this.props.selectedItems ? this.props.onItemsRemoved : undefined,
-      ...this.selectedItemsListProps
-    });
+    const SelectedItems: React.ComponentType<IBaseSelectedItemsListProps<T>> = this.props.onRenderSelectedItems;
+    return (
+      <SelectedItems
+        componentRef={this.selectedItemsList}
+        selection={this.selection}
+        selectedItems={this.props.selectedItems ? this.props.selectedItems : undefined}
+        onItemsDeleted={this.props.selectedItems ? this.props.onItemsRemoved : undefined}
+        {...this.selectedItemsListProps}
+      />
+    );
   }
 
   protected onInputChange = (value: string): void => {

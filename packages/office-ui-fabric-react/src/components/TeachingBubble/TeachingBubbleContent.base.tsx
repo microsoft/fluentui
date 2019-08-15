@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef, KeyCodes } from '../../Utilities';
+import { BaseComponent, classNamesFunction, KeyCodes } from '../../Utilities';
 import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
 import { ITeachingBubbleState } from './TeachingBubble.base';
 import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
@@ -18,7 +18,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
     }
   };
 
-  public rootElement = createRef<HTMLDivElement>();
+  public rootElement = React.createRef<HTMLDivElement>();
 
   constructor(props: ITeachingBubbleProps) {
     super(props);
@@ -60,7 +60,8 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       styles,
       theme,
       ariaDescribedBy,
-      ariaLabelledBy
+      ariaLabelledBy,
+      footerContent: customFooterContent
     } = this.props;
 
     let imageContent;
@@ -110,11 +111,12 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       );
     }
 
-    if (primaryButtonProps || secondaryButtonProps) {
+    if (primaryButtonProps || secondaryButtonProps || customFooterContent) {
       footerContent = (
         <div className={classNames.footer}>
           {primaryButtonProps && <PrimaryButton {...primaryButtonProps} className={classNames.primaryButton} />}
           {secondaryButtonProps && <DefaultButton {...secondaryButtonProps} className={classNames.secondaryButton} />}
+          {customFooterContent && <span>{customFooterContent}</span>}
         </div>
       );
     }

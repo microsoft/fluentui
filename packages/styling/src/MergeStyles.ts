@@ -6,6 +6,7 @@ export {
   IStyleSet,
   IProcessedStyleSet,
   IStyleSheetConfig,
+  ICSPSettings,
   InjectionMode,
   Stylesheet,
   concatStyleSets,

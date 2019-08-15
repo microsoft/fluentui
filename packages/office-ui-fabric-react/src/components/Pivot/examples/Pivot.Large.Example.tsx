@@ -7,13 +7,13 @@ export class PivotLargeExample extends React.Component<any, any> {
     return (
       <div>
         <Pivot linkSize={PivotLinkSize.large}>
-          <PivotItem linkText="My Files">
+          <PivotItem headerText="My Files">
             <Label>Pivot #1</Label>
           </PivotItem>
-          <PivotItem linkText="Recent">
+          <PivotItem headerText="Recent">
             <Label>Pivot #2</Label>
           </PivotItem>
-          <PivotItem linkText="Shared with me">
+          <PivotItem headerText="Shared with me">
             <Label>Pivot #3</Label>
           </PivotItem>
         </Pivot>

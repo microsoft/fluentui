@@ -1,5 +1,5 @@
-import { Customizations, merge } from '@uifabric/utilities';
-import { IPalette, ISemanticColors, ITheme, IPartialTheme, ISemanticTextColors } from '../interfaces/index';
+import { Customizations, merge, getWindow } from '@uifabric/utilities';
+import { IPalette, ISemanticColors, ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
 import { DefaultSpacing } from './DefaultSpacing';
@@ -18,7 +18,7 @@ let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 export const ThemeSettingName = 'theme';
 
 if (!Customizations.getSettings([ThemeSettingName]).theme) {
-  let win = typeof window !== 'undefined' ? window : undefined;
+  const win = getWindow();
 
   // tslint:disable:no-string-literal no-any
   if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
@@ -74,7 +74,7 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
   _theme = createTheme(theme, depComments);
 
   // Invoke the legacy method of theming the page as well.
-  legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors });
+  legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors, ..._theme.effects, ..._loadFonts(_theme) });
 
   Customizations.applySettings({ [ThemeSettingName]: _theme });
 
@@ -87,6 +87,27 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
   });
 
   return _theme;
+}
+
+/**
+ * Loads font variables into a JSON object.
+ * @param theme - The theme object
+ */
+function _loadFonts(theme: ITheme): { [name: string]: string } {
+  const lines = {};
+
+  for (const fontName of Object.keys(theme.fonts)) {
+    const font = theme.fonts[fontName];
+    for (const propName of Object.keys(font)) {
+      const name = fontName + propName.charAt(0).toUpperCase() + propName.slice(1);
+      let value = font[propName];
+      if (propName === 'fontSize' && value.indexOf('px') < 0) {
+        value += 'px';
+      }
+      lines[name] = value;
+    }
+  }
+  return lines;
 }
 
 /**
@@ -107,11 +128,24 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
+  let defaultFontStyles: IFontStyles = { ...DefaultFontStyles };
+
+  if (theme.defaultFontStyle) {
+    for (const fontStyle of Object.keys(defaultFontStyles)) {
+      defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.defaultFontStyle);
+    }
+  }
+
+  if (theme.fonts) {
+    for (const fontStyle of Object.keys(theme.fonts)) {
+      defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.fonts[fontStyle]);
+    }
+  }
+
   return {
     palette: newPalette,
     fonts: {
-      ...DefaultFontStyles,
-      ...theme.fonts
+      ...defaultFontStyles
     },
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,
@@ -157,9 +191,10 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
 
     disabledBackground: p.neutralLighter,
     disabledText: p.neutralTertiary,
-    disabledBodyText: p.neutralTertiary,
     disabledSubtext: p.neutralQuaternary,
+    disabledBodyText: p.neutralTertiary,
     disabledBodySubtext: p.neutralTertiaryAlt,
+    disabledBorder: p.neutralTertiaryAlt,
 
     focusBorder: p.neutralSecondary,
     variantBorder: p.neutralLight,
@@ -168,38 +203,43 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
 
     errorText: !isInverted ? p.redDark : '#ff5f5f',
     warningText: !isInverted ? '#333333' : '#ffffff',
-    errorBackground: !isInverted ? 'rgba(232, 17, 35, .2)' : 'rgba(232, 17, 35, .5)',
-    blockingBackground: !isInverted ? 'rgba(234, 67, 0, .2)' : 'rgba(234, 67, 0, .5)',
-    warningBackground: !isInverted ? 'rgba(255, 185, 0, .2)' : 'rgba(255, 251, 0, .6)',
+    successText: !isInverted ? '#107C10' : '#92c353',
+    errorBackground: !isInverted ? 'rgba(245, 135, 145, .2)' : 'rgba(232, 17, 35, .5)',
+    blockingBackground: !isInverted ? 'rgba(250, 65, 0, .2)' : 'rgba(234, 67, 0, .5)',
+    warningBackground: !isInverted ? 'rgba(255, 200, 10, .2)' : 'rgba(255, 251, 0, .6)',
     warningHighlight: !isInverted ? '#ffb900' : '#fff100',
-    successBackground: !isInverted ? 'rgba(186, 216, 10, .2)' : 'rgba(186, 216, 10, .4)',
+    successBackground: !isInverted ? 'rgba(95, 210, 85, .2)' : 'rgba(186, 216, 10, .4)',
 
-    inputBorder: p.neutralTertiary,
+    inputBorder: p.neutralSecondaryAlt,
     inputBorderHovered: p.neutralPrimary,
     inputBackground: p.white,
     inputBackgroundChecked: p.themePrimary,
-    inputBackgroundCheckedHovered: p.themeDarkAlt,
+    inputBackgroundCheckedHovered: p.themeDark,
+    inputPlaceholderBackgroundChecked: p.themeLighter,
     inputForegroundChecked: p.white,
+    inputIcon: p.themePrimary,
+    inputIconHovered: p.themeDark,
+    inputIconDisabled: p.neutralTertiary,
     inputFocusBorderAlt: p.themePrimary,
     smallInputBorder: p.neutralSecondary,
     inputText: p.neutralPrimary,
     inputTextHovered: p.neutralDark,
     inputPlaceholderText: p.neutralSecondary,
 
-    buttonBackground: p.neutralLighter,
+    buttonBackground: p.white,
     buttonBackgroundChecked: p.neutralTertiaryAlt,
-    buttonBackgroundHovered: p.neutralLight,
+    buttonBackgroundHovered: p.neutralLighter,
     buttonBackgroundCheckedHovered: p.neutralLight,
     buttonBackgroundPressed: p.neutralLight,
     buttonBackgroundDisabled: p.neutralLighter,
-    buttonBorder: 'transparent',
+    buttonBorder: p.neutralSecondaryAlt,
     buttonText: p.neutralPrimary,
     buttonTextHovered: p.neutralDark,
     buttonTextChecked: p.neutralDark,
     buttonTextCheckedHovered: p.black,
     buttonTextPressed: p.neutralDark,
     buttonTextDisabled: p.neutralTertiary,
-    buttonBorderDisabled: 'transparent',
+    buttonBorderDisabled: p.neutralLighter,
 
     primaryButtonBackground: p.themePrimary,
     primaryButtonBackgroundHovered: p.themeDarkAlt,

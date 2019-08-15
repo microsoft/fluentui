@@ -39,7 +39,7 @@ export const PersonaPage = (props: IComponentDemoPageProps) => {
           </p>
           <p>
             On a somewhat longer term this should replace the Persona component in the next major version. It'll aim to reduce the DOM
-            impact and in addition support stuff like Slots etc for the "horizontal" persona as well.
+            impact and in addition support stuff like slots etc for the "horizontal" persona as well.
           </p>
         </div>
       }

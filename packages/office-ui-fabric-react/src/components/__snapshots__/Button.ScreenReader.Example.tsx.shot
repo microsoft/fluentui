@@ -21,8 +21,8 @@ exports[`Component Examples renders Button.ScreenReader.Example.tsx correctly 1`
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           background-color: #0078d4;
-          border-radius: 0px;
-          border: 1px solid transparent;
+          border-radius: 2px;
+          border: none;
           box-sizing: border-box;
           color: #ffffff;
           cursor: pointer;
@@ -47,14 +47,15 @@ exports[`Component Examples renders Button.ScreenReader.Example.tsx correctly 1`
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
+          border-color: #ffffff;
+          border: 1px solid transparent;
+          bottom: 2px;
           content: "";
-          left: 0px;
-          outline: 1px solid #666666;
+          left: 2px;
+          outline: none;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: 2px;
+          top: 2px;
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {

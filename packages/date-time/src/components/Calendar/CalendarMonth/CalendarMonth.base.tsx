@@ -15,18 +15,69 @@ import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } f
 import { getStyles } from './CalendarMonth.styles';
 import { defaultIconStrings, defaultDateTimeFormatterCallbacks } from '../Calendar.base';
 import { KeyCodes } from '@uifabric/utilities';
+import { ICalendarYear, ICalendarYearRange } from '../CalendarYear/CalendarYear.types';
+import { CalendarYear } from '../CalendarYear/CalendarYear';
+
+const MONTHS_PER_ROW = 4;
 
 const getClassNames = classNamesFunction<ICalendarMonthStyleProps, ICalendarMonthStyles>();
 
-export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
+export interface ICalendarMonthState {
+  isYearPickerVisible?: boolean;
+  animateBackwards?: boolean;
+  previousNavigatedDate?: Date;
+}
+
+export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalendarMonthState> {
   public static defaultProps: Partial<ICalendarMonthProps> = {
     styles: getStyles,
     strings: undefined,
     navigationIcons: defaultIconStrings,
-    dateTimeFormatter: defaultDateTimeFormatterCallbacks
+    dateTimeFormatter: defaultDateTimeFormatterCallbacks,
+    yearPickerHidden: false
   };
 
   private _navigatedMonth: HTMLButtonElement;
+  private _calendarYearRef = React.createRef<ICalendarYear>();
+  private _focusOnUpdate: boolean;
+
+  public static getDerivedStateFromProps(props: ICalendarMonthProps, state: ICalendarMonthState): ICalendarMonthState {
+    const previousYear = state.previousNavigatedDate ? state.previousNavigatedDate.getFullYear() : undefined;
+    const nextYear = props.navigatedDate.getFullYear();
+    if (!previousYear) {
+      return {};
+    }
+
+    if (previousYear < nextYear) {
+      return {
+        animateBackwards: false,
+        previousNavigatedDate: props.navigatedDate
+      };
+    } else if (previousYear > nextYear) {
+      return {
+        animateBackwards: true,
+        previousNavigatedDate: props.navigatedDate
+      };
+    }
+
+    return {};
+  }
+
+  constructor(props: ICalendarMonthProps) {
+    super(props);
+
+    this.state = {
+      isYearPickerVisible: false,
+      previousNavigatedDate: props.navigatedDate
+    };
+  }
+
+  public componentDidUpdate(): void {
+    if (this._focusOnUpdate) {
+      this.focus();
+      this._focusOnUpdate = false;
+    }
+  }
 
   public render(): JSX.Element {
     const {
@@ -44,7 +95,8 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
       allFocusable,
       highlightCurrentMonth,
       highlightSelectedMonth,
-      onHeaderSelect
+      onHeaderSelect,
+      animationDirection
     } = this.props;
 
     // using "!" to mark as non-null since we have a default value if it is undefined, but typescript doesn't recognize it as non-null
@@ -59,88 +111,137 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
     const classNames = getClassNames(styles, {
       theme: theme!,
       className: className,
-      hasHeaderClickCallback: !!this.props.onHeaderSelect,
-      highlightCurrentMonth: highlightCurrentMonth,
-      highlightSelectedMonth: highlightSelectedMonth
+      hasHeaderClickCallback: !!onHeaderSelect,
+      highlightCurrent: highlightCurrentMonth,
+      highlightSelected: highlightSelectedMonth,
+      animateBackwards: this.state.animateBackwards,
+      animationDirection: animationDirection
     });
+
+    if (this.state.isYearPickerVisible) {
+      // use navigated date for the year picker
+      return (
+        <CalendarYear
+          key={'calendarYear'}
+          minYear={minDate ? minDate.getFullYear() : undefined}
+          maxYear={maxDate ? maxDate.getFullYear() : undefined}
+          onSelectYear={this._onSelectYear}
+          navigationIcons={navigationIcons}
+          onHeaderSelect={this._onYearPickerHeaderSelect}
+          selectedYear={selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined}
+          onRenderYear={this._onRenderYear}
+          strings={{
+            rangeAriaLabel: this._yearRangeToString,
+            prevRangeAriaLabel: this._yearRangeToPrevDecadeLabel,
+            nextRangeAriaLabel: this._yearRangeToNextDecadeLabel
+          }}
+          componentRef={this._calendarYearRef}
+          styles={styles}
+          highlightCurrentYear={highlightCurrentMonth}
+          highlightSelectedYear={highlightSelectedMonth}
+          animationDirection={animationDirection}
+        />
+      );
+    }
+
+    const rowIndexes = [];
+    for (let i = 0; i < strings.shortMonths.length / MONTHS_PER_ROW; i++) {
+      rowIndexes.push(i);
+    }
 
     return (
       <div className={classNames.root}>
         <div className={classNames.headerContainer}>
           <button
-            className={classNames.currentYearButton}
+            key={dateFormatter.formatYear(navigatedDate)}
+            className={classNames.currentItemButton}
             onClick={this._onHeaderSelect}
             onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
             aria-label={dateFormatter.formatYear(navigatedDate)}
             data-is-focusable={!!onHeaderSelect}
             tabIndex={!!onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
+            type="button"
+            aria-atomic={true}
+            aria-live="polite"
           >
             {dateFormatter.formatYear(navigatedDate)}
           </button>
-          <div className={classNames.yearNavigationButtonsContainer}>
+          <div className={classNames.navigationButtonsContainer}>
             <button
-              className={css(classNames.yearNavigationButton, {
-                [classNames.disabledStyle]: !isPrevYearInBounds
+              className={css(classNames.navigationButton, {
+                [classNames.disabled]: !isPrevYearInBounds
               })}
               disabled={!allFocusable && !isPrevYearInBounds}
               onClick={isPrevYearInBounds ? this._onSelectPrevYear : undefined}
               onKeyDown={isPrevYearInBounds ? this._onButtonKeyDown(this._onSelectPrevYear) : undefined}
-              aria-label={
+              title={
                 strings.prevYearAriaLabel
                   ? strings.prevYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, -1))
                   : undefined
               }
+              type="button"
             >
               <Icon iconName={getRTL() ? rightNavigationIcon : leftNavigationIcon} />
             </button>
             <button
-              className={css(classNames.yearNavigationButton, {
-                [classNames.disabledStyle]: !isNextYearInBounds
+              className={css(classNames.navigationButton, {
+                [classNames.disabled]: !isNextYearInBounds
               })}
               disabled={!allFocusable && !isNextYearInBounds}
               onClick={isNextYearInBounds ? this._onSelectNextYear : undefined}
               onKeyDown={isNextYearInBounds ? this._onButtonKeyDown(this._onSelectNextYear) : undefined}
-              aria-label={
+              title={
                 strings.nextYearAriaLabel
                   ? strings.nextYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, 1))
                   : undefined
               }
+              type="button"
             >
               <Icon iconName={getRTL() ? leftNavigationIcon : rightNavigationIcon} />
             </button>
           </div>
         </div>
         <FocusZone>
-          <div className={classNames.monthGridContainer} role="grid">
-            {strings.shortMonths.map((month: string, index: number) => {
-              const indexedMonth = setMonth(navigatedDate, index);
-              const isCurrentMonth = this._isCurrentMonth(index, navigatedDate.getFullYear(), today!);
-              const isNavigatedMonth = navigatedDate.getMonth() === index;
-              const isSelectedMonth = selectedDate.getMonth() === index;
-              const isSelectedYear = selectedDate.getFullYear() === navigatedDate.getFullYear();
-              const isInBounds =
-                (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
-                (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true);
-
+          <div className={classNames.gridContainer} role="grid">
+            {rowIndexes.map((rowNum: number) => {
+              const monthsForRow = strings.shortMonths.slice(rowNum * MONTHS_PER_ROW, (rowNum + 1) * MONTHS_PER_ROW);
               return (
-                <button
-                  ref={isNavigatedMonth ? this._setNavigatedMonthRef : undefined}
-                  role={'gridcell'}
-                  className={css(classNames.monthButton, {
-                    [classNames.currentMonth]: highlightCurrentMonth && isCurrentMonth!,
-                    [classNames.selectedMonth]: highlightSelectedMonth && isSelectedMonth && isSelectedYear,
-                    [classNames.disabledStyle]: !isInBounds
+                <div key={'monthRow_' + rowNum + navigatedDate.getFullYear()} role="row" className={classNames.buttonRow}>
+                  {monthsForRow.map((month: string, index: number) => {
+                    const monthIndex = rowNum * MONTHS_PER_ROW + index;
+                    const indexedMonth = setMonth(navigatedDate, monthIndex);
+                    const isCurrentMonth = this._isCurrentMonth(monthIndex, navigatedDate.getFullYear(), today!);
+                    const isNavigatedMonth = navigatedDate.getMonth() === monthIndex;
+                    const isSelectedMonth = selectedDate.getMonth() === monthIndex;
+                    const isSelectedYear = selectedDate.getFullYear() === navigatedDate.getFullYear();
+                    const isInBounds =
+                      (minDate ? compareDatePart(minDate, getMonthEnd(indexedMonth)) < 1 : true) &&
+                      (maxDate ? compareDatePart(getMonthStart(indexedMonth), maxDate) < 1 : true);
+
+                    return (
+                      <button
+                        ref={isNavigatedMonth ? this._setNavigatedMonthRef : undefined}
+                        role={'gridcell'}
+                        className={css(classNames.itemButton, {
+                          [classNames.current]: highlightCurrentMonth && isCurrentMonth!,
+                          [classNames.selected]: highlightSelectedMonth && isSelectedMonth && isSelectedYear,
+                          [classNames.disabled]: !isInBounds
+                        })}
+                        disabled={!allFocusable && !isInBounds}
+                        key={monthIndex}
+                        onClick={isInBounds ? this._selectMonthCallback(monthIndex) : undefined}
+                        onKeyDown={isInBounds ? this._onButtonKeyDown(this._selectMonthCallback(monthIndex)) : undefined}
+                        aria-label={dateFormatter.formatMonthYear(indexedMonth, strings)}
+                        aria-selected={isNavigatedMonth}
+                        data-is-focusable={isInBounds ? true : undefined}
+                        type="button"
+                        aria-readonly={true} // prevent grid from being "editable"
+                      >
+                        {month}
+                      </button>
+                    );
                   })}
-                  disabled={!allFocusable && !isInBounds}
-                  key={index}
-                  onClick={isInBounds ? this._selectMonthCallback(index) : undefined}
-                  onKeyDown={isInBounds ? this._onButtonKeyDown(this._selectMonthCallback(index)) : undefined}
-                  aria-label={dateFormatter.formatMonthYear(indexedMonth, strings)}
-                  aria-selected={isNavigatedMonth}
-                  data-is-focusable={isInBounds ? true : undefined}
-                >
-                  {month}
-                </button>
+                </div>
               );
             })}
           </div>
@@ -150,7 +251,9 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
   }
 
   public focus = () => {
-    if (this._navigatedMonth && this._navigatedMonth.value) {
+    if (this._calendarYearRef.current) {
+      this._calendarYearRef.current.focus();
+    } else if (this._navigatedMonth) {
       this._navigatedMonth.focus();
     }
   };
@@ -163,7 +266,6 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
     return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
       switch (ev.which) {
         case KeyCodes.enter:
-        case KeyCodes.space:
           callback();
           break;
       }
@@ -199,9 +301,65 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, {}> {
   };
 
   private _onHeaderSelect = (): void => {
-    const { onHeaderSelect } = this.props;
-    if (onHeaderSelect) {
+    const { onHeaderSelect, yearPickerHidden } = this.props;
+    if (!yearPickerHidden) {
+      this._focusOnUpdate = true;
+      this.setState({ isYearPickerVisible: true });
+    } else if (onHeaderSelect) {
       onHeaderSelect();
     }
+  };
+
+  private _onSelectYear = (selectedYear: number) => {
+    this._focusOnUpdate = true;
+    const { navigatedDate, onNavigateDate, maxDate, minDate } = this.props;
+    const navYear = navigatedDate.getFullYear();
+    if (navYear !== selectedYear) {
+      let newNavigationDate = new Date(navigatedDate.getTime());
+      newNavigationDate.setFullYear(selectedYear);
+      // for min and max dates, adjust the new navigation date - perhaps this should be
+      // checked on the master navigation date handler (i.e. in Calendar)
+      if (maxDate && newNavigationDate > maxDate) {
+        newNavigationDate = setMonth(newNavigationDate, maxDate.getMonth());
+      } else if (minDate && newNavigationDate < minDate) {
+        newNavigationDate = setMonth(newNavigationDate, minDate.getMonth());
+      }
+      onNavigateDate(newNavigationDate, true);
+    }
+    this.setState({ isYearPickerVisible: false });
+  };
+
+  private _onYearPickerHeaderSelect = (focus: boolean): void => {
+    this._focusOnUpdate = focus;
+    this.setState({ isYearPickerVisible: false });
+  };
+
+  private _onRenderYear = (year: number) => {
+    return this._yearToString(year);
+  };
+
+  private _yearToString = (year: number) => {
+    const { navigatedDate, dateTimeFormatter } = this.props;
+    if (dateTimeFormatter) {
+      // create a date based on the current nav date
+      const yearFormattingDate = new Date(navigatedDate.getTime());
+      yearFormattingDate.setFullYear(year);
+      return dateTimeFormatter.formatYear(yearFormattingDate);
+    }
+    return String(year);
+  };
+
+  private _yearRangeToString = (yearRange: ICalendarYearRange) => {
+    return `${this._yearToString(yearRange.fromYear)} - ${this._yearToString(yearRange.toYear)}`;
+  };
+
+  private _yearRangeToNextDecadeLabel = (yearRange: ICalendarYearRange) => {
+    const { strings } = this.props;
+    return strings.nextYearRangeAriaLabel ? `${strings.nextYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}` : '';
+  };
+
+  private _yearRangeToPrevDecadeLabel = (yearRange: ICalendarYearRange) => {
+    const { strings } = this.props;
+    return strings.prevYearRangeAriaLabel ? `${strings.prevYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}` : '';
   };
 }

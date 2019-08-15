@@ -1,18 +1,19 @@
-import { ISlotProp } from './slots';
-import { IStackProps, ITextProps, IPersonaCoinProps } from '@uifabric/experiments';
-import { IContextualMenuProps, IIconProps } from 'office-ui-fabric-react';
+import {
+  ICalloutProps,
+  IContextualMenuProps,
+  IIconProps,
+  ILabelProps,
+  IListProps,
+  IPersonaPresenceProps,
+  PersonaPresence
+} from 'office-ui-fabric-react';
+import { ISlotProp } from '../Foundation';
 
-// TODO: All contents of this file should be moved to each respective component after Slots utilities are promoted.
+// TODO: All contents of this file should be moved to each respective component after slots utilities are promoted.
 
-// HTML Types
-export type IHTMLButtonSlot = ISlotProp<React.ButtonHTMLAttributes<any>>;
-export type IHTMLDivSlot = ISlotProp<React.HTMLAttributes<any>>;
-
-// Icon Types
-export const IconShorthandProp: keyof IIconProps = 'iconName';
-export type IIconSlot = ISlotProp<IIconProps, 'iconName'>;
-
-export type IHorizontalStackSlot = ISlotProp<IStackProps>;
+export type ICalloutSlot = ISlotProp<ICalloutProps>;
 export type IContextualMenuSlot = ISlotProp<IContextualMenuProps>;
-export type ITextSlot = ISlotProp<ITextProps, 'children'>;
-export type IPersonaCoinSlot = ISlotProp<IPersonaCoinProps>;
+export type IIconSlot = ISlotProp<IIconProps, string>;
+export type ILabelSlot = ISlotProp<ILabelProps, string>;
+export type IListSlot = ISlotProp<IListProps>;
+export type IPersonaPresenceSlot = ISlotProp<IPersonaPresenceProps, PersonaPresence>;
