@@ -90,6 +90,12 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
   ariaLabel?: string;
 
   /**
+   * Whether or not the clear button is enabled.
+   * @defaultvalue true
+   */
+  clearable?: boolean;
+
+  /**
    * The props for the clear button.
    */
   clearButtonProps?: IButtonProps;

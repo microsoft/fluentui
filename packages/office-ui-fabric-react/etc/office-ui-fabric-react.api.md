@@ -6447,6 +6447,7 @@ export interface ISearchBox {
 export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElement> {
     ariaLabel?: string;
     className?: string;
+    clearable?: boolean;
     clearButtonProps?: IButtonProps;
     componentRef?: IRefObject<ISearchBox>;
     // @deprecated

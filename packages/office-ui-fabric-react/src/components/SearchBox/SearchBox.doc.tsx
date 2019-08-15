@@ -6,6 +6,7 @@ import { SearchBoxUnderlinedExample } from './examples/SearchBox.Underlined.Exam
 import { SearchBoxDisabledExample } from './examples/SearchBox.Disabled.Example';
 import { SearchBoxCustomIconExample } from './examples/SearchBox.CustomIcon.Example';
 import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
+import { SearchBoxNonclearableExample } from './examples/SearchBox.Nonclearable.Example';
 
 const SearchBoxFullSizeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
 const SearchBoxFullSizeExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
@@ -14,6 +15,8 @@ const SearchBoxDisabledExampleCode = require('!raw-loader!office-ui-fabric-react
 const SearchBoxCustomIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.CustomIcon.Example.tsx') as string;
 const SearchBoxSmallExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
 const SearchBoxSmallExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Small.Example.tsx') as string;
+const SearchBoxNonclearableExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Nonclearable.Example.tsx') as string;
+const SearchBoxNonclearableExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Nonclearable.Example.tsx') as string;
 
 export const SearchBoxPageProps: IDocPageProps = {
   title: 'SearchBox',
@@ -46,6 +49,12 @@ export const SearchBoxPageProps: IDocPageProps = {
       code: SearchBoxSmallExampleCode,
       codepenJS: SearchBoxSmallExampleCodepen,
       view: <SearchBoxSmallExample />
+    },
+    {
+      title: 'Non-clearable SearchBox',
+      code: SearchBoxNonclearableExampleCode,
+      codepenJS: SearchBoxNonclearableExampleCodepen,
+      view: <SearchBoxNonclearableExample />
     }
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxOverview.md'),

@@ -82,6 +82,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       styles,
       labelText,
       theme,
+      clearable,
       clearButtonProps,
       disableAnimation,
       iconProps,
@@ -89,6 +90,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     } = this.props;
     const { value, hasFocus } = this.state;
     const placeholderValue = labelText === undefined ? placeholder : labelText;
+    const clearableValue = clearable === undefined || clearable;
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -126,7 +128,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
           aria-label={ariaLabel ? ariaLabel : placeholder}
           ref={this._inputElement}
         />
-        {value!.length > 0 && (
+        {value!.length > 0 && clearableValue && (
           <div className={classNames.clearButton}>
             <IconButton
               styles={{ root: { height: 'auto' }, icon: { fontSize: '12px' } }}

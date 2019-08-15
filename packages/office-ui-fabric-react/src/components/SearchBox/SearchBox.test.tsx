@@ -159,4 +159,10 @@ describe('SearchBox', () => {
     wrapper.setProps({ value: null as any });
     expect(wrapper.find('input').prop('value')).toBe('');
   });
+
+  it('should not render the clear button when clearable is false', () => {
+    wrapper = mount(<SearchBox clearable={false} />);
+
+    expect(wrapper.find('button').exists()).toBe(false);
+  });
 });
