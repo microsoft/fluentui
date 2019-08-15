@@ -1,6 +1,6 @@
 {
-  "comment": "Combobox: Updated web fluent styles",
-  "type": "patch",
+  "comment": "Updated ComboBox snapshots",
+  "type": "none",
   "packageName": "@uifabric/experiments",
   "email": "v-mare@microsoft.com",
   "commit": "9a3955fc93cb4fea86dab7de73967f799a0501f3",

@@ -1,5 +1,5 @@
 {
-  "comment": "Combobox: Updated web fluent styles",
+  "comment": "Combobox: Updates styles to latest design specs.",
   "type": "patch",
   "packageName": "office-ui-fabric-react",
   "email": "v-mare@microsoft.com",
