@@ -1,6 +1,25 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 14 Aug 2019 12:30:13 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+
+## 7.25.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Adding prop on BaseButton to allow user to specify custom props on SplitButton's primary action button. (pagaur@microsoft.com)
+,- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+,- Add fast Icon variants and useFastIcons option in DetailsList (elcraig@microsoft.com)
+
+### Patches
+
+- FocusZone: Remove role=presentation (elcraig@microsoft.com)
+,- Moving the drag-drop caret icon on top of column divider to make if compatible with Sticky header (svaibhav@microsoft.com)
+,- Slider: update active pressed state color for slider border and thumb to match design toolkit spec. Updated palette references to sematic colors. (marygans@microsoft.com)
+,- TextField: fix onChange issue and async tests (elcraig@microsoft.com)
+,- Dropdown: allow setting empty string as item title (elcraig@microsoft.com)
+,- ActivityItem, Nav, and Pivot example updates (elcraig@microsoft.com)
+,- MessageBarButton: Remove the fixed width added in #8779. (jagore@microsoft.com)
 
 ## 7.24.0
 Wed, 14 Aug 2019 12:30:13 GMT

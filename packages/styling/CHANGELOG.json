@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2019 12:30:43 GMT",
+      "tag": "@uifabric/styling_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding input semantic slots",
+            "author": "marygans@microsoft.com",
+            "commit": "7e8a6c466df5f3899fd56422fdf64e0771324ae1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Aug 2019 12:31:50 GMT",
       "tag": "@uifabric/styling_v7.4.1",
       "version": "7.4.1",

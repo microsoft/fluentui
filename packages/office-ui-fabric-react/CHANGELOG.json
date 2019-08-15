@@ -2,6 +2,74 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2019 12:30:43 GMT",
+      "tag": "office-ui-fabric-react_v7.25.0",
+      "version": "7.25.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: Remove role=presentation",
+            "author": "elcraig@microsoft.com",
+            "commit": "f5823e6840f0aa1884b712d8572d2b7d0fc189c2"
+          },
+          {
+            "comment": "Moving the drag-drop caret icon on top of column divider to make if compatible with Sticky header",
+            "author": "svaibhav@microsoft.com",
+            "commit": "f92b1ee8a21054d1f57d0277d3fd0010d9d1b124"
+          },
+          {
+            "comment": "Slider: update active pressed state color for slider border and thumb to match design toolkit spec. Updated palette references to sematic colors.",
+            "author": "marygans@microsoft.com",
+            "commit": "ce35d5fe311321a9f084cc0be326a2d5137a9935"
+          },
+          {
+            "comment": "TextField: fix onChange issue and async tests",
+            "author": "elcraig@microsoft.com",
+            "commit": "6d55bd23655d5dc84e7f2aa613184dcb7468ef67"
+          },
+          {
+            "comment": "Dropdown: allow setting empty string as item title",
+            "author": "elcraig@microsoft.com",
+            "commit": "98b721dd072deb4ffedf5ea0fc85e42a62e4998e"
+          },
+          {
+            "comment": "ActivityItem, Nav, and Pivot example updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "835bb6c84cfa864bccd4b96d038b9ff5bca75c0c"
+          },
+          {
+            "comment": "MessageBarButton: Remove the fixed width added in #8779.",
+            "author": "jagore@microsoft.com",
+            "commit": "c5882425313e25e68c419613f46c660e4e605d6e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding prop on BaseButton to allow user to specify custom props on SplitButton's primary action button.",
+            "author": "pagaur@microsoft.com",
+            "commit": "56706417eb5510ac5128b1ec690da302d3bb2f45"
+          },
+          {
+            "comment": "Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9.",
+            "author": "jagore@microsoft.com",
+            "commit": "ce48383da2d27474122aef769af0c313e29281d0"
+          },
+          {
+            "comment": "Add fast Icon variants and useFastIcons option in DetailsList",
+            "author": "elcraig@microsoft.com",
+            "commit": "9f38bd6bd42b57ae679c956f57304eb1e194b252"
+          }
+        ],
+        "none": [
+          {
+            "comment": "TeachingBubble: Added aria labels to examples with close icons",
+            "author": "marygans@microsoft.com",
+            "commit": "806584e1347d8a4a428f5e9727a1d842002c7a58"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Aug 2019 12:30:13 GMT",
       "tag": "office-ui-fabric-react_v7.24.0",
       "version": "7.24.0",

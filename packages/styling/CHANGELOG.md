@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 09 Aug 2019 12:31:50 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+
+## 7.5.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Adding input semantic slots (marygans@microsoft.com)
 
 ## 7.4.1
 Fri, 09 Aug 2019 12:31:50 GMT

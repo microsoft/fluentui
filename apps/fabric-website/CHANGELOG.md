@@ -1,6 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 08 Aug 2019 12:32:41 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+
+## 7.4.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+
+### Patches
+
+- Card: Showing examples on demo page and website (Humberto.Morimoto@microsoft.com)
 
 ## 7.3.2
 Thu, 08 Aug 2019 12:32:41 GMT
