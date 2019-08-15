@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "MessageBarButton: Remove the fixed width added in #8779.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jagore@microsoft.com",
+  "commit": "c5882425313e25e68c419613f46c660e4e605d6e",
+  "date": "2019-08-14T18:23:34.026Z"
+}

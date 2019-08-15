@@ -9,7 +9,6 @@ export const getStyles = memoizeFunction(
     const messageBarButtonStyles: IButtonStyles = {
       root: {
         height: 24,
-        width: 84,
         borderColor: theme.palette.neutralTertiaryAlt
       }
     };
