@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add clearable prop to SearchBox component",
+  "packageName": "office-ui-fabric-react",
+  "email": "etroday@microsoft.com",
+  "commit": "08922e4c331706265813ee45689d8091d3332f76",
+  "date": "2019-08-15T17:43:06.142Z"
+}
