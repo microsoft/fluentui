@@ -294,13 +294,21 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       classNames.regularLabel,
       {
         position: 'absolute',
-
+        height: '0px',
         background: theme.palette.neutralTertiaryAlt,
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'WindowText'
           }
         }
+      },
+      {
+        transform: 'translateY(6px) translateX(-6px)'
+      },
+      vertical && {
+        margin: '0 auto',
+        marginBottom: '20px',
+        transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
       },
       disabled && {
         background: theme.palette.neutralLight,
@@ -309,18 +317,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
             backgroundColor: 'GrayText'
           }
         }
-      },
-      vertical
-        ? {
-            margin: '0 auto',
-            height: '0px',
-            marginBottom: '20px',
-            transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
-          }
-        : {
-            height: '0px',
-            transform: 'translateY(6px) translateX(-6px)'
-          }
+      }
     ],
 
     regularTick: [

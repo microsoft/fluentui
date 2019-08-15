@@ -1,8 +1,8 @@
 {
   "type": "minor",
-  "comment": "ticks_new is now up to date with the ticks code",
+  "comment": "Slider: added tickmarks,thumblabel, min & max value, and custom labels",
   "packageName": "office-ui-fabric-react",
-  "email": "sneharoy321@gmail.com",
+  "email": "t-snroy@microsoft.com",
   "commit": "879bc600a690963d3d60a21e644e1bf61ef1a3e6",
   "date": "2019-08-06T21:09:55.457Z"
 }

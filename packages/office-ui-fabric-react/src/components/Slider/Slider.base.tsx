@@ -89,7 +89,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       theme: theme!
     });
     const divButtonProps = buttonProps ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties) : undefined;
-    const theButton = (
+    const thumbButton = (
       <span
         ref={this._thumb}
         className={classNames.thumb}
@@ -100,7 +100,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     );
     return (
       <div className={classNames.root}>
-        {label && (
+        {showValue && label && (
           <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })} disabled={disabled}>
             {label} : {valueFormat ? valueFormat(value!) : value}
           </Label>
@@ -155,10 +155,10 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                     directionalHint: vertical ? DirectionalHint.rightCenter : DirectionalHint.topCenter
                   }}
                 >
-                  {theButton}
+                  {thumbButton}
                 </TooltipHost>
               ) : (
-                theButton
+                thumbButton
               )}
               {originFromZero ? (
                 <>
