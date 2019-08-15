@@ -1904,6 +1904,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     onRenderText?: IRenderFunction<IButtonProps>;
     persistMenu?: boolean;
     primary?: boolean;
+    primaryActionButtonProps?: IButtonProps;
     primaryDisabled?: boolean;
     // @deprecated
     rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
