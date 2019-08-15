@@ -66,6 +66,8 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   private _textElement = React.createRef<HTMLTextAreaElement | HTMLInputElement>();
   private _classNames: IProcessedStyleSet<ITextFieldStyles>;
   private _async: Async;
+  /** Most recent value from a change or input event, to help avoid processing events twice */
+  private _lastChangeValue: string | undefined;
 
   public constructor(props: ITextFieldProps) {
     super(props);
@@ -104,11 +106,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
    * Gets the current value of the text field.
    */
   public get value(): string | undefined {
-    const value = _getValue(this.props, this.state);
-    if (typeof value === 'number') {
-      return String(value);
-    }
-    return value;
+    return _getValue(this.props, this.state);
   }
 
   public componentDidMount(): void {
@@ -161,7 +159,6 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       // TODO: #5875 added logic to trigger validation in componentWillReceiveProps and other places.
       // This seems a bit odd and hard to integrate with the new approach.
       // (Starting to think we should just put the validation logic in a separate wrapper component...?)
-      // TODO: VERIFY that debouncing prevents this from being called too many times, and the timing is right
       if (_shouldValidateAllChanges(props)) {
         this._delayedValidate(this.value);
       }
@@ -471,29 +468,48 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   }
 
   private _onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
-    event.persist();
-    const element: HTMLInputElement = event.target as HTMLInputElement;
-    const value: string = element.value;
-    const props = this.props;
+    // Previously, we needed to call both onInput and onChange due to some weird IE/React issues,
+    // which have *probably* been fixed now:
+    // - https://github.com/OfficeDev/office-ui-fabric-react/issues/744 (likely fixed)
+    // - https://github.com/OfficeDev/office-ui-fabric-react/issues/824 (confirmed fixed)
 
-    // Avoid doing unnecessary work when the value has not changed.
-    if (value === this.value) {
+    // TODO (Fabric 8?) - Switch to calling only onChange. This switch is pretty disruptive for
+    // tests (ours and maybe consumers' too), so it seemed best to do the switch in a major bump.
+
+    const element = event.target as HTMLInputElement;
+    const value = element.value;
+    // Ignore this event if the value is undefined (in case one of the IE bugs comes back)
+    if (value === undefined || value === this._lastChangeValue) {
       return;
     }
+    this._lastChangeValue = value;
 
-    // ONLY is this is an uncontrolled component, update the displayed value.
-    // (Controlled components must update the `value` prop from `onChange`.)
-    if (!this._isControlled) {
-      // For uncontrolled components, wait to call onChange until after state is updated
-      this.setState({ uncontrolledValue: value }, () => {
-        if (props.onChange) {
-          props.onChange(event, value);
+    // This is so developers can access the event properties in asynchronous callbacks
+    // https://reactjs.org/docs/events.html#event-pooling
+    event.persist();
+
+    let isSameValue: boolean;
+    this.setState(
+      (prevState: ITextFieldState, props: ITextFieldProps) => {
+        const prevValue = _getValue(props, prevState) || '';
+        isSameValue = value === prevValue;
+        // Avoid doing unnecessary work when the value has not changed.
+        if (isSameValue) {
+          return null;
         }
-      });
-    } else if (props.onChange) {
-      // For controlled components, call onChange now
-      props.onChange(event, value);
-    }
+
+        // ONLY if this is an uncontrolled component, update the displayed value.
+        // (Controlled components must update the `value` prop from `onChange`.)
+        return this._isControlled ? null : { uncontrolledValue: value };
+      },
+      () => {
+        // If the value actually changed, call onChange (for either controlled or uncontrolled)
+        const { onChange } = this.props;
+        if (!isSameValue && onChange) {
+          onChange(event, value);
+        }
+      }
+    );
   };
 
   private _validate(value: string | undefined): void {
@@ -503,7 +519,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     }
 
     this._latestValidateValue = value;
-    const onGetErrorMessage = this.props.onGetErrorMessage as (value: string) => string | PromiseLike<string> | undefined;
+    const onGetErrorMessage = this.props.onGetErrorMessage;
     const result = onGetErrorMessage && onGetErrorMessage(value || '');
 
     if (result !== undefined) {
@@ -540,8 +556,13 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   }
 }
 
+/** Get the value from the given state and props (converting from number to string if needed) */
 function _getValue(props: ITextFieldProps, state: ITextFieldState): string | undefined {
   const { value = state.uncontrolledValue } = props;
+  if (typeof value === 'number') {
+    // not allowed per typings, but happens anyway
+    return String(value);
+  }
   return value;
 }
 

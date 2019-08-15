@@ -362,11 +362,13 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
 
   private _onChange(): void {
     /**
-     * A noop input change handler.
-     * https://github.com/facebook/react/issues/7027.
-     * Using the native onInput handler fixes the issue but onChange
-     * still need to be wired to avoid React console errors
-     * TODO: Check if issue is resolved when React 16 is available.
+     * A noop input change handler. Using onInput instead of onChange was meant to address an issue
+     * which apparently has been resolved in React 16 (https://github.com/facebook/react/issues/7027).
+     * The no-op onChange handler was still needed because React gives console errors if an input
+     * doesn't have onChange.
+     *
+     * TODO (Fabric 8?) - switch to just calling onChange (this is a breaking change for any tests,
+     * ours or 3rd-party, which simulate entering text in a SpinButton)
      */
   }
 
