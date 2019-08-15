@@ -1,65 +1,27 @@
 import * as React from 'react';
-import { css, classNamesFunction, DefaultButton, IButtonProps, IStyle, Label, PrimaryButton } from 'office-ui-fabric-react';
+import { DefaultButton, IButtonProps, Label, ILabelStyles, PrimaryButton, Stack } from 'office-ui-fabric-react';
 
-type IButtonBasicExampleStyleProps = {};
-
-interface IButtonBasicExampleStyles {
-  twoup?: IStyle;
-}
-
-const exampleStyles: IButtonBasicExampleStyles = {
-  twoup: [
-    'ms-BasicButtonsTwoUp',
-    {
-      display: 'flex',
-      selectors: {
-        '& > *': {
-          flexGrow: 1
-        },
-        '.ms-Label': {
-          marginBottom: '10px'
-        }
-      }
-    }
-  ]
+const labelStyles: Partial<ILabelStyles> = {
+  root: { marginBottom: 10 }
 };
 
-const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
-const classNames = getClassNames(exampleStyles, {});
+export const ButtonDefaultExample: React.FunctionComponent<IButtonProps> = props => {
+  const { disabled, checked } = props;
 
-export class ButtonDefaultExample extends React.Component<IButtonProps, {}> {
-  public render(): JSX.Element {
-    const { disabled, checked } = this.props;
-
-    return (
-      <div className={css(classNames.twoup)}>
-        <div>
-          <Label>Standard</Label>
-          <DefaultButton
-            data-automation-id="test"
-            allowDisabledFocus={true}
-            disabled={disabled}
-            checked={checked}
-            text="Standard Button"
-            onClick={this._alertClicked}
-          />
-        </div>
-        <div>
-          <Label>Primary</Label>
-          <PrimaryButton
-            data-automation-id="test"
-            disabled={disabled}
-            checked={checked}
-            text="Primary Button"
-            onClick={this._alertClicked}
-            allowDisabledFocus={true}
-          />
-        </div>
+  return (
+    <Stack horizontal tokens={{ childrenGap: 40 }}>
+      <div>
+        <Label styles={labelStyles}>Standard</Label>
+        <DefaultButton text="Standard Button" onClick={_alertClicked} allowDisabledFocus={true} disabled={disabled} checked={checked} />
       </div>
-    );
-  }
+      <div>
+        <Label styles={labelStyles}>Primary</Label>
+        <PrimaryButton text="Primary Button" onClick={_alertClicked} allowDisabledFocus={true} disabled={disabled} checked={checked} />
+      </div>
+    </Stack>
+  );
+};
 
-  private _alertClicked(): void {
-    alert('Clicked');
-  }
+function _alertClicked(): void {
+  alert('Clicked');
 }
