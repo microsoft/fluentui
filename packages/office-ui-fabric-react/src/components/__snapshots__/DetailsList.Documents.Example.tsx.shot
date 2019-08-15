@@ -790,22 +790,26 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       <i
                         aria-hidden={true}
                         className=
-
+                            ms-Icon
+                            {
+                              display: inline-block;
+                            }
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #605e5c;
-                              display: inline-block;
                               font-family: "FabricMDL2Icons";
-                              font-size: 16px;
                               font-style: normal;
                               font-weight: normal;
+                              speak: none;
+                            }
+                            {
+                              color: #605e5c;
+                              font-size: 16px;
                               opacity: 1;
                               padding-bottom: 0px;
                               padding-left: 0px;
                               padding-right: 0px;
                               padding-top: 0px;
-                              speak: none;
                             }
                         data-icon-name="Page"
                         role="presentation"
@@ -996,19 +1000,23 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     <i
                       aria-hidden={true}
                       className=
-
+                          ms-Icon
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #605e5c;
-                            display: inline-block;
                             font-family: "FabricMDL2Icons";
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            color: #605e5c;
                             opacity: 1;
                             padding-left: 4px;
                             position: relative;
-                            speak: none;
                             top: 1px;
                           }
                       data-icon-name="SortUp"

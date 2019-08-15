@@ -410,17 +410,21 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                       <i
                         aria-hidden={true}
                         className=
-
+                            ms-Icon
+                            {
+                              display: inline-block;
+                            }
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #605e5c;
-                              display: inline-block;
                               font-family: "FabricMDL2Icons";
                               font-style: normal;
                               font-weight: normal;
-                              opacity: 1;
                               speak: none;
+                            }
+                            {
+                              color: #605e5c;
+                              opacity: 1;
                             }
                         data-icon-name="Page"
                         role="presentation"

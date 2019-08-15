@@ -273,20 +273,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                     <i
                       aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Check-circle
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #605e5c;
-                            display: inline-block;
                             font-family: "FabricMDL2Icons";
-                            font-size: 18px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            color: #605e5c;
+                            font-size: 18px;
                             height: 18px;
                             left: 0px;
                             position: absolute;
-                            speak: none;
                             text-align: center;
                             top: 0px;
                             vertical-align: middle;
@@ -303,21 +308,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                     <i
                       aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Check-check
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #605e5c;
-                            display: inline-block;
                             font-family: "FabricMDL2Icons";
-                            font-size: 16px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            color: #605e5c;
+                            font-size: 16px;
                             height: 18px;
                             left: .5px;
                             opacity: 0;
                             position: absolute;
-                            speak: none;
                             text-align: center;
                             top: 0px;
                             vertical-align: middle;
@@ -749,20 +759,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -779,21 +794,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -1142,20 +1162,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -1172,21 +1197,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -1535,20 +1565,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -1565,21 +1600,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -1928,20 +1968,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -1958,21 +2003,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -2321,20 +2371,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -2351,21 +2406,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -2714,20 +2774,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -2744,21 +2809,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -3107,20 +3177,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -3137,21 +3212,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -3500,20 +3580,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -3530,21 +3615,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -3893,20 +3983,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -3923,21 +4018,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -4286,20 +4386,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -4316,21 +4421,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
