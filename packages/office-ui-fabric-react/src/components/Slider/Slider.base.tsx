@@ -3,7 +3,7 @@ import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
-import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
+import { TooltipHost } from '../Tooltip';
 import { DirectionalHint } from '../Callout';
 
 export interface ISliderState {
@@ -295,11 +295,11 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   //returns an array of spans each span pertains to a custom label the user passes in
   private _addLabels(cssRegularLabelClassNames: string | undefined): JSX.Element[] {
     const { vertical, marks, min, max } = this.props;
-    if (min === undefined || max === undefined || !Array.isArray(marks)) {
-      return [];
-    }
-    // enable marks if an array is an array of JSON with fields of value (denotes where) and label (denotes what to display)
     const labels: JSX.Element[] = [];
+    if (min === undefined || max === undefined || marks === undefined) {
+      return labels;
+    }
+
     for (let i = 0; i < marks.length; i++) {
       let currentLabel = (
         <span
@@ -312,8 +312,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       );
       labels.push(currentLabel);
     }
-
-    console.log('returns label : ' + labels.toString);
     return labels;
   }
 
