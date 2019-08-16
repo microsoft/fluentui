@@ -5,9 +5,9 @@ import * as renderer from 'react-test-renderer';
 
 import { IBasePicker } from '../BasePicker.types';
 import { resetIds } from '@uifabric/utilities';
-import { people } from './examples/PeoplePickerExampleData';
 import { NormalPeoplePicker } from './PeoplePicker';
 import { IPersonaProps } from '../../Persona/Persona.types';
+import { peopleOnly as people } from '../../ExtendedPicker/examples/PeopleExampleData';
 
 function onResolveSuggestions(text: string): IPersonaProps[] {
   return people.filter((person: IPersonaProps) => person.text!.toLowerCase().indexOf(text.toLowerCase()) === 0);

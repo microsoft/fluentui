@@ -9,7 +9,7 @@ import {
 } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 // Fake data for examples. Not exported by any package.
-import { people } from '../../../ExtendedPicker/examples/PeopleExampleData';
+import { people } from 'office-ui-fabric-react/lib/components/ExtendedPicker/examples/PeopleExampleData';
 
 export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];

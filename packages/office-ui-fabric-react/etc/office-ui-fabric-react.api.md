@@ -12,6 +12,7 @@ import { IComponentAs } from '@uifabric/utilities';
 import { IComponentStyles } from '@uifabric/foundation';
 import { ICSSPixelUnitRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { ICSSRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
+import { IExtendedPersonaProps as IExtendedPersonaProps_2 } from 'office-ui-fabric-react/lib/SelectedItemsList';
 import { IFontStyles } from '@uifabric/styling';
 import { IHTMLSlot } from '@uifabric/foundation';
 import { IObjectWithKey } from '@uifabric/utilities';
@@ -1401,7 +1402,7 @@ export const GroupFooter: React.StatelessComponent<IGroupFooterProps>;
 export const GroupHeader: React.StatelessComponent<IGroupHeaderProps>;
 
 // @public (undocumented)
-export const groupOne: IExtendedPersonaProps[];
+export const groupOne: IExtendedPersonaProps_2[];
 
 // @public (undocumented)
 export const GroupShowAll: React.StatelessComponent<IGroupShowAllProps>;
@@ -1410,7 +1411,7 @@ export const GroupShowAll: React.StatelessComponent<IGroupShowAllProps>;
 export const GroupSpacer: React.FunctionComponent<IGroupSpacerProps>;
 
 // @public (undocumented)
-export const groupTwo: IExtendedPersonaProps[];
+export const groupTwo: IExtendedPersonaProps_2[];
 
 // @public
 export const HEX_REGEX: RegExp;
@@ -8072,7 +8073,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
 }
 
 // @public (undocumented)
-export const mru: IExtendedPersonaProps[];
+export const mru: IExtendedPersonaProps_2[];
 
 // @public (undocumented)
 export const Nav: React.StatelessComponent<INavProps>;
@@ -8175,9 +8176,12 @@ export enum PanelType {
 }
 
 // @public (undocumented)
-export const people: (IExtendedPersonaProps & {
+export const people: (IExtendedPersonaProps_2 & {
     key: string | number;
 })[];
+
+// @public (undocumented)
+export const peopleOnly: IExtendedPersonaProps_2[];
 
 // @public (undocumented)
 export const PeoplePickerItem: React.FunctionComponent<IPeoplePickerItemSelectedProps>;

@@ -13,10 +13,7 @@ import {
   ValidationState
 } from 'office-ui-fabric-react/lib/Pickers';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Promise } from 'es6-promise';
-// Helper imports to generate data for this particular examples. Not exported by any package.
-import { people, mru } from './PeoplePickerExampleData';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { people, mru } from 'office-ui-fabric-react/lib/components/ExtendedPicker/examples/PeopleExampleData';
 
 export interface IPeoplePickerExampleState {
   currentPicker?: number | string;
@@ -108,7 +105,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
             selectedKey={this.state.currentPicker}
             onChange={this._dropDownSelected}
           />
-          <Checkbox
+          <Toggle
             styles={{ root: { marginTop: 10 } }}
             label="Disable People Picker"
             checked={this.state.isPickerDisabled}
@@ -124,6 +121,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   private _getTextFromItem(persona: IPersonaProps): string {
     return persona.text as string;
   }
+
   private _renderListPicker() {
     return (
       <ListPeoplePicker

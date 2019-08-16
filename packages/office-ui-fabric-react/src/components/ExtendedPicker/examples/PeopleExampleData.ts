@@ -1,8 +1,8 @@
 // If this file is moved or split, the scripts for building codepen examples will likely need to be updated.
 
-import { PersonaPresence } from '../../../Persona';
-import { IExtendedPersonaProps } from '../../../SelectedItemsList';
-import { TestImages } from '../../../common/TestImages';
+import { PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
+import { IExtendedPersonaProps } from 'office-ui-fabric-react/lib/SelectedItemsList';
+import { TestImages } from 'office-ui-fabric-react/lib/common/TestImages';
 
 export const people: (IExtendedPersonaProps & { key: string | number })[] = [
   {
@@ -460,6 +460,8 @@ export const people: (IExtendedPersonaProps & { key: string | number })[] = [
     isValid: true
   }
 ];
+
+export const peopleOnly: IExtendedPersonaProps[] = people.filter(p => !p.canExpand);
 
 export const mru: IExtendedPersonaProps[] = people.slice(0, 5);
 
