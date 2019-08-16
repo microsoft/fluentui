@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "PersonaCoin: Update colors to match v7 and improve color contrast.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jdh@microsoft.com",
+  "commit": "f31b6a30ff21317481f3bf12c1d7cd188c9ae703",
+  "date": "2019-08-16T00:37:47.917Z"
+}
