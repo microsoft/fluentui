@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SearchBoxFullSizeExample } from './examples/SearchBox.FullSize.Example';
+import { SearchBoxBasicExample } from './examples/SearchBox.Basic.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
 import { SearchBoxUnderlinedExample } from './examples/SearchBox.Underlined.Example';
@@ -7,8 +7,8 @@ import { SearchBoxDisabledExample } from './examples/SearchBox.Disabled.Example'
 import { SearchBoxCustomIconExample } from './examples/SearchBox.CustomIcon.Example';
 import { SearchBoxCustomEventsExample } from './examples/SearchBox.CustomEvents.Example';
 
-const SearchBoxFullSizeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
-const SearchBoxFullSizeExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
+const SearchBoxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Basic.Example.tsx') as string;
+const SearchBoxBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Basic.Example.tsx') as string;
 const SearchBoxUnderlinedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Underlined.Example.tsx') as string;
 const SearchBoxDisabledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.Disabled.Example.tsx') as string;
 const SearchBoxCustomIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.CustomIcon.Example.tsx') as string;
@@ -22,9 +22,9 @@ export const SearchBoxPageProps: IDocPageProps = {
   examples: [
     {
       title: 'Default SearchBox',
-      code: SearchBoxFullSizeExampleCode,
-      view: <SearchBoxFullSizeExample />,
-      codepenJS: SearchBoxFullSizeExampleCodepen
+      code: SearchBoxBasicExampleCode,
+      view: <SearchBoxBasicExample />,
+      codepenJS: SearchBoxBasicExampleCodepen
     },
     {
       title: 'Underlined SearchBox',
