@@ -2,6 +2,11 @@ import { ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { getGlobalClassNames, HighContrastSelector, AnimationVariables, getFocusStyle } from '../../Styling';
 import { getRTL } from '@uifabric/utilities';
 
+export interface ISliderMarksArrayFormat {
+  value: number;
+  label: string;
+}
+
 const GlobalClassNames = {
   root: 'ms-Slider',
   enabled: 'ms-Slider-enabled',

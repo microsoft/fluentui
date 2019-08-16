@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SliderBase, ISliderMarksArrayFormat } from './Slider.base';
+import { SliderBase } from './Slider.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
@@ -12,6 +12,10 @@ export interface ISlider {
   focus: () => void;
 }
 
+export interface ISliderMarksArrayFormat {
+  value: number;
+  label: string;
+}
 /**
  * {@docCategory Slider}
  */

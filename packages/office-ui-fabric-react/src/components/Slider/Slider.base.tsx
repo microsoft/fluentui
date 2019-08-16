@@ -128,22 +128,19 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                 <span className={classNames.zeroTick} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
               )}
               {marks && this._addTickmarks(classNames.regularTick)}
-              {
-                <span>
-                  {Array.isArray(marks) ? (
-                    this._addLabels(classNames.regularLabel)
-                  ) : (
-                    <>
-                      <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 0)}>
-                        {min}
-                      </span>
-                      <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 100)}>
-                        {max}
-                      </span>
-                    </>
-                  )}
-                </span>
-              }
+              {Array.isArray(marks) ? (
+                this._addLabels(classNames.regularLabel)
+              ) : (
+                <>
+                  <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 0)}>
+                    {min}
+                  </span>
+                  <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 100)}>
+                    {max}
+                  </span>
+                </>
+              )}
+
               {showThumbTooltip ? (
                 <TooltipHost
                   content={`${value}`}
