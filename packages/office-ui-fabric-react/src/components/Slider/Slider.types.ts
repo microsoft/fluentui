@@ -131,11 +131,11 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
 
   /**
    * Optional flag to indicate whether to have tick marks
-   * Can add custom marks when setting enableMarks to an array of JSON that each contain a value property
+   * Can add custom marks when setting marks to an array of JSON that each contain a value property
    * (denotes where) and a string label (denotes what to display for the indicated position)
    * @defaultvalue false
    */
-  enableMarks?: boolean | ISliderMarksArrayFormat[];
+  marks?: boolean | ISliderMarksArrayFormat[];
   /**
    *  Optional flag to decide that thumb will snap to closest value while moving the slider
    *  @defaultvalue false
@@ -213,12 +213,12 @@ export interface ISliderStyles {
   zeroTick: IStyle;
 
   /**
-   * Style set for tick on number line. This element only shows up when enableMarks prop is true.
+   * Style set for tick on number line. This element only shows up when marks prop is true.
    */
   regularTick: IStyle;
 
   /**
-   * Style set for specified labels on number line. This element only shows up when enableMarks prop is true.
+   * Style set for specified labels on number line. This element only shows up when marks prop is true.
    */
   regularLabel: IStyle;
 }

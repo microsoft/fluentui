@@ -6839,8 +6839,8 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     componentRef?: IRefObject<ISlider>;
     defaultValue?: number;
     disabled?: boolean;
-    enableMarks?: boolean | ISliderMarksArrayFormat[];
     label?: string;
+    marks?: boolean | ISliderMarksArrayFormat[];
     max?: number;
     min?: number;
     onChange?: (value: number) => void;

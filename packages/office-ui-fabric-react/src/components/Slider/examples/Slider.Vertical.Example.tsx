@@ -29,7 +29,7 @@ export const SliderVerticalExample: React.StatelessComponent = () => {
         defaultValue={2}
         showValue
         vertical
-        enableMarks
+        marks
         showThumbTooltip
       />
       <Slider // prettier-ignore

@@ -121,7 +121,9 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         flexDirection: 'column',
         height: '100%',
         textAlign: 'center',
-        margin: '8px 0'
+        margin: '8px 0',
+        paddingBottom: '40px 0',
+        marginTop: '40px'
       }
     ],
     slideBox: [
@@ -318,8 +320,9 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         transform: 'translateY(6px) translateX(-6px)'
       },
       vertical && {
-        margin: '0 auto',
-        marginBottom: '20px',
+        margin: '0 auto 20px',
+        // marginBottom: '20px',
+        // marginTop: '20px',
         transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
       },
       disabled && {

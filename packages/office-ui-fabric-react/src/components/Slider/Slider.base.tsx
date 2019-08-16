@@ -68,7 +68,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       styles,
       theme,
       originFromZero,
-      enableMarks,
+      marks,
       showThumbTooltip,
       valueFormat
     } = this.props;
@@ -127,10 +127,10 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               {originFromZero && (
                 <span className={classNames.zeroTick} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
               )}
-              {enableMarks && this._addTickmarks(classNames.regularTick)}
+              {marks && this._addTickmarks(classNames.regularTick)}
               {
                 <span>
-                  {Array.isArray(enableMarks) ? (
+                  {Array.isArray(marks) ? (
                     this._addLabels(classNames.regularLabel)
                   ) : (
                     <>
@@ -301,21 +301,21 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
   //returns an array of spans each span pertains to a custom label the user passes in
   private _addLabels(cssRegularLabelClassNames: string | undefined): JSX.Element[] {
-    const { vertical, enableMarks, min, max } = this.props;
+    const { vertical, marks, min, max } = this.props;
     if (min === undefined || max === undefined) {
       return [];
     }
     // enable marks if an array is an array of JSON with fields of value (denotes where) and label (denotes what to display)
     const labels: JSX.Element[] = [];
-    if (Array.isArray(enableMarks)) {
-      for (let i = 0; i < enableMarks.length; i++) {
+    if (Array.isArray(marks)) {
+      for (let i = 0; i < marks.length; i++) {
         let currentLabel = (
           <span
             className={cssRegularLabelClassNames}
-            style={this._getStyleUsingOffsetPercent(vertical, ((enableMarks[i].value - min) / (max - min)) * 100)}
+            style={this._getStyleUsingOffsetPercent(vertical, ((marks[i].value - min) / (max - min)) * 100)}
             key={i}
           >
-            {enableMarks[i].label}
+            {marks[i].label}
           </span>
         );
         labels.push(currentLabel);

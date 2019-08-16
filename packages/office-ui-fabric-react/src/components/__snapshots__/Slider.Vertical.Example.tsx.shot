@@ -79,7 +79,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
             margin-bottom: 8px;
             margin-left: 0;
             margin-right: 0;
-            margin-top: 8px;
+            margin-top: 40px;
+            padding-bottom: 40px 0;
             text-align: center;
           }
     >
@@ -378,7 +379,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
             margin-bottom: 8px;
             margin-left: 0;
             margin-right: 0;
-            margin-top: 8px;
+            margin-top: 40px;
+            padding-bottom: 40px 0;
             text-align: center;
           }
     >
@@ -789,7 +791,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
             margin-bottom: 8px;
             margin-left: 0;
             margin-right: 0;
-            margin-top: 8px;
+            margin-top: 40px;
+            padding-bottom: 40px 0;
             text-align: center;
           }
     >
@@ -1041,7 +1044,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
             margin-bottom: 8px;
             margin-left: 0;
             margin-right: 0;
-            margin-top: 8px;
+            margin-top: 40px;
+            padding-bottom: 40px 0;
             text-align: center;
           }
     >
@@ -1340,7 +1344,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
             margin-bottom: 8px;
             margin-left: 0;
             margin-right: 0;
-            margin-top: 8px;
+            margin-top: 40px;
+            padding-bottom: 40px 0;
             text-align: center;
           }
     >
@@ -1639,7 +1644,8 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
             margin-bottom: 8px;
             margin-left: 0;
             margin-right: 0;
-            margin-top: 8px;
+            margin-top: 40px;
+            padding-bottom: 40px 0;
             text-align: center;
           }
     >
