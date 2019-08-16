@@ -19,7 +19,7 @@ const spinAnimation: string = keyframes({
 export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
   const { theme, size, className, labelPosition } = props;
 
-  const { palette } = theme;
+  const { palette, semanticColors } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -48,7 +48,7 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
       {
         boxSizing: 'border-box',
         borderRadius: '50%',
-        border: '1.5px solid ' + palette.themeLight,
+        border: '1.5px solid ' + semanticColors.inputPlaceholderBackgroundChecked,
         borderTopColor: palette.themePrimary,
         animationName: spinAnimation,
         animationDuration: '1.3s',
