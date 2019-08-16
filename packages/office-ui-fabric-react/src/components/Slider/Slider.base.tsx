@@ -146,7 +146,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               }
               {showThumbTooltip ? (
                 <TooltipHost
-                  content={'' + value}
+                  content={`${value}`}
                   id={this._hostId}
                   calloutProps={{
                     gapSpace: 5,
@@ -327,6 +327,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
   private _addTickmarks(cssRegularTickClassNames: string | undefined): JSX.Element[] {
     const { min, max, step, vertical } = this.props;
+    // if anyof the values are not defined then will not render ticks
     if (min === undefined || max === undefined || step === undefined) {
       return [];
     }
