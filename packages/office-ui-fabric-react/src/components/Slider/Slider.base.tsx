@@ -100,9 +100,9 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     );
     return (
       <div className={classNames.root}>
-        {showValue && label && (
+        {label && (
           <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })} disabled={disabled}>
-            {label} : {valueFormat ? valueFormat(value!) : value}
+            {label} : {valueFormat && showValue ? valueFormat(value!) : value}
           </Label>
         )}
         <div className={classNames.container}>

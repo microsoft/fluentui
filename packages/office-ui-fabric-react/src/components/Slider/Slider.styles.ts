@@ -115,7 +115,8 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       {
         display: 'flex',
         flexWrap: 'nowrap',
-        alignItems: 'center'
+        alignItems: 'center',
+        margin: '10px'
       },
       vertical && {
         flexDirection: 'column',
