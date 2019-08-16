@@ -1,6 +1,7 @@
 import { mod } from 'riceburn';
 import ts from 'typescript';
-import { migration, IMigrationOptions, ModResult } from '../../migration';
+import { migration, IMigrationOptions } from '../../migration';
+import { ModResult } from 'riceburn/lib/interfaces';
 
 export default migration(
   'rename componentWillReceiveProps with UNSAFE_componentWillReceiveProps',

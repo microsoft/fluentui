@@ -1,12 +1,8 @@
+import { ModResult } from 'riceburn/lib/interfaces';
+
 export interface IMigrationOptions {
   dryRun: boolean;
   warn: (message: string) => void;
-}
-
-// tslint:disable-next-line: interface-name
-export interface ModResult {
-  fileName: string;
-  state: 'not-modified' | 'would-be-modified' | 'modified';
 }
 
 export interface IMigration {

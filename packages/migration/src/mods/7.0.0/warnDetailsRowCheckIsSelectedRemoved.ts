@@ -1,6 +1,7 @@
-import { IMigrationOptions, migration, ModResult } from '../../migration';
+import { IMigrationOptions, migration } from '../../migration';
 import { mod } from 'riceburn';
 import { renameJsxProp } from 'riceburn/lib/mods/renameJsxProp';
+import { ModResult } from 'riceburn/lib/interfaces';
 
 /**
  * A code mod that transforms the following usage of

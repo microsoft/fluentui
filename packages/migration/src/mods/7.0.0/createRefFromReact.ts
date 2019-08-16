@@ -1,6 +1,7 @@
-import { IMigrationOptions, migration, ModResult } from '../../migration';
+import { IMigrationOptions, migration } from '../../migration';
 import { mod } from 'riceburn';
 import { moveImports } from '../../util/MoveImports';
+import { ModResult } from 'riceburn/lib/interfaces';
 
 const legacyExports = ['createRef'];
 const fromPackage = 'office-ui-fabric-react';

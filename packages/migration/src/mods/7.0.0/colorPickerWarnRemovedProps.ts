@@ -1,6 +1,7 @@
 import ts from 'typescript';
-import { IMigrationOptions, migration, ModResult } from '../../migration';
+import { IMigrationOptions, migration } from '../../migration';
 import { mod } from 'riceburn';
+import { ModResult } from 'riceburn/lib/interfaces';
 
 const onChangedPropsByComponent: { [component: string]: string } = {
   ColorPicker: 'onColorChanged',
