@@ -22,7 +22,7 @@ exports[`Spinner renders Spinner correctly 1`] = `
           animation-timing-function: cubic-bezier(.53,.21,.29,.67);
           border-radius: 50%;
           border-top-color: #0078d4;
-          border: 1.5px solid #c7e0f4;
+          border: 1.5px solid #deecf9;
           box-sizing: border-box;
           height: 20px;
           width: 20px;
