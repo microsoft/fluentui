@@ -1756,7 +1756,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -2062,7 +2062,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -2216,7 +2216,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -2419,7 +2419,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -2718,7 +2718,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -2872,7 +2872,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -3026,7 +3026,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -3180,7 +3180,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
