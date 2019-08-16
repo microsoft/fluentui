@@ -89,6 +89,13 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
 
   /** If provided, can be used to render a custom checkbox */
   onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
+
+  /**
+   * Whether to use fast icon and check components. The icons can't be targeted by customization
+   * but are still customizable via class names.
+   * @defaultvalue true
+   */
+  useFastIcons?: boolean;
 }
 
 /**
@@ -124,11 +131,9 @@ export enum SelectAllVisibility {
  * {@docCategory DetailsList}
  */
 export interface IDetailsHeaderState {
-  columnReorderProps?: IColumnReorderHeaderProps;
   columnResizeDetails?: IColumnResizeDetails;
   isAllSelected?: boolean;
   isSizing?: boolean;
-  groupNestingDepth?: number;
   isAllCollapsed?: boolean;
 }
 

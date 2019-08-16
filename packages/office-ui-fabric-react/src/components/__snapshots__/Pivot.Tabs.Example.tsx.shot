@@ -13,7 +13,6 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className=
@@ -194,7 +193,15 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
+                  & > *  {
+                    margin-left: 4px;
+                  }
+                  & > *:first-child {
+                    margin-left: 0px;
+                  }
             >
               <span
                 className=
@@ -356,7 +363,15 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
+                  & > *  {
+                    margin-left: 4px;
+                  }
+                  & > *:first-child {
+                    margin-left: 0px;
+                  }
             >
               <span
                 className=
@@ -518,7 +533,15 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
+                  & > *  {
+                    margin-left: 4px;
+                  }
+                  & > *:first-child {
+                    margin-left: 0px;
+                  }
             >
               <span
                 className=
@@ -680,7 +703,15 @@ exports[`Component Examples renders Pivot.Tabs.Example.tsx correctly 1`] = `
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
+                  & > *  {
+                    margin-left: 4px;
+                  }
+                  & > *:first-child {
+                    margin-left: 0px;
+                  }
             >
               <span
                 className=

@@ -259,11 +259,11 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     const { properties, isEnum, isClass } = this.state;
 
     return (
-      <Stack gap={MEDIUM_GAP_SIZE}>
-        <Stack gap={SMALL_GAP_SIZE}>
+      <Stack tokens={{ childrenGap: MEDIUM_GAP_SIZE }}>
+        <Stack tokens={{ childrenGap: SMALL_GAP_SIZE }}>
           {this._renderTitle()}
           {(description || (extendsTokens && extendsTokens.length > 0)) && (
-            <Stack gap={XSMALL_GAP_SIZE}>
+            <Stack tokens={{ childrenGap: XSMALL_GAP_SIZE }}>
               {this._renderDescription()}
               {this._renderExtends()}
             </Stack>
@@ -356,9 +356,9 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     const { properties, methods } = this.state;
 
     return (
-      <Stack gap={MEDIUM_GAP_SIZE}>
+      <Stack tokens={{ childrenGap: MEDIUM_GAP_SIZE }}>
         {properties && properties.length > 0 && (
-          <Stack gap={SMALL_GAP_SIZE}>
+          <Stack tokens={{ childrenGap: SMALL_GAP_SIZE }}>
             <Text variant={'medium'}>Members</Text>
             <DetailsList
               selectionMode={SelectionMode.none}
@@ -371,7 +371,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
           </Stack>
         )}
         {methods && methods.length > 0 && (
-          <Stack gap={SMALL_GAP_SIZE}>
+          <Stack tokens={{ childrenGap: SMALL_GAP_SIZE }}>
             <Text variant={'medium'}>Methods</Text>
             <DetailsList
               selectionMode={SelectionMode.none}

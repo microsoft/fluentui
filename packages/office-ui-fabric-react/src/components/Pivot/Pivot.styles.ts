@@ -1,5 +1,5 @@
 import { IPivotStyleProps, IPivotStyles } from './Pivot.types';
-import { AnimationVariables, getGlobalClassNames, HighContrastSelector, IStyle, normalize, FontSizes, FontWeights } from '../../Styling';
+import { AnimationVariables, getGlobalClassNames, HighContrastSelector, IStyle, normalize, FontWeights } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
 const globalClassNames = {
@@ -16,13 +16,12 @@ const globalClassNames = {
 
 const linkStyles = (props: IPivotStyleProps): IStyle[] => {
   const { rootIsLarge, rootIsTabs } = props;
-  const { semanticColors } = props.theme;
+  const { semanticColors, fonts } = props.theme;
   return [
+    fonts.medium,
     {
       color: semanticColors.actionLink,
       display: 'inline-block',
-      fontSize: FontSizes.medium,
-      fontWeight: FontWeights.regular,
       lineHeight: 44,
       height: 44,
       marginRight: 8,
@@ -76,7 +75,7 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
       }
     },
     rootIsLarge && {
-      fontSize: FontSizes.large
+      fontSize: fonts.large.fontSize
     },
     rootIsTabs && [
       {
@@ -103,18 +102,16 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
 
 export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
   const { className, rootIsLarge, rootIsTabs, theme } = props;
-  const { semanticColors } = theme;
+  const { semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      fonts.medium,
       normalize,
       {
-        fontSize: FontSizes.medium,
-        fontWeight: FontWeights.regular,
         position: 'relative',
         color: semanticColors.link,
         whiteSpace: 'nowrap'
@@ -195,7 +192,20 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
         }
       }
     ],
-    linkContent: [classNames.linkContent],
+    linkContent: [
+      classNames.linkContent,
+      {
+        flex: '0 1 100%',
+        selectors: {
+          '& > * ': {
+            marginLeft: 4
+          },
+          '& > *:first-child': {
+            marginLeft: 0
+          }
+        }
+      }
+    ],
     text: [
       classNames.text,
       {
@@ -206,20 +216,10 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
     count: [
       classNames.count,
       {
-        marginLeft: '4px',
         display: 'inline-block',
         verticalAlign: 'top'
       }
     ],
-    icon: [
-      classNames.icon,
-      {
-        selectors: {
-          '& + $text': {
-            marginLeft: '4px'
-          }
-        }
-      }
-    ]
+    icon: classNames.icon
   };
 };

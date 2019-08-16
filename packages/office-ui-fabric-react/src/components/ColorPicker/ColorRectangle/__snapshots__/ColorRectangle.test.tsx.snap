@@ -7,7 +7,7 @@ exports[`ColorRectangle renders correctly 1`] = `
       {
         border-radius: 2px;
         border: 1px solid #f3f2f1;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         position: relative;
       }
       @media screen and (-ms-high-contrast: active){& {

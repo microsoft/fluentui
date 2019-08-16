@@ -101,7 +101,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     ].filter(section => !!section) as Array<{ title: string }>;
 
     return (
-      <Stack horizontal maxWidth="100%" wrap tokens={{ childrenGap: '5px 40px' }} className={classNames.navigation}>
+      <Stack horizontal wrap tokens={{ childrenGap: '5px 40px', maxWidth: '100%' }} className={classNames.navigation}>
         {sections.map(section => (
           <Link key={section.title} href={this._baseUrl + '#' + _idFromSectionTitle(section.title)} className={classNames.headerLink}>
             {section.title}

@@ -130,7 +130,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     clearTimeout(this._scrollIdleTimeoutId);
   }
 
-  public componentWillReceiveProps(newProps: IDropdownProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IDropdownProps): void {
     // In controlled component usage where selectedKey is provided, update the selectedIndex
     // state if the key or options change.
     let selectedKeyProp: 'defaultSelectedKeys' | 'selectedKeys' | 'defaultSelectedKey' | 'selectedKey';
@@ -471,7 +472,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       : undefined;
 
     return isSmall ? (
-      <Panel isOpen={true} isLightDismiss={true} onDismissed={this._onDismiss} hasCloseButton={false} styles={panelStyles} {...panelProps}>
+      <Panel isOpen={true} isLightDismiss={true} onDismiss={this._onDismiss} hasCloseButton={false} styles={panelStyles} {...panelProps}>
         {this._renderFocusableList(props)}
       </Panel>
     ) : (
@@ -580,6 +581,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       ? this._classNames.dropdownItemDisabled
       : this._classNames.dropdownItem;
 
+    const { title = item.text } = item;
+
     return !this.props.multiSelect ? (
       <CommandButton
         id={id + '-list' + item.index}
@@ -595,7 +598,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
         ariaLabel={item.ariaLabel}
-        title={item.title ? item.title : item.text}
+        title={title}
       >
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>

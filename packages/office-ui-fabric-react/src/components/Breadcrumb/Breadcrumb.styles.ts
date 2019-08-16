@@ -39,7 +39,7 @@ const MediumScreenSelector = getScreenSelector(ScreenWidthMinMedium, ScreenWidth
 
 export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
   const { className, theme } = props;
-  const { palette, semanticColors } = theme;
+  const { palette, semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -94,7 +94,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      fonts.medium,
       {
         margin: '11px 0 1px'
       },
@@ -132,7 +132,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
       classNames.chevron,
       {
         color: chevronButtonColor,
-        fontSize: theme.fonts.small.fontSize,
+        fontSize: fonts.small.fontSize,
         selectors: {
           [HighContrastSelector]: {
             color: 'WindowText',
@@ -172,7 +172,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
             padding: '4px 6px'
           },
           [MediumScreenSelector]: {
-            fontSize: theme.fonts.mediumPlus.fontSize
+            fontSize: fonts.mediumPlus.fontSize
           }
         }
       }

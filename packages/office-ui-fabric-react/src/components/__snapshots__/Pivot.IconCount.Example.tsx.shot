@@ -13,7 +13,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className=
@@ -184,14 +183,20 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
+                  & > *  {
+                    margin-left: 4px;
+                  }
+                  & > *:first-child {
+                    margin-left: 0px;
+                  }
             >
               <span
                 className=
                     ms-Pivot-icon
-                    & + $text {
-                      margin-left: 4px;
-                    }
+
               >
                 <i
                   aria-hidden={true}
@@ -228,7 +233,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                     ms-Pivot-count
                     {
                       display: inline-block;
-                      margin-left: 4px;
                       vertical-align: top;
                     }
               >
@@ -371,14 +375,20 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
+                  & > *  {
+                    margin-left: 4px;
+                  }
+                  & > *:first-child {
+                    margin-left: 0px;
+                  }
             >
               <span
                 className=
                     ms-Pivot-icon
-                    & + $text {
-                      margin-left: 4px;
-                    }
+
               >
                 <i
                   aria-hidden={true}
@@ -404,7 +414,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                     ms-Pivot-count
                     {
                       display: inline-block;
-                      margin-left: 4px;
                       vertical-align: top;
                     }
               >
@@ -547,14 +556,20 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
+                  & > *  {
+                    margin-left: 4px;
+                  }
+                  & > *:first-child {
+                    margin-left: 0px;
+                  }
             >
               <span
                 className=
                     ms-Pivot-icon
-                    & + $text {
-                      margin-left: 4px;
-                    }
+
               >
                 <i
                   aria-hidden={true}
@@ -711,14 +726,20 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
             <span
               className=
                   ms-Pivot-linkContent
-
+                  {
+                    flex: 0 1 100%;
+                  }
+                  & > *  {
+                    margin-left: 4px;
+                  }
+                  & > *:first-child {
+                    margin-left: 0px;
+                  }
             >
               <span
                 className=
                     ms-Pivot-icon
-                    & + $text {
-                      margin-left: 4px;
-                    }
+
               >
                 <i
                   aria-hidden={true}
@@ -755,7 +776,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                     ms-Pivot-count
                     {
                       display: inline-block;
-                      margin-left: 4px;
                       vertical-align: top;
                     }
               >
@@ -900,14 +920,20 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               <span
                 className=
                     ms-Pivot-linkContent
-
+                    {
+                      flex: 0 1 100%;
+                    }
+                    & > *  {
+                      margin-left: 4px;
+                    }
+                    & > *:first-child {
+                      margin-left: 0px;
+                    }
               >
                 <span
                   className=
                       ms-Pivot-icon
-                      & + $text {
-                        margin-left: 4px;
-                      }
+
                 >
                   <i
                     aria-hidden={true}
@@ -944,7 +970,6 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                       ms-Pivot-count
                       {
                         display: inline-block;
-                        margin-left: 4px;
                         vertical-align: top;
                       }
                 >

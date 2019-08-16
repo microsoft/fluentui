@@ -1,6 +1,34 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+
+## 7.5.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Adding input semantic slots (marygans@microsoft.com)
+
+## 7.4.1
+Fri, 09 Aug 2019 12:31:50 GMT
+
+### Patches
+
+- fix font theme variable values for legacy-load-theme (phkuo@microsoft.com)
+
+## 7.4.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- Semantic Colors: Changing and adding a few colors that target input controls. (v-mare@microsoft.com)
+
+## 7.3.1
+Wed, 24 Jul 2019 12:27:56 GMT
+
+### Patches
+
+- Removing react dependency in @uifabric/styling library. (Humberto.Morimoto@microsoft.com)
 
 ## 7.3.0
 Mon, 22 Jul 2019 12:28:42 GMT

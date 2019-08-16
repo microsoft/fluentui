@@ -1,6 +1,197 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+
+## 7.25.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Adding prop on BaseButton to allow user to specify custom props on SplitButton's primary action button. (pagaur@microsoft.com)
+,- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+,- Add fast Icon variants and useFastIcons option in DetailsList (elcraig@microsoft.com)
+
+### Patches
+
+- FocusZone: Remove role=presentation (elcraig@microsoft.com)
+,- Moving the drag-drop caret icon on top of column divider to make if compatible with Sticky header (svaibhav@microsoft.com)
+,- Slider: update active pressed state color for slider border and thumb to match design toolkit spec. Updated palette references to sematic colors. (marygans@microsoft.com)
+,- TextField: fix onChange issue and async tests (elcraig@microsoft.com)
+,- Dropdown: allow setting empty string as item title (elcraig@microsoft.com)
+,- ActivityItem, Nav, and Pivot example updates (elcraig@microsoft.com)
+,- MessageBarButton: Remove the fixed width added in #8779. (jagore@microsoft.com)
+
+## 7.24.0
+Wed, 14 Aug 2019 12:30:13 GMT
+
+### Minor changes
+
+- ChoiceGroup: fix focusing on options and general cleanup (elcraig@microsoft.com)
+
+### Patches
+
+- Searchbox: Updates styles to latest design specs and added semantic slots usage. (v-mare@microsoft.com)
+
+## 7.23.0
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Minor changes
+
+- Checkbox: added indeterminate state (v-mare@microsoft.com)
+
+### Patches
+
+- Updating snpashots and styles which use $ syntax. (dzearing@microsoft.com)
+,- Changing breadcrumb items to links (camontei@microsoft.com)
+,- Pivot: pivot content (icon, text, count) should be consistently aligned via styling. (dzearing@microsoft.com)
+
+## 7.22.2
+Mon, 12 Aug 2019 12:30:25 GMT
+
+### Patches
+
+- Allow callout to reposition after position prop is passed in (joschect@microsoft.com)
+
+## 7.22.1
+Fri, 09 Aug 2019 12:31:50 GMT
+
+### Patches
+
+- Spinbutton: removed additional top and bottom margin styling overriding Label's styling and causes alignment inconsistencies with textbox, combobox, etc. (marygans@microsoft.com)
+
+## 7.22.0
+Thu, 08 Aug 2019 12:32:41 GMT
+
+### Minor changes
+
+- DetailsList: Assign button role to group toggle element if aria-label provided. (t-mashia@microsoft.com)
+,- Update SASS variables using script (phkuo@microsoft.com)
+
+### Patches
+
+- Moved role, aria-label, and aria-expanded to the same element as per aria requirements (susunda@microsoft.com)
+,- DetailsRow should only re-render if a prop is detected to have changed. (megreid115@gmail.com)
+
+## 7.21.0
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Minor changes
+
+- Updating styles to not use $ syntax. (dzearing@microsoft.com)
+,- Initial implementation of clickable legends (atgupta@microsoft.com)
+
+### Patches
+
+- Add customization section to Themes page (naethell@microsoft.com)
+,- Checkbox: Fix for an accessibility bug where checkbox labels were read at two different locations in Narrator's scan mode (kisiebel@microsoft.com)
+,- moving the async clearTimeout call inside the if check to prevent accidentally clearing the timeout unless we're going to be making a new one (jolore@microsoft.com)
+
+## 7.20.1
+Tue, 06 Aug 2019 12:32:07 GMT
+
+### Patches
+
+- Replace the usage of `FontSizes` variable with font styles pulled from the theme object and minor cleanup. (vibraga@microsoft.com)
+
+## 7.20.0
+Mon, 05 Aug 2019 12:33:41 GMT
+
+### Minor changes
+
+- Slider: Add new prop to snap while moving. (t-snroy@microsoft.com)
+
+## 7.19.1
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Patches
+
+- Persona: Fix styles issue caused by unnecessary nesting (cliff.koh@microsoft.com)
+,- Remove extra export of SelectionMode (jdh@microsoft.com)
+
+## 7.19.0
+Wed, 31 Jul 2019 12:26:17 GMT
+
+### Minor changes
+
+- Commandbar: Expose dataDidRender method (joschect@microsoft.com)
+
+### Patches
+
+- [BaseExtendedPicker] Only add aria-owns tag when the picker is expanded (andrescb@microsoft.com)
+,- Tooltip: Fixing hidden hover area overlapping with Tooltip targets. (Humberto.Morimoto@microsoft.com)
+,- Perf Test: Integrate Flamegrill (jagore@microsoft.com)
+
+## 7.18.1
+Tue, 30 Jul 2019 12:28:32 GMT
+
+### Patches
+
+- TeachingBubble: Fix primary button high contrast styling issues. (Humberto.Morimoto@microsoft.com)
+,- Dropdown: Panel now dismisses in small widths (bhdev@outlook.com)
+,- Separate the anchor for the card from card's hover target ('xingwa@microsoft.com')
+
+## 7.18.0
+Mon, 29 Jul 2019 12:26:00 GMT
+
+### Minor changes
+
+- Shimmer: refactor out the BaseComponent and deprecated React lifecycle methods. (vibraga@microsoft.com)
+
+### Patches
+
+- Fix cell animations so they only trigger on cell key changes (tmichon@microsoft.com)
+,- Panel: fix shrinking of the footer and make header not shrink. (vibraga@microsoft.com)
+,- Pivot: align pivot link text in relation to the whole pivot tab. (vibraga@microsoft.com)
+
+## 7.17.0
+Fri, 26 Jul 2019 12:28:52 GMT
+
+### Minor changes
+
+- ShimmeredDetailsList: enables additional logic to be executed before rendering the default shimmer row. (vibraga@microsoft.com)
+,- removing BaseComponent from SpinButton (aneeshak@microsoft.com)
+
+### Patches
+
+- Added aria label to demo page for custom picker (susunda@microsoft.com)
+
+## 7.16.0
+Thu, 25 Jul 2019 12:27:19 GMT
+
+### Minor changes
+
+- ChoiceGroup: updating IChoiceOption to accept input attributes (dzearing@microsoft.com)
+
+## 7.15.0
+Wed, 24 Jul 2019 12:27:56 GMT
+
+### Minor changes
+
+- split calendarMonth into three rows (Qianqian.Li@microsoft.com)
+
+### Patches
+
+- Facepile: Fix narrator not announcing coauthor position (tabrumle@microsoft.com)
+
+## 7.14.1
+Tue, 23 Jul 2019 16:33:51 GMT
+
+### Patches
+
+- Tooltip: Updates box-shadow to match fluent web toolkit (v-mare@microsoft.com)
+,- Rating: fix aria-label in `readOnly` mode and when use half stars. (vibraga@microsoft.com)
+,- Spinner: Updating label font size and position in respect to spinner to match fluent toolkit (v-mare@microsoft.com)
+,- ColorPicker: Updates margin bottom of the color rectangle to match web fluent toolkit. (v-mare@microsoft.com)
+,- Multiselect ComboBox options should respect disabled setting (elcraig@microsoft.com)
+,- making mousemove event bind to capture phase to work inside Layers and Callouts (jolore@microsoft.com)
+
+## 7.14.0
+Mon, 22 Jul 2019 21:37:45 GMT
+
+### Minor changes
+
+- support to add custom attributes on SpinButton and ComboBox components (pagaur@microsoft.com)
+,- Details____ general cleanup (elcraig@microsoft.com)
 
 ## 7.13.0
 Mon, 22 Jul 2019 12:28:42 GMT

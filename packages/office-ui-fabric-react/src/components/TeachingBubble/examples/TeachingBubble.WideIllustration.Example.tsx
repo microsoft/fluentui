@@ -50,6 +50,7 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
               isWide={true}
               hasSmallHeadline={true}
               hasCloseIcon={true}
+              closeButtonAriaLabel="Close"
               target={this._menuButtonElement}
               primaryButtonProps={examplePrimaryButton}
               secondaryButtonProps={exampleSecondaryButtonProps}

@@ -17,7 +17,7 @@
     "esModuleInterop": true,
     "preserveConstEnums": true,
     "lib": ["es5", "dom", "es2015.promise", "es2015.iterable"],
-    "types": ["jest", "webpack-env"],
+    "types": ["jest", "webpack-env", "node"],
     "paths": {
       "@uifabric/tsx-editor/lib/*": ["./src/*"],
       "@uifabric/tsx-editor": ["./src"]

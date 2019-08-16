@@ -222,7 +222,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
   }
 
-  public componentWillReceiveProps(newProps: IComboBoxProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IComboBoxProps): void {
     // Update the selectedIndex and currentOptions state if
     // the selectedKey, value, or options have changed
     if (newProps.selectedKey !== this.props.selectedKey || newProps.text !== this.props.text || newProps.options !== this.props.options) {
@@ -327,7 +328,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       placeholder,
       tabIndex,
       autofill,
-      persistMenu
+      persistMenu,
+      iconButtonProps
     } = this.props;
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
@@ -412,6 +414,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 iconProps={buttonIconProps}
                 disabled={disabled}
                 checked={isOpen}
+                {...iconButtonProps}
               />
             </div>
           )}
@@ -1235,6 +1238,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           aria-selected={isSelected ? 'true' : 'false'}
           checked={isSelected}
           title={title}
+          disabled={item.disabled}
         >
           {onRenderOption(item, this._onRenderOptionContent)}
         </Checkbox>

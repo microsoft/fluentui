@@ -97,7 +97,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     this._positionAttempts = 0;
   }
 
-  public componentWillMount(): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillMount(): void {
     this._setTargetWindowAndElement(this._getTarget());
   }
 
@@ -110,7 +111,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     this._updateAsyncPosition();
   }
 
-  public componentWillUpdate(newProps: IPositioningContainerProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(newProps: IPositioningContainerProps): void {
     // If the target element changed, find the new one. If we are tracking
     // target with class name, always find element because we do not know if
     // fabric has rendered a new element and disposed the old element.

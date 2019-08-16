@@ -23,7 +23,6 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className="ms-SelectionZone"
@@ -58,7 +57,6 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="People Picker"
-            aria-owns="suggestion-list"
             autoCapitalize="off"
             autoComplete="off"
             className="ms-BasePicker-input"

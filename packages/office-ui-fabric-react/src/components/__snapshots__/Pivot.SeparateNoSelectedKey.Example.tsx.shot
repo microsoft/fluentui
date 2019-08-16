@@ -36,7 +36,6 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
-        role="presentation"
       >
         <div
           className=
@@ -196,7 +195,15 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
               <span
                 className=
                     ms-Pivot-linkContent
-
+                    {
+                      flex: 0 1 100%;
+                    }
+                    & > *  {
+                      margin-left: 4px;
+                    }
+                    & > *:first-child {
+                      margin-left: 0px;
+                    }
               >
                 <span
                   className=
@@ -345,7 +352,15 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
               <span
                 className=
                     ms-Pivot-linkContent
-
+                    {
+                      flex: 0 1 100%;
+                    }
+                    & > *  {
+                      margin-left: 4px;
+                    }
+                    & > *:first-child {
+                      margin-left: 0px;
+                    }
               >
                 <span
                   className=
@@ -494,7 +509,15 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
               <span
                 className=
                     ms-Pivot-linkContent
-
+                    {
+                      flex: 0 1 100%;
+                    }
+                    & > *  {
+                      margin-left: 4px;
+                    }
+                    & > *:first-child {
+                      margin-left: 0px;
+                    }
               >
                 <span
                   className=

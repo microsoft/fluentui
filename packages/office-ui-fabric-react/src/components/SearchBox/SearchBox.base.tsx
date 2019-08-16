@@ -53,7 +53,8 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     };
   }
 
-  public componentWillReceiveProps(newProps: ISearchBoxProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void {
     if (newProps.value !== undefined) {
       this._latestValue = newProps.value;
       // If the user passes in null, substitute an empty string
@@ -64,7 +65,8 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     }
   }
 
-  public componentWillMount() {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillMount() {
     if (this._events) {
       this._events.dispose();
     }

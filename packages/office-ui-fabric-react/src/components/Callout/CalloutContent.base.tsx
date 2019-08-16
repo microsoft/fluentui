@@ -122,7 +122,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
   }
 
-  public componentWillMount() {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillMount() {
     this._setTargetWindowAndElement(this._getTarget());
   }
 
@@ -131,7 +132,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     this._disposables.forEach((dispose: () => void) => dispose());
   }
 
-  public componentWillUpdate(newProps: ICalloutProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(newProps: ICalloutProps): void {
     // If the target element changed, find the new one. If we are tracking target with class name, always find element because we
     // do not know if fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);
@@ -149,7 +151,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     }
 
     // Ensure positioning is recalculated when we are about to show a persisted menu.
-    if (!newProps.hidden && newProps.hidden !== this.props.hidden) {
+    if (this._didPositionPropsChange(newProps, this.props)) {
       this._maxHeight = undefined;
       // Target might have been updated while hidden.
       this._setTargetWindowAndElement(newTarget);
@@ -524,6 +526,11 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         }
       });
     }
+  }
+
+  // Whether or not the current positions should be reset
+  private _didPositionPropsChange(newProps: ICalloutProps, oldProps: ICalloutProps): boolean {
+    return (!newProps.hidden && newProps.hidden !== oldProps.hidden) || newProps.directionalHint !== oldProps.directionalHint;
   }
 
   private _getTarget(props: ICalloutProps = this.props): Target {

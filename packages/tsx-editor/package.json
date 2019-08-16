@@ -1,11 +1,10 @@
 {
   "name": "@uifabric/tsx-editor",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "Live tsx editor for Fabric website.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "private": true,
   "sideEffects": [
     "lib/version.js"
   ],
@@ -27,6 +26,7 @@
     "@types/enzyme": "3.1.13",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/es6-promise": "0.0.32",
+    "@types/node": "^8.10.29",
     "@types/jest": "23.0.0",
     "@types/react": "16.8.11",
     "@types/react-dom": "16.8.4",
@@ -48,10 +48,10 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/set-version": "^7.0.1",
-    "@uifabric/fluent-theme": "^7.0.4",
+    "@uifabric/fluent-theme": "^7.1.1",
     "monaco-editor": "^0.17.0",
     "monaco-editor-webpack-plugin": "^1.7.0",
-    "office-ui-fabric-react": "^7.13.0",
+    "office-ui-fabric-react": "^7.25.0",
     "tslib": "^1.7.1",
     "typescript": "3.5.1"
   },

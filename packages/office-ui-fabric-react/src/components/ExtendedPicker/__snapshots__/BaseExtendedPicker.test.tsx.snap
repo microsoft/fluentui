@@ -16,7 +16,6 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with no items 1
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className="ms-SelectionZone"
@@ -37,7 +36,6 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with no items 1
         <input
           aria-expanded={false}
           aria-haspopup="true"
-          aria-owns="suggestion-list"
           autoCapitalize="off"
           autoComplete="off"
           className="ms-BasePicker-input"
@@ -78,7 +76,6 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with selected a
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className="ms-SelectionZone"
@@ -107,7 +104,6 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with selected a
         <input
           aria-expanded={false}
           aria-haspopup="true"
-          aria-owns="suggestion-list"
           autoCapitalize="off"
           autoComplete="off"
           className="ms-BasePicker-input"

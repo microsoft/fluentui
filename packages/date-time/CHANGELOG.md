@@ -1,6 +1,34 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+
+## 7.4.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+
+## 7.3.0
+Thu, 08 Aug 2019 12:32:41 GMT
+
+### Minor changes
+
+- Moves aria-label to same element as role=combobox on the datepicker as required by the aria docs (susunda@microsoft.com)
+
+## 7.2.1
+Tue, 06 Aug 2019 12:32:07 GMT
+
+### Patches
+
+- fixing broken IE11 by removing findIndex call, fixing the weeklydaypicker not rerendering when passed new initial date (jolore@microsoft.com)
+
+## 7.2.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- finishing up the slide animation to apply to calendar and month and year pickers, and allow consumer to specify direction (jolore@microsoft.com)
 
 ## 7.1.7
 Mon, 22 Jul 2019 12:28:42 GMT

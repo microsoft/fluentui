@@ -1,9 +1,12 @@
-import { normalize } from '../../Styling';
+import { normalize, FontWeights } from '../../Styling';
 import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
 
 export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => {
-  const { theme, className, imageProvided } = props;
+  const { theme, className } = props;
   const { palette } = theme;
+
+  const previewWidth = ((1 / 3) * 100).toString() + '%';
+  const infoWidth = ((2 / 3) * 100).toString() + '%';
 
   return {
     root: [
@@ -13,12 +16,13 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
       {
         display: 'flex',
         flexWrap: 'wrap',
+        overflow: 'hidden',
         WebkitFontSmoothing: 'antialiased',
         backgroundColor: palette.white,
         borderRadius: 2,
         boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.3)',
-        width: 600,
-        height: 126,
+        width: 576,
+        height: 112,
         userSelect: 'none',
         position: 'relative',
         selectors: {
@@ -29,35 +33,15 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
       },
       className
     ],
-    icon: [
-      imageProvided && {
-        height: 24,
-        left: 10,
-        bottom: 10,
-        position: 'absolute'
-      },
-      !imageProvided && {
-        width: 190,
-        height: 80,
-        // revisit
-        backgroundColor: theme.palette.neutralLight
-      }
-    ],
     preview: [
+      'ms-ChicletCard-preview',
       {
-        height: 122,
-        width: 198,
-        padding: '2px 0px 2px 2px'
-      },
-      imageProvided && {
-        position: 'relative',
-        backgroundColor: palette.white,
-        display: 'block'
-      },
-      !imageProvided && {
         display: 'flex',
+        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: theme.palette.neutralLight
+        height: 112,
+        width: previewWidth,
+        backgroundColor: palette.white
       }
     ],
     info: [
@@ -67,21 +51,20 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
         height: '100%',
         overflow: 'hidden',
         wordWrap: 'break-word',
-        width: 400
+        width: infoWidth
       }
     ],
     title: [
       {
-        padding: '9px 26px 5px 11px',
+        padding: '16px 16px 4px 16px',
         fontSize: 16,
-        fontWeight: 'normal',
+        fontWeight: FontWeights.semibold,
+        color: palette.neutralPrimary,
         fontStyle: 'normal',
         fontStretch: 'normal',
-        color: palette.neutralPrimary,
         letterSpacing: 'normal',
         textAlign: 'left',
-        height: 37, // Two lines of text, making sure the third line is hidden
-        width: 363,
+        maxHeight: 37,
         lineHeight: '1.25',
         overflow: 'hidden',
         wordWrap: 'break-word'
@@ -89,17 +72,14 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
     ],
     description: [
       {
-        padding: '0px 16px 17px 11px',
+        display: 'flex',
+        alignItems: 'center',
+        padding: '0px 16px 0px 16px',
         fontSize: 12,
-        fontWeight: 'normal',
-        fontStyle: 'normal',
-        fontStretch: 'normal',
+        fontWeight: FontWeights.semibold,
         lineHeight: '1.33',
-        letterSpacing: 'normal',
         textAlign: 'left',
-        color: '#797671', // @todo: get theme from designers
-        width: 248,
-        height: 16,
+        color: palette.neutralSecondary,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis'

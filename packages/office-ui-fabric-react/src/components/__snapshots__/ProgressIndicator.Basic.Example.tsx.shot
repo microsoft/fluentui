@@ -17,7 +17,6 @@ exports[`Component Examples renders ProgressIndicator.Basic.Example.tsx correctl
         ms-ProgressIndicator-itemName
         {
           color: #323130;
-          font-size: 14px;
           line-height: 20px;
           overflow: hidden;
           padding-top: 4px;

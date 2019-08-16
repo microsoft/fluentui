@@ -67,7 +67,8 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     });
   }
 
-  public componentWillReceiveProps(newProps: IModalProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IModalProps): void {
     clearTimeout(this._onModalCloseTimer);
 
     // Opening the dialog

@@ -3,6 +3,7 @@ import { Markdown, ColorPalette, IPageSectionProps, IColorSwatch } from '@uifabr
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { ColorsNeutralsPageProps } from './NeutralsPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
+import { getColorsImplementation } from './getColorsImplementation';
 
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
 const neutralColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-neutral.json');
@@ -30,15 +31,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             </>
           )
         },
-        {
-          sectionName: 'Implementation',
-          editUrl: `${baseUrl}/web/ColorsImplementation.md`,
-          content: (
-            <Markdown>
-              {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/Colors/docs/web/ColorsImplementation.md') as string}
-            </Markdown>
-          )
-        }
+        getColorsImplementation(baseUrl, 'NeutralColors', 'gray10', 'gray10')
       ];
 
     default:

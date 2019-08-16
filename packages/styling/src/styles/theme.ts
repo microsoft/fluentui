@@ -99,8 +99,12 @@ function _loadFonts(theme: ITheme): { [name: string]: string } {
   for (const fontName of Object.keys(theme.fonts)) {
     const font = theme.fonts[fontName];
     for (const propName of Object.keys(font)) {
-      const name = 'ms-font-' + fontName + '-' + propName;
-      lines[name] = `"[theme:${name}, default: ${font[propName]}]"`;
+      const name = fontName + propName.charAt(0).toUpperCase() + propName.slice(1);
+      let value = font[propName];
+      if (propName === 'fontSize' && value.indexOf('px') < 0) {
+        value += 'px';
+      }
+      lines[name] = value;
     }
   }
   return lines;
@@ -187,9 +191,10 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
 
     disabledBackground: p.neutralLighter,
     disabledText: p.neutralTertiary,
-    disabledBodyText: p.neutralTertiary,
     disabledSubtext: p.neutralQuaternary,
+    disabledBodyText: p.neutralTertiary,
     disabledBodySubtext: p.neutralTertiaryAlt,
+    disabledBorder: p.neutralTertiaryAlt,
 
     focusBorder: p.neutralSecondary,
     variantBorder: p.neutralLight,
@@ -209,8 +214,12 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     inputBorderHovered: p.neutralPrimary,
     inputBackground: p.white,
     inputBackgroundChecked: p.themePrimary,
-    inputBackgroundCheckedHovered: p.themeDarkAlt,
+    inputBackgroundCheckedHovered: p.themeDark,
+    inputPlaceholderBackgroundChecked: p.themeLighter,
     inputForegroundChecked: p.white,
+    inputIcon: p.themePrimary,
+    inputIconHovered: p.themeDark,
+    inputIconDisabled: p.neutralTertiary,
     inputFocusBorderAlt: p.themePrimary,
     smallInputBorder: p.neutralSecondary,
     inputText: p.neutralPrimary,

@@ -107,10 +107,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                   vertical-align: top;
                   white-space: nowrap;
                 }
-                &:hover $check {
+                &:hover .ms-DetailsHeader-check {
                   opacity: 1;
                 }
-                & ms-TooltipHost $checkTooltip {
+                & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                   display: block;
                 }
             data-automationid="DetailsHeader"
@@ -174,13 +174,14 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
             >
               <span
                 className=
-
+                    ms-DetailsHeader-checkTooltip
 
               >
                 <div
                   aria-checked={false}
                   className=
                       ms-DetailsRow-check
+                      ms-DetailsHeader-check
                       ms-DetailsRow-check--isHeader
                       ms-Check-checkHost
                       {
@@ -272,20 +273,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                     <i
                       aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Check-circle
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #605e5c;
-                            display: inline-block;
                             font-family: "FabricMDL2Icons";
-                            font-size: 18px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            color: #605e5c;
+                            font-size: 18px;
                             height: 18px;
                             left: 0px;
                             position: absolute;
-                            speak: none;
                             text-align: center;
                             top: 0px;
                             vertical-align: middle;
@@ -302,21 +308,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                     <i
                       aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Check-check
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #605e5c;
-                            display: inline-block;
                             font-family: "FabricMDL2Icons";
-                            font-size: 16px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            color: #605e5c;
+                            font-size: 16px;
                             height: 18px;
                             left: .5px;
                             opacity: 0;
                             position: absolute;
-                            speak: none;
                             text-align: center;
                             top: 0px;
                             vertical-align: middle;
@@ -496,7 +507,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
             onFocus={[Function]}
             onKeyDown={[Function]}
             onMouseDownCapture={[Function]}
-            role="presentation"
           >
             <div
               className="ms-SelectionZone"
@@ -592,10 +602,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -749,20 +759,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -779,21 +794,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -868,7 +888,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
-
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -986,10 +1005,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -1143,20 +1162,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -1173,21 +1197,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -1262,7 +1291,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
-
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -1380,10 +1408,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -1537,20 +1565,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -1567,21 +1600,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -1656,7 +1694,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
-
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -1774,10 +1811,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -1931,20 +1968,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -1961,21 +2003,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -2050,7 +2097,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
-
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -2168,10 +2214,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -2325,20 +2371,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -2355,21 +2406,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -2444,7 +2500,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
-
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -2562,10 +2617,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -2719,20 +2774,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -2749,21 +2809,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -2838,7 +2903,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
-
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -2956,10 +3020,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -3113,20 +3177,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -3143,21 +3212,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -3232,7 +3306,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
-
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -3350,10 +3423,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -3507,20 +3580,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -3537,21 +3615,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -3626,7 +3709,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
-
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -3744,10 +3826,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -3901,20 +3983,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -3931,21 +4018,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -4020,7 +4112,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
-
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"
@@ -4138,10 +4229,10 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                             &:hover .is-row-header {
                               color: #201f1e;
                             }
-                            &:hover $check {
+                            &:hover .ms-DetailsRow-check {
                               opacity: 1;
                             }
-                            .ms-Fabric--isFocusVisible &:focus $check {
+                            .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                               opacity: 1;
                             }
                         data-automationid="DetailsRow"
@@ -4295,20 +4386,25 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-circle
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 18px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 18px;
                                       height: 18px;
                                       left: 0px;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -4325,21 +4421,26 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                               <i
                                 aria-hidden={true}
                                 className=
+                                    ms-Icon
                                     ms-Check-check
+                                    {
+                                      display: inline-block;
+                                    }
                                     {
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
-                                      color: #605e5c;
-                                      display: inline-block;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
+                                      speak: none;
+                                    }
+                                    {
+                                      color: #605e5c;
+                                      font-size: 16px;
                                       height: 18px;
                                       left: .5px;
                                       opacity: 0;
                                       position: absolute;
-                                      speak: none;
                                       text-align: center;
                                       top: 0px;
                                       vertical-align: middle;
@@ -4414,7 +4515,6 @@ exports[`Component Examples renders HoverCard.Target.Example.tsx correctly 1`] =
                                 {
                                   padding-right: 8px;
                                 }
-
                             data-automation-key="key"
                             data-automationid="DetailsRowCell"
                             role="gridcell"

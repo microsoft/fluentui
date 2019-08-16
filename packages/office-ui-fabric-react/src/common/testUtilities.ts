@@ -22,6 +22,7 @@ export function expectMissing(wrapper: ReactWrapper<any, any>, className: string
   expectNodes(wrapper, className, 0);
 }
 
+/** @deprecated Use fake timers and `jest.runAllTimers()` instead */
 export function delay(millisecond: number): Promise<void> {
   return new Promise<void>(resolve => setTimeout(resolve, millisecond));
 }
@@ -45,4 +46,12 @@ export function renderIntoDocument(element: React.ReactElement<any>): HTMLElemen
 export function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData {
   const target: EventTarget = { value: targetValue } as HTMLInputElement;
   return { target };
+}
+
+/**
+ * Hack for forcing Jest to run pending promises
+ * https://github.com/facebook/jest/issues/2157#issuecomment-279171856
+ */
+export function flushPromises() {
+  return new Promise<void>(resolve => setImmediate(resolve));
 }

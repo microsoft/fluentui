@@ -3,6 +3,7 @@ import { Chiclet, ChicletSize } from '@uifabric/experiments';
 import { IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
+import { FontWeights } from '@uifabric/styling';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
@@ -15,26 +16,28 @@ export class FooterComponent extends React.Component<IFooterComponent, {}> {
 }
 
 const footerStyle = mergeStyles({
+  display: 'flex',
+  position: 'absolute',
+  alignItems: 'flex-end',
+  justifyContent: 'flex-start',
   height: 36,
-  paddingLeft: 11
+  width: '100%',
+  bottom: 0
 });
 
 const activitiesStyle = mergeStyles({
-  width: 184,
-  lineHeight: 1.83,
-  float: 'left',
-  paddingTop: 18,
-  paddingBottom: 12,
-  marginTop: 0
+  paddingLeft: 16,
+  paddingBottom: 8,
+  fontWeight: FontWeights.semibold
 });
 
 const actionsStyle = mergeStyles({
-  paddingRight: 6,
-  position: 'relative'
+  display: 'flex',
+  fontSize: 16,
+  marginLeft: 'auto'
 });
 
 const actionStyle = mergeStyles({
-  float: 'right',
   cursor: 'pointer',
   width: 32,
   height: 36,
@@ -50,7 +53,15 @@ export const ChicletFooterExample: React.FunctionComponent<{}> = () => {
   ];
   const footer = <FooterComponent buttonProps={footerButtonProps} activities="10 Comments  16 Shares  87 Views" />;
 
-  return <Chiclet url={SAMPLE_URL} title="Quarterly Results.docx" size={ChicletSize.medium} footer={footer} />;
+  return (
+    <Chiclet
+      url={SAMPLE_URL}
+      image="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_16x1_5.svg"
+      title="Quarterly Results.docx"
+      size={ChicletSize.medium}
+      footer={footer}
+    />
+  );
 };
 
 export interface IFooterComponent extends React.Props<FooterComponent> {

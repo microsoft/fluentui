@@ -1,22 +1,31 @@
 import * as React from 'react';
-import { classNamesFunction } from '../../Utilities';
+import { css, classNamesFunction } from '../../Utilities';
 import { IChicletCardStyles, IChicletCardStyleProps } from './ChicletCard.types';
 import { IChicletCardProps } from './ChicletCard.types';
-import { generatePreview } from '../../utilities/chicletHelper';
+import { mergeStyles } from '../../Styling';
 
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
 
-const PREVIEW_IMAGE_WIDTH = '61px';
-const PREVIEW_IMAGE_HEIGHT = '59px';
+const customPreviewStyling = mergeStyles({
+  height: 60,
+  width: '100%',
+  objectFit: 'contain'
+});
+
+const imageStyling = mergeStyles({
+  maxWidth: '100%',
+  height: '100%',
+  overflow: 'hidden',
+  objectFit: 'contain'
+});
 
 export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
   private _classNames: { [key in keyof IChicletCardStyles]: string };
 
   public render(): JSX.Element {
-    const { onClick, title, image, imageAlt, className, footer, theme, styles, url } = this.props;
+    const { onClick, title, className, footer, theme, styles, url } = this.props;
 
     const footerProvided = !!footer;
-    const imageProvided = !!image || !!imageAlt;
 
     this._classNames = getClassNames(styles, { theme: theme!, className, footerProvided });
 
@@ -25,21 +34,28 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
     const tabIndex = onClick ? 0 : undefined;
 
     return (
-      <div tabIndex={tabIndex} role={role} onClick={this._onClick} className={this._classNames.root}>
-        {generatePreview(this.props, imageProvided, this._classNames, PREVIEW_IMAGE_HEIGHT, PREVIEW_IMAGE_WIDTH)}
+      <div tabIndex={tabIndex} role={role} onClick={onClick} className={this._classNames.root}>
+        {this._renderPreview()}
         <div className={this._classNames.info}>
           <div className={this._classNames.title}>{title ? title : null}</div>
-          <div className={this._classNames.url}>{url ? url : null}</div>
+          <div className={this._classNames.url}>{url}</div>
         </div>
         {footer}
       </div>
     );
   }
 
-  private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {
-    const { onClick } = this.props;
-    if (onClick) {
-      onClick(ev);
-    }
-  };
+  private _renderPreview(): JSX.Element {
+    const { image, imageAlt, preview } = this.props;
+
+    return (
+      <div className={this._classNames.preview}>
+        {preview ? ( // render custom preview
+          React.cloneElement(preview, { className: css(preview.props.className, customPreviewStyling) })
+        ) : (
+          <img className={imageStyling} src={image} alt={imageAlt ? imageAlt : undefined} />
+        )}
+      </div>
+    );
+  }
 }
