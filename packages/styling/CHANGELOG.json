@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Fri, 16 Aug 2019 22:19:39 GMT",
+      "tag": "@uifabric/styling_v6.50.5",
+      "version": "6.50.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix theming type issue",
+            "author": "phkuo@microsoft.com",
+            "commit": "101d45d22b5d0edea208322e9515d1fa102820ae"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Aug 2019 12:23:03 GMT",
       "tag": "@uifabric/styling_v6.50.4",
       "version": "6.50.4",

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix theming type issue",
-  "packageName": "@uifabric/styling",
-  "email": "phkuo@microsoft.com",
-  "commit": "101d45d22b5d0edea208322e9515d1fa102820ae",
-  "date": "2019-08-16T20:56:22.118Z"
-}

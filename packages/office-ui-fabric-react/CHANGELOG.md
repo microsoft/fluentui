@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 12 Aug 2019 12:22:01 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Aug 2019 22:19:39 GMT and should not be manually modified.
+
+## 6.201.0
+Fri, 16 Aug 2019 22:19:39 GMT
+
+### Minor changes
+
+- DetailsList: Remove unnecessary BaseComponent and class component usage (elcraig@microsoft.com)
+,- Add fast Icon variants and useFastIcons option in DetailsList (elcraig@microsoft.com)
+
+### Patches
+
+- DetailsRow: pass aria-label attribute to each row's checkbox. (vibraga@microsoft.com)
+,- DetailsList and Check styling optimizations (elcraig@microsoft.com)
+,- DetailsList: add aria-hidden to checkbox labels (naethell@microsoft.com)
 
 ## 6.200.1
 Mon, 12 Aug 2019 12:22:01 GMT
