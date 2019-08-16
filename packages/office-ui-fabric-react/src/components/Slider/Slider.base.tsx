@@ -11,10 +11,6 @@ export interface ISliderState {
   renderedValue?: number;
 }
 
-export interface ISliderMarksArrayFormat {
-  value: number;
-  label: string;
-}
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
@@ -299,25 +295,24 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   //returns an array of spans each span pertains to a custom label the user passes in
   private _addLabels(cssRegularLabelClassNames: string | undefined): JSX.Element[] {
     const { vertical, marks, min, max } = this.props;
-    if (min === undefined || max === undefined) {
+    if (min === undefined || max === undefined || !Array.isArray(marks)) {
       return [];
     }
     // enable marks if an array is an array of JSON with fields of value (denotes where) and label (denotes what to display)
     const labels: JSX.Element[] = [];
-    if (Array.isArray(marks)) {
-      for (let i = 0; i < marks.length; i++) {
-        let currentLabel = (
-          <span
-            className={cssRegularLabelClassNames}
-            style={this._getStyleUsingOffsetPercent(vertical, ((marks[i].value - min) / (max - min)) * 100)}
-            key={i}
-          >
-            {marks[i].label}
-          </span>
-        );
-        labels.push(currentLabel);
-      }
+    for (let i = 0; i < marks.length; i++) {
+      let currentLabel = (
+        <span
+          className={cssRegularLabelClassNames}
+          style={this._getStyleUsingOffsetPercent(vertical, ((marks[i].value - min) / (max - min)) * 100)}
+          key={i}
+        >
+          {marks[i].label}
+        </span>
+      );
+      labels.push(currentLabel);
     }
+
     console.log('returns label : ' + labels.toString);
     return labels;
   }
