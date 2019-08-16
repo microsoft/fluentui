@@ -12,8 +12,8 @@ export interface IRawStyle extends IRawStyleBase {
    */
   displayName?: string;
 
-  /**
-   * Custom selectors for the style.
+  /** @deprecated
+   * Custom selectors for the style. //deprecate???
    */
   selectors?: {
     [key: string]: IStyle;

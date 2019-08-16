@@ -132,19 +132,20 @@ describe('mergeStyleSets', () => {
   });
 
   it('can expand child selectors', () => {
+    // mergeStyleSets({
+    //   a: {
+    //     selectors: {
+    //       ':hover': {
+    //         background: 'green'
+    //       }
+    //     }
+    //   }
+    // });
     mergeStyleSets({
       a: {
-        selectors: {
-          ':hover': {
-            background: 'green'
-          }
-        }
+        '&:hover': { background: 'green' }
       }
-    });
-    // mergeStyleSets(({
-    //   a: {
-    //     '&:hover': {background: 'green'}
-    //   }} as any);
+    } as any);
     expect(_stylesheet.getRules()).toEqual('.a-0:hover{background:green;}');
   });
 

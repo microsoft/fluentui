@@ -105,33 +105,12 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
       // tslint:disable-next-line:no-any
       for (const prop in arg as any) {
         if (prop === 'selectors') {
-          // tslint:disable-next-line:no-any
-          const selectors: { [key: string]: IStyle } = (arg as any).selectors;
-
-          for (let newSelector in selectors) {
-            if (selectors.hasOwnProperty(newSelector)) {
-              const selectorValue = selectors[newSelector];
-
-              if (newSelector.indexOf('@') === 0) {
-                newSelector = newSelector + '{' + currentSelector;
-                extractRules([selectorValue], rules, newSelector);
-              } else if (newSelector.indexOf(',') > -1) {
-                const commaSeparatedSelectors = expandCommaSeparatedGlobals(newSelector)
-                  .split(/,/g)
-                  .map((s: string) => s.trim());
-                extractRules(
-                  [selectorValue],
-                  rules,
-                  commaSeparatedSelectors
-                    .map((commaSeparatedSelector: string) => expandSelector(commaSeparatedSelector, currentSelector))
-                    .join(', ')
-                );
-              } else {
-                extractRules([selectorValue], rules, expandSelector(newSelector, currentSelector));
-              }
-            }
-          }
+          handleSelectors(arg, currentSelector, rules);
         } else {
+          if (prop.indexOf('&:') === 0) {
+            const newProp = expandSelector('blah', currentSelector);
+            (currentRules as any)[newProp] = (arg as any)[newProp] as any;
+          }
           if ((arg as any)[prop] !== undefined) {
             // Else, add the rule to the currentSelector.
             if (prop === 'margin' || prop === 'padding') {
@@ -146,8 +125,36 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
       }
     }
   }
-
   return rules;
+}
+
+function handleSelectors(arg: IStyle, currentSelector: string, rules: IRuleSet = { __order: [] }) {
+  // tslint:disable-next-line:no-any
+  const selectors: { [key: string]: IStyle } = (arg as any).selectors;
+
+  for (let newSelector in selectors) {
+    if (selectors.hasOwnProperty(newSelector)) {
+      const selectorValue = selectors[newSelector];
+
+      if (newSelector.indexOf('@') === 0) {
+        newSelector = newSelector + '{' + currentSelector;
+        extractRules([selectorValue], rules, newSelector);
+      } else if (newSelector.indexOf(',') > -1) {
+        const commaSeparatedSelectors = expandCommaSeparatedGlobals(newSelector)
+          .split(/,/g)
+          .map((s: string) => s.trim());
+        extractRules(
+          [selectorValue],
+          rules,
+          commaSeparatedSelectors
+            .map((commaSeparatedSelector: string) => expandSelector(commaSeparatedSelector, currentSelector))
+            .join(', ')
+        );
+      } else {
+        extractRules([selectorValue], rules, expandSelector(newSelector, currentSelector));
+      }
+    }
+  }
 }
 
 function expandQuads(currentRules: IDictionary, name: string, value: string): void {
