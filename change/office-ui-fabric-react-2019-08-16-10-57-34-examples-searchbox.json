@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update SearchBox and people examples",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "52228d62c55c4e6041dd39916398bc0950f139ef",
+  "date": "2019-08-16T17:57:34.067Z"
+}
