@@ -1166,7 +1166,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                 className=
                     ms-Persona-initials
                     {
-                      background-color: #D13438;
+                      background-color: #005B70;
                       border-radius: 50%;
                       color: #ffffff;
                       font-size: 14px;
