@@ -1,0 +1,8 @@
+{
+  "comment": "Refactor Checkbox styles to reduce size.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "4986fe6b70cf080af7b9b61b7d6abe7ffbec53fa",
+  "date": "2019-08-16T21:33:49.902Z"
+}
