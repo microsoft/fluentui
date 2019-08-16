@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Button: Using FontIcon and ImageIcon instead of Icon in both oufr and experiments Button.",
+  "packageName": "office-ui-fabric-react",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "c98b154a94543323c31e34b39eae8d2058c53c10",
+  "date": "2019-08-16T23:38:36.312Z"
+}
