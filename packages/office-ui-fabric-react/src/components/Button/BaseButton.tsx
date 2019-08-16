@@ -12,7 +12,7 @@ import {
   mergeAriaAttributeValues,
   portalContainsElement
 } from '../../Utilities';
-import { Icon } from '../../Icon';
+import { FontIcon, ImageIcon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
@@ -321,9 +321,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const { iconProps } = this.props;
 
     if (iconProps && (iconProps.iconName !== undefined || iconProps.imageProps)) {
-      const { className, ...rest } = iconProps;
+      const { className, imageProps, ...rest } = iconProps;
 
-      return <Icon className={css(this._classNames.icon, className)} {...rest} />;
+      if (iconProps.iconName) {
+        return <FontIcon className={css(this._classNames.icon, className)} {...rest} />;
+      } else if (imageProps) {
+        return <ImageIcon className={css(this._classNames.icon, className)} imageProps={imageProps} {...rest} />;
+      }
     }
     return null;
   };
@@ -414,7 +418,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderMenuIcon = (props: IButtonProps): JSX.Element | null => {
     const { menuIconProps } = this.props;
 
-    return <Icon iconName="ChevronDown" {...menuIconProps} className={this._classNames.menuIcon} />;
+    return <FontIcon iconName="ChevronDown" {...menuIconProps} className={this._classNames.menuIcon} />;
   };
 
   private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {

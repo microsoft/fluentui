@@ -49,7 +49,7 @@ export const PeoplePickerItemBase = (props: IPeoplePickerItemSelectedProps) => {
       <IconButton
         onClick={onRemoveItem}
         disabled={disabled}
-        iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
+        iconProps={{ iconName: 'Cancel', style: { fontSize: '12px' } }}
         className={classNames.removeButton}
         ariaLabel={removeButtonAriaLabel}
       />

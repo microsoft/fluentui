@@ -46,7 +46,7 @@ export const TagItemBase = (props: ITagItemProps) => {
       <IconButton
         onClick={onRemoveItem}
         disabled={disabled}
-        iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
+        iconProps={{ iconName: 'Cancel', style: { fontSize: '12px' } }}
         className={classNames.close}
         ariaLabel={removeButtonAriaLabel}
       />

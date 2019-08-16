@@ -174,24 +174,29 @@ exports[`Button renders a Button inside a CommandBar correctly 1`] = `
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -465,18 +470,25 @@ exports[`Button renders a default Button with content and an icon correctly 1`] 
   <i
     aria-hidden={true}
     className=
+        ms-Icon
         ms-Button-icon
+        {
+          display: inline-block;
+        }
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          font-family: "FabricMDL2Icons";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+        {
           color: #323130;
           display: flex;
           fill: #323130;
-          font-family: "FabricMDL2Icons";
           font-size: 16px;
-          font-style: normal;
           font-weight: 400;
-          speak: none;
         }
     data-icon-name="Upload"
     role="presentation"
@@ -848,18 +860,25 @@ exports[`Button renders a default circular Button with an icon correctly 1`] = `
   <i
     aria-hidden={true}
     className=
+        ms-Icon
         ms-Button-icon
+        {
+          display: inline-block;
+        }
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          font-family: "FabricMDL2Icons-3";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+        {
           color: #323130;
           display: flex;
           fill: #323130;
-          font-family: "FabricMDL2Icons-3";
           font-size: 16px;
-          font-style: normal;
           font-weight: 400;
-          speak: none;
         }
     data-icon-name="PeopleAdd"
     role="presentation"
@@ -967,18 +986,25 @@ exports[`Button renders a default circular checked Button correctly 1`] = `
   <i
     aria-hidden={true}
     className=
+        ms-Icon
         ms-Button-icon
+        {
+          display: inline-block;
+        }
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          font-family: "FabricMDL2Icons-2";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+        {
           color: #201f1e;
           display: flex;
           fill: #201f1e;
-          font-family: "FabricMDL2Icons-2";
           font-size: 16px;
-          font-style: normal;
           font-weight: 400;
-          speak: none;
         }
     data-icon-name="Volume3"
     role="presentation"
@@ -1092,18 +1118,25 @@ exports[`Button renders a default circular disabled checked Button correctly 1`]
   <i
     aria-hidden={true}
     className=
+        ms-Icon
         ms-Button-icon
+        {
+          display: inline-block;
+        }
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          font-family: "FabricMDL2Icons-2";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+        {
           color: #a19f9d;
           display: flex;
           fill: #a19f9d;
-          font-family: "FabricMDL2Icons-2";
           font-size: 16px;
-          font-style: normal;
           font-weight: 400;
-          speak: none;
         }
         @media screen and (-ms-high-contrast: active){& {
           color: GrayText;
@@ -1478,18 +1511,25 @@ exports[`Button renders a disabled default circular Button with an icon correctl
   <i
     aria-hidden={true}
     className=
+        ms-Icon
         ms-Button-icon
+        {
+          display: inline-block;
+        }
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          font-family: "FabricMDL2Icons-0";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+        {
           color: #a19f9d;
           display: flex;
           fill: #a19f9d;
-          font-family: "FabricMDL2Icons-0";
           font-size: 16px;
-          font-style: normal;
           font-weight: 400;
-          speak: none;
         }
         @media screen and (-ms-high-contrast: active){& {
           color: GrayText;
@@ -1739,18 +1779,25 @@ exports[`Button renders a disabled primary circular Button with an icon correctl
   <i
     aria-hidden={true}
     className=
+        ms-Icon
         ms-Button-icon
+        {
+          display: inline-block;
+        }
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          font-family: "FabricMDL2Icons-0";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+        {
           color: #a19f9d;
           display: flex;
           fill: #a19f9d;
-          font-family: "FabricMDL2Icons-0";
           font-size: 16px;
-          font-style: normal;
           font-weight: 400;
-          speak: none;
         }
         @media screen and (-ms-high-contrast: active){& {
           color: GrayText;
@@ -2406,18 +2453,25 @@ exports[`Button renders a primary circular Button with an icon correctly 1`] = `
   <i
     aria-hidden={true}
     className=
+        ms-Icon
         ms-Button-icon
+        {
+          display: inline-block;
+        }
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          font-family: "FabricMDL2Icons-2";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+        {
           color: #ffffff;
           display: flex;
           fill: #ffffff;
-          font-family: "FabricMDL2Icons-2";
           font-size: 16px;
-          font-style: normal;
           font-weight: 400;
-          speak: none;
         }
         @media screen and (-ms-high-contrast: active){& {
           color: Window;
@@ -2533,18 +2587,25 @@ exports[`Button renders a primary circular checked Button correctly 1`] = `
   <i
     aria-hidden={true}
     className=
+        ms-Icon
         ms-Button-icon
+        {
+          display: inline-block;
+        }
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          font-family: "FabricMDL2Icons-2";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+        {
           color: #ffffff;
           display: flex;
           fill: #ffffff;
-          font-family: "FabricMDL2Icons-2";
           font-size: 16px;
-          font-style: normal;
           font-weight: 400;
-          speak: none;
         }
         @media screen and (-ms-high-contrast: active){& {
           color: Window;
@@ -2662,18 +2723,25 @@ exports[`Button renders a primary circular disabled checked Button correctly 1`]
   <i
     aria-hidden={true}
     className=
+        ms-Icon
         ms-Button-icon
+        {
+          display: inline-block;
+        }
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          font-family: "FabricMDL2Icons-2";
+          font-style: normal;
+          font-weight: normal;
+          speak: none;
+        }
+        {
           color: #a19f9d;
           display: flex;
           fill: #a19f9d;
-          font-family: "FabricMDL2Icons-2";
           font-size: 16px;
-          font-style: normal;
           font-weight: 400;
-          speak: none;
         }
         @media screen and (-ms-high-contrast: active){& {
           color: GrayText;

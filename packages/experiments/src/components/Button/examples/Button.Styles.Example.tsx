@@ -65,7 +65,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
               </ButtonStack>
               <ButtonStack>
                 <Button icon="PeopleAdd" content="Button Styles Object: Pink Icon" styles={{ icon: { color: 'pink ' } }} />
-                <Button icon={{ iconName: 'PeopleAdd', styles: { root: { color: 'pink ' } } }} content="Icon Styles Object: Pink Icon" />
+                <Button icon={{ iconName: 'PeopleAdd', style: { color: 'pink ' } }} content="Icon Style Object: Pink Icon" />
               </ButtonStack>
               <ButtonStack>
                 <Button
@@ -99,25 +99,6 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                     styles: (props, theme) => ({ root: { color: theme.semanticColors.buttonText } }),
                     theme: testTheme
                   }}
-                />
-              </ButtonStack>
-              <ButtonStack>
-                <Button
-                  icon={{
-                    iconName: 'PeopleAdd',
-                    styles: () => ({ root: { color: '#8F6800' } })
-                  }}
-                  content="Icon Styles Function: Golden Brown Icon"
-                />
-              </ButtonStack>
-              <ButtonStack>
-                <Button
-                  icon={{
-                    iconName: 'PeopleAdd',
-                    styles: props => ({ root: { color: props.theme!.semanticColors.buttonText } }),
-                    theme: testTheme
-                  }}
-                  content="Icon Styles Function: Red Icon via Icon Theme"
                 />
               </ButtonStack>
               <ButtonStack>
@@ -188,10 +169,10 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                   }}
                 />
                 <Button
-                  content="Icon Styles Overrides ClassName: Red Icon"
+                  content="Icon Style Overrides ClassName: Red Icon"
                   icon={{
                     iconName: 'PeopleAdd',
-                    styles: { root: { color: '#E20000' } },
+                    style: { color: '#E20000' },
                     className: testClassName
                   }}
                 />
