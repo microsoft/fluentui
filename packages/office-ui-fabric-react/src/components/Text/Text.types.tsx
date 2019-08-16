@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { IRawStyleBase, IRawFontStyle } from '@uifabric/merge-styles';
 import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps, ISlottableProps } from '../../Foundation';
 import { IFontStyles } from '../../Styling';
 
@@ -71,7 +72,18 @@ export interface ITextProps
 /**
  * {@docCategory Text}
  */
-export interface ITextTokens {}
+export interface ITextTokens {
+  color?: string;
+  display?: IRawStyleBase['display'];
+  fontFamily?: string;
+  fontSize?: string | number;
+  fontWeight?: IRawFontStyle['fontWeight'];
+  mozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
+  webkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
+  overflow?: IRawStyleBase['overflow'];
+  textOverflow?: string;
+  whiteSpace?: string;
+}
 
 /**
  * {@docCategory Text}

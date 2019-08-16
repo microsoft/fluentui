@@ -104,9 +104,9 @@ exports[`Button Variants renders a CommandBarButton correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           color: inherit;
           display: inline;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-family: inherit;
           font-size: 14px;
-          font-weight: normal;
+          font-weight: 600;
           moz-osx-font-smoothing: grayscale;
           overflow: visible;
           webkit-font-smoothing: antialiased;
@@ -476,7 +476,7 @@ exports[`Button Variants renders a default CompoundButton correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #323130;
+          color: inherit;
           display: inline;
           font-family: inherit;
           font-size: 14px;
@@ -484,18 +484,6 @@ exports[`Button Variants renders a default CompoundButton correctly 1`] = `
           moz-osx-font-smoothing: grayscale;
           overflow: visible;
           webkit-font-smoothing: antialiased;
-        }
-        &:hover {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover {
-          color: Highlight;
-        }
-        &:active {
-          color: #201f1e;
-        }
-        @media screen and (-ms-high-contrast: active){&:active {
-          color: Highlight;
         }
   >
     Button
@@ -745,7 +733,7 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #a19f9d;
+          color: inherit;
           display: inline;
           font-family: inherit;
           font-size: 14px;
@@ -753,21 +741,6 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
           moz-osx-font-smoothing: grayscale;
           overflow: visible;
           webkit-font-smoothing: antialiased;
-        }
-        &:hover {
-          color: #a19f9d;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover {
-          color: GrayText;
-        }
-        &:active {
-          color: #a19f9d;
-        }
-        @media screen and (-ms-high-contrast: active){&:active {
-          color: GrayText;
-        }
-        @media screen and (-ms-high-contrast: active){& {
-          color: GrayText;
         }
   >
     Button
@@ -1016,9 +989,9 @@ exports[`Button Variants renders a disabled ActionButton correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           color: inherit;
           display: inline;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-family: inherit;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
           moz-osx-font-smoothing: grayscale;
           overflow: visible;
           webkit-font-smoothing: antialiased;
@@ -1135,9 +1108,9 @@ exports[`Button Variants renders a disabled CommandBarButton correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           color: inherit;
           display: inline;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-family: inherit;
           font-size: 14px;
-          font-weight: normal;
+          font-weight: 600;
           moz-osx-font-smoothing: grayscale;
           overflow: visible;
           webkit-font-smoothing: antialiased;
@@ -1652,7 +1625,7 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #ffffff;
+          color: inherit;
           display: inline;
           font-family: inherit;
           font-size: 14px;
@@ -1660,21 +1633,6 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
           moz-osx-font-smoothing: grayscale;
           overflow: visible;
           webkit-font-smoothing: antialiased;
-        }
-        &:hover {
-          color: #ffffff;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover {
-          color: Window;
-        }
-        &:active {
-          color: #ffffff;
-        }
-        @media screen and (-ms-high-contrast: active){&:active {
-          color: Window;
-        }
-        @media screen and (-ms-high-contrast: active){& {
-          color: Window;
         }
   >
     Button
@@ -1934,7 +1892,7 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #a19f9d;
+          color: inherit;
           display: inline;
           font-family: inherit;
           font-size: 14px;
@@ -1942,21 +1900,6 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
           moz-osx-font-smoothing: grayscale;
           overflow: visible;
           webkit-font-smoothing: antialiased;
-        }
-        &:hover {
-          color: #a19f9d;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover {
-          color: GrayText;
-        }
-        &:active {
-          color: #a19f9d;
-        }
-        @media screen and (-ms-high-contrast: active){&:active {
-          color: GrayText;
-        }
-        @media screen and (-ms-high-contrast: active){& {
-          color: GrayText;
         }
   >
     Button
@@ -2206,9 +2149,9 @@ exports[`Button Variants renders an ActionButton correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           color: inherit;
           display: inline;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-family: inherit;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
           moz-osx-font-smoothing: grayscale;
           overflow: visible;
           webkit-font-smoothing: antialiased;

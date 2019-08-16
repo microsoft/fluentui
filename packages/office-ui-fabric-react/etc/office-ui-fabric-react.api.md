@@ -16,7 +16,9 @@ import { IFontStyles } from '@uifabric/styling';
 import { IHTMLSlot } from '@uifabric/foundation';
 import { IObjectWithKey } from '@uifabric/utilities';
 import { IPoint } from '@uifabric/utilities';
+import { IRawFontStyle } from '@uifabric/merge-styles';
 import { IRawStyle } from '@uifabric/styling';
+import { IRawStyleBase } from '@uifabric/merge-styles';
 import { IRectangle } from '@uifabric/utilities';
 import { IRefObject } from '@uifabric/utilities';
 import { IRenderComponent } from '@uifabric/utilities';
@@ -7550,6 +7552,26 @@ export type ITextTokenReturnType = ReturnType<Extract<ITextComponent['tokens'], 
 
 // @public (undocumented)
 export interface ITextTokens {
+    // (undocumented)
+    color?: string;
+    // (undocumented)
+    display?: IRawStyleBase['display'];
+    // (undocumented)
+    fontFamily?: string;
+    // (undocumented)
+    fontSize?: string | number;
+    // (undocumented)
+    fontWeight?: IRawFontStyle['fontWeight'];
+    // (undocumented)
+    mozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
+    // (undocumented)
+    overflow?: IRawStyleBase['overflow'];
+    // (undocumented)
+    textOverflow?: string;
+    // (undocumented)
+    webkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
+    // (undocumented)
+    whiteSpace?: string;
 }
 
 // @public (undocumented)
@@ -9226,6 +9248,9 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
 // @public (undocumented)
 export const TextStyles: ITextComponent['styles'];
+
+// @public (undocumented)
+export const TextTokens: ITextComponent['tokens'];
 
 // @public (undocumented)
 export const TextView: ITextComponent['view'];
