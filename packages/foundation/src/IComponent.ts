@@ -104,7 +104,7 @@ export interface IComponentOptions<
   TStatics = {}
 > {
   /**
-   * Boolean prop that determines whether style memoization should be disabled or not.
+   * Internal use only - Boolean prop that determines whether style memoization should be disabled or not.
    * @defaultvalue false
    */
   disableCaching?: boolean;
