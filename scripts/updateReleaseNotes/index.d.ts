@@ -46,8 +46,6 @@ interface IPullRequest {
   author: string;
   /** Author GitHub profile URL */
   authorUrl: string;
-  /** Merge commit SHA (initially undefined if this PR came from a search) */
-  mergeCommit?: string;
   /** Commits included in this PR (filtered to ones by the PR author) */
   commits?: ICommit[];
 }

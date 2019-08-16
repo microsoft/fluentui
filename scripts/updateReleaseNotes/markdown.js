@@ -1,7 +1,7 @@
 // @ts-check
 /// <reference path="./index.d.ts" />
 
-const { argv, repoDetails } = require('./init');
+const { repoDetails } = require('./init');
 const { getPullRequest } = require('./pullRequests');
 
 const EOL = '\n';
@@ -26,19 +26,17 @@ async function getMarkdownForEntry(entry) {
  * @param {IChangelogComment[]} comments - Changelog comments for a version
  */
 async function getChangeComments(title, comments) {
-  const commitPrefix = `https://github.com/${repoDetails.owner}/${repoDetails.repo}/commit/`;
   if (comments) {
     const lines = ['## ' + title, ''];
     for (const comment of comments) {
-      let line = `- ${comment.comment}`;
+      let line = `- ${comment.comment} (`;
       if (comment.commit) {
-        let pr = await getPullRequest(comment.commit, comment.author);
-
-        const commit = pr && pr.mergeCommit && argv['use-merge-commit'] ? pr.mergeCommit : comment.commit;
-        line += ` ([commit](${commitPrefix}${commit})`;
-
+        // Prefer linking to the PR if we can find it (this is generally more useful than the commit)
+        const pr = await getPullRequest(comment);
         if (pr) {
-          line += ` by [${pr.author}](${pr.authorUrl}), PR [#${pr.number}](${pr.url})`;
+          line += `PR [#${pr.number}](${pr.url}) by [${pr.author}](${pr.authorUrl})`;
+        } else {
+          line += `[commit](https://github.com/${repoDetails.owner}/${repoDetails.repo}/commit/${comment.commit})`;
         }
 
         line += `)`;

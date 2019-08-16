@@ -13,11 +13,6 @@ const argv = yargs
   .option('debug', { describe: 'Use debug mode for the GitHub API', type: 'boolean', default: false })
   // Default to checking the past 5 days in case there were any missed days or other issues
   .option('age', { describe: 'Get tags/releases up to this many days old', type: 'number', default: 5 })
-  .option('use-merge-commit', {
-    describe: "Link to the PR's merge commit, not the commit from the changefile",
-    type: 'boolean',
-    default: false
-  })
   .option('owner', { describe: 'Owner of the repo to work against', type: 'string', default: 'OfficeDev' })
   .option('repo', { describe: 'Repo to work against', type: 'string', default: 'office-ui-fabric-react' })
   .version(false)

@@ -38,33 +38,43 @@ async function getPullRequest(changelogComment) {
   // (the commit referenced in the change file might not directly exist in a PR if the PR was rebased)
   console.log(`Could not find a PR matching ${commit}.`);
   console.log("Checking for a commit with a matching message in the author's recent PRs instead...");
-  return getMatchingRecentPullRequest(commit, authorEmail);
+  return getMatchingRecentPullRequest(changelogComment);
 }
 
 /**
  * Look for a commit with a matching message and author among the recent PRs.
  *
- * @param {string} commitHash - Commit hash from the change file
- * @param {string} authorEmail - Author email from the change file
+ * @param {IChangelogComment} changelogComment
  * @returns {Promise<IPullRequest | null>}
  */
-async function getMatchingRecentPullRequest(commitHash, authorEmail) {
+async function getMatchingRecentPullRequest(changelogComment) {
+  const { author: authorEmail, commit: commitHash } = changelogComment;
   /** @type {IPullRequest[]} */
   let possiblePrs = [];
-  let message;
+  let message, author;
   try {
     // Get info about the commit to find the message and author (GH username) to match
     // (need to get the GH username since it's not possible to search by email)
     const commitResponse = await github.repos.getCommit({ ref: commitHash, ...repoDetails });
-    const author = commitResponse.data.author.login;
-    message = commitResponse.data.commit.message;
-
-    // Get this author's recent PRs and look for one or more with a matching commit message and email
-    possiblePrs = (await getRecentPrsByAuthor(author)).filter(pr =>
-      pr.commits.some(commit => commit.message === message && commit.authorEmail === authorEmail)
-    );
+    if (commitResponse.data.author) {
+      author = commitResponse.data.author.login;
+      message = commitResponse.data.commit.message;
+    } else {
+      console.warn(`No author data available for ${commitHash}`);
+    }
   } catch (ex) {
-    // ignore--this is a bit of a long shot anyway
+    console.warn(`Error getting commit ${commitHash}: ${ex}`);
+  }
+
+  try {
+    if (author) {
+      // Get this author's recent PRs and look for one or more with a matching commit message and email
+      possiblePrs = (await getRecentPrsByAuthor(author)).filter(pr =>
+        pr.commits.some(commit => commit.message === message && commit.authorEmail === authorEmail)
+      );
+    }
+  } catch (ex) {
+    console.warn(`Error getting recent PRs by ${author}: ${ex}`);
   }
 
   const commitDescription = `message "${message}" by ${authorEmail} (from ${commitHash})`;
@@ -77,7 +87,7 @@ async function getMatchingRecentPullRequest(commitHash, authorEmail) {
     console.warn(possiblePrs.map(pr => `  ${pr.url}`).join('\n'));
     console.warn('Not using any of them to avoid showing incorrect data.\n');
   } else {
-    console.warn(`No PRs found for ${commitHash}\n`);
+    console.warn(`No PRs found for ${commitHash} (changelog message: "${changelogComment.comment}")\n`);
   }
   return null;
 }
@@ -108,17 +118,6 @@ async function getRecentPrsByAuthor(author, count = 10) {
       // Add commit info
       const prs = result.map(processPr);
       await addCommitInfo(prs);
-
-      // Add merge commit info (for some reason not included in search result)
-      try {
-        for (const pr of prs) {
-          const prInfo = await github.pulls.get({ pull_number: pr.number, ...repoDetails });
-          pr.mergeCommit = prInfo.data.merge_commit_sha;
-        }
-      } catch (ex) {
-        // ignore this one
-      }
-      Array.fill;
 
       _recentPrsByAuthor[author] = prs;
     } catch (ex) {
@@ -191,9 +190,7 @@ function processPr(pr) {
     number: pr.number,
     url: pr.html_url,
     author: pr.user.login,
-    authorUrl: pr.user.html_url,
-    // Will be unset for PRs coming from the search API
-    mergeCommit: pr.merge_commit_sha
+    authorUrl: pr.user.html_url
   };
 }
 
