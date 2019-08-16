@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 16 Aug 2019 12:30:19 GMT",
+      "tag": "office-ui-fabric-react_v7.25.0",
+      "version": "7.25.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix async patterns in tests",
+            "author": "elcraig@microsoft.com",
+            "commit": "09a0bbca1887a3a4695306ef64abf97986efbd1e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2019 12:30:43 GMT",
       "tag": "office-ui-fabric-react_v7.25.0",
       "version": "7.25.0",
