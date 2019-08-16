@@ -2,11 +2,6 @@ import { ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { getGlobalClassNames, HighContrastSelector, AnimationVariables, getFocusStyle } from '../../Styling';
 import { getRTL } from '@uifabric/utilities';
 
-export interface ISliderMarksArrayFormat {
-  value: number;
-  label: string;
-}
-
 const GlobalClassNames = {
   root: 'ms-Slider',
   enabled: 'ms-Slider-enabled',
@@ -320,15 +315,11 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           [HighContrastSelector]: {
             backgroundColor: 'WindowText'
           }
-        }
-      },
-      {
+        },
         transform: 'translateY(6px) translateX(-6px)'
       },
       vertical && {
         margin: '0 auto 20px',
-        // marginBottom: '20px',
-        // marginTop: '20px',
         transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
       },
       disabled && {
@@ -376,17 +367,14 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       classNames.valueLabel,
       {
         flexShrink: 1,
-        lineHeight: '1'
+        lineHeight: '1',
+        whiteSpace: 'nowrap'
       },
-      vertical
-        ? {
-            margin: '0 auto',
-            whiteSpace: 'nowrap',
-            width: 40
-          }
-        : {
-            whiteSpace: 'nowrap'
-          }
+      vertical && {
+        margin: '0 auto',
+        whiteSpace: 'nowrap',
+        width: 40
+      }
     ]
   };
 };
