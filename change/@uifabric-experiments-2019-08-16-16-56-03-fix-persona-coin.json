@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Persona types, updated snapshots.",
+  "packageName": "@uifabric/experiments",
+  "email": "jdh@microsoft.com",
+  "commit": "83e181410c1ce8511c411decfef2563e5b150248",
+  "date": "2019-08-16T23:56:02.981Z"
+}
