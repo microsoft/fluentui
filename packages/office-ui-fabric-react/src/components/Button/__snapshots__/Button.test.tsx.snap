@@ -83,7 +83,7 @@ exports[`Button renders ActionButton correctly 1`] = `
   onMouseUp={[Function]}
   type="button"
 >
-  <div
+  <span
     className=
         ms-Button-flexContainer
         {
@@ -94,17 +94,19 @@ exports[`Button renders ActionButton correctly 1`] = `
           justify-content: flex-start;
         }
   >
-    <div
+    <span
       className=
           ms-Button-textContainer
           {
+            display: block;
             flex-grow: 0;
           }
     >
-      <div
+      <span
         className=
             ms-Button-label
             {
+              display: block;
               line-height: 100%;
               margin-bottom: 0;
               margin-left: 4px;
@@ -114,9 +116,9 @@ exports[`Button renders ActionButton correctly 1`] = `
         id="id__0"
       >
         Button
-      </div>
-    </div>
-  </div>
+      </span>
+    </span>
+  </span>
 </button>
 `;
 
@@ -215,7 +217,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
   onMouseUp={[Function]}
   type="button"
 >
-  <div
+  <span
     className=
         ms-Button-flexContainer
         {
@@ -255,17 +257,19 @@ exports[`Button renders CommandBarButton correctly 1`] = `
     >
       
     </i>
-    <div
+    <span
       className=
           ms-Button-textContainer
           {
+            display: block;
             flex-grow: 1;
           }
     >
-      <div
+      <span
         className=
             ms-Button-label
             {
+              display: block;
               font-weight: normal;
               line-height: 100%;
               margin-bottom: 0;
@@ -276,8 +280,8 @@ exports[`Button renders CommandBarButton correctly 1`] = `
         id="id__0"
       >
         Create account
-      </div>
-    </div>
+      </span>
+    </span>
     <i
       aria-hidden={true}
       className=
@@ -307,7 +311,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
     >
       
     </i>
-  </div>
+  </span>
 </button>
 `;
 
@@ -399,7 +403,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
   onMouseUp={[Function]}
   type="button"
 >
-  <div
+  <span
     className=
         ms-Button-flexContainer
         {
@@ -416,18 +420,20 @@ exports[`Button renders CompoundButton correctly 1`] = `
           min-width: 100%;
         }
   >
-    <div
+    <span
       className=
           ms-Button-textContainer
           {
+            display: block;
             flex-grow: 1;
             text-align: left;
           }
     >
-      <div
+      <span
         className=
             ms-Button-label
             {
+              display: block;
               font-weight: 600;
               line-height: 100%;
               margin-bottom: 5px;
@@ -438,14 +444,15 @@ exports[`Button renders CompoundButton correctly 1`] = `
         id="id__0"
       >
         Create account
-      </div>
-      <div
+      </span>
+      <span
         className=
             ms-Button-description
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               color: #605e5c;
+              display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
@@ -454,9 +461,9 @@ exports[`Button renders CompoundButton correctly 1`] = `
         id="id__1"
       >
         You can create a new account here.
-      </div>
-    </div>
-  </div>
+      </span>
+    </span>
+  </span>
 </button>
 `;
 
@@ -539,7 +546,7 @@ exports[`Button renders DefaultButton correctly 1`] = `
   onMouseUp={[Function]}
   type="button"
 >
-  <div
+  <span
     className=
         ms-Button-flexContainer
         {
@@ -550,17 +557,19 @@ exports[`Button renders DefaultButton correctly 1`] = `
           justify-content: center;
         }
   >
-    <div
+    <span
       className=
           ms-Button-textContainer
           {
+            display: block;
             flex-grow: 1;
           }
     >
-      <div
+      <span
         className=
             ms-Button-label
             {
+              display: block;
               font-weight: 600;
               line-height: 100%;
               margin-bottom: 0;
@@ -571,9 +580,9 @@ exports[`Button renders DefaultButton correctly 1`] = `
         id="id__0"
       >
         Button
-      </div>
-    </div>
-  </div>
+      </span>
+    </span>
+  </span>
 </button>
 `;
 
@@ -658,7 +667,7 @@ exports[`Button renders IconButton correctly 1`] = `
   title="Emoji"
   type="button"
 >
-  <div
+  <span
     className=
         ms-Button-flexContainer
         {
@@ -697,7 +706,7 @@ exports[`Button renders IconButton correctly 1`] = `
     >
       
     </i>
-  </div>
+  </span>
 </button>
 `;
 
@@ -783,7 +792,7 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
   onMouseUp={[Function]}
   type="button"
 >
-  <div
+  <span
     className=
         ms-Button-flexContainer
         {
@@ -794,17 +803,19 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
           justify-content: center;
         }
   >
-    <div
+    <span
       className=
           ms-Button-textContainer
           {
+            display: block;
             flex-grow: 1;
           }
     >
-      <div
+      <span
         className=
             ms-Button-label
             {
+              display: block;
               font-weight: 600;
               line-height: 100%;
               margin-bottom: 0;
@@ -815,8 +826,8 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
         id="id__0"
       >
         Button
-      </div>
-    </div>
-  </div>
+      </span>
+    </span>
+  </span>
 </button>
 `;

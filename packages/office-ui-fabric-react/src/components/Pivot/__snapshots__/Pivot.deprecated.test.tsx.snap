@@ -168,7 +168,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -204,7 +204,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               Test Link 1
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -325,7 +325,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -361,7 +361,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>

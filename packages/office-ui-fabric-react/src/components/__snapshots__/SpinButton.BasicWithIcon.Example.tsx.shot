@@ -260,7 +260,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -299,7 +299,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
             >
               
             </i>
-          </div>
+          </span>
         </button>
         <button
           aria-label="Decrease value by 1"
@@ -393,7 +393,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -432,7 +432,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
             >
               
             </i>
-          </div>
+          </span>
         </button>
       </span>
     </div>

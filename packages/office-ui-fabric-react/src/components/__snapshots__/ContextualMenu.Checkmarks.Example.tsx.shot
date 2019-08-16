@@ -82,7 +82,7 @@ exports[`Component Examples renders ContextualMenu.Checkmarks.Example.tsx correc
   onMouseUp={[Function]}
   type="button"
 >
-  <div
+  <span
     className=
         ms-Button-flexContainer
         {
@@ -93,17 +93,19 @@ exports[`Component Examples renders ContextualMenu.Checkmarks.Example.tsx correc
           justify-content: center;
         }
   >
-    <div
+    <span
       className=
           ms-Button-textContainer
           {
+            display: block;
             flex-grow: 1;
           }
     >
-      <div
+      <span
         className=
             ms-Button-label
             {
+              display: block;
               font-weight: 600;
               line-height: 100%;
               margin-bottom: 0;
@@ -114,8 +116,8 @@ exports[`Component Examples renders ContextualMenu.Checkmarks.Example.tsx correc
         id="id__0"
       >
         Click for ContextualMenu
-      </div>
-    </div>
+      </span>
+    </span>
     <i
       aria-hidden={true}
       className=
@@ -144,6 +146,6 @@ exports[`Component Examples renders ContextualMenu.Checkmarks.Example.tsx correc
     >
       
     </i>
-  </div>
+  </span>
 </button>
 `;

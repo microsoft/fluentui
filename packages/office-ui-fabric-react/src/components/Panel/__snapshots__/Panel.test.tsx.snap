@@ -261,7 +261,7 @@ exports[`Panel renders Panel correctly 1`] = `
                 onMouseUp={[Function]}
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -300,7 +300,7 @@ exports[`Panel renders Panel correctly 1`] = `
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
             </div>
           </div>

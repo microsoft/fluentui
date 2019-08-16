@@ -180,7 +180,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -216,7 +216,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 Foo
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -350,7 +350,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -386,7 +386,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 Bar
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -520,7 +520,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -556,7 +556,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 Bas
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -690,7 +690,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -726,7 +726,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 Biz
               </span>
             </span>
-          </div>
+          </span>
         </button>
       </div>
     </div>

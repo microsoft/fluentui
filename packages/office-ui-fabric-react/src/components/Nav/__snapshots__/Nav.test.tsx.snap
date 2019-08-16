@@ -178,7 +178,7 @@ exports[`Nav renders Nav correctly 1`] = `
                 title=""
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -205,7 +205,7 @@ exports[`Nav renders Nav correctly 1`] = `
                   >
                     
                   </div>
-                </div>
+                </span>
               </button>
             </div>
           </li>

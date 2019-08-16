@@ -557,7 +557,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -596,7 +596,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
         </span>

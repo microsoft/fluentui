@@ -170,7 +170,7 @@ exports[`Component Examples renders Pivot.Large.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -206,7 +206,7 @@ exports[`Component Examples renders Pivot.Large.Example.tsx correctly 1`] = `
                 My Files
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -327,7 +327,7 @@ exports[`Component Examples renders Pivot.Large.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -363,7 +363,7 @@ exports[`Component Examples renders Pivot.Large.Example.tsx correctly 1`] = `
                 Recent
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -484,7 +484,7 @@ exports[`Component Examples renders Pivot.Large.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -520,7 +520,7 @@ exports[`Component Examples renders Pivot.Large.Example.tsx correctly 1`] = `
                 Shared with me
               </span>
             </span>
-          </div>
+          </span>
         </button>
       </div>
     </div>

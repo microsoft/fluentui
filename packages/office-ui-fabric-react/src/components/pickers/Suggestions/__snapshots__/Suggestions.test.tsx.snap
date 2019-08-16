@@ -126,7 +126,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -142,7 +142,7 @@ exports[`Suggestions renders a list properly 1`] = `
               black
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -259,7 +259,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -275,7 +275,7 @@ exports[`Suggestions renders a list properly 1`] = `
               blue
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -392,7 +392,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -408,7 +408,7 @@ exports[`Suggestions renders a list properly 1`] = `
               brown
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -525,7 +525,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -541,7 +541,7 @@ exports[`Suggestions renders a list properly 1`] = `
               cyan
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -658,7 +658,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -674,7 +674,7 @@ exports[`Suggestions renders a list properly 1`] = `
               green
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -791,7 +791,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -807,7 +807,7 @@ exports[`Suggestions renders a list properly 1`] = `
               magenta
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -924,7 +924,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -940,7 +940,7 @@ exports[`Suggestions renders a list properly 1`] = `
               mauve
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1057,7 +1057,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1073,7 +1073,7 @@ exports[`Suggestions renders a list properly 1`] = `
               orange
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1190,7 +1190,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1206,7 +1206,7 @@ exports[`Suggestions renders a list properly 1`] = `
               pink
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1323,7 +1323,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1339,7 +1339,7 @@ exports[`Suggestions renders a list properly 1`] = `
               purple
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1456,7 +1456,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1472,7 +1472,7 @@ exports[`Suggestions renders a list properly 1`] = `
               red
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1589,7 +1589,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1605,7 +1605,7 @@ exports[`Suggestions renders a list properly 1`] = `
               rose
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1722,7 +1722,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1738,7 +1738,7 @@ exports[`Suggestions renders a list properly 1`] = `
               violet
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1855,7 +1855,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1871,7 +1871,7 @@ exports[`Suggestions renders a list properly 1`] = `
               white
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1988,7 +1988,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2004,7 +2004,7 @@ exports[`Suggestions renders a list properly 1`] = `
               yellow
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2153,7 +2153,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2169,7 +2169,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               black
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2286,7 +2286,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2302,7 +2302,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               blue
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2419,7 +2419,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2435,7 +2435,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               brown
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2552,7 +2552,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2568,7 +2568,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               cyan
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2685,7 +2685,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2701,7 +2701,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               green
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2818,7 +2818,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2834,7 +2834,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               magenta
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2951,7 +2951,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2967,7 +2967,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               mauve
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3084,7 +3084,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3100,7 +3100,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               orange
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3217,7 +3217,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3233,7 +3233,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               pink
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3350,7 +3350,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3366,7 +3366,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               purple
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3483,7 +3483,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3499,7 +3499,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               red
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3616,7 +3616,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3632,7 +3632,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               rose
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3749,7 +3749,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3765,7 +3765,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               violet
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3882,7 +3882,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3898,7 +3898,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               white
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4015,7 +4015,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4031,7 +4031,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               yellow
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4181,7 +4181,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4197,7 +4197,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               black
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4314,7 +4314,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4330,7 +4330,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               blue
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4447,7 +4447,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4463,7 +4463,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               brown
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4580,7 +4580,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4596,7 +4596,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               cyan
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4713,7 +4713,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4729,7 +4729,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               green
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4846,7 +4846,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4862,7 +4862,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               magenta
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4979,7 +4979,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4995,7 +4995,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               mauve
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5112,7 +5112,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5128,7 +5128,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               orange
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5250,7 +5250,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5266,7 +5266,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               pink
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5383,7 +5383,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5399,7 +5399,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               purple
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5516,7 +5516,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5532,7 +5532,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               red
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5649,7 +5649,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5665,7 +5665,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               rose
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5782,7 +5782,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5798,7 +5798,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               violet
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5915,7 +5915,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5931,7 +5931,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               white
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -6048,7 +6048,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -6064,7 +6064,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               yellow
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>

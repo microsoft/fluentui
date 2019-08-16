@@ -846,7 +846,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -857,17 +857,19 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             justify-content: center;
           }
     >
-      <div
+      <span
         className=
             ms-Button-textContainer
             {
+              display: block;
               flex-grow: 1;
             }
       >
-        <div
+        <span
           className=
               ms-Button-label
               {
+                display: block;
                 font-weight: 600;
                 line-height: 100%;
                 margin-bottom: 0;
@@ -878,9 +880,9 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           id="id__3"
         >
           Click to change rating to 5
-        </div>
-      </div>
-    </div>
+        </span>
+      </span>
+    </span>
   </button>
 </div>
 `;

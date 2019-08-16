@@ -82,7 +82,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
   onMouseUp={[Function]}
   type="button"
 >
-  <div
+  <span
     className=
         ms-Button-flexContainer
         {
@@ -467,6 +467,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         </div>
       </div>
     </span>
-  </div>
+  </span>
 </button>
 `;

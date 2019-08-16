@@ -168,7 +168,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -204,7 +204,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
               test
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -325,7 +325,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -373,7 +373,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
               )
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -556,7 +556,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -592,7 +592,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               Test Link 1
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -713,7 +713,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -749,7 +749,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               Test Link 2
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -931,7 +931,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -968,7 +968,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               )
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -1089,7 +1089,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -1137,7 +1137,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               )
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -1258,7 +1258,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -1318,7 +1318,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               Text with icon
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -1500,7 +1500,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -1536,7 +1536,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               Test Link 1
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -1657,7 +1657,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -1693,7 +1693,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -1885,7 +1885,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -1921,7 +1921,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               Test Link 1
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -2055,7 +2055,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -2091,7 +2091,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -2272,7 +2272,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -2308,7 +2308,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               Test Link 1
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -2429,7 +2429,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -2465,7 +2465,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -2656,7 +2656,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -2692,7 +2692,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               Test Link 1
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={false}
@@ -2826,7 +2826,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -2862,7 +2862,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -3032,7 +3032,7 @@ exports[`Pivot supports JSX expressions 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -3068,7 +3068,7 @@ exports[`Pivot supports JSX expressions 1`] = `
               Test Link 1
             </span>
           </span>
-        </div>
+        </span>
       </button>
       <button
         aria-selected={true}
@@ -3200,7 +3200,7 @@ exports[`Pivot supports JSX expressions 1`] = `
         role="tab"
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -3236,7 +3236,7 @@ exports[`Pivot supports JSX expressions 1`] = `
               Test Link 3
             </span>
           </span>
-        </div>
+        </span>
       </button>
     </div>
   </div>

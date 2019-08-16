@@ -166,7 +166,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               role="menuitem"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -206,17 +206,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -228,8 +230,8 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__1"
                   >
                     New
-                  </div>
-                </div>
+                  </span>
+                </span>
                 <i
                   aria-hidden={true}
                   className=
@@ -259,7 +261,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
           <div
@@ -366,7 +368,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseUp={[Function]}
               role="menuitem"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -406,17 +408,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -428,9 +432,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__4"
                   >
                     Upload
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </a>
           </div>
           <div
@@ -537,7 +541,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -577,17 +581,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   >
                     
                   </i>
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: normal;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -599,9 +605,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       id="id__7"
                     >
                       Share
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
             </div>
           </div>
@@ -708,7 +714,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               role="menuitem"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -748,17 +754,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -770,9 +778,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__10"
                   >
                     Download
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -879,7 +887,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -919,7 +927,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
         </div>
@@ -1040,7 +1048,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               role="menuitem"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1080,17 +1088,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -1102,9 +1112,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__16"
                   >
                     Sort
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -1223,7 +1233,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1263,7 +1273,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
             </div>
           </div>
@@ -1383,7 +1393,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1423,7 +1433,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
             </div>
           </div>
@@ -1600,7 +1610,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               role="menuitem"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1640,17 +1650,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -1662,8 +1674,8 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__1"
                   >
                     New
-                  </div>
-                </div>
+                  </span>
+                </span>
                 <i
                   aria-hidden={true}
                   className=
@@ -1693,7 +1705,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
           <div
@@ -1800,7 +1812,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseUp={[Function]}
               role="menuitem"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1840,17 +1852,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -1862,9 +1876,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__4"
                   >
                     Upload
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </a>
           </div>
           <div
@@ -1971,7 +1985,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -2011,17 +2025,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   >
                     
                   </i>
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: normal;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -2033,9 +2049,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       id="id__7"
                     >
                       Share
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
             </div>
             <span
@@ -2450,7 +2466,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                         title="Close"
                                         type="button"
                                       >
-                                        <div
+                                        <span
                                           className=
                                               ms-Button-flexContainer
                                               {
@@ -2489,7 +2505,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                           >
                                             
                                           </i>
-                                        </div>
+                                        </span>
                                       </button>
                                     </div>
                                   </div>
@@ -2619,7 +2635,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               role="menuitem"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2659,17 +2675,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -2681,9 +2699,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__10"
                   >
                     Download
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -2790,7 +2808,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2830,7 +2848,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
         </div>
@@ -2951,7 +2969,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               role="menuitem"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2991,17 +3009,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -3013,9 +3033,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__16"
                   >
                     Sort
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -3134,7 +3154,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -3174,7 +3194,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
             </div>
           </div>
@@ -3294,7 +3314,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -3334,7 +3354,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
             </div>
           </div>

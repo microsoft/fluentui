@@ -244,7 +244,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     tabIndex={-1}
                     type="button"
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-flexContainer
                           {
@@ -284,17 +284,19 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       >
                         
                       </i>
-                      <div
+                      <span
                         className=
                             ms-Button-textContainer
                             {
+                              display: block;
                               flex-grow: 1;
                             }
                       >
-                        <div
+                        <span
                           className=
                               ms-Button-label
                               {
+                                display: block;
                                 font-weight: normal;
                                 line-height: 100%;
                                 margin-bottom: 0;
@@ -306,9 +308,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           id="id__1"
                         >
                           New
-                        </div>
-                      </div>
-                    </div>
+                        </span>
+                      </span>
+                    </span>
                   </button>
                   <button
                     aria-expanded={false}
@@ -368,7 +370,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     tabIndex={-1}
                     type="button"
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-flexContainer
                           {
@@ -409,7 +411,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       >
                         
                       </i>
-                    </div>
+                    </span>
                   </button>
                   <span
                     aria-hidden={true}
@@ -598,7 +600,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     tabIndex={-1}
                     type="button"
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-flexContainer
                           {
@@ -638,17 +640,19 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       >
                         
                       </i>
-                      <div
+                      <span
                         className=
                             ms-Button-textContainer
                             {
+                              display: block;
                               flex-grow: 1;
                             }
                       >
-                        <div
+                        <span
                           className=
                               ms-Button-label
                               {
+                                display: block;
                                 font-weight: normal;
                                 line-height: 100%;
                                 margin-bottom: 0;
@@ -660,9 +664,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           id="id__7"
                         >
                           Upload
-                        </div>
-                      </div>
-                    </div>
+                        </span>
+                      </span>
+                    </span>
                   </button>
                   <button
                     aria-disabled={true}
@@ -732,7 +736,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     tabIndex={-1}
                     type="button"
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-flexContainer
                           {
@@ -773,7 +777,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       >
                         
                       </i>
-                    </div>
+                    </span>
                   </button>
                   <span
                     aria-hidden={true}
@@ -889,7 +893,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -929,17 +933,19 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   >
                     
                   </i>
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: normal;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -951,9 +957,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       id="id__13"
                     >
                       Share
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
             </div>
             <div
@@ -1064,7 +1070,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   role="menuitem"
                   type="button"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-flexContainer
                         {
@@ -1104,7 +1110,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     >
                       
                     </i>
-                  </div>
+                  </span>
                 </button>
               </div>
             </div>
@@ -1212,7 +1218,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                 onMouseUp={[Function]}
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1252,7 +1258,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
             </div>
           </div>
@@ -1373,7 +1379,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1413,17 +1419,19 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   >
                     
                   </i>
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: normal;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -1435,9 +1443,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       id="id__23"
                     >
                       Sort
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
             </div>
             <div
@@ -1556,7 +1564,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   role="menuitem"
                   type="button"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-flexContainer
                         {
@@ -1596,7 +1604,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     >
                       
                     </i>
-                  </div>
+                  </span>
                 </button>
               </div>
             </div>
@@ -1716,7 +1724,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   role="menuitem"
                   type="button"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-flexContainer
                         {
@@ -1756,7 +1764,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     >
                       
                     </i>
-                  </div>
+                  </span>
                 </button>
               </div>
             </div>

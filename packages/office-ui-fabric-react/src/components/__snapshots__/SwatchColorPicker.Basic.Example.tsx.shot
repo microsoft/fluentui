@@ -178,7 +178,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="orange"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -206,7 +206,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -341,7 +341,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="cyan"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -369,7 +369,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -504,7 +504,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="blueMagenta"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -532,7 +532,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -667,7 +667,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="magenta"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -695,7 +695,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -830,7 +830,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="white"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -858,7 +858,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
         </tr>
@@ -1032,7 +1032,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="orange"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1058,7 +1058,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     width="100%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -1184,7 +1184,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="cyan"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1210,7 +1210,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     width="100%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -1336,7 +1336,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="blueMagenta"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1362,7 +1362,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     width="100%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -1488,7 +1488,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="magenta"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1514,7 +1514,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     width="100%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -1640,7 +1640,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="white"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1666,7 +1666,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     width="100%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
         </tr>
@@ -1840,7 +1840,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="orange"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1866,7 +1866,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     width="100%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -1992,7 +1992,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="cyan"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2018,7 +2018,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     width="100%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -2144,7 +2144,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="blueMagenta"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2170,7 +2170,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     width="100%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -2296,7 +2296,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="magenta"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2322,7 +2322,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     width="100%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -2448,7 +2448,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="white"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2474,7 +2474,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     width="100%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
         </tr>
@@ -2667,7 +2667,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="red"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2695,7 +2695,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -2830,7 +2830,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="orange"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2858,7 +2858,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -2993,7 +2993,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="orangeYellow"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -3021,7 +3021,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -3156,7 +3156,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="yellowGreen"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -3184,7 +3184,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
         </tr>
@@ -3323,7 +3323,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="green"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -3351,7 +3351,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -3486,7 +3486,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="cyan"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -3514,7 +3514,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -3649,7 +3649,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="cyanBlue"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -3677,7 +3677,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -3812,7 +3812,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="magenta"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -3840,7 +3840,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
         </tr>
@@ -3979,7 +3979,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="magentaPink"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -4007,7 +4007,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -4142,7 +4142,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="black"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -4170,7 +4170,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -4305,7 +4305,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="gray"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -4333,7 +4333,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -4468,7 +4468,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="gray20"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -4496,7 +4496,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
         </tr>
@@ -4684,7 +4684,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="orange"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -4712,7 +4712,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -4852,7 +4852,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="cyan"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -4880,7 +4880,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -5020,7 +5020,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="blueMagenta"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -5048,7 +5048,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -5188,7 +5188,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="magenta"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -5216,7 +5216,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
           <td
@@ -5356,7 +5356,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
               title="white"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -5384,7 +5384,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     r="50%"
                   />
                 </svg>
-              </div>
+              </span>
             </button>
           </td>
         </tr>

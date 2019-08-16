@@ -661,7 +661,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -700,7 +700,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
     <div
@@ -801,7 +801,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -840,7 +840,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
     <div
@@ -941,7 +941,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -980,7 +980,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
     <div

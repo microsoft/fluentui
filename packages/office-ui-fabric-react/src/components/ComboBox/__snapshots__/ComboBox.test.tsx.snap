@@ -260,7 +260,7 @@ exports[`ComboBox Renders correctly 1`] = `
       tabIndex={-1}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -299,7 +299,7 @@ exports[`ComboBox Renders correctly 1`] = `
         >
           
         </i>
-      </div>
+      </span>
     </button>
   </div>
 </div>
@@ -568,7 +568,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
       tabIndex={-1}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -607,7 +607,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
         >
           
         </i>
-      </div>
+      </span>
     </button>
   </div>
 </div>

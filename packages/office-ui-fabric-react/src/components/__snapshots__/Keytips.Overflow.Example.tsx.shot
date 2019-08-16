@@ -127,7 +127,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -138,17 +138,19 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
                 justify-content: center;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-textContainer
                 {
+                  display: block;
                   flex-grow: 1;
                 }
           >
-            <div
+            <span
               className=
                   ms-Button-label
                   {
+                    display: block;
                     font-weight: normal;
                     line-height: 100%;
                     margin-bottom: 0;
@@ -159,9 +161,9 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
               id="id__1"
             >
               Link 1
-            </div>
-          </div>
-        </div>
+            </span>
+          </span>
+        </span>
       </button>
     </div>
     <div
@@ -267,7 +269,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -278,17 +280,19 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
                 justify-content: center;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-textContainer
                 {
+                  display: block;
                   flex-grow: 1;
                 }
           >
-            <div
+            <span
               className=
                   ms-Button-label
                   {
+                    display: block;
                     font-weight: normal;
                     line-height: 100%;
                     margin-bottom: 0;
@@ -299,9 +303,9 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
               id="id__4"
             >
               Link 2
-            </div>
-          </div>
-        </div>
+            </span>
+          </span>
+        </span>
       </button>
     </div>
     <div
@@ -407,7 +411,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -418,17 +422,19 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
                 justify-content: center;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-textContainer
                 {
+                  display: block;
                   flex-grow: 1;
                 }
           >
-            <div
+            <span
               className=
                   ms-Button-label
                   {
+                    display: block;
                     font-weight: normal;
                     line-height: 100%;
                     margin-bottom: 0;
@@ -439,9 +445,9 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
               id="id__7"
             >
               Link 3
-            </div>
-          </div>
-        </div>
+            </span>
+          </span>
+        </span>
       </button>
     </div>
     <div
@@ -549,7 +555,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -589,7 +595,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -674,7 +680,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -685,17 +691,19 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
             justify-content: center;
           }
     >
-      <div
+      <span
         className=
             ms-Button-textContainer
             {
+              display: block;
               flex-grow: 1;
             }
       >
-        <div
+        <span
           className=
               ms-Button-label
               {
+                display: block;
                 font-weight: 600;
                 line-height: 100%;
                 margin-bottom: 0;
@@ -706,9 +714,9 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
           id="id__13"
         >
           Move overflow items
-        </div>
-      </div>
-    </div>
+        </span>
+      </span>
+    </span>
   </button>
 </div>
 `;

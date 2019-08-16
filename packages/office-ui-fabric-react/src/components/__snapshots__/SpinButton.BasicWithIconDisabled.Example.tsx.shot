@@ -271,7 +271,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -311,7 +311,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
             >
               
             </i>
-          </div>
+          </span>
         </button>
         <button
           aria-disabled={true}
@@ -406,7 +406,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -446,7 +446,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
             >
               
             </i>
-          </div>
+          </span>
         </button>
       </span>
     </div>

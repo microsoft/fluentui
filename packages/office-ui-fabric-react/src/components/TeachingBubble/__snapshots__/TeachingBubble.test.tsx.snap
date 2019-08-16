@@ -406,7 +406,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -417,17 +417,19 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 justify-content: center;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-textContainer
                 {
+                  display: block;
                   flex-grow: 1;
                 }
           >
-            <div
+            <span
               className=
                   ms-Button-label
                   {
+                    display: block;
                     font-weight: 600;
                     line-height: 100%;
                     margin-bottom: 0;
@@ -438,9 +440,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               id="id__0"
             >
               Test Primary Button
-            </div>
-          </div>
-        </div>
+            </span>
+          </span>
+        </span>
       </button>
       <button
         className=
@@ -537,7 +539,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -548,17 +550,19 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 justify-content: center;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-textContainer
                 {
+                  display: block;
                   flex-grow: 1;
                 }
           >
-            <div
+            <span
               className=
                   ms-Button-label
                   {
+                    display: block;
                     font-weight: 600;
                     line-height: 100%;
                     margin-bottom: 0;
@@ -569,9 +573,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               id="id__3"
             >
               Test Secondary Button
-            </div>
-          </div>
-        </div>
+            </span>
+          </span>
+        </span>
       </button>
     </div>
   </div>
@@ -658,7 +662,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -697,7 +701,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
       >
         
       </i>
-    </div>
+    </span>
   </button>
 </div>
 `;

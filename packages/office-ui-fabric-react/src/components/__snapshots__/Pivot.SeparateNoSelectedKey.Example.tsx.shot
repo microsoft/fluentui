@@ -181,7 +181,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
             role="tab"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -217,7 +217,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   Thing1
                 </span>
               </span>
-            </div>
+            </span>
           </button>
           <button
             aria-selected={false}
@@ -338,7 +338,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
             role="tab"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -374,7 +374,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   Thing2
                 </span>
               </span>
-            </div>
+            </span>
           </button>
           <button
             aria-selected={false}
@@ -495,7 +495,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
             role="tab"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -531,7 +531,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   Thing3
                 </span>
               </span>
-            </div>
+            </span>
           </button>
         </div>
       </div>
@@ -614,7 +614,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -658,7 +658,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
         >
           
         </i>
-      </div>
+      </span>
     </button>
   </div>
   <div>

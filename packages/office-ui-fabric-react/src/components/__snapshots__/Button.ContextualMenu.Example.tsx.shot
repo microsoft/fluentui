@@ -124,7 +124,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -163,17 +163,19 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
         >
           
         </i>
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -184,8 +186,8 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
             id="id__0"
           >
             New
-          </div>
-        </div>
+          </span>
+        </span>
         <i
           aria-hidden={true}
           className=
@@ -214,7 +216,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
         >
           
         </i>
-      </div>
+      </span>
     </button>
   </div>
   <div>
@@ -327,7 +329,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -366,17 +368,19 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
         >
           
         </i>
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -387,8 +391,8 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
             id="id__3"
           >
             New
-          </div>
-        </div>
+          </span>
+        </span>
         <i
           aria-hidden={true}
           className=
@@ -417,7 +421,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
         >
           
         </i>
-      </div>
+      </span>
     </button>
   </div>
 </div>

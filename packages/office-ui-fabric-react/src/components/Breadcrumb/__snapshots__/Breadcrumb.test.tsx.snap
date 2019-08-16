@@ -570,7 +570,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                 role="button"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -609,7 +609,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
               <i
                 aria-hidden={true}
@@ -1376,7 +1376,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                 role="button"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1415,7 +1415,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
               <i
                 aria-hidden={true}
@@ -1778,7 +1778,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                 role="button"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1817,7 +1817,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
             </li>
           </ol>
@@ -2002,7 +2002,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                 role="button"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -2041,7 +2041,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
             </li>
           </ol>

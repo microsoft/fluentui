@@ -4,7 +4,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
 <div
   className=
 
-      & .headerDivider-529:hover + .headerDividerBar-530 {
+      & .headerDivider-530:hover + .headerDividerBar-531 {
         display: inline;
       }
 >
@@ -168,7 +168,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -208,17 +208,19 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   >
                     
                   </i>
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: normal;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -230,9 +232,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       id="id__1"
                     >
                       Insert row
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
             </div>
             <div
@@ -337,7 +339,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -377,17 +379,19 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   >
                     
                   </i>
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: normal;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -399,9 +403,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       id="id__4"
                     >
                       Delete row
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
             </div>
             <div
@@ -509,7 +513,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -549,17 +553,19 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   >
                     
                   </i>
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: normal;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -571,8 +577,8 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       id="id__7"
                     >
                       Configure
-                    </div>
-                  </div>
+                    </span>
+                  </span>
                   <i
                     aria-hidden={true}
                     className=
@@ -602,7 +608,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
             </div>
           </div>
@@ -721,7 +727,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -732,17 +738,19 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                         justify-content: center;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: normal;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -754,9 +762,9 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                       id="id__10"
                     >
                       0 selected
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
             </div>
           </div>

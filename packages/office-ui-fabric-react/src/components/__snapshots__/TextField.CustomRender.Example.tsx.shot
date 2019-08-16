@@ -157,7 +157,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
           title="Info"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -196,7 +196,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             >
               
             </i>
-          </div>
+          </span>
         </button>
       </div>
       <div

@@ -229,7 +229,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         tabIndex={-1}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -268,7 +268,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
           >
             
           </i>
-        </div>
+        </span>
       </button>
       <button
         className=
@@ -361,7 +361,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
         tabIndex={-1}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -400,7 +400,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </span>
   </div>
@@ -637,7 +637,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
         tabIndex={-1}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -676,7 +676,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
           >
             
           </i>
-        </div>
+        </span>
       </button>
       <button
         className=
@@ -769,7 +769,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
         tabIndex={-1}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -808,7 +808,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </span>
   </div>

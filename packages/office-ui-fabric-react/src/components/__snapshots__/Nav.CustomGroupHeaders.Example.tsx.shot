@@ -182,7 +182,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 target="_blank"
                 title="Activity"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -209,7 +209,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   >
                     Activity
                   </div>
-                </div>
+                </span>
               </a>
             </div>
           </li>
@@ -335,7 +335,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 target="_blank"
                 title="News"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -362,7 +362,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   >
                     News
                   </div>
-                </div>
+                </span>
               </a>
             </div>
           </li>
@@ -524,7 +524,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 target="_blank"
                 title="Settings"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -551,7 +551,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   >
                     Settings
                   </div>
-                </div>
+                </span>
               </a>
             </div>
           </li>
@@ -677,7 +677,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 target="_blank"
                 title="Notes"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -704,7 +704,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                   >
                     Notes
                   </div>
-                </div>
+                </span>
               </a>
             </div>
           </li>

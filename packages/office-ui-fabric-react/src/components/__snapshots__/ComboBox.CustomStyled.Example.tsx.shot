@@ -321,7 +321,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         tabIndex={-1}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -360,7 +360,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -653,7 +653,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         tabIndex={-1}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -692,7 +692,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
   </div>
