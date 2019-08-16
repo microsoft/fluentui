@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Icon } from '../../Icon';
-import { BaseComponent, IRenderFunction, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
+import { Icon, FontIcon } from '../../Icon';
+import { initializeComponentRef, IRenderFunction, EventGroup, Async, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
 import { IColumn, ColumnActionsMode } from './DetailsList.types';
 
 import { ITooltipHostProps } from '../../Tooltip';
@@ -21,13 +21,31 @@ const CLASSNAME_ADD_INTERVAL = 20; // ms
  *
  * {@docCategory DetailsList}
  */
-export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
+export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
+  private _async: Async;
+  private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
   private _dragDropSubscription: IDisposable;
   private _classNames: IClassNames<IDetailsColumnStyles>;
 
+  constructor(props: IDetailsColumnProps) {
+    super(props);
+    initializeComponentRef(this);
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+  }
+
   public render(): JSX.Element {
-    const { column, columnIndex, parentId, isDraggable, styles, theme, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = this.props;
+    const {
+      column,
+      columnIndex,
+      parentId,
+      isDraggable,
+      styles,
+      theme,
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+      useFastIcons
+    } = this.props;
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
 
     this._classNames = getClassNames(styles, {
@@ -45,6 +63,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     });
 
     const classNames = this._classNames;
+    const IconComponent = useFastIcons ? FontIcon : Icon;
 
     return (
       <>
@@ -67,7 +86,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
           data-automationid={'ColumnsHeaderColumn'}
           data-item-key={column.key}
         >
-          {isDraggable && <Icon iconName="GripperBarVertical" className={classNames.gripperBarVerticalStyle} />}
+          {isDraggable && <IconComponent iconName="GripperBarVertical" className={classNames.gripperBarVerticalStyle} />}
           {onRenderColumnHeaderTooltip(
             {
               hostClassName: classNames.cellTooltip,
@@ -98,19 +117,23 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
                   }
                 >
                   <span id={`${parentId}-${column.key}-name`} className={classNames.cellName}>
-                    {(column.iconName || column.iconClassName) && <Icon className={classNames.iconClassName} iconName={column.iconName} />}
+                    {(column.iconName || column.iconClassName) && (
+                      <IconComponent className={classNames.iconClassName} iconName={column.iconName} />
+                    )}
 
                     {column.isIconOnly ? <span className={classNames.accessibleLabel}>{column.name}</span> : column.name}
                   </span>
 
-                  {column.isFiltered && <Icon className={classNames.nearIcon} iconName={'Filter'} />}
+                  {column.isFiltered && <IconComponent className={classNames.nearIcon} iconName="Filter" />}
 
-                  {column.isSorted && <Icon className={classNames.sortIcon} iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'} />}
+                  {column.isSorted && (
+                    <IconComponent className={classNames.sortIcon} iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'} />
+                  )}
 
-                  {column.isGrouped && <Icon className={classNames.nearIcon} iconName={'GroupedDescending'} />}
+                  {column.isGrouped && <IconComponent className={classNames.nearIcon} iconName="GroupedDescending" />}
 
                   {column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
-                    <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />
+                    <IconComponent aria-hidden={true} className={classNames.filterChevron} iconName="ChevronDown" />
                   )}
                 </span>
               )
@@ -167,6 +190,8 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       this._dragDropSubscription.dispose();
       delete this._dragDropSubscription;
     }
+    this._async.dispose();
+    this._events.dispose();
   }
 
   public componentDidUpdate(): void {

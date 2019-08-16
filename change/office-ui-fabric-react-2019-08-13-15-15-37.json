@@ -1,0 +1,8 @@
+{
+  "comment": "DetailsList: add aria-hidden to checkbox labels",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "naethell@microsoft.com",
+  "commit": "8c26a95fc4c6a6325e1e3129852012f1c489ce2a",
+  "date": "2019-08-13T22:15:37.796Z"
+}

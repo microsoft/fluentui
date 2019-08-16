@@ -17,12 +17,12 @@ const GlobalClassNames = {
   cellCheck: 'ms-DetailsRow-cellCheck',
   cellMeasurer: 'ms-DetailsRow-cellMeasurer',
   listCellFirstChild: 'ms-List-cell:first-child',
-  isFocusable: "[data-is-focusable='true']",
   isContentUnselectable: 'is-contentUnselectable',
   isSelected: 'is-selected',
   isCheckVisible: 'is-check-visible',
   fields: 'ms-DetailsRow-fields'
 };
+const IsFocusableSelector = "[data-is-focusable='true']";
 
 export const DEFAULT_CELL_STYLE_PROPS: ICellStyleProps = {
   cellLeftPadding: 12,
@@ -259,7 +259,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
           maxWidth: '100%'
         },
 
-        [classNames.isFocusable!]: getFocusStyle(theme, { inset: -1, borderColor: neutralSecondary, outlineColor: white }),
+        [IsFocusableSelector]: getFocusStyle(theme, { inset: -1, borderColor: neutralSecondary, outlineColor: white }),
 
         '&$shimmer': {
           padding: 0,
@@ -319,21 +319,17 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       compact && rootCompactStyles,
       className
     ],
-    cellUnpadded: [
-      {
-        paddingRight: `${cellStyleProps.cellRightPadding}px`
-      }
-    ],
-    cellPadded: [
-      {
-        paddingRight: `${cellStyleProps.cellExtraRightPadding + cellStyleProps.cellRightPadding}px`,
-        selectors: {
-          '&.$checkCell': {
-            paddingRight: 0
-          }
+    cellUnpadded: {
+      paddingRight: `${cellStyleProps.cellRightPadding}px`
+    },
+    cellPadded: {
+      paddingRight: `${cellStyleProps.cellExtraRightPadding + cellStyleProps.cellRightPadding}px`,
+      selectors: {
+        '&.$checkCell': {
+          paddingRight: 0
         }
       }
-    ],
+    },
 
     cell: defaultCellStyles,
     cellAnimation: enableUpdateAnimations && AnimationStyles.slideLeftIn40,
@@ -358,20 +354,14 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         flexShrink: 0
       }
     ],
-    checkCover: [
-      {
-        position: 'absolute',
-        top: -1,
-        left: 0,
-        bottom: 0,
-        right: 0,
-        display: 'none'
-      },
-
-      anySelected && {
-        display: 'block'
-      }
-    ],
+    checkCover: {
+      position: 'absolute',
+      top: -1,
+      left: 0,
+      bottom: 0,
+      right: 0,
+      display: anySelected ? 'block' : 'none'
+    },
     fields: [
       classNames.fields,
       {

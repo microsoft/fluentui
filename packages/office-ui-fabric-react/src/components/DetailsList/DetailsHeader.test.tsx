@@ -6,6 +6,7 @@ import { Selection, SelectionMode } from '../../utilities/selection/index';
 import { EventGroup } from '../../Utilities';
 import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';
+import { getTheme } from '../../Styling';
 
 const _items: {}[] = [];
 const _selection = new Selection();
@@ -737,6 +738,6 @@ describe('DetailsHeader', () => {
     );
 
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(1);
-    expect(onRenderCheckboxMock.mock.calls[0][0]).toEqual({ checked: false });
+    expect(onRenderCheckboxMock.mock.calls[0][0]).toEqual({ checked: false, theme: getTheme() });
   });
 });

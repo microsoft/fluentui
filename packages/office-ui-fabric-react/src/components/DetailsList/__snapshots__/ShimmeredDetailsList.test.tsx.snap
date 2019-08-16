@@ -199,9 +199,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
 
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
@@ -236,7 +233,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
