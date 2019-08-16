@@ -91,6 +91,8 @@ const TestImages = {};
 
 const people: (IExtendedPersonaProps & { key: string | number })[] = [];
 
+const peopleOnly: IExtendedPersonaProps[] = people.filter(p => !p.canExpand);
+
 const mru: IExtendedPersonaProps[] = people.slice(0, 5);
 
 const groupOne: IExtendedPersonaProps[] = people.slice(6, 10);
