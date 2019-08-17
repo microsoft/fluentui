@@ -7,12 +7,8 @@ class TextFieldExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div className=\\"ms-TextFieldExample\\">
-        <TextField id=\\"TextFieldId\\" />
-        <TextField prefix=\\"prefix\\" />
-        <TextField onRenderPrefix={this._onRenderAddon} />
-        <TextField onChanged={this._onChanged} />
-        <TextField onBeforeChange={this._onBeforeChange} />
-        <TextField iconClass=\\"iconClassName\\" />
+        <TextField id=\\"TextFieldId\\" prefix=\\"prefix\\" onRenderPrefix={this._onRenderAddon} />
+        <TextField onChanged={this._onChanged} onBeforeChange={this._onBeforeChange} iconClass=\\"iconClassName\\" />
       </div>
     );
   }
