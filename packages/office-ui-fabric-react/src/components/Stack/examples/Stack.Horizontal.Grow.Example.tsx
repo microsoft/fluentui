@@ -24,20 +24,18 @@ const stackTokens: IStackTokens = {
   padding: 10
 };
 
-export class HorizontalStackGrowExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    return (
-      <Stack horizontal styles={stackStyles} tokens={stackTokens}>
-        <Stack.Item grow={3} styles={stackItemStyles}>
-          Grow is 3
-        </Stack.Item>
-        <Stack.Item grow={2} styles={stackItemStyles}>
-          Grow is 2
-        </Stack.Item>
-        <Stack.Item grow styles={stackItemStyles}>
-          Grow is 1
-        </Stack.Item>
-      </Stack>
-    );
-  }
-}
+export const HorizontalStackGrowExample: React.FunctionComponent = () => {
+  return (
+    <Stack horizontal styles={stackStyles} tokens={stackTokens}>
+      <Stack.Item grow={3} styles={stackItemStyles}>
+        Grow is 3
+      </Stack.Item>
+      <Stack.Item grow={2} styles={stackItemStyles}>
+        Grow is 2
+      </Stack.Item>
+      <Stack.Item grow styles={stackItemStyles}>
+        Grow is 1
+      </Stack.Item>
+    </Stack>
+  );
+};

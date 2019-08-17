@@ -20,7 +20,7 @@ export const TogglePageProps: IDocPageProps = {
       codepenJS: ToggleBasicExampleCodepen
     },
     {
-      title: 'Custom Labels',
+      title: 'Toggles with Custom Labels',
       code: ToggleCustomLabelExampleCode,
       view: <ToggleCustomLabelExample />
     }

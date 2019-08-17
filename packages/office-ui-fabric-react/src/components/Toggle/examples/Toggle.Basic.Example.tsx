@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+
+const stackTokens: IStackTokens = { childrenGap: 10 };
 
 export const ToggleBasicExample: React.FunctionComponent = () => {
   return (
-    <Stack tokens={{ childrenGap: 10 }}>
+    <Stack tokens={stackTokens}>
       <Toggle label="Enabled and checked" defaultChecked onText="On" offText="Off" onChange={_onChange} />
 
       <Toggle label="Enabled and unchecked" onText="On" offText="Off" onChange={_onChange} />

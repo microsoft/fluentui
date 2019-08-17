@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
+
+const stackTokens: IStackTokens = { childrenGap: 10 };
 
 export const ToggleCustomLabelExample: React.FunctionComponent = () => {
   return (
-    <Stack tokens={{ childrenGap: 10 }}>
+    <Stack tokens={stackTokens}>
       <Toggle
         label={
           <div>

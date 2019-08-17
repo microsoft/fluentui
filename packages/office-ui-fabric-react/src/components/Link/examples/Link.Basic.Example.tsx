@@ -9,7 +9,7 @@ export const LinkBasicExample: React.FunctionComponent = () => {
         href, <Link>the link is rendered as a button</Link>. You can also use the disabled attribute to create a{' '}
         <Link disabled={true} href="http://dev.office.com/fabric/components/link">
           disabled link.
-        </Link>{' '}
+        </Link>
       </p>
       <p>
         It's not recommended to use Links with imgs because Links are meant to render textual inline content. Buttons are inline-block or in
