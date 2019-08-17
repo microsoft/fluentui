@@ -153,7 +153,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
           return true;
         }
       }
-      return shallowCompare(this.props, nextProps);
+      return !shallowCompare(this.props, nextProps);
     } else {
       return true;
     }
