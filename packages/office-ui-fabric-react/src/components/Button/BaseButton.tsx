@@ -12,7 +12,7 @@ import {
   mergeAriaAttributeValues,
   portalContainsElement
 } from '../../Utilities';
-import { FontIcon, ImageIcon } from '../../Icon';
+import { Icon, FontIcon, ImageIcon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ContextualMenu, IContextualMenuProps } from '../../ContextualMenu';
 import { IButtonProps, IButton } from './Button.types';
@@ -323,9 +323,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (iconProps && (iconProps.iconName !== undefined || iconProps.imageProps)) {
       const { className, imageProps, ...rest } = iconProps;
 
+      if (iconProps.styles) {
+        return <Icon className={css(this._classNames.icon, className)} imageProps={imageProps} {...rest} />;
+      }
       if (iconProps.iconName) {
         return <FontIcon className={css(this._classNames.icon, className)} {...rest} />;
-      } else if (imageProps) {
+      }
+      if (imageProps) {
         return <ImageIcon className={css(this._classNames.icon, className)} imageProps={imageProps} {...rest} />;
       }
     }
