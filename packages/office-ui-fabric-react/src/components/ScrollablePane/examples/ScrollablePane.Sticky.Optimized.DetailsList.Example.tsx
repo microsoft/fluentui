@@ -12,7 +12,7 @@ import {
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
-import { ScrollablePane, ScrollbarVisibility, StickyContainerBehaviorType } from 'office-ui-fabric-react/lib/ScrollablePane';
+import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
@@ -125,8 +125,8 @@ export class ScrollablePaneStickyOptimizedDetailsList extends React.Component<{}
       <div className={classNames.wrapper}>
         <ScrollablePane
           scrollbarVisibility={ScrollbarVisibility.always}
-          stickyHeaderContainerBehavior={StickyContainerBehaviorType.StickyOnScroll}
-          stickyFooterContainerBehavior={StickyContainerBehaviorType.StickyAlways}
+          stickyHeaderContainerBehavior={'onScroll'}
+          stickyFooterContainerBehavior={'always'}
           optimizeForPerformace={true}
         >
           <Sticky stickyPosition={StickyPositionType.Header} order={1} stickyBackgroundColor={stickyBackgroundColor}>

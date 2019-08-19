@@ -54,20 +54,20 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
   scrollbarVisibility?: ScrollbarVisibility;
 
   /**
-   * If true, it optimizes the performance which may affect component behavior to some extend in few scenarios.
+   * If true, it optimizes the performance which may affect component behavior to some extent in few scenarios.
    * It is suggested to test the component so that it works as per the desired behavior.
    */
   optimizeForPerformace?: boolean;
 
   /**
-   * Determies the behavior of Sticky component(s) having stickyPosition StickyPosition.Header
+   * Determines the behavior of Sticky component(s) having stickyPosition StickyPosition.Header
    */
-  stickyHeaderContainerBehavior?: StickyContainerBehaviorType;
+  stickyHeaderContainerBehavior?: IStickyContainerBehaviorType;
 
   /**
-   * Determies the behavior of Sticky component(s) having stickyPosition StickyPosition.Footer
+   * Determines the behavior of Sticky component(s) having stickyPosition StickyPosition.Footer
    */
-  stickyFooterContainerBehavior?: StickyContainerBehaviorType;
+  stickyFooterContainerBehavior?: IStickyContainerBehaviorType;
 }
 
 /**
@@ -114,34 +114,7 @@ export interface IScrollablePaneStyles {
    */
   contentContainer: IStyle;
 }
-
-/**
- * {@docCategory ScrollablePane}
- */
-export const StickyContainerBehaviorType = {
-  /**
-   * This is the default behavior.
-   */
-  Default: 'Default' as 'Default',
-
-  /**
-   * Sticky component(s) will become sticky or non-sticky based on scrolling.
-   * The calculation which determine if a Sticky component is sticky or non-sticky,
-   * are done after user interaction (scrolling) and don't affect page load time.
-   */
-  StickyOnScroll: 'StickyOnScroll' as 'StickyOnScroll',
-
-  /**
-   * Sticky component(s) will always be sticky independent of scrolling.
-   * There are no calculations done as the component(s) would always be sticky.
-   */
-  StickyAlways: 'StickyAlways' as 'StickyAlways'
-};
-
-/**
- * {@docCategory ScrollablePane}
- */
-export type StickyContainerBehaviorType = typeof StickyContainerBehaviorType[keyof typeof StickyContainerBehaviorType];
+export type IStickyContainerBehaviorType = 'default' | 'onScroll' | 'always';
 
 /**
  * {@docCategory ScrollablePane}
@@ -170,7 +143,7 @@ export interface IScrollablePaneContext {
     getScrollPosition: (horizontal?: boolean) => number;
     verifyStickyContainerBehavior: (
       stickyContainerPosition: StickyPositionType,
-      stickyContainerBehavior: StickyContainerBehaviorType
+      stickyContainerBehavior: IStickyContainerBehaviorType
     ) => boolean;
     getUserInteractionStatus: () => boolean;
   };

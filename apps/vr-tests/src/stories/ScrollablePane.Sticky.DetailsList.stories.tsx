@@ -19,7 +19,6 @@ import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Toolt
 import {
   ScrollablePane,
   ScrollbarVisibility,
-  StickyContainerBehaviorType,
   IScrollablePaneProps
 } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
@@ -86,7 +85,7 @@ export interface IScrollablePaneDetailsListExampleProps {
 export class ScrollablePaneDetailsListExample extends React.Component<
   IScrollablePaneDetailsListExampleProps,
   IScrollablePaneDetailsListExampleState
-  > {
+> {
   private _selection: Selection;
   private _allItems: IScrollablePaneDetailsListExampleItem[];
   private _columns: IColumn[];
@@ -194,8 +193,8 @@ export class ScrollablePaneDetailsListExample extends React.Component<
     this.setState({
       items: text
         ? this._allItems.filter((item: IScrollablePaneDetailsListExampleItem) =>
-          hasText(item, text)
-        )
+            hasText(item, text)
+          )
         : this._allItems
     });
   };
@@ -260,13 +259,13 @@ const getElement = "document.getElementsByClassName('ms-ScrollablePane--contentC
 const cropTo = { cropTo: '.testWrapper' };
 const scrollablePaneProps: IScrollablePaneProps = {
   scrollbarVisibility: ScrollbarVisibility.always,
-  stickyFooterContainerBehavior: StickyContainerBehaviorType.StickyAlways,
-  stickyHeaderContainerBehavior: StickyContainerBehaviorType.StickyOnScroll,
+  stickyFooterContainerBehavior: 'always',
+  stickyHeaderContainerBehavior: 'onScroll',
   optimizeForPerformace: true
 };
 const scrollablePaneProps1: IScrollablePaneProps = {
   ...scrollablePaneProps,
-  stickyHeaderContainerBehavior: StickyContainerBehaviorType.StickyAlways
+  stickyHeaderContainerBehavior: 'always'
 };
 
 storiesOf('ScrollablePane-Sticky Details List', module)
