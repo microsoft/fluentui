@@ -11,13 +11,13 @@ import { ISemanticTextColors } from './ISemanticTextColors';
  *
  * The name of a semantic slot can quickly tell you how it’s meant to be used. It generally follows this format:
  *
- * `[category name][element name][checked state][hovered/pressed/disabled state]`
+ * `[category name][element name][Checked][Hovered/Pressed/Disabled state]`
  *
  * * `[category name]` – The “family” that this slot belongs to.
  * * `[element name]` – The name of the thing being targeted, such as the background or border.
- * * `[checked state]` – Whether the thing is checked. We assume things are unchecked by default, so no need to specify the unchecked state.
+ * * `[Checked]` – Whether the thing is checked. We assume things are unchecked by default, so no need to specify the unchecked state.
  * (We used “checked” to refer to anything that is on, selected, toggled, highlighted, emphasized, etc.)
- * * `[hovered/pressed/disabled state]` – One of these states, if applicable. Each of these states are mutually exclusive.
+ * * `[Hovered/Pressed/Disabled state]` – One of these states, if applicable. Each of these states are mutually exclusive.
  * Pressed styles overwrite hovered styles, and disabled elements cannot be hovered or pressed.
  *
  * #### Base Slots
@@ -63,6 +63,18 @@ export interface ISemanticColors extends ISemanticTextColors {
    * The default color for backgrounds.
    */
   bodyBackground: string;
+
+  /**
+   * The default hover color for the backgrounds of interactable elements that don't have their own backgrounds.
+   * e.g. if links had hover backgrounds, they'd use this
+   */
+  bodyBackgroundHovered: string;
+
+  /**
+   * The default background color of selected interactable elements that don't have their own backgrounds.
+   * e.g. indicates in the nav which page you're currently on
+   */
+  bodyBackgroundChecked: string;
 
   /**
    * The standout color for highlighted content backgrounds.

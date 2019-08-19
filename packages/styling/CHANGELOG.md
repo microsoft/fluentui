@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Aug 2019 12:32:05 GMT and should not be manually modified.
+
+## 7.5.1
+Mon, 19 Aug 2019 12:32:05 GMT
+
+### Patches
+
+- Fix theming code type issue (phkuo@microsoft.com)
 
 ## 7.5.0
 Thu, 15 Aug 2019 12:30:43 GMT
