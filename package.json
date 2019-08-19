@@ -12,6 +12,7 @@
     "postinstall": "node ./scripts/postinstall.js",
     "buildto": "node ./scripts/monorepo/buildTo.js",
     "builddemo": "node ./scripts/monorepo/buildTo.js fabric-website-resources --min",
+    "clean-all": "node ./scripts/clean-all.js",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
     "start": "cd apps && cd fabric-website-resources && npm start",
