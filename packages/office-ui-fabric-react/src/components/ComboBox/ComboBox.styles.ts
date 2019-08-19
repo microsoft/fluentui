@@ -63,12 +63,11 @@ export const getOptionStyles = memoizeFunction(
     const { palette, semanticColors } = theme;
 
     const option = {
-      textHoveredColor: palette.neutralDark,
+      textHoveredColor: semanticColors.menuItemTextHovered,
       textSelectedColor: palette.neutralDark,
       textDisabledColor: semanticColors.disabledText,
       backgroundHoveredColor: semanticColors.menuItemBackgroundHovered,
-      backgroundPressedColor: semanticColors.menuItemBackgroundPressed,
-      backgroundDisabledColor: semanticColors.bodyBackground
+      backgroundPressedColor: semanticColors.menuItemBackgroundPressed
     };
 
     const optionStyles: IComboBoxOptionStyles = {
@@ -100,7 +99,7 @@ export const getOptionStyles = memoizeFunction(
               display: 'flex',
               alignItems: 'center'
             },
-            ':hover:active': {
+            '&.ms-Button--command:hover:active': {
               backgroundColor: option.backgroundPressedColor
             }
           }
@@ -127,7 +126,6 @@ export const getOptionStyles = memoizeFunction(
         getListOptionHighContrastStyles(theme)
       ],
       rootDisabled: {
-        backgroundColor: option.backgroundDisabledColor,
         color: option.textDisabledColor,
         cursor: 'default'
       },
