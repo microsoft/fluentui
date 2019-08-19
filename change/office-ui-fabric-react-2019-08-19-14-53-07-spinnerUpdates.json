@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Semantic slots: added input variants",
+  "packageName": "office-ui-fabric-react",
+  "email": "marygans@microsoft.com",
+  "commit": "26b35714f9dc4b8d103942b2cfb10ddd827de2e6",
+  "date": "2019-08-19T21:52:20.226Z"
+}
