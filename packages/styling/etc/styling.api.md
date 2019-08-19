@@ -482,10 +482,14 @@ export interface ISemanticColors extends ISemanticTextColors {
     inputBackground: string;
     inputBackgroundChecked: string;
     inputBackgroundCheckedHovered: string;
+    inputBackgroundHovered: string;
     inputBorder: string;
     inputBorderHovered: string;
     inputFocusBorderAlt: string;
+    inputForeground: string;
     inputForegroundChecked: string;
+    inputForegroundCheckedHovered: string;
+    inputForegroundHovered: string;
     inputIcon: string;
     inputIconDisabled: string;
     inputIconHovered: string;
@@ -513,6 +517,7 @@ export interface ISemanticColors extends ISemanticTextColors {
     primaryButtonBackgroundPressed: string;
     primaryButtonBorder: string;
     smallInputBorder: string;
+    smallInputBorderHovered: string;
     successBackground: string;
     variantBorder: string;
     variantBorderHovered: string;
