@@ -3,6 +3,7 @@ import { BaseComponent, DelayedRender, getId, classNamesFunction, getNativeProps
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
+import { ITheme, getTheme } from '../../Styling';
 
 const getClassNames = classNamesFunction<IMessageBarStyleProps, IMessageBarStyles>();
 
@@ -30,6 +31,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   };
 
   private _classNames: { [key in keyof IMessageBarStyles]: string };
+  private _globalTheme: ITheme;
 
   constructor(props: IMessageBarProps) {
     super(props);
@@ -39,6 +41,8 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
       showContent: false,
       expandSingleLine: false
     };
+
+    this._globalTheme = getTheme();
   }
 
   public render(): JSX.Element {
@@ -106,9 +110,9 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderMultiLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const { theme } = this.props;
+    const theme = this._globalTheme;
     return (
-      <div style={{ background: theme!.semanticColors.bodyBackground }}>
+      <div style={{ background: theme.semanticColors.bodyBackground }}>
         <div className={this._classNames.root}>
           <div className={this._classNames.content}>
             {this._getIconSpan()}
@@ -122,9 +126,9 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderSingleLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const { theme } = this.props;
+    const theme = this._globalTheme;
     return (
-      <div style={{ background: theme!.semanticColors.bodyBackground }}>
+      <div style={{ background: theme.semanticColors.bodyBackground }}>
         <div className={this._classNames.root}>
           <div className={this._classNames.content}>
             {this._getIconSpan()}
@@ -153,11 +157,11 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _getClassNames(): { [key in keyof IMessageBarStyles]: string } {
-    const { theme, className, messageBarType, onDismiss, actions, truncated, isMultiline } = this.props;
+    const { className, messageBarType, onDismiss, actions, truncated, isMultiline } = this.props;
     const { expandSingleLine } = this.state;
 
     return getClassNames(this.props.styles!, {
-      theme: theme!,
+      theme: this._globalTheme,
       messageBarType: messageBarType || MessageBarType.info,
       onDismiss: onDismiss !== undefined,
       actions: actions !== undefined,
