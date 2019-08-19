@@ -334,12 +334,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderItems(): JSX.Element[] {
-    const { disabled, removeButtonAriaLabel } = this.props;
+    const { disabled, removeButtonAriaLabel, readOnly } = this.props;
     const onRenderItem = this.props.onRenderItem as (props: IPickerItemProps<T>) => JSX.Element;
 
     const { items, selectedIndices } = this.state;
     return items.map((item: any, index: number) =>
       onRenderItem({
+        readOnly,
         item,
         index,
         key: item.key ? item.key : index,

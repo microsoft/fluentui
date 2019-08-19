@@ -1,6 +1,7 @@
 import { getGlobalClassNames, getFocusStyle, HighContrastSelector } from '../../../Styling';
 import { ButtonGlobalClassNames } from '../../Button/BaseButton.classNames';
 import { ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
+import { getRTL } from '../../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-TagItem',
@@ -12,7 +13,7 @@ const GlobalClassNames = {
 const TAG_HEIGHT = 26;
 
 export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
-  const { className, theme, selected, disabled } = props;
+  const { className, theme, selected, disabled, readOnly } = props;
 
   const { palette, effects } = theme;
 
@@ -39,6 +40,7 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
           ':hover': [
             !disabled &&
               !selected && {
+                color: palette.neutralDark,
                 background: palette.neutralLight,
                 selectors: {
                   '.ms-TagItem-close': {
@@ -77,7 +79,8 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
         minWidth: 30,
-        margin: '0 8px'
+        margin: '0 8px',
+        textAlign: readOnly ? 'center' : 'start'
       },
       disabled && {
         selectors: {
@@ -94,14 +97,17 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         width: 30,
         height: '100%',
         flex: '0 0 auto',
-        borderRadius: `0 ${effects.roundedCorner2} ${effects.roundedCorner2} 0`,
+        borderRadius: getRTL()
+          ? `${effects.roundedCorner2} 0 0 ${effects.roundedCorner2}`
+          : `0 ${effects.roundedCorner2} ${effects.roundedCorner2} 0`,
         selectors: {
           ':hover': {
             background: palette.neutralQuaternaryAlt,
             color: palette.neutralPrimary
           },
           ':active': {
-            color: palette.white
+            color: palette.white,
+            backgroundColor: palette.themeDark
           }
         }
       },

@@ -202,6 +202,10 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * Theme provided by styled() function.
    */
   theme?: ITheme;
+  /**
+   * Optional read only state applied to picker.
+   */
+  readOnly?: boolean;
 }
 
 /**
