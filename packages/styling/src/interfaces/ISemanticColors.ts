@@ -159,6 +159,11 @@ export interface ISemanticColors extends ISemanticTextColors {
   smallInputBorder: string;
 
   /**
+   * The border of a small input control in its hovered state; e.g. checkbox border color on hover.
+   */
+  smallInputBorderHovered: string;
+
+  /**
    * The border color of a large hovered input control, such as textbox.
    */
   inputBorderHovered: string;
@@ -174,6 +179,11 @@ export interface ISemanticColors extends ISemanticTextColors {
   inputBackgroundChecked: string;
 
   /**
+   * The background of a hovered control; e.g. hovered checkbox background.
+   */
+  inputBackgroundHovered: string;
+
+  /**
    * The background of a checked and hovered control; e.g. checked checkbox's background color on hover.
    */
   inputBackgroundCheckedHovered: string;
@@ -184,10 +194,25 @@ export interface ISemanticColors extends ISemanticTextColors {
   inputPlaceholderBackgroundChecked: string;
 
   /**
+   * The foreground of a control in rest state; e.g. unchecked toggle at rest color.
+   */
+  inputForeground: string;
+
+  /**
+   * The foreground of a hovered control; e.g. unchecked toggle's foreground color on hover.
+   */
+  inputForegroundHovered: string;
+
+  /**
    * The foreground of a checked control; e.g. checked checkbox's checkmark color, checked toggle's thumb color,
    * radio button's background color around the dot.
    */
   inputForegroundChecked: string;
+
+  /**
+   * The foreground of a checked and hovered control; e.g. checked toggle's foreground color on hover.
+   */
+  inputForegroundCheckedHovered: string;
 
   /**
    * The alternate focus border color for elements that already have a border; e.g. text field borders on focus.
