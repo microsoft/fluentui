@@ -5,7 +5,7 @@ import { ModResult } from 'riceburn/lib/interfaces';
 import { getModificationNote } from '../../util/getMessages';
 
 export default migration(
-  getModificationNote('Rename deprecated React lifecycle methods with adding UNSAFE prefix.'),
+  getModificationNote('Rename deprecated React lifecycle methods with adding UNSAFE prefix'),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.ts?(x)', opts).asTypescript((node, modder) => {
       const replacements = {

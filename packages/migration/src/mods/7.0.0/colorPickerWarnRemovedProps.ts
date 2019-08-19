@@ -11,7 +11,7 @@ const onChangedPropsByComponent: { [component: string]: string } = {
 };
 
 export default migration(
-  getWarningNote('ColorPicker onChanged prop was removed.'),
+  getWarningNote('ColorPicker onChanged prop was removed'),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.tsx', opts).asTypescript((node, modder) => {
       let tagName: string;

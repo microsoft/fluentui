@@ -5,7 +5,7 @@ import { ModResult } from 'riceburn/lib/interfaces';
 import { getModificationNote } from '../../util/getMessages';
 
 export default migration(
-  getModificationNote('ComboBox: rename deprecated prop value to text.'),
+  getModificationNote('ComboBox deprecated prop value renamed to text'),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.tsx', opts).asTypescript((node, modder) => {
       return renameJsxProp('ComboBox', 'value', 'text')(node, modder);

@@ -8,7 +8,7 @@ const packageName = 'office-ui-fabric-react';
 const importName = 'autobind';
 
 export default migration(
-  getWarningNote('Autobind decorator (@autobind) removed.'),
+  getWarningNote('Autobind decorator (@autobind) removed'),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.ts?(x)', opts).asTypescript((node, modder) => {
       if (

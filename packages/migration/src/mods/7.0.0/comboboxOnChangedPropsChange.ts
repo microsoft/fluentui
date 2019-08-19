@@ -8,7 +8,7 @@ const tagName = 'ComboBox';
 const propName = 'onChanged';
 
 export default migration(
-  getWarningNote('ComboBox onChanged prop was removed.'),
+  getWarningNote('ComboBox onChanged prop was removed'),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.tsx', opts).asTypescript((node, modder) => {
       if (

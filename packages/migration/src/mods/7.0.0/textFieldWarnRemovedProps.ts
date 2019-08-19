@@ -10,7 +10,7 @@ const onBeforeChange = 'onBeforeChange';
 const iconClass = 'iconClass';
 
 export default migration(
-  getWarningNote('TextField: onChanged, onBeforeChange, and iconClass props were removed.'),
+  getWarningNote('TextField onChanged, onBeforeChange, and iconClass props were removed'),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.tsx', opts).asTypescript((node, modder) => {
       if (

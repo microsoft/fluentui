@@ -8,7 +8,7 @@ const tagName = 'SearchBox';
 const propName = 'onChange';
 
 export default migration(
-  getWarningNote('SearchBox onChange callback signature changed.'),
+  getWarningNote('SearchBox onChange callback signature changed'),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.tsx', opts).asTypescript((node, modder) => {
       if (

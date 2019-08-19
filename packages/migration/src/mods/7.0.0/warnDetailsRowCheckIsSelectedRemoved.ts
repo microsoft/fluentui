@@ -17,7 +17,7 @@ import { getModificationNote } from '../../util/getMessages';
  * to assist with Fabric 7.0 migration.
  */
 export default migration(
-  getModificationNote('DetailsRowCheck: rename deprecated prop isSelected to selected.'),
+  getModificationNote('DetailsRowCheck deprecated prop isSelected was renamed to selected'),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.ts?(x)', opts).asTypescript((node, modder) => {
       return renameJsxProp('DetailsRowCheck', 'isSelected', 'selected')(node, modder);
