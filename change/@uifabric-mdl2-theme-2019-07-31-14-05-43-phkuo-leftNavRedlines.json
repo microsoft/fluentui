@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Nav: add backwards compat for update to latest redlines",
+  "packageName": "@uifabric/mdl2-theme",
+  "email": "phkuo@microsoft.com",
+  "commit": "7779a3437650dff286de759c3474e6fe8c4294e7",
+  "date": "2019-07-31T21:05:31.597Z"
+}

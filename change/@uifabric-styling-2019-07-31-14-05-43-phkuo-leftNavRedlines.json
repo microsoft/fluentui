@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Semantic slots: add bodyBackgroundHovered and bodyBackgroundSelected",
+  "packageName": "@uifabric/styling",
+  "email": "phkuo@microsoft.com",
+  "commit": "7779a3437650dff286de759c3474e6fe8c4294e7",
+  "date": "2019-07-31T21:05:43.090Z"
+}
