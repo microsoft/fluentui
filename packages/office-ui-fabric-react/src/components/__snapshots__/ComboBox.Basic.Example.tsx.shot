@@ -1751,7 +1751,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
@@ -1909,7 +1909,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
@@ -2057,7 +2057,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
@@ -2211,7 +2211,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
@@ -2414,7 +2414,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
@@ -2506,7 +2506,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          background-color: #ffffff;
+                          background-color: transparent;
                           border-color: transparent;
                           border-radius: 0px;
                           border-style: solid;
@@ -2572,7 +2572,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
@@ -2713,7 +2713,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
@@ -2867,7 +2867,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
@@ -3021,7 +3021,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
@@ -3175,7 +3175,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
