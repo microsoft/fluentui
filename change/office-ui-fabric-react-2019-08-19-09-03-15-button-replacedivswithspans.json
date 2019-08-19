@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "Button: change divs to be spans so its w3 compliant",
   "packageName": "office-ui-fabric-react",
   "email": "joschect@microsoft.com",
