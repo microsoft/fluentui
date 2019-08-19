@@ -191,6 +191,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <span
                 className=
@@ -348,6 +349,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <span
                 className=
@@ -505,6 +507,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <span
                 className=
@@ -624,6 +627,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <i
           aria-hidden={true}

@@ -330,6 +330,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
               aria-hidden={true}
@@ -468,6 +469,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <span
           className=
@@ -796,6 +798,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -1129,6 +1132,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -1461,6 +1465,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -1793,6 +1798,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                             height: 100%;
                             justify-content: flex-start;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                        
                       <span
@@ -1948,6 +1954,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                             height: 100%;
                             justify-content: flex-start;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                        
                       <span
@@ -2105,6 +2112,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                             height: 100%;
                             justify-content: flex-start;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                        
                       <span
@@ -2262,6 +2270,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                             height: 100%;
                             justify-content: flex-start;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                        
                       <span
@@ -2468,6 +2477,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                             height: 100%;
                             justify-content: flex-start;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                        
                       <span
@@ -2616,6 +2626,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                             height: 100%;
                             justify-content: flex-start;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                        
                       <span
@@ -2773,6 +2784,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                             height: 100%;
                             justify-content: flex-start;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                        
                       <span
@@ -2930,6 +2942,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                             height: 100%;
                             justify-content: flex-start;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                        
                       <span
@@ -3087,6 +3100,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                             height: 100%;
                             justify-content: flex-start;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                        
                       <span
@@ -3244,6 +3258,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                             height: 100%;
                             justify-content: flex-start;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                        
                       <span
@@ -3539,6 +3554,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -3838,6 +3854,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}

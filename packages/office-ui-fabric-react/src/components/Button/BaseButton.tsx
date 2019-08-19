@@ -279,7 +279,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     const Button = (keytipAttributes?: any): JSX.Element => (
       <Tag {...buttonProps} {...keytipAttributes}>
-        <span className={this._classNames.flexContainer}>
+        <span className={this._classNames.flexContainer} data-automationid="splitbuttonprimary">
           {onRenderIcon(props, this._onRenderIcon)}
           {this._onRenderTextContents()}
           {onRenderAriaDescription(props, this._onRenderAriaDescription)}

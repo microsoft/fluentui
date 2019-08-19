@@ -176,6 +176,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -378,6 +379,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -551,6 +553,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
@@ -724,6 +727,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -897,6 +901,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -1058,6 +1063,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -1243,6 +1249,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
@@ -1403,6 +1410,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
@@ -1620,6 +1628,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -1822,6 +1831,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -1995,6 +2005,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
@@ -2476,6 +2487,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                 height: 100%;
                                                 justify-content: center;
                                               }
+                                          data-automationid="splitbuttonprimary"
                                         >
                                           <i
                                             aria-hidden={true}
@@ -2645,6 +2657,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -2818,6 +2831,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -2979,6 +2993,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -3164,6 +3179,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
@@ -3324,6 +3340,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}

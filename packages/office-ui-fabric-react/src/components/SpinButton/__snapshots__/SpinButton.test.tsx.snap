@@ -239,6 +239,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -371,6 +372,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -647,6 +649,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -779,6 +782,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}

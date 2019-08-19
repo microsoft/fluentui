@@ -172,6 +172,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <span
                   className=
@@ -314,6 +315,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <span
                   className=

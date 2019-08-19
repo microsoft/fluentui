@@ -93,6 +93,7 @@ exports[`Button renders ActionButton correctly 1`] = `
           height: 100%;
           justify-content: flex-start;
         }
+    data-automationid="splitbuttonprimary"
   >
     <span
       className=
@@ -227,6 +228,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
           height: 100%;
           justify-content: center;
         }
+    data-automationid="splitbuttonprimary"
   >
     <i
       aria-hidden={true}
@@ -419,6 +421,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
           margin-top: ;
           min-width: 100%;
         }
+    data-automationid="splitbuttonprimary"
   >
     <span
       className=
@@ -556,6 +559,7 @@ exports[`Button renders DefaultButton correctly 1`] = `
           height: 100%;
           justify-content: center;
         }
+    data-automationid="splitbuttonprimary"
   >
     <span
       className=
@@ -677,6 +681,7 @@ exports[`Button renders IconButton correctly 1`] = `
           height: 100%;
           justify-content: center;
         }
+    data-automationid="splitbuttonprimary"
   >
     <i
       aria-hidden={true}
@@ -802,6 +807,7 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
           height: 100%;
           justify-content: center;
         }
+    data-automationid="splitbuttonprimary"
   >
     <span
       className=

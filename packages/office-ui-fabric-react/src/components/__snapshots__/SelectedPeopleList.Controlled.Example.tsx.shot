@@ -102,6 +102,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
       <span
         className=
@@ -275,6 +276,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -585,6 +587,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}

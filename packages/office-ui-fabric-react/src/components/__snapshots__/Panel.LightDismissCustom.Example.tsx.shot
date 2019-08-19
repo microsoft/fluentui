@@ -90,6 +90,7 @@ exports[`Component Examples renders Panel.LightDismissCustom.Example.tsx correct
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
       <span
         className=

@@ -339,6 +339,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -455,6 +456,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -571,6 +573,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -689,6 +692,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <span
           className=
@@ -843,6 +847,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -959,6 +964,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -1075,6 +1081,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=

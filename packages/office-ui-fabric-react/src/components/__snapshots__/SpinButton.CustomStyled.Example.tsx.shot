@@ -241,6 +241,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
               aria-hidden={true}
@@ -374,6 +375,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
               aria-hidden={true}

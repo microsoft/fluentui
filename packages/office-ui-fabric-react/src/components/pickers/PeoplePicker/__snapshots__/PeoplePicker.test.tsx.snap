@@ -567,6 +567,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}

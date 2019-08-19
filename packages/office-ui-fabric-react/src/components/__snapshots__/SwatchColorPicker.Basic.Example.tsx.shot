@@ -188,6 +188,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -351,6 +352,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -514,6 +516,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -677,6 +680,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -840,6 +844,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -1042,6 +1047,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -1194,6 +1200,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -1346,6 +1353,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -1498,6 +1506,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -1650,6 +1659,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -1850,6 +1860,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -2002,6 +2013,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -2154,6 +2166,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -2306,6 +2319,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -2458,6 +2472,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -2677,6 +2692,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -2840,6 +2856,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -3003,6 +3020,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -3166,6 +3184,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -3333,6 +3352,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -3496,6 +3516,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -3659,6 +3680,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -3822,6 +3844,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -3989,6 +4012,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -4152,6 +4176,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -4315,6 +4340,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -4478,6 +4504,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -4694,6 +4721,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -4862,6 +4890,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -5030,6 +5059,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -5198,6 +5228,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=
@@ -5366,6 +5397,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                       height: 100%;
                       justify-content: flex-start;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <svg
                   className=

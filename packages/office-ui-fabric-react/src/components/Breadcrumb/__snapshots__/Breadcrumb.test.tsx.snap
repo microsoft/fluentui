@@ -580,6 +580,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
@@ -1386,6 +1387,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
@@ -1788,6 +1790,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
@@ -2012,6 +2015,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}

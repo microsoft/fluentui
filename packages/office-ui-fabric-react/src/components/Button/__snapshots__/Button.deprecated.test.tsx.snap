@@ -104,6 +104,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
           margin-top: ;
           min-width: 100%;
         }
+    data-automationid="splitbuttonprimary"
   >
     <span
       className=

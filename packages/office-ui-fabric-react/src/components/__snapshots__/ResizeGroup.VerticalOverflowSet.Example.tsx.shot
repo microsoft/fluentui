@@ -155,6 +155,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -323,6 +324,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -491,6 +493,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -659,6 +662,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -827,6 +831,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -995,6 +1000,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -1163,6 +1169,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -1331,6 +1338,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -1499,6 +1507,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -1667,6 +1676,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -1835,6 +1845,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -2003,6 +2014,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -2171,6 +2183,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -2339,6 +2352,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -2507,6 +2521,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -2675,6 +2690,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -2843,6 +2859,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -3011,6 +3028,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -3179,6 +3197,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -3347,6 +3366,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}

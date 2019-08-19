@@ -416,6 +416,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -549,6 +550,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -672,6 +674,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
       <i
         aria-hidden={true}

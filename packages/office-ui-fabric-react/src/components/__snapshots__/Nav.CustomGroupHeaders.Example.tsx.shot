@@ -192,6 +192,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                         height: 100%;
                         justify-content: flex-start;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <div
                     className=
@@ -345,6 +346,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                         height: 100%;
                         justify-content: flex-start;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <div
                     className=
@@ -534,6 +536,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                         height: 100%;
                         justify-content: flex-start;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <div
                     className=
@@ -687,6 +690,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                         height: 100%;
                         justify-content: flex-start;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <div
                     className=

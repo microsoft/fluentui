@@ -128,6 +128,7 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
       <span
         className=

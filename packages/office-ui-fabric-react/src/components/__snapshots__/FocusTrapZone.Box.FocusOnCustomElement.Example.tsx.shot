@@ -156,6 +156,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <span
           className=

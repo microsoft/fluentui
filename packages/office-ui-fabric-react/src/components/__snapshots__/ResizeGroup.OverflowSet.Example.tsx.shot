@@ -152,6 +152,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -319,6 +320,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -486,6 +488,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -653,6 +656,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -820,6 +824,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -987,6 +992,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -1154,6 +1160,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -1321,6 +1328,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -1488,6 +1496,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -1655,6 +1664,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -1822,6 +1832,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -1989,6 +2000,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -2156,6 +2168,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -2323,6 +2336,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -2490,6 +2504,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -2657,6 +2672,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -2824,6 +2840,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -2991,6 +3008,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -3158,6 +3176,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -3325,6 +3344,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}

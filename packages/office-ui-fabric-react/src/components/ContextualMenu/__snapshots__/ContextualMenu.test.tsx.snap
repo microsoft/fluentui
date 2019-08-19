@@ -92,6 +92,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
           height: 100%;
           justify-content: center;
         }
+    data-automationid="splitbuttonprimary"
   >
     <i
       aria-hidden={true}

@@ -178,6 +178,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -335,6 +336,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -566,6 +568,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -723,6 +726,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -941,6 +945,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -1099,6 +1104,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -1268,6 +1274,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -1510,6 +1517,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -1667,6 +1675,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -1895,6 +1904,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -2065,6 +2075,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -2282,6 +2293,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -2439,6 +2451,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -2666,6 +2679,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -2836,6 +2850,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -3042,6 +3057,7 @@ exports[`Pivot supports JSX expressions 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -3210,6 +3226,7 @@ exports[`Pivot supports JSX expressions 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=

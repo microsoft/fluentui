@@ -184,6 +184,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -347,6 +348,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -510,6 +512,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -673,6 +676,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -840,6 +844,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1003,6 +1008,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1166,6 +1172,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1329,6 +1336,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1496,6 +1504,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1659,6 +1668,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1822,6 +1832,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1985,6 +1996,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=

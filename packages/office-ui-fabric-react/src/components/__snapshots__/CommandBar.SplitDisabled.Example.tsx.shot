@@ -254,6 +254,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             height: 100%;
                             justify-content: center;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                       <i
                         aria-hidden={true}
@@ -380,6 +381,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             height: 100%;
                             justify-content: center;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                       <i
                         aria-hidden={true}
@@ -610,6 +612,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             height: 100%;
                             justify-content: center;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                       <i
                         aria-hidden={true}
@@ -746,6 +749,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             height: 100%;
                             justify-content: center;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                       <i
                         aria-hidden={true}
@@ -903,6 +907,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
@@ -1080,6 +1085,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           height: 100%;
                           justify-content: center;
                         }
+                    data-automationid="splitbuttonprimary"
                   >
                     <i
                       aria-hidden={true}
@@ -1228,6 +1234,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
@@ -1389,6 +1396,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
@@ -1574,6 +1582,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           height: 100%;
                           justify-content: center;
                         }
+                    data-automationid="splitbuttonprimary"
                   >
                     <i
                       aria-hidden={true}
@@ -1734,6 +1743,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           height: 100%;
                           justify-content: center;
                         }
+                    data-automationid="splitbuttonprimary"
                   >
                     <i
                       aria-hidden={true}

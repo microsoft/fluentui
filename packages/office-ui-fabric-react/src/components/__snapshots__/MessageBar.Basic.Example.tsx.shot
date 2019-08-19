@@ -466,6 +466,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -778,6 +779,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -916,6 +918,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -1226,6 +1229,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <span
                   className=
@@ -1343,6 +1347,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <span
                   className=
@@ -1655,6 +1660,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <span
                     className=
@@ -1772,6 +1778,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <span
                     className=
@@ -2086,6 +2093,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <span
                     className=
@@ -2222,6 +2230,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -2523,6 +2532,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -2664,6 +2674,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <span
                   className=
@@ -2781,6 +2792,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <span
                   className=

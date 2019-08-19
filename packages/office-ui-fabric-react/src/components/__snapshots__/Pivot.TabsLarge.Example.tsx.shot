@@ -190,6 +190,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -360,6 +361,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -530,6 +532,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -700,6 +703,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=

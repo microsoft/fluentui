@@ -178,6 +178,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=
@@ -335,6 +336,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
                 height: 100%;
                 justify-content: flex-start;
               }
+          data-automationid="splitbuttonprimary"
         >
           <span
             className=

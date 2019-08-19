@@ -671,6 +671,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -811,6 +812,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -951,6 +953,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}

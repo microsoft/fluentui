@@ -449,7 +449,7 @@ describe('Button', () => {
           }}
         />
       );
-      const primaryButtonDOM: HTMLDivElement = button.getElementsByTagName('div')[0] as HTMLDivElement;
+      const primaryButtonDOM: HTMLElement = button.querySelector("[data-automationid='splitbuttonprimary']") as HTMLElement;
 
       ReactTestUtils.Simulate.keyDown(primaryButtonDOM, { which: KeyCodes.enter });
 
