@@ -6,7 +6,11 @@ import { DialogBase } from './Dialog.base';
 import { DialogContent } from './DialogContent';
 import { DialogType } from './DialogContent.types'; // for express fluent assertions
 
-/* tslint:disable:no-unused-expression */ describe('Dialog', () => {
+describe('Dialog', () => {
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   it('renders Dialog correctly', () => {
     const component = renderer.create(<DialogContent />);
     const tree = component.toJSON();
@@ -29,7 +33,8 @@ import { DialogType } from './DialogContent.types'; // for express fluent assert
     expect(tree).toMatchSnapshot();
   });
 
-  it('Fires dismissed after closing', done => {
+  it('Fires dismissed after closing', () => {
+    jest.useFakeTimers();
     let dismissedCalled = false;
 
     const handleDismissed = () => {
@@ -42,17 +47,10 @@ import { DialogType } from './DialogContent.types'; // for express fluent assert
     wrapper.setProps({ hidden: true });
     wrapper.update();
 
-    // give time for update to complete
-    setTimeout(() => {
-      try {
-        expect(document.querySelector('[role="dialog"]')).toBeNull();
-        expect(dismissedCalled).toEqual(true);
-      } catch (e) {
-        done(e);
-      }
-      wrapper.unmount();
-      done();
-    }, 300);
+    jest.runAllTimers();
+    expect(document.querySelector('[role="dialog"]')).toBeNull();
+    expect(dismissedCalled).toEqual(true);
+    wrapper.unmount();
   });
 
   it('Properly attaches auto-generated aria attributes IDs', () => {

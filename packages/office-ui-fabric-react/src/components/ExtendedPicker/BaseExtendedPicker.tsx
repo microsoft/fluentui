@@ -60,7 +60,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     this.forceUpdate();
   }
 
-  public componentWillReceiveProps(newProps: P): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: P): void {
     if (newProps.floatingPickerProps) {
       this.floatingPickerProps = newProps.floatingPickerProps;
     }

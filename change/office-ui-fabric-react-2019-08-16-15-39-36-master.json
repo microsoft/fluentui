@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Tooltip: Fix examples to pass correct root display styling.",
+  "packageName": "office-ui-fabric-react",
+  "email": "email not defined",
+  "commit": "e3b482b0d2587e7a56b2717a27454688fece8197",
+  "date": "2019-08-16T22:39:36.332Z"
+}

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Nav } from '../index';
+import { Nav } from 'office-ui-fabric-react/lib/Nav';
 
-export const NavNestedExample: React.StatelessComponent = () => {
+export const NavNestedExample: React.FunctionComponent = () => {
   return (
     <Nav
       expandButtonAriaLabel="Expand or collapse"

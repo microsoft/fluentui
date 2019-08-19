@@ -56,7 +56,6 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className="ms-SelectionZone"

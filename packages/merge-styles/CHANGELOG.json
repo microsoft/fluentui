@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2019 12:30:43 GMT",
+      "tag": "@uifabric/merge-styles_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Minor readme updates.",
+            "author": "jagore@microsoft.com",
+            "commit": "9c6b6468c922d15a7f7a392db6725abbbdba989a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 13 Aug 2019 12:31:12 GMT",
       "tag": "@uifabric/merge-styles_v7.4.0",
       "version": "7.4.0",

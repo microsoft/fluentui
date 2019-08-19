@@ -101,8 +101,9 @@ function _loadFonts(theme: ITheme): { [name: string]: string } {
     for (const propName of Object.keys(font)) {
       const name = fontName + propName.charAt(0).toUpperCase() + propName.slice(1);
       let value = font[propName];
-      if (propName === 'fontSize' && value.indexOf('px') < 0) {
-        value += 'px';
+      if (propName === 'fontSize' && typeof value === 'number') {
+        // if it's a number, convert it to px by default like our theming system does
+        value = value + 'px';
       }
       lines[name] = value;
     }
@@ -194,6 +195,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     disabledSubtext: p.neutralQuaternary,
     disabledBodyText: p.neutralTertiary,
     disabledBodySubtext: p.neutralTertiaryAlt,
+    disabledBorder: p.neutralTertiaryAlt,
 
     focusBorder: p.neutralSecondary,
     variantBorder: p.neutralLight,
@@ -214,6 +216,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     inputBackground: p.white,
     inputBackgroundChecked: p.themePrimary,
     inputBackgroundCheckedHovered: p.themeDark,
+    inputPlaceholderBackgroundChecked: p.themeLighter,
     inputForegroundChecked: p.white,
     inputIcon: p.themePrimary,
     inputIconHovered: p.themeDark,

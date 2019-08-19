@@ -26,7 +26,8 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
     this.state = { needsVerticalScrollBar: false };
   }
 
-  public componentWillMount(): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillMount(): void {
     this._originalFocusedElement = getDocument()!.activeElement as HTMLElement;
   }
 

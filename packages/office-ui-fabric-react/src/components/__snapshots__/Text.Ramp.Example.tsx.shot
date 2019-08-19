@@ -500,7 +500,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
