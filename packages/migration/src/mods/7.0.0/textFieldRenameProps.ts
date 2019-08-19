@@ -2,6 +2,7 @@ import ts from 'typescript';
 import { migration, IMigrationOptions } from '../../migration';
 import { mod } from 'riceburn';
 import { ModResult, TypescriptMod } from 'riceburn/lib/interfaces';
+import { getModificationNote } from '../../util/getMessages';
 
 const tagName = 'TextField';
 const propReplacementMap: { [key: string]: string } = {
@@ -11,7 +12,7 @@ const propReplacementMap: { [key: string]: string } = {
 };
 
 export default migration(
-  'TextField: rename deprecated props addonString, onRenderAddon and componentId.',
+  getModificationNote('TextField: rename deprecated props addonString, onRenderAddon and componentId.'),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.tsx', opts).asTypescript((node, modder) => {
       if (

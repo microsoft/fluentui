@@ -2,12 +2,13 @@ import ts from 'typescript';
 import { IMigrationOptions, migration } from '../../migration';
 import { mod } from 'riceburn';
 import { ModResult } from 'riceburn/lib/interfaces';
+import { getWarningNote } from '../../util/getMessages';
 
 const tagName = 'ComboBox';
 const propName = 'onChanged';
 
 export default migration(
-  'warn ComboBox.onChanged removed',
+  getWarningNote('ComboBox onChanged prop was removed.'),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.tsx', opts).asTypescript((node, modder) => {
       if (

@@ -24,16 +24,20 @@ export function registerMigration(theMigration: IMigration) {
 }
 
 export function applyRegisteredMigrations(options: IMigrationOptions) {
-  console.error('Apply migration steps:');
+  console.error(`Migration steps in ${options.dryRun ? 'dry run' : 'write'} mode:`);
   allMigrations.forEach(theMigration => {
     console.error(`- ${theMigration.note}`);
     const results = theMigration.step(options);
-    console.log(
-      results
-        .filter(r => r.state === 'modified')
-        .map(r => `  ${r.fileName}`)
-        .join('\n')
-    );
+    if (!results.length) {
+      console.log('  No files found by this migration step so no changes required.');
+    } else {
+      console.log(
+        results
+          .filter(r => r.state === 'modified')
+          .map(r => `  ${!options.dryRun ? '[Modified]: ' : ''}${r.fileName}`)
+          .join('\n')
+      );
+    }
   });
 }
 
