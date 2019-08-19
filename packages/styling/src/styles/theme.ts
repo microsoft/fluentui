@@ -8,7 +8,7 @@ import { DefaultEffects } from './DefaultEffects';
 
 let _theme: ITheme = createTheme({
   palette: DefaultPalette,
-  semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
+  semanticColors: makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
   isInverted: false,
   disableGlobalClassNames: false
@@ -124,7 +124,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
 
   // mix in custom overrides with good slots first, since custom overrides might be used in fixing deprecated slots
   let newSemanticColors = {
-    ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted, depComments),
+    ...makeSemanticColorsFromPalette(newPalette, !!theme.isInverted, depComments),
     ...theme.semanticColors
   };
 
@@ -178,7 +178,7 @@ function _expandFrom<TRetVal, TMapType>(propertyName: string | TRetVal | undefin
 
 // Generates all the semantic slot colors based on the Fabric palette.
 // We'll use these as fallbacks for semantic slots that the passed in theme did not define.
-function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
+export function makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
     bodyStandoutBackground: p.neutralLighterAlt,
