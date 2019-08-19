@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "MessageBar: use global theme instead of context one to work same in a dark theme.",
+  "packageName": "office-ui-fabric-react",
+  "email": "vibraga@microsoft.com",
+  "commit": "1bcecaee3c69f091f0e07e13597d2e364ed1107a",
+  "date": "2019-08-19T06:11:20.723Z"
+}
