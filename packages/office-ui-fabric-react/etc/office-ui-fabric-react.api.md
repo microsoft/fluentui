@@ -8031,6 +8031,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
 
 // @public (undocumented)
 export class MessageBarButton extends BaseComponent<IButtonProps, {}> {
+    constructor(props: IButtonProps);
     // (undocumented)
     render(): JSX.Element;
 }
