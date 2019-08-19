@@ -6,6 +6,7 @@ import {
   getFirstTabbable,
   getLastTabbable,
   getNextElement,
+  getDocument,
   focusAsync,
   initializeComponentRef,
   on
@@ -64,10 +65,11 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
 
   public componentWillUnmount(): void {
     // don't handle return focus unless forceFocusInsideTrap is true or focus is still within FocusTrapZone
+    const doc = getDocument(this._root.current);
     if (
       !this.props.disabled ||
       this.props.forceFocusInsideTrap ||
-      !elementContains(this._root.current, document.activeElement as HTMLElement)
+      !elementContains(this._root.current, doc!.activeElement as HTMLElement)
     ) {
       this._returnFocusToInitiator();
     }
@@ -162,7 +164,8 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
       // even when it's not. Using document.activeElement is another way
       // for us to be able to get what the relatedTarget without relying
       // on the event
-      relatedTarget = document.activeElement as Element;
+      const doc = getDocument(this._root.current);
+      relatedTarget = doc!.activeElement as Element;
     }
 
     if (!elementContains(this._root.current, relatedTarget as HTMLElement)) {
@@ -211,9 +214,8 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
 
     FocusTrapZone._focusStack.push(this);
 
-    this._previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss
-      ? elementToFocusOnDismiss
-      : (document.activeElement as HTMLElement);
+    const doc = getDocument(this._root.current);
+    this._previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss ? elementToFocusOnDismiss : (doc!.activeElement as HTMLElement);
     if (!disableFirstFocus && !elementContains(this._root.current, this._previouslyFocusedElementOutsideTrapZone)) {
       this.focus();
     }
@@ -226,12 +228,13 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
       return this !== value;
     });
 
-    const activeElement = document.activeElement as HTMLElement;
+    const doc = getDocument(this._root.current);
+    const activeElement = doc!.activeElement as HTMLElement;
     if (
       !ignoreExternalFocusing &&
       this._previouslyFocusedElementOutsideTrapZone &&
       typeof this._previouslyFocusedElementOutsideTrapZone.focus === 'function' &&
-      (elementContains(this._root.current, activeElement) || activeElement === document.body)
+      (elementContains(this._root.current, activeElement) || activeElement === doc!.body)
     ) {
       this._focusAsync(this._previouslyFocusedElementOutsideTrapZone);
     }
@@ -277,7 +280,8 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     }
 
     if (FocusTrapZone._focusStack.length && this === FocusTrapZone._focusStack[FocusTrapZone._focusStack.length - 1]) {
-      const focusedElement = document.activeElement as HTMLElement;
+      const doc = getDocument(this._root.current);
+      const focusedElement = doc!.activeElement as HTMLElement;
 
       if (!elementContains(this._root.current, focusedElement)) {
         this.focus();

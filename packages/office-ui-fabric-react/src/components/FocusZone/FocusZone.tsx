@@ -139,7 +139,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
       let parentElement = getParent(root, ALLOW_VIRTUAL_ELEMENTS);
 
-      while (parentElement && parentElement !== document.body && parentElement.nodeType === 1) {
+      const doc = getDocument(this._root.current);
+      while (parentElement && parentElement !== doc!.body && parentElement.nodeType === 1) {
         if (isElementFocusZone(parentElement)) {
           this._isInnerZone = true;
           break;
@@ -500,7 +501,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       return;
     }
 
-    if (document.activeElement === this._root.current && this._isInnerZone) {
+    const doc = getDocument(this._root.current);
+
+    if (doc!.activeElement === this._root.current && this._isInnerZone) {
       // If this element has focus, it is being controlled by a parent.
       // Ignore the keystroke.
       return;
@@ -947,8 +950,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   private _getOwnerZone(element?: HTMLElement): HTMLElement | null {
     let parentElement = getParent(element as HTMLElement, ALLOW_VIRTUAL_ELEMENTS);
+    const doc = getDocument(this._root.current);
 
-    while (parentElement && parentElement !== this._root.current && parentElement !== document.body) {
+    while (parentElement && parentElement !== this._root.current && parentElement !== doc!.body) {
       if (isElementFocusZone(parentElement)) {
         return parentElement;
       }
