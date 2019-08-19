@@ -1,7 +1,7 @@
-import { ILabelStyleProps } from 'office-ui-fabric-react/lib/Label';
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { ILabelStyleProps, ILabelStyles } from 'office-ui-fabric-react/lib/Label';
+import { FontWeights } from '@uifabric/styling';
 
-export const LabelStyles = (props: ILabelStyleProps) => {
+export const LabelStyles = (props: ILabelStyleProps): Partial<ILabelStyles> => {
   const { theme, disabled } = props;
   const { palette } = theme;
 

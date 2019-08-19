@@ -1,6 +1,497 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 06 Nov 2018 13:31:09 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+
+## 7.6.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+
+### Patches
+
+- Fix example issues from Accessibility Insights (elcraig@microsoft.com)
+
+## 7.5.1
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Patches
+
+- Updated snpashots and styles which use $ syntax. (dzearing@microsoft.com)
+
+## 7.5.0
+Mon, 12 Aug 2019 12:30:25 GMT
+
+### Minor changes
+
+- Adding import scripts check (esteban.230@hotmail.com)
+
+## 7.4.1
+Thu, 08 Aug 2019 12:32:41 GMT
+
+### Patches
+
+- getQueryParam gracefully falls back when window is not defined (jdh@microsoft.com)
+,- Add check for monaco global in example card (elcraig@microsoft.com)
+
+## 7.4.0
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Minor changes
+
+- Updating styles to not use $ syntax. (dzearing@microsoft.com)
+
+## 7.3.0
+Tue, 06 Aug 2019 12:32:07 GMT
+
+### Minor changes
+
+- Tsx-editor: Adding error bar (esteban.230@hotmail.com)
+
+### Patches
+
+- Tsx editor - Code not showing fix (esteban.230@hotmail.com)
+
+## 7.2.1
+Mon, 05 Aug 2019 12:33:41 GMT
+
+### Patches
+
+- updated style to add spinner for loading editor (t-nikaz@microsoft.com)
+
+## 7.2.0
+Fri, 02 Aug 2019 12:33:29 GMT
+
+### Minor changes
+
+- Website changes to work with monaco editor state management (t-nikaz@microsoft.com)
+
+## 7.1.7
+Tue, 30 Jul 2019 12:28:32 GMT
+
+### Patches
+
+- Replace the usage of deprecated Stack props to remove the console warnings. (vibraga@microsoft.com)
+
+## 7.1.6
+Mon, 22 Jul 2019 12:28:42 GMT
+
+### Patches
+
+- Add a way to get settings from query or session storage (elcraig@microsoft.com)
+
+## 7.1.5
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Allowing example title to show completely even when it goes past one line. (Humberto.Morimoto@microsoft.com)
+,- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+,- Fix API reference tables' flash of content on scroll (706967+KevinTCoughlin@users.noreply.github.com)
+
+## 7.1.3
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.1.2
+Thu, 27 Jun 2019 18:25:04 GMT
+
+### Patches
+
+- Addressing a variety of problems related to style recalculations.
+
+## 7.1.1
+Thu, 20 Jun 2019 12:27:38 GMT
+
+### Patches
+
+- Renamed instances of "Microsoft UI Fabric" to "UI Fabric"
+
+## 7.1.0
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Minor changes
+
+- Adds conditional logic to the render of specific regions on the page to enable use of the examples on docs.microsoft portal for OUFR.
+
+## 7.0.4
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- ColorPalette: fix missing react code breaking rendering
+
+## 7.0.3
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix export to codepen in fabric 7
+- Fix missing assets in production build.
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 7.0.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Breaking changes
+
+- Remove deprecated components; some styling fixes
+
+### Minor changes
+
+- Move Router to example-app-base
+
+### Patches
+
+- Revert example-app-base font changes
+- Update and dedupe React deps.
+- Remove use of deprecated @autobind decorator
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
+
+## 6.23.1
+Wed, 29 May 2019 12:21:24 GMT
+
+### Patches
+
+- Revert styled perf fixes temporarily.
+
+## 6.23.0
+Wed, 22 May 2019 12:21:34 GMT
+
+### Minor changes
+
+- Addressing a variety of problems related to style recalculations.
+
+### Patches
+
+- Use new fluent styles in ExampleCard; code highlighting cleanup; unused style cleanup
+- Update withPlatform return type
+
+## 6.22.0
+Tue, 21 May 2019 12:20:44 GMT
+
+### Minor changes
+
+- Add createDemoApp
+
+## 6.21.1
+Mon, 20 May 2019 12:22:33 GMT
+
+### Patches
+
+- ApiReferencesTable: use maps and combine if statements
+
+## 6.21.0
+Wed, 15 May 2019 12:31:44 GMT
+
+### Minor changes
+
+- Add randomEntry utility
+
+### Patches
+
+- PlatformContext: improve types, add displayName
+
+## 6.20.1
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- getSiteArea now pulls name from page definition instead of URL
+- Update Fabric assets link
+
+## 6.20.0
+Tue, 14 May 2019 01:56:43 GMT
+
+### Minor changes
+
+- Add `themeSlots` api to ColorPalette.
+- ApiReferencesTable/ApiReferencesTableSet: handle type aliases.
+
+## 6.19.0
+Thu, 09 May 2019 12:35:50 GMT
+
+### Minor changes
+
+- Add SiteMessageBar component and renderSiteMessageBar api to ISiteDefinition
+
+## 6.18.0
+Tue, 07 May 2019 12:34:52 GMT
+
+### Minor changes
+
+- Use kebab case IDs and add more jump link options
+
+### Patches
+
+- Fix UHF header style bugs.
+- Allow regex redirects
+
+## 6.17.4
+Mon, 06 May 2019 19:32:45 GMT
+
+### Patches
+
+- Fix UHF styling conflicts
+
+## 6.17.3
+Mon, 06 May 2019 12:35:11 GMT
+
+### Patches
+
+- Added css reset directly to ul
+
+## 6.17.2
+Mon, 06 May 2019 00:28:08 GMT
+
+### Patches
+
+- Syntax highlighting optimizations
+
+## 6.17.1
+Sun, 05 May 2019 19:59:10 GMT
+
+### Patches
+
+- ApiReferencesTable: only render methods and members tables if not empty
+- Fix footer flashing, sticky nav, sticky side rail
+- Anchor link handling and other bug fixes
+- More EditSection tooltip fixes
+
+## 6.17.0
+Sat, 04 May 2019 00:01:53 GMT
+
+### Minor changes
+
+- Adds shell and bash language support
+- Bug fixes and styling updates for new website
+- Updates for new website
+- Break out of existing customizations when showing example card.
+
+### Patches
+
+- conditionally render Implementation jump link based on presence of jsonDocs
+
+## 6.16.1
+Thu, 02 May 2019 12:36:35 GMT
+
+### Patches
+
+- extractAnchorLink shouldn't return undefined
+
+## 6.16.0
+Wed, 01 May 2019 12:34:24 GMT
+
+### Minor changes
+
+- Start copying new components and deprecating old things
+
+## 6.15.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- add ApiReferencesTable and ApiReferencesTableSet
+
+### Patches
+
+- fix links for fabric demo/pr deploy site
+-  Use new getFocusStyle signature
+
+## 6.14.4
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Patches
+
+- Deprecate implementation examples
+
+## 6.14.3
+Wed, 24 Apr 2019 12:35:54 GMT
+
+### Patches
+
+- Deprecate component status
+
+## 6.14.2
+Thu, 18 Apr 2019 12:31:50 GMT
+
+### Patches
+
+- reduce the re-export wild card to fix website
+
+## 6.14.1
+Wed, 17 Apr 2019 12:33:35 GMT
+
+### Patches
+
+- Run prettier on all files
+
+## 6.14.0
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Minor changes
+
+- Convert components to css-in-js
+
+## 6.13.2
+Tue, 02 Apr 2019 12:36:20 GMT
+
+### Patches
+
+- handle TSDoc default value tag
+
+## 6.13.1
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.13.0
+Fri, 29 Mar 2019 12:36:45 GMT
+
+### Minor changes
+
+- Code and documentation cleanup
+
+### Patches
+
+- Make CodepenComponent specify SCSS preprocessor
+
+## 6.12.4
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- Enable stricter lint and compiler options
+- ExampleCard: Remove dependency on styles from random example, and remove utility CSS classes
+
+## 6.12.3
+Fri, 22 Mar 2019 12:34:41 GMT
+
+### Patches
+
+- Remove ExampleCardComponent now that Stack has been promoted.
+
+## 6.12.2
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Patches
+
+- FeedbackList: Iterate Github issues collection directly to avoid total_count disparity
+
+## 6.12.1
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Patches
+
+- Improve autodoc to deal with line breaks in extends clause.
+
+## 6.12.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- remove not null assertion for optional prop
+
+## 6.11.8
+Tue, 26 Feb 2019 22:45:29 GMT
+
+### Patches
+
+- Feedback button: Increase styles specificity to override MWF conflicts.
+
+## 6.11.7
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Tweaking the package json to remove uneeded side effects, which helps with bundling.
+
+## 6.11.6
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- fluent folder cover; updated metadata font color; added yellowDark color variable
+- Switch PivotItems to use headerText not linkText
+
+## 6.11.5
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Patches
+
+- Changes to support Slots Foundation.
+
+## 6.11.4
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Patches
+
+- Use fabric dev build in export to codepen
+
+## 6.11.3
+Fri, 18 Jan 2019 13:38:05 GMT
+
+### Patches
+
+- Fix bug where customizations apply to theme and scheme dropdowns.
+
+## 6.11.2
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- ComponentPage: add id to dos and donts section to fix linking on site
+
+## 6.11.1
+Wed, 16 Jan 2019 13:38:44 GMT
+
+### Patches
+
+- Icon: removing aria-hidden attribute.
+
+## 6.11.0
+Mon, 14 Jan 2019 13:39:22 GMT
+
+### Minor changes
+
+- **New:** MarkdownTable components for use in PageMarkdown.\n**EditSection:** Allow content to be more flexible in order to render.\n**PageMarkdown:** Override table elements with new MarkdownTable components, add global classNames, add static displayName.
+
+## 6.10.0
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Minor changes
+
+- replace references to isCollapsable with isCollapsible
+
+### Patches
+
+- Remove types and modules no longer needed due to Foundation changes.
+
+## 6.9.4
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Patches
+
+- Fix Example dropdown regression caused by #7326.
+
+## 6.9.3
+Thu, 06 Dec 2018 13:34:21 GMT
+
+### Patches
+
+- Fix for issue#7258:Documentation is missing for button
 
 ## 6.9.2
 Tue, 06 Nov 2018 13:31:09 GMT

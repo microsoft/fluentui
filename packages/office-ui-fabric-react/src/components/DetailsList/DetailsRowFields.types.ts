@@ -1,15 +1,22 @@
 import { IColumn } from './DetailsList.types';
-import { IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
-import { IBaseProps, IRefObject } from '../../Utilities';
+import { ICellStyleProps, IDetailsRowStyles } from './DetailsRow.types';
+import { IDetailsListProps } from './DetailsList';
+import { IDetailsRowProps } from './DetailsRow';
 
-export interface IDetailsRowFields {}
+/**
+ * Extended column render props.
+ *
+ * {@docCategory DetailsList}
+ */
+export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'> &
+  Pick<IDetailsRowProps, 'cellsByColumn'>;
 
-export interface IDetailsRowFieldsProps extends IBaseProps<IDetailsRowFields> {
-  /**
-   * Ref of component
-   */
-  componentRef?: IRefObject<IDetailsRowFields>;
-
+/**
+ * Props interface for the DetailsRowFields component.
+ *
+ * {@docCategory DetailsList}
+ */
+export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
   /**
    * Data source for this component
    */
@@ -36,19 +43,19 @@ export interface IDetailsRowFieldsProps extends IBaseProps<IDetailsRowFields> {
   compact?: boolean;
 
   /**
-   * Callback for rendering an item column
+   * Subset of classnames currently generated in DetailsRow that are used within DetailsRowFields.
    */
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
+  rowClassNames: {
+    [k in keyof Pick<
+      IDetailsRowStyles,
+      'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'
+    >]: string
+  };
 
   /**
-   * Whether to show shimmer
+   * Style properties to customize cell render output.
    */
-  shimmer?: boolean;
-
-  /**
-   * Required prop to be passed in from the parent DetailsRow a map of classNames and its mergestyle-created classNames
-   */
-  rowClassNames: { [className in keyof IDetailsRowStyles]: string };
-
   cellStyleProps?: ICellStyleProps;
+
+  enableUpdateAnimations?: boolean;
 }

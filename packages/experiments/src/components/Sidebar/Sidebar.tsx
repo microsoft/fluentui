@@ -2,7 +2,6 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  */
 
-import { autobind } from 'office-ui-fabric-react';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
@@ -37,9 +36,9 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
   }
 
   /*
-     * ComponentDidMount is used in the sidebar to adjust the height of the sidebar content
-     * to allow the content scrollbar to be correctly sized.
-     */
+   * ComponentDidMount is used in the sidebar to adjust the height of the sidebar content
+   * to allow the content scrollbar to be correctly sized.
+   */
   public componentDidMount(): void {
     const parentId = this.props.id ? this.props.id : '';
     const sidebar = document.getElementsByClassName(`ba-Sidebar-${parentId}`)[0] as HTMLElement;
@@ -54,7 +53,7 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
     const { theme, styles, collapseButtonStyles, className, collapseButtonAriaLabel, footerItems, id, items } = this.props;
 
     this._theme = theme!;
-    this._colors = this.props.colors ? this.props.colors : SidebarColors.Light;
+    this._colors = this.props.colors !== undefined ? this.props.colors : SidebarColors.Light;
     this._buttonStyles = getButtonColoredStyles(theme!, this._colors, this.props.buttonStyles);
 
     this._classNames = getSidebarClassNames(getSidebarStyles(theme!, this._colors, styles), className, this.state.isCollapsed);
@@ -95,8 +94,7 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
     );
   }
 
-  @autobind
-  public toggleCollapsed(): void {
+  public toggleCollapsed = () => {
     this.setState((prevState: ISidebarState) => {
       return { isCollapsed: !this.state.isCollapsed };
     });
@@ -104,7 +102,7 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
     if (this.props.onCollapseChanged) {
       this.props.onCollapseChanged();
     }
-  }
+  };
 
   public setCollapsed(newValue: boolean): void {
     this.setState((prevState: ISidebarState) => {

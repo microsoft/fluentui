@@ -1,32 +1,37 @@
-let path = require('path');
-let resources = require('../../scripts/tasks/webpack-resources');
-const devServerConfig = {
-  inline: true,
-  port: 4321
-};
+// @ts-check
 
-const outputConfig = {
-  filename: 'fabric-sitev5.js'
-};
+const path = require('path');
+const resources = require('@uifabric/build/webpack/webpack-resources');
+const { addMonacoConfig } = require('@uifabric/tsx-editor/scripts/monaco-webpack');
 
-module.exports = resources.createServeConfig({
-  entry: './src/root.tsx',
+const entryPointName = 'fabric-sitev5';
 
-  output: outputConfig,
+module.exports = resources.createServeConfig(
+  addMonacoConfig({
+    entry: {
+      [entryPointName]: './src/root.tsx'
+    },
 
-  devServer: devServerConfig,
+    output: {
+      chunkFilename: `${entryPointName}-[name].js`
+    },
 
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM'
-  },
+    externals: {
+      react: 'React',
+      'react-dom': 'ReactDOM'
+    },
 
-  resolve: {
-    alias: {
-      'office-ui-fabric-react/src': path.join(__dirname, 'node_modules/office-ui-fabric-react/src'),
-      'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
-      'Props.ts.js': 'Props',
-      'Example.tsx.js': 'Example'
+    resolve: {
+      alias: {
+        '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
+        '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
+        '@uifabric/example-app-base$': path.resolve(__dirname, '../../packages/example-app-base/src'),
+        'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
+        'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
+        'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
+        'Props.ts.js': 'Props',
+        'Example.tsx.js': 'Example'
+      }
     }
-  }
-});
+  })
+);

@@ -37,54 +37,51 @@ export const TeamsCustomizations: ICustomizations = {
         buttonTextPressed: '#252424',
         buttonTextHovered: '#252424',
 
-        buttonBorder: '#bdbdbd',
-
-        primaryBorder: 'transparent'
+        buttonBorder: '#bdbdbd'
       }
     })
   },
 
   scopedSettings: {
     Button: {
-      styleVariables: {
-        baseVariant: {
-          baseState: {
-            borderRadius: 3,
-            borderWidth: 2,
+      // tslint:disable:no-any
+      tokens: (props: any) => {
+        return [
+          {
             iconSize: 16,
             iconWeight: 700,
-            textWeight: 400,
+            textWeight: 400
+          },
+          !props.circular && {
+            borderRadius: 3,
+            borderWidth: 2,
             contentPadding: '4px 32px'
           },
-          enabled: {
-            iconColor: '#252424',
+          props.circular && {
+            borderWidth: 1
+          },
+          !props.disabled && {
+            iconColor: '#252424', // this hardcoding doesn't work well with variants
             borderColorHovered: 'transparent',
             borderColorPressed: 'transparent'
           },
-          expanded: {
+          props.expanded && {
             borderColor: 'transparent'
-          }
-        },
-        circular: {
-          baseState: {
-            borderWidth: 1
           },
-          enabled: {
-            backgroundColorHovered: '#464775',
-            backgroundColorPressed: '#464775',
-
-            textColorHovered: '#fff',
-            textColorPressed: '#fff',
-
-            iconColorHovered: '#fff',
-            iconColorPressed: '#fff'
-          }
-        },
-        primary: {
-          enabled: {
-            iconColor: 'white'
-          }
-        }
+          props.circular &&
+            !props.disabled && {
+              backgroundColorHovered: '#464775', // this hardcoding doesn't work well with variants
+              backgroundColorPressed: '#464775', // this hardcoding doesn't work well with variants
+              textColorHovered: '#fff',
+              textColorPressed: '#fff',
+              iconColorHovered: '#fff',
+              iconColorPressed: '#fff'
+            },
+          props.primary &&
+            !props.disabled && {
+              iconColor: 'white'
+            }
+        ];
       }
     }
   }

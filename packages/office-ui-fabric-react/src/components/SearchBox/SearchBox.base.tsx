@@ -1,51 +1,74 @@
 import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
-import { BaseComponent, getId, KeyCodes, classNamesFunction, createRef, getNativeProps, inputProperties } from '../../Utilities';
+import {
+  initializeComponentRef,
+  warnDeprecations,
+  EventGroup,
+  getId,
+  KeyCodes,
+  classNamesFunction,
+  getNativeProps,
+  inputProperties
+} from '../../Utilities';
 
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 
 const getClassNames = classNamesFunction<ISearchBoxStyleProps, ISearchBoxStyles>();
+const COMPONENT_NAME = 'SearchBox';
 
 export interface ISearchBoxState {
   value?: string;
   hasFocus?: boolean;
-  id?: string;
 }
 
-export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxState> {
+export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
   public static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'> = {
     disableAnimation: false,
     clearButtonProps: { ariaLabel: 'Clear text' }
   };
 
-  private _rootElement = createRef<HTMLDivElement>();
-  private _inputElement = createRef<HTMLInputElement>();
+  private _rootElement = React.createRef<HTMLDivElement>();
+  private _inputElement = React.createRef<HTMLInputElement>();
   private _latestValue: string;
+  private _fallbackId: string;
+  private _events: EventGroup | undefined;
 
   public constructor(props: ISearchBoxProps) {
     super(props);
 
-    this._warnDeprecations({
+    initializeComponentRef(this);
+
+    warnDeprecations(COMPONENT_NAME, props, {
       labelText: 'placeholder',
       defaultValue: 'value'
     });
 
     this._latestValue = props.value || '';
+    this._fallbackId = getId(COMPONENT_NAME);
 
     this.state = {
       value: this._latestValue,
-      hasFocus: false,
-      id: getId('SearchBox')
+      hasFocus: false
     };
   }
 
-  public componentWillReceiveProps(newProps: ISearchBoxProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: ISearchBoxProps): void {
     if (newProps.value !== undefined) {
       this._latestValue = newProps.value;
+      // If the user passes in null, substitute an empty string
+      // (passing null is not allowed per typings, but users might do it anyway)
       this.setState({
-        value: newProps.value
+        value: newProps.value || ''
       });
+    }
+  }
+
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillMount() {
+    if (this._events) {
+      this._events.dispose();
     }
   }
 
@@ -61,9 +84,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       theme,
       clearButtonProps,
       disableAnimation,
-      iconProps
+      iconProps,
+      id = this._fallbackId
     } = this.props;
-    const { value, hasFocus, id } = this.state;
+    const { value, hasFocus } = this.state;
     const placeholderValue = labelText === undefined ? placeholder : labelText;
 
     const classNames = getClassNames(styles!, {
@@ -76,7 +100,13 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       disableAnimation
     });
 
-    const nativeProps = getNativeProps(this.props, inputProperties, ['id', 'className', 'placeholder', 'onFocus', 'onBlur', 'value']);
+    const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
+      'className',
+      'placeholder',
+      'onFocus',
+      'onBlur',
+      'value'
+    ]);
 
     return (
       <div ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
@@ -133,7 +163,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       this.setState({
         value: ''
       });
-      this._callOnChange('');
+      this._callOnChange(undefined, '');
       ev.stopPropagation();
       ev.preventDefault();
 
@@ -150,19 +180,13 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   };
 
   private _onFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
-    this.setState(
-      {
-        hasFocus: true
-      },
-      () => {
-        // IE doesn't capture the onClickFocus, so we will focus here
-        const inputElement = this._inputElement.current;
-        if (inputElement && document.activeElement !== inputElement) {
-          this.focus();
-        }
-      }
-    );
+    this.setState({
+      hasFocus: true
+    });
 
+    if (!this._events) {
+      this._events = new EventGroup(this);
+    }
     this._events.on(ev.currentTarget, 'blur', this._onBlur, true);
 
     if (this.props.onFocus) {
@@ -194,8 +218,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       case KeyCodes.enter:
         if (this.props.onSearch) {
           this.props.onSearch(this.state.value);
+          break;
         }
-        break;
+        // if we don't handle the enter press then we shouldn't prevent default
+        return;
 
       default:
         this.props.onKeyDown && this.props.onKeyDown(ev);
@@ -211,7 +237,9 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
   };
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
-    this._events.off(this._rootElement.current, 'blur');
+    if (this._events) {
+      this._events.off();
+    }
     this.setState({
       hasFocus: false
     });
@@ -230,10 +258,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     this._latestValue = value;
 
     this.setState({ value });
-    this._callOnChange(value);
+    this._callOnChange(ev, value);
   };
 
-  private _callOnChange(newValue: string): void {
+  private _callOnChange(ev?: React.ChangeEvent<HTMLInputElement>, newValue?: string): void {
     const { onChange, onChanged } = this.props;
 
     // Call @deprecated method.
@@ -242,7 +270,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     }
 
     if (onChange) {
-      onChange(newValue);
+      onChange(ev, newValue);
     }
   }
 }

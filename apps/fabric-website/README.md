@@ -8,10 +8,12 @@ Office UI Fabric is a collection of projects that represent the Office and Offic
 
 Before you get started, make sure you have [node.js](https://nodejs.org/), [gulp](http://gulpjs.com/), and [git](https://git-scm.com/) installed. To view the documentation including examples, contracts, current statuses, and to add functionality or fix issues locally, you can:
 
-1.  `git clone https://github.com/OfficeDev/office-ui-fabric-react.git` - this is the [Office UI Fabric React project](https://github.com/OfficeDev/office-ui-fabric-react) which you will want to name _office-ui-fabric-react_
-2.  `npm install` the Fabric React project you just cloned in the previous step.
-3.  In the command prompt change directories to the fabric-website director in apps `cd apps/fabric-website/`.
-4.  Then to start the website run `npm start`. This will open your operating system's default web browser with the website. You can make changes to the code which will automatically build and refresh the page using live-reload.
+1.  `git clone https://github.com/OfficeDev/office-ui-fabric-react.git` - this is the [Office UI Fabric React project](https://github.com/OfficeDev/office-ui-fabric-react)
+2.  Change directories into the newly cloned project's directory: `cd office-ui-fabric-react`
+3.  `npm install` to install dependencies and start building the project
+4.  `npm run buildfast` to build additional dependencies of `fabric-website`
+5.  Change directories to the `fabric-website` directory under `apps`: `cd apps && cd fabric-website`.
+6.  To start the website, run `npm start`. This will open your operating system's default web browser with the website. You can make changes to the code which will automatically build and refresh the page using live-reload.
 
 **Note**: Were any steps missing? Could the instructions be made clearer for the next person? Update the instructions above and submit a pull request!
 
@@ -26,7 +28,7 @@ Before you get started, make sure you have [node.js](https://nodejs.org/), [gulp
 
 All files on the Office UI Fabric React GitHub repository are subject to the MIT license. Please read the License file at the root of the project.
 
-Usage of the fonts referenced in Office UI Fabric files is subject to the [license](https://spoprod-a.akamaihd.net/files/fabric/assets/microsoft_fabric_assets_license_agreement_10262017.pdf).
+Usage of the fonts referenced in Office UI Fabric files is subject to the [license](https://aka.ms/fabric-assets-license).
 
 ---
 

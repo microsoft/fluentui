@@ -8,12 +8,11 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
     return (
       <div>
         <DefaultButton
-          id="ContextualMenuSectionExample"
           text="Click for ContextualMenu"
           menuProps={{
             items: [
               {
-                key: 'section',
+                key: 'section1',
                 itemType: ContextualMenuItemType.Section,
                 sectionProps: {
                   topDivider: true,
@@ -32,7 +31,7 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
                 }
               },
               {
-                key: 'section',
+                key: 'section2',
                 itemType: ContextualMenuItemType.Section,
                 sectionProps: {
                   title: 'Social',
@@ -53,7 +52,7 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
                 }
               },
               {
-                key: 'section',
+                key: 'section3',
                 itemType: ContextualMenuItemType.Section,
                 sectionProps: {
                   title: 'Navigation',
@@ -61,7 +60,8 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
                     {
                       key: 'Bing',
                       text: 'Go to Bing',
-                      href: 'http://www.bing.com'
+                      href: 'http://www.bing.com',
+                      target: '_blank'
                     }
                   ]
                 }

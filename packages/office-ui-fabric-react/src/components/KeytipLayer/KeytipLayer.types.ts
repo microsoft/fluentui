@@ -3,9 +3,15 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle } from '../../Styling';
 import { IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
 
+/**
+ * {@docCategory Keytips}
+ */
 export interface IKeytipLayer {}
 
-export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
+/**
+ * {@docCategory Keytips}
+ */
+export interface IKeytipLayerProps extends React.ClassAttributes<IKeytipLayer> {
   /**
    * Optional callback to access the KeytipLayer component. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -50,8 +56,14 @@ export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
   styles?: IStyleFunctionOrObject<IKeytipLayerStyleProps, IKeytipLayerStyles>;
 }
 
+/**
+ * {@docCategory Keytips}
+ */
 export interface IKeytipLayerStyles {
   innerContent: IStyle;
 }
 
+/**
+ * {@docCategory Keytips}
+ */
 export interface IKeytipLayerStyleProps {}

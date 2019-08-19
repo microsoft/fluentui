@@ -7,13 +7,14 @@ const getClassNames = classNamesFunction<ISpinnerStyleProps, ISpinnerStyles>();
 export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
   public static defaultProps: ISpinnerProps = {
     size: SpinnerSize.medium,
-    ariaLive: 'polite'
+    ariaLive: 'polite',
+    labelPosition: 'bottom'
   };
 
   public render() {
-    const { type, size, ariaLabel, ariaLive, styles, label, theme, className } = this.props;
-    const statusMessage = ariaLabel || label;
-    const nativeProps = getNativeProps(this.props, divProperties, ['size']);
+    const { type, size, ariaLabel, ariaLive, styles, label, theme, className, labelPosition } = this.props;
+    const statusMessage = ariaLabel;
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['size']);
 
     // SpinnerType is deprecated. If someone is still using this property, rather than putting the SpinnerType into the ISpinnerStyleProps,
     // we'll map SpinnerType to its equivalent SpinnerSize and pass that in. Once SpinnerType finally goes away we should delete this.
@@ -25,7 +26,8 @@ export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
     const classNames = getClassNames(styles!, {
       theme: theme!,
       size: styleSize,
-      className
+      className,
+      labelPosition
     });
 
     return (

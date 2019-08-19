@@ -27,7 +27,8 @@ export const getStyles = (props: IOverlayStyleProps): IOverlayStyles => {
 
         selectors: {
           [HighContrastSelector]: {
-            border: '1px solid WindowText'
+            border: '1px solid WindowText',
+            opacity: 0
           }
         }
       },

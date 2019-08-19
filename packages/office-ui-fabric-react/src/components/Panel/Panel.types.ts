@@ -1,10 +1,14 @@
 import * as React from 'react';
 import { IFocusTrapZoneProps } from '../../FocusTrapZone';
 import { ILayerProps } from '../../Layer';
+import { IOverlayProps } from '../../Overlay';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { PanelBase } from './Panel.base';
 
+/**
+ * {@docCategory Panel}
+ */
 export interface IPanel {
   /**
    * Forces the panel to open.
@@ -16,6 +20,10 @@ export interface IPanel {
    */
   dismiss: (ev?: React.KeyboardEvent<HTMLElement>) => void;
 }
+
+/**
+ * {@docCategory Panel}
+ */
 export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   /**
    * Optional callback to access the IPanel interface. Use this instead of ref for accessing
@@ -25,7 +33,10 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
 
   /**
    * Whether the panel is displayed.
-   * @defaultvalue false
+   * If true, will cause panel to stay open even if dismissed.
+   * If false, will cause panel to stay hidden.
+   * If undefined, will allow the panel to control its own visility through open/dismiss methods.
+   * @defaultvalue undefined
    */
   isOpen?: boolean;
 
@@ -67,13 +78,24 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   headerText?: string;
 
   /**
+   * A callback function for when the Panel is opened, before the animation completes.
+   */
+  onOpen?: () => void;
+
+  /**
+   * A callback function for when the Panel is opened, after the animation completes.
+   */
+  onOpened?: () => void;
+
+  /**
    * A callback function for when the panel is closed, before the animation completes.
    * If the panel should NOT be dismissed based on some keyboard event, then simply call ev.preventDefault() on it
    */
   onDismiss?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
 
   /**
-   * A callback function which is called after the Panel is dismissed and the animation is complete.
+   * A callback function which is called **after** the Panel is dismissed and the animation is complete.
+   * (If you need to update the Panel's `isOpen` prop in response to a dismiss event, use `onDismiss` instead.)
    */
   onDismissed?: () => void;
 
@@ -100,7 +122,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   type?: PanelType;
 
   /**
-   * Custom panel width, used only when type is set to PanelType.custom.
+   * Custom panel width, used only when `type` is set to `PanelType.custom`.
    */
   customWidth?: string;
 
@@ -129,9 +151,9 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   ignoreExternalFocusing?: boolean;
 
   /**
-   * Indicates whether Panel should force focus inside the focus trap zone
+   * Indicates whether Panel should force focus inside the focus trap zone.
+   * If not explicitly specified, behavior aligns with FocusTrapZone's default behavior.
    * Deprecated, use `focusTrapZoneProps`.
-   * @defaultvalue true
    * @deprecated Use `focusTrapZoneProps`.
    */
   forceFocusInsideTrap?: boolean;
@@ -154,6 +176,11 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   layerProps?: ILayerProps;
 
   /**
+   * Optional props to pass to the Overlay component that the panel uses.
+   */
+  overlayProps?: IOverlayProps;
+
+  /**
    * Optional custom function to handle clicks outside the panel in lightdismiss mode
    */
   onLightDismissClick?: () => void;
@@ -164,9 +191,14 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   onOuterClick?: () => void;
 
   /**
-   * Optional custom renderer navigation region. Replaces current close button.
+   * Optional custom renderer navigation region. Replaces the region that contains the close button.
    */
   onRenderNavigation?: IRenderFunction<IPanelProps>;
+
+  /**
+   * Optional custom renderer for content in the navigation region. Replaces current close button.
+   */
+  onRenderNavigationContent?: IRenderFunction<IPanelProps>;
 
   /**
    * Optional custom renderer for header region. Replaces current title
@@ -200,6 +232,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
  * the panel's title. This allows the `aria-labelledby` for the panel popup to work correctly.
  * Note that if `headerTextId` is provided, it **must** be used on an element, or screen readers
  * will be confused by the reference to a nonexistent ID.
+ * {@docCategory Panel}
  */
 export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
   /**
@@ -212,92 +245,102 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
   (props?: IPanelProps, defaultRender?: IPanelHeaderRenderer, headerTextId?: string | undefined): JSX.Element | null;
 }
 
+/**
+ * {@docCategory Panel}
+ */
 export enum PanelType {
   /**
-   * Renders the panel in 'small' mode, anchored to the far side (right in LTR mode), and has a fluid width.
-   * Only used on Small screen breakpoints.
-   * Small: 320-479px width (full screen), 16px Left/Right padding
-   * Medium: \<unused\>
-   * Large: \<unused\>
-   * XLarge: \<unused\>
-   * XXLarge: \<unused\>
+   * Renders the Panel with a `fluid` (full screen) width.
+   * Recommended for use on small screen breakpoints.
+   * - Small (320-479): full screen width, 16px left/right padding
+   * - Medium (480-639): full screen width, 16px left/right padding
+   * - Large (640-1023): full screen width, 32px left/right padding
+   * - XLarge (1024-1365): full screen width, 32px left/right padding
+   * - XXLarge (1366-up): full screen width, 40px left/right padding
    */
   smallFluid = 0,
 
   /**
-   * Renders the panel in 'small' mode, anchored to the far side (right in LTR mode), and has a fixed width.
-   * Small: 272px width, 16px Left/Right padding
-   * Medium: 340px width, 16px Left/Right padding
-   * Large: 340px width, 32px Left/Right padding
-   * XLarge: 340px width, 32px Left/Right padding
-   * XXLarge: 340px width, 40px Left/Right padding
+   * Renders the Panel in fixed-width `small` size, anchored to the far side (right in LTR mode).
+   * - Small (320-479): adapts to `PanelType.smallFluid` at this breakpoint
+   * - Medium (480-639): 340px width, 16px left/right padding
+   * - Large (640-1023): 340px width, 32px left/right padding
+   * - XLarge (1024-1365): 340px width, 32px left/right padding
+   * - XXLarge (1366-up): 340px width, 40px left/right padding
    */
   smallFixedFar = 1,
 
   /**
-   * Renders the panel in 'small' mode, anchored to the near side (left in LTR mode), and has a fixed width.
-   * Small: 272px width, 16px Left/Right padding
-   * Medium: 272px width, 16px Left/Right padding
-   * Large: 272px width, 32px Left/Right padding
-   * XLarge: 272px width, 32px Left/Right padding
-   * XXLarge: 272px width, 32px Left/Right padding
+   * Renders the Panel in fixed-width `small` size, anchored to the near side (left in LTR mode).
+   * - Small (320-479): 272px width, 16px left/right padding
+   * - Medium (480-639): 272px width, 16px left/right padding
+   * - Large (640-1023): 272px width, 32px left/right padding
+   * - XLarge (1024-1365): 272px width, 32px left/right padding
+   * - XXLarge (1366-up): 272px width, 40px left/right padding
    */
   smallFixedNear = 2,
 
   /**
-   * Renders the panel in 'medium' mode, anchored to the far side (right in LTR mode).
-   * Small: \<adapts to smallFluid\>
-   * Medium: \<adapts to smallFixedFar\>
-   * Large: 48px fixed left margin, 32px Left/Right padding
-   * XLarge: 644px width, 32px Left/Right padding
-   * XXLarge: 643px width, 40px Left/Right padding
+   * Renders the Panel in `medium` size, anchored to the far side (right in LTR mode).
+   * - Small (320-479): adapts to `PanelType.smallFluid` at this breakpoint
+   * - Medium (480-639): adapts to `PanelType.smallFixedFar` at this breakpoint
+   * - Large (640-1023): 592px width, 32px left/right padding
+   * - XLarge (1024-1365): 644px width, 32px left/right padding
+   * - XXLarge (1366-up): 644px width, 40px left/right padding
    */
   medium = 3,
 
   /**
-   * Renders the panel in 'large' mode, anchored to the far side (right in LTR mode), and is fluid at XXX-Large breakpoint.
-   * Small: \<adapts to smallFluid\>
-   * Medium:  \<adapts to smallFixedFar\>
-   * Large: \<adapts to medium\>
-   * XLarge: 48px fixed left margin, 32px Left/Right padding
-   * XXLarge: 48px fixed left margin, 32px Left/Right padding
-   * XXXLarge: 48px fixed left margin, (no redlines for padding, assuming previous breakpoint)
+   * Renders the Panel in `large` size, anchored to the far side (right in LTR mode).
+   * - Small (320-479): adapts to `PanelType.smallFluid` at this breakpoint
+   * - Medium (480-639):  adapts to `PanelType.smallFixedFar` at this breakpoint
+   * - Large (640-1023): adapts to `PanelType.medium` at this breakpoint
+   * - XLarge (1024-1365): 48px fixed left margin, fluid width, 32px left/right padding
+   * - XXLarge (1366-up): 428px fixed left margin, fluid width, 40px left/right padding
    */
   large = 4,
 
   /**
-   * Renders the panel in 'large' mode, anchored to the far side (right in LTR mode), and is fixed at XXX-Large breakpoint.
-   * Small: \<adapts to smallFluid\>
-   * Medium: \<adapts to smallFixedFar\>
-   * Large: \<adapts to medium\>
-   * XLarge: 48px fixed left margin, 32px Left/Right padding
-   * XXLarge: 48px fixed left margin, 32px Left/Right padding
-   * XXXLarge: 940px width, (no redlines for padding, assuming previous breakpoint)
+   * Renders the Panel in `large` size, anchored to the far side (right in LTR mode), with a fixed width at XX-Large breakpoint.
+   * - Small (320-479): adapts to `PanelType.smallFluid` at this breakpoint
+   * - Medium (480-639): adapts to `PanelType.smallFixedFar` at this breakpoint
+   * - Large (640-1023): adapts to `PanelType.medium` at this breakpoint
+   * - XLarge (1024-1365): 48px fixed left margin, fluid width, 32px left/right padding
+   * - XXLarge (1366-up): 940px width, 40px left/right padding
    */
   largeFixed = 5,
 
   /**
-   * Renders the panel in 'extra large' mode, anchored to the far side (right in LTR mode).
-   * Small: \<adapts to smallFluid\>
-   * Medium: \<adapts to smallFixedFar\>
-   * Large: \<adapts to medium\>
-   * XLarge: \<adapts to large\>
-   * XXLarge: 176px fixed left margin, 40px Left/Right padding
-   * XXXLarge: 176px fixed left margin, 40px Left/Right padding
+   * Renders the Panel in `extra large` size, anchored to the far side (right in LTR mode).
+   * - Small (320-479): adapts to `PanelType.smallFluid` at this breakpoint
+   * - Medium (480-639): adapts to `PanelType.smallFixedFar` at this breakpoint
+   * - Large (640-1023): adapts to `PanelType.medium` at this breakpoint
+   * - XLarge (1024-1365): adapts to `PanelType.large` at this breakpoint
+   * - XXLarge (1366-1919): 176px fixed left margin, fluid width, 40px left/right padding
+   * - XXXLarge (1920-up): 176px fixed left margin, fluid width, 40px left/right padding
    */
   extraLarge = 6,
 
   /**
-   * Renders the panel in 'custom' mode using customWidth, anchored to the far side (right in LTR mode).
-   * Small: \<adapts to smallFluid\>
-   * Medium: \<adapts to smallFixedFar\>
-   * Large: 48px fixed left margin, 32px Left/Right padding
-   * XLarge: 644px width, 32px Left/Right padding
-   * XXLarge: 643px width, 40px Left/Right padding
+   * Renders the Panel in `custom` size using `customWidth`, anchored to the far side (right in LTR mode).
+   * - Has a fixed width provided by the `customWidth` prop
+   * - When screen width reaches the `customWidth` value it will behave like a fluid width Panel
+   * taking up 100% of the viewport width
    */
-  custom = 7
+  custom = 7,
+
+  /**
+   * Renders the Panel in `custom` size using `customWidth`, anchored to the near side (left in LTR mode).
+   * - Has a fixed width provided by the `customWidth` prop
+   * - When screen width reaches the `customWidth` value it will behave like a fluid width Panel
+   * taking up 100% of the viewport width
+   */
+  customNear = 8
 }
 
+/**
+ * {@docCategory Panel}
+ */
 export interface IPanelStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -370,6 +413,9 @@ export interface IPanelStyleProps {
 //   button: IStyleFunctionOrObject<any, any>;
 // }
 
+/**
+ * {@docCategory Panel}
+ */
 export interface IPanelStyles {
   /**
    * Style for the root element.

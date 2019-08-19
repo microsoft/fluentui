@@ -1,17 +1,16 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, divProperties, getNativeProps } from '../../Utilities';
+import { classNamesFunction, divProperties, getNativeProps } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
-import { ITooltipProps, ITooltipStyleProps, ITooltipStyles, TooltipDelay } from './Tooltip.types';
+import { ITooltipProps, ITooltipStyleProps, ITooltipStyles } from './Tooltip.types';
 import { Callout } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 const getClassNames = classNamesFunction<ITooltipStyleProps, ITooltipStyles>();
 
-export class TooltipBase extends BaseComponent<ITooltipProps, any> {
+export class TooltipBase extends React.Component<ITooltipProps, any> {
   // Specify default props values
   public static defaultProps: Partial<ITooltipProps> = {
     directionalHint: DirectionalHint.topCenter,
-    delay: TooltipDelay.medium,
     maxWidth: '364px',
     calloutProps: {
       isBeakVisible: true,
@@ -28,7 +27,6 @@ export class TooltipBase extends BaseComponent<ITooltipProps, any> {
     const {
       className,
       calloutProps,
-      delay,
       directionalHint,
       directionalHintForRTL,
       styles,
@@ -42,7 +40,8 @@ export class TooltipBase extends BaseComponent<ITooltipProps, any> {
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className: className || (calloutProps && calloutProps.className),
-      delay: delay!,
+      beakWidth: calloutProps && calloutProps.beakWidth,
+      gapSpace: calloutProps && calloutProps.gapSpace,
       maxWidth: maxWidth!
     });
 

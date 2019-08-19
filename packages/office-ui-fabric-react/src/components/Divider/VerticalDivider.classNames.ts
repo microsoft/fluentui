@@ -2,6 +2,9 @@ import { memoizeFunction } from '../../Utilities';
 import { mergeStyleSets, ITheme } from '../../Styling';
 import { IVerticalDividerClassNames } from './VerticalDivider.types';
 
+/**
+ * @deprecated use getStyles exported from VerticalDivider.styles.ts
+ */
 export const getDividerClassNames = memoizeFunction(
   (theme: ITheme): IVerticalDividerClassNames => {
     return mergeStyleSets({

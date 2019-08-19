@@ -20,3 +20,6 @@ tsd.json
 tslint.json
 typings
 webpack.config.js
+*.png
+*.jpg
+*.bmp

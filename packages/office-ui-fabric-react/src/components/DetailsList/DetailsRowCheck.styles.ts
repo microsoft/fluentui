@@ -1,5 +1,8 @@
-import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
 import { getGlobalClassNames, getFocusStyle } from '../../Styling';
+import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
+import { DEFAULT_ROW_HEIGHTS } from './DetailsRow.styles';
+import { HEADER_HEIGHT } from './DetailsHeader.styles';
+import { CheckGlobalClassNames } from '../Check/Check.styles';
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow-check',
@@ -7,9 +10,14 @@ const GlobalClassNames = {
   isHeader: 'ms-DetailsRow-check--isHeader'
 };
 
+export const CHECK_CELL_WIDTH = 48;
+
 export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckStyles => {
   const { theme, className, isHeader, selected, anySelected, canSelect, compact, isVisible } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const { rowHeight, compactRowHeight } = DEFAULT_ROW_HEIGHTS;
+
+  const height = isHeader ? HEADER_HEIGHT : compact ? compactRowHeight : rowHeight;
 
   const isCheckVisible = isVisible || selected || anySelected;
 
@@ -17,10 +25,11 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
     root: [classNames.root, className],
 
     check: [
-      !canSelect && [classNames.isDisabled, { visibility: 'hidden' }],
+      !canSelect && classNames.isDisabled,
       isHeader && classNames.isHeader,
       getFocusStyle(theme),
       theme.fonts.small,
+      CheckGlobalClassNames.checkHost,
       {
         display: 'flex',
         alignItems: 'center',
@@ -31,20 +40,11 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
         background: 'none',
         backgroundColor: 'transparent',
         border: 'none',
-        opacity: 0,
-        height: compact || isHeader ? 32 : 40,
-        width: 40,
+        opacity: isCheckVisible ? 1 : 0,
+        height: height,
+        width: CHECK_CELL_WIDTH,
         padding: 0,
-        margin: 0,
-        selectors: {
-          '&:hover': {
-            opacity: 1
-          }
-        }
-      },
-
-      isCheckVisible && {
-        opacity: 1
+        margin: 0
       }
     ],
 

@@ -1,15 +1,12 @@
 import * as React from 'react';
-import { DateRangeType, DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
-import { IDocPageProps } from '../../common/DocPage.types';
+import { DateRangeType, DayOfWeek } from '../../Calendar';
+import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
-import { CalendarStatus } from './Calendar.checklist';
-import { addMonths, addYears, addWeeks } from '../../utilities/dateMath/DateMath';
+import { addMonths, addYears, addWeeks, addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 
 const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
-const CalendarButtonExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Calendar/Calendar.Button.Example.Codepen.txt') as string;
 const CalendarInlineExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
-const CalendarInlineExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Calendar/Calendar.Inline.Example.Codepen.txt') as string;
 
 const today = new Date(Date.now());
 
@@ -17,7 +14,6 @@ export const CalendarPageProps: IDocPageProps = {
   title: 'Calendar',
   componentName: 'Calendar',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Calendar',
-  componentStatus: CalendarStatus,
   examples: [
     {
       title: 'Inline Calendar',
@@ -30,8 +26,7 @@ export const CalendarPageProps: IDocPageProps = {
           autoNavigateOnSelection={false}
           showGoToToday={true}
         />
-      ),
-      codepenJS: CalendarInlineExampleCodepen
+      )
     },
     {
       title: 'Inline Calendar with overlaid month picker when header is clicked',
@@ -78,8 +73,8 @@ export const CalendarPageProps: IDocPageProps = {
       )
     },
     {
-      title: `Inline Calendar with week selection, date boundary (minDate, maxDate), and overlaid year picker when
-        month header is clicked`,
+      title: `Inline Calendar with week selection, date boundary (minDate, maxDate), disabled dates (restrictedDates),
+        and overlaid year picker when month header is clicked`,
       code: CalendarInlineExampleCode,
 
       view: (
@@ -92,6 +87,7 @@ export const CalendarPageProps: IDocPageProps = {
           showNavigateButtons={true}
           minDate={addWeeks(today, -2)}
           maxDate={addWeeks(today, 2)}
+          restrictedDates={[addDays(today, -2), addDays(today, -8), addDays(today, 2), addDays(today, 8)]}
         />
       )
     },
@@ -154,7 +150,8 @@ export const CalendarPageProps: IDocPageProps = {
       )
     },
     {
-      title: 'Inline Calendar with date boundary (minDate, maxDate) and overlaid year picker when month header is clicked',
+      title: `Inline Calendar with date boundary (minDate, maxDate), disabled dates (restrictedDates),
+        and overlaid year picker when month header is clicked`,
       code: CalendarInlineExampleCode,
 
       view: (
@@ -166,6 +163,7 @@ export const CalendarPageProps: IDocPageProps = {
           showGoToToday={false}
           minDate={addMonths(today, -1)}
           maxDate={addYears(today, 1)}
+          restrictedDates={[addDays(today, -2), addDays(today, -8), addDays(today, 2), addDays(today, 8)]}
         />
       )
     },
@@ -190,8 +188,7 @@ export const CalendarPageProps: IDocPageProps = {
       title: 'Calendar launched from a button',
       code: CalendarButtonExampleCode,
 
-      view: <CalendarButtonExample highlightCurrentMonth={true} />,
-      codepenJS: CalendarButtonExampleCodepen
+      view: <CalendarButtonExample highlightCurrentMonth={true} />
     },
     {
       title: 'Month picker launched from a button',
@@ -234,7 +231,6 @@ export const CalendarPageProps: IDocPageProps = {
       )
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/Calendar.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Calendar/docs/CalendarDos.md'),

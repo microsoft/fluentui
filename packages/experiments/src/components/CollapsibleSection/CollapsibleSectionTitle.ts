@@ -1,13 +1,15 @@
-import { createStatelessComponent } from '../../Foundation';
-import { CollapsibleSectionTitleView as view } from './CollapsibleSectionTitle.view';
+import { createComponent } from '../../Foundation';
+import { CollapsibleSectionTitleView } from './CollapsibleSectionTitle.view';
 import { getStyles as styles } from './CollapsibleSectionTitle.styles';
-import { ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStyles } from './CollapsibleSectionTitle.types';
+import { ICollapsibleSectionTitleProps } from './CollapsibleSectionTitle.types';
 
-export const CollapsibleSectionTitle: React.StatelessComponent = createStatelessComponent<
-  ICollapsibleSectionTitleProps,
-  ICollapsibleSectionTitleStyles
->({
-  displayName: 'CollapsibleSectionTitle',
-  view,
-  styles
-});
+export const CollapsibleSectionTitle: React.FunctionComponent<ICollapsibleSectionTitleProps> = createComponent(
+  CollapsibleSectionTitleView,
+  {
+    displayName: 'CollapsibleSectionTitle',
+    styles,
+    factoryOptions: {
+      defaultProp: 'text'
+    }
+  }
+);

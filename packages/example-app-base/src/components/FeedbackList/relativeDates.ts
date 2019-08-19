@@ -1,7 +1,7 @@
 export function relativeDates(thenDate: Date, nowDate: Date): string {
-  let milliSeconds = nowDate.getTime() - thenDate.getTime();
-  let hours = Math.floor(milliSeconds / (1000 * 60 * 60)) % 24;
-  let days = Math.floor(milliSeconds / (1000 * 60 * 60 * 24));
+  const milliSeconds = nowDate.getTime() - thenDate.getTime();
+  const hours = Math.floor(milliSeconds / (1000 * 60 * 60)) % 24;
+  const days = Math.floor(milliSeconds / (1000 * 60 * 60 * 24));
   let openedOn = '';
 
   if (days < 1 && hours <= 1) {

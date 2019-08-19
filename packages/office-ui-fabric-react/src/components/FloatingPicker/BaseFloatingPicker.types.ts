@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { ISuggestionModel } from '../../Pickers';
-import { IPersonaProps } from '../../Persona';
-import { ISuggestionsHeaderFooterProps } from './Suggestions/Suggestions.types';
+import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
+import { IRefObject } from '../../Utilities';
+import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
 
 export interface IBaseFloatingPicker {
   /** Whether the suggestions are shown */
@@ -31,8 +32,8 @@ export interface IBaseFloatingPicker {
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
 // tslint:disable-next-line:no-any
-export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
-  componentRef?: (component?: IBaseFloatingPicker | null) => void;
+export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> {
+  componentRef?: IRefObject<IBaseFloatingPicker>;
 
   /**
    * The suggestions store
@@ -52,8 +53,7 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   /**
    * Function that specifies how an individual suggestion item will appear.
    */
-  // tslint:disable-next-line:no-any
-  onRenderSuggestionsItem?: (props: T, itemProps: any) => JSX.Element;
+  onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSX.Element;
   /**
    * A callback for what should happen when a person types text into the input.
    * Returns the already selected items so the resolver can filter them out.
@@ -88,9 +88,9 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
    */
   pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
   /**
-   * A callback for when a persona is removed from the suggestion list
+   * A callback for when an item is removed from the suggestion list
    */
-  onRemoveSuggestion?: (item: IPersonaProps) => void;
+  onRemoveSuggestion?: (item: T) => void;
   /**
    * A function used to validate if raw text entered into the well can be added
    */
@@ -142,18 +142,10 @@ export interface IBaseFloatingPickerProps<T> extends React.Props<any> {
   suggestionItems?: T[];
 }
 
-export interface IBaseFloatingPickerSuggestionProps {
-  /**
-   * Whether or not the first selectable item in the suggestions list should be selected
-   */
-  shouldSelectFirstItem?: () => boolean;
-
-  /**
-   * The header items props
-   */
-  headerItemsProps?: ISuggestionsHeaderFooterProps[];
-  /**
-   * The footer items props
-   */
-  footerItemsProps?: ISuggestionsHeaderFooterProps[];
-}
+/**
+ * Props which are passed on to the inner Suggestions component
+ */
+export type IBaseFloatingPickerSuggestionProps = Pick<
+  ISuggestionsControlProps<any>,
+  'shouldSelectFirstItem' | 'headerItemsProps' | 'footerItemsProps' | 'showRemoveButtons'
+>;

@@ -32,13 +32,18 @@ exports[`ContextualMenuSplitButton creates a normal split button renders the con
           align-items: center;
           display: inline-flex;
           height: 100%;
+          position: absolute;
+          right: 28px;
+        }
+        @media only screen and (min-width: 0px) and (max-width: 639px){& {
+          right: 32px;
         }
   >
     <span
       className=
 
           {
-            background-color: #c8c8c8;
+            background-color: #c8c6c4;
             height: 16px;
             width: 1px;
           }

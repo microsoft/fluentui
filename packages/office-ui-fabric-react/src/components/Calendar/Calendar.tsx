@@ -4,7 +4,7 @@ import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateV
 import { CalendarDay, ICalendarDay } from './CalendarDay';
 import { CalendarMonth, ICalendarMonth } from './CalendarMonth';
 import { compareDates, getDateRangeArray } from '../../utilities/dateMath/DateMath';
-import { css, BaseComponent, KeyCodes, createRef, getNativeProps, divProperties } from '../../Utilities';
+import { css, BaseComponent, KeyCodes, getNativeProps, divProperties } from '../../Utilities';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
@@ -69,8 +69,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     allFocusable: false
   };
 
-  private _dayPicker = createRef<ICalendarDay>();
-  private _monthPicker = createRef<ICalendarMonth>();
+  private _dayPicker = React.createRef<ICalendarDay>();
+  private _monthPicker = React.createRef<ICalendarMonth>();
 
   private _focusOnUpdate: boolean;
 
@@ -92,7 +92,8 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     this._focusOnUpdate = false;
   }
 
-  public componentWillReceiveProps(nextProps: ICalendarProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: ICalendarProps): void {
     const { autoNavigateOnSelection, value, today = new Date() } = nextProps;
 
     // Make sure auto-navigation is supported for programmatic changes to selected date, i.e.,
@@ -131,17 +132,29 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
       navigationIcons,
       minDate,
       maxDate,
+      restrictedDates,
       className,
       showCloseButton,
       allFocusable,
-      yearPickerHidden
+      yearPickerHidden,
+      today
     } = this.props;
-    const nativeProps = getNativeProps(this.props, divProperties, ['value']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['value']);
 
     const { selectedDate, navigatedDayDate, navigatedMonthDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
     const overlayedWithButton = showMonthPickerAsOverlay && showGoToToday;
+
+    let goTodayEnabled = showGoToToday;
+
+    if (goTodayEnabled && navigatedDayDate && navigatedMonthDate && today) {
+      goTodayEnabled =
+        navigatedDayDate.getFullYear() !== today.getFullYear() ||
+        navigatedDayDate.getMonth() !== today.getMonth() ||
+        navigatedMonthDate.getFullYear() !== today.getFullYear() ||
+        navigatedMonthDate.getMonth() !== today.getMonth();
+    }
 
     return (
       <div className={css(rootClass, styles.root, className)} role="application">
@@ -184,6 +197,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                     showSixWeeksByDefault={this.props.showSixWeeksByDefault}
                     minDate={minDate}
                     maxDate={maxDate}
+                    restrictedDates={restrictedDates}
                     workWeekDays={this.props.workWeekDays}
                     componentRef={this._dayPicker}
                     showCloseButton={showCloseButton}
@@ -214,11 +228,14 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
                   <button
                     role="button"
                     className={css('ms-DatePicker-goToday js-goToday', styles.goToday, {
-                      [styles.goTodayInlineMonth]: isMonthPickerVisible
+                      [styles.goTodayInlineMonth]: isMonthPickerVisible,
+                      [styles.goToTodayIsDisabled]: !goTodayEnabled
                     })}
                     onClick={this._onGotoTodayClick}
                     onKeyDown={this._onGotoTodayKeyDown}
                     tabIndex={0}
+                    disabled={!goTodayEnabled}
+                    type="button"
                   >
                     {strings!.goToToday}
                   </button>
@@ -308,6 +325,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
 
     this._navigateDayPickerDay(today!);
+    this._focusOnUpdate = true;
   };
 
   private _onGotoTodayClick = (ev: React.MouseEvent<HTMLElement>): void => {

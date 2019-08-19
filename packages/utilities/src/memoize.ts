@@ -40,9 +40,9 @@ export function resetMemoizations(): void {
 }
 
 /**
- * Memoize decorator to be used on class methods. Note that the "this" reference
- * will be inaccessible within a memoized method, given that a cached method's this
- * would not be instance specific.
+ * Memoize decorator to be used on class methods. WARNING: the `this` reference
+ * will be inaccessible within a memoized method, given that a cached method's `this`
+ * would not be instance-specific.
  *
  * @public
  */

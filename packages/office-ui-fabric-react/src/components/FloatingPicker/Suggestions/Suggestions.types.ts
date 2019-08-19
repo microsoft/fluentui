@@ -2,9 +2,10 @@ import * as React from 'react';
 import { ISuggestionModel } from '../../../Pickers';
 import { IPersonaProps } from '../../../Persona';
 import { IRefObject } from '../../../Utilities';
+import { ISuggestionItemProps } from '../../pickers/Suggestions/SuggestionsItem.types';
 
 // tslint:disable-next-line:no-any
-export interface ISuggestionsCoreProps<T> extends React.Props<any> {
+export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**
    * Gets the component ref.
    */
@@ -12,7 +13,8 @@ export interface ISuggestionsCoreProps<T> extends React.Props<any> {
   /**
    * How the suggestion should look in the suggestion list.
    */
-  onRenderSuggestion?: (props: T, suggestionItemProps: T) => JSX.Element;
+  onRenderSuggestion?: (props: T, suggestionItemProps: ISuggestionItemProps<T>) => JSX.Element;
+
   /**
    * What should occur when a suggestion is clicked
    */
@@ -54,7 +56,7 @@ export interface ISuggestionsCoreProps<T> extends React.Props<any> {
 }
 
 // tslint:disable-next-line:no-any
-export interface ISuggestionsControlProps<T> extends React.Props<any>, ISuggestionsCoreProps<T> {
+export interface ISuggestionsControlProps<T> extends React.ClassAttributes<any>, ISuggestionsCoreProps<T> {
   /**
    * An ARIA label for the container that is the parent of the suggestions header items.
    */

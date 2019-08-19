@@ -10,14 +10,14 @@ const DEFAULT_OPTIONS: IColorCellProps[] = [
   { id: 'b', label: 'orange', color: '#ffa500' },
   { id: 'c', label: 'blue', color: '#0000ff' },
   { id: 'd', label: 'red', color: '#ff0000' },
-  { id: 'g', label: 'green', color: 'green' },
-  { id: 'h', label: 'orange', color: 'orange' },
-  { id: 'i', label: 'blue', color: 'blue' },
-  { id: 'j', label: 'red', color: 'red' },
-  { id: 'k', label: 'black', color: 'black' },
-  { id: 'l', label: 'grey', color: 'grey' },
-  { id: 'm', label: 'purple', color: 'purple' },
-  { id: 'n', label: 'yellow', color: 'yellow' }
+  { id: 'g', label: 'green', color: '#01ff01' },
+  { id: 'h', label: 'orange', color: '#ffa501' },
+  { id: 'i', label: 'blue', color: '#0101ff' },
+  { id: 'j', label: 'red', color: '#ff0101' },
+  { id: 'k', label: 'black', color: '#000' },
+  { id: 'l', label: 'grey', color: '#888' },
+  { id: 'm', label: 'white', color: '#fff' },
+  { id: 'n', label: 'something', color: '#123' }
 ];
 
 describe('SwatchColorPicker', () => {

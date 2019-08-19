@@ -6,10 +6,14 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory Tooltip}
+ */
 export interface ITooltip {}
 
 /**
  * Tooltip component props.
+ * {@docCategory Tooltip}
  */
 export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | TooltipBase> {
   /**
@@ -25,9 +29,9 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
   calloutProps?: ICalloutProps;
 
   /**
-   *  String to be passed to the tooltip
+   *  Content to be passed to the tooltip
    */
-  content?: string;
+  content?: string | JSX.Element | JSX.Element[];
 
   /**
    *  Render function to populate content area
@@ -74,12 +78,18 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
   styles?: IStyleFunctionOrObject<ITooltipStyleProps, ITooltipStyles>;
 }
 
+/**
+ * {@docCategory Tooltip}
+ */
 export enum TooltipDelay {
   zero = 0,
   medium = 1,
   long = 2
 }
 
+/**
+ * {@docCategory Tooltip}
+ */
 export interface ITooltipStyleProps {
   /**
    * Accept theme prop.
@@ -93,6 +103,7 @@ export interface ITooltipStyleProps {
 
   /**
    * Delay before tooltip appears.
+   * @deprecated Delay logic moved to TooltipHost vs relying on animation delay.
    */
   delay?: TooltipDelay;
 
@@ -100,8 +111,23 @@ export interface ITooltipStyleProps {
    * Maximum width of tooltip.
    */
   maxWidth?: string;
+
+  /**
+   * The gap between the Callout and the target
+   * @defaultvalue 0
+   */
+  gapSpace?: number;
+
+  /**
+   * The width of the Callout's beak
+   * @defaultvalue 16
+   */
+  beakWidth?: number;
 }
 
+/**
+ * {@docCategory Tooltip}
+ */
 export interface ITooltipStyles {
   /**
    * Style for the root element.

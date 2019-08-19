@@ -1,2 +1,0 @@
-// tslint:disable-next-line:max-line-length
-export const negativeStateChange = `data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTEiIGhlaWdodD0iOSIgdmlld0JveD0iMCAwIDExIDkiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0xMC40IDBMNS4xOTk5NiA5TDEuMzE4NDZlLTA1IC05LjA5MTkzZS0wN0wxMC40IDBaIiBmaWxsPSIjQzUwRjFGIi8+Cjwvc3ZnPgo=`;

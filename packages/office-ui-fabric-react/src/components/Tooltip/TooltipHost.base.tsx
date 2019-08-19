@@ -1,16 +1,17 @@
 import * as React from 'react';
 import {
-  BaseComponent,
+  initializeComponentRef,
+  Async,
   divProperties,
   getNativeProps,
   getId,
   assign,
   hasOverflow,
-  createRef,
   portalContainsElement,
-  classNamesFunction
+  classNamesFunction,
+  KeyCodes
 } from '../../Utilities';
-import { ITooltipHostProps, TooltipOverflowMode, ITooltipHostStyles, ITooltipHostStyleProps } from './TooltipHost.types';
+import { ITooltipHostProps, TooltipOverflowMode, ITooltipHostStyles, ITooltipHostStyleProps, ITooltipHost } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.types';
 
@@ -20,26 +21,32 @@ export interface ITooltipHostState {
 
 const getClassNames = classNamesFunction<ITooltipHostStyleProps, ITooltipHostStyles>();
 
-export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHostState> {
+export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltipHostState> implements ITooltipHost {
   public static defaultProps = {
     delay: TooltipDelay.medium
   };
 
-  // The wrapping div that gets the hover events
-  private _tooltipHost = createRef<HTMLDivElement>();
-  private _classNames: { [key in keyof ITooltipHostStyles]: string };
+  private static _currentVisibleTooltip: ITooltipHost | undefined;
 
-  // The ID of the setTimeout that will eventually close the tooltip if the
-  // the tooltip isn't hovered over.
-  private _closingTimer = -1;
+  // The wrapping div that gets the hover events
+  private _tooltipHost = React.createRef<HTMLDivElement>();
+
+  private _classNames: { [key in keyof ITooltipHostStyles]: string };
+  private _async: Async;
+  private _dismissTimerId: number;
+  private _openTimerId: number;
 
   // Constructor
   constructor(props: ITooltipHostProps) {
     super(props);
 
+    initializeComponentRef(this);
+
     this.state = {
       isTooltipVisible: false
     };
+
+    this._async = new Async(this);
   }
 
   // Render
@@ -48,7 +55,6 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
       calloutProps,
       children,
       content,
-      delay,
       directionalHint,
       directionalHintForRTL,
       hostClassName: className,
@@ -78,23 +84,25 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
         {...{ onBlurCapture: this._hideTooltip }}
         onMouseEnter={this._onTooltipMouseEnter}
         onMouseLeave={this._onTooltipMouseLeave}
+        onKeyDown={this._onTooltipKeyDown}
         aria-describedby={ariaDescribedBy}
       >
         {children}
         {showTooltip && (
           <Tooltip
             id={tooltipId}
-            delay={delay}
             content={content}
             targetElement={this._getTargetElement()}
             directionalHint={directionalHint}
             directionalHintForRTL={directionalHintForRTL}
             calloutProps={assign({}, calloutProps, {
+              onDismiss: this._hideTooltip,
               onMouseEnter: this._onTooltipMouseEnter,
               onMouseLeave: this._onTooltipMouseLeave
             })}
             onMouseEnter={this._onTooltipMouseEnter}
             onMouseLeave={this._onTooltipMouseLeave}
+            onWheel={this._hideTooltip}
             {...getNativeProps(this.props, divProperties)}
             {...tooltipProps}
           />
@@ -103,7 +111,23 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
     );
   }
 
-  private _getTargetElement(): HTMLElement | undefined {
+  public componentWillUnmount(): void {
+    if (TooltipHostBase._currentVisibleTooltip && TooltipHostBase._currentVisibleTooltip === this) {
+      TooltipHostBase._currentVisibleTooltip = undefined;
+    }
+
+    this._async.dispose();
+  }
+
+  public show = (): void => {
+    this._toggleTooltip(true);
+  };
+
+  public dismiss = (): void => {
+    this._hideTooltip();
+  };
+
+  private _getTargetElement = (): HTMLElement | undefined => {
     if (!this._tooltipHost.current) {
       return undefined;
     }
@@ -123,11 +147,16 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
     }
 
     return this._tooltipHost.current;
-  }
+  };
 
   // Show Tooltip
   private _onTooltipMouseEnter = (ev: any): void => {
-    const { overflowMode } = this.props;
+    const { overflowMode, delay } = this.props;
+
+    if (TooltipHostBase._currentVisibleTooltip && TooltipHostBase._currentVisibleTooltip !== this) {
+      TooltipHostBase._currentVisibleTooltip.dismiss();
+    }
+    TooltipHostBase._currentVisibleTooltip = this;
 
     if (overflowMode !== undefined) {
       const overflowElement = this._getTargetElement();
@@ -141,25 +170,52 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
       return;
     }
 
-    this._toggleTooltip(true);
     this._clearDismissTimer();
+    this._clearOpenTimer();
+
+    if (delay !== TooltipDelay.zero) {
+      const delayTime = this._getDelayTime(delay!); // non-null assertion because we set it in `defaultProps`
+
+      this._openTimerId = this._async.setTimeout(() => {
+        this._toggleTooltip(true);
+      }, delayTime);
+    } else {
+      this._toggleTooltip(true);
+    }
   };
 
   // Hide Tooltip
   private _onTooltipMouseLeave = (ev: any): void => {
-    if (this.props.closeDelay) {
-      this._clearDismissTimer();
+    const { closeDelay } = this.props;
 
-      this._closingTimer = this._async.setTimeout(() => {
+    this._clearDismissTimer();
+    this._clearOpenTimer();
+
+    if (closeDelay) {
+      this._dismissTimerId = this._async.setTimeout(() => {
         this._toggleTooltip(false);
-      }, this.props.closeDelay);
+      }, closeDelay);
     } else {
       this._toggleTooltip(false);
+    }
+
+    if (TooltipHostBase._currentVisibleTooltip === this) {
+      TooltipHostBase._currentVisibleTooltip = undefined;
+    }
+  };
+
+  private _onTooltipKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    if (ev.which === KeyCodes.escape) {
+      this._hideTooltip();
     }
   };
 
   private _clearDismissTimer = (): void => {
-    this._async.clearTimeout(this._closingTimer);
+    this._async.clearTimeout(this._dismissTimerId);
+  };
+
+  private _clearOpenTimer = (): void => {
+    this._async.clearTimeout(this._openTimerId);
   };
 
   // Hide Tooltip
@@ -167,9 +223,20 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
     this._toggleTooltip(false);
   };
 
-  private _toggleTooltip(isTooltipVisible: boolean): void {
+  private _toggleTooltip = (isTooltipVisible: boolean): void => {
     if (this.state.isTooltipVisible !== isTooltipVisible) {
       this.setState({ isTooltipVisible }, () => this.props.onTooltipToggle && this.props.onTooltipToggle(this.state.isTooltipVisible));
     }
-  }
+  };
+
+  private _getDelayTime = (delay: TooltipDelay): number => {
+    switch (delay) {
+      case TooltipDelay.medium:
+        return 300;
+      case TooltipDelay.long:
+        return 500;
+      default:
+        return 0;
+    }
+  };
 }

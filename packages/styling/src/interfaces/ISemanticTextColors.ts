@@ -1,3 +1,6 @@
+/**
+ * {@docCategory ISemanticTextColors}
+ */
 export interface ISemanticTextColors {
   /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\office-ui-fabric-react\src\common\_semanticSlots.scss */
 
@@ -53,16 +56,37 @@ export interface ISemanticTextColors {
    */
   disabledSubtext: string;
 
+  /**
+   * Disabled de-emphasized text, for use on the default background (bodyBackground).
+   */
+  disabledBodySubtext: string;
+
   //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
 
   /**
-   * The default color of error text, used on bodyBackground.
+   * The default color of error text on bodyBackground.
    */
   errorText: string;
+
   /**
-   * The color of text on errorBackground, warningBackground, blockingBackground, or successBackground.
+   * The default color of text on errorBackground, warningBackground, blockingBackground, or successBackground.
    */
   warningText: string;
+
+  /**
+   * The default color of success text on successBackground.
+   */
+  successText: string;
+
+  /**
+   * The color of input text.
+   */
+  inputText: string;
+
+  /**
+   * The color of input text on hover.
+   */
+  inputTextHovered: string;
 
   /**
    * The color of placeholder text.
@@ -114,6 +138,11 @@ export interface ISemanticTextColors {
    * Color of text in a disabled primary button
    */
   primaryButtonTextDisabled: string;
+
+  /**
+   * Color of text for accent button (kicker)
+   */
+  accentButtonText: string;
 
   //// Lists
 

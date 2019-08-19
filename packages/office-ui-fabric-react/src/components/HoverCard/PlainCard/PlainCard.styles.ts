@@ -16,14 +16,8 @@ export function getStyles(props: IPlainCardStyleProps): IPlainCardStyles {
       {
         pointerEvents: 'auto',
         selectors: {
-          '.ms-Callout': {
-            boxShadow: '0 0 20px rgba(0, 0, 0, .2)',
-            border: 'none',
-            selectors: {
-              [HighContrastSelector]: {
-                border: '1px solid WindowText'
-              }
-            }
+          [HighContrastSelector]: {
+            border: '1px solid WindowText'
           }
         }
       },

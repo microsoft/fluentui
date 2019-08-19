@@ -1,3 +1,5 @@
+// If this file is moved or split, the scripts for building codepen examples will likely need to be updated.
+
 const baseProductionCdnUrl = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/';
 
 export const TestImages = {

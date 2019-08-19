@@ -41,6 +41,70 @@ exports[`styled can process style props (background blue) 1`] = `
 />
 `;
 
+exports[`styled can wrap components and merge styling functions for all 1`] = `
+<div
+  className=
+
+      {
+        background: blue;
+        color: green;
+        line-height: 29px;
+      }
+/>
+`;
+
+exports[`styled can wrap components and merge styling objects for all 1`] = `
+<div
+  className=
+
+      {
+        background: blue;
+        color: green;
+        line-height: 19px;
+      }
+/>
+`;
+
+exports[`styled gives styles function user prop priority 1`] = `
+<div
+  className=
+
+      {
+        background: purple;
+      }
+/>
+`;
+
+exports[`styled gives styles object user prop priority 1`] = `
+<div
+  className=
+
+      {
+        background: purple;
+      }
+/>
+`;
+
+exports[`styled gives wrapped styles function priority 1`] = `
+<div
+  className=
+
+      {
+        background: grey;
+      }
+/>
+`;
+
+exports[`styled gives wrapped styles object priority 1`] = `
+<div
+  className=
+
+      {
+        background: grey;
+      }
+/>
+`;
+
 exports[`styled renders base styles (background red) 1`] = `
 <div
   className=
@@ -50,3 +114,28 @@ exports[`styled renders base styles (background red) 1`] = `
       }
 />
 `;
+
+exports[`styled respects styles arg 1`] = `
+<div>
+  <div
+    className=
+
+        {
+          background-color: red;
+        }
+  >
+    Panel1
+  </div>
+  <div
+    className=
+
+        {
+          background-color: green;
+        }
+  >
+    Panel2
+  </div>
+</div>
+`;
+
+exports[`styled respects styles type 1`] = `null`;

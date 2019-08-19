@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "preserveConstEnums": true,
+    "lib": ["es5", "dom", "es2015.promise", "es2015.iterable"],
+    "types": ["jest", "webpack-env", "node"],
+    "paths": {
+      "@uifabric/tsx-editor/lib/*": ["./src/*"],
+      "@uifabric/tsx-editor": ["./src"]
+    }
+  },
+  "include": ["src"]
+}

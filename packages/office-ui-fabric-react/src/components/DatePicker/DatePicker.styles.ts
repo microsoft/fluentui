@@ -1,5 +1,5 @@
 import { IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { IStyle, normalize, getGlobalClassNames, FontSizes } from '../../Styling';
+import { IStyle, normalize, getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-DatePicker',
@@ -11,12 +11,12 @@ const GlobalClassNames = {
 
 export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
   const { className, theme, disabled, label, isDatePickerShown } = props;
-  const { palette } = theme;
+  const { palette, semanticColors, effects, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const DatePickerEvent: IStyle = {
     color: palette.neutralSecondary,
-    fontSize: FontSizes.icon,
+    fontSize: fonts.mediumPlus.fontSize,
     lineHeight: '18px',
     pointerEvents: 'none',
     position: 'absolute',
@@ -40,9 +40,16 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
             }
           }
         }
+      },
+      disabled && {
+        selectors: {
+          '& input[readonly]': {
+            cursor: 'default'
+          }
+        }
       }
     ],
-    callout: [classNames.callout],
+    callout: [classNames.callout, { boxShadow: effects.elevation8 }],
     icon: [
       DatePickerEvent,
       !label && [classNames.withoutLabel, { top: '7px' }],
@@ -53,7 +60,11 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
           pointerEvents: 'initial',
           cursor: 'pointer'
         }
-      ]
+      ],
+      disabled && {
+        color: semanticColors.disabledText,
+        cursor: 'default'
+      }
     ]
   };
 };

@@ -8,8 +8,7 @@ import {
   classNamesFunction,
   findScrollableParent,
   getDistanceBetweenPoints,
-  getRTL,
-  createRef
+  getRTL
 } from '../../Utilities';
 
 import { IMarqueeSelectionProps, IMarqueeSelectionStyleProps, IMarqueeSelectionStyles } from './MarqueeSelection.types';
@@ -38,7 +37,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
     isEnabled: true
   };
 
-  private _root = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
   private _dragOrigin: IPoint | undefined;
   private _rootRect: IRectangle;
   private _lastMouseEvent: MouseEvent | undefined;
@@ -46,6 +45,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
   private _selectedIndicies: { [key: string]: boolean } | undefined;
   private _preservedIndicies: number[] | undefined;
   private _itemRectCache: { [key: string]: IRectangle } | undefined;
+  private _allSelectedIndices: { [key: string]: boolean } | undefined;
   private _scrollableParent: HTMLElement;
   private _scrollableSurface: HTMLElement;
   private _scrollTop: number;
@@ -143,7 +143,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       if (this._scrollableSurface && ev.button === 0 && this._root.current) {
         this._selectedIndicies = {};
         this._preservedIndicies = undefined;
-        this._events.on(window, 'mousemove', this._onAsyncMouseMove);
+        this._events.on(window, 'mousemove', this._onAsyncMouseMove, true);
         this._events.on(this._scrollableParent, 'scroll', this._onAsyncMouseMove);
         this._events.on(window, 'click', this._onMouseUp, true);
 
@@ -215,8 +215,13 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
         if (!this.state.dragRect) {
           const { selection } = this.props;
 
+          if (!ev.shiftKey) {
+            selection.setAllSelected(false);
+          }
+
           this._preservedIndicies = selection && selection.getSelectedIndices && selection.getSelectedIndices();
         }
+
         // We need to constrain the current point to the rootRect boundaries.
         const constrainedPoint = this.props.isDraggingConstrainedToRoot
           ? {
@@ -284,7 +289,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       const index = Number(element.getAttribute('data-selection-index'));
       if (selection.isIndexSelected(index)) {
         const itemRect = element.getBoundingClientRect();
-        if (this._isPointInRectangle(itemRect, { x: ev.x, y: ev.y })) {
+        if (this._isPointInRectangle(itemRect, { x: ev.clientX, y: ev.clientY })) {
           return true;
         }
       }
@@ -319,10 +324,6 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
     if (!this._itemRectCache) {
       this._itemRectCache = {};
     }
-
-    // Stop change events, clear selection to re-populate.
-    selection.setChangeEvents(false);
-    selection.setAllSelected(false);
 
     for (let i = 0; i < allElements.length; i++) {
       const element = allElements[i];
@@ -361,18 +362,53 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       }
     }
 
+    // set previousSelectedIndices to be all of the selected indices from last time
+    const previousSelectedIndices = this._allSelectedIndices || {};
+    this._allSelectedIndices = {};
+
+    // set all indices that are supposed to be selected in _allSelectedIndices
     for (const index in this._selectedIndicies!) {
       if (this._selectedIndicies!.hasOwnProperty(index)) {
-        selection.setIndexSelected(Number(index), true, false);
+        this._allSelectedIndices![index] = true;
       }
     }
 
     if (this._preservedIndicies) {
-      for (const index of this._preservedIndicies) {
-        selection.setIndexSelected(index, true, false);
+      for (const index of this._preservedIndicies!) {
+        this._allSelectedIndices![index] = true;
       }
     }
 
-    selection.setChangeEvents(true);
+    // check if needs to update selection, only when current _allSelectedIndices
+    // is different than previousSelectedIndices
+    let needToUpdate = false;
+    for (const index in this._allSelectedIndices!) {
+      if (this._allSelectedIndices![index] !== previousSelectedIndices![index]) {
+        needToUpdate = true;
+        break;
+      }
+    }
+
+    if (!needToUpdate) {
+      for (const index in previousSelectedIndices!) {
+        if (this._allSelectedIndices![index] !== previousSelectedIndices![index]) {
+          needToUpdate = true;
+          break;
+        }
+      }
+    }
+
+    // only update selection when needed
+    if (needToUpdate) {
+      // Stop change events, clear selection to re-populate.
+      selection.setChangeEvents(false);
+      selection.setAllSelected(false);
+
+      for (const index of Object.keys(this._allSelectedIndices!)) {
+        selection.setIndexSelected(Number(index), true, false);
+      }
+
+      selection.setChangeEvents(true);
+    }
   }
 }

@@ -1,10 +1,28 @@
 import * as React from 'react';
+
 import { IIconProps } from '../../Icon';
+import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { ITheme, IStyle } from '../../Styling';
+import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption/ChoiceGroupOption.types';
 
-export interface IChoiceGroup {}
+/**
+ * {@docCategory ChoiceGroup}
+ */
+export interface IChoiceGroup {
+  /**
+   * Gets the current checked option.
+   */
+  checkedOption: IChoiceGroupOption | undefined;
 
+  /**
+   * Sets focus to the checked option or the first enabled option in the ChoiceGroup.
+   */
+  focus: () => void;
+}
+
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
@@ -20,6 +38,8 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
   /**
    * The key of the option that will be initially checked.
    */
+  // TODO (Fabric 8?): defaultSelectedKey/selectedKey allow numbers but IChoiceGroupOption doesn't.
+  // This should be consistent one way or the other everywhere.
   defaultSelectedKey?: string | number;
 
   /**
@@ -60,7 +80,10 @@ export interface IChoiceGroupProps extends React.InputHTMLAttributes<HTMLElement
   ariaLabelledBy?: string;
 }
 
-export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | HTMLInputElement> {
+/**
+ * {@docCategory ChoiceGroup}
+ */
+export interface IChoiceGroupOption extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
    * A required key to uniquely identify the option.
    */
@@ -114,7 +137,13 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
 
   /**
    * Whether or not the option is checked.
+   * @deprecated Do not track checked state in the options themselves. Instead, either pass
+   * `defaultSelectedKey` to the `ChoiceGroup` and allow it to track selection state internally
+   * (uncontrolled), or pass `selectedKey` and `onChange` to the `ChoiceGroup` to track/update
+   * the selection state manually (controlled).
    */
+  // This should move from IChoiceGroupOption to IChoiceGroupOptionProps, so that the ChoiceGroup
+  // can still set the option as checked for rendering purposes
   checked?: boolean;
 
   /**
@@ -133,16 +162,35 @@ export interface IChoiceGroupOption extends React.HTMLAttributes<HTMLElement | H
    * The aria label of the ChoiceGroupOption for the benefit of screen readers.
    */
   ariaLabel?: string;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
 }
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupStyleProps {
   theme: ITheme;
   className?: string;
   optionsContainIconOrImage?: boolean;
 }
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupStyles {
+  /**
+   * The actual root of the component.
+   * @deprecated Styles will be merged with `root` in a future release.
+   */
   applicationRole?: IStyle;
+  /**
+   * Not currently the actual root of the component (will be fixed in a future release).
+   * For now, to style the actual root, use `applicationRole`.
+   */
   root?: IStyle;
   label?: IStyle;
   flexContainer?: IStyle;

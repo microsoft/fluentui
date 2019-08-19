@@ -19,7 +19,7 @@ exports[`DetailsList renders List correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -51,30 +51,34 @@ exports[`DetailsList renders List correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background: #ffffff;
-                border-bottom: 1px solid #eaeaea;
+                border-bottom: 1px solid #edebe9;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover $check {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
-              & ms-TooltipHost $checkTooltip {
+              & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                 display: block;
               }
           data-automationid="DetailsHeader"
@@ -86,7 +90,7 @@ exports[`DetailsList renders List correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 100,
             }
           }
         >
@@ -100,9 +104,9 @@ exports[`DetailsList renders List correctly 1`] = `
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -127,7 +131,7 @@ exports[`DetailsList renders List correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
@@ -138,15 +142,18 @@ exports[`DetailsList renders List correctly 1`] = `
           >
             <span
               className=
-
+                  ms-DetailsHeader-checkTooltip
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -164,7 +171,7 @@ exports[`DetailsList renders List correctly 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -178,7 +185,7 @@ exports[`DetailsList renders List correctly 1`] = `
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -188,16 +195,12 @@ exports[`DetailsList renders List correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -231,27 +234,32 @@ exports[`DetailsList renders List correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-circle
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 18px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -268,21 +276,26 @@ exports[`DetailsList renders List correctly 1`] = `
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-check
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 16px;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -312,14 +325,13 @@ exports[`DetailsList renders List correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -344,18 +356,18 @@ exports[`DetailsList renders List correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -385,7 +397,7 @@ exports[`DetailsList renders List correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header6-key-name "
+                aria-labelledby="header6-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -410,7 +422,7 @@ exports[`DetailsList renders List correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -426,6 +438,8 @@ exports[`DetailsList renders List correctly 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -457,7 +471,7 @@ exports[`DetailsList renders List correctly 1`] = `
                   border: 0px;
                 }
                 &:after {
-                  background: #c8c8c8;
+                  background: #c8c6c4;
                   bottom: 0px;
                   content: "";
                   left: 50%;
@@ -474,7 +488,7 @@ exports[`DetailsList renders List correctly 1`] = `
                   opacity: 1;
                   transition: opacity 0.3s linear;
                 }
-                &$cellIsResizing:after {
+                &.is-resizing:after {
                   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                   opacity: 1;
                   transition: opacity 0.3s linear;
@@ -504,6 +518,9 @@ exports[`DetailsList renders List correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -514,7 +531,6 @@ exports[`DetailsList renders List correctly 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -601,7 +617,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -633,30 +649,34 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background: #ffffff;
-                border-bottom: 1px solid #eaeaea;
+                border-bottom: 1px solid #edebe9;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover $check {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
-              & ms-TooltipHost $checkTooltip {
+              & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                 display: block;
               }
           data-automationid="DetailsHeader"
@@ -668,7 +688,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 500,
             }
           }
         >
@@ -682,9 +702,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -709,7 +729,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
@@ -720,15 +740,18 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           >
             <span
               className=
-
+                  ms-DetailsHeader-checkTooltip
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -746,7 +769,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -760,7 +783,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -770,16 +793,12 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -813,27 +832,32 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-circle
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 18px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -850,21 +874,26 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-check
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 16px;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -894,14 +923,13 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -926,18 +954,18 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -968,7 +996,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               <span
                 aria-describedby="header0-column_key_0-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header0-column_key_0-name "
+                aria-labelledby="header0-column_key_0-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -993,7 +1021,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -1009,6 +1037,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -1050,14 +1080,13 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -1082,18 +1111,18 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -1124,7 +1153,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               <span
                 aria-describedby="header0-column_key_1-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header0-column_key_1-name "
+                aria-labelledby="header0-column_key_1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1149,7 +1178,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -1165,6 +1194,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -1206,14 +1237,13 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -1238,18 +1268,18 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -1280,7 +1310,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               <span
                 aria-describedby="header0-column_key_2-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header0-column_key_2-name "
+                aria-labelledby="header0-column_key_2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1305,7 +1335,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -1321,6 +1351,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -1362,14 +1394,13 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -1394,18 +1425,18 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -1436,7 +1467,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               <span
                 aria-describedby="header0-column_key_3-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header0-column_key_3-name "
+                aria-labelledby="header0-column_key_3-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1461,7 +1492,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -1477,6 +1508,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -1518,14 +1551,13 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -1550,18 +1582,18 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -1592,7 +1624,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               <span
                 aria-describedby="header0-column_key_4-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header0-column_key_4-name "
+                aria-labelledby="header0-column_key_4-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1617,7 +1649,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -1633,6 +1665,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -1677,6 +1711,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -1687,7 +1724,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -1775,7 +1811,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -1807,30 +1843,34 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background: #ffffff;
-                border-bottom: 1px solid #eaeaea;
+                border-bottom: 1px solid #edebe9;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover $check {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
-              & ms-TooltipHost $checkTooltip {
+              & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                 display: block;
               }
           data-automationid="DetailsHeader"
@@ -1842,7 +1882,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 100,
             }
           }
         >
@@ -1856,9 +1896,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -1883,7 +1923,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
@@ -1894,15 +1934,18 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           >
             <span
               className=
-
+                  ms-DetailsHeader-checkTooltip
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -1920,7 +1963,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -1934,7 +1977,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -1944,16 +1987,12 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -1987,27 +2026,32 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-circle
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 18px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -2024,21 +2068,26 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-check
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 16px;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -2068,14 +2117,13 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -2100,18 +2148,18 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -2141,7 +2189,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header12-key-name "
+                aria-labelledby="header12-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2166,7 +2214,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -2182,6 +2230,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -2213,7 +2263,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   border: 0px;
                 }
                 &:after {
-                  background: #c8c8c8;
+                  background: #c8c6c4;
                   bottom: 0px;
                   content: "";
                   left: 50%;
@@ -2230,7 +2280,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   opacity: 1;
                   transition: opacity 0.3s linear;
                 }
-                &$cellIsResizing:after {
+                &.is-resizing:after {
                   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                   opacity: 1;
                   transition: opacity 0.3s linear;
@@ -2260,6 +2310,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -2270,7 +2323,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -2358,7 +2410,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -2390,30 +2442,34 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background: #ffffff;
-                border-bottom: 1px solid #eaeaea;
+                border-bottom: 1px solid #edebe9;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover $check {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
-              & ms-TooltipHost $checkTooltip {
+              & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                 display: block;
               }
           data-automationid="DetailsHeader"
@@ -2425,7 +2481,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 900,
             }
           }
         >
@@ -2439,9 +2495,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -2466,7 +2522,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
@@ -2477,15 +2533,18 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           >
             <span
               className=
-
+                  ms-DetailsHeader-checkTooltip
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -2503,7 +2562,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -2517,7 +2576,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -2527,16 +2586,12 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -2570,27 +2625,32 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-circle
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 18px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -2607,21 +2667,26 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-check
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 16px;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -2651,14 +2716,13 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -2683,18 +2747,18 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -2724,7 +2788,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-key-name "
+                aria-labelledby="header9-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2749,7 +2813,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -2765,6 +2829,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -2796,7 +2862,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   border: 0px;
                 }
                 &:after {
-                  background: #c8c8c8;
+                  background: #c8c6c4;
                   bottom: 0px;
                   content: "";
                   left: 50%;
@@ -2813,7 +2879,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   opacity: 1;
                   transition: opacity 0.3s linear;
                 }
-                &$cellIsResizing:after {
+                &.is-resizing:after {
                   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                   opacity: 1;
                   transition: opacity 0.3s linear;
@@ -2840,14 +2906,13 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -2872,18 +2937,18 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -2913,7 +2978,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-name-name "
+                aria-labelledby="header9-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2938,7 +3003,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -2954,6 +3019,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -2985,7 +3052,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   border: 0px;
                 }
                 &:after {
-                  background: #c8c8c8;
+                  background: #c8c6c4;
                   bottom: 0px;
                   content: "";
                   left: 50%;
@@ -3002,7 +3069,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   opacity: 1;
                   transition: opacity 0.3s linear;
                 }
-                &$cellIsResizing:after {
+                &.is-resizing:after {
                   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                   opacity: 1;
                   transition: opacity 0.3s linear;
@@ -3029,14 +3096,13 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -3061,18 +3127,18 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -3102,7 +3168,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-value-name "
+                aria-labelledby="header9-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3127,7 +3193,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -3143,6 +3209,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -3174,7 +3242,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   border: 0px;
                 }
                 &:after {
-                  background: #c8c8c8;
+                  background: #c8c6c4;
                   bottom: 0px;
                   content: "";
                   left: 50%;
@@ -3191,7 +3259,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   opacity: 1;
                   transition: opacity 0.3s linear;
                 }
-                &$cellIsResizing:after {
+                &.is-resizing:after {
                   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                   opacity: 1;
                   transition: opacity 0.3s linear;
@@ -3221,6 +3289,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -3231,7 +3302,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -3318,7 +3388,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -3350,30 +3420,34 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background: #ffffff;
-                border-bottom: 1px solid #eaeaea;
+                border-bottom: 1px solid #edebe9;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover $check {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
-              & ms-TooltipHost $checkTooltip {
+              & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                 display: block;
               }
           data-automationid="DetailsHeader"
@@ -3385,7 +3459,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 500,
             }
           }
         >
@@ -3399,9 +3473,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   align-items: center;
                   border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-flex;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0px;
                   margin-left: 0px;
@@ -3426,7 +3500,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
@@ -3437,15 +3511,18 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           >
             <span
               className=
-
+                  ms-DetailsHeader-checkTooltip
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
+                    ms-DetailsHeader-check
                     ms-DetailsRow-check--isHeader
+                    ms-Check-checkHost
                     {
-                      height: 32px;
+                      height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
@@ -3463,7 +3540,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       justify-content: center;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -3477,7 +3554,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       padding-top: 0px;
                       position: relative;
                       vertical-align: top;
-                      width: 40px;
+                      width: 48px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -3487,16 +3564,12 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
-
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
                 data-selection-toggle={true}
@@ -3530,27 +3603,32 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-circle
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 18px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -3567,21 +3645,26 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-check
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #c8c8c8;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 16px;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -3611,14 +3694,13 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -3643,18 +3725,18 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -3685,7 +3767,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               <span
                 aria-describedby="header3-column_key_0-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header3-column_key_0-name "
+                aria-labelledby="header3-column_key_0-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3710,7 +3792,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -3726,6 +3808,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -3770,14 +3854,13 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -3802,18 +3885,18 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -3844,7 +3927,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               <span
                 aria-describedby="header3-column_key_1-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header3-column_key_1-name "
+                aria-labelledby="header3-column_key_1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3869,7 +3952,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -3885,6 +3968,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -3929,14 +4014,13 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -3961,18 +4045,18 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -4003,7 +4087,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               <span
                 aria-describedby="header3-column_key_2-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header3-column_key_2-name "
+                aria-labelledby="header3-column_key_2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4028,7 +4112,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -4044,6 +4128,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -4088,14 +4174,13 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -4120,18 +4205,18 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -4162,7 +4247,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               <span
                 aria-describedby="header3-column_key_3-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header3-column_key_3-name "
+                aria-labelledby="header3-column_key_3-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4187,7 +4272,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -4203,6 +4288,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -4247,14 +4334,13 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -4279,18 +4365,18 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -4321,7 +4407,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               <span
                 aria-describedby="header3-column_key_4-tooltip"
                 aria-haspopup={false}
-                aria-labelledby="header3-column_key_4-name "
+                aria-labelledby="header3-column_key_4-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4346,7 +4432,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -4362,6 +4448,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -4409,6 +4497,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -4419,7 +4510,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -4506,7 +4596,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
           background: #ffffff;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -4538,30 +4628,34 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background: #ffffff;
-                border-bottom: 1px solid #eaeaea;
+                border-bottom: 1px solid #edebe9;
                 box-sizing: content-box;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 12px;
                 font-weight: 400;
-                height: 32px;
-                line-height: 32px;
+                height: 42px;
+                line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
                 white-space: nowrap;
               }
-              &:hover $check {
+              &:hover .ms-DetailsHeader-check {
                 opacity: 1;
               }
-              & ms-TooltipHost $checkTooltip {
+              & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                 display: block;
               }
           data-automationid="DetailsHeader"
@@ -4573,29 +4667,33 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           role="row"
           style={
             Object {
-              "minWidth": 0,
+              "minWidth": 100,
             }
           }
         >
           <div
+            aria-expanded={true}
             className=
                 ms-DetailsHeader-cell
                 {
+                  align-items: center;
                   border: none;
                   box-sizing: border-box;
-                  color: #333333;
-                  display: inline-block;
-                  height: 32px;
+                  color: #605e5c;
+                  display: inline-flex;
+                  font-size: 12px;
+                  height: 42px;
+                  justify-content: center;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
                   margin-right: 0;
                   margin-top: 0;
                   outline: transparent;
-                  padding-bottom: 0;
-                  padding-left: 8px;
-                  padding-right: 8px;
-                  padding-top: 0;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
                   position: relative;
                   text-align: left;
                   text-overflow: ellipsis;
@@ -4611,11 +4709,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
+                }
+                &:hover {
+                  background-color: #f3f2f1;
+                }
+                &:active {
+                  background-color: #edebe9;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -4623,27 +4727,28 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             <i
               aria-hidden={true}
               className=
+                  ms-Icon
                   ms-DetailsHeader-collapseButton
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    font-family: "FabricMDL2Icons";
+                    font-family: "FabricMDL2Icons-2";
                     font-style: normal;
                     font-weight: normal;
-                    outline: 0px;
-                    padding-right: 0px;
                     speak: none;
-                    text-align: center;
-                    transform-origin: 50% 50%;
-                    transform: rotate(-180deg);
-                    transition: transform 0.1s linear;
-                    width: 20px;
                   }
-              data-icon-name="ChevronDown"
+                  {
+                    transform-origin: 50% 50%;
+                    transform: rotate(90deg);
+                    transition: transform .1s linear;
+                  }
+              data-icon-name="ChevronRightMed"
               role="presentation"
             >
-              
+              
             </i>
           </div>
           <div
@@ -4655,14 +4760,13 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 12px;
                   font-weight: 400;
-                  height: 32px;
+                  height: 42px;
                   line-height: inherit;
                   margin-bottom: 0;
                   margin-left: 0;
@@ -4687,18 +4791,18 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #f4f4f4;
-                  color: #333333;
+                  background: #f3f2f1;
+                  color: #323130;
                 }
                 &:active {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 &:hover i[data-icon-name="GripperBarVertical"] {
                   display: block;
@@ -4728,7 +4832,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header15-key-name "
+                aria-labelledby="header15-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4753,7 +4857,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -4769,6 +4873,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       ms-DetailsHeader-cellName
                       {
                         flex: 0 1 auto;
+                        font-size: 14px;
+                        font-weight: 600;
                         overflow: hidden;
                         text-overflow: ellipsis;
                       }
@@ -4800,7 +4906,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   border: 0px;
                 }
                 &:after {
-                  background: #c8c8c8;
+                  background: #c8c6c4;
                   bottom: 0px;
                   content: "";
                   left: 50%;
@@ -4817,7 +4923,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   opacity: 1;
                   transition: opacity 0.3s linear;
                 }
-                &$cellIsResizing:after {
+                &.is-resizing:after {
                   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
                   opacity: 1;
                   transition: opacity 0.3s linear;
@@ -4847,6 +4953,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -4857,7 +4966,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -4882,8 +4990,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     font-weight: 400;
                     position: relative;
                   }
-                  & :global(.ms-List-cell) {
-                    min-height: 36px;
+                  & .ms-List-cell {
+                    min-height: 38px;
                   }
               data-automationid="GroupedList"
               data-is-scrollable="false"
@@ -4891,7 +4999,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             >
               <div
                 className="ms-List"
-                role="list"
+                role="presentation"
               >
                 <div
                   className="ms-List-surface"
@@ -4906,7 +5014,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       className="ms-List-cell"
                       data-automationid="ListCell"
                       data-list-index={0}
-                      role="listitem"
+                      role="presentation"
                     >
                       <div
                         className=
@@ -4923,6 +5031,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
+                                border-bottom: 1px solid #ffffff;
                                 cursor: default;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                 font-size: 14px;
@@ -4939,25 +5048,29 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
-                                outline: 1px solid #666666;
+                                outline: 1px solid #605e5c;
                                 position: absolute;
                                 right: 1px;
                                 top: 1px;
                                 z-index: 1;
                               }
                               &:hover {
-                                background: #f4f4f4;
+                                background: #f3f2f1;
+                                color: #201f1e;
                               }
-                              &:hover $check {
+                              &:hover .ms-GroupHeader-check {
                                 opacity: 1;
                               }
-                              .ms-GroupedList-group.is-dropping > $root $dropIcon {
+                              .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
+                                opacity: 1;
+                              }
+                              & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
                                 opacity: 1;
                                 transform: rotate(0.2deg) scale(1);
                                 transition-delay: 0.367s;
                                 transition: transform 0.467s cubic-bezier(0.075, 0.820, 0.165, 1.000) opacity 0.167s cubic-bezier(0.390, 0.575, 0.565, 1.000);
                               }
-                              .ms-GroupedList-group.is-dropping $check {
+                              .ms-GroupedList-group.is-dropping .ms-GroupHeader-check {
                                 opacity: 0;
                               }
                           data-is-focusable={true}
@@ -4967,22 +5080,24 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                           <div
                             className=
                                 ms-FocusZone
+                                &:focus {
+                                  outline: none;
+                                }
                                 {
                                   align-items: center;
                                   display: flex;
-                                  height: 40px;
+                                  height: 48px;
                                 }
                             data-focuszone-id="FocusZone19"
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             onMouseDownCapture={[Function]}
-                            role="presentation"
                           >
                             <div
                               className=
                                   ms-GroupHeader-dropIcon
                                   {
-                                    color: #666666;
+                                    color: #605e5c;
                                     font-size: 20px;
                                     left: -26px;
                                     opacity: 0;
@@ -5021,15 +5136,21 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               className=
                                   ms-GroupHeader-expand
                                   {
+                                    align-items: center;
                                     background-color: transparent;
                                     background: none;
                                     border: none;
-                                    color: #666666;
+                                    color: #605e5c;
                                     cursor: default;
-                                    font-size: 20px;
-                                    height: 40px;
+                                    display: flex;
+                                    font-size: 12px;
+                                    height: 48px;
+                                    justify-content: center;
                                     outline: transparent;
-                                    padding-top: 4px;
+                                    padding-bottom: 0px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                    padding-top: 0px;
                                     position: relative;
                                     width: 36px;
                                   }
@@ -5041,11 +5162,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     bottom: 1px;
                                     content: "";
                                     left: 1px;
-                                    outline: 1px solid #666666;
+                                    outline: 1px solid #605e5c;
                                     position: absolute;
                                     right: 1px;
                                     top: 1px;
                                     z-index: 1;
+                                  }
+                                  &:hover {
+                                    background-color: #edebe9;
+                                  }
+                                  &:active {
+                                    background-color: #e1dfdd;
                                   }
                               onClick={[Function]}
                               type="button"
@@ -5058,18 +5185,18 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
                                       display: inline-block;
-                                      font-family: "FabricMDL2Icons";
+                                      font-family: "FabricMDL2Icons-2";
                                       font-style: normal;
                                       font-weight: normal;
                                       speak: none;
                                       transform-origin: 50% 50%;
-                                      transform: rotate(-180deg);
+                                      transform: rotate(90deg);
                                       transition: transform .1s linear;
                                     }
-                                data-icon-name="ChevronDown"
+                                data-icon-name="ChevronRightMed"
                                 role="presentation"
                               >
-                                
+                                
                               </i>
                             </button>
                             <div
@@ -5077,8 +5204,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   ms-GroupHeader-title
                                   {
                                     cursor: pointer;
-                                    font-size: 21px;
-                                    font-weight: 100;
+                                    font-size: 16px;
+                                    font-weight: 600;
                                     outline: 0px;
                                     padding-left: 12px;
                                     text-overflow: ellipsis;
@@ -5108,7 +5235,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         <div
                           className="ms-List"
                           id="GroupedListSection18"
-                          role="list"
+                          role="grid"
                         >
                           <div
                             className="ms-List-surface"
@@ -5123,7 +5250,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 className="ms-List-cell"
                                 data-automationid="ListCell"
                                 data-list-index={0}
-                                role="listitem"
+                                role="presentation"
                               >
                                 <div
                                   aria-rowindex={1}
@@ -5132,6 +5259,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       ms-FocusZone
                                       ms-DetailsRow
                                       is-contentUnselectable
+                                      &:focus {
+                                        outline: none;
+                                      }
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
@@ -5140,9 +5270,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         animation-name: keyframes from{opacity:0;}to{opacity:1;};
                                         animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                                         background: #ffffff;
-                                        border-bottom: 1px solid #f4f4f4;
+                                        border-bottom: 1px solid #f3f2f1;
                                         box-sizing: border-box;
-                                        color: #666666;
+                                        color: #605e5c;
                                         cursor: default;
                                         display: inline-flex;
                                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5165,7 +5295,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         border: 0;
                                       }
                                       .ms-Fabric--isFocusVisible &:focus:after {
-                                        border: 1px solid #0078d4;
+                                        border: 1px solid #605e5c;
                                         bottom: 1px;
                                         content: "";
                                         left: 1px;
@@ -5175,45 +5305,42 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         top: 1px;
                                         z-index: 1;
                                       }
-                                      ms-List-cell:first-child &:before {
+                                      .ms-List-cell:first-child &:before {
                                         display: none;
                                       }
                                       &:hover {
-                                        background: #f4f4f4;
+                                        background: #f3f2f1;
+                                        color: #323130;
                                       }
-                                      &:hover $check {
+                                      &:hover .is-row-header {
+                                        color: #201f1e;
+                                      }
+                                      &:hover .ms-DetailsRow-check {
+                                        opacity: 1;
+                                      }
+                                      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
                                   data-focuszone-id="FocusZone22"
-                                  data-is-draggable={false}
                                   data-is-focusable={true}
                                   data-item-index={0}
                                   data-selection-index={0}
-                                  draggable={false}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
                                   <span
-                                    className=
-                                        ms-GroupSpacer
-                                        {
-                                          -moz-osx-font-smoothing: grayscale;
-                                          -webkit-font-smoothing: antialiased;
-                                          display: inline-block;
-                                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                          font-size: 14px;
-                                          font-weight: 400;
-                                        }
+                                    className="ms-GroupSpacer"
                                     style={
                                       Object {
+                                        "display": "inline-block",
                                         "width": 36,
                                       }
                                     }
@@ -5250,7 +5377,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                             border: 0;
                                           }
                                           .ms-Fabric--isFocusVisible &:focus:after {
-                                            border: 1px solid #666666;
+                                            border: 1px solid #605e5c;
                                             bottom: 0px;
                                             content: "";
                                             left: 0px;
@@ -5269,21 +5396,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           }
                                           & [data-is-focusable='true']::-moz-focus-inner {
                                             border: 0;
-                                          }
-                                          &$shimmer {
-                                            border-bottom: 17.5px solid #ffffff;
-                                            border-left: 12px solid #ffffff;
-                                            border-right: 32px solid #ffffff;
-                                            border-top: 17.5px solid #ffffff;
-                                            padding-bottom: 0px;
-                                            padding-left: 0px;
-                                            padding-right: 0px;
-                                            padding-top: 0px;
-                                          }
-                                          &$shimmerIconPlaceholder {
-                                            border-bottom: 13px solid #ffffff;
-                                            border-right: 8px solid #ffffff;
-                                            border-top: 13px solid #ffffff;
                                           }
                                           {
                                             padding-right: 8px;
@@ -5321,7 +5433,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 className="ms-List-cell"
                                 data-automationid="ListCell"
                                 data-list-index={1}
-                                role="listitem"
+                                role="presentation"
                               >
                                 <div
                                   aria-rowindex={2}
@@ -5330,6 +5442,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       ms-FocusZone
                                       ms-DetailsRow
                                       is-contentUnselectable
+                                      &:focus {
+                                        outline: none;
+                                      }
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
@@ -5338,9 +5453,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         animation-name: keyframes from{opacity:0;}to{opacity:1;};
                                         animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                                         background: #ffffff;
-                                        border-bottom: 1px solid #f4f4f4;
+                                        border-bottom: 1px solid #f3f2f1;
                                         box-sizing: border-box;
-                                        color: #666666;
+                                        color: #605e5c;
                                         cursor: default;
                                         display: inline-flex;
                                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5363,7 +5478,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         border: 0;
                                       }
                                       .ms-Fabric--isFocusVisible &:focus:after {
-                                        border: 1px solid #0078d4;
+                                        border: 1px solid #605e5c;
                                         bottom: 1px;
                                         content: "";
                                         left: 1px;
@@ -5373,45 +5488,42 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         top: 1px;
                                         z-index: 1;
                                       }
-                                      ms-List-cell:first-child &:before {
+                                      .ms-List-cell:first-child &:before {
                                         display: none;
                                       }
                                       &:hover {
-                                        background: #f4f4f4;
+                                        background: #f3f2f1;
+                                        color: #323130;
                                       }
-                                      &:hover $check {
+                                      &:hover .is-row-header {
+                                        color: #201f1e;
+                                      }
+                                      &:hover .ms-DetailsRow-check {
+                                        opacity: 1;
+                                      }
+                                      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
                                   data-focuszone-id="FocusZone23"
-                                  data-is-draggable={false}
                                   data-is-focusable={true}
                                   data-item-index={1}
                                   data-selection-index={1}
-                                  draggable={false}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
                                   <span
-                                    className=
-                                        ms-GroupSpacer
-                                        {
-                                          -moz-osx-font-smoothing: grayscale;
-                                          -webkit-font-smoothing: antialiased;
-                                          display: inline-block;
-                                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                          font-size: 14px;
-                                          font-weight: 400;
-                                        }
+                                    className="ms-GroupSpacer"
                                     style={
                                       Object {
+                                        "display": "inline-block",
                                         "width": 36,
                                       }
                                     }
@@ -5448,7 +5560,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                             border: 0;
                                           }
                                           .ms-Fabric--isFocusVisible &:focus:after {
-                                            border: 1px solid #666666;
+                                            border: 1px solid #605e5c;
                                             bottom: 0px;
                                             content: "";
                                             left: 0px;
@@ -5467,21 +5579,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           }
                                           & [data-is-focusable='true']::-moz-focus-inner {
                                             border: 0;
-                                          }
-                                          &$shimmer {
-                                            border-bottom: 17.5px solid #ffffff;
-                                            border-left: 12px solid #ffffff;
-                                            border-right: 32px solid #ffffff;
-                                            border-top: 17.5px solid #ffffff;
-                                            padding-bottom: 0px;
-                                            padding-left: 0px;
-                                            padding-right: 0px;
-                                            padding-top: 0px;
-                                          }
-                                          &$shimmerIconPlaceholder {
-                                            border-bottom: 13px solid #ffffff;
-                                            border-right: 8px solid #ffffff;
-                                            border-top: 13px solid #ffffff;
                                           }
                                           {
                                             padding-right: 8px;
@@ -5530,7 +5627,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       className="ms-List-cell"
                       data-automationid="ListCell"
                       data-list-index={1}
-                      role="listitem"
+                      role="presentation"
                     >
                       <div
                         className=
@@ -5547,6 +5644,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               {
                                 -moz-osx-font-smoothing: grayscale;
                                 -webkit-font-smoothing: antialiased;
+                                border-bottom: 1px solid #ffffff;
                                 cursor: default;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                 font-size: 14px;
@@ -5563,25 +5661,29 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
-                                outline: 1px solid #666666;
+                                outline: 1px solid #605e5c;
                                 position: absolute;
                                 right: 1px;
                                 top: 1px;
                                 z-index: 1;
                               }
                               &:hover {
-                                background: #f4f4f4;
+                                background: #f3f2f1;
+                                color: #201f1e;
                               }
-                              &:hover $check {
+                              &:hover .ms-GroupHeader-check {
                                 opacity: 1;
                               }
-                              .ms-GroupedList-group.is-dropping > $root $dropIcon {
+                              .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
+                                opacity: 1;
+                              }
+                              & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
                                 opacity: 1;
                                 transform: rotate(0.2deg) scale(1);
                                 transition-delay: 0.367s;
                                 transition: transform 0.467s cubic-bezier(0.075, 0.820, 0.165, 1.000) opacity 0.167s cubic-bezier(0.390, 0.575, 0.565, 1.000);
                               }
-                              .ms-GroupedList-group.is-dropping $check {
+                              .ms-GroupedList-group.is-dropping .ms-GroupHeader-check {
                                 opacity: 0;
                               }
                           data-is-focusable={true}
@@ -5591,22 +5693,24 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                           <div
                             className=
                                 ms-FocusZone
+                                &:focus {
+                                  outline: none;
+                                }
                                 {
                                   align-items: center;
                                   display: flex;
-                                  height: 40px;
+                                  height: 48px;
                                 }
                             data-focuszone-id="FocusZone21"
                             onFocus={[Function]}
                             onKeyDown={[Function]}
                             onMouseDownCapture={[Function]}
-                            role="presentation"
                           >
                             <div
                               className=
                                   ms-GroupHeader-dropIcon
                                   {
-                                    color: #666666;
+                                    color: #605e5c;
                                     font-size: 20px;
                                     left: -26px;
                                     opacity: 0;
@@ -5645,15 +5749,21 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               className=
                                   ms-GroupHeader-expand
                                   {
+                                    align-items: center;
                                     background-color: transparent;
                                     background: none;
                                     border: none;
-                                    color: #666666;
+                                    color: #605e5c;
                                     cursor: default;
-                                    font-size: 20px;
-                                    height: 40px;
+                                    display: flex;
+                                    font-size: 12px;
+                                    height: 48px;
+                                    justify-content: center;
                                     outline: transparent;
-                                    padding-top: 4px;
+                                    padding-bottom: 0px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                    padding-top: 0px;
                                     position: relative;
                                     width: 36px;
                                   }
@@ -5665,11 +5775,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     bottom: 1px;
                                     content: "";
                                     left: 1px;
-                                    outline: 1px solid #666666;
+                                    outline: 1px solid #605e5c;
                                     position: absolute;
                                     right: 1px;
                                     top: 1px;
                                     z-index: 1;
+                                  }
+                                  &:hover {
+                                    background-color: #edebe9;
+                                  }
+                                  &:active {
+                                    background-color: #e1dfdd;
                                   }
                               onClick={[Function]}
                               type="button"
@@ -5682,18 +5798,18 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       -moz-osx-font-smoothing: grayscale;
                                       -webkit-font-smoothing: antialiased;
                                       display: inline-block;
-                                      font-family: "FabricMDL2Icons";
+                                      font-family: "FabricMDL2Icons-2";
                                       font-style: normal;
                                       font-weight: normal;
                                       speak: none;
                                       transform-origin: 50% 50%;
-                                      transform: rotate(-180deg);
+                                      transform: rotate(90deg);
                                       transition: transform .1s linear;
                                     }
-                                data-icon-name="ChevronDown"
+                                data-icon-name="ChevronRightMed"
                                 role="presentation"
                               >
-                                
+                                
                               </i>
                             </button>
                             <div
@@ -5701,8 +5817,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   ms-GroupHeader-title
                                   {
                                     cursor: pointer;
-                                    font-size: 21px;
-                                    font-weight: 100;
+                                    font-size: 16px;
+                                    font-weight: 600;
                                     outline: 0px;
                                     padding-left: 12px;
                                     text-overflow: ellipsis;
@@ -5732,7 +5848,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         <div
                           className="ms-List"
                           id="GroupedListSection20"
-                          role="list"
+                          role="grid"
                         >
                           <div
                             className="ms-List-surface"
@@ -5747,7 +5863,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 className="ms-List-cell"
                                 data-automationid="ListCell"
                                 data-list-index={2}
-                                role="listitem"
+                                role="presentation"
                               >
                                 <div
                                   aria-rowindex={3}
@@ -5756,6 +5872,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       ms-FocusZone
                                       ms-DetailsRow
                                       is-contentUnselectable
+                                      &:focus {
+                                        outline: none;
+                                      }
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
@@ -5764,9 +5883,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         animation-name: keyframes from{opacity:0;}to{opacity:1;};
                                         animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                                         background: #ffffff;
-                                        border-bottom: 1px solid #f4f4f4;
+                                        border-bottom: 1px solid #f3f2f1;
                                         box-sizing: border-box;
-                                        color: #666666;
+                                        color: #605e5c;
                                         cursor: default;
                                         display: inline-flex;
                                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5789,7 +5908,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         border: 0;
                                       }
                                       .ms-Fabric--isFocusVisible &:focus:after {
-                                        border: 1px solid #0078d4;
+                                        border: 1px solid #605e5c;
                                         bottom: 1px;
                                         content: "";
                                         left: 1px;
@@ -5799,45 +5918,42 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         top: 1px;
                                         z-index: 1;
                                       }
-                                      ms-List-cell:first-child &:before {
+                                      .ms-List-cell:first-child &:before {
                                         display: none;
                                       }
                                       &:hover {
-                                        background: #f4f4f4;
+                                        background: #f3f2f1;
+                                        color: #323130;
                                       }
-                                      &:hover $check {
+                                      &:hover .is-row-header {
+                                        color: #201f1e;
+                                      }
+                                      &:hover .ms-DetailsRow-check {
+                                        opacity: 1;
+                                      }
+                                      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
                                   data-focuszone-id="FocusZone24"
-                                  data-is-draggable={false}
                                   data-is-focusable={true}
                                   data-item-index={2}
                                   data-selection-index={2}
-                                  draggable={false}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
                                   <span
-                                    className=
-                                        ms-GroupSpacer
-                                        {
-                                          -moz-osx-font-smoothing: grayscale;
-                                          -webkit-font-smoothing: antialiased;
-                                          display: inline-block;
-                                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                          font-size: 14px;
-                                          font-weight: 400;
-                                        }
+                                    className="ms-GroupSpacer"
                                     style={
                                       Object {
+                                        "display": "inline-block",
                                         "width": 36,
                                       }
                                     }
@@ -5874,7 +5990,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                             border: 0;
                                           }
                                           .ms-Fabric--isFocusVisible &:focus:after {
-                                            border: 1px solid #666666;
+                                            border: 1px solid #605e5c;
                                             bottom: 0px;
                                             content: "";
                                             left: 0px;
@@ -5893,21 +6009,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           }
                                           & [data-is-focusable='true']::-moz-focus-inner {
                                             border: 0;
-                                          }
-                                          &$shimmer {
-                                            border-bottom: 17.5px solid #ffffff;
-                                            border-left: 12px solid #ffffff;
-                                            border-right: 32px solid #ffffff;
-                                            border-top: 17.5px solid #ffffff;
-                                            padding-bottom: 0px;
-                                            padding-left: 0px;
-                                            padding-right: 0px;
-                                            padding-top: 0px;
-                                          }
-                                          &$shimmerIconPlaceholder {
-                                            border-bottom: 13px solid #ffffff;
-                                            border-right: 8px solid #ffffff;
-                                            border-top: 13px solid #ffffff;
                                           }
                                           {
                                             padding-right: 8px;
@@ -5945,7 +6046,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 className="ms-List-cell"
                                 data-automationid="ListCell"
                                 data-list-index={3}
-                                role="listitem"
+                                role="presentation"
                               >
                                 <div
                                   aria-rowindex={4}
@@ -5954,6 +6055,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       ms-FocusZone
                                       ms-DetailsRow
                                       is-contentUnselectable
+                                      &:focus {
+                                        outline: none;
+                                      }
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
@@ -5962,9 +6066,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         animation-name: keyframes from{opacity:0;}to{opacity:1;};
                                         animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                                         background: #ffffff;
-                                        border-bottom: 1px solid #f4f4f4;
+                                        border-bottom: 1px solid #f3f2f1;
                                         box-sizing: border-box;
-                                        color: #666666;
+                                        color: #605e5c;
                                         cursor: default;
                                         display: inline-flex;
                                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5987,7 +6091,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         border: 0;
                                       }
                                       .ms-Fabric--isFocusVisible &:focus:after {
-                                        border: 1px solid #0078d4;
+                                        border: 1px solid #605e5c;
                                         bottom: 1px;
                                         content: "";
                                         left: 1px;
@@ -5997,45 +6101,42 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         top: 1px;
                                         z-index: 1;
                                       }
-                                      ms-List-cell:first-child &:before {
+                                      .ms-List-cell:first-child &:before {
                                         display: none;
                                       }
                                       &:hover {
-                                        background: #f4f4f4;
+                                        background: #f3f2f1;
+                                        color: #323130;
                                       }
-                                      &:hover $check {
+                                      &:hover .is-row-header {
+                                        color: #201f1e;
+                                      }
+                                      &:hover .ms-DetailsRow-check {
+                                        opacity: 1;
+                                      }
+                                      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
                                   data-focuszone-id="FocusZone25"
-                                  data-is-draggable={false}
                                   data-is-focusable={true}
                                   data-item-index={3}
                                   data-selection-index={3}
-                                  draggable={false}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
                                   <span
-                                    className=
-                                        ms-GroupSpacer
-                                        {
-                                          -moz-osx-font-smoothing: grayscale;
-                                          -webkit-font-smoothing: antialiased;
-                                          display: inline-block;
-                                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                          font-size: 14px;
-                                          font-weight: 400;
-                                        }
+                                    className="ms-GroupSpacer"
                                     style={
                                       Object {
+                                        "display": "inline-block",
                                         "width": 36,
                                       }
                                     }
@@ -6072,7 +6173,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                             border: 0;
                                           }
                                           .ms-Fabric--isFocusVisible &:focus:after {
-                                            border: 1px solid #666666;
+                                            border: 1px solid #605e5c;
                                             bottom: 0px;
                                             content: "";
                                             left: 0px;
@@ -6091,21 +6192,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           }
                                           & [data-is-focusable='true']::-moz-focus-inner {
                                             border: 0;
-                                          }
-                                          &$shimmer {
-                                            border-bottom: 17.5px solid #ffffff;
-                                            border-left: 12px solid #ffffff;
-                                            border-right: 32px solid #ffffff;
-                                            border-top: 17.5px solid #ffffff;
-                                            padding-bottom: 0px;
-                                            padding-left: 0px;
-                                            padding-right: 0px;
-                                            padding-top: 0px;
-                                          }
-                                          &$shimmerIconPlaceholder {
-                                            border-bottom: 13px solid #ffffff;
-                                            border-right: 8px solid #ffffff;
-                                            border-top: 13px solid #ffffff;
                                           }
                                           {
                                             padding-right: 8px;
@@ -6143,7 +6229,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 className="ms-List-cell"
                                 data-automationid="ListCell"
                                 data-list-index={4}
-                                role="listitem"
+                                role="presentation"
                               >
                                 <div
                                   aria-rowindex={5}
@@ -6152,6 +6238,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       ms-FocusZone
                                       ms-DetailsRow
                                       is-contentUnselectable
+                                      &:focus {
+                                        outline: none;
+                                      }
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
@@ -6160,9 +6249,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         animation-name: keyframes from{opacity:0;}to{opacity:1;};
                                         animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                                         background: #ffffff;
-                                        border-bottom: 1px solid #f4f4f4;
+                                        border-bottom: 1px solid #f3f2f1;
                                         box-sizing: border-box;
-                                        color: #666666;
+                                        color: #605e5c;
                                         cursor: default;
                                         display: inline-flex;
                                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -6185,7 +6274,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         border: 0;
                                       }
                                       .ms-Fabric--isFocusVisible &:focus:after {
-                                        border: 1px solid #0078d4;
+                                        border: 1px solid #605e5c;
                                         bottom: 1px;
                                         content: "";
                                         left: 1px;
@@ -6195,45 +6284,42 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                         top: 1px;
                                         z-index: 1;
                                       }
-                                      ms-List-cell:first-child &:before {
+                                      .ms-List-cell:first-child &:before {
                                         display: none;
                                       }
                                       &:hover {
-                                        background: #f4f4f4;
+                                        background: #f3f2f1;
+                                        color: #323130;
                                       }
-                                      &:hover $check {
+                                      &:hover .is-row-header {
+                                        color: #201f1e;
+                                      }
+                                      &:hover .ms-DetailsRow-check {
+                                        opacity: 1;
+                                      }
+                                      .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
                                   data-focuszone-id="FocusZone26"
-                                  data-is-draggable={false}
                                   data-is-focusable={true}
                                   data-item-index={4}
                                   data-selection-index={4}
-                                  draggable={false}
                                   onFocus={[Function]}
                                   onKeyDown={[Function]}
                                   onMouseDownCapture={[Function]}
                                   role="row"
                                   style={
                                     Object {
-                                      "minWidth": 0,
+                                      "minWidth": 100,
                                     }
                                   }
                                 >
                                   <span
-                                    className=
-                                        ms-GroupSpacer
-                                        {
-                                          -moz-osx-font-smoothing: grayscale;
-                                          -webkit-font-smoothing: antialiased;
-                                          display: inline-block;
-                                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                          font-size: 14px;
-                                          font-weight: 400;
-                                        }
+                                    className="ms-GroupSpacer"
                                     style={
                                       Object {
+                                        "display": "inline-block",
                                         "width": 36,
                                       }
                                     }
@@ -6270,7 +6356,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                             border: 0;
                                           }
                                           .ms-Fabric--isFocusVisible &:focus:after {
-                                            border: 1px solid #666666;
+                                            border: 1px solid #605e5c;
                                             bottom: 0px;
                                             content: "";
                                             left: 0px;
@@ -6289,21 +6375,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           }
                                           & [data-is-focusable='true']::-moz-focus-inner {
                                             border: 0;
-                                          }
-                                          &$shimmer {
-                                            border-bottom: 17.5px solid #ffffff;
-                                            border-left: 12px solid #ffffff;
-                                            border-right: 32px solid #ffffff;
-                                            border-top: 17.5px solid #ffffff;
-                                            padding-bottom: 0px;
-                                            padding-left: 0px;
-                                            padding-right: 0px;
-                                            padding-top: 0px;
-                                          }
-                                          &$shimmerIconPlaceholder {
-                                            border-bottom: 13px solid #ffffff;
-                                            border-right: 8px solid #ffffff;
-                                            border-top: 13px solid #ffffff;
                                           }
                                           {
                                             padding-right: 8px;

@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { FocusZone } from './FocusZone';
-import { IRefObject } from '../../Utilities';
+import { IRefObject, IPoint } from '../../Utilities';
 
 /**
  * FocusZone component class interface.
+ * {@docCategory FocusZone}
  */
 export interface IFocusZone {
   /**
@@ -22,10 +23,18 @@ export interface IFocusZone {
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   focusElement(childElement?: HTMLElement): boolean;
+
+  /**
+   * Forces horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on
+   * the last horizontal motion.
+   * @param point - the new reference point.
+   */
+  setFocusAlignment(point: IPoint): void;
 }
 
 /**
  * FocusZone component props.
+ * {@docCategory FocusZone}
  */
 export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> {
   /**
@@ -41,7 +50,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * Defines which arrows to react to.
-   * @defaultvalue FocusZoneDirection.bidriectional
+   * @defaultvalue FocusZoneDirection.bidirectional
    */
   direction?: FocusZoneDirection;
 
@@ -58,8 +67,14 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * Element type the root element will use. Default is "div".
+   * @deprecated Use 'as' instead.
    */
-  elementType?: keyof React.ReactHTML;
+  elementType?: any /* TODO should be `keyof React.ReactHTML`, tracking with https://github.com/Microsoft/TypeScript/issues/30050 */;
+
+  /**
+   * A component that should be used as the root element of the FocusZone component.
+   */
+  as?: React.ReactType;
 
   /**
    * If set, will cycle to the beginning of the targets once the user navigates to the
@@ -76,11 +91,13 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * Sets the aria-labelledby attribute.
+   * @deprecated Directly use the `aria-labelledby` attribute instead
    */
   ariaLabelledBy?: string;
 
   /**
    * Sets the aria-describedby attribute.
+   * @deprecated Directly use the `aria-describedby` attribute instead
    */
   ariaDescribedBy?: string;
 
@@ -146,18 +163,28 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    */
   onFocusNotification?: () => void;
 }
-
-export const enum FocusZoneTabbableElements {
+/**
+ * {@docCategory FocusZone}
+ */
+export const FocusZoneTabbableElements = {
   /** Tabbing is not allowed */
-  none = 0,
+  none: 0 as 0,
 
   /** All tabbing action is allowed */
-  all = 1,
+  all: 1 as 1,
 
   /** Tabbing is allowed only on input elements */
-  inputOnly = 2
-}
+  inputOnly: 2 as 2
+};
 
+/**
+ * {@docCategory FocusZone}
+ */
+export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
+
+/**
+ * {@docCategory FocusZone}
+ */
 export enum FocusZoneDirection {
   /** Only react to up/down arrows. */
   vertical = 0,

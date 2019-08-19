@@ -1,35 +1,48 @@
 import * as React from 'react';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import './Dialog.Basic.Example.scss';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
+import { hiddenContentStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 
-export class DialogBasicExample extends React.Component<
-  {},
-  {
-    hideDialog: boolean;
-  }
-> {
-  constructor(props: {}) {
-    super(props);
+const screenReaderOnly = mergeStyles(hiddenContentStyle);
 
-    this.state = {
-      hideDialog: true
-    };
-  }
+export interface IDialogBasicExampleState {
+  hideDialog: boolean;
+  isDraggable: boolean;
+}
+
+export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleState> {
+  public state: IDialogBasicExampleState = {
+    hideDialog: true,
+    isDraggable: false
+  };
+  // Use getId() to ensure that the IDs are unique on the page.
+  // (It's also okay to use plain strings without getId() and manually ensure uniqueness.)
+  private _labelId: string = getId('dialogLabel');
+  private _subTextId: string = getId('subTextLabel');
+  private _dragOptions = {
+    moveMenuItemText: 'Move',
+    closeMenuItemText: 'Close',
+    menu: ContextualMenu
+  };
 
   public render() {
+    const { hideDialog, isDraggable } = this.state;
     return (
       <div>
+        <Checkbox label="Is draggable" onChange={this._toggleDraggable} checked={isDraggable} />
         <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
-        <label id="myLabelId" className="screenReaderOnly">
+        <label id={this._labelId} className={screenReaderOnly}>
           My sample Label
         </label>
-        <label id="mySubTextId" className="screenReaderOnly">
+        <label id={this._subTextId} className={screenReaderOnly}>
           My Sample description
         </label>
 
         <Dialog
-          hidden={this.state.hideDialog}
+          hidden={hideDialog}
           onDismiss={this._closeDialog}
           dialogContentProps={{
             type: DialogType.normal,
@@ -37,13 +50,13 @@ export class DialogBasicExample extends React.Component<
             subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
           }}
           modalProps={{
-            titleAriaId: 'myLabelId',
-            subtitleAriaId: 'mySubTextId',
+            titleAriaId: this._labelId,
+            subtitleAriaId: this._subTextId,
             isBlocking: false,
-            containerClassName: 'ms-dialogMainOverride'
+            styles: { main: { maxWidth: 450 } },
+            dragOptions: isDraggable ? this._dragOptions : undefined
           }}
         >
-          {null /** You can also include null values as the result of conditionals */}
           <DialogFooter>
             <PrimaryButton onClick={this._closeDialog} text="Save" />
             <DefaultButton onClick={this._closeDialog} text="Cancel" />
@@ -59,5 +72,9 @@ export class DialogBasicExample extends React.Component<
 
   private _closeDialog = (): void => {
     this.setState({ hideDialog: true });
+  };
+
+  private _toggleDraggable = (): void => {
+    this.setState({ isDraggable: !this.state.isDraggable });
   };
 }

@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { IGroup, IGroupDividerProps, IGroupRenderProps, IGroupedListStyles } from './GroupedList.types';
 import { IGroupHeaderProps } from './GroupHeader.types';
+import { IGroupFooterProps } from './GroupFooter.types';
+import { IGroupShowAllProps } from './GroupShowAll.types';
 
 import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../utilities/dragdrop/index';
 
-import { BaseComponent, IRenderFunction, IDisposable, createRef, IClassNames } from '../../Utilities';
+import { initializeComponentRef, IRenderFunction, IDisposable, IClassNames, css, getId, EventGroup } from '../../Utilities';
 
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/index';
 
@@ -14,11 +16,10 @@ import { GroupFooter } from './GroupFooter';
 
 import { List } from '../../List';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
-import { assign, css, getId } from '../../Utilities';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { IListProps } from '../List/index';
 
-export interface IGroupedListSectionProps extends React.Props<GroupedListSection> {
+export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedListSection> {
   /** GroupedList resolved class names */
   groupedListClassNames?: IClassNames<IGroupedListStyles>;
 
@@ -26,6 +27,9 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
    * Gets the component ref.
    */
   componentRef?: () => void;
+
+  /** Whether to render in compact mode */
+  compact?: boolean;
 
   /** Map of callback functions related to drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
@@ -37,7 +41,7 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
   eventsToRegister?: { eventName: string; callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Information to pass in to the group footer. */
-  footerProps?: IGroupDividerProps;
+  footerProps?: IGroupFooterProps;
 
   /** Grouping item limit. */
   getGroupItemLimit?: (group: IGroup) => number;
@@ -55,13 +59,13 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
   groupProps?: IGroupRenderProps;
 
   /** Information to pass in to the group header. */
-  headerProps?: IGroupDividerProps;
+  headerProps?: IGroupHeaderProps;
 
   /** List of items to render. */
   items: any[];
 
   /** Optional list props to pass to list renderer.  */
-  listProps?: any;
+  listProps?: IListProps;
 
   /** Rendering callback to render the group items. */
   onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
@@ -73,19 +77,19 @@ export interface IGroupedListSectionProps extends React.Props<GroupedListSection
   selectionMode?: SelectionMode;
 
   /** Information to pass in to the group Show All footer. */
-  showAllProps?: IGroupDividerProps;
+  showAllProps?: IGroupShowAllProps;
 
   /** Optional Viewport, provided by the parent component. */
   viewport?: IViewport;
 
   /** Override for rendering the group header. */
-  onRenderGroupHeader?: IRenderFunction<IGroupDividerProps>;
+  onRenderGroupHeader?: IRenderFunction<IGroupHeaderProps>;
 
   /** Override for rendering the group Show All link. */
-  onRenderGroupShowAll?: IRenderFunction<IGroupDividerProps>;
+  onRenderGroupShowAll?: IRenderFunction<IGroupShowAllProps>;
 
   /** Override for rendering the group footer. */
-  onRenderGroupFooter?: IRenderFunction<IGroupDividerProps>;
+  onRenderGroupFooter?: IRenderFunction<IGroupFooterProps>;
 
   /**
    * Optional callback to determine whether the list should be rendered in full, or virtualized.
@@ -106,10 +110,11 @@ export interface IGroupedListSectionState {
 
 const DEFAULT_DROPPING_CSS_CLASS = 'is-dropping';
 
-export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, IGroupedListSectionState> {
-  private _root = createRef<HTMLDivElement>();
-  private _list = createRef<List>();
+export class GroupedListSection extends React.Component<IGroupedListSectionProps, IGroupedListSectionState> {
+  private _root = React.createRef<HTMLDivElement>();
+  private _list = React.createRef<List>();
   private _id: string;
+  private _events: EventGroup;
 
   private _dragDropSubscription: IDisposable;
 
@@ -118,12 +123,16 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
     const { selection, group } = props;
 
+    initializeComponentRef(this);
+
     this._id = getId('GroupedListSection');
 
     this.state = {
       isDropping: false,
       isSelected: selection && group ? selection.isRangeSelected(group.startIndex, group.count) : false
     };
+
+    this._events = new EventGroup(this);
   }
 
   public componentDidMount(): void {
@@ -139,6 +148,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   }
 
   public componentWillUnmount() {
+    this._events.dispose();
+
     if (this._dragDropSubscription) {
       this._dragDropSubscription.dispose();
     }
@@ -176,7 +187,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderGroupFooter = this._onRenderGroupFooter,
       onShouldVirtualize,
       groupedListClassNames,
-      groups
+      groups,
+      compact
     } = this.props;
     const { isSelected } = this.state;
     const renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
@@ -185,22 +197,23 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     const hasNestedGroups = group && group.children && group.children.length > 0;
 
     const dividerProps: IGroupDividerProps = {
-      group: group,
-      groupIndex: groupIndex,
+      group,
+      groupIndex,
       groupLevel: group ? group.level : 0,
       isSelected,
-      viewport: viewport,
-      selectionMode: selectionMode,
-      groups: groups
+      viewport,
+      selectionMode,
+      groups,
+      compact
     };
 
     const ariaControlsProps: IGroupHeaderProps = {
       groupedListId: this._id
     };
 
-    const groupHeaderProps: IGroupDividerProps = assign({}, headerProps, dividerProps, ariaControlsProps);
-    const groupShowAllProps: IGroupDividerProps = assign({}, showAllProps, dividerProps);
-    const groupFooterProps: IGroupDividerProps = assign({}, footerProps, dividerProps);
+    const groupHeaderProps: IGroupHeaderProps = { ...headerProps, ...dividerProps, ...ariaControlsProps };
+    const groupShowAllProps: IGroupShowAllProps = { ...showAllProps, ...dividerProps };
+    const groupFooterProps: IGroupFooterProps = { ...footerProps, ...dividerProps };
 
     return (
       <div
@@ -211,6 +224,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         {onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader)}
         {group && group.isCollapsed ? null : hasNestedGroups ? (
           <List
+            role="presentation"
             ref={this._list}
             items={group!.children}
             onRenderCell={this._renderSubGroup}
@@ -258,15 +272,15 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     }
   }
 
-  private _onRenderGroupHeader = (props: IGroupDividerProps): JSX.Element => {
+  private _onRenderGroupHeader = (props: IGroupHeaderProps): JSX.Element => {
     return <GroupHeader {...props} />;
   };
 
-  private _onRenderGroupShowAll = (props: IGroupDividerProps): JSX.Element => {
+  private _onRenderGroupShowAll = (props: IGroupShowAllProps): JSX.Element => {
     return <GroupShowAll {...props} />;
   };
 
-  private _onRenderGroupFooter = (props: IGroupDividerProps): JSX.Element => {
+  private _onRenderGroupFooter = (props: IGroupFooterProps): JSX.Element => {
     return <GroupFooter {...props} />;
   };
 
@@ -290,11 +304,12 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
 
   private _onRenderGroup(renderCount: number): JSX.Element {
     const { group, items, onRenderCell, listProps, groupNestingDepth, onShouldVirtualize } = this.props;
-    const count = group ? group.count : items.length;
+    const count = group && !group.isShowingAll ? group.count : items.length;
     const startIndex = group ? group.startIndex : 0;
 
     return (
       <List
+        role="grid"
         items={items}
         onRenderCell={this._onRenderGroupCell(onRenderCell, groupNestingDepth)}
         ref={this._list}
@@ -307,7 +322,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     );
   }
 
-  private _renderSubGroup = (subGroup: any, subGroupIndex: number): JSX.Element | null => {
+  private _renderSubGroup = (subGroup: IGroup, subGroupIndex: number): JSX.Element | null => {
     const {
       dragDropEvents,
       dragDropHelper,
@@ -328,8 +343,11 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
       onRenderGroupShowAll,
       onRenderGroupFooter,
       onShouldVirtualize,
-      group
+      group,
+      compact
     } = this.props;
+
+    const nestingDepth = subGroup.level ? subGroup.level + 1 : groupNestingDepth;
 
     return !subGroup || subGroup.count > 0 || (groupProps && groupProps.showEmptyGroups) ? (
       <GroupedListSection
@@ -342,7 +360,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         getGroupItemLimit={getGroupItemLimit}
         group={subGroup}
         groupIndex={subGroupIndex}
-        groupNestingDepth={groupNestingDepth}
+        groupNestingDepth={nestingDepth}
         groupProps={groupProps}
         headerProps={headerProps}
         items={items}
@@ -357,6 +375,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
         onRenderGroupFooter={onRenderGroupFooter}
         onShouldVirtualize={onShouldVirtualize}
         groups={group!.children}
+        compact={compact}
       />
     ) : null;
   };
@@ -365,7 +384,7 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
     return 1;
   }
 
-  private _getGroupKey(group: any, index: number): string {
+  private _getGroupKey(group: IGroup, index: number): string {
     return 'group-' + (group && group.key ? group.key : String(group.level) + String(index));
   }
 
@@ -388,9 +407,8 @@ export class GroupedListSection extends BaseComponent<IGroupedListSectionProps, 
   /**
    * update groupIsDropping state based on the input value, which is used to change style during drag and drop
    *
-   * @private
-   * @param {boolean} newValue (new isDropping state value)
-   * @param {DragEvent} event (the event trigger dropping state change which can be dragenter, dragleave etc)
+   * @param newValue - new isDropping state value
+   * @param event - the event trigger dropping state change which can be dragenter, dragleave etc
    */
   private _updateDroppingState = (newIsDropping: boolean, event: DragEvent): void => {
     const { isDropping } = this.state;

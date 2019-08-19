@@ -13,6 +13,7 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
     super(props);
 
     this._onDismiss = this._onDismiss.bind(this);
+    this._onShow = this._onShow.bind(this);
 
     this.state = {
       isTeachingBubbleVisible: false
@@ -28,15 +29,19 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
     return (
       <div className="ms-TeachingBubbleExample">
         <span className="ms-TeachingBubbleBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
-          <DefaultButton onClick={this._onDismiss} text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'} />
+          <DefaultButton
+            onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
+            text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
+          />
         </span>
         {isTeachingBubbleVisible ? (
           <div>
             <TeachingBubble
-              targetElement={this._menuButtonElement}
+              target={this._menuButtonElement}
               hasSmallHeadline={true}
               onDismiss={this._onDismiss}
               hasCloseIcon={true}
+              closeButtonAriaLabel="Close"
               primaryButtonProps={examplePrimaryButton}
               headline="Discover what’s trending around you"
             >
@@ -50,7 +55,13 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
 
   private _onDismiss(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: !this.state.isTeachingBubbleVisible
+      isTeachingBubbleVisible: false
+    });
+  }
+
+  private _onShow(ev: any): void {
+    this.setState({
+      isTeachingBubbleVisible: true
     });
   }
 }

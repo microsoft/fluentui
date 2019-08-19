@@ -1,0 +1,413 @@
+{
+  "fontName": "fabric-icons-15",
+  "fontFamilyName": "FabricMDL2Icons-15",
+  "excludeGlyphs": false,
+  "excludeThirdPartyIcons": true,
+  "chunkSubsets": true,
+  "hashFontFileName": true,
+  "subsetChunkSettings": {
+    "maxSubsetSize": 100
+  },
+  "glyphs": [
+    {
+      "name": "DeleteRowsMirrored",
+      "unicode": "F650"
+    },
+    {
+      "name": "DeleteTable",
+      "unicode": "F651"
+    },
+    {
+      "name": "AccountBrowser",
+      "unicode": "F652"
+    },
+    {
+      "name": "VersionControlPush",
+      "unicode": "F664"
+    },
+    {
+      "name": "StackedColumnChart2",
+      "unicode": "F666"
+    },
+    {
+      "name": "TripleColumnWide",
+      "unicode": "F66E"
+    },
+    {
+      "name": "QuadColumn",
+      "unicode": "F66F"
+    },
+    {
+      "name": "WhiteBoardApp16",
+      "unicode": "F673"
+    },
+    {
+      "name": "WhiteBoardApp32",
+      "unicode": "F674"
+    },
+    {
+      "name": "PinnedSolid",
+      "unicode": "F676"
+    },
+    {
+      "name": "InsertSignatureLine",
+      "unicode": "F677"
+    },
+    {
+      "name": "ArrangeByFrom",
+      "unicode": "F678"
+    },
+    {
+      "name": "Phishing",
+      "unicode": "F679"
+    },
+    {
+      "name": "CreateMailRule",
+      "unicode": "F67A"
+    },
+    {
+      "name": "PublishCourse",
+      "unicode": "F699"
+    },
+    {
+      "name": "DictionaryRemove",
+      "unicode": "F69A"
+    },
+    {
+      "name": "UserRemove",
+      "unicode": "F69B"
+    },
+    {
+      "name": "UserEvent",
+      "unicode": "F69C"
+    },
+    {
+      "name": "Encryption",
+      "unicode": "F69D"
+    },
+    {
+      "name": "PasswordField",
+      "unicode": "F6AA"
+    },
+    {
+      "name": "OpenInNewTab",
+      "unicode": "F6AB"
+    },
+    {
+      "name": "Hide3",
+      "unicode": "F6AC"
+    },
+    {
+      "name": "VerifiedBrandSolid",
+      "unicode": "F6AD"
+    },
+    {
+      "name": "MarkAsProtected",
+      "unicode": "F6AE"
+    },
+    {
+      "name": "AuthenticatorApp",
+      "unicode": "F6B1"
+    },
+    {
+      "name": "WebTemplate",
+      "unicode": "F6B2"
+    },
+    {
+      "name": "DefenderTVM",
+      "unicode": "F6B3"
+    },
+    {
+      "name": "MedalSolid",
+      "unicode": "F6B9"
+    },
+    {
+      "name": "D365TalentLearn",
+      "unicode": "F6BB"
+    },
+    {
+      "name": "D365TalentInsight",
+      "unicode": "F6BC"
+    },
+    {
+      "name": "D365TalentHRCore",
+      "unicode": "F6BD"
+    },
+    {
+      "name": "BacklogList",
+      "unicode": "F6BF"
+    },
+    {
+      "name": "ButtonControl",
+      "unicode": "F6C0"
+    },
+    {
+      "name": "TableGroup",
+      "unicode": "F6D9"
+    },
+    {
+      "name": "MountainClimbing",
+      "unicode": "F6DB"
+    },
+    {
+      "name": "TagUnknown",
+      "unicode": "F6DF"
+    },
+    {
+      "name": "TagUnknownMirror",
+      "unicode": "F6E0"
+    },
+    {
+      "name": "TagUnknown12",
+      "unicode": "F6E1"
+    },
+    {
+      "name": "TagUnknown12Mirror",
+      "unicode": "F6E2"
+    },
+    {
+      "name": "Link12",
+      "unicode": "F6E3"
+    },
+    {
+      "name": "Presentation",
+      "unicode": "F6E4"
+    },
+    {
+      "name": "Presentation12",
+      "unicode": "F6E5"
+    },
+    {
+      "name": "Lock12",
+      "unicode": "F6E6"
+    },
+    {
+      "name": "BuildDefinition",
+      "unicode": "F6E9"
+    },
+    {
+      "name": "ReleaseDefinition",
+      "unicode": "F6EA"
+    },
+    {
+      "name": "SaveTemplate",
+      "unicode": "F6EC"
+    },
+    {
+      "name": "UserGauge",
+      "unicode": "F6ED"
+    },
+    {
+      "name": "BlockedSiteSolid12",
+      "unicode": "F70A"
+    },
+    {
+      "name": "TagSolid",
+      "unicode": "F70E"
+    },
+    {
+      "name": "OfficeChat",
+      "unicode": "F70F"
+    },
+    {
+      "name": "OfficeChatSolid",
+      "unicode": "F710"
+    },
+    {
+      "name": "MailSchedule",
+      "unicode": "F72E"
+    },
+    {
+      "name": "WarningSolid",
+      "unicode": "F736"
+    },
+    {
+      "name": "Blocked2Solid",
+      "unicode": "F737"
+    },
+    {
+      "name": "SkypeCircleArrow",
+      "unicode": "F747"
+    },
+    {
+      "name": "SkypeArrow",
+      "unicode": "F748"
+    },
+    {
+      "name": "SyncStatus",
+      "unicode": "F751"
+    },
+    {
+      "name": "SyncStatusSolid",
+      "unicode": "F752"
+    },
+    {
+      "name": "ProjectDocument",
+      "unicode": "F759"
+    },
+    {
+      "name": "ToDoLogoOutline",
+      "unicode": "F75B"
+    },
+    {
+      "name": "VisioOnlineLogoFill32",
+      "unicode": "F75F"
+    },
+    {
+      "name": "VisioOnlineLogo32",
+      "unicode": "F760"
+    },
+    {
+      "name": "VisioOnlineLogoCloud32",
+      "unicode": "F761"
+    },
+    {
+      "name": "VisioDiagramSync",
+      "unicode": "F762"
+    },
+    {
+      "name": "Event12",
+      "unicode": "F763"
+    },
+    {
+      "name": "EventDateMissed12",
+      "unicode": "F764"
+    },
+    {
+      "name": "UserOptional",
+      "unicode": "F767"
+    },
+    {
+      "name": "ResponsesMenu",
+      "unicode": "F768"
+    },
+    {
+      "name": "DoubleDownArrow",
+      "unicode": "F769"
+    },
+    {
+      "name": "DistributeDown",
+      "unicode": "F76A"
+    },
+    {
+      "name": "BookmarkReport",
+      "unicode": "F76B"
+    },
+    {
+      "name": "FilterSettings",
+      "unicode": "F76C"
+    },
+    {
+      "name": "GripperDotsVertical",
+      "unicode": "F772"
+    },
+    {
+      "name": "MailAttached",
+      "unicode": "F774"
+    },
+    {
+      "name": "AddIn",
+      "unicode": "F775"
+    },
+    {
+      "name": "LinkedDatabase",
+      "unicode": "F779"
+    },
+    {
+      "name": "PromotedDatabase",
+      "unicode": "F77D"
+    },
+    {
+      "name": "BarChartVerticalFilter",
+      "unicode": "F77E"
+    },
+    {
+      "name": "BarChartVerticalFilterSolid",
+      "unicode": "F77F"
+    },
+    {
+      "name": "MicrosoftTranslatorLogo",
+      "unicode": "F782"
+    },
+    {
+      "name": "ShowTimeAs",
+      "unicode": "F787"
+    },
+    {
+      "name": "FileRequest",
+      "unicode": "F789"
+    },
+    {
+      "name": "WorkItemAlert",
+      "unicode": "F78F"
+    },
+    {
+      "name": "PowerBILogo16",
+      "unicode": "F790"
+    },
+    {
+      "name": "PowerBILogoBackplate16",
+      "unicode": "F791"
+    },
+    {
+      "name": "BulletedListText",
+      "unicode": "F792"
+    },
+    {
+      "name": "BulletedListBullet",
+      "unicode": "F793"
+    },
+    {
+      "name": "BulletedListTextMirrored",
+      "unicode": "F794"
+    },
+    {
+      "name": "BulletedListBulletMirrored",
+      "unicode": "F795"
+    },
+    {
+      "name": "NumberedListText",
+      "unicode": "F796"
+    },
+    {
+      "name": "NumberedListNumber",
+      "unicode": "F797"
+    },
+    {
+      "name": "NumberedListTextMirrored",
+      "unicode": "F798"
+    },
+    {
+      "name": "NumberedListNumberMirrored",
+      "unicode": "F799"
+    },
+    {
+      "name": "RemoveLinkChain",
+      "unicode": "F79A"
+    },
+    {
+      "name": "RemoveLinkX",
+      "unicode": "F79B"
+    },
+    {
+      "name": "FabricTextHighlight",
+      "unicode": "F79C"
+    },
+    {
+      "name": "ClearFormattingA",
+      "unicode": "F79D"
+    },
+    {
+      "name": "ClearFormattingEraser",
+      "unicode": "F79E"
+    },
+    {
+      "name": "Photo2Fill",
+      "unicode": "F79F"
+    },
+    {
+      "name": "IncreaseIndentText",
+      "unicode": "F7A0"
+    }
+  ]
+}

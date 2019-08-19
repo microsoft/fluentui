@@ -95,7 +95,7 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
 
   private _onDirectionalChanged(event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void {
     this.setState({
-      directionalHint: option.key as number
+      directionalHint: option.key as DirectionalHint
     });
   }
 }

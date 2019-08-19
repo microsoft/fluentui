@@ -3,8 +3,14 @@ import * as React from 'react';
 import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory Label}
+ */
 export interface ILabel {}
 
+/**
+ * {@docCategory Label}
+ */
 export interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
   /**
    * Render the root element as another type.
@@ -39,6 +45,9 @@ export interface ILabelProps extends React.LabelHTMLAttributes<HTMLLabelElement>
   styles?: IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>;
 }
 
+/**
+ * {@docCategory Label}
+ */
 export interface ILabelStyles {
   /**
    * Styles for the root element.
@@ -46,6 +55,9 @@ export interface ILabelStyles {
   root: IStyle;
 }
 
+/**
+ * {@docCategory Label}
+ */
 export interface ILabelStyleProps {
   /**
    *

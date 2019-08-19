@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getId } from '../../Utilities';
+import { warnDeprecations, classNamesFunction, getId } from '../../Utilities';
 import { IDialogProps, IDialogStyleProps, IDialogStyles } from './Dialog.types';
 import { DialogType, IDialogContentProps } from './DialogContent.types';
-import { Modal, IModalProps } from '../../Modal';
+import { Modal, IModalProps, IDragOptions } from '../../Modal';
 import { ILayerProps } from '../../Layer';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
@@ -25,7 +25,7 @@ const DefaultDialogContentProps: IDialogContentProps = {
 };
 
 @withResponsiveMode
-export class DialogBase extends BaseComponent<IDialogProps, {}> {
+export class DialogBase extends React.Component<IDialogProps, {}> {
   public static defaultProps: IDialogProps = {
     hidden: true
   };
@@ -41,21 +41,23 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
     this._defaultTitleTextId = this._id + '-title';
     this._defaultSubTextId = this._id + '-subText';
 
-    this._warnDeprecations({
-      isOpen: 'hidden',
-      type: 'dialogContentProps.type',
-      subText: 'dialogContentProps.subText',
-      contentClassName: 'dialogContentProps.className',
-      topButtonsProps: 'dialogContentProps.topButtonsProps',
-      className: 'modalProps.className',
-      isDarkOverlay: 'modalProps.isDarkOverlay',
-      isBlocking: 'modalProps.isBlocking',
-      containerClassName: 'modalProps.containerClassName',
-      onDismissed: 'modalProps.onDismissed',
-      onLayerDidMount: 'modalProps.layerProps.onLayerDidMount',
-      ariaDescribedById: 'modalProps.subtitleAriaId',
-      ariaLabelledById: 'modalProps.titleAriaId'
-    });
+    if (process.env.NODE_ENV !== 'production') {
+      warnDeprecations('Dialog', props, {
+        isOpen: 'hidden',
+        type: 'dialogContentProps.type',
+        subText: 'dialogContentProps.subText',
+        contentClassName: 'dialogContentProps.className',
+        topButtonsProps: 'dialogContentProps.topButtonsProps',
+        className: 'modalProps.className',
+        isDarkOverlay: 'modalProps.isDarkOverlay',
+        isBlocking: 'modalProps.isBlocking',
+        containerClassName: 'modalProps.containerClassName',
+        onDismissed: 'modalProps.onDismissed',
+        onLayerDidMount: 'modalProps.layerProps.onLayerDidMount',
+        ariaDescribedById: 'modalProps.subtitleAriaId',
+        ariaLabelledById: 'modalProps.titleAriaId'
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -94,15 +96,32 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       mergedLayerProps.onLayerDidMount = onLayerDidMount;
     }
 
+    let dialogDraggableClassName: string | undefined;
+    let dragOptions: IDragOptions | undefined;
+
+    // if we are draggable, make sure we are using the correct
+    // draggable classname and selectors
+    if (modalProps && modalProps.dragOptions && !modalProps.dragOptions.dragHandleSelector) {
+      dialogDraggableClassName = 'ms-Dialog-draggable-header';
+      dragOptions = {
+        ...modalProps.dragOptions,
+        dragHandleSelector: `.${dialogDraggableClassName}`
+      };
+    } else {
+      dragOptions = modalProps && modalProps.dragOptions;
+    }
+
     const mergedModalProps = {
       ...DefaultModalProps,
       ...modalProps,
-      layerProps: mergedLayerProps
+      layerProps: mergedLayerProps,
+      dragOptions
     };
 
     const dialogContentProps: IDialogContentProps = {
       ...DefaultDialogContentProps,
-      ...this.props.dialogContentProps
+      ...this.props.dialogContentProps,
+      draggableHeaderClassName: dialogDraggableClassName
     };
 
     const classNames = getClassNames(styles!, {

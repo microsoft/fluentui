@@ -2,7 +2,7 @@ import { IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types'
 
 export const getStyles = (props: IColorSliderStyleProps): IColorSliderStyles => {
   const { theme, className } = props;
-  const { palette } = theme;
+  const { palette, effects } = theme;
 
   return {
     root: [
@@ -10,8 +10,9 @@ export const getStyles = (props: IColorSliderStyleProps): IColorSliderStyles => 
       {
         position: 'relative',
         height: 20,
-        marginBottom: 5,
+        marginBottom: 8,
         border: `1px solid ${palette.neutralLight}`,
+        borderRadius: effects.roundedCorner2,
         boxSizing: 'border-box'
       },
       className
@@ -35,9 +36,9 @@ export const getStyles = (props: IColorSliderStyleProps): IColorSliderStyles => 
         width: 20,
         height: 20,
         background: 'white',
-        border: '1px solid rgba(255,255,255,.8)',
+        border: `1px solid ${palette.neutralSecondaryAlt}`,
         borderRadius: '50%',
-        boxShadow: '0 0 15px -5px black',
+        boxShadow: effects.elevation8,
         transform: 'translate(-50%, -50%)',
         top: '50%'
       }

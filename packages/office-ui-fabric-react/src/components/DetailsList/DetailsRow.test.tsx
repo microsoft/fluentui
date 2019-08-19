@@ -5,6 +5,7 @@ import { IDetailsRowProps } from './DetailsRow.types';
 import { IDetailsListProps, IColumn, CheckboxVisibility } from './DetailsList.types';
 import { SelectionMode, Selection } from '../../utilities/selection/index';
 import { DetailsRow } from './DetailsRow';
+import { getTheme } from '../../Styling';
 
 const _columns: IColumn[] = [
   {
@@ -39,7 +40,7 @@ function mockItems(count: number): any[] {
   return items;
 }
 
-const renderRow = (row: IDetailsRowProps) => <div>{row!.item.name}</div>;
+const renderRow = (row: IDetailsRowProps) => <div>{row.item.name}</div>;
 
 const mockProps: IDetailsListProps = {
   items: mockItems(5),
@@ -101,5 +102,23 @@ describe('DetailsRow', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('renders details list row with custom checkbox render', () => {
+    const onRenderCheckboxMock = jest.fn();
+
+    renderer.create(
+      <DetailsRow
+        item={mockProps.items[0]}
+        itemIndex={0}
+        columns={_columns}
+        checkboxVisibility={CheckboxVisibility.always}
+        selectionMode={SelectionMode.single}
+        selection={new Selection()}
+        onRenderDetailsCheckbox={onRenderCheckboxMock}
+      />
+    );
+
+    expect(onRenderCheckboxMock).toHaveBeenCalledWith({ checked: false, theme: getTheme() }, expect.any(Function));
   });
 });

@@ -1,8 +1,9 @@
 import { IGroupedListStyleProps, IGroupedListStyles } from './GroupedList.types';
-import { getGlobalClassNames, FontSizes, AnimationVariables } from '../../Styling';
+import { getGlobalClassNames, AnimationVariables } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-GroupedList',
+  compact: 'ms-GroupedList--Compact',
   group: 'ms-GroupedList-group',
   link: 'ms-Link',
   listCell: 'ms-List-cell'
@@ -13,23 +14,32 @@ const beziers = {
 };
 
 export const getStyles = (props: IGroupedListStyleProps): IGroupedListStyles => {
-  const { theme, className } = props;
+  const { theme, className, compact } = props;
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme!);
 
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         position: 'relative',
-        fontSize: FontSizes.small,
         selectors: {
-          [`& :global(.${classNames.listCell})`]: {
-            minHeight: 36
+          [`.${classNames.listCell}`]: {
+            minHeight: 38 // be consistent with DetailsList styles
           }
         }
       },
+      compact && [
+        classNames.compact,
+        {
+          selectors: {
+            [`.${classNames.listCell}`]: {
+              minHeight: 32 // be consistent with DetailsList styles
+            }
+          }
+        }
+      ],
       className
     ],
     group: [
@@ -38,10 +48,8 @@ export const getStyles = (props: IGroupedListStyleProps): IGroupedListStyles => 
         transition: `background-color ${AnimationVariables.durationValue2} ${beziers.easeInOutSine}`
       }
     ],
-    groupIsDropping: [
-      {
-        backgroundColor: palette.neutralLight
-      }
-    ]
+    groupIsDropping: {
+      backgroundColor: palette.neutralLight
+    }
   };
 };

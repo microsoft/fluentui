@@ -1,4 +1,4 @@
-import { FontSizes, FontWeights, HighContrastSelector, keyframes, noWrap, getGlobalClassNames, IRawStyle } from '../../Styling';
+import { HighContrastSelector, keyframes, noWrap, getGlobalClassNames, IRawStyle } from '../../Styling';
 import { getRTL } from '../../Utilities';
 import { IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './ProgressIndicator.types';
 
@@ -32,28 +32,21 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
   const isRTL = getRTL();
   const { className, indeterminate, theme, barHeight = 2 } = props;
 
-  const { palette, semanticColors } = theme;
+  const { palette, semanticColors, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const marginBetweenText = 8;
   const textHeight = 18;
+  const progressTrackColor = palette.neutralLight;
 
   return {
-    root: [
-      classNames.root,
-      theme.fonts.medium,
-      {
-        fontWeight: FontWeights.regular
-      },
-      className
-    ],
+    root: [classNames.root, fonts.medium, className],
 
     itemName: [
       classNames.itemName,
       noWrap,
       {
         color: semanticColors.bodyText,
-        fontSize: FontSizes.medium,
         paddingTop: marginBetweenText / 2,
         lineHeight: textHeight + 2
       }
@@ -63,7 +56,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
       classNames.itemDescription,
       {
         color: semanticColors.bodySubtext,
-        fontSize: FontSizes.xSmall,
+        fontSize: fonts.small.fontSize,
         lineHeight: textHeight
       }
     ],
@@ -84,7 +77,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
         position: 'absolute',
         width: '100%',
         height: barHeight,
-        backgroundColor: palette.neutralLight,
+        backgroundColor: progressTrackColor,
 
         selectors: {
           [HighContrastSelector]: {
@@ -113,7 +106,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
         ? ({
             position: 'absolute',
             minWidth: '33%',
-            background: `linear-gradient(to right, transparent 0%, ${palette.themePrimary} 50%, transparent 100%)`,
+            background: `linear-gradient(to right, ${progressTrackColor} 0%, ${palette.themePrimary} 50%, ${progressTrackColor} 100%)`,
             animation: `${isRTL ? IndeterminateProgressRTL : IndeterminateProgress} 3s infinite`
           } as IRawStyle)
         : ({

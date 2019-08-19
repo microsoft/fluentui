@@ -1,5 +1,5 @@
 import { IDetailsListStyleProps, IDetailsListStyles } from './DetailsList.types';
-import { getGlobalClassNames, FontSizes } from '../../Styling';
+import { getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-DetailsList',
@@ -22,7 +22,6 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
       theme.fonts.small,
       {
         position: 'relative',
-        fontSize: FontSizes.small,
         background: semanticColors.listBackground,
         color: semanticColors.listText,
         selectors: {
@@ -33,7 +32,7 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
         }
       },
 
-      isFixed && [classNames.isFixed],
+      isFixed && classNames.isFixed,
 
       compact && [
         classNames.compact,
@@ -65,7 +64,7 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
         minHeight: 1
       }
     ],
-    headerWrapper: [classNames.headerWrapper],
-    contentWrapper: [classNames.contentWrapper]
+    headerWrapper: classNames.headerWrapper,
+    contentWrapper: classNames.contentWrapper
   };
 };

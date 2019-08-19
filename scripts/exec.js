@@ -1,7 +1,7 @@
+// @ts-check
 const path = require('path');
-const exec = require('child_process').exec;
-const chalk = require('chalk');
-const stream = require('stream');
+const child_process = require('child_process');
+const chalk = require('chalk').default;
 const { logStatus } = require('./logging');
 
 const SEPARATOR = process.platform === 'win32' ? ';' : ':',
@@ -9,7 +9,15 @@ const SEPARATOR = process.platform === 'win32' ? ';' : ':',
 
 env.PATH = path.resolve('./node_modules/.bin') + SEPARATOR + env.PATH;
 
-module.exports = function(cmd, displayName, cwd = process.cwd(), opts = {}) {
+/**
+ * Execute a command.
+ *
+ * @param {string} cmd Command to execute
+ * @param {string} [displayName] Display name for the command
+ * @param {string} [cwd] Working directory in which to run the command
+ * @param {{ stdout?: any; stderr?: any; }} [opts] Pipe stdout/stderr somewhere. Can pass `process` global.
+ */
+function exec(cmd, displayName, cwd = process.cwd(), opts = {}) {
   logStatus(chalk.gray('Executing: ') + chalk.cyan(displayName || cmd));
 
   const execOptions = {
@@ -19,20 +27,17 @@ module.exports = function(cmd, displayName, cwd = process.cwd(), opts = {}) {
   };
 
   return new Promise((resolve, reject) => {
-    const child = exec(
-      cmd,
-      execOptions,
-      (error, stdout, stderr) =>
-        error
-          ? reject({
-              error,
-              stdout: stdout,
-              stderr: stderr
-            })
-          : resolve({
-              stdout: stdout,
-              stderr: stderr
-            })
+    const child = child_process.exec(cmd, execOptions, (error, stdout, stderr) =>
+      error
+        ? reject({
+            error,
+            stdout: stdout,
+            stderr: stderr
+          })
+        : resolve({
+            stdout: stdout,
+            stderr: stderr
+          })
     );
 
     if (opts.stdout) {
@@ -42,4 +47,6 @@ module.exports = function(cmd, displayName, cwd = process.cwd(), opts = {}) {
       child.stderr.pipe(opts.stderr);
     }
   });
-};
+}
+
+module.exports = exec;

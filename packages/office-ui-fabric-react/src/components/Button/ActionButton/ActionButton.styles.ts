@@ -15,7 +15,7 @@ export const getStyles = memoizeFunction(
         height: DEFAULT_BUTTON_HEIGHT,
         color: theme.palette.neutralPrimary,
         backgroundColor: 'transparent',
-        border: 'none'
+        border: '1px solid transparent'
       },
 
       rootHovered: {
@@ -46,7 +46,8 @@ export const getStyles = memoizeFunction(
 
       rootDisabled: {
         color: theme.palette.neutralTertiary,
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
+        borderColor: 'transparent'
       },
 
       rootChecked: {

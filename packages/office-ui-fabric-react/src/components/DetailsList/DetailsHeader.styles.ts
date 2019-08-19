@@ -3,6 +3,8 @@ import { getFocusStyle, focusClear, IStyle, getGlobalClassNames, HighContrastSel
 import { IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { ICellStyleProps } from './DetailsRow.types';
+// For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
+import { SPACER_WIDTH as GROUP_EXPANDER_WIDTH } from '../GroupedList/GroupSpacer';
 
 const GlobalClassNames = {
   tooltipHost: 'ms-TooltipHost',
@@ -22,12 +24,12 @@ const GlobalClassNames = {
   cellTitle: 'ms-DetailsHeader-cellTitle',
   cellName: 'ms-DetailsHeader-cellName',
   filterChevron: 'ms-DetailsHeader-filterChevron',
-  gripperBarVertical: 'ms-DetailsColumn-gripperBarVertical'
+  gripperBarVertical: 'ms-DetailsColumn-gripperBarVertical',
+  checkTooltip: 'ms-DetailsHeader-checkTooltip',
+  check: 'ms-DetailsHeader-check'
 };
 
-const values = {
-  rowHeight: 32
-};
+export const HEADER_HEIGHT = 42;
 
 export const getCellStyles = (props: { theme: ITheme; cellStyleProps?: ICellStyleProps }): IStyle => {
   const { theme, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = props;
@@ -43,10 +45,9 @@ export const getCellStyles = (props: { theme: ITheme; cellStyleProps?: ICellStyl
       display: 'inline-block',
       boxSizing: 'border-box',
       padding: `0 ${cellStyleProps.cellRightPadding}px 0 ${cellStyleProps.cellLeftPadding}px`,
-      border: 'none',
       lineHeight: 'inherit',
       margin: '0',
-      height: values.rowHeight,
+      height: HEADER_HEIGHT,
       verticalAlign: 'top',
       whiteSpace: 'nowrap',
       textOverflow: 'ellipsis',
@@ -67,7 +68,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     cellStyleProps = DEFAULT_CELL_STYLE_PROPS
   } = props;
 
-  const { semanticColors, palette } = theme;
+  const { semanticColors, palette, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const colors = {
@@ -88,26 +89,27 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
   return {
     root: [
       classNames.root,
-      theme.fonts.small,
+      fonts.small,
       {
         display: 'inline-block',
         background: colors.headerBackgroundColor,
         position: 'relative',
         minWidth: '100%',
         verticalAlign: 'top',
-        height: values.rowHeight,
-        lineHeight: values.rowHeight,
+        height: HEADER_HEIGHT,
+        lineHeight: HEADER_HEIGHT,
         whiteSpace: 'nowrap',
         boxSizing: 'content-box',
         paddingBottom: '1px',
+        paddingTop: '1px',
         borderBottom: `1px solid ${semanticColors.bodyDivider}`,
         cursor: 'default',
         userSelect: 'none',
         selectors: {
-          '&:hover $check': {
+          [`&:hover .${classNames.check}`]: {
             opacity: 1
           },
-          [`${classNames.tooltipHost} $checkTooltip`]: {
+          [`& .${classNames.tooltipHost} .${classNames.checkTooltip}`]: {
             display: 'block'
           }
         }
@@ -115,7 +117,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       isAllSelected && classNames.isAllSelected,
       isSelectAllHidden && {
         selectors: {
-          $cell$cellIsCheck: {
+          [`& .${classNames.cellIsCheck}`]: {
             visibility: 'hidden'
           }
         }
@@ -125,8 +127,9 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     ],
 
     check: [
+      classNames.check,
       {
-        height: 32
+        height: HEADER_HEIGHT
       },
       {
         selectors: {
@@ -137,11 +140,9 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       }
     ],
 
-    cellWrapperPadded: [
-      {
-        paddingRight: cellStyleProps.cellExtraRightPadding + cellStyleProps.cellRightPadding
-      }
-    ],
+    cellWrapperPadded: {
+      paddingRight: cellStyleProps.cellExtraRightPadding + cellStyleProps.cellRightPadding
+    },
 
     cellIsCheck: [
       cellStyles,
@@ -151,7 +152,8 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         padding: 0,
         margin: 0,
         display: 'inline-flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        border: 'none'
       },
       isAllSelected && {
         opacity: 1
@@ -161,30 +163,39 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     cellIsGroupExpander: [
       cellStyles,
       {
-        paddingLeft: '8px',
-        paddingRight: '8px',
-        width: '36px'
-      }
-    ],
-
-    cellIsActionable: [
-      {
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: fonts.small.fontSize,
+        padding: 0,
+        border: 'none',
+        width: GROUP_EXPANDER_WIDTH, // align with GroupedList's first expandIcon cell width.
+        color: palette.neutralSecondary,
         selectors: {
           ':hover': {
-            color: semanticColors.bodyText,
-            background: semanticColors.listHeaderBackgroundHovered
+            backgroundColor: palette.neutralLighter
           },
           ':active': {
-            background: semanticColors.listHeaderBackgroundPressed
+            backgroundColor: palette.neutralLight
           }
         }
       }
     ],
-    cellIsEmpty: [
-      {
-        textOverflow: 'clip'
+
+    cellIsActionable: {
+      selectors: {
+        ':hover': {
+          color: semanticColors.bodyText,
+          background: semanticColors.listHeaderBackgroundHovered
+        },
+        ':active': {
+          background: semanticColors.listHeaderBackgroundPressed
+        }
       }
-    ],
+    },
+    cellIsEmpty: {
+      textOverflow: 'clip'
+    },
 
     cellSizer: [
       classNames.cellSizer,
@@ -213,7 +224,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
           },
           ':focus:after': cellSizerFadeInStyles,
           ':hover:after': cellSizerFadeInStyles,
-          '&$cellIsResizing:after': [
+          [`&.${classNames.isResizing}:after`]: [
             cellSizerFadeInStyles,
             {
               boxShadow: '0 0 5px 0 rgba(0, 0, 0, 0.4)'
@@ -223,59 +234,54 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       }
     ],
 
-    cellIsResizing: [classNames.isResizing],
+    cellIsResizing: classNames.isResizing,
 
-    cellSizerStart: [
-      {
-        margin: '0 -8px'
-      }
-    ],
+    cellSizerStart: {
+      margin: '0 -8px'
+    },
 
-    cellSizerEnd: [
-      {
-        margin: 0,
-        marginLeft: -16
-      }
-    ],
+    cellSizerEnd: {
+      margin: 0,
+      marginLeft: -16
+    },
 
     collapseButton: [
       classNames.collapseButton,
       {
-        textAlign: 'center',
-        transform: 'rotate(-180deg)',
         transformOrigin: '50% 50%',
-        transition: 'transform 0.1s linear',
-        width: 20,
-        outline: 0,
-        paddingRight: 0
+        transition: 'transform .1s linear'
       },
-      isAllCollapsed && {
-        transform: 'rotate(0deg)'
-      },
-      isAllCollapsed && classNames.isCollapsed
+      isAllCollapsed
+        ? [
+            classNames.isCollapsed,
+            {
+              transform: 'rotate(0deg)'
+            }
+          ]
+        : {
+            transform: 'rotate(90deg)'
+          }
     ],
 
-    checkTooltip: [],
+    checkTooltip: classNames.checkTooltip,
 
-    sizingOverlay: [
-      isSizing && {
-        position: 'absolute',
-        left: 0,
-        top: 0,
-        right: 0,
-        bottom: 0,
-        cursor: 'ew-resize',
-        background: 'rgba(255, 255, 255, 0)',
-        selectors: {
-          [HighContrastSelector]: {
-            background: 'transparent',
-            '-ms-high-contrast-adjust': 'none'
-          }
+    sizingOverlay: isSizing && {
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      right: 0,
+      bottom: 0,
+      cursor: 'ew-resize',
+      background: 'rgba(255, 255, 255, 0)',
+      selectors: {
+        [HighContrastSelector]: {
+          background: 'transparent',
+          MsHighContrastAdjust: 'none'
         }
       }
-    ],
+    },
 
-    accessibleLabel: [hiddenContentStyle],
+    accessibleLabel: hiddenContentStyle,
 
     dropHintCircleStyle: [
       classNames.dropHintCircleStyle,
@@ -299,12 +305,11 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     dropHintCaretStyle: [
       classNames.dropHintCaretStyle,
       {
-        display: 'inline-block',
-        visibility: 'hidden',
+        display: 'none',
         position: 'absolute',
-        top: 22,
+        top: -18,
         left: -7.5,
-        fontSize: 16,
+        fontSize: fonts.mediumPlus.fontSize,
         color: palette.themePrimary,
         overflow: 'visible',
         zIndex: 10
@@ -314,11 +319,10 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     dropHintLineStyle: [
       classNames.dropHintLineStyle,
       {
-        display: 'inline-block',
-        visibility: 'hidden',
+        display: 'none',
         position: 'absolute',
         bottom: 0,
-        top: -3,
+        top: 6,
         overflow: 'hidden',
         height: 37,
         width: 1,
@@ -327,11 +331,9 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       }
     ],
 
-    dropHintStyle: [
-      {
-        display: 'inline-block',
-        position: 'absolute'
-      }
-    ]
+    dropHintStyle: {
+      display: 'inline-block',
+      position: 'absolute'
+    }
   };
 };

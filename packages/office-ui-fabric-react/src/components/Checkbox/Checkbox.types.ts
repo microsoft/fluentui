@@ -6,8 +6,12 @@ import { IKeytipProps } from '../../Keytip';
 
 /**
  * Checkbox class interface.
+ * {@docCategory Checkbox}
  */
 export interface ICheckbox {
+  /** Gets the current indeterminate state. */
+  indeterminate: boolean;
+
   /** Gets the current checked state. */
   checked: boolean;
 
@@ -17,6 +21,7 @@ export interface ICheckbox {
 
 /**
  * Checkbox properties.
+ * {@docCategory Checkbox}
  */
 export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
@@ -120,22 +125,52 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
    * Optional keytip for this checkbox
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Optional controlled indeterminate visual state for checkbox. Setting indeterminate state takes visual precedence
+   * over checked or defaultChecked props given but does not affect checked state.
+   * This should not be a toggleable state. On load the checkbox will receive indeterminate visual state
+   * and after the first user click it should be removed by your supplied onChange callback
+   * function exposing the true state of the checkbox.
+   */
+  indeterminate?: boolean;
+
+  /**
+   * Optional uncontrolled indeterminate visual state for checkbox. Setting indeterminate state takes visual precedence
+   * over checked or defaultChecked props given but does not affect checked state.
+   * This is not a toggleable state. On load the checkbox will receive indeterminate visual state
+   * and after the user's first click it will be removed exposing the true state of the checkbox.
+   */
+  defaultIndeterminate?: boolean;
 }
 
+/**
+ * {@docCategory Checkbox}
+ */
 export interface ICheckboxStyleProps {
   theme: ITheme;
   className?: string;
   disabled?: boolean;
   checked?: boolean;
   reversed?: boolean;
+  indeterminate?: boolean;
   isUsingCustomLabelRender: boolean;
 }
 
+/**
+ * {@docCategory Checkbox}
+ */
 export interface ICheckboxStyles {
   /**
    * Style for the root element (a button) of the checkbox component in the default enabled/unchecked state.
    */
   root?: IStyle;
+
+  /**
+   * INTERNAL: This is mostly an internal implementation detail which you should avoid styling.
+   * This refers to the <input type="checkbox"> element that is typically hidden and not rendered on screen.
+   */
+  input?: IStyle;
 
   /**
    * Style for the label part (contains the customized checkbox + text) when enabled.

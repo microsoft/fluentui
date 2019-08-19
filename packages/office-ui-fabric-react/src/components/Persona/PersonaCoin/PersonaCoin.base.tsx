@@ -12,7 +12,7 @@ import {
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize
 } from '../Persona.types';
-import { initialsColorPropToColorCode } from '../PersonaInitialsColor';
+import { getPersonaInitialsColor } from '../PersonaInitialsColor';
 import { sizeToPixels } from '../PersonaConsts';
 
 const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>();
@@ -44,7 +44,8 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     };
   }
 
-  public componentWillReceiveProps(nextProps: IPersonaCoinProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: IPersonaCoinProps): void {
     if (nextProps.imageUrl !== this.props.imageUrl) {
       this.setState({
         isImageLoaded: false,
@@ -61,6 +62,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
       coinSize,
       styles,
       imageUrl,
+      isOutOfOffice,
       onRenderCoin = this._onRenderCoin,
       onRenderInitials = this._onRenderInitials,
       presence,
@@ -69,12 +71,14 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
     } = this.props;
 
     const size = this.props.size as PersonaSize;
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
+    const divCoinProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(coinProps || {}, divProperties);
     const coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
     const hideImage = showUnknownPersonaCoin;
 
     const personaPresenceProps: IPersonaPresenceProps = {
       coinSize,
+      isOutOfOffice,
       presence,
       size,
       theme
@@ -95,14 +99,14 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
     return (
       <div {...divProps} className={classNames.coin}>
-        {// Render PersonaCoin if size is not size10
-        size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
-          <div {...coinProps} className={classNames.imageArea} style={coinSizeStyle}>
+        {// Render PersonaCoin if size is not size8. size10 and tiny need to removed after a deprecation cleanup.
+        size !== PersonaSize.size8 && size !== PersonaSize.size10 && size !== PersonaSize.tiny ? (
+          <div {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
             {shouldRenderInitials && (
               <div
                 className={mergeStyles(
                   classNames.initials,
-                  !showUnknownPersonaCoin && { backgroundColor: initialsColorPropToColorCode(this.props) }
+                  !showUnknownPersonaCoin && { backgroundColor: getPersonaInitialsColor(this.props) }
                 )}
                 style={coinSizeStyle}
                 aria-hidden="true"

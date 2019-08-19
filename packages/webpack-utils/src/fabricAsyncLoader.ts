@@ -1,4 +1,3 @@
-import * as webpack from 'webpack';
 import * as path from 'path';
 import * as loaderUtils from 'loader-utils';
 

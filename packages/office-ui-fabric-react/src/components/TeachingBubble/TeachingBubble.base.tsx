@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
-import { ITeachingBubbleProps, ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
-import { calloutStyles } from './TeachingBubble.styles';
+import {
+  ITeachingBubbleProps,
+  ITeachingBubbleStyleProps,
+  ITeachingBubbleStyles,
+  ITeachingBubbleSubComponentStyles
+} from './TeachingBubble.types';
 import { Callout, ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -28,7 +32,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
     }
   };
 
-  public rootElement = createRef<HTMLDivElement>();
+  public rootElement = React.createRef<HTMLDivElement>();
   private _defaultCalloutProps: ICalloutProps;
 
   // Constructor
@@ -53,7 +57,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
   }
 
   public render(): JSX.Element {
-    const { calloutProps: setCalloutProps, targetElement, onDismiss, isWide, styles, theme } = this.props;
+    const { calloutProps: setCalloutProps, targetElement, onDismiss, isWide, styles, theme, target } = this.props;
     const calloutProps = { ...this._defaultCalloutProps, ...setCalloutProps };
     const stylesProps: ITeachingBubbleStyleProps = {
       theme: theme!,
@@ -62,14 +66,17 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
     };
 
     const classNames = getClassNames(styles, stylesProps);
+    const calloutStyles = classNames.subComponentStyles
+      ? (classNames.subComponentStyles as ITeachingBubbleSubComponentStyles).callout
+      : undefined;
 
     return (
       <Callout
-        target={targetElement}
+        target={target || targetElement}
         onDismiss={onDismiss}
         {...calloutProps}
         className={classNames.root}
-        styles={calloutStyles(stylesProps)}
+        styles={calloutStyles}
         hideOverflow
       >
         <div ref={this.rootElement}>

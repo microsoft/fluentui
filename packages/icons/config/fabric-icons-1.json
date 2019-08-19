@@ -10,6 +10,34 @@
   },
   "glyphs": [
     {
+      "name": "Financial",
+      "unicode": "E7BB"
+    },
+    {
+      "name": "Education",
+      "unicode": "E7BE"
+    },
+    {
+      "name": "ShoppingCart",
+      "unicode": "E7BF"
+    },
+    {
+      "name": "Train",
+      "unicode": "E7C0"
+    },
+    {
+      "name": "Move",
+      "unicode": "E7C2"
+    },
+    {
+      "name": "TouchPointer",
+      "unicode": "E7C9"
+    },
+    {
+      "name": "Merge",
+      "unicode": "E7D5"
+    },
+    {
       "name": "TurnRight",
       "unicode": "E7DB"
     },
@@ -42,12 +70,24 @@
       "unicode": "E7F5"
     },
     {
+      "name": "Game",
+      "unicode": "E7FC"
+    },
+    {
+      "name": "UnstackSelected",
+      "unicode": "E7FE"
+    },
+    {
       "name": "StackIndicator",
       "unicode": "E7FF"
     },
     {
       "name": "Nav2DMapView",
       "unicode": "E800"
+    },
+    {
+      "name": "StreetsideSplitMinimize",
+      "unicode": "E802"
     },
     {
       "name": "Car",
@@ -60,6 +100,10 @@
     {
       "name": "EatDrink",
       "unicode": "E807"
+    },
+    {
+      "name": "SeeDo",
+      "unicode": "E808"
     },
     {
       "name": "LocationCircle",
@@ -106,6 +150,14 @@
       "unicode": "E81D"
     },
     {
+      "name": "MapLayers",
+      "unicode": "E81E"
+    },
+    {
+      "name": "SearchNearby",
+      "unicode": "E820"
+    },
+    {
       "name": "Work",
       "unicode": "E821"
     },
@@ -116,6 +168,10 @@
     {
       "name": "Hotel",
       "unicode": "E824"
+    },
+    {
+      "name": "Bank",
+      "unicode": "E825"
     },
     {
       "name": "LocationDot",
@@ -140,6 +196,10 @@
     {
       "name": "RevToggleKey",
       "unicode": "E845"
+    },
+    {
+      "name": "USB",
+      "unicode": "E88E"
     },
     {
       "name": "Previous",
@@ -212,6 +272,10 @@
     {
       "name": "Rename",
       "unicode": "E8AC"
+    },
+    {
+      "name": "Go",
+      "unicode": "E8AD"
     },
     {
       "name": "Remote",
@@ -342,72 +406,8 @@
       "unicode": "E8E5"
     },
     {
-      "name": "FontDecrease",
-      "unicode": "E8E7"
-    },
-    {
-      "name": "FontIncrease",
-      "unicode": "E8E8"
-    },
-    {
-      "name": "FontSize",
-      "unicode": "E8E9"
-    },
-    {
-      "name": "CellPhone",
-      "unicode": "E8EA"
-    },
-    {
-      "name": "Calculator",
-      "unicode": "E8EF"
-    },
-    {
-      "name": "Library",
-      "unicode": "E8F1"
-    },
-    {
-      "name": "PostUpdate",
-      "unicode": "E8F3"
-    },
-    {
-      "name": "NewFolder",
-      "unicode": "E8F4"
-    },
-    {
-      "name": "CalendarReply",
-      "unicode": "E8F5"
-    },
-    {
-      "name": "UnsyncFolder",
-      "unicode": "E8F6"
-    },
-    {
-      "name": "SyncFolder",
-      "unicode": "E8F7"
-    },
-    {
-      "name": "BlockContact",
-      "unicode": "E8F8"
-    },
-    {
-      "name": "Accept",
-      "unicode": "E8FB"
-    },
-    {
-      "name": "BulletedList",
-      "unicode": "E8FD"
-    },
-    {
-      "name": "Preview",
-      "unicode": "E8FF"
-    },
-    {
-      "name": "News",
-      "unicode": "E900"
-    },
-    {
-      "name": "Chat",
-      "unicode": "E901"
+      "name": "ClearSelection",
+      "unicode": "E8E6"
     }
   ]
 }

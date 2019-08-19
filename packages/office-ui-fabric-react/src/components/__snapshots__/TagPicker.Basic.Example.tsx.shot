@@ -1,91 +1,96 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = `
-<div>
-  <button
-    aria-checked={false}
-    checked={false}
+<div
+  className=
+
+      {
+        max-width: 500px;
+      }
+>
+  <div
     className=
         ms-Checkbox
         is-enabled
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          background: none;
-          border: none;
-          cursor: pointer;
-          display: block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          margin-bottom: 0;
+          display: flex;
+          margin-bottom: 10px;
           margin-left: 0;
           margin-right: 0;
-          margin-top: 0;
-          outline: none;
-          padding-bottom: 0;
-          padding-left: 0;
-          padding-right: 0;
-          padding-top: 0;
+          margin-top: 10px;
           position: relative;
         }
-        &::-moz-focus-inner {
-          border: 0;
-        }
-        .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: -2px;
-          content: "";
-          left: -2px;
-          outline: 1px solid #666666;
-          position: absolute;
-          right: -2px;
-          top: -2px;
-          z-index: 1;
-        }
         &:hover .ms-Checkbox-checkbox {
-          border-color: #212121;
+          border-color: #323130;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
           border-color: Highlight;
         }
         &:focus .ms-Checkbox-checkbox {
-          border-color: #212121;
+          border-color: #323130;
         }
         &:hover .ms-Checkbox-checkmark {
-          color: #a6a6a6;
+          color: #605e5c;
           opacity: 1;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
           color: Highlight;
         }
         &:hover .ms-Checkbox-text {
-          color: #333333;
+          color: #201f1e;
         }
         &:focus .ms-Checkbox-text {
-          color: #333333;
+          color: #201f1e;
         }
-    id="checkbox-0"
-    onBlur={[Function]}
-    onClick={[Function]}
-    onFocus={[Function]}
-    role="checkbox"
-    type="button"
   >
+    <input
+      aria-checked="false"
+      aria-label="Disable Tag Picker"
+      checked={false}
+      className=
+
+          {
+            background: none;
+            opacity: 0;
+            position: absolute;
+          }
+          .ms-Fabric--isFocusVisible &:focus + label::before {
+            outline-offset: 2px;
+            outline: 1px solid #605e5c;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            outline: 1px solid ActiveBorder;
+          }
+      id="checkbox-0"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      type="checkbox"
+    />
     <label
       className=
           ms-Checkbox-label
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             align-items: flex-start;
             cursor: pointer;
             display: flex;
-            margin-bottom: 0;
-            margin-left: -4px;
-            margin-right: -4px;
-            margin-top: 0;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             position: relative;
             text-align: left;
             user-select: none;
+          }
+          &::before {
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            pointer-events: none;
+            position: absolute;
+            right: 0px;
+            top: 0px;
           }
       htmlFor="checkbox-0"
     >
@@ -94,19 +99,16 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             ms-Checkbox-checkbox
             {
               align-items: center;
-              border-color: #666666;
-              border-style: solid;
-              border-width: 1px;
+              border-radius: 2px;
+              border: 1px solid #323130;
               box-sizing: border-box;
               display: flex;
               flex-shrink: 0;
               height: 20px;
               justify-content: center;
-              margin-bottom: 0;
-              margin-left: 4px;
               margin-right: 4px;
-              margin-top: 0;
               overflow: hidden;
+              position: relative;
               transition-duration: 200ms;
               transition-property: background, border, border-color;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
@@ -139,34 +141,38 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
-              color: #333333;
+              color: #323130;
               font-size: 14px;
               line-height: 20px;
-              margin-bottom: 0;
               margin-left: 4px;
-              margin-right: 4px;
-              margin-top: 0;
             }
       >
         Disable Tag Picker
       </span>
     </label>
-  </button>
+  </div>
   Filter items in suggestions: This picker will filter added items from the search suggestions.
   <div
-    className="ms-BasePicker"
+    className=
+        ms-BasePicker
+
+    onBlur={[Function]}
     onKeyDown={[Function]}
   >
     <div
-      className="ms-FocusZone"
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
       data-focuszone-id="FocusZone2"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className="ms-SelectionZone"
@@ -181,22 +187,45 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
         role="presentation"
       >
         <div
-          className="ms-BasePicker-text"
+          className=
+              ms-BasePicker-text
+              {
+                align-items: center;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
+                box-sizing: border-box;
+                display: flex;
+                flex-wrap: wrap;
+                min-height: 30px;
+                min-width: 180px;
+                position: relative;
+              }
+              &:hover {
+                border-color: #323130;
+              }
         >
-          <span
-            id="selected-items-id__1"
-            role="list"
-          />
           <input
             aria-autocomplete="both"
             aria-controls=" "
-            aria-describedby="selected-items-id__1"
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="Tag Picker"
             autoCapitalize="off"
             autoComplete="off"
-            className="ms-BasePicker-input"
+            className=
+                ms-BasePicker-input
+                {
+                  align-self: flex-end;
+                  border-radius: 2px;
+                  border: none;
+                  flex-grow: 1;
+                  height: 30px;
+                  outline: none;
+                  padding-bottom: 0;
+                  padding-left: 6px;
+                  padding-right: 6px;
+                  padding-top: 0;
+                }
             data-lpignore={true}
             disabled={false}
             onBlur={[Function]}
@@ -208,6 +237,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             onInput={[Function]}
             onKeyDown={[Function]}
             role="combobox"
+            spellCheck={false}
             value=""
           />
         </div>
@@ -217,16 +247,22 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
   <br />
   Filter items on selected: This picker will show already-added suggestions but will not add duplicate tags.
   <div
-    className="ms-BasePicker"
+    className=
+        ms-BasePicker
+
+    onBlur={[Function]}
     onKeyDown={[Function]}
   >
     <div
-      className="ms-FocusZone"
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
       data-focuszone-id="FocusZone4"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className="ms-SelectionZone"
@@ -241,22 +277,45 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
         role="presentation"
       >
         <div
-          className="ms-BasePicker-text"
+          className=
+              ms-BasePicker-text
+              {
+                align-items: center;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
+                box-sizing: border-box;
+                display: flex;
+                flex-wrap: wrap;
+                min-height: 30px;
+                min-width: 180px;
+                position: relative;
+              }
+              &:hover {
+                border-color: #323130;
+              }
         >
-          <span
-            id="selected-items-id__3"
-            role="list"
-          />
           <input
             aria-autocomplete="both"
             aria-controls=" "
-            aria-describedby="selected-items-id__3"
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="Tag Picker"
             autoCapitalize="off"
             autoComplete="off"
-            className="ms-BasePicker-input"
+            className=
+                ms-BasePicker-input
+                {
+                  align-self: flex-end;
+                  border-radius: 2px;
+                  border: none;
+                  flex-grow: 1;
+                  height: 30px;
+                  outline: none;
+                  padding-bottom: 0;
+                  padding-left: 6px;
+                  padding-right: 6px;
+                  padding-top: 0;
+                }
             data-lpignore={true}
             disabled={false}
             onBlur={[Function]}
@@ -268,6 +327,7 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
             onInput={[Function]}
             onKeyDown={[Function]}
             role="combobox"
+            spellCheck={false}
             value=""
           />
         </div>

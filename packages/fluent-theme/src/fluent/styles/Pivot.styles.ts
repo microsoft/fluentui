@@ -1,7 +1,7 @@
-import { IPivotStyleProps } from 'office-ui-fabric-react/lib/Pivot';
+import { IPivotStyleProps, IPivotStyles } from 'office-ui-fabric-react/lib/Pivot';
 import { AnimationVariables } from 'office-ui-fabric-react/lib/Styling';
 
-export const PivotStyles = (props: IPivotStyleProps) => {
+export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
   const { theme, rootIsTabs } = props;
   const { palette } = theme;
 

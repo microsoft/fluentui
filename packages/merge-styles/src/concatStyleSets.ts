@@ -132,6 +132,10 @@ export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | u
  * @param styleSets - One or more stylesets to be merged (each param can also be falsy).
  */
 export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | undefined)[]): IConcatenatedStyleSet<any> {
+  if (styleSets && styleSets.length === 1 && styleSets[0] && !(styleSets[0] as IStyleSet<any>).subComponentStyles) {
+    return styleSets[0] as IConcatenatedStyleSet<any>;
+  }
+
   const mergedSet: IConcatenatedStyleSet<any> = {};
 
   // We process sub component styles in two phases. First we collect them, then we combine them into 1 style function.
@@ -187,9 +191,8 @@ export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | u
         const workingSet = workingSubcomponentStyles[subCompProp];
         mergedSubStyles[subCompProp] = (styleProps: any) => {
           return concatStyleSets(
-            ...workingSet.map(
-              (styleFunctionOrObject: IStyleFunctionOrObject<any, any>) =>
-                typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject
+            ...workingSet.map((styleFunctionOrObject: IStyleFunctionOrObject<any, any>) =>
+              typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject
             )
           );
         };

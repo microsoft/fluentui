@@ -1,0 +1,3546 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders Persona.Colors.Example.tsx correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      {
+        display: flex;
+        flex-wrap: wrap;
+        height: auto;
+        overflow: visible;
+        width: auto;
+      }
+>
+  <div
+    className=
+        ms-Stack-inner
+        {
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          height: 100%;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          max-width: 100vw;
+          overflow: visible;
+          width: 100%;
+        }
+        & > * {
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          max-width: 100%;
+          text-overflow: ellipsis;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #498205;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              G
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            green10
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #0B6A0B;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              D
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            darkGreen20
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #038387;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              T
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            teal10
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #005B70;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              C
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            cyan30
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #4F6BED;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              L
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            lightBlue30
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #0078D4;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              B
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            blue20
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #004E8C;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              D
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            darkBlue10
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #8764B8;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              V
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            violet10
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #5C2E91;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              P
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            purple10
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #881798;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              M
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            magenta10
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #C239B3;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              L
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            lightPink10
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #E3008C;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              P
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            pink10
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #750B1C;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              P
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            pinkRed10
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #D13438;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              R
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            red10
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #A4262C;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              D
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            darkRed20
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #CA5010;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              O
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            orange10
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #8E562E;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              O
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            orange30
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #986F0B;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              O
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            orangeYellow20
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #7A7574;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              G
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            gray30
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+    <div
+      className=
+          ms-Persona
+          ms-Persona--size100
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            align-items: center;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100px;
+            margin-bottom: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 5px;
+            min-width: 100px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            width: 300px;
+          }
+          & .contextualHost {
+            display: none;
+          }
+    >
+      <div
+        className=
+            ms-Persona-coin
+            ms-Persona--size100
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+            }
+      >
+        <div
+          className=
+              ms-Persona-imageArea
+              {
+                flex: 0 0 auto;
+                height: 100px;
+                position: relative;
+                text-align: center;
+                width: 100px;
+              }
+        >
+          <div
+            aria-hidden="true"
+            className=
+                ms-Persona-initials
+                {
+                  background-color: #69797E;
+                  border-radius: 50%;
+                  color: #ffffff;
+                  font-size: 42px;
+                  font-weight: 600;
+                  height: 100px;
+                  line-height: 100px;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: Window !important;
+                  border: 1px solid WindowText;
+                  box-sizing: border-box;
+                  color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
+                }
+          >
+            <span>
+              G
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-Persona-details
+            {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-around;
+              min-width: 0px;
+              padding-bottom: 0;
+              padding-left: 16px;
+              padding-right: 24px;
+              padding-top: 0;
+              text-align: left;
+              width: 100%;
+            }
+      >
+        <div
+          className=
+              ms-Persona-primaryText
+              {
+                color: #323130;
+                font-size: 20px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              &:hover {
+                color: #201f1e;
+              }
+          dir="auto"
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  display: inline;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+          >
+            gray20
+          </div>
+        </div>
+        <div
+          className=
+              ms-Persona-secondaryText
+              {
+                color: #605e5c;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-tertiaryText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+        <div
+          className=
+              ms-Persona-optionalText
+              {
+                color: #605e5c;
+                display: block;
+                font-size: 14px;
+                font-weight: 400;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          dir="auto"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

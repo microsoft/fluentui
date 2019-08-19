@@ -1,8 +1,14 @@
 import { IGroupHeaderStyleProps, IGroupHeaderStyles } from './GroupHeader.types';
-import { getGlobalClassNames, getFocusStyle, FontSizes, IStyle, AnimationVariables, FontWeights, IconFontSizes } from '../../Styling';
+import { getGlobalClassNames, getFocusStyle, IStyle, AnimationVariables, FontWeights, IconFontSizes } from '../../Styling';
+import { IsFocusVisibleClassName } from '../../Utilities';
+import { DEFAULT_CELL_STYLE_PROPS } from '../DetailsList/DetailsRow.styles';
+import { CHECK_CELL_WIDTH } from '../DetailsList/DetailsRowCheck.styles';
+// For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
+import { SPACER_WIDTH as EXPAND_BUTTON_WIDTH } from './GroupSpacer';
 
 const GlobalClassNames = {
   root: 'ms-GroupHeader',
+  compact: 'ms-GroupHeader--compact',
   check: 'ms-GroupHeader-check',
   dropIcon: 'ms-GroupHeader-dropIcon',
   expand: 'ms-GroupHeader-expand',
@@ -14,17 +20,21 @@ const GlobalClassNames = {
   isDropping: 'is-dropping'
 };
 
-const rowHeight = 40;
-
 const beziers = {
   easeOutCirc: 'cubic-bezier(0.075, 0.820, 0.165, 1.000)',
   easeOutSine: 'cubic-bezier(0.390, 0.575, 0.565, 1.000)',
   easeInBack: 'cubic-bezier(0.600, -0.280, 0.735, 0.045)'
 };
 
+const DEFAULT_GROUP_HEADER_HEIGHT = 48;
+const COMPACT_GROUP_HEADER_HEIGHT = 40;
+
 export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => {
-  const { theme, className, selected, isCollapsed } = props;
-  const { semanticColors, palette } = theme;
+  const { theme, className, selected, isCollapsed, compact } = props;
+  const { cellLeftPadding } = DEFAULT_CELL_STYLE_PROPS; // padding from the source to align GroupHeader title with DetailsRow's first cell.
+  const finalRowHeight = compact ? COMPACT_GROUP_HEADER_HEIGHT : DEFAULT_GROUP_HEADER_HEIGHT;
+
+  const { semanticColors, palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme!);
 
@@ -35,7 +45,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       background: 'none',
       backgroundColor: 'transparent',
       border: 'none',
-      fontSize: IconFontSizes.large
+      padding: 0 // cancel default <button> padding
     }
   ];
 
@@ -45,18 +55,23 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       getFocusStyle(theme),
       theme.fonts.medium,
       {
+        borderBottom: `1px solid ${semanticColors.listBackground}`, // keep the border for height but color it so it's invisible.
         cursor: 'default',
         userSelect: 'none',
         selectors: {
           ':hover': {
-            background: semanticColors.listItemBackgroundHovered
+            background: semanticColors.listItemBackgroundHovered,
+            color: semanticColors.actionLinkHovered
           },
-          ':hover $check': {
+          [`&:hover .${classNames.check}`]: {
+            opacity: 1
+          },
+          [`.${IsFocusVisibleClassName} &:focus .${classNames.check}`]: {
             opacity: 1
           },
           [`:global(.${classNames.group}.${classNames.isDropping})`]: {
             selectors: {
-              '> $root $dropIcon': {
+              [`& > .${classNames.root} .${classNames.dropIcon}`]: {
                 transition: `transform ${AnimationVariables.durationValue4} ${beziers.easeOutCirc} opacity ${
                   AnimationVariables.durationValue1
                 } ${beziers.easeOutSine}`,
@@ -65,7 +80,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
                 transform: `rotate(0.2deg) scale(1);` // rotation prevents jittery motion in IE
               },
 
-              $check: {
+              [`.${classNames.check}`]: {
                 opacity: 0
               }
             }
@@ -80,19 +95,20 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
             ':hover': {
               background: semanticColors.listItemBackgroundCheckedHovered
             },
-            $check: {
+            [`${classNames.check}`]: {
               opacity: 1
             }
           }
         }
       ],
+      compact && [classNames.compact, { border: 'none' }],
       className
     ],
     groupHeaderContainer: [
       {
         display: 'flex',
         alignItems: 'center',
-        height: rowHeight
+        height: finalRowHeight
       }
     ],
     headerCount: [
@@ -104,23 +120,44 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       classNames.check,
       checkExpandResetStyles,
       {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        // paddingTop and marginTop brought from the DetailsRow.styles.ts with explanation below.
+        // Ensure that the check cell covers the top border of the cell.
+        // This ensures the click target does not leave a spot which would
+        // cause other items to be deselected.
+        paddingTop: 1,
+        marginTop: -1,
         opacity: 0,
+        width: CHECK_CELL_WIDTH,
+        height: finalRowHeight,
         selectors: {
-          ':focus': {
+          [`.${IsFocusVisibleClassName} &:focus`]: {
             opacity: 1
           }
-        },
-        width: '40px'
+        }
       }
     ],
     expand: [
       classNames.expand,
       checkExpandResetStyles,
       {
-        width: 36,
-        height: rowHeight,
-        color: palette.neutralSecondary,
-        paddingTop: 4
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        fontSize: fonts.small.fontSize,
+        width: EXPAND_BUTTON_WIDTH,
+        height: finalRowHeight,
+        color: selected ? palette.neutralPrimary : palette.neutralSecondary,
+        selectors: {
+          ':hover': {
+            backgroundColor: selected ? palette.neutralQuaternary : palette.neutralLight
+          },
+          ':active': {
+            backgroundColor: selected ? palette.neutralTertiaryAlt : palette.neutralQuaternaryAlt
+          }
+        }
       }
     ],
     expandIsCollapsed: [
@@ -134,7 +171,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
             }
           ]
         : {
-            transform: 'rotate(-180deg)',
+            transform: 'rotate(90deg)',
             transformOrigin: '50% 50%',
             transition: 'transform .1s linear'
           }
@@ -142,9 +179,9 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
     title: [
       classNames.title,
       {
-        paddingLeft: '12px',
-        fontSize: FontSizes.xLarge,
-        fontWeight: FontWeights.light,
+        paddingLeft: cellLeftPadding,
+        fontSize: compact ? fonts.medium.fontSize : fonts.mediumPlus.fontSize,
+        fontWeight: isCollapsed ? FontWeights.regular : FontWeights.semibold,
         cursor: 'pointer',
         outline: 0,
         whiteSpace: 'nowrap',

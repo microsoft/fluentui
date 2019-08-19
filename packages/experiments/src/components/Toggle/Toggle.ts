@@ -1,12 +1,12 @@
 import { ToggleView } from './Toggle.view';
-import { ToggleStyles } from './Toggle.styles';
-import { ToggleState } from './Toggle.state';
-import { IToggleProps, IToggleViewProps, IToggleStyles } from './Toggle.types';
+import { ToggleStyles as styles, ToggleTokens as tokens } from './Toggle.styles';
+import { useToggleState as state } from './Toggle.state';
+import { IToggleProps } from './Toggle.types';
 import { createComponent } from '../../Foundation';
 
-export const Toggle: React.StatelessComponent<IToggleProps> = createComponent<IToggleProps, IToggleViewProps, IToggleStyles>({
+export const Toggle: React.StatelessComponent<IToggleProps> = createComponent(ToggleView, {
   displayName: 'Toggle',
-  view: ToggleView,
-  state: ToggleState,
-  styles: ToggleStyles
+  state,
+  styles,
+  tokens
 });

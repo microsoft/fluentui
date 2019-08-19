@@ -1,6 +1,238 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Thu, 25 Oct 2018 12:30:06 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+
+## 7.2.3
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Patches
+
+- Card: Showing examples on demo page and website. (Humberto.Morimoto@microsoft.com)
+
+## 7.2.2
+Wed, 17 Jul 2019 18:58:57 GMT
+
+### Patches
+
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+,- Replace fluent customizations with default ones. (vibraga@microsoft.com)
+
+## 7.2.0
+Wed, 03 Jul 2019 12:30:55 GMT
+
+### Minor changes
+
+- Add DetailsList animation example page (inateeg@microsoft.com)
+
+## 7.1.1
+Mon, 01 Jul 2019 18:51:42 GMT
+
+### Patches
+
+- adds react-app-polyfill
+
+## 7.1.0
+Wed, 26 Jun 2019 12:23:41 GMT
+
+### Minor changes
+
+- Add a new theme package dependancy and surface it to the example pages theme dropdown.
+
+## 7.0.4
+Mon, 24 Jun 2019 23:11:20 GMT
+
+### Patches
+
+- Update website for Fabric 7
+
+## 7.0.3
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Patches
+
+- Get rid of references to _exampleStyles.scss
+- AppDefinition: fixes urls to align to the ones on the website.
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 6.18.4
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Patches
+
+- Update Calendar and DatePicker import paths
+- Move legacy components to separate section, and DetailsList examples to sub-section
+- Update and dedupe React deps.
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
+
+## 6.18.3
+Wed, 22 May 2019 12:21:34 GMT
+
+### Patches
+
+- update azure-themes version
+- Use CodeSnippet for example code
+
+## 6.18.2
+Tue, 21 May 2019 12:20:44 GMT
+
+### Patches
+
+- Use shared demo app bootstrapping code
+
+## 6.18.1
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.18.0
+Tue, 07 May 2019 12:34:52 GMT
+
+### Minor changes
+
+- Updating insureSlots method name to ensureSlots to use a more correct verb.
+
+## 6.17.1
+Mon, 06 May 2019 00:28:08 GMT
+
+### Patches
+
+- Specify component for syntax highlighting
+
+## 6.17.0
+Sat, 04 May 2019 00:01:54 GMT
+
+### Minor changes
+
+- Updates for new website
+
+## 6.16.0
+Wed, 01 May 2019 12:34:24 GMT
+
+### Minor changes
+
+- Updating insureSlots method name to ensureSlots to use a more correct verb.
+
+## 6.15.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- change component pages to use page json files
+
+## 6.14.4
+Wed, 24 Apr 2019 12:35:54 GMT
+
+### Patches
+
+- Delete outdated component status info
+
+## 6.14.3
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Patches
+
+- Hide status badges, import updates
+
+## 6.14.2
+Fri, 12 Apr 2019 12:34:16 GMT
+
+### Patches
+
+- Fixed: make demo-app also deploy in demo site like experiments
+- ThemeGeneratorPage: fix it so it looks right
+
+## 6.14.1
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.14.0
+Mon, 01 Apr 2019 12:37:03 GMT
+
+### Minor changes
+
+- add Separator page
+
+## 6.13.2
+Fri, 29 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- DemoPage: pass all extra props to ComponentPage
+
+## 6.13.1
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- Improve imports of color utilities
+
+## 6.13.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- add Announced demo pages
+- Export all theme variables in one file
+
+## 6.12.0
+Tue, 26 Feb 2019 13:31:28 GMT
+
+### Minor changes
+
+- add Text component
+
+## 6.11.1
+Mon, 18 Feb 2019 13:38:30 GMT
+
+### Patches
+
+- Remove IColorPickerProps.onColorChanged usage
+
+## 6.11.0
+Fri, 15 Feb 2019 17:41:16 GMT
+
+### Minor changes
+
+- Stack: Adding StackPage to AppDefinition.tsx.
+
+## 6.10.1
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- Switch PivotItems to use headerText not linkText
+
+## 6.10.0
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Minor changes
+
+- config: add _themeVariables.scss and _legacyThemePalette.scss to pre-copy
+
+## 6.9.9
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- Added azure themes to demo page
 
 ## 6.9.8
 Thu, 25 Oct 2018 12:30:05 GMT

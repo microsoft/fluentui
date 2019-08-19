@@ -1,6 +1,7 @@
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from '../Calendar.types';
-import { IStyle, ITheme } from '@uifabric/styling';
+import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks, AnimationDirection } from '../Calendar.types';
+import { ITheme } from '@uifabric/styling';
+import { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
 export interface ICalendarMonth {
   focus(): void;
@@ -104,56 +105,19 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
    * Additional CSS class(es) to apply to the CalendarMonth.
    */
   className?: string;
+
+  /**
+   * Whether the year picker is hidden
+   * @defaultvalue false
+   */
+  yearPickerHidden?: boolean;
+
+  /**
+   * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
+   */
+  animationDirection?: AnimationDirection;
 }
 
-export interface ICalendarMonthStyleProps {
-  /**
-   * Theme provided by High-Order Component.
-   */
-  theme: ITheme;
+export interface ICalendarMonthStyleProps extends ICalendarPickerStyleProps {}
 
-  /**
-   * Accept custom classNames
-   */
-  className?: string;
-
-  /**
-   * Whether the header can be clicked
-   */
-  hasHeaderClickCallback?: boolean;
-
-  /**
-   * Whether the month picker should highlight the current month
-   */
-  highlightCurrentMonth?: boolean;
-
-  /**
-   * Whether the month picker should highlight the selected month
-   */
-  highlightSelectedMonth?: boolean;
-}
-
-export interface ICalendarMonthStyles {
-  /**
-   * Style for the root element.
-   */
-  root: IStyle;
-
-  headerContainer: IStyle;
-
-  currentYearButton: IStyle;
-
-  yearNavigationButtonsContainer: IStyle;
-
-  yearNavigationButton: IStyle;
-
-  monthGridContainer: IStyle;
-
-  monthButton: IStyle;
-
-  currentMonth: IStyle;
-
-  selectedMonth: IStyle;
-
-  disabledStyle: IStyle;
-}
+export interface ICalendarMonthStyles extends ICalendarPickerStyles {}

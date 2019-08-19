@@ -7,8 +7,9 @@ import { ISelectableOption } from '../../utilities/selectableOption/SelectableOp
 /**
  * TComponent - Component used for reference properties, such as componentRef
  * TListenerElement - Listener element associated with HTML event callbacks. Optional. If not provided, TComponent is assumed.
+ * {@docCategory ISelectableDroppableTextProps}
  */
-export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TComponent> extends React.HTMLAttributes<TListenerElement> {
+export interface ISelectableDroppableTextProps<TComponent, TListenerElement> extends React.HTMLAttributes<TListenerElement> {
   /**
    * Optional callback to access the ISelectableDroppableText interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -38,13 +39,14 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TC
   /**
    * The key(s) that will be initially used to set a selected item.
    */
-  defaultSelectedKey?: string | number | string[] | number[];
+  defaultSelectedKey?: string | number | string[] | number[] | null;
 
   /**
    * The key(s) of the selected item. If you provide this, you must maintain selection
    * state by observing onChange events and passing a new value in when changed.
+   * Note that passing in `null` will cause selection to be reset.
    */
-  selectedKey?: string | number | string[] | number[];
+  selectedKey?: string | number | string[] | number[] | null;
 
   /**
    * Collection of options for this ISelectableDroppableText
@@ -54,12 +56,12 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TC
   /**
    * Optional custom renderer for the ISelectableDroppableText container
    */
-  onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent>>;
+  onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
 
   /**
    * Optional custom renderer for the ISelectableDroppableText list
    */
-  onRenderList?: IRenderFunction<ISelectableDroppableTextProps<TComponent>>;
+  onRenderList?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
 
   /**
    * Optional custom renderer for the ISelectableDroppableText options
@@ -95,4 +97,15 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TC
    * Descriptive label for the ISelectableDroppableText Error Message
    */
   errorMessage?: string;
+
+  /**
+   * Input placeholder text. Displayed until option is selected.
+   */
+  placeholder?: string;
+
+  /**
+   * Whether or not the combobox should expand on keyboard focus
+   * @defaultvalue false
+   */
+  openOnKeyboardFocus?: boolean;
 }
