@@ -210,9 +210,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        opacity: 1;
-                      }
 
                   data-automationid="DetailsRowCheck"
                   data-is-focusable={true}
@@ -247,7 +244,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           right: 1px;
                           top: 1px;
                         }
-                        $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                        .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                           opacity: 1;
                         }
                   >
@@ -320,6 +317,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
               </span>
             </div>
             <label
+              aria-hidden={true}
               className=
 
                   {
@@ -1340,9 +1338,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
 
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
@@ -1375,7 +1370,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -2088,9 +2083,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
 
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
@@ -2123,7 +2115,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -2836,9 +2828,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
 
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
@@ -2871,7 +2860,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -3584,9 +3573,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
 
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
@@ -3619,7 +3605,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -4332,9 +4318,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
 
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
@@ -4367,7 +4350,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -5080,9 +5063,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
 
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
@@ -5115,7 +5095,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -5828,9 +5808,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
 
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
@@ -5863,7 +5840,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -6576,9 +6553,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
 
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
@@ -6611,7 +6585,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -7324,9 +7298,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
 
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
@@ -7359,7 +7330,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -8072,9 +8043,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   top: 1px;
                                   z-index: 1;
                                 }
-                                &:hover {
-                                  opacity: 1;
-                                }
 
                             data-automationid="DetailsRowCheck"
                             data-selection-toggle={true}
@@ -8107,7 +8075,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                                  .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                                     opacity: 1;
                                   }
                             >

@@ -66,6 +66,12 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
    * If provided, can be used to render a custom checkbox
    */
   onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
+
+  /**
+   * Whether to use fast icon and check components. The icons can't be targeted by customization
+   * but are still customizable via class names.
+   */
+  useFastIcons?: boolean;
 }
 
 /**
@@ -75,6 +81,13 @@ export type IDetailsRowCheckStyleProps = Required<Pick<IDetailsRowCheckProps, 't
   Pick<IDetailsRowCheckProps, 'compact' | 'isHeader' | 'selected' | 'anySelected' | 'canSelect' | 'className'> & {
     /** Is checkbox visible */
     isVisible?: boolean;
+
+    /**
+     * Controls whether to use the global check host class name (if true) or the calculated one (if false).
+     * @deprecated This is a temporary measure in v6 *only* to opt in to fast checkbox styling.
+     * This prop does not exist in v7.
+     */
+    useGlobalCheckHostClass?: boolean;
   };
 
 /**
@@ -88,4 +101,5 @@ export interface IDetailsRowCheckStyles {
 
 export interface IDetailsCheckboxProps {
   checked: boolean;
+  theme?: ITheme;
 }

@@ -153,9 +153,6 @@ exports[`DetailsHeader can render 1`] = `
               top: 1px;
               z-index: 1;
             }
-            &:hover {
-              opacity: 1;
-            }
 
         data-automationid="DetailsRowCheck"
         data-is-focusable={true}
@@ -190,7 +187,7 @@ exports[`DetailsHeader can render 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+              .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                 opacity: 1;
               }
         >
@@ -1030,9 +1027,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               top: 1px;
               z-index: 1;
             }
-            &:hover {
-              opacity: 1;
-            }
         id="header2-check"
       />
     </span>
@@ -1803,9 +1797,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               top: 1px;
               z-index: 1;
             }
-            &:hover {
-              opacity: 1;
-            }
 
         data-automationid="DetailsRowCheck"
         data-is-focusable={true}
@@ -1840,7 +1831,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 right: 1px;
                 top: 1px;
               }
-              $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+              .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                 opacity: 1;
               }
         >

@@ -302,7 +302,7 @@ Array [
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".root-37",
+        "fullyQualifiedLogicalName": ".is-disabled.root-37",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -323,7 +323,7 @@ Array [
       "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".root-37",
+      "fullyQualifiedLogicalName": ".is-disabled.root-37",
       "ruleId": "button-name",
     },
     "properties": Object {

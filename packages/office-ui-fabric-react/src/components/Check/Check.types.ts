@@ -1,12 +1,10 @@
-import * as React from 'react';
-import { CheckBase } from './Check.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory Check}
  */
-export interface ICheckProps extends React.ClassAttributes<CheckBase> {
+export interface ICheckProps {
   /**
    * Gets the component ref.
    */
@@ -24,7 +22,7 @@ export interface ICheckProps extends React.ClassAttributes<CheckBase> {
   styles?: IStyleFunctionOrObject<ICheckStyleProps, ICheckStyles>;
 
   /**
-   * Flag to always show the check icon. Not currently working.
+   * @deprecated Not used
    */
   alwaysShowCheck?: boolean;
 
@@ -35,9 +33,14 @@ export interface ICheckProps extends React.ClassAttributes<CheckBase> {
 
   /**
    * Additional css class to apply to the Check
-   * @defaultvalue undefined
    */
   className?: string;
+
+  /**
+   * Whether to use fast icon components. The icons can't be targeted by customization but are
+   * still customizable via class names.
+   */
+  useFastIcons?: boolean;
 }
 
 /**
@@ -61,6 +64,13 @@ export interface ICheckStyleProps {
   checkBoxHeight?: string;
 
   checked?: boolean;
+
+  /**
+   * Controls whether to use the global check host class name (if true) or the old `$checkHost` (if false).
+   * @deprecated This is a temporary measure in v6 *only* to opt in to fast checkbox styling.
+   * This prop does not exist in v7.
+   */
+  useGlobalCheckHostClass?: boolean;
 }
 
 /**
@@ -84,6 +94,9 @@ export interface ICheckStyles {
 
   /**
    * Check host style
+   * @deprecated If `useFastIcons` is true (default in 7), this is not used directly within the component.
+   * Instead, use `CheckGlobalClassNames.checkHost` from `Check.styles.ts` to get the static class name to
+   * apply to the parent element of the Check.
    */
   checkHost: IStyle;
 }

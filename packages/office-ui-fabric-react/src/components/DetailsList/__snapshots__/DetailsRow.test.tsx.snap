@@ -199,9 +199,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
 
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
@@ -236,7 +233,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
@@ -1016,9 +1013,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
 
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
@@ -1053,7 +1047,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
@@ -1821,9 +1815,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             top: 1px;
             z-index: 1;
           }
-          &:hover {
-            opacity: 1;
-          }
 
       data-automationid="DetailsRowCheck"
       data-selection-toggle={true}
@@ -1856,7 +1847,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
               right: 1px;
               top: 1px;
             }
-            $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+            .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
               opacity: 1;
             }
       >
@@ -2368,9 +2359,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
 
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
@@ -2405,7 +2393,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >
@@ -3185,9 +3173,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       top: 1px;
                       z-index: 1;
                     }
-                    &:hover {
-                      opacity: 1;
-                    }
 
                 data-automationid="DetailsRowCheck"
                 data-is-focusable={true}
@@ -3222,7 +3207,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                         right: 1px;
                         top: 1px;
                       }
-                      $checkHost:hover &, $checkHost:focus &, &:hover, &:focus {
+                      .$checkHost:hover &, .$checkHost:focus &, &:hover, &:focus {
                         opacity: 1;
                       }
                 >

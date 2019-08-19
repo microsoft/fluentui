@@ -2,19 +2,21 @@ import { ICheckStyleProps, ICheckStyles } from './Check.types';
 import { HighContrastSelector, IStyle, getGlobalClassNames } from '../../Styling';
 import { getRTL } from '../../Utilities';
 
-const GlobalClassNames = {
+export const CheckGlobalClassNames = {
   root: 'ms-Check',
   circle: 'ms-Check-circle',
-  check: 'ms-Check-check'
+  check: 'ms-Check-check',
+  /** Must be manually applied to the parent element of the check. */
+  checkHost: 'ms-Check-checkHost'
 };
 
 export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
-  const { checkBoxHeight = '18px', checked, className, theme } = props;
+  const { checkBoxHeight = '18px', checked, useGlobalCheckHostClass, className, theme } = props;
 
   const { palette, semanticColors } = theme;
   const isRTL = getRTL();
 
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const classNames = getGlobalClassNames(CheckGlobalClassNames, theme);
 
   const sharedCircleCheck: IStyle = {
     fontSize: checkBoxHeight,
@@ -26,6 +28,8 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
     textAlign: 'center',
     verticalAlign: 'middle'
   };
+
+  const checkHostClass = useGlobalCheckHostClass ? CheckGlobalClassNames.checkHost : '$checkHost';
 
   return {
     root: [
@@ -53,11 +57,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
             background: semanticColors.bodyBackground
           },
 
-          /**
-           * TODO: Come back to this once .checkHost has been
-           * converted to mergeStyles
-           */
-          '$checkHost:hover &, $checkHost:focus &, &:hover, &:focus': {
+          [`.${checkHostClass}:hover &, .${checkHostClass}:focus &, &:hover, &:focus`]: {
             opacity: 1
           }
         }

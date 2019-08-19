@@ -2,6 +2,70 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 16 Aug 2019 22:19:39 GMT",
+      "tag": "office-ui-fabric-react_v6.201.0",
+      "version": "6.201.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsRow: pass aria-label attribute to each row's checkbox.",
+            "author": "vibraga@microsoft.com",
+            "commit": "6717d7c71de202760f4d0ecbe061f40acbb0ec9a"
+          },
+          {
+            "comment": "DetailsList and Check styling optimizations",
+            "author": "elcraig@microsoft.com",
+            "commit": "fabd0c72bc1955d4296f42b312df5eece4c61c13"
+          },
+          {
+            "comment": "DetailsList: add aria-hidden to checkbox labels",
+            "author": "naethell@microsoft.com",
+            "commit": "8c26a95fc4c6a6325e1e3129852012f1c489ce2a"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "DetailsList: Remove unnecessary BaseComponent and class component usage",
+            "author": "elcraig@microsoft.com",
+            "commit": "3e37d3320b5e1e518007afb5ca79eb4748829da1"
+          },
+          {
+            "comment": "Add fast Icon variants and useFastIcons option in DetailsList",
+            "author": "elcraig@microsoft.com",
+            "commit": "d2b9bae0694bc0dc9a038d26d78f4d64bfd244fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Aug 2019 12:22:01 GMT",
+      "tag": "office-ui-fabric-react_v6.200.1",
+      "version": "6.200.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing the drop hint icon and it's position for list's column drag-drop",
+            "author": "svaibhav@microsoft.com",
+            "commit": "41d0be951c2308f9eb9bc74c0398abfaf14363a9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Aug 2019 12:22:20 GMT",
+      "tag": "office-ui-fabric-react_v6.200.0",
+      "version": "6.200.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Run update-sass-theme-files to update SASS theme files",
+            "author": "phkuo@microsoft.com",
+            "commit": "a2d894c25f204abc69d0a3d59a7ccb661fe38c1e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2019 12:22:20 GMT",
       "tag": "office-ui-fabric-react_v6.199.1",
       "version": "6.199.1",
