@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme, makeSemanticColorsFromPalette, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { Stack, Text } from 'office-ui-fabric-react';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { SemanticSlotsDetailsList } from './SemanticSlotsDetailsList';
@@ -33,87 +33,14 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
   let softSlots: JSX.Element[] = [];
   let strongSlots: JSX.Element[] = [];
 
-  slotNames = [
-    // DEFAULTS - 13
-    'bodyBackground', // white
-    'bodyStandoutBackground', // neutralLighterAlt
-    'bodyFrameBackground', // white
-    'bodyFrameDivider', // neturalLight
-    'bodyText', // neutralPrimary
-    'bodyTextChecked', // black
-    'bodySubtext', // neutralSecondary
-    'bodyDivider', // neutralLight
-    'disabledBodyText', // neutralTertiary
-    'focusBorder', // neutralSecondary
-    'variantBorder', // neutralLight
-    'variantBorderHovered', // neutralTertiary
-    'defaultStateBackground', // neutralLighterAlt
-    // LINKS - 4
-    'actionLink', // neutralPrimary
-    'actionLinkHovered', // neutralDark
-    'link', // themePrimary
-    'linkHovered', // themeDarker
-    // BUTTONS - 25
-    'buttonBackground', // neutralLighter
-    'buttonBackgroundChecked', // neutralTertiaryAlt
-    'buttonBackgroundHovered', // neutralLight
-    'buttonBackgroundCheckedHovered', // neutralLight
-    'buttonBackgroundPressed', // neutralLight
-    'buttonBackgroundDisabled', // neutralLighter
-    'buttonBorder', // 'transparent'
-    'buttonText', // neutralPrimary
-    'buttonTextHovered', // neutralDark
-    'buttonTextChecked', // neutralDark
-    'buttonTextCheckedHovered', // black
-    'buttonTextPressed', // neutralDark
-    'buttonTextDisabled', // neutralTertiary
-    'buttonBorderDisabled', // 'transparent'
+  let semanticColorsNone = makeSemanticColorsFromPalette(DefaultPalette, false, false);
+  slotNames = Object.keys(semanticColorsNone);
+  console.log(semanticColorsNone);
+  console.log(Object.keys(semanticColorsNone));
 
-    'primaryButtonBackground', // themePrimary
-    'primaryButtonBackgroundHovered', // themeDarkAlt
-    'primaryButtonBackgroundPressed', // themeDark
-    'primaryButtonBackgroundDisabled', // neutralLighter
-    'primaryButtonBorder', // 'transparent'
-    'primaryButtonText', // white
-    'primaryButtonTextHovered', // white
-    'primaryButtonTextPressed', // white
-    'primaryButtonTextDisabled', // neutralQuaternary
-
-    'accentButtonBackground', // accent
-    'accentButtonText', // white
-    // INPUTS - 14
-    'inputBorder', // neutralTertiary
-    'inputBorderHovered', // neutralPrimary
-    'inputBackground', // white
-    'inputBackgroundChecked', // themePrimary
-    'inputBackgroundCheckedHovered', // themeDarkAlt
-    'inputForegroundChecked', // white
-    'inputFocusBorderAlt', // themePrimary
-    'smallInputBorder', // neutralSecondary
-    'inputText', // neutralPrimary
-    'inputTextHovered', // neutralDark
-    'inputPlaceholderText', // neutralSecondary
-    'disabledBackground', // neutralLighter
-    'disabledText', // neutralTertiary
-    'disabledSubText', // neutralQuaternary
-    // LISTS - 7
-    'listBackground', // white
-    'listText', // neutralPrimary
-    'listItemBackgroundHovered', // neutralLighter
-    'listItemBackgroundChecked', // neutralLight
-    'listItemBackgroundCheckedHovered', // neutralQuaternaryAlt
-    'listHeaderBackgroundHovered', // neutralLighter
-    'listHeaderBackgroundPressed', // neutralLight
-    // MENUS - 8
-    'menuBackground', // white
-    'menuDivider', // neutralTertiaryAlt
-    'menuIcon', // themePrimary
-    'menuHeader', // themePrimary
-    'menuItemBackgroundHovered', // neutralLighter
-    'menuItemBackgroundPressed', // neutralLight
-    'menuItemText', // neutralPrimary
-    'menuItemTextHovered' // neutralDark
-  ];
+  // for (let slot in semanticColorsNone) {
+  //   if ()
+  // }
 
   const noneSemanticColorsToPaletteValuesMapping = {
     bodyBackground: 'white',
