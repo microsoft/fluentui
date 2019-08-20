@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix generated font theme tokens for legacy theming",
-  "packageName": "@uifabric/styling",
-  "email": "phkuo@microsoft.com",
-  "commit": "8fed2cf839a7f27ae8f64126069e7dc013c6982c",
-  "date": "2019-08-16T22:18:00.898Z"
-}

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 16 Aug 2019 22:19:39 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Aug 2019 12:22:59 GMT and should not be manually modified.
+
+## 6.50.6
+Tue, 20 Aug 2019 12:22:59 GMT
+
+### Patches
+
+- Fix generated font theme tokens for legacy theming (phkuo@microsoft.com)
 
 ## 6.50.5
 Fri, 16 Aug 2019 22:19:39 GMT
