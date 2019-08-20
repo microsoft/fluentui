@@ -45,7 +45,7 @@ exports[`Component Examples renders Stack.Vertical.Wrap.Example.tsx correctly 1`
             box-shadow: none;
             box-sizing: border-box;
             color: #323130;
-            display: block;
+            display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 600;
@@ -63,7 +63,38 @@ exports[`Component Examples renders Stack.Vertical.Wrap.Example.tsx correctly 1`
       htmlFor="Slider2"
     >
       Change the stack height to see how child items wrap onto multiple columns:
-       : 
+    </label>
+    <label
+      className=
+          ms-Label
+          ms-Slider-value
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #323130;
+            display: inline-block;
+            flex-shrink: 1;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            white-space: nowrap;
+            word-wrap: break-word;
+          }
+    >
+      :
+       
       420
     </label>
     <div
@@ -73,6 +104,10 @@ exports[`Component Examples renders Stack.Vertical.Wrap.Example.tsx correctly 1`
             align-items: center;
             display: flex;
             flex-wrap: nowrap;
+            margin-bottom: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 10px;
           }
     >
       <div
@@ -179,47 +214,45 @@ exports[`Component Examples renders Stack.Vertical.Wrap.Example.tsx correctly 1`
                 width: 100%;
               }
         >
-          <span>
-            <span
-              className=
-                  ms-Slider-regularLabel
-                  {
-                    background: #c8c6c4;
-                    height: 0px;
-                    position: absolute;
-                    transform: translateY(6px) translateX(-6px);
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    background-color: WindowText;
-                  }
-              style={
-                Object {
-                  "left": "0%",
+          <span
+            className=
+                ms-Slider-regularLabel
+                {
+                  background: #c8c6c4;
+                  height: 0px;
+                  position: absolute;
+                  transform: translateY(10px) translateX(-6px);
                 }
-              }
-            >
-              1
-            </span>
-            <span
-              className=
-                  ms-Slider-regularLabel
-                  {
-                    background: #c8c6c4;
-                    height: 0px;
-                    position: absolute;
-                    transform: translateY(6px) translateX(-6px);
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    background-color: WindowText;
-                  }
-              style={
-                Object {
-                  "left": "100%",
+                @media screen and (-ms-high-contrast: active){& {
+                  background-color: WindowText;
                 }
+            style={
+              Object {
+                "left": "0%",
               }
-            >
-              420
-            </span>
+            }
+          >
+            1
+          </span>
+          <span
+            className=
+                ms-Slider-regularLabel
+                {
+                  background: #c8c6c4;
+                  height: 0px;
+                  position: absolute;
+                  transform: translateY(10px) translateX(-6px);
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  background-color: WindowText;
+                }
+            style={
+              Object {
+                "left": "100%",
+              }
+            }
+          >
+            420
           </span>
           <span
             className=

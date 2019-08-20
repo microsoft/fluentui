@@ -103,6 +103,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
   vertical?: boolean;
 
   /**
+   * @defaultvalue false
    * Optional flag to render the Slider as disabled.
    */
   disabled?: boolean;
@@ -140,6 +141,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * @defaultvalue false
    */
   marks?: boolean | ISliderMarksArrayFormat[];
+
   /**
    *  Optional flag to decide that thumb will snap to closest value while moving the slider
    *  @defaultvalue false

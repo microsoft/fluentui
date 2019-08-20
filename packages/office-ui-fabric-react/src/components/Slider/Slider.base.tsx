@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '../../Utilities';
-import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
+import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles, ISliderMarksArrayFormat } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
 import { TooltipHost } from '../Tooltip';
@@ -91,16 +91,16 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
         className={classNames.thumb}
         style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)}
         id={this._buttonId}
-        aria-labelledby={showThumbTooltip ? this._hostId : undefined}
       />
     );
     return (
       <div className={classNames.root}>
         {label && (
           <Label className={classNames.titleLabel} {...(ariaLabel ? {} : { htmlFor: this._id })} disabled={disabled}>
-            {label} : {valueFormat && showValue ? valueFormat(value!) : value}
+            {label}
           </Label>
         )}
+        {this._getValueLabel(classNames.valueLabel)}
         <div className={classNames.container}>
           <div
             aria-valuenow={value}
@@ -125,7 +125,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               )}
               {marks && this._addTickmarks(classNames.regularTick)}
               {Array.isArray(marks) ? (
-                this._addLabels(classNames.regularLabel)
+                this._addLabels(classNames.regularLabel, marks)
               ) : (
                 <>
                   <span className={classNames.regularLabel} style={this._getStyleUsingOffsetPercent(vertical, 0)}>
@@ -202,7 +202,18 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       return Math.max(this.props.min, Math.min(this.props.max, value));
     }
   }
+  private _getValueLabel(className: string): JSX.Element | null {
+    const { showValue, disabled, valueFormat, label } = this.props;
 
+    if (showValue) {
+      return (
+        <Label className={className} disabled={disabled}>
+          {label && ':'} {valueFormat ? valueFormat(this.value!) : this.value}
+        </Label>
+      );
+    }
+    return null;
+  }
   private get renderedValue(): number | undefined {
     // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`. Fall back to `value`.
     const { renderedValue = this.value } = this.state;
@@ -293,8 +304,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   //returns an array of spans each span pertains to a custom label the user passes in
-  private _addLabels(cssRegularLabelClassNames: string | undefined): JSX.Element[] {
-    const { vertical, marks, min, max } = this.props;
+  private _addLabels(cssRegularLabelClassNames: string | undefined, marks: ISliderMarksArrayFormat[]): JSX.Element[] {
+    const { vertical, min, max } = this.props;
     const labels: JSX.Element[] = [];
     if (min === undefined || max === undefined || marks === undefined) {
       return labels;

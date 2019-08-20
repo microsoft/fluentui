@@ -102,7 +102,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #323130;
-                  display: block;
+                  display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 600;
@@ -120,7 +120,38 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             htmlFor="Slider2"
           >
             Number of items:
-             : 
+          </label>
+          <label
+            className=
+                ms-Label
+                ms-Slider-value
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #323130;
+                  display: inline-block;
+                  flex-shrink: 1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  line-height: 1;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  white-space: nowrap;
+                  word-wrap: break-word;
+                }
+          >
+            :
+             
             5
           </label>
           <div
@@ -130,6 +161,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   align-items: center;
                   display: flex;
                   flex-wrap: nowrap;
+                  margin-bottom: 10px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  margin-top: 10px;
                 }
           >
             <div
@@ -236,47 +271,45 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       width: 100%;
                     }
               >
-                <span>
-                  <span
-                    className=
-                        ms-Slider-regularLabel
-                        {
-                          background: #c8c6c4;
-                          height: 0px;
-                          position: absolute;
-                          transform: translateY(6px) translateX(-6px);
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-color: WindowText;
-                        }
-                    style={
-                      Object {
-                        "left": "0%",
+                <span
+                  className=
+                      ms-Slider-regularLabel
+                      {
+                        background: #c8c6c4;
+                        height: 0px;
+                        position: absolute;
+                        transform: translateY(10px) translateX(-6px);
                       }
-                    }
-                  >
-                    1
-                  </span>
-                  <span
-                    className=
-                        ms-Slider-regularLabel
-                        {
-                          background: #c8c6c4;
-                          height: 0px;
-                          position: absolute;
-                          transform: translateY(6px) translateX(-6px);
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-color: WindowText;
-                        }
-                    style={
-                      Object {
-                        "left": "100%",
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: WindowText;
                       }
+                  style={
+                    Object {
+                      "left": "0%",
                     }
-                  >
-                    10
-                  </span>
+                  }
+                >
+                  1
+                </span>
+                <span
+                  className=
+                      ms-Slider-regularLabel
+                      {
+                        background: #c8c6c4;
+                        height: 0px;
+                        position: absolute;
+                        transform: translateY(10px) translateX(-6px);
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: WindowText;
+                      }
+                  style={
+                    Object {
+                      "left": "100%",
+                    }
+                  }
+                >
+                  10
                 </span>
                 <span
                   className=
@@ -1006,7 +1039,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #a19f9d;
-                  display: block;
+                  display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 600;
@@ -1027,7 +1060,41 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             htmlFor="Slider9"
           >
             Container height:
-             : 
+          </label>
+          <label
+            className=
+                ms-Label
+                ms-Slider-value
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #a19f9d;
+                  display: inline-block;
+                  flex-shrink: 1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  line-height: 1;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  white-space: nowrap;
+                  word-wrap: break-word;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: GrayText;
+                }
+          >
+            :
+             
             200
           </label>
           <div
@@ -1037,6 +1104,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   align-items: center;
                   display: flex;
                   flex-wrap: nowrap;
+                  margin-bottom: 10px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  margin-top: 10px;
                 }
           >
             <div
@@ -1091,47 +1162,45 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       width: 100%;
                     }
               >
-                <span>
-                  <span
-                    className=
-                        ms-Slider-regularLabel
-                        {
-                          background: #edebe9;
-                          height: 0px;
-                          position: absolute;
-                          transform: translateY(6px) translateX(-6px);
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-color: GrayText;
-                        }
-                    style={
-                      Object {
-                        "left": "0%",
+                <span
+                  className=
+                      ms-Slider-regularLabel
+                      {
+                        background: #edebe9;
+                        height: 0px;
+                        position: absolute;
+                        transform: translateY(10px) translateX(-6px);
                       }
-                    }
-                  >
-                    1
-                  </span>
-                  <span
-                    className=
-                        ms-Slider-regularLabel
-                        {
-                          background: #edebe9;
-                          height: 0px;
-                          position: absolute;
-                          transform: translateY(6px) translateX(-6px);
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-color: GrayText;
-                        }
-                    style={
-                      Object {
-                        "left": "100%",
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: GrayText;
                       }
+                  style={
+                    Object {
+                      "left": "0%",
                     }
-                  >
-                    400
-                  </span>
+                  }
+                >
+                  1
+                </span>
+                <span
+                  className=
+                      ms-Slider-regularLabel
+                      {
+                        background: #edebe9;
+                        height: 0px;
+                        position: absolute;
+                        transform: translateY(10px) translateX(-6px);
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: GrayText;
+                      }
+                  style={
+                    Object {
+                      "left": "100%",
+                    }
+                  }
+                >
+                  400
                 </span>
                 <span
                   className=
@@ -1457,7 +1526,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #323130;
-                  display: block;
+                  display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 600;
@@ -1475,7 +1544,38 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             htmlFor="Slider13"
           >
             Vertical gap between items:
-             : 
+          </label>
+          <label
+            className=
+                ms-Label
+                ms-Slider-value
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #323130;
+                  display: inline-block;
+                  flex-shrink: 1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  line-height: 1;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  white-space: nowrap;
+                  word-wrap: break-word;
+                }
+          >
+            :
+             
             0
           </label>
           <div
@@ -1485,6 +1585,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   align-items: center;
                   display: flex;
                   flex-wrap: nowrap;
+                  margin-bottom: 10px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  margin-top: 10px;
                 }
           >
             <div
@@ -1591,47 +1695,45 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       width: 100%;
                     }
               >
-                <span>
-                  <span
-                    className=
-                        ms-Slider-regularLabel
-                        {
-                          background: #c8c6c4;
-                          height: 0px;
-                          position: absolute;
-                          transform: translateY(6px) translateX(-6px);
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-color: WindowText;
-                        }
-                    style={
-                      Object {
-                        "left": "0%",
+                <span
+                  className=
+                      ms-Slider-regularLabel
+                      {
+                        background: #c8c6c4;
+                        height: 0px;
+                        position: absolute;
+                        transform: translateY(10px) translateX(-6px);
                       }
-                    }
-                  >
-                    0
-                  </span>
-                  <span
-                    className=
-                        ms-Slider-regularLabel
-                        {
-                          background: #c8c6c4;
-                          height: 0px;
-                          position: absolute;
-                          transform: translateY(6px) translateX(-6px);
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-color: WindowText;
-                        }
-                    style={
-                      Object {
-                        "left": "100%",
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: WindowText;
                       }
+                  style={
+                    Object {
+                      "left": "0%",
                     }
-                  >
-                    50
-                  </span>
+                  }
+                >
+                  0
+                </span>
+                <span
+                  className=
+                      ms-Slider-regularLabel
+                      {
+                        background: #c8c6c4;
+                        height: 0px;
+                        position: absolute;
+                        transform: translateY(10px) translateX(-6px);
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: WindowText;
+                      }
+                  style={
+                    Object {
+                      "left": "100%",
+                    }
+                  }
+                >
+                  50
                 </span>
                 <span
                   className=
@@ -2584,7 +2686,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #323130;
-                  display: block;
+                  display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 600;
@@ -2602,7 +2704,38 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             htmlFor="Slider22"
           >
             Left padding:
-             : 
+          </label>
+          <label
+            className=
+                ms-Label
+                ms-Slider-value
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #323130;
+                  display: inline-block;
+                  flex-shrink: 1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  line-height: 1;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  white-space: nowrap;
+                  word-wrap: break-word;
+                }
+          >
+            :
+             
             0
           </label>
           <div
@@ -2612,6 +2745,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   align-items: center;
                   display: flex;
                   flex-wrap: nowrap;
+                  margin-bottom: 10px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  margin-top: 10px;
                 }
           >
             <div
@@ -2718,47 +2855,45 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       width: 100%;
                     }
               >
-                <span>
-                  <span
-                    className=
-                        ms-Slider-regularLabel
-                        {
-                          background: #c8c6c4;
-                          height: 0px;
-                          position: absolute;
-                          transform: translateY(6px) translateX(-6px);
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-color: WindowText;
-                        }
-                    style={
-                      Object {
-                        "left": "0%",
+                <span
+                  className=
+                      ms-Slider-regularLabel
+                      {
+                        background: #c8c6c4;
+                        height: 0px;
+                        position: absolute;
+                        transform: translateY(10px) translateX(-6px);
                       }
-                    }
-                  >
-                    0
-                  </span>
-                  <span
-                    className=
-                        ms-Slider-regularLabel
-                        {
-                          background: #c8c6c4;
-                          height: 0px;
-                          position: absolute;
-                          transform: translateY(6px) translateX(-6px);
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-color: WindowText;
-                        }
-                    style={
-                      Object {
-                        "left": "100%",
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: WindowText;
                       }
+                  style={
+                    Object {
+                      "left": "0%",
                     }
-                  >
-                    50
-                  </span>
+                  }
+                >
+                  0
+                </span>
+                <span
+                  className=
+                      ms-Slider-regularLabel
+                      {
+                        background: #c8c6c4;
+                        height: 0px;
+                        position: absolute;
+                        transform: translateY(10px) translateX(-6px);
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: WindowText;
+                      }
+                  style={
+                    Object {
+                      "left": "100%",
+                    }
+                  }
+                >
+                  50
                 </span>
                 <span
                   className=
@@ -2857,7 +2992,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #323130;
-                  display: block;
+                  display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 600;
@@ -2875,7 +3010,38 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             htmlFor="Slider25"
           >
             Right padding:
-             : 
+          </label>
+          <label
+            className=
+                ms-Label
+                ms-Slider-value
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #323130;
+                  display: inline-block;
+                  flex-shrink: 1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  line-height: 1;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  white-space: nowrap;
+                  word-wrap: break-word;
+                }
+          >
+            :
+             
             0
           </label>
           <div
@@ -2885,6 +3051,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   align-items: center;
                   display: flex;
                   flex-wrap: nowrap;
+                  margin-bottom: 10px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  margin-top: 10px;
                 }
           >
             <div
@@ -2991,47 +3161,45 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       width: 100%;
                     }
               >
-                <span>
-                  <span
-                    className=
-                        ms-Slider-regularLabel
-                        {
-                          background: #c8c6c4;
-                          height: 0px;
-                          position: absolute;
-                          transform: translateY(6px) translateX(-6px);
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-color: WindowText;
-                        }
-                    style={
-                      Object {
-                        "left": "0%",
+                <span
+                  className=
+                      ms-Slider-regularLabel
+                      {
+                        background: #c8c6c4;
+                        height: 0px;
+                        position: absolute;
+                        transform: translateY(10px) translateX(-6px);
                       }
-                    }
-                  >
-                    0
-                  </span>
-                  <span
-                    className=
-                        ms-Slider-regularLabel
-                        {
-                          background: #c8c6c4;
-                          height: 0px;
-                          position: absolute;
-                          transform: translateY(6px) translateX(-6px);
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-color: WindowText;
-                        }
-                    style={
-                      Object {
-                        "left": "100%",
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: WindowText;
                       }
+                  style={
+                    Object {
+                      "left": "0%",
                     }
-                  >
-                    50
-                  </span>
+                  }
+                >
+                  0
+                </span>
+                <span
+                  className=
+                      ms-Slider-regularLabel
+                      {
+                        background: #c8c6c4;
+                        height: 0px;
+                        position: absolute;
+                        transform: translateY(10px) translateX(-6px);
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: WindowText;
+                      }
+                  style={
+                    Object {
+                      "left": "100%",
+                    }
+                  }
+                >
+                  50
                 </span>
                 <span
                   className=
@@ -3168,7 +3336,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #323130;
-                  display: block;
+                  display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 600;
@@ -3186,7 +3354,38 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             htmlFor="Slider28"
           >
             Top padding:
-             : 
+          </label>
+          <label
+            className=
+                ms-Label
+                ms-Slider-value
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #323130;
+                  display: inline-block;
+                  flex-shrink: 1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  line-height: 1;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  white-space: nowrap;
+                  word-wrap: break-word;
+                }
+          >
+            :
+             
             0
           </label>
           <div
@@ -3196,6 +3395,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   align-items: center;
                   display: flex;
                   flex-wrap: nowrap;
+                  margin-bottom: 10px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  margin-top: 10px;
                 }
           >
             <div
@@ -3302,47 +3505,45 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       width: 100%;
                     }
               >
-                <span>
-                  <span
-                    className=
-                        ms-Slider-regularLabel
-                        {
-                          background: #c8c6c4;
-                          height: 0px;
-                          position: absolute;
-                          transform: translateY(6px) translateX(-6px);
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-color: WindowText;
-                        }
-                    style={
-                      Object {
-                        "left": "0%",
+                <span
+                  className=
+                      ms-Slider-regularLabel
+                      {
+                        background: #c8c6c4;
+                        height: 0px;
+                        position: absolute;
+                        transform: translateY(10px) translateX(-6px);
                       }
-                    }
-                  >
-                    0
-                  </span>
-                  <span
-                    className=
-                        ms-Slider-regularLabel
-                        {
-                          background: #c8c6c4;
-                          height: 0px;
-                          position: absolute;
-                          transform: translateY(6px) translateX(-6px);
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-color: WindowText;
-                        }
-                    style={
-                      Object {
-                        "left": "100%",
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: WindowText;
                       }
+                  style={
+                    Object {
+                      "left": "0%",
                     }
-                  >
-                    50
-                  </span>
+                  }
+                >
+                  0
+                </span>
+                <span
+                  className=
+                      ms-Slider-regularLabel
+                      {
+                        background: #c8c6c4;
+                        height: 0px;
+                        position: absolute;
+                        transform: translateY(10px) translateX(-6px);
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: WindowText;
+                      }
+                  style={
+                    Object {
+                      "left": "100%",
+                    }
+                  }
+                >
+                  50
                 </span>
                 <span
                   className=
@@ -3441,7 +3642,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #323130;
-                  display: block;
+                  display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 600;
@@ -3459,7 +3660,38 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
             htmlFor="Slider31"
           >
             Bottom padding:
-             : 
+          </label>
+          <label
+            className=
+                ms-Label
+                ms-Slider-value
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #323130;
+                  display: inline-block;
+                  flex-shrink: 1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 600;
+                  line-height: 1;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  white-space: nowrap;
+                  word-wrap: break-word;
+                }
+          >
+            :
+             
             0
           </label>
           <div
@@ -3469,6 +3701,10 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   align-items: center;
                   display: flex;
                   flex-wrap: nowrap;
+                  margin-bottom: 10px;
+                  margin-left: 10px;
+                  margin-right: 10px;
+                  margin-top: 10px;
                 }
           >
             <div
@@ -3575,47 +3811,45 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       width: 100%;
                     }
               >
-                <span>
-                  <span
-                    className=
-                        ms-Slider-regularLabel
-                        {
-                          background: #c8c6c4;
-                          height: 0px;
-                          position: absolute;
-                          transform: translateY(6px) translateX(-6px);
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-color: WindowText;
-                        }
-                    style={
-                      Object {
-                        "left": "0%",
+                <span
+                  className=
+                      ms-Slider-regularLabel
+                      {
+                        background: #c8c6c4;
+                        height: 0px;
+                        position: absolute;
+                        transform: translateY(10px) translateX(-6px);
                       }
-                    }
-                  >
-                    0
-                  </span>
-                  <span
-                    className=
-                        ms-Slider-regularLabel
-                        {
-                          background: #c8c6c4;
-                          height: 0px;
-                          position: absolute;
-                          transform: translateY(6px) translateX(-6px);
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-color: WindowText;
-                        }
-                    style={
-                      Object {
-                        "left": "100%",
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: WindowText;
                       }
+                  style={
+                    Object {
+                      "left": "0%",
                     }
-                  >
-                    50
-                  </span>
+                  }
+                >
+                  0
+                </span>
+                <span
+                  className=
+                      ms-Slider-regularLabel
+                      {
+                        background: #c8c6c4;
+                        height: 0px;
+                        position: absolute;
+                        transform: translateY(10px) translateX(-6px);
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        background-color: WindowText;
+                      }
+                  style={
+                    Object {
+                      "left": "100%",
+                    }
+                  }
+                >
+                  50
                 </span>
                 <span
                   className=

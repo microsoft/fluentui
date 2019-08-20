@@ -45,12 +45,11 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
           min={0}
           max={50}
           step={10}
-          snapToStep
-          showValue={true}
-          onChange={(value: number) => console.log(value)}
           defaultValue={20}
+          showValue
+          onChange={(value: number) => console.log(value)}
+          snapToStep
         />
-
         <Slider
           label="Marks example"
           min={0}
@@ -62,7 +61,7 @@ export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleS
           showThumbTooltip
           marks={marks}
         />
-        <Slider label="Disabled example" min={50} max={500} step={50} defaultValue={300} showValue={true} disabled={true} />
+        <Slider label="Disabled example" min={50} max={500} step={50} defaultValue={300} showValue={true} disabled />
         <Slider
           label="Controlled example"
           max={10}

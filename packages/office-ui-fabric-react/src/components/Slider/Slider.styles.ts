@@ -1,5 +1,5 @@
 import { ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { getGlobalClassNames, HighContrastSelector, AnimationVariables, getFocusStyle } from '../../Styling';
+import { getGlobalClassNames, HighContrastSelector, AnimationVariables, getFocusStyle, IRawStyle } from '../../Styling';
 import { getRTL } from '@uifabric/utilities';
 
 const GlobalClassNames = {
@@ -21,6 +21,16 @@ const GlobalClassNames = {
   regularTick: 'ms-Slider-regularTick',
   regularLabel: 'ms-Slider-regularLabel'
 };
+
+function getHighContrastSelector(systemColor: string): IRawStyle {
+  return {
+    selectors: {
+      [HighContrastSelector]: {
+        backgroundColor: systemColor
+      }
+    }
+  };
+}
 
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   const { className, titleLabelClassName, theme, vertical, disabled, showTransitions, showValue } = props;
@@ -106,7 +116,8 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     ],
     titleLabel: [
       {
-        padding: 0
+        padding: 0,
+        display: 'inline-block'
       },
       titleLabelClassName
     ],
@@ -231,13 +242,9 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     ],
     activeSection: [
       classNames.activeSection,
+      getHighContrastSelector(disabled ? 'GrayText' : 'WindowText'),
       {
-        background: restActiveSectionColor,
-        selectors: {
-          [HighContrastSelector]: {
-            backgroundColor: 'WindowText'
-          }
-        }
+        background: restActiveSectionColor
       },
       showTransitions && {
         transition: `width ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
@@ -246,7 +253,6 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         background: disabledActiveSectionColor,
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: 'GrayText',
             borderColor: 'GrayText'
           }
         }
@@ -276,22 +282,13 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     ],
     zeroTick: [
       classNames.zeroTick,
+      getHighContrastSelector(disabled ? 'GrayText' : 'WindowText'),
       {
         position: 'absolute',
-        background: semanticColors.disabledBorder,
-        selectors: {
-          [HighContrastSelector]: {
-            backgroundColor: 'WindowText'
-          }
-        }
+        background: semanticColors.disabledBorder
       },
       disabled && {
-        background: theme.palette.neutralLight,
-        selectors: {
-          [HighContrastSelector]: {
-            backgroundColor: 'GrayText'
-          }
-        }
+        background: theme.palette.neutralLight
       },
       vertical
         ? {
@@ -307,49 +304,31 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     ],
     regularLabel: [
       classNames.regularLabel,
+      getHighContrastSelector(disabled ? 'GrayText' : 'WindowText'),
       {
         position: 'absolute',
         height: '0px',
         background: theme.palette.neutralTertiaryAlt,
-        selectors: {
-          [HighContrastSelector]: {
-            backgroundColor: 'WindowText'
-          }
-        },
-        transform: 'translateY(6px) translateX(-6px)'
+        transform: 'translateY(10px) translateX(-6px)'
       },
       vertical && {
         margin: '0 auto 20px',
         transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
       },
       disabled && {
-        background: theme.palette.neutralLight,
-        selectors: {
-          [HighContrastSelector]: {
-            backgroundColor: 'GrayText'
-          }
-        }
+        background: theme.palette.neutralLight
       }
     ],
 
     regularTick: [
       classNames.regularTick,
+      getHighContrastSelector(disabled ? 'GrayText' : 'WindowText'),
       {
         position: 'absolute',
-        background: '#fff',
-        selectors: {
-          [HighContrastSelector]: {
-            backgroundColor: 'WindowText'
-          }
-        }
+        background: '#fff'
       },
       disabled! && {
-        background: theme.palette.neutralLight,
-        selectors: {
-          [HighContrastSelector]: {
-            backgroundColor: 'GrayText'
-          }
-        }
+        background: theme.palette.neutralLight
       },
       vertical
         ? {
@@ -368,7 +347,8 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       {
         flexShrink: 1,
         lineHeight: '1',
-        whiteSpace: 'nowrap'
+        whiteSpace: 'nowrap',
+        display: 'inline-block'
       },
       vertical && {
         margin: '0 auto',
