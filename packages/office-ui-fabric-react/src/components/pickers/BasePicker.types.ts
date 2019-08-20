@@ -203,7 +203,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    */
   theme?: ITheme;
   /**
-   * Optional read only state applied to picker.
+   * Optional read only state applied to tag picker. Removes the clear button from the TagItem pill.
    */
   readOnly?: boolean;
 }
