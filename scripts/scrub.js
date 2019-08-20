@@ -3,10 +3,14 @@
 const child_process = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const os = require('os');
 // This script MUST NOT have any deps aside from Node built-ins, because it deletes all node_modules!
 
-/** @returns {Promise<string>} */
+const verbose = process.argv.includes('--verbose') || process.argv.includes('-v');
+
+/**
+ * @param {string} question - question to ask the user
+ * @returns {Promise<string>} response
+ */
 function prompt(question) {
   return new Promise(resolve => {
     process.stdin.resume();
@@ -19,20 +23,32 @@ function prompt(question) {
   });
 }
 
-function deleteIfSymlink(itemPath) {
-  itemPath = path.resolve(itemPath);
+/**
+ * @param {string} itemPath
+ * @param {string[]} failedPaths
+ */
+function deleteIfSymlink(itemPath, failedPaths) {
   try {
     // Compare realpath since fs.statSync(itemPath).isSymbolicLink() doesn't work on Windows
     if (fs.realpathSync(itemPath) !== itemPath) {
-      console.log('  Deleting symlink: ' + itemPath);
+      if (verbose) {
+        console.log('  Deleting symlink: ' + itemPath);
+      }
       fs.unlinkSync(itemPath);
     }
   } catch (ex) {
     console.warn(`Error running stat or unlink on ${itemPath}: ${ex}`);
+    failedPaths.push(itemPath);
   }
 }
 
-function deleteNodeModulesSymlinks(nodeModulesPath) {
+/**
+ * Delete symlinks from a package's node_modules folder
+ * @param {string} packagePath
+ * @param {string[]} failedPaths
+ */
+function deleteNodeModulesSymlinks(packagePath, failedPaths) {
+  const nodeModulesPath = path.resolve(packagePath, 'node_modules');
   if (!fs.existsSync(nodeModulesPath)) {
     return;
   }
@@ -44,20 +60,24 @@ function deleteNodeModulesSymlinks(nodeModulesPath) {
       // Add any scoped modules to the list of things to check
       modules.push(...fs.readdirSync(modulePath).map(m => path.join(mod, m)));
     } else {
-      deleteIfSymlink(modulePath);
+      deleteIfSymlink(modulePath, failedPaths);
     }
   }
 }
 
-function deleteSymlinks(parentFolder) {
-  const parentPath = path.join(process.cwd(), parentFolder);
-  if (!fs.existsSync(parentPath)) {
-    return;
-  }
-  for (const child of fs.readdirSync(parentPath)) {
-    const nodeModulesPath = path.join(parentPath, child, 'node_modules');
-    deleteNodeModulesSymlinks(nodeModulesPath);
-  }
+function getChildren(parentFolder) {
+  return fs.readdirSync(parentFolder).map(child => path.join(parentFolder, child));
+}
+
+/**
+ * @param {string} cmd
+ */
+function execWithPipe(cmd) {
+  return new Promise((resolve, reject) => {
+    const child = child_process.exec(cmd, err => (err ? reject(err) : resolve));
+    child.stdout.pipe(process.stdout);
+    child.stderr.pipe(process.stderr);
+  });
 }
 
 async function run() {
@@ -76,7 +96,7 @@ async function run() {
     if (gitStatus) {
       console.log('It will also revert uncommitted changes to the following files:');
       const lines = gitStatus.split(/\r?\n/g).map(line => '  ' + line);
-      console.log(lines.slice(0, 20).join(os.EOL));
+      console.log(lines.slice(0, 20).join('\n'));
       if (lines.length > 20) {
         console.log(`  ...and ${lines.length - 20} more`);
       }
@@ -87,19 +107,30 @@ async function run() {
     }
   }
 
-  console.log("Deleting symlinks from packages' node_modules...");
-  deleteSymlinks('apps');
-  deleteSymlinks('packages');
+  const failedPaths = [];
 
-  console.log('Deleting symlinks from rush temp files...');
-  deleteNodeModulesSymlinks('common/temp/node_modules');
-  deleteIfSymlink('common/temp/pnpm-local');
+  console.log("\nDeleting symlinks from packages' node_modules and rush temp files...");
+  const folders = [...getChildren('apps'), ...getChildren('packages'), 'scripts', 'common/temp'];
+  for (const folder of folders) {
+    deleteNodeModulesSymlinks(folder, failedPaths);
+  }
+  deleteIfSymlink(path.resolve('common/temp/pnpm-local'), failedPaths);
 
-  console.log();
+  if (failedPaths.length) {
+    console.error('Deleting the following symlinks failed. Please delete these manually and try again.');
+    console.error(failedPaths.map(p => '  ' + p).join('\n'));
+    process.exit(1);
+  }
 
-  console.log('Running "git clean -fdx" to remove all untracked files/folders (this may take awhile)...');
-  child_process.execSync('git clean -fdx');
-  console.log('Done!');
+  console.log('\nRunning "git clean -fdx" to remove all untracked files/folders (this may take awhile)...');
+  await execWithPipe('git clean -fdx');
+  // Run it again in case the first time didn't fully work (known to happen)
+  await execWithPipe('git clean -fdx');
+
+  console.log('\nRunning "git reset --hard"...');
+  await execWithPipe('git reset --hard');
+
+  console.log('\nDone!');
 }
 
 run().catch(ex => {
