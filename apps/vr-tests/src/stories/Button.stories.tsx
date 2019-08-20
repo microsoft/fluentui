@@ -218,7 +218,13 @@ storiesOf('Button Special Scenarios', module)
 storiesOf('IconButton Scenarios', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener steps={new Steps().snapshot('icon', { cropTo: '.testWrapper' }).end()}>
+    <Screener
+      steps={new Steps()
+        .snapshot('icon', { cropTo: '.testWrapper' })
+        .hover('.ms-Button')
+        .snapshot('hover icon', { cropTo: '.testWrapper' })
+        .end()}
+    >
       {story()}
     </Screener>
   ))
