@@ -181,7 +181,6 @@ function makePackage(error) {
 
   fs.mkdirSync(`${packagePath}/config`);
   fs.mkdirSync(`${packagePath}/src`);
-  fs.mkdirSync(`${packagePath}/src/common`);
   fs.mkdirSync(`${packagePath}/src/demo`);
   fs.mkdirSync(`${packagePath}/src/components`);
 
