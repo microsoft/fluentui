@@ -52,34 +52,47 @@ exports[`VerticalPersona renders correctly with a text and secondary text 1`] = 
   </div>
   <span
     className=
-
+        test-cn-text
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
+          color: #323130;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 19.2px;
-          font-weight: 400;
+          font-size: 14px;
+          font-weight: 600;
           moz-osx-font-smoothing: grayscale;
+          padding-top: 8px;
+          text-align: center;
           webkit-font-smoothing: antialiased;
+          white-space: initial;
+          width: 100%;
+          word-break: break-word;
+          word-wrap: break-word;
         }
   >
     James Bond
   </span>
   <span
     className=
-
+        test-cn-secondaryText
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
+          color: #605e5c;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 19.2px;
+          font-size: 12px;
           font-weight: 400;
+          line-height: 1.42;
           moz-osx-font-smoothing: grayscale;
+          padding-top: 6px;
+          text-align: center;
           webkit-font-smoothing: antialiased;
+          white-space: initial;
+          width: 100%;
+          word-break: break-word;
+          word-wrap: break-word;
         }
   >
     Super secret agent
@@ -139,17 +152,23 @@ exports[`VerticalPersona renders correctly with only a text 1`] = `
   </div>
   <span
     className=
-
+        test-cn-text
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
+          color: #323130;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 19.2px;
-          font-weight: 400;
+          font-size: 14px;
+          font-weight: 600;
           moz-osx-font-smoothing: grayscale;
+          padding-top: 8px;
+          text-align: center;
           webkit-font-smoothing: antialiased;
+          white-space: initial;
+          width: 100%;
+          word-break: break-word;
+          word-wrap: break-word;
         }
   >
     James Bond
@@ -209,34 +228,47 @@ exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
   </div>
   <span
     className=
-
+        test-cn-text
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
+          color: #323130;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 19.2px;
-          font-weight: 400;
+          font-size: 14px;
+          font-weight: 600;
           moz-osx-font-smoothing: grayscale;
+          padding-top: 8px;
+          text-align: center;
           webkit-font-smoothing: antialiased;
+          white-space: initial;
+          width: 100%;
+          word-break: break-word;
+          word-wrap: break-word;
         }
   >
     James Bond
   </span>
   <span
     className=
-
+        test-cn-secondaryText
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
+          color: #605e5c;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 19.2px;
+          font-size: 12px;
           font-weight: 400;
+          line-height: 1.42;
           moz-osx-font-smoothing: grayscale;
+          padding-top: 6px;
+          text-align: center;
           webkit-font-smoothing: antialiased;
+          white-space: initial;
+          width: 100%;
+          word-break: break-word;
+          word-wrap: break-word;
         }
   >
     Super secret agent

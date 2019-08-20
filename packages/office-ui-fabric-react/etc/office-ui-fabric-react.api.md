@@ -9250,9 +9250,6 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 export const TextStyles: ITextComponent['styles'];
 
 // @public (undocumented)
-export const TextTokens: ITextComponent['tokens'];
-
-// @public (undocumented)
 export const TextView: ITextComponent['view'];
 
 // @public (undocumented)

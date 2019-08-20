@@ -82,13 +82,14 @@ export function createComponent<
 
     if (!options.disableCaching) {
       // We get the entry in the memoized classNamesMap for the current component or create one if it doesn't exist.
-      const displayName = options.displayName || view.name;
+      const displayName = options.displayName!;
       if (!memoizedClassNamesMap.hasOwnProperty(displayName)) {
         memoizedClassNamesMap[displayName] = { map: {} };
       }
 
-      // Memoize based on the tokens definition.
       let current = memoizedClassNamesMap[displayName];
+
+      // Memoize based on the tokens definition.
       const tokenKeys = Object.keys(tokens).sort();
       for (const key of tokenKeys) {
         let nextToken = tokens[key];
@@ -101,12 +102,22 @@ export function createComponent<
         current = current.map[nextToken];
       }
 
+      // Memoize the slots so we only have to get Object.keys once.
+      let slots = (memoizedClassNamesMap[displayName] as any).slots;
+      let defaultStyles;
+      if (!slots) {
+        defaultStyles = _resolveStyles(componentProps, theme, tokens, options.styles, settings.styles);
+        (memoizedClassNamesMap[displayName] as any).slots = Object.keys(defaultStyles);
+        slots = (memoizedClassNamesMap[displayName] as any).slots;
+      }
+
       // Memoize based on the base styling of the component (i.e. without user specified props).
-      const defaultStyles = _resolveStyles(componentProps, theme, tokens, options.styles, settings.styles) as any;
-      styles = defaultStyles;
-      const defaultStyleKeys = Object.keys(defaultStyles).sort();
-      for (const key of defaultStyleKeys) {
+      for (const key of slots) {
         if (!current.map.hasOwnProperty(key)) {
+          // Get default styles once if we didn't get them before.
+          if (!defaultStyles) {
+            defaultStyles = _resolveStyles(componentProps, theme, tokens, options.styles, settings.styles);
+          }
           current.map[key] = { className: mergeStyles(defaultStyles[key]), map: {} };
         }
         finalStyles[key] = current.map[key].className;
@@ -119,7 +130,7 @@ export function createComponent<
             : componentProps.styles;
         styles = concatStyleSets(styles, userStyles);
         if (userStyles) {
-          const userStyleKeys = Object.keys(userStyles).sort();
+          const userStyleKeys = Object.keys(userStyles);
           for (const key of userStyleKeys) {
             if (finalStyles.hasOwnProperty(key)) {
               finalStyles[key] = mergeStyles([current.map[key].className], userStyles[key]);
