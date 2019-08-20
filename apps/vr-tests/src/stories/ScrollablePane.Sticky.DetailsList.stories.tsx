@@ -261,7 +261,7 @@ const scrollablePaneProps: IScrollablePaneProps = {
   scrollbarVisibility: ScrollbarVisibility.always,
   stickyFooterContainerBehavior: 'always',
   stickyHeaderContainerBehavior: 'onScroll',
-  optimizeForPerformace: true
+  optimizeForPerformance: true
 };
 const scrollablePaneProps1: IScrollablePaneProps = {
   ...scrollablePaneProps,

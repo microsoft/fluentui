@@ -54,10 +54,11 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
   scrollbarVisibility?: ScrollbarVisibility;
 
   /**
-   * If true, it optimizes the performance which may affect component behavior to some extent in few scenarios.
+   * If true, it optimizes the performance, but may affect component behavior to some extent in few scenarios
+   * where stickyClassName prop is used for Sticky component(s).
    * It is suggested to test the component so that it works as per the desired behavior.
    */
-  optimizeForPerformace?: boolean;
+  optimizeForPerformance?: boolean;
 
   /**
    * Determines the behavior of Sticky component(s) having stickyPosition StickyPosition.Header

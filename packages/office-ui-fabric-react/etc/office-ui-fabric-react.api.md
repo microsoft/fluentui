@@ -6361,7 +6361,7 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
     className?: string;
     componentRef?: IRefObject<IScrollablePane>;
     initialScrollPosition?: number;
-    optimizeForPerformace?: boolean;
+    optimizeForPerformance?: boolean;
     scrollbarVisibility?: ScrollbarVisibility;
     stickyFooterContainerBehavior?: IStickyContainerBehaviorType;
     stickyHeaderContainerBehavior?: IStickyContainerBehaviorType;

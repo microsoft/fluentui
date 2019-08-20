@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, divProperties, getNativeProps, getRTL, safeRequestAnimationFrame } from '../../Utilities';
+import { BaseComponent, classNamesFunction, divProperties, getNativeProps, getRTL } from '../../Utilities';
 import {
   IScrollablePane,
   IScrollablePaneContext,
@@ -35,7 +35,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   private _stickies: Set<Sticky>;
   private _mutationObserver: MutationObserver;
   private _notifyThrottled: () => void;
-  private _requestAnimationFrame = safeRequestAnimationFrame(this);
 
   constructor(props: IScrollablePaneProps) {
     super(props);
@@ -314,7 +313,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   public usePlaceholderForSticky = (): boolean => {
-    return !this.props.optimizeForPerformace;
+    return !this.props.optimizeForPerformance;
   };
 
   public verifyStickyContainerBehavior = (
@@ -508,28 +507,26 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   }
 
   private _onScroll = () => {
-    this._requestAnimationFrame(() => {
-      const { contentContainer } = this;
+    const { contentContainer } = this;
 
-      if (contentContainer) {
-        // sync Sticky scroll if contentContainer has scrolled horizontally
-        if (this._scrollLeft !== contentContainer.scrollLeft) {
-          this._scrollLeft = contentContainer.scrollLeft;
-          this._stickies.forEach((sticky: Sticky) => {
-            sticky.syncScroll(contentContainer);
-          });
-        }
-        if (this._scrollTop !== contentContainer.scrollTop) {
-          this._userInteractionStarted = true;
-          this._scrollTop = contentContainer.scrollTop;
-          this._notifyThrottled();
-        }
+    if (contentContainer) {
+      // sync Sticky scroll if contentContainer has scrolled horizontally
+      if (this._scrollLeft !== contentContainer.scrollLeft) {
+        this._scrollLeft = contentContainer.scrollLeft;
+        this._stickies.forEach((sticky: Sticky) => {
+          sticky.syncScroll(contentContainer);
+        });
       }
-    });
+      if (this._scrollTop !== contentContainer.scrollTop) {
+        this._userInteractionStarted = true;
+        this._scrollTop = contentContainer.scrollTop;
+        this._notifyThrottled();
+      }
+    }
   };
 
   private _sortBasedOnOrder(): boolean {
-    return !!this.props.optimizeForPerformace;
+    return !!this.props.optimizeForPerformance;
   }
 
   private _stickyContainerContainsStickyContent(sticky: Sticky, stickyPositionType: StickyPositionType): boolean {
