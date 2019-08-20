@@ -15,6 +15,7 @@ const GlobalClassNames = {
   size56: 'ms-Persona--size56',
   size72: 'ms-Persona--size72',
   size100: 'ms-Persona--size100',
+  size120: 'ms-Persona--size120',
   available: 'ms-Persona--online',
   away: 'ms-Persona--away',
   blocked: 'ms-Persona--blocked',
@@ -159,6 +160,14 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         {
           height: personaSize.size100,
           minWidth: personaSize.size100
+        }
+      ],
+
+      size.isSize120 && [
+        classNames.size120,
+        {
+          height: personaSize.size120,
+          minWidth: personaSize.size120
         }
       ],
 

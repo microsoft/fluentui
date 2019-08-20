@@ -16,6 +16,7 @@ export namespace personaSize {
   export const size56 = '56px';
   export const size72 = '72px';
   export const size100 = '100px';
+  export const size120 = '120px';
 }
 
 // Persona Presence Sizes
@@ -44,7 +45,8 @@ export const sizeBoolean = (size: PersonaSize) => ({
   isSize48: size === PersonaSize.size48 || size === PersonaSize.regular,
   isSize56: size === PersonaSize.size56,
   isSize72: size === PersonaSize.size72 || size === PersonaSize.large,
-  isSize100: size === PersonaSize.size100 || size === PersonaSize.extraLarge
+  isSize100: size === PersonaSize.size100 || size === PersonaSize.extraLarge,
+  isSize120: size === PersonaSize.size120
 });
 
 export const sizeToPixels: { [key: number]: number } = {
@@ -67,7 +69,8 @@ export const sizeToPixels: { [key: number]: number } = {
   [PersonaSize.size48]: 48,
   [PersonaSize.size56]: 56,
   [PersonaSize.size72]: 72,
-  [PersonaSize.size100]: 100
+  [PersonaSize.size100]: 100,
+  [PersonaSize.size120]: 120
 };
 
 export const presenceBoolean = (presence: PersonaPresence) => ({
