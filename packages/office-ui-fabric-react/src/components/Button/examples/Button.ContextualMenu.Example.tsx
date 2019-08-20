@@ -46,9 +46,9 @@ export const ButtonContextualMenuExample: React.FunctionComponent<IButtonExample
   );
 };
 
-function _getMenu(menuProps: IContextualMenuProps): JSX.Element {
+function _getMenu(props: IContextualMenuProps): JSX.Element {
   // Customize contextual menu with menuAs
-  return <ContextualMenu {...menuProps} />;
+  return <ContextualMenu {...props} />;
 }
 
 function _onMenuClick(ev?: React.SyntheticEvent<any>) {
