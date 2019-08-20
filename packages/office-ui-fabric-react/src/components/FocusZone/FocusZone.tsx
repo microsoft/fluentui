@@ -310,12 +310,15 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   private _evaluateFocusBeforeRender(): void {
     const { current: root } = this._root;
 
-    const focusedElement = this._getDocument().activeElement as HTMLElement;
+    const doc = this._getDocument();
+    if (doc) {
+      const focusedElement = doc.activeElement as HTMLElement;
 
-    // Only update the index path if we are not parked on the root.
-    if (focusedElement !== root) {
-      const shouldRestoreFocus = elementContains(root, focusedElement, false);
-      this._lastIndexPath = shouldRestoreFocus ? getElementIndexPath(root as HTMLElement, focusedElement) : undefined;
+      // Only update the index path if we are not parked on the root.
+      if (focusedElement !== root) {
+        const shouldRestoreFocus = elementContains(root, focusedElement, false);
+        this._lastIndexPath = shouldRestoreFocus ? getElementIndexPath(root as HTMLElement, focusedElement) : undefined;
+      }
     }
   }
 
@@ -1058,6 +1061,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   }
 
   private _getDocument(): Document {
-    return getDocument(this._root.current) || document;
+    return getDocument(this._root.current)!;
   }
 }
