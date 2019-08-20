@@ -25,7 +25,7 @@ import { updateH } from '../../utilities/color/updateH';
 import { correctRGB } from '../../utilities/color/correctRGB';
 import { correctHex } from '../../utilities/color/correctHex';
 
-type IRGBHex = Pick<IColor, 'r' | 'g' | 'b' | 'a' | 'hex'>;
+export type IRGBHex = Pick<IColor, 'r' | 'g' | 'b' | 'a' | 'hex'>;
 
 export interface IColorPickerState {
   color: IColor;
@@ -231,7 +231,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       const newColor = isHex
         ? getColorFromString('#' + newValue)
         : getColorFromRGBA({
-            ...color,
+            ...(color as IRGB),
             // Overwrite whichever key is being updated with the new value
             [component]: Number(newValue)
           });
