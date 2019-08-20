@@ -32,12 +32,17 @@ function sharedBeforeEach() {
 }
 
 function sharedAfterEach() {
-  jest.useRealTimers();
   if (wrapper) {
     wrapper.unmount();
     wrapper = undefined;
   }
   textField = undefined;
+
+  // Do this after umounting the wrapper to make sure any timers cleaned up on unmount are
+  // cleaned up in fake timers world
+  if ((global.setTimeout as any).mock) {
+    jest.useRealTimers();
+  }
 }
 
 describe('TextField snapshots', () => {
@@ -273,11 +278,14 @@ describe('TextField with error message', () => {
 
     if (expectedErrorMessage === false) {
       expect(errorMessageDOM).toBeNull(); // element not exists
-    } else if (typeof expectedErrorMessage === 'string') {
-      expect(errorMessageDOM!.textContent).toEqual(expectedErrorMessage);
-    } else if (typeof expectedErrorMessage !== 'boolean') {
-      const xhtml = errorMessageDOM!.innerHTML.replace(/<br>/g, '<br/>');
-      expect(xhtml).toEqual(renderToStaticMarkup(expectedErrorMessage));
+    } else {
+      expect(errorMessageDOM).not.toBeNull();
+      if (typeof expectedErrorMessage === 'string') {
+        expect(errorMessageDOM!.textContent).toEqual(expectedErrorMessage);
+      } else if (typeof expectedErrorMessage !== 'boolean') {
+        const xhtml = errorMessageDOM!.innerHTML.replace(/<br>/g, '<br/>');
+        expect(xhtml).toEqual(renderToStaticMarkup(expectedErrorMessage));
+      }
     }
   }
 
@@ -299,9 +307,23 @@ describe('TextField with error message', () => {
   it('should render error message when onGetErrorMessage returns a string', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessage : ''));
 
+    // function onNotifyResult(errorMessage: string | JSX.Element, value: string | undefined) {
+    //   try {
+    //     expect(validator).toHaveBeenCalledTimes(1);
+    //     assertErrorMessage(wrapper!.getDOMNode(), errorMessage);
+    //     done();
+    //   } catch (ex) {
+    //     done(ex);
+    //   }
+    // }
+
     wrapper = mount(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
 
     wrapper.find('input').simulate('input', mockEvent('also invalid'));
+    // // run the validation debounce timer
+    // jest.runOnlyPendingTimers();
+    // // // error message is inside a DelayedRender, so run that timer
+    // jest.runOnlyPendingTimers();
     jest.runAllTimers();
 
     expect(validator).toHaveBeenCalledTimes(1);
@@ -314,6 +336,11 @@ describe('TextField with error message', () => {
     wrapper = mount(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
 
     wrapper.find('input').simulate('input', mockEvent('also invalid'));
+    // // run the validation debounce timer
+    // jest.runOnlyPendingTimers();
+    // // error message is inside a DelayedRender, so run that timer
+    // jest.runOnlyPendingTimers();
+
     jest.runAllTimers();
 
     expect(validator).toHaveBeenCalledTimes(1);
@@ -637,14 +664,14 @@ describe('TextField onChange', () => {
   function simulateAndVerifyChange(changeValue: string, calls: number, expectedValue?: string) {
     expectedValue = typeof expectedValue === 'string' ? expectedValue : changeValue;
 
-    const inputDOM = wrapper!.getDOMNode().querySelector('input')!;
+    const input = wrapper!.find('input');
     // Fire input AND change events to more realistically test
-    ReactTestUtils.Simulate.input(inputDOM, mockEvent(changeValue));
-    ReactTestUtils.Simulate.change(inputDOM, mockEvent(changeValue));
+    input.simulate('input', mockEvent(changeValue));
+    input.simulate('change', mockEvent(changeValue));
 
     expect(onChange).toHaveBeenCalledTimes(calls);
     expect(textField!.value).toEqual(expectedValue);
-    expect(inputDOM.value).toEqual(expectedValue);
+    expect((input.getDOMNode() as HTMLInputElement).value).toEqual(expectedValue);
   }
 
   beforeEach(() => {
@@ -677,6 +704,33 @@ describe('TextField onChange', () => {
 
     expect(onChange).toHaveBeenCalledTimes(0);
     simulateAndVerifyChange('value change', 1, initialValue);
+  });
+
+  it('should not apply edits if controlled (empty initial value)', () => {
+    wrapper = mount(<TextField componentRef={textFieldRef} value="" onChange={onChange} />);
+
+    expect(onChange).toHaveBeenCalledTimes(0);
+    simulateAndVerifyChange('value change', 1, '');
+  });
+
+  it('respects prop updates in response to onChange', () => {
+    onChange = jest.fn((ev: any, value?: string) => wrapper!.setProps({ value }));
+    wrapper = mount(<TextField componentRef={textFieldRef} value="" onChange={onChange} />);
+
+    simulateAndVerifyChange('a', 1);
+  });
+
+  it('should apply edits after clearing field', () => {
+    onChange = jest.fn((ev: any, value?: string) => wrapper!.setProps({ value }));
+    wrapper = mount(<TextField componentRef={textFieldRef} value="" onChange={onChange} />);
+
+    simulateAndVerifyChange('a', 1);
+
+    // clear the value manually (not via a change event)
+    wrapper.setProps({ value: '' });
+
+    // updating to the same value as before should be respected
+    simulateAndVerifyChange('a', 2);
   });
 }); // end on change
 
