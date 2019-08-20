@@ -215,7 +215,7 @@ storiesOf('Button Special Scenarios', module)
     </div>
   ));
 
-storiesOf('Icon Scenarios', module)
+storiesOf('IconButton Scenarios', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('icon', { cropTo: '.testWrapper' }).end()}>
