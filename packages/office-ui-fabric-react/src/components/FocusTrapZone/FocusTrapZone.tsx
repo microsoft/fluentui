@@ -308,6 +308,6 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   };
 
   private _getDocument(): Document {
-    return getDocument(this._root.current)!;
+    return getDocument(this._root.current) || document;
   }
 }

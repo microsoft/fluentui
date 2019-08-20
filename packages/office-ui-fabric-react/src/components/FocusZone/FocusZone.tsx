@@ -1058,6 +1058,6 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   }
 
   private _getDocument(): Document {
-    return getDocument(this._root.current)!;
+    return getDocument(this._root.current) || document;
   }
 }
