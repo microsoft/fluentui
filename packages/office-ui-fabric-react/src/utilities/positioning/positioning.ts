@@ -326,7 +326,6 @@ function _adjustFitWithinBounds(
   if (!directionalHintFixed && !coverTarget) {
     elementEstimate = _flipToFit(element, target, bounding, positionData, gap);
   }
-
   const outOfBounds = _getOutOfBoundsEdges(element, bounding);
 
   if (alignTargetEdge) {
@@ -335,12 +334,31 @@ function _adjustFitWithinBounds(
       const flippedElementEstimate = _flipAlignmentEdge(elementEstimate, target, gap, coverTarget);
       if (_isRectangleWithinBounds(flippedElementEstimate.elementRectangle, bounding)) {
         return flippedElementEstimate;
+      } else {
+        // If the flipped elements edges are still out of bounds, try nudging it.
+        elementEstimate = _alignOutOfBoundsEdges(
+          _getOutOfBoundsEdges(flippedElementEstimate.elementRectangle, bounding),
+          elementEstimate,
+          bounding
+        );
       }
     }
   } else {
-    for (const direction of outOfBounds) {
-      elementEstimate.elementRectangle = _alignEdges(elementEstimate.elementRectangle, bounding, direction);
-    }
+    elementEstimate = _alignOutOfBoundsEdges(outOfBounds, elementEstimate, bounding);
+  }
+
+  return elementEstimate;
+}
+
+/**
+ * Iterates through a list of out of bounds edges and tries to nudge and align them.
+ * @param outOfBoundsEdges Array of edges that are out of bounds
+ * @param elementEstimate The current element positioning estimate
+ * @param bounding The current bounds
+ */
+function _alignOutOfBoundsEdges(outOfBoundsEdges: RectangleEdge[], elementEstimate: IElementPosition, bounding: Rectangle) {
+  for (const direction of outOfBoundsEdges) {
+    elementEstimate.elementRectangle = _alignEdges(elementEstimate.elementRectangle, bounding, direction);
   }
 
   return elementEstimate;
