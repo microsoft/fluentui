@@ -33,31 +33,32 @@ export function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, 
   for (const arg of args) {
     // If the arg is a string, we need to look up the class map and merge.
     if (typeof arg === 'string') {
-      const expandedRules = stylesheet.argsFromClassName(arg);
-
-      if (expandedRules) {
-        extractRules(expandedRules, rules, currentSelector);
-      }
+      extractRulesFromString(arg, rules, currentSelector);
       // Else if the arg is an array, we need to recurse in.
     } else if (Array.isArray(arg)) {
       extractRules(arg, rules, currentSelector);
     } else {
-      notAnArray(arg, rules, currentRules, currentSelector);
+      extractRulesFromObject(arg, rules, currentRules, currentSelector);
     }
   }
   return rules;
 }
 
-function notAnArray(arg: IStyle, rules: IRuleSet = { __order: [] }, currentRules: IDictionary, currentSelector: string = '&'): IRuleSet {
+function extractRulesFromString(arg: string, rules: IRuleSet, currentSelector: string) {
+  const stylesheet = Stylesheet.getInstance();
+  const expandedRules = stylesheet.argsFromClassName(arg);
+
+  if (expandedRules) {
+    extractRules(expandedRules, rules, currentSelector);
+  }
+}
+
+export function extractRulesFromObject(arg: IStyle, rules: IRuleSet, currentRules: IDictionary, currentSelector: string): void {
   // tslint:disable-next-line:no-any
   for (const prop in arg as any) {
     if (prop === 'selectors') {
       handleSelectors(arg, currentSelector, rules);
     } else {
-      //   if (prop.indexOf('&:') === 0) {
-      //     const newProp = expandSelector('blah', currentSelector);
-      //     (currentRules as any)[newProp] = (arg as any)[newProp] as any;
-      //   }
       if ((arg as any)[prop] !== undefined) {
         // Else, add the rule to the currentSelector.
         if (prop === 'margin' || prop === 'padding') {
@@ -93,7 +94,7 @@ function expandSelector(newSelector: string, currentSelector: string): string {
   return newSelector;
 }
 
-function handleSelectors(arg: IStyle, currentSelector: string, rules: IRuleSet = { __order: [] }) {
+export function handleSelectors(arg: IStyle, currentSelector: string, rules: IRuleSet = { __order: [] }) {
   // tslint:disable-next-line:no-any
   const selectors: { [key: string]: IStyle } = (arg as any).selectors;
 
