@@ -42,30 +42,34 @@ export function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, 
     } else if (Array.isArray(arg)) {
       extractRules(arg, rules, currentSelector);
     } else {
-      // tslint:disable-next-line:no-any
-      for (const prop in arg as any) {
-        if (prop === 'selectors') {
-          handleSelectors(arg, currentSelector, rules);
+      notAnArray(arg, rules, currentRules, currentSelector);
+    }
+  }
+  return rules;
+}
+
+function notAnArray(arg: IStyle, rules: IRuleSet = { __order: [] }, currentRules: IDictionary, currentSelector: string = '&'): IRuleSet {
+  // tslint:disable-next-line:no-any
+  for (const prop in arg as any) {
+    if (prop === 'selectors') {
+      handleSelectors(arg, currentSelector, rules);
+    } else {
+      //   if (prop.indexOf('&:') === 0) {
+      //     const newProp = expandSelector('blah', currentSelector);
+      //     (currentRules as any)[newProp] = (arg as any)[newProp] as any;
+      //   }
+      if ((arg as any)[prop] !== undefined) {
+        // Else, add the rule to the currentSelector.
+        if (prop === 'margin' || prop === 'padding') {
+          // tslint:disable-next-line:no-any
+          expandQuads(currentRules, prop, (arg as any)[prop]);
         } else {
-          if (prop.indexOf('&:') === 0) {
-            const newProp = expandSelector('blah', currentSelector);
-            (currentRules as any)[newProp] = (arg as any)[newProp] as any;
-          }
-          if ((arg as any)[prop] !== undefined) {
-            // Else, add the rule to the currentSelector.
-            if (prop === 'margin' || prop === 'padding') {
-              // tslint:disable-next-line:no-any
-              expandQuads(currentRules, prop, (arg as any)[prop]);
-            } else {
-              // tslint:disable-next-line:no-any
-              (currentRules as any)[prop] = (arg as any)[prop] as any;
-            }
-          }
+          // tslint:disable-next-line:no-any
+          (currentRules as any)[prop] = (arg as any)[prop] as any;
         }
       }
     }
   }
-  return rules;
 }
 
 function expandQuads(currentRules: IDictionary, name: string, value: string): void {
