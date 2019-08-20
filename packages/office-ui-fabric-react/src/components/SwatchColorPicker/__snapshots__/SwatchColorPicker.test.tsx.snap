@@ -18,7 +18,6 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
-  role="presentation"
 >
   <table
     className=

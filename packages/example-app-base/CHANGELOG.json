@@ -2,6 +2,123 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2019 12:30:43 GMT",
+      "tag": "@uifabric/example-app-base_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9.",
+            "author": "jagore@microsoft.com",
+            "commit": "ce48383da2d27474122aef769af0c313e29281d0"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix example issues from Accessibility Insights",
+            "author": "elcraig@microsoft.com",
+            "commit": "66cfdbf1e5bf0b111cd0227342b973e443c2b8e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Aug 2019 12:31:12 GMT",
+      "tag": "@uifabric/example-app-base_v7.5.1",
+      "version": "7.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated snpashots and styles which use $ syntax.",
+            "author": "dzearing@microsoft.com",
+            "commit": ""
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Aug 2019 12:30:25 GMT",
+      "tag": "@uifabric/example-app-base_v7.5.0",
+      "version": "7.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding import scripts check",
+            "author": "esteban.230@hotmail.com",
+            "commit": "3a0a0f24e79ceb81380a3f61146db0d126101b2c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Aug 2019 12:32:41 GMT",
+      "tag": "@uifabric/example-app-base_v7.4.1",
+      "version": "7.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "getQueryParam gracefully falls back when window is not defined",
+            "author": "jdh@microsoft.com",
+            "commit": "4bdb5e699873847d33d72849ffc69ba8f1d761b3"
+          },
+          {
+            "comment": "Add check for monaco global in example card",
+            "author": "elcraig@microsoft.com",
+            "commit": "b36b034d883fb1e85b9e3da13eb87f281b3262e3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Aug 2019 12:32:28 GMT",
+      "tag": "@uifabric/example-app-base_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating styles to not use $ syntax.",
+            "author": "dzearing@microsoft.com",
+            "commit": "de03449faca7e6256e3863892a1c465721fd0ec4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Aug 2019 12:32:07 GMT",
+      "tag": "@uifabric/example-app-base_v7.3.0",
+      "version": "7.3.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tsx editor - Code not showing fix",
+            "author": "esteban.230@hotmail.com",
+            "commit": "44e2d8acf95bbb8f7ca92c8564bd80902a344709"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Tsx-editor: Adding error bar",
+            "author": "esteban.230@hotmail.com",
+            "commit": "aec752dc11f9e83488fd46e96fa943a95a1500d3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Aug 2019 12:33:41 GMT",
+      "tag": "@uifabric/example-app-base_v7.2.1",
+      "version": "7.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updated style to add spinner for loading editor",
+            "author": "t-nikaz@microsoft.com",
+            "commit": "6539ca2b3e21e98cf2909fcdb4157020569cf2f6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Aug 2019 12:33:29 GMT",
       "tag": "@uifabric/example-app-base_v7.2.0",
       "version": "7.2.0",

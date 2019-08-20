@@ -456,6 +456,38 @@ describe('Button', () => {
       expect(keyDownSpy).toHaveBeenCalled();
     });
 
+    it('Space keydown in a splitButton will fire onClick', () => {
+      const onClickSpy = jest.fn();
+
+      const button = render(
+        <DefaultButton
+          data-automation-id="test"
+          text="Create account"
+          split={true}
+          onClick={onClickSpy}
+          menuProps={{
+            items: [
+              {
+                key: 'emailMessage',
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
+              },
+              {
+                key: 'calendarEvent',
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
+              }
+            ]
+          }}
+        />
+      );
+      const buttonContainer: HTMLDivElement = button.getElementsByTagName('div')[0] as HTMLDivElement;
+
+      ReactTestUtils.Simulate.keyDown(buttonContainer, { which: KeyCodes.space });
+
+      expect(onClickSpy).toHaveBeenCalled();
+    });
+
     it('Providing onClick, menuProps and setting splitButton to true renders a SplitButton', () => {
       const button = render(
         <DefaultButton

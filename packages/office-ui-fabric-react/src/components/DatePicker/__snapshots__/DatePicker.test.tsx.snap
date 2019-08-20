@@ -23,9 +23,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
       }
 >
   <div
-    aria-expanded={false}
     aria-haspopup="true"
-    role="combobox"
   >
     <div
       className=
@@ -92,6 +90,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
               }
         >
           <input
+            aria-expanded={false}
             aria-invalid={false}
             className=
                 ms-TextField-field
@@ -163,6 +162,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
             onKeyDown={[Function]}
             readOnly={true}
             required={false}
+            role="combobox"
             type="text"
             value=""
           />

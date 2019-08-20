@@ -11,7 +11,13 @@ export class TooltipInteractiveExample extends React.Component<any, any> {
   public render() {
     return (
       <div>
-        <TooltipHost content="This is the tooltip" id={this._hostId} calloutProps={{ gapSpace: 0 }} closeDelay={500}>
+        <TooltipHost
+          content="This is the tooltip"
+          id={this._hostId}
+          calloutProps={{ gapSpace: 0 }}
+          closeDelay={500}
+          styles={{ root: { display: 'inline-block' } }}
+        >
           <DefaultButton aria-labelledby={this._hostId}>Interact with my tooltip</DefaultButton>
         </TooltipHost>
       </div>

@@ -1,4 +1,4 @@
-import { getGlobalClassNames, FontSizes } from '../../Styling';
+import { getGlobalClassNames } from '../../Styling';
 import { IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
 import { DocumentCardPreviewGlobalClassNames as previewClassNames } from './DocumentCardPreview.styles';
 import { DocumentCardActivityGlobalClassNames as activityClassNames } from './DocumentCardActivity.styles';
@@ -13,7 +13,7 @@ const GlobalClassNames = {
 
 export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles => {
   const { className, theme, actionable, compact } = props;
-  const { palette } = theme;
+  const { palette, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -78,7 +78,7 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
             },
             [`.${titleClassNames.root}`]: {
               paddingBottom: '12px 16px 8px 16px',
-              fontSize: FontSizes.mediumPlus,
+              fontSize: fonts.mediumPlus.fontSize,
               lineHeight: '16px'
             }
           }

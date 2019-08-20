@@ -40,8 +40,6 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     // (undocumented)
     componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void;
     // (undocumented)
-    componentWillReceiveProps(nextProps: IDatePickerProps): void;
-    // (undocumented)
     static defaultProps: IDatePickerProps;
     // (undocumented)
     focus(): void;
@@ -49,6 +47,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     render(): JSX.Element;
     // (undocumented)
     reset(): void;
+    // (undocumented)
+    UNSAFE_componentWillReceiveProps(nextProps: IDatePickerProps): void;
     }
 
 export { DateRangeType }

@@ -29,10 +29,10 @@ exports[`DetailsHeader can render 1`] = `
         vertical-align: top;
         white-space: nowrap;
       }
-      &:hover $check {
+      &:hover .ms-DetailsHeader-check {
         opacity: 1;
       }
-      & ms-TooltipHost $checkTooltip {
+      & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
         display: block;
       }
   data-automationid="DetailsHeader"
@@ -96,13 +96,14 @@ exports[`DetailsHeader can render 1`] = `
   >
     <span
       className=
-
+          ms-DetailsHeader-checkTooltip
 
     >
       <div
         aria-checked={false}
         className=
             ms-DetailsRow-check
+            ms-DetailsHeader-check
             ms-DetailsRow-check--isHeader
             ms-Check-checkHost
             {
@@ -194,20 +195,25 @@ exports[`DetailsHeader can render 1`] = `
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Check-circle
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
                   font-family: "FabricMDL2Icons";
-                  font-size: 18px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #605e5c;
+                  font-size: 18px;
                   height: 18px;
                   left: 0px;
                   position: absolute;
-                  speak: none;
                   text-align: center;
                   top: 0px;
                   vertical-align: middle;
@@ -224,21 +230,26 @@ exports[`DetailsHeader can render 1`] = `
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Check-check
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
                   font-family: "FabricMDL2Icons";
-                  font-size: 16px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #605e5c;
+                  font-size: 16px;
                   height: 18px;
                   left: .5px;
                   opacity: 0;
                   position: absolute;
-                  speak: none;
                   text-align: center;
                   top: 0px;
                   vertical-align: middle;
@@ -431,7 +442,7 @@ exports[`DetailsHeader can render 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -584,19 +595,23 @@ exports[`DetailsHeader can render 1`] = `
         <i
           aria-hidden={true}
           className=
-
+              ms-Icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #605e5c;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
                 opacity: 1;
                 padding-left: 4px;
                 position: relative;
-                speak: none;
                 top: 1px;
               }
           data-icon-name="SortUp"
@@ -645,7 +660,7 @@ exports[`DetailsHeader can render 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -798,18 +813,23 @@ exports[`DetailsHeader can render 1`] = `
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-DetailsHeader-filterChevron
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a19f9d;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
-                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
-                padding-left: 6px;
                 speak: none;
+              }
+              {
+                color: #a19f9d;
+                font-size: 12px;
+                padding-left: 6px;
                 vertical-align: middle;
               }
           data-icon-name="ChevronDown"
@@ -858,7 +878,7 @@ exports[`DetailsHeader can render 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -908,13 +928,13 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         vertical-align: top;
         white-space: nowrap;
       }
-      &:hover $check {
+      &:hover .ms-DetailsHeader-check {
         opacity: 1;
       }
-      & ms-TooltipHost $checkTooltip {
+      & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
         display: block;
       }
-      & $cell$cellIsCheck {
+      & .ms-DetailsHeader-cellIsCheck {
         visibility: hidden;
       }
   data-automationid="DetailsHeader"
@@ -977,12 +997,13 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
   >
     <span
       className=
-
+          ms-DetailsHeader-checkTooltip
 
     >
       <div
         className=
             ms-DetailsRow-check
+            ms-DetailsHeader-check
             ms-DetailsRow-check--isDisabled
             ms-DetailsRow-check--isHeader
             ms-Check-checkHost
@@ -1211,7 +1232,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -1364,19 +1385,23 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         <i
           aria-hidden={true}
           className=
-
+              ms-Icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #605e5c;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
                 opacity: 1;
                 padding-left: 4px;
                 position: relative;
-                speak: none;
                 top: 1px;
               }
           data-icon-name="SortUp"
@@ -1425,7 +1450,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -1578,18 +1603,23 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-DetailsHeader-filterChevron
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a19f9d;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
-                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
-                padding-left: 6px;
                 speak: none;
+              }
+              {
+                color: #a19f9d;
+                font-size: 12px;
+                padding-left: 6px;
                 vertical-align: middle;
               }
           data-icon-name="ChevronDown"
@@ -1638,7 +1668,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -1688,10 +1718,10 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         vertical-align: top;
         white-space: nowrap;
       }
-      &:hover $check {
+      &:hover .ms-DetailsHeader-check {
         opacity: 1;
       }
-      & ms-TooltipHost $checkTooltip {
+      & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
         display: block;
       }
   data-automationid="DetailsHeader"
@@ -1755,13 +1785,14 @@ exports[`DetailsHeader renders accessible labels 1`] = `
   >
     <span
       className=
-
+          ms-DetailsHeader-checkTooltip
 
     >
       <div
         aria-checked={false}
         className=
             ms-DetailsRow-check
+            ms-DetailsHeader-check
             ms-DetailsRow-check--isHeader
             ms-Check-checkHost
             {
@@ -1853,20 +1884,25 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Check-circle
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
                   font-family: "FabricMDL2Icons";
-                  font-size: 18px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #605e5c;
+                  font-size: 18px;
                   height: 18px;
                   left: 0px;
                   position: absolute;
-                  speak: none;
                   text-align: center;
                   top: 0px;
                   vertical-align: middle;
@@ -1883,21 +1919,26 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Check-check
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #605e5c;
-                  display: inline-block;
                   font-family: "FabricMDL2Icons";
-                  font-size: 16px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #605e5c;
+                  font-size: 16px;
                   height: 18px;
                   left: .5px;
                   opacity: 0;
                   position: absolute;
-                  speak: none;
                   text-align: center;
                   top: 0px;
                   vertical-align: middle;
@@ -2090,7 +2131,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -2244,19 +2285,23 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         <i
           aria-hidden={true}
           className=
-
+              ms-Icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #605e5c;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
                 opacity: 1;
                 padding-left: 4px;
                 position: relative;
-                speak: none;
                 top: 1px;
               }
           data-icon-name="SortUp"
@@ -2328,7 +2373,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;
@@ -2483,18 +2528,23 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         <i
           aria-hidden={true}
           className=
-
+              ms-Icon
+              ms-DetailsColumn-nearIcon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #605e5c;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
                 opacity: 1;
                 padding-left: 8px;
-                speak: none;
               }
           data-icon-name="Filter"
           role="presentation"
@@ -2504,18 +2554,23 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         <i
           aria-hidden={true}
           className=
-
+              ms-Icon
+              ms-DetailsColumn-nearIcon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #605e5c;
-                display: inline-block;
                 font-family: "FabricMDL2Icons-6";
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #605e5c;
                 opacity: 1;
                 padding-left: 8px;
-                speak: none;
               }
           data-icon-name="GroupedDescending"
           role="presentation"
@@ -2525,18 +2580,23 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-DetailsHeader-filterChevron
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a19f9d;
-                display: inline-block;
                 font-family: "FabricMDL2Icons";
-                font-size: 12px;
                 font-style: normal;
                 font-weight: normal;
-                padding-left: 6px;
                 speak: none;
+              }
+              {
+                color: #a19f9d;
+                font-size: 12px;
+                padding-left: 6px;
                 vertical-align: middle;
               }
           data-icon-name="ChevronDown"
@@ -2609,7 +2669,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           opacity: 1;
           transition: opacity 0.3s linear;
         }
-        &$cellIsResizing:after {
+        &.is-resizing:after {
           box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.4);
           opacity: 1;
           transition: opacity 0.3s linear;

@@ -1,5 +1,6 @@
 import { IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
 import { FontWeights, getGlobalClassNames } from '../../Styling';
+import { IconFontSizes } from '@uifabric/styling';
 
 const GlobalClassNames = {
   contentLgHeader: 'ms-Dialog-lgHeader',
@@ -72,7 +73,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         selectors: {
           '.ms-Icon.ms-Icon--Cancel': {
             color: palette.neutralSecondary,
-            fontSize: '16px'
+            fontSize: IconFontSizes.medium
           }
         }
       }
@@ -100,20 +101,15 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         color: palette.neutralPrimary,
         margin: '0',
         padding: '16px 46px 24px 24px',
-        fontSize: 20, // TODO: after updating the type ramp this needs reevaluated
-        fontWeight: FontWeights.semibold,
         lineHeight: 'normal'
       },
-      isLargeHeader && [
-        fonts.xxLarge,
-        {
-          color: palette.white,
-          marginBottom: '8px',
-          padding: '22px 24px',
-          fontWeight: FontWeights.semibold
-        }
-      ],
-      isMultiline && fonts.xxLarge
+      isLargeHeader && {
+        fontSize: fonts.xxLarge.fontSize,
+        color: palette.white,
+        marginBottom: '8px',
+        padding: '22px 24px'
+      },
+      isMultiline && { fontSize: fonts.xxLarge.fontSize }
     ],
 
     topButton: [

@@ -299,7 +299,8 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
     );
   }
 
-  public componentWillReceiveProps(newProps: ICoachmarkProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: ICoachmarkProps): void {
     if (this.props.isCollapsed && !newProps.isCollapsed) {
       // The coachmark is about to open
       this._openCoachmark();

@@ -253,10 +253,10 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                     vertical-align: top;
                     white-space: nowrap;
                   }
-                  &:hover $check {
+                  &:hover .ms-DetailsHeader-check {
                     opacity: 1;
                   }
-                  & ms-TooltipHost $checkTooltip {
+                  & .ms-TooltipHost .ms-DetailsHeader-checkTooltip {
                     display: block;
                   }
               data-automationid="DetailsHeader"
@@ -402,7 +402,7 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                             overflow: hidden;
                             text-overflow: ellipsis;
                           }
-                          & $nearIcon {
+                          & .ms-DetailsColumn-nearIcon {
                             padding-left: 0px;
                           }
                       id="header1-thumbnail-name"
@@ -410,17 +410,21 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
                       <i
                         aria-hidden={true}
                         className=
-
+                            ms-Icon
+                            {
+                              display: inline-block;
+                            }
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #605e5c;
-                              display: inline-block;
                               font-family: "FabricMDL2Icons";
                               font-style: normal;
                               font-weight: normal;
-                              opacity: 1;
                               speak: none;
+                            }
+                            {
+                              color: #605e5c;
+                              opacity: 1;
                             }
                         data-icon-name="Page"
                         role="presentation"
@@ -477,7 +481,6 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="presentation"
             >
               <div
                 className="ms-SelectionZone"
