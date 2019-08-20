@@ -12,8 +12,8 @@ export const getStyles = memoizeFunction(
     const iconButtonStyles: IButtonStyles = {
       root: {
         padding: '0 4px',
-        width: '32px',
-        height: '32px',
+        minWidth: '32px',
+        minHeight: '32px',
         backgroundColor: 'transparent',
         border: 'none',
         color: semanticColors.link
