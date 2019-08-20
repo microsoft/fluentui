@@ -85,6 +85,18 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
             'aria-label': 'Tag Picker'
           }}
         />
+        <br />
+        Read only type tags.
+        <TagPicker
+          readOnly
+          onResolveSuggestions={this._onFilterChanged}
+          getTextFromItem={this._getTextFromItem}
+          pickerSuggestionsProps={{
+            suggestionsHeaderText: 'Suggested Tags',
+            noResultsFoundText: 'No Color Tags Found'
+          }}
+          itemLimit={5}
+        />
       </div>
     );
   }
