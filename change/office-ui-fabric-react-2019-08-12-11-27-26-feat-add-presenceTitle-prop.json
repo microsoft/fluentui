@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add presenceTitle prop",
+  "packageName": "office-ui-fabric-react",
+  "email": "gogoe@microsoft.com",
+  "commit": "231d33083d5b0bc2bf150c91ccf4ade66caeeb98",
+  "date": "2019-08-12T05:57:26.802Z"
+}

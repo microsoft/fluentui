@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Tue, 13 Aug 2019 12:31:12 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Aug 2019 12:31:26 GMT and should not be manually modified.
+
+## 7.1.2
+Tue, 20 Aug 2019 12:31:26 GMT
+
+### Patches
+
+- Nav: update to latest redlines (phkuo@microsoft.com)
 
 ## 7.1.1
 Tue, 13 Aug 2019 12:31:12 GMT
