@@ -242,11 +242,11 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
           height: 18
         },
 
-      (size.isSize56 || size.isSize72 || size.isSize100) && {
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) && {
         fontSize: fonts.xLarge.fontSize
       },
 
-      (size.isSize56 || size.isSize72 || size.isSize100) &&
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) &&
         showSecondaryText && {
           height: 22
         }
@@ -273,11 +273,11 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
           height: 18
         },
 
-      (size.isSize56 || size.isSize72 || size.isSize100) && {
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) && {
         fontSize: fonts.medium.fontSize
       },
 
-      (size.isSize56 || size.isSize72 || size.isSize100) &&
+      (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) &&
         showSecondaryText && {
           height: 18
         }
@@ -292,7 +292,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         fontSize: fonts.medium.fontSize
       },
 
-      (size.isSize72 || size.isSize100) && {
+      (size.isSize72 || size.isSize100 || size.isSize120) && {
         display: 'block'
       }
     ],
@@ -306,7 +306,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         fontSize: fonts.medium.fontSize
       },
 
-      size.isSize100 && {
+      (size.isSize100 || size.isSize120) && {
         display: 'block'
       }
     ],

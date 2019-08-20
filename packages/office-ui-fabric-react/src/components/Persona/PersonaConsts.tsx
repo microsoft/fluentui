@@ -27,6 +27,8 @@ export namespace personaPresenceSize {
   export const size16 = '16px';
   export const size20 = '20px';
   export const size28 = '28px';
+  export const size32 = '32px';
+
   /**
    * @deprecated This is now unused
    */
