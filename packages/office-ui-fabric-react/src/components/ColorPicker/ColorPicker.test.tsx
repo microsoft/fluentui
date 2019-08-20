@@ -33,7 +33,7 @@ describe('ColorPicker', () => {
   }
 
   function validateChange(opts: IValidateChangeOptions) {
-    const { calls, prop, value, input, inputValue } = opts;
+    const { calls, prop, value, input, inputValue = String(value) } = opts;
     expect(onChange).toHaveBeenCalledTimes(calls);
     if (calls > 0) {
       expect(updatedColor![prop]).toBe(value);
