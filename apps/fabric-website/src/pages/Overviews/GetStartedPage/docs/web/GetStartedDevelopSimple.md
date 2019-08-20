@@ -2,7 +2,7 @@ Fabric React provides several starter kit options. Make sure you have the [lates
 
 - [Option 1: Quick start](#option-1-quick-start)
 - [Option 2: Using Create React App](#option-2-create-react-app)
-- [Option 3: Using Gatsby.js](#option-3-gatsby-js)
+- [Option 3: Using Gatsby.js](#option-3-gatsbyjs)
 
 ### Option 1: Quick start
 

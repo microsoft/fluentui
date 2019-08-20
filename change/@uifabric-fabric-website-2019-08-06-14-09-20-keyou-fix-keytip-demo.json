@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix Keytips demo page by adding a KeytipLayer",
-  "packageName": "@uifabric/fabric-website",
-  "email": "keyou@microsoft.com",
-  "commit": "007ad920796ff13326ec6f26eed425dd60a32369",
-  "date": "2019-08-06T21:09:20.003Z"
-}

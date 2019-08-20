@@ -23,6 +23,18 @@ storiesOf('Checkbox', module)
   .addStory('Checked disabled', () => (
     <Checkbox label="Checked disabled checkbox" checked disabled />
   ))
+  .addStory('Controlled Indeterminate', () => (
+    <Checkbox label="Controlled Indeterminate checkbox" indeterminate />
+  ))
+  .addStory('Controlled Indeterminate disabled', () => (
+    <Checkbox label="Controlled Indeterminate disabled checkbox" disabled indeterminate />
+  ))
+  .addStory('Uncontrolled Indeterminate', () => (
+    <Checkbox label="Uncontrolled Indeterminate disabled checkbox" defaultIndeterminate />
+  ))
+  .addStory('Uncontrolled Indeterminate disabled', () => (
+    <Checkbox label="Uncontrolled Indeterminate disabled checkbox" disabled defaultIndeterminate />
+  ))
   .addStory('End', () => <Checkbox label="Checkbox end" boxSide="end" />, { rtl: true })
   .addStory('Multi-line Checkbox', () => (
     <Checkbox
@@ -37,5 +49,45 @@ storiesOf('Checkbox', module)
       onRenderLabel={props => {
         return <Persona text={props!.label} size={PersonaSize.size32} />;
       }}
+    />
+  ));
+
+storiesOf('Checkbox Indeterminate', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story =>
+    // prettier-ignore
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .hover('.ms-Checkbox')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .click('.ms-Checkbox')
+        .snapshot('clicked', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  )
+  .addStory('Uncontrolled Indeterminate checkbox', () => (
+    <Checkbox label="Uncontrolled Indeterminate checkbox" defaultIndeterminate />
+  ))
+  .addStory('Uncontrolled Indeterminate defaultChecked checkbox', () => (
+    <Checkbox
+      label="Uncontrolled Indeterminate defaultChecked checkbox"
+      defaultIndeterminate
+      defaultChecked
+    />
+  ))
+  .addStory('Controlled Indeterminate checkbox without onChange callback', () => (
+    <Checkbox
+      label="Controlled Indeterminate checkbox without onChange callback"
+      indeterminate={true}
+    />
+  ))
+  .addStory('Uncontrolled and Controlled Indeterminate checkbox', () => (
+    <Checkbox
+      label="Uncontrolled and Controlled Indeterminate checkbox"
+      defaultIndeterminate
+      indeterminate={true}
     />
   ));

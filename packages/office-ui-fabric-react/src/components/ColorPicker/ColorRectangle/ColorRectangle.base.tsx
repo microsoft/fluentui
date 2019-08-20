@@ -41,7 +41,8 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     return this.state.color;
   }
 
-  public componentWillReceiveProps(newProps: IColorRectangleProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IColorRectangleProps): void {
     const { color } = newProps;
 
     this.setState({

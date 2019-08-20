@@ -3,7 +3,7 @@ import { IBaseProps } from '@uifabric/utilities';
 import { IStackProps, IStackSlots, IStackTokens } from 'office-ui-fabric-react';
 
 /**
- * {@docCategory CardSection}
+ * {@docCategory Card}
  */
 export type ICardSectionComponent = IComponent<ICardSectionProps, ICardSectionTokens, ICardSectionStyles, ICardSectionViewProps>;
 
@@ -12,32 +12,32 @@ export type ICardSectionComponent = IComponent<ICardSectionProps, ICardSectionTo
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
 
 /**
- * {@docCategory CardSection}
+ * {@docCategory Card}
  */
 export type ICardSectionTokenReturnType = ReturnType<Extract<ICardSectionComponent['tokens'], Function>>;
 
 /**
- * {@docCategory CardSection}
+ * {@docCategory Card}
  */
 export type ICardSectionStylesReturnType = ReturnType<Extract<ICardSectionComponent['styles'], Function>>;
 
 /**
- * {@docCategory CardSection}
+ * {@docCategory Card}
  */
 export type ICardSectionSlot = ISlotProp<ICardSectionProps>;
 
 /**
- * {@docCategory CardSection}
+ * {@docCategory Card}
  */
 export interface ICardSectionSlots extends Pick<IStackSlots, 'root'> {}
 
 /**
- * {@docCategory CardSection}
+ * {@docCategory Card}
  */
 export interface ICardSection {}
 
 /**
- * {@docCategory CardSection}
+ * {@docCategory Card}
  */
 export interface ICardSectionProps
   extends ICardSectionSlots,
@@ -54,12 +54,12 @@ export interface ICardSectionProps
 }
 
 /**
- * {@docCategory CardSection}
+ * {@docCategory Card}
  */
 export interface ICardSectionViewProps extends ICardSectionProps {}
 
 /**
- * {@docCategory CardSection}
+ * {@docCategory Card}
  */
 export interface ICardSectionTokens extends IStackTokens {
   /**
@@ -69,6 +69,6 @@ export interface ICardSectionTokens extends IStackTokens {
 }
 
 /**
- * {@docCategory CardSection}
+ * {@docCategory Card}
  */
 export type ICardSectionStyles = IComponentStyles<ICardSectionSlots>;

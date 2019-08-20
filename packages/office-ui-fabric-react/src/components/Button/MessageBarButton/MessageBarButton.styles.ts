@@ -18,7 +18,6 @@ export const getStyles = memoizeFunction(
         }),
         {
           height: 24,
-          width: 84,
           borderColor: theme.palette.neutralTertiaryAlt
         }
       ]

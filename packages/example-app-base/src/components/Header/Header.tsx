@@ -57,7 +57,7 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
                   </a>
                 ))
                 .concat([
-                  <button key="headerButton" className={classNames.button} onClick={this._onGearClick}>
+                  <button key="headerButton" className={classNames.button} onClick={this._onGearClick} aria-label="Settings">
                     <Icon iconName="Settings" styles={subComponentStyles.icons} />
                   </button>
                 ])}

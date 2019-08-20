@@ -32,7 +32,8 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
     };
   }
 
-  public componentWillReceiveProps(nextProps: IImageProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: IImageProps): void {
     if (nextProps.src !== this.props.src) {
       this.setState({
         loadState: ImageLoadState.notLoaded

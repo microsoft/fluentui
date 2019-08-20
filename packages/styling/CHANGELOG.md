@@ -1,6 +1,38 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 02 Aug 2019 12:33:29 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Aug 2019 12:31:26 GMT and should not be manually modified.
+
+## 7.6.0
+Tue, 20 Aug 2019 12:31:26 GMT
+
+### Minor changes
+
+- Semantic slots: add bodyBackgroundHovered and bodyBackgroundSelected (phkuo@microsoft.com)
+
+### Patches
+
+- Fix generation of font size theming variables for legacy (phkuo@microsoft.com)
+
+## 7.5.1
+Mon, 19 Aug 2019 12:32:05 GMT
+
+### Patches
+
+- Fix theming code type issue (phkuo@microsoft.com)
+
+## 7.5.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Adding input semantic slots (marygans@microsoft.com)
+
+## 7.4.1
+Fri, 09 Aug 2019 12:31:50 GMT
+
+### Patches
+
+- fix font theme variable values for legacy-load-theme (phkuo@microsoft.com)
 
 ## 7.4.0
 Fri, 02 Aug 2019 12:33:29 GMT

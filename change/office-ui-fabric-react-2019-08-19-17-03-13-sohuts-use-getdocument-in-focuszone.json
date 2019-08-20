@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Use getDocument instead document in FocusZone and FocusTrapZone",
+  "packageName": "office-ui-fabric-react",
+  "email": "sohuts@microsoft.com",
+  "commit": "c4766bf28c3c6fe6021e2a0f277524bcc64064b4",
+  "date": "2019-08-19T15:03:13.879Z"
+}

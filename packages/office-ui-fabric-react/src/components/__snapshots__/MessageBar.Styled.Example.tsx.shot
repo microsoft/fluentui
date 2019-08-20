@@ -1178,7 +1178,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     text-decoration: none;
                     user-select: none;
                     vertical-align: top;
-                    width: 84px;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -1295,7 +1294,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     text-decoration: none;
                     user-select: none;
                     vertical-align: top;
-                    width: 84px;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -1609,7 +1607,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                       text-decoration: none;
                       user-select: none;
                       vertical-align: top;
-                      width: 84px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -1726,7 +1723,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                       text-decoration: none;
                       user-select: none;
                       vertical-align: top;
-                      width: 84px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -2042,7 +2038,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                       text-decoration: none;
                       user-select: none;
                       vertical-align: top;
-                      width: 84px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -2625,7 +2620,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     text-decoration: none;
                     user-select: none;
                     vertical-align: top;
-                    width: 84px;
                   }
                   &::-moz-focus-inner {
                     border: 0;
@@ -2742,7 +2736,6 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
                     text-decoration: none;
                     user-select: none;
                     vertical-align: top;
-                    width: 84px;
                   }
                   &::-moz-focus-inner {
                     border: 0;

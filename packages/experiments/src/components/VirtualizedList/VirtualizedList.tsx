@@ -63,7 +63,8 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
     this._updateObservedElements();
   }
 
-  public componentWillUpdate(): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(): void {
     for (const key of Object.keys(this._spacerElements)) {
       const ref = this._spacerElements[key];
       this.context.scrollContainer.unobserve(ref);
