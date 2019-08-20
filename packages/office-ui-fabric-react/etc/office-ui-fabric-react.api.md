@@ -5983,6 +5983,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     onRenderPersonaCoin?: IRenderFunction<IPersonaSharedProps>;
     optionalText?: string;
     presence?: PersonaPresence;
+    presenceTitle?: string;
     // @deprecated
     primaryText?: string;
     secondaryText?: string;
