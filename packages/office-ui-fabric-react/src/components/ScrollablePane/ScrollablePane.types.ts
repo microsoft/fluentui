@@ -115,6 +115,29 @@ export interface IScrollablePaneStyles {
    */
   contentContainer: IStyle;
 }
+
+/**
+ * 'default': Sticky component(s) will become sticky or non-sticky whenever it is expected.
+ *  If there is a large page having a Sticky component for which stickyPosition is 'StickyPosition.Footer'
+ *  and this Sticky component is not in viewable area of the device screen,
+ *  the 'default' behavior will make sure this component is displayed at it's sticky position, i.e.,
+ *  at the bottom of the viewable area of the device screen, without requiring manual scroll.
+ *
+ *
+ * 'onScroll' : Sticky component(s) will become sticky or non-sticky based on scrolling.
+ *  The calculation which determine if a Sticky component is sticky or non-sticky,
+ *  are done after user interaction (scrolling) and don't affect page load time.
+ *  It is most suitable for stickyHeaderContainerBehavior.
+ *
+ *
+ * 'always': Sticky component(s) will always be sticky independent of scrolling.
+ *  There are no calculations done as the component(s) would always be sticky.
+ *  It is most suitable if stickyPosition is:
+ *   1. 'StickyPosition.Header' (i.e, for stickyHeaderContainerBehavior) and
+ *       there is no non-sticky content above the Sticky component
+ *   2. 'StickyPosition.Footer' (i.e, for stickyFooterContainerBehavior) and
+ *       there is no non-sticky content below the Sticky component.
+ */
 export type IStickyContainerBehaviorType = 'default' | 'onScroll' | 'always';
 
 /**

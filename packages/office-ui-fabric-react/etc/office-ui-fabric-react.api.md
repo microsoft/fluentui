@@ -7050,7 +7050,7 @@ export interface IStackTokens {
     padding?: number | string;
 }
 
-// @public (undocumented)
+// @public
 export type IStickyContainerBehaviorType = 'default' | 'onScroll' | 'always';
 
 // @public (undocumented)
