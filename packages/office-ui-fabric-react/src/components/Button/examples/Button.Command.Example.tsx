@@ -1,61 +1,33 @@
 import * as React from 'react';
-import { CommandButton, IButtonProps, ILabelStyles, Label, Stack } from 'office-ui-fabric-react';
+import { CommandButton, IContextualMenuProps, IIconProps } from 'office-ui-fabric-react';
 
-const labelStyles: Partial<ILabelStyles> = {
-  root: { marginBottom: 10 }
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
+}
+
+const menuProps: IContextualMenuProps = {
+  items: [
+    {
+      key: 'emailMessage',
+      text: 'Email message',
+      iconProps: { iconName: 'Mail' }
+    },
+    {
+      key: 'calendarEvent',
+      text: 'Calendar event',
+      iconProps: { iconName: 'Calendar' }
+    }
+  ]
+  // By default, the menu will be focused when it opens. Uncomment the next line to prevent this.
+  // shouldFocusOnMount: false
 };
 
-export const ButtonCommandExample: React.FunctionComponent<IButtonProps> = props => {
+const addIcon: IIconProps = { iconName: 'Add' };
+
+export const ButtonCommandExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
-  return (
-    <Stack horizontal tokens={{ childrenGap: 40 }}>
-      <div>
-        <Label styles={labelStyles}>CommandButton that focuses on menu</Label>
-        <CommandButton
-          iconProps={{ iconName: 'Add' }}
-          text="New item"
-          menuProps={{
-            items: [
-              {
-                key: 'emailMessage',
-                text: 'Email message',
-                iconProps: { iconName: 'Mail' }
-              },
-              {
-                key: 'calendarEvent',
-                text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
-          }}
-          disabled={disabled}
-          checked={checked}
-        />
-      </div>
-      <div>
-        <Label styles={labelStyles}>CommandButton that doesn't focus on menu</Label>
-        <CommandButton
-          iconProps={{ iconName: 'Add' }}
-          text="New item"
-          menuProps={{
-            shouldFocusOnMount: false,
-            items: [
-              {
-                key: 'emailMessage',
-                text: 'Email message',
-                iconProps: { iconName: 'Mail' }
-              },
-              {
-                key: 'calendarEvent',
-                text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
-          }}
-          disabled={disabled}
-          checked={checked}
-        />
-      </div>
-    </Stack>
-  );
+
+  return <CommandButton iconProps={addIcon} text="New item" menuProps={menuProps} disabled={disabled} checked={checked} />;
 };

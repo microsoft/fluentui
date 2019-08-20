@@ -1,23 +1,22 @@
 import * as React from 'react';
-import { DefaultButton, IButtonProps, Label, ILabelStyles, PrimaryButton, Stack } from 'office-ui-fabric-react';
+import { DefaultButton, PrimaryButton, Stack, IStackTokens } from 'office-ui-fabric-react';
 
-const labelStyles: Partial<ILabelStyles> = {
-  root: { marginBottom: 10 }
-};
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
+}
 
-export const ButtonDefaultExample: React.FunctionComponent<IButtonProps> = props => {
+// Example formatting
+const stackTokens: IStackTokens = { childrenGap: 40 };
+
+export const ButtonDefaultExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
 
   return (
-    <Stack horizontal tokens={{ childrenGap: 40 }}>
-      <div>
-        <Label styles={labelStyles}>Standard</Label>
-        <DefaultButton text="Standard Button" onClick={_alertClicked} allowDisabledFocus={true} disabled={disabled} checked={checked} />
-      </div>
-      <div>
-        <Label styles={labelStyles}>Primary</Label>
-        <PrimaryButton text="Primary Button" onClick={_alertClicked} allowDisabledFocus={true} disabled={disabled} checked={checked} />
-      </div>
+    <Stack horizontal tokens={stackTokens}>
+      <DefaultButton text="Standard" onClick={_alertClicked} allowDisabledFocus disabled={disabled} checked={checked} />
+      <PrimaryButton text="Primary" onClick={_alertClicked} allowDisabledFocus disabled={disabled} checked={checked} />
     </Stack>
   );
 };

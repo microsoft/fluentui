@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { IButtonStyles, IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import { IButtonStyles, IconButton, HighContrastSelector, Label, IContextualMenuProps, IIconProps } from 'office-ui-fabric-react';
+
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
+}
 
 const customSplitButtonStyles: IButtonStyles = {
   splitButtonMenuButton: { backgroundColor: 'white', width: 28, border: 'none' },
@@ -14,33 +18,39 @@ const customSplitButtonStyles: IButtonStyles = {
   }
 };
 
-export const ButtonSplitCustomExample: React.FunctionComponent<IButtonProps> = props => {
+const menuProps: IContextualMenuProps = {
+  items: [
+    {
+      key: 'emailMessage',
+      text: 'Email message',
+      iconProps: { iconName: 'Mail' }
+    },
+    {
+      key: 'calendarEvent',
+      text: 'Calendar event',
+      iconProps: { iconName: 'Calendar' }
+    }
+  ]
+};
+
+const addIcon: IIconProps = { iconName: 'Add' };
+
+export const ButtonSplitCustomExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
 
   return (
     <div>
       <Label>Split button with icon and custom styles</Label>
       <IconButton
-        iconProps={{ iconName: 'Add' }}
-        text="New item"
-        onClick={_alertClicked}
-        split={true}
+        split
+        iconProps={addIcon}
+        splitButtonAriaLabel="See 2 options"
         aria-roledescription="split button"
         styles={customSplitButtonStyles}
-        menuProps={{
-          items: [
-            {
-              key: 'emailMessage',
-              text: 'Email message',
-              iconProps: { iconName: 'Mail' }
-            },
-            {
-              key: 'calendarEvent',
-              text: 'Calendar event',
-              iconProps: { iconName: 'Calendar' }
-            }
-          ]
-        }}
+        menuProps={menuProps}
+        // This text is hidden by the styles
+        text="New item"
+        onClick={_alertClicked}
         disabled={disabled}
         checked={checked}
       />

@@ -1,71 +1,48 @@
 import * as React from 'react';
-import { ContextualMenu, DefaultButton, IButtonProps, IContextualMenuProps, ILabelStyles, Label, Stack } from 'office-ui-fabric-react';
+import { ContextualMenu, DefaultButton, IContextualMenuProps, IIconProps } from 'office-ui-fabric-react';
 
-const labelStyles: Partial<ILabelStyles> = {
-  root: { marginBottom: 10 }
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
+}
+
+const menuProps: IContextualMenuProps = {
+  items: [
+    {
+      key: 'emailMessage',
+      text: 'Email message',
+      iconProps: { iconName: 'Mail' }
+    },
+    {
+      key: 'calendarEvent',
+      text: 'Calendar event',
+      iconProps: { iconName: 'Calendar' }
+    }
+  ],
+  directionalHintFixed: true
 };
+const addIcon: IIconProps = { iconName: 'Add' };
 
-export const ButtonContextualMenuExample: React.FunctionComponent<IButtonProps> = props => {
+export const ButtonContextualMenuExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
 
   return (
-    <Stack horizontal tokens={{ childrenGap: 40 }}>
-      <div>
-        <Label styles={labelStyles}>Non-persisted menu</Label>
-        <DefaultButton
-          allowDisabledFocus={true}
-          iconProps={{ iconName: 'Add' }}
-          menuAs={_getMenu}
-          text="New item"
-          onMenuClick={_onMenuClick}
-          menuProps={{
-            items: [
-              {
-                key: 'emailMessage',
-                text: 'Email message',
-                iconProps: { iconName: 'Mail' }
-              },
-              {
-                key: 'calendarEvent',
-                text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ],
-            directionalHintFixed: true
-          }}
-          disabled={disabled}
-          checked={checked}
-        />
-      </div>
-      <div>
-        <Label styles={labelStyles}>Persisted menu</Label>
-        <DefaultButton
-          allowDisabledFocus={true}
-          persistMenu={true}
-          iconProps={{ iconName: 'Add' }}
-          menuAs={_getMenu}
-          text="New item"
-          onMenuClick={_onMenuClick}
-          menuProps={{
-            items: [
-              {
-                key: 'emailMessage',
-                text: 'Email message',
-                iconProps: { iconName: 'Mail' }
-              },
-              {
-                key: 'calendarEvent',
-                text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ],
-            directionalHintFixed: true
-          }}
-          disabled={disabled}
-          checked={checked}
-        />
-      </div>
-    </Stack>
+    <DefaultButton
+      text="New item"
+      iconProps={addIcon}
+      menuProps={menuProps}
+      // Optional callback to customize menu rendering
+      menuAs={_getMenu}
+      // Optional callback to do other actions (besides opening the menu) on click
+      onMenuClick={_onMenuClick}
+      // By default, the ContextualMenu is re-created each time it's shown and destroyed when closed.
+      // Uncomment the next line to hide the ContextualMenu but persist it in the DOM instead.
+      // persistMenu={true}
+      allowDisabledFocus
+      disabled={disabled}
+      checked={checked}
+    />
   );
 };
 

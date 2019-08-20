@@ -1,7 +1,13 @@
 import * as React from 'react';
-import { IButtonProps, PrimaryButton } from 'office-ui-fabric-react';
+import { PrimaryButton } from 'office-ui-fabric-react';
 
-export const ButtonScreenReaderExample: React.FunctionComponent<IButtonProps> = props => {
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
+}
+
+export const ButtonScreenReaderExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
 
   return (

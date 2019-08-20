@@ -1,37 +1,26 @@
 import * as React from 'react';
-import { CompoundButton, IButtonProps, IButtonStyles, ILabelStyles, Label, Stack } from 'office-ui-fabric-react';
+import { CompoundButton, Stack, IStackTokens } from 'office-ui-fabric-react';
 
-const labelStyles: Partial<ILabelStyles> = {
-  root: { marginBottom: 10 }
-};
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
+}
 
-const buttonStyles: Partial<IButtonStyles> = {
-  root: { margin: '10px 0' }
-};
+// Example formatting
+const stackTokens: IStackTokens = { childrenGap: 40 };
 
-export const ButtonCompoundExample: React.FunctionComponent<IButtonProps> = props => {
+export const ButtonCompoundExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
 
   return (
-    <Stack horizontal tokens={{ childrenGap: 40 }}>
-      <div>
-        <Label styles={labelStyles}>Standard</Label>
-        <CompoundButton secondaryText="You can create a new account here." disabled={disabled} checked={checked} styles={buttonStyles}>
-          Create account
-        </CompoundButton>
-      </div>
-      <div>
-        <Label styles={labelStyles}>Primary</Label>
-        <CompoundButton
-          primary={true}
-          secondaryText="You can create a new account here."
-          styles={buttonStyles}
-          disabled={disabled}
-          checked={checked}
-        >
-          Create account
-        </CompoundButton>
-      </div>
+    <Stack horizontal tokens={stackTokens}>
+      <CompoundButton secondaryText="This is the secondary text." disabled={disabled} checked={checked}>
+        Standard
+      </CompoundButton>
+      <CompoundButton primary secondaryText="This is the secondary text." disabled={disabled} checked={checked}>
+        Primary
+      </CompoundButton>
     </Stack>
   );
 };

@@ -1,130 +1,77 @@
 import * as React from 'react';
-import { DefaultButton, IButtonProps, ILabelStyles, Label, Stack } from 'office-ui-fabric-react';
+import { DefaultButton, IContextualMenuProps, Stack, IStackTokens } from 'office-ui-fabric-react';
 
-const labelStyles: Partial<ILabelStyles> = {
-  root: { marginBottom: 10 }
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
+}
+
+const menuProps: IContextualMenuProps = {
+  items: [
+    {
+      key: 'emailMessage',
+      text: 'Email message',
+      iconProps: { iconName: 'Mail' }
+    },
+    {
+      key: 'calendarEvent',
+      text: 'Calendar event',
+      iconProps: { iconName: 'Calendar' }
+    }
+  ]
 };
+// Example formatting
+const stackTokens: IStackTokens = { childrenGap: 40 };
 
-export const ButtonSplitExample: React.FunctionComponent<IButtonProps> = props => {
+export const ButtonSplitExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
 
   return (
-    <Stack horizontal wrap tokens={{ childrenGap: 40 }}>
-      <div>
-        <Label styles={labelStyles}>Standard</Label>
-        <DefaultButton
-          disabled={disabled}
-          checked={checked}
-          text="New item"
-          onClick={_alertClicked}
-          split={true}
-          splitButtonAriaLabel="See 2 options"
-          aria-roledescription="split button"
-          style={{ height: '35px' }}
-          menuProps={{
-            items: [
-              {
-                key: 'emailMessage',
-                text: 'Email message',
-                iconProps: { iconName: 'Mail' }
-              },
-              {
-                key: 'calendarEvent',
-                text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
-          }}
-        />
-      </div>
-      <div>
-        <Label styles={labelStyles}>Primary</Label>
-        <DefaultButton
-          primary
-          disabled={disabled}
-          checked={checked}
-          text="New item"
-          onClick={_alertClicked}
-          split={true}
-          aria-roledescription="split button"
-          style={{ height: '35px' }}
-          menuProps={{
-            items: [
-              {
-                key: 'emailMessage',
-                text: 'Email message',
-                iconProps: { iconName: 'Mail' }
-              },
-              {
-                key: 'calendarEvent',
-                text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
-          }}
-        />
-      </div>
-      <div>
-        <Label styles={labelStyles}>Primary Action Disabled</Label>
-        <DefaultButton
-          primary
-          disabled={disabled}
-          primaryDisabled={true}
-          checked={checked}
-          text="New item"
-          onClick={_alertClicked}
-          split={true}
-          aria-roledescription="split button"
-          style={{ height: '35px' }}
-          menuProps={{
-            items: [
-              {
-                key: 'emailMessage',
-                text: 'Email message',
-                iconProps: { iconName: 'Mail' }
-              },
-              {
-                key: 'calendarEvent',
-                text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
-          }}
-        />
-      </div>
-      <div>
-        <Label styles={labelStyles}>Button Disabled</Label>
-        <DefaultButton
-          primary
-          disabled={true}
-          allowDisabledFocus={true}
-          checked={checked}
-          text="New item"
-          onClick={_alertClicked}
-          onKeyPress={_alertClicked}
-          onKeyDown={_alertClicked}
-          onKeyUp={_alertClicked}
-          onMouseDown={_alertClicked}
-          onMouseUp={_alertClicked}
-          split={true}
-          aria-roledescription="split button"
-          style={{ height: '35px' }}
-          menuProps={{
-            items: [
-              {
-                key: 'emailMessage',
-                text: 'Email message',
-                iconProps: { iconName: 'Mail' }
-              },
-              {
-                key: 'calendarEvent',
-                text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
-          }}
-        />
-      </div>
+    <Stack horizontal wrap tokens={stackTokens}>
+      <DefaultButton
+        text="Standard"
+        split
+        splitButtonAriaLabel="See 2 options"
+        aria-roledescription="split button"
+        menuProps={menuProps}
+        onClick={_alertClicked}
+        disabled={disabled}
+        checked={checked}
+      />
+      <DefaultButton
+        text="Primary"
+        primary
+        split
+        splitButtonAriaLabel="See 2 options"
+        aria-roledescription="split button"
+        menuProps={menuProps}
+        onClick={_alertClicked}
+        disabled={disabled}
+        checked={checked}
+      />
+      <DefaultButton
+        text="Main action disabled"
+        primaryDisabled
+        split
+        splitButtonAriaLabel="See 2 options"
+        aria-roledescription="split button"
+        menuProps={menuProps}
+        onClick={_alertClicked}
+        disabled={disabled}
+        checked={checked}
+      />
+      <DefaultButton
+        text="Disabled"
+        disabled
+        allowDisabledFocus
+        split
+        splitButtonAriaLabel="See 2 options"
+        aria-roledescription="split button"
+        menuProps={menuProps}
+        onClick={_alertClicked}
+        checked={checked}
+      />
     </Stack>
   );
 };

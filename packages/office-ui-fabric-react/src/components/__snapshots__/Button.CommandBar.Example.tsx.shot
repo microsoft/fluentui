@@ -2,13 +2,25 @@
 
 exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] = `
 <div
-  style={
-    Object {
-      "alignItems": "stretch",
-      "display": "flex",
-      "height": "44px",
-    }
-  }
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: 44px;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 0px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
 >
   <button
     aria-expanded={false}
@@ -349,7 +361,7 @@ exports[`Component Examples renders Button.CommandBar.Example.tsx correctly 1`] 
               }
           id="id__3"
         >
-          Send Mail
+          Send mail
         </div>
       </div>
     </div>
