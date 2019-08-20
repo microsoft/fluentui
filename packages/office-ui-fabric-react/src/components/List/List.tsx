@@ -319,7 +319,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     this._events.dispose();
   }
 
-  public componentWillReceiveProps(newProps: IListProps<T>): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IListProps<T>): void {
     if (
       newProps.items !== this.props.items ||
       newProps.renderCount !== this.props.renderCount ||

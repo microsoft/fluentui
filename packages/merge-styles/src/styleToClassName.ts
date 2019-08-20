@@ -240,7 +240,7 @@ export function styleToRegistration(...args: IStyle[]): IRegistration | undefine
   }
 }
 
-export function applyRegistration(registration: IRegistration, classMap?: { [key: string]: string }): void {
+export function applyRegistration(registration: IRegistration): void {
   const stylesheet = Stylesheet.getInstance();
   const { className, key, args, rulesToInsert } = registration;
 
@@ -251,18 +251,7 @@ export function applyRegistration(registration: IRegistration, classMap?: { [key
       if (rules) {
         let selector = rulesToInsert[i];
 
-        // Fix selector using map.
-        selector = selector.replace(
-          /(&)|\$([\w-]+)\b/g,
-          (match: string, amp: string, cn: string): string => {
-            if (amp) {
-              return '.' + registration.className;
-            } else if (cn) {
-              return '.' + ((classMap && classMap[cn]) || cn);
-            }
-            return '';
-          }
-        );
+        selector = selector.replace(/&/g, '.' + registration.className);
 
         // Insert. Note if a media query, we must close the query with a final bracket.
         const processedRule = `${selector}{${rules}}${selector.indexOf('@') === 0 ? '}' : ''}`;

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Mon, 22 Jul 2019 12:28:42 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+
+## 0.107.7
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Patches
+
+- Card: Showing examples on demo page and website. (Humberto.Morimoto@microsoft.com)
 
 ## 0.107.6
 Mon, 22 Jul 2019 12:28:42 GMT

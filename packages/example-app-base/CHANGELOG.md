@@ -1,6 +1,64 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 02 Aug 2019 12:33:29 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+
+## 7.6.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+
+### Patches
+
+- Fix example issues from Accessibility Insights (elcraig@microsoft.com)
+
+## 7.5.1
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Patches
+
+- Updated snpashots and styles which use $ syntax. (dzearing@microsoft.com)
+
+## 7.5.0
+Mon, 12 Aug 2019 12:30:25 GMT
+
+### Minor changes
+
+- Adding import scripts check (esteban.230@hotmail.com)
+
+## 7.4.1
+Thu, 08 Aug 2019 12:32:41 GMT
+
+### Patches
+
+- getQueryParam gracefully falls back when window is not defined (jdh@microsoft.com)
+,- Add check for monaco global in example card (elcraig@microsoft.com)
+
+## 7.4.0
+Wed, 07 Aug 2019 12:32:28 GMT
+
+### Minor changes
+
+- Updating styles to not use $ syntax. (dzearing@microsoft.com)
+
+## 7.3.0
+Tue, 06 Aug 2019 12:32:07 GMT
+
+### Minor changes
+
+- Tsx-editor: Adding error bar (esteban.230@hotmail.com)
+
+### Patches
+
+- Tsx editor - Code not showing fix (esteban.230@hotmail.com)
+
+## 7.2.1
+Mon, 05 Aug 2019 12:33:41 GMT
+
+### Patches
+
+- updated style to add spinner for loading editor (t-nikaz@microsoft.com)
 
 ## 7.2.0
 Fri, 02 Aug 2019 12:33:29 GMT

@@ -1,8 +1,18 @@
 import * as React from 'react';
-import { ActionButton, Button, IButtonStyles, IButtonTokens, Persona } from '@uifabric/experiments';
-import { Card, ICardTokens, ICardItemTokens, ICardSectionStyles, ICardSectionTokens } from '@uifabric/react-cards';
+import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@uifabric/react-cards';
 import { FontWeights } from '@uifabric/styling';
-import { Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
+import {
+  ActionButton,
+  IButtonStyles,
+  Icon,
+  IIconStyles,
+  Image,
+  Persona,
+  Stack,
+  IStackTokens,
+  Text,
+  ITextStyles
+} from 'office-ui-fabric-react';
 
 const alertClicked = (): void => {
   alert('Clicked');
@@ -74,7 +84,7 @@ export class CardVerticalExample extends React.Component<{}, {}> {
           }
         }
       },
-      content: {
+      textContainer: {
         fontSize: 12,
         fontWeight: FontWeights.semibold
       }
@@ -86,26 +96,6 @@ export class CardVerticalExample extends React.Component<{}, {}> {
     const backgroundImageCardSectionTokens: ICardSectionTokens = { padding: 12 };
     const agendaCardSectionTokens: ICardSectionTokens = { childrenGap: 0 };
     const attendantsCardSectionTokens: ICardSectionTokens = { childrenGap: 6 };
-    const footerCardItemTokens: ICardItemTokens = {
-      margin: '12px 12px 6px',
-      padding: '6px 0px 0px'
-    };
-    const addEventButtonTokens: IButtonTokens = {
-      backgroundColor: 'transparent',
-      backgroundColorHovered: 'transparent',
-      backgroundColorPressed: 'transparent',
-      borderColor: 'transparent',
-      borderColorHovered: 'transparent',
-      borderColorPressed: 'transparent',
-      colorHovered: '#0078D4',
-      colorPressed: '#0078D4',
-      contentPadding: 0,
-      iconColor: '#0078D4',
-      iconColorHovered: '#0078D4',
-      iconColorPressed: '#0078D4',
-      textSize: 12,
-      textWeight: FontWeights.regular
-    };
 
     return (
       <Stack horizontal tokens={sectionStackTokens}>
@@ -168,13 +158,18 @@ export class CardVerticalExample extends React.Component<{}, {}> {
             <span />
           </Card.Item>
           <Card.Section horizontal tokens={attendantsCardSectionTokens}>
-            <ActionButton content="12 Attendees" styles={actionButtonStyles} />
-            <ActionButton content="4 Accepted" styles={actionButtonStyles} />
-            <ActionButton content="3 Declined" styles={actionButtonStyles} />
+            <ActionButton text="12 Attendees" styles={actionButtonStyles} />
+            <ActionButton text="4 Accepted" styles={actionButtonStyles} />
+            <ActionButton text="3 Declined" styles={actionButtonStyles} />
           </Card.Section>
-          <Card.Item styles={footerCardSectionStyles} tokens={footerCardItemTokens}>
-            <Button icon="Add" content="Add to Outlook" tokens={addEventButtonTokens} />
-          </Card.Item>
+          <Card.Section horizontal styles={footerCardSectionStyles} tokens={footerCardSectionTokens}>
+            <Icon iconName="RedEye" styles={iconStyles} />
+            <Icon iconName="SingleBookmark" styles={iconStyles} />
+            <Stack.Item grow={1}>
+              <span />
+            </Stack.Item>
+            <Icon iconName="MoreVertical" styles={iconStyles} />
+          </Card.Section>
         </Card>
       </Stack>
     );

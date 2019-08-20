@@ -124,7 +124,8 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
     this._focusOnUpdate = false;
   }
 
-  public componentWillReceiveProps(nextProps: ICalendarProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: ICalendarProps): void {
     const { value, today = new Date() } = nextProps;
 
     this.setState({

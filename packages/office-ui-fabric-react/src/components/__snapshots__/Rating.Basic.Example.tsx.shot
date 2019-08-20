@@ -68,7 +68,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
       tabIndex={-1}
     >
       <button
@@ -923,7 +922,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
       tabIndex={-1}
     >
       <button
@@ -1778,7 +1776,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
       tabIndex={-1}
     >
       <button
@@ -3411,7 +3408,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
       tabIndex={-1}
     >
       <button
@@ -4012,7 +4008,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
       tabIndex={0}
     >
       <button
@@ -4777,7 +4772,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
       tabIndex={-1}
     >
       <button
@@ -5632,7 +5626,6 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
       tabIndex={-1}
     >
       <button

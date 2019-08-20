@@ -1,5 +1,5 @@
 import { IGroupShowAllProps, IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
-import { getGlobalClassNames, FontSizes } from '../../Styling';
+import { getGlobalClassNames } from '../../Styling';
 
 export { IGroupShowAllProps };
 
@@ -10,19 +10,20 @@ const GlobalClassNames = {
 
 export const getStyles = (props: IGroupShowAllStyleProps): IGroupShowAllStyles => {
   const { theme } = props;
+  const { fonts } = theme;
+
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
       {
         position: 'relative',
         padding: '10px 84px',
         cursor: 'pointer',
         selectors: {
           [`.${classNames.link}`]: {
-            fontSize: FontSizes.small
+            fontSize: fonts.small.fontSize
           }
         }
       }

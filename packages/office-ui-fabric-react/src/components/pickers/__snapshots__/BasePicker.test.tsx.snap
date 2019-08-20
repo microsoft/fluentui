@@ -16,7 +16,6 @@ exports[`BasePicker renders correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className="ms-SelectionZone"
@@ -76,7 +75,6 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className="ms-SelectionZone"

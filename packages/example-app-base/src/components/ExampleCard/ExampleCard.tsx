@@ -2,7 +2,16 @@ import * as React from 'react';
 import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
-import { styled, Customizer, classNamesFunction, css, isIE11, CustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  styled,
+  Customizer,
+  classNamesFunction,
+  css,
+  isIE11,
+  CustomizerContext,
+  warn,
+  getWindow
+} from 'office-ui-fabric-react/lib/Utilities';
 import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
@@ -15,8 +24,11 @@ import { EditorPreview } from '@uifabric/tsx-editor/lib/components/EditorPreview
 import { transformExample } from '@uifabric/tsx-editor/lib/transpiler/exampleTransform';
 import * as tsxEditorModule from '@uifabric/tsx-editor';
 import { getSetting } from '../../index2';
+import { Spinner, SpinnerSize } from 'office-ui-fabric-react';
 
 export interface IExampleCardState {
+  /** only used if props.isCodeVisible and props.onToggleEditor are undefined */
+  isCodeVisible?: boolean;
   schemeIndex: number;
   themeIndex: number;
   error?: string;
@@ -45,11 +57,16 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   constructor(props: IExampleCardProps) {
     super(props);
     this.state = {
+      isCodeVisible: false,
       schemeIndex: 0,
       themeIndex: 0
     };
+    const win = getWindow();
     this.canRenderLiveEditor =
-      getSetting('useEditor') === '1' && !isIE11() && transformExample(props.code!, 'placeholder').error === undefined;
+      !!(win && (win as any).MonacoEnvironment) && // tslint:disable-line:no-any
+      getSetting('useEditor') === '1' &&
+      !isIE11() &&
+      transformExample(props.code!, 'placeholder').error === undefined;
 
     if (this.canRenderLiveEditor) {
       import('office-ui-fabric-react').then(Fabric => {
@@ -57,11 +74,16 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
         (window as any).Fabric = Fabric;
       });
     }
+
+    if (props.isCodeVisible !== undefined && props.onToggleEditor === undefined && process.env.NODE_ENV !== 'production') {
+      warn('ExampleCard: the onToggleEditor prop is required if isCodeVisible is set. Otherwise the show/hide code button will not work.');
+    }
   }
 
   public render(): JSX.Element {
-    const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme, isCodeVisible } = this.props;
+    const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme } = this.props;
     const { schemeIndex, themeIndex } = this.state;
+    const { isCodeVisible = this.state.isCodeVisible } = this.props;
 
     return (
       <AppCustomizationsContext.Consumer>
@@ -85,7 +107,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
           const exampleCardContent =
             this.props.isCodeVisible && this.canRenderLiveEditor ? (
-              <EditorPreview className={classNames.example} id={this.props.title.replace(' ', '')} />
+              <EditorPreview error={this.state.error} className={classNames.example} id={this.props.title.replace(' ', '')} />
             ) : (
               <div className={classNames.example} data-is-scrollable={isScrollable}>
                 {children}
@@ -132,28 +154,27 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                   )}
                 </div>
               </div>
-
-              {isCodeVisible &&
-                (this.canRenderLiveEditor ? (
-                  // <React.Suspense fallback={<div>Loading...</div>}>
-                  this.editorModule ? (
-                    <this.editorModule.Editor
-                      code={code!}
-                      onChange={this._editorOnChange}
-                      width={'auto'}
-                      height={500}
-                      language="typescript"
-                    />
+              {isCodeVisible && (
+                <div className={classNames.code}>
+                  {this.canRenderLiveEditor ? (
+                    this.editorModule ? (
+                      <this.editorModule.Editor
+                        code={code!}
+                        onChange={this._editorOnChange}
+                        width={'auto'}
+                        height={500}
+                        language="typescript"
+                      />
+                    ) : (
+                      <Stack horizontalAlign="center" verticalAlign="center" styles={{ root: { height: 500 } }}>
+                        <Spinner size={SpinnerSize.large} label="Loading editor..." />
+                      </Stack>
+                    )
                   ) : (
-                    <div>Loading...</div>
-                  )
-                ) : (
-                  // </React.Suspense>
-                  <div className={classNames.code}>
                     <CodeSnippet language="tsx">{code}</CodeSnippet>
-                  </div>
-                ))}
-
+                  )}
+                </div>
+              )}
               {activeCustomizations ? (
                 <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
                   <Customizer {...activeCustomizations}>
@@ -195,10 +216,10 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
   private _editorOnChange = (editor: ITextModel) => {
     this.editorModule.transpile(editor).then((output: ITranspiledOutput) => {
-      if (output.outputString) {
+      if (output.outputString !== undefined) {
         const evalCodeError = this.editorModule.evalCode(output.outputString, this.props.title.replace(' ', ''));
         this.setState({
-          error: evalCodeError || undefined
+          error: evalCodeError
         });
       } else {
         this.setState({
@@ -225,12 +246,16 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
         this.forceUpdate();
       });
     }
-    if (this.props.onToggleEditor) {
+    if (this.props.isCodeVisible !== undefined && this.props.onToggleEditor !== undefined) {
       if (this.props.isCodeVisible) {
         this.props.onToggleEditor('');
       } else {
         this.props.onToggleEditor(this.props.title);
       }
+    } else {
+      this.setState({
+        isCodeVisible: !this.state.isCodeVisible
+      });
     }
   };
 }
