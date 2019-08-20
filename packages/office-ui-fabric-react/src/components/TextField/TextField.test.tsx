@@ -307,23 +307,9 @@ describe('TextField with error message', () => {
   it('should render error message when onGetErrorMessage returns a string', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessage : ''));
 
-    // function onNotifyResult(errorMessage: string | JSX.Element, value: string | undefined) {
-    //   try {
-    //     expect(validator).toHaveBeenCalledTimes(1);
-    //     assertErrorMessage(wrapper!.getDOMNode(), errorMessage);
-    //     done();
-    //   } catch (ex) {
-    //     done(ex);
-    //   }
-    // }
-
     wrapper = mount(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
 
     wrapper.find('input').simulate('input', mockEvent('also invalid'));
-    // // run the validation debounce timer
-    // jest.runOnlyPendingTimers();
-    // // // error message is inside a DelayedRender, so run that timer
-    // jest.runOnlyPendingTimers();
     jest.runAllTimers();
 
     expect(validator).toHaveBeenCalledTimes(1);
@@ -336,11 +322,6 @@ describe('TextField with error message', () => {
     wrapper = mount(<TextField onGetErrorMessage={validator} validateOnLoad={false} />);
 
     wrapper.find('input').simulate('input', mockEvent('also invalid'));
-    // // run the validation debounce timer
-    // jest.runOnlyPendingTimers();
-    // // error message is inside a DelayedRender, so run that timer
-    // jest.runOnlyPendingTimers();
-
     jest.runAllTimers();
 
     expect(validator).toHaveBeenCalledTimes(1);
