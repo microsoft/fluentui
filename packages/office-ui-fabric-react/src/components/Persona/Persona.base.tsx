@@ -65,6 +65,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       onRenderCoin,
       onRenderInitials,
       presence,
+      presenceTitle,
       showInitialsUntilImageLoads,
       showSecondaryText,
       theme
@@ -84,6 +85,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       onRenderCoin,
       onRenderInitials,
       presence,
+      presenceTitle,
       showInitialsUntilImageLoads,
       size,
       text: this._getText(),
