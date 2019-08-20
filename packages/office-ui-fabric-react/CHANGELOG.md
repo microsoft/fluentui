@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Aug 2019 12:31:26 GMT and should not be manually modified.
+
+## 7.25.1
+Tue, 20 Aug 2019 12:31:26 GMT
+
+### Patches
+
+- Nav: update to latest redlines (phkuo@microsoft.com)
+,- Tooltip: Fix examples to pass correct root display styling. (email not defined)
 
 ## 7.25.0
 Thu, 15 Aug 2019 12:30:43 GMT

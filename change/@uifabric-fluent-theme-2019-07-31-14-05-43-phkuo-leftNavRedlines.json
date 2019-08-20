@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Nav: update to latest redlines",
-  "packageName": "@uifabric/fluent-theme",
-  "email": "phkuo@microsoft.com",
-  "commit": "7779a3437650dff286de759c3474e6fe8c4294e7",
-  "date": "2019-07-31T21:05:19.873Z"
-}

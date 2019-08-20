@@ -42,7 +42,7 @@
     "@uifabric/experiments": "^7.12.0",
     "@uifabric/set-version": "^7.0.1",
     "@uifabric/react-cards": "^0.107.7",
-    "office-ui-fabric-react": "^7.25.0",
+    "office-ui-fabric-react": "^7.25.1",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

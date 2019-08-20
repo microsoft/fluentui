@@ -2,6 +2,27 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Tue, 20 Aug 2019 12:31:26 GMT",
+      "tag": "@uifabric/styling_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Semantic slots: add bodyBackgroundHovered and bodyBackgroundSelected",
+            "author": "phkuo@microsoft.com",
+            "commit": "7779a3437650dff286de759c3474e6fe8c4294e7"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix generation of font size theming variables for legacy",
+            "author": "phkuo@microsoft.com",
+            "commit": "19e9d72b86050048c0361ca1caba0aca898ca642"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 Aug 2019 12:32:05 GMT",
       "tag": "@uifabric/styling_v7.5.1",
       "version": "7.5.1",

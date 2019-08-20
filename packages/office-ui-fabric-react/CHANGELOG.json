@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 20 Aug 2019 12:31:26 GMT",
+      "tag": "office-ui-fabric-react_v7.25.1",
+      "version": "7.25.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Nav: update to latest redlines",
+            "author": "phkuo@microsoft.com",
+            "commit": "7779a3437650dff286de759c3474e6fe8c4294e7"
+          },
+          {
+            "comment": "Tooltip: Fix examples to pass correct root display styling.",
+            "author": "email not defined",
+            "commit": "e3b482b0d2587e7a56b2717a27454688fece8197"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Aug 2019 12:30:19 GMT",
       "tag": "office-ui-fabric-react_v7.25.0",
       "version": "7.25.0",

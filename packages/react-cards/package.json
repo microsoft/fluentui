@@ -52,10 +52,10 @@
     "@uifabric/file-type-icons": "^7.0.6",
     "@uifabric/foundation": "^7.0.3",
     "@uifabric/set-version": "^7.0.1",
-    "@uifabric/styling": "^7.5.1",
+    "@uifabric/styling": "^7.6.0",
     "@uifabric/theme-samples": "^7.0.3",
     "@uifabric/utilities": "^7.0.7",
-    "office-ui-fabric-react": "^7.25.0",
+    "office-ui-fabric-react": "^7.25.1",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
