@@ -101,7 +101,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #0078d4;
+            border-color: #8a8886;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -124,13 +124,13 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -157,6 +157,9 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           }
           &:focus {
             border-color: #0078d4;
+          }
+          &:focus .ms-ComboBox-Input {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:focus {
             -ms-high-contrast-adjust: none;
@@ -433,7 +436,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #0078d4;
+            border-color: #8a8886;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -456,13 +459,13 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -489,6 +492,9 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           }
           &:focus {
             border-color: #0078d4;
+          }
+          &:focus .ms-ComboBox-Input {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:focus {
             -ms-high-contrast-adjust: none;

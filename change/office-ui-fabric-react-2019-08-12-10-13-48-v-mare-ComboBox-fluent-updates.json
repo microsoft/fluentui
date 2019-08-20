@@ -1,0 +1,8 @@
+{
+  "comment": "Combobox: Updates styles to latest design specs.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "9a3955fc93cb4fea86dab7de73967f799a0501f3",
+  "date": "2019-08-12T17:13:48.718Z"
+}
