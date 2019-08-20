@@ -65,16 +65,21 @@ function deleteNodeModulesSymlinks(packagePath, failedPaths) {
   }
 }
 
+/**
+ * @param {string} parentFolder
+ */
 function getChildren(parentFolder) {
   return fs.readdirSync(parentFolder).map(child => path.join(parentFolder, child));
 }
 
 /**
  * @param {string} cmd
+ * @param {string[]} args
  */
-function execWithPipe(cmd) {
+function spawn(cmd, args) {
   return new Promise((resolve, reject) => {
-    const child = child_process.exec(cmd, err => (err ? reject(err) : resolve));
+    const child = child_process.spawn(cmd, args);
+    child.on('exit', code => (code ? reject(new Error('Command failed')) : resolve()));
     child.stdout.pipe(process.stdout);
     child.stderr.pipe(process.stderr);
   });
@@ -123,12 +128,12 @@ async function run() {
   }
 
   console.log('\nRunning "git clean -fdx" to remove all untracked files/folders (this may take awhile)...');
-  await execWithPipe('git clean -fdx');
+  await spawn('git', ['clean', '-fdx']);
   // Run it again in case the first time didn't fully work (known to happen)
-  await execWithPipe('git clean -fdx');
+  await spawn('git', ['clean', '-fdx']);
 
-  console.log('\nRunning "git reset --hard"...');
-  await execWithPipe('git reset --hard');
+  // console.log('\nRunning "git reset --hard"...');
+  // await spawn('git', ['reset', '--hard']);
 
   console.log('\nDone!');
 }
