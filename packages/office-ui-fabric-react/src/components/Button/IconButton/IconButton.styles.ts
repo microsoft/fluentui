@@ -13,7 +13,7 @@ export const getStyles = memoizeFunction(
       root: {
         padding: '0 4px',
         minWidth: '32px',
-        minHeight: '32px',
+        height: '32px',
         backgroundColor: 'transparent',
         border: 'none',
         color: semanticColors.link
