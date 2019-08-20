@@ -157,7 +157,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     if (editingColor && editingColor.component === component) {
       return editingColor.value;
     }
-    if (color[component] == null) {
+    if (color[component] === null || color[component] === undefined) {
       return '';
     } else {
       return String(color[component]);
