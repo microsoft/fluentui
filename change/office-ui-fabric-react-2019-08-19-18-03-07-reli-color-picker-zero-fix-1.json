@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix empty text box when a color component being zero",
+  "packageName": "office-ui-fabric-react",
+  "email": "reli@microsoft.com",
+  "commit": "f389783057c0ba7f32c5a00c38840bec07125cb8",
+  "date": "2019-08-20T01:03:07.503Z"
+}
