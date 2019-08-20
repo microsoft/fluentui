@@ -594,6 +594,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           font-size: 12px;
           font-weight: 400;
           height: 32px;
+          min-width: 32px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -606,7 +607,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           top: 0px;
           user-select: none;
           vertical-align: top;
-          width: 32px;
         }
         &::-moz-focus-inner {
           border: 0;

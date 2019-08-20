@@ -1550,6 +1550,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -1560,7 +1561,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -2235,6 +2235,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -2245,7 +2246,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -2920,6 +2920,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -2930,7 +2931,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -3605,6 +3605,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -3615,7 +3616,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -4290,6 +4290,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -4300,7 +4301,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -4975,6 +4975,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -4985,7 +4986,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -5660,6 +5660,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -5670,7 +5671,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -6345,6 +6345,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -6355,7 +6356,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -7030,6 +7030,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -7040,7 +7041,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -7715,6 +7715,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -7725,7 +7726,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
