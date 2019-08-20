@@ -37,7 +37,7 @@ function deleteIfSymlink(itemPath, failedPaths) {
       fs.unlinkSync(itemPath);
     }
   } catch (ex) {
-    console.warn(`Error running stat or unlink on ${itemPath}: ${ex}`);
+    console.warn(`Error running realpath or unlink on ${itemPath}: ${ex}`);
     failedPaths.push(itemPath);
   }
 }
@@ -78,10 +78,8 @@ function getChildren(parentFolder) {
  */
 function spawn(cmd, args) {
   return new Promise((resolve, reject) => {
-    const child = child_process.spawn(cmd, args);
+    const child = child_process.spawn(cmd, args, { stdio: 'inherit' });
     child.on('exit', code => (code ? reject(new Error('Command failed')) : resolve()));
-    child.stdout.pipe(process.stdout);
-    child.stderr.pipe(process.stderr);
   });
 }
 
