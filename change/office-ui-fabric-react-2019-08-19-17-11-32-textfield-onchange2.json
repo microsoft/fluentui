@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix TextField onChange bug",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "adc0f263cc2c85ea2ff6ef9d44b2b3e3bc52139a",
+  "date": "2019-08-20T00:11:28.647Z"
+}
