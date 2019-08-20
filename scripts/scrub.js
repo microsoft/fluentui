@@ -129,8 +129,6 @@ async function run() {
 
   console.log('\nRunning "git clean -fdx" to remove all untracked files/folders (this may take awhile)...');
   await spawn('git', ['clean', '-fdx']);
-  // Run it again in case the first time didn't fully work (known to happen)
-  await spawn('git', ['clean', '-fdx']);
 
   // console.log('\nRunning "git reset --hard"...');
   // await spawn('git', ['reset', '--hard']);
