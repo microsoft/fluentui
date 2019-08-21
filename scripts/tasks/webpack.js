@@ -14,8 +14,9 @@ exports.webpackDevServer = async function() {
   if (fs.existsSync(configPath)) {
     const webpackDevServerPath = require.resolve('webpack-dev-server/bin/webpack-dev-server.js');
     const execSync = require('../exec-sync');
-
-    execSync(`node ${webpackDevServerPath} --config ${configPath} --port ${port} --open`);
+    const cmd = `node ${webpackDevServerPath} --config ${configPath} --port ${port} --open ${argv().cached ? '--env.cached=true' : ''}`;
+    console.log('RUNNING: ', cmd);
+    execSync(cmd);
   }
 };
 
