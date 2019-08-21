@@ -2,7 +2,7 @@
 import { Text, KeytipData } from 'office-ui-fabric-react';
 import { withSlots, getSlots } from '../../Foundation';
 import { getNativeProps, anchorProperties, buttonProperties } from '../../Utilities';
-import { Icon } from '../../utilities/factoryComponents';
+import { FontIcon } from '../../utilities/factoryComponents';
 
 import { IButtonComponent, IButtonProps, IButtonSlots, IButtonViewProps } from './Button.types';
 import { IActionableRootElements } from './Actionable/Actionable.types';
@@ -16,7 +16,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
 
   const Slots = getSlots<IButtonProps, IButtonSlots>(props, {
     root: slotType,
-    icon: Icon,
+    icon: FontIcon,
     content: Text
   });
 

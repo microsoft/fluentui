@@ -1,6 +1,7 @@
 import {
   ICalloutProps,
   IContextualMenuProps,
+  IFontIconProps,
   IIconProps,
   ILabelProps,
   IListProps,
@@ -13,6 +14,7 @@ import { ISlotProp } from '../Foundation';
 
 export type ICalloutSlot = ISlotProp<ICalloutProps>;
 export type IContextualMenuSlot = ISlotProp<IContextualMenuProps>;
+export type IFontIconSlot = ISlotProp<IFontIconProps, string>;
 export type IIconSlot = ISlotProp<IIconProps, string>;
 export type ILabelSlot = ISlotProp<ILabelProps, string>;
 export type IListSlot = ISlotProp<IListProps>;
