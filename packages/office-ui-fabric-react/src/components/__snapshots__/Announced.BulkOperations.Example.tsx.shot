@@ -132,7 +132,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                     line-height: 42px;
                     min-width: 100%;
                     padding-bottom: 1px;
-                    padding-top: 1px;
+                    padding-top: 16px;
                     position: relative;
                     user-select: none;
                     vertical-align: top;
