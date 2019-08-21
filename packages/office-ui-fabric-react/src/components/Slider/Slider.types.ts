@@ -11,10 +11,21 @@ export interface ISlider {
 
   focus: () => void;
 }
-
+/**
+ * {@docCategory Slider}
+ */
 export interface ISliderMarksArrayFormat {
+  /**
+   * This is how the JSON should be formated for the custom marks
+   */
   value: number;
+  /**
+   * value denotes the "where" or at what value location should the label be placed at
+   */
   label: string;
+  /**
+   * label is the string that will be placed at the value location for custom labels
+   */
 }
 /**
  * {@docCategory Slider}
