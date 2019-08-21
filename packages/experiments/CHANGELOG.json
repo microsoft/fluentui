@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 21 Aug 2019 12:34:09 GMT",
+      "tag": "@uifabric/experiments_v7.12.0",
+      "version": "7.12.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updated ComboBox snapshots",
+            "author": "v-mare@microsoft.com",
+            "commit": "9a3955fc93cb4fea86dab7de73967f799a0501f3"
+          },
+          {
+            "comment": "Remove relative imports in new Button examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "dc83b75a4a45fb5b4d5ad62f856b959d39b6c1da"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2019 12:30:43 GMT",
       "tag": "@uifabric/experiments_v7.12.0",
       "version": "7.12.0",

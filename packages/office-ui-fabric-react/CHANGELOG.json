@@ -2,6 +2,52 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 21 Aug 2019 12:34:09 GMT",
+      "tag": "office-ui-fabric-react_v7.26.0",
+      "version": "7.26.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combobox: Updates styles to latest design specs.",
+            "author": "v-mare@microsoft.com",
+            "commit": "9a3955fc93cb4fea86dab7de73967f799a0501f3"
+          },
+          {
+            "comment": "Simplify Button examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "dc83b75a4a45fb5b4d5ad62f856b959d39b6c1da"
+          },
+          {
+            "comment": "Use getDocument instead document in FocusZone and FocusTrapZone",
+            "author": "sohuts@microsoft.com",
+            "commit": "c4766bf28c3c6fe6021e2a0f277524bcc64064b4"
+          },
+          {
+            "comment": "Fix TextField onChange bug",
+            "author": "elcraig@microsoft.com",
+            "commit": "adc0f263cc2c85ea2ff6ef9d44b2b3e3bc52139a"
+          },
+          {
+            "comment": "Fix empty text box when a color component being zero",
+            "author": "reli@microsoft.com",
+            "commit": "f389783057c0ba7f32c5a00c38840bec07125cb8"
+          },
+          {
+            "comment": "add space functionality to split button with tests",
+            "author": "chiechan@microsoft.com",
+            "commit": "2d36be7008d746555faf1570d5541f8e74ea31c8"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add presenceTitle prop",
+            "author": "gogoe@microsoft.com",
+            "commit": "231d33083d5b0bc2bf150c91ccf4ade66caeeb98"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Aug 2019 12:31:26 GMT",
       "tag": "office-ui-fabric-react_v7.25.1",
       "version": "7.25.1",

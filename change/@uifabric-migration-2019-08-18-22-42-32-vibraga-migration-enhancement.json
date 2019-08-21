@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Messaging now with more hints and fix TextField codemod.",
-  "packageName": "@uifabric/migration",
-  "email": "vibraga@microsoft.com",
-  "commit": "119a353997226c75b29e6d4f6337b3451b2d59e1",
-  "date": "2019-08-19T05:42:32.629Z"
-}

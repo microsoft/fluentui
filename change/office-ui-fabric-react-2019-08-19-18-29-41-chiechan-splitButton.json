@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add space functionality to split button with tests",
-  "packageName": "office-ui-fabric-react",
-  "email": "chiechan@microsoft.com",
-  "commit": "2d36be7008d746555faf1570d5541f8e74ea31c8",
-  "date": "2019-08-20T01:29:40.953Z"
-}
