@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 16 Aug 2019 22:19:39 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Aug 2019 12:21:08 GMT and should not be manually modified.
+
+## 6.201.1
+Mon, 19 Aug 2019 12:21:08 GMT
+
+### Patches
+
+- DetailsRow should only re-render if a prop is detected to have changed. (megreid115@gmail.com)
 
 ## 6.201.0
 Fri, 16 Aug 2019 22:19:39 GMT

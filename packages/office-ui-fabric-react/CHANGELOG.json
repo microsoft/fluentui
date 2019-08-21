@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 19 Aug 2019 12:21:08 GMT",
+      "tag": "office-ui-fabric-react_v6.201.1",
+      "version": "6.201.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsRow should only re-render if a prop is detected to have changed.",
+            "author": "megreid115@gmail.com",
+            "commit": "00bda91a359c9efbefd855bcf2bfaa09a031536e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Aug 2019 22:19:39 GMT",
       "tag": "office-ui-fabric-react_v6.201.0",
       "version": "6.201.0",

@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Tue, 20 Aug 2019 12:22:59 GMT",
+      "tag": "@uifabric/styling_v6.50.6",
+      "version": "6.50.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix generated font theme tokens for legacy theming",
+            "author": "phkuo@microsoft.com",
+            "commit": "8fed2cf839a7f27ae8f64126069e7dc013c6982c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Aug 2019 22:19:39 GMT",
       "tag": "@uifabric/styling_v6.50.5",
       "version": "6.50.5",
