@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Remove relative imports in new Button examples",
+  "packageName": "@uifabric/experiments",
+  "email": "elcraig@microsoft.com",
+  "commit": "dc83b75a4a45fb5b4d5ad62f856b959d39b6c1da",
+  "date": "2019-08-16T20:56:02.896Z"
+}
