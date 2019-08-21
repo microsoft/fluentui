@@ -3284,6 +3284,7 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
     onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
+    paddingTop?: number;
     selectAllVisibility?: SelectAllVisibility;
     styles?: IStyleFunctionOrObject<IDetailsHeaderStyleProps, IDetailsHeaderStyles>;
     theme?: ITheme;
@@ -3444,6 +3445,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     onRowDidMount?: (item?: any, index?: number) => void;
     onRowWillUnmount?: (item?: any, index?: number) => void;
     onShouldVirtualize?: (props: IListProps) => boolean;
+    paddingTop?: number;
     rowElementEventMap?: {
         eventName: string;
         callback: (context: IDragDropContext, event?: any) => void;
