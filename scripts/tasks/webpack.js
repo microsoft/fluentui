@@ -1,6 +1,6 @@
 // @ts-check
 
-const { webpackTask, argv } = require('just-scripts');
+const { webpackTask, argv, logger } = require('just-scripts');
 const path = require('path');
 const fs = require('fs');
 
@@ -15,7 +15,7 @@ exports.webpackDevServer = async function() {
     const webpackDevServerPath = require.resolve('webpack-dev-server/bin/webpack-dev-server.js');
     const execSync = require('../exec-sync');
     const cmd = `node ${webpackDevServerPath} --config ${configPath} --port ${port} --open ${argv().cached ? '--env.cached=true' : ''}`;
-    console.log('RUNNING: ', cmd);
+    logger.info('Running: ', cmd);
     execSync(cmd);
   }
 };
