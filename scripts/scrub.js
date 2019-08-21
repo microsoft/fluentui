@@ -99,9 +99,10 @@ async function run() {
     if (gitStatus) {
       console.log('It will also revert uncommitted changes to the following files:');
       const lines = gitStatus.split(/\r?\n/g).map(line => '  ' + line);
-      console.log(lines.slice(0, 20).join('\n'));
-      if (lines.length > 20) {
-        console.log(`  ...and ${lines.length - 20} more`);
+      const showFileCount = 20;
+      console.log(lines.slice(0, showFileCount).join('\n'));
+      if (lines.length > showFileCount) {
+        console.log(`  ...and ${lines.length - showFileCount} more`);
       }
     }
     const answer = await prompt('Are you sure you want to proceed? (yes/no) ');
