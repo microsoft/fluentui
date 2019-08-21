@@ -157,6 +157,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         {isGrouped ? <TextField label="Group item limit" onChange={this._onItemLimitChanged} /> : null}
 
         <DetailsList
+          paddingTop={0}
           setKey="items"
           items={items}
           selection={this._selection}
