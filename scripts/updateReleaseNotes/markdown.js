@@ -34,7 +34,7 @@ async function getChangeComments(title, comments) {
         // Prefer linking to the PR if we can find it (this is generally more useful than the commit)
         const pr = await getPullRequest(comment);
         if (pr) {
-          line += `PR [#${pr.number}](${pr.url}) by [${pr.author}](${pr.authorUrl})`;
+          line += `PR #${pr.number} by [${pr.author}](${pr.authorUrl})`;
         } else {
           line += `[commit](https://github.com/${repoDetails.owner}/${repoDetails.repo}/commit/${comment.commit})`;
         }
