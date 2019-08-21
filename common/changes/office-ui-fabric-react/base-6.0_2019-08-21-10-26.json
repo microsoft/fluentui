@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Drop hint icon changed to circle and a padding of 16px added to accomodate the drophint icon",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "svaibhav@microsoft.com"
+}
