@@ -114,8 +114,8 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
   vertical?: boolean;
 
   /**
-   * @defaultvalue false
    * Optional flag to render the Slider as disabled.
+   * @defaultvalue false
    */
   disabled?: boolean;
 
