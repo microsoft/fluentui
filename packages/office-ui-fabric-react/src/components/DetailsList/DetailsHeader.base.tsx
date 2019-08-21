@@ -587,12 +587,12 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     return (
       <div key={'dropHintKey'} className={classNames.dropHintStyle} id={`columnDropHint_${dropHintIndex}`}>
         <IconComponent
-          key={`dropHintCaretKey`}
+          key={`dropHintCircleKey`}
           aria-hidden={true}
           data-is-focusable={false}
           data-sizer-index={dropHintIndex}
           className={classNames.dropHintCaretStyle}
-          iconName={'CaretDownSolid8'}
+          iconName={'CircleShapeSolid'}
         />
         <div
           key={`dropHintLineKey`}
