@@ -323,6 +323,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (iconProps && (iconProps.iconName !== undefined || iconProps.imageProps)) {
       const { className, imageProps, ...rest } = iconProps;
 
+      // If the styles prop is specified as part of iconProps, fall back to regular Icon as FontIcon and ImageIcon do not have such prop.
       if (iconProps.styles) {
         return <Icon className={css(this._classNames.icon, className)} imageProps={imageProps} {...rest} />;
       }
