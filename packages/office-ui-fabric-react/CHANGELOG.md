@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 20 Aug 2019 12:31:26 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Aug 2019 12:34:09 GMT and should not be manually modified.
+
+## 7.26.0
+Wed, 21 Aug 2019 12:34:09 GMT
+
+### Minor changes
+
+- Add presenceTitle prop (gogoe@microsoft.com)
+
+### Patches
+
+- Combobox: Updates styles to latest design specs. (v-mare@microsoft.com)
+,- Simplify Button examples (elcraig@microsoft.com)
+,- Use getDocument instead document in FocusZone and FocusTrapZone (sohuts@microsoft.com)
+,- Fix TextField onChange bug (elcraig@microsoft.com)
+,- Fix empty text box when a color component being zero (reli@microsoft.com)
+,- add space functionality to split button with tests (chiechan@microsoft.com)
 
 ## 7.25.1
 Tue, 20 Aug 2019 12:31:26 GMT

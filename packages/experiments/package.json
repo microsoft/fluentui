@@ -39,7 +39,7 @@
     "@uifabric/example-app-base": "^7.6.0",
     "@uifabric/jest-serializer-merge-styles": "^7.0.4",
     "@uifabric/prettier-rules": "^7.0.3",
-    "@uifabric/tslint-rules": "^7.0.3",
+    "@uifabric/tslint-rules": "^7.0.4",
     "enzyme": "~3.9.0",
     "enzyme-adapter-react-16": "^1.2.0",
     "es6-weak-map": "^2.0.2",
@@ -66,7 +66,7 @@
     "@uifabric/utilities": "^7.0.7",
     "@uifabric/variants": "^7.0.3",
     "deep-assign": "^2.0.0",
-    "office-ui-fabric-react": "^7.25.1",
+    "office-ui-fabric-react": "^7.26.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },

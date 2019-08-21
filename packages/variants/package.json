@@ -23,12 +23,12 @@
   "devDependencies": {
     "@types/jest": "23.0.0",
     "@uifabric/prettier-rules": "^7.0.3",
-    "@uifabric/tslint-rules": "^7.0.3",
+    "@uifabric/tslint-rules": "^7.0.4",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.1",
-    "office-ui-fabric-react": "^7.25.1",
+    "office-ui-fabric-react": "^7.26.0",
     "tslib": "^1.7.1"
   }
 }
