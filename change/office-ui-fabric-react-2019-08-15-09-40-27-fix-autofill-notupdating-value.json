@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Autofill: fix issue where autofill wouldn't handle delete correctly",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "98b668899f9b152865de792d07d19b3d32bf2701",
+  "date": "2019-08-15T16:40:27.068Z"
+}
