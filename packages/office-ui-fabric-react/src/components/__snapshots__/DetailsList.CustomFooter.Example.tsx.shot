@@ -91,6 +91,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
           style={
             Object {
               "minWidth": 200,
+              "paddingTop": 16,
             }
           }
         >

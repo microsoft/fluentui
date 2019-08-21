@@ -91,6 +91,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
           style={
             Object {
               "minWidth": 0,
+              "paddingTop": 16,
             }
           }
         >

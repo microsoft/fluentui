@@ -100,6 +100,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
             style={
               Object {
                 "minWidth": 800,
+                "paddingTop": 16,
               }
             }
           >

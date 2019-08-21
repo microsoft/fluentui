@@ -91,6 +91,7 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
           style={
             Object {
               "minWidth": 100,
+              "paddingTop": 16,
             }
           }
         >

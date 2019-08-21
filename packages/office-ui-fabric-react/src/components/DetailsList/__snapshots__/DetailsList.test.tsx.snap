@@ -91,6 +91,7 @@ exports[`DetailsList renders List correctly 1`] = `
           style={
             Object {
               "minWidth": 100,
+              "paddingTop": 16,
             }
           }
         >
@@ -677,6 +678,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           style={
             Object {
               "minWidth": 500,
+              "paddingTop": 16,
             }
           }
         >
@@ -1851,6 +1853,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           style={
             Object {
               "minWidth": 100,
+              "paddingTop": 16,
             }
           }
         >
@@ -2438,6 +2441,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           style={
             Object {
               "minWidth": 900,
+              "paddingTop": 16,
             }
           }
         >
@@ -3400,6 +3404,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           style={
             Object {
               "minWidth": 500,
+              "paddingTop": 16,
             }
           }
         >
@@ -4588,6 +4593,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           style={
             Object {
               "minWidth": 100,
+              "paddingTop": 16,
             }
           }
         >

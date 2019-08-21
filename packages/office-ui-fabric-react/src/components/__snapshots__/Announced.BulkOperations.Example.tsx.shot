@@ -154,6 +154,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
               style={
                 Object {
                   "minWidth": 400,
+                  "paddingTop": 16,
                 }
               }
             >

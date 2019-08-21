@@ -91,6 +91,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
           style={
             Object {
               "minWidth": 200,
+              "paddingTop": 16,
             }
           }
         >

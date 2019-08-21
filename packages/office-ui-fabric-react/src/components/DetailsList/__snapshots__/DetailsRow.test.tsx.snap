@@ -91,6 +91,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           style={
             Object {
               "minWidth": 24,
+              "paddingTop": 16,
             }
           }
         >
@@ -905,6 +906,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           style={
             Object {
               "minWidth": 24,
+              "paddingTop": 16,
             }
           }
         >
@@ -2251,6 +2253,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           style={
             Object {
               "minWidth": 24,
+              "paddingTop": 16,
             }
           }
         >
@@ -3065,6 +3068,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           style={
             Object {
               "minWidth": 24,
+              "paddingTop": 16,
             }
           }
         >

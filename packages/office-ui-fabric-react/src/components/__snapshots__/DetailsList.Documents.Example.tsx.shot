@@ -642,6 +642,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               style={
                 Object {
                   "minWidth": 296,
+                  "paddingTop": 16,
                 }
               }
             >
