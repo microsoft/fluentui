@@ -70,10 +70,18 @@ describe('extractRules', () => {
     expect(rules).toEqual({ __order: ['&'], '&': { background: '#eee', color: '#aaa' } });
   });
 
-  it('modifies rules when several classes are specified', () => {
+  it('modifies rules when several classes are specified', () => { // just combining, not nesting
     _stylesheet.cacheClassName('foo', 'foo', [{ background: '#eee' }], []);
     _stylesheet.cacheClassName('bar', 'bar', [{ marginRight: '42' }], []);
     const rules = extractRules(['foo', 'bar']);
     expect(rules).toEqual({ __order: ['&'], '&': { background: '#eee', marginRight: '42' } });
+  });
+
+  // nesting test
+  it('modifies rules when selector is top level', () => {
+    const rules = {};
+    extractRulesFromObject({ a: {'&:hover:' { background: 'green'} }}, { __order: [] }, rules, []);
+    console.log(rules); // { a: { '&:hover:': { background: 'green' } } }
+    expect(rules).toEqual('a-0{&:hover{background:green;}');
   });
 });
