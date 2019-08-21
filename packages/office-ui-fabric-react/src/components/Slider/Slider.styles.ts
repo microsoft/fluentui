@@ -329,17 +329,16 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       disabled! && {
         background: theme.palette.neutralLight
       },
-      vertical
-        ? {
-            width: '16px',
-            height: '1px',
-            transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
-          }
-        : {
-            width: '2px',
-            height: '4px',
-            transform: 'translateY(0px)'
-          }
+      {
+        width: '2px',
+        height: '4px',
+        transform: 'translateY(0px)'
+      },
+      vertical! && {
+        width: '16px',
+        height: '1px',
+        transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
+      }
     ],
     valueLabel: [
       classNames.valueLabel,

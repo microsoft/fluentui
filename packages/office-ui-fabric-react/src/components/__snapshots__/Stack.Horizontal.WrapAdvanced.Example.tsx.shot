@@ -140,10 +140,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 align-items: center;
                 display: flex;
                 flex-wrap: nowrap;
-                margin-bottom: 10px;
-                margin-left: 10px;
-                margin-right: 10px;
-                margin-top: 10px;
               }
         >
           <div
@@ -462,10 +458,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 align-items: center;
                 display: flex;
                 flex-wrap: nowrap;
-                margin-bottom: 10px;
-                margin-left: 10px;
-                margin-right: 10px;
-                margin-top: 10px;
               }
         >
           <div
