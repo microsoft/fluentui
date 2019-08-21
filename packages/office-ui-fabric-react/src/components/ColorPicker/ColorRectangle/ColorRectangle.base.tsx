@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, EventGroup, initializeComponentRef, warnDeprecations } from '../../../Utilities';
+import { classNamesFunction, EventGroup, initializeComponentRef, warnDeprecations } from '../../../Utilities';
 import { IColor } from '../../../utilities/color/interfaces';
 import { MAX_COLOR_SATURATION, MAX_COLOR_VALUE } from '../../../utilities/color/consts';
 import { getFullColorString } from '../../../utilities/color/getFullColorString';
@@ -16,19 +16,19 @@ export interface IColorRectangleState {
 /**
  * {@docCategory ColorPicker}
  */
-export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, IColorRectangleState> implements IColorRectangle {
+export class ColorRectangleBase extends React.Component<IColorRectangleProps, IColorRectangleState> implements IColorRectangle {
   public static defaultProps = {
     minSize: 220
   };
 
-  private _eventsGroup: EventGroup;
+  private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
 
   constructor(props: IColorRectangleProps) {
     super(props);
 
     initializeComponentRef(this);
-    this._eventsGroup = new EventGroup(this);
+    this._events = new EventGroup(this);
 
     warnDeprecations('ColorRectangle', props, {
       onSVChanged: 'onChange'
@@ -54,7 +54,7 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
   }
 
   public componentWillUnmount() {
-    this._eventsGroup.dispose();
+    this._events.dispose();
   }
 
   public render(): JSX.Element {
@@ -84,8 +84,8 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
   }
 
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
-    this._eventsGroup.on(window, 'mousemove', this._onMouseMove, true);
-    this._eventsGroup.on(window, 'mouseup', this._disableEvents, true);
+    this._events.on(window, 'mousemove', this._onMouseMove, true);
+    this._events.on(window, 'mouseup', this._disableEvents, true);
 
     this._onMouseMove(ev);
   };
@@ -125,7 +125,7 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
   };
 
   private _disableEvents = (): void => {
-    this._eventsGroup.off();
+    this._events.off();
   };
 }
 

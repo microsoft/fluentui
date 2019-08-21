@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, initializeComponentRef, warnDeprecations } from '../../Utilities';
+import { classNamesFunction, initializeComponentRef, warnDeprecations } from '../../Utilities';
 import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles, IColorPicker } from './ColorPicker.types';
 import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
@@ -41,7 +41,7 @@ const colorComponents: Array<keyof IRGBHex> = ['hex', 'r', 'g', 'b', 'a'];
 /**
  * {@docCategory ColorPicker}
  */
-export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> implements IColorPicker {
+export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPickerState> implements IColorPicker {
   public static defaultProps = {
     hexLabel: 'Hex',
     redLabel: 'Red',

@@ -594,7 +594,7 @@ export enum CollapseAllVisibility {
 export const ColorPicker: React.StatelessComponent<IColorPickerProps>;
 
 // @public (undocumented)
-export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> implements IColorPicker {
+export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPickerState> implements IColorPicker {
     constructor(props: IColorPickerProps);
     // (undocumented)
     readonly color: IColor;
@@ -2498,7 +2498,7 @@ export interface IColorPickerGridCellStyles {
 }
 
 // @public (undocumented)
-export interface IColorPickerProps extends IBaseProps<IColorPicker> {
+export interface IColorPickerProps {
     alphaLabel?: string;
     alphaSliderHidden?: boolean;
     blueLabel?: string;
@@ -2548,7 +2548,7 @@ export interface IColorRectangle {
 }
 
 // @public (undocumented)
-export interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
+export interface IColorRectangleProps {
     className?: string;
     color: IColor;
     componentRef?: IRefObject<IColorRectangle>;
@@ -2579,7 +2579,7 @@ export interface IColorSlider {
 }
 
 // @public (undocumented)
-export interface IColorSliderProps extends IBaseProps<IColorSlider> {
+export interface IColorSliderProps {
     className?: string;
     componentRef?: IRefObject<IColorSlider>;
     isAlpha?: boolean;
