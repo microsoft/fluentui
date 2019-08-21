@@ -313,7 +313,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       },
       vertical && {
         margin: '0 auto 20px',
-        transform: 'translate(10px,10px) '
+        transform: 'translate(13px,10px) '
       },
       disabled && {
         background: theme.palette.neutralLight

@@ -144,7 +144,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                     gapSpace: 5,
                     beakWidth: 8,
                     target: `#${this._buttonId}`,
-                    directionalHint: vertical ? DirectionalHint.rightCenter : DirectionalHint.topCenter
+                    directionalHint: vertical ? DirectionalHint.leftCenter : DirectionalHint.topCenter
                   }}
                 >
                   {thumbButton}
