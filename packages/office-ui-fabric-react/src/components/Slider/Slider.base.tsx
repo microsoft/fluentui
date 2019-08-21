@@ -65,8 +65,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       theme,
       originFromZero,
       marks,
-      showThumbTooltip,
-      valueFormat
+      showThumbTooltip
     } = this.props;
     const value = this.value;
     const renderedValue = this.renderedValue;
@@ -323,6 +322,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       );
       labels.push(currentLabel);
     }
+    console.log(labels);
     return labels;
   }
 
