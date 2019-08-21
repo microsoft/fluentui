@@ -9,6 +9,24 @@ export interface ISliderVerticalExampleState {
 // tslint:disable:jsx-no-lambda
 export const SliderVerticalExample: React.StatelessComponent = () => {
   const stackTokens: IStackTokens = { childrenGap: 20 };
+  const marks = [
+    {
+      value: 0,
+      label: '0°C'
+    },
+    {
+      value: 30,
+      label: '30°C'
+    },
+    {
+      value: 80,
+      label: '80°C'
+    },
+    {
+      value: 100,
+      label: '100°C'
+    }
+  ];
 
   return (
     <Stack horizontal tokens={stackTokens} styles={{ root: { height: 200 } }}>
@@ -23,13 +41,13 @@ export const SliderVerticalExample: React.StatelessComponent = () => {
       />
       <Slider // prettier-ignore
         label="Marks"
-        min={1}
-        max={5}
-        step={1}
+        min={0}
+        max={100}
+        step={10}
         defaultValue={2}
         showValue
         vertical
-        marks
+        marks={marks}
         showThumbTooltip
       />
       <Slider // prettier-ignore

@@ -126,8 +126,8 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       {
         display: 'flex',
         flexWrap: 'nowrap',
-        alignItems: 'center',
-        margin: '10px'
+        alignItems: 'center'
+        // margin: '10px'
       },
       vertical && {
         flexDirection: 'column',
@@ -313,7 +313,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       },
       vertical && {
         margin: '0 auto 20px',
-        transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
+        transform: 'translate(10px,10px) '
       },
       disabled && {
         background: theme.palette.neutralLight
