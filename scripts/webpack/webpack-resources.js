@@ -140,86 +140,82 @@ module.exports = {
   },
 
   createServeConfig(customConfig) {
-    return env => {
-      env = env || {};
-      console.log('SHOULD CACHE: ', Boolean(!process.env.TF_BUILD && env.cached));
-      const config = merge(
-        {
-          devServer: {
-            inline: true,
-            port: 4322,
-            contentBase: path.resolve(process.cwd(), 'dist')
-          },
+    const config = merge(
+      {
+        devServer: {
+          inline: true,
+          port: 4322,
+          contentBase: path.resolve(process.cwd(), 'dist')
+        },
 
-          mode: 'development',
+        mode: 'development',
 
-          resolve: {
-            extensions: ['.ts', '.tsx', '.js']
-          },
+        resolve: {
+          extensions: ['.ts', '.tsx', '.js']
+        },
 
-          devtool: 'eval',
+        devtool: 'eval',
 
-          module: {
-            rules: [
-              cssRule,
-              {
-                test: [/\.tsx?$/],
-                use: {
-                  loader: 'ts-loader',
+        module: {
+          rules: [
+            cssRule,
+            {
+              test: [/\.tsx?$/],
+              use: {
+                loader: 'ts-loader',
+                options: {
+                  experimentalWatchApi: true,
+                  transpileOnly: true
+                }
+              },
+              exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/]
+            },
+            {
+              test: /\.scss$/,
+              enforce: 'pre',
+              exclude: [/node_modules/],
+              use: [
+                {
+                  loader: '@microsoft/loader-load-themed-styles' // creates style nodes from JS strings
+                },
+                {
+                  loader: 'css-loader', // translates CSS into CommonJS
                   options: {
-                    experimentalWatchApi: true,
-                    transpileOnly: true
+                    modules: true,
+                    importLoaders: 2,
+                    localIdentName: '[name]_[local]_[hash:base64:5]',
+                    minimize: false
                   }
                 },
-                exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/]
-              },
-              {
-                test: /\.scss$/,
-                enforce: 'pre',
-                exclude: [/node_modules/],
-                use: [
-                  {
-                    loader: '@microsoft/loader-load-themed-styles' // creates style nodes from JS strings
-                  },
-                  {
-                    loader: 'css-loader', // translates CSS into CommonJS
-                    options: {
-                      modules: true,
-                      importLoaders: 2,
-                      localIdentName: '[name]_[local]_[hash:base64:5]',
-                      minimize: false
+                {
+                  loader: 'postcss-loader',
+                  options: {
+                    plugins: function() {
+                      return [require('autoprefixer')];
                     }
-                  },
-                  {
-                    loader: 'postcss-loader',
-                    options: {
-                      plugins: function() {
-                        return [require('autoprefixer')];
-                      }
-                    }
-                  },
-                  {
-                    loader: 'sass-loader'
                   }
-                ]
-              }
-            ]
-          },
-
-          plugins: [
-            // TODO: will investigate why this doesn't work on mac
-            // new WebpackNotifierPlugin(),
-            new ForkTsCheckerWebpackPlugin(),
-            ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()]),
-            ...(!process.env.TF_BUILD && env.cached ? [new HardSourceWebpackPlugin()] : [])
+                },
+                {
+                  loader: 'sass-loader'
+                }
+              ]
+            }
           ]
         },
-        customConfig
-      );
 
-      config.entry = createEntryWithPolyfill(config.entry, config);
-      return config;
-    };
+        plugins: [
+          // TODO: will investigate why this doesn't work on mac
+          // new WebpackNotifierPlugin(),
+          new ForkTsCheckerWebpackPlugin(),
+          ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()]),
+          ...(!process.env.TF_BUILD && process.env.cached ? [new HardSourceWebpackPlugin()] : [])
+        ]
+      },
+      customConfig
+    );
+
+    config.entry = createEntryWithPolyfill(config.entry, config);
+    return config;
   }
 };
 
