@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Panel Example: Fix function typing",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "b3a08f9e4ad8ec638e7e0e975cad0f598d597c42",
+  "date": "2019-08-21T17:23:05.343Z"
+}
