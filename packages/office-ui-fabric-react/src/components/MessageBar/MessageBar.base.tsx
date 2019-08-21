@@ -31,7 +31,6 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   };
 
   private _classNames: { [key in keyof IMessageBarStyles]: string };
-  private _globalTheme: ITheme;
 
   constructor(props: IMessageBarProps) {
     super(props);
@@ -41,8 +40,6 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
       showContent: false,
       expandSingleLine: false
     };
-
-    this._globalTheme = getTheme();
   }
 
   public render(): JSX.Element {
@@ -110,7 +107,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderMultiLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const theme = this._globalTheme;
+    const theme: ITheme = getTheme();
     return (
       <div style={{ background: theme.semanticColors.bodyBackground }}>
         <div className={this._classNames.root}>
@@ -126,7 +123,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderSingleLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const theme = this._globalTheme;
+    const theme: ITheme = getTheme();
     return (
       <div style={{ background: theme.semanticColors.bodyBackground }}>
         <div className={this._classNames.root}>
@@ -161,7 +158,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
     const { expandSingleLine } = this.state;
 
     return getClassNames(this.props.styles!, {
-      theme: this._globalTheme,
+      theme: getTheme(),
       messageBarType: messageBarType || MessageBarType.info,
       onDismiss: onDismiss !== undefined,
       actions: actions !== undefined,

@@ -10,24 +10,10 @@ import { ITheme, getTheme } from '../../../Styling';
  */
 @customizable('MessageBarButton', ['theme', 'styles'], true)
 export class MessageBarButton extends BaseComponent<IButtonProps, {}> {
-  private _globalTheme: ITheme;
-
-  constructor(props: IButtonProps) {
-    super(props);
-
-    this._globalTheme = getTheme();
-  }
-
   public render(): JSX.Element {
     const { styles } = this.props;
+    const theme: ITheme = getTheme();
 
-    return (
-      <DefaultButton
-        {...this.props}
-        styles={getStyles(this._globalTheme, styles)}
-        theme={this._globalTheme}
-        onRenderDescription={nullRender}
-      />
-    );
+    return <DefaultButton {...this.props} styles={getStyles(theme, styles)} theme={theme} onRenderDescription={nullRender} />;
   }
 }
