@@ -24,6 +24,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
 
   const buttonBorderHovered = theme.palette.neutralLighter;
   const buttonBorderChecked = theme.palette.neutralLight;
+  const buttonBorderCheckedHovered = theme.palette.neutralSecondary;
   const buttonBorderIsWhite = theme.palette.neutralTertiary;
 
   // If user provided a value, use it. If not, then we decide depending on the 24px size breakpoint.
@@ -76,7 +77,19 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
       },
       selected && {
         padding: DIVIDING_PADDING,
-        border: `${calculatedBorderWidth}px solid ${buttonBorderChecked}`
+        border: `${calculatedBorderWidth}px solid ${buttonBorderChecked}`,
+        selectors: {
+          ['&:hover::before']: {
+            content: '""',
+            height: height,
+            width: width,
+            position: 'absolute',
+            top: -calculatedBorderWidth,
+            left: -calculatedBorderWidth,
+            borderRadius: circle ? '50%' : 'default',
+            boxShadow: `inset 0 0 0 1px ${buttonBorderCheckedHovered}`
+          }
+        }
       },
       !selected && {
         selectors: {
