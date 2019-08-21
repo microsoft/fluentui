@@ -154,6 +154,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       ariaLabelForSelectionColumn,
       indentWidth,
       rowWidth = 0,
+      paddingTop = 16,
       onColumnClick,
       onColumnContextMenu,
       onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip,
@@ -206,64 +207,64 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
         ref={this._onRootRef}
         onMouseMove={this._onRootMouseMove}
         data-automationid="DetailsHeader"
-        style={{ minWidth: rowWidth }}
+        style={{ minWidth: rowWidth, paddingTop }}
         direction={FocusZoneDirection.horizontal}
       >
         {showCheckbox
           ? [
-              <div
-                key="__checkbox"
-                className={classNames.cellIsCheck}
-                aria-labelledby={`${this._id}-check`}
-                onClick={!isCheckboxHidden ? this._onSelectAllClicked : undefined}
-                aria-colindex={1}
-                role={'columnheader'}
-              >
-                {onRenderColumnHeaderTooltip(
-                  {
-                    hostClassName: classNames.checkTooltip,
-                    id: `${this._id}-checkTooltip`,
-                    setAriaDescribedBy: false,
-                    content: ariaLabelForSelectAllCheckbox,
-                    children: (
-                      <DetailsRowCheck
-                        id={`${this._id}-check`}
-                        aria-label={ariaLabelForSelectionColumn}
-                        aria-describedby={
-                          !isCheckboxHidden
-                            ? ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip
-                              ? `${this._id}-checkTooltip`
-                              : undefined
-                            : ariaLabelForSelectionColumn && !this.props.onRenderColumnHeaderTooltip
+            <div
+              key="__checkbox"
+              className={classNames.cellIsCheck}
+              aria-labelledby={`${this._id}-check`}
+              onClick={!isCheckboxHidden ? this._onSelectAllClicked : undefined}
+              aria-colindex={1}
+              role={'columnheader'}
+            >
+              {onRenderColumnHeaderTooltip(
+                {
+                  hostClassName: classNames.checkTooltip,
+                  id: `${this._id}-checkTooltip`,
+                  setAriaDescribedBy: false,
+                  content: ariaLabelForSelectAllCheckbox,
+                  children: (
+                    <DetailsRowCheck
+                      id={`${this._id}-check`}
+                      aria-label={ariaLabelForSelectionColumn}
+                      aria-describedby={
+                        !isCheckboxHidden
+                          ? ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip
                             ? `${this._id}-checkTooltip`
                             : undefined
-                        }
-                        data-is-focusable={!isCheckboxHidden || undefined}
-                        isHeader={true}
-                        selected={isAllSelected}
-                        anySelected={false}
-                        canSelect={!isCheckboxHidden}
-                        className={classNames.check}
-                        onRenderDetailsCheckbox={onRenderDetailsCheckbox}
-                        useFastIcons={useFastIcons}
-                      />
-                    )
-                  },
-                  this._onRenderColumnHeaderTooltip
-                )}
-              </div>,
-              !this.props.onRenderColumnHeaderTooltip ? (
-                ariaLabelForSelectAllCheckbox && !isCheckboxHidden ? (
-                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel} aria-hidden={true}>
-                    {ariaLabelForSelectAllCheckbox}
-                  </label>
-                ) : ariaLabelForSelectionColumn && isCheckboxHidden ? (
-                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel} aria-hidden={true}>
-                    {ariaLabelForSelectionColumn}
-                  </label>
-                ) : null
+                          : ariaLabelForSelectionColumn && !this.props.onRenderColumnHeaderTooltip
+                            ? `${this._id}-checkTooltip`
+                            : undefined
+                      }
+                      data-is-focusable={!isCheckboxHidden || undefined}
+                      isHeader={true}
+                      selected={isAllSelected}
+                      anySelected={false}
+                      canSelect={!isCheckboxHidden}
+                      className={classNames.check}
+                      onRenderDetailsCheckbox={onRenderDetailsCheckbox}
+                      useFastIcons={useFastIcons}
+                    />
+                  )
+                },
+                this._onRenderColumnHeaderTooltip
+              )}
+            </div>,
+            !this.props.onRenderColumnHeaderTooltip ? (
+              ariaLabelForSelectAllCheckbox && !isCheckboxHidden ? (
+                <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel} aria-hidden={true}>
+                  {ariaLabelForSelectAllCheckbox}
+                </label>
+              ) : ariaLabelForSelectionColumn && isCheckboxHidden ? (
+                <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel} aria-hidden={true}>
+                  {ariaLabelForSelectionColumn}
+                </label>
               ) : null
-            ]
+            ) : null
+          ]
           : null}
         {groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
           <div
@@ -284,8 +285,8 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
             : false;
           return [
             columnReorderProps &&
-              (_isDraggable || columnIndex === columns.length - frozenColumnCountFromEnd) &&
-              this._renderDropHint(columnIndex),
+            (_isDraggable || columnIndex === columns.length - frozenColumnCountFromEnd) &&
+            this._renderDropHint(columnIndex),
             <DetailsColumn
               column={column}
               key={column.key}
@@ -618,12 +619,12 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     return (
       <div key={'dropHintKey'} className={classNames.dropHintStyle} id={`columnDropHint_${dropHintIndex}`}>
         <IconComponent
-          key={`dropHintCaretKey`}
+          key={`dropHintCircleKey`}
           aria-hidden={true}
           data-is-focusable={false}
           data-sizer-index={dropHintIndex}
           className={classNames.dropHintCaretStyle}
-          iconName={'CaretDownSolid8'}
+          iconName={'CircleShapeSolid'}
         />
         <div
           key={`dropHintLineKey`}

@@ -131,9 +131,9 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
     this._dragDropHelper = props.dragDropEvents
       ? new DragDropHelper({
-          selection: this._selection,
-          minimumPixelsForDrag: props.minimumPixelsForDrag
-        })
+        selection: this._selection,
+        minimumPixelsForDrag: props.minimumPixelsForDrag
+      })
       : undefined;
     this._initialFocusedIndex = props.initialFocusedIndex;
   }
@@ -273,9 +273,9 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       this._dragDropHelper && this._dragDropHelper.dispose();
       this._dragDropHelper = newProps.dragDropEvents
         ? new DragDropHelper({
-            selection: this._selection,
-            minimumPixelsForDrag: newProps.minimumPixelsForDrag
-          })
+          selection: this._selection,
+          minimumPixelsForDrag: newProps.minimumPixelsForDrag
+        })
         : undefined;
       shouldForceUpdates = true;
     }
@@ -330,6 +330,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       theme,
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
       onRenderCheckbox,
+      paddingTop,
       useFastIcons
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
@@ -394,16 +395,16 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         compact={compact}
       />
     ) : (
-      <List
-        ref={this._list}
-        role="presentation"
-        items={enableShimmer && !items.length ? SHIMMER_ITEMS : items}
-        onRenderCell={this._onRenderListCell(0)}
-        usePageCache={usePageCache}
-        onShouldVirtualize={onShouldVirtualize}
-        {...additionalListProps}
-      />
-    );
+        <List
+          ref={this._list}
+          role="presentation"
+          items={enableShimmer && !items.length ? SHIMMER_ITEMS : items}
+          onRenderCell={this._onRenderListCell(0)}
+          usePageCache={usePageCache}
+          onShouldVirtualize={onShouldVirtualize}
+          {...additionalListProps}
+        />
+      );
 
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
@@ -427,6 +428,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
             {isHeaderVisible &&
               onRenderDetailsHeader(
                 {
+                  paddingTop,
                   componentRef: this._header,
                   selectionMode: selectionMode,
                   layoutMode: layoutMode!,
@@ -481,8 +483,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
                   {list}
                 </SelectionZone>
               ) : (
-                list
-              )}
+                  list
+                )}
             </FocusZone>
           </div>
           {onRenderDetailsFooter(
@@ -1034,40 +1036,40 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     const groupNestingDepth = this._getGroupNestingDepth();
     const onRenderFooter = onRenderDetailsGroupFooter
       ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-          return onRenderDetailsGroupFooter(
-            {
-              ...props,
-              columns: columns,
-              groupNestingDepth: groupNestingDepth,
-              indentWidth,
-              selection: this._selection,
-              selectionMode: selectionMode,
-              viewport: viewport,
-              checkboxVisibility,
-              cellStyleProps
-            },
-            defaultRender
-          );
-        }
+        return onRenderDetailsGroupFooter(
+          {
+            ...props,
+            columns: columns,
+            groupNestingDepth: groupNestingDepth,
+            indentWidth,
+            selection: this._selection,
+            selectionMode: selectionMode,
+            viewport: viewport,
+            checkboxVisibility,
+            cellStyleProps
+          },
+          defaultRender
+        );
+      }
       : undefined;
 
     const onRenderHeader = onRenderDetailsGroupHeader
       ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-          return onRenderDetailsGroupHeader(
-            {
-              ...props,
-              columns: columns,
-              groupNestingDepth: groupNestingDepth,
-              indentWidth,
-              selection: this._selection,
-              selectionMode: selectionMode,
-              viewport: viewport,
-              checkboxVisibility,
-              cellStyleProps
-            },
-            defaultRender
-          );
-        }
+        return onRenderDetailsGroupHeader(
+          {
+            ...props,
+            columns: columns,
+            groupNestingDepth: groupNestingDepth,
+            indentWidth,
+            selection: this._selection,
+            selectionMode: selectionMode,
+            viewport: viewport,
+            checkboxVisibility,
+            cellStyleProps
+          },
+          defaultRender
+        );
+      }
       : undefined;
 
     return {

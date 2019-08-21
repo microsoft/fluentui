@@ -94,6 +94,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    */
   initialFocusedIndex?: number;
 
+  /**
+   * Optional top padding of the list header (default as 16px)
+   */
+  paddingTop?: number;
+
   /** Optional class name to add to the root element. */
   className?: string;
 
@@ -711,6 +716,6 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
 /**
  * {@docCategory DetailsList}
  */
-export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}
+export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps { }
 
-export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {}
+export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps { }

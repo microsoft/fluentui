@@ -309,9 +309,9 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       {
         display: 'none',
         position: 'absolute',
-        top: -13,
-        left: -7.5,
-        fontSize: 16,
+        top: -20,
+        left: -6.5,
+        fontSize: 14,
         color: palette.themePrimary,
         overflow: 'visible',
         zIndex: 10
