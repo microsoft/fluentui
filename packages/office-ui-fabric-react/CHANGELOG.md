@@ -1,6 +1,73 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 12 Aug 2019 12:30:25 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Aug 2019 12:34:09 GMT and should not be manually modified.
+
+## 7.26.0
+Wed, 21 Aug 2019 12:34:09 GMT
+
+### Minor changes
+
+- Add presenceTitle prop (gogoe@microsoft.com)
+
+### Patches
+
+- Combobox: Updates styles to latest design specs. (v-mare@microsoft.com)
+,- Simplify Button examples (elcraig@microsoft.com)
+,- Use getDocument instead document in FocusZone and FocusTrapZone (sohuts@microsoft.com)
+,- Fix TextField onChange bug (elcraig@microsoft.com)
+,- Fix empty text box when a color component being zero (reli@microsoft.com)
+,- add space functionality to split button with tests (chiechan@microsoft.com)
+
+## 7.25.1
+Tue, 20 Aug 2019 12:31:26 GMT
+
+### Patches
+
+- Nav: update to latest redlines (phkuo@microsoft.com)
+,- Tooltip: Fix examples to pass correct root display styling. (email not defined)
+
+## 7.25.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Adding prop on BaseButton to allow user to specify custom props on SplitButton's primary action button. (pagaur@microsoft.com)
+,- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+,- Add fast Icon variants and useFastIcons option in DetailsList (elcraig@microsoft.com)
+
+### Patches
+
+- FocusZone: Remove role=presentation (elcraig@microsoft.com)
+,- Moving the drag-drop caret icon on top of column divider to make if compatible with Sticky header (svaibhav@microsoft.com)
+,- Slider: update active pressed state color for slider border and thumb to match design toolkit spec. Updated palette references to sematic colors. (marygans@microsoft.com)
+,- TextField: fix onChange issue and async tests (elcraig@microsoft.com)
+,- Dropdown: allow setting empty string as item title (elcraig@microsoft.com)
+,- ActivityItem, Nav, and Pivot example updates (elcraig@microsoft.com)
+,- MessageBarButton: Remove the fixed width added in #8779. (jagore@microsoft.com)
+
+## 7.24.0
+Wed, 14 Aug 2019 12:30:13 GMT
+
+### Minor changes
+
+- ChoiceGroup: fix focusing on options and general cleanup (elcraig@microsoft.com)
+
+### Patches
+
+- Searchbox: Updates styles to latest design specs and added semantic slots usage. (v-mare@microsoft.com)
+
+## 7.23.0
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Minor changes
+
+- Checkbox: added indeterminate state (v-mare@microsoft.com)
+
+### Patches
+
+- Updating snpashots and styles which use $ syntax. (dzearing@microsoft.com)
+,- Changing breadcrumb items to links (camontei@microsoft.com)
+,- Pivot: pivot content (icon, text, count) should be consistently aligned via styling. (dzearing@microsoft.com)
 
 ## 7.22.2
 Mon, 12 Aug 2019 12:30:25 GMT

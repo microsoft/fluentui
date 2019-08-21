@@ -1,38 +1,29 @@
 import * as React from 'react';
-import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IIconProps } from 'office-ui-fabric-react';
 
-export interface IButtonToggleExampleState {
-  muted: boolean;
+export interface IButtonExampleProps {
+  // These are set based on the toggles shown above the examples (not needed in real code)
+  disabled?: boolean;
+  checked?: boolean;
 }
 
-export class ButtonToggleExample extends React.Component<IButtonProps, IButtonToggleExampleState> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      muted: false
-    };
-  }
+const volume0Icon: IIconProps = { iconName: 'Volume0' };
+const volume3Icon: IIconProps = { iconName: 'Volume3' };
 
-  public render(): JSX.Element {
-    const { disabled, checked } = this.props;
+export const ButtonToggleExample: React.FunctionComponent<IButtonExampleProps> = props => {
+  const { disabled, checked } = props;
+  const [muted, setMuted] = React.useState<boolean>(false);
+  const onClick = () => setMuted(!muted);
 
-    // tslint:disable:jsx-no-lambda
-    return (
-      <div>
-        <div>
-          <DefaultButton
-            data-automation-id="test"
-            allowDisabledFocus={true}
-            disabled={disabled}
-            toggle={true}
-            checked={this.state.muted || checked}
-            text={this.state.muted ? 'Volume Muted' : 'Volume Unmuted'}
-            onClick={() => {
-              this.setState({ muted: !this.state.muted });
-            }}
-          />
-        </div>
-      </div>
-    );
-  }
-}
+  return (
+    <DefaultButton
+      toggle
+      checked={muted || checked}
+      text={muted ? 'Volume muted' : 'Volume unmuted'}
+      iconProps={muted ? volume0Icon : volume3Icon}
+      onClick={onClick}
+      allowDisabledFocus
+      disabled={disabled}
+    />
+  );
+};

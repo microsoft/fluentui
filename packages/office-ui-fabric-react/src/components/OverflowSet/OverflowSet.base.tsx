@@ -116,7 +116,8 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     this._unregisterPersistedKeytips();
   }
 
-  public componentWillUpdate() {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate() {
     this._unregisterPersistedKeytips();
   }
 

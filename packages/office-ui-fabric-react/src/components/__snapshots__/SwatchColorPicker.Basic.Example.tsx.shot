@@ -22,7 +22,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <table
       className=
@@ -886,7 +885,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <table
       className=
@@ -1695,7 +1693,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <table
       className=
@@ -2514,7 +2511,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <table
       className=
@@ -4527,7 +4523,6 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <table
       className=

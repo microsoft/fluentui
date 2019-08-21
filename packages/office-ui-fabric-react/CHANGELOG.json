@@ -2,6 +2,205 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 21 Aug 2019 12:34:09 GMT",
+      "tag": "office-ui-fabric-react_v7.26.0",
+      "version": "7.26.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combobox: Updates styles to latest design specs.",
+            "author": "v-mare@microsoft.com",
+            "commit": "9a3955fc93cb4fea86dab7de73967f799a0501f3"
+          },
+          {
+            "comment": "Simplify Button examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "dc83b75a4a45fb5b4d5ad62f856b959d39b6c1da"
+          },
+          {
+            "comment": "Use getDocument instead document in FocusZone and FocusTrapZone",
+            "author": "sohuts@microsoft.com",
+            "commit": "c4766bf28c3c6fe6021e2a0f277524bcc64064b4"
+          },
+          {
+            "comment": "Fix TextField onChange bug",
+            "author": "elcraig@microsoft.com",
+            "commit": "adc0f263cc2c85ea2ff6ef9d44b2b3e3bc52139a"
+          },
+          {
+            "comment": "Fix empty text box when a color component being zero",
+            "author": "reli@microsoft.com",
+            "commit": "f389783057c0ba7f32c5a00c38840bec07125cb8"
+          },
+          {
+            "comment": "add space functionality to split button with tests",
+            "author": "chiechan@microsoft.com",
+            "commit": "2d36be7008d746555faf1570d5541f8e74ea31c8"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add presenceTitle prop",
+            "author": "gogoe@microsoft.com",
+            "commit": "231d33083d5b0bc2bf150c91ccf4ade66caeeb98"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Aug 2019 12:31:26 GMT",
+      "tag": "office-ui-fabric-react_v7.25.1",
+      "version": "7.25.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Nav: update to latest redlines",
+            "author": "phkuo@microsoft.com",
+            "commit": "7779a3437650dff286de759c3474e6fe8c4294e7"
+          },
+          {
+            "comment": "Tooltip: Fix examples to pass correct root display styling.",
+            "author": "email not defined",
+            "commit": "e3b482b0d2587e7a56b2717a27454688fece8197"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Aug 2019 12:30:19 GMT",
+      "tag": "office-ui-fabric-react_v7.25.0",
+      "version": "7.25.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix async patterns in tests",
+            "author": "elcraig@microsoft.com",
+            "commit": "09a0bbca1887a3a4695306ef64abf97986efbd1e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Aug 2019 12:30:43 GMT",
+      "tag": "office-ui-fabric-react_v7.25.0",
+      "version": "7.25.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: Remove role=presentation",
+            "author": "elcraig@microsoft.com",
+            "commit": "f5823e6840f0aa1884b712d8572d2b7d0fc189c2"
+          },
+          {
+            "comment": "Moving the drag-drop caret icon on top of column divider to make if compatible with Sticky header",
+            "author": "svaibhav@microsoft.com",
+            "commit": "f92b1ee8a21054d1f57d0277d3fd0010d9d1b124"
+          },
+          {
+            "comment": "Slider: update active pressed state color for slider border and thumb to match design toolkit spec. Updated palette references to sematic colors.",
+            "author": "marygans@microsoft.com",
+            "commit": "ce35d5fe311321a9f084cc0be326a2d5137a9935"
+          },
+          {
+            "comment": "TextField: fix onChange issue and async tests",
+            "author": "elcraig@microsoft.com",
+            "commit": "6d55bd23655d5dc84e7f2aa613184dcb7468ef67"
+          },
+          {
+            "comment": "Dropdown: allow setting empty string as item title",
+            "author": "elcraig@microsoft.com",
+            "commit": "98b721dd072deb4ffedf5ea0fc85e42a62e4998e"
+          },
+          {
+            "comment": "ActivityItem, Nav, and Pivot example updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "835bb6c84cfa864bccd4b96d038b9ff5bca75c0c"
+          },
+          {
+            "comment": "MessageBarButton: Remove the fixed width added in #8779.",
+            "author": "jagore@microsoft.com",
+            "commit": "c5882425313e25e68c419613f46c660e4e605d6e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding prop on BaseButton to allow user to specify custom props on SplitButton's primary action button.",
+            "author": "pagaur@microsoft.com",
+            "commit": "56706417eb5510ac5128b1ec690da302d3bb2f45"
+          },
+          {
+            "comment": "Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9.",
+            "author": "jagore@microsoft.com",
+            "commit": "ce48383da2d27474122aef769af0c313e29281d0"
+          },
+          {
+            "comment": "Add fast Icon variants and useFastIcons option in DetailsList",
+            "author": "elcraig@microsoft.com",
+            "commit": "9f38bd6bd42b57ae679c956f57304eb1e194b252"
+          }
+        ],
+        "none": [
+          {
+            "comment": "TeachingBubble: Added aria labels to examples with close icons",
+            "author": "marygans@microsoft.com",
+            "commit": "806584e1347d8a4a428f5e9727a1d842002c7a58"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Aug 2019 12:30:13 GMT",
+      "tag": "office-ui-fabric-react_v7.24.0",
+      "version": "7.24.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ChoiceGroup: fix focusing on options and general cleanup",
+            "author": "elcraig@microsoft.com",
+            "commit": "e0eac43d64115bca62712ac742d7dd6258672cf9"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Searchbox: Updates styles to latest design specs and added semantic slots usage.",
+            "author": "v-mare@microsoft.com",
+            "commit": "339fb254438cb74a0de7aa660c84109779883dcd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Aug 2019 12:31:12 GMT",
+      "tag": "office-ui-fabric-react_v7.23.0",
+      "version": "7.23.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Checkbox: added indeterminate state",
+            "author": "v-mare@microsoft.com",
+            "commit": "67bf2ba2d4adaece4b763d6f1b0b8e42ea47ed9b"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Updating snpashots and styles which use $ syntax.",
+            "author": "dzearing@microsoft.com",
+            "commit": ""
+          },
+          {
+            "comment": "Changing breadcrumb items to links",
+            "author": "camontei@microsoft.com",
+            "commit": "67751de82592bd67fe8d91ba145576f012ae09a7"
+          },
+          {
+            "comment": "Pivot: pivot content (icon, text, count) should be consistently aligned via styling.",
+            "author": "dzearing@microsoft.com",
+            "commit": "70ab625a39a61364decf37000310602a8d94c719"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 12 Aug 2019 12:30:25 GMT",
       "tag": "office-ui-fabric-react_v7.22.2",
       "version": "7.22.2",

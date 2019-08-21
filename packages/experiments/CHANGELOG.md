@@ -1,6 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 09 Aug 2019 12:31:50 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+
+## 7.12.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+
+## 7.11.2
+Tue, 13 Aug 2019 12:31:12 GMT
+
+### Patches
+
+- Updating snapshots. (dzearing@microsoft.com)
 
 ## 7.11.1
 Fri, 09 Aug 2019 12:31:50 GMT

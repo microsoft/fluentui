@@ -1,6 +1,13 @@
 # Change Log - @uifabric/migration
 
-This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Aug 2019 12:34:09 GMT and should not be manually modified.
+
+## 7.0.4
+Wed, 21 Aug 2019 12:34:09 GMT
+
+### Patches
+
+- Messaging now with more hints and fix TextField codemod. (vibraga@microsoft.com)
 
 ## 7.0.3
 Wed, 17 Jul 2019 18:58:57 GMT

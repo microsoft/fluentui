@@ -1,5 +1,5 @@
 import { IComponent, IComponentStyles, IHTMLSlot, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
-import { IContextualMenuSlot, IIconSlot } from '../../../utilities/factoryComponents.types';
+import { IContextualMenuSlot, IFontIconSlot } from '../../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../../Utilities';
 import { IButton, IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps, INativeButtonProps } from '../Button.types';
 
@@ -47,7 +47,7 @@ export interface IMenuButtonSlots extends IButtonSlots {
   /**
    * Defines the menu chevron icon that is displayed insisde the MenuButton.
    */
-  menuIcon?: IIconSlot;
+  menuIcon?: IFontIconSlot;
 }
 
 /**

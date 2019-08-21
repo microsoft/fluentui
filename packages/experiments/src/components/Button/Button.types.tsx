@@ -1,7 +1,7 @@
 import { IRawFontStyle, IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { ITextSlot } from 'office-ui-fabric-react';
 import { IComponent, IComponentStyles, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../Foundation';
-import { IIconSlot } from '../../utilities/factoryComponents.types';
+import { IFontIconSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
 import { IActionable, IActionableProps, IActionableSlots, IActionableTokens, IActionableViewProps } from './Actionable/Actionable.types';
 
@@ -39,7 +39,7 @@ export interface IButtonSlots extends IActionableSlots {
   /**
    * Defines the icon that is displayed next to the text inside the Button.
    */
-  icon?: IIconSlot;
+  icon?: IFontIconSlot;
 }
 
 /**
