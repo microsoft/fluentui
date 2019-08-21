@@ -5,7 +5,6 @@ import { TextView } from './Text.view';
 import { TextStyles as styles } from './Text.styles';
 
 export const Text: React.StatelessComponent<ITextProps> = createComponent(TextView, {
-  disableCaching: true,
   displayName: 'Text',
   styles
 });

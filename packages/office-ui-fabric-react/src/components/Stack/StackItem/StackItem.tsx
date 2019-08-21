@@ -18,7 +18,6 @@ const StackItemView: IStackItemComponent['view'] = props => {
 };
 
 export const StackItem: React.StatelessComponent<IStackItemProps> = createComponent(StackItemView, {
-  disableCaching: true,
   displayName: 'StackItem',
   styles
 });

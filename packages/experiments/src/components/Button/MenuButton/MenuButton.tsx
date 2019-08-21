@@ -1,4 +1,5 @@
-import { createComponent } from '../../../Foundation';
+// Temporary import file to experiment with memoization approach.
+import { createComponent } from '@uifabric/foundation/lib/next/createComponent';
 import { useMenuButtonState as state } from './MenuButton.state';
 import { MenuButtonStyles as styles, MenuButtonTokens as tokens } from './MenuButton.styles';
 import { IMenuButtonProps } from './MenuButton.types';

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { concatStyleSets, IStyleSet, ITheme } from '@uifabric/styling';
 import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
-import { createFactory } from './slots';
-import { assign } from './utilities';
+import { createFactory } from '../slots';
+import { assign } from '../utilities';
 
 import {
   IComponentOptions,
@@ -12,8 +12,20 @@ import {
   IToken,
   ITokenFunction,
   IViewComponent
-} from './IComponent';
-import { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
+} from '../IComponent';
+import { IDefaultSlotProps, ISlotCreator, ValidProps } from '../ISlots';
+import { mergeStyles } from '@uifabric/merge-styles';
+
+interface IClassNamesMapNode {
+  className?: string;
+  map: IClassNamesMap;
+}
+
+interface IClassNamesMap {
+  [key: string]: IClassNamesMapNode;
+}
+
+const memoizedClassNamesMap: IClassNamesMap = {};
 
 /**
  * Assembles a higher order component based on the following: styles, theme, view, and state.
@@ -63,15 +75,82 @@ export function createComponent<
     }
 
     const theme = componentProps.theme || settings.theme;
+    const tokens = _resolveTokens(componentProps, theme, options.tokens, settings.tokens, componentProps.tokens) as any;
+    let styles;
 
-    const tokens = _resolveTokens(componentProps, theme, options.tokens, settings.tokens, componentProps.tokens);
-    const styles = _resolveStyles(componentProps, theme, tokens, options.styles, settings.styles, componentProps.styles);
+    const finalStyles: { [key: string]: string | undefined } = {};
+
+    // We get the entry in the memoized classNamesMap for the current component or create one if it doesn't exist.
+    const displayName = options.displayName;
+
+    // If no displayName has been specified, then do not use caching.
+    if (displayName) {
+      if (!memoizedClassNamesMap.hasOwnProperty(displayName)) {
+        memoizedClassNamesMap[displayName] = { map: {} };
+      }
+
+      let current = memoizedClassNamesMap[displayName];
+
+      // Memoize based on the tokens definition.
+      const tokenKeys = Object.keys(tokens).sort();
+      for (const key of tokenKeys) {
+        let nextToken = tokens[key];
+        if (nextToken === undefined) {
+          nextToken = '__undefined__';
+        }
+        if (!current.map.hasOwnProperty(nextToken)) {
+          current.map[nextToken] = { map: {} };
+        }
+        current = current.map[nextToken];
+      }
+
+      // Memoize the slots so we only have to get Object.keys once.
+      let slots = (memoizedClassNamesMap[displayName] as any).slots;
+      let defaultStyles;
+      if (!slots) {
+        defaultStyles = _resolveStyles(componentProps, theme, tokens, options.styles, settings.styles);
+        (memoizedClassNamesMap[displayName] as any).slots = Object.keys(defaultStyles);
+        slots = (memoizedClassNamesMap[displayName] as any).slots;
+      }
+
+      // Memoize based on the base styling of the component (i.e. without user specified props).
+      for (const key of slots) {
+        if (!current.map.hasOwnProperty(key)) {
+          // Get default styles once if we didn't get them before.
+          if (!defaultStyles) {
+            defaultStyles = _resolveStyles(componentProps, theme, tokens, options.styles, settings.styles);
+          }
+          current.map[key] = { className: mergeStyles(defaultStyles[key]), map: {} };
+        }
+        finalStyles[key] = current.map[key].className;
+      }
+
+      if (componentProps.styles) {
+        const userStyles: any =
+          typeof componentProps.styles === 'function'
+            ? componentProps.styles(componentProps as TViewProps, theme, tokens)
+            : componentProps.styles;
+        styles = concatStyleSets(styles, userStyles);
+        if (userStyles) {
+          const userStyleKeys = Object.keys(userStyles);
+          for (const key of userStyleKeys) {
+            if (finalStyles.hasOwnProperty(key)) {
+              finalStyles[key] = mergeStyles([current.map[key].className], userStyles[key]);
+            } else {
+              finalStyles[key] = mergeStyles(userStyles[key]);
+            }
+          }
+        }
+      }
+    } else {
+      styles = _resolveStyles(componentProps, theme, tokens, options.styles, settings.styles, componentProps.styles);
+    }
 
     const viewProps = {
       ...componentProps,
       styles,
       tokens,
-      _defaultStyles: styles
+      _defaultStyles: displayName ? finalStyles : styles
     } as TViewProps & IDefaultSlotProps<any>;
 
     return view(viewProps);
