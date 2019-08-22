@@ -19,7 +19,7 @@ import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { KeytipData } from '../../KeytipData';
-import { memoizeFunction } from '@uifabric/utilities';
+import { memoizeFunction, nullRender } from '@uifabric/utilities';
 import { IKeytipProps } from '../Keytip/Keytip.types';
 
 /**
@@ -166,7 +166,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     let ariaDescribedBy = undefined;
     if (ariaDescription) {
       ariaDescribedBy = _ariaDescriptionId;
-    } else if (secondaryText) {
+    } else if (secondaryText && this.props.onRenderDescription !== nullRender) {
+      // for buttons like CompoundButton with a valid onRenderDescription, we need to set an ariaDescribedBy
+      // for buttons that do not render anything (via nullRender), we should not set an ariaDescribedBy
       ariaDescribedBy = _descriptionId;
     } else if ((nativeProps as any)['aria-describedby']) {
       ariaDescribedBy = (nativeProps as any)['aria-describedby'];

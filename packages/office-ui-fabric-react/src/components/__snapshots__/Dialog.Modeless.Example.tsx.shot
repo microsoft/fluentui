@@ -153,8 +153,6 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
       </label>
     </div>
     <button
-      aria-describedby="id__2"
-      aria-labelledby="id__1"
       className=
           ms-Button
           ms-Button--default
@@ -269,8 +267,6 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
       </div>
     </button>
     <button
-      aria-describedby="id__5"
-      aria-labelledby="id__4"
       className=
           ms-Button
           ms-Button--default
