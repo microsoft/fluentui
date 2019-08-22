@@ -67,8 +67,8 @@ export const Stack: React.StatelessComponent<IStackProps> & {
   Item: React.StatelessComponent<IStackItemProps>;
 } = createComponent(StackView, {
   displayName: 'Stack',
-  statics: StackStatics,
-  styles
+  styles,
+  statics: StackStatics
 });
 
 export default Stack;
