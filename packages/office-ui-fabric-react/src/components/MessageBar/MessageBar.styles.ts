@@ -91,7 +91,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       inset: 1,
       highContrastStyle: {
         outlineOffset: '-4px',
-        outlineColor: 'ActiveBorder'
+        outlineColor: 'Window'
       },
       borderColor: 'transparent'
     }),
