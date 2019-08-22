@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 21 Aug 2019 12:34:09 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Aug 2019 12:34:59 GMT and should not be manually modified.
+
+## 7.27.0
+Thu, 22 Aug 2019 12:34:59 GMT
+
+### Minor changes
+
+- Button: Using FontIcon and ImageIcon instead of Icon in both oufr and experiments Button. (Humberto.Morimoto@microsoft.com)
+,- right align the action buttons per new design (kchau@microsoft.com)
+
+### Patches
+
+- Autofill: fix issue where autofill wouldn't handle delete correctly (joschect@microsoft.com)
+,- making sure we get rid of javascript: urls in nav (kchau@microsoft.com)
+,- Panel Example: Fix function typing (joschect@microsoft.com)
 
 ## 7.26.0
 Wed, 21 Aug 2019 12:34:09 GMT

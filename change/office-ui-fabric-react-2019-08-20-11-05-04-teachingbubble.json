@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "right align the action buttons per new design",
-  "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com",
-  "commit": "a68fcab8e5e63d8e659249ecac327edae68ca7ff",
-  "date": "2019-08-20T18:05:04.921Z"
-}

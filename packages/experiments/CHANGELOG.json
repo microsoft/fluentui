@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 22 Aug 2019 12:34:59 GMT",
+      "tag": "@uifabric/experiments_v7.13.0",
+      "version": "7.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Using FontIcon and ImageIcon instead of Icon in both oufr and experiments Button.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "c98b154a94543323c31e34b39eae8d2058c53c10"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 21 Aug 2019 12:34:09 GMT",
       "tag": "@uifabric/experiments_v7.12.0",
       "version": "7.12.0",

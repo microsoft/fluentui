@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Disabling 'export to codepen' functionality in Card examples.",
-  "packageName": "@uifabric/react-cards",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "1944001393a9e6836d8c36a3ca282c0f91b7096a",
-  "date": "2019-08-21T17:57:50.236Z"
-}

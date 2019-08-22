@@ -2,6 +2,42 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 22 Aug 2019 12:34:59 GMT",
+      "tag": "office-ui-fabric-react_v7.27.0",
+      "version": "7.27.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Autofill: fix issue where autofill wouldn't handle delete correctly",
+            "author": "joschect@microsoft.com",
+            "commit": "98b668899f9b152865de792d07d19b3d32bf2701"
+          },
+          {
+            "comment": "making sure we get rid of javascript: urls in nav",
+            "author": "kchau@microsoft.com",
+            "commit": "267653fde8ac14ffd3eea8a0e8e57720ab1b8feb"
+          },
+          {
+            "comment": "Panel Example: Fix function typing",
+            "author": "joschect@microsoft.com",
+            "commit": "b3a08f9e4ad8ec638e7e0e975cad0f598d597c42"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Button: Using FontIcon and ImageIcon instead of Icon in both oufr and experiments Button.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "c98b154a94543323c31e34b39eae8d2058c53c10"
+          },
+          {
+            "comment": "right align the action buttons per new design",
+            "author": "kchau@microsoft.com",
+            "commit": "a68fcab8e5e63d8e659249ecac327edae68ca7ff"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 21 Aug 2019 12:34:09 GMT",
       "tag": "office-ui-fabric-react_v7.26.0",
       "version": "7.26.0",
