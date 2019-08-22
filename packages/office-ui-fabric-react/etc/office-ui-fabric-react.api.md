@@ -6823,7 +6823,7 @@ export interface ISlider {
 }
 
 // @public
-export interface ISliderMarksArrayFormat {
+export interface ISliderMarks {
     // (undocumented)
     label: string;
     // (undocumented)
@@ -6840,7 +6840,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     defaultValue?: number;
     disabled?: boolean;
     label?: string;
-    marks?: boolean | ISliderMarksArrayFormat[];
+    marks?: boolean | ISliderMarks[];
     max?: number;
     min?: number;
     onChange?: (value: number) => void;
