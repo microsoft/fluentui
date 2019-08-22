@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '../../Utilities';
-import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles, ISliderMarksArrayFormat } from './Slider.types';
+import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles, ISliderMarks } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
 import { TooltipHost } from '../../Tooltip';
@@ -302,7 +302,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   // returns an array of spans each span pertains to a custom label the user passes in
-  private _addLabels(cssRegularLabelClassNames: string | undefined, marks: ISliderMarksArrayFormat[]): JSX.Element[] {
+  private _addLabels(cssRegularLabelClassNames: string | undefined, marks: ISliderMarks[]): JSX.Element[] {
     const { vertical, min, max } = this.props;
     const labels: JSX.Element[] = [];
     if (min === undefined || max === undefined || marks === undefined) {
