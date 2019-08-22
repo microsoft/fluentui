@@ -5,6 +5,7 @@
 ```ts
 
 import { BaseComponent } from '@uifabric/utilities';
+import { BaseComponent as BaseComponent_2 } from 'office-ui-fabric-react/lib/Utilities';
 import { EventGroup } from '@uifabric/utilities';
 import { IBaseProps } from '@uifabric/utilities';
 import { IComponent } from '@uifabric/foundation';
@@ -8834,7 +8835,7 @@ export const sizeToPixels: {
 export const Slider: React.StatelessComponent<ISliderProps>;
 
 // @public (undocumented)
-export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
+export class SliderBase extends BaseComponent_2<ISliderProps, ISliderState> implements ISlider {
     constructor(props: ISliderProps);
     // (undocumented)
     static defaultProps: ISliderProps;

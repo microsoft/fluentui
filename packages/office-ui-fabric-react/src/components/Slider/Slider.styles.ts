@@ -2,6 +2,8 @@ import { ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { getGlobalClassNames, HighContrastSelector, AnimationVariables, getFocusStyle, IRawStyle } from '../../Styling';
 import { getRTL } from '@uifabric/utilities';
 
+const SliderSpacing = 13;
+
 const GlobalClassNames = {
   root: 'ms-Slider',
   enabled: 'ms-Slider-enabled',
@@ -127,7 +129,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         display: 'flex',
         flexWrap: 'nowrap',
         alignItems: 'center',
-        marginBottom: 13
+        marginBottom: SliderSpacing
       },
       vertical && {
         flexDirection: 'column',
@@ -310,7 +312,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         height: '0px',
         background: theme.palette.neutralTertiaryAlt,
         transform: 'translateX(-50%)',
-        marginTop: 13
+        marginTop: SliderSpacing
       },
       vertical && {
         margin: '0 auto 20px',

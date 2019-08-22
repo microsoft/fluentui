@@ -12,20 +12,14 @@ export interface ISlider {
   focus: () => void;
 }
 /**
+ * This is how the array of javascript object should be formated for the custom marks
+ * value denotes the "where" or at what value location should the label be placed at
+ * label is the string that will be placed at the value location for custom labels
  * {@docCategory Slider}
  */
 export interface ISliderMarksArrayFormat {
-  /**
-   * This is how the javascript object should be formated for the custom marks
-   */
   value: number;
-  /**
-   * value denotes the "where" or at what value location should the label be placed at
-   */
   label: string;
-  /**
-   * label is the string that will be placed at the value location for custom labels
-   */
 }
 /**
  * {@docCategory Slider}
