@@ -37,12 +37,6 @@ function lintImports() {
     // These were added to reduce the initial ramifications of disabling relative imports across all examples,
     // the primary goal being to eliminate usage of relative imports going forward.
     // TODO: Ideally these would eventually be removed.
-    'ActivityItem.Compact.Example.tsx',
-    'ActivityItem.Persona.Example.tsx',
-    'Button.CustomSplit.Example.tsx',
-    'Button.Keytips.Example.tsx',
-    'Button.Toggle.Example.tsx',
-    'Button.Variants.Example.tsx',
     'Chiclet.Basic.Example.tsx',
     'ChoiceGroup.Image.Example.tsx',
     'DocumentCard.Basic.Example.tsx',

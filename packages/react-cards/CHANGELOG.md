@@ -1,6 +1,13 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Aug 2019 12:34:59 GMT and should not be manually modified.
+
+## 0.107.8
+Thu, 22 Aug 2019 12:34:59 GMT
+
+### Patches
+
+- Disabling 'export to codepen' functionality in Card examples. (Humberto.Morimoto@microsoft.com)
 
 ## 0.107.7
 Thu, 15 Aug 2019 12:30:43 GMT

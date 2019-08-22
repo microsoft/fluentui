@@ -814,23 +814,28 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                     <i
                       aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            display: inline-block;
-                            flex-shrink: 0;
                             font-family: "FabricMDL2Icons-2";
-                            font-size: 8px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            flex-shrink: 0;
+                            font-size: 8px;
                             height: 16px;
                             line-height: 16px;
                             margin-bottom: 0px;
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
-                            speak: none;
                             text-align: center;
                             vertical-align: middle;
                           }
@@ -946,23 +951,28 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                     <i
                       aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            display: inline-block;
-                            flex-shrink: 0;
                             font-family: "FabricMDL2Icons-2";
-                            font-size: 8px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            flex-shrink: 0;
+                            font-size: 8px;
                             height: 16px;
                             line-height: 16px;
                             margin-bottom: 0px;
                             margin-left: 0px;
                             margin-right: 0px;
                             margin-top: 0px;
-                            speak: none;
                             text-align: center;
                             vertical-align: middle;
                           }

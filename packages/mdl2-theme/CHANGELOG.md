@@ -1,6 +1,13 @@
 # Change Log - @uifabric/mdl2-theme
 
-This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Aug 2019 12:31:26 GMT and should not be manually modified.
+
+## 0.1.3
+Tue, 20 Aug 2019 12:31:26 GMT
+
+### Patches
+
+- Nav: add backwards compat for update to latest redlines (phkuo@microsoft.com)
 
 ## 0.1.2
 Wed, 17 Jul 2019 18:58:57 GMT

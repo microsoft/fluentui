@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Aug 2019 12:34:09 GMT and should not be manually modified.
+
+## 7.2.4
+Wed, 21 Aug 2019 12:34:09 GMT
+
+### Patches
+
+- Use toggles for button example page knobs (elcraig@microsoft.com)
 
 ## 7.2.3
 Thu, 15 Aug 2019 12:30:43 GMT

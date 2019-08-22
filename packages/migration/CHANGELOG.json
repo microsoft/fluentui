@@ -2,6 +2,20 @@
   "name": "@uifabric/migration",
   "entries": [
     {
+      "date": "Wed, 21 Aug 2019 12:34:09 GMT",
+      "tag": "@uifabric/migration_v7.0.4",
+      "version": "7.0.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Messaging now with more hints and fix TextField codemod.",
+            "author": "vibraga@microsoft.com",
+            "commit": "119a353997226c75b29e6d4f6337b3451b2d59e1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jul 2019 18:58:57 GMT",
       "tag": "@uifabric/migration_v7.0.3",
       "version": "7.0.3",

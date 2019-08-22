@@ -101,8 +101,9 @@ function _loadFonts(theme: ITheme): { [name: string]: string } {
     for (const propName of Object.keys(font)) {
       const name = fontName + propName.charAt(0).toUpperCase() + propName.slice(1);
       let value = font[propName];
-      if (propName === 'fontSize' && value.indexOf('px') < 0) {
-        value += 'px';
+      if (propName === 'fontSize' && typeof value === 'number') {
+        // if it's a number, convert it to px by default like our theming system does
+        value = value + 'px';
       }
       lines[name] = value;
     }
@@ -181,6 +182,8 @@ function _expandFrom<TRetVal, TMapType>(propertyName: string | TRetVal | undefin
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
+    bodyBackgroundHovered: p.neutralLighter,
+    bodyBackgroundChecked: p.neutralLight,
     bodyStandoutBackground: p.neutralLighterAlt,
     bodyFrameBackground: p.white,
     bodyFrameDivider: p.neutralLight,
