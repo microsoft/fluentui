@@ -13,12 +13,12 @@ export interface ISlider {
 }
 /**
  * This is how the objects should be formated in the array for the custom marks
- * value denotes the "where" or at what value location should the label be placed at
- * label is the string that will be placed at the value location for custom labels
  * {@docCategory Slider}
  */
 export interface ISliderMarks {
+  // value denotes the "where" or at what value location should the label be placed at
   value: number;
+  // label is the string that will be placed at the value location for custom labels
   label: string;
 }
 /**
@@ -43,6 +43,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
 
   /**
    * Description label of the Slider
+
    */
   label?: string;
 
