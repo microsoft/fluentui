@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "making sure we get rid of javascript: urls in nav",
+  "packageName": "office-ui-fabric-react",
+  "email": "kchau@microsoft.com",
+  "commit": "267653fde8ac14ffd3eea8a0e8e57720ab1b8feb",
+  "date": "2019-08-20T20:30:01.038Z"
+}
