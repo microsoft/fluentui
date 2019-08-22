@@ -202,12 +202,11 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
   private _getValueLabel(className: string): JSX.Element | null {
     const { showValue, disabled, valueFormat, label } = this.props;
-
+    const value = valueFormat ? valueFormat(this.value!) : this.value;
     if (showValue) {
       return (
         <Label className={className} disabled={disabled}>
-          {label && ': '}
-          {valueFormat ? valueFormat(this.value!) : this.value}
+          {label ? `: ${value}` : value}
         </Label>
       );
     }
