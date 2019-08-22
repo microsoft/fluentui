@@ -202,8 +202,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
   private _getValueLabel(className: string): JSX.Element | null {
     const { showValue, disabled, valueFormat, label } = this.props;
-    const value = valueFormat ? valueFormat(this.value!) : this.value;
     if (showValue) {
+      const value = valueFormat ? valueFormat(this.value!) : this.value;
       return (
         <Label className={className} disabled={disabled}>
           {label ? `: ${value}` : value}
@@ -326,13 +326,13 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
   private _addTickmarks(cssRegularTickClassNames: string | undefined): JSX.Element[] {
     const { min, max, step, vertical } = this.props;
-    // if anyof the values are not defined then will not render ticks
+    // if any of the values is undefined then we dont not render ticks
     if (min === undefined || max === undefined || step === undefined) {
       return [];
     }
     const ticks = [];
+    // += number is basically the distance between each tick
     for (let i = 0; i <= 100; i += (100 * step) / (max - min)) {
-      // += number is basically the distance between each tick
       ticks.push(
         <span
           className={cssRegularTickClassNames}
