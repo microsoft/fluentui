@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 19 Aug 2019 12:21:08 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Aug 2019 12:22:24 GMT and should not be manually modified.
+
+## 6.201.2
+Thu, 22 Aug 2019 12:22:24 GMT
+
+### Patches
+
+- Fix empty text box when a color component being zero (reli@microsoft.com)
+,- ColorPicker: remove decimals from alpha value (elcraig@microsoft.com)
 
 ## 6.201.1
 Mon, 19 Aug 2019 12:21:08 GMT

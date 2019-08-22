@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 22 Aug 2019 12:22:24 GMT",
+      "tag": "office-ui-fabric-react_v6.201.2",
+      "version": "6.201.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix empty text box when a color component being zero",
+            "author": "reli@microsoft.com",
+            "commit": "f389783057c0ba7f32c5a00c38840bec07125cb8"
+          },
+          {
+            "comment": "ColorPicker: remove decimals from alpha value",
+            "author": "elcraig@microsoft.com",
+            "commit": "f8e1275afdf2494b44f2d60cbf205e2763398b71"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 Aug 2019 12:21:08 GMT",
       "tag": "office-ui-fabric-react_v6.201.1",
       "version": "6.201.1",
