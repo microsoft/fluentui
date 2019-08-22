@@ -333,10 +333,10 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         height: '4px',
         transform: 'translateY(0px)'
       },
-      disabled! && {
+      disabled && {
         background: theme.palette.neutralLight
       },
-      vertical! && {
+      vertical && {
         width: '16px',
         height: '1px',
         transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
