@@ -248,6 +248,7 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
               font-weight: 400;
               height: 32px;
               line-height: 30px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -588,6 +589,7 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
               font-weight: 400;
               height: 32px;
               line-height: 30px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
