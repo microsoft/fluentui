@@ -17,7 +17,8 @@
     "build": "just-scripts build",
     "just": "just-scripts",
     "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style"
+    "code-style": "just-scripts code-style",
+    "update-api": "just-scripts update-api"
   },
   "devDependencies": {
     "@uifabric/prettier-rules": "^7.0.4",
