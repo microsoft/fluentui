@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '../../Utilities';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles, ISliderMarksArrayFormat } from './Slider.types';
-import { classNamesFunction, getNativeProps, divProperties } from 'office-ui-fabric-react/lib/Utilities';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
+import { Label } from '../../Label';
+import { TooltipHost } from '../../Tooltip';
+import { DirectionalHint } from '../../common/DirectionalHint';
 export interface ISliderState {
   value?: number;
   renderedValue?: number;

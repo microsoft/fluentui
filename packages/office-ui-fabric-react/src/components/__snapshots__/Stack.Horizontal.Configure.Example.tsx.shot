@@ -149,8 +149,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   word-wrap: break-word;
                 }
           >
-            : 
-            5
+            : 5
           </label>
           <div
             className=
@@ -1118,8 +1117,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     word-wrap: break-word;
                   }
             >
-              : 
-              100
+              : 100
             </label>
             <div
               className=
@@ -1482,8 +1480,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   word-wrap: break-word;
                 }
           >
-            : 
-            0
+            : 0
           </label>
           <div
             className=
@@ -1786,8 +1783,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   word-wrap: break-word;
                 }
           >
-            : 
-            0
+            : 0
           </label>
           <div
             className=
@@ -2127,8 +2123,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   word-wrap: break-word;
                 }
           >
-            : 
-            0
+            : 0
           </label>
           <div
             className=
@@ -2431,8 +2426,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   word-wrap: break-word;
                 }
           >
-            : 
-            0
+            : 0
           </label>
           <div
             className=
@@ -2772,8 +2766,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   word-wrap: break-word;
                 }
           >
-            : 
-            0
+            : 0
           </label>
           <div
             className=
@@ -3076,8 +3069,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   word-wrap: break-word;
                 }
           >
-            : 
-            0
+            : 0
           </label>
           <div
             className=

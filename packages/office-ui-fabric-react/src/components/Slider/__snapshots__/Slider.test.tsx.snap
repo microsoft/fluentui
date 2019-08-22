@@ -72,8 +72,7 @@ exports[`Slider renders correctly 1`] = `
           word-wrap: break-word;
         }
   >
-    : 
-    0
+    : 0
   </label>
   <div
     className=

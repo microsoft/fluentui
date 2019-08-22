@@ -93,8 +93,7 @@ exports[`Component Examples renders Stack.Horizontal.Shrink.Example.tsx correctl
             word-wrap: break-word;
           }
     >
-      : 
-      100
+      : 100
     </label>
     <div
       className=

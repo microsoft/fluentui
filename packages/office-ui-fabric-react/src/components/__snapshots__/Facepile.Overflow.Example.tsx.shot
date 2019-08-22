@@ -738,8 +738,7 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
               word-wrap: break-word;
             }
       >
-        : 
-        5
+        : 5
       </label>
       <div
         className=

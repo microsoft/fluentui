@@ -93,8 +93,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapNested.Example.tsx corr
             word-wrap: break-word;
           }
     >
-      : 
-      100
+      : 100
     </label>
     <div
       className=

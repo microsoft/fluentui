@@ -150,8 +150,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   word-wrap: break-word;
                 }
           >
-            : 
-            5
+            : 5
           </label>
           <div
             className=
@@ -1091,8 +1090,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   color: GrayText;
                 }
           >
-            : 
-            200
+            : 200
           </label>
           <div
             className=
@@ -1570,8 +1568,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   word-wrap: break-word;
                 }
           >
-            : 
-            0
+            : 0
           </label>
           <div
             className=
@@ -2728,8 +2725,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   word-wrap: break-word;
                 }
           >
-            : 
-            0
+            : 0
           </label>
           <div
             className=
@@ -3032,8 +3028,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   word-wrap: break-word;
                 }
           >
-            : 
-            0
+            : 0
           </label>
           <div
             className=
@@ -3374,8 +3369,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   word-wrap: break-word;
                 }
           >
-            : 
-            0
+            : 0
           </label>
           <div
             className=
@@ -3678,8 +3672,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   word-wrap: break-word;
                 }
           >
-            : 
-            0
+            : 0
           </label>
           <div
             className=
