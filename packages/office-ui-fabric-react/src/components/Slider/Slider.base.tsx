@@ -206,7 +206,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     if (showValue) {
       return (
         <Label className={className} disabled={disabled}>
-          {label ? `: ${value}` : value}
+          {label ? `${label}: ${value}` : value}
         </Label>
       );
     }
