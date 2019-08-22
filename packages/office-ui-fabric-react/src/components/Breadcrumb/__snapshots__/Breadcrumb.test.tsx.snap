@@ -489,6 +489,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       font-size: 16px;
                       font-weight: 400;
                       height: 100%;
+                      min-width: 32px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -502,7 +503,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       user-select: none;
                       vertical-align: top;
                       white-space: nowrap;
-                      width: 32px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -584,23 +584,28 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -1295,6 +1300,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       font-size: 16px;
                       font-weight: 400;
                       height: 100%;
+                      min-width: 32px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -1308,7 +1314,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       user-select: none;
                       vertical-align: top;
                       white-space: nowrap;
-                      width: 32px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -1390,23 +1395,28 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -1697,6 +1707,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       font-size: 16px;
                       font-weight: 400;
                       height: 100%;
+                      min-width: 32px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -1710,7 +1721,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       user-select: none;
                       vertical-align: top;
                       white-space: nowrap;
-                      width: 32px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -1792,23 +1802,28 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -1921,6 +1936,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                       font-size: 16px;
                       font-weight: 400;
                       height: 100%;
+                      min-width: 32px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -1934,7 +1950,6 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                       user-select: none;
                       vertical-align: top;
                       white-space: nowrap;
-                      width: 32px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -2016,23 +2031,28 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }

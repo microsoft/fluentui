@@ -496,6 +496,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     font-size: 14px;
                     font-weight: 400;
                     height: 24px;
+                    min-width: 32px;
                     outline: transparent;
                     padding-bottom: 0;
                     padding-left: 4px;

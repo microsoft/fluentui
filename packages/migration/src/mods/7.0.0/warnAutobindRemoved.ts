@@ -1,12 +1,14 @@
 import ts from 'typescript';
-import { IMigrationOptions, migration, ModResult } from '../../migration';
+import { IMigrationOptions, migration } from '../../migration';
 import { mod } from 'riceburn';
+import { ModResult } from 'riceburn/lib/interfaces';
+import { getWarningNote } from '../../util/getMessages';
 
 const packageName = 'office-ui-fabric-react';
 const importName = 'autobind';
 
 export default migration(
-  'warn autobind decorator removed',
+  getWarningNote('Autobind decorator (@autobind) removed'),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.ts?(x)', opts).asTypescript((node, modder) => {
       if (

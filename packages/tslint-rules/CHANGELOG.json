@@ -2,6 +2,20 @@
   "name": "@uifabric/tslint-rules",
   "entries": [
     {
+      "date": "Wed, 21 Aug 2019 12:34:09 GMT",
+      "tag": "@uifabric/tslint-rules_v7.0.4",
+      "version": "7.0.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add lint rule banning describe/it.only",
+            "author": "elcraig@microsoft.com",
+            "commit": "adc0f263cc2c85ea2ff6ef9d44b2b3e3bc52139a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Jul 2019 12:28:42 GMT",
       "tag": "@uifabric/tslint-rules_v7.0.3",
       "version": "7.0.3",

@@ -5,9 +5,6 @@ const chalk = require('chalk').default;
 const { logStatus } = require('./logging');
 
 const SEPARATOR = process.platform === 'win32' ? ';' : ':';
-const env = Object.assign({}, process.env);
-
-env.PATH = path.resolve('./node_modules/.bin') + SEPARATOR + env.PATH;
 
 /**
  * Execute a command synchronously.
@@ -17,11 +14,15 @@ env.PATH = path.resolve('./node_modules/.bin') + SEPARATOR + env.PATH;
  * @param {string} [cwd] Working directory in which to run the command
  */
 function execSync(cmd, displayName, cwd = process.cwd()) {
+  // delay copying the env so that mods to the process.env are captured
+  const env = Object.assign({}, process.env);
+  env.PATH = path.resolve('./node_modules/.bin') + SEPARATOR + env.PATH;
+
   logStatus(chalk.gray('Executing: ') + chalk.cyan(displayName || cmd));
 
   child_process.execSync(cmd, {
     cwd,
-    env: env,
+    env,
     stdio: 'inherit'
   });
 }

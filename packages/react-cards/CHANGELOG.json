@@ -2,6 +2,20 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Thu, 22 Aug 2019 12:34:59 GMT",
+      "tag": "@uifabric/react-cards_v0.107.8",
+      "version": "0.107.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Disabling 'export to codepen' functionality in Card examples.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1944001393a9e6836d8c36a3ca282c0f91b7096a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2019 12:30:43 GMT",
       "tag": "@uifabric/react-cards_v0.107.7",
       "version": "0.107.7",

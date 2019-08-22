@@ -156,11 +156,14 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       // Adjust height if needed based on new value
       this._adjustInputHeight();
 
+      // Reset the record of the last value seen by a change/input event
+      this._lastChangeValue = undefined;
+
       // TODO: #5875 added logic to trigger validation in componentWillReceiveProps and other places.
       // This seems a bit odd and hard to integrate with the new approach.
       // (Starting to think we should just put the validation logic in a separate wrapper component...?)
       if (_shouldValidateAllChanges(props)) {
-        this._delayedValidate(this.value);
+        this._delayedValidate(value);
       }
     }
   }
