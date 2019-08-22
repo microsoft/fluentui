@@ -265,7 +265,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   }
 
   private _onNavButtonLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
-    // In this case, the href would be "#" and needs a preventDefault to prevent it from bouncing around
+    // If the href is "#" we should call preventDefault to prevent scrolling to the top of the page
     this._preventBounce(link, ev);
 
     if (link.onClick) {
