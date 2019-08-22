@@ -6,8 +6,6 @@ trigger:
 
 variables:
   - group: fabric-variables
-  - name: YARN_CACHE_FOLDER
-    value: $(Pipeline.Workspace)/.yarn
 
 pool:
   vmImage: 'Ubuntu 16.04'
@@ -18,15 +16,9 @@ steps:
       versionSpec: '10.x'
     displayName: 'Install Node.js'
 
-  - task: CacheBeta@0
-    inputs:
-      key: yarn | $(Agent.OS) | yarn.lock
-      path: $(YARN_CACHE_FOLDER)
-    displayName: Cache Yarn packages
-
   - script: |
-      yarn --frozen-lockfile
-    displayName: yarn --frozen-lockfile
+      yarn
+    displayName: yarn
 
   - script: |
       npm run checkchange
