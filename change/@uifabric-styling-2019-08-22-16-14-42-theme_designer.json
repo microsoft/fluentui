@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Theme Designer: update Semantic Slots table to use mapping of semantic slots to palette colors from theme.",
+  "packageName": "@uifabric/styling",
+  "email": "email not defined",
+  "commit": "da4f0e746afcd45c1dd18c6b0eb522620d033924",
+  "date": "2019-08-22T23:14:42.121Z"
+}
