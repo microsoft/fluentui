@@ -20,12 +20,12 @@ const cellHighContrastFocus = {
 
 export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGridCellStyles => {
   const { theme, disabled, selected, circle, isWhite, height = DEFAULT_CELL_SIZE, width = DEFAULT_CELL_SIZE, borderWidth } = props;
-  const { semanticColors } = theme;
+  const { semanticColors, palette } = theme;
 
-  const buttonBorderHovered = theme.palette.neutralLighter;
-  const buttonBorderChecked = theme.palette.neutralLight;
-  const buttonBorderCheckedHovered = theme.palette.neutralSecondary;
-  const buttonBorderIsWhite = theme.palette.neutralTertiary;
+  const buttonBorderHovered = palette.neutralLighter;
+  const buttonBorderChecked = palette.neutralLight;
+  const buttonBorderCheckedHovered = palette.neutralSecondary;
+  const buttonBorderIsWhite = palette.neutralTertiary;
 
   // If user provided a value, use it. If not, then we decide depending on the 24px size breakpoint.
   const calculatedBorderWidth = borderWidth ? borderWidth : width < CELL_BORDER_BREAKPOINT ? SMALL_BORDER : LARGE_BORDER;
