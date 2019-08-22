@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ITheme, makeSemanticColorsFromPalette, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { Stack, Text } from 'office-ui-fabric-react';
+import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { Stack } from 'office-ui-fabric-react';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { SemanticSlotsDetailsList } from './SemanticSlotsDetailsList';
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
@@ -120,12 +120,14 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
       console.log('palette colors: ', onlyPaletteColors);
       let mapping = {};
       for (let semanticColor in trimmedSemanticColors) {
-        const paletteColorHexStr = (trimmedSemanticColors as any)[semanticColor];
-        for (let palette in props.theme.palette) {
-          if ((onlyPaletteColors as any)[palette] === paletteColorHexStr) {
-            (mapping as any)[semanticColor] = palette;
-          } else if (paletteColorHexStr === 'transparent') {
-            (mapping as any)[semanticColor] = 'transparent';
+        if (semanticColor) {
+          const paletteColorHexStr = (trimmedSemanticColors as any)[semanticColor];
+          for (let palette in props.theme.palette) {
+            if ((onlyPaletteColors as any)[palette] === paletteColorHexStr) {
+              (mapping as any)[semanticColor] = palette;
+            } else if (paletteColorHexStr === 'transparent') {
+              (mapping as any)[semanticColor] = 'transparent';
+            }
           }
         }
       }
@@ -147,9 +149,8 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     }
   };
 
-  let semanticColorsNone = makeSemanticColorsFromPalette(DefaultPalette, false, false);
+  let semanticColorsNone = props.theme.semanticColors;
   slotNames = trimSemanticSlotNames(Object.keys(semanticColorsNone));
-  console.log(slotNames);
   noneSlots = fillVariantSlotsList(VariantThemeType.None);
   neutralSlots = fillVariantSlotsList(VariantThemeType.Neutral);
   softSlots = fillVariantSlotsList(VariantThemeType.Soft);
