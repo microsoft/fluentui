@@ -10,10 +10,6 @@ const CardVerticalExampleCode = require('!raw-loader!@uifabric/react-cards/src/c
 const CardCompactExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Compact.Example.tsx') as string;
 const CardConfigureExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Configure.Example.tsx') as string;
 
-const CardVerticalExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/react-cards/src/components/Card/examples/Card.Vertical.Example.tsx') as string;
-const CardCompactExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/react-cards/src/components/Card/examples/Card.Compact.Example.tsx') as string;
-const CardConfigureExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/react-cards/src/components/Card/examples/Card.Configure.Example.tsx') as string;
-
 export const CardPageProps: IDocPageProps = {
   title: 'Card',
   componentName: 'Card',
@@ -22,19 +18,16 @@ export const CardPageProps: IDocPageProps = {
     {
       title: 'Vertical Card',
       code: CardVerticalExampleCode,
-      codepenJS: CardVerticalExampleCodepen,
       view: <CardVerticalExample />
     },
     {
       title: 'Compact Card',
       code: CardCompactExampleCode,
-      codepenJS: CardCompactExampleCodepen,
       view: <CardCompactExample />
     },
     {
       title: 'Configure Properties',
       code: CardConfigureExampleCode,
-      codepenJS: CardConfigureExampleCodepen,
       view: <CardConfigureExample />
     }
   ],

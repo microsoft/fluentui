@@ -100,7 +100,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               margin-bottom: 8px;
             }
             &.is-open {
-              border-color: #0078d4;
+              border-color: #8a8886;
             }
             @media screen and (-ms-high-contrast: active){&.is-open {
               -ms-high-contrast-adjust: none;
@@ -123,13 +123,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: #201f1e;
             }
             &:hover .ms-ComboBox-Input::placeholder {
-              color: #323130;
+              color: #201f1e;
             }
             &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-              color: #323130;
+              color: #201f1e;
             }
             &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-              color: #323130;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               -ms-high-contrast-adjust: none;
@@ -156,6 +156,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
             &:focus {
               border-color: #0078d4;
+            }
+            &:focus .ms-ComboBox-Input {
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:focus {
               -ms-high-contrast-adjust: none;
@@ -335,23 +338,28 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             <i
               aria-hidden={true}
               className=
+                  ms-Icon
                   ms-Button-icon
+                  {
+                    display: inline-block;
+                  }
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
-                    font-size: 12px;
                     font-style: normal;
                     font-weight: normal;
+                    speak: none;
+                  }
+                  {
+                    flex-shrink: 0;
+                    font-size: 12px;
                     height: 16px;
                     line-height: 16px;
                     margin-bottom: 0;
                     margin-left: 4px;
                     margin-right: 4px;
                     margin-top: 0;
-                    speak: none;
                     text-align: center;
                     vertical-align: middle;
                   }
@@ -565,7 +573,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #0078d4;
+            border-color: #8a8886;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -588,13 +596,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -621,6 +629,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           }
           &:focus {
             border-color: #0078d4;
+          }
+          &:focus .ms-ComboBox-Input {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:focus {
             -ms-high-contrast-adjust: none;
@@ -800,23 +811,28 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons";
-                  font-size: 12px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 12px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0;
                   margin-left: 4px;
                   margin-right: 4px;
                   margin-top: 0;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -898,7 +914,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #0078d4;
+            border-color: #8a8886;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -921,13 +937,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -954,6 +970,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           }
           &:focus {
             border-color: #0078d4;
+          }
+          &:focus .ms-ComboBox-Input {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:focus {
             -ms-high-contrast-adjust: none;
@@ -1134,23 +1153,28 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons";
-                  font-size: 12px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 12px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0;
                   margin-left: 4px;
                   margin-right: 4px;
                   margin-top: 0;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -1232,7 +1256,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #0078d4;
+            border-color: #8a8886;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -1255,13 +1279,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -1288,6 +1312,9 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           }
           &:focus {
             border-color: #0078d4;
+          }
+          &:focus .ms-ComboBox-Input {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:focus {
             -ms-high-contrast-adjust: none;
@@ -1467,23 +1494,28 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons";
-                  font-size: 12px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 12px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0;
                   margin-left: 4px;
                   margin-right: 4px;
                   margin-top: 0;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -1743,15 +1775,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -1844,7 +1873,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border-width: 1px;
                           border: 1px solid transparent;
                           box-sizing: border-box;
-                          color: #000000;
+                          color: #201f1e;
                           cursor: pointer;
                           display: block;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1904,10 +1933,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
@@ -2055,15 +2081,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -2212,15 +2235,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -2418,15 +2438,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -2513,7 +2530,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          background-color: #ffffff;
+                          background-color: transparent;
                           border-color: transparent;
                           border-radius: 0px;
                           border-style: solid;
@@ -2579,10 +2596,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
@@ -2723,15 +2737,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -2880,15 +2891,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -3037,15 +3045,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -3194,15 +3199,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           align-items: center;
                           display: flex;
                         }
-                        &.ms-Checkbox:hover {
-                          background-color: #f3f2f1;
-                        }
-                        &:hover:active {
+                        &.ms-Button--command:hover:active {
                           background-color: #edebe9;
                         }
                         &:hover {
                           background-color: #f3f2f1;
-                          color: #323130;
+                          color: #201f1e;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -3354,7 +3356,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #0078d4;
+            border-color: #8a8886;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -3546,23 +3548,28 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons";
-                  font-size: 12px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 12px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0;
                   margin-left: 4px;
                   margin-right: 4px;
                   margin-top: 0;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -3578,7 +3585,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       className=
 
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             color: #a4262c;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
           }
     >
       Oh no! This ComboBox has an error!
@@ -3657,7 +3669,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #0078d4;
+            border-color: #8a8886;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -3846,24 +3858,29 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a19f9d;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons";
-                  font-size: 12px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #a19f9d;
+                  flex-shrink: 0;
+                  font-size: 12px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0;
                   margin-left: 4px;
                   margin-right: 4px;
                   margin-top: 0;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }

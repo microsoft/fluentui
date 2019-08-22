@@ -1,7 +1,7 @@
 /** @jsx withSlots */
 import { ContextualMenu, DirectionalHint, Text } from 'office-ui-fabric-react';
 import { withSlots, getSlots } from '../../../Foundation';
-import { Icon } from '../../../utilities/factoryComponents';
+import { FontIcon } from '../../../utilities/factoryComponents';
 
 import { Button } from '../Button';
 import { IMenuButtonComponent, IMenuButtonProps, IMenuButtonSlots } from './MenuButton.types';
@@ -31,11 +31,11 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
   const Slots = getSlots<IMenuButtonProps, IMenuButtonSlots>(props, {
     root: 'div',
     button: Button,
-    icon: Icon,
+    icon: FontIcon,
     content: Text,
     menuArea: 'div',
     menu: ContextualMenu,
-    menuIcon: Icon
+    menuIcon: FontIcon
   });
 
   return (

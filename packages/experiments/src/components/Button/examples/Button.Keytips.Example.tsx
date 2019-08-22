@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { Button } from '../Button';
-import { MenuButton } from '../MenuButton/MenuButton';
-import { IMenuButtonProps } from '../MenuButton/MenuButton.types';
-import { SplitButton } from '../SplitButton/SplitButton';
+import { Button, MenuButton, IMenuButtonProps, SplitButton } from '@uifabric/experiments';
 import { Stack, IStackTokens } from 'office-ui-fabric-react';
 import { buildKeytipConfigMap, IKeytipConfig, IKeytipConfigMap } from 'office-ui-fabric-react/lib/utilities/keytips/index';
 

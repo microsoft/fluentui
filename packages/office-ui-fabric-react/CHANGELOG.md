@@ -1,6 +1,36 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 20 Aug 2019 12:31:26 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Aug 2019 12:34:59 GMT and should not be manually modified.
+
+## 7.27.0
+Thu, 22 Aug 2019 12:34:59 GMT
+
+### Minor changes
+
+- Button: Using FontIcon and ImageIcon instead of Icon in both oufr and experiments Button. (Humberto.Morimoto@microsoft.com)
+,- right align the action buttons per new design (kchau@microsoft.com)
+
+### Patches
+
+- Autofill: fix issue where autofill wouldn't handle delete correctly (joschect@microsoft.com)
+,- making sure we get rid of javascript: urls in nav (kchau@microsoft.com)
+,- Panel Example: Fix function typing (joschect@microsoft.com)
+
+## 7.26.0
+Wed, 21 Aug 2019 12:34:09 GMT
+
+### Minor changes
+
+- Add presenceTitle prop (gogoe@microsoft.com)
+
+### Patches
+
+- Combobox: Updates styles to latest design specs. (v-mare@microsoft.com)
+,- Simplify Button examples (elcraig@microsoft.com)
+,- Use getDocument instead document in FocusZone and FocusTrapZone (sohuts@microsoft.com)
+,- Fix TextField onChange bug (elcraig@microsoft.com)
+,- Fix empty text box when a color component being zero (reli@microsoft.com)
+,- add space functionality to split button with tests (chiechan@microsoft.com)
 
 ## 7.25.1
 Tue, 20 Aug 2019 12:31:26 GMT

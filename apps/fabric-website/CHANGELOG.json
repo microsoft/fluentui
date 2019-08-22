@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Wed, 21 Aug 2019 12:34:09 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.1",
+      "version": "7.4.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use toggles for button example page knobs",
+            "author": "elcraig@microsoft.com",
+            "commit": "dc83b75a4a45fb5b4d5ad62f856b959d39b6c1da"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2019 12:30:43 GMT",
       "tag": "@uifabric/fabric-website_v7.4.0",
       "version": "7.4.0",

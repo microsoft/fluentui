@@ -34,6 +34,8 @@ module.exports = function preset() {
   // Build only commonjs (not other TS variants) but still run other tasks
   option('commonjs');
 
+  option('cached', { default: false });
+
   task('clean', clean);
   task('copy', copy);
   task('jest', jest);

@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@uifabric/prettier-rules": "^7.0.3",
-    "@uifabric/tslint-rules": "^7.0.3",
+    "@uifabric/tslint-rules": "^7.0.4",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
