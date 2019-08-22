@@ -12,7 +12,7 @@ export interface ISlider {
   focus: () => void;
 }
 /**
- * This is how the objects should be formated in the array for the custom marks
+ * This is how the objects should be formatted in the array for the custom marks
  * value denotes the "where" or at what value location should the label be placed at
  * label is the string that will be placed at the value location for custom labels
  * {@docCategory Slider}
