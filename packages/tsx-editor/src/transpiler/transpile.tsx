@@ -1,6 +1,7 @@
 import * as monaco from 'monaco-editor';
 import { TypeScriptWorker, EmitOutput } from './monacoTypescriptWorker.d';
 import { transformExample } from './exampleTransform';
+import { _getErrorMessages } from './helpers';
 
 export interface ITranspiledOutput {
   outputString?: string;
@@ -17,12 +18,24 @@ export function transpile(model: monaco.editor.ITextModel): Promise<ITranspiledO
     .then(makeWorker => makeWorker(model.uri))
     .then((worker: TypeScriptWorker) => {
       return worker.getEmitOutput(filename).then((output: EmitOutput) => {
-        if (output.emitSkipped) {
-          transpiledOutput.error = 'Error transpiling code';
-        } else {
+        if (!output.emitSkipped) {
           transpiledOutput.outputString = output.outputFiles[0].text;
+          return transpiledOutput;
         }
-        return transpiledOutput;
+        // There was an error, so get diagnostics
+        return Promise.all([worker.getSyntacticDiagnostics(filename), worker.getSemanticDiagnostics(filename)]).then(
+          ([syntacticDiagnostics, semanticDiagnostics]) => {
+            const diagnostics = syntacticDiagnostics.concat(semanticDiagnostics).filter(d => d.category === 1 /*error*/);
+            diagnostics.sort((a, b) => a.start! - b.start!);
+            if (diagnostics.length) {
+              transpiledOutput.error = _getErrorMessages(diagnostics, model.getValue());
+            } else {
+              transpiledOutput.error = 'Error transpiling code';
+            }
+
+            return transpiledOutput;
+          }
+        );
       });
     })
     .catch(ex => {
