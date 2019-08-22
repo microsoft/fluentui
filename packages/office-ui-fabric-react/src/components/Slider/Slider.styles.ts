@@ -126,7 +126,8 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       {
         display: 'flex',
         flexWrap: 'nowrap',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 13
       },
       vertical && {
         flexDirection: 'column',
@@ -308,7 +309,8 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         position: 'absolute',
         height: '0px',
         background: theme.palette.neutralTertiaryAlt,
-        transform: 'translateY(10px) translateX(-6px)'
+        transform: 'translateX(-50%)',
+        marginTop: 13
       },
       vertical && {
         margin: '0 auto 20px',
@@ -324,15 +326,13 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       getHighContrastSelector(disabled ? 'GrayText' : 'WindowText'),
       {
         position: 'absolute',
-        background: '#fff'
-      },
-      disabled! && {
-        background: theme.palette.neutralLight
-      },
-      {
+        background: '#fff',
         width: '2px',
         height: '4px',
         transform: 'translateY(0px)'
+      },
+      disabled! && {
+        background: theme.palette.neutralLight
       },
       vertical! && {
         width: '16px',

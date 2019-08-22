@@ -6824,9 +6824,7 @@ export interface ISlider {
 
 // @public (undocumented)
 export interface ISliderMarksArrayFormat {
-    // (undocumented)
     label: string;
-    // (undocumented)
     value: number;
 }
 
@@ -6838,7 +6836,6 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     className?: string;
     componentRef?: IRefObject<ISlider>;
     defaultValue?: number;
-    // (undocumented)
     disabled?: boolean;
     label?: string;
     marks?: boolean | ISliderMarksArrayFormat[];

@@ -93,8 +93,7 @@ exports[`Component Examples renders Stack.Horizontal.Wrap.Example.tsx correctly 
             word-wrap: break-word;
           }
     >
-      :
-       
+      : 
       100
     </label>
     <div
@@ -104,6 +103,7 @@ exports[`Component Examples renders Stack.Horizontal.Wrap.Example.tsx correctly 
             align-items: center;
             display: flex;
             flex-wrap: nowrap;
+            margin-bottom: 13px;
           }
     >
       <div
@@ -216,8 +216,9 @@ exports[`Component Examples renders Stack.Horizontal.Wrap.Example.tsx correctly 
                 {
                   background: #c8c6c4;
                   height: 0px;
+                  margin-top: 13px;
                   position: absolute;
-                  transform: translateY(10px) translateX(-6px);
+                  transform: translateX(-50%);
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   background-color: WindowText;
@@ -236,8 +237,9 @@ exports[`Component Examples renders Stack.Horizontal.Wrap.Example.tsx correctly 
                 {
                   background: #c8c6c4;
                   height: 0px;
+                  margin-top: 13px;
                   position: absolute;
-                  transform: translateY(10px) translateX(-6px);
+                  transform: translateX(-50%);
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   background-color: WindowText;

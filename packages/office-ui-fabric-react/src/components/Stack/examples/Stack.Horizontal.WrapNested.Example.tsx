@@ -71,7 +71,7 @@ export class HorizontalStackWrapNestedExample extends React.Component<{}, IExamp
     return (
       <Stack tokens={sectionStackTokens}>
         <Slider
-          label="Change the stack width to see how child items wrap onto multiple rows:"
+          label="Change the stack width to see how child items wrap onto multiple rows"
           min={1}
           max={100}
           step={1}

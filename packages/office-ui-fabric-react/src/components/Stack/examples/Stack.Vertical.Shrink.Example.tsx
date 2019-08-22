@@ -63,7 +63,7 @@ export class VerticalStackShrinkExample extends React.Component<{}, IExampleStat
     return (
       <Stack tokens={outerStackTokens}>
         <Slider
-          label="Change the stack height to see how child items shrink:"
+          label="Change the stack height to see how child items shrink"
           min={1}
           max={100}
           step={1}

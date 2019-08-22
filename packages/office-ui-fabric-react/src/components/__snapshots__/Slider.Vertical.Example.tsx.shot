@@ -95,8 +95,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
             word-wrap: break-word;
           }
     >
-      :
-       
+      : 
       2
     </label>
     <div
@@ -425,8 +424,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
             word-wrap: break-word;
           }
     >
-      :
-       
+      : 
       2
     </label>
     <div
@@ -1031,8 +1029,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
             color: GrayText;
           }
     >
-      :
-       
+      : 
       300
     </label>
     <div
@@ -1314,8 +1311,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
             word-wrap: break-word;
           }
     >
-      :
-       
+      : 
       0
     </label>
     <div
@@ -1644,8 +1640,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
             word-wrap: break-word;
           }
     >
-      :
-       
+      : 
       0%
     </label>
     <div
@@ -1974,8 +1969,7 @@ exports[`Component Examples renders Slider.Vertical.Example.tsx correctly 1`] = 
             word-wrap: break-word;
           }
     >
-      :
-       
+      : 
       5
     </label>
     <div

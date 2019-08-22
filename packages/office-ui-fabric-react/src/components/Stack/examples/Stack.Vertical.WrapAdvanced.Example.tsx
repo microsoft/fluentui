@@ -64,15 +64,7 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
             <Slider label="Stack height:" min={1} max={420} step={1} defaultValue={420} showValue={true} onChange={this._onHeightChange} />
           </Stack.Item>
           <Stack.Item grow>
-            <Slider
-              label="Container width:"
-              min={1}
-              max={100}
-              step={1}
-              defaultValue={100}
-              showValue={true}
-              onChange={this._onWidthChange}
-            />
+            <Slider label="Container width" min={1} max={100} step={1} defaultValue={100} showValue={true} onChange={this._onWidthChange} />
           </Stack.Item>
         </Stack>
 

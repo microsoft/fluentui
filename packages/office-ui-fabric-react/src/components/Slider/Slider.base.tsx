@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '../../Utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from 'office-ui-fabric-react/lib/Utilities';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles, ISliderMarksArrayFormat } from './Slider.types';
-import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
-import { Label } from '../../Label';
-import { TooltipHost } from '../Tooltip';
-import { DirectionalHint } from '../Callout';
-
+import { classNamesFunction, getNativeProps, divProperties } from 'office-ui-fabric-react/lib/Utilities';
+import { Label } from 'office-ui-fabric-react/lib/Label';
+import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
+import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 export interface ISliderState {
   value?: number;
   renderedValue?: number;
@@ -207,7 +206,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     if (showValue) {
       return (
         <Label className={className} disabled={disabled}>
-          {label && ':'} {valueFormat ? valueFormat(this.value!) : this.value}
+          {label && ': '}
+          {valueFormat ? valueFormat(this.value!) : this.value}
         </Label>
       );
     }
@@ -302,7 +302,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     return currentPosition;
   }
 
-  //returns an array of spans each span pertains to a custom label the user passes in
+  // returns an array of spans each span pertains to a custom label the user passes in
   private _addLabels(cssRegularLabelClassNames: string | undefined, marks: ISliderMarksArrayFormat[]): JSX.Element[] {
     const { vertical, min, max } = this.props;
     const labels: JSX.Element[] = [];
@@ -311,7 +311,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     }
 
     for (let i = 0; i < marks.length; i++) {
-      let currentLabel = (
+      const currentLabel = (
         <span
           className={cssRegularLabelClassNames}
           style={this._getStyleUsingOffsetPercent(vertical, ((marks[i].value - min) / (max - min)) * 100)}
@@ -322,7 +322,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       );
       labels.push(currentLabel);
     }
-    console.log(labels);
     return labels;
   }
 

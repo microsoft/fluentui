@@ -116,7 +116,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
           <Stack.Item grow>
             <Stack>
               <Slider
-                label="Number of items:"
+                label="Number of items"
                 min={1}
                 max={10}
                 step={1}
@@ -135,7 +135,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
           <Stack.Item grow>
             <Stack>
               <Slider
-                label="Container height:"
+                label="Container height"
                 min={1}
                 max={400}
                 step={1}
@@ -153,7 +153,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
           <Stack.Item grow>
             <Stack>
               <Slider
-                label="Vertical gap between items:"
+                label="Vertical gap between items"
                 min={0}
                 max={50}
                 step={1}
@@ -199,7 +199,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
           <Stack.Item grow>
             <Stack>
               <Slider
-                label="Left padding:"
+                label="Left padding"
                 min={0}
                 max={50}
                 step={1}
@@ -208,7 +208,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
                 onChange={this._onPaddingLeftChange}
               />
               <Slider
-                label="Right padding:"
+                label="Right padding"
                 min={0}
                 max={50}
                 step={1}
@@ -220,17 +220,9 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
           </Stack.Item>
           <Stack.Item grow>
             <Stack>
+              <Slider label="Top padding" min={0} max={50} step={1} defaultValue={0} showValue={true} onChange={this._onPaddingTopChange} />
               <Slider
-                label="Top padding:"
-                min={0}
-                max={50}
-                step={1}
-                defaultValue={0}
-                showValue={true}
-                onChange={this._onPaddingTopChange}
-              />
-              <Slider
-                label="Bottom padding:"
+                label="Bottom padding"
                 min={0}
                 max={50}
                 step={1}

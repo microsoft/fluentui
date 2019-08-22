@@ -119,7 +119,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
             htmlFor="Slider2"
           >
-            Number of items:
+            Number of items
           </label>
           <label
             className=
@@ -150,8 +150,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   word-wrap: break-word;
                 }
           >
-            :
-             
+            : 
             5
           </label>
           <div
@@ -161,11 +160,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   align-items: center;
                   display: flex;
                   flex-wrap: nowrap;
+                  margin-bottom: 13px;
                 }
           >
             <div
               aria-disabled={false}
-              aria-label="Number of items:"
+              aria-label="Number of items"
               aria-valuemax={10}
               aria-valuemin={1}
               aria-valuenow={5}
@@ -273,8 +273,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background: #c8c6c4;
                         height: 0px;
+                        margin-top: 13px;
                         position: absolute;
-                        transform: translateY(10px) translateX(-6px);
+                        transform: translateX(-50%);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;
@@ -293,8 +294,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background: #c8c6c4;
                         height: 0px;
+                        margin-top: 13px;
                         position: absolute;
-                        transform: translateY(10px) translateX(-6px);
+                        transform: translateX(-50%);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;
@@ -1055,7 +1057,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
             htmlFor="Slider9"
           >
-            Container height:
+            Container height
           </label>
           <label
             className=
@@ -1089,8 +1091,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   color: GrayText;
                 }
           >
-            :
-             
+            : 
             200
           </label>
           <div
@@ -1100,11 +1101,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   align-items: center;
                   display: flex;
                   flex-wrap: nowrap;
+                  margin-bottom: 13px;
                 }
           >
             <div
               aria-disabled={true}
-              aria-label="Container height:"
+              aria-label="Container height"
               aria-valuemax={400}
               aria-valuemin={1}
               aria-valuenow={200}
@@ -1160,8 +1162,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background: #edebe9;
                         height: 0px;
+                        margin-top: 13px;
                         position: absolute;
-                        transform: translateY(10px) translateX(-6px);
+                        transform: translateX(-50%);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: GrayText;
@@ -1180,8 +1183,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background: #edebe9;
                         height: 0px;
+                        margin-top: 13px;
                         position: absolute;
-                        transform: translateY(10px) translateX(-6px);
+                        transform: translateX(-50%);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: GrayText;
@@ -1535,7 +1539,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
             htmlFor="Slider13"
           >
-            Vertical gap between items:
+            Vertical gap between items
           </label>
           <label
             className=
@@ -1566,8 +1570,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   word-wrap: break-word;
                 }
           >
-            :
-             
+            : 
             0
           </label>
           <div
@@ -1577,11 +1580,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   align-items: center;
                   display: flex;
                   flex-wrap: nowrap;
+                  margin-bottom: 13px;
                 }
           >
             <div
               aria-disabled={false}
-              aria-label="Vertical gap between items:"
+              aria-label="Vertical gap between items"
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
@@ -1689,8 +1693,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background: #c8c6c4;
                         height: 0px;
+                        margin-top: 13px;
                         position: absolute;
-                        transform: translateY(10px) translateX(-6px);
+                        transform: translateX(-50%);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;
@@ -1709,8 +1714,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background: #c8c6c4;
                         height: 0px;
+                        margin-top: 13px;
                         position: absolute;
-                        transform: translateY(10px) translateX(-6px);
+                        transform: translateX(-50%);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;
@@ -2691,7 +2697,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
             htmlFor="Slider22"
           >
-            Left padding:
+            Left padding
           </label>
           <label
             className=
@@ -2722,8 +2728,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   word-wrap: break-word;
                 }
           >
-            :
-             
+            : 
             0
           </label>
           <div
@@ -2733,11 +2738,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   align-items: center;
                   display: flex;
                   flex-wrap: nowrap;
+                  margin-bottom: 13px;
                 }
           >
             <div
               aria-disabled={false}
-              aria-label="Left padding:"
+              aria-label="Left padding"
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
@@ -2845,8 +2851,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background: #c8c6c4;
                         height: 0px;
+                        margin-top: 13px;
                         position: absolute;
-                        transform: translateY(10px) translateX(-6px);
+                        transform: translateX(-50%);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;
@@ -2865,8 +2872,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background: #c8c6c4;
                         height: 0px;
+                        margin-top: 13px;
                         position: absolute;
-                        transform: translateY(10px) translateX(-6px);
+                        transform: translateX(-50%);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;
@@ -2993,7 +3001,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
             htmlFor="Slider25"
           >
-            Right padding:
+            Right padding
           </label>
           <label
             className=
@@ -3024,8 +3032,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   word-wrap: break-word;
                 }
           >
-            :
-             
+            : 
             0
           </label>
           <div
@@ -3035,11 +3042,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   align-items: center;
                   display: flex;
                   flex-wrap: nowrap;
+                  margin-bottom: 13px;
                 }
           >
             <div
               aria-disabled={false}
-              aria-label="Right padding:"
+              aria-label="Right padding"
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
@@ -3147,8 +3155,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background: #c8c6c4;
                         height: 0px;
+                        margin-top: 13px;
                         position: absolute;
-                        transform: translateY(10px) translateX(-6px);
+                        transform: translateX(-50%);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;
@@ -3167,8 +3176,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background: #c8c6c4;
                         height: 0px;
+                        margin-top: 13px;
                         position: absolute;
-                        transform: translateY(10px) translateX(-6px);
+                        transform: translateX(-50%);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;
@@ -3333,7 +3343,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
             htmlFor="Slider28"
           >
-            Top padding:
+            Top padding
           </label>
           <label
             className=
@@ -3364,8 +3374,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   word-wrap: break-word;
                 }
           >
-            :
-             
+            : 
             0
           </label>
           <div
@@ -3375,11 +3384,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   align-items: center;
                   display: flex;
                   flex-wrap: nowrap;
+                  margin-bottom: 13px;
                 }
           >
             <div
               aria-disabled={false}
-              aria-label="Top padding:"
+              aria-label="Top padding"
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
@@ -3487,8 +3497,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background: #c8c6c4;
                         height: 0px;
+                        margin-top: 13px;
                         position: absolute;
-                        transform: translateY(10px) translateX(-6px);
+                        transform: translateX(-50%);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;
@@ -3507,8 +3518,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background: #c8c6c4;
                         height: 0px;
+                        margin-top: 13px;
                         position: absolute;
-                        transform: translateY(10px) translateX(-6px);
+                        transform: translateX(-50%);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;
@@ -3635,7 +3647,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 }
             htmlFor="Slider31"
           >
-            Bottom padding:
+            Bottom padding
           </label>
           <label
             className=
@@ -3666,8 +3678,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   word-wrap: break-word;
                 }
           >
-            :
-             
+            : 
             0
           </label>
           <div
@@ -3677,11 +3688,12 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   align-items: center;
                   display: flex;
                   flex-wrap: nowrap;
+                  margin-bottom: 13px;
                 }
           >
             <div
               aria-disabled={false}
-              aria-label="Bottom padding:"
+              aria-label="Bottom padding"
               aria-valuemax={50}
               aria-valuemin={0}
               aria-valuenow={0}
@@ -3789,8 +3801,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background: #c8c6c4;
                         height: 0px;
+                        margin-top: 13px;
                         position: absolute;
-                        transform: translateY(10px) translateX(-6px);
+                        transform: translateX(-50%);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;
@@ -3809,8 +3822,9 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       {
                         background: #c8c6c4;
                         height: 0px;
+                        margin-top: 13px;
                         position: absolute;
-                        transform: translateY(10px) translateX(-6px);
+                        transform: translateX(-50%);
                       }
                       @media screen and (-ms-high-contrast: active){& {
                         background-color: WindowText;

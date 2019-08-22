@@ -62,7 +62,7 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
           }
       htmlFor="Slider2"
     >
-      Change the stack height to see how child items wrap onto multiple columns:
+      Change the stack height to see how child items wrap onto multiple columns
     </label>
     <label
       className=
@@ -93,8 +93,7 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
             word-wrap: break-word;
           }
     >
-      :
-       
+      : 
       420
     </label>
     <div
@@ -104,11 +103,12 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
             align-items: center;
             display: flex;
             flex-wrap: nowrap;
+            margin-bottom: 13px;
           }
     >
       <div
         aria-disabled={false}
-        aria-label="Change the stack height to see how child items wrap onto multiple columns:"
+        aria-label="Change the stack height to see how child items wrap onto multiple columns"
         aria-valuemax={420}
         aria-valuemin={1}
         aria-valuenow={420}
@@ -216,8 +216,9 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                 {
                   background: #c8c6c4;
                   height: 0px;
+                  margin-top: 13px;
                   position: absolute;
-                  transform: translateY(10px) translateX(-6px);
+                  transform: translateX(-50%);
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   background-color: WindowText;
@@ -236,8 +237,9 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                 {
                   background: #c8c6c4;
                   height: 0px;
+                  margin-top: 13px;
                   position: absolute;
-                  transform: translateY(10px) translateX(-6px);
+                  transform: translateX(-50%);
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   background-color: WindowText;

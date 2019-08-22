@@ -73,7 +73,7 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
     return (
       <Stack tokens={sectionStackTokens}>
         <Slider
-          label="Change the stack height to see how child items wrap onto multiple columns:"
+          label="Change the stack height to see how child items wrap onto multiple columns"
           min={1}
           max={420}
           step={1}

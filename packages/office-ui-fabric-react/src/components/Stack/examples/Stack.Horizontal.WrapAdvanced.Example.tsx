@@ -62,11 +62,11 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
       <Stack tokens={sectionStackTokens}>
         <Stack horizontal>
           <Stack.Item grow>
-            <Slider label="Stack width:" min={1} max={100} step={1} defaultValue={100} showValue={true} onChange={this._onWidthChange} />
+            <Slider label="Stack width" min={1} max={100} step={1} defaultValue={100} showValue={true} onChange={this._onWidthChange} />
           </Stack.Item>
           <Stack.Item grow>
             <Slider
-              label="Container height:"
+              label="Container height"
               min={1}
               max={200}
               step={1}
