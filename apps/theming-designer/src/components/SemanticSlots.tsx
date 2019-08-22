@@ -85,7 +85,6 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
   };
 
   const trimSemanticSlotNames = (semanticSlotNames: string[]): any => {
-    console.log(semanticSlotNames);
     let trimmedSemanticSlotNames = [];
     for (let i = 0; i < semanticSlotNames.length; i++) {
       let slotName = (semanticSlotNames as any)[i];
@@ -103,7 +102,6 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
         slotName.includes('menu') ||
         slotName.includes('input')
       ) {
-        console.log('found one');
         trimmedSemanticSlotNames.push(slotName);
       }
     }
@@ -116,9 +114,10 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
       currThemeVariant = getVariant(props.theme, variantType);
       let currVariantSemanticColors = currThemeVariant.semanticColors;
       const trimmedSemanticColors = trimSemanticColors(currVariantSemanticColors);
-      console.log(trimmedSemanticColors);
+      console.log('semantic colors', trimmedSemanticColors);
       let currVariantPaletteColors = currThemeVariant.palette;
       const onlyPaletteColors = trimPaletteColors(currVariantPaletteColors);
+      console.log('palette colors: ', onlyPaletteColors);
       let mapping = {};
       for (let semanticColor in trimmedSemanticColors) {
         const paletteColorHexStr = (trimmedSemanticColors as any)[semanticColor];
