@@ -295,6 +295,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             align-items: center;
             color: #ffffff;
             display: flex;
+            justify-content: flex-end;
           }
           & .ms-Button:not(:first-child) {
             margin-left: 16px;
@@ -850,6 +851,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
             align-items: center;
             color: #ffffff;
             display: flex;
+            justify-content: flex-end;
           }
           & .ms-Button:not(:first-child) {
             margin-left: 16px;
