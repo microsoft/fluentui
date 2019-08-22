@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '../../../Styling';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 
 /**
  * {@docCategory ColorPicker}
@@ -10,7 +10,7 @@ export interface IColorSlider {}
 /**
  * {@docCategory ColorPicker}
  */
-export interface IColorSliderProps extends IBaseProps<IColorSlider> {
+export interface IColorSliderProps {
   /**
    * Gets the component ref.
    */

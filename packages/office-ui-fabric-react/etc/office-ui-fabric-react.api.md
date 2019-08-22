@@ -594,7 +594,7 @@ export enum CollapseAllVisibility {
 export const ColorPicker: React.StatelessComponent<IColorPickerProps>;
 
 // @public (undocumented)
-export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> implements IColorPicker {
+export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPickerState> implements IColorPicker {
     constructor(props: IColorPickerProps);
     // (undocumented)
     readonly color: IColor;
@@ -760,6 +760,9 @@ export enum ContextualMenuItemType {
     // (undocumented)
     Section = 3,
 }
+
+// @public
+export function correctHex(hex: string): string;
 
 // @public
 export function correctHSV(color: IHSV): IHSV;
@@ -1392,6 +1395,9 @@ export const GroupSpacer: React.SFC<IGroupSpacerProps>;
 
 // @public (undocumented)
 export const groupTwo: IExtendedPersonaProps[];
+
+// @public
+export const HEX_REGEX: RegExp;
 
 // @public (undocumented)
 export const HoverCard: React.StatelessComponent<IHoverCardProps>;
@@ -2492,7 +2498,7 @@ export interface IColorPickerGridCellStyles {
 }
 
 // @public (undocumented)
-export interface IColorPickerProps extends IBaseProps<IColorPicker> {
+export interface IColorPickerProps {
     alphaLabel?: string;
     alphaSliderHidden?: boolean;
     blueLabel?: string;
@@ -2513,6 +2519,11 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
 export interface IColorPickerState {
     // (undocumented)
     color: IColor;
+    // (undocumented)
+    editingColor?: {
+        component: keyof IRGBHex;
+        value: string;
+    };
 }
 
 // @public (undocumented)
@@ -2537,7 +2548,7 @@ export interface IColorRectangle {
 }
 
 // @public (undocumented)
-export interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
+export interface IColorRectangleProps {
     className?: string;
     color: IColor;
     componentRef?: IRefObject<IColorRectangle>;
@@ -2568,7 +2579,7 @@ export interface IColorSlider {
 }
 
 // @public (undocumented)
-export interface IColorSliderProps extends IBaseProps<IColorSlider> {
+export interface IColorSliderProps {
     className?: string;
     componentRef?: IRefObject<IColorSlider>;
     isAlpha?: boolean;
@@ -6387,6 +6398,9 @@ export interface IRGB {
 }
 
 // @public (undocumented)
+export type IRGBHex = Pick<IColor, 'r' | 'g' | 'b' | 'a' | 'hex'>;
+
+// @public (undocumented)
 export interface IScrollablePane {
     forceLayoutUpdate(): void;
     getScrollPosition(): number;
@@ -8015,6 +8029,12 @@ export const MAX_COLOR_SATURATION = 100;
 // @public (undocumented)
 export const MAX_COLOR_VALUE = 100;
 
+// @public
+export const MAX_HEX_LENGTH = 6;
+
+// @public
+export const MAX_RGBA_LENGTH = 3;
+
 // @public (undocumented)
 export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, IPeoplePickerProps> {
 }
@@ -8048,6 +8068,12 @@ export enum MessageBarType {
     success = 4,
     warning = 5,
 }
+
+// @public
+export const MIN_HEX_LENGTH = 3;
+
+// @public
+export const MIN_RGBA_LENGTH = 1;
 
 // @public (undocumented)
 export const Modal: React.StatelessComponent<IModalProps>;
@@ -8525,6 +8551,9 @@ export function rgb2hex(r: number, g: number, b: number): string;
 
 // @public
 export function rgb2hsv(r: number, g: number, b: number): IHSV;
+
+// @public
+export const RGBA_REGEX: RegExp;
 
 // @public (undocumented)
 export const ScrollablePane: React.StatelessComponent<IScrollablePaneProps>;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../../Utilities';
+import { classNamesFunction, EventGroup, initializeComponentRef, warnDeprecations } from '../../../Utilities';
 import { IColor } from '../../../utilities/color/interfaces';
 import { MAX_COLOR_SATURATION, MAX_COLOR_VALUE } from '../../../utilities/color/consts';
 import { getFullColorString } from '../../../utilities/color/getFullColorString';
@@ -16,17 +16,21 @@ export interface IColorRectangleState {
 /**
  * {@docCategory ColorPicker}
  */
-export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, IColorRectangleState> implements IColorRectangle {
+export class ColorRectangleBase extends React.Component<IColorRectangleProps, IColorRectangleState> implements IColorRectangle {
   public static defaultProps = {
     minSize: 220
   };
 
+  private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
 
   constructor(props: IColorRectangleProps) {
     super(props);
 
-    this._warnDeprecations({
+    initializeComponentRef(this);
+    this._events = new EventGroup(this);
+
+    warnDeprecations('ColorRectangle', props, {
       onSVChanged: 'onChange'
     });
 
@@ -47,6 +51,10 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
     this.setState({
       color: color
     });
+  }
+
+  public componentWillUnmount() {
+    this._events.dispose();
   }
 
   public render(): JSX.Element {
