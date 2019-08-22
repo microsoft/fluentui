@@ -47,7 +47,7 @@ describe('styleToClassName', () => {
       }
     });
 
-    expect(_stylesheet.getRules()).toEqual('.css-0 .foo, .css-0 .bar{background:red;}');
+    expect(_stylesheet.getRules()).toEqual('.css-0 .foo{background:red;}.css-0 .bar{background:red;}');
   });
 
   it('can have child selectors with comma with pseudo selectors', () => {
@@ -57,7 +57,7 @@ describe('styleToClassName', () => {
       }
     });
 
-    expect(_stylesheet.getRules()).toEqual('.css-0:hover, .css-0:active{background:red;}');
+    expect(_stylesheet.getRules()).toEqual('.css-0:hover{background:red;}.css-0:active{background:red;}');
   });
 
   it('can have child selectors with comma with @media query', () => {
@@ -212,7 +212,7 @@ describe('styleToClassName', () => {
     });
 
     expect(className).toEqual('css-0');
-    expect(_stylesheet.getRules()).toEqual('.class1, .class2, .class3{top:140px;}');
+    expect(_stylesheet.getRules()).toEqual('.class1{top:140px;}.class2{top:140px;}.class3{top:140px;}');
   });
 
   it('can register multiple selectors wrapped within a global wrappers', () => {
@@ -223,7 +223,7 @@ describe('styleToClassName', () => {
     });
 
     expect(className).toEqual('css-0');
-    expect(_stylesheet.getRules()).toEqual('.class1, .class2, .class3{top:140px;}');
+    expect(_stylesheet.getRules()).toEqual('.class1{top:140px;}.class2{top:140px;}.class3{top:140px;}');
   });
 
   it('can process a ":global(.class3, button)" selector', () => {
@@ -234,7 +234,7 @@ describe('styleToClassName', () => {
     });
 
     expect(className).toEqual('css-0');
-    expect(_stylesheet.getRules()).toEqual('.class3, button{top:140px;}');
+    expect(_stylesheet.getRules()).toEqual('.class3{top:140px;}button{top:140px;}');
   });
 
   it('can process a ":global(.class3 button)" selector', () => {
@@ -256,7 +256,7 @@ describe('styleToClassName', () => {
     });
 
     expect(className).toEqual('css-0');
-    expect(_stylesheet.getRules()).toEqual('.css-0 button:focus, .class1, .class2, .class3{top:140px;}');
+    expect(_stylesheet.getRules()).toEqual('.css-0 button:focus{top:140px;}.class1{top:140px;}.class2{top:140px;}.class3{top:140px;}');
   });
 
   it('can process a complex multiple global selector', () => {
@@ -267,7 +267,9 @@ describe('styleToClassName', () => {
     });
 
     expect(className).toEqual('css-0');
-    expect(_stylesheet.getRules()).toEqual('.css20, .css50, #myId button:hover .class1, .class2, .class3{top:140px;}');
+    expect(_stylesheet.getRules()).toEqual(
+      '.css20{top:140px;}.css50{top:140px;}#myId button:hover .class1{top:140px;}.class2{top:140px;}.class3{top:140px;}'
+    );
   });
 
   it('can expand an array of rules', () => {
