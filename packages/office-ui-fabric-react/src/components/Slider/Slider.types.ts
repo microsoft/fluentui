@@ -12,12 +12,12 @@ export interface ISlider {
   focus: () => void;
 }
 /**
- * This is how the array of javascript object should be formated for the custom marks
+ * This is how the objects should be formated in the array for the custom marks
  * value denotes the "where" or at what value location should the label be placed at
  * label is the string that will be placed at the value location for custom labels
  * {@docCategory Slider}
  */
-export interface ISliderMarksArrayFormat {
+export interface ISliderMarks {
   value: number;
   label: string;
 }
@@ -146,7 +146,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * (denotes where) and a string label (denotes what to display for the indicated position)
    * @defaultvalue false
    */
-  marks?: boolean | ISliderMarksArrayFormat[];
+  marks?: boolean | ISliderMarks[];
 
   /**
    *  Optional flag to decide that thumb will snap to closest value while moving the slider
