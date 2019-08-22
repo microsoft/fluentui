@@ -12,7 +12,7 @@ export interface ISlider {
   focus: () => void;
 }
 /**
- *  This is how the objects should be formated in the array for the custom marks
+ * Format for the array of custom marks
  * {@docCategory Slider}
  */
 export interface ISliderMarks {
