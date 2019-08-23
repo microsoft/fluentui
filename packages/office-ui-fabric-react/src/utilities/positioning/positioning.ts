@@ -246,13 +246,15 @@ function _flipToFit(
   for (let i = 0; i < 4; i++) {
     if (!_isEdgeInBounds(currentEstimate, bounding, currentEdge)) {
       directions.splice(directions.indexOf(currentEdge), 1);
-      if (directions.indexOf(currentEdge * -1) > -1) {
-        currentEdge = currentEdge * -1;
-      } else {
-        currentAlignment = currentEdge;
-        currentEdge = directions.slice(-1)[0];
+      if (directions.length > 0) {
+        if (directions.indexOf(currentEdge * -1) > -1) {
+          currentEdge = currentEdge * -1;
+        } else {
+          currentAlignment = currentEdge;
+          currentEdge = directions.slice(-1)[0];
+        }
+        currentEstimate = _estimatePosition(rect, target, { targetEdge: currentEdge, alignmentEdge: currentAlignment }, gap);
       }
-      currentEstimate = _estimatePosition(rect, target, { targetEdge: currentEdge, alignmentEdge: currentAlignment }, gap);
     } else {
       return {
         elementRectangle: currentEstimate,
