@@ -15,6 +15,7 @@
     "_rushRebuildCi": "node common/scripts/install-run-rush.js rebuild --verbose --lint",
     "_rushRebuildFast": "node common/scripts/install-run-rush.js rebuild",
     "postinstall": "npm run _rushInstall && npm run _rushBuildToFabricResources -- --npm-install-mode",
+    "scrub": "node scripts/scrub.js",
     "test": "npm run _rushBuild",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
