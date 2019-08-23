@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update npmignores, delete unused jest setup files",
+  "packageName": "@uifabric/react-cards",
+  "email": "elcraig@microsoft.com",
+  "commit": "b12aaa280221562003af1e0f02aa5f3a5b008041",
+  "date": "2019-08-20T22:44:04.485Z"
+}
