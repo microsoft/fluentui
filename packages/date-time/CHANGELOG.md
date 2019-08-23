@@ -1,6 +1,14 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+
+## 7.4.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+,- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.4.0
 Thu, 15 Aug 2019 12:30:43 GMT

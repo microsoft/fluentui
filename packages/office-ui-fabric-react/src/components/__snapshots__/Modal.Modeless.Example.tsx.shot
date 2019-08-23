@@ -148,8 +148,6 @@ exports[`Component Examples renders Modal.Modeless.Example.tsx correctly 1`] = `
     </label>
   </div>
   <button
-    aria-describedby="id__4"
-    aria-labelledby="id__3"
     className=
         ms-Button
         ms-Button--default

@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 21 Aug 2019 12:34:09 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+
+## 7.4.2
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Get rid of monaco-editor-webpack-plugin (elcraig@microsoft.com)
+,- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.4.1
 Wed, 21 Aug 2019 12:34:09 GMT

@@ -2149,6 +2149,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        min-width: 32px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -2162,7 +2163,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         user-select: none;
                         vertical-align: top;
                         white-space: nowrap;
-                        width: 32px;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2929,6 +2929,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        min-width: 32px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -2942,7 +2943,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         user-select: none;
                         vertical-align: top;
                         white-space: nowrap;
-                        width: 32px;
                       }
                       &::-moz-focus-inner {
                         border: 0;

@@ -30,7 +30,7 @@ function prompt(question) {
 function deleteIfSymlink(itemPath, failedPaths) {
   try {
     // Compare realpath since fs.statSync(itemPath).isSymbolicLink() doesn't work on Windows
-    if (fs.realpathSync(itemPath) !== itemPath) {
+    if (fs.existsSync(itemPath) && fs.realpathSync(itemPath) !== itemPath) {
       if (verbose) {
         console.log('  Deleting symlink: ' + itemPath);
       }

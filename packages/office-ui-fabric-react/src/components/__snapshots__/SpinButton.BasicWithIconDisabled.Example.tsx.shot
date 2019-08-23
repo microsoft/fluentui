@@ -201,6 +201,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 font-size: 14px;
                 font-weight: 400;
                 height: 50%;
+                min-width: 32px;
                 opacity: 0.5;
                 outline: transparent;
                 padding-bottom: 0px;
@@ -341,6 +342,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 font-size: 14px;
                 font-weight: 400;
                 height: 50%;
+                min-width: 32px;
                 opacity: 0.5;
                 outline: transparent;
                 padding-bottom: 0px;

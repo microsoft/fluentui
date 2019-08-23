@@ -1,6 +1,14 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Tue, 23 Jul 2019 16:33:51 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+
+## 7.0.7
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+,- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.0.6
 Tue, 23 Jul 2019 16:33:51 GMT

@@ -1,6 +1,6 @@
-# [@uifabric/azure-themes](http://dev.microsoft.com/fabric)
+# @uifabric/azure-themes
 
-##### Azure theme for Office UI Fabric React
+**Azure theme for [Office UI Fabric React](https://dev.microsoft.com/fabric)**
 
 The Azure themes require the following import statements:
 
@@ -11,7 +11,7 @@ import { AzureCustomizationsLight, AzureCustomizationsDark } from '@uifabric/azu
 
 The theme may subsequently be set to either the Azure or Azure-Dark themes
 
-```js
+```jsx
   const customizations = AzureCustomizationsDark // or alternatively AzureCustomizationsLight
   <Customizer {...customizations}>
     <Fabric>

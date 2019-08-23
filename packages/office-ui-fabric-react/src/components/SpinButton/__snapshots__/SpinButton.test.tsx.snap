@@ -157,6 +157,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              min-width: 32px;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -294,6 +295,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              min-width: 32px;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -575,6 +577,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              min-width: 32px;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -712,6 +715,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              min-width: 32px;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;

@@ -1,6 +1,21 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+
+## 7.13.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+,- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.13.0
+Thu, 22 Aug 2019 12:34:59 GMT
+
+### Minor changes
+
+- Button: Using FontIcon and ImageIcon instead of Icon in both oufr and experiments Button. (Humberto.Morimoto@microsoft.com)
 
 ## 7.12.0
 Thu, 15 Aug 2019 12:30:43 GMT

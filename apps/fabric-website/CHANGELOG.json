@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.2",
+      "version": "7.4.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Get rid of monaco-editor-webpack-plugin",
+            "author": "elcraig@microsoft.com",
+            "commit": "8404e0edc3591a74cda292aedd1e4bff58768e7c"
+          },
+          {
+            "comment": "Fix up readme and package.json descriptions",
+            "author": "elcraig@microsoft.com",
+            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 21 Aug 2019 12:34:09 GMT",
       "tag": "@uifabric/fabric-website_v7.4.1",
       "version": "7.4.1",

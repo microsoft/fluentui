@@ -1,6 +1,15 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Mon, 12 Aug 2019 12:30:25 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+
+## 0.3.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+,- Disable noEmitOnError for now (elcraig@microsoft.com)
+,- Get rid of monaco-editor-webpack-plugin and fix demo app (elcraig@microsoft.com)
 
 ## 0.3.0
 Mon, 12 Aug 2019 12:30:25 GMT

@@ -28,8 +28,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       preserveConstEnums: true,
       outDir: 'lib',
       module: monaco.languages.typescript.ModuleKind.ESNext,
-      lib: ['es5', 'dom'],
-      noEmitOnError: true
+      lib: ['es5', 'dom']
     });
 
     monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: true });
