@@ -1,4 +1,4 @@
-import { buildKeytipConfigMap, IKeytipConfig, IKeytipConfigMap } from 'office-ui-fabric-react/lib/Keytip';
+import { buildKeytipConfigMap, IKeytipConfig, IKeytipConfigMap } from 'office-ui-fabric-react/lib/utilities/keytips/index';
 
 const btnExecute = (el: HTMLElement) => {
   el.click();
