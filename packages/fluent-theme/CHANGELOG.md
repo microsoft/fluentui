@@ -8,8 +8,8 @@ Thu, 01 Aug 2019 12:23:00 GMT
 ### Patches
 
 - ComboBox: Updated colors for borders, text, backgrounds, and font sizes per web fluent toolkit. (v-mare@microsoft.com)
-,- ContextualMenu: Reverts splitPrimary button hover state back to highlighting whole button (v-mare@microsoft.com)
-,- Searchbox: Removed hasInput border (v-mare@microsoft.com)
+- ContextualMenu: Reverts splitPrimary button hover state back to highlighting whole button (v-mare@microsoft.com)
+- Searchbox: Removed hasInput border (v-mare@microsoft.com)
 
 ## 0.16.19
 Wed, 31 Jul 2019 12:20:38 GMT
@@ -192,7 +192,7 @@ Mon, 28 Jan 2019 13:35:27 GMT
 
 ### Patches
 
-- Dropdown: fixes a misalignment of some items in the dropdown. 
+- Dropdown: fixes a misalignment of some items in the dropdown.
 
 ## 0.13.3
 Fri, 25 Jan 2019 13:38:07 GMT
