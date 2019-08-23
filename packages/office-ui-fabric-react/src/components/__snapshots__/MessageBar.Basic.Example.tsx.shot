@@ -417,7 +417,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: Window;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -735,7 +736,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: Window;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -879,7 +881,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: Window;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -1204,7 +1207,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -1319,7 +1323,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -1629,7 +1634,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       border: none;
                       bottom: -2px;
                       left: -2px;
-                      outline-color: ButtonText;
+                      outline-color: ActiveBorder;
+                      outline-offset: -4px;
                       right: -2px;
                       top: -2px;
                     }
@@ -1744,7 +1750,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       border: none;
                       bottom: -2px;
                       left: -2px;
-                      outline-color: ButtonText;
+                      outline-color: ActiveBorder;
+                      outline-offset: -4px;
                       right: -2px;
                       top: -2px;
                     }
@@ -2056,7 +2063,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       border: none;
                       bottom: -2px;
                       left: -2px;
-                      outline-color: ButtonText;
+                      outline-color: ActiveBorder;
+                      outline-offset: -4px;
                       right: -2px;
                       top: -2px;
                     }
@@ -2181,7 +2189,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: Window;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -2488,7 +2497,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                   border: none;
                   bottom: -2px;
                   left: -2px;
-                  outline-color: ButtonText;
+                  outline-color: Window;
+                  outline-offset: -4px;
                   right: -2px;
                   top: -2px;
                 }
@@ -2644,7 +2654,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -2759,7 +2770,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
