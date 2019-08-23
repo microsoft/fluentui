@@ -1,0 +1,8 @@
+{
+  "comment": "MessageBar: Fix high contrast mode issue where you cannot tell which buttons you have focus on.",
+  "type": "patch",
+  "packageName": "office-ui-fabric-react",
+  "email": "cliff.koh@microsoft.com",
+  "commit": "56d02a9d9cf05868799723721e6c9f35dd10c528",
+  "date": "2019-07-26T05:24:45.198Z"
+}
