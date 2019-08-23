@@ -191,8 +191,18 @@ function createTestSummary(testResults) {
   <table>
   <tr>
     <th>Scenario</th>
-    <th>Master Samples *</th>
-    <th>PR Samples *</th>
+    <th>
+      <div>Master Ticks *</div>
+      <div><small>
+      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Why ticks?</a>
+      </small></div>
+    </th>
+    <th>
+    <div>Master Ticks *</div>
+      <div><small>
+      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Why ticks?</a>
+      </small></div>
+    </th>
     <th>Potential Regression</th>
   </tr>`.concat(
     Object.keys(testResults)
@@ -208,7 +218,7 @@ function createTestSummary(testResults) {
       })
       .join('\n')
       .concat(`</table>`)
-      .concat("* Sample counts can vary by up to 30% and shouldn't be used solely for determining regression.  ")
+      .concat("* Ticks can occasionally vary by up to 100% and shouldn't be used solely for determining regression.  ")
       .concat('For more information please see the ')
       .concat('<a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing">Perf Testing wiki</a>.')
   );
