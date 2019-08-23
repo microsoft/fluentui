@@ -1,8 +1,0 @@
-{
-  "comment": "ColorPicker: remove decimals from alpha value",
-  "type": "patch",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "f8e1275afdf2494b44f2d60cbf205e2763398b71",
-  "date": "2019-08-20T23:21:04.954Z"
-}

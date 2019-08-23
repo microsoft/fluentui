@@ -32,7 +32,8 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
       isOutOfOffice,
       styles, // Use getStyles from props.
       presence,
-      theme
+      theme,
+      presenceTitle
     } = this.props;
     const size = sizeBoolean(this.props.size as PersonaSize);
 
@@ -66,7 +67,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
     }
 
     return (
-      <div className={classNames.presence} style={coinSizeWithPresenceStyle}>
+      <div className={classNames.presence} style={coinSizeWithPresenceStyle} title={presenceTitle}>
         {renderIcon && this._onRenderIcon(classNames.presenceIcon, coinSizeWithPresenceIconStyle)}
       </div>
     );
