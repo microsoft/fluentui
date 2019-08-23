@@ -8,7 +8,7 @@ Fri, 23 Aug 2019 12:35:28 GMT
 ### Patches
 
 - Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
-,- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.0.3
 Wed, 17 Jul 2019 18:58:57 GMT

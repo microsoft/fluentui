@@ -8,7 +8,7 @@ Fri, 23 Aug 2019 12:35:28 GMT
 ### Patches
 
 - Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
-,- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.1.1
 Wed, 17 Jul 2019 18:58:57 GMT
@@ -85,7 +85,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.1.1
 Fri, 21 Sep 2018 14:25:46 GMT

@@ -8,7 +8,7 @@ Fri, 23 Aug 2019 12:35:28 GMT
 ### Patches
 
 - Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
-,- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.1.2
 Tue, 20 Aug 2019 12:31:26 GMT
@@ -190,7 +190,7 @@ Mon, 28 Jan 2019 13:35:27 GMT
 
 ### Patches
 
-- Dropdown: fixes a misalignment of some items in the dropdown. 
+- Dropdown: fixes a misalignment of some items in the dropdown.
 
 ## 0.13.3
 Fri, 25 Jan 2019 13:38:07 GMT

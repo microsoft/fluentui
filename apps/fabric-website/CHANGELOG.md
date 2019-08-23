@@ -8,7 +8,7 @@ Fri, 23 Aug 2019 12:35:28 GMT
 ### Patches
 
 - Get rid of monaco-editor-webpack-plugin (elcraig@microsoft.com)
-,- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.4.1
 Wed, 21 Aug 2019 12:34:09 GMT
@@ -34,7 +34,7 @@ Thu, 08 Aug 2019 12:32:41 GMT
 ### Patches
 
 - Update webpack configs to make Monaco work cross-domain (elcraig@microsoft.com)
-,- Fix some markdown bookmarks to enable click navigation to the bookmarked sections. (vibraga@microsoft.com)
+- Fix some markdown bookmarks to enable click navigation to the bookmarked sections. (vibraga@microsoft.com)
 
 ## 7.3.1
 Wed, 07 Aug 2019 12:32:28 GMT
@@ -42,7 +42,7 @@ Wed, 07 Aug 2019 12:32:28 GMT
 ### Patches
 
 - Add customization section to Typography pages (naethell@microsoft.com)
-,- Fix Keytips demo page by adding a KeytipLayer (keyou@microsoft.com)
+- Fix Keytips demo page by adding a KeytipLayer (keyou@microsoft.com)
 
 ## 7.3.0
 Fri, 02 Aug 2019 12:33:29 GMT
@@ -389,7 +389,7 @@ Tue, 23 Apr 2019 12:32:00 GMT
 
 ### Patches
 
-- Remove very old things from the website	
+- Remove very old things from the website
 
 ## 6.13.4
 Wed, 17 Apr 2019 12:33:35 GMT
@@ -631,7 +631,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.4.6
 Tue, 02 Oct 2018 12:28:04 GMT
