@@ -136,11 +136,15 @@ module.exports = async function getPerfRegressions() {
     if (!scenariosAvailable.includes(scenario)) {
       throw new Error(`Invalid scenario: ${scenario}.`);
     }
+    // These lines can be used to check for consistency.
+    // Array.from({ length: 20 }, (entry, index) => {
     scenarios.push({
+      // name: scenario + index,
       name: scenario,
       reference: `${urlForMaster}?scenario=${scenario}&iterations=${iterations}`,
       scenario: `${urlForDeploy}?scenario=${scenario}&iterations=${iterations}`
     });
+    // });
   });
 
   console.log(`\nRunning ${iterations} iterations for each of these scenarios: ${scenarioList}\n`);
@@ -150,11 +154,11 @@ module.exports = async function getPerfRegressions() {
     fs.mkdirSync(tempDir);
   }
 
-  const logfileContents = fs.readdirSync(tempDir);
+  const tempContents = fs.readdirSync(tempDir);
 
-  if (logfileContents.length > 0) {
+  if (tempContents.length > 0) {
     console.log(`Unexpected files already present in ${tempDir}`);
-    logfileContents.forEach(logFile => {
+    tempContents.forEach(logFile => {
       const logFilePath = path.join(tempDir, logFile);
       console.log(`Deleting ${logFilePath}`);
       fs.unlinkSync(logFilePath);
@@ -183,30 +187,38 @@ module.exports = async function getPerfRegressions() {
  * Create test summary based on test results.
  */
 function createTestSummary(testResults) {
-  testResults.forEach(testResult => {
-    testResult.numTicksReference = getTicks(testResult.outfileReference);
-    testResult.numTicks = getTicks(testResult.outfile);
-  });
-
   const result = `Component Perf Analysis:
   <table>
   <tr>
     <th>Scenario</th>
-    <th>Master Samples *</th>
-    <th>PR Samples *</th>
+    <th>
+      <div>Master Ticks *</div>
+      <div><small>
+      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Why ticks?</a>
+      </small></div>
+    </th>
+    <th>
+    <div>PR Ticks *</div>
+      <div><small>
+      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Why ticks?</a>
+      </small></div>
+    </th>
+    <th>Potential Regression</th>
   </tr>`.concat(
-    testResults
-      .map(
-        testResult =>
-          `<tr>
-            <td>${scenarioNames[testResult.name] || testResult.name}</td>
-            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfileReference)}">${testResult.numTicksReference}</a></td>
-            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfile)}">${testResult.numTicks}</a></td>
-           </tr>`
-      )
+    Object.keys(testResults)
+      .map(key => {
+        const testResult = testResults[key];
+
+        return `<tr>
+            <td>${scenarioNames[key] || key}</td>
+            ${getCell(testResult.reference)}
+            ${getCell(testResult)}
+            ${getRegression(testResult)}
+           </tr>`;
+      })
       .join('\n')
       .concat(`</table>`)
-      .concat("* Sample counts can vary by up to 30% and shouldn't be used solely for determining regression.  ")
+      .concat("* Ticks can occasionally vary by up to 100% and shouldn't be used solely for determining regression.  ")
       .concat('For more information please see the ')
       .concat('<a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing">Perf Testing wiki</a>.')
   );
@@ -216,21 +228,22 @@ function createTestSummary(testResults) {
   return result;
 }
 
-/**
- * Get ticks from flamegraph file.
- *
- * @param {*} resultsFile
- */
-function getTicks(resultsFile) {
-  const numTicks = fs
-    .readFileSync(resultsFile, 'utf8')
-    .toString()
-    .match(/numTicks\s?\=\s?([0-9]+)/);
+function getCell(testResult) {
+  const cell = testResult.files
+    ? testResult.files.errorFile
+      ? `<a href="${urlForDeployPath}/${path.basename(testResult.files.errorFile)}">err</a>`
+      : `<a href="${urlForDeployPath}/${path.basename(testResult.files.flamegraphFile)}">${testResult.numTicks}</a>`
+    : `n/a`;
 
-  if (numTicks && numTicks[1]) {
-    return numTicks[1];
-  } else {
-    console.log('Could not read numTicks from ' + resultsFile);
-    return 'n/a';
-  }
+  return `<td>${cell}</td>`;
+}
+
+function getRegression(testResult) {
+  const cell = testResult.isRegression
+    ? testResult.files.regressionFile
+      ? `<a href="${urlForDeployPath}/${path.basename(testResult.files.regressionFile)}">Yes</a>`
+      : ''
+    : '';
+
+  return `<td>${cell}</td>`;
 }

@@ -19,7 +19,7 @@
     "@uifabric/prettier-rules": "^7.0.4",
     "@uifabric/tslint-rules": "^7.0.5",
     "@uifabric/build": "^7.0.0",
-    "flamegrill": "0.0.5"
+    "flamegrill": "0.0.7"
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.2",

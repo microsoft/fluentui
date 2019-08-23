@@ -6971,13 +6971,14 @@ flamebearer@^1.1.3:
     concat-stream "^1.6.2"
     opn "^5.3.0"
 
-flamegrill@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/flamegrill/-/flamegrill-0.0.5.tgz#7a4fd0354a217f35a817a43364b79fccbc746a0c"
-  integrity sha512-BEifGrdcdv+OafbJ9LIGvx++QQKXrR8CvlmOnT2N6hGoK7wnm9AT/yyyPsP8vB5uXEG/GwqSQJyq02vDL1o/tQ==
+flamegrill@0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/flamegrill/-/flamegrill-0.0.7.tgz#025fbf428ae7b92bae32a3d68c9b502bbcbc92f8"
+  integrity sha512-Xu4BzuSTa1/FOBJYbNxVarCHJoz+BuquXNhhkhT4LrFnQ3vy5WChrh8SO58toJ96aYs0hIjn51GmoRXr9JdGWw==
   dependencies:
     concat-stream "^2.0.0"
     flamebearer "^1.1.3"
+    n-readlines "^1.0.0"
     puppeteer "^1.13.0"
     yargs-parser "^13.1.0"
 
@@ -10693,6 +10694,11 @@ mute-stream@~0.0.4:
   version "0.0.8"
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-0.0.8.tgz#1630c42b2251ff81e2a283de96a5497ea92e5e0d"
   integrity sha512-nnbWWOkoWyUsTjKrhgD0dcz22mdkSnpYqbEjIm2nhwhuxlSkpywJmBo8h0ZqJdkp73mb90SssHkN4rsRaBAfAA==
+
+n-readlines@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/n-readlines/-/n-readlines-1.0.0.tgz#c353797f216c253fdfef7e91da4e8b17c29a91a6"
+  integrity sha512-ISDqGcspVu6U3VKqtJZG1uR55SmNNF9uK0EMq1IvNVVZOui6MW6VR0+pIZhqz85ORAGp+4zW+5fJ/SE7bwEibA==
 
 nan@^2.12.1, nan@^2.13.2:
   version "2.14.0"
