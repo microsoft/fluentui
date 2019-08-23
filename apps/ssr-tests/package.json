@@ -1,12 +1,8 @@
 {
   "name": "ssr-tests",
   "version": "7.0.0",
-  "description": "Reusable React components for building experiences for Office 365.",
+  "description": "Server-side rendering tests for office-ui-fabric-react.",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
-  },
   "scripts": {
     "build": "just-scripts build",
     "code-style": "node -v",

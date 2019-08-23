@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/styling",
   "version": "7.6.0",
-  "description": "Defines the core Office UI Fabric styles through a JavaScript interface.",
+  "description": "Styling helpers for Office UI Fabric.",
   "repository": {
     "type": "git",
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"

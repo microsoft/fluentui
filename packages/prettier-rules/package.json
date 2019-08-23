@@ -2,5 +2,10 @@
   "name": "@uifabric/prettier-rules",
   "version": "7.0.3",
   "description": "Shared Prettier rules for UI Fabric projects",
-  "main": "prettier.config.js"
+  "main": "prettier.config.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
+  "license": "MIT"
 }

@@ -1,6 +1,6 @@
-# [Office UI Fabric React Foundation](http://dev.microsoft.com/fabric)
+# @uifabric/foundation
 
-##### Foundation for Office UI Fabric React
+**Foundation for [Office UI Fabric React](https://dev.microsoft.com/fabric)**
 
 This library provides the foundation for creating and using Fabric components.
 

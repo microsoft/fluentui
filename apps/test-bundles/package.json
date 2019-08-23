@@ -9,10 +9,6 @@
   ],
   "typings": "lib/index.d.ts",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
-  },
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
