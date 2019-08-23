@@ -44,7 +44,7 @@ export function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, 
   return rules;
 }
 
-function extractRulesFromString(arg: string, rules: IRuleSet, currentSelector: string) {
+function extractRulesFromString(arg: string, rules: IRuleSet, currentSelector: string): void {
   const stylesheet = Stylesheet.getInstance();
   const expandedRules = stylesheet.argsFromClassName(arg);
 
@@ -94,7 +94,7 @@ function expandSelector(newSelector: string, currentSelector: string): string {
   return newSelector;
 }
 
-export function handleSelectors(arg: IStyle, currentSelector: string, rules: IRuleSet = { __order: [] }) {
+export function handleSelectors(arg: IStyle, currentSelector: string, rules: IRuleSet = { __order: [] }): void {
   // tslint:disable-next-line:no-any
   const selectors: { [key: string]: IStyle } = (arg as any).selectors;
 

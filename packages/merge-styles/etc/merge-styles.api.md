@@ -98,6 +98,7 @@ export interface IRawFontStyle {
 // @public
 export interface IRawStyle extends IRawStyleBase {
     displayName?: string;
+    // @deprecated (undocumented)
     selectors?: {
         [key: string]: IStyle;
     };
@@ -416,7 +417,7 @@ export function keyframes(timeline: {
 }): string;
 
 // @public
-export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
+export function mergeStyles(...args: (any)[]): string;
 
 // @public
 export function mergeStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(styleSet: TStyleSet | false | null | undefined): IProcessedStyleSet<TStyleSet>;
