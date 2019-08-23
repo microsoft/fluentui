@@ -7,6 +7,8 @@ export interface ITranspiledOutput {
   error?: string | string[];
 }
 
+// This is intentionally not an async function, because debugging within transpiled async functions
+// is next to impossible.
 export function transpile(model: monaco.editor.ITextModel): Promise<ITranspiledOutput> {
   const transpiledOutput: ITranspiledOutput = { error: undefined, outputString: undefined };
   const filename = model.uri.toString();
