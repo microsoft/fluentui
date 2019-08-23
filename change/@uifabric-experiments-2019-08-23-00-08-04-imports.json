@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Get rid of relative imports in examples",
+  "packageName": "@uifabric/experiments",
+  "email": "elcraig@microsoft.com",
+  "commit": "46485e4494c6cccfb271ea20f5e6c0c490cb2e8f",
+  "date": "2019-08-23T07:08:03.725Z"
+}
