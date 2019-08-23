@@ -198,7 +198,7 @@ function createTestSummary(testResults) {
       </small></div>
     </th>
     <th>
-    <div>Master Ticks *</div>
+    <div>PR Ticks *</div>
       <div><small>
       <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Why ticks?</a>
       </small></div>
