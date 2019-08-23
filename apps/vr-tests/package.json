@@ -39,6 +39,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
+    "@uifabric/example-data": "^7.0.0",
     "@uifabric/experiments": "^7.13.1",
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/react-cards": "^0.107.9",
