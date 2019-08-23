@@ -1,5 +1,5 @@
 import * as monaco from 'monaco-editor';
-import { TypeScriptWorker, EmitOutput } from './monacoTypescriptWorker';
+import { TypeScriptWorker, EmitOutput } from './monacoTypescriptWorker.d';
 import { transformExample } from './exampleTransform';
 
 export interface ITranspiledOutput {
