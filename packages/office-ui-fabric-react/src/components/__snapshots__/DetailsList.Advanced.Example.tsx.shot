@@ -853,7 +853,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                   line-height: 42px;
                   min-width: 100%;
                   padding-bottom: 1px;
-                  padding-top: 1px;
+                  padding-top: 16px;
                   position: relative;
                   user-select: none;
                   vertical-align: top;
@@ -1406,7 +1406,7 @@ exports[`Component Examples renders DetailsList.Advanced.Example.tsx correctly 1
                     bottom: 0px;
                     display: none;
                     position: absolute;
-                    top: 0px;
+                    top: 16px;
                     width: 1px;
                     z-index: 5;
                   }

@@ -101,7 +101,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         whiteSpace: 'nowrap',
         boxSizing: 'content-box',
         paddingBottom: '1px',
-        paddingTop: '1px',
+        paddingTop: '16px',
         borderBottom: `1px solid ${semanticColors.bodyDivider}`,
         cursor: 'default',
         userSelect: 'none',
@@ -307,9 +307,9 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       {
         display: 'none',
         position: 'absolute',
-        top: -18,
-        left: -7.5,
-        fontSize: fonts.mediumPlus.fontSize,
+        top: -28,
+        left: -6.5,
+        fontSize: fonts.medium.fontSize,
         color: palette.themePrimary,
         overflow: 'visible',
         zIndex: 10
@@ -322,9 +322,9 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         display: 'none',
         position: 'absolute',
         bottom: 0,
-        top: 6,
+        top: 0,
         overflow: 'hidden',
-        height: 37,
+        height: 42,
         width: 1,
         background: palette.themePrimary,
         zIndex: 10

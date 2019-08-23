@@ -625,7 +625,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     line-height: 42px;
                     min-width: 100%;
                     padding-bottom: 1px;
-                    padding-top: 1px;
+                    padding-top: 16px;
                     position: relative;
                     user-select: none;
                     vertical-align: top;
