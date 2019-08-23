@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "MergeStyles: loosening typings & top level selectors support",
+  "packageName": "@uifabric/merge-styles",
+  "email": "email not defined",
+  "commit": "036314eaab7e7f2a49a43a1f554034f3c7616dc7",
+  "date": "2019-08-23T18:37:41.482Z"
+}
