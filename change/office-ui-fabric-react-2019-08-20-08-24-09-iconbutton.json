@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fixing the icons to have minWidth instead of hard coded width",
-  "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com",
-  "commit": "c65edc3a401e7a7940645d6431b2bab188a0abd5",
-  "date": "2019-08-20T15:24:09.305Z"
-}

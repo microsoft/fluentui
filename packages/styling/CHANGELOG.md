@@ -1,6 +1,14 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 20 Aug 2019 12:31:26 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+
+## 7.6.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+,- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.6.0
 Tue, 20 Aug 2019 12:31:26 GMT

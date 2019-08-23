@@ -1,6 +1,14 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Thu, 22 Aug 2019 12:34:59 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+
+## 0.107.9
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+,- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 0.107.8
 Thu, 22 Aug 2019 12:34:59 GMT

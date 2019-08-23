@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/icons",
-  "version": "7.1.1",
+  "version": "7.1.2",
   "description": "Office UI Fabric icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -20,13 +20,13 @@
     "code-style": "just-scripts code-style"
   },
   "devDependencies": {
-    "@uifabric/prettier-rules": "^7.0.3",
-    "@uifabric/tslint-rules": "^7.0.4",
+    "@uifabric/prettier-rules": "^7.0.4",
+    "@uifabric/tslint-rules": "^7.0.5",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.1",
-    "@uifabric/styling": "^7.6.0",
+    "@uifabric/set-version": "^7.0.2",
+    "@uifabric/styling": "^7.6.1",
     "tslib": "^1.7.1"
   }
 }

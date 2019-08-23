@@ -1,6 +1,14 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Mon, 29 Jul 2019 12:26:00 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+
+## 7.0.6
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+,- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.0.5
 Mon, 29 Jul 2019 12:26:00 GMT

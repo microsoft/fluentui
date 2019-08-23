@@ -2,6 +2,40 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "office-ui-fabric-react_v7.27.1",
+      "version": "7.27.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MessageBar: Fix high contrast mode issue where you cannot tell which buttons you have focus on.",
+            "author": "cliff.koh@microsoft.com",
+            "commit": "56d02a9d9cf05868799723721e6c9f35dd10c528"
+          },
+          {
+            "comment": "fixing the icons to have minWidth instead of hard coded width",
+            "author": "kchau@microsoft.com",
+            "commit": "c65edc3a401e7a7940645d6431b2bab188a0abd5"
+          },
+          {
+            "comment": "Update npmignores, delete unused jest setup files",
+            "author": "elcraig@microsoft.com",
+            "commit": "b12aaa280221562003af1e0f02aa5f3a5b008041"
+          },
+          {
+            "comment": "make sure to skip aria-describedby for onRenderDescription is nullRender",
+            "author": "kchau@microsoft.com",
+            "commit": "848e0bb2a102fa6d0cc6be601fff635657889ece"
+          },
+          {
+            "comment": "Fix up readme and package.json descriptions",
+            "author": "elcraig@microsoft.com",
+            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Aug 2019 12:34:59 GMT",
       "tag": "office-ui-fabric-react_v7.27.0",
       "version": "7.27.0",

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "make sure to skip aria-describedby for onRenderDescription is nullRender",
-  "packageName": "office-ui-fabric-react",
-  "email": "kchau@microsoft.com",
-  "commit": "848e0bb2a102fa6d0cc6be601fff635657889ece",
-  "date": "2019-08-22T16:49:52.716Z"
-}

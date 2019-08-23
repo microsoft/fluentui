@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/set-version",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "description": "Non-Fabric-specific package version setter",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -17,8 +17,8 @@
   },
   "devDependencies": {
     "@types/jest": "23.0.0",
-    "@uifabric/prettier-rules": "^7.0.3",
-    "@uifabric/tslint-rules": "^7.0.4",
+    "@uifabric/prettier-rules": "^7.0.4",
+    "@uifabric/tslint-rules": "^7.0.5",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {

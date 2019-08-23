@@ -2,6 +2,30 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "@uifabric/example-app-base_v7.6.1",
+      "version": "7.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update npmignores, delete unused jest setup files",
+            "author": "elcraig@microsoft.com",
+            "commit": "b12aaa280221562003af1e0f02aa5f3a5b008041"
+          },
+          {
+            "comment": "Get rid of monaco-editor-webpack-plugin",
+            "author": "elcraig@microsoft.com",
+            "commit": "8404e0edc3591a74cda292aedd1e4bff58768e7c"
+          },
+          {
+            "comment": "Fix up readme and package.json descriptions",
+            "author": "elcraig@microsoft.com",
+            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2019 12:30:43 GMT",
       "tag": "@uifabric/example-app-base_v7.6.0",
       "version": "7.6.0",

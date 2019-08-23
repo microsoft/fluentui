@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Disable noEmitOnError for now",
-  "packageName": "@uifabric/tsx-editor",
-  "email": "elcraig@microsoft.com",
-  "commit": "cd09d67cabaa8b44ad373f37397b58b9f08bd5da",
-  "date": "2019-08-22T22:29:38.424Z"
-}

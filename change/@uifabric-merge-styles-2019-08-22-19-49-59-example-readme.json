@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix up readme and package.json descriptions",
-  "packageName": "@uifabric/merge-styles",
-  "email": "elcraig@microsoft.com",
-  "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71",
-  "date": "2019-08-23T02:49:57.667Z"
-}
