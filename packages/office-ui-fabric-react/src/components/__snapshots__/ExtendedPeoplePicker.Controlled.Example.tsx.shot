@@ -23,7 +23,6 @@ exports[`Component Examples renders ExtendedPeoplePicker.Controlled.Example.tsx 
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className="ms-SelectionZone"

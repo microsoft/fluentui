@@ -123,9 +123,10 @@ describe('mergeStyleSets', () => {
       subComponentStyles: {}
     });
 
+    console.log(_stylesheet.getRules());
     expect(_stylesheet.getRules()).toEqual(
-      '.a-0:hover .b-1{background:green;}' +
-        '.a-0:focus .c-foo-2{background:red;}' +
+      '.a-0:hover $b{background:green;}' +
+        '.a-0:focus $c-foo{background:red;}' +
         '.a-0:active .d{background:pink;}' +
         '.b-1{background:blue;}'
     );
@@ -141,6 +142,7 @@ describe('mergeStyleSets', () => {
         }
       }
     });
+    // test that needs to pass to confirm top level support of &: selectors
     //   mergeStyleSets({
     //     a: {
     //       '&:hover': { background: 'green' }
@@ -172,7 +174,7 @@ describe('mergeStyleSets', () => {
       child: 'd child-1',
       subComponentStyles: {}
     });
-    expect(_stylesheet.getRules()).toEqual('.root-0:hover .child-1{background:red;}' + '.child-1{background:green;}');
+    expect(_stylesheet.getRules()).toEqual('.root-0:hover $child{background:red;}' + '.child-1{background:green;}');
   });
 
   it('can merge class names', () => {

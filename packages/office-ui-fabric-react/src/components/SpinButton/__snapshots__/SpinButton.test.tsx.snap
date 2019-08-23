@@ -41,10 +41,10 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             margin-right: 0px;
             margin-top: 0px;
             overflow-wrap: break-word;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
             pointer-events: none;
             word-wrap: break-word;
           }
@@ -157,6 +157,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              min-width: 32px;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -243,23 +244,28 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons-2";
-                  font-size: 8px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 8px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
                   margin-top: 0px;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -289,6 +295,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              min-width: 32px;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -375,23 +382,28 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons-2";
-                  font-size: 8px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 8px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
                   margin-top: 0px;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -448,10 +460,10 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             margin-right: 0px;
             margin-top: 0px;
             overflow-wrap: break-word;
-            padding-bottom: 0px;
-            padding-left: 0px;
-            padding-right: 0px;
-            padding-top: 0px;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
             pointer-events: none;
             word-wrap: break-word;
           }
@@ -565,6 +577,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              min-width: 32px;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -651,23 +664,28 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons-2";
-                  font-size: 8px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 8px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
                   margin-top: 0px;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -697,6 +715,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              min-width: 32px;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -783,23 +802,28 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons-2";
-                  font-size: 8px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 8px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
                   margin-top: 0px;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }

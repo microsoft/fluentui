@@ -90,7 +90,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     this._onClose = this._onClose.bind(this);
   }
 
-  public componentWillReceiveProps(nextProps: ICalendarDayProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayProps): void {
     this.setState({
       weeks: this._getWeeks(nextProps)
     });

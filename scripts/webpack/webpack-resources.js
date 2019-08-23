@@ -4,9 +4,16 @@ const fs = require('fs');
 const resolve = require('resolve');
 const merge = require('../tasks/merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
 const webpackVersion = require('webpack/package.json').version;
 console.log(`Webpack version: ${webpackVersion}`);
+
+const cssRule = {
+  test: /\.css$/,
+  include: /node_modules/,
+  use: ['style-loader', 'css-loader']
+};
 
 let isValidEnv = false;
 
@@ -61,22 +68,26 @@ function createEntryWithPolyfill(entry, config) {
 module.exports = {
   webpack,
 
+  /**
+   * @param packageName {string} - name of the package
+   * @param isProduction {boolean} - whether it's a production build
+   * @param customConfig {Partial<webpack.Configuration>} - partial custom webpack config, merged into each full config object
+   * @param [onlyProduction] {boolean} - whether to only generate the production config
+   * @param [excludeSourceMaps] {boolean} - whether to skip generating source maps
+   * @returns {webpack.Configuration[]} array of configs
+   */
   createConfig(packageName, isProduction, customConfig, onlyProduction, excludeSourceMaps) {
     const module = {
       noParse: [/autoit.js/],
       rules: excludeSourceMaps
-        ? []
+        ? [cssRule]
         : [
             {
               test: /\.js$/,
               use: 'source-map-loader',
               enforce: 'pre'
             },
-            {
-              test: /\.css$/,
-              include: /node_modules/,
-              use: ['style-loader', 'css-loader']
-            }
+            cssRule
           ]
     };
 
@@ -147,11 +158,7 @@ module.exports = {
 
         module: {
           rules: [
-            {
-              test: /\.css$/,
-              include: /node_modules/,
-              use: ['style-loader', 'css-loader']
-            },
+            cssRule,
             {
               test: [/\.tsx?$/],
               use: {
@@ -200,7 +207,8 @@ module.exports = {
           // TODO: will investigate why this doesn't work on mac
           // new WebpackNotifierPlugin(),
           new ForkTsCheckerWebpackPlugin(),
-          ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()])
+          ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()]),
+          ...(!process.env.TF_BUILD && process.env.cached ? [new HardSourceWebpackPlugin()] : [])
         ]
       },
       customConfig

@@ -7,6 +7,7 @@ import {
   DefaultButton,
   ActionButton,
   CompoundButton,
+  IconButton,
   IButtonProps,
   CommandBarButton
 } from 'office-ui-fabric-react';
@@ -210,6 +211,37 @@ storiesOf('Button Special Scenarios', module)
         iconProps={{ iconName: 'Add' }}
         menuIconProps={{}}
         styles={{ root: { width: '100%' } }}
+      />
+    </div>
+  ));
+
+storiesOf('IconButton Scenarios', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener
+      steps={new Steps()
+        .snapshot('icon', { cropTo: '.testWrapper' })
+        .hover('.ms-Button')
+        .snapshot('hover icon', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  ))
+
+  .addStory('normal icon button', () => (
+    <div>
+      <IconButton iconProps={{ iconName: 'Globe' }} primary={true} />
+    </div>
+  ))
+  .addStory('icon button with menu', () => (
+    <div>
+      <IconButton
+        iconProps={{ iconName: 'Globe' }}
+        primary={true}
+        menuProps={{
+          items: [{ key: 'a', text: 'Item 1' }, { key: 'b', text: 'Item 2' }]
+        }}
       />
     </div>
   ));
