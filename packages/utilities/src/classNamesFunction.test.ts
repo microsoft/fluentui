@@ -31,13 +31,13 @@ describe('classNamesFunction', () => {
     styleFunctionCalled = false;
 
     expect(getClassNames(getStyles, { a: 1, b: 'test' })).toEqual(classNames);
-    // expect(styleFunctionCalled).toEqual(false);
+    expect(styleFunctionCalled).toEqual(false);
 
     expect(getClassNames(getStyles, { a: 2, b: 'test' })).not.toEqual(classNames);
     expect(styleFunctionCalled).toEqual(true);
 
     styleFunctionCalled = false;
     getClassNames(getStyles, { a: 2, b: 'test' });
-    // expect(styleFunctionCalled).toEqual(false);
+    expect(styleFunctionCalled).toEqual(false);
   });
 });
