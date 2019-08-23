@@ -10,7 +10,9 @@ import {
   KeyCodes,
   css,
   mergeAriaAttributeValues,
-  portalContainsElement
+  portalContainsElement,
+  memoizeFunction,
+  nullRender
 } from '../../Utilities';
 import { Icon, FontIcon, ImageIcon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -19,7 +21,6 @@ import { IButtonProps, IButton } from './Button.types';
 import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNames';
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { KeytipData } from '../../KeytipData';
-import { memoizeFunction, nullRender } from '@uifabric/utilities';
 import { IKeytipProps } from '../Keytip/Keytip.types';
 
 /**

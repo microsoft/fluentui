@@ -31,76 +31,6 @@ function lintImports() {
   const sourcePath = path.resolve(process.cwd(), 'src');
   const cwdNodeModulesPath = path.resolve(process.cwd(), 'node_modules');
   const nodeModulesPath = path.resolve(gitRoot, 'node_modules');
-  const rootFolder = gitRoot;
-
-  const allowRelativeImportExamples = [
-    // These were added to reduce the initial ramifications of disabling relative imports across all examples,
-    // the primary goal being to eliminate usage of relative imports going forward.
-    // TODO: Ideally these would eventually be removed.
-    'Chiclet.Basic.Example.tsx',
-    'ChoiceGroup.Image.Example.tsx',
-    'DocumentCard.Basic.Example.tsx',
-    'DocumentCard.Compact.Example.tsx',
-    'DocumentCard.Complete.Example.tsx',
-    'DocumentCard.Conversation.Example.tsx',
-    'DocumentCard.Image.Example.tsx',
-    'ExtendedPeoplePicker.Basic.Example.tsx',
-    'ExtendedPeoplePicker.Controlled.Example.tsx',
-    'Facepile.AddFace.Example.tsx',
-    'Facepile.Basic.Example.tsx',
-    'Facepile.Overflow.Example.tsx',
-    'FacepileExampleData.ts',
-    'FloatingPeoplePicker.Basic.Example.tsx',
-    'Icon.ImageSheet.Example.tsx',
-    'Keytips.Basic.Example.tsx',
-    'Keytips.Button.Example.tsx',
-    'Keytips.CommandBar.Example.tsx',
-    'Keytips.Overflow.Example.tsx',
-    'Nav.Basic.Example.tsx',
-    'Nav.CustomGroupHeaders.Example.tsx',
-    'Nav.FabricDemoApp.Example.tsx',
-    'Nav.Nested.Example.tsx',
-    'PeoplePicker.Types.Example.tsx',
-    'PeoplePickerExampleData.ts',
-    'Persona.Alternate.Example.tsx',
-    'Persona.Basic.Example.tsx',
-    'Persona.CustomCoinRender.Example.tsx',
-    'Persona.CustomRender.Example.tsx',
-    'Persona.UnknownPersona.Example.tsx',
-    'Persona.Presence.Example.tsx',
-    'Picker.CustomResult.Example.tsx',
-    'Pivot.Fabric.Example.tsx',
-    'SelectedPeopleList.Basic.Example.tsx',
-    'SelectedPeopleList.Controlled.Example.tsx',
-    'SelectedPeopleList.WithContextMenu.Example.tsx',
-    'SelectedPeopleList.WithEdit.Example.tsx',
-    'SelectedPeopleList.WithEditInContextMenu.Example.tsx',
-    'SelectedPeopleList.WithGroupExpand.Example.tsx',
-    'Stack.Horizontal.Basic.Example.tsx',
-    'Stack.Horizontal.Configure.Example.tsx',
-    'Stack.Horizontal.Grow.Example.tsx',
-    'Stack.Horizontal.HorizontalAlign.Example.tsx',
-    'Stack.Horizontal.Reversed.Example.tsx',
-    'Stack.Horizontal.Shrink.Example.tsx',
-    'Stack.Horizontal.Spacing.Example.tsx',
-    'Stack.Horizontal.VerticalAlign.Example.tsx',
-    'Stack.Horizontal.Wrap.Example.tsx',
-    'Stack.Horizontal.WrapAdvanced.Example.tsx',
-    'Stack.Horizontal.WrapNested.Example.tsx',
-    'Stack.Vertical.Basic.Example.tsx',
-    'Stack.Vertical.Configure.Example.tsx',
-    'Stack.Vertical.Grow.Example.tsx',
-    'Stack.Vertical.HorizontalAlign.Example.tsx',
-    'Stack.Vertical.Reversed.Example.tsx',
-    'Stack.Vertical.Shrink.Example.tsx',
-    'Stack.Vertical.Spacing.Example.tsx',
-    'Stack.Vertical.VerticalAlign.Example.tsx',
-    'Stack.Vertical.Wrap.Example.tsx',
-    'Stack.Vertical.WrapAdvanced.Example.tsx',
-    'Stack.Vertical.WrapNested.Example.tsx',
-    'TilesList.Document.Example.tsx',
-    'TilesList.Media.Example.tsx'
-  ];
 
   const packagesInfo = getAllPackageInfo();
 
@@ -126,14 +56,8 @@ function lintImports() {
     };
 
     for (const file of files) {
-      const filename = file
-        .split('\\')
-        .pop()
-        .split('/')
-        .pop();
-
       // Do not allow relative imports in example files.
-      const allowRelativeImports = file.indexOf('.Example.') === -1 || allowRelativeImportExamples.includes(filename);
+      const allowRelativeImports = file.indexOf('/examples/') === -1 && file.indexOf('.Example.') === -1;
 
       _evaluateFile(file, importErrors, allowRelativeImports);
     }

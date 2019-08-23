@@ -3,7 +3,7 @@ import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'offi
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from 'office-ui-fabric-react/lib/common/TestImages';
 
 export const PersonaBasicExample: React.FunctionComponent = () => {
   const [renderDetails, updateRenderDetails] = React.useState(true);

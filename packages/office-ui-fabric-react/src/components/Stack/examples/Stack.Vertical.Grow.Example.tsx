@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Stack } from '../Stack';
-import { IStackStyles, IStackTokens } from '../Stack.types';
-import { IStackItemStyles } from '../StackItem/StackItem.types';
+import { Stack, IStackStyles, IStackTokens, IStackItemStyles } from 'office-ui-fabric-react/lib/Stack';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 // Styles definition

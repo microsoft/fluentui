@@ -1,12 +1,19 @@
 import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { people, groupOne, groupTwo } from './PeopleExampleData';
-import { SelectedPeopleList, ISelectedPeopleList } from '../SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { SelectedPersona } from '../Items/SelectedPersona';
-import { ISelectedItemProps } from '../../SelectedItemsList.types';
+import {
+  people,
+  groupOne,
+  groupTwo
+} from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/examples/PeopleExampleData';
+import {
+  SelectedPeopleList,
+  ISelectedPeopleList
+} from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
+import { SelectedPersona } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/Items/SelectedPersona';
+import { ISelectedItemProps } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedItemsList.types';
 
 export interface IPeopleSelectedItemsListExampleState {
   currentSelectedItems: IPersonaProps[];

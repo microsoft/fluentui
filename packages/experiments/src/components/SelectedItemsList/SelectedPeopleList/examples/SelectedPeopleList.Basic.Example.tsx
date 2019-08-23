@@ -2,10 +2,13 @@ import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersona } from 'office-ui-fabric-react/lib/Persona';
-import { people } from './PeopleExampleData';
-import { SelectedPeopleList, ISelectedPeopleList } from '../../SelectedPeopleList/SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { people } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/examples/PeopleExampleData';
+import {
+  SelectedPeopleList,
+  ISelectedPeopleList
+} from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
 
 export interface IPeopleSelectedItemsListExampleState {
   currentSelectedItems: IPersona[];

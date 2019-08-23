@@ -1,20 +1,25 @@
 import * as React from 'react';
 
+// tslint:disable:max-line-length
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { people } from './PeopleExampleData';
-import { SelectedPeopleList, ISelectedPeopleList } from '../SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
-import { SelectedPersona } from '../Items/SelectedPersona';
-import { ItemWithContextMenu } from '../../Items/ItemWithContextMenu';
-import { copyToClipboard } from '../../utils/copyToClipboard';
-import { EditableItem } from '../../Items/EditableItem';
-import { DefaultEditingItem } from '../../Items/subcomponents/DefaultEditingItem';
-import { EditingItemInnerFloatingPickerProps } from '../../Items/subcomponents/DefaultEditingItem';
-import { FloatingPeopleSuggestions } from '../../../FloatingSuggestions/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
-import { SuggestionsStore } from '../../../FloatingSuggestions/Suggestions/SuggestionsStore';
-import { ExampleSuggestionsModel } from './ExampleSuggestionsModel';
-import { TriggerOnContextMenu } from '../../Items/TriggerOnContextMenu';
+import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { people } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/examples/PeopleExampleData';
+import {
+  SelectedPeopleList,
+  ISelectedPeopleList
+} from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
+import { SelectedPersona } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/Items/SelectedPersona';
+import { TriggerOnContextMenu } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/TriggerOnContextMenu';
+import { ItemWithContextMenu } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/ItemWithContextMenu';
+import { EditableItem } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/EditableItem';
+import { DefaultEditingItem } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/subcomponents/DefaultEditingItem';
+import { EditingItemInnerFloatingPickerProps } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/subcomponents/DefaultEditingItem';
+import { FloatingPeopleSuggestions } from '@uifabric/experiments/lib/components/FloatingSuggestions/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
+import { SuggestionsStore } from '@uifabric/experiments/lib/components/FloatingSuggestions/Suggestions/SuggestionsStore';
+import { ExampleSuggestionsModel } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/examples/ExampleSuggestionsModel';
+import { copyToClipboard } from '@uifabric/experiments/lib/components/SelectedItemsList/utils/copyToClipboard';
+// tslint:enable:max-line-length
 
 export interface IPeopleSelectedItemsListExampleState {
   currentSelectedItems: IPersonaProps[];

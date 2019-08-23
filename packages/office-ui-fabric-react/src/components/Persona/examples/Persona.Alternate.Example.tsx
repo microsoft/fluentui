@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from 'office-ui-fabric-react/lib/common/TestImages';
 
 export const PersonaAlternateExample: React.FunctionComponent = () => {
   const examplePersona: IPersonaSharedProps = {

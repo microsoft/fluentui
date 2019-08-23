@@ -12,8 +12,7 @@ import {
 import { ISelectedPeopleProps, SelectedPeopleList, IExtendedPersonaProps } from 'office-ui-fabric-react/lib/SelectedItemsList';
 import { IFocusZoneProps, FocusZoneTabbableElements } from 'office-ui-fabric-react/lib/FocusZone';
 import { mergeStyleSets, getTheme, IStyle, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-// Fake data for examples. Not exported by any package.
-import { people, mru, groupOne, groupTwo } from './PeopleExampleData';
+import { people, mru, groupOne, groupTwo } from 'office-ui-fabric-react/lib/components/ExtendedPicker/examples/PeopleExampleData';
 
 export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];

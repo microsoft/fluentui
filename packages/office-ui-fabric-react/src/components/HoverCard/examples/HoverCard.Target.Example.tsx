@@ -4,7 +4,7 @@ import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/D
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { KeyCodes } from '@uifabric/utilities';
+import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const classNames = mergeStyleSets({

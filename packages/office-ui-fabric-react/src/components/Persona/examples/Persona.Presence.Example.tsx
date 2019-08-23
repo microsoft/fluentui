@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const examplePersona: IPersonaSharedProps = {
   imageUrl: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png',
