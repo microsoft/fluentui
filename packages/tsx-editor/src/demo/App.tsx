@@ -1,6 +1,15 @@
 import React from 'react';
-import { PrimaryButton, Stack, Label, mergeStyleSets } from 'office-ui-fabric-react';
+import { PrimaryButton, Stack, mergeStyleSets, Spinner, SpinnerSize } from 'office-ui-fabric-react';
 import { ITextModel } from '../components/Editor.types';
+import { EditorPreview } from '../components/index';
+import * as editorModule from '../components/Editor';
+
+import * as fabricModule from 'office-ui-fabric-react';
+
+(window as any).Fabric = fabricModule; // tslint:disable-line:no-any
+
+const example = require('!raw-loader!../transpiler/examples/class.txt');
+const outputId = 'output';
 
 interface ITranspiledOutput {
   outputString?: string;
@@ -8,49 +17,54 @@ interface ITranspiledOutput {
 }
 
 const classNames = mergeStyleSets({
-  error: {
-    backgroundColor: '#FEF0F0',
-    color: '#FF5E79'
-  },
   component: {
-    backgroundColor: 'lightgray'
+    border: '1px solid lightgray'
   }
 });
 
 interface IAppState {
   error?: string;
   editorHidden?: boolean;
-  editor?: HTMLElement;
+  editorModule?: typeof editorModule;
 }
 
-export class App extends React.Component {
+const width = 800;
+const height = 500;
+
+export class App extends React.Component<{}, IAppState> {
   public state: IAppState = {
     editorHidden: true
   };
 
   public render() {
-    const editor = (
-      <Stack className={classNames.component} gap={4}>
-        {this.state.editor}
-        {this.state.error !== undefined && <Label className={classNames.error}>{this.state.error}</Label>}
-      </Stack>
-    );
-
     return (
-      <div>
-        <PrimaryButton onClick={this.buttonClicked} />
-        {!this.state.editorHidden && editor}
-        <div id="output" />
-      </div>
+      <Stack styles={{ root: { width, margin: '0 auto' } }} tokens={{ childrenGap: 20 }}>
+        <h1>Typescript + React editor</h1>
+        <Stack.Item grow={false}>
+          <PrimaryButton text="Show/hide editor" onClick={this._buttonClicked} />
+        </Stack.Item>
+        {!this.state.editorHidden && (
+          <div className={classNames.component}>
+            {this.state.editorModule ? (
+              <editorModule.Editor width={width} height={height} code={example} language="typescript" onChange={this._onChange} />
+            ) : (
+              <Stack horizontalAlign="center" verticalAlign="center" styles={{ root: { height } }}>
+                <Spinner size={SpinnerSize.large} label="Loading editor..." />
+              </Stack>
+            )}
+          </div>
+        )}
+        <EditorPreview id={outputId} error={this.state.error} />
+      </Stack>
     );
   }
 
-  private onChange = (editor: ITextModel) => {
+  private _onChange = (model: ITextModel) => {
     require.ensure(['../transpiler/transpile'], require => {
       const { evalCode, transpile } = require('../transpiler/transpile');
-      transpile(editor).then((output: ITranspiledOutput) => {
+      transpile(model).then((output: ITranspiledOutput) => {
         if (output.outputString) {
-          const evalCodeError = evalCode(output.outputString);
+          const evalCodeError = evalCode(output.outputString, outputId);
           if (evalCodeError) {
             this.setState({
               error: evalCodeError.error
@@ -69,26 +83,17 @@ export class App extends React.Component {
     });
   };
 
-  private buttonClicked = (): void => {
+  private _buttonClicked = (): void => {
     if (this.state.editorHidden) {
-      require.ensure([], require => {
-        const Editor = require('../components/Editor').Editor;
-        this.setState({
-          editor: (
-            <div>
-              <div>
-                <Label>Typescript + React editor</Label>
-              </div>
-              <React.Suspense fallback={<div>Loading...</div>}>
-                <Editor width={800} height={500} code="console.log('hello world');" language="typescript" onChange={this.onChange} />
-              </React.Suspense>
-            </div>
-          ),
-          editorHidden: false
-        });
+      this.setState({ editorHidden: false }, () => {
+        if (!this.state.editorModule) {
+          require.ensure([], require => {
+            this.setState({ editorModule: require('../components/Editor') });
+          });
+        }
       });
     } else {
-      this.setState({ editor: null, editorHidden: true });
+      this.setState({ error: undefined, editorHidden: true });
     }
   };
 }

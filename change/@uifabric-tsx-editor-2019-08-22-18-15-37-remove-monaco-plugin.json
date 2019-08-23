@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Get rid of monaco-editor-webpack-plugin and fix demo app",
+  "packageName": "@uifabric/tsx-editor",
+  "email": "elcraig@microsoft.com",
+  "commit": "8404e0edc3591a74cda292aedd1e4bff58768e7c",
+  "date": "2019-08-23T01:15:37.266Z"
+}
