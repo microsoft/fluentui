@@ -236,7 +236,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                         right: 1px;
                         top: 1px;
                       }
-                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover & {
+                        opacity: 1;
+                      }
+                      .ms-Check-checkHost:focus & {
+                        opacity: 1;
+                      }
+                      &:hover {
+                        opacity: 1;
+                      }
+                      &:focus {
                         opacity: 1;
                       }
                 >
@@ -880,7 +889,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -1070,7 +1088,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -1377,7 +1403,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -1567,7 +1602,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -1874,7 +1917,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -2064,7 +2116,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -2371,7 +2431,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -2561,7 +2630,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -2868,7 +2945,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -3058,7 +3144,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -3365,7 +3459,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -3555,7 +3658,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -3862,7 +3973,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -4052,7 +4172,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -4359,7 +4487,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -4549,7 +4686,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -4856,7 +5001,16 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
@@ -5046,7 +5200,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }

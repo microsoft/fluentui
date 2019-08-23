@@ -535,6 +535,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       background-color: #f3f2f1;
                       color: #323130;
                       cursor: pointer;
+                      text-decoration: none;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
@@ -543,12 +544,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                     &:active {
                       background-color: #edebe9;
                       color: #323130;
+                      text-decoration: none;
                     }
                     &:active:hover {
                       background-color: #edebe9;
                       color: #323130;
-                    }
-                    &:active, &:hover, &:active:hover {
                       text-decoration: none;
                     }
                     @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -1346,6 +1346,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       background-color: #f3f2f1;
                       color: #323130;
                       cursor: pointer;
+                      text-decoration: none;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
@@ -1354,12 +1355,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                     &:active {
                       background-color: #edebe9;
                       color: #323130;
+                      text-decoration: none;
                     }
                     &:active:hover {
                       background-color: #edebe9;
                       color: #323130;
-                    }
-                    &:active, &:hover, &:active:hover {
                       text-decoration: none;
                     }
                     @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -1753,6 +1753,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       background-color: #f3f2f1;
                       color: #323130;
                       cursor: pointer;
+                      text-decoration: none;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
@@ -1761,12 +1762,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                     &:active {
                       background-color: #edebe9;
                       color: #323130;
+                      text-decoration: none;
                     }
                     &:active:hover {
                       background-color: #edebe9;
                       color: #323130;
-                    }
-                    &:active, &:hover, &:active:hover {
                       text-decoration: none;
                     }
                     @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -1982,6 +1982,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                       background-color: #f3f2f1;
                       color: #323130;
                       cursor: pointer;
+                      text-decoration: none;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
@@ -1990,12 +1991,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                     &:active {
                       background-color: #edebe9;
                       color: #323130;
+                      text-decoration: none;
                     }
                     &:active:hover {
                       background-color: #edebe9;
                       color: #323130;
-                    }
-                    &:active, &:hover, &:active:hover {
                       text-decoration: none;
                     }
                     @media only screen and (min-width: 0px) and (max-width: 479px){& {

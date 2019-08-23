@@ -234,7 +234,16 @@ exports[`DetailsList renders List correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover & {
+                        opacity: 1;
+                      }
+                      .ms-Check-checkHost:focus & {
+                        opacity: 1;
+                      }
+                      &:hover {
+                        opacity: 1;
+                      }
+                      &:focus {
                         opacity: 1;
                       }
                 >
@@ -832,7 +841,16 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover & {
+                        opacity: 1;
+                      }
+                      .ms-Check-checkHost:focus & {
+                        opacity: 1;
+                      }
+                      &:hover {
+                        opacity: 1;
+                      }
+                      &:focus {
                         opacity: 1;
                       }
                 >
@@ -2026,7 +2044,16 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover & {
+                        opacity: 1;
+                      }
+                      .ms-Check-checkHost:focus & {
+                        opacity: 1;
+                      }
+                      &:hover {
+                        opacity: 1;
+                      }
+                      &:focus {
                         opacity: 1;
                       }
                 >
@@ -2625,7 +2652,16 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover & {
+                        opacity: 1;
+                      }
+                      .ms-Check-checkHost:focus & {
+                        opacity: 1;
+                      }
+                      &:hover {
+                        opacity: 1;
+                      }
+                      &:focus {
                         opacity: 1;
                       }
                 >
@@ -3603,7 +3639,16 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         right: 1px;
                         top: 1px;
                       }
-                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover & {
+                        opacity: 1;
+                      }
+                      .ms-Check-checkHost:focus & {
+                        opacity: 1;
+                      }
+                      &:hover {
+                        opacity: 1;
+                      }
+                      &:focus {
                         opacity: 1;
                       }
                 >
