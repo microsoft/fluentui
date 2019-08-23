@@ -117,7 +117,7 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
                 extractRules([selectorValue], rules, newSelector);
               } else if (newSelector.indexOf(',') > -1) {
                 expandCommaSeparatedGlobals(newSelector)
-                  .split(/,/g)
+                  .split(',')
                   .map((s: string) => s.trim())
                   .forEach((separatedSelector: string) =>
                     extractRules([selectorValue], rules, expandSelector(separatedSelector, currentSelector))
