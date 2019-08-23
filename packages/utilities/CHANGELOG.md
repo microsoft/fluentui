@@ -8,7 +8,7 @@ Fri, 23 Aug 2019 12:35:28 GMT
 ### Patches
 
 - Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
-,- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.0.7
 Wed, 17 Jul 2019 18:58:57 GMT
@@ -394,7 +394,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.21.1
 Wed, 26 Sep 2018 12:27:23 GMT
@@ -518,7 +518,7 @@ Fri, 27 Jul 2018 10:25:39 GMT
 
 ### Patches
 
-- prop-types version 
+- prop-types version
 
 ## 6.12.0
 Mon, 23 Jul 2018 10:28:08 GMT
@@ -1271,7 +1271,7 @@ Fri, 26 May 2017 10:21:03 GMT
 
 ### Patches
 
-- Utilities: Fixed incorrect calculation of initials. Properly remove unwanted ASCII characters, and do not calculate initials for Arabic and CJK based languages. 
+- Utilities: Fixed incorrect calculation of initials. Properly remove unwanted ASCII characters, and do not calculate initials for Arabic and CJK based languages.
 
 ## 1.10.1
 Wed, 24 May 2017 23:52:09 GMT

@@ -8,7 +8,7 @@ Fri, 23 Aug 2019 12:35:28 GMT
 ### Patches
 
 - Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
-,- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.0.6
 Tue, 23 Jul 2019 16:33:51 GMT
@@ -56,7 +56,7 @@ Wed, 12 Jun 2019 00:42:26 GMT
 
 - Update and dedupe React deps.
 - fix mapping for OneNote notebook filetype icon
-- updating getFileTypeIconProps to make reference to correct sharepoint… 
+- updating getFileTypeIconProps to make reference to correct sharepoint…
 
 ## 6.5.1
 Tue, 11 Jun 2019 12:21:35 GMT
@@ -106,7 +106,7 @@ Thu, 18 Apr 2019 12:31:50 GMT
 ### Patches
 
 - fix mapping for OneNote notebook filetype icon
-- updating getFileTypeIconProps to make reference to correct sharepoint… 
+- updating getFileTypeIconProps to make reference to correct sharepoint…
 
 ## 6.4.5
 Wed, 10 Apr 2019 12:33:17 GMT
@@ -128,7 +128,7 @@ Tue, 12 Mar 2019 12:31:43 GMT
 ### Patches
 
 - fix mapping for OneNote notebook filetype icon
-- updating getFileTypeIconProps to make reference to correct sharepoint… 
+- updating getFileTypeIconProps to make reference to correct sharepoint…
 
 ## 6.4.2
 Fri, 01 Mar 2019 13:33:08 GMT
@@ -163,7 +163,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.1.2
 Fri, 21 Sep 2018 14:25:46 GMT

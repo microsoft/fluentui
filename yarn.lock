@@ -3876,10 +3876,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beachball@^1.11.7:
-  version "1.11.7"
-  resolved "https://registry.yarnpkg.com/beachball/-/beachball-1.11.7.tgz#7577e69ace7e59e2d5ca266fdd1ada452a7d67f8"
-  integrity sha512-t2IWU1qGfwzxIUcrb0DXDsgJOdo0MYocy4FZXBpYn8gIOD7VAupbnCYUR33l+fmBgmOugbnfZCmJ6y36fUW3AQ==
+beachball@^1.12.0:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/beachball/-/beachball-1.12.0.tgz#82107cb3dd5d2bb4a25c15c8ba2d574d563b1afb"
+  integrity sha512-b3ldO/bDxbyXv+vbUOrpwriSdroADN1FNse+5rjlGtf7TTnym81o2t2hXbJ0v27v8y2CHI4jvzVXrmQhg2BjRQ==
   dependencies:
     fs-extra "^8.0.1"
     git-url-parse "^11.1.2"

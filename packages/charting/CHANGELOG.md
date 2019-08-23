@@ -8,7 +8,7 @@ Fri, 23 Aug 2019 12:35:28 GMT
 ### Patches
 
 - Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
-,- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 0.134.1
 Tue, 13 Aug 2019 12:31:12 GMT
@@ -71,7 +71,7 @@ Tue, 18 Jun 2019 12:26:19 GMT
 
 ### Patches
 
-- Add data viz separator for HorizontalBarChart 
+- Add data viz separator for HorizontalBarChart
 
 ## 0.131.2
 Fri, 14 Jun 2019 12:26:30 GMT
@@ -109,7 +109,7 @@ Fri, 07 Jun 2019 12:21:48 GMT
 
 ### Patches
 
-- Data Viz 'Legends' is not accessible using keyboard tab navigation 
+- Data Viz 'Legends' is not accessible using keyboard tab navigation
 
 ## 0.30.0
 Mon, 03 Jun 2019 23:04:02 GMT
@@ -200,7 +200,7 @@ Wed, 06 Feb 2019 13:38:06 GMT
 
 ### Patches
 
-- office ui fabric charting package, legend related changes 
+- office ui fabric charting package, legend related changes
 
 ## 0.28.5
 Tue, 08 Jan 2019 13:34:49 GMT
@@ -324,7 +324,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 0.24.0
 Thu, 04 Oct 2018 12:26:48 GMT
@@ -451,7 +451,7 @@ Fri, 31 Aug 2018 10:27:35 GMT
 ### Patches
 
 - Fixes the usage of renamed variable
-- horizontal bar chart modified according to figma 
+- horizontal bar chart modified according to figma
 
 ## 0.17.0
 Thu, 30 Aug 2018 19:26:04 GMT
@@ -469,7 +469,7 @@ Thu, 30 Aug 2018 10:32:49 GMT
 
 ### Patches
 
-- Donut chart with legends and hover behavior 
+- Donut chart with legends and hover behavior
 
 ## 0.16.0
 Fri, 24 Aug 2018 10:26:08 GMT
@@ -694,7 +694,7 @@ Tue, 10 Apr 2018 17:37:28 GMT
 
 ### Minor changes
 
-- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same 
+- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same
 
 ### Patches
 

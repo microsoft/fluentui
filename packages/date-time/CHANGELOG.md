@@ -8,7 +8,7 @@ Fri, 23 Aug 2019 12:35:28 GMT
 ### Patches
 
 - Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
-,- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.4.0
 Thu, 15 Aug 2019 12:30:43 GMT
@@ -44,7 +44,7 @@ Mon, 22 Jul 2019 12:28:42 GMT
 ### Patches
 
 - fixing issue where buttons don't hide if they have focus, adding touch for navigation (jolore@microsoft.com)
-,- Improve how to get the min query string (elcraig@microsoft.com)
+- Improve how to get the min query string (elcraig@microsoft.com)
 
 ## 7.1.6
 Wed, 17 Jul 2019 18:58:57 GMT
