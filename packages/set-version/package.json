@@ -1,12 +1,9 @@
 {
   "name": "@uifabric/set-version",
   "version": "7.0.1",
-  "description": "Non-Fabric specific package version setter",
+  "description": "Non-Fabric-specific package version setter",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "sideEffects": [
-    "lib/version.js"
-  ],
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",

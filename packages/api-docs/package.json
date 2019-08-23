@@ -1,9 +1,13 @@
 {
   "name": "@uifabric/api-docs",
   "version": "7.0.6",
-  "description": "A package that transforms .api.json files into page.json files",
+  "description": "A package that transforms api-extractor .api.json files into page.json files",
   "main": "lib-commonjs/index.js",
   "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+  },
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",

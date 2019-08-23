@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/fabric-website-resources",
   "version": "7.2.4",
-  "description": "Office UI Fabric React website resources project",
+  "description": "Office UI Fabric React local demo app",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "sideEffects": [

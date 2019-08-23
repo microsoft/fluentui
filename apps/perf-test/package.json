@@ -1,6 +1,6 @@
 {
   "name": "perf-test",
-  "description": "Sample todo app using office-ui-fabric-react.",
+  "description": "Perf tests for office-ui-fabric-react.",
   "version": "7.0.0",
   "private": true,
   "scripts": {
