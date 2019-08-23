@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SliderBase } from './Slider.base';
+import { Slider } from './Slider';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
