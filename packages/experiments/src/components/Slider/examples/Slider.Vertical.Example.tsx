@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { Slider } from '@uifabric/experiments/lib/Slider';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 
 export interface ISliderVerticalExampleState {
