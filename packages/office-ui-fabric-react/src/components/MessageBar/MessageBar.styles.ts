@@ -92,17 +92,27 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     }
   };
 
-  const dismissalAndExpandStyle: IStyle = {
-    flexShrink: 0,
-    margin: 8,
-    marginLeft: 0,
-    selectors: {
-      '& .ms-Button-icon': dismissalAndExpandIconStyle,
-      [SmallScreenSelector]: {
-        margin: '0px 0px 0px 8px'
+  const dismissalAndExpandStyle: IStyle = [
+    getFocusStyle(theme, {
+      inset: 1,
+      highContrastStyle: {
+        outlineOffset: '-4px',
+        outlineColor: 'Window'
+      },
+      borderColor: 'transparent'
+    }),
+    {
+      flexShrink: 0,
+      margin: 8,
+      marginLeft: 0,
+      selectors: {
+        '& .ms-Button-icon': dismissalAndExpandIconStyle,
+        [SmallScreenSelector]: {
+          margin: '0px 0px 0px 8px'
+        }
       }
     }
-  };
+  ];
 
   const focusStyle = getFocusStyle(theme, { borderColor: palette.black });
 
