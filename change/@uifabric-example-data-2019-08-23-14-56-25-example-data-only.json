@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add example data package",
+  "packageName": "@uifabric/example-data",
+  "email": "elcraig@microsoft.com",
+  "commit": "ac31cd661f1331fb298330c54074ef81c83a36cc",
+  "date": "2019-08-23T21:56:25.066Z"
+}
