@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button, MenuButton, IMenuButtonProps, SplitButton } from '@uifabric/experiments';
-import { Stack, IStackTokens, buildKeytipConfigMap, IKeytipConfig, IKeytipConfigMap } from 'office-ui-fabric-react';
+import { Stack, IStackTokens } from 'office-ui-fabric-react';
+import { buildKeytipConfigMap, IKeytipConfig, IKeytipConfigMap } from 'office-ui-fabric-react/lib/utilities/keytips/index';
 
 const btnExecute = (el: HTMLElement) => {
   el.click();
