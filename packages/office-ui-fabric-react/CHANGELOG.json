@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 23 Aug 2019 12:21:26 GMT",
+      "tag": "office-ui-fabric-react_v6.202.0",
+      "version": "6.202.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add presenceTitle prop",
+            "author": "gogoe@microsoft.com",
+            "commit": "231d33083d5b0bc2bf150c91ccf4ade66caeeb98"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 22 Aug 2019 12:22:24 GMT",
       "tag": "office-ui-fabric-react_v6.201.2",
       "version": "6.201.2",

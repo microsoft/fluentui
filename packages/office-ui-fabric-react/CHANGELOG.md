@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 22 Aug 2019 12:22:24 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Aug 2019 12:21:26 GMT and should not be manually modified.
+
+## 6.202.0
+Fri, 23 Aug 2019 12:21:26 GMT
+
+### Minor changes
+
+- Add presenceTitle prop (gogoe@microsoft.com)
 
 ## 6.201.2
 Thu, 22 Aug 2019 12:22:24 GMT
