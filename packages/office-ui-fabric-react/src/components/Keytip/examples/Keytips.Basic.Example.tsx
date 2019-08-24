@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { keytipMap } from './KeytipSetup';
+import { keytipMap } from 'office-ui-fabric-react/lib/components/Keytip/examples/KeytipSetup';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ComboBox } from 'office-ui-fabric-react/lib/ComboBox';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
