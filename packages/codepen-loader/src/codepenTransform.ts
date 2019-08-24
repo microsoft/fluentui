@@ -1,7 +1,5 @@
 import * as babylon from 'babylon';
 import * as prettier from 'prettier';
-import * as fs from 'fs';
-import * as path from 'path';
 
 import { Recast, JSCodeShift, IASTPath, IASTSpecifier, IASTNode } from './interfaces';
 
@@ -10,44 +8,6 @@ const recast: Recast = require('recast');
 const jscodeshift: {
   withParser: (parser: string) => JSCodeShift;
 } = require('jscodeshift');
-
-// These files are copied to lib in the pre-copy step (see config/pre-copy.json)
-const exampleDataFiles = {
-  exampleData: { name: 'exampleData', contents: '' },
-  testImages: { name: 'TestImages', contents: '' },
-  peopleExampleData: { name: 'PeopleExampleData', contents: '' }
-};
-// Regex to match example data file imports
-const exampleDataRegex = new RegExp(
-  Object.values(exampleDataFiles)
-    // tslint:disable-next-line:typedef
-    .map(fileInfo => `\\b${fileInfo.name}\\b`)
-    .join('|') + '$'
-);
-
-for (const fileInfo of Object.values(exampleDataFiles)) {
-  // Read each file and remove all export statements (to avoid confusing the logic later that
-  // determines which exported thing is the actual example component)
-  let contents = fs
-    .readFileSync(path.resolve(__dirname, '../lib', fileInfo.name + '.ts'))
-    .toString();
-
-  // Strip the first few lines of comments from the files--they all have notes at the top which
-  // don't need to be in the resulting codepen
-  while (contents.startsWith('//')) {
-    contents = contents.replace(/^.*?\r?\n/, '');
-  }
-  // Hack to quickly get rid of exports
-  contents = contents.replace(/^export /gm, '');
-  fileInfo.contents = contents;
-}
-
-// PeopleExampleData imports TestImages and uses it in a constant.
-// Replace the import with the TestImages file contents to avoid a runtime error.
-exampleDataFiles.peopleExampleData.contents = exampleDataFiles.peopleExampleData.contents.replace(
-  /import .*?\bTestImages\b.*?\r?\n/,
-  exampleDataFiles.testImages.contents
-);
 
 const j = jscodeshift.withParser('babylon');
 
@@ -76,31 +36,25 @@ const parse = (source: string) =>
  * @returns The transformed file contents
  */
 export function transform(file: string): string {
-  let sourceStr = file;
-  // If example data files were imported, append the file contents
-  for (const fileInfo of Object.values(exampleDataFiles)) {
-    if (file.includes(`/${fileInfo.name}'`)) {
-      sourceStr += `\n${fileInfo.contents}\n`;
-    }
-  }
-
+  const sourceStr = file;
   const source = j(recast.parse(sourceStr, { parser: { parse } }));
 
-  // Make a list of imported identifiers, and remove all imports
+  // Make a list of imported identifiers (normal and for example data), and remove all imports
   const identifiers: string[] = [];
+  const exampleIdentifiers: string[] = [];
   source.find(j.ImportDeclaration).forEach((p: IASTPath) => {
     const importPath = p.node.source.value;
     // Ignore identifiers from:
     // - the React import (which will be a global)
     // - css/scss
-    // - example data files which will be appended if needed
-    if (
-      importPath !== 'react' &&
-      !/\.s?css$/.test(importPath) &&
-      !exampleDataRegex.test(importPath)
-    ) {
+    if (importPath !== 'react' && !/\.s?css$/.test(importPath)) {
+      const isExample = importPath.startsWith('@uifabric/example-data');
       p.node.specifiers.forEach((spec: IASTSpecifier) => {
-        identifiers.push(spec.local.loc.identifierName);
+        if (isExample) {
+          exampleIdentifiers.push(spec.local.loc.identifierName);
+        } else {
+          identifiers.push(spec.local.loc.identifierName);
+        }
       });
     }
 
@@ -113,9 +67,7 @@ export function transform(file: string): string {
   source
     .find(
       j.ExportNamedDeclaration,
-      (node: IASTNode) =>
-        node.declaration.type === 'VariableDeclaration' ||
-        node.declaration.type === 'FunctionDeclaration'
+      (node: IASTNode) => node.declaration.type === 'VariableDeclaration' || node.declaration.type === 'FunctionDeclaration'
     )
     .replaceWith((p: IASTPath) => {
       if (p.node.declaration.type === 'VariableDeclaration') {
@@ -127,9 +79,7 @@ export function transform(file: string): string {
   source
     .find(
       j.ExportNamedDeclaration,
-      (node: IASTNode) =>
-        node.declaration.type === 'ClassDeclaration' ||
-        node.declaration.type === 'TSInterfaceDeclaration'
+      (node: IASTNode) => node.declaration.type === 'ClassDeclaration' || node.declaration.type === 'TSInterfaceDeclaration'
     )
     .replaceWith((p: IASTPath) => {
       if (p.node.declaration.type === 'ClassDeclaration') {
@@ -138,21 +88,22 @@ export function transform(file: string): string {
       return p.node.declaration;
     });
 
-  // Build the list of imports from window.Fabric
-  let attachedWindowString = 'const {';
-  if (identifiers.length > 0) {
-    attachedWindowString += identifiers.join(',') + ',';
-  }
-  attachedWindowString += 'Fabric} = window.Fabric;\n';
-
   // add imports and React render footer (with the component wrapped in a <Fabric> for styling)
   const sourceWithFooter = [
-    attachedWindowString,
+    'const FabricWrapper = window.Fabric.Fabric',
     source.toSource(),
-    `ReactDOM.render(<Fabric><${exampleName}/></Fabric>, document.getElementById("content"));`
-  ].join('\n');
+    `ReactDOM.render(<FabricWrapper><${exampleName}/></FabricWrapper>, document.getElementById("content"));`
+  ];
 
-  return prettier.format(sourceWithFooter, {
+  // Build the list of imports from window.Fabric and window.FabricExampleData
+  if (identifiers.length) {
+    sourceWithFooter.unshift(`const {${identifiers.join(',')}} = window.Fabric;\n`);
+  }
+  if (exampleIdentifiers.length) {
+    sourceWithFooter.unshift(`const {${exampleIdentifiers.join(',')}} = window.FabricExampleData;\n`);
+  }
+
+  return prettier.format(sourceWithFooter.join('\n'), {
     parser: 'typescript',
     printWidth: 100,
     tabWidth: 2,

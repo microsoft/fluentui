@@ -1,173 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`codepen transform handles examples importing PeopleExampleData 1`] = `
-"const {
-  IExtendedPersonaProps,
-  SelectedPeopleList,
-  ISelectedPeopleItemProps,
-  ExtendedSelectedItem,
-  PrimaryButton,
-  Selection,
-  Stack,
-  PersonaPresence,
-  IExtendedPersonaProps,
-  Fabric
-} = window.Fabric;
+exports[`codepen transform handles examples importing exampleData 1`] = `
+"const { createListItems, IExampleItem } = window.FabricExampleData;
 
-interface ISelectedPeopleListBasicExampleState {
-  nextPersonIndex: number;
-}
-
-class SelectedPeopleListBasicExample extends React.Component<
-  {},
-  ISelectedPeopleListBasicExampleState
-> {
-  private _selectionList = React.createRef<SelectedPeopleList>();
-  private _selection: Selection;
-
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      nextPersonIndex: 0
-    };
-    this._selection = new Selection({ onSelectionChanged: () => this.forceUpdate() });
-  }
-
-  public render(): JSX.Element {
-    return (
-      <div>
-        <PrimaryButton
-          text=\\"Add another item\\"
-          onClick={this._onAddItemButtonClicked}
-          disabled={this.state.nextPersonIndex >= people.length}
-          styles={{ root: { display: 'block', marginBottom: 20 } }}
-        />
-        <Stack horizontal wrap>
-          <SelectedPeopleList
-            key=\\"normal\\"
-            removeButtonAriaLabel=\\"Remove\\"
-            defaultSelectedItems={[people[40]]}
-            componentRef={this._selectionList}
-            onCopyItems={this._onCopyItems}
-            onExpandGroup={this._onExpandItem}
-            copyMenuItemText=\\"Copy\\"
-            removeMenuItemText=\\"Remove\\"
-            selection={this._selection}
-            onRenderItem={this._onRenderItem}
-          />
-        </Stack>
-      </div>
-    );
-  }
-
-  private _onRenderItem = (props: ISelectedPeopleItemProps): JSX.Element => {
-    return <ExtendedSelectedItem {...props} />;
-  };
-
-  private _onAddItemButtonClicked = (): void => {
-    if (this._selectionList.current) {
-      const { nextPersonIndex } = this.state;
-      this._selectionList.current.addItems([people[nextPersonIndex]]);
-      this.setState({ nextPersonIndex: nextPersonIndex + 1 });
-    }
-  };
-
-  private _onExpandItem = (item: IExtendedPersonaProps): void => {
-    const expandedItem =
-      item.text === 'Group One' ? groupOne : item.text === 'Group Two' ? groupTwo : [];
-    this._selectionList.current!.replaceItem(item, expandedItem);
-  };
-
-  private _onCopyItems(items: IExtendedPersonaProps[]): string {
-    return items.map((item: IExtendedPersonaProps) => item.text).join(', ');
-  }
-}
-
-const baseProductionCdnUrl =
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/';
-
-const TestImages = {};
-
-const people: (IExtendedPersonaProps & { key: string | number })[] = [];
-
-const mru: IExtendedPersonaProps[] = people.slice(0, 5);
-
-const groupOne: IExtendedPersonaProps[] = people.slice(6, 10);
-
-const groupTwo: IExtendedPersonaProps[] = people.slice(11, 16);
+const FabricWrapper = window.Fabric.Fabric;
+const FakeExampleDataExample = () => {
+  return <div>hi</div>;
+};
 
 ReactDOM.render(
-  <Fabric>
-    <SelectedPeopleListBasicExample />
-  </Fabric>,
-  document.getElementById('content')
-);
-"
-`;
-
-exports[`codepen transform handles examples importing TestImages 1`] = `
-"const {
-  DocumentCard,
-  DocumentCardActivity,
-  DocumentCardPreview,
-  DocumentCardTitle,
-  IDocumentCardPreviewProps,
-  ImageFit,
-  Fabric
-} = window.Fabric;
-
-class DocumentCardBasicExample extends React.PureComponent<{}> {
-  public render(): JSX.Element {
-    const previewProps: IDocumentCardPreviewProps = {
-      previewImages: [
-        {
-          name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
-          linkProps: {
-            href: 'http://bing.com'
-          },
-          previewImageSrc: TestImages.documentPreview,
-          iconSrc: TestImages.iconPpt,
-          imageFit: ImageFit.cover,
-          width: 318,
-          height: 196
-        }
-      ]
-    };
-
-    return (
-      <DocumentCard onClickHref=\\"http://bing.com\\">
-        <DocumentCardPreview {...previewProps} />
-        <DocumentCardTitle
-          title=\\"Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx\\"
-          shouldTruncate={true}
-        />
-        <DocumentCardActivity
-          activity=\\"Created a few minutes ago\\"
-          people={[{ name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale }]}
-        />
-      </DocumentCard>
-    );
-  }
-}
-
-const baseProductionCdnUrl =
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/';
-
-const TestImages = {};
-
-ReactDOM.render(
-  <Fabric>
-    <DocumentCardBasicExample />
-  </Fabric>,
+  <FabricWrapper>
+    <FakeExampleDataExample />
+  </FabricWrapper>,
   document.getElementById('content')
 );
 "
 `;
 
 exports[`codepen transform handles examples with class components 1`] = `
-"const { SpinButton, Fabric } = window.Fabric;
+"const { SpinButton } = window.Fabric;
 
+const FabricWrapper = window.Fabric.Fabric;
 class SpinButtonBasicExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
@@ -188,17 +41,18 @@ class SpinButtonBasicExample extends React.Component<any, any> {
 }
 
 ReactDOM.render(
-  <Fabric>
+  <FabricWrapper>
     <SpinButtonBasicExample />
-  </Fabric>,
+  </FabricWrapper>,
   document.getElementById('content')
 );
 "
 `;
 
 exports[`codepen transform handles examples with function components 1`] = `
-"const { Label, Fabric } = window.Fabric;
+"const { Label } = window.Fabric;
 
+const FabricWrapper = window.Fabric.Fabric;
 const LabelBasicExample = () => {
   return (
     <div>
@@ -208,9 +62,9 @@ const LabelBasicExample = () => {
 };
 
 ReactDOM.render(
-  <Fabric>
+  <FabricWrapper>
     <LabelBasicExample />
-  </Fabric>,
+  </FabricWrapper>,
   document.getElementById('content')
 );
 "
