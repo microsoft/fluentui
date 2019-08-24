@@ -378,10 +378,19 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                               border-color: Highlight;
                               color: HighlightText;
                             }
-                            .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
+                            .ms-Fabric--isFocusVisible &:focus {
                               background-color: #ffffff;
                             }
-                            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
+                            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                              -ms-high-contrast-adjust: none;
+                              background-color: Highlight;
+                              border-color: Highlight;
+                              color: HighlightText;
+                            }
+                            .ms-Fabric--isFocusVisible &:focus:hover {
+                              background-color: #ffffff;
+                            }
+                            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:hover {
                               -ms-high-contrast-adjust: none;
                               background-color: Highlight;
                               border-color: Highlight;

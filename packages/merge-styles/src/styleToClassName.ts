@@ -116,16 +116,12 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
                 newSelector = newSelector + '{' + currentSelector;
                 extractRules([selectorValue], rules, newSelector);
               } else if (newSelector.indexOf(',') > -1) {
-                const commaSeparatedSelectors = expandCommaSeparatedGlobals(newSelector)
-                  .split(/,/g)
-                  .map((s: string) => s.trim());
-                extractRules(
-                  [selectorValue],
-                  rules,
-                  commaSeparatedSelectors
-                    .map((commaSeparatedSelector: string) => expandSelector(commaSeparatedSelector, currentSelector))
-                    .join(', ')
-                );
+                expandCommaSeparatedGlobals(newSelector)
+                  .split(',')
+                  .map((s: string) => s.trim())
+                  .forEach((separatedSelector: string) =>
+                    extractRules([selectorValue], rules, expandSelector(separatedSelector, currentSelector))
+                  );
               } else {
                 extractRules([selectorValue], rules, expandSelector(newSelector, currentSelector));
               }

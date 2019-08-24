@@ -161,7 +161,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -327,7 +333,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -490,7 +502,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -659,7 +677,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -803,7 +827,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -930,12 +960,12 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 position: relative;
               }
               &:hover {
-                border-color: #323130;
+                border-color: #a4262c;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
               }
-              &:focus, &:hover {
+              &:focus {
                 border-color: #a4262c;
               }
         >
@@ -971,7 +1001,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -1162,7 +1198,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -1328,7 +1370,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -1515,7 +1563,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -1682,7 +1736,13 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {

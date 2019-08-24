@@ -152,7 +152,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                 text-overflow: ellipsis;
                 width: 100%;
               }
-              &:active, &:focus, &:hover {
+              &:active {
+                outline: 0px;
+              }
+              &:focus {
+                outline: 0px;
+              }
+              &:hover {
                 outline: 0px;
               }
               &::-ms-clear {
@@ -440,7 +446,16 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                             right: 1px;
                             top: 1px;
                           }
-                          .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                          .ms-Check-checkHost:hover & {
+                            opacity: 1;
+                          }
+                          .ms-Check-checkHost:focus & {
+                            opacity: 1;
+                          }
+                          &:hover {
+                            opacity: 1;
+                          }
+                          &:focus {
                             opacity: 1;
                           }
                     >
@@ -1197,7 +1212,16 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -1639,7 +1663,16 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -2081,7 +2114,16 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -2523,7 +2565,16 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -2965,7 +3016,16 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -3407,7 +3467,16 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -3849,7 +3918,16 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -4291,7 +4369,16 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -4733,7 +4820,16 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -5175,7 +5271,16 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >

@@ -505,12 +505,17 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #106ebe;
+              border-color: #ffffff;
               color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
               color: Highlight;
+            }
+            &:focus {
+              background-color: #106ebe;
+              border-color: #ffffff;
             }
             &:active {
               background-color: #0078d4;
@@ -524,10 +529,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-            }
-            &:hover, &:focus {
-              background-color: #106ebe;
-              border-color: #ffffff;
             }
         data-is-focusable={true}
         onClick={[Function]}

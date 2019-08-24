@@ -267,7 +267,13 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 text-overflow: ellipsis;
                 width: 100%;
               }
-              &:active, &:focus, &:hover {
+              &:active {
+                outline: 0px;
+              }
+              &:focus {
+                outline: 0px;
+              }
+              &:hover {
                 outline: 0px;
               }
               &::-ms-clear {
@@ -445,7 +451,13 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 text-overflow: ellipsis;
                 width: 100%;
               }
-              &:active, &:focus, &:hover {
+              &:active {
+                outline: 0px;
+              }
+              &:focus {
+                outline: 0px;
+              }
+              &:hover {
                 outline: 0px;
               }
               &::-ms-clear {

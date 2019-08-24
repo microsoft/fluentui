@@ -528,7 +528,15 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
-                  &:active, &:hover, &:active:hover {
+                  &:active {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:hover {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
@@ -604,7 +612,15 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
-                  &:active, &:hover, &:active:hover {
+                  &:active {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:hover {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
@@ -680,7 +696,15 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   @media screen and (-ms-high-contrast: active){& {
                     border-bottom: none;
                   }
-                  &:active, &:hover, &:active:hover {
+                  &:active {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:hover {
+                    color: #004578;
+                    text-decoration: underline;
+                  }
+                  &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
