@@ -1,10 +1,17 @@
 import * as monaco from 'monaco-editor';
 import * as React from 'react';
-import { IEditorProps } from './Editor.types';
+import { IEditorProps, ITextModel } from './Editor.types';
+import { codeFontFamily } from './TypeScriptSnippet';
 
 export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProps) => {
+  const { width, height, onChange, language = 'typescript', code } = props;
+
+  // Hooks must be called unconditionally, so we have to create a backup ref here even if we
+  // immediately throw it away to use the one passed in.
+  const backupModelRef = React.useRef<ITextModel>();
+  const modelRef = props.modelRef || backupModelRef;
+
   const ref = React.useRef<HTMLDivElement>(null);
-  const { width, height, onChange, language, code } = props;
   const style = { width, height };
 
   React.useEffect(() => {
@@ -33,30 +40,33 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
 
     monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({ noSemanticValidation: true });
 
-    const model = monaco.editor.createModel(code, 'typescript', monaco.Uri.parse('file:///main.tsx'));
+    const model = (modelRef.current = monaco.editor.createModel(code, language, monaco.Uri.parse('file:///main.tsx')));
 
-    onChange(model);
+    if (onChange) {
+      onChange(model);
+    }
 
     const editor = monaco.editor.create(ref.current!, {
       model: model,
       value: code,
       language,
-      minimap: {
-        enabled: false
-      }
+      minimap: { enabled: false },
+      fontFamily: codeFontFamily
     });
 
     editor.onDidChangeModelContent(() => {
-      onChange(editor.getModel()!);
+      if (onChange) {
+        onChange(editor.getModel()!);
+      }
     });
 
     return () => {
       editor.getModel()!.dispose();
       editor.dispose();
+      modelRef.current = undefined;
     };
-  }, []);
+  }, [onChange, language, code, modelRef]);
 
   return <div ref={ref} style={style} />;
 };
-
 export default Editor;
