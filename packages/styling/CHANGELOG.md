@@ -1,6 +1,32 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+
+## 7.6.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.6.0
+Tue, 20 Aug 2019 12:31:26 GMT
+
+### Minor changes
+
+- Semantic slots: add bodyBackgroundHovered and bodyBackgroundSelected (phkuo@microsoft.com)
+
+### Patches
+
+- Fix generation of font size theming variables for legacy (phkuo@microsoft.com)
+
+## 7.5.1
+Mon, 19 Aug 2019 12:32:05 GMT
+
+### Patches
+
+- Fix theming code type issue (phkuo@microsoft.com)
 
 ## 7.5.0
 Thu, 15 Aug 2019 12:30:43 GMT
@@ -36,7 +62,7 @@ Mon, 22 Jul 2019 12:28:42 GMT
 ### Minor changes
 
 - Adding Georgian and Armenian font for Segoe UI Web (marygans@microsoft.com)
-,- Export default effects (joschect@microsoft.com)
+- Export default effects (joschect@microsoft.com)
 
 ## 7.2.1
 Wed, 17 Jul 2019 18:58:57 GMT
@@ -338,7 +364,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.29.1
 Fri, 05 Oct 2018 23:29:26 GMT
@@ -739,7 +765,7 @@ Thu, 25 Jan 2018 11:23:06 GMT
 
 ### Minor changes
 
-- Add focus clear func to styling and change maxheight/maxfontsize to CSSPixelUnitRule 
+- Add focus clear func to styling and change maxheight/maxfontsize to CSSPixelUnitRule
 
 ## 5.16.0
 Wed, 24 Jan 2018 11:23:26 GMT
@@ -1272,7 +1298,7 @@ Wed, 21 Jun 2017 00:45:41 GMT
 
 ### Minor changes
 
-- Consume latest version of createApp 
+- Consume latest version of createApp
 
 ### Patches
 

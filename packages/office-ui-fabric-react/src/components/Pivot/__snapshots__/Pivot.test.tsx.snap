@@ -1995,8 +1995,8 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
-              color: #201f1e;
+              background-color: #0078d4;
+              color: #ffffff;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -2007,12 +2007,13 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               color: #0078d4;
             }
             &:focus {
+              color: #000000;
               outline-offset: -1px;
               outline: none;
             }
             &:active {
-              background-color: #edebe9;
-              color: #201f1e;
+              background-color: #0078d4;
+              color: #ffffff;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -2044,13 +2045,6 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               background: transparent;
               height: auto;
               transition: none;
-            }
-            &:hover, &:focus {
-              color: #000000;
-            }
-            &:active, &:hover {
-              background-color: #0078d4;
-              color: #ffffff;
             }
         data-content=""
         data-is-focusable={true}
@@ -2770,8 +2764,8 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
-              color: #201f1e;
+              background-color: #0078d4;
+              color: #ffffff;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -2782,12 +2776,13 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               color: #0078d4;
             }
             &:focus {
+              color: #000000;
               outline-offset: -1px;
               outline: none;
             }
             &:active {
-              background-color: #edebe9;
-              color: #201f1e;
+              background-color: #0078d4;
+              color: #ffffff;
             }
             &:active .ms-Button-icon {
               color: #004578;
@@ -2819,13 +2814,6 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               background: transparent;
               height: auto;
               transition: none;
-            }
-            &:hover, &:focus {
-              color: #000000;
-            }
-            &:active, &:hover {
-              background-color: #0078d4;
-              color: #ffffff;
             }
         data-content=""
         data-is-focusable={true}

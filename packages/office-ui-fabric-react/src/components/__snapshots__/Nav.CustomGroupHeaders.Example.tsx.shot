@@ -53,6 +53,10 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               ms-Nav-navItems
               {
                 list-style-type: none;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -75,7 +79,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               className=
                   ms-Nav-compositeLink
                   {
-                    background-color: #ffffff;
                     color: #323130;
                     display: block;
                     position: relative;
@@ -101,8 +104,8 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
-                      height: 36px;
-                      line-height: 36px;
+                      height: 44px;
+                      line-height: 44px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -168,7 +171,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       border-color: WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
-                      background-color: #faf9f8;
+                      background-color: #f3f2f1;
                       color: #323130;
                     }
                 data-is-focusable={true}
@@ -229,7 +232,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               className=
                   ms-Nav-compositeLink
                   {
-                    background-color: #ffffff;
                     color: #323130;
                     display: block;
                     position: relative;
@@ -255,8 +257,8 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
-                      height: 36px;
-                      line-height: 36px;
+                      height: 44px;
+                      line-height: 44px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -322,7 +324,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       border-color: WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
-                      background-color: #faf9f8;
+                      background-color: #f3f2f1;
                       color: #323130;
                     }
                 data-is-focusable={true}
@@ -397,6 +399,10 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               ms-Nav-navItems
               {
                 list-style-type: none;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -419,7 +425,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               className=
                   ms-Nav-compositeLink
                   {
-                    background-color: #ffffff;
                     color: #323130;
                     display: block;
                     position: relative;
@@ -445,8 +450,8 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
-                      height: 36px;
-                      line-height: 36px;
+                      height: 44px;
+                      line-height: 44px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -512,7 +517,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       border-color: WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
-                      background-color: #faf9f8;
+                      background-color: #f3f2f1;
                       color: #323130;
                     }
                 data-is-focusable={true}
@@ -573,7 +578,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
               className=
                   ms-Nav-compositeLink
                   {
-                    background-color: #ffffff;
                     color: #323130;
                     display: block;
                     position: relative;
@@ -599,8 +603,8 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
-                      height: 36px;
-                      line-height: 36px;
+                      height: 44px;
+                      line-height: 44px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -666,7 +670,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       border-color: WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
-                      background-color: #faf9f8;
+                      background-color: #f3f2f1;
                       color: #323130;
                     }
                 data-is-focusable={true}

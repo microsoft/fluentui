@@ -30,7 +30,7 @@ const classNames = mergeStyleSets({
     display: 'none',
     background: theme.palette.themePrimary,
     position: 'absolute',
-    top: 0,
+    top: 16,
     bottom: 0,
     width: '1px',
     zIndex: 5

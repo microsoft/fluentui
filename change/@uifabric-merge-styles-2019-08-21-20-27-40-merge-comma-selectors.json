@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "merge-styles: Collapsing comma delimited selectors to make styles easy to define for multiple matches.",
+  "packageName": "@uifabric/merge-styles",
+  "email": "dzearing@hotmail.com",
+  "commit": "605ac28702d8c81fc1a735bab7c93f668da4a47c",
+  "date": "2019-08-22T03:27:40.586Z"
+}

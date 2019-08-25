@@ -62,6 +62,7 @@ packages/styling/src/styles/ @phkuo
 packages/utilities/positioning/ @joschect
 packages/date-time @OfficeDev/uifabric-calendar @lorejoh @evlevy
 packages/migration/ @ecraig12345 @kenotron
+packages/tsx-editor @ecraig12345
 
 ### Fabric
 # common/

@@ -3,8 +3,6 @@
 exports[`Component Examples renders Panel.Large.Example.tsx correctly 1`] = `
 <div>
   <button
-    aria-describedby="id__1"
-    aria-labelledby="id__0"
     className=
         ms-Button
         ms-Button--default

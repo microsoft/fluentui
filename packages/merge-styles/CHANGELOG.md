@@ -1,6 +1,14 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 13 Aug 2019 12:31:12 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+
+## 7.4.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.4.0
 Tue, 13 Aug 2019 12:31:12 GMT
@@ -242,7 +250,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.9.3
 Mon, 01 Oct 2018 12:27:24 GMT

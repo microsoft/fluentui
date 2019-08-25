@@ -259,24 +259,29 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       <i
                         aria-hidden={true}
                         className=
+                            ms-Icon
                             ms-Button-icon
+                            {
+                              display: inline-block;
+                            }
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #0078d4;
-                              display: inline-block;
-                              flex-shrink: 0;
                               font-family: "FabricMDL2Icons";
-                              font-size: 16px;
                               font-style: normal;
                               font-weight: normal;
+                              speak: none;
+                            }
+                            {
+                              color: #0078d4;
+                              flex-shrink: 0;
+                              font-size: 16px;
                               height: 16px;
                               line-height: 16px;
                               margin-bottom: 0;
                               margin-left: 4px;
                               margin-right: 4px;
                               margin-top: 0;
-                              speak: none;
                               text-align: center;
                               vertical-align: middle;
                             }
@@ -386,25 +391,44 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       <i
                         aria-hidden={true}
                         className=
+                            ms-Icon
                             ms-Button-icon
                             ms-Button-menuIcon
+                            ms-Button-menuIcon
+                            {
+                              display: inline-block;
+                            }
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #605e5c;
-                              display: inline-block;
-                              flex-shrink: 0;
                               font-family: "FabricMDL2Icons";
-                              font-size: 12px;
                               font-style: normal;
                               font-weight: normal;
+                              speak: none;
+                            }
+                            {
+                              color: #323130;
+                              flex-shrink: 0;
+                              font-size: 12px;
                               height: 16px;
                               line-height: 16px;
                               margin-bottom: 0;
                               margin-left: 4px;
                               margin-right: 4px;
                               margin-top: 0;
-                              speak: none;
+                              text-align: center;
+                              vertical-align: middle;
+                            }
+                            {
+                              color: #605e5c;
+                              flex-shrink: 0;
+                              font-size: 12px;
+                              height: 16px;
+                              line-height: 16px;
+                              margin-bottom: 0;
+                              margin-left: 4px;
+                              margin-right: 4px;
+                              margin-top: 0;
                               text-align: center;
                               vertical-align: middle;
                             }
@@ -617,24 +641,29 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       <i
                         aria-hidden={true}
                         className=
+                            ms-Icon
                             ms-Button-icon
+                            {
+                              display: inline-block;
+                            }
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #a19f9d;
-                              display: inline-block;
-                              flex-shrink: 0;
                               font-family: "FabricMDL2Icons";
-                              font-size: 16px;
                               font-style: normal;
                               font-weight: normal;
+                              speak: none;
+                            }
+                            {
+                              color: #a19f9d;
+                              flex-shrink: 0;
+                              font-size: 16px;
                               height: 16px;
                               line-height: 16px;
                               margin-bottom: 0;
                               margin-left: 4px;
                               margin-right: 4px;
                               margin-top: 0;
-                              speak: none;
                               text-align: center;
                               vertical-align: middle;
                             }
@@ -754,25 +783,44 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       <i
                         aria-hidden={true}
                         className=
+                            ms-Icon
                             ms-Button-icon
                             ms-Button-menuIcon
+                            ms-Button-menuIcon
+                            {
+                              display: inline-block;
+                            }
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #605e5c;
-                              display: inline-block;
-                              flex-shrink: 0;
                               font-family: "FabricMDL2Icons";
-                              font-size: 12px;
                               font-style: normal;
                               font-weight: normal;
+                              speak: none;
+                            }
+                            {
+                              color: #a19f9d;
+                              flex-shrink: 0;
+                              font-size: 12px;
                               height: 16px;
                               line-height: 16px;
                               margin-bottom: 0;
                               margin-left: 4px;
                               margin-right: 4px;
                               margin-top: 0;
-                              speak: none;
+                              text-align: center;
+                              vertical-align: middle;
+                            }
+                            {
+                              color: #605e5c;
+                              flex-shrink: 0;
+                              font-size: 12px;
+                              height: 16px;
+                              line-height: 16px;
+                              margin-bottom: 0;
+                              margin-left: 4px;
+                              margin-right: 4px;
+                              margin-top: 0;
                               text-align: center;
                               vertical-align: middle;
                             }
@@ -912,24 +960,29 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #a19f9d;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #a19f9d;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -1090,24 +1143,29 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     <i
                       aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #a19f9d;
-                            display: inline-block;
-                            flex-shrink: 0;
                             font-family: "FabricMDL2Icons";
-                            font-size: 16px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            color: #a19f9d;
+                            flex-shrink: 0;
+                            font-size: 16px;
                             height: 16px;
                             line-height: 16px;
                             margin-bottom: 0;
                             margin-left: 4px;
                             margin-right: 4px;
                             margin-top: 0;
-                            speak: none;
                             text-align: center;
                             vertical-align: middle;
                           }
@@ -1239,24 +1297,29 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-menuIcon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #605e5c;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 17px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          flex-shrink: 0;
+                          font-size: 17px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -1401,24 +1464,29 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #0078d4;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #0078d4;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -1587,24 +1655,29 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     <i
                       aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #0078d4;
-                            display: inline-block;
-                            flex-shrink: 0;
                             font-family: "FabricMDL2Icons";
-                            font-size: 16px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            color: #0078d4;
+                            flex-shrink: 0;
+                            font-size: 16px;
                             height: 16px;
                             line-height: 16px;
                             margin-bottom: 0;
                             margin-left: 4px;
                             margin-right: 4px;
                             margin-top: 0;
-                            speak: none;
                             text-align: center;
                             vertical-align: middle;
                           }
@@ -1748,24 +1821,29 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     <i
                       aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #0078d4;
-                            display: inline-block;
-                            flex-shrink: 0;
                             font-family: "FabricMDL2Icons";
-                            font-size: 16px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            color: #0078d4;
+                            flex-shrink: 0;
+                            font-size: 16px;
                             height: 16px;
                             line-height: 16px;
                             margin-bottom: 0;
                             margin-left: 4px;
                             margin-right: 4px;
                             margin-top: 0;
-                            speak: none;
                             text-align: center;
                             vertical-align: middle;
                           }

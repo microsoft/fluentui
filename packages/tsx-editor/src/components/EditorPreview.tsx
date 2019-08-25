@@ -1,25 +1,19 @@
 import * as React from 'react';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react';
+import { IEditorPreviewProps } from './EditorWrapper.types';
 
-export interface IEditorPreviewProps {
-  id: string;
-  error?: string;
-  className?: string;
-}
+/**
+ * Region for showing the result of compiling and rendering an example.
+ * This will initially show any children passed in, but they'll be replaced when the example runs.
+ */
+export const EditorPreview: React.FunctionComponent<IEditorPreviewProps> = props => {
+  const { className, id, isScrollable, children } = props;
 
-export const EditorPreview = (props: IEditorPreviewProps) => {
   return (
-    <div>
-      {props.error === undefined ? (
-        ''
-      ) : (
-        <MessageBar messageBarType={MessageBarType.error} truncated={true} overflowButtonAriaLabel="Show more">
-          There is an error preventing the code from being rendered: {props.error}
-        </MessageBar>
-      )}
-      <div className={props.className} id={props.id} />
+    <div id={id} className={className} data-is-scrollable={isScrollable}>
+      {
+        // Initially put the children in this div, but they'll be overwritten when the example renders
+        children
+      }
     </div>
   );
 };
-
-export default EditorPreview;

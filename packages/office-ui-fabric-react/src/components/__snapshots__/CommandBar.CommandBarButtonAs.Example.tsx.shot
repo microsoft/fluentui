@@ -181,24 +181,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -236,24 +241,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-menuIcon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #605e5c;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 12px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #605e5c;
+                        flex-shrink: 0;
+                        font-size: 12px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -384,24 +394,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -558,24 +573,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #0078d4;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #0078d4;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -732,24 +752,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -906,24 +931,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-menuIcon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #605e5c;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 17px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #605e5c;
+                        flex-shrink: 0;
+                        font-size: 17px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -1068,24 +1098,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -1254,24 +1289,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #0078d4;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #0078d4;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -1415,24 +1455,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #0078d4;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #0078d4;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -1633,24 +1678,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -1688,24 +1738,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-menuIcon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #605e5c;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 12px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #605e5c;
+                        flex-shrink: 0;
+                        font-size: 12px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -1836,24 +1891,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -2010,24 +2070,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #0078d4;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #0078d4;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -2412,6 +2477,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                               font-size: 12px;
                                               font-weight: 400;
                                               height: 32px;
+                                              min-width: 32px;
                                               outline: transparent;
                                               padding-bottom: 0;
                                               padding-left: 4px;
@@ -2424,7 +2490,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                               top: 0px;
                                               user-select: none;
                                               vertical-align: top;
-                                              width: 32px;
                                             }
                                             &::-moz-focus-inner {
                                               border: 0;
@@ -2492,23 +2557,28 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                           <i
                                             aria-hidden={true}
                                             className=
+                                                ms-Icon
                                                 ms-Button-icon
+                                                {
+                                                  display: inline-block;
+                                                }
                                                 {
                                                   -moz-osx-font-smoothing: grayscale;
                                                   -webkit-font-smoothing: antialiased;
-                                                  display: inline-block;
-                                                  flex-shrink: 0;
                                                   font-family: "FabricMDL2Icons";
-                                                  font-size: 16px;
                                                   font-style: normal;
                                                   font-weight: normal;
+                                                  speak: none;
+                                                }
+                                                {
+                                                  flex-shrink: 0;
+                                                  font-size: 16px;
                                                   height: 16px;
                                                   line-height: 16px;
                                                   margin-bottom: 0;
                                                   margin-left: 4px;
                                                   margin-right: 4px;
                                                   margin-top: 0;
-                                                  speak: none;
                                                   text-align: center;
                                                   vertical-align: middle;
                                                 }
@@ -2662,24 +2732,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -2836,24 +2911,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-menuIcon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #605e5c;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 17px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #605e5c;
+                        flex-shrink: 0;
+                        font-size: 17px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -2998,24 +3078,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -3184,24 +3269,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #0078d4;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #0078d4;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -3345,24 +3435,29 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #0078d4;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #0078d4;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
