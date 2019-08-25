@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, mergeStyles } from '@uifabric/styling';
-import { css, memoizeFunction } from '@uifabric/utilities';
+import { memoizeFunction } from '@uifabric/utilities';
 import { assign } from './utilities';
 import { IFactoryOptions } from './IComponent';
 import {
@@ -191,11 +191,7 @@ function _constructFinalProps<TProps extends IProcessedSlotProps>(defaultStyles:
     assign(finalProps, ...(props as any));
   }
 
-  if (typeof defaultStyles === 'string') {
-    finalProps.className = css(defaultStyles, classNames);
-  } else {
-    finalProps.className = mergeStyles([defaultStyles], classNames);
-  }
+  finalProps.className = mergeStyles(defaultStyles, classNames);
 
   return finalProps;
 }
