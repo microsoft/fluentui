@@ -17,6 +17,7 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
     expanded,
     onMenuDismiss,
     menuButtonRef,
+    styles,
     ...rest
   } = props;
   let { keytipProps } = props;

@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { createComponent } from '../../../Foundation';
+// Temporary import file to experiment with memoization approach.
+import { createComponent } from '@uifabric/foundation/lib/next/createComponent';
 import { useSplitButtonState as state } from './SplitButton.state';
 import { SplitButtonStyles as styles, SplitButtonTokens as tokens } from './SplitButton.styles';
 import { ISplitButtonProps } from './SplitButton.types';
