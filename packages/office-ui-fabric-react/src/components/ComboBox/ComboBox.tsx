@@ -229,11 +229,16 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       const selectedKeys: string[] | number[] = this._buildSelectedKeys(newProps.selectedKey);
       const indices: number[] = this._getSelectedIndices(newProps.options, selectedKeys);
 
-      this.setState({
+      const newState = {
         selectedIndices: indices,
-        currentOptions: newProps.options,
-        suggestedDisplayValue: undefined
-      });
+        currentOptions: newProps.options
+      };
+      
+      if (newProps.selectedKey === null) {
+        newState.suggestedDisplayValue = undefined;
+      }
+      
+      this.setState(newState);      
     }
   }
 
