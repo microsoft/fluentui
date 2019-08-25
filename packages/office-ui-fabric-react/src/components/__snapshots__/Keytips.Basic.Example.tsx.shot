@@ -175,7 +175,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -185,6 +185,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -211,7 +212,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 Pivot 1
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-describedby="ktp-layer-id ktp-b"
@@ -335,7 +336,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -345,6 +346,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -371,7 +373,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 Pivot 2
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-describedby="ktp-layer-id ktp-c"
@@ -495,7 +497,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -505,6 +507,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -531,7 +534,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 Pivot 3
               </span>
             </span>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -801,7 +804,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                   tabIndex={-1}
                   type="button"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-flexContainer
                         {
@@ -811,6 +814,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                           height: 100%;
                           justify-content: center;
                         }
+                    data-automationid="splitbuttonprimary"
                   >
                     <i
                       aria-hidden={true}
@@ -845,7 +849,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                     >
                       
                     </i>
-                  </div>
+                  </span>
                 </button>
                 <button
                   className=
@@ -939,7 +943,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                   tabIndex={-1}
                   type="button"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-flexContainer
                         {
@@ -949,6 +953,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                           height: 100%;
                           justify-content: center;
                         }
+                    data-automationid="splitbuttonprimary"
                   >
                     <i
                       aria-hidden={true}
@@ -983,7 +988,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                     >
                       
                     </i>
-                  </div>
+                  </span>
                 </button>
               </span>
             </div>

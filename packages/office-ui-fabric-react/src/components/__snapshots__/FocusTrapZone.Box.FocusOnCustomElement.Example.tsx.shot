@@ -146,7 +146,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -156,18 +156,21 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -178,9 +181,9 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
             id="id__0"
           >
             Focus Custom Element
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
   </div>
   <div

@@ -92,7 +92,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -102,18 +102,21 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
-      <div
+      <span
         className=
             ms-Button-textContainer
             {
+              display: block;
               flex-grow: 1;
             }
       >
-        <div
+        <span
           className=
               ms-Button-label
               {
+                display: block;
                 font-weight: 600;
                 line-height: 100%;
                 margin-bottom: 0;
@@ -124,9 +127,9 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
           id="id__0"
         >
           Add another item
-        </div>
-      </div>
-    </div>
+        </span>
+      </span>
+    </span>
   </button>
   <div
     className=
@@ -263,7 +266,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -273,6 +276,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -312,7 +316,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
           <div
@@ -578,7 +582,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -588,6 +592,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -627,7 +632,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
         </div>

@@ -452,7 +452,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -462,18 +462,21 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -484,8 +487,8 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
             id="id__2"
           >
             Show context menu
-          </div>
-        </div>
+          </span>
+        </span>
         <i
           aria-hidden={true}
           className=
@@ -519,7 +522,7 @@ exports[`Component Examples renders ContextualMenu.Directional.Example.tsx corre
         >
           
         </i>
-      </div>
+      </span>
     </button>
   </div>
 </div>

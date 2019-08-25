@@ -389,7 +389,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -399,18 +399,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -421,9 +424,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__2"
               >
                 http://placehold.it/100x200
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -819,7 +822,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -829,18 +832,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -851,9 +857,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__6"
               >
                 http://placehold.it/100x201
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -1249,7 +1255,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1259,18 +1265,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -1281,9 +1290,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__10"
               >
                 http://placehold.it/100x202
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -1679,7 +1688,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1689,18 +1698,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -1711,9 +1723,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__14"
               >
                 http://placehold.it/100x203
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -2109,7 +2121,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2119,18 +2131,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -2141,9 +2156,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__18"
               >
                 http://placehold.it/100x204
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -2539,7 +2554,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2549,18 +2564,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -2571,9 +2589,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__22"
               >
                 http://placehold.it/100x205
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -2969,7 +2987,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2979,18 +2997,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -3001,9 +3022,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__26"
               >
                 http://placehold.it/100x206
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -3399,7 +3420,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3409,18 +3430,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -3431,9 +3455,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__30"
               >
                 http://placehold.it/100x207
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -3829,7 +3853,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3839,18 +3863,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -3861,9 +3888,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__34"
               >
                 http://placehold.it/100x208
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -4259,7 +4286,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4269,18 +4296,21 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -4291,9 +4321,9 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                 id="id__38"
               >
                 http://placehold.it/100x209
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>

@@ -114,7 +114,7 @@ exports[`Component Examples renders HoverCard.EventListenerTarget.Example.tsx co
       title="Emoji"
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -124,6 +124,7 @@ exports[`Component Examples renders HoverCard.EventListenerTarget.Example.tsx co
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <i
           aria-hidden={true}
@@ -158,7 +159,7 @@ exports[`Component Examples renders HoverCard.EventListenerTarget.Example.tsx co
         >
           
         </i>
-      </div>
+      </span>
     </button>
     <div
       className=

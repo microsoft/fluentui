@@ -131,7 +131,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -141,6 +141,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -176,7 +177,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -291,7 +292,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -301,6 +302,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -336,7 +338,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -451,7 +453,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -461,6 +463,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -496,7 +499,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -602,7 +605,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -612,6 +615,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <i
           aria-hidden={true}
@@ -647,7 +651,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
         >
           
         </i>
-      </div>
+      </span>
     </button>
   </div>
 </div>
