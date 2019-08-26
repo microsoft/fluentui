@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Adding Preview pan to the color picker component, increasing the width and height of the color rectangle and css changes",
+  "packageName": "office-ui-fabric-react",
+  "email": "navkuma@microsoft.com",
+  "commit": "d541ebf70b7734c45fa1ccf120783b8a28b40738",
+  "date": "2019-08-26T10:38:41.865Z"
+}
