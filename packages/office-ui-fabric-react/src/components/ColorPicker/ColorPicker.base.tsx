@@ -33,7 +33,6 @@ export interface IColorPickerState {
     component: keyof IRGBHex;
     value: string;
   };
-  previewBoxVisible: boolean;
 }
 
 const getClassNames = classNamesFunction<IColorPickerStyleProps, IColorPickerStyles>();
@@ -63,8 +62,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     initializeComponentRef(this);
 
     this.state = {
-      color: _getColorFromProps(props) || getColorFromString('#ffffff')!,
-      previewBoxVisible: isPreviewBoxVisible(props)
+      color: _getColorFromProps(props) || getColorFromString('#ffffff')!
     };
 
     this._textChangeHandlers = {} as any;
@@ -323,8 +321,4 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
 function _getColorFromProps(props: IColorPickerProps): IColor | undefined {
   const { color } = props;
   return typeof color === 'string' ? getColorFromString(color) : color;
-}
-
-function isPreviewBoxVisible(props: IColorPickerProps): boolean {
-  return props.previewBoxVisible === undefined || props.previewBoxVisible === false ? false : true;
 }

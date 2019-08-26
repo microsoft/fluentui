@@ -2542,8 +2542,6 @@ export interface IColorPickerState {
         component: keyof IRGBHex;
         value: string;
     };
-    // (undocumented)
-    previewBoxVisible: boolean;
 }
 
 // @public (undocumented)
