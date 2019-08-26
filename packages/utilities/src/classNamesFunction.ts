@@ -56,7 +56,7 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     styleProps: TStyleProps = {} as TStyleProps
   ): IProcessedStyleSet<TStyleSet> => {
     let current: Map<any, any> = map;
-    const disableCaching = options.disableCaching;
+    const disableCaching = true;
 
     // On reset of our stylesheet, reset memoized cache.
     if (currentMemoizedClassNames !== _memoizedClassNames) {
