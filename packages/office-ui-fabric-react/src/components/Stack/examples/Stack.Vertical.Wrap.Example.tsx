@@ -18,7 +18,7 @@ const itemStyles: React.CSSProperties = {
 const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const wrapStackTokens: IStackTokens = { childrenGap: 20 };
 
-export const VerticalStackShrinkExample: React.FunctionComponent = () => {
+export const VerticalStackWrapExample: React.FunctionComponent = () => {
   const [stackHeight, setStackHeight] = React.useState<number>(420);
 
   // Mutating styles definition

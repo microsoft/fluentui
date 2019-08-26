@@ -54,7 +54,7 @@ const HorizontalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampl
         styles={stackStyles}
         tokens={wrapStackTokens}
       >
-        {[1, 2, 3, 4, 5, 6, 7, 7, 9, 10].map(n => (
+        {_range(1, 10).map(n => (
           <span style={itemStyles} key={n}>
             {n}
           </span>
@@ -63,6 +63,14 @@ const HorizontalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampl
     </div>
   );
 };
+
+function _range(start: number, end: number): number[] {
+  const result = [];
+  for (let i = start; i <= end; i++) {
+    result.push(i);
+  }
+  return result;
+}
 
 export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExampleOptions> {
   public state: IExampleOptions = {
