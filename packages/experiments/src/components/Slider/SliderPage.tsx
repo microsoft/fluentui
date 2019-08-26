@@ -5,7 +5,7 @@ import { SliderExample } from './examples/Slider.Example';
 const SliderExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Slider/examples/Slider.Example.tsx') as string;
 
 import { SliderVerticalExample } from './examples/Slider.Vertical.Example';
-const SliderVerticalExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Slider/examples/Slider.Tokens.Object.Example.tsx') as string;
+const SliderVerticalExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Slider/examples/Slider.Vertical.Example.tsx') as string;
 
 export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
