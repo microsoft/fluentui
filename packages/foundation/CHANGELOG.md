@@ -1,7 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Aug 2019 12:30:49 GMT and should not be manually modified.
 
+## 7.1.0
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Minor changes
+
+- Memoizing styling in createComponent for components that have their default styling determined entirely by tokens. (Humberto.Morimoto@microsoft.com)
 ## 7.0.4
 Fri, 23 Aug 2019 12:35:28 GMT
 

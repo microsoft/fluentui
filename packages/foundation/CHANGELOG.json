@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "date": "Mon, 26 Aug 2019 12:30:49 GMT",
+      "tag": "@uifabric/foundation_v7.1.0",
+      "version": "7.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Memoizing styling in createComponent for components that have their default styling determined entirely by tokens.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8507da7511cf1a7dd1c9de98568fc5c48fe22ba5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Aug 2019 12:35:28 GMT",
       "tag": "@uifabric/foundation_v7.0.4",
       "version": "7.0.4",

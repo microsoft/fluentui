@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating snapshots due to merge-styles selector split changes.",
-  "packageName": "office-ui-fabric-react",
-  "email": "dzearing@hotmail.com",
-  "commit": "5dde847550f5b53ecddb0cf63e887d507ea80234",
-  "date": "2019-08-23T14:22:10.303Z"
-}

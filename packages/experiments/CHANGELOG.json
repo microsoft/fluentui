@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 26 Aug 2019 12:30:49 GMT",
+      "tag": "@uifabric/experiments_v7.13.2",
+      "version": "7.13.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Memoizing styling in createComponent for components that have their default styling determined entirely by tokens.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8507da7511cf1a7dd1c9de98568fc5c48fe22ba5"
+          },
+          {
+            "comment": "Updating snapshots.",
+            "author": "dzearing@hotmail.com",
+            "commit": "ba4fa6f2ea29cea78bf9024f2d7469c80da099ce"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Aug 2019 12:35:28 GMT",
       "tag": "@uifabric/experiments_v7.13.1",
       "version": "7.13.1",

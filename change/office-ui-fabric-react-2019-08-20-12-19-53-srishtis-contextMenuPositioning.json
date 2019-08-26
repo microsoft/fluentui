@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update positioning logic to nudge item when none of the positions fit",
-  "packageName": "office-ui-fabric-react",
-  "email": "53619942+srishtis27@users.noreply.github.com",
-  "commit": "b593c455b0413240c4695a435de9008d3568271a",
-  "date": "2019-08-20T19:19:53.529Z"
-}

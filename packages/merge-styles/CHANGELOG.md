@@ -1,7 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Aug 2019 12:30:49 GMT and should not be manually modified.
 
+## 7.5.0
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Minor changes
+
+- merge-styles: Collapsing comma delimited selectors to make styles easy to define for multiple matches. (dzearing@hotmail.com)
 ## 7.4.1
 Fri, 23 Aug 2019 12:35:28 GMT
 
