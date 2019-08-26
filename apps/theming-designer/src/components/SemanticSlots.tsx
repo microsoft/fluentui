@@ -44,16 +44,16 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     );
   };
 
-  const trimPaletteColors = (paletteColors: {}): any => {
+  const trimPaletteColors = (paletteColors: {}): {} => {
     let trimmedPaletteColors = {};
     for (let palette in paletteColors) {
       if (
-        palette.includes('theme') ||
-        palette.includes('neutral') ||
-        palette.includes('black') ||
-        palette.includes('white') ||
-        palette.includes('redDark') ||
-        palette.includes('accent')
+        palette.startsWith('theme') ||
+        palette.startsWith('neutral') ||
+        palette === 'black' ||
+        palette === 'white' ||
+        palette === 'redDark' ||
+        palette === 'accent'
       ) {
         (trimmedPaletteColors as any)[palette] = (paletteColors as any)[palette];
       }
@@ -61,22 +61,22 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     return trimmedPaletteColors;
   };
 
-  const trimSemanticColors = (semanticColors: {}): any => {
+  const trimSemanticColors = (semanticColors: {}): {} => {
     let trimmedSemanticColors = {};
     for (let semanticColor in semanticColors) {
       if (
-        semanticColor.includes('body') ||
-        semanticColor.includes('disabled') ||
-        semanticColor.includes('focus') ||
-        semanticColor.includes('variant') ||
-        semanticColor.includes('default') ||
+        semanticColor.startsWith('body') ||
+        semanticColor.startsWith('disabled') ||
+        semanticColor.startsWith('focus') ||
+        semanticColor.startsWith('variant') ||
+        semanticColor.startsWith('default') ||
         semanticColor.includes('action') ||
         semanticColor.includes('link') ||
-        semanticColor.includes('accent') ||
-        semanticColor.includes('list') ||
-        semanticColor.includes('button') ||
-        semanticColor.includes('menu') ||
-        semanticColor.includes('input')
+        semanticColor.startsWith('accent') ||
+        semanticColor.startsWith('list') ||
+        semanticColor.startsWith('button') ||
+        semanticColor.startsWith('menu') ||
+        semanticColor.startsWith('input')
       ) {
         (trimmedSemanticColors as any)[semanticColor] = (semanticColors as any)[semanticColor];
       }
@@ -113,12 +113,16 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     if (props.theme) {
       currThemeVariant = getVariant(props.theme, variantType);
       let currVariantSemanticColors = currThemeVariant.semanticColors;
+      // "trimming" to get rid of the seamantic color slots & palette slots we don't use for theme designer app
       const trimmedSemanticColors = trimSemanticColors(currVariantSemanticColors);
       console.log('semantic colors', trimmedSemanticColors);
       let currVariantPaletteColors = currThemeVariant.palette;
       const onlyPaletteColors = trimPaletteColors(currVariantPaletteColors);
       console.log('palette colors: ', onlyPaletteColors);
-      let mapping = {};
+      const mapping = {};
+      // Iterate through the list of semantic colors
+      // for each semantic color, check if it's hex color string is in the list of palette colors
+      // if it is, add it to the mapping
       for (let semanticColor in trimmedSemanticColors) {
         if (semanticColor) {
           const paletteColorHexStr = (trimmedSemanticColors as any)[semanticColor];
@@ -135,13 +139,8 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
       tempJSXList = [];
       for (let i = 0; i < slotNames.length; i++) {
         let slot = slotNames[i];
-        if ((mapping as any)[slot] === 'N/A') {
-          let currSlotJSX = semanticSlotWidget('#ffffff', (mapping as any)[slot]);
-          tempJSXList.push(currSlotJSX);
-        } else {
-          let currSlotJSX = semanticSlotWidget((currVariantSemanticColors as any)[slot], (mapping as any)[slot]);
-          tempJSXList.push(currSlotJSX);
-        }
+        let currSlotJSX = semanticSlotWidget((currVariantSemanticColors as any)[slot], (mapping as any)[slot]);
+        tempJSXList.push(currSlotJSX);
       }
       return tempJSXList;
     } else {
