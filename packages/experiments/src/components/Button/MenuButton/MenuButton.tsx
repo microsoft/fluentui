@@ -1,15 +1,16 @@
 // Temporary import file to experiment with memoization approach.
-import { createComponent } from '@uifabric/foundation/lib/next/createComponent';
+import { compose } from '@uifabric/foundation/lib/next/compose';
 import { useMenuButtonState as state } from './MenuButton.state';
 import { MenuButtonStyles as styles, MenuButtonTokens as tokens } from './MenuButton.styles';
 import { IMenuButtonProps } from './MenuButton.types';
-import { MenuButtonView } from './MenuButton.view';
+import { MenuButtonView as view } from './MenuButton.view';
 
-export const MenuButton: React.StatelessComponent<IMenuButtonProps> = createComponent(MenuButtonView, {
+export const MenuButton: React.StatelessComponent<IMenuButtonProps> = compose({
   displayName: 'MenuButton',
   state,
   styles,
-  tokens
+  tokens,
+  view
 });
 
 export default MenuButton;

@@ -1,15 +1,16 @@
 // Temporary import file to experiment with memoization approach.
-import { createComponent } from '@uifabric/foundation/lib/next/createComponent';
+import { compose } from '@uifabric/foundation/lib/next/compose';
 import { ActionableStyles as styles, ActionableTokens as tokens } from './Actionable.styles';
 import { IActionableProps } from './Actionable.types';
-import { useButtonState as state } from '../Button.state';
-import { ActionableView } from './Actionable.view';
+import { useActionableState as state } from './Actionable.state';
+import { ActionableView as view } from './Actionable.view';
 
-export const Actionable: React.StatelessComponent<IActionableProps> = createComponent(ActionableView, {
+export const Actionable: React.StatelessComponent<IActionableProps> = compose({
   displayName: 'Actionable',
   state,
   styles,
-  tokens
+  tokens,
+  view
 });
 
 export default Actionable;
