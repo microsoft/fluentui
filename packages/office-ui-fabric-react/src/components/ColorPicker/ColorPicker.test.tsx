@@ -77,7 +77,7 @@ describe('ColorPicker', () => {
     const color = getColorFromString('#000000')!;
     wrapper = mount(<ColorPicker color={color} onChange={noOp} componentRef={colorPickerRef} />);
 
-    const inputs = wrapper.getDOMNode().querySelectorAll('.ms-TextField') as NodeListOf<HTMLInputElement>;
+    const inputs = wrapper.getDOMNode().querySelectorAll('.ms-TextField input') as NodeListOf<HTMLInputElement>;
     expect(inputs[1].value).toBe('0'); // not empty string
   });
 
