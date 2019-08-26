@@ -89,7 +89,7 @@ export const CardView: ICardComponent['view'] = props => {
       tokens={tokens as IStackComponent['tokens']}
       verticalFill
       verticalAlign="start"
-      horizontalAlign="stretch"
+      horizontalAlign={compact ? 'start' : 'stretch'}
     >
       {cardChildren}
     </Slots.root>
