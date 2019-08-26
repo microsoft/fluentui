@@ -142,7 +142,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                     />
                   )}
                 </td>
-                {this.state.previewBoxVisible && (
+                {props.previewBoxVisible && (
                   <td className={classNamesPreviewBox.tableData}>
                     <div className={classNamesPreviewBox.colorSquare} />
                   </td>

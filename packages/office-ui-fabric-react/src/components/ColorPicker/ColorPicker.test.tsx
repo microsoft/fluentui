@@ -94,7 +94,10 @@ describe('ColorPicker', () => {
     wrapper = mount(<ColorPicker color="#FFFFFF" alphaSliderHidden={true} />);
 
     const alphaSlider = wrapper.find('.is-alpha');
-    const tableHeaders = wrapper.find('thead td');
+    const tableHeaders = wrapper
+      .find('thead')
+      .at(1)
+      .find('td');
     const inputs = wrapper.find('.ms-TextField');
 
     // There should only be table headers and inputs for hex, red, green, and blue (no alpha)
@@ -103,10 +106,41 @@ describe('ColorPicker', () => {
     expect(inputs).toHaveLength(4);
   });
 
+  it('show preview box', () => {
+    wrapper = mount(<ColorPicker color="#FFFFFF" previewBoxVisible={true} />);
+
+    const previewBox = wrapper
+      .find('thead')
+      .at(0)
+      .find('td')
+      .at(1)
+      .find('div');
+
+    // There should be one preview box
+    expect(previewBox.exists()).toBe(true);
+  });
+
+  it('hide preview box', () => {
+    wrapper = mount(<ColorPicker color="#FFFFFF" previewBoxVisible={false} />);
+
+    const previewBox = wrapper
+      .find('thead')
+      .at(0)
+      .find('td')
+      .at(1)
+      .find('div');
+
+    // There should be one preview box
+    expect(previewBox.exists()).toBe(false);
+  });
+
   it('renders default RGBA/Hex strings', () => {
     wrapper = mount(<ColorPicker color="#FFFFFF" />);
 
-    const tableHeaders = wrapper.find('thead td');
+    const tableHeaders = wrapper
+      .find('thead')
+      .at(1)
+      .find('td');
     const textHeaders = [
       ColorPickerBase.defaultProps.hexLabel,
       ColorPickerBase.defaultProps.redLabel,
@@ -134,7 +168,10 @@ describe('ColorPicker', () => {
       />
     );
 
-    const tableHeaders = wrapper.find('thead td');
+    const tableHeaders = wrapper
+      .find('thead')
+      .at(1)
+      .find('td');
     tableHeaders.forEach((node, index) => {
       expect(node.text()).toEqual(textHeaders[index]);
     });
