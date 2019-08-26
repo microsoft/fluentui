@@ -157,11 +157,10 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     if (editingColor && editingColor.component === component) {
       return editingColor.value;
     }
-    if (color[component] === null || color[component] === undefined) {
-      return '';
-    } else {
+    if (typeof color[component] === 'number' && !isNaN(color[component] as number)) {
       return String(color[component]);
     }
+    return '';
   }
 
   private _onSVChanged = (ev: React.MouseEvent<HTMLElement>, color: IColor): void => {
