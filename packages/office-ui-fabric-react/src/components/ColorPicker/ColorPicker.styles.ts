@@ -9,14 +9,15 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
       theme.fonts.medium,
       {
         position: 'relative',
-        maxWidth: 300
+        maxWidth: 352,
+        minWidth: 352
       },
       className
     ],
     panel: [
       'ms-ColorPicker-panel',
       {
-        padding: '16px'
+        padding: '12px'
       }
     ],
     table: [

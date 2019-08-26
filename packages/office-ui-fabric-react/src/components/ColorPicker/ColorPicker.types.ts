@@ -80,6 +80,12 @@ export interface IColorPickerProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
+
+  /**
+   * whether color preview box is visible.
+   * @defaultvalue false
+   */
+  previewBoxVisible?: boolean;
 }
 
 /**

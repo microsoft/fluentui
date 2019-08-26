@@ -2527,6 +2527,7 @@ export interface IColorPickerProps {
     greenLabel?: string;
     hexLabel?: string;
     onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
+    previewBoxVisible?: boolean;
     redLabel?: string;
     styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
     theme?: ITheme;
@@ -2541,6 +2542,8 @@ export interface IColorPickerState {
         component: keyof IRGBHex;
         value: string;
     };
+    // (undocumented)
+    previewBoxVisible: boolean;
 }
 
 // @public (undocumented)

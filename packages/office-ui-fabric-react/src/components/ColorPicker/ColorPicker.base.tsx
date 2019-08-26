@@ -23,6 +23,7 @@ import { updateA } from '../../utilities/color/updateA';
 import { updateH } from '../../utilities/color/updateH';
 import { correctRGB } from '../../utilities/color/correctRGB';
 import { correctHex } from '../../utilities/color/correctHex';
+import { mergeStyleSets, HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
 
 type IRGBHex = Pick<IColor, 'r' | 'g' | 'b' | 'a' | 'hex'>;
 
@@ -32,6 +33,7 @@ export interface IColorPickerState {
     component: keyof IRGBHex;
     value: string;
   };
+  previewBoxVisible: boolean;
 }
 
 const getClassNames = classNamesFunction<IColorPickerStyleProps, IColorPickerStyles>();
@@ -61,7 +63,8 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     initializeComponentRef(this);
 
     this.state = {
-      color: _getColorFromProps(props) || getColorFromString('#ffffff')!
+      color: _getColorFromProps(props) || getColorFromString('#ffffff')!,
+      previewBoxVisible: isPreviewBoxVisible(props)
     };
 
     this._textChangeHandlers = {} as any;
@@ -99,22 +102,55 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       className
     });
 
+    const classNamesPreviewBox = mergeStyleSets({
+      tableData: {
+        width: '18%'
+      },
+      colorSquare: {
+        width: 48,
+        height: 48,
+        margin: '0 0 0 8px',
+        border: '1px solid #c8c6c4',
+        backgroundColor: color.str,
+        selectors: {
+          [HighContrastSelector]: {
+            MsHighContrastAdjust: 'none'
+          }
+        }
+      }
+    });
+
     return (
       <div className={classNames.root}>
         <div className={classNames.panel}>
-          <ColorRectangle color={color} onChange={this._onSVChanged} />
-          <ColorSlider className="is-hue" minValue={0} maxValue={MAX_COLOR_HUE} value={color.h} onChange={this._onHChanged} />
-          {!props.alphaSliderHidden && (
-            <ColorSlider
-              className="is-alpha"
-              isAlpha
-              overlayStyle={{ background: `linear-gradient(to right, transparent 0, #${color.hex} 100%)` }}
-              minValue={0}
-              maxValue={MAX_COLOR_ALPHA}
-              value={color.a}
-              onChange={this._onAChanged}
-            />
-          )}
+          <ColorRectangle color={color} onChange={this._onSVChanged} styles={{ root: { height: 268 } }} />
+          <table className={classNames.table} cellPadding="0" cellSpacing="0">
+            <thead>
+              <tr className={classNames.tableHeader}>
+                <td>
+                  <ColorSlider className="is-hue" minValue={0} maxValue={MAX_COLOR_HUE} value={color.h} onChange={this._onHChanged} />
+
+                  {!props.alphaSliderHidden && (
+                    <ColorSlider
+                      className="is-alpha"
+                      isAlpha
+                      overlayStyle={{ background: `linear-gradient(to right, transparent 0, #${color.hex} 100%)` }}
+                      minValue={0}
+                      maxValue={MAX_COLOR_ALPHA}
+                      value={color.a}
+                      onChange={this._onAChanged}
+                    />
+                  )}
+                </td>
+                {this.state.previewBoxVisible && (
+                  <td className={classNamesPreviewBox.tableData}>
+                    <div className={classNamesPreviewBox.colorSquare} />
+                  </td>
+                )}
+              </tr>
+            </thead>
+          </table>
+
           <table className={classNames.table} cellPadding="0" cellSpacing="0">
             <thead>
               <tr className={classNames.tableHeader}>
@@ -287,4 +323,8 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
 function _getColorFromProps(props: IColorPickerProps): IColor | undefined {
   const { color } = props;
   return typeof color === 'string' ? getColorFromString(color) : color;
+}
+
+function isPreviewBoxVisible(props: IColorPickerProps): boolean {
+  return props.previewBoxVisible === undefined || props.previewBoxVisible === false ? false : true;
 }
