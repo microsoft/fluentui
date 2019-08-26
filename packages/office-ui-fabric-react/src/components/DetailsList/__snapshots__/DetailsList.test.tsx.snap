@@ -69,7 +69,7 @@ exports[`DetailsList renders List correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
-                padding-top: 1px;
+                padding-top: 16px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -655,7 +655,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
-                padding-top: 1px;
+                padding-top: 16px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -1829,7 +1829,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
-                padding-top: 1px;
+                padding-top: 16px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -2416,7 +2416,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
-                padding-top: 1px;
+                padding-top: 16px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -3378,7 +3378,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
-                padding-top: 1px;
+                padding-top: 16px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -4566,7 +4566,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
-                padding-top: 1px;
+                padding-top: 16px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
