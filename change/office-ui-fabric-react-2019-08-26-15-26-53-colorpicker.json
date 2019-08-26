@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "ColorRectangle styling fixes",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "902caded70c4332a0c8f8a8a359af4952d40573f",
+  "date": "2019-08-26T22:26:53.021Z"
+}
