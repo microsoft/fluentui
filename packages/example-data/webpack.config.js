@@ -1,7 +1,7 @@
 const path = require('path');
 const resources = require('@uifabric/build/webpack/webpack-resources');
 
-const BUNDLE_NAME = '{{{packageName}}}';
+const BUNDLE_NAME = 'example-data';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
 module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
@@ -11,16 +11,16 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
 
   output: {
     libraryTarget: 'var',
-    library: 'Fabric{{{friendlyPackageName}}}'
+    library: 'FabricExampleData'
   },
 
   externals: [{ react: 'React' }, { 'react-dom': 'ReactDOM' }],
 
   resolve: {
     alias: {
-      '{{{packageNpmName}}}/src': path.join(__dirname, 'src'),
-      '{{{packageNpmName}}}/lib': path.join(__dirname, 'lib'),
-      '{{{packageNpmName}}}': path.join(__dirname, 'lib')
+      '@uifabric/example-data/src': path.join(__dirname, 'src'),
+      '@uifabric/example-data/lib': path.join(__dirname, 'lib'),
+      '@uifabric/example-data': path.join(__dirname, 'lib')
     }
   }
 });
