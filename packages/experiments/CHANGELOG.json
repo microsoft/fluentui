@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 27 Aug 2019 12:33:51 GMT",
+      "tag": "@uifabric/experiments_v7.13.3",
+      "version": "7.13.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove some relative imports from examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "9bfb3b5f1dbec3c8ef57558d3d47f5bdc2f9648c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Aug 2019 12:30:49 GMT",
       "tag": "@uifabric/experiments_v7.13.2",
       "version": "7.13.2",

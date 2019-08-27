@@ -1,7 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Aug 2019 12:33:51 GMT and should not be manually modified.
 
+## 0.134.3
+Tue, 27 Aug 2019 12:33:51 GMT
+
+### Patches
+
+- Remove relative imports from examples and fix incorrectly named example files (elcraig@microsoft.com)
 ## 0.134.2
 Fri, 23 Aug 2019 12:35:28 GMT
 
