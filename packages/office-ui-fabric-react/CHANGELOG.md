@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 23 Aug 2019 12:21:26 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Aug 2019 12:22:52 GMT and should not be manually modified.
 
+## 6.202.1
+Tue, 27 Aug 2019 12:22:52 GMT
+
+### Patches
+
+- Drop hint icon changed to circle and a padding of 16px added to accomodate the drophint icon (svaibhav@microsoft.com)
 ## 6.202.0
 Fri, 23 Aug 2019 12:21:26 GMT
 
