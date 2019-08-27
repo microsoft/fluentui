@@ -68,7 +68,7 @@ npm install --save office-ui-fabric-react
 
 This will add the package as a dependency in your `package.json` file and download it under `node_modules/office-ui-fabric-react`.
 
-The library includes ES2015 module entry points under the `lib` folder (use `lib-amd` if you need AMD, or `lib-commonjs` if you need commonjs). To use a control, import it and then use it in your render method:
+The library includes ES2015 module entry points under the `lib` folder (use `lib-amd` if you need AMD, or `lib-commonjs` if you need `commonjs`). To use a control, import it and then use it in your render method:
 
 ```js
 import * as React from 'react';
