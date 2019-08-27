@@ -124,10 +124,7 @@ describe('ColorPicker', () => {
   it('renders default RGBA/Hex strings', () => {
     wrapper = mount(<ColorPicker color="#FFFFFF" />);
 
-    const tableHeaders = wrapper
-      .find('thead')
-      .at(1)
-      .find('td');
+    const tableHeaders = wrapper.find('thead td');
     const textHeaders = [
       ColorPickerBase.defaultProps.hexLabel,
       ColorPickerBase.defaultProps.redLabel,
@@ -155,10 +152,7 @@ describe('ColorPicker', () => {
       />
     );
 
-    const tableHeaders = wrapper
-      .find('thead')
-      .at(1)
-      .find('td');
+    const tableHeaders = wrapper.find('thead td');
     tableHeaders.forEach((node, index) => {
       expect(node.text()).toEqual(textHeaders[index]);
     });
