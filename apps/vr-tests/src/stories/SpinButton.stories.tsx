@@ -2,20 +2,21 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFixedWidth } from '../utilities';
-import { Fabric, SpinButton } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities';
+import { Fabric, SpinButton, TextField, ISpinButtonProps } from 'office-ui-fabric-react';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 
-const props = {
+const props: ISpinButtonProps = {
   defaultValue: '0',
   label: 'Basic SpinButton:',
   min: 0,
   max: 0,
-  step: 1
+  step: 1,
+  styles: { root: { width: 300 } }
 };
 
 storiesOf('SpinButton', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -58,6 +59,45 @@ storiesOf('SpinButton', module)
     () => (
       <Fabric>
         <SpinButton {...props} labelPosition={Position.end} />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
+  .addStory(
+    'Label on top',
+    () => (
+      <Fabric>
+        <SpinButton {...props} labelPosition={Position.top} />
+        <TextField
+          label="Should vertically align with SpinButton"
+          styles={{ root: { width: 300 } }}
+        />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
+  .addStory(
+    'Label on top with icon',
+    () => (
+      <Fabric>
+        <SpinButton
+          {...props}
+          labelPosition={Position.top}
+          iconProps={{ iconName: 'IncreaseIndentLegacy' }}
+        />
+        <TextField
+          label="Should vertically align with SpinButton"
+          styles={{ root: { width: 300 } }}
+        />
+      </Fabric>
+    ),
+    { rtl: true }
+  )
+  .addStory(
+    'Label on bottom',
+    () => (
+      <Fabric>
+        <SpinButton {...props} labelPosition={Position.bottom} />
       </Fabric>
     ),
     { rtl: true }
