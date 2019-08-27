@@ -3,14 +3,14 @@
 const getAllPackageInfo = require('../monorepo/getAllPackageInfo');
 const findConfig = require('../find-config');
 const { readConfig } = require('../read-config');
-const importStatementGlobalRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/gm;
-const importStatementRegex = /^import [{} a-zA-Z0-9_,*\r?\n ]*(?:from )?['"]{1}([.\/a-zA-Z0-9_@\-]+)['"]{1};.*$/;
-const pkgNameRegex = /^(@[a-z\-]+\/[a-z\-]+)|([a-z\-]+)/;
+const importStatementGlobalRegex = /^import [^'"]*(?:from )?['"]([^'"]+)['"];.*$/gm;
+const importStatementRegex = /^import [^'"]*(?:from )?['"]([^'"]+)['"];.*$/;
+const pkgNameRegex = /^(@[\w-]+\/[\w-]+|[\w-]+)/;
 
 /**
  * @typedef {{
  *   count: number;
- *   matches: { [key: string]: string }
+ *   matches: { [key: string]: { importPath: string; alternative?: string; } }
  * }} ImportErrorGroup
  *
  * @typedef {{
@@ -18,6 +18,8 @@ const pkgNameRegex = /^(@[a-z\-]+\/[a-z\-]+)|([a-z\-]+)/;
  *   totalImportStatements: number;
  *   pathNotFile: ImportErrorGroup;
  *   pathRelative: ImportErrorGroup;
+ *   pathDeep: ImportErrorGroup;
+ *   pathReExported: ImportErrorGroup;
  * }} ImportErrors
  */
 
@@ -31,40 +33,28 @@ function lintImports() {
   const sourcePath = path.resolve(process.cwd(), 'src');
   const cwdNodeModulesPath = path.resolve(process.cwd(), 'node_modules');
   const nodeModulesPath = path.resolve(gitRoot, 'node_modules');
-  const rootFolder = gitRoot;
 
-  const allowRelativeImportExamples = [
-    // These were added to reduce the initial ramifications of disabling relative imports across all examples,
-    // the primary goal being to eliminate usage of relative imports going forward.
+  const allowedDeepImports = [
+    // This is a temporary measure until we figure out what root file these should be exported from.
     // TODO: Ideally these would eventually be removed.
-    'ChoiceGroup.Image.Example.tsx',
-    'DocumentCard.Basic.Example.tsx',
-    'DocumentCard.Compact.Example.tsx',
-    'DocumentCard.Complete.Example.tsx',
-    'DocumentCard.Conversation.Example.tsx',
-    'DocumentCard.Image.Example.tsx',
-    'ExtendedPeoplePicker.Basic.Example.tsx',
-    'ExtendedPeoplePicker.Controlled.Example.tsx',
-    'Facepile.AddFace.Example.tsx',
-    'Facepile.Basic.Example.tsx',
-    'Facepile.Overflow.Example.tsx',
-    'FacepileExampleData.ts',
-    'FloatingPeoplePicker.Basic.Example.tsx',
-    'PeoplePicker.Types.Example.tsx',
-    'PeoplePickerExampleData.ts',
-    'Persona.Alternate.Example.tsx',
-    'Persona.Basic.Example.tsx',
-    'Persona.CustomCoinRender.Example.tsx',
-    'Persona.CustomRender.Example.tsx',
-    'Persona.UnknownPersona.Example.tsx',
-    'Persona.Presence.Example.tsx',
-    'SelectedPeopleList.Basic.Example.tsx',
-    'SelectedPeopleList.Controlled.Example.tsx',
-    'SelectedPeopleList.WithContextMenu.Example.tsx',
-    'SelectedPeopleList.WithEdit.Example.tsx',
-    'SelectedPeopleList.WithEditInContextMenu.Example.tsx',
-    'SelectedPeopleList.WithGroupExpand.Example.tsx'
+    'office-ui-fabric-react/lib/components/Keytip/examples/KeytipSetup',
+    'office-ui-fabric-react/lib/utilities/dateMath/DateMath',
+    'office-ui-fabric-react/lib/utilities/keytips/index',
+    'office-ui-fabric-react/lib/utilities/positioning',
+    '@uifabric/charting/lib/types/IDataPoint',
+    '@uifabric/date-time/lib/utilities/dateMath/DateMath',
+    '@uifabric/experiments/lib/utilities/scrolling/ScrollContainer',
+    // Once the components using this data are promoted, the data should go into @uifabric/example-data
+    '@uifabric/experiments/lib/common/TestImages',
+    '@uifabric/experiments/lib/components/TilesList/examples/ExampleHelpers'
   ];
+  const reExportedPackages = {
+    '@uifabric/foundation': 'Foundation',
+    '@uifabric/icons': 'Icons',
+    '@uifabric/merge-styles': 'Styling',
+    '@uifabric/styling': 'Styling',
+    '@uifabric/utilities': 'Utilities'
+  };
 
   const packagesInfo = getAllPackageInfo();
 
@@ -79,27 +69,16 @@ function lintImports() {
     const importErrors = {
       totalImportKeywords: 0,
       totalImportStatements: 0,
-      pathNotFile: {
-        count: 0,
-        matches: {}
-      },
-      pathRelative: {
-        count: 0,
-        matches: {}
-      }
+      pathNotFile: { count: 0, matches: {} },
+      pathRelative: { count: 0, matches: {} },
+      pathDeep: { count: 0, matches: {} },
+      pathReExported: { count: 0, matches: {} }
     };
 
     for (const file of files) {
-      const filename = file
-        .split('\\')
-        .pop()
-        .split('/')
-        .pop();
+      const isExample = file.includes('/examples/') || file.includes('.Example.');
 
-      // Do not allow relative imports in example files.
-      const allowRelativeImports = file.indexOf('.Example.') === -1 || allowRelativeImportExamples.includes(filename);
-
-      _evaluateFile(file, importErrors, allowRelativeImports);
+      _evaluateFile(file, importErrors, isExample);
     }
 
     // A mismatch here identifies a potential issue with the import regex properly matching all import statements.
@@ -112,7 +91,7 @@ function lintImports() {
       console.log('!!!!!!!!!!!!!!!!!!!!!!!!!');
     }
 
-    if (reportFilePathErrors(importErrors.pathNotFile, importErrors.pathRelative)) {
+    if (reportFilePathErrors(importErrors)) {
       return Promise.reject('Errors in imports were found!');
     }
 
@@ -151,9 +130,9 @@ function lintImports() {
   /**
    * @param {string} filePath
    * @param {ImportErrors} importErrors
-   * @param {boolean} allowRelativeImports
+   * @param {boolean} isExample
    */
-  function _evaluateFile(filePath, importErrors, allowRelativeImports) {
+  function _evaluateFile(filePath, importErrors, isExample) {
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
     const importKeywords = fileContent.match(importStatementGlobalRegex);
@@ -173,7 +152,7 @@ function lintImports() {
         const parts = importStatementRegex.exec(statement);
 
         if (parts) {
-          _evaluateImport(filePath, parts[1], importErrors, allowRelativeImports);
+          _evaluateImport(filePath, parts[1], importErrors, isExample);
         }
       });
     }
@@ -183,13 +162,15 @@ function lintImports() {
    * @param {string} filePath
    * @param {string} importPath
    * @param {ImportErrors} importErrors
-   * @param {boolean} allowRelativeImports
+   * @param {boolean} isExample
    */
-  function _evaluateImport(filePath, importPath, importErrors, allowRelativeImports) {
+  function _evaluateImport(filePath, importPath, importErrors, isExample) {
     let fullImportPath;
     let pathIsRelative = false;
+    let pathIsDeep = false;
+    let pkgName;
 
-    if (importPath.indexOf('.') === 0) {
+    if (importPath[0] === '.') {
       // import is a file path. is this a file?
       fullImportPath = _evaluateImportPath(path.dirname(filePath), importPath);
       pathIsRelative = true;
@@ -199,12 +180,11 @@ function lintImports() {
     } else {
       const pkgNameMatch = importPath.match(pkgNameRegex);
       if (pkgNameMatch === null) {
-        // This means the import does not adhere to what we are looking for (usually import * from 'react';, which
-        // we would skipping linting for.
+        // This means the import does not adhere to what we are looking for, so skip linting.
         return;
       }
 
-      const pkgName = pkgNameMatch[1] || pkgNameMatch[2];
+      pkgName = pkgNameMatch[1];
 
       // we don't evaluate imports of non monorepo packages
       if (!Object.keys(packagesInfo).includes(pkgName)) {
@@ -218,20 +198,37 @@ function lintImports() {
         fullImportPath =
           _evaluateImportPath(nodeModulesPath, './' + importPath) || _evaluateImportPath(cwdNodeModulesPath, './' + importPath);
       }
+
+      // A "deep" path is anything that goes further into the package than <pkg>/lib/<file>
+      const allowedSegments = pkgName[0] === '@' ? 4 : 3;
+      pathIsDeep = importPath.split(/\//g).length > allowedSegments;
     }
+
+    const relativePath = path.relative(sourcePath, filePath);
 
     if (!fullImportPath || fs.statSync(fullImportPath).isDirectory()) {
-      const pathNotFile = importErrors.pathNotFile;
-      const relativePath = path.relative(sourcePath, filePath);
-      pathNotFile.count++;
-      pathNotFile.matches[relativePath] = importPath;
+      importErrors.pathNotFile.count++;
+      importErrors.pathNotFile.matches[relativePath] = { importPath };
     }
 
-    if (!allowRelativeImports && pathIsRelative && importPath.indexOf('.scss') === -1) {
-      const pathRelative = importErrors.pathRelative;
-      const relativePath = path.relative(sourcePath, filePath);
-      pathRelative.count++;
-      pathRelative.matches[relativePath] = importPath;
+    if (isExample) {
+      if (pathIsRelative && !importPath.includes('.scss')) {
+        importErrors.pathRelative.count++;
+        importErrors.pathRelative.matches[relativePath] = { importPath };
+      }
+
+      if (pathIsDeep && !allowedDeepImports.includes(importPath) && !/\.Example$/.test(importPath)) {
+        importErrors.pathDeep.count++;
+        importErrors.pathDeep.matches[relativePath] = { importPath };
+      }
+
+      if (reExportedPackages[pkgName]) {
+        importErrors.pathReExported.count++;
+        importErrors.pathReExported.matches[relativePath] = {
+          importPath,
+          alternative: 'office-ui-fabric-react/lib/' + reExportedPackages[pkgName]
+        };
+      }
     }
   }
 
@@ -255,35 +252,49 @@ function lintImports() {
   }
 
   /**
-   * @param {ImportErrorGroup} pathNotFile
-   * @param {ImportErrorGroup} pathRelative
+   * @param {ImportErrors} importErrors
    */
-  function reportFilePathErrors(pathNotFile, pathRelative) {
-    if (pathNotFile.count) {
-      console.error(
-        `${chalk.red('ERROR')}: ${
-          pathNotFile.count
-        } import path(s) do not reference physical files. This can break AMD imports. Please ensure the following imports reference physical files:`
-      );
+  function reportFilePathErrors(importErrors) {
+    const { pathNotFile, pathRelative, pathDeep, pathReExported } = importErrors;
+
+    logErrors(
+      pathNotFile,
+      'import path(s) do not reference physical files. This can break AMD imports. Please ensure the following imports reference physical files:'
+    );
+    logErrors(
+      pathRelative,
+      'example files are using relative imports. For example portability, please ensure that the following imports are absolute:'
+    );
+    logErrors(
+      pathDeep,
+      'example files are using deep imports. ' +
+        'To promote best practices, please only import from root-level files (<package-name> or <package-name>/lib/<file>):'
+    );
+    logErrors(
+      pathReExported,
+      'example files are directly importing from packages that office-ui-fabric-react re-exports. ' +
+        'Please change the following imports to reference office-ui-fabric-react instead:'
+    );
+
+    return pathNotFile.count > 0 || pathRelative.count > 0 || pathDeep.count > 0;
+  }
+
+  /**
+   * @param {ImportErrorGroup} errorGroup
+   * @param {string} message
+   */
+  function logErrors(errorGroup, message) {
+    if (errorGroup.count) {
+      console.error(`${chalk.red('ERROR')}: ${errorGroup.count} ${message}`);
       console.error('-------------------------------------');
-      for (const filePath in pathNotFile.matches) {
-        console.error(`  ${filePath}: ${chalk.inverse(pathNotFile.matches[filePath])}`);
+      for (const filePath in errorGroup.matches) {
+        const { importPath, alternative } = errorGroup.matches[filePath];
+        console.error(`  ${filePath}: ${chalk.inverse(importPath)}`);
+        if (alternative) {
+          console.error(`        (use instead: '${alternative}')`);
+        }
       }
     }
-
-    if (pathRelative.count) {
-      console.error(
-        `${chalk.red('ERROR')}: ${
-          pathRelative.count
-        } Example files are using relative imports. For example portability, please ensure that the following imports are absolute:`
-      );
-      console.error('-------------------------------------');
-      for (const filePath in pathRelative.matches) {
-        console.error(`  ${filePath}: ${chalk.inverse(pathRelative.matches[filePath])}`);
-      }
-    }
-
-    return pathNotFile.count > 0 || pathRelative.count > 0;
   }
 }
 
