@@ -3,6 +3,7 @@ import * as React from 'react';
 import {
   ChoiceGroup,
   CommandBar,
+  ICommandBarItemProps,
   createTheme,
   Customizer,
   DefaultButton,
@@ -21,7 +22,6 @@ import {
   Text
 } from 'office-ui-fabric-react';
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@uifabric/variants';
-import { farItems, items, overflowItems } from 'office-ui-fabric-react/lib/components/CommandBar/examples/data';
 
 // tslint:disable:max-line-length
 import { CollapsibleSectionRecursiveExample } from '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
@@ -185,77 +185,6 @@ const schemeThemeCustom: ITheme = {
   }
 };
 
-interface IDialogExampleProps {
-  buttonText: string;
-}
-
-interface IDialogExampleState {
-  hideDialog: boolean;
-}
-
-class DialogExample extends React.Component<IDialogExampleProps, IDialogExampleState> {
-  constructor(props: IDialogExampleProps) {
-    super(props);
-
-    this.state = {
-      hideDialog: true
-    };
-  }
-
-  public render(): JSX.Element {
-    return (
-      <div>
-        <br />
-        <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text={this.props.buttonText} />
-        <Dialog
-          hidden={this.state.hideDialog}
-          onDismiss={this._closeDialog}
-          dialogContentProps={{
-            type: DialogType.largeHeader,
-            title: 'All emails together',
-            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
-          }}
-          modalProps={{
-            isBlocking: false,
-            styles: { main: { maxWidth: 450 } }
-          }}
-        >
-          <ChoiceGroup
-            options={[
-              {
-                key: 'A',
-                text: 'Option A'
-              },
-              {
-                key: 'B',
-                text: 'Option B',
-                checked: true
-              },
-              {
-                key: 'C',
-                text: 'Option C',
-                disabled: true
-              }
-            ]}
-          />
-          <DialogFooter>
-            <PrimaryButton onClick={this._closeDialog} text="Save" />
-            <DefaultButton onClick={this._closeDialog} text="Cancel" />
-          </DialogFooter>
-        </Dialog>
-      </div>
-    );
-  }
-
-  private _showDialog = (): void => {
-    this.setState({ hideDialog: false });
-  };
-
-  private _closeDialog = (): void => {
-    this.setState({ hideDialog: true });
-  };
-}
-
 export interface IThemingExampleState {
   bodyToggle: boolean;
   sideToggle: boolean;
@@ -363,4 +292,106 @@ export class ThemingSchemesCustomExample extends ThemingExample {
   public render(): JSX.Element {
     return <Customizer settings={{ theme: schemeThemeCustom }}>{this._renderSchemedComponents()}</Customizer>;
   }
+}
+
+const onCommandClick = (ev: any, item?: ICommandBarItemProps) => console.log(item && item.name);
+const items: ICommandBarItemProps[] = [
+  {
+    key: 'newItem',
+    name: 'New',
+    iconProps: { iconName: 'Add' },
+    ariaLabel: 'New. Use left and right arrow keys to navigate',
+    subMenuProps: {
+      items: [
+        { key: 'emailMessage', name: 'Email message', iconProps: { iconName: 'Mail' } },
+        { key: 'calendarEvent', name: 'Calendar event', iconProps: { iconName: 'Calendar' } }
+      ]
+    }
+  },
+  { key: 'upload', name: 'Upload', iconProps: { iconName: 'Upload' }, href: 'https://dev.office.com/fabric', target: '_blank' },
+  { key: 'share', name: 'Share', iconProps: { iconName: 'Share' }, onClick: onCommandClick },
+  { key: 'download', name: 'Download', iconProps: { iconName: 'Download' }, onClick: onCommandClick }
+];
+
+const overflowItems: ICommandBarItemProps[] = [
+  { key: 'move', name: 'Move to...', iconProps: { iconName: 'MoveToFolder' } },
+  { key: 'copy', name: 'Copy to...', iconProps: { iconName: 'Copy' } },
+  { key: 'rename', name: 'Rename...', iconProps: { iconName: 'Edit' } }
+];
+
+const farItems: ICommandBarItemProps[] = [
+  { key: 'sort', name: 'Sort', ariaLabel: 'Sort', iconProps: { iconName: 'SortLines' }, onClick: onCommandClick },
+  { key: 'tile', name: 'Grid view', ariaLabel: 'Grid view', iconProps: { iconName: 'Tiles' }, iconOnly: true, onClick: onCommandClick },
+  { key: 'info', name: 'Info', ariaLabel: 'Info', iconProps: { iconName: 'Info' }, iconOnly: true, onClick: onCommandClick }
+];
+
+interface IDialogExampleProps {
+  buttonText: string;
+}
+
+interface IDialogExampleState {
+  hideDialog: boolean;
+}
+
+class DialogExample extends React.Component<IDialogExampleProps, IDialogExampleState> {
+  constructor(props: IDialogExampleProps) {
+    super(props);
+
+    this.state = {
+      hideDialog: true
+    };
+  }
+
+  public render(): JSX.Element {
+    return (
+      <div>
+        <br />
+        <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text={this.props.buttonText} />
+        <Dialog
+          hidden={this.state.hideDialog}
+          onDismiss={this._closeDialog}
+          dialogContentProps={{
+            type: DialogType.largeHeader,
+            title: 'All emails together',
+            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+          }}
+          modalProps={{
+            isBlocking: false,
+            styles: { main: { maxWidth: 450 } }
+          }}
+        >
+          <ChoiceGroup
+            options={[
+              {
+                key: 'A',
+                text: 'Option A'
+              },
+              {
+                key: 'B',
+                text: 'Option B',
+                checked: true
+              },
+              {
+                key: 'C',
+                text: 'Option C',
+                disabled: true
+              }
+            ]}
+          />
+          <DialogFooter>
+            <PrimaryButton onClick={this._closeDialog} text="Save" />
+            <DefaultButton onClick={this._closeDialog} text="Cancel" />
+          </DialogFooter>
+        </Dialog>
+      </div>
+    );
+  }
+
+  private _showDialog = (): void => {
+    this.setState({ hideDialog: false });
+  };
+
+  private _closeDialog = (): void => {
+    this.setState({ hideDialog: true });
+  };
 }

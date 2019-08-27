@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { ColorPicker, Toggle, getColorFromString, IColor, IColorPickerStyles } from 'office-ui-fabric-react/lib/index';
+import { ColorPicker, Toggle, getColorFromString, IColor, IColorPickerStyles , updateA} from 'office-ui-fabric-react/lib/index';
 import { mergeStyleSets, HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
-import { updateA } from 'office-ui-fabric-react/lib/utilities/color/updateA';
 
 const classNames = mergeStyleSets({
   wrapper: {

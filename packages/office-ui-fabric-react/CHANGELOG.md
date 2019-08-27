@@ -1,7 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Aug 2019 12:30:49 GMT and should not be manually modified.
 
+## 7.28.0
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Minor changes
+
+- Button: change divs to be spans so its w3 compliant (joschect@microsoft.com)
+### Patches
+
+- Memoizing styling in createComponent for components that have their default styling determined entirely by tokens. (Humberto.Morimoto@microsoft.com)
+- Refactor Checkbox styles to reduce size. (v-mare@microsoft.com)
+- Update positioning logic to nudge item when none of the positions fit (53619942+srishtis27@users.noreply.github.com)
+- New drop hint icon for drag-drop and corresponding padding space on top (svaibhav@microsoft.com)
+- Updating snapshots due to merge-styles selector split changes. (dzearing@hotmail.com)
 ## 7.27.1
 Fri, 23 Aug 2019 12:35:28 GMT
 
