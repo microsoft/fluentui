@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColorPicker, Toggle, getColorFromString, IColor } from 'office-ui-fabric-react/lib/index';
+import { ColorPicker, Toggle, getColorFromString, IColor, IColorPickerStyles } from 'office-ui-fabric-react/lib/index';
 import { mergeStyleSets, HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
 import { updateA } from 'office-ui-fabric-react/lib/utilities/color/updateA';
 
@@ -23,33 +23,47 @@ const classNames = mergeStyleSets({
   }
 });
 
+const rectangleStyle: Partial<IColorPickerStyles> = {
+  root: { height: 268 }
+};
+
+const colorPickerStyles: Partial<IColorPickerStyles> = {
+  panel: { padding: 12 },
+  root: {
+    maxWidth: 352,
+    minWidth: 352
+  }
+};
+
 export interface IBasicColorPickerExampleState {
   color: IColor;
   alphaSliderHidden: boolean;
-  previewBoxVisible: boolean;
+  showPreview: boolean;
 }
 
 export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPickerExampleState> {
   public state: IBasicColorPickerExampleState = {
     color: getColorFromString('#ffffff')!,
     alphaSliderHidden: false,
-    previewBoxVisible: true
+    showPreview: true
   };
 
   public render(): JSX.Element {
-    const { color, alphaSliderHidden, previewBoxVisible } = this.state;
+    const { color, alphaSliderHidden, showPreview: showPreview } = this.state;
     return (
       <div className={classNames.wrapper}>
         <ColorPicker
           color={color}
           onChange={this._updateColor}
           alphaSliderHidden={alphaSliderHidden}
-          previewBoxVisible={previewBoxVisible}
+          showPreview={showPreview}
+          rectangleStyle={rectangleStyle}
+          styles={colorPickerStyles}
         />
 
         <div className={classNames.column2}>
           <Toggle label="Hide alpha slider" onChange={this._onHideAlphaClick} checked={alphaSliderHidden} />
-          <Toggle label="Show Preview Box" onChange={this._onShowPreviewBoxClick} checked={previewBoxVisible} />
+          <Toggle label="Show Preview Box" onChange={this._onShowPreviewBoxClick} checked={showPreview} />
         </div>
       </div>
     );
@@ -69,6 +83,6 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
   };
 
   private _onShowPreviewBoxClick = (ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
-    this.setState({ previewBoxVisible: !!checked });
+    this.setState({ showPreview: !!checked });
   };
 }

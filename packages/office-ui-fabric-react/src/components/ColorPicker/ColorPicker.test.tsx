@@ -94,10 +94,7 @@ describe('ColorPicker', () => {
     wrapper = mount(<ColorPicker color="#FFFFFF" alphaSliderHidden={true} />);
 
     const alphaSlider = wrapper.find('.is-alpha');
-    const tableHeaders = wrapper
-      .find('thead')
-      .at(1)
-      .find('td');
+    const tableHeaders = wrapper.find('thead td');
     const inputs = wrapper.find('.ms-TextField');
 
     // There should only be table headers and inputs for hex, red, green, and blue (no alpha)
@@ -107,28 +104,18 @@ describe('ColorPicker', () => {
   });
 
   it('show preview box', () => {
-    wrapper = mount(<ColorPicker color="#FFFFFF" previewBoxVisible={true} />);
+    wrapper = mount(<ColorPicker color="#FFFFFF" showPreview={true} />);
 
-    const previewBox = wrapper
-      .find('thead')
-      .at(0)
-      .find('td')
-      .at(1)
-      .find('div');
+    const previewBox = wrapper.find('.is-preview');
 
     // There should be one preview box
     expect(previewBox.exists()).toBe(true);
   });
 
   it('hide preview box', () => {
-    wrapper = mount(<ColorPicker color="#FFFFFF" previewBoxVisible={false} />);
+    wrapper = mount(<ColorPicker color="#FFFFFF" showPreview={false} />);
 
-    const previewBox = wrapper
-      .find('thead')
-      .at(0)
-      .find('td')
-      .at(1)
-      .find('div');
+    const previewBox = wrapper.find('.is-preview');
 
     // There should be one preview box
     expect(previewBox.exists()).toBe(false);

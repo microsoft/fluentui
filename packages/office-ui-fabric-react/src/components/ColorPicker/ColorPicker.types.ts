@@ -82,10 +82,15 @@ export interface IColorPickerProps {
   styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
 
   /**
+   * Call to provide customized styling for Preview Box.
+   */
+  rectangleStyle?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
+
+  /**
    * Whether to show color preview box.
    * @defaultvalue false
    */
-  previewBoxVisible?: boolean;
+  showPreview?: boolean;
 }
 
 /**
@@ -113,9 +118,14 @@ export interface IColorPickerStyles {
   root?: IStyle;
 
   /**
-   * Style set for the panel element that contains the color rectangle.
+   * Style set for the panel element that contains the color rectangle, color sliders and inputs .
    */
   panel?: IStyle;
+
+  /**
+   * Style set for the panel element that contains the color rectangle
+   */
+  colorRectangle?: IStyle;
 
   /**
    * Style set for the table element that contains the color sliders and inputs.

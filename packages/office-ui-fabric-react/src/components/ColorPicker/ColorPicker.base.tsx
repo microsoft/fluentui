@@ -118,36 +118,44 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       }
     });
 
+    const flexGrid = mergeStyleSets({
+      flexContainer: {
+        display: 'flex'
+      },
+      flexSlider: {
+        flexGrow: '1'
+      },
+      flexPreviewBox: {
+        flexGrow: '0'
+      }
+    });
+
     return (
       <div className={classNames.root}>
         <div className={classNames.panel}>
-          <ColorRectangle color={color} onChange={this._onSVChanged} styles={{ root: { height: 268 } }} />
-          <table className={classNames.table} cellPadding="0" cellSpacing="0">
-            <thead>
-              <tr className={classNames.tableHeader}>
-                <td>
-                  <ColorSlider className="is-hue" minValue={0} maxValue={MAX_COLOR_HUE} value={color.h} onChange={this._onHChanged} />
+          <ColorRectangle color={color} onChange={this._onSVChanged} styles={props.rectangleStyle} />
+          <div className={flexGrid.flexContainer}>
+            <div className={flexGrid.flexSlider}>
+              <ColorSlider className="is-hue" minValue={0} maxValue={MAX_COLOR_HUE} value={color.h} onChange={this._onHChanged} />
 
-                  {!props.alphaSliderHidden && (
-                    <ColorSlider
-                      className="is-alpha"
-                      isAlpha
-                      overlayStyle={{ background: `linear-gradient(to right, transparent 0, #${color.hex} 100%)` }}
-                      minValue={0}
-                      maxValue={MAX_COLOR_ALPHA}
-                      value={color.a}
-                      onChange={this._onAChanged}
-                    />
-                  )}
-                </td>
-                {props.previewBoxVisible && (
-                  <td className={classNamesPreviewBox.tableData}>
-                    <div className={classNamesPreviewBox.colorSquare} />
-                  </td>
-                )}
-              </tr>
-            </thead>
-          </table>
+              {!props.alphaSliderHidden && (
+                <ColorSlider
+                  className="is-alpha"
+                  isAlpha
+                  overlayStyle={{ background: `linear-gradient(to right, transparent 0, #${color.hex} 100%)` }}
+                  minValue={0}
+                  maxValue={MAX_COLOR_ALPHA}
+                  value={color.a}
+                  onChange={this._onAChanged}
+                />
+              )}
+            </div>
+            {props.showPreview && (
+              <div className={flexGrid.flexPreviewBox}>
+                <div className={classNamesPreviewBox.colorSquare + ' is-preview'} />
+              </div>
+            )}
+          </div>
 
           <table className={classNames.table} cellPadding="0" cellSpacing="0">
             <thead>
