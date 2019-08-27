@@ -221,7 +221,7 @@ module.exports = async function getPerfRegressions() {
  * @returns {string}
  */
 function createReport(testResults) {
-  const report = '<a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing"><h3>Component Perf Analysis</h3></a>'
+  const report = '### [Component Perf Analysis](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing)\n'
 
     // Show only significant changes by default.
     .concat(createScenarioTable(testResults, false))
@@ -305,7 +305,7 @@ function getCell(testResult) {
 function getRegression(testResult) {
   const cell = testResult.isRegression
     ? testResult.files.regressionFile
-      ? `<a href="${urlForDeployPath}/${path.basename(testResult.files.regressionFile)}">Possible Regression</a>`
+      ? `<a href="${urlForDeployPath}/${path.basename(testResult.files.regressionFile)}">Possible regression</a>`
       : ''
     : '';
 
