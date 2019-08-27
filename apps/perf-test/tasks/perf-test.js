@@ -6,6 +6,35 @@ const flamegrill = require('flamegrill');
 const scenarioNames = require('../src/scenarioNames');
 const { argv } = require('@uifabric/build').just;
 
+// Flamegrill Types
+/**
+ * @typedef {{
+ *   outDir?: string;
+ *   tempDir?: string;
+ * }} ScenarioConfig
+ *
+ * @typedef {{
+ *   dataFile?: string;
+ *   errorFile?: string;
+ *   flamegraphFile?: string;
+ *   regressionFile?: string;
+ * }} OutputFiles
+ *
+ * @typedef {{
+ *   numTicks?: number;
+ *   files?: OutputFiles;
+ *   isRegression?: boolean;
+ *   reference?: {
+ *     files?: OutputFiles;
+ *     numTicks?: number;
+ *   }
+ * }} Analysis
+ *
+ * @typedef {{
+ *   [key: string]: Analysis;
+ * }} Analyses
+ */
+
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
 // Wiki: https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing
 const iterationsDefault = 5000;
@@ -165,10 +194,12 @@ module.exports = async function getPerfRegressions() {
     });
   }
 
+  /** @type {ScenarioConfig} */
   const scenarioConfig = { outDir, tempDir };
+  /** @type {Analyses} */
   const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
 
-  const comment = createTestSummary(scenarioResults);
+  const comment = createReport(scenarioResults);
 
   // TODO: determine status according to perf numbers
   const status = 'success';
@@ -185,27 +216,51 @@ module.exports = async function getPerfRegressions() {
 
 /**
  * Create test summary based on test results.
+ *
+ * @param {Analyses} testResults
+ * @returns {string}
  */
-function createTestSummary(testResults) {
-  const result = `Component Perf Analysis:
+function createReport(testResults) {
+  const report = '### [Component Perf Analysis](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing)\n'
+
+    // Show only significant changes by default.
+    .concat(createScenarioTable(testResults, false))
+
+    // Show all results in a collapsible table.
+    .concat('<details><summary>All results</summary><p>')
+    .concat(createScenarioTable(testResults, true))
+    .concat('</p></details>');
+
+  return report;
+}
+
+/**
+ * Create a table of scenario results.
+ *
+ * @param {Analyses} testResults
+ * @param {boolean} showAll Show only significant results by default.
+ * @returns {string}
+ */
+function createScenarioTable(testResults, showAll) {
+  const resultsToDisplay = Object.keys(testResults).filter(key => showAll || testResults[key].isRegression);
+
+  if (resultsToDisplay.length === 0) {
+    return '<p>No significant results to display.</p>';
+  }
+
+  const result = `
   <table>
   <tr>
     <th>Scenario</th>
     <th>
-      <div>Master Ticks *</div>
-      <div><small>
-      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Why ticks?</a>
-      </small></div>
+      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
     </th>
     <th>
-    <div>PR Ticks *</div>
-      <div><small>
-      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Why ticks?</a>
-      </small></div>
+      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
     </th>
-    <th>Potential Regression</th>
+    <th>Status</th>
   </tr>`.concat(
-    Object.keys(testResults)
+    resultsToDisplay
       .map(key => {
         const testResult = testResults[key];
 
@@ -218,9 +273,6 @@ function createTestSummary(testResults) {
       })
       .join('\n')
       .concat(`</table>`)
-      .concat("* Ticks can occasionally vary by up to 100% and shouldn't be used solely for determining regression.  ")
-      .concat('For more information please see the ')
-      .concat('<a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing">Perf Testing wiki</a>.')
   );
 
   console.log('result: ' + result);
@@ -228,6 +280,12 @@ function createTestSummary(testResults) {
   return result;
 }
 
+/**
+ * Helper that renders an output cell based on a test result.
+ *
+ * @param {Analysis} testResult
+ * @returns {string}
+ */
 function getCell(testResult) {
   const cell = testResult.files
     ? testResult.files.errorFile
@@ -238,10 +296,16 @@ function getCell(testResult) {
   return `<td>${cell}</td>`;
 }
 
+/**
+ * Helper that renders an output cell based on a test result.
+ *
+ * @param {Analysis} testResult
+ * @returns {string}
+ */
 function getRegression(testResult) {
   const cell = testResult.isRegression
     ? testResult.files.regressionFile
-      ? `<a href="${urlForDeployPath}/${path.basename(testResult.files.regressionFile)}">Yes</a>`
+      ? `<a href="${urlForDeployPath}/${path.basename(testResult.files.regressionFile)}">Possible regression</a>`
       : ''
     : '';
 
