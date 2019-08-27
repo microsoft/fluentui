@@ -1,4 +1,4 @@
-import { useConst } from './useConst';
+import * as React from 'react';
 
 /**
  * Hook to ensure a callback function always has the same identity.
@@ -11,5 +11,9 @@ import { useConst } from './useConst';
  */
 // tslint:disable-next-line:no-any
 export function useConstCallback<T extends (...args: any[]) => any>(callback: T): T {
-  return useConst(() => callback);
+  const ref = React.useRef<T>();
+  if (!ref.current) {
+    ref.current = callback;
+  }
+  return ref.current;
 }
