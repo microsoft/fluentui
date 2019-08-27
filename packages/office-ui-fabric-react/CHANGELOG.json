@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 27 Aug 2019 12:33:51 GMT",
+      "tag": "office-ui-fabric-react_v7.28.1",
+      "version": "7.28.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Link, Stack, and Toggle example updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "5b314c660d66a8398a9f2ca7bf21df61335759fb"
+          },
+          {
+            "comment": "Remove some relative imports from examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "9bfb3b5f1dbec3c8ef57558d3d47f5bdc2f9648c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Aug 2019 12:30:49 GMT",
       "tag": "office-ui-fabric-react_v7.28.0",
       "version": "7.28.0",

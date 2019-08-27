@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 26 Aug 2019 12:30:49 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Aug 2019 12:33:51 GMT and should not be manually modified.
 
+## 7.13.3
+Tue, 27 Aug 2019 12:33:51 GMT
+
+### Patches
+
+- Remove some relative imports from examples (elcraig@microsoft.com)
 ## 7.13.2
 Mon, 26 Aug 2019 12:30:49 GMT
 

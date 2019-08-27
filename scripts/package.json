@@ -42,7 +42,7 @@
     "jju": "^1.4.0",
     "jscodeshift": "^0.5.0",
     "json-loader": "^0.5.7",
-    "just-scripts": "~0.25.2",
+    "just-scripts": "~0.28.2",
     "mustache": "^2.3.0",
     "ngrok": "^3.0.1",
     "node-sass": "^4.5.3",

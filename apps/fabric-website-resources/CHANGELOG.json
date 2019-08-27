@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Tue, 27 Aug 2019 12:33:51 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.2.6",
+      "version": "7.2.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update how DemoPage creates ExampleCards",
+            "author": "elcraig@microsoft.com",
+            "commit": "5b314c660d66a8398a9f2ca7bf21df61335759fb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Aug 2019 12:35:28 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.2.5",
       "version": "7.2.5",

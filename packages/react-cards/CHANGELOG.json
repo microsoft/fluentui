@@ -2,6 +2,20 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Tue, 27 Aug 2019 12:33:51 GMT",
+      "tag": "@uifabric/react-cards_v0.108.0",
+      "version": "0.108.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Card: fixing vertical and horizontal alignment to start rather than space-between.",
+            "author": "dzearing@hotmail.com",
+            "commit": "4ef6e8836a4a18dc3859aa01a2e1641f00787113"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Aug 2019 12:35:28 GMT",
       "tag": "@uifabric/react-cards_v0.107.9",
       "version": "0.107.9",

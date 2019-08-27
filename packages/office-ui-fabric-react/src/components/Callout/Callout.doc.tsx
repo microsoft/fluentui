@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { items } from '../CommandBar/examples/data';
 
 import { IDocPageProps } from '../../common/DocPage.types';
 
@@ -15,8 +14,6 @@ const CalloutFocusTrapExampleCode = require('!raw-loader!office-ui-fabric-react/
 const CalloutDirectionalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Directional.Example.tsx') as string;
 const CalloutCoverExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Cover.Example.tsx') as string;
 
-const cmdBarParamsTextAndIcons: any = { items: items, farItems: null };
-
 export const CalloutPageProps: IDocPageProps = {
   title: 'Callout',
   componentName: 'Callout',
@@ -30,12 +27,12 @@ export const CalloutPageProps: IDocPageProps = {
     {
       title: 'Nested Callout... Callout with a commandbar with a sub menu',
       code: CalloutNestedExampleCode,
-      view: <CalloutNestedExample {...cmdBarParamsTextAndIcons} />
+      view: <CalloutNestedExample />
     },
     {
       title: 'Focus Trap Callout',
       code: CalloutFocusTrapExampleCode,
-      view: <CalloutFocusTrapExample {...cmdBarParamsTextAndIcons} />
+      view: <CalloutFocusTrapExample />
     },
     {
       title: 'Callout with directional hint',

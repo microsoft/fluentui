@@ -1,7 +1,13 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Aug 2019 12:33:51 GMT and should not be manually modified.
 
+## 0.108.0
+Tue, 27 Aug 2019 12:33:51 GMT
+
+### Minor changes
+
+- Card: fixing vertical and horizontal alignment to start rather than space-between. (dzearing@hotmail.com)
 ## 0.107.9
 Fri, 23 Aug 2019 12:35:28 GMT
 
