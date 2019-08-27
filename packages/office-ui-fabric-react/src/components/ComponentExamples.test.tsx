@@ -5,7 +5,7 @@ import * as path from 'path';
 
 import { resetIds } from '../Utilities';
 
-import * as DataUtil from '../utilities/exampleData';
+import * as DataUtil from '@uifabric/example-data';
 import * as mergeStylesSerializer from '@uifabric/jest-serializer-merge-styles';
 
 const ReactDOM = require('react-dom');

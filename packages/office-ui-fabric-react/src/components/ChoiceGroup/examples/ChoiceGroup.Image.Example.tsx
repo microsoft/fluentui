@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
 export const ChoiceGroupImageExample: React.FunctionComponent = () => {
   const [selectedKey, setSelectedKey] = React.useState<string>('bar');
