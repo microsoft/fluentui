@@ -157,7 +157,7 @@ export const getStyles = memoizeFunction(
         // Due to the lineHeight set on the label (below), the height of the wrapper (contains icon+label)
         // ends up 1px taller than a standard label height, causing the vertical alignment to be off when
         // the SpinButton is displayed with the label on top next to other form fields.
-        // Decrease the label's effective height slightly to compensate.
+        // Decrease the wrapper's effective height slightly to compensate.
         marginBottom: -1
       },
       labelWrapperBottom: {},
