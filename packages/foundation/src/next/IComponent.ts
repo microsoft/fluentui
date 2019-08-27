@@ -130,7 +130,7 @@ export interface IComponentOptions<
   /**
    * Stateless pure function that receives props to render the output of the component.
    */
-  view?: IViewComponent<TViewProps>;
+  view: IViewComponent<TViewProps>;
   /**
    * Default prop for which to map primitive values.
    */

@@ -48,7 +48,7 @@ export function composed<
   TViewProps extends TComponentProps = TComponentProps,
   TStatics = {}
 >(
-  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics> = {}
+  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>
 ): React.FunctionComponent<TComponentProps> & TStatics {
   const { factoryOptions = {}, view } = options;
   const { defaultProp } = factoryOptions;
@@ -151,10 +151,10 @@ export function composed<
       _defaultStyles: displayName ? finalStyles : styles
     } as TViewProps & IDefaultSlotProps<any>;
 
-    return view!(viewProps);
+    return view(viewProps);
   };
 
-  result.displayName = options.displayName || view!.name;
+  result.displayName = options.displayName || view.name;
 
   // If a shorthand prop is defined, create a factory for the component.
   // TODO: This shouldn't be a concern of createComponent.. factoryOptions should just be forwarded.
