@@ -5,13 +5,13 @@ exports[`CardView renders a Compact Card with an onClick function specified corr
   className=
       ms-Stack
       {
-        align-items: space-between;
+        align-items: flex-start;
         box-sizing: border-box;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         height: 100%;
-        justify-content: space-between;
+        justify-content: flex-start;
         width: auto;
       }
       & > * {
@@ -54,13 +54,13 @@ exports[`CardView renders a Compact Card with contents correctly 1`] = `
   className=
       ms-Stack
       {
-        align-items: space-between;
+        align-items: flex-start;
         box-sizing: border-box;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         height: 100%;
-        justify-content: space-between;
+        justify-content: flex-start;
         width: auto;
       }
       & > * {
@@ -144,13 +144,13 @@ exports[`CardView renders a Compact Card without contents correctly 1`] = `
   className=
       ms-Stack
       {
-        align-items: space-between;
+        align-items: flex-start;
         box-sizing: border-box;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
         height: 100%;
-        justify-content: space-between;
+        justify-content: flex-start;
         width: auto;
       }
       & > * {
@@ -170,13 +170,13 @@ exports[`CardView renders a Vertical Card with an onClick function specified cor
   className=
       ms-Stack
       {
-        align-items: space-between;
+        align-items: stretch;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         height: 100%;
-        justify-content: space-between;
+        justify-content: flex-start;
         width: auto;
       }
       & > * {
@@ -219,13 +219,13 @@ exports[`CardView renders a Vertical Card with contents correctly 1`] = `
   className=
       ms-Stack
       {
-        align-items: space-between;
+        align-items: stretch;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         height: 100%;
-        justify-content: space-between;
+        justify-content: flex-start;
         width: auto;
       }
       & > * {
@@ -309,13 +309,13 @@ exports[`CardView renders a Vertical Card without contents correctly 1`] = `
   className=
       ms-Stack
       {
-        align-items: space-between;
+        align-items: stretch;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
         flex-wrap: nowrap;
         height: 100%;
-        justify-content: space-between;
+        justify-content: flex-start;
         width: auto;
       }
       & > * {

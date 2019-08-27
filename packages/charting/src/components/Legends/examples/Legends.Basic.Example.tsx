@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Legends, ILegend } from '../index';
+import { Legends, ILegend } from '@uifabric/charting/lib/Legends';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class LegendBasicExample extends React.Component<{}, {}> {

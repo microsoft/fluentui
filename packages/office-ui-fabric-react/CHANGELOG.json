@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 26 Aug 2019 12:30:49 GMT",
+      "tag": "office-ui-fabric-react_v7.28.0",
+      "version": "7.28.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Memoizing styling in createComponent for components that have their default styling determined entirely by tokens.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8507da7511cf1a7dd1c9de98568fc5c48fe22ba5"
+          },
+          {
+            "comment": "Refactor Checkbox styles to reduce size.",
+            "author": "v-mare@microsoft.com",
+            "commit": "4986fe6b70cf080af7b9b61b7d6abe7ffbec53fa"
+          },
+          {
+            "comment": "Update positioning logic to nudge item when none of the positions fit",
+            "author": "53619942+srishtis27@users.noreply.github.com",
+            "commit": "b593c455b0413240c4695a435de9008d3568271a"
+          },
+          {
+            "comment": "New drop hint icon for drag-drop and corresponding padding space on top",
+            "author": "svaibhav@microsoft.com",
+            "commit": "c327dbc79097a670aa17b939f87295a59fbe1281"
+          },
+          {
+            "comment": "Updating snapshots due to merge-styles selector split changes.",
+            "author": "dzearing@hotmail.com",
+            "commit": "5dde847550f5b53ecddb0cf63e887d507ea80234"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Button: change divs to be spans so its w3 compliant",
+            "author": "joschect@microsoft.com",
+            "commit": "de80498dc1eacdad8ec494b0601ad5feecf5fd95"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Aug 2019 12:35:28 GMT",
       "tag": "office-ui-fabric-react_v7.27.1",
       "version": "7.27.1",
