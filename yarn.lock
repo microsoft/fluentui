@@ -9546,7 +9546,23 @@ just-extend@^4.0.2:
   resolved "https://registry.yarnpkg.com/just-extend/-/just-extend-4.0.2.tgz#f3f47f7dfca0f989c55410a7ebc8854b07108afc"
   integrity sha512-FrLwOgm+iXrPV+5zDU6Jqu4gCRXbWEQg2O3SKONsWE4w7AXFRkryS53bpWdaL9cNol+AmR3AEYz6kn+o0fCPnw==
 
-"just-scripts-utils@>=0.8.2 <1.0.0", just-scripts-utils@^0.8.3:
+"just-scripts-utils@>=0.8.4 <1.0.0":
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/just-scripts-utils/-/just-scripts-utils-0.8.4.tgz#228a0d8296ad20236ece61cf9c0a985521e4724c"
+  integrity sha512-Amx6OGrV8DoIyLnU8QUxs6uMY12CAZy3WmENGgpePzOJK2q7XUeBEHN3a8aSRDpzy7Wc/cL7+ZYbt7UZ6cGsfQ==
+  dependencies:
+    fs-extra "^7.0.1"
+    glob "^7.1.3"
+    handlebars "^4.0.12"
+    jju "^1.4.0"
+    just-task-logger ">=0.3.0 <1.0.0"
+    marked "^0.7.0"
+    marked-terminal "^3.3.0"
+    semver "^5.6.0"
+    tar "^4.4.8"
+    yargs "^12.0.5"
+
+just-scripts-utils@^0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/just-scripts-utils/-/just-scripts-utils-0.8.3.tgz#9af85102b110976c983476a1d4481205c63861ce"
   integrity sha512-J8HhkNUdMJtpwT4+Grp+z3Cf1rVJNXCg6SENZEtDyDcLD3pleg6W9V3bZT+oJ7WC6UR/g3XkPg+l3nBx+eABzg==
@@ -9562,18 +9578,18 @@ just-extend@^4.0.2:
     tar "^4.4.8"
     yargs "^12.0.5"
 
-just-scripts@~0.25.2:
-  version "0.25.4"
-  resolved "https://registry.yarnpkg.com/just-scripts/-/just-scripts-0.25.4.tgz#8c5ec0845be78a247a86893232da07c1677d0199"
-  integrity sha512-bioGm9Fbv9b1jMmsq8C+SorfugtNzwOTTfK1iLGW6GGBAHybsVZJ/Nfef9zhN4KknlX40uIe2oqnP6aZ23+gjg==
+just-scripts@~0.28.2:
+  version "0.28.2"
+  resolved "https://registry.yarnpkg.com/just-scripts/-/just-scripts-0.28.2.tgz#3d96c7ded84f47f607da9f062d5a62640ab059cf"
+  integrity sha512-ZLlJmmzc+qkK2s8IsNcLL1Fp+zYoYWmDl8qeAk/t6iwU5jTCPJ7XlPp1YR8UF2I5iWKw6oejh23O2yH1sF/lKw==
   dependencies:
     "@types/node" "^10.12.18"
     chalk "^2.4.1"
     diff-match-patch "1.0.4"
     fs-extra "^7.0.1"
     glob "^7.1.3"
-    just-scripts-utils ">=0.8.2 <1.0.0"
-    just-task ">=0.13.0 <1.0.0"
+    just-scripts-utils ">=0.8.4 <1.0.0"
+    just-task ">=0.13.1 <1.0.0"
     npm-registry-fetch "^3.9.0"
     prompts "^2.0.1"
     run-parallel-limit "^1.0.5"
@@ -9587,10 +9603,10 @@ just-scripts@~0.25.2:
     chalk "^2.4.1"
     yargs "^12.0.5"
 
-"just-task@>=0.13.0 <1.0.0":
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/just-task/-/just-task-0.13.1.tgz#18fee82364d4a29d1e3c09863ce2f1efa053436f"
-  integrity sha512-i/mYabRo01haIUzUZH1sh9Znbzf7fu04d8p6YzLV3v2TySaDLAJRZVE1QJBqBxV08UHTJZ67awzVPuoQk8Wvew==
+"just-task@>=0.13.1 <1.0.0":
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/just-task/-/just-task-0.13.2.tgz#6d5442972a28b12d1a5d6f86fadaa6cf3c6a9f37"
+  integrity sha512-bICTvAV7Y/cYP3nfcMMapUl2pQJR6mi+uRJTcrqnJwt8fKtlZOMIyMcBTQS+A1V9m/a1qPONwwiGbZwEl3FMVg==
   dependencies:
     "@microsoft/package-deps-hash" "^2.2.153"
     chalk "^2.4.1"
@@ -10267,6 +10283,18 @@ marked-terminal@^3.2.0:
     node-emoji "^1.4.1"
     supports-hyperlinks "^1.0.1"
 
+marked-terminal@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/marked-terminal/-/marked-terminal-3.3.0.tgz#25ce0c0299285998c7636beaefc87055341ba1bd"
+  integrity sha512-+IUQJ5VlZoAFsM5MHNT7g3RHSkA3eETqhRCdXv4niUMAKHQ7lb1yvAcuGPmm4soxhmtX13u4Li6ZToXtvSEH+A==
+  dependencies:
+    ansi-escapes "^3.1.0"
+    cardinal "^2.1.1"
+    chalk "^2.4.1"
+    cli-table "^0.3.1"
+    node-emoji "^1.4.1"
+    supports-hyperlinks "^1.0.1"
+
 marked@^0.3.9:
   version "0.3.19"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.19.tgz#5d47f709c4c9fc3c216b6d46127280f40b39d790"
@@ -10276,6 +10304,11 @@ marked@^0.6.0:
   version "0.6.2"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.6.2.tgz#c574be8b545a8b48641456ca1dbe0e37b6dccc1a"
   integrity sha512-LqxwVH3P/rqKX4EKGz7+c2G9r98WeM/SW34ybhgNGhUQNKtf1GmmSkJ6cDGJ/t6tiyae49qRkpyTw2B9HOrgUA==
+
+marked@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-0.7.0.tgz#b64201f051d271b1edc10a04d1ae9b74bb8e5c0e"
+  integrity sha512-c+yYdCZJQrsRjTPhUx7VKkApw9bwDkNbHUKo1ovgcfDjb2kc8rLuRbIFyXL5WOEUwzSSKo3IXpph2K6DqB/KZg==
 
 math-expression-evaluator@^1.2.14:
   version "1.2.17"
