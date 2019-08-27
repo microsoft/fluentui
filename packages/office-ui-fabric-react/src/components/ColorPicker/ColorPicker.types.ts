@@ -82,7 +82,7 @@ export interface IColorPickerProps {
   styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
 
   /**
-   * whether color preview box is visible.
+   * Whether to show color preview box.
    * @defaultvalue false
    */
   previewBoxVisible?: boolean;

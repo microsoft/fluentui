@@ -26,28 +26,30 @@ const classNames = mergeStyleSets({
 export interface IBasicColorPickerExampleState {
   color: IColor;
   alphaSliderHidden: boolean;
+  previewBoxVisible: boolean;
 }
 
 export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPickerExampleState> {
   public state: IBasicColorPickerExampleState = {
     color: getColorFromString('#ffffff')!,
-    alphaSliderHidden: false
+    alphaSliderHidden: false,
+    previewBoxVisible: true
   };
 
   public render(): JSX.Element {
-    const { color, alphaSliderHidden } = this.state;
+    const { color, alphaSliderHidden, previewBoxVisible } = this.state;
     return (
       <div className={classNames.wrapper}>
-        <ColorPicker color={color} onChange={this._updateColor} alphaSliderHidden={alphaSliderHidden} />
+        <ColorPicker
+          color={color}
+          onChange={this._updateColor}
+          alphaSliderHidden={alphaSliderHidden}
+          previewBoxVisible={previewBoxVisible}
+        />
 
         <div className={classNames.column2}>
-          <div
-            className={classNames.colorSquare}
-            style={{
-              backgroundColor: color.str
-            }}
-          />
           <Toggle label="Hide alpha slider" onChange={this._onHideAlphaClick} checked={alphaSliderHidden} />
+          <Toggle label="Show Preview Box" onChange={this._onShowPreviewBoxClick} checked={previewBoxVisible} />
         </div>
       </div>
     );
@@ -64,5 +66,9 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
       color = updateA(this.state.color, 100);
     }
     this.setState({ alphaSliderHidden: !!checked, color });
+  };
+
+  private _onShowPreviewBoxClick = (ev: React.MouseEvent<HTMLElement>, checked?: boolean) => {
+    this.setState({ previewBoxVisible: !!checked });
   };
 }
