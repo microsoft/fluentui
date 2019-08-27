@@ -30,7 +30,7 @@ const CodepenComponentBase: React.StatelessComponent<ICodepenProps> = props => {
   // boilerplate for codepen API
   const htmlContent = [
     script('office-ui-fabric-react@7/dist/office-ui-fabric-react.js'),
-    script('@uifabric/example-data@7/dist/example-data.js'),
+    jsContent.indexOf('window.FabricExampleData') !== -1 ? script('@uifabric/example-data@7/dist/example-data.js') : '',
     '<div id="content"></div>'
   ].join('\n');
 
