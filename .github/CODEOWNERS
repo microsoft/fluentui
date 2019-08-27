@@ -46,23 +46,24 @@ Controls/web.tsx @Vitalius1 @natalieethell
 #### Packages
 packages/charting/ @Raghurk
 packages/codepen-loader/ @ecraig12345 @kenotron
-packages/foundation/ @JasonGore
+packages/date-time @OfficeDev/uifabric-calendar @lorejoh @evlevy
 packages/example-app-base/ @ecraig12345
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
+packages/foundation/ @JasonGore
 # packages/icons/
 # packages/jest-serializer-merge-styles/
 packages/lists/ @dzearing @KevinTCoughlin @aditima
-# packages/merge-styles/
-# packages/prettier-rules/
-# packages/tslint-rules/
+packages/merge-styles/ @dzearing
+packages/migration/ @ecraig12345 @kenotron
+packages/prettier-rules/ @ecraig12345 @kenotron
+packages/react-hooks/ @ecraig12345
 packages/styling/ @dzearing
 packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
+packages/tslint-rules/ @ecraig12345 @kenotron
+packages/tsx-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @joschect
-packages/date-time @OfficeDev/uifabric-calendar @lorejoh @evlevy
-packages/migration/ @ecraig12345 @kenotron
-packages/tsx-editor @ecraig12345
 
 ### Fabric
 # common/
