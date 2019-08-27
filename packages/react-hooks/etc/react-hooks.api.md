@@ -5,7 +5,7 @@
 ```ts
 
 // @public
-export function useConst<T>(initializer: () => T): T;
+export function useConst<T>(initialValue: T | (() => T)): T;
 
 // @public
 export function useConstCallback<T extends (...args: any[]) => any>(callback: T): T;
