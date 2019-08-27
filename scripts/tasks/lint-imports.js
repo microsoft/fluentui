@@ -37,7 +37,6 @@ function lintImports() {
     // These were added to reduce the initial ramifications of disabling relative imports across all examples,
     // the primary goal being to eliminate usage of relative imports going forward.
     // TODO: Ideally these would eventually be removed.
-    'Chiclet.Basic.Example.tsx',
     'ChoiceGroup.Image.Example.tsx',
     'DocumentCard.Basic.Example.tsx',
     'DocumentCard.Compact.Example.tsx',
@@ -51,11 +50,6 @@ function lintImports() {
     'Facepile.Overflow.Example.tsx',
     'FacepileExampleData.ts',
     'FloatingPeoplePicker.Basic.Example.tsx',
-    'Icon.ImageSheet.Example.tsx',
-    'Keytips.Basic.Example.tsx',
-    'Keytips.Button.Example.tsx',
-    'Keytips.CommandBar.Example.tsx',
-    'Keytips.Overflow.Example.tsx',
     'PeoplePicker.Types.Example.tsx',
     'PeoplePickerExampleData.ts',
     'Persona.Alternate.Example.tsx',
@@ -64,15 +58,12 @@ function lintImports() {
     'Persona.CustomRender.Example.tsx',
     'Persona.UnknownPersona.Example.tsx',
     'Persona.Presence.Example.tsx',
-    'Picker.CustomResult.Example.tsx',
     'SelectedPeopleList.Basic.Example.tsx',
     'SelectedPeopleList.Controlled.Example.tsx',
     'SelectedPeopleList.WithContextMenu.Example.tsx',
     'SelectedPeopleList.WithEdit.Example.tsx',
     'SelectedPeopleList.WithEditInContextMenu.Example.tsx',
-    'SelectedPeopleList.WithGroupExpand.Example.tsx',
-    'TilesList.Document.Example.tsx',
-    'TilesList.Media.Example.tsx'
+    'SelectedPeopleList.WithGroupExpand.Example.tsx'
   ];
 
   const packagesInfo = getAllPackageInfo();

@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Remove relative imports from examples and fix incorrectly named example files",
+  "packageName": "@uifabric/charting",
+  "email": "elcraig@microsoft.com",
+  "commit": "9bfb3b5f1dbec3c8ef57558d3d47f5bdc2f9648c",
+  "date": "2019-08-26T23:42:38.253Z"
+}
