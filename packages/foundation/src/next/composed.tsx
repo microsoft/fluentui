@@ -41,7 +41,7 @@ const memoizedClassNamesMap: IClassNamesMap = {};
  *
  * @param options - component Component options. See IComponentOptions for more detail.
  */
-export function compose<
+export function composed<
   TComponentProps extends ValidProps,
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,

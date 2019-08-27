@@ -1,6 +1,6 @@
 import * as React from 'react';
 // Temporary import file to experiment with memoization approach.
-import { compose } from '@uifabric/foundation/lib/next/compose';
+import { composed } from '@uifabric/foundation/lib/next/composed';
 import { useButtonState as state } from '../Button.state';
 import {
   baseTokens,
@@ -25,7 +25,7 @@ export const PrimaryButtonTokens: IButtonComponent['tokens'] = (props, theme): I
   props.disabled && disabledTokens
 ];
 
-export const PrimaryButton: React.StatelessComponent<IButtonProps> = compose({
+export const PrimaryButton: React.StatelessComponent<IButtonProps> = composed({
   displayName: 'PrimaryButton',
   state,
   styles,
