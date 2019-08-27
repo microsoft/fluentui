@@ -9,7 +9,7 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
       theme.fonts.medium,
       {
         position: 'relative',
-        maxWidth: 350
+        maxWidth: 300
       },
       className
     ],
