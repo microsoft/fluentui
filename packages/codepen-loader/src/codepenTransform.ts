@@ -90,17 +90,17 @@ export function transform(file: string): string {
 
   // add imports and React render footer (with the component wrapped in a <Fabric> for styling)
   const sourceWithFooter = [
-    'const FabricWrapper = window.Fabric.Fabric',
+    'const FabricComponent = window.Fabric.Fabric;\n',
     source.toSource(),
-    `ReactDOM.render(<FabricWrapper><${exampleName}/></FabricWrapper>, document.getElementById("content"));`
+    `ReactDOM.render(<FabricComponent><${exampleName}/></FabricComponent>, document.getElementById("content"));`
   ];
 
   // Build the list of imports from window.Fabric and window.FabricExampleData
-  if (identifiers.length) {
-    sourceWithFooter.unshift(`const {${identifiers.join(',')}} = window.Fabric;\n`);
-  }
   if (exampleIdentifiers.length) {
-    sourceWithFooter.unshift(`const {${exampleIdentifiers.join(',')}} = window.FabricExampleData;\n`);
+    sourceWithFooter.unshift(`const {${exampleIdentifiers.join(',')}} = window.FabricExampleData;`);
+  }
+  if (identifiers.length) {
+    sourceWithFooter.unshift(`const {${identifiers.join(',')}} = window.Fabric;`);
   }
 
   return prettier.format(sourceWithFooter.join('\n'), {

@@ -2,16 +2,16 @@
 
 exports[`codepen transform handles examples importing exampleData 1`] = `
 "const { createListItems, IExampleItem } = window.FabricExampleData;
+const FabricComponent = window.Fabric.Fabric;
 
-const FabricWrapper = window.Fabric.Fabric;
 const FakeExampleDataExample = () => {
   return <div>hi</div>;
 };
 
 ReactDOM.render(
-  <FabricWrapper>
+  <FabricComponent>
     <FakeExampleDataExample />
-  </FabricWrapper>,
+  </FabricComponent>,
   document.getElementById('content')
 );
 "
@@ -19,8 +19,8 @@ ReactDOM.render(
 
 exports[`codepen transform handles examples with class components 1`] = `
 "const { SpinButton } = window.Fabric;
+const FabricComponent = window.Fabric.Fabric;
 
-const FabricWrapper = window.Fabric.Fabric;
 class SpinButtonBasicExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
@@ -41,9 +41,9 @@ class SpinButtonBasicExample extends React.Component<any, any> {
 }
 
 ReactDOM.render(
-  <FabricWrapper>
+  <FabricComponent>
     <SpinButtonBasicExample />
-  </FabricWrapper>,
+  </FabricComponent>,
   document.getElementById('content')
 );
 "
@@ -51,8 +51,8 @@ ReactDOM.render(
 
 exports[`codepen transform handles examples with function components 1`] = `
 "const { Label } = window.Fabric;
+const FabricComponent = window.Fabric.Fabric;
 
-const FabricWrapper = window.Fabric.Fabric;
 const LabelBasicExample = () => {
   return (
     <div>
@@ -62,9 +62,9 @@ const LabelBasicExample = () => {
 };
 
 ReactDOM.render(
-  <FabricWrapper>
+  <FabricComponent>
     <LabelBasicExample />
-  </FabricWrapper>,
+  </FabricComponent>,
   document.getElementById('content')
 );
 "

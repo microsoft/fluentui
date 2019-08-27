@@ -11,6 +11,16 @@ function script(path: string) {
   return `<script src="//unpkg.com/${path}"></script>`;
 }
 
+interface ICodepenPrefill {
+  title: string;
+  html: string;
+  head: string;
+  js: string;
+  js_pre_processor: string;
+  css_pre_processor: string;
+  // and other options--see https://blog.codepen.io/documentation/api/prefill/
+}
+
 const CodepenComponentBase: React.StatelessComponent<ICodepenProps> = props => {
   const { jsContent, buttonAs: ButtonType = CommandButton, styles, theme } = props;
 
@@ -22,11 +32,11 @@ const CodepenComponentBase: React.StatelessComponent<ICodepenProps> = props => {
     script('office-ui-fabric-react@7/dist/office-ui-fabric-react.js'),
     script('@uifabric/example-data@7/dist/example-data.js'),
     '<div id="content"></div>'
-  ];
+  ].join('\n');
 
   const headContent = [script('react@16.8.6/umd/react.development.js'), script('react-dom@16.8.6/umd/react-dom.development.js')].join('\n');
 
-  const valueData = {
+  const valueData: ICodepenPrefill = {
     title: 'Fabric Example Pen',
     html: htmlContent,
     head: headContent,
