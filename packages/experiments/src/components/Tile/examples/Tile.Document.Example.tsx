@@ -10,7 +10,7 @@ import {
   getTileLayout,
   renderTileWithLayout
 } from '@uifabric/experiments';
-import { lorem } from '@uifabric/example-app-base';
+import { lorem } from '@uifabric/example-data';
 import * as TileExampleStylesModule from './Tile.Example.scss';
 
 // tslint:disable-next-line:no-any
