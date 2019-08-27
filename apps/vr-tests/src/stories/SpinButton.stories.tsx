@@ -13,10 +13,7 @@ const props: ISpinButtonProps = {
   max: 0,
   step: 1
 };
-const propsWithStyles: ISpinButtonProps = {
-  ...props,
-  styles: { root: { width: 300 } }
-};
+const styles = { root: { width: 300 } };
 const iconProps = { iconName: 'IncreaseIndentLegacy' };
 
 storiesOf('SpinButton', module)
@@ -59,6 +56,7 @@ storiesOf('SpinButton', module)
     { rtl: true }
   );
 
+// The stories for label placement are separate since they don't need to include hover/click states
 storiesOf('SpinButton - Label Placement', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
@@ -70,7 +68,7 @@ storiesOf('SpinButton - Label Placement', module)
     'Label at end',
     () => (
       <Fabric>
-        <SpinButton {...propsWithStyles} labelPosition={Position.end} />
+        <SpinButton {...props} styles={styles} labelPosition={Position.end} />
       </Fabric>
     ),
     { rtl: true }
@@ -79,36 +77,40 @@ storiesOf('SpinButton - Label Placement', module)
     'Label at end with icon',
     () => (
       <Fabric>
-        <SpinButton {...propsWithStyles} labelPosition={Position.end} iconProps={iconProps} />
+        <SpinButton {...props} styles={styles} labelPosition={Position.end} iconProps={iconProps} />
       </Fabric>
     ),
     { rtl: true }
   )
   .addStory('Label on top', () => (
-    <Fabric styles={{ root: { width: 610 } }}>
-      <SpinButton {...propsWithStyles} labelPosition={Position.top} />
-      <TextField
-        label="Should vertically align with SpinButton"
-        styles={{ root: { width: 300 } }}
-      />
+    <Fabric styles={{ root: { width: 460 } }}>
+      <SpinButton {...props} styles={{ root: { width: 150 } }} labelPosition={Position.top} />
+      <TextField label="Should vertically align with SpinButton" styles={styles} />
     </Fabric>
   ))
   .addStory('Label on top with icon', () => (
-    <Fabric styles={{ root: { width: 610 } }}>
-      <SpinButton {...propsWithStyles} labelPosition={Position.top} iconProps={iconProps} />
-      <TextField
-        label="Should vertically align with SpinButton"
-        styles={{ root: { width: 300 } }}
+    <Fabric styles={{ root: { width: 460 } }}>
+      <SpinButton
+        {...props}
+        styles={{ root: { width: 150 } }}
+        labelPosition={Position.top}
+        iconProps={iconProps}
       />
+      <TextField label="Should vertically align with SpinButton" styles={styles} />
     </Fabric>
   ))
   .addStory('Label on bottom', () => (
     <Fabric>
-      <SpinButton {...propsWithStyles} labelPosition={Position.bottom} />
+      <SpinButton {...props} styles={styles} labelPosition={Position.bottom} />
     </Fabric>
   ))
   .addStory('Label on bottom with icon', () => (
     <Fabric>
-      <SpinButton {...propsWithStyles} labelPosition={Position.bottom} iconProps={iconProps} />
+      <SpinButton
+        {...props}
+        styles={styles}
+        labelPosition={Position.bottom}
+        iconProps={iconProps}
+      />
     </Fabric>
   ));
