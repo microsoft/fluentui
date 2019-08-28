@@ -1893,22 +1893,6 @@
   resolved "https://registry.yarnpkg.com/@types/z-schema/-/z-schema-3.16.31.tgz#2eb1d00a5e4ec3fa58c76afde12e182b66dc5c1c"
   integrity sha1-LrHQCl5Ow/pYx2r94S4YK2bcXBw=
 
-"@uifabric/react-cards@^0.107.9":
-  version "0.107.9"
-  resolved "https://registry.yarnpkg.com/@uifabric/react-cards/-/react-cards-0.107.9.tgz#c505f7b05f69a2201bf6e0fe733461ad0a3e20ba"
-  integrity sha512-6P7V+e5H9bhh3t+9WTGak+G0uHmPkPDXLKL8bMsInRnFgB33b4LF5K/AiBnXrtUjpexdrsUMgiJyF8fTr5bK4g==
-  dependencies:
-    "@microsoft/load-themed-styles" "^1.7.13"
-    "@uifabric/azure-themes" "^7.0.6"
-    "@uifabric/file-type-icons" "^7.0.7"
-    "@uifabric/foundation" "^7.0.4"
-    "@uifabric/set-version" "^7.0.2"
-    "@uifabric/styling" "^7.6.1"
-    "@uifabric/theme-samples" "^7.0.4"
-    "@uifabric/utilities" "^7.0.8"
-    office-ui-fabric-react "^7.27.1"
-    tslib "^1.7.1"
-
 "@webassemblyjs/ast@1.8.3":
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.3.tgz#63a741bd715a6b6783f2ea5c6ab707516aa215eb"
