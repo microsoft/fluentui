@@ -81,6 +81,18 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
+
+  /**
+   * Custom icon to replace the dismiss icon.
+   * If unset, default will be the Fabric Clear icon.
+   */
+  dismissIcon?: string;
+
+  /**
+   * Custom icon to replace the message bar icon.
+   * If unset, default will be the icon set by messageBarType.
+   */
+  messageBarIcon?: string;
 }
 
 /**

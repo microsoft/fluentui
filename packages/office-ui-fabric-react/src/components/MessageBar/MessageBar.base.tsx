@@ -57,13 +57,14 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _getDismissDiv(): JSX.Element | null {
-    if (this.props.onDismiss) {
+    const { onDismiss, dismissIcon } = this.props;
+    if (onDismiss) {
       return (
         <IconButton
           disabled={false}
           className={this._classNames.dismissal}
-          onClick={this.props.onDismiss}
-          iconProps={{ iconName: 'Clear' }}
+          onClick={onDismiss}
+          iconProps={{ iconName: dismissIcon ? dismissIcon : 'Clear' }}
           ariaLabel={this.props.dismissButtonAriaLabel}
         />
       );
@@ -98,9 +99,10 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _getIconSpan(): JSX.Element {
+    const { messageBarIcon } = this.props;
     return (
       <div className={this._classNames.iconContainer} aria-hidden>
-        <Icon iconName={this.ICON_MAP[this.props.messageBarType!]} className={this._classNames.icon} />
+        <Icon iconName={messageBarIcon ? messageBarIcon : this.ICON_MAP[this.props.messageBarType!]} className={this._classNames.icon} />
       </div>
     );
   }
