@@ -18,7 +18,7 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
     "@octokit/rest": "^16.28.2",
-    "@uifabric/codepen-loader": "^7.0.6",
+    "@uifabric/codepen-loader": "^7.0.7",
     "@uifabric/prettier-rules": "^7.0.4",
     "async": "^2.6.1",
     "autoprefixer": "^7.1.5",
