@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "Remove example data exports from example-app-base (use `@uifabric/example-data` instead)",
+  "type": "patch",
+  "comment": "Deprecate example data exports (use `@uifabric/example-data` instead)",
   "packageName": "@uifabric/example-app-base",
   "email": "elcraig@microsoft.com",
   "commit": "b3952ba9bbc421acbc9abc240634c876e3e973c9",
