@@ -31,6 +31,8 @@ exports[`ColorPicker renders correctly 1`] = `
             border-radius: 2px;
             border: 1px solid #f3f2f1;
             margin-bottom: 8px;
+            min-height: 220px;
+            min-width: 220px;
             position: relative;
           }
           @media screen and (-ms-high-contrast: active){& {
@@ -40,8 +42,6 @@ exports[`ColorPicker renders correctly 1`] = `
       style={
         Object {
           "backgroundColor": "#0080ff",
-          "minHeight": 220,
-          "minWidth": 220,
         }
       }
     >
