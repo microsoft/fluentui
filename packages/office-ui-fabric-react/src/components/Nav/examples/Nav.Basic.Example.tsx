@@ -6,6 +6,7 @@ export const NavBasicExample: React.FunctionComponent = () => {
     <Nav
       onLinkClick={_onLinkClick}
       selectedKey="key3"
+      isOnTop={true}
       expandButtonAriaLabel="Expand or collapse"
       selectedAriaLabel="Selected"
       styles={{
