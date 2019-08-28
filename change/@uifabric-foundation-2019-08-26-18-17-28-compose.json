@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Renaming createComponent to compose and moving View inside component options object.",
+  "packageName": "@uifabric/foundation",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "commit": "1568bc0023d3a97bf8b75c3b2a3689d041d16eb0",
+  "date": "2019-08-26T23:17:28.800Z"
+}
