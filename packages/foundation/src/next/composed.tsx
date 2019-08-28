@@ -4,14 +4,8 @@ import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric
 import { createFactory } from '../slots';
 import { assign } from '../utilities';
 
-import {
-  IComponentOptions,
-  ICustomizationProps,
-  IStyleableComponentProps,
-  IStylesFunctionOrObject,
-  IToken,
-  ITokenFunction
-} from './IComponent';
+import { IComponentOptions } from './IComponent';
+import { ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken, ITokenFunction } from '../IComponent';
 import { IDefaultSlotProps, ISlotCreator, ValidProps } from '../ISlots';
 import { mergeStyles } from '@uifabric/merge-styles';
 
@@ -48,7 +42,7 @@ export function composed<
   TViewProps extends TComponentProps = TComponentProps,
   TStatics = {}
 >(
-  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>
+  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics> = {}
 ): React.FunctionComponent<TComponentProps> & TStatics {
   const { factoryOptions = {}, view } = options;
   const { defaultProp } = factoryOptions;
@@ -151,10 +145,10 @@ export function composed<
       _defaultStyles: displayName ? finalStyles : styles
     } as TViewProps & IDefaultSlotProps<any>;
 
-    return view(viewProps);
+    return view ? view(viewProps) : null;
   };
 
-  result.displayName = options.displayName || view.name;
+  result.displayName = options.displayName || (view && view.name);
 
   // If a shorthand prop is defined, create a factory for the component.
   // TODO: This shouldn't be a concern of createComponent.. factoryOptions should just be forwarded.
