@@ -12,10 +12,11 @@
     "postinstall": "node ./scripts/postinstall.js",
     "buildto": "node ./scripts/monorepo/buildTo.js",
     "builddemo": "node ./scripts/monorepo/buildTo.js fabric-website-resources --min",
+    "scrub": "node ./scripts/scrub.js",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
-    "start": "cd apps && cd fabric-website-resources && npm start",
-    "start-exp": "cd packages && cd experiments && npm start",
+    "start": "yarn workspace @uifabric/fabric-website-resources start",
+    "start-exp": "yarn workspace @uifabric/experiments start",
     "build": "lerna run build --stream -- --production --lint",
     "buildci": "lerna run build --stream -- --lint",
     "rebuild": "node ./scripts/invalidate-just-cache.js && npx lerna build --stream",
@@ -39,7 +40,7 @@
     "dom-test": "cd apps/dom-tests && just-scripts jest-dom-with-webpack"
   },
   "devDependencies": {
-    "beachball": "^1.11.6",
+    "beachball": "^1.12.2",
     "lerna": "^3.15.0",
     "lint-staged": "^7.0.5"
   },

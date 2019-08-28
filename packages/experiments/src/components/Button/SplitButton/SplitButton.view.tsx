@@ -1,7 +1,7 @@
 /** @jsx withSlots */
 import { ContextualMenu, Text } from 'office-ui-fabric-react';
 import { withSlots, getSlots } from '../../../Foundation';
-import { Icon } from '../../../utilities/factoryComponents';
+import { FontIcon } from '../../../utilities/factoryComponents';
 
 import { Button } from '../Button';
 import { MenuButton } from '../MenuButton/MenuButton';
@@ -38,11 +38,11 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     root: 'span',
     button: Button,
     menuButton: MenuButton,
-    icon: Icon,
+    icon: FontIcon,
     content: Text,
     menuArea: 'span',
     menu: ContextualMenu,
-    menuIcon: Icon,
+    menuIcon: FontIcon,
     splitDividerContainer: 'span',
     splitDivider: 'span'
   });

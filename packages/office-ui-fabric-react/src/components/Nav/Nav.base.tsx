@@ -89,11 +89,12 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
     const selectedStateAriaLabel = isSelectedLink && selectedAriaLabel ? selectedAriaLabel : undefined;
+
     return (
       <LinkAs
         className={classNames.link}
         styles={buttonStyles}
-        href={link.url || (link.forceAnchor ? 'javascript:' : undefined)}
+        href={link.url || (link.forceAnchor ? '#' : undefined)}
         iconProps={link.iconProps || { iconName: link.icon }}
         onClick={link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link)}
         title={link.title || link.name}
@@ -243,7 +244,16 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     ev.stopPropagation();
   }
 
+  private _preventBounce(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
+    if (!link.url && link.forceAnchor) {
+      ev.preventDefault();
+    }
+  }
+
   private _onNavAnchorLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
+    // If the href is "#" we should call preventDefault to prevent scrolling to the top of the page
+    this._preventBounce(link, ev);
+
     if (this.props.onLinkClick) {
       this.props.onLinkClick(ev, link);
     }
@@ -255,6 +265,9 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   }
 
   private _onNavButtonLinkClicked(link: INavLink, ev: React.MouseEvent<HTMLElement>): void {
+    // If the href is "#" we should call preventDefault to prevent scrolling to the top of the page
+    this._preventBounce(link, ev);
+
     if (link.onClick) {
       link.onClick(ev, link);
     }

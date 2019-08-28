@@ -1,6 +1,13 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+
+## 7.0.7
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.0.6
 Thu, 15 Aug 2019 12:30:43 GMT

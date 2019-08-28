@@ -1,6 +1,27 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Aug 2019 12:33:51 GMT and should not be manually modified.
+
+## 0.108.0
+Tue, 27 Aug 2019 12:33:51 GMT
+
+### Minor changes
+
+- Card: fixing vertical and horizontal alignment to start rather than space-between. (dzearing@hotmail.com)
+## 0.107.9
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 0.107.8
+Thu, 22 Aug 2019 12:34:59 GMT
+
+### Patches
+
+- Disabling 'export to codepen' functionality in Card examples. (Humberto.Morimoto@microsoft.com)
 
 ## 0.107.7
 Thu, 15 Aug 2019 12:30:43 GMT
@@ -15,7 +36,7 @@ Mon, 22 Jul 2019 12:28:42 GMT
 ### Patches
 
 - Card: Importing from office-ui-fabric-react directly instead of from office-ui-fabric-react/lib/... (Humberto.Morimoto@microsoft.com)
-,- Improve how to get the min query string (elcraig@microsoft.com)
+- Improve how to get the min query string (elcraig@microsoft.com)
 
 ## 0.107.5
 Wed, 17 Jul 2019 18:58:57 GMT

@@ -34,6 +34,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 32px;
+            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -45,7 +46,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             text-decoration: none;
             user-select: none;
             vertical-align: top;
-            width: 32px;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -94,7 +94,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -104,28 +104,34 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-Button-icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a19f9d;
-                display: inline-block;
-                flex-shrink: 0;
                 font-family: "FabricMDL2Icons-1";
-                font-size: 16px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #a19f9d;
+                flex-shrink: 0;
+                font-size: 16px;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
-                speak: none;
                 text-align: center;
                 vertical-align: middle;
               }
@@ -134,7 +140,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
         >
           
         </i>
-      </div>
+      </span>
     </button>
     <button
       aria-disabled={true}
@@ -158,6 +164,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 32px;
+            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -169,7 +176,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             text-decoration: none;
             user-select: none;
             vertical-align: top;
-            width: 32px;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -218,7 +224,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -228,28 +234,34 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-Button-icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #a19f9d;
-                display: inline-block;
-                flex-shrink: 0;
                 font-family: "FabricMDL2Icons-8";
-                font-size: 16px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #a19f9d;
+                flex-shrink: 0;
+                font-size: 16px;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
-                speak: none;
                 text-align: center;
                 vertical-align: middle;
               }
@@ -258,7 +270,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
         >
           
         </i>
-      </div>
+      </span>
     </button>
     <button
       aria-label="page 1 of 10 selected"
@@ -352,7 +364,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -362,9 +374,10 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         1
-      </div>
+      </span>
     </button>
     <button
       aria-label="page 2 of 10"
@@ -458,7 +471,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -468,9 +481,10 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         2
-      </div>
+      </span>
     </button>
     <button
       aria-label="page 3 of 10"
@@ -564,7 +578,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -574,9 +588,10 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         3
-      </div>
+      </span>
     </button>
     <button
       aria-label="page 4 of 10"
@@ -670,7 +685,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -680,9 +695,10 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         4
-      </div>
+      </span>
     </button>
     <button
       aria-label="page 5 of 10"
@@ -776,7 +792,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -786,9 +802,10 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         5
-      </div>
+      </span>
     </button>
     <button
       aria-label="next page"
@@ -809,6 +826,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 32px;
+            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -819,7 +837,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             text-decoration: none;
             user-select: none;
             vertical-align: top;
-            width: 32px;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -869,7 +886,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -879,28 +896,34 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-Button-icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #0078d4;
-                display: inline-block;
-                flex-shrink: 0;
                 font-family: "FabricMDL2Icons-8";
-                font-size: 16px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                color: #0078d4;
+                flex-shrink: 0;
+                font-size: 16px;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
-                speak: none;
                 text-align: center;
                 vertical-align: middle;
               }
@@ -909,7 +932,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
         >
           
         </i>
-      </div>
+      </span>
     </button>
     <div
       className=
@@ -942,6 +965,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -952,7 +976,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               text-decoration: none;
               user-select: none;
               vertical-align: top;
-              width: 32px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1002,7 +1025,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -1012,28 +1035,34 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #0078d4;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons-1";
-                  font-size: 16px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #0078d4;
+                  flex-shrink: 0;
+                  font-size: 16px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0;
                   margin-left: 4px;
                   margin-right: 4px;
                   margin-top: 0;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -1042,7 +1071,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -1087,6 +1116,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 32px;
+          min-width: 32px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -1098,7 +1128,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-decoration: none;
           user-select: none;
           vertical-align: top;
-          width: 32px;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -1147,7 +1176,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -1157,28 +1186,34 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
       <i
         aria-hidden={true}
         className=
+            ms-Icon
             ms-Button-icon
+            {
+              display: inline-block;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #a19f9d;
-              display: inline-block;
-              flex-shrink: 0;
               font-family: "FabricMDL2Icons-1";
-              font-size: 16px;
               font-style: normal;
               font-weight: normal;
+              speak: none;
+            }
+            {
+              color: #a19f9d;
+              flex-shrink: 0;
+              font-size: 16px;
               height: 16px;
               line-height: 16px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
               margin-top: 0;
-              speak: none;
               text-align: center;
               vertical-align: middle;
             }
@@ -1187,7 +1222,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
       >
         
       </i>
-    </div>
+    </span>
   </button>
   <button
     aria-disabled={true}
@@ -1211,6 +1246,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 32px;
+          min-width: 32px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -1222,7 +1258,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-decoration: none;
           user-select: none;
           vertical-align: top;
-          width: 32px;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -1271,7 +1306,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -1281,28 +1316,34 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
       <i
         aria-hidden={true}
         className=
+            ms-Icon
             ms-Button-icon
+            {
+              display: inline-block;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #a19f9d;
-              display: inline-block;
-              flex-shrink: 0;
               font-family: "FabricMDL2Icons-8";
-              font-size: 16px;
               font-style: normal;
               font-weight: normal;
+              speak: none;
+            }
+            {
+              color: #a19f9d;
+              flex-shrink: 0;
+              font-size: 16px;
               height: 16px;
               line-height: 16px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
               margin-top: 0;
-              speak: none;
               text-align: center;
               vertical-align: middle;
             }
@@ -1311,7 +1352,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
       >
         
       </i>
-    </div>
+    </span>
   </button>
   <div
     className=
@@ -1359,7 +1400,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #0078d4;
+            border-color: #8a8886;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -1382,13 +1423,13 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -1415,6 +1456,9 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           }
           &:focus {
             border-color: #0078d4;
+          }
+          &:focus .ms-ComboBox-Input {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:focus {
             -ms-high-contrast-adjust: none;
@@ -1506,6 +1550,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               font-weight: 400;
               height: 32px;
               line-height: 30px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -1578,7 +1623,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         tabIndex={-1}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -1588,27 +1633,33 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons";
-                  font-size: 12px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 12px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0;
                   margin-left: 4px;
                   margin-right: 4px;
                   margin-top: 0;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -1617,7 +1668,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -1640,6 +1691,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 32px;
+          min-width: 32px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -1650,7 +1702,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-decoration: none;
           user-select: none;
           vertical-align: top;
-          width: 32px;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -1700,7 +1751,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -1710,27 +1761,33 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
       <i
         aria-hidden={true}
         className=
+            ms-Icon
             ms-Button-icon
+            {
+              display: inline-block;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              flex-shrink: 0;
               font-family: "FabricMDL2Icons-8";
-              font-size: 16px;
               font-style: normal;
               font-weight: normal;
+              speak: none;
+            }
+            {
+              flex-shrink: 0;
+              font-size: 16px;
               height: 16px;
               line-height: 16px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
               margin-top: 0;
-              speak: none;
               text-align: center;
               vertical-align: middle;
             }
@@ -1739,7 +1796,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
       >
         
       </i>
-    </div>
+    </span>
   </button>
   <button
     aria-label="last page"
@@ -1760,6 +1817,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           height: 32px;
+          min-width: 32px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -1770,7 +1828,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-decoration: none;
           user-select: none;
           vertical-align: top;
-          width: 32px;
         }
         &::-moz-focus-inner {
           border: 0;
@@ -1820,7 +1877,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -1830,27 +1887,33 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
       <i
         aria-hidden={true}
         className=
+            ms-Icon
             ms-Button-icon
+            {
+              display: inline-block;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              flex-shrink: 0;
               font-family: "FabricMDL2Icons-1";
-              font-size: 16px;
               font-style: normal;
               font-weight: normal;
+              speak: none;
+            }
+            {
+              flex-shrink: 0;
+              font-size: 16px;
               height: 16px;
               line-height: 16px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
               margin-top: 0;
-              speak: none;
               text-align: center;
               vertical-align: middle;
             }
@@ -1859,7 +1922,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
       >
         
       </i>
-    </div>
+    </span>
   </button>
 </div>
 `;

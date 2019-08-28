@@ -1,13 +1,44 @@
-import { migration } from '../../migration';
+import ts from 'typescript';
+import { migration, IMigrationOptions } from '../../migration';
 import { mod } from 'riceburn';
-import { renameJsxProp } from 'riceburn/lib/mods/renameJsxProp';
+import { ModResult, TypescriptMod } from 'riceburn/lib/interfaces';
+import { getModificationNote } from '../../util/getMessages';
 
-export default migration('TextField: rename deprecated props', () => {
-  return mod('**/*.tsx').asTypescript((node, modder) => {
-    return (
-      renameJsxProp('TextField', 'addonString', 'prefix')(node, modder) ||
-      renameJsxProp('TextField', 'onRenderAddon', 'onRenderPrefix')(node, modder) ||
-      renameJsxProp('TextField', 'componentId', 'id')(node, modder)
-    );
-  }).files;
-});
+const tagName = 'TextField';
+const propReplacementMap: { [key: string]: string } = {
+  addonString: 'prefix',
+  onRenderAddon: 'onRenderPrefix',
+  componentId: 'id'
+};
+
+export default migration(
+  getModificationNote(
+    'TextField deprecated props addonString, onRenderAddon and componentId were renamed to prefix, onRenderPrefix and id respectively'
+  ),
+  (opts: IMigrationOptions): ModResult[] => {
+    return mod('**/*.tsx', opts).asTypescript((node, modder) => {
+      if (
+        (ts.isJsxOpeningElement(node) || ts.isJsxSelfClosingElement(node)) &&
+        node.tagName.getFullText() === tagName &&
+        node.attributes &&
+        node.attributes.properties
+      ) {
+        const mods: TypescriptMod[] = [];
+
+        for (const prop of node.attributes.properties) {
+          if (ts.isJsxAttribute(prop) && prop && prop.name && prop.initializer) {
+            const propName = prop.name.getText();
+
+            if (propReplacementMap[propName]) {
+              mods.push(modder.replace(prop.name, propReplacementMap[propName]));
+            }
+          }
+        }
+
+        return mods;
+      }
+
+      return undefined;
+    }).files;
+  }
+);

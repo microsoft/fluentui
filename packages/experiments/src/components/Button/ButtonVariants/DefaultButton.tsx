@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { createComponent } from '@uifabric/foundation';
+// Temporary import file to experiment with memoization approach.
+import { createComponent } from '@uifabric/foundation/lib/next/createComponent';
 import { useButtonState as state } from '../Button.state';
 import {
   baseTokens,

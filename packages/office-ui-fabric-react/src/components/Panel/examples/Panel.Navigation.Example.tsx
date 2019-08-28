@@ -39,7 +39,10 @@ export class PanelNavigationExample extends React.Component<
     this.setState({ showPanel: false });
   };
 
-  private _onRenderNavigationContent = (props: IPanelProps, defaultRender: IRenderFunction<IPanelProps>): JSX.Element => {
+  private _onRenderNavigationContent: IRenderFunction<IPanelProps> = (
+    props?: IPanelProps,
+    defaultRender?: IRenderFunction<IPanelProps>
+  ): JSX.Element => {
     const theme = getTheme();
 
     return (
@@ -106,7 +109,7 @@ export class PanelNavigationExample extends React.Component<
             iconName: 'MoreVertical'
           }}
         />
-        {defaultRender(props)}
+        {defaultRender!(props)}
       </React.Fragment>
     );
   };

@@ -1,6 +1,21 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+This log was last generated on Mon, 26 Aug 2019 12:30:49 GMT and should not be manually modified.
+
+## 7.6.2
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Patches
+
+- Move most editor-related logic to EditorWrapper (elcraig@microsoft.com)
+## 7.6.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Get rid of monaco-editor-webpack-plugin (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.6.0
 Thu, 15 Aug 2019 12:30:43 GMT
@@ -33,7 +48,7 @@ Thu, 08 Aug 2019 12:32:41 GMT
 ### Patches
 
 - getQueryParam gracefully falls back when window is not defined (jdh@microsoft.com)
-,- Add check for monaco global in example card (elcraig@microsoft.com)
+- Add check for monaco global in example card (elcraig@microsoft.com)
 
 ## 7.4.0
 Wed, 07 Aug 2019 12:32:28 GMT
@@ -87,8 +102,8 @@ Wed, 17 Jul 2019 18:58:57 GMT
 ### Patches
 
 - Allowing example title to show completely even when it goes past one line. (Humberto.Morimoto@microsoft.com)
-,- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
-,- Fix API reference tables' flash of content on scroll (706967+KevinTCoughlin@users.noreply.github.com)
+- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+- Fix API reference tables' flash of content on scroll (706967+KevinTCoughlin@users.noreply.github.com)
 
 ## 7.1.3
 Mon, 01 Jul 2019 18:51:42 GMT
@@ -541,7 +556,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.7.3
 Fri, 21 Sep 2018 14:25:46 GMT

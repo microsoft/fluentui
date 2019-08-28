@@ -1,8 +1,8 @@
-# Office UI Fabric React DateTime
+# @uifabric/date-time
 
-**DateTime components for [Office UI Fabric React](http://dev.microsoft.com/fabric)**
+**Date and time-related components for [Office UI Fabric React](https://dev.microsoft.com/fabric)**
 
-To import DateTime components:
+To import the components:
 
 ```js
 import { Calendar, DatePicker } from '@uifabric/date-time';

@@ -166,7 +166,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               role="menuitem"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -176,28 +176,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -206,17 +212,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -228,29 +236,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__1"
                   >
                     New
-                  </div>
-                </div>
+                  </span>
+                </span>
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-menuIcon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #605e5c;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 12px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #605e5c;
+                        flex-shrink: 0;
+                        font-size: 12px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -259,7 +272,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
           <div
@@ -366,7 +379,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseUp={[Function]}
               role="menuitem"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -376,28 +389,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -406,17 +425,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -428,9 +449,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__4"
                   >
                     Upload
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </a>
           </div>
           <div
@@ -537,7 +558,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -547,28 +568,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #0078d4;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #0078d4;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -577,17 +604,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   >
                     
                   </i>
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: normal;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -599,9 +628,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       id="id__7"
                     >
                       Share
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
             </div>
           </div>
@@ -708,7 +737,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               role="menuitem"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -718,28 +747,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -748,17 +783,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -770,9 +807,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__10"
                   >
                     Download
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -879,7 +916,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -889,28 +926,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-menuIcon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #605e5c;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 17px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #605e5c;
+                        flex-shrink: 0;
+                        font-size: 17px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -919,7 +962,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
         </div>
@@ -1040,7 +1083,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               role="menuitem"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1050,28 +1093,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -1080,17 +1129,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -1102,9 +1153,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__16"
                   >
                     Sort
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -1223,7 +1274,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1233,28 +1284,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #0078d4;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #0078d4;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -1263,7 +1320,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
             </div>
           </div>
@@ -1383,7 +1440,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1393,28 +1450,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #0078d4;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #0078d4;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -1423,7 +1486,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
             </div>
           </div>
@@ -1600,7 +1663,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               role="menuitem"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1610,28 +1673,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -1640,17 +1709,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -1662,29 +1733,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__1"
                   >
                     New
-                  </div>
-                </div>
+                  </span>
+                </span>
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-menuIcon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #605e5c;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 12px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #605e5c;
+                        flex-shrink: 0;
+                        font-size: 12px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -1693,7 +1769,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
           <div
@@ -1800,7 +1876,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseUp={[Function]}
               role="menuitem"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1810,28 +1886,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -1840,17 +1922,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -1862,9 +1946,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__4"
                   >
                     Upload
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </a>
           </div>
           <div
@@ -1971,7 +2055,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1981,28 +2065,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #0078d4;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #0078d4;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -2011,17 +2101,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   >
                     
                   </i>
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: normal;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -2033,9 +2125,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       id="id__7"
                     >
                       Share
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
             </div>
             <span
@@ -2385,6 +2477,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                               font-size: 12px;
                                               font-weight: 400;
                                               height: 32px;
+                                              min-width: 32px;
                                               outline: transparent;
                                               padding-bottom: 0;
                                               padding-left: 4px;
@@ -2397,7 +2490,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                               top: 0px;
                                               user-select: none;
                                               vertical-align: top;
-                                              width: 32px;
                                             }
                                             &::-moz-focus-inner {
                                               border: 0;
@@ -2450,7 +2542,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                         title="Close"
                                         type="button"
                                       >
-                                        <div
+                                        <span
                                           className=
                                               ms-Button-flexContainer
                                               {
@@ -2460,27 +2552,33 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                 height: 100%;
                                                 justify-content: center;
                                               }
+                                          data-automationid="splitbuttonprimary"
                                         >
                                           <i
                                             aria-hidden={true}
                                             className=
+                                                ms-Icon
                                                 ms-Button-icon
+                                                {
+                                                  display: inline-block;
+                                                }
                                                 {
                                                   -moz-osx-font-smoothing: grayscale;
                                                   -webkit-font-smoothing: antialiased;
-                                                  display: inline-block;
-                                                  flex-shrink: 0;
                                                   font-family: "FabricMDL2Icons";
-                                                  font-size: 16px;
                                                   font-style: normal;
                                                   font-weight: normal;
+                                                  speak: none;
+                                                }
+                                                {
+                                                  flex-shrink: 0;
+                                                  font-size: 16px;
                                                   height: 16px;
                                                   line-height: 16px;
                                                   margin-bottom: 0;
                                                   margin-left: 4px;
                                                   margin-right: 4px;
                                                   margin-top: 0;
-                                                  speak: none;
                                                   text-align: center;
                                                   vertical-align: middle;
                                                 }
@@ -2489,7 +2587,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                           >
                                             
                                           </i>
-                                        </div>
+                                        </span>
                                       </button>
                                     </div>
                                   </div>
@@ -2619,7 +2717,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               role="menuitem"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2629,28 +2727,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -2659,17 +2763,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -2681,9 +2787,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__10"
                   >
                     Download
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -2790,7 +2896,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2800,28 +2906,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-menuIcon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #605e5c;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 17px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #605e5c;
+                        flex-shrink: 0;
+                        font-size: 17px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -2830,7 +2942,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
         </div>
@@ -2951,7 +3063,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               role="menuitem"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2961,28 +3073,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
                   className=
+                      ms-Icon
                       ms-Button-icon
+                      {
+                        display: inline-block;
+                      }
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #0078d4;
-                        display: inline-block;
-                        flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
-                        font-size: 16px;
                         font-style: normal;
                         font-weight: normal;
+                        speak: none;
+                      }
+                      {
+                        color: #0078d4;
+                        flex-shrink: 0;
+                        font-size: 16px;
                         height: 16px;
                         line-height: 16px;
                         margin-bottom: 0;
                         margin-left: 4px;
                         margin-right: 4px;
                         margin-top: 0;
-                        speak: none;
                         text-align: center;
                         vertical-align: middle;
                       }
@@ -2991,17 +3109,19 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -3013,9 +3133,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     id="id__16"
                   >
                     Sort
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -3134,7 +3254,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -3144,28 +3264,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #0078d4;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #0078d4;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -3174,7 +3300,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
             </div>
           </div>
@@ -3294,7 +3420,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 role="menuitem"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -3304,28 +3430,34 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Button-icon
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #0078d4;
-                          display: inline-block;
-                          flex-shrink: 0;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #0078d4;
+                          flex-shrink: 0;
+                          font-size: 16px;
                           height: 16px;
                           line-height: 16px;
                           margin-bottom: 0;
                           margin-left: 4px;
                           margin-right: 4px;
                           margin-top: 0;
-                          speak: none;
                           text-align: center;
                           vertical-align: middle;
                         }
@@ -3334,7 +3466,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   >
                     
                   </i>
-                </div>
+                </span>
               </button>
             </div>
           </div>

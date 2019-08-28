@@ -1,6 +1,34 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Aug 2019 12:33:51 GMT and should not be manually modified.
+
+## 7.13.3
+Tue, 27 Aug 2019 12:33:51 GMT
+
+### Patches
+
+- Remove some relative imports from examples (elcraig@microsoft.com)
+## 7.13.2
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Patches
+
+- Memoizing styling in createComponent for components that have their default styling determined entirely by tokens. (Humberto.Morimoto@microsoft.com)
+- Updating snapshots. (dzearing@hotmail.com)
+## 7.13.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.13.0
+Thu, 22 Aug 2019 12:34:59 GMT
+
+### Minor changes
+
+- Button: Using FontIcon and ImageIcon instead of Icon in both oufr and experiments Button. (Humberto.Morimoto@microsoft.com)
 
 ## 7.12.0
 Thu, 15 Aug 2019 12:30:43 GMT
@@ -29,7 +57,7 @@ Wed, 07 Aug 2019 12:32:28 GMT
 ### Minor changes
 
 - Chiclet: Medium chiclet is styled according to redlines and xSmall Chiclet url displays properly (t-stcar@microsoft.com)
-,- Updating styles to not use $ syntax. (dzearing@microsoft.com)
+- Updating styles to not use $ syntax. (dzearing@microsoft.com)
 
 ## 7.10.1
 Tue, 06 Aug 2019 12:32:07 GMT
@@ -76,12 +104,12 @@ Mon, 22 Jul 2019 12:28:42 GMT
 ### Minor changes
 
 - Refactor out BaseComponent from Tile (706967+KevinTCoughlin@users.noreply.github.com)
-,- Tile: Add ability for screen reader to read selected state. (Humberto.Morimoto@microsoft.com)
+- Tile: Add ability for screen reader to read selected state. (Humberto.Morimoto@microsoft.com)
 
 ### Patches
 
 - Button: Updating Button styles to use corresponding semanticColors instead of palette. (Humberto.Morimoto@microsoft.com)
-,- Improve how to get the min query string (elcraig@microsoft.com)
+- Improve how to get the min query string (elcraig@microsoft.com)
 
 ## 7.7.0
 Fri, 19 Jul 2019 12:25:58 GMT
@@ -96,7 +124,7 @@ Wed, 17 Jul 2019 18:58:57 GMT
 ### Patches
 
 - Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
-,- Remove fluent customizations. (vibraga@microsoft.com)
+- Remove fluent customizations. (vibraga@microsoft.com)
 
 ## 7.6.0
 Sat, 13 Jul 2019 22:20:41 GMT
@@ -1038,7 +1066,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 - Fix a11y violations in Fluent ContextualMenu examples
 - Sidebar: Fixed filename and imports
 
@@ -1414,7 +1442,7 @@ Thu, 12 Jul 2018 10:29:30 GMT
 
 ### Patches
 
-- Consume horizontal bar chart in card, fix bad import 
+- Consume horizontal bar chart in card, fix bad import
 
 ## 6.13.5
 Tue, 10 Jul 2018 21:54:07 GMT
@@ -1549,7 +1577,7 @@ Mon, 18 Jun 2018 16:57:14 GMT
 
 ### Minor changes
 
-- Dashboard Card Component for Admin Portals Dashboard which will be hosted inside react-grid-layout. 
+- Dashboard Card Component for Admin Portals Dashboard which will be hosted inside react-grid-layout.
 - Add GridList component into the existing Dashboard Card Component
 
 ### Patches
@@ -1795,7 +1823,7 @@ Tue, 10 Apr 2018 17:37:28 GMT
 
 ### Minor changes
 
-- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same 
+- FloatingPicker: add show/hide picker call backs, fix double resolve when queryString is the same
 
 ### Patches
 

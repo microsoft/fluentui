@@ -2,6 +2,60 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "@uifabric/styling_v7.6.1",
+      "version": "7.6.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update npmignores, delete unused jest setup files",
+            "author": "elcraig@microsoft.com",
+            "commit": "b12aaa280221562003af1e0f02aa5f3a5b008041"
+          },
+          {
+            "comment": "Fix up readme and package.json descriptions",
+            "author": "elcraig@microsoft.com",
+            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Aug 2019 12:31:26 GMT",
+      "tag": "@uifabric/styling_v7.6.0",
+      "version": "7.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Semantic slots: add bodyBackgroundHovered and bodyBackgroundSelected",
+            "author": "phkuo@microsoft.com",
+            "commit": "7779a3437650dff286de759c3474e6fe8c4294e7"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix generation of font size theming variables for legacy",
+            "author": "phkuo@microsoft.com",
+            "commit": "19e9d72b86050048c0361ca1caba0aca898ca642"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Aug 2019 12:32:05 GMT",
+      "tag": "@uifabric/styling_v7.5.1",
+      "version": "7.5.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix theming code type issue",
+            "author": "phkuo@microsoft.com",
+            "commit": "7f01ca2e4da23a4cfb5a319cbd58dfbf250998a2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2019 12:30:43 GMT",
       "tag": "@uifabric/styling_v7.5.0",
       "version": "7.5.0",
