@@ -200,7 +200,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -210,18 +210,21 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -232,9 +235,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 id="id__0"
               >
                 Standard
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
         <button
           aria-expanded={false}
@@ -285,7 +288,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -295,6 +298,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
               aria-hidden={true}
@@ -344,7 +348,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             >
               
             </i>
-          </div>
+          </span>
         </button>
         <span
           aria-hidden={true}
@@ -531,7 +535,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -541,18 +545,21 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -563,9 +570,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 id="id__6"
               >
                 Primary
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
         <button
           aria-expanded={false}
@@ -616,7 +623,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -626,6 +633,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
               aria-hidden={true}
@@ -678,7 +686,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             >
               
             </i>
-          </div>
+          </span>
         </button>
         <span
           aria-hidden={true}
@@ -857,7 +865,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -867,18 +875,21 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -889,9 +900,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 id="id__12"
               >
                 Main action disabled
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
         <button
           aria-expanded={false}
@@ -942,7 +953,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -952,6 +963,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
               aria-hidden={true}
@@ -1001,7 +1013,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             >
               
             </i>
-          </div>
+          </span>
         </button>
         <span
           aria-hidden={true}
@@ -1173,7 +1185,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1183,18 +1195,21 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -1205,9 +1220,9 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 id="id__18"
               >
                 Disabled
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
         <button
           aria-disabled={true}
@@ -1268,7 +1283,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           tabIndex={-1}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1278,6 +1293,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <i
               aria-hidden={true}
@@ -1327,7 +1343,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             >
               
             </i>
-          </div>
+          </span>
         </button>
         <span
           aria-hidden={true}

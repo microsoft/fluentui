@@ -1,13 +1,31 @@
 /** @jsx withSlots */
 import { ContextualMenu, Text } from 'office-ui-fabric-react';
-import { withSlots, getSlots } from '../../../Foundation';
+import { withSlots } from '../../../Foundation';
 import { FontIcon } from '../../../utilities/factoryComponents';
 
 import { Button } from '../Button';
 import { MenuButton } from '../MenuButton/MenuButton';
-import { ISplitButtonComponent, ISplitButtonProps, ISplitButtonSlots, ISplitButtonTokens } from './SplitButton.types';
+import { ISplitButtonComponent, ISplitButtonTokens } from './SplitButton.types';
 
-export const SplitButtonView: ISplitButtonComponent['view'] = props => {
+export const SplitButtonSlots: ISplitButtonComponent['slots'] = props => ({
+  root: 'span',
+  button: Button,
+  menuButton: MenuButton,
+  icon: FontIcon,
+  content: Text,
+  menuArea: 'span',
+  menu: ContextualMenu,
+  menuIcon: FontIcon,
+  splitDividerContainer: 'span',
+  splitDivider: 'span'
+});
+
+export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => {
+  // If slots are not present return null.
+  if (!slots) {
+    return null;
+  }
+
   const {
     styles,
     tokens,
@@ -33,19 +51,6 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     menuButtonRef,
     ...rest
   } = props;
-
-  const Slots = getSlots<ISplitButtonProps, ISplitButtonSlots>(props, {
-    root: 'span',
-    button: Button,
-    menuButton: MenuButton,
-    icon: FontIcon,
-    content: Text,
-    menuArea: 'span',
-    menu: ContextualMenu,
-    menuIcon: FontIcon,
-    splitDividerContainer: 'span',
-    splitDivider: 'span'
-  });
 
   const menuButtonAriaLabel = secondaryAriaLabel ? secondaryAriaLabel : ariaLabel ? ariaLabel : (content as string);
 
@@ -81,8 +86,8 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
   const menuButtonTokens = { contentPadding: secondaryPadding, ...splitButtonTokens };
 
   return (
-    <Slots.root>
-      <Slots.button
+    <slots.root>
+      <slots.button
         primary={primary}
         disabled={primaryActionDisabled || disabled}
         allowDisabledFocus={allowDisabledFocus}
@@ -95,13 +100,13 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
         {...rest}
       >
         {children}
-      </Slots.button>
+      </slots.button>
 
-      <Slots.splitDividerContainer>
-        <Slots.splitDivider />
-      </Slots.splitDividerContainer>
+      <slots.splitDividerContainer>
+        <slots.splitDivider />
+      </slots.splitDividerContainer>
 
-      <Slots.menuButton
+      <slots.menuButton
         primary={primary}
         disabled={disabled}
         defaultExpanded={defaultExpanded}
@@ -116,6 +121,6 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
         onMenuDismiss={onMenuDismiss}
         tokens={menuButtonTokens}
       />
-    </Slots.root>
+    </slots.root>
   );
 };

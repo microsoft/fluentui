@@ -180,7 +180,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="green"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -190,6 +190,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -208,7 +209,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -349,7 +350,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="orange"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -359,6 +360,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -377,7 +379,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -518,7 +520,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="blue"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -528,6 +530,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -546,7 +549,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -687,7 +690,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="red"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -697,6 +700,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -715,7 +719,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
       </tr>
@@ -860,7 +864,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="green"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -870,6 +874,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -888,7 +893,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -1029,7 +1034,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="orange"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -1039,6 +1044,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1057,7 +1063,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -1198,7 +1204,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="blue"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -1208,6 +1214,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1226,7 +1233,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -1367,7 +1374,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="red"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -1377,6 +1384,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1395,7 +1403,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
       </tr>
@@ -1540,7 +1548,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="black"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -1550,6 +1558,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1568,7 +1577,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -1709,7 +1718,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="grey"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -1719,6 +1728,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1737,7 +1747,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -1878,7 +1888,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="white"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -1888,6 +1898,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1906,7 +1917,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -2047,7 +2058,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="something"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -2057,6 +2068,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -2075,7 +2087,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
       </tr>

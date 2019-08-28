@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "New drop hint icon for drag-drop and corresponding padding space on top",
-  "packageName": "office-ui-fabric-react",
-  "email": "svaibhav@microsoft.com",
-  "commit": "c327dbc79097a670aa17b939f87295a59fbe1281",
-  "date": "2019-08-21T10:59:55.411Z"
-}

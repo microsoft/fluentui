@@ -230,7 +230,7 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -240,18 +240,21 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -262,9 +265,9 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
             id="id__1"
           >
             Open Dialog
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
     <button
       className=
@@ -344,7 +347,7 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -354,18 +357,21 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -376,9 +382,9 @@ exports[`Component Examples renders Dialog.Modeless.Example.tsx correctly 1`] = 
             id="id__4"
           >
             Close Dialog
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
   </div>
 </div>

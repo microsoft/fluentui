@@ -9,13 +9,11 @@ import {
   IStackStyles,
   IStackItemStyles,
   IStackTokens,
+  IStackProps,
   TextField
 } from 'office-ui-fabric-react';
 
-export type HorizontalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
-export type VerticalAlignment = 'start' | 'center' | 'end';
-
-export interface IExampleState {
+export interface IExampleOptions {
   numItems: number;
   showBoxShadow: boolean;
   preventOverflow: boolean;
@@ -28,93 +26,144 @@ export interface IExampleState {
   paddingRight: number;
   paddingTop: number;
   paddingBottom: number;
-  horizontalAlignment: HorizontalAlignment;
-  verticalAlignment: VerticalAlignment;
+  horizontalAlignment: IStackProps['horizontalAlign'];
+  verticalAlignment: IStackProps['verticalAlign'];
   hideEmptyChildren: boolean;
   emptyChildren: string[];
 }
 
-export class HorizontalStackConfigureExample extends React.Component<{}, IExampleState> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      numItems: 5,
-      showBoxShadow: false,
-      preventOverflow: false,
-      wrap: false,
-      wrapperWidth: 100,
-      disableShrink: true,
-      columnGap: 0,
-      rowGap: 0,
-      paddingLeft: 0,
-      paddingRight: 0,
-      paddingTop: 0,
-      paddingBottom: 0,
-      horizontalAlignment: 'start',
-      verticalAlignment: 'start',
-      hideEmptyChildren: false,
-      emptyChildren: []
-    };
+const HorizontalStackConfigureExampleContent: React.FunctionComponent<IExampleOptions> = props => {
+  const {
+    numItems,
+    showBoxShadow,
+    preventOverflow,
+    wrap,
+    wrapperWidth,
+    disableShrink,
+    columnGap,
+    rowGap,
+    paddingLeft,
+    paddingRight,
+    paddingTop,
+    paddingBottom,
+    horizontalAlignment,
+    verticalAlignment,
+    hideEmptyChildren,
+    emptyChildren
+  } = props;
+  // Styles definition
+  const stackStyles: IStackStyles = {
+    root: [
+      {
+        background: DefaultPalette.themeTertiary,
+        marginLeft: 10,
+        marginRight: 10,
+        minHeight: 100,
+        width: `calc(${wrapperWidth}% - 20px)`
+      },
+      preventOverflow && {
+        overflow: 'hidden' as 'hidden'
+      }
+    ],
+    inner: {
+      overflow: preventOverflow ? 'hidden' : ('visible' as 'hidden' | 'visible')
+    }
+  };
+  const stackItemStyles: IStackItemStyles = {
+    root: {
+      alignItems: 'center',
+      background: DefaultPalette.themePrimary,
+      boxShadow: showBoxShadow ? `0px 0px 10px 5px ${DefaultPalette.themeDarker}` : '',
+      color: DefaultPalette.white,
+      display: 'flex',
+      height: 50,
+      justifyContent: 'center',
+      width: 50
+    }
+  };
+
+  // Tokens definition
+  const exampleStackTokens: IStackTokens = {
+    childrenGap: rowGap + ' ' + columnGap,
+    padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`
+  };
+
+  return (
+    <Stack
+      horizontal
+      wrap={wrap}
+      disableShrink={disableShrink}
+      horizontalAlign={horizontalAlignment}
+      verticalAlign={verticalAlignment}
+      styles={stackStyles}
+      tokens={exampleStackTokens}
+    >
+      {_range(1, numItems).map((value: number, index: number) => {
+        if (emptyChildren.indexOf(value.toString()) !== -1) {
+          return hideEmptyChildren ? (
+            <Stack.Item key={index} styles={stackItemStyles} />
+          ) : (
+            <span key={index} style={stackItemStyles.root as React.CSSProperties} />
+          );
+        }
+
+        return (
+          <span key={index} style={stackItemStyles.root as React.CSSProperties}>
+            {value}
+          </span>
+        );
+      })}
+    </Stack>
+  );
+};
+
+function _range(start: number, end: number): number[] {
+  const result = [];
+  for (let i = start; i <= end; i++) {
+    result.push(i);
   }
+  return result;
+}
+
+// Tokens definition
+const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+const configureStackTokens: IStackTokens = { childrenGap: 20 };
+
+export class HorizontalStackConfigureExample extends React.Component<{}, IExampleOptions> {
+  public state: IExampleOptions = {
+    numItems: 5,
+    showBoxShadow: false,
+    preventOverflow: false,
+    wrap: false,
+    wrapperWidth: 100,
+    disableShrink: true,
+    columnGap: 0,
+    rowGap: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingTop: 0,
+    paddingBottom: 0,
+    horizontalAlignment: 'start',
+    verticalAlignment: 'start',
+    hideEmptyChildren: false,
+    emptyChildren: []
+  };
+  private _horizontalAlignmentOptions: IDropdownOption[] = [
+    { key: 'start', text: 'Left' },
+    { key: 'center', text: 'Center' },
+    { key: 'end', text: 'Right' },
+    { key: 'space-around', text: 'Space around' },
+    { key: 'space-between', text: 'Space between' },
+    { key: 'space-evenly', text: 'Space evenly' }
+  ];
+  private _verticalAlignmentOptions: IDropdownOption[] = [
+    { key: 'start', text: 'Top' },
+    { key: 'center', text: 'Center' },
+    { key: 'end', text: 'Bottom' }
+  ];
 
   public render(): JSX.Element {
-    const {
-      numItems,
-      showBoxShadow,
-      preventOverflow,
-      wrap,
-      wrapperWidth,
-      disableShrink,
-      columnGap,
-      rowGap,
-      paddingLeft,
-      paddingRight,
-      paddingTop,
-      paddingBottom,
-      horizontalAlignment,
-      verticalAlignment,
-      hideEmptyChildren,
-      emptyChildren
-    } = this.state;
-
-    // Styles definition
-    const stackStyles: IStackStyles = {
-      root: [
-        {
-          background: DefaultPalette.themeTertiary,
-          marginLeft: 10,
-          marginRight: 10,
-          minHeight: 100,
-          width: `calc(${wrapperWidth}% - 20px)`
-        },
-        preventOverflow && {
-          overflow: 'hidden' as 'hidden'
-        }
-      ],
-      inner: {
-        overflow: preventOverflow ? 'hidden' : ('visible' as 'hidden' | 'visible')
-      }
-    };
-    const stackItemStyles: IStackItemStyles = {
-      root: {
-        alignItems: 'center',
-        background: DefaultPalette.themePrimary,
-        boxShadow: showBoxShadow ? `0px 0px 10px 5px ${DefaultPalette.themeDarker}` : '',
-        color: DefaultPalette.white,
-        display: 'flex',
-        height: 50,
-        justifyContent: 'center',
-        width: 50
-      }
-    };
-
-    // Tokens definition
-    const sectionStackTokens: IStackTokens = { childrenGap: 10 };
-    const configureStackTokens: IStackTokens = { childrenGap: 20 };
-    const exampleStackTokens: IStackTokens = {
-      childrenGap: rowGap + ' ' + columnGap,
-      padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`
-    };
+    const { horizontalAlignment, verticalAlignment } = this.state;
 
     return (
       <Stack tokens={sectionStackTokens}>
@@ -232,14 +281,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
               selectedKey={horizontalAlignment}
               placeholder="Select Horizontal Alignment"
               label="Horizontal alignment:"
-              options={[
-                { key: 'start', text: 'Left' },
-                { key: 'center', text: 'Center' },
-                { key: 'end', text: 'Right' },
-                { key: 'space-around', text: 'Space around' },
-                { key: 'space-between', text: 'Space between' },
-                { key: 'space-evenly', text: 'Space evenly' }
-              ]}
+              options={this._horizontalAlignmentOptions}
               onChange={this._onHorizontalAlignChange}
             />
           </Stack.Item>
@@ -248,7 +290,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
               selectedKey={verticalAlignment}
               placeholder="Select Vertical Alignment"
               label="Vertical alignment:"
-              options={[{ key: 'start', text: 'Top' }, { key: 'center', text: 'Center' }, { key: 'end', text: 'Bottom' }]}
+              options={this._verticalAlignmentOptions}
               onChange={this._onVerticalAlignChange}
             />
           </Stack.Item>
@@ -260,45 +302,13 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           </Stack.Item>
         </Stack>
 
-        <Stack
-          horizontal
-          wrap={wrap}
-          disableShrink={disableShrink}
-          horizontalAlign={horizontalAlignment}
-          verticalAlign={verticalAlignment}
-          styles={stackStyles}
-          tokens={exampleStackTokens}
-        >
-          {this._range(1, numItems).map((value: number, index: number) => {
-            if (emptyChildren.indexOf(value.toString()) !== -1) {
-              return hideEmptyChildren ? (
-                <Stack.Item key={index} styles={stackItemStyles} />
-              ) : (
-                <span key={index} style={stackItemStyles.root as React.CSSProperties} />
-              );
-            }
-
-            return (
-              <span key={index} style={stackItemStyles.root as React.CSSProperties}>
-                {value}
-              </span>
-            );
-          })}
-        </Stack>
+        <HorizontalStackConfigureExampleContent {...this.state} />
       </Stack>
     );
   }
 
   private _onNumItemsChange = (value: number): void => {
     this.setState({ numItems: value });
-  };
-
-  private _range = (start: number, end: number): number[] => {
-    const result = [];
-    for (let i = start; i <= end; i++) {
-      result.push(i);
-    }
-    return result;
   };
 
   private _onBoxShadowChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
@@ -346,11 +356,11 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
   };
 
   private _onHorizontalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    this.setState({ horizontalAlignment: option.key as HorizontalAlignment });
+    this.setState({ horizontalAlignment: option.key as IStackProps['horizontalAlign'] });
   };
 
   private _onVerticalAlignChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
-    this.setState({ verticalAlignment: option.key as VerticalAlignment });
+    this.setState({ verticalAlignment: option.key as IStackProps['verticalAlign'] });
   };
 
   private _onHideEmptyChildrenChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {

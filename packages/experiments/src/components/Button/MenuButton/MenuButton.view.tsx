@@ -1,12 +1,27 @@
 /** @jsx withSlots */
 import { ContextualMenu, DirectionalHint, Text } from 'office-ui-fabric-react';
-import { withSlots, getSlots } from '../../../Foundation';
+import { withSlots } from '../../../Foundation';
 import { FontIcon } from '../../../utilities/factoryComponents';
 
 import { Button } from '../Button';
-import { IMenuButtonComponent, IMenuButtonProps, IMenuButtonSlots } from './MenuButton.types';
+import { IMenuButtonComponent } from './MenuButton.types';
 
-export const MenuButtonView: IMenuButtonComponent['view'] = props => {
+export const MenuButtonSlots: IMenuButtonComponent['slots'] = props => ({
+  root: 'div',
+  button: Button,
+  icon: FontIcon,
+  content: Text,
+  menuArea: 'div',
+  menu: ContextualMenu,
+  menuIcon: FontIcon
+});
+
+export const MenuButtonView: IMenuButtonComponent['view'] = (props, slots) => {
+  // If slots are not present return null.
+  if (!slots) {
+    return null;
+  }
+
   const {
     children,
     disabled,
@@ -17,6 +32,7 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
     expanded,
     onMenuDismiss,
     menuButtonRef,
+    styles,
     ...rest
   } = props;
   let { keytipProps } = props;
@@ -28,19 +44,9 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
     };
   }
 
-  const Slots = getSlots<IMenuButtonProps, IMenuButtonSlots>(props, {
-    root: 'div',
-    button: Button,
-    icon: FontIcon,
-    content: Text,
-    menuArea: 'div',
-    menu: ContextualMenu,
-    menuIcon: FontIcon
-  });
-
   return (
-    <Slots.root ref={menuButtonRef}>
-      <Slots.button
+    <slots.root ref={menuButtonRef}>
+      <slots.button
         aria-expanded={expanded}
         onClick={onClick}
         disabled={disabled}
@@ -49,18 +55,18 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
         {...rest}
       >
         {children}
-        <Slots.menuArea>
-          <Slots.menuIcon iconName="ChevronDown" />
-        </Slots.menuArea>
-      </Slots.button>
+        <slots.menuArea>
+          <slots.menuIcon iconName="ChevronDown" />
+        </slots.menuArea>
+      </slots.button>
       {expanded && (
-        <Slots.menu
+        <slots.menu
           target={menuButtonRef && menuButtonRef.current}
           onDismiss={onMenuDismiss}
           items={[]}
           directionalHint={DirectionalHint.bottomRightEdge}
         />
       )}
-    </Slots.root>
+    </slots.root>
   );
 };

@@ -1629,7 +1629,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -1639,6 +1639,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -1673,7 +1674,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -2328,7 +2329,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -2338,6 +2339,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -2372,7 +2374,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -3027,7 +3029,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -3037,6 +3039,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -3071,7 +3074,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -3726,7 +3729,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -3736,6 +3739,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -3770,7 +3774,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -4425,7 +4429,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -4435,6 +4439,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -4469,7 +4474,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -5124,7 +5129,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -5134,6 +5139,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -5168,7 +5174,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -5823,7 +5829,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -5833,6 +5839,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -5867,7 +5874,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -6522,7 +6529,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -6532,6 +6539,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -6566,7 +6574,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -7221,7 +7229,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -7231,6 +7239,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -7265,7 +7274,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -7920,7 +7929,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -7930,6 +7939,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -7964,7 +7974,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
