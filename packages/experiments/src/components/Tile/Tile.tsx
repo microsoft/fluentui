@@ -38,21 +38,21 @@ export const TileLayoutSizes: {
     foregroundMargin: number;
   };
 } = {
-    small: {
-      nameplatePadding: TileLayoutValues.nameplatePadding,
-      nameplateNameHeight: TileLayoutValues.smallNameplateNameHeight,
-      nameplateMargin: TileLayoutValues.nameplateMargin,
-      nameplateActivityHeight: TileLayoutValues.smallNameplateActivityHeight,
-      foregroundMargin: TileLayoutValues.foregroundMargin
-    },
-    large: {
-      nameplatePadding: TileLayoutValues.nameplatePadding,
-      nameplateNameHeight: TileLayoutValues.largeNameplateNameHeight,
-      nameplateMargin: TileLayoutValues.nameplateMargin,
-      nameplateActivityHeight: TileLayoutValues.largeNameplateActivityHeight,
-      foregroundMargin: TileLayoutValues.foregroundMargin
-    }
-  };
+  small: {
+    nameplatePadding: TileLayoutValues.nameplatePadding,
+    nameplateNameHeight: TileLayoutValues.smallNameplateNameHeight,
+    nameplateMargin: TileLayoutValues.nameplateMargin,
+    nameplateActivityHeight: TileLayoutValues.smallNameplateActivityHeight,
+    foregroundMargin: TileLayoutValues.foregroundMargin
+  },
+  large: {
+    nameplatePadding: TileLayoutValues.nameplatePadding,
+    nameplateNameHeight: TileLayoutValues.largeNameplateNameHeight,
+    nameplateMargin: TileLayoutValues.nameplateMargin,
+    nameplateActivityHeight: TileLayoutValues.largeNameplateActivityHeight,
+    foregroundMargin: TileLayoutValues.foregroundMargin
+  }
+};
 
 /**
  * A tile provides a frame for a potentially-selectable item which displays its contents prominently.
@@ -146,6 +146,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     const {
       children,
       selectionIndex = -1,
+      isSelectable: isItemSelectable,
       invokeSelection = false,
       selection,
       background,
@@ -172,7 +173,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       isModal = false
     } = this.state;
 
-    const isSelectable = !!selection && selectionIndex > -1;
+    const { isSelectable = isItemSelectable || (!!selection && selectionIndex > -1) } = this.props;
     const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
 
     return (
@@ -260,9 +261,9 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     background,
     hideBackground
   }: {
-      background: React.ReactNode | React.ReactNode[];
-      hideBackground: boolean;
-    }): JSX.Element {
+    background: React.ReactNode | React.ReactNode[];
+    hideBackground: boolean;
+  }): JSX.Element {
     return (
       <span
         className={ css('ms-Tile-background', TileStyles.background, {
@@ -278,9 +279,9 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     foreground,
     hideForeground
   }: {
-      foreground: React.ReactNode | React.ReactNode[];
-      hideForeground: boolean;
-    }): JSX.Element {
+    foreground: React.ReactNode | React.ReactNode[];
+    hideForeground: boolean;
+  }): JSX.Element {
     return (
       <span
         role='presentation'
@@ -307,9 +308,9 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     name,
     activity
   }: {
-      name: React.ReactNode | React.ReactNode[];
-      activity: React.ReactNode | React.ReactNode[];
-    }): JSX.Element {
+    name: React.ReactNode | React.ReactNode[];
+    activity: React.ReactNode | React.ReactNode[];
+  }): JSX.Element {
     return (
       <span
         className={ css('ms-Tile-nameplate', TileStyles.nameplate) }
@@ -341,8 +342,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
   private _onRenderCheck({
     isSelected
   }: {
-      isSelected: boolean;
-    }): JSX.Element {
+    isSelected: boolean;
+  }): JSX.Element {
     const { toggleSelectionAriaLabel } = this.props;
 
     return (

@@ -32,6 +32,10 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    */
   selectionIndex?: number;
   /**
+   * Whether or not item is selectable;
+   */
+  isSelectable?: boolean;
+  /**
    * Selection controller for the item rendered in the tile.
    *
    * @type {ISelection}
