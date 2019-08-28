@@ -15,7 +15,7 @@ export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName=" Slider"
         exampleCards={
           <div>
-            <ExampleCard title="Default Sliders" code={SliderExampleCode}>
+            <ExampleCard title="Horizontal Sliders" code={SliderExampleCode}>
               <SliderExample />
             </ExampleCard>
             <ExampleCard title="Vertical Sliders" code={SliderVerticalExampleCode}>
@@ -28,8 +28,8 @@ export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
         }
         overview={<Markdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderOverview.md')}</Markdown>}
         bestPractices={<div />}
-        dos={<Markdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDos.md')}</Markdown>}
-        donts={<Markdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDonts.md')}</Markdown>}
+        dos={<Markdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Slider/docs/SliderDos.md')}</Markdown>}
+        donts={<Markdown>{require<string>('!raw-loader!uifabric/experiments/src/components/Slider/docs/SliderDonts.md')}</Markdown>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

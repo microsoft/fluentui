@@ -2,4 +2,4 @@
 - Don’t use a Slider for binary settings.
 - Don’t create a continuous Slider if the range of values is large.
 - Don’t use for a range of three values or less.
-- Don't have a colon after the label as that is already added
+- Don't add a colon at the end of your label as that is already taken into account when formatting the `label: value` pairs.

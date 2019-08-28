@@ -135,13 +135,13 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
   originFromZero?: boolean;
 
   /**
-   * Optional flag to display tick marks on each step
+   * Optional flag to display tooltip on hover
    * @defaultvalue false
    */
   showThumbTooltip?: boolean;
 
   /**
-   * Optional flag to indicate whether to have tick marks
+   * Optional flag to indicate whether to have the Slider component render tick marks.
    * Can add custom marks when setting marks to an array of javascript objects that each contain a value property
    * (denotes where) and a string label (denotes what to display for the indicated position)
    * @defaultvalue false
@@ -149,7 +149,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
   marks?: boolean | ISliderMarks[];
 
   /**
-   *  Optional flag to decide that thumb will snap to closest value while moving the slider
+   *  Optional flag to decide that thumb will snap to closest value while moving the slider.
    *  @defaultvalue false
    */
   snapToStep?: boolean;
