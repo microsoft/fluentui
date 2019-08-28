@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 28 Aug 2019 12:22:13 GMT",
+      "tag": "office-ui-fabric-react_v6.202.2",
+      "version": "6.202.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Picker suggestions ref replace empty string with undefined.",
+            "author": "vibraga@microsoft.com",
+            "commit": "0ab3f2ffebdc565f93a56bc03e13325561233f34"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Aug 2019 12:22:52 GMT",
       "tag": "office-ui-fabric-react_v6.202.1",
       "version": "6.202.1",
