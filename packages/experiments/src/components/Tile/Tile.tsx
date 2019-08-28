@@ -142,6 +142,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
     const {
       children,
       selectionIndex = -1,
+      isSelectable: isItemSelectable,
       invokeSelection = false,
       selection,
       background,
@@ -168,7 +169,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
 
     const { isSelected = false, isModal = false } = this.state;
 
-    const isSelectable = !!selection && selectionIndex > -1;
+    const isSelectable = isItemSelectable || (!!selection && selectionIndex > -1);
     const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
     const ariaLabelWithSelectState = isSelected && ariaLabelSelected ? `${ariaLabel}, ${ariaLabelSelected}` : ariaLabel;
     const content = (
@@ -207,7 +208,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
         href={href}
         onClick={onClick}
         ref={this.props.linkRef}
-        data-selection-invoke={isInvokable && selectionIndex > -1 ? true : undefined}
+        data-selection-invoke={isSelectable || (isInvokable && selectionIndex > -1) ? true : undefined}
         className={css('ms-Tile-link', TileStyles.link)}
       >
         {content}
