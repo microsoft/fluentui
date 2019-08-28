@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "added isSelectable prop for Tile.types; unshow checkbox if item is not selectable",
+  "packageName": "@uifabric/experiments",
+  "email": "huaxi@microsoft.com",
+  "commit": "b5240a289ee31211cd039980f97064645630ff2c",
+  "date": "2019-08-28T22:55:16.075Z"
+}
