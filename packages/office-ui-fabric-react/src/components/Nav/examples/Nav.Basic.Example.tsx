@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
-
+import { Nav, INavLink, INav } from 'office-ui-fabric-react/lib/Nav';
+const _nav = React.createRef<INav>();
 export const NavBasicExample: React.FunctionComponent = () => {
   return (
     <Nav
       onLinkClick={_onLinkClick}
       selectedKey="key3"
+      componentRef={_nav}
       expandButtonAriaLabel="Expand or collapse"
       selectedAriaLabel="Selected"
       styles={{
@@ -82,5 +83,8 @@ export const NavBasicExample: React.FunctionComponent = () => {
 function _onLinkClick(ev: React.MouseEvent<HTMLElement>, item?: INavLink) {
   if (item && item.name === 'News') {
     alert('News link clicked');
+  }
+  if (_nav && _nav.current) {
+    _nav.current.focus(true);
   }
 }

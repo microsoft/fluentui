@@ -5530,6 +5530,7 @@ export interface IModalStyles {
 
 // @public (undocumented)
 export interface INav {
+    focus(forceIntoFirstElement?: boolean): boolean;
     selectedKey: string | undefined;
 }
 
@@ -8083,11 +8084,8 @@ export const Nav: React.StatelessComponent<INavProps>;
 export class NavBase extends React.Component<INavProps, INavState> implements INav {
     constructor(props: INavProps);
     // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
     static defaultProps: INavProps;
+    focus(forceIntoFirstElement?: boolean): boolean;
     // (undocumented)
     render(): JSX.Element | null;
     // (undocumented)
