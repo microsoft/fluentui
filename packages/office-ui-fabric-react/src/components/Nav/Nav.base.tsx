@@ -5,6 +5,7 @@ import { classNamesFunction, divProperties, getNativeProps, getWindow } from '..
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { INav, INavLink, INavLinkGroup, INavProps, INavStyleProps, INavStyles } from './Nav.types';
+import { IFocusZone } from '../FocusZone';
 
 // The number pixels per indentation level for Nav links.
 const _indentationSize = 14;
@@ -33,14 +34,27 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     groups: null
   };
 
+  private _focusZone: IFocusZone | null;
+  private _isLastRenderingOnTop: boolean;
+
   constructor(props: INavProps) {
     super(props);
+
+    this._isLastRenderingOnTop = false;
 
     this.state = {
       isGroupCollapsed: {},
       isLinkExpandStateChanged: false,
       selectedKey: props.initialSelectedKey || props.selectedKey
     };
+  }
+
+  public componentDidUpdate() {
+    this._setNavWithFocus();
+  }
+
+  public componentDidMount() {
+    this._setNavWithFocus();
   }
 
   public render(): JSX.Element | null {
@@ -55,7 +69,8 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     const classNames = getClassNames(styles!, { theme: theme!, className, isOnTop, groups });
 
     return (
-      <FocusZone direction={FocusZoneDirection.vertical}>
+      // tslint:disable-next-line: jsx-no-lambda
+      <FocusZone direction={FocusZoneDirection.vertical} componentRef={focusZone => (this._focusZone = focusZone)}>
         <nav role="navigation" className={classNames.root} aria-label={this.props.ariaLabel}>
           {groupElements}
         </nav>
@@ -65,6 +80,13 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
   public get selectedKey(): string | undefined {
     return this.state.selectedKey;
+  }
+
+  private _setNavWithFocus() {
+    if (!this._isLastRenderingOnTop && this.props.isOnTop && this._focusZone && this._focusZone) {
+      this._focusZone.focus();
+    }
+    this._isLastRenderingOnTop = !!this.props.isOnTop;
   }
 
   private _onRenderLink = (link: INavLink): JSX.Element => {

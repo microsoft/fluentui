@@ -19,6 +19,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
+          animation-duration: 0.367s;
+          animation-fill-mode: both;
+          animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(-40px,0,0);}to{transform:translate3d(0,0,0);};
+          animation-timing-function: cubic-bezier(.1,.9,.2,1);
           border: 1px solid #eee;
           box-sizing: border-box;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -26,6 +30,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
           font-weight: 400;
           height: 350px;
           overflow-y: auto;
+          position: absolute;
           user-select: none;
           width: 208px;
         }

@@ -8083,6 +8083,10 @@ export const Nav: React.StatelessComponent<INavProps>;
 export class NavBase extends React.Component<INavProps, INavState> implements INav {
     constructor(props: INavProps);
     // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(): void;
+    // (undocumented)
     static defaultProps: INavProps;
     // (undocumented)
     render(): JSX.Element | null;
