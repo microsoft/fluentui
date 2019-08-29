@@ -5,10 +5,9 @@ import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 export interface ISliderVerticalExampleState {
   value: number;
 }
-
+const stackTokens: IStackTokens = { childrenGap: 20 };
 // tslint:disable:jsx-no-lambda
 export const SliderVerticalExample: React.StatelessComponent = () => {
-  const stackTokens: IStackTokens = { childrenGap: 20 };
   const marks = [
     {
       value: 0,
