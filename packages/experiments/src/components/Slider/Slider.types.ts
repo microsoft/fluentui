@@ -12,15 +12,20 @@ export interface ISlider {
   focus: () => void;
 }
 /**
- * Format for the array of custom marks
+ * Format for the array of custom marks.
  * {@docCategory Slider}
  */
 export interface ISliderMarks {
-  // value denotes the "where" or at what location the label should be placed at
+  /**
+   * value denotes the "where" or at what location the label should be placed at
+   */
   value: number;
-  // the custom label string that will be placed at the location denoted by the value
+  /**
+   * the custom label string that will be placed at the location denoted by the value
+   */
   label: string;
 }
+
 /**
  * {@docCategory Slider}
  */
@@ -142,9 +147,9 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
 
   /**
    * Optional flag to indicate whether to have the Slider component render tick marks or add custom labels
-   * If marks is true tick marks will be placed according to the value of the step prop.
-   * If marks is an array, it should contain objects with keys of value (denote the where to place the label on the slider if specified)
-   * and label (what to label to display at specified position).
+   * If marks is `true`, tick marks will be placed according to the value of the `step` prop.
+   * If marks is an array, it should contain objects with keys of `value` (denote the where to place the label on the slider if specified)
+   * and `label` (what to label to display at specified position).
    * @defaultvalue false
    */
   marks?: boolean | ISliderMarks[];

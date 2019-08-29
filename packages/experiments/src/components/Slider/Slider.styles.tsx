@@ -311,12 +311,12 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         position: 'absolute',
         height: '0px',
         background: theme.palette.neutralTertiaryAlt,
-        transform: 'translateX(-50%)',
+        transform: getRTL() ? 'translateX(50%)' : 'translateX(-50%)',
         marginTop: tickLabelSpacing
       },
       vertical && {
         margin: '0 auto 20px',
-        transform: 'translate(13px,10px) '
+        transform: 'translate(13px,10px)'
       },
       disabled && {
         background: theme.palette.neutralLight
