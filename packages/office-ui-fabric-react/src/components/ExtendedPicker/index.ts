@@ -1,4 +1,4 @@
 export * from './BaseExtendedPicker';
 export * from './BaseExtendedPicker.types';
 export * from './PeoplePicker/ExtendedPeoplePicker';
-export * from './examples/PeopleExampleData';
+export { people, mru, groupOne, groupTwo } from '@uifabric/example-data';

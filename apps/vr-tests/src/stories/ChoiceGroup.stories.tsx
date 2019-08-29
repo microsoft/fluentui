@@ -4,7 +4,7 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { ChoiceGroup } from 'office-ui-fabric-react';
-import { TestImages } from '../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
 const options = [
   {

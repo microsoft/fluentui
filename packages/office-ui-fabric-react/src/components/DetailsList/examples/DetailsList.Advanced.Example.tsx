@@ -13,10 +13,10 @@ import {
   IGroup,
   Selection,
   SelectionMode,
-  buildColumns
+  buildColumns,
+  IDetailsColumnProps
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems, isGroupable, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn';
+import { createListItems, isGroupable, IExampleItem } from '@uifabric/example-data';
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getTheme, mergeStyles, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 

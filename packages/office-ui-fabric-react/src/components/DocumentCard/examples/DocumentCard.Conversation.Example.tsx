@@ -6,11 +6,11 @@ import {
   DocumentCardLogo,
   DocumentCardStatus,
   IDocumentCardLogoProps,
-  IDocumentCardActivityPerson
+  IDocumentCardActivityPerson,
+  IDocumentCardStyles
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { TestImages } from '../../../common/TestImages';
-import { IDocumentCardStyles } from '../DocumentCard.types';
+import { TestImages } from '@uifabric/example-data';
 
 const conversationTileClass = mergeStyles({ height: 182 });
 
