@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "small bug fixes. Fix overflow issue in firefox, fix mouse hover issue in all, fix perf issue in month view rendering of Calendar",
-  "packageName": "@uifabric/date-time",
-  "email": "jolore@microsoft.com",
-  "commit": "a80d436207a5133c6cd130a48e1fe506de845dd5",
-  "date": "2019-08-29T00:00:50.635Z"
-}

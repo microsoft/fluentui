@@ -28,7 +28,7 @@
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/styling": "^7.6.1",
     "@uifabric/variants": "^7.0.4",
-    "office-ui-fabric-react": "^7.28.1",
+    "office-ui-fabric-react": "^7.28.2",
     "tslib": "^1.7.1"
   }
 }

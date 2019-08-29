@@ -21,7 +21,7 @@
     "@types/react-dom": "16.8.4",
     "@types/storybook__react": "3.0.5",
     "@types/webpack-env": "1.13.9",
-    "@uifabric/date-time": "^7.4.2",
+    "@uifabric/date-time": "^7.4.3",
     "@uifabric/prettier-rules": "^7.0.4",
     "@uifabric/tslint-rules": "^7.0.5",
     "awesome-typescript-loader": "^3.2.3",
@@ -39,10 +39,10 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/experiments": "^7.13.3",
+    "@uifabric/experiments": "^7.13.4",
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/react-cards": "^0.108.0",
-    "office-ui-fabric-react": "^7.28.1",
+    "office-ui-fabric-react": "^7.28.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

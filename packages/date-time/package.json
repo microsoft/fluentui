@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/date-time",
-  "version": "7.4.2",
+  "version": "7.4.3",
   "description": "Date and time related React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -52,7 +52,7 @@
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/styling": "^7.6.1",
     "@uifabric/utilities": "^7.0.8",
-    "office-ui-fabric-react": "^7.28.1",
+    "office-ui-fabric-react": "^7.28.2",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {

@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 27 Aug 2019 12:33:51 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Aug 2019 12:30:00 GMT and should not be manually modified.
 
+## 7.28.2
+Thu, 29 Aug 2019 12:30:00 GMT
+
+### Patches
+
+- ColorRectangle styling fixes (elcraig@microsoft.com)
+- Fix override handling for CommandBarButton (tmichon@microsoft.com)
 ## 7.28.1
 Tue, 27 Aug 2019 12:33:51 GMT
 

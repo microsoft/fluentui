@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix override handling for CommandBarButton",
-  "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com",
-  "commit": "60dff6f06cf20de307ebf784ee77b5855b0ea453",
-  "date": "2019-08-28T20:40:03.869Z"
-}
