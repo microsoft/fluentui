@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 28 Aug 2019 12:22:13 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Aug 2019 12:24:03 GMT and should not be manually modified.
 
+## 6.202.3
+Thu, 29 Aug 2019 12:24:03 GMT
+
+### Patches
+
+- fix typo in Autofill (afhassan@microsoft.com)
 ## 6.202.2
 Wed, 28 Aug 2019 12:22:13 GMT
 

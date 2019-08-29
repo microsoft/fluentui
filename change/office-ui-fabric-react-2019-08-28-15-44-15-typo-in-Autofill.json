@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix typo in Autofill",
-  "packageName": "office-ui-fabric-react",
-  "email": "afhassan@microsoft.com",
-  "commit": "e1e39b45d1b9770ce11de4692513bf4b17d0b4a6",
-  "date": "2019-08-28T22:44:15.833Z"
-}

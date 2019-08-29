@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 29 Aug 2019 12:24:03 GMT",
+      "tag": "office-ui-fabric-react_v6.202.3",
+      "version": "6.202.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix typo in Autofill",
+            "author": "afhassan@microsoft.com",
+            "commit": "e1e39b45d1b9770ce11de4692513bf4b17d0b4a6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Aug 2019 12:22:13 GMT",
       "tag": "office-ui-fabric-react_v6.202.2",
       "version": "6.202.2",
