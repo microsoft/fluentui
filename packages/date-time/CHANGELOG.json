@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Thu, 29 Aug 2019 12:30:00 GMT",
+      "tag": "@uifabric/date-time_v7.4.3",
+      "version": "7.4.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "small bug fixes. Fix overflow issue in firefox, fix mouse hover issue in all, fix perf issue in month view rendering of Calendar",
+            "author": "jolore@microsoft.com",
+            "commit": "a80d436207a5133c6cd130a48e1fe506de845dd5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Aug 2019 12:30:49 GMT",
       "tag": "@uifabric/date-time_v7.4.2",
       "version": "7.4.2",

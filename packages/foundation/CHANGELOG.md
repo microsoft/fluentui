@@ -1,7 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Mon, 26 Aug 2019 12:30:49 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Aug 2019 12:30:00 GMT and should not be manually modified.
 
+## 7.2.0
+Thu, 29 Aug 2019 12:30:00 GMT
+
+### Minor changes
+
+- Renaming createComponent to compose and moving View inside component options object. (humbertomakotomorimoto@gmail.com)
 ## 7.1.0
 Mon, 26 Aug 2019 12:30:49 GMT
 

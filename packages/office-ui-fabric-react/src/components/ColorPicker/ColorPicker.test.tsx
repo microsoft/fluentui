@@ -73,6 +73,14 @@ describe('ColorPicker', () => {
     expect(colorPicker!.color).toEqual(color);
   });
 
+  it('handles color object with 0 values correctly', () => {
+    const color = getColorFromString('#000000')!;
+    wrapper = mount(<ColorPicker color={color} onChange={noOp} componentRef={colorPickerRef} />);
+
+    const inputs = wrapper.getDOMNode().querySelectorAll('.ms-TextField input') as NodeListOf<HTMLInputElement>;
+    expect(inputs[1].value).toBe('0'); // not empty string
+  });
+
   it('respects color prop change', () => {
     wrapper = mount(<ColorPicker color="#abcdef" onChange={onChange} componentRef={colorPickerRef} />);
 
