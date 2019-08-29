@@ -17,7 +17,7 @@ describe('MessageBar', () => {
   });
 
   it('renders custom message bar icon correctly', () => {
-    const wrapper = mount(<MessageBar messageBarType={MessageBarType.success} messageBarIcon={{ iconName: 'AddFriend' }} />);
+    const wrapper = mount(<MessageBar messageBarType={MessageBarType.success} messageBarIconProps={{ iconName: 'AddFriend' }} />);
     const dismissIcon = wrapper.find('[data-icon-name="AddFriend"]');
     expect(dismissIcon.exists()).toBe(true);
   });
@@ -47,7 +47,7 @@ describe('MessageBar', () => {
       });
 
       it('has custom dismiss icon', () => {
-        const wrapper = mount(<MessageBar onDismiss={noop} isMultiline={false} dismissIcon={{ iconName: 'AddFriend' }} />);
+        const wrapper = mount(<MessageBar onDismiss={noop} isMultiline={false} dismissIconProps={{ iconName: 'AddFriend' }} />);
         const dismissIcon = wrapper.find('[data-icon-name="AddFriend"]');
         expect(dismissIcon.exists()).toBe(true);
       });

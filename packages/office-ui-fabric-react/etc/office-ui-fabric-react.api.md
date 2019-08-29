@@ -5427,9 +5427,9 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IMessageBar>;
     dismissButtonAriaLabel?: string;
-    dismissIcon?: string;
+    dismissIconProps?: IIconProps;
     isMultiline?: boolean;
-    messageBarIcon?: string;
+    messageBarIconProps?: IIconProps;
     messageBarType?: MessageBarType;
     onDismiss?: (ev?: React.MouseEvent<HTMLElement | BaseButton | Button>) => any;
     overflowButtonAriaLabel?: string;
