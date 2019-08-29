@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 29 Aug 2019 12:30:00 GMT",
+      "tag": "@uifabric/experiments_v7.13.4",
+      "version": "7.13.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Renaming createComponent to compose and moving View inside component options object.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "1568bc0023d3a97bf8b75c3b2a3689d041d16eb0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Aug 2019 12:33:51 GMT",
       "tag": "@uifabric/experiments_v7.13.3",
       "version": "7.13.3",

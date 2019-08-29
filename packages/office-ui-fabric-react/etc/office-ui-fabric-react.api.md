@@ -2580,6 +2580,7 @@ export interface IColorRectangleProps {
 // @public (undocumented)
 export interface IColorRectangleStyleProps {
     className?: string;
+    minSize?: number;
     theme: ITheme;
 }
 

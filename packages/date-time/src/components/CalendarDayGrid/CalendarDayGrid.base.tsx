@@ -116,6 +116,9 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       animateBackwards: animateBackwards
     });
 
+    // When the month is highlighted get the corner dates so that styles can be added to them
+    const weekCorners: IWeekCorners = this._getWeekCornerStyles(classNames, weeks!);
+
     return (
       <FocusZone className={classNames.wrapper}>
         <table
@@ -128,11 +131,19 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
         >
           <tbody>
             {this.renderMonthHeaderRow(classNames)}
-            {this.renderRow(classNames, weeks![0], -1, classNames.firstTransitionWeek, 'presentation', true /*aria-hidden*/)}
+            {this.renderRow(classNames, weeks![0], -1, weekCorners, classNames.firstTransitionWeek, 'presentation', true /*aria-hidden*/)}
             {weeks!
               .slice(1, weeks!.length - 1)
-              .map((week: IDayInfo[], weekIndex: number) => this.renderRow(classNames, week, weekIndex, classNames.weekRow))}
-            {this.renderRow(classNames, weeks![weeks!.length - 1], -2, classNames.lastTransitionWeek, 'presentation', true /*aria-hidden*/)}
+              .map((week: IDayInfo[], weekIndex: number) => this.renderRow(classNames, week, weekIndex, weekCorners, classNames.weekRow))}
+            {this.renderRow(
+              classNames,
+              weeks![weeks!.length - 1],
+              -2,
+              weekCorners,
+              classNames.lastTransitionWeek,
+              'presentation',
+              true /*aria-hidden*/
+            )}
           </tbody>
         </table>
       </FocusZone>
@@ -183,6 +194,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
     week: IDayInfo[],
     weekIndex: number,
+    weekCorners: IWeekCorners,
     rowClassName?: string,
     ariaRole?: string,
     ariaHidden?: boolean
@@ -200,7 +212,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
             <span>{weekNumbers[weekIndex]}</span>
           </th>
         )}
-        {week.map((day: IDayInfo, dayIndex: number) => this.renderDayCells(classNames, day, dayIndex, weekIndex, ariaHidden))}
+        {week.map((day: IDayInfo, dayIndex: number) => this.renderDayCells(classNames, day, dayIndex, weekIndex, weekCorners, ariaHidden))}
       </tr>
     );
   };
@@ -210,14 +222,12 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     day: IDayInfo,
     dayIndex: number,
     weekIndex: number,
+    weekCorners: IWeekCorners,
     ariaHidden?: boolean
   ): JSX.Element => {
     const { navigatedDate, dateTimeFormatter, allFocusable, strings } = this.props;
-    const { activeDescendantId, weeks } = this.state;
+    const { activeDescendantId } = this.state;
     const isNavigatedDate = compareDates(navigatedDate, day.originalDate);
-
-    // When the month is highlighted get the corner dates so that styles can be added to them
-    const weekCorners: IWeekCorners = this._getWeekCornerStyles(classNames, weeks!);
 
     return (
       <td

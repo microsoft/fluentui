@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bumps just-scripts and just-task both to make jest do forceexit to prevent issues with timeouts",
-  "packageName": "@uifabric/codepen-loader",
-  "email": "kchau@microsoft.com",
-  "commit": "a4ed5a9d35b5bab1e918e44abeb8e25d78de6d42",
-  "date": "2019-08-27T05:22:20.009Z"
-}

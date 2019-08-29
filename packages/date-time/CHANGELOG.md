@@ -1,7 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Mon, 26 Aug 2019 12:30:49 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Aug 2019 12:30:00 GMT and should not be manually modified.
 
+## 7.4.3
+Thu, 29 Aug 2019 12:30:00 GMT
+
+### Patches
+
+- small bug fixes. Fix overflow issue in firefox, fix mouse hover issue in all, fix perf issue in month view rendering of Calendar (jolore@microsoft.com)
 ## 7.4.2
 Mon, 26 Aug 2019 12:30:49 GMT
 
