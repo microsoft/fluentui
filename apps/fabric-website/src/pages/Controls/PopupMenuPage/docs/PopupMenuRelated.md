@@ -1,1 +1,3 @@
-- [iOS Drawer](#/controls/ios/drawer)
+- [iOS PopupMenu](#/controls/ios/popupmenu)
+- [Android PopupMenu](#/controls/android/popupmenu)
+- [Android BottomSheet](#/controls/android/bottomsheet)
