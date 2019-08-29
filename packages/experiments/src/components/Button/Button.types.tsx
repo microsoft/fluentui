@@ -10,7 +10,7 @@ import { IActionable, IActionableProps, IActionableSlots, IActionableTokens, IAc
 /**
  * {@docCategory Button}
  */
-export type IButtonComponent = IComponent<IButtonProps, IButtonSlots, IButtonTokens, IButtonStyles, IButtonViewProps>;
+export type IButtonComponent = IComponent<IButtonProps, IButtonTokens, IButtonStyles, IButtonViewProps, IButtonSlots>;
 
 // These types are redundant with IButtonComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241

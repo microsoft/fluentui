@@ -5,9 +5,9 @@ import { ISlots, ISlotDefinition, ISlottableProps } from '../ISlots';
 /**
  * Defines the contract for view components.
  */
-export type IViewComponent<TViewProps, TComponentSlots> = (
+export type IViewComponent<TViewProps, TComponentSlots = {}> = (
   props: IPropsWithChildren<TViewProps>,
-  slots?: ISlots<Required<TComponentSlots>>
+  slots: ISlots<Required<TComponentSlots>>
 ) => ReturnType<React.FunctionComponent>;
 
 /**
@@ -29,10 +29,10 @@ export type ISlotComponent<TComponentProps extends ISlottableProps<TComponentSlo
  */
 export interface IComponentOptions<
   TComponentProps extends ISlottableProps<TComponentSlots>,
-  TComponentSlots,
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps = TComponentProps,
+  TComponentSlots = {},
   TStatics = {}
 > extends IOldComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics> {
   /**
@@ -50,9 +50,9 @@ export interface IComponentOptions<
  */
 export type IComponent<
   TComponentProps extends ISlottableProps<TComponentSlots>,
-  TComponentSlots,
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps = TComponentProps,
+  TComponentSlots = {},
   TStatics = {}
-> = Required<IComponentOptions<TComponentProps, TComponentSlots, TTokens, TStyleSet, TViewProps, TStatics>>;
+> = Required<IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>>;

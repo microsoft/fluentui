@@ -10,10 +10,10 @@ import { IButton, IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButto
  */
 export type IMenuButtonComponent = IComponent<
   IMenuButtonProps,
-  IMenuButtonSlots,
   IMenuButtonTokens,
   IMenuButtonStyles,
-  IMenuButtonViewProps
+  IMenuButtonViewProps,
+  IMenuButtonSlots
 >;
 
 // These types are redundant with IButtonComponent but are needed until TS function return widening issue is resolved:

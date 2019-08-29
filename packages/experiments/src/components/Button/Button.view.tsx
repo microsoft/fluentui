@@ -13,11 +13,6 @@ export const ButtonSlots: IButtonComponent['slots'] = props => ({
 });
 
 export const ButtonView: IButtonComponent['view'] = (props, slots) => {
-  // If slots are not present return null.
-  if (!slots) {
-    return null;
-  }
-
   const { icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
 
   const { htmlType, propertiesType } = _deriveRootType(props);

@@ -17,10 +17,10 @@ import {
  */
 export type ISplitButtonComponent = IComponent<
   ISplitButtonProps,
-  ISplitButtonSlots,
   ISplitButtonTokens,
   ISplitButtonStyles,
-  ISplitButtonViewProps
+  ISplitButtonViewProps,
+  ISplitButtonSlots
 >;
 
 // These types are redundant with IButtonComponent but are needed until TS function return widening issue is resolved:

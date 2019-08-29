@@ -33,10 +33,10 @@ export interface ICompountButtonTokens extends IButtonTokens {
 
 export type ICompoundButtonComponent = IComponent<
   ICompoundButtonProps,
-  IButtonSlots,
   ICompountButtonTokens,
   IButtonStyles,
-  ICompoundButtonViewProps
+  ICompoundButtonViewProps,
+  IButtonSlots
 >;
 
 const baseTokens: ICompoundButtonComponent['tokens'] = (props, theme) => {

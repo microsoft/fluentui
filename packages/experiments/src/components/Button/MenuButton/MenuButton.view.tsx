@@ -17,11 +17,6 @@ export const MenuButtonSlots: IMenuButtonComponent['slots'] = props => ({
 });
 
 export const MenuButtonView: IMenuButtonComponent['view'] = (props, slots) => {
-  // If slots are not present return null.
-  if (!slots) {
-    return null;
-  }
-
   const {
     children,
     disabled,

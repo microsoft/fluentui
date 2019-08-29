@@ -6,7 +6,7 @@ import { createFactory, getSlots } from '../slots';
 import { assign } from '../utilities';
 import { ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken, ITokenFunction } from '../IComponent';
 import { IComponentOptions } from './IComponent';
-import { IDefaultSlotProps, ISlotCreator, ValidProps, ISlottableProps } from '../ISlots';
+import { IDefaultSlotProps, ISlots, ISlotCreator, ValidProps, ISlottableProps } from '../ISlots';
 
 interface IClassNamesMapNode {
   className?: string;
@@ -36,13 +36,13 @@ const memoizedClassNamesMap: IClassNamesMap = {};
  */
 export function composed<
   TComponentProps extends ValidProps & ISlottableProps<TComponentSlots>,
-  TComponentSlots,
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps extends TComponentProps = TComponentProps,
+  TComponentSlots = {},
   TStatics = {}
 >(
-  options: IComponentOptions<TComponentProps, TComponentSlots, TTokens, TStyleSet, TViewProps, TStatics> = {}
+  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> = {}
 ): React.FunctionComponent<TComponentProps> & TStatics {
   const { factoryOptions = {}, view } = options;
   const { defaultProp } = factoryOptions;
@@ -145,11 +145,12 @@ export function composed<
       _defaultStyles: displayName ? finalStyles : styles
     } as TViewProps & IDefaultSlotProps<any>;
 
-    const Slots = options.slots
-      ? typeof options.slots === 'function'
-        ? getSlots(viewProps, options.slots(viewProps))
-        : getSlots(viewProps, options.slots)
-      : undefined;
+    let Slots: ISlots<Required<TComponentSlots>>;
+    if (options.slots) {
+      Slots = typeof options.slots === 'function' ? getSlots(viewProps, options.slots(viewProps)) : getSlots(viewProps, options.slots);
+    } else {
+      Slots = {} as ISlots<Required<TComponentSlots>>;
+    }
 
     return view ? view(viewProps, Slots) : null;
   };

@@ -21,11 +21,6 @@ export const SplitButtonSlots: ISplitButtonComponent['slots'] = props => ({
 });
 
 export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => {
-  // If slots are not present return null.
-  if (!slots) {
-    return null;
-  }
-
   const {
     styles,
     tokens,

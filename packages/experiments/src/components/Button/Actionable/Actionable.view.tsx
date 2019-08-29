@@ -10,11 +10,6 @@ export const ActionableSlots: IActionableComponent['slots'] = props => ({
 });
 
 export const ActionableView: IActionableComponent['view'] = (props, slots) => {
-  // If slots are not present return null.
-  if (!slots) {
-    return null;
-  }
-
   const { children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
 
   const { htmlType, propertiesType } = _deriveRootType(props);

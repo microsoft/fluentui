@@ -9,10 +9,10 @@ import { IBaseProps } from '../../../Utilities';
  */
 export type IActionableComponent = IComponent<
   IActionableProps,
-  IActionableSlots,
   IActionableTokens,
   IActionableStyles,
-  IActionableViewProps
+  IActionableViewProps,
+  IActionableSlots
 >;
 
 // These types are redundant with IActionableComponent but are needed until TS function return widening issue is resolved:
