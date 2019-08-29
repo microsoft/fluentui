@@ -75,7 +75,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     if (!scrollablePane || !this.props.isScrollSynced || !(isStickyBottom || isStickyTop)) {
       return;
     }
-    const containerScrollLeft = scrollablePane.getScrollPosition(true /** horizontal */);
+    const containerScrollLeft = scrollablePane.getHorizontalScrollPosition();
     const usePlaceholderForSticky = scrollablePane.usePlaceholderForSticky();
     const stickyContent = isStickyTop ? stickyContentTop : stickyContentBottom;
     if (!usePlaceholderForSticky && stickyContent && stickyContent.children && stickyContent.children.length > 0) {
@@ -125,7 +125,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       scrollablePane.updateStickyRefHeights();
     }
     // horizontal scroll has to be synced only if component is sticky
-    if ((isStickyBottom || isStickyTop) && scrollablePane.getScrollPosition(true /** horizontal */)) {
+    if ((isStickyBottom || isStickyTop) && scrollablePane.getHorizontalScrollPosition()) {
       // Sync Sticky scroll position with content container on each update
       scrollablePane.syncScrollSticky(this);
     }

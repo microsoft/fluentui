@@ -298,11 +298,18 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     }
   };
 
-  public getScrollPosition = (horizontal?: boolean): number => {
+  public getScrollPosition = (): number => {
     if (this.contentContainer) {
-      return horizontal ? this._scrollLeft : this._scrollTop;
+      return this._listeningToEvents ? this._scrollTop : this.contentContainer.scrollTop;
     }
 
+    return 0;
+  };
+
+  public getHorizontalScrollPosition = (): number => {
+    if (this.contentContainer) {
+      return this._listeningToEvents ? this._scrollLeft : this.contentContainer.scrollLeft;
+    }
     return 0;
   };
 
@@ -313,7 +320,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   public usePlaceholderForSticky = (): boolean => {
-    return !this.props.optimizeForPerformance;
+    return !this.props.experimentalLayoutImprovements;
   };
 
   public verifyStickyContainerBehavior = (
@@ -347,7 +354,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         notifySubscribers: this.notifySubscribers,
         syncScrollSticky: this.syncScrollSticky,
         usePlaceholderForSticky: this.usePlaceholderForSticky,
-        getScrollPosition: this.getScrollPosition,
+        getHorizontalScrollPosition: this.getHorizontalScrollPosition,
         verifyStickyContainerBehavior: this.verifyStickyContainerBehavior,
         getUserInteractionStatus: this.getUserInteractionStatus
       }
@@ -526,7 +533,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   private _sortBasedOnOrder(): boolean {
-    return !!this.props.optimizeForPerformance;
+    return !!this.props.experimentalLayoutImprovements;
   }
 
   private _stickyContainerContainsStickyContent(sticky: Sticky, stickyPositionType: StickyPositionType): boolean {

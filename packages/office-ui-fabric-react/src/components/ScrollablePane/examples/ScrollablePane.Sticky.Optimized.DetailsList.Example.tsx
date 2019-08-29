@@ -127,7 +127,7 @@ export class ScrollablePaneStickyOptimizedDetailsList extends React.Component<{}
           scrollbarVisibility={ScrollbarVisibility.always}
           stickyHeaderContainerBehavior={'onScroll'}
           stickyFooterContainerBehavior={'always'}
-          optimizeForPerformance={true}
+          experimentalLayoutImprovements={true}
         >
           <Sticky stickyPosition={StickyPositionType.Header} order={1} stickyBackgroundColor={stickyBackgroundColor}>
             <TextField className={classNames.filter} label="Filter by name:" onChange={this._onFilterChange} />

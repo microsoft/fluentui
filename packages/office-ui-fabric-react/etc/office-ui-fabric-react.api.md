@@ -6334,6 +6334,7 @@ export interface IRGB {
 // @public (undocumented)
 export interface IScrollablePane {
     forceLayoutUpdate(): void;
+    getHorizontalScrollPosition(): number;
     getScrollPosition(): number;
 }
 
@@ -6350,7 +6351,7 @@ export interface IScrollablePaneContext {
         notifySubscribers: (sort?: boolean) => void;
         syncScrollSticky: (sticky: Sticky) => void;
         usePlaceholderForSticky: () => boolean;
-        getScrollPosition: (horizontal?: boolean) => number;
+        getHorizontalScrollPosition: () => number;
         verifyStickyContainerBehavior: (stickyContainerPosition: StickyPositionType, stickyContainerBehavior: IStickyContainerBehaviorType) => boolean;
         getUserInteractionStatus: () => boolean;
     };
@@ -6360,8 +6361,8 @@ export interface IScrollablePaneContext {
 export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement | ScrollablePaneBase> {
     className?: string;
     componentRef?: IRefObject<IScrollablePane>;
+    experimentalLayoutImprovements?: boolean;
     initialScrollPosition?: number;
-    optimizeForPerformance?: boolean;
     scrollbarVisibility?: ScrollbarVisibility;
     stickyFooterContainerBehavior?: IStickyContainerBehaviorType;
     stickyHeaderContainerBehavior?: IStickyContainerBehaviorType;
@@ -8540,7 +8541,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     // (undocumented)
     forceLayoutUpdate(): void;
     // (undocumented)
-    getScrollPosition: (horizontal?: boolean | undefined) => number;
+    getHorizontalScrollPosition: () => number;
+    // (undocumented)
+    getScrollPosition: () => number;
     // (undocumented)
     getUserInteractionStatus: () => boolean;
     // (undocumented)

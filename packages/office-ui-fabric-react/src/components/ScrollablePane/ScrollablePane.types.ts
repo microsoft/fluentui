@@ -11,8 +11,10 @@ import { StickyPositionType } from '../Sticky/Sticky.types';
 export interface IScrollablePane {
   /** Triggers a layout update for the pane. */
   forceLayoutUpdate(): void;
-  /** Gets the current scroll position of the scrollable pane */
+  /** Gets the current vertical scroll position of the scrollable pane */
   getScrollPosition(): number;
+  /** Gets the current horizontal scroll position of the scrollable pane */
+  getHorizontalScrollPosition(): number;
 }
 
 /**
@@ -57,8 +59,9 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
    * If true, it optimizes the performance, but may affect component behavior to some extent in few scenarios
    * where stickyClassName prop is used for Sticky component(s).
    * It is suggested to test the component so that it works as per the desired behavior.
+   * Set it to true only if ScrollablePane has Sticky component(s).
    */
-  optimizeForPerformance?: boolean;
+  experimentalLayoutImprovements?: boolean;
 
   /**
    * Determines the behavior of Sticky component(s) having stickyPosition StickyPosition.Header
@@ -164,7 +167,7 @@ export interface IScrollablePaneContext {
     notifySubscribers: (sort?: boolean) => void;
     syncScrollSticky: (sticky: Sticky) => void;
     usePlaceholderForSticky: () => boolean;
-    getScrollPosition: (horizontal?: boolean) => number;
+    getHorizontalScrollPosition: () => number;
     verifyStickyContainerBehavior: (
       stickyContainerPosition: StickyPositionType,
       stickyContainerBehavior: IStickyContainerBehaviorType
