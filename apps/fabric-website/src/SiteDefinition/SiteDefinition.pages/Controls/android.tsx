@@ -123,7 +123,7 @@ export const controlsPagesAndroid: INavPage[] = [
       },
       {
         title: 'PopupMenu',
-        url: '#/controls/android/drawer',
+        url: '#/controls/android/popupmenu',
         component: () => <LoadingComponent title="PopupMenu" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/PopupMenuPage/PopupMenuPage').PopupMenuPage))
