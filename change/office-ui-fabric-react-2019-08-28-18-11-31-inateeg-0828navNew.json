@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Nav Component isOnTop property set can set focus to the Nav focusZone",
+  "packageName": "office-ui-fabric-react",
+  "email": "inateeg@microsoft.com",
+  "commit": "058a69c3b956ee906b8c4a562589759c30762126",
+  "date": "2019-08-29T01:11:31.815Z"
+}
