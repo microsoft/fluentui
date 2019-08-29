@@ -95,6 +95,42 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       renderedItems,
       renderedOverflowItems
     };
+    console.log(OVERFLOW_KEY1);
+    console.log(OVERFLOW_KEY2);
+    console.log(OVERFLOW_KEY3);
+    console.log(OVERFLOW_KEY4);
+    console.log(OVERFLOW_KEY5);
+    console.log(OVERFLOW_KEY6);
+    console.log(OVERFLOW_KEY7);
+    console.log(OVERFLOW_KEY8);
+    console.log(OVERFLOW_KEY9);
+    console.log(OVERFLOW_KEY21);
+    console.log(OVERFLOW_KEY22);
+    console.log(OVERFLOW_KEY23);
+    console.log(OVERFLOW_KEY24);
+    console.log(OVERFLOW_KEY25);
+    console.log(OVERFLOW_KEY26);
+    console.log(OVERFLOW_KEY27);
+    console.log(OVERFLOW_KEY28);
+    console.log(OVERFLOW_KEY29);
+    console.log(OVERFLOW_KEY31);
+    console.log(OVERFLOW_KEY32);
+    console.log(OVERFLOW_KEY33);
+    console.log(OVERFLOW_KEY34);
+    console.log(OVERFLOW_KEY35);
+    console.log(OVERFLOW_KEY36);
+    console.log(OVERFLOW_KEY37);
+    console.log(OVERFLOW_KEY38);
+    console.log(OVERFLOW_KEY39);
+    console.log(OVERFLOW_KEY41);
+    console.log(OVERFLOW_KEY42);
+    console.log(OVERFLOW_KEY43);
+    console.log(OVERFLOW_KEY44);
+    console.log(OVERFLOW_KEY45);
+    console.log(OVERFLOW_KEY46);
+    console.log(OVERFLOW_KEY47);
+    console.log(OVERFLOW_KEY48);
+    console.log(OVERFLOW_KEY49);
 
     this._classNames = getClassNames(styles, {
       className,
