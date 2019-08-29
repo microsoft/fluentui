@@ -2,6 +2,7 @@ import * as React from 'react';
 import { BaseButton, Button } from '../../Button';
 import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IIconProps } from '../Icon';
 
 /**
  * {@docCategory MessageBar}
@@ -83,16 +84,16 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
 
   /**
-   * Custom icon to replace the dismiss icon.
+   * Custom icon prop to replace the dismiss icon.
    * If unset, default will be the Fabric Clear icon.
    */
-  dismissIcon?: string;
+  dismissIconProps?: IIconProps;
 
   /**
-   * Custom icon to replace the message bar icon.
+   * Custom icon prop to replace the message bar icon.
    * If unset, default will be the icon set by messageBarType.
    */
-  messageBarIcon?: string;
+  messageBarIconProps?: IIconProps;
 }
 
 /**

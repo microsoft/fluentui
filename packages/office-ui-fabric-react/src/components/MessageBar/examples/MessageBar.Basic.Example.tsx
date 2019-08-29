@@ -147,8 +147,8 @@ export const MessageBarBasicExample: React.StatelessComponent = () => (
             <MessageBarButton>Action</MessageBarButton>
           </div>
         }
-        dismissIcon={'AddFriend'}
-        messageBarIcon={'Search'}
+        dismissIconProps={{ iconName: 'AddFriend' }}
+        messageBarIconProps={{ iconName: 'Search' }}
       >
         Warning lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
         <Link href="www.bing.com" target="_blank">
