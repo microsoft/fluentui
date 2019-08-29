@@ -67,7 +67,7 @@ export function composed<
     }
 
     const theme = componentProps.theme || settings.theme;
-    const tokens = _resolveTokens(componentProps as TViewProps, theme, options.tokens, settings.tokens, componentProps.tokens) as any;
+    const tokens = _resolveTokens(componentProps, theme, options.tokens, settings.tokens, componentProps.tokens) as any;
     let styles;
 
     const finalStyles: { [key: string]: string | undefined } = {};
@@ -120,7 +120,7 @@ export function composed<
       if (componentProps.styles) {
         const userStyles: any =
           typeof componentProps.styles === 'function'
-            ? (componentProps.styles as Function)(componentProps as TViewProps, theme, tokens)
+            ? componentProps.styles(componentProps as TViewProps, theme, tokens)
             : componentProps.styles;
         styles = concatStyleSets(styles, userStyles);
         if (userStyles) {
@@ -180,7 +180,7 @@ function _resolveStyles<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>
 ): ReturnType<typeof concatStyleSets> {
   return concatStyleSets(
     ...allStyles.map((styles: IStylesFunctionOrObject<TProps, TTokens, TStyleSet> | undefined) =>
-      typeof styles === 'function' ? (styles as Function)(props, theme, tokens) : styles
+      typeof styles === 'function' ? styles(props, theme, tokens) : styles
     )
   );
 }
