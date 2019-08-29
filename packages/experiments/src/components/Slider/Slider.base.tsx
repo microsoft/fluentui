@@ -331,6 +331,12 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       return [];
     }
     const ticks = [];
+
+    // // if step is null then use the value variables in the marks array to denote where to set the tick marks
+    // for (let i = 0; Array.isArray(marks) && i < marks.length && step === null; i++) {
+    //   ticks.push(<span className={cssRegularTickClassNames} style={this._getStyleUsingOffsetPercent(vertical, marks[i].value)} key={i} />);
+    // }
+    // When displaying the ticks based off of the step value
     // += number is basically the distance between each tick
     for (let i = 0; i <= 100; i += (100 * step) / (max - min)) {
       ticks.push(

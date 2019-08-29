@@ -42,7 +42,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
   theme?: ITheme;
 
   /**
-   * Description label of the Slider
+   * Description label of the Slider.
    */
   label?: string;
 
@@ -135,15 +135,16 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
   originFromZero?: boolean;
 
   /**
-   * Optional flag to display tooltip on hover
+   * Optional flag to display tooltip on hover.
    * @defaultvalue false
    */
   showThumbTooltip?: boolean;
 
   /**
-   * Optional flag to indicate whether to have the Slider component render tick marks.
-   * Can add custom marks when setting marks to an array of javascript objects that each contain a value property
-   * (denotes where) and a string label (denotes what to display for the indicated position)
+   * Optional flag to indicate whether to have the Slider component render tick marks or add custom labels
+   * If marks is true tick marks will be placed according to the value of the step prop.
+   * If marks is an array, it should contain objects with keys of value (denote the where to place the label on the slider if specified)
+   * and label (what to label to display at specified position).
    * @defaultvalue false
    */
   marks?: boolean | ISliderMarks[];
