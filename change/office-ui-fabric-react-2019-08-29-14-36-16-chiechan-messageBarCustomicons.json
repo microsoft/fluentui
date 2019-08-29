@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "update to use icon prop instead of string",
+  "packageName": "office-ui-fabric-react",
+  "email": "chiechan@microsoft.com",
+  "commit": "dc1164aa712afb535b0c1efb7717ad1ceb87abf5",
+  "date": "2019-08-29T21:36:16.152Z"
+}
