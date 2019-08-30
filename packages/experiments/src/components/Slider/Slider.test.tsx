@@ -145,9 +145,3 @@ it('should be able to display the correct number of custom labels & tickmarks', 
   const tickNumber = component.find('.ms-Slider-regularTick').length;
   expect(tickNumber).toEqual(11);
 });
-
-it('renders Slider with marks correctly', () => {
-  const component = renderer.create(<Slider />);
-  const tree = component.toJSON();
-  expect(tree).toMatchSnapshot();
-});
