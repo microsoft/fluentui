@@ -423,12 +423,14 @@ export enum PersonaInitialsColor {
   magenta = 9,
   purple = 10,
   /**
-   * Black is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides
+   * `black` is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides.
+   * @deprecated will be removed in a future major release.
    */
   black = 11,
   orange = 12,
   /**
-   * Red is a color that often has a special meaning, so it is considered a reserved color and can only be set with overrides
+   * `red` is a color that often has a special meaning, so it is considered a reserved color and can only be set with overrides
+   * @deprecated will be removed in a future major release.
    */
   red = 13,
   darkRed = 14,
@@ -437,5 +439,16 @@ export enum PersonaInitialsColor {
    * Its primary use is for overflow buttons, so it is considered a reserved color and can only be set with overrides.
    */
   transparent = 15,
-  violet = 16
+  violet = 16,
+  lightRed = 17,
+  gold = 18,
+  burgundy = 19,
+  warmGray = 20,
+  coolGray = 21,
+  /**
+   * `gray` is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides
+   */
+  gray = 22,
+  cyan = 23,
+  rust = 24
 }

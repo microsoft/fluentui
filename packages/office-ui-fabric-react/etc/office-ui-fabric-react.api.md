@@ -8239,15 +8239,25 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
 // @public (undocumented)
 export enum PersonaInitialsColor {
+    // @deprecated
     black = 11,
     // (undocumented)
     blue = 1,
+    // (undocumented)
+    burgundy = 19,
+    // (undocumented)
+    coolGray = 21,
+    // (undocumented)
+    cyan = 23,
     // (undocumented)
     darkBlue = 2,
     // (undocumented)
     darkGreen = 6,
     // (undocumented)
     darkRed = 14,
+    // (undocumented)
+    gold = 18,
+    gray = 22,
     // (undocumented)
     green = 5,
     // (undocumented)
@@ -8257,6 +8267,8 @@ export enum PersonaInitialsColor {
     // (undocumented)
     lightPink = 7,
     // (undocumented)
+    lightRed = 17,
+    // (undocumented)
     magenta = 9,
     // (undocumented)
     orange = 12,
@@ -8264,12 +8276,17 @@ export enum PersonaInitialsColor {
     pink = 8,
     // (undocumented)
     purple = 10,
+    // @deprecated
     red = 13,
+    // (undocumented)
+    rust = 24,
     // (undocumented)
     teal = 3,
     transparent = 15,
     // (undocumented)
     violet = 16,
+    // (undocumented)
+    warmGray = 20,
 }
 
 // @public (undocumented)
