@@ -145,12 +145,11 @@ export function composed<
       _defaultStyles: displayName ? finalStyles : styles
     } as TViewProps & IDefaultSlotProps<any>;
 
-    let Slots: ISlots<Required<TComponentSlots>>;
-    if (options.slots) {
-      Slots = typeof options.slots === 'function' ? getSlots(viewProps, options.slots(viewProps)) : getSlots(viewProps, options.slots);
-    } else {
-      Slots = {} as ISlots<Required<TComponentSlots>>;
+    if (!options.slots) {
+      throw new Error(`Component ${options.displayName || (view && view.name) || ''} is missing slot definitions.`);
     }
+
+    const Slots = typeof options.slots === 'function' ? getSlots(viewProps, options.slots(viewProps)) : getSlots(viewProps, options.slots);
 
     return view ? view(viewProps, Slots) : null;
   };
