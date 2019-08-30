@@ -1,7 +1,13 @@
 # Change Log - @uifabric/codepen-loader
 
-This log was last generated on Wed, 28 Aug 2019 12:29:56 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Aug 2019 12:30:57 GMT and should not be manually modified.
 
+## 7.0.8
+Fri, 30 Aug 2019 12:30:57 GMT
+
+### Patches
+
+- Handle example-data package (elcraig@microsoft.com)
 ## 7.0.7
 Wed, 28 Aug 2019 12:29:56 GMT
 

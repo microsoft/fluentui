@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 30 Aug 2019 12:30:57 GMT",
+      "tag": "office-ui-fabric-react_v7.28.3",
+      "version": "7.28.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix imports in examples and deprecate old example data",
+            "author": "elcraig@microsoft.com",
+            "commit": "b3952ba9bbc421acbc9abc240634c876e3e973c9"
+          },
+          {
+            "comment": "Dialog: Changed demo copy to match real OWA text",
+            "author": "v-mare@microsoft.com",
+            "commit": "9b8ce939de9ac6d1ec1ebf5df599e47adcded3ab"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Aug 2019 12:30:00 GMT",
       "tag": "office-ui-fabric-react_v7.28.2",
       "version": "7.28.2",

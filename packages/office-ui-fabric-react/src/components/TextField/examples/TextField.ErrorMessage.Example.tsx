@@ -1,4 +1,3 @@
-import { Promise } from 'es6-promise';
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';

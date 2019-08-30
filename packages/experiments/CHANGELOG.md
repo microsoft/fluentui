@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 29 Aug 2019 12:30:00 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Aug 2019 12:30:57 GMT and should not be manually modified.
 
+## 7.13.5
+Fri, 30 Aug 2019 12:30:57 GMT
+
+### Patches
+
+- Fix example imports and SelectedItemsList export structure (elcraig@microsoft.com)
 ## 7.13.4
 Thu, 29 Aug 2019 12:30:00 GMT
 
