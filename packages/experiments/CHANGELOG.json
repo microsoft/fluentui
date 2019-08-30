@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 30 Aug 2019 12:30:57 GMT",
+      "tag": "@uifabric/experiments_v7.13.5",
+      "version": "7.13.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix example imports and SelectedItemsList export structure",
+            "author": "elcraig@microsoft.com",
+            "commit": "b3952ba9bbc421acbc9abc240634c876e3e973c9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Aug 2019 12:30:00 GMT",
       "tag": "@uifabric/experiments_v7.13.4",
       "version": "7.13.4",

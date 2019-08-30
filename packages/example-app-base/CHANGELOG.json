@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Fri, 30 Aug 2019 12:30:57 GMT",
+      "tag": "@uifabric/example-app-base_v7.6.3",
+      "version": "7.6.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Deprecate example data exports (use `@uifabric/example-data` instead)",
+            "author": "elcraig@microsoft.com",
+            "commit": "b3952ba9bbc421acbc9abc240634c876e3e973c9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Aug 2019 12:30:49 GMT",
       "tag": "@uifabric/example-app-base_v7.6.2",
       "version": "7.6.2",

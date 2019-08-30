@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 29 Aug 2019 12:30:00 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Aug 2019 12:30:57 GMT and should not be manually modified.
 
+## 7.28.3
+Fri, 30 Aug 2019 12:30:57 GMT
+
+### Patches
+
+- Fix imports in examples and deprecate old example data (elcraig@microsoft.com)
+- Dialog: Changed demo copy to match real OWA text (v-mare@microsoft.com)
 ## 7.28.2
 Thu, 29 Aug 2019 12:30:00 GMT
 

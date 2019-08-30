@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix imports in examples and deprecate old example data",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "b3952ba9bbc421acbc9abc240634c876e3e973c9",
-  "date": "2019-08-27T05:24:05.210Z"
-}

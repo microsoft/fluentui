@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dialog: Changed demo copy to match real OWA text",
-  "packageName": "office-ui-fabric-react",
-  "email": "v-mare@microsoft.com",
-  "commit": "9b8ce939de9ac6d1ec1ebf5df599e47adcded3ab",
-  "date": "2019-08-28T19:35:53.471Z"
-}

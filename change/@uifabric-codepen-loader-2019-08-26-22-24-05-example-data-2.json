@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Handle example-data package",
-  "packageName": "@uifabric/codepen-loader",
-  "email": "elcraig@microsoft.com",
-  "commit": "b3952ba9bbc421acbc9abc240634c876e3e973c9",
-  "date": "2019-08-27T05:23:24.165Z"
-}
