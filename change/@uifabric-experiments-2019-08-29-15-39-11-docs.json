@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update experiments readme to include build instructions.",
+  "packageName": "@uifabric/experiments",
+  "email": "elcraig@microsoft.com",
+  "commit": "d0fb4fa09133189dfe947fda211557a66b0b3909",
+  "date": "2019-08-29T22:39:11.887Z"
+}
