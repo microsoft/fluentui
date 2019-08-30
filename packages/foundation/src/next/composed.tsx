@@ -1,13 +1,12 @@
 import * as React from 'react';
+import { mergeStyles } from '@uifabric/merge-styles';
 import { concatStyleSets, IStyleSet, ITheme } from '@uifabric/styling';
 import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
-import { createFactory } from '../slots';
+import { createFactory, getSlots } from '../slots';
 import { assign } from '../utilities';
-
-import { IComponentOptions } from './IComponent';
 import { ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken, ITokenFunction } from '../IComponent';
-import { IDefaultSlotProps, ISlotCreator, ValidProps } from '../ISlots';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { IComponentOptions } from './IComponent';
+import { IDefaultSlotProps, ISlotCreator, ValidProps, ISlottableProps } from '../ISlots';
 
 interface IClassNamesMapNode {
   className?: string;
@@ -36,19 +35,20 @@ const memoizedClassNamesMap: IClassNamesMap = {};
  * @param options - component Component options. See IComponentOptions for more detail.
  */
 export function composed<
-  TComponentProps extends ValidProps,
+  TComponentProps extends ValidProps & ISlottableProps<TComponentSlots>,
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps extends TComponentProps = TComponentProps,
+  TComponentSlots = {},
   TStatics = {}
 >(
-  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics> = {}
+  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> = {}
 ): React.FunctionComponent<TComponentProps> & TStatics {
   const { factoryOptions = {}, view } = options;
   const { defaultProp } = factoryOptions;
 
   const result: React.FunctionComponent<TComponentProps> = (
-    componentProps: TComponentProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet>
+    componentProps: TViewProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet>
   ) => {
     const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
       options.displayName,
@@ -145,7 +145,13 @@ export function composed<
       _defaultStyles: displayName ? finalStyles : styles
     } as TViewProps & IDefaultSlotProps<any>;
 
-    return view ? view(viewProps) : null;
+    if (!options.slots) {
+      throw new Error(`Component ${options.displayName || (view && view.name) || ''} is missing slot definitions.`);
+    }
+
+    const Slots = typeof options.slots === 'function' ? getSlots(viewProps, options.slots(viewProps)) : getSlots(viewProps, options.slots);
+
+    return view ? view(viewProps, Slots) : null;
   };
 
   result.displayName = options.displayName || (view && view.name);
