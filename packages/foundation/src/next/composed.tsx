@@ -6,7 +6,7 @@ import { createFactory, getSlots } from '../slots';
 import { assign } from '../utilities';
 import { ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken, ITokenFunction } from '../IComponent';
 import { IComponentOptions } from './IComponent';
-import { IDefaultSlotProps, ISlots, ISlotCreator, ValidProps, ISlottableProps } from '../ISlots';
+import { IDefaultSlotProps, ISlotCreator, ValidProps, ISlottableProps } from '../ISlots';
 
 interface IClassNamesMapNode {
   className?: string;
