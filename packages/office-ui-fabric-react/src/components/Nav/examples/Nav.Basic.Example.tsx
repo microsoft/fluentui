@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
-/// this variable is used to test INav.focus method below.
-/// const _nav = React.createRef<INav>();
+
 export const NavBasicExample: React.FunctionComponent = () => {
   return (
     <Nav
       onLinkClick={_onLinkClick}
       selectedKey="key3"
-      /// componentRef={_nav}
       expandButtonAriaLabel="Expand or collapse"
       selectedAriaLabel="Selected"
       styles={{
@@ -85,10 +83,4 @@ function _onLinkClick(ev: React.MouseEvent<HTMLElement>, item?: INavLink) {
   if (item && item.name === 'News') {
     alert('News link clicked');
   }
-
-  /// below code has nothing to do with onClick but we use this entry to test out INav.focus() public API.
-  /// this is not needed when you write normal onLinkClick Handler.
-  /// if (_nav && _nav.current) {
-  ///  _nav.current.focus(true);
-  /// }
 }
