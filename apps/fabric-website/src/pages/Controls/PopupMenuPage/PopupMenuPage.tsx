@@ -21,5 +21,13 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PopupMenuPage/docs/ios/PopupMenuImplementation.md') as string
         }
       ];
+    case 'android':
+      return [
+        {
+          sectionName: 'Implementation',
+          editUrl: baseUrl + 'docs/android/PopupMenuImplementation.md',
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PopupMenuPage/docs/android/PopupMenuImplementation.md') as string
+        }
+      ];
   }
 }

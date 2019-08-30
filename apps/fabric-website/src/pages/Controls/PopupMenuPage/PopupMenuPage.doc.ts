@@ -9,5 +9,10 @@ export const PopupMenuPageProps: TFabricPlatformPageProps = {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PopupMenuPage/docs/ios/PopupMenuOverview.md') as string,
     related,
     componentUrl
+  },
+  android: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PopupMenuPage/docs/android/PopupMenuOverview.md') as string,
+    related,
+    componentUrl
   }
 };
