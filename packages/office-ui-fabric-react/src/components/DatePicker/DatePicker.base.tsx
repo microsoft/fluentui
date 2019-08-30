@@ -68,7 +68,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     dateTimeFormatter: undefined,
     showCloseButton: false,
     underlined: false,
-    allFocusable: false
+    allFocusable: false,
+    onChangeMonth: undefined
   };
 
   private _calendar = React.createRef<ICalendar>();
@@ -222,6 +223,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
               <CalendarType
                 {...calendarProps}
                 onSelectDate={this._onSelectDate}
+                onChangeMonth={this.props.onChangeMonth}
                 onDismiss={this._calendarDismissed}
                 isMonthPickerVisible={this.props.isMonthPickerVisible}
                 showMonthPickerAsOverlay={this.props.showMonthPickerAsOverlay}

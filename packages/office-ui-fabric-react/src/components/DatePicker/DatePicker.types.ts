@@ -65,6 +65,12 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   onSelectDate?: (date: Date | null | undefined) => void;
 
   /**
+   * Callback issued when a month is changed
+   * @param date - The date with current month
+   */
+  onChangeMonth?: (date: Date) => void;
+
+  /**
    * Label for the DatePicker
    */
   label?: string;

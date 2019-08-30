@@ -181,6 +181,7 @@ describe('DatePicker', () => {
       formatDay: (date: Date) => 'd',
       formatYear: (date: Date) => 'y'
     };
+    const monthChangeCallback = jest.fn();
 
     const datePicker = shallow(
       <DatePickerBase
@@ -194,6 +195,7 @@ describe('DatePicker', () => {
         firstWeekOfYear={FirstWeekOfYear.FirstFullWeek}
         showGoToToday={false}
         dateTimeFormatter={dateTimeFormatter}
+        onChangeMonth={monthChangeCallback}
       />
     );
     datePicker.setState({ isDatePickerShown: true });
@@ -238,6 +240,10 @@ describe('DatePicker', () => {
 
     it('renders Calendar with same dateTimeFormatter', () => {
       expect(calendarProps.dateTimeFormatter).toBe(dateTimeFormatter);
+    });
+
+    it('renders Calendar with same onChangeMonth callback', () => {
+      expect(calendarProps.onChangeMonth).toBe(monthChangeCallback);
     });
   });
 

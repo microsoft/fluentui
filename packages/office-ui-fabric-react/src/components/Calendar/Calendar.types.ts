@@ -34,6 +34,12 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttribu
   onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
 
   /**
+   * Callback issued when a month is changed
+   * @param date - The date with current month
+   */
+  onChangeMonth?: (date: Date) => void;
+
+  /**
    * Callback issued when calendar is closed
    */
   onDismiss?: () => void;

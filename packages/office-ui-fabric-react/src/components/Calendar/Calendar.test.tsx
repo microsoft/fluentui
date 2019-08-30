@@ -392,4 +392,43 @@ describe('Calendar', () => {
       expect(monthHeader).toBeTruthy();
     });
   });
+
+  describe('Test month change callback gets called', () => {
+    const defaultDate = new Date(2019, 7, 1);
+    const monthChanged = (monthDate: Date) => {
+      currentMonth = monthDate;
+    };
+
+    let currentMonth: Date;
+
+    beforeAll(() => {
+      currentMonth = new Date(2019, 1, 1);
+    });
+
+    it('navigating next month invokes callback', () => {
+      const renderedComponent = (ReactTestUtils.renderIntoDocument(
+        <Calendar strings={dayPickerStrings} value={defaultDate} onChangeMonth={monthChanged} />
+      ) as unknown) as Calendar;
+
+      expect(renderedComponent.state.selectedDate!.getMonth()).toBe(7);
+
+      const nextMonthButton = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-nextMonth');
+      ReactTestUtils.Simulate.click(nextMonthButton);
+
+      expect(currentMonth.getMonth()).toBe(8);
+    });
+
+    it('navigating prev month invokes callback', () => {
+      const renderedComponent = (ReactTestUtils.renderIntoDocument(
+        <Calendar strings={dayPickerStrings} value={defaultDate} onChangeMonth={monthChanged} />
+      ) as unknown) as Calendar;
+
+      expect(renderedComponent.state.selectedDate!.getMonth()).toBe(7);
+
+      const prevMonthButton = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-prevMonth');
+      ReactTestUtils.Simulate.click(prevMonthButton);
+
+      expect(currentMonth.getMonth()).toBe(6);
+    });
+  });
 });

@@ -46,6 +46,7 @@ export interface ICalendarState {
 export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> implements ICalendar {
   public static defaultProps: ICalendarProps = {
     onSelectDate: undefined,
+    onChangeMonth: undefined,
     onDismiss: undefined,
     isMonthPickerVisible: true,
     isDayPickerVisible: true,
@@ -257,10 +258,17 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
   }
 
   private _navigateDayPickerDay = (date: Date): void => {
-    this.setState({
-      navigatedDayDate: date,
-      navigatedMonthDate: date
-    });
+    this.setState(
+      {
+        navigatedDayDate: date,
+        navigatedMonthDate: date
+      },
+      () => {
+        if (this.props.onChangeMonth !== undefined) {
+          this.props.onChangeMonth(date);
+        }
+      }
+    );
   };
 
   private _navigateMonthPickerDay = (date: Date): void => {

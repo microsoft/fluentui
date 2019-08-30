@@ -2017,6 +2017,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttribu
     maxDate?: Date;
     minDate?: Date;
     navigationIcons?: ICalendarIconStrings;
+    onChangeMonth?: (date: Date) => void;
     onDismiss?: () => void;
     onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
     restrictedDates?: Date[];
@@ -3136,6 +3137,7 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
     maxDate?: Date;
     minDate?: Date;
     onAfterMenuDismiss?: () => void;
+    onChangeMonth?: (date: Date) => void;
     onSelectDate?: (date: Date | null | undefined) => void;
     parseDateFromString?: (dateStr: string) => Date | null;
     pickerAriaLabel?: string;
