@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Nav, INavLink, INav } from 'office-ui-fabric-react/lib/Nav';
+import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
 /// this variable is used to test INav.focus method below.
 /// const _nav = React.createRef<INav>();
 export const NavBasicExample: React.FunctionComponent = () => {
