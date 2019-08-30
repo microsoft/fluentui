@@ -136,3 +136,18 @@ describe('Slider', () => {
     ReactDOM.unmountComponentAtNode(container);
   });
 });
+
+it('should be able to display the correct number of custom labels & tickmarks', () => {
+  const labelsArray = [{ label: '20°C', value: 20 }, { label: '80°C', value: 80 }, { label: '100°C', value: 100 }];
+  const component = mount(<Slider marks={labelsArray} min={0} max={100} showValue={true} step={10} />);
+  const labelNumber = component.find('.ms-Slider-regularLabel').length;
+  expect(labelNumber).toEqual(3);
+  const tickNumber = component.find('.ms-Slider-regularTick').length;
+  expect(tickNumber).toEqual(11);
+});
+
+it('renders Slider with marks correctly', () => {
+  const component = renderer.create(<Slider />);
+  const tree = component.toJSON();
+  expect(tree).toMatchSnapshot();
+});
