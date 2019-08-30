@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Add FocusZone direction domOrder",
+  "packageName": "office-ui-fabric-react",
+  "email": "sohuts@microsoft.com",
+  "commit": "79e5c9b78db9910ef7ecb2fa7f30d2ab51534d89",
+  "date": "2019-08-30T10:48:11.010Z"
+}
