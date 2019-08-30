@@ -6,7 +6,7 @@ exports[`Card Section renders correctly 1`] = `
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: stretch;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -15,7 +15,7 @@ exports[`Card Section renders correctly 1`] = `
         flex-direction: column;
         flex-wrap: nowrap;
         height: inherit;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
         transition: box-shadow 0.5s ease;
@@ -80,7 +80,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: flex-start;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -89,7 +89,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
         flex-direction: row;
         flex-wrap: nowrap;
         height: auto;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
         transition: box-shadow 0.5s ease;
@@ -191,7 +191,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: stretch;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -200,7 +200,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
         flex-direction: column;
         flex-wrap: nowrap;
         height: inherit;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
         transition: box-shadow 0.5s ease;
@@ -302,7 +302,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: flex-start;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -311,7 +311,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
         flex-direction: row;
         flex-wrap: nowrap;
         height: auto;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
         transition: box-shadow 0.5s ease;
@@ -413,7 +413,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: stretch;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -422,7 +422,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
         flex-direction: column;
         flex-wrap: nowrap;
         height: inherit;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
         transition: box-shadow 0.5s ease;
@@ -524,7 +524,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: flex-start;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -533,7 +533,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
         flex-direction: row;
         flex-wrap: nowrap;
         height: auto;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
         transition: box-shadow 0.5s ease;
@@ -672,7 +672,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: stretch;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -681,7 +681,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
         flex-direction: column;
         flex-wrap: nowrap;
         height: inherit;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
         transition: box-shadow 0.5s ease;
@@ -820,7 +820,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: flex-start;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -829,7 +829,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
         flex-direction: row;
         flex-wrap: nowrap;
         height: auto;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 500px;
         min-width: 300px;
         transition: box-shadow 0.5s ease;
@@ -894,7 +894,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: stretch;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -903,7 +903,7 @@ exports[`Card Section renders correctly when filling up the margins while being 
         flex-direction: column;
         flex-wrap: nowrap;
         height: inherit;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
         transition: box-shadow 0.5s ease;
@@ -968,7 +968,7 @@ exports[`Card Section renders correctly when having tokens passed to it 1`] = `
       ms-Stack
       ms-Card
       {
-        align-items: space-between;
+        align-items: stretch;
         border-radius: 2px;
         box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
         box-sizing: border-box;
@@ -977,7 +977,7 @@ exports[`Card Section renders correctly when having tokens passed to it 1`] = `
         flex-direction: column;
         flex-wrap: nowrap;
         height: inherit;
-        justify-content: space-between;
+        justify-content: flex-start;
         max-width: 286px;
         min-width: 212px;
         transition: box-shadow 0.5s ease;

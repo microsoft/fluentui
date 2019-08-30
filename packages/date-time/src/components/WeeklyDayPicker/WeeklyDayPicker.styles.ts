@@ -44,6 +44,8 @@ export const styles = (props: IWeeklyDayPickerStyleProps): IWeeklyDayPickerStyle
         padding: 0,
         margin: 0,
         border: 'none',
+        display: 'flex',
+        alignItems: 'center',
         backgroundColor: palette.neutralLighter,
         fontSize: FontSizes.small,
         selectors: {

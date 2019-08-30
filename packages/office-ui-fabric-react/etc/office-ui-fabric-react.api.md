@@ -6,6 +6,8 @@
 
 import { BaseComponent } from '@uifabric/utilities';
 import { EventGroup } from '@uifabric/utilities';
+import { groupOne } from '@uifabric/example-data';
+import { groupTwo } from '@uifabric/example-data';
 import { IBaseProps } from '@uifabric/utilities';
 import { IComponent } from '@uifabric/foundation';
 import { IComponentAs } from '@uifabric/utilities';
@@ -32,7 +34,9 @@ import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IStyleSet } from '@uifabric/styling';
 import { ITheme } from '@uifabric/styling';
 import { KeyCodes } from '@uifabric/utilities';
+import { mru } from '@uifabric/example-data';
 import { Omit } from '@uifabric/utilities';
+import { people } from '@uifabric/example-data';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { Selection } from '@uifabric/utilities';
@@ -1400,8 +1404,7 @@ export const GroupFooter: React.StatelessComponent<IGroupFooterProps>;
 // @public (undocumented)
 export const GroupHeader: React.StatelessComponent<IGroupHeaderProps>;
 
-// @public (undocumented)
-export const groupOne: IExtendedPersonaProps[];
+export { groupOne }
 
 // @public (undocumented)
 export const GroupShowAll: React.StatelessComponent<IGroupShowAllProps>;
@@ -1409,8 +1412,7 @@ export const GroupShowAll: React.StatelessComponent<IGroupShowAllProps>;
 // @public (undocumented)
 export const GroupSpacer: React.FunctionComponent<IGroupSpacerProps>;
 
-// @public (undocumented)
-export const groupTwo: IExtendedPersonaProps[];
+export { groupTwo }
 
 // @public
 export const HEX_REGEX: RegExp;
@@ -1866,7 +1868,7 @@ export interface IButton {
 }
 
 // @public (undocumented)
-export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button> {
+export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button | HTMLSpanElement> {
     allowDisabledFocus?: boolean;
     ariaDescription?: string;
     ariaHidden?: boolean;
@@ -2578,6 +2580,7 @@ export interface IColorRectangleProps {
 // @public (undocumented)
 export interface IColorRectangleStyleProps {
     className?: string;
+    minSize?: number;
     theme: ITheme;
 }
 
@@ -5428,7 +5431,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
     dismissButtonAriaLabel?: string;
     isMultiline?: boolean;
     messageBarType?: MessageBarType;
-    onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement | BaseButton | HTMLAnchorElement | HTMLDivElement | Button>) => any;
+    onDismiss?: (ev?: React.MouseEvent<HTMLElement | BaseButton | Button>) => any;
     overflowButtonAriaLabel?: string;
     styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
     theme?: ITheme;
@@ -5983,6 +5986,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     onRenderPersonaCoin?: IRenderFunction<IPersonaSharedProps>;
     optionalText?: string;
     presence?: PersonaPresence;
+    presenceTitle?: string;
     // @deprecated
     primaryText?: string;
     secondaryText?: string;
@@ -8071,8 +8075,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     UNSAFE_componentWillReceiveProps(newProps: IModalProps): void;
 }
 
-// @public (undocumented)
-export const mru: IExtendedPersonaProps[];
+export { mru }
 
 // @public (undocumented)
 export const Nav: React.StatelessComponent<INavProps>;
@@ -8174,10 +8177,7 @@ export enum PanelType {
     smallFluid = 0
 }
 
-// @public (undocumented)
-export const people: (IExtendedPersonaProps & {
-    key: string | number;
-})[];
+export { people }
 
 // @public (undocumented)
 export const PeoplePickerItem: React.FunctionComponent<IPeoplePickerItemSelectedProps>;

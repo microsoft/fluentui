@@ -307,7 +307,13 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -470,7 +476,13 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -591,7 +603,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                     line-height: 42px;
                     min-width: 100%;
                     padding-bottom: 1px;
-                    padding-top: 1px;
+                    padding-top: 16px;
                     position: relative;
                     user-select: none;
                     vertical-align: top;
@@ -758,7 +770,16 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                             right: 1px;
                             top: 1px;
                           }
-                          .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                          .ms-Check-checkHost:hover & {
+                            opacity: 1;
+                          }
+                          .ms-Check-checkHost:focus & {
+                            opacity: 1;
+                          }
+                          &:hover {
+                            opacity: 1;
+                          }
+                          &:focus {
                             opacity: 1;
                           }
                     >
@@ -1073,7 +1094,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        font-family: "FabricMDL2Icons-6";
+                        font-family: "FabricMDL2Icons-14";
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
@@ -1081,19 +1102,19 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                       {
                         color: #0078d4;
                         display: none;
-                        font-size: 16px;
-                        left: -7.5px;
+                        font-size: 14px;
+                        left: -6.5px;
                         overflow: visible;
                         position: absolute;
-                        top: -18px;
+                        top: -28px;
                         z-index: 10;
                       }
-                  data-icon-name="CaretDownSolid8"
+                  data-icon-name="CircleShapeSolid"
                   data-is-focusable={false}
                   data-sizer-index={1}
                   role="presentation"
                 >
-                  
+                  
                 </i>
                 <div
                   aria-hidden={true}
@@ -1103,10 +1124,10 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                         background: #0078d4;
                         bottom: 0px;
                         display: none;
-                        height: 37px;
+                        height: 42px;
                         overflow: hidden;
                         position: absolute;
-                        top: 6px;
+                        top: 0px;
                         width: 1px;
                         z-index: 10;
                       }
@@ -1387,7 +1408,16 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -1774,7 +1804,16 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -2161,7 +2200,16 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -2548,7 +2596,16 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -2935,7 +2992,16 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -3322,7 +3388,16 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -3709,7 +3784,16 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -4096,7 +4180,16 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -4483,7 +4576,16 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >
@@ -4870,7 +4972,16 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                                       right: 1px;
                                       top: 1px;
                                     }
-                                    .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                    .ms-Check-checkHost:hover & {
+                                      opacity: 1;
+                                    }
+                                    .ms-Check-checkHost:focus & {
+                                      opacity: 1;
+                                    }
+                                    &:hover {
+                                      opacity: 1;
+                                    }
+                                    &:focus {
                                       opacity: 1;
                                     }
                               >

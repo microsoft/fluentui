@@ -124,7 +124,13 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
                 text-overflow: ellipsis;
                 width: 100%;
               }
-              &:active, &:focus, &:hover {
+              &:active {
+                outline: 0px;
+              }
+              &:focus {
+                outline: 0px;
+              }
+              &:hover {
                 outline: 0px;
               }
               &::-ms-clear {
@@ -249,7 +255,7 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -259,18 +265,21 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
-      <div
+      <span
         className=
             ms-Button-textContainer
             {
+              display: block;
               flex-grow: 1;
             }
       >
-        <div
+        <span
           className=
               ms-Button-label
               {
+                display: block;
                 font-weight: 600;
                 line-height: 100%;
                 margin-bottom: 0;
@@ -281,28 +290,33 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           id="id__3"
         >
           Click for ContextualMenu
-        </div>
-      </div>
+        </span>
+      </span>
       <i
         aria-hidden={true}
         className=
+            ms-Icon
             ms-Button-menuIcon
+            {
+              display: inline-block;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              flex-shrink: 0;
               font-family: "FabricMDL2Icons";
-              font-size: 12px;
               font-style: normal;
               font-weight: normal;
+              speak: none;
+            }
+            {
+              flex-shrink: 0;
+              font-size: 12px;
               height: 16px;
               line-height: 16px;
               margin-bottom: 0;
               margin-left: 4px;
               margin-right: 4px;
               margin-top: 0;
-              speak: none;
               text-align: center;
               vertical-align: middle;
             }
@@ -311,7 +325,7 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
       >
         
       </i>
-    </div>
+    </span>
   </button>
 </div>
 `;

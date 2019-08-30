@@ -2,6 +2,53 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Tue, 27 Aug 2019 12:33:51 GMT",
+      "tag": "@uifabric/react-cards_v0.108.0",
+      "version": "0.108.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Card: fixing vertical and horizontal alignment to start rather than space-between.",
+            "author": "dzearing@hotmail.com",
+            "commit": "4ef6e8836a4a18dc3859aa01a2e1641f00787113"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "@uifabric/react-cards_v0.107.9",
+      "version": "0.107.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update npmignores, delete unused jest setup files",
+            "author": "elcraig@microsoft.com",
+            "commit": "b12aaa280221562003af1e0f02aa5f3a5b008041"
+          },
+          {
+            "comment": "Fix up readme and package.json descriptions",
+            "author": "elcraig@microsoft.com",
+            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Aug 2019 12:34:59 GMT",
+      "tag": "@uifabric/react-cards_v0.107.8",
+      "version": "0.107.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Disabling 'export to codepen' functionality in Card examples.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "1944001393a9e6836d8c36a3ca282c0f91b7096a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2019 12:30:43 GMT",
       "tag": "@uifabric/react-cards_v0.107.7",
       "version": "0.107.7",

@@ -3,7 +3,7 @@ import { Chiclet, ChicletSize } from '@uifabric/experiments/lib/Chiclet';
 import { IButtonProps, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Icon, IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 

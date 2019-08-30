@@ -1,94 +1,40 @@
 import React from 'react';
-import { PrimaryButton, Stack, Label, mergeStyleSets } from 'office-ui-fabric-react';
-import { ITextModel } from '../components/Editor.types';
+import { PrimaryButton, mergeStyleSets, Stack, Toggle } from 'office-ui-fabric-react';
+import { EditorWrapper } from '../components/EditorWrapper';
 
-interface ITranspiledOutput {
-  outputString?: string;
-  error?: string;
-}
+const example = require('!raw-loader!../transpiler/examples/class.txt');
 
 const classNames = mergeStyleSets({
-  error: {
-    backgroundColor: '#FEF0F0',
-    color: '#FF5E79'
-  },
   component: {
-    backgroundColor: 'lightgray'
+    border: '1px solid lightgray'
+  },
+  preview: {
+    paddingTop: 20
   }
 });
+const width = 800;
 
-interface IAppState {
-  error?: string;
-  editorHidden?: boolean;
-  editor?: HTMLElement;
-}
+export const App: React.FunctionComponent = () => {
+  const [editorHidden, setEditorHidden] = React.useState<boolean>(true);
+  const [useEditor, setUseEditor] = React.useState<boolean>(true);
 
-export class App extends React.Component {
-  public state: IAppState = {
-    editorHidden: true
-  };
+  const onButtonClick = () => setEditorHidden(!editorHidden);
+  const onToggleChange = () => setUseEditor(!useEditor);
 
-  public render() {
-    const editor = (
-      <Stack className={classNames.component} gap={4}>
-        {this.state.editor}
-        {this.state.error !== undefined && <Label className={classNames.error}>{this.state.error}</Label>}
+  return (
+    <Stack styles={{ root: { width, margin: '0 auto' } }} tokens={{ childrenGap: 20 }}>
+      <h1>Typescript + React editor</h1>
+      <Stack horizontal tokens={{ childrenGap: 40 }}>
+        <PrimaryButton text={editorHidden ? 'Show code' : 'Hide code'} onClick={onButtonClick} />
+        <Toggle inlineLabel label="Use editor" checked={useEditor} onChange={onToggleChange} />
       </Stack>
-    );
-
-    return (
-      <div>
-        <PrimaryButton onClick={this.buttonClicked} />
-        {!this.state.editorHidden && editor}
-        <div id="output" />
-      </div>
-    );
-  }
-
-  private onChange = (editor: ITextModel) => {
-    require.ensure(['../transpiler/transpile'], require => {
-      const { evalCode, transpile } = require('../transpiler/transpile');
-      transpile(editor).then((output: ITranspiledOutput) => {
-        if (output.outputString) {
-          const evalCodeError = evalCode(output.outputString);
-          if (evalCodeError) {
-            this.setState({
-              error: evalCodeError.error
-            });
-          } else {
-            this.setState({
-              error: undefined
-            });
-          }
-        } else {
-          this.setState({
-            error: output.error
-          });
-        }
-      });
-    });
-  };
-
-  private buttonClicked = (): void => {
-    if (this.state.editorHidden) {
-      require.ensure([], require => {
-        const Editor = require('../components/Editor').Editor;
-        this.setState({
-          editor: (
-            <div>
-              <div>
-                <Label>Typescript + React editor</Label>
-              </div>
-              <React.Suspense fallback={<div>Loading...</div>}>
-                <Editor width={800} height={500} code="console.log('hello world');" language="typescript" onChange={this.onChange} />
-              </React.Suspense>
-            </div>
-          ),
-          editorHidden: false
-        });
-      });
-    } else {
-      this.setState({ editor: null, editorHidden: true });
-    }
-  };
-}
+      <EditorWrapper
+        code={example}
+        editorClassName={classNames.component}
+        previewClassName={classNames.preview}
+        isCodeVisible={!editorHidden}
+        useEditor={useEditor}
+      />
+    </Stack>
+  );
+};

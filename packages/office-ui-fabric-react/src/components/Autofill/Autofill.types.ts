@@ -83,8 +83,6 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
    * Handler for checking and updating the value if needed
    * in componentWillReceiveProps
    *
-   * @param defaultVisibleValue - The defaultVisibleValue that got passed
-   *  in to the auto fill's componentWillReceiveProps
    * @returns - the updated value to set, if needed
    */
   updateValueInWillReceiveProps?: () => string | null;

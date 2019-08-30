@@ -3727,7 +3727,13 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     text-overflow: ellipsis;
                     width: 100%;
                   }
-                  &:active, &:focus, &:hover {
+                  &:active {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
+                  &:hover {
                     outline: 0px;
                   }
                   &::-ms-clear {

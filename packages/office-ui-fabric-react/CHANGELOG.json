@@ -2,6 +2,220 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 29 Aug 2019 12:30:00 GMT",
+      "tag": "office-ui-fabric-react_v7.28.2",
+      "version": "7.28.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ColorRectangle styling fixes",
+            "author": "elcraig@microsoft.com",
+            "commit": "902caded70c4332a0c8f8a8a359af4952d40573f"
+          },
+          {
+            "comment": "Fix override handling for CommandBarButton",
+            "author": "tmichon@microsoft.com",
+            "commit": "60dff6f06cf20de307ebf784ee77b5855b0ea453"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Aug 2019 12:33:51 GMT",
+      "tag": "office-ui-fabric-react_v7.28.1",
+      "version": "7.28.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Link, Stack, and Toggle example updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "5b314c660d66a8398a9f2ca7bf21df61335759fb"
+          },
+          {
+            "comment": "Remove some relative imports from examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "9bfb3b5f1dbec3c8ef57558d3d47f5bdc2f9648c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Aug 2019 12:30:49 GMT",
+      "tag": "office-ui-fabric-react_v7.28.0",
+      "version": "7.28.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Memoizing styling in createComponent for components that have their default styling determined entirely by tokens.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8507da7511cf1a7dd1c9de98568fc5c48fe22ba5"
+          },
+          {
+            "comment": "Refactor Checkbox styles to reduce size.",
+            "author": "v-mare@microsoft.com",
+            "commit": "4986fe6b70cf080af7b9b61b7d6abe7ffbec53fa"
+          },
+          {
+            "comment": "Update positioning logic to nudge item when none of the positions fit",
+            "author": "53619942+srishtis27@users.noreply.github.com",
+            "commit": "b593c455b0413240c4695a435de9008d3568271a"
+          },
+          {
+            "comment": "New drop hint icon for drag-drop and corresponding padding space on top",
+            "author": "svaibhav@microsoft.com",
+            "commit": "c327dbc79097a670aa17b939f87295a59fbe1281"
+          },
+          {
+            "comment": "Updating snapshots due to merge-styles selector split changes.",
+            "author": "dzearing@hotmail.com",
+            "commit": "5dde847550f5b53ecddb0cf63e887d507ea80234"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Button: change divs to be spans so its w3 compliant",
+            "author": "joschect@microsoft.com",
+            "commit": "de80498dc1eacdad8ec494b0601ad5feecf5fd95"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
+      "tag": "office-ui-fabric-react_v7.27.1",
+      "version": "7.27.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MessageBar: Fix high contrast mode issue where you cannot tell which buttons you have focus on.",
+            "author": "cliff.koh@microsoft.com",
+            "commit": "56d02a9d9cf05868799723721e6c9f35dd10c528"
+          },
+          {
+            "comment": "fixing the icons to have minWidth instead of hard coded width",
+            "author": "kchau@microsoft.com",
+            "commit": "c65edc3a401e7a7940645d6431b2bab188a0abd5"
+          },
+          {
+            "comment": "Update npmignores, delete unused jest setup files",
+            "author": "elcraig@microsoft.com",
+            "commit": "b12aaa280221562003af1e0f02aa5f3a5b008041"
+          },
+          {
+            "comment": "make sure to skip aria-describedby for onRenderDescription is nullRender",
+            "author": "kchau@microsoft.com",
+            "commit": "848e0bb2a102fa6d0cc6be601fff635657889ece"
+          },
+          {
+            "comment": "Fix up readme and package.json descriptions",
+            "author": "elcraig@microsoft.com",
+            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Aug 2019 12:34:59 GMT",
+      "tag": "office-ui-fabric-react_v7.27.0",
+      "version": "7.27.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Autofill: fix issue where autofill wouldn't handle delete correctly",
+            "author": "joschect@microsoft.com",
+            "commit": "98b668899f9b152865de792d07d19b3d32bf2701"
+          },
+          {
+            "comment": "making sure we get rid of javascript: urls in nav",
+            "author": "kchau@microsoft.com",
+            "commit": "267653fde8ac14ffd3eea8a0e8e57720ab1b8feb"
+          },
+          {
+            "comment": "Panel Example: Fix function typing",
+            "author": "joschect@microsoft.com",
+            "commit": "b3a08f9e4ad8ec638e7e0e975cad0f598d597c42"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Button: Using FontIcon and ImageIcon instead of Icon in both oufr and experiments Button.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "c98b154a94543323c31e34b39eae8d2058c53c10"
+          },
+          {
+            "comment": "right align the action buttons per new design",
+            "author": "kchau@microsoft.com",
+            "commit": "a68fcab8e5e63d8e659249ecac327edae68ca7ff"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Aug 2019 12:34:09 GMT",
+      "tag": "office-ui-fabric-react_v7.26.0",
+      "version": "7.26.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combobox: Updates styles to latest design specs.",
+            "author": "v-mare@microsoft.com",
+            "commit": "9a3955fc93cb4fea86dab7de73967f799a0501f3"
+          },
+          {
+            "comment": "Simplify Button examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "dc83b75a4a45fb5b4d5ad62f856b959d39b6c1da"
+          },
+          {
+            "comment": "Use getDocument instead document in FocusZone and FocusTrapZone",
+            "author": "sohuts@microsoft.com",
+            "commit": "c4766bf28c3c6fe6021e2a0f277524bcc64064b4"
+          },
+          {
+            "comment": "Fix TextField onChange bug",
+            "author": "elcraig@microsoft.com",
+            "commit": "adc0f263cc2c85ea2ff6ef9d44b2b3e3bc52139a"
+          },
+          {
+            "comment": "Fix empty text box when a color component being zero",
+            "author": "reli@microsoft.com",
+            "commit": "f389783057c0ba7f32c5a00c38840bec07125cb8"
+          },
+          {
+            "comment": "add space functionality to split button with tests",
+            "author": "chiechan@microsoft.com",
+            "commit": "2d36be7008d746555faf1570d5541f8e74ea31c8"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add presenceTitle prop",
+            "author": "gogoe@microsoft.com",
+            "commit": "231d33083d5b0bc2bf150c91ccf4ade66caeeb98"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Aug 2019 12:31:26 GMT",
+      "tag": "office-ui-fabric-react_v7.25.1",
+      "version": "7.25.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Nav: update to latest redlines",
+            "author": "phkuo@microsoft.com",
+            "commit": "7779a3437650dff286de759c3474e6fe8c4294e7"
+          },
+          {
+            "comment": "Tooltip: Fix examples to pass correct root display styling.",
+            "author": "email not defined",
+            "commit": "e3b482b0d2587e7a56b2717a27454688fece8197"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Aug 2019 12:30:19 GMT",
       "tag": "office-ui-fabric-react_v7.25.0",
       "version": "7.25.0",

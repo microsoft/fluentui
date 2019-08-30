@@ -1,6 +1,21 @@
 # Change Log - @uifabric/tslint-rules
 
-This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+
+## 7.0.5
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.0.4
+Wed, 21 Aug 2019 12:34:09 GMT
+
+### Patches
+
+- Add lint rule banning describe/it.only (elcraig@microsoft.com)
 
 ## 7.0.3
 Wed, 17 Jul 2019 18:58:57 GMT

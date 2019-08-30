@@ -19,7 +19,8 @@ Issues that do not meet these guidelines will be closed.
 
 - **Package version(s)**: (fill this out)
 - **Browser and OS versions**: (fill this out)
-- **Screen reader(s)**: (fill this out if applicable)
+
+> Note that our screen reader support is limited to Edge + Narrator. Issues that do not reproduce in Edge + Narrator, and aren't caused by obvious invalid aria values, should be filed with the respective screen reading software, not the Fabric repo.
 
 ### Describe the issue:
 

@@ -144,6 +144,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       classNames.footer,
       {
         display: 'flex',
+        justifyContent: 'flex-end',
         alignItems: 'center',
         color: palette.white,
         selectors: {

@@ -170,8 +170,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -191,21 +203,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   onClick={[Function]}
                 >
@@ -331,8 +330,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -352,21 +363,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   onClick={[Function]}
                 >
@@ -492,8 +490,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -513,21 +523,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   onClick={[Function]}
                 >
@@ -653,8 +650,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -674,21 +683,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   onClick={[Function]}
                 >
@@ -814,8 +810,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -835,21 +843,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   onClick={[Function]}
                 >
@@ -976,8 +971,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -997,21 +1004,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   onClick={[Function]}
                 >
@@ -1205,8 +1199,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -1226,21 +1232,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   onClick={[Function]}
                 >
@@ -1359,8 +1352,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -1380,21 +1385,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   onClick={[Function]}
                 >
@@ -1513,8 +1505,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -1534,21 +1538,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   onClick={[Function]}
                 >
@@ -1667,8 +1658,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -1688,21 +1691,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   onClick={[Function]}
                 >
@@ -1821,8 +1811,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -1842,21 +1844,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   onClick={[Function]}
                 >
@@ -1976,8 +1965,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -1997,21 +1998,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   onClick={[Function]}
                 >
@@ -2161,6 +2149,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        min-width: 32px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -2174,7 +2163,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         user-select: none;
                         vertical-align: top;
                         white-space: nowrap;
-                        width: 32px;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2207,6 +2195,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background-color: #f3f2f1;
                         color: #323130;
                         cursor: pointer;
+                        text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -2215,12 +2204,11 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       &:active {
                         background-color: #edebe9;
                         color: #323130;
+                        text-decoration: none;
                       }
                       &:active:hover {
                         background-color: #edebe9;
                         color: #323130;
-                      }
-                      &:active, &:hover, &:active:hover {
                         text-decoration: none;
                       }
                       @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -2242,7 +2230,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   role="button"
                   type="button"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-flexContainer
                         {
@@ -2252,27 +2240,33 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                           height: 100%;
                           justify-content: center;
                         }
+                    data-automationid="splitbuttonprimary"
                   >
                     <i
                       aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            display: inline-block;
-                            flex-shrink: 0;
                             font-family: "FabricMDL2Icons";
-                            font-size: 16px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            flex-shrink: 0;
+                            font-size: 16px;
                             height: 16px;
                             line-height: 16px;
                             margin-bottom: 0;
                             margin-left: 4px;
                             margin-right: 4px;
                             margin-top: 0;
-                            speak: none;
                             text-align: center;
                             vertical-align: middle;
                           }
@@ -2281,7 +2275,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     >
                       
                     </i>
-                  </div>
+                  </span>
                 </button>
                 <i
                   aria-hidden={true}
@@ -2373,8 +2367,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -2394,21 +2400,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   href="#/examples/breadcrumb"
                   onClick={[Function]}
@@ -2518,8 +2511,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -2539,21 +2544,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   href="#/examples/breadcrumb"
                   onClick={[Function]}
@@ -2664,8 +2656,20 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       @media screen and (-ms-high-contrast: active){& {
                         border-bottom: none;
                       }
-                      &:active, &:hover, &:active:hover {
-                        color: #004578;
+                      &:active {
+                        background-color: #edebe9;
+                        color: #323130;
+                        text-decoration: none;
+                      }
+                      &:hover {
+                        background-color: #f3f2f1;
+                        color: #323130;
+                        cursor: pointer;
+                        text-decoration: none;
+                      }
+                      &:active:hover {
+                        background-color: #edebe9;
+                        color: #323130;
                         text-decoration: none;
                       }
                       &:focus {
@@ -2685,21 +2689,8 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      &:hover {
-                        background-color: #f3f2f1;
-                        color: #323130;
-                        cursor: pointer;
-                      }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
-                      }
-                      &:active {
-                        background-color: #edebe9;
-                        color: #323130;
-                      }
-                      &:active:hover {
-                        background-color: #edebe9;
-                        color: #323130;
                       }
                   href="#/examples/breadcrumb"
                   onClick={[Function]}
@@ -2939,6 +2930,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        min-width: 32px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -2952,7 +2944,6 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         user-select: none;
                         vertical-align: top;
                         white-space: nowrap;
-                        width: 32px;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -2985,6 +2976,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                         background-color: #f3f2f1;
                         color: #323130;
                         cursor: pointer;
+                        text-decoration: none;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
@@ -2993,12 +2985,11 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                       &:active {
                         background-color: #edebe9;
                         color: #323130;
+                        text-decoration: none;
                       }
                       &:active:hover {
                         background-color: #edebe9;
                         color: #323130;
-                      }
-                      &:active, &:hover, &:active:hover {
                         text-decoration: none;
                       }
                       @media only screen and (min-width: 0px) and (max-width: 479px){& {
@@ -3020,7 +3011,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                   role="button"
                   type="button"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-flexContainer
                         {
@@ -3030,27 +3021,33 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                           height: 100%;
                           justify-content: center;
                         }
+                    data-automationid="splitbuttonprimary"
                   >
                     <i
                       aria-hidden={true}
                       className=
+                          ms-Icon
                           ms-Button-icon
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            display: inline-block;
-                            flex-shrink: 0;
                             font-family: "FabricMDL2Icons";
-                            font-size: 16px;
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            flex-shrink: 0;
+                            font-size: 16px;
                             height: 16px;
                             line-height: 16px;
                             margin-bottom: 0;
                             margin-left: 4px;
                             margin-right: 4px;
                             margin-top: 0;
-                            speak: none;
                             text-align: center;
                             vertical-align: middle;
                           }
@@ -3059,7 +3056,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
                     >
                       
                     </i>
-                  </div>
+                  </span>
                 </button>
                 <i
                   aria-hidden={true}

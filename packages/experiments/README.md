@@ -1,6 +1,6 @@
-# Office UI Fabric React Experiments
+# @uifabric/experiments
 
-**Experimental components for [Office UI Fabric React](http://dev.microsoft.com/fabric)**
+**Experimental components for [Office UI Fabric React](https://dev.microsoft.com/fabric)**
 
 These are not production-ready components and **should never be used in product** unless you are the [CODEOWNER](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/.github/CODEOWNERS) of the component and are responsible for reviewing all PRs involving this component. This experimental space is useful for testing new components whose APIs might change before final release.
 
