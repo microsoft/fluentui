@@ -122,17 +122,17 @@ export const controlsPagesAndroid: INavPage[] = [
           require.ensure([], require => cb(require<any>('../../../pages/Controls/BottomSheetPage/BottomSheetPage').BottomSheetPage))
       },
       {
+        title: 'Drawer',
+        url: '#/controls/android/drawer',
+        component: () => <LoadingComponent title="Drawer" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage))
+      },
+      {
         title: 'PopupMenu',
         url: '#/controls/android/popupmenu',
         component: () => <LoadingComponent title="PopupMenu" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/PopupMenuPage/PopupMenuPage').PopupMenuPage))
-      },
-      {
-        title: 'Drawer',
-        url: '#/controls/android/drawer',
-        component: () => <LoadingComponent title="Drawer" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage))
       },
       {
         title: 'Tooltip',
