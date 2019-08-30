@@ -1,4 +1,4 @@
-`BottomSheet` is used to display a list of menu items in a modal dialog inside of a Fragment that retains state.
+`BottomSheet` is used to display a list of menu items in a modal dialog. It slides up over the main app content as a result of a user triggered action. Swiping up can reveal additional content.
 
 | BottomSheet with single line items                                                                                                                                                                    | BottomSheet with double line items                                                                                                                                                                    |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
