@@ -1245,9 +1245,6 @@ describe('FocusZone', () => {
     const buttonB = focusZone.querySelector('.b') as HTMLElement;
     const buttonC = focusZone.querySelector('.c') as HTMLElement;
 
-    // Set up a grid like so:
-    // A B
-    // C D
     // Assign bounding locations to buttons.
     setupElement(buttonA, {
       clientRect: {
