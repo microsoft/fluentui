@@ -997,7 +997,7 @@ exports[`Button renders a default circular checked Button correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          font-family: "FabricMDL2Icons-2";
+          font-family: "FabricMDL2Icons-3";
           font-style: normal;
           font-weight: normal;
           speak: none;
@@ -1129,7 +1129,7 @@ exports[`Button renders a default circular disabled checked Button correctly 1`]
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          font-family: "FabricMDL2Icons-2";
+          font-family: "FabricMDL2Icons-3";
           font-style: normal;
           font-weight: normal;
           speak: none;
@@ -2598,7 +2598,7 @@ exports[`Button renders a primary circular checked Button correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          font-family: "FabricMDL2Icons-2";
+          font-family: "FabricMDL2Icons-3";
           font-style: normal;
           font-weight: normal;
           speak: none;
@@ -2734,7 +2734,7 @@ exports[`Button renders a primary circular disabled checked Button correctly 1`]
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          font-family: "FabricMDL2Icons-2";
+          font-family: "FabricMDL2Icons-3";
           font-style: normal;
           font-weight: normal;
           speak: none;
