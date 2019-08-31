@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add PopupMenu title",
+  "packageName": "@uifabric/fabric-website",
+  "email": "emlynam@microsoft.com",
+  "commit": "8d4cfae2dabddb2fd3b620c12c36d1bb7c11e421",
+  "date": "2019-08-30T23:06:24.090Z"
+}

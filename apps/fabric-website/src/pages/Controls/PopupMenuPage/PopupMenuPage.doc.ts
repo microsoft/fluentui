@@ -5,7 +5,6 @@ const componentUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/m
 
 export const PopupMenuPageProps: TFabricPlatformPageProps = {
   ios: {
-    title: 'Popup Menu',
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PopupMenuPage/docs/ios/PopupMenuOverview.md') as string,
     related,
     componentUrl
