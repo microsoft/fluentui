@@ -83,13 +83,13 @@ storiesOf('SpinButton - Label Placement', module)
     { rtl: true }
   )
   .addStory('Label on top', () => (
-    <Fabric styles={{ root: { width: 460 } }}>
+    <Fabric styles={{ root: { width: 500 } }}>
       <SpinButton {...props} styles={{ root: { width: 150 } }} labelPosition={Position.top} />
       <TextField label="Should vertically align with SpinButton" styles={styles} />
     </Fabric>
   ))
   .addStory('Label on top with icon', () => (
-    <Fabric styles={{ root: { width: 460 } }}>
+    <Fabric styles={{ root: { width: 500 } }}>
       <SpinButton
         {...props}
         styles={{ root: { width: 150 } }}
