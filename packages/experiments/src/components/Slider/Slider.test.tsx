@@ -135,13 +135,42 @@ describe('Slider', () => {
 
     ReactDOM.unmountComponentAtNode(container);
   });
-});
 
-it('should be able to display the correct number of custom labels & tickmarks', () => {
-  const labelsArray = [{ label: '20°C', value: 20 }, { label: '80°C', value: 80 }, { label: '100°C', value: 100 }];
-  const component = mount(<Slider marks={labelsArray} min={0} max={100} showValue={true} step={10} />);
-  const labelNumber = component.find('.ms-Slider-regularLabel').length;
-  expect(labelNumber).toEqual(3);
-  const tickNumber = component.find('.ms-Slider-regularTick').length;
-  expect(tickNumber).toEqual(11);
+  it.only('should be able to display the correct custom labels & tickmarks at the correct positions', () => {
+    const labelsArray = [{ label: '20°C', value: 20 }, { label: '80°C', value: 80 }, { label: '100°C', value: 100 }];
+    const expectedValuesArray = [20, 80, 100];
+    const component = mount(<Slider marks={labelsArray} min={0} max={100} showValue={true} step={10} />);
+
+    const allLabels = component.find('.ms-Slider-regularLabel');
+    const labels = allLabels.getElements();
+    const labelNumber = component.find('.ms-Slider-regularLabel').length;
+    const tickNumber = component.find('.ms-Slider-regularTick').length;
+
+    for (let i = 0; i < labelsArray.length; i++) {
+      expect(labels[i].props.children).toBe(`${expectedValuesArray[i]}°C`);
+      expect(labels[i].props.style.left).toBe(`${expectedValuesArray[i]}%`);
+    }
+
+    expect(labelNumber).toEqual(3);
+    expect(tickNumber).toEqual(11);
+  });
+
+  it('custom labels should be able to handle values that are out of bounds', () => {
+    const labelsArray = [{ label: '20°C', value: -20 }, { label: '100°C', value: 1000 }];
+    const component = mount(<Slider marks={labelsArray} min={0} max={100} showValue={true} step={10} />);
+    const expectedValuesArray = [20, 80, 100];
+
+    const allLabels = component.find('.ms-Slider-regularLabel');
+    const labels = allLabels.getElements();
+    const labelNumber = component.find('.ms-Slider-regularLabel').length;
+    const tickNumber = component.find('.ms-Slider-regularTick').length;
+
+    for (let i = 0; i < labelsArray.length; i++) {
+      expect(labels[i].props.children).toBe(`${expectedValuesArray[i]}°C`);
+      expect(labels[i].props.style.left).toBe(`${expectedValuesArray[i]}%`);
+    }
+
+    expect(labelNumber).toEqual(3);
+    expect(tickNumber).toEqual(11);
+  });
 });

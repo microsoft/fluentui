@@ -310,6 +310,13 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     }
 
     for (let i = 0; i < marks.length; i++) {
+      // this makes it so that if user passes in a value that is not in bounds it will just cap off the value
+      if (marks[i].value > max) {
+        marks[i].value = max;
+      }
+      if (marks[i].value < min) {
+        marks[i].value = min;
+      }
       const currentLabel = (
         <span
           className={cssRegularLabelClassNames}
