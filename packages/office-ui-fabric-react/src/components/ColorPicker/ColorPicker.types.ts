@@ -146,4 +146,24 @@ export interface IColorPickerStyles {
    * Style set for each text field input.
    */
   input?: IStyle;
+
+  /**
+   * Color Square
+   */
+  colorSquare?: IStyle;
+
+  /**
+   * flexContainer
+   */
+  flexContainer?: IStyle;
+
+  /**
+   * flexSlider
+   */
+  flexSlider?: IStyle;
+
+  /**
+   * flexPreviewBox
+   */
+  flexPreviewBox?: IStyle;
 }

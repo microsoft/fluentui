@@ -100,44 +100,13 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       className
     });
 
-    const classNamesPreviewBox = mergeStyleSets({
-      tableData: {
-        width: '18%'
-      },
-      colorSquare: {
-        width: 48,
-        height: 48,
-        margin: '0 0 0 8px',
-        border: '1px solid #c8c6c4',
-        backgroundColor: color.str,
-        selectors: {
-          [HighContrastSelector]: {
-            MsHighContrastAdjust: 'none'
-          }
-        }
-      }
-    });
-
-    const flexGrid = mergeStyleSets({
-      flexContainer: {
-        display: 'flex'
-      },
-      flexSlider: {
-        flexGrow: '1'
-      },
-      flexPreviewBox: {
-        flexGrow: '0'
-      }
-    });
-
     return (
       <div className={classNames.root}>
         <div className={classNames.panel}>
           <ColorRectangle color={color} onChange={this._onSVChanged} styles={props.rectangleStyle} />
-          <div className={flexGrid.flexContainer}>
-            <div className={flexGrid.flexSlider}>
+          <div className={classNames.flexContainer}>
+            <div className={classNames.flexSlider}>
               <ColorSlider className="is-hue" minValue={0} maxValue={MAX_COLOR_HUE} value={color.h} onChange={this._onHChanged} />
-
               {!props.alphaSliderHidden && (
                 <ColorSlider
                   className="is-alpha"
@@ -151,8 +120,13 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
               )}
             </div>
             {props.showPreview && (
-              <div className={flexGrid.flexPreviewBox}>
-                <div className={classNamesPreviewBox.colorSquare + ' is-preview'} />
+              <div className={classNames.flexPreviewBox}>
+                <div
+                  className={classNames.colorSquare + ' is-preview'}
+                  style={{
+                    backgroundColor: color.str
+                  }}
+                />
               </div>
             )}
           </div>
