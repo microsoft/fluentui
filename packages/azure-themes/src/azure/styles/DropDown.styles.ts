@@ -129,11 +129,8 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       color: semanticColors.bodyText,
       fontWeight: 'bold',
       selectors: {
-        '&:hover': {
-          backgroundColor: semanticColors.listItemBackgroundChecked,
-          borderColor: 'transparent'
-        },
-        '&:hover:focus': {
+        // active: Mouse down on the item, then drag outside.
+        '&:hover, &:focus, &:active, &:hover:focus': {
           backgroundColor: semanticColors.listItemBackgroundChecked,
           borderColor: 'transparent',
           color: semanticColors.bodyText
