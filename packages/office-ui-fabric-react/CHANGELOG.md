@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 29 Aug 2019 12:24:03 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Sep 2019 12:24:08 GMT and should not be manually modified.
 
+## 6.203.0
+Mon, 02 Sep 2019 12:24:08 GMT
+
+### Minor changes
+
+- PersonaCoin: Update colors to match v7 and improve color contrast. (jdh@microsoft.com)
 ## 6.202.3
 Thu, 29 Aug 2019 12:24:03 GMT
 

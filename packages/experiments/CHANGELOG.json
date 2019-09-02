@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Mon, 02 Sep 2019 12:24:08 GMT",
+      "tag": "@uifabric/experiments_v6.82.1",
+      "version": "6.82.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Persona types, updated snapshots.",
+            "author": "jdh@microsoft.com",
+            "commit": "83e181410c1ce8511c411decfef2563e5b150248"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Aug 2019 22:19:39 GMT",
       "tag": "@uifabric/experiments_v6.82.0",
       "version": "6.82.0",

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 01 Aug 2019 12:23:00 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Sep 2019 12:24:08 GMT and should not be manually modified.
 
+## 6.82.1
+Mon, 02 Sep 2019 12:24:08 GMT
+
+### Patches
+
+- Persona types, updated snapshots. (jdh@microsoft.com)
 ## 6.82.0
 Thu, 01 Aug 2019 12:23:00 GMT
 
