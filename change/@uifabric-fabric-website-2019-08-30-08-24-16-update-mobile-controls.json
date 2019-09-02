@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add PopupMenu and BottomSheet to mobile docs.",
-  "packageName": "@uifabric/fabric-website",
-  "email": "emlynam@microsoft.com",
-  "commit": "9be8ad3ec737d22c263d7516e9d3ea93d931234e",
-  "date": "2019-08-30T15:24:16.806Z"
-}

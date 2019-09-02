@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Mon, 02 Sep 2019 12:33:56 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.3",
+      "version": "7.4.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add PopupMenu and BottomSheet to mobile docs.",
+            "author": "emlynam@microsoft.com",
+            "commit": "9be8ad3ec737d22c263d7516e9d3ea93d931234e"
+          },
+          {
+            "comment": "Add PopupMenu title",
+            "author": "emlynam@microsoft.com",
+            "commit": "8d4cfae2dabddb2fd3b620c12c36d1bb7c11e421"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Aug 2019 12:35:28 GMT",
       "tag": "@uifabric/fabric-website_v7.4.2",
       "version": "7.4.2",

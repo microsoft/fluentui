@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 30 Aug 2019 12:30:57 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Sep 2019 12:33:56 GMT and should not be manually modified.
 
+## 7.29.0
+Mon, 02 Sep 2019 12:33:56 GMT
+
+### Minor changes
+
+- Add FocusZone direction domOrder (sohuts@microsoft.com)
+### Patches
+
+- Nav Component isOnTop property set can set focus to the Nav focusZone (inateeg@microsoft.com)
 ## 7.28.3
 Fri, 30 Aug 2019 12:30:57 GMT
 

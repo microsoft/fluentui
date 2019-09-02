@@ -1,7 +1,16 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 30 Aug 2019 12:30:57 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Sep 2019 12:33:56 GMT and should not be manually modified.
 
+## 7.14.0
+Mon, 02 Sep 2019 12:33:56 GMT
+
+### Minor changes
+
+- Updating Button to use new composed approach with slots as options. (humbertomakotomorimoto@gmail.com)
+### Patches
+
+- Update experiments readme to include build instructions. (elcraig@microsoft.com)
 ## 7.13.5
 Fri, 30 Aug 2019 12:30:57 GMT
 

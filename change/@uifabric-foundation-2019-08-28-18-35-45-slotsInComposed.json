@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Foundation: Moving slots inside composed options.",
-  "packageName": "@uifabric/foundation",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "3946cadd372b0d10ee99e78b4025592e551f0abb",
-  "date": "2019-08-28T23:35:45.796Z"
-}

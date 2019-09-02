@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updating Button to use new composed approach with slots as options.",
-  "packageName": "@uifabric/experiments",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "3946cadd372b0d10ee99e78b4025592e551f0abb",
-  "date": "2019-08-28T23:35:41.999Z"
-}

@@ -1,7 +1,14 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Sep 2019 12:33:56 GMT and should not be manually modified.
 
+## 7.4.3
+Mon, 02 Sep 2019 12:33:56 GMT
+
+### Patches
+
+- Add PopupMenu and BottomSheet to mobile docs. (emlynam@microsoft.com)
+- Add PopupMenu title (emlynam@microsoft.com)
 ## 7.4.2
 Fri, 23 Aug 2019 12:35:28 GMT
 
