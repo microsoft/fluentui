@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { ActionButton } from '../../Button';
 import { buttonStyles } from './Nav.styles';
-import { classNamesFunction, divProperties, getNativeProps, getWindow } from '../../Utilities';
+import { classNamesFunction, divProperties, getNativeProps, getWindow, initializeComponentRef } from '../../Utilities';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { INav, INavLink, INavLinkGroup, INavProps, INavStyleProps, INavStyles } from './Nav.types';
-import { initializeComponentRef } from 'office-ui-fabric-react/lib/Utilities';
 
 // The number pixels per indentation level for Nav links.
 const _indentationSize = 14;
