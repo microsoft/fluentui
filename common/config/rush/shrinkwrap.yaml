@@ -90,7 +90,7 @@ dependencies:
   babel-core: 6.26.3
   babel-loader: 7.1.5
   babylon: 7.0.0-beta.47
-  beachball: 1.12.0
+  beachball: 1.13.0
   bundlesize: 0.15.3
   chalk: 2.4.1
   codecov: 3.1.0
@@ -3455,7 +3455,7 @@ packages:
     dev: false
     resolution:
       integrity: sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
-  /beachball/1.12.0:
+  /beachball/1.13.0:
     dependencies:
       fs-extra: 8.1.0
       git-url-parse: 11.1.2
@@ -3466,7 +3466,7 @@ packages:
     dev: false
     hasBin: true
     resolution:
-      integrity: sha512-b3ldO/bDxbyXv+vbUOrpwriSdroADN1FNse+5rjlGtf7TTnym81o2t2hXbJ0v27v8y2CHI4jvzVXrmQhg2BjRQ==
+      integrity: sha512-RaTATKvLpX8jnz6nkkhM3jMv0RrZd4x13UMXnj3GDhl9fgx0ru6UMuXxFwUyRMzEMHKCcJhWr7LkQV56WXn+Og==
   /bfj/6.1.1:
     dependencies:
       bluebird: 3.5.3
@@ -16446,7 +16446,7 @@ packages:
     dev: false
     name: '@rush-temp/api-docs'
     resolution:
-      integrity: sha512-rPS1c/d51kRtK5AxKB0IQN748CoFot6k2EyMc7ZvngE95pCD80PmCl2hEoMQlYeWj0zvKrs/SfjTY9fjeRcGbQ==
+      integrity: sha512-UZayqm1oq4OJoSLmP/G5eGW29CPbiwb88EcKgNPV2oWe6Ly1wlE/4rBYwYLH4LbQ7FD8JJFTlSDgUhNK+HL0lg==
       tarball: 'file:projects/api-docs.tgz'
     version: 0.0.0
   'file:projects/azure-themes.tgz':
@@ -16456,7 +16456,7 @@ packages:
     dev: false
     name: '@rush-temp/azure-themes'
     resolution:
-      integrity: sha512-xN2ZPr2gRmc7DGHdrmi/6WCNTKAsjPfcFcWUYHcNcrKxN0gHTOthA8ceFauDdrd0QjxFZujcaGVZYaY9lfG5gA==
+      integrity: sha512-rcoeyRMwLxXLBeNT8nMEGdg25HcTe/fuo+u+mtbD2HK0jH49GJCdKOL9ZFs3IG8o7zigeUTGkVCPZRSAwxQyBA==
       tarball: 'file:projects/azure-themes.tgz'
     version: 0.0.0
   'file:projects/build.tgz':
@@ -16467,7 +16467,7 @@ packages:
       async: 2.6.1
       autoprefixer: 7.2.6
       babylon: 7.0.0-beta.47
-      beachball: 1.12.0
+      beachball: 1.13.0
       bundlesize: 0.15.3
       chalk: 2.4.1
       codecov: 3.1.0
@@ -16526,7 +16526,7 @@ packages:
     dev: false
     name: '@rush-temp/build'
     resolution:
-      integrity: sha512-uRIntY5yVJKk5cgR0j9mz6XpvzsYI5tBLy4l2bRHgX+23ZVAC4wBJPs0NTT9KcFW7ytMtpbDfmOwKZImKHIGZA==
+      integrity: sha512-N8kLIJOfsuQbrD3zV/Ru8E44pLqhdgtXJJ9yRIFyKtcdg7wBC7bO2JY/K5L0mM5LR8fTnZ9HGa4jhuEhlIXQ+A==
       tarball: 'file:projects/build.tgz'
     version: 0.0.0
   'file:projects/charting.tgz':
@@ -16569,7 +16569,7 @@ packages:
     dev: false
     name: '@rush-temp/charting'
     resolution:
-      integrity: sha512-b5UGdnUYJSHC77alwIqiInhjISF8GC113wFD8XYfOjGwlmhKirKwC/SsPQ4jQ88w5I0TBRQF1etK4R75CIgimA==
+      integrity: sha512-Idv+kWXnvonrCDAq13Qf3sCclNscVbGvvE5c5PxeHAkzPcd0fLkQ0ilmlylbhMBvz6f7ueEmP0Cv1gy1nKG95Q==
       tarball: 'file:projects/charting.tgz'
     version: 0.0.0
   'file:projects/codepen-loader.tgz':
@@ -16616,7 +16616,7 @@ packages:
     dev: false
     name: '@rush-temp/date-time'
     resolution:
-      integrity: sha512-P+4wmVcz9vTY2fugW0xJe2empnNFO1uOQ+LOnm4CDT3FFVlunUvcecB1uJq28XFJUbPKkDpZO/sbgGvXTp0jkg==
+      integrity: sha512-ixNKOw2XNZ1mD4GKM+yjotyryOlEMGiIOwsw2WPkA31ef4LfMFbx9QMiItPQQTMfb1guBesLS/0auRoYtnmiig==
       tarball: 'file:projects/date-time.tgz'
     version: 0.0.0
   'file:projects/dom-tests.tgz':
@@ -16672,7 +16672,7 @@ packages:
     dev: false
     name: '@rush-temp/example-app-base'
     resolution:
-      integrity: sha512-VrbX213TovZ/GQDKRRoTgjBV4N6JD43LzbDE/Be5yZj6Z0akxdMK2raRCNkIt/4CV+H43BzUNHfpw7u+cFIDew==
+      integrity: sha512-DPAGp16NXspj4RkHcnty5D3zHDbfphPVh5rN14rRuVtVUk1sexdYHJcm+FgAy15cSjKxA05Di0wnOjJPr3yYgg==
       tarball: 'file:projects/example-app-base.tgz'
     version: 0.0.0
   'file:projects/experiments.tgz':
@@ -16705,7 +16705,7 @@ packages:
     dev: false
     name: '@rush-temp/experiments'
     resolution:
-      integrity: sha512-zu9Ld1kpMi1TRebBnPqFNbJSi5sw6ruuXZGUjXUBusWlQeBju5Ph+USpDriWFmth72JSBc02zNGPg3fasVjf6A==
+      integrity: sha512-fqqbfNr2CDiJR5y/X9z+say1G/oITqghAEaPdZifYUrR7Lg7SI05TiUUbwXO9UGU05UFcirWamMhGl/o16p85A==
       tarball: 'file:projects/experiments.tgz'
     version: 0.0.0
   'file:projects/fabric-website-resources.tgz':
@@ -16741,7 +16741,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website-resources'
     resolution:
-      integrity: sha512-75exisC1SGbE/SfVyuV5/gbYuzVrhXiwnY73voEK+6xcH9N6tMnpHTumNIsriN992nvfnChxFrF1PZEcq7hWvg==
+      integrity: sha512-mi1jhvA5EzyzGU63XXc2e3W3Yw6BVgTJ+XgXohKPjPD6WUAWtvzo2DpWAVniTFsUhzTHlYuihsBSsfZkMe2yOA==
       tarball: 'file:projects/fabric-website-resources.tgz'
     version: 0.0.0
   'file:projects/fabric-website.tgz':
@@ -16769,7 +16769,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website'
     resolution:
-      integrity: sha512-i8iOrKLf+i8DobvUk2TlZAoyol6y8wxGzWMn8UVl3BiXtjC82oxttKAIoZnIKODoLvu5inKcYbK+rtkKmxn2XQ==
+      integrity: sha512-ZuDQbTIA3jnHAuTv0z6npMyMHJFlrUFbbNpb93hK0BPNl+Zyv+Bre1xho8i5PTzBbmc20FHLdR71gWvY2QrM3A==
       tarball: 'file:projects/fabric-website.tgz'
     version: 0.0.0
   'file:projects/file-type-icons.tgz':
@@ -16793,7 +16793,7 @@ packages:
     dev: false
     name: '@rush-temp/fluent-theme'
     resolution:
-      integrity: sha512-hWl7NNWhMbrVbJFgx/M/TFcYiJPEFW1dr3rZCvUclWIvKA7x1IFGoumrGTNSo0MQHJ9f0Wd+T5KYVvkD7e6oAg==
+      integrity: sha512-QfrOyxxG/hIIHH3jEgXVZTRla1MfcpcVFpa+8fSYu4H+Id9QdJLAtk9p7xG04koFHkH4yP51ZyCB0I69ArC+CA==
       tarball: 'file:projects/fluent-theme.tgz'
     version: 0.0.0
   'file:projects/foundation-scenarios.tgz':
@@ -16817,7 +16817,7 @@ packages:
     dev: false
     name: '@rush-temp/foundation-scenarios'
     resolution:
-      integrity: sha512-sbipGIar1ruHM/9ZEwfGO/IikPE/gUi0S4BdTAkK8WjIDXEpnbrvaXsxchc/40VFjaAP6syCMyv5mR7Lh/e/9g==
+      integrity: sha512-Q5gK2dnXF4KdIKgvFD2DMQfnndny+FbtMzhqmVf/flAv0W1nPKa4ku9XA61MUwTMVM+FtiuFV8eNm5Fes90wxw==
       tarball: 'file:projects/foundation-scenarios.tgz'
     version: 0.0.0
   'file:projects/foundation.tgz':
@@ -16887,7 +16887,7 @@ packages:
     dev: false
     name: '@rush-temp/lists'
     resolution:
-      integrity: sha512-t98wE4uY1hQqssqqkmgisQDx+9DsVat99yLhyHKsP0D+niM44XGe4PYxgai6xRESLNTWwwrrXhukNHfUrHZLLA==
+      integrity: sha512-M70+d52TjKUZqPpNW9KL6diWXrs39dcU39cQrxw1SlTSxwwnHOki5J5UVl58enC49XRMztythZRU+OU6IqRs0A==
       tarball: 'file:projects/lists.tgz'
     version: 0.0.0
   'file:projects/merge-styles.tgz':
@@ -16997,7 +16997,7 @@ packages:
     dev: false
     name: '@rush-temp/pr-deploy-site'
     resolution:
-      integrity: sha512-A3cvCknZwP5Gd1n8sMwx7zsTZHwptzQ4emicMwsBGaWnjFlEo7EkQGg8B4+EG5Zrm2ZBFFNpUrIxIIu4b102Lw==
+      integrity: sha512-kYWLv6d1QkT6zgSgVHD+y8h3wStniEzLvIdCHjpSOWRcTQ3FJZE7EwwRMGOhQ6iGiMzn0mvmc3VPtFP26UPLlg==
       tarball: 'file:projects/pr-deploy-site.tgz'
     version: 0.0.0
   'file:projects/prettier-rules.tgz':
@@ -17029,7 +17029,7 @@ packages:
     dev: false
     name: '@rush-temp/react-cards'
     resolution:
-      integrity: sha512-5SJAfC9Qm5XMX3eE/VFTyDm36i5M5Mj2zkcnoXk8eGNTYozxVQIyGzLrxY/JAVSVz00Vp42nxpu8NfiLOvBEvA==
+      integrity: sha512-ee2RBUddaninNbOIRhjxy9bR1ZEMsJC4B7SOjbeADCz7N7oraNUwqfhyjQKEtJxMl8WCTl8v2P/fs8xG3gKccQ==
       tarball: 'file:projects/react-cards.tgz'
     version: 0.0.0
   'file:projects/server-rendered-app.tgz':
@@ -17141,7 +17141,7 @@ packages:
     dev: false
     name: '@rush-temp/theme-samples'
     resolution:
-      integrity: sha512-GXwn36UNRQ0pAGuGjHS4HNNuuex+vQBSeR+zuEKymhGASjTbqwJrLrB5GUkAh1s/tbFzu2wzHCgPqFNbNZlZiA==
+      integrity: sha512-WQpYQ+WA5zKMY3oiK526wEEyIDyLnhx/P+DfYPZYlYBWS6zJt3Lw1ympy6p4spNRWYZQPpICBGav+fdyYIUfdw==
       tarball: 'file:projects/theme-samples.tgz'
     version: 0.0.0
   'file:projects/theming-designer.tgz':
@@ -17223,7 +17223,7 @@ packages:
     dev: false
     name: '@rush-temp/variants'
     resolution:
-      integrity: sha512-rRRtZafLTqwWL4jC8/3wxOiE4PU5pIsQv/55EVVLC1BCOHmmYPu7GPIb1W0yi7FJsfDqkA5Crk8zZVfbvT1lAA==
+      integrity: sha512-6nCWA+oHDHOVlp16jb9S5dNfeo3YFLZTxCwQ4V7Pmi2BsnrOpZgajQWpZTfVjacfolBy2ToYJAolmq/c54MmKQ==
       tarball: 'file:projects/variants.tgz'
     version: 0.0.0
   'file:projects/vr-tests.tgz':
@@ -17367,7 +17367,7 @@ specifiers:
   babel-core: ^6.26.3
   babel-loader: ^7.1.5
   babylon: ^7.0.0-beta.47
-  beachball: ^1.12.0
+  beachball: ^1.13.0
   bundlesize: ^0.15.2
   chalk: ^2.1.0
   codecov: ^3.1.0
