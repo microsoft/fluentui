@@ -146,7 +146,6 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
     const {
       children,
       selectionIndex = -1,
-      isSelectable: isItemSelectable,
       invokeSelection = false,
       selection,
       background,
@@ -173,7 +172,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       isModal = false
     } = this.state;
 
-    const { isSelectable = isItemSelectable || (!!selection && selectionIndex > -1) } = this.props;
+    const { isSelectable = !!selection && selectionIndex > -1 } = this.props;
     const isInvokable = (!!href || !!onClick || !!invokeSelection) && !isModal;
 
     return (
