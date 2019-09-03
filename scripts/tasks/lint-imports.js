@@ -46,7 +46,8 @@ function lintImports() {
     '@uifabric/experiments/lib/utilities/scrolling/ScrollContainer',
     // Once the components using this data are promoted, the data should go into @uifabric/example-data
     '@uifabric/experiments/lib/common/TestImages',
-    '@uifabric/experiments/lib/components/TilesList/examples/ExampleHelpers'
+    '@uifabric/experiments/lib/components/TilesList/examples/ExampleHelpers',
+    '@uifabric/experiments/lib/slots/examples/Slots.Recomposition.Helpers'
   ];
   const reExportedPackages = {
     '@uifabric/foundation': 'Foundation',
