@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 02 Sep 2019 12:24:08 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Sep 2019 12:24:52 GMT and should not be manually modified.
 
+## 6.203.1
+Tue, 03 Sep 2019 12:24:52 GMT
+
+### Patches
+
+- MessageBar: Fix high contrast mode issue where you cannot tell which buttons you have focus on. (53378748+cnamal-msft@users.noreply.github.com)
 ## 6.203.0
 Mon, 02 Sep 2019 12:24:08 GMT
 
