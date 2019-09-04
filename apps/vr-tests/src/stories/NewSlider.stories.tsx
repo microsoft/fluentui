@@ -12,7 +12,7 @@ const marks = [
 ];
 
 // tslint:disable:jsx-ban-props
-storiesOf('Slider', module)
+storiesOf('Experimental Slider', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
     <Screener
