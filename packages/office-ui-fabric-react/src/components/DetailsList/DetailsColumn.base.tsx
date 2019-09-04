@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Icon, FontIcon } from '../../Icon';
 import { initializeComponentRef, EventGroup, Async, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
-import { IColumn, ColumnActionsMode } from './DetailsList.types';
+import { ColumnActionsMode } from './DetailsList.types';
 
 import { ITooltipHostProps } from '../../Tooltip';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
@@ -109,8 +109,8 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
                   aria-describedby={
                     !this.props.onRenderColumnHeaderTooltip && this._hasAccessibleLabel() ? `${parentId}-${column.key}-tooltip` : undefined
                   }
-                  onContextMenu={this._onColumnContextMenu.bind(this, column)}
-                  onClick={this._onColumnClick.bind(this, column)}
+                  onContextMenu={this._onColumnContextMenu}
+                  onClick={this._onColumnClick}
                   aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
                   aria-expanded={column.columnActionsMode === ColumnActionsMode.hasDropdown ? !!column.isMenuOpen : undefined}
                 >
@@ -196,12 +196,12 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;
   };
 
-  private _onColumnClick(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {
+  private _onColumnClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { onColumnClick, column } = this.props;
+
     if (column.columnActionsMode === ColumnActionsMode.disabled) {
       return;
     }
-
-    const { onColumnClick } = this.props;
 
     if (column.onColumnClick) {
       column.onColumnClick(ev, column);
@@ -210,7 +210,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     if (onColumnClick) {
       onColumnClick(ev, column);
     }
-  }
+  };
 
   private _getColumnDragDropOptions(): IDragDropOptions {
     const { columnIndex } = this.props;
@@ -284,8 +284,8 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     }
   };
 
-  private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {
-    const { onColumnContextMenu } = this.props;
+  private _onColumnContextMenu = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { onColumnContextMenu, column } = this.props;
     if (column.onColumnContextMenu) {
       column.onColumnContextMenu(column, ev);
       ev.preventDefault();
@@ -294,7 +294,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       onColumnContextMenu(column, ev);
       ev.preventDefault();
     }
-  }
+  };
 
   private _onRootMouseDown = (ev: MouseEvent): void => {
     const { isDraggable } = this.props;
