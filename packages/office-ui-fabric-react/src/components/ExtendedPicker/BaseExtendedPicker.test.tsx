@@ -299,7 +299,7 @@ describe('Pickers', () => {
         ReactDOM.unmountComponentAtNode(root);
       });
 
-      it.only('renders an aria-owns when the floating picker is open', () => {
+      it('renders an aria-owns when the floating picker is open', () => {
         const root = document.createElement('div');
         document.body.appendChild(root);
 
