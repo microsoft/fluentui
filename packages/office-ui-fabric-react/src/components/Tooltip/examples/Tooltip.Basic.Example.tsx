@@ -12,7 +12,7 @@ export class TooltipBasicExample extends React.Component<any, any> {
     return (
       <div>
         <TooltipHost
-          content="This is the tooltip"
+          content={<a href="#">Click Me</a>}
           id={this._hostId}
           calloutProps={{ gapSpace: 0 }}
           styles={{ root: { display: 'inline-block' } }}
