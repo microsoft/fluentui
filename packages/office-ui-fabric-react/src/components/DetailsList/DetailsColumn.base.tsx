@@ -196,7 +196,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;
   };
 
-  private _onColumnClick(ev: React.MouseEvent<HTMLElement>): void {
+  private _onColumnClick = (ev: React.MouseEvent<HTMLElement>): void => {
     const { onColumnClick, column } = this.props;
 
     if (column.columnActionsMode === ColumnActionsMode.disabled) {
@@ -210,7 +210,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     if (onColumnClick) {
       onColumnClick(ev, column);
     }
-  }
+  };
 
   private _getColumnDragDropOptions(): IDragDropOptions {
     const { columnIndex } = this.props;
@@ -284,7 +284,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     }
   };
 
-  private _onColumnContextMenu(ev: React.MouseEvent<HTMLElement>): void {
+  private _onColumnContextMenu = (ev: React.MouseEvent<HTMLElement>): void => {
     const { onColumnContextMenu, column } = this.props;
     if (column.onColumnContextMenu) {
       column.onColumnContextMenu(column, ev);
@@ -294,7 +294,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       onColumnContextMenu(column, ev);
       ev.preventDefault();
     }
-  }
+  };
 
   private _onRootMouseDown = (ev: MouseEvent): void => {
     const { isDraggable } = this.props;
