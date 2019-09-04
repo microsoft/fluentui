@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Cherry-pick: Mark IMarkdownTableCellProps 'as' optional",
+  "packageName": "@uifabric/example-app-base",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "commit": "bb83a2c5bc50d4e3ff8fc86613cbf1288e84536e",
+  "date": "2019-09-04T22:19:55.025Z"
+}
