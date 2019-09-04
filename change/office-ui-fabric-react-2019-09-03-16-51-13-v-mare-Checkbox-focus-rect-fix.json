@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Checkbox: Added initializeFocusRects to fix focus issue.",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "77da1f7cd4c2990f741bb8a81c6b8b5ad8fa894e",
+  "date": "2019-09-03T23:51:13.026Z"
+}

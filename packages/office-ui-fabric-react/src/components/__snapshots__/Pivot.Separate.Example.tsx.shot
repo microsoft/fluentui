@@ -25,7 +25,6 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className=
@@ -182,7 +181,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -192,6 +191,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -218,7 +218,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 Rectangle red
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -339,7 +339,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -349,6 +349,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -375,7 +376,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 Square red
               </span>
             </span>
-          </div>
+          </span>
         </button>
         <button
           aria-selected={false}
@@ -496,7 +497,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
           role="tab"
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -506,6 +507,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <span
               className=
@@ -532,7 +534,7 @@ exports[`Component Examples renders Pivot.Separate.Example.tsx correctly 1`] = `
                 Rectangle green
               </span>
             </span>
-          </div>
+          </span>
         </button>
       </div>
     </div>

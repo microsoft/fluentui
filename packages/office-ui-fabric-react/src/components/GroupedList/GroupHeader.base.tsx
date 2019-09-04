@@ -31,7 +31,8 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     };
   }
 
-  public componentWillReceiveProps(newProps: IGroupHeaderProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(newProps: IGroupHeaderProps): void {
     if (newProps.group) {
       const newCollapsed = newProps.group.isCollapsed;
       const isGroupLoading = newProps.isGroupLoading;

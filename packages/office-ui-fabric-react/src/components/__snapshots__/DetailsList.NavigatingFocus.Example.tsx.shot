@@ -69,7 +69,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                 line-height: 42px;
                 min-width: 100%;
                 padding-bottom: 1px;
-                padding-top: 1px;
+                padding-top: 16px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -236,27 +236,41 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                         right: 1px;
                         top: 1px;
                       }
-                      .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                      .ms-Check-checkHost:hover & {
+                        opacity: 1;
+                      }
+                      .ms-Check-checkHost:focus & {
+                        opacity: 1;
+                      }
+                      &:hover {
+                        opacity: 1;
+                      }
+                      &:focus {
                         opacity: 1;
                       }
                 >
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-circle
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #605e5c;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 18px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 18px;
                           height: 18px;
                           left: 0px;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -273,21 +287,26 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                   <i
                     aria-hidden={true}
                     className=
+                        ms-Icon
                         ms-Check-check
+                        {
+                          display: inline-block;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          color: #605e5c;
-                          display: inline-block;
                           font-family: "FabricMDL2Icons";
-                          font-size: 16px;
                           font-style: normal;
                           font-weight: normal;
+                          speak: none;
+                        }
+                        {
+                          color: #605e5c;
+                          font-size: 16px;
                           height: 18px;
                           left: .5px;
                           opacity: 0;
                           position: absolute;
-                          speak: none;
                           text-align: center;
                           top: 0px;
                           vertical-align: middle;
@@ -624,7 +643,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
-          role="presentation"
         >
           <div
             className="ms-SelectionZone"
@@ -871,27 +889,41 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-circle
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 18px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 18px;
                                     height: 18px;
                                     left: 0px;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -908,21 +940,26 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-check
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 16px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 16px;
                                     height: 18px;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -1051,7 +1088,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -1358,27 +1403,41 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-circle
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 18px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 18px;
                                     height: 18px;
                                     left: 0px;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -1395,21 +1454,26 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-check
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 16px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 16px;
                                     height: 18px;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -1538,7 +1602,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -1845,27 +1917,41 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-circle
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 18px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 18px;
                                     height: 18px;
                                     left: 0px;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -1882,21 +1968,26 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-check
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 16px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 16px;
                                     height: 18px;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -2025,7 +2116,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -2332,27 +2431,41 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-circle
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 18px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 18px;
                                     height: 18px;
                                     left: 0px;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -2369,21 +2482,26 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-check
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 16px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 16px;
                                     height: 18px;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -2512,7 +2630,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -2819,27 +2945,41 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-circle
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 18px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 18px;
                                     height: 18px;
                                     left: 0px;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -2856,21 +2996,26 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-check
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 16px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 16px;
                                     height: 18px;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -2999,7 +3144,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -3306,27 +3459,41 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-circle
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 18px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 18px;
                                     height: 18px;
                                     left: 0px;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -3343,21 +3510,26 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-check
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 16px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 16px;
                                     height: 18px;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -3486,7 +3658,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -3793,27 +3973,41 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-circle
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 18px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 18px;
                                     height: 18px;
                                     left: 0px;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -3830,21 +4024,26 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-check
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 16px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 16px;
                                     height: 18px;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -3973,7 +4172,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -4280,27 +4487,41 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-circle
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 18px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 18px;
                                     height: 18px;
                                     left: 0px;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -4317,21 +4538,26 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-check
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 16px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 16px;
                                     height: 18px;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -4460,7 +4686,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }
@@ -4767,27 +5001,41 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   right: 1px;
                                   top: 1px;
                                 }
-                                .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                .ms-Check-checkHost:hover & {
+                                  opacity: 1;
+                                }
+                                .ms-Check-checkHost:focus & {
+                                  opacity: 1;
+                                }
+                                &:hover {
+                                  opacity: 1;
+                                }
+                                &:focus {
                                   opacity: 1;
                                 }
                           >
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-circle
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 18px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 18px;
                                     height: 18px;
                                     left: 0px;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -4804,21 +5052,26 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                             <i
                               aria-hidden={true}
                               className=
+                                  ms-Icon
                                   ms-Check-check
+                                  {
+                                    display: inline-block;
+                                  }
                                   {
                                     -moz-osx-font-smoothing: grayscale;
                                     -webkit-font-smoothing: antialiased;
-                                    color: #605e5c;
-                                    display: inline-block;
                                     font-family: "FabricMDL2Icons";
-                                    font-size: 16px;
                                     font-style: normal;
                                     font-weight: normal;
+                                    speak: none;
+                                  }
+                                  {
+                                    color: #605e5c;
+                                    font-size: 16px;
                                     height: 18px;
                                     left: .5px;
                                     opacity: 0;
                                     position: absolute;
-                                    speak: none;
                                     text-align: center;
                                     top: 0px;
                                     vertical-align: middle;
@@ -4947,7 +5200,15 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                 @media screen and (-ms-high-contrast: black-on-white){& {
                                   color: #00009F;
                                 }
-                                &:active, &:hover, &:active:hover {
+                                &:active {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:hover {
+                                  color: #004578;
+                                  text-decoration: underline;
+                                }
+                                &:active:hover {
                                   color: #004578;
                                   text-decoration: underline;
                                 }

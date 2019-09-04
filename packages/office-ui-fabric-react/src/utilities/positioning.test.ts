@@ -127,8 +127,32 @@ describe('Callout Positioning', () => {
     positionCalloutTest(basicTestCase, DirectionalHint.bottomRightEdge, validateBottomRight);
   });
 
+  it('Correctly positions the callout when none of the alignment options fit within bounds', () => {
+    const basicTestCase: ITestValues = {
+      callout: new Rectangle(0, 200, 0, 200),
+      target: new Rectangle(150, 160, 150, 160),
+      bounds: new Rectangle(8, 300, 8, 300),
+      beakWidth: 0
+    };
+
+    const validateBottomLeft: ITestValidation = {
+      callout: new Rectangle(8, 208, 100, 300),
+      beak: null
+    };
+
+    const validateTopRight: ITestValidation = {
+      callout: new Rectangle(8, 208, 8, 208),
+      beak: null
+    };
+
+    validateNoBeakTest(basicTestCase, DirectionalHint.bottomLeftEdge, validateBottomLeft);
+
+    validateNoBeakTest(basicTestCase, DirectionalHint.topRightEdge, validateTopRight);
+  });
+
   it('Correctly determines max height', () => {
     const getMaxHeight = __positioningTestPackage._getMaxHeightFromTargetRectangle;
+
     let targetTop;
     let targetBot;
     const targetRight = (targetBot = 20);

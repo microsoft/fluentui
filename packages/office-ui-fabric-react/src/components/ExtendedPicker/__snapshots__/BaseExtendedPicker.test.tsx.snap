@@ -16,7 +16,6 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with no items 1
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className="ms-SelectionZone"
@@ -77,7 +76,6 @@ exports[`Pickers BasePicker renders BaseExtendedPicker correctly with selected a
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className="ms-SelectionZone"

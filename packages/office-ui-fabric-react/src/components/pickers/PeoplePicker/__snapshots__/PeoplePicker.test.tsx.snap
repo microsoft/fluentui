@@ -18,7 +18,6 @@ exports[`PeoplePicker renders correctly 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className="ms-SelectionZone"
@@ -108,7 +107,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
-    role="presentation"
   >
     <div
       className="ms-SelectionZone"
@@ -498,6 +496,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     font-size: 14px;
                     font-weight: 400;
                     height: 24px;
+                    min-width: 32px;
                     outline: transparent;
                     padding-bottom: 0;
                     padding-left: 4px;
@@ -559,7 +558,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -569,6 +568,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -598,7 +598,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
         </span>

@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { GroupedList, IGroup } from 'office-ui-fabric-react/lib/components/GroupedList/index';
-import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-import { DetailsRow } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRow';
+import { GroupedList, IGroup } from 'office-ui-fabric-react/lib/GroupedList';
+import { IColumn, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/utilities/selection/index';
+import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
-import { createListItems, createGroups, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createListItems, createGroups, IExampleItem } from '@uifabric/example-data';
 
 const groupCount = 3;
 const groupDepth = 3;

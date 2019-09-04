@@ -1,8 +1,0 @@
-{
-  "comment": "Updating snpashots and styles which use $ syntax.",
-  "type": "patch",
-  "packageName": "@uifabric/fluent-theme",
-  "email": "dzearing@microsoft.com",
-  "commit": "",
-  "date": "2019-08-08T22:27:58.404Z"
-}

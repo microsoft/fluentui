@@ -1,6 +1,45 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 08 Aug 2019 12:32:41 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+
+## 7.4.4
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.4.3
+Mon, 02 Sep 2019 12:33:56 GMT
+
+### Patches
+
+- Add PopupMenu and BottomSheet to mobile docs. (emlynam@microsoft.com)
+- Add PopupMenu title (emlynam@microsoft.com)
+## 7.4.2
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Get rid of monaco-editor-webpack-plugin (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
+
+## 7.4.1
+Wed, 21 Aug 2019 12:34:09 GMT
+
+### Patches
+
+- Use toggles for button example page knobs (elcraig@microsoft.com)
+
+## 7.4.0
+Thu, 15 Aug 2019 12:30:43 GMT
+
+### Minor changes
+
+- Rename deprecated React lifecycle functions to prevent development mode warnings in React 16.9. (jagore@microsoft.com)
+
+### Patches
+
+- Card: Showing examples on demo page and website (Humberto.Morimoto@microsoft.com)
 
 ## 7.3.2
 Thu, 08 Aug 2019 12:32:41 GMT
@@ -8,7 +47,7 @@ Thu, 08 Aug 2019 12:32:41 GMT
 ### Patches
 
 - Update webpack configs to make Monaco work cross-domain (elcraig@microsoft.com)
-,- Fix some markdown bookmarks to enable click navigation to the bookmarked sections. (vibraga@microsoft.com)
+- Fix some markdown bookmarks to enable click navigation to the bookmarked sections. (vibraga@microsoft.com)
 
 ## 7.3.1
 Wed, 07 Aug 2019 12:32:28 GMT
@@ -16,7 +55,7 @@ Wed, 07 Aug 2019 12:32:28 GMT
 ### Patches
 
 - Add customization section to Typography pages (naethell@microsoft.com)
-,- Fix Keytips demo page by adding a KeytipLayer (keyou@microsoft.com)
+- Fix Keytips demo page by adding a KeytipLayer (keyou@microsoft.com)
 
 ## 7.3.0
 Fri, 02 Aug 2019 12:33:29 GMT
@@ -363,7 +402,7 @@ Tue, 23 Apr 2019 12:32:00 GMT
 
 ### Patches
 
-- Remove very old things from the website	
+- Remove very old things from the website
 
 ## 6.13.4
 Wed, 17 Apr 2019 12:33:35 GMT
@@ -605,7 +644,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 6.4.6
 Tue, 02 Oct 2018 12:28:04 GMT

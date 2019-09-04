@@ -33,7 +33,7 @@ const createNodeMock = (el: React.ReactElement<{}>) => {
   };
 };
 
-describe.only('ComboBox', () => {
+describe('ComboBox', () => {
   afterEach(() => {
     if (wrapper) {
       wrapper.unmount();

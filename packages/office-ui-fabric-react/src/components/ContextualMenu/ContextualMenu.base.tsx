@@ -150,7 +150,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
   }
 
-  public componentWillUpdate(newProps: IContextualMenuProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillUpdate(newProps: IContextualMenuProps): void {
     if (newProps.target !== this.props.target) {
       const newTarget = newProps.target;
       this._setTargetWindowAndElement(newTarget!);
@@ -173,7 +174,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   }
 
   // Invoked once, both on the client and server, immediately before the initial rendering occurs.
-  public componentWillMount() {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillMount() {
     const target = this.props.target;
     this._setTargetWindowAndElement(target!);
     if (!this.props.hidden) {

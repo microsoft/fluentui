@@ -36,7 +36,6 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
-        role="presentation"
       >
         <div
           className=
@@ -182,7 +181,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
             role="tab"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -192,6 +191,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <span
                 className=
@@ -218,7 +218,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   Thing1
                 </span>
               </span>
-            </div>
+            </span>
           </button>
           <button
             aria-selected={false}
@@ -339,7 +339,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
             role="tab"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -349,6 +349,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <span
                 className=
@@ -375,7 +376,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   Thing2
                 </span>
               </span>
-            </div>
+            </span>
           </button>
           <button
             aria-selected={false}
@@ -496,7 +497,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
             role="tab"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -506,6 +507,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <span
                 className=
@@ -532,7 +534,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   Thing3
                 </span>
               </span>
-            </div>
+            </span>
           </button>
         </div>
       </div>
@@ -555,6 +557,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
             font-size: 14px;
             font-weight: 400;
             height: 32px;
+            min-width: 32px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -565,7 +568,6 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
             text-decoration: none;
             user-select: none;
             vertical-align: top;
-            width: 32px;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -615,7 +617,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -625,27 +627,33 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
         <i
           aria-hidden={true}
           className=
+              ms-Icon
               ms-Button-icon
+              {
+                display: inline-block;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                display: inline-block;
-                flex-shrink: 0;
                 font-family: "FabricMDL2Icons";
-                font-size: 16px;
                 font-style: normal;
                 font-weight: normal;
+                speak: none;
+              }
+              {
+                flex-shrink: 0;
+                font-size: 16px;
                 height: 16px;
                 line-height: 16px;
                 margin-bottom: 0;
                 margin-left: 4px;
                 margin-right: 4px;
                 margin-top: 0;
-                speak: none;
                 text-align: center;
                 vertical-align: middle;
               }
@@ -659,7 +667,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
         >
           
         </i>
-      </div>
+      </span>
     </button>
   </div>
   <div>

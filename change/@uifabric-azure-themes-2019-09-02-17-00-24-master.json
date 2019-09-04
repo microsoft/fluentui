@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "DropDown: Fixed dropdownItem and dropdownItemSelected azure-theme styles.",
+  "packageName": "@uifabric/azure-themes",
+  "email": "xinychen@microsoft.com",
+  "commit": "ed88a11e8e689d9c6fe3f45e49dabdea8fdd9ff7",
+  "date": "2019-09-02T09:00:24.797Z"
+}
