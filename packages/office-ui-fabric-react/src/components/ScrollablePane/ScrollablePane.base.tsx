@@ -470,7 +470,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   private _getStickyContainerStyle = (height: number, isTop: boolean): React.CSSProperties => {
-    const stickyContainerHeight = this._setStickyContainerHeight(isTop) ? height : undefined;
+    const stickyContainerHeight = this._setStickyContainerHeight() ? height : undefined;
     return {
       ...(stickyContainerHeight !== undefined ? { height: height } : {}),
       ...(getRTL()
@@ -492,13 +492,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     };
   };
 
-  private _setStickyContainerHeight(isTop: boolean): boolean {
-    return (
-      this.usePlaceholderForSticky() ||
-      (isTop
-        ? this.verifyStickyContainerBehavior(StickyPositionType.Header, 'default')
-        : this.verifyStickyContainerBehavior(StickyPositionType.Footer, 'default'))
-    );
+  private _setStickyContainerHeight(): boolean {
+    return this.usePlaceholderForSticky();
   }
 
   private _getScrollbarWidth(): number {

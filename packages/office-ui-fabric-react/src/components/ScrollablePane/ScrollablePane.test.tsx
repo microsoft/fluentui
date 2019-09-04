@@ -78,8 +78,7 @@ describe('ScrollablePane', () => {
       );
 
       const scrollablePaneRefCurrent = scrollablePaneRef.current! as any;
-      expect(scrollablePaneRefCurrent._setStickyContainerHeight(true /** isTop */)).toBe(true);
-      expect(scrollablePaneRefCurrent._setStickyContainerHeight(false /** isTop */)).toBe(true);
+      expect(scrollablePaneRefCurrent._setStickyContainerHeight()).toBe(true);
 
       // it sets userinteraction flag only after scroll
       expect(!!scrollablePaneRefCurrent.getUserInteractionStatus()).toBe(false);
@@ -358,8 +357,7 @@ describe('ScrollablePane', () => {
         );
 
         const scrollablePaneRefCurrent = scrollablePaneRef.current! as any;
-        expect(scrollablePaneRefCurrent._setStickyContainerHeight(true /** isTop */)).toBe(false);
-        expect(scrollablePaneRefCurrent._setStickyContainerHeight(false /** isTop */)).toBe(false);
+        expect(scrollablePaneRefCurrent._setStickyContainerHeight()).toBe(false);
         expect(scrollablePaneRefCurrent._sortBasedOnOrder()).toBe(true);
         expect(scrollablePaneRefCurrent.usePlaceholderForSticky()).toBe(false);
 
