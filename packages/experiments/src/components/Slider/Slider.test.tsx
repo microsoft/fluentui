@@ -146,31 +146,32 @@ describe('Slider', () => {
     const labelNumber = component.find('.ms-Slider-regularLabel').length;
     const tickNumber = component.find('.ms-Slider-regularTick').length;
 
-    for (let i = 0; i < labelsArray.length; i++) {
-      expect(labels[i].props.children).toBe(`${expectedValuesArray[i]}°C`);
-      expect(labels[i].props.style.left).toBe(`${expectedValuesArray[i]}%`);
-    }
-
     expect(labelNumber).toEqual(3);
     expect(tickNumber).toEqual(11);
+
+    for (let i = 0; i < labelsArray.length; i++) {
+      expect(labels[i].props.children).toEqual(`${expectedValuesArray[i]}°C`);
+      expect(labels[i].props.style.left).toEqual(`${expectedValuesArray[i]}%`);
+    }
   });
 
   it('custom labels should be able to handle values that are out of bounds', () => {
-    const labelsArray = [{ label: '20°C', value: -20 }, { label: '100°C', value: 1000 }];
+    const labelsArray = [{ label: '-20°C', value: -20 }, { label: '1000°C', value: 1000 }];
     const component = mount(<Slider marks={labelsArray} min={0} max={100} showValue={true} step={10} />);
-    const expectedValuesArray = [20, 80, 100];
+    const expectedLabelsArray = [-20, 1000];
+    const expectedValuesArray = [0, 100];
 
     const allLabels = component.find('.ms-Slider-regularLabel');
     const labels = allLabels.getElements();
     const labelNumber = component.find('.ms-Slider-regularLabel').length;
     const tickNumber = component.find('.ms-Slider-regularTick').length;
 
+    expect(labelNumber).toEqual(2);
+    expect(tickNumber).toEqual(11);
+
     for (let i = 0; i < labelsArray.length; i++) {
-      expect(labels[i].props.children).toBe(`${expectedValuesArray[i]}°C`);
+      expect(labels[i].props.children).toBe(`${expectedLabelsArray[i]}°C`);
       expect(labels[i].props.style.left).toBe(`${expectedValuesArray[i]}%`);
     }
-
-    expect(labelNumber).toEqual(3);
-    expect(tickNumber).toEqual(11);
   });
 });
