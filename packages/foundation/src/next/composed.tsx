@@ -6,8 +6,8 @@ import { createFactory, getSlots } from '../slots';
 import { assign } from '../utilities';
 import { ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken, ITokenFunction } from '../IComponent';
 import { IComponentOptions, IRecompositionComponentOptions, ISlotComponent } from './IComponent';
-import { IDefaultSlotProps, ValidProps, ISlottableProps, ISlotDefinition } from '../ISlots';
-import { ISlotCreator } from './ISlots';
+import { IDefaultSlotProps, ValidProps, ISlottableProps, ISlotCreator, ISlotDefinition } from '../ISlots';
+import { IFoundationComponent } from './ISlots';
 
 interface IClassNamesMapNode {
   className?: string;
@@ -44,7 +44,7 @@ export function composed<
   TStatics = {}
 >(
   options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
-): React.FunctionComponent<TComponentProps> & TStatics;
+): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics;
 
 /**
  * Recomposes a functional component based on the following set of options: styles, theme, view, and state.
@@ -72,7 +72,7 @@ export function composed<
 >(
   baseComponent: React.FunctionComponent,
   options: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
-): React.FunctionComponent<TComponentProps> & TStatics;
+): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics;
 
 export function composed<
   TComponentProps extends ValidProps & ISlottableProps<TComponentSlots>,
@@ -83,24 +83,15 @@ export function composed<
   TStatics = {}
 >(
   baseComponentOrOptions:
-    | React.FunctionComponent
+    | IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
     | IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> = {},
   recompositionOptions?: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
-): React.FunctionComponent<TComponentProps> & TStatics {
-  const baseComponentOptions = (baseComponentOrOptions as ISlotCreator<
-    TComponentProps,
-    any,
-    TTokens,
-    TStyleSet,
-    TViewProps,
-    TComponentSlots,
-    TStatics
-  >).__options;
-
+): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics {
   // Check if we are composing or recomposing.
   let options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>;
-  if (typeof baseComponentOrOptions === 'function' && baseComponentOptions) {
+  if (typeof baseComponentOrOptions === 'function' && baseComponentOrOptions.__options) {
     let slots: ISlotComponent<TComponentProps, TComponentSlots>;
+    const baseComponentOptions = baseComponentOrOptions.__options;
     const baseComponentSlots = baseComponentOptions.slots ? baseComponentOptions.slots : ({} as ISlotDefinition<Required<TComponentSlots>>);
     const recompositionSlots = recompositionOptions ? (recompositionOptions.slots ? recompositionOptions.slots : {}) : {};
 
@@ -136,8 +127,8 @@ export function composed<
   const { factoryOptions = {}, view } = options;
   const { defaultProp } = factoryOptions;
 
-  const result: React.FunctionComponent<TComponentProps> = (
-    componentProps: TViewProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet>
+  const result: IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> = (
+    componentProps: TViewProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet> & { children?: React.ReactNode }
   ) => {
     const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
       options.displayName,
@@ -249,18 +240,15 @@ export function composed<
   // TODO: This shouldn't be a concern of createComponent.. factoryOptions should just be forwarded.
   //       Need to weigh creating default factories on component creation vs. memoizing them on use in slots.tsx.
   if (defaultProp) {
-    (result as ISlotCreator<TComponentProps, any, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>).create = createFactory(
-      result,
-      { defaultProp }
-    );
+    (result as ISlotCreator<TComponentProps, any>).create = createFactory(result, { defaultProp });
   }
 
-  (result as ISlotCreator<TComponentProps, any, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>).__options = options;
+  result.__options = options;
 
   assign(result, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
-  return result as React.FunctionComponent<TComponentProps> & TStatics;
+  return result as IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics;
 }
 
 /**

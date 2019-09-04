@@ -3,7 +3,6 @@ import { composed } from './composed';
 import { IComponentStyles } from '../IComponent';
 import { IComponent, IComponentOptions, IRecompositionComponentOptions } from './IComponent';
 import { IHTMLElementSlot, IHTMLSlot } from '../IHTMLSlots';
-import { ISlotCreator } from './ISlots';
 
 describe('composed', () => {
   type ITestComponent = IComponent<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots>;
@@ -36,10 +35,10 @@ describe('composed', () => {
       view: TestView
     };
 
-    const TestComponent: React.FunctionComponent<ITestProps> = composed(options);
+    const TestComponent = composed(options);
 
     expect(TestComponent.displayName).toEqual('TestComponent');
-    expect((TestComponent as ISlotCreator<ITestProps, any, ITestTokens, ITestStyles>).__options).toEqual(options);
+    expect(TestComponent.__options).toEqual(options);
 
     const recompositionOptions: IRecompositionComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
       displayName: 'TestComponent2',
@@ -57,10 +56,10 @@ describe('composed', () => {
       view: TestView
     };
 
-    const TestComponent2: React.FunctionComponent<ITestProps> = composed(TestComponent, recompositionOptions);
+    const TestComponent2 = composed(TestComponent, recompositionOptions);
 
     expect(TestComponent2.displayName).toEqual('TestComponent2');
-    expect((TestComponent2 as ISlotCreator<ITestProps, any, ITestTokens, ITestStyles>).__options).toEqual(recomposedOptions);
+    expect(TestComponent2.__options).toEqual(recomposedOptions);
   });
 
   it("recomposes a component's view correctly", () => {
@@ -73,10 +72,10 @@ describe('composed', () => {
       view: TestView
     };
 
-    const TestComponent: React.FunctionComponent<ITestProps> = composed(options);
+    const TestComponent = composed(options);
 
     expect(TestComponent.displayName).toEqual('TestComponent');
-    expect((TestComponent as ISlotCreator<ITestProps, any, ITestTokens, ITestStyles>).__options).toEqual(options);
+    expect(TestComponent.__options).toEqual(options);
 
     const TestView2: ITestComponent['view'] = (props, slots) => {
       const { children, content } = props;
@@ -102,9 +101,9 @@ describe('composed', () => {
       view: TestView2
     };
 
-    const TestComponent2: React.FunctionComponent<ITestProps> = composed(TestComponent, recompositionOptions);
+    const TestComponent2 = composed(TestComponent, recompositionOptions);
 
     expect(TestComponent2.displayName).toEqual('TestComponent2');
-    expect((TestComponent2 as ISlotCreator<ITestProps, any, ITestTokens, ITestStyles>).__options).toEqual(recomposedOptions);
+    expect(TestComponent2.__options).toEqual(recomposedOptions);
   });
 });
