@@ -1,6 +1,4 @@
-/** @jsx withSlots */
 import * as React from 'react';
-import { withSlots } from '@uifabric/foundation';
 import { Stack, IStackProps } from 'office-ui-fabric-react';
 import { SpinnerButton, IconAtEndButton, SpinnerAtEndButton } from '@uifabric/experiments/lib/slots/examples/Slots.Recomposition.Helpers';
 
