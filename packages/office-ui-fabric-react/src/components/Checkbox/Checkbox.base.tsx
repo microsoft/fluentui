@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { getId, classNamesFunction, mergeAriaAttributeValues, initializeComponentRef, warnMutuallyExclusive } from '../../Utilities';
+import {
+  getId,
+  classNamesFunction,
+  mergeAriaAttributeValues,
+  initializeComponentRef,
+  warnMutuallyExclusive,
+  initializeFocusRects
+} from '../../Utilities';
 import { Icon } from '../../Icon';
 import { ICheckbox, ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 import { KeytipData } from '../../KeytipData';
@@ -57,6 +64,8 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked),
       isIndeterminate: !!(props.indeterminate !== undefined ? props.indeterminate : props.defaultIndeterminate)
     };
+
+    initializeFocusRects();
   }
 
   /**
