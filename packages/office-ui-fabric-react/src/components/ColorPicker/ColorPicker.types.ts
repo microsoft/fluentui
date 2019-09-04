@@ -82,11 +82,6 @@ export interface IColorPickerProps {
   styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
 
   /**
-   * Call to provide customized styling for Preview Box.
-   */
-  rectangleStyle?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
-
-  /**
    * Whether to show color preview box.
    * @defaultvalue false
    */

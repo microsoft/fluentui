@@ -23,7 +23,6 @@ import { updateA } from '../../utilities/color/updateA';
 import { updateH } from '../../utilities/color/updateH';
 import { correctRGB } from '../../utilities/color/correctRGB';
 import { correctHex } from '../../utilities/color/correctHex';
-import { mergeStyleSets, HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
 
 type IRGBHex = Pick<IColor, 'r' | 'g' | 'b' | 'a' | 'hex'>;
 
@@ -103,7 +102,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     return (
       <div className={classNames.root}>
         <div className={classNames.panel}>
-          <ColorRectangle color={color} onChange={this._onSVChanged} styles={props.rectangleStyle} />
+          <ColorRectangle color={color} onChange={this._onSVChanged} className={classNames.colorRectangle} />
           <div className={classNames.flexContainer}>
             <div className={classNames.flexSlider}>
               <ColorSlider className="is-hue" minValue={0} maxValue={MAX_COLOR_HUE} value={color.h} onChange={this._onHChanged} />

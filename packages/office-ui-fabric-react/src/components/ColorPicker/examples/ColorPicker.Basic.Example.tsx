@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColorPicker, Toggle, getColorFromString, IColor, IColorPickerStyles , updateA} from 'office-ui-fabric-react/lib/index';
+import { ColorPicker, Toggle, getColorFromString, IColor, IColorPickerStyles, updateA } from 'office-ui-fabric-react/lib/index';
 import { mergeStyleSets, HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
 
 const classNames = mergeStyleSets({
@@ -22,16 +22,13 @@ const classNames = mergeStyleSets({
   }
 });
 
-const rectangleStyle: Partial<IColorPickerStyles> = {
-  root: { height: 268 }
-};
-
 const colorPickerStyles: Partial<IColorPickerStyles> = {
   panel: { padding: 12 },
   root: {
     maxWidth: 352,
     minWidth: 352
-  }
+  },
+  colorRectangle: { height: 268 }
 };
 
 export interface IBasicColorPickerExampleState {
@@ -56,7 +53,6 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
           onChange={this._updateColor}
           alphaSliderHidden={alphaSliderHidden}
           showPreview={showPreview}
-          rectangleStyle={rectangleStyle}
           styles={colorPickerStyles}
         />
 
