@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "keep aria-label in sync with FloatingPicker open state in BaseExtendedPicker",
+  "packageName": "office-ui-fabric-react",
+  "email": "mhuan13@gmail.com",
+  "commit": "c88a91e9007158986ee9d359166ff9c376dc5127",
+  "date": "2019-09-04T20:25:26.861Z"
+}
