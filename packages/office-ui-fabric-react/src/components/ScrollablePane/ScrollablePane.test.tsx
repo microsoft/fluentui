@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import { createRef } from 'react';
 import { IScrollablePane } from './ScrollablePane.types';
 import { DetailsListBasicExample } from '../DetailsList/examples/DetailsList.Basic.Example';
-import { Sticky, StickyPositionType } from '../Sticky';
+import { Sticky, StickyPositionType } from '../../Sticky';
 
 describe('ScrollablePane', () => {
   it('renders correctly', () => {
