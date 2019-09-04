@@ -22,10 +22,29 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-4"`,
-      src: `url('${baseUrl}fabric-icons-4-0a742c61.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-4-013130c8.woff') format('woff')`
     },
     icons: {
+      'ShowResultsMirrored': '\uEA65',
+      'ThumbnailViewMirrored': '\uEA67',
+      'Media': '\uEA69',
+      'Devices3': '\uEA6C',
+      'Focus': '\uEA6F',
+      'VideoLightOff': '\uEA74',
+      'Lightbulb': '\uEA80',
+      'StatusTriangle': '\uEA82',
+      'VolumeDisabled': '\uEA85',
+      'Puzzle': '\uEA86',
+      'EmojiNeutral': '\uEA87',
+      'EmojiDisappointed': '\uEA88',
+      'HomeSolid': '\uEA8A',
+      'Ringer': '\uEA8F',
+      'PDF': '\uEA90',
+      'HeartBroken': '\uEA92',
+      'StoreLogo16': '\uEA96',
+      'MultiSelectMirrored': '\uEA98',
       'Broom': '\uEA99',
+      'AddToShoppingList': '\uEA9A',
       'Cocktails': '\uEA9D',
       'Wines': '\uEABF',
       'Articles': '\uEAC1',
@@ -105,26 +124,7 @@ export function initializeIcons(
       'WindDirection': '\uEBE6',
       'Bug': '\uEBE8',
       'SiteScan': '\uEBEC',
-      'BrowserScreenShot': '\uEBED',
-      'F12DevTools': '\uEBEE',
-      'CSS': '\uEBEF',
-      'JS': '\uEBF0',
-      'DeliveryTruck': '\uEBF4',
-      'ReminderPerson': '\uEBF7',
-      'ReminderGroup': '\uEBF8',
-      'TabletMode': '\uEBFC',
-      'Umbrella': '\uEC04',
-      'NetworkTower': '\uEC05',
-      'CityNext': '\uEC06',
-      'CityNext2': '\uEC07',
-      'Section': '\uEC0C',
-      'OneNoteLogoInverse': '\uEC0D',
-      'ToggleFilled': '\uEC11',
-      'ToggleBorder': '\uEC12',
-      'SliderThumb': '\uEC13',
-      'ToggleThumb': '\uEC14',
-      'Documentation': '\uEC17',
-      'Badge': '\uEC1B'
+      'BrowserScreenShot': '\uEBED'
     }
   };
 

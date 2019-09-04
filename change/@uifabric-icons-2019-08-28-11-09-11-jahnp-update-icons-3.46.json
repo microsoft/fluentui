@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Update Fabric icons to v3.46, adding many new icons.",
+  "packageName": "@uifabric/icons",
+  "email": "pejahn@microsoft.com",
+  "commit": "e3de486f43f63f28c2cadacb73d18bfe334d5fdd",
+  "date": "2019-08-28T18:09:11.869Z"
+}
