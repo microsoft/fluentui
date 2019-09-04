@@ -15,6 +15,7 @@ export interface IBaseExtendedPickerState<T> {
   queryString: string | null;
   selectedItems: T[] | null;
   suggestionItems: T[] | null;
+  suggestionsShown: boolean;
 }
 
 export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState<T>>
@@ -40,7 +41,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
         ? (this.props.defaultSelectedItems as T[])
         : this.props.selectedItems
         ? (this.props.selectedItems as T[])
-        : null
+        : null,
+      suggestionsShown: false
     };
 
     this.floatingPickerProps = this.props.floatingPickerProps;
@@ -157,6 +159,8 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
       <FloatingPicker
         componentRef={this.floatingPicker}
         onChange={this._onSuggestionSelected}
+        onSuggestionsHidden={this._onSuggestionsHidden}
+        onSuggestionsShown={this._onSuggestionsShown}
         inputElement={this.input.current ? this.input.current.inputElement : undefined}
         selectedItems={this.items}
         suggestionItems={this.props.suggestionItems ? this.props.suggestionItems : undefined}
@@ -277,6 +281,28 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
         this._addProcessedItem(newItem);
       }
     }
+  };
+
+  /**
+   * The floating picker is the source of truth for if the menu has been opened or not.
+   *
+   * Because this isn't tracked inside the state of this component, we need to
+   * force an update here to keep the rendered output that depends on the picker being open
+   * in sync with the state
+   */
+  private _onSuggestionsHidden = () => {
+    this.forceUpdate();
+  };
+
+  /**
+   * The floating picker is the source of truth for if the menu has been opened or not.
+   *
+   * Because this isn't tracked inside the state of this component, we need to
+   * force an update here to keep the rendered output that depends on the picker being open
+   * in sync with the state
+   */
+  private _onSuggestionsShown = () => {
+    this.forceUpdate();
   };
 
   protected _onSelectedItemsChanged = (): void => {
