@@ -125,7 +125,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       scrollablePane.updateStickyRefHeights();
     }
     // horizontal scroll has to be synced only if component is sticky
-    if ((isStickyBottom || isStickyTop) && scrollablePane.getHorizontalScrollPosition()) {
+    if ((isStickyBottom || isStickyTop) && scrollablePane.getUserInteractionStatus()) {
       // Sync Sticky scroll position with content container on each update
       scrollablePane.syncScrollSticky(this);
     }

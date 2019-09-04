@@ -292,10 +292,17 @@ storiesOf('ScrollablePane-Sticky Details List', module)
           'scroll horizontally to see if header and footer are aligned for non-zero scroll',
           cropTo
         )
+        .executeScript(`${getElement}.scrollTop=0`)
+        .executeScript(`${getElement}.scrollLeft=0`)
+        .executeScript(`${getElement}.scrollTop=50`)
+        .snapshot(
+          'scroll horizontally to see if header and footer are aligned for non-zero scroll (1)',
+          cropTo
+        )
         .executeScript(`${getElement}.scrollTop=100`)
         .executeScript(`${getElement}.scrollLeft=99999`)
         .snapshot(
-          'scroll horizontally to see if header and footer are aligned for non-zero scroll (1)',
+          'scroll horizontally to see if header and footer are aligned for non-zero scroll (2)',
           cropTo
         )
         .executeScript(`${getElement}.scrollLeft=0`)
@@ -303,7 +310,7 @@ storiesOf('ScrollablePane-Sticky Details List', module)
         .executeScript(`${getElement}.scrollTop=999999`)
         .executeScript(`${getElement}.scrollLeft=50`)
         .snapshot(
-          'scroll horizontally to see if header and footer are aligned for non-zero scroll (2)',
+          'scroll horizontally to see if header and footer are aligned for non-zero scroll (3)',
           cropTo
         )
         .executeScript(`${getElement}.scrollLeft=0`)
