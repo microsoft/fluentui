@@ -242,11 +242,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         ? isPartOfStickyAboveContainer !== isPartOfStickyBelowContainer
         : isPartOfStickyAboveContainer && isPartOfStickyBelowContainer;
 
-      if (isPartOfStickyContainer) {
-        const alreadySortedBasedOnOrder = this._sortBasedOnOrder();
-        if (alreadySortedBasedOnOrder) {
-          return;
-        }
+      if (isPartOfStickyContainer && this._sortBasedOnOrder()) {
+        // already sorted based on order
+        return;
       }
       if (sortAgain) {
         this._removeStickyFromContainers(sticky);
@@ -498,8 +496,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     return (
       this.usePlaceholderForSticky() ||
       (isTop
-        ? !this.verifyStickyContainerBehavior(StickyPositionType.Header, 'always')
-        : !this.verifyStickyContainerBehavior(StickyPositionType.Footer, 'always'))
+        ? this.verifyStickyContainerBehavior(StickyPositionType.Header, 'default')
+        : this.verifyStickyContainerBehavior(StickyPositionType.Footer, 'default'))
     );
   }
 
