@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 04 Sep 2019 12:32:15 GMT",
+      "tag": "@uifabric/experiments_v7.15.0",
+      "version": "7.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add change file for new icons snapshots",
+            "author": "pejahn@microsoft.com",
+            "commit": "44e972ea7ac581303bbc4cc931ae89bac7c719d1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 04:09:58 GMT",
       "tag": "@uifabric/experiments_v7.14.1",
       "version": "7.14.1",

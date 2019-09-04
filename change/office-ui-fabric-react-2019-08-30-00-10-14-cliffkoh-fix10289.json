@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dropdown: Fix bug where it was not programatically possible to focus on Dropdown with `tabIndex=-1`. ",
-  "packageName": "office-ui-fabric-react",
-  "email": "cliff.koh@microsoft.com",
-  "commit": "566e6e0f14a21a69a44bbed6f034d80a84fbb85b",
-  "date": "2019-08-30T07:10:14.020Z"
-}

@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/icons",
-  "version": "7.1.3",
+  "version": "7.2.0",
   "description": "Office UI Fabric icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

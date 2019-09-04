@@ -1,7 +1,13 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 12:32:15 GMT and should not be manually modified.
 
+## 7.0.8
+Wed, 04 Sep 2019 12:32:15 GMT
+
+### Patches
+
+- DropDown: Fixed dropdownItem and dropdownItemSelected azure-theme styles. (xinychen@microsoft.com)
 ## 7.0.7
 Wed, 04 Sep 2019 04:09:58 GMT
 

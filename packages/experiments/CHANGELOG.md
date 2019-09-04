@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 12:32:15 GMT and should not be manually modified.
 
+## 7.15.0
+Wed, 04 Sep 2019 12:32:15 GMT
+
+### Minor changes
+
+- Add change file for new icons snapshots (pejahn@microsoft.com)
 ## 7.14.1
 Wed, 04 Sep 2019 04:09:58 GMT
 

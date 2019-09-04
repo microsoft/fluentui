@@ -2,6 +2,20 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Wed, 04 Sep 2019 12:32:15 GMT",
+      "tag": "@uifabric/azure-themes_v7.0.8",
+      "version": "7.0.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DropDown: Fixed dropdownItem and dropdownItemSelected azure-theme styles.",
+            "author": "xinychen@microsoft.com",
+            "commit": "ed88a11e8e689d9c6fe3f45e49dabdea8fdd9ff7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 04:09:58 GMT",
       "tag": "@uifabric/azure-themes_v7.0.7",
       "version": "7.0.7",

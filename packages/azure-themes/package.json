@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/azure-themes",
-  "version": "7.0.7",
+  "version": "7.0.8",
   "description": "Azure themes for Office UI Components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -29,7 +29,7 @@
   "dependencies": {
     "@uifabric/merge-styles": "^7.5.1",
     "@uifabric/set-version": "^7.0.2",
-    "office-ui-fabric-react": "^7.29.2",
+    "office-ui-fabric-react": "^7.30.0",
     "tslib": "^1.7.1"
   }
 }

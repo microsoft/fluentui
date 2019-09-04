@@ -2,6 +2,20 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "date": "Wed, 04 Sep 2019 12:32:15 GMT",
+      "tag": "@uifabric/icons_v7.2.0",
+      "version": "7.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update Fabric icons to v3.46, adding many new icons.",
+            "author": "pejahn@microsoft.com",
+            "commit": "e3de486f43f63f28c2cadacb73d18bfe334d5fdd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 04:09:58 GMT",
       "tag": "@uifabric/icons_v7.1.3",
       "version": "7.1.3",

@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 04 Sep 2019 12:32:15 GMT",
+      "tag": "office-ui-fabric-react_v7.30.0",
+      "version": "7.30.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update snapshots",
+            "author": "pejahn@microsoft.com",
+            "commit": "3235dbb40b79bf6611b60c3b64999fc12a53ebcd"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Dropdown: Fix bug where it was not programatically possible to focus on Dropdown with `tabIndex=-1`. ",
+            "author": "cliff.koh@microsoft.com",
+            "commit": "566e6e0f14a21a69a44bbed6f034d80a84fbb85b"
+          },
+          {
+            "comment": "Checkbox: Added initializeFocusRects to fix focus issue.",
+            "author": "v-mare@microsoft.com",
+            "commit": "77da1f7cd4c2990f741bb8a81c6b8b5ad8fa894e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 04:09:58 GMT",
       "tag": "office-ui-fabric-react_v7.29.2",
       "version": "7.29.2",

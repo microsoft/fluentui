@@ -24,11 +24,11 @@
   "dependencies": {
     "@uifabric/set-version": "^7.0.2",
     "@uifabric/example-app-base": "^7.6.4",
-    "@uifabric/experiments": "^7.14.1",
+    "@uifabric/experiments": "^7.15.0",
     "@microsoft/load-themed-styles": "^1.7.13",
     "es6-promise": "^4.1.0",
     "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^7.29.2",
+    "office-ui-fabric-react": "^7.30.0",
     "querystring": "^0.2.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",

@@ -1,7 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 12:32:15 GMT and should not be manually modified.
 
+## 7.30.0
+Wed, 04 Sep 2019 12:32:15 GMT
+
+### Minor changes
+
+- Update snapshots (pejahn@microsoft.com)
+### Patches
+
+- Dropdown: Fix bug where it was not programatically possible to focus on Dropdown with `tabIndex=-1`.  (cliff.koh@microsoft.com)
+- Checkbox: Added initializeFocusRects to fix focus issue. (v-mare@microsoft.com)
 ## 7.29.2
 Wed, 04 Sep 2019 04:09:58 GMT
 
