@@ -7,7 +7,7 @@ const glob = require('glob');
 
 const generateOnly = process.argv.indexOf('-g') > -1;
 const beachballBin = require.resolve('beachball/bin/beachball.js');
-const bumpCmd = [process.execPath, beachballBin];
+const bumpCmd = [process.execPath, beachballBin, 'bump'];
 const findGitRoot = require('../monorepo/findGitRoot');
 const gitRoot = findGitRoot();
 
