@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "DetailsList: Fix function mutations with onClick and onContextMenuClick in DetailsColumn",
+  "packageName": "office-ui-fabric-react",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "commit": "30f9ef58adfe5c792ebab236788119208029ed11",
+  "date": "2019-09-04T00:31:27.996Z"
+}
