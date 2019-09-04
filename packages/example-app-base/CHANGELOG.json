@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Wed, 04 Sep 2019 12:24:13 GMT",
+      "tag": "@uifabric/example-app-base_v6.23.8",
+      "version": "6.23.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "reset version files to correct version",
+            "author": "kchau@microsoft.com",
+            "commit": "87e5e2cc90f19cddb5bec832609ab839e858967f"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.23.7",
       "tag": "@uifabric/example-app-base_v6.23.7",
       "date": "Mon, 22 Jul 2019 12:21:49 GMT",

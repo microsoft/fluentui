@@ -2,6 +2,20 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "date": "Wed, 04 Sep 2019 12:24:13 GMT",
+      "tag": "@uifabric/fluent-theme_v0.16.21",
+      "version": "0.16.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "reset version files to correct version",
+            "author": "kchau@microsoft.com",
+            "commit": "87e5e2cc90f19cddb5bec832609ab839e858967f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Aug 2019 12:23:00 GMT",
       "tag": "@uifabric/fluent-theme_v0.16.20",
       "version": "0.16.20",

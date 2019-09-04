@@ -1,7 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Mon, 22 Jul 2019 12:21:49 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 12:24:13 GMT and should not be manually modified.
 
+## 0.8.3
+Wed, 04 Sep 2019 12:24:13 GMT
+
+### Patches
+
+- reset version files to correct version (kchau@microsoft.com)
 ## 0.8.2
 Mon, 22 Jul 2019 12:21:49 GMT
 

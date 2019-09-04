@@ -1,7 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 20 Aug 2019 12:22:59 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 12:24:13 GMT and should not be manually modified.
 
+## 6.50.7
+Wed, 04 Sep 2019 12:24:13 GMT
+
+### Patches
+
+- reset version files to correct version (kchau@microsoft.com)
 ## 6.50.6
 Tue, 20 Aug 2019 12:22:59 GMT
 

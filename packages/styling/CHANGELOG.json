@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Wed, 04 Sep 2019 12:24:13 GMT",
+      "tag": "@uifabric/styling_v6.50.7",
+      "version": "6.50.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "reset version files to correct version",
+            "author": "kchau@microsoft.com",
+            "commit": "87e5e2cc90f19cddb5bec832609ab839e858967f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Aug 2019 12:22:59 GMT",
       "tag": "@uifabric/styling_v6.50.6",
       "version": "6.50.6",

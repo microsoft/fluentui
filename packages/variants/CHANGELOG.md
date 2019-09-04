@@ -1,7 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Mon, 22 Jul 2019 12:21:49 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 12:24:13 GMT and should not be manually modified.
 
+## 6.15.2
+Wed, 04 Sep 2019 12:24:13 GMT
+
+### Patches
+
+- reset version files to correct version (kchau@microsoft.com)
 ## 6.15.1
 Mon, 22 Jul 2019 12:21:49 GMT
 

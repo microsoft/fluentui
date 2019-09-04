@@ -2,6 +2,20 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Wed, 04 Sep 2019 12:24:13 GMT",
+      "tag": "@uifabric/azure-themes_v6.0.5",
+      "version": "6.0.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "reset version files to correct version",
+            "author": "kchau@microsoft.com",
+            "commit": "87e5e2cc90f19cddb5bec832609ab839e858967f"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.4",
       "tag": "@uifabric/azure-themes_v6.0.4",
       "date": "Mon, 22 Jul 2019 12:21:49 GMT",
