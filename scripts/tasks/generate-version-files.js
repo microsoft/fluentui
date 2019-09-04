@@ -52,12 +52,10 @@ function revertLocalChanges() {
  * "generateOnly" mode takes existing versions and write them out to version files (do this when out of sync)
  */
 module.exports = function generateVersionFiles() {
-  let modified = [];
-  let untracked = [];
-
   const gitRoot = findGitRoot();
 
   if (!generateOnly) {
+    console.log('bumping');
     // Do a dry-run on all packages
     run(bumpCmd);
   }
@@ -94,12 +92,14 @@ setVersion('${packageJson.name}', '${packageJson.version}');`;
 
   // 3. revert bump changes
   if (!generateOnly) {
+    console.log('reverting');
     revertLocalChanges();
   }
 
   // 4. write version files
   if (updatedVersionContents) {
     Object.keys(updatedVersionContents).forEach(versionFile => {
+      console.log(`writing to ${versionFile}`);
       fs.writeFileSync(versionFile, updatedVersionContents[versionFile]);
     });
   }
