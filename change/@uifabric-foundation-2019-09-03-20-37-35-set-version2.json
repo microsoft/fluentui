@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "reset version files to correct version",
+  "packageName": "@uifabric/foundation",
+  "email": "kchau@microsoft.com",
+  "commit": "87e5e2cc90f19cddb5bec832609ab839e858967f",
+  "date": "2019-09-04T03:37:30.530Z"
+}
