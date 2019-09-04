@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 04 Sep 2019 00:37:31 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
 
+## 7.29.2
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- DetailsList: Fix function mutations with onClick and onContextMenuClick in DetailsColumn (KevinTCoughlin@users.noreply.github.com)
+- fix version file (kchau@microsoft.com)
 ## 7.29.1
 Wed, 04 Sep 2019 00:37:31 GMT
 

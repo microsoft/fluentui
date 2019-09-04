@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix version file",
-  "packageName": "@uifabric/fabric-website",
-  "email": "kchau@microsoft.com",
-  "commit": "fbccfaf91bfe3c77d95c614ac2cb69b7c9e1dad1",
-  "date": "2019-09-04T02:45:33.419Z"
-}

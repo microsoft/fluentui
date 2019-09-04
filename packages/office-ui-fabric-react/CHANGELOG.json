@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 04 Sep 2019 04:09:58 GMT",
+      "tag": "office-ui-fabric-react_v7.29.2",
+      "version": "7.29.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: Fix function mutations with onClick and onContextMenuClick in DetailsColumn",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "30f9ef58adfe5c792ebab236788119208029ed11"
+          },
+          {
+            "comment": "fix version file",
+            "author": "kchau@microsoft.com",
+            "commit": "fbccfaf91bfe3c77d95c614ac2cb69b7c9e1dad1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 00:37:31 GMT",
       "tag": "office-ui-fabric-react_v7.29.1",
       "version": "7.29.1",
