@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Button: Fixing SplitButton outline when focused.",
-  "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "517b38898616f600760338c49205bfd0652d58c9",
-  "date": "2019-08-30T22:46:18.924Z"
-}

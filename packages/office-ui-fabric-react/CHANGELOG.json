@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 04 Sep 2019 00:37:31 GMT",
+      "tag": "office-ui-fabric-react_v7.29.1",
+      "version": "7.29.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Fixing SplitButton outline when focused.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "517b38898616f600760338c49205bfd0652d58c9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Sep 2019 12:33:56 GMT",
       "tag": "office-ui-fabric-react_v7.29.0",
       "version": "7.29.0",
