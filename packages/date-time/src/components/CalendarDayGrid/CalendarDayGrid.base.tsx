@@ -232,39 +232,44 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     return (
       <td
         key={day.key}
-        className={css(
-          classNames.dayCell,
-          this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex),
-          day.isSelected && classNames.daySelected,
-          !day.isInBounds && classNames.dayOutsideBounds,
-          !day.isInMonth && classNames.dayOutsideNavigatedMonth
-        )}
-        ref={(element: HTMLTableCellElement) => this._setDayCellRef(element, day, isNavigatedDate)}
-        aria-hidden={ariaHidden}
-        onClick={day.isInBounds && !ariaHidden ? day.onSelected : undefined}
-        onMouseOver={!ariaHidden ? this.onMouseOverDay(day) : undefined}
-        onMouseDown={!ariaHidden ? this.onMouseDownDay(day) : undefined}
-        onMouseUp={!ariaHidden ? this.onMouseUpDay(day) : undefined}
-        onMouseOut={!ariaHidden ? this.onMouseOutDay(day) : undefined}
+        className={classNames.dayCellWrapper}
+        {...this.props.customDayCellProps && this.props.customDayCellProps(day.originalDate)}
       >
-        <button
-          key={day.key + 'button'}
+        <div
+          className={css(
+            classNames.dayCell,
+            this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex),
+            day.isSelected && classNames.daySelected,
+            !day.isInBounds && classNames.dayOutsideBounds,
+            !day.isInMonth && classNames.dayOutsideNavigatedMonth
+          )}
+          ref={(element: HTMLTableCellElement) => this._setDayCellRef(element, day, isNavigatedDate)}
           aria-hidden={ariaHidden}
-          className={css(classNames.dayButton, day.isToday && classNames.dayIsToday)}
-          onKeyDown={!ariaHidden ? this._onDayKeyDown(day.originalDate, weekIndex, dayIndex) : undefined}
-          aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
-          id={isNavigatedDate ? activeDescendantId : undefined}
-          aria-selected={day.isInBounds ? day.isSelected : undefined}
-          data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
-          ref={(element: HTMLButtonElement) => this._setDayRef(element, day, isNavigatedDate)}
-          disabled={!allFocusable && !day.isInBounds}
-          aria-disabled={!ariaHidden && !day.isInBounds}
-          type="button"
-          role="gridcell" // create grid structure
-          aria-readonly={true} // prevent grid from being "editable"
+          onClick={day.isInBounds && !ariaHidden ? day.onSelected : undefined}
+          onMouseOver={!ariaHidden ? this.onMouseOverDay(day) : undefined}
+          onMouseDown={!ariaHidden ? this.onMouseDownDay(day) : undefined}
+          onMouseUp={!ariaHidden ? this.onMouseUpDay(day) : undefined}
+          onMouseOut={!ariaHidden ? this.onMouseOutDay(day) : undefined}
         >
-          <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
-        </button>
+          <button
+            key={day.key + 'button'}
+            aria-hidden={ariaHidden}
+            className={css(classNames.dayButton, day.isToday && classNames.dayIsToday)}
+            onKeyDown={!ariaHidden ? this._onDayKeyDown(day.originalDate, weekIndex, dayIndex) : undefined}
+            aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
+            id={isNavigatedDate ? activeDescendantId : undefined}
+            aria-selected={day.isInBounds ? day.isSelected : undefined}
+            data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
+            ref={(element: HTMLButtonElement) => this._setDayRef(element, day, isNavigatedDate)}
+            disabled={!allFocusable && !day.isInBounds}
+            aria-disabled={!ariaHidden && !day.isInBounds}
+            type="button"
+            role="gridcell" // create grid structure
+            aria-readonly={true} // prevent grid from being "editable"
+          >
+            <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
+          </button>
+        </div>
       </td>
     );
   };

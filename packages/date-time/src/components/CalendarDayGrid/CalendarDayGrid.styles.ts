@@ -71,7 +71,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         tableLayout: 'fixed',
         fontSize: 'inherit',
         marginTop: 4,
-        width: 197,
+        width: 196,
         position: 'relative',
         paddingBottom: 10
       },
@@ -79,6 +79,11 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         width: 226
       }
     ],
+    dayCellWrapper: {
+      width: 28,
+      height: 28,
+      padding: 0
+    },
     dayCell: {
       margin: 0,
       padding: 0,
