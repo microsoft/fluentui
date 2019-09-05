@@ -1,7 +1,6 @@
 // @ts-check
 
 module.exports = function(env) {
-  const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
   const path = require('path');
   const resources = require('@uifabric/build/webpack/webpack-resources');
   const { addMonacoConfig } = require('@uifabric/tsx-editor/scripts/monaco-webpack');
@@ -36,7 +35,14 @@ module.exports = function(env) {
       },
 
       resolve: {
-        alias: getResolveAlias()
+        alias: {
+          '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
+          '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
+          'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
+          'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
+          'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
+          '@uifabric/api-docs/lib': path.resolve(__dirname, '../../packages/api-docs/lib')
+        }
       }
     }),
     /* only production */ isProductionArg
