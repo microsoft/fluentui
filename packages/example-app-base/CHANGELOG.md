@@ -1,7 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 04 Sep 2019 12:24:13 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Sep 2019 12:22:27 GMT and should not be manually modified.
 
+## 6.24.0
+Thu, 05 Sep 2019 12:22:27 GMT
+
+### Minor changes
+
+- Cherry-pick: Mark IMarkdownTableCellProps 'as' optional (KevinTCoughlin@users.noreply.github.com)
 ## 6.23.8
 Wed, 04 Sep 2019 12:24:13 GMT
 
