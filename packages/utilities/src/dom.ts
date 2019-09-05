@@ -6,7 +6,6 @@ export * from './dom/getChildren';
 export * from './dom/getDocument';
 export * from './dom/getParent';
 export * from './dom/getRect';
-export * from './dom/getRenderedContainer';
 export * from './dom/getVirtualParent';
 export * from './dom/getWindow';
 export * from './dom/isVirtualElement';

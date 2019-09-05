@@ -4,13 +4,11 @@
 
 ```ts
 
-import * as CSS from 'csstype';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { IStyleFunction } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { IStyleSet } from '@uifabric/merge-styles';
 import { Omit } from '@uifabric/merge-styles';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 // @public
@@ -329,11 +327,6 @@ export function getPreviousElement(rootElement: HTMLElement, currentElement: HTM
 
 // @public
 export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
-
-// Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
-// 
-// @public (undocumented)
-export function getRenderedContainer(content?: Element | string | MouseEvent | IPoint | null | React_2.RefObject<Element>, possibleContainers?: DOMRect[] | ClientRect[]): DOMRect | ClientRect | undefined;
 
 // @public
 export function getResourceUrl(url: string): string;
