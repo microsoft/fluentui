@@ -10,6 +10,126 @@
   },
   "glyphs": [
     {
+      "name": "AlignVerticalTop",
+      "unicode": "F4F6"
+    },
+    {
+      "name": "AlignVerticalCenter",
+      "unicode": "F4F7"
+    },
+    {
+      "name": "AlignVerticalBottom",
+      "unicode": "F4F8"
+    },
+    {
+      "name": "HorizontalDistributeCenter",
+      "unicode": "F4F9"
+    },
+    {
+      "name": "VerticalDistributeCenter",
+      "unicode": "F4FA"
+    },
+    {
+      "name": "Ellipse",
+      "unicode": "F4FB"
+    },
+    {
+      "name": "Line",
+      "unicode": "F4FC"
+    },
+    {
+      "name": "Octagon",
+      "unicode": "F4FD"
+    },
+    {
+      "name": "Hexagon",
+      "unicode": "F4FE"
+    },
+    {
+      "name": "Pentagon",
+      "unicode": "F4FF"
+    },
+    {
+      "name": "RightTriangle",
+      "unicode": "F500"
+    },
+    {
+      "name": "HalfCircle",
+      "unicode": "F501"
+    },
+    {
+      "name": "QuarterCircle",
+      "unicode": "F502"
+    },
+    {
+      "name": "ThreeQuarterCircle",
+      "unicode": "F503"
+    },
+    {
+      "name": "6PointStar",
+      "unicode": "F504"
+    },
+    {
+      "name": "12PointStar",
+      "unicode": "F505"
+    },
+    {
+      "name": "ArrangeBringToFront",
+      "unicode": "F506"
+    },
+    {
+      "name": "ArrangeSendToBack",
+      "unicode": "F507"
+    },
+    {
+      "name": "ArrangeSendBackward",
+      "unicode": "F508"
+    },
+    {
+      "name": "ArrangeBringForward",
+      "unicode": "F509"
+    },
+    {
+      "name": "BorderDash",
+      "unicode": "F50A"
+    },
+    {
+      "name": "BorderDot",
+      "unicode": "F50B"
+    },
+    {
+      "name": "LineStyle",
+      "unicode": "F50C"
+    },
+    {
+      "name": "LineThickness",
+      "unicode": "F50D"
+    },
+    {
+      "name": "WindowEdit",
+      "unicode": "F50E"
+    },
+    {
+      "name": "HintText",
+      "unicode": "F50F"
+    },
+    {
+      "name": "MediaAdd",
+      "unicode": "F510"
+    },
+    {
+      "name": "AnchorLock",
+      "unicode": "F511"
+    },
+    {
+      "name": "AutoHeight",
+      "unicode": "F512"
+    },
+    {
+      "name": "ChartSeries",
+      "unicode": "F513"
+    },
+    {
       "name": "ChartXAngle",
       "unicode": "F514"
     },
@@ -186,6 +306,10 @@
       "unicode": "F549"
     },
     {
+      "name": "GreetingCard",
+      "unicode": "F54B"
+    },
+    {
       "name": "Flower",
       "unicode": "F54E"
     },
@@ -242,6 +366,10 @@
       "unicode": "F55C"
     },
     {
+      "name": "ReportWarning",
+      "unicode": "F569"
+    },
+    {
       "name": "TransitionPop",
       "unicode": "F5B2"
     },
@@ -280,134 +408,6 @@
     {
       "name": "CertifiedDatabase",
       "unicode": "F5BB"
-    },
-    {
-      "name": "MaximumValue",
-      "unicode": "F5BC"
-    },
-    {
-      "name": "MinimumValue",
-      "unicode": "F5BD"
-    },
-    {
-      "name": "VisualStudioIDELogo32",
-      "unicode": "F5D0"
-    },
-    {
-      "name": "PasteAsText",
-      "unicode": "F5D5"
-    },
-    {
-      "name": "PasteAsCode",
-      "unicode": "F5D6"
-    },
-    {
-      "name": "BrowserTab",
-      "unicode": "F5D7"
-    },
-    {
-      "name": "BrowserTabScreenshot",
-      "unicode": "F5D8"
-    },
-    {
-      "name": "DesktopScreenshot",
-      "unicode": "F5D9"
-    },
-    {
-      "name": "FileYML",
-      "unicode": "F5DA"
-    },
-    {
-      "name": "ClipboardSolid",
-      "unicode": "F5DC"
-    },
-    {
-      "name": "FabricUserFolder",
-      "unicode": "F5E5"
-    },
-    {
-      "name": "FabricNetworkFolder",
-      "unicode": "F5E6"
-    },
-    {
-      "name": "AnalyticsView",
-      "unicode": "F5F1"
-    },
-    {
-      "name": "Video360Generic",
-      "unicode": "F609"
-    },
-    {
-      "name": "Leave",
-      "unicode": "F627"
-    },
-    {
-      "name": "Trending12",
-      "unicode": "F62D"
-    },
-    {
-      "name": "Blocked12",
-      "unicode": "F62E"
-    },
-    {
-      "name": "Warning12",
-      "unicode": "F62F"
-    },
-    {
-      "name": "CheckedOutByOther12",
-      "unicode": "F630"
-    },
-    {
-      "name": "CheckedOutByYou12",
-      "unicode": "F631"
-    },
-    {
-      "name": "CircleShapeSolid",
-      "unicode": "F63C"
-    },
-    {
-      "name": "SquareShapeSolid",
-      "unicode": "F63D"
-    },
-    {
-      "name": "TriangleShapeSolid",
-      "unicode": "F63E"
-    },
-    {
-      "name": "DropShapeSolid",
-      "unicode": "F63F"
-    },
-    {
-      "name": "RectangleShapeSolid",
-      "unicode": "F640"
-    },
-    {
-      "name": "ZoomToFit",
-      "unicode": "F649"
-    },
-    {
-      "name": "InsertColumnsLeft",
-      "unicode": "F64A"
-    },
-    {
-      "name": "InsertColumnsRight",
-      "unicode": "F64B"
-    },
-    {
-      "name": "InsertRowsAbove",
-      "unicode": "F64C"
-    },
-    {
-      "name": "InsertRowsBelow",
-      "unicode": "F64D"
-    },
-    {
-      "name": "DeleteColumns",
-      "unicode": "F64E"
-    },
-    {
-      "name": "DeleteRows",
-      "unicode": "F64F"
     }
   ]
 }

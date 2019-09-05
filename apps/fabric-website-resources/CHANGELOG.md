@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Tue, 27 Aug 2019 12:33:51 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
 
+## 7.2.7
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
 ## 7.2.6
 Tue, 27 Aug 2019 12:33:51 GMT
 

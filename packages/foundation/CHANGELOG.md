@@ -1,7 +1,19 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Thu, 29 Aug 2019 12:30:00 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
 
+## 7.3.1
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.3.0
+Mon, 02 Sep 2019 12:33:56 GMT
+
+### Minor changes
+
+- Foundation: Moving slots inside composed options. (humbertomakotomorimoto@gmail.com)
 ## 7.2.0
 Thu, 29 Aug 2019 12:30:00 GMT
 

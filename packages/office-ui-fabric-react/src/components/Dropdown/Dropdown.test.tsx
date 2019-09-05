@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
@@ -259,6 +260,37 @@ describe('Dropdown', () => {
       expect(titleElement.text()).toEqual('1');
     });
 
+    it('is possible to programatically focus on Dropdown when it has tabIndex of `-1, and it will select the first valid item`', () => {
+      const dropdown = React.createRef<IDropdown>();
+
+      const container = document.createElement('div');
+      document.body.appendChild(container);
+
+      // in enzyme, when we call the programatic focus(), it does not trigger the onFocus callback of the div being focused.
+      // Utilize JSDOM instead.
+      ReactDOM.render(<Dropdown componentRef={dropdown} label="testgroup" tabIndex={-1} options={DEFAULT_OPTIONS} />, container);
+
+      dropdown.current!.focus(false);
+
+      const titleElement = container.querySelector('.ms-Dropdown-title') as HTMLElement;
+      // for some reason, JSDOM does not return innerText of 1 so we have to use innerHTML instead.
+      expect(titleElement.innerHTML).toEqual('<span>1</span>');
+    });
+
+    it('calling programatic focus() with `true` opens up the Dropdown and focuses/selects on first selectable option`', () => {
+      const dropdown = React.createRef<IDropdown>();
+
+      const container = document.createElement('div');
+      document.body.appendChild(container);
+      ReactDOM.render(<Dropdown componentRef={dropdown} label="testgroup" options={DEFAULT_OPTIONS} />, container);
+
+      expect(document.body.querySelector('.ms-Dropdown-item')).toBeNull();
+      dropdown.current!.focus(true);
+      const firstDropdownItem = document.body.querySelector('.ms-Dropdown-item');
+      expect(firstDropdownItem).not.toBeNull();
+      expect(firstDropdownItem!.getAttribute('aria-selected')).toBe('true');
+    });
+
     it('selects the first valid item on Home keypress', () => {
       wrapper = mount(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />);
 
@@ -321,8 +353,8 @@ describe('Dropdown', () => {
 
       wrapper.find('.ms-Dropdown').simulate('click');
 
-      const item = document.querySelector('.ms-Dropdown-item') as HTMLElement;
-      expect(item.getAttribute('title')).toBe('a');
+      const item = wrapper.find('.ms-Dropdown-item');
+      expect(item.getElements()[0].props.title).toBe('a');
     });
 
     it('uses item title attribute if provided', () => {
@@ -331,8 +363,8 @@ describe('Dropdown', () => {
 
       wrapper.find('.ms-Dropdown').simulate('click');
 
-      const item = document.querySelector('.ms-Dropdown-item') as HTMLElement;
-      expect(item.getAttribute('title')).toBe('b');
+      const item = wrapper.find('.ms-Dropdown-item');
+      expect(item.getElements()[0].props.title).toBe('b');
     });
 
     // This is a way to effectively disable setting a title
@@ -342,8 +374,8 @@ describe('Dropdown', () => {
 
       wrapper.find('.ms-Dropdown').simulate('click');
 
-      const item = document.querySelector('.ms-Dropdown-item') as HTMLElement;
-      expect(item.getAttribute('title')).toBe('');
+      const item = wrapper.find('.ms-Dropdown-item');
+      expect(item.getElements()[0].props.title).toBe('');
     });
   });
 
