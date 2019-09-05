@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Callout: add windowSegment Logic",
+  "packageName": "@uifabric/utilities",
+  "email": "jspurlin@microsoft.com",
+  "commit": "88b25a0c67f8758b1a0e1c5412ef4c33d0d6f702",
+  "date": "2019-09-05T17:54:55.253Z"
+}
