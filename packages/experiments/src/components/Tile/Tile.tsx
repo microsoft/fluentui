@@ -199,7 +199,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
         data-is-focusable={ true }
         data-is-sub-focuszone={ true }
         data-disable-click-on-enter={ true }
-        data-selection-index={ (selectionIndex > -1) ? selectionIndex : undefined }
+        data-selection-index={ isInvokable && selectionIndex > -1 ? true : undefined }
       >
         <a
           href={ href }
