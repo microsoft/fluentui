@@ -16,8 +16,16 @@ export class TooltipCustomExample extends React.Component<any, any> {
             return (
               <div>
                 <ul style={{ margin: 0, padding: 0 }}>
-                  <li>1. One</li>
-                  <li>2. Two</li>
+                  <li>
+                    <a target="_blank" href="#">
+                      1. One
+                    </a>
+                  </li>
+                  <li>
+                    <a target="_blank" href="#">
+                      2. Two
+                    </a>
+                  </li>
                 </ul>
               </div>
             );
