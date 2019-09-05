@@ -14,7 +14,8 @@ import {
   getNativeProps,
   getWindow,
   on,
-  shallowCompare
+  shallowCompare,
+  getRenderedContainer
 } from '../../Utilities';
 import {
   positionCallout,
@@ -27,6 +28,10 @@ import {
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
+
+interface IWindow extends Window {
+  getBoundingWindowRects?: Function;
+}
 
 const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.top]: AnimationClassNames.slideUpIn10,
@@ -71,8 +76,11 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   private _didSetInitialFocus: boolean;
   private _hostElement = React.createRef<HTMLDivElement>();
   private _calloutElement = React.createRef<HTMLDivElement>();
-  private _targetWindow: Window;
+  private _targetWindow: IWindow;
+  private _targetWindowSegmentRect?: DOMRect | ClientRect;
   private _bounds: IRectangle | undefined;
+  private _targetWindowSegmentBounds?: IRectangle | undefined;
+  private _windowRects?: DOMRect[] | ClientRect[];
   private _positionAttempts: number;
   private _target: Element | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
@@ -153,6 +161,9 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     // Ensure positioning is recalculated when we are about to show a persisted menu.
     if (this._didPositionPropsChange(newProps, this.props)) {
       this._maxHeight = undefined;
+      this._windowRects = undefined;
+      this._targetWindowSegmentRect = undefined;
+      this._targetWindowSegmentBounds = undefined;
       // Target might have been updated while hidden.
       this._setTargetWindowAndElement(newTarget);
       this.setState({
@@ -342,6 +353,12 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     }, 0);
   }
 
+  private _updateWindowRects = () => {
+    if (this._targetWindow.getBoundingWindowRects) {
+      this._windowRects = this._targetWindow.getBoundingWindowRects();
+    }
+  };
+
   private _removeListeners() {
     this._disposables.forEach((dispose: () => void) => dispose());
     this._disposables = [];
@@ -408,20 +425,46 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   }
 
   private _getBounds(): IRectangle {
-    if (!this._bounds) {
+    const useTargetWindowSegment = this._targetWindowSegmentRect && this._windowRects && this._windowRects.length > 1;
+
+    // If we have not have yet taken the bounds or have a targetWindowSegment
+    // and the bounds have not yet taken it into account, update the bounds
+    if (!this._bounds || (useTargetWindowSegment && this._targetWindowSegmentBounds !== this._bounds)) {
       let currentBounds = this.props.bounds;
 
       if (!currentBounds) {
+        let top: number;
+        let left: number;
+        let width: number;
+        let height: number;
+
+        if (useTargetWindowSegment) {
+          top = this._targetWindowSegmentRect!.top;
+          left = this._targetWindowSegmentRect!.left;
+          width = left + this._targetWindowSegmentRect!.width;
+          height = top + this._targetWindowSegmentRect!.height;
+        } else {
+          top = 0;
+          left = 0;
+          width = this._targetWindow.innerWidth;
+          height = this._targetWindow.innerHeight;
+        }
+
         currentBounds = {
-          top: 0 + this.props.minPagePadding!,
-          left: 0 + this.props.minPagePadding!,
-          right: this._targetWindow.innerWidth - this.props.minPagePadding!,
-          bottom: this._targetWindow.innerHeight - this.props.minPagePadding!,
-          width: this._targetWindow.innerWidth - this.props.minPagePadding! * 2,
-          height: this._targetWindow.innerHeight - this.props.minPagePadding! * 2
+          top: top + this.props.minPagePadding!,
+          left: left + this.props.minPagePadding!,
+          right: width - this.props.minPagePadding!,
+          bottom: height - this.props.minPagePadding!,
+          width: width - this.props.minPagePadding! * 2,
+          height: height - this.props.minPagePadding! * 2
         };
       }
       this._bounds = currentBounds;
+
+      // Remember the bounds so that we only measure once
+      if (useTargetWindowSegment) {
+        this._targetWindowSegmentBounds = this._bounds;
+      }
     }
     return this._bounds;
   }
@@ -496,6 +539,12 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       } else {
         this._targetWindow = getWindow()!;
         this._target = target as IPoint;
+      }
+
+      // Take note of the windowRects if we have not already
+      if (!this._windowRects || this._windowRects.length <= 0) {
+        this._updateWindowRects();
+        this._targetWindowSegmentRect = getRenderedContainer(this._target, this._windowRects);
       }
     } else {
       this._targetWindow = getWindow()!;
