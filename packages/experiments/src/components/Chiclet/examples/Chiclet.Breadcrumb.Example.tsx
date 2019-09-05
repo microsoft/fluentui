@@ -4,8 +4,7 @@ import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcru
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react/lib/Tooltip';
 import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
-import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
-import { FontWeights } from '@uifabric/styling';
+import { mergeStyles, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 

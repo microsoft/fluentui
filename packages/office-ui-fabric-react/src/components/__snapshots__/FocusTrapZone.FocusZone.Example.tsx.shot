@@ -224,7 +224,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className=
@@ -330,7 +329,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -340,18 +339,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -362,9 +364,9 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 id="id__2"
               >
                 FZ1
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
         <button
           className=
@@ -444,7 +446,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -454,18 +456,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -476,9 +481,9 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 id="id__5"
               >
                 FZ1
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
         <button
           className=
@@ -558,7 +563,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -568,18 +573,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -590,9 +598,9 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 id="id__8"
               >
                 FZ1
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>
@@ -674,7 +682,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       onMouseUp={[Function]}
       type="button"
     >
-      <div
+      <span
         className=
             ms-Button-flexContainer
             {
@@ -684,18 +692,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
               height: 100%;
               justify-content: center;
             }
+        data-automationid="splitbuttonprimary"
       >
-        <div
+        <span
           className=
               ms-Button-textContainer
               {
+                display: block;
                 flex-grow: 1;
               }
         >
-          <div
+          <span
             className=
                 ms-Button-label
                 {
+                  display: block;
                   font-weight: 600;
                   line-height: 100%;
                   margin-bottom: 0;
@@ -706,9 +717,9 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
             id="id__11"
           >
             No FZ
-          </div>
-        </div>
-      </div>
+          </span>
+        </span>
+      </span>
     </button>
     <div
       className=
@@ -721,7 +732,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="presentation"
     >
       <div
         className=
@@ -827,7 +837,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -837,18 +847,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -859,9 +872,9 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 id="id__15"
               >
                 FZ2
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
         <button
           className=
@@ -941,7 +954,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -951,18 +964,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -973,9 +989,9 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 id="id__18"
               >
                 FZ2
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
         <button
           className=
@@ -1055,7 +1071,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1065,18 +1081,21 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                   height: 100%;
                   justify-content: center;
                 }
+            data-automationid="splitbuttonprimary"
           >
-            <div
+            <span
               className=
                   ms-Button-textContainer
                   {
+                    display: block;
                     flex-grow: 1;
                   }
             >
-              <div
+              <span
                 className=
                     ms-Button-label
                     {
+                      display: block;
                       font-weight: 600;
                       line-height: 100%;
                       margin-bottom: 0;
@@ -1087,9 +1106,9 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 id="id__21"
               >
                 FZ2
-              </div>
-            </div>
-          </div>
+              </span>
+            </span>
+          </span>
         </button>
       </div>
     </div>

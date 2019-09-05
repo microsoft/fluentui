@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Announced } from 'office-ui-fabric-react/lib/Announced';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, IDragDropEvents } from 'office-ui-fabric-react/lib/DetailsList';
+import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
-import { IDragDropEvents } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import { mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
 
 const _items: IFileExampleItem[] = [];

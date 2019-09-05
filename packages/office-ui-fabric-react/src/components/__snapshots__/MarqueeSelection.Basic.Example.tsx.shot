@@ -30,6 +30,10 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           background: #005a9e;
           border-color: #005a9e;
         }
+        & .ms-Checkbox-checkbox {
+          background: #0078d4;
+          border-color: #0078d4;
+        }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
           background: Window;
           border-color: Highlight;
@@ -54,6 +58,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
         }
   >
     <input
+      aria-checked="true"
       aria-label="Is marquee enabled"
       className=
 
@@ -119,6 +124,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
               justify-content: center;
               margin-right: 4px;
               overflow: hidden;
+              position: relative;
               transition-duration: 200ms;
               transition-property: background, border, border-color;
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);

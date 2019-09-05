@@ -114,7 +114,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="presentation"
             >
               <table
                 aria-activedescendant="DatePickerDay-active0"
@@ -1174,7 +1173,6 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="presentation"
             >
               <div
                 aria-readonly="true"

@@ -113,7 +113,8 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     window.removeEventListener('hashchange', this._handleRouteChange);
   }
 
-  public componentWillReceiveProps(nextProps: ISiteProps): void {
+  // tslint:disable-next-line function-name
+  public UNSAFE_componentWillReceiveProps(nextProps: ISiteProps): void {
     if (nextProps && nextProps.children !== this.props.children) {
       document.body.scrollTop = document.documentElement.scrollTop = 0;
     }

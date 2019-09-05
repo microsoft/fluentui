@@ -495,7 +495,13 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -625,7 +631,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     line-height: 42px;
                     min-width: 100%;
                     padding-bottom: 1px;
-                    padding-top: 1px;
+                    padding-top: 16px;
                     position: relative;
                     user-select: none;
                     vertical-align: top;
@@ -790,22 +796,26 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                       <i
                         aria-hidden={true}
                         className=
-
+                            ms-Icon
+                            {
+                              display: inline-block;
+                            }
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #605e5c;
-                              display: inline-block;
                               font-family: "FabricMDL2Icons";
-                              font-size: 16px;
                               font-style: normal;
                               font-weight: normal;
+                              speak: none;
+                            }
+                            {
+                              color: #605e5c;
+                              font-size: 16px;
                               opacity: 1;
                               padding-bottom: 0px;
                               padding-left: 0px;
                               padding-right: 0px;
                               padding-top: 0px;
-                              speak: none;
                             }
                         data-icon-name="Page"
                         role="presentation"
@@ -996,19 +1006,23 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                     <i
                       aria-hidden={true}
                       className=
-
+                          ms-Icon
+                          {
+                            display: inline-block;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;
-                            color: #605e5c;
-                            display: inline-block;
                             font-family: "FabricMDL2Icons";
                             font-style: normal;
                             font-weight: normal;
+                            speak: none;
+                          }
+                          {
+                            color: #605e5c;
                             opacity: 1;
                             padding-left: 4px;
                             position: relative;
-                            speak: none;
                             top: 1px;
                           }
                       data-icon-name="SortUp"
@@ -1313,7 +1327,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
-              role="presentation"
             >
               <div
                 className="ms-SelectionZone"

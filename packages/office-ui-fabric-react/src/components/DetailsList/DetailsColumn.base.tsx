@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Icon } from '../../Icon';
+import { Icon, FontIcon } from '../../Icon';
 import { initializeComponentRef, EventGroup, Async, IDisposable, classNamesFunction, IClassNames } from '../../Utilities';
-import { IColumn, ColumnActionsMode } from './DetailsList.types';
+import { ColumnActionsMode } from './DetailsList.types';
 
 import { ITooltipHostProps } from '../../Tooltip';
 import { IDragDropOptions } from './../../utilities/dragdrop/interfaces';
@@ -36,7 +36,16 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
   }
 
   public render(): JSX.Element {
-    const { column, columnIndex, parentId, isDraggable, styles, theme, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = this.props;
+    const {
+      column,
+      columnIndex,
+      parentId,
+      isDraggable,
+      styles,
+      theme,
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+      useFastIcons = true
+    } = this.props;
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
 
     this._classNames = getClassNames(styles, {
@@ -54,6 +63,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     });
 
     const classNames = this._classNames;
+    const IconComponent = useFastIcons ? FontIcon : Icon;
 
     return (
       <>
@@ -76,7 +86,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
           data-automationid={'ColumnsHeaderColumn'}
           data-item-key={column.key}
         >
-          {isDraggable && <Icon iconName="GripperBarVertical" className={classNames.gripperBarVerticalStyle} />}
+          {isDraggable && <IconComponent iconName="GripperBarVertical" className={classNames.gripperBarVerticalStyle} />}
           {onRenderColumnHeaderTooltip(
             {
               hostClassName: classNames.cellTooltip,
@@ -99,25 +109,29 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
                   aria-describedby={
                     !this.props.onRenderColumnHeaderTooltip && this._hasAccessibleLabel() ? `${parentId}-${column.key}-tooltip` : undefined
                   }
-                  onContextMenu={this._onColumnContextMenu.bind(this, column)}
-                  onClick={this._onColumnClick.bind(this, column)}
+                  onContextMenu={this._onColumnContextMenu}
+                  onClick={this._onColumnClick}
                   aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown}
                   aria-expanded={column.columnActionsMode === ColumnActionsMode.hasDropdown ? !!column.isMenuOpen : undefined}
                 >
                   <span id={`${parentId}-${column.key}-name`} className={classNames.cellName}>
-                    {(column.iconName || column.iconClassName) && <Icon className={classNames.iconClassName} iconName={column.iconName} />}
+                    {(column.iconName || column.iconClassName) && (
+                      <IconComponent className={classNames.iconClassName} iconName={column.iconName} />
+                    )}
 
                     {column.isIconOnly ? <span className={classNames.accessibleLabel}>{column.name}</span> : column.name}
                   </span>
 
-                  {column.isFiltered && <Icon className={classNames.nearIcon} iconName={'Filter'} />}
+                  {column.isFiltered && <IconComponent className={classNames.nearIcon} iconName="Filter" />}
 
-                  {column.isSorted && <Icon className={classNames.sortIcon} iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'} />}
+                  {column.isSorted && (
+                    <IconComponent className={classNames.sortIcon} iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'} />
+                  )}
 
-                  {column.isGrouped && <Icon className={classNames.nearIcon} iconName={'GroupedDescending'} />}
+                  {column.isGrouped && <IconComponent className={classNames.nearIcon} iconName="GroupedDescending" />}
 
                   {column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
-                    <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />
+                    <IconComponent aria-hidden={true} className={classNames.filterChevron} iconName="ChevronDown" />
                   )}
                 </span>
               )
@@ -182,12 +196,12 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     return <span className={tooltipHostProps.hostClassName}>{tooltipHostProps.children}</span>;
   };
 
-  private _onColumnClick(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {
+  private _onColumnClick = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { onColumnClick, column } = this.props;
+
     if (column.columnActionsMode === ColumnActionsMode.disabled) {
       return;
     }
-
-    const { onColumnClick } = this.props;
 
     if (column.onColumnClick) {
       column.onColumnClick(ev, column);
@@ -196,7 +210,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     if (onColumnClick) {
       onColumnClick(ev, column);
     }
-  }
+  };
 
   private _getColumnDragDropOptions(): IDragDropOptions {
     const { columnIndex } = this.props;
@@ -270,8 +284,8 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     }
   };
 
-  private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {
-    const { onColumnContextMenu } = this.props;
+  private _onColumnContextMenu = (ev: React.MouseEvent<HTMLElement>): void => {
+    const { onColumnContextMenu, column } = this.props;
     if (column.onColumnContextMenu) {
       column.onColumnContextMenu(column, ev);
       ev.preventDefault();
@@ -280,7 +294,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       onColumnContextMenu(column, ev);
       ev.preventDefault();
     }
-  }
+  };
 
   private _onRootMouseDown = (ev: MouseEvent): void => {
     const { isDraggable } = this.props;

@@ -50,8 +50,14 @@ exports[`Chiclet renders Medium chiclet with title, icon, onClick, and url 1`] =
         }
   >
     <img
-      height="100%"
-      width="auto"
+      className=
+
+          {
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            overflow: hidden;
+          }
     />
   </div>
   <div
@@ -163,8 +169,14 @@ exports[`Chiclet renders Xsmall Chiclet with the correct icon from a file extens
         }
   >
     <img
-      height="auto"
-      width="100%"
+      className=
+
+          {
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            overflow: hidden;
+          }
     />
   </div>
   <div
@@ -265,8 +277,14 @@ exports[`Chiclet renders Xsmall chiclet with a title, icon, onClick, and url 1`]
         }
   >
     <img
-      height="auto"
-      width="100%"
+      className=
+
+          {
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            overflow: hidden;
+          }
     />
   </div>
   <div
@@ -367,9 +385,15 @@ exports[`Chiclet renders Xsmall chiclet with title, preview, onClick, and url 1`
         }
   >
     <img
-      height="auto"
+      className=
+
+          {
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+            overflow: hidden;
+          }
       src="https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg"
-      width="100%"
     />
   </div>
   <div
@@ -475,12 +499,8 @@ exports[`Chiclet should set className on preview 1`] = `
       className=
           ms-ChicletCard-preview-custom
           {
-            align-items: center;
-            display: flex;
-            height: 100%;
-            justify-content: center;
+            height: 112px;
             object-fit: contain;
-            overflow: hidden;
             width: 100%;
           }
       src="http://placehold.it/100x100"

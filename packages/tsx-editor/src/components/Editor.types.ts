@@ -1,14 +1,24 @@
-import { Uri } from 'monaco-editor';
+import * as React from 'react';
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 
-export interface ITextModel {
-  id: string;
-  uri: Uri;
-}
+export type ITextModel = monaco.editor.ITextModel;
 
 export interface IEditorProps {
-  width: number | string;
-  height: number | string;
-  language: string;
+  /** Code to edit */
   code: string;
-  onChange: (model: ITextModel) => void;
+
+  /** Editor height */
+  height: number | string;
+
+  /** Editor width */
+  width: number | string;
+
+  /** Editor code language (default typescript) */
+  language?: string;
+
+  /** Used to get notifications of changes to the editor text */
+  onChange?: (model: ITextModel) => void;
+
+  /** Used to access the editor model. Cleared when editor component is disposed to avoid memory leaks. */
+  modelRef?: React.MutableRefObject<ITextModel>;
 }

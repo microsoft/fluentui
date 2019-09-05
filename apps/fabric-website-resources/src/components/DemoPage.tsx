@@ -1,5 +1,13 @@
 import { IDemoPageProps } from './DemoPage.types';
-import { ComponentPage, ExampleCard, ApiReferencesTableSet, PropertiesTableSet, Markdown, FeedbackList } from '@uifabric/example-app-base';
+import {
+  ComponentPage,
+  ExampleCard,
+  ApiReferencesTableSet,
+  PropertiesTableSet,
+  Markdown,
+  FeedbackList,
+  IExampleCardProps
+} from '@uifabric/example-app-base';
 import * as React from 'react';
 
 export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps => {
@@ -23,9 +31,9 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps 
             {exampleKnobs}
             {examples &&
               examples.map(example => {
-                const { view, ...cardProps } = example;
+                const { view, styles, ...cardProps } = example;
                 return (
-                  <ExampleCard key={cardProps.title} {...cardProps}>
+                  <ExampleCard key={cardProps.title} styles={styles as IExampleCardProps['styles']} {...cardProps}>
                     {view}
                   </ExampleCard>
                 );

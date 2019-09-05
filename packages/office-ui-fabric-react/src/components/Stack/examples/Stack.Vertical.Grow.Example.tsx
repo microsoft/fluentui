@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Stack } from '../Stack';
-import { IStackStyles, IStackTokens } from '../Stack.types';
-import { IStackItemStyles } from '../StackItem/StackItem.types';
+import { Stack, IStackStyles, IStackTokens, IStackItemStyles } from 'office-ui-fabric-react/lib/Stack';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 // Styles definition
@@ -28,22 +26,20 @@ const innerStackTokens: IStackTokens = {
   padding: 10
 };
 
-export class VerticalStackGrowExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    return (
-      <Stack tokens={outerStackTokens}>
-        <Stack styles={stackStyles} tokens={innerStackTokens}>
-          <Stack.Item grow={3} styles={stackItemStyles}>
-            Grow is 3
-          </Stack.Item>
-          <Stack.Item grow={2} styles={stackItemStyles}>
-            Grow is 2
-          </Stack.Item>
-          <Stack.Item grow styles={stackItemStyles}>
-            Grow is 1
-          </Stack.Item>
-        </Stack>
+export const VerticalStackGrowExample: React.FunctionComponent = () => {
+  return (
+    <Stack tokens={outerStackTokens}>
+      <Stack styles={stackStyles} tokens={innerStackTokens}>
+        <Stack.Item grow={3} styles={stackItemStyles}>
+          Grow is 3
+        </Stack.Item>
+        <Stack.Item grow={2} styles={stackItemStyles}>
+          Grow is 2
+        </Stack.Item>
+        <Stack.Item grow styles={stackItemStyles}>
+          Grow is 1
+        </Stack.Item>
       </Stack>
-    );
-  }
-}
+    </Stack>
+  );
+};
