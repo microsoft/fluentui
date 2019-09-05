@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Hacked an examplecard msicon override for a specific DetailsList Drag and Drop page in fabric website",
+  "packageName": "@uifabric/fabric-website",
+  "email": "kchau@microsoft.com",
+  "commit": "b988c64fa3b73070e9e58607d4100ba26ffa44ab",
+  "date": "2019-09-05T21:14:55.319Z"
+}
