@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 05 Sep 2019 12:34:51 GMT",
+      "tag": "office-ui-fabric-react_v7.31.0",
+      "version": "7.31.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding Preview pan to the color picker component, increasing the width and height of the color rectangle and css changes",
+            "author": "navkuma@microsoft.com",
+            "commit": "d541ebf70b7734c45fa1ccf120783b8a28b40738"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "give tooltip hoverable area an index lower than the content",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "555cf61228750ecabaad6b250b563fcff757e9c8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 12:32:15 GMT",
       "tag": "office-ui-fabric-react_v7.30.0",
       "version": "7.30.0",
