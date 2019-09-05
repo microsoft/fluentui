@@ -80,6 +80,12 @@ export interface IColorPickerProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
+
+  /**
+   * Whether to show color preview box.
+   * @defaultvalue false
+   */
+  showPreview?: boolean;
 }
 
 /**
@@ -107,9 +113,14 @@ export interface IColorPickerStyles {
   root?: IStyle;
 
   /**
-   * Style set for the panel element that contains the color rectangle.
+   * Style set for the panel element that contains the color rectangle, color sliders and inputs .
    */
   panel?: IStyle;
+
+  /**
+   * Style set for the panel element that contains the color rectangle
+   */
+  colorRectangle?: IStyle;
 
   /**
    * Style set for the table element that contains the color sliders and inputs.
@@ -130,4 +141,24 @@ export interface IColorPickerStyles {
    * Style set for each text field input.
    */
   input?: IStyle;
+
+  /**
+   * Color Square
+   */
+  colorSquare?: IStyle;
+
+  /**
+   * flexContainer
+   */
+  flexContainer?: IStyle;
+
+  /**
+   * flexSlider
+   */
+  flexSlider?: IStyle;
+
+  /**
+   * flexPreviewBox
+   */
+  flexPreviewBox?: IStyle;
 }

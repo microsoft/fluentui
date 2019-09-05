@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 04 Sep 2019 12:32:15 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Sep 2019 12:34:51 GMT and should not be manually modified.
 
+## 7.16.0
+Thu, 05 Sep 2019 12:34:51 GMT
+
+### Minor changes
+
+- slider: added dos and don'ts to the documentation (sneharoy321@gmail.com)
 ## 7.15.0
 Wed, 04 Sep 2019 12:32:15 GMT
 

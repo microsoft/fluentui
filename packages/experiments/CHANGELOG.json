@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 05 Sep 2019 12:34:51 GMT",
+      "tag": "@uifabric/experiments_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "slider: added dos and don'ts to the documentation",
+            "author": "sneharoy321@gmail.com",
+            "commit": "f037bb2de2b24231ac171e15b4faedbfc8074ec5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 12:32:15 GMT",
       "tag": "@uifabric/experiments_v7.15.0",
       "version": "7.15.0",
