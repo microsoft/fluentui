@@ -207,7 +207,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
         href={href}
         onClick={onClick}
         ref={this.props.linkRef}
-        data-selection-invoke={isSelectable || (isInvokable && selectionIndex > -1) ? true : undefined}
+        data-selection-invoke={isInvokable && selectionIndex > -1 ? true : undefined}
         className={css('ms-Tile-link', TileStyles.link)}
       >
         {content}
