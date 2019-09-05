@@ -95,7 +95,17 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonDivider: {
-      backgroundColor: p.neutralTertiaryAlt
+      backgroundColor: p.neutralTertiaryAlt,
+      position: 'absolute',
+      width: 1,
+      right: 31,
+      top: 8,
+      bottom: 8,
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'WindowText'
+        }
+      }
     },
 
     splitButtonDividerDisabled: {
@@ -213,7 +223,17 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonDivider: {
-      backgroundColor: p.neutralTertiaryAlt
+      backgroundColor: p.neutralTertiaryAlt,
+      position: 'absolute',
+      width: 1,
+      right: 31,
+      top: 8,
+      bottom: 8,
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: 'Window'
+        }
+      }
     },
 
     splitButtonMenuButton: {
@@ -262,13 +282,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonMenuIcon: {
-      color: s.primaryButtonText,
-
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'Window'
-        }
-      }
+      color: s.primaryButtonText
     },
 
     splitButtonMenuIconDisabled: {
