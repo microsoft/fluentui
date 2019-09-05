@@ -8,7 +8,6 @@ const alias = {
   '@uifabric/experiments/src': path.join(__dirname, 'src'),
   '@uifabric/experiments/lib': path.join(__dirname, 'lib'),
   '@uifabric/experiments': path.join(__dirname, 'lib'),
-  '@uifabric/fluent-theme$': path.join(__dirname, '../../packages/fluent-theme/src'),
   '@uifabric/theme-samples$': path.join(__dirname, '../../packages/theme-samples/src')
 };
 

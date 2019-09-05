@@ -19,7 +19,6 @@ module.exports = resources.createServeConfig({
       '@uifabric/experiments/src': path.join(__dirname, 'src'),
       '@uifabric/experiments/lib': path.join(__dirname, 'src'),
       '@uifabric/experiments': path.join(__dirname, 'src'),
-      '@uifabric/fluent-theme$': path.join(__dirname, '../../packages/fluent-theme/src'),
       '@uifabric/foundation$': path.join(__dirname, '../../packages/foundation/src'),
       'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
       'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
