@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { createComponent, ITokenFunction } from '@uifabric/foundation';
+// Temporary import file to experiment with next version of foundation.
+import { composed } from '@uifabric/foundation/lib/next/composed';
+import { ITokenFunction } from '@uifabric/foundation';
 import { useButtonState as state } from '../Button.state';
 import { ButtonStyles as styles, ButtonTokens } from '../Button.styles';
 import { IButtonComponent, IButtonProps, IButtonTokenReturnType, IButtonTokens, IButtonViewProps } from '../Button.types';
-import { ButtonView } from '../Button.view';
+import { ButtonSlots as slots, ButtonView as view } from '../Button.view';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { palette } = theme;
@@ -38,9 +40,11 @@ export const MessageBarButtonTokens: IButtonComponent['tokens'] = (props, theme)
   return [regularTokens, baseTokens, props.disabled && disabledTokens];
 };
 
-export const MessageBarButton: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
+export const MessageBarButton: React.StatelessComponent<IButtonProps> = composed({
   displayName: 'MessageBarButton',
+  slots,
   state,
   styles,
-  tokens: MessageBarButtonTokens
+  tokens: MessageBarButtonTokens,
+  view
 });

@@ -1,20 +1,22 @@
 import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { people } from './PeopleExampleData';
-import { SelectedPeopleList, ISelectedPeopleList } from '../SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
-import { SelectedPersona } from '../Items/SelectedPersona';
-import { ItemWithContextMenu } from '../../Items/ItemWithContextMenu';
-import { copyToClipboard } from '../../utils/copyToClipboard';
-import { EditableItem } from '../../Items/EditableItem';
-import { DefaultEditingItem } from '../../Items/subcomponents/DefaultEditingItem';
-import { EditingItemInnerFloatingPickerProps } from '../../Items/subcomponents/DefaultEditingItem';
-import { FloatingPeopleSuggestions } from '../../../FloatingSuggestions/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
-import { SuggestionsStore } from '../../../FloatingSuggestions/Suggestions/SuggestionsStore';
-import { ExampleSuggestionsModel } from './ExampleSuggestionsModel';
-import { TriggerOnContextMenu } from '../../Items/TriggerOnContextMenu';
+import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { people } from '@uifabric/example-data';
+import {
+  SelectedPeopleList,
+  ISelectedPeopleList,
+  SelectedPersona,
+  TriggerOnContextMenu,
+  ItemWithContextMenu,
+  EditableItem,
+  DefaultEditingItem,
+  EditingItemInnerFloatingPickerProps,
+  copyToClipboard
+} from '@uifabric/experiments/lib/SelectedItemsList';
+import { FloatingPeopleSuggestions } from '@uifabric/experiments/lib/FloatingPeopleSuggestions';
+import { SuggestionsStore } from '@uifabric/experiments/lib/FloatingSuggestions';
 
 export interface IPeopleSelectedItemsListExampleState {
   currentSelectedItems: IPersonaProps[];
@@ -116,5 +118,62 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
     });
 
     return copyText;
+  }
+}
+
+type IBaseExampleType = {
+  text?: string;
+  name?: string;
+};
+
+class ExampleSuggestionsModel<T extends IBaseExampleType> {
+  private suggestionsData: T[];
+
+  public constructor(data: T[]) {
+    this.suggestionsData = [...data];
+  }
+
+  public resolveSuggestions = (filterText: string, currentItems?: T[]): Promise<T[]> => {
+    let filteredItems: T[] = [];
+    if (filterText) {
+      filteredItems = this._filterItemsByText(filterText);
+      filteredItems = this._removeDuplicates(filteredItems, currentItems || []);
+    }
+
+    return this._convertResultsToPromise(filteredItems);
+  };
+
+  public removeSuggestion(item: T) {
+    const index = this.suggestionsData.indexOf(item);
+    console.log('removing', item, 'at', index);
+    if (index !== -1) {
+      this.suggestionsData.splice(index, 1);
+    }
+  }
+
+  private _filterItemsByText(filterText: string): T[] {
+    return this.suggestionsData.filter((item: T) => {
+      const itemText = item.text || item.name;
+      return itemText ? this._doesTextStartWith(itemText, filterText) : false;
+    });
+  }
+
+  private _doesTextStartWith(text: string, filterText: string): boolean {
+    return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
+  }
+
+  private _removeDuplicates(items: T[], possibleDupes: T[]): T[] {
+    return items.filter((item: T) => !this._listContainsItem(item, possibleDupes));
+  }
+
+  private _listContainsItem(item: T, Items: T[]): boolean {
+    if (!Items || !Items.length || Items.length === 0) {
+      return false;
+    }
+    return Items.filter((i: T) => (i.text || i.name) === (item.text || item.name)).length > 0;
+  }
+
+  private _convertResultsToPromise(results: T[]): Promise<T[]> {
+    return new Promise<T[]>(resolve => setTimeout(() => resolve(results), 150));
   }
 }

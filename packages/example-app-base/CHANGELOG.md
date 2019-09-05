@@ -1,7 +1,19 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 26 Aug 2019 12:30:49 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
 
+## 7.6.4
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.6.3
+Fri, 30 Aug 2019 12:30:57 GMT
+
+### Patches
+
+- Deprecate example data exports (use `@uifabric/example-data` instead) (elcraig@microsoft.com)
 ## 7.6.2
 Mon, 26 Aug 2019 12:30:49 GMT
 

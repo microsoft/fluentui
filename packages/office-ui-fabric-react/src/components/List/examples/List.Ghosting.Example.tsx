@@ -3,11 +3,10 @@ import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZ
 import { List } from 'office-ui-fabric-react/lib/List';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { ITheme, mergeStyleSets, getTheme, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
-
-export type IExampleItem = { name: string; thumbnail: string };
+import { createListItems, IExampleItem } from '@uifabric/example-data';
 
 export interface IListGhostingExampleProps {
-  items: IExampleItem[];
+  items?: IExampleItem[];
 }
 
 interface IListGhostingExampleClassObject {
@@ -72,13 +71,17 @@ const classNames: IListGhostingExampleClassObject = mergeStyleSets({
 });
 
 export class ListGhostingExample extends React.Component<IListGhostingExampleProps> {
-  public render(): JSX.Element {
-    const { items } = this.props;
+  private _items: IExampleItem[];
+  constructor(props: IListGhostingExampleProps) {
+    super(props);
+    this._items = props.items || createListItems(5000);
+  }
 
+  public render(): JSX.Element {
     return (
       <FocusZone direction={FocusZoneDirection.vertical}>
         <div className={classNames.container} data-is-scrollable={true}>
-          <List items={items} onRenderCell={this._onRenderCell} />
+          <List items={this._items} onRenderCell={this._onRenderCell} />
         </div>
       </FocusZone>
     );

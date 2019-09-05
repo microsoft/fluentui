@@ -2,6 +2,20 @@
   "name": "@uifabric/codepen-loader",
   "entries": [
     {
+      "date": "Fri, 30 Aug 2019 12:30:57 GMT",
+      "tag": "@uifabric/codepen-loader_v7.0.8",
+      "version": "7.0.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Handle example-data package",
+            "author": "elcraig@microsoft.com",
+            "commit": "b3952ba9bbc421acbc9abc240634c876e3e973c9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Aug 2019 12:29:56 GMT",
       "tag": "@uifabric/codepen-loader_v7.0.7",
       "version": "7.0.7",

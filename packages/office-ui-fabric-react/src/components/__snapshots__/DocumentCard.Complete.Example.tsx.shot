@@ -1000,7 +1000,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  font-family: "FabricMDL2Icons-3";
+                  font-family: "FabricMDL2Icons-4";
                   font-style: normal;
                   font-weight: normal;
                   speak: none;

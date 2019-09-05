@@ -2,9 +2,10 @@ import * as React from 'react';
 import { ActionButton } from '../../Button';
 import { buttonStyles } from './Nav.styles';
 import { classNamesFunction, divProperties, getNativeProps, getWindow } from '../../Utilities';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { INav, INavLink, INavLinkGroup, INavProps, INavStyleProps, INavStyles } from './Nav.types';
+import { initializeComponentRef } from 'office-ui-fabric-react/lib/Utilities';
 
 // The number pixels per indentation level for Nav links.
 const _indentationSize = 14;
@@ -33,9 +34,10 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     groups: null
   };
 
+  private _focusZone = React.createRef<IFocusZone>();
   constructor(props: INavProps) {
     super(props);
-
+    initializeComponentRef(this);
     this.state = {
       isGroupCollapsed: {},
       isLinkExpandStateChanged: false,
@@ -55,7 +57,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     const classNames = getClassNames(styles!, { theme: theme!, className, isOnTop, groups });
 
     return (
-      <FocusZone direction={FocusZoneDirection.vertical}>
+      <FocusZone direction={FocusZoneDirection.vertical} componentRef={this._focusZone}>
         <nav role="navigation" className={classNames.root} aria-label={this.props.ariaLabel}>
           {groupElements}
         </nav>
@@ -65,6 +67,19 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
   public get selectedKey(): string | undefined {
     return this.state.selectedKey;
+  }
+
+  /**
+   * Sets focus to the first tabbable item in the zone.
+   * @param forceIntoFirstElement - If true, focus will be forced into the first element, even
+   * if focus is already in the focus zone.
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   */
+  public focus(forceIntoFirstElement: boolean = false): boolean {
+    if (this._focusZone && this._focusZone.current) {
+      return this._focusZone.current.focus(forceIntoFirstElement);
+    }
+    return false;
   }
 
   private _onRenderLink = (link: INavLink): JSX.Element => {

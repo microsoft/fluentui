@@ -15,3 +15,15 @@ Once the experimental component graduates to a production release, the component
 ```js
 import { ComponentName } from 'office-ui-fabric-react/lib/ComponentName';
 ```
+
+### Testing locally
+
+To run the local demo app for this project, first follow the [setup instructions](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Setup) for the `office-ui-fabric-react` repo. Then run the following starting from the root folder (**not** the `experiments` folder):
+
+```
+yarn
+yarn buildto experiments --min
+cd packages
+cd experiments
+yarn start
+```

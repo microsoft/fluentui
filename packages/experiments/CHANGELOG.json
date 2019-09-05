@@ -2,6 +2,97 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 05 Sep 2019 12:34:51 GMT",
+      "tag": "@uifabric/experiments_v7.16.0",
+      "version": "7.16.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "slider: added dos and don'ts to the documentation",
+            "author": "sneharoy321@gmail.com",
+            "commit": "f037bb2de2b24231ac171e15b4faedbfc8074ec5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2019 12:32:15 GMT",
+      "tag": "@uifabric/experiments_v7.15.0",
+      "version": "7.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add change file for new icons snapshots",
+            "author": "pejahn@microsoft.com",
+            "commit": "44e972ea7ac581303bbc4cc931ae89bac7c719d1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2019 04:09:58 GMT",
+      "tag": "@uifabric/experiments_v7.14.1",
+      "version": "7.14.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix version file",
+            "author": "kchau@microsoft.com",
+            "commit": "fbccfaf91bfe3c77d95c614ac2cb69b7c9e1dad1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Sep 2019 12:33:56 GMT",
+      "tag": "@uifabric/experiments_v7.14.0",
+      "version": "7.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating Button to use new composed approach with slots as options.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "3946cadd372b0d10ee99e78b4025592e551f0abb"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update experiments readme to include build instructions.",
+            "author": "elcraig@microsoft.com",
+            "commit": "d0fb4fa09133189dfe947fda211557a66b0b3909"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Aug 2019 12:30:57 GMT",
+      "tag": "@uifabric/experiments_v7.13.5",
+      "version": "7.13.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix example imports and SelectedItemsList export structure",
+            "author": "elcraig@microsoft.com",
+            "commit": "b3952ba9bbc421acbc9abc240634c876e3e973c9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Aug 2019 12:30:00 GMT",
+      "tag": "@uifabric/experiments_v7.13.4",
+      "version": "7.13.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Renaming createComponent to compose and moving View inside component options object.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "1568bc0023d3a97bf8b75c3b2a3689d041d16eb0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Aug 2019 12:33:51 GMT",
       "tag": "@uifabric/experiments_v7.13.3",
       "version": "7.13.3",
