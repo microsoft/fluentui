@@ -6,7 +6,11 @@ import { mergeStyles } from 'office-ui-fabric-react';
 export const DetailsListDragDropPage: React.StatelessComponent<IControlsPageProps> = props => {
   const className = mergeStyles({
     selectors: {
-      '.ExampleCard .ms-Icon': {
+      '.ExampleCard .ms-Icon.ms-DetailsHeader-dropHintCaretStyle': {
+        display: 'none'
+      },
+
+      '.ExampleCard .ms-DetailsHeader-cell .ms-Icon': {
         display: 'none'
       }
     }
