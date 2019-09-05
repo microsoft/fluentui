@@ -1090,7 +1090,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     -webkit-font-smoothing: antialiased;
                     color: #a4262c;
                     display: inline-block;
-                    font-family: "FabricMDL2Icons-0";
+                    font-family: "FabricMDL2Icons-1";
                     font-style: normal;
                     font-weight: normal;
                     speak: none;

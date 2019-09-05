@@ -1,4 +1,6 @@
-import { IComponent, IComponentStyles, IHTMLSlot, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
+// Temporary import file to experiment with next version of foundation.
+import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
+import { IComponentStyles, IHTMLSlot, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 import { IContextualMenuSlot, IFontIconSlot } from '../../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../../Utilities';
 import { IButton, IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps, INativeButtonProps } from '../Button.types';
@@ -6,7 +8,13 @@ import { IButton, IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButto
 /**
  * {@docCategory Button}
  */
-export type IMenuButtonComponent = IComponent<IMenuButtonProps, IMenuButtonTokens, IMenuButtonStyles, IMenuButtonViewProps>;
+export type IMenuButtonComponent = IComponent<
+  IMenuButtonProps,
+  IMenuButtonTokens,
+  IMenuButtonStyles,
+  IMenuButtonViewProps,
+  IMenuButtonSlots
+>;
 
 // These types are redundant with IButtonComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241

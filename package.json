@@ -35,12 +35,12 @@
     "update-a11y": "cd apps/a11y-tests && npm run update-snapshots",
     "check-for-changed-files": "cd scripts && just-scripts check-for-modified-files",
     "prettier": "node scripts/prettier.js",
-    "generate-version-files": "cd scripts && just-scripts generate-version-files",
+    "generate-version-files": "yarn workspace @uifabric/build just generate-version-files",
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
     "dom-test": "cd apps/dom-tests && just-scripts jest-dom-with-webpack"
   },
   "devDependencies": {
-    "beachball": "^1.12.2",
+    "beachball": "^1.13.0",
     "lerna": "^3.15.0",
     "lint-staged": "^7.0.5"
   },

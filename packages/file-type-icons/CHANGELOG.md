@@ -1,7 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
 
+## 7.0.8
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
 ## 7.0.7
 Fri, 23 Aug 2019 12:35:28 GMT
 
