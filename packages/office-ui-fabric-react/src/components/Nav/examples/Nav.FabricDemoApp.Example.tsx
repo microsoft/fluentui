@@ -6,6 +6,7 @@ export const NavFabricDemoAppExample: React.FunctionComponent = () => {
     <Nav
       styles={{ root: { width: 300 } }}
       expandButtonAriaLabel="Expand or collapse"
+      ariaLabel="Nav example similiar to one found in this demo page"
       groups={[
         {
           name: 'Basic components',
