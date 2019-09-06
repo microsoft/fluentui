@@ -24,7 +24,7 @@ function getCurrentHash() {
 
 const baseBranch = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
   ? process.env.SYSTEM_PULLREQUEST_TARGETBRANCH.replace(/^refs\/heads\//, '')
-  : 'master';
+  : '6.0';
 
 module.exports = {
   projectRepo: 'OfficeDev/office-ui-fabric-react',
