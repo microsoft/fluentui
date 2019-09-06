@@ -1,0 +1,8 @@
+{
+  "comment": "Run prettier on all files",
+  "type": "none",
+  "packageName": "@uifabric/migration",
+  "email": "elcraig@microsoft.com",
+  "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1",
+  "date": "2019-09-06T08:00:05.638Z"
+}
