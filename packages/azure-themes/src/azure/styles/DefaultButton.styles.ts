@@ -2,9 +2,11 @@ import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import * as StyleConstants from '../Constants';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { FontSizes } from '../AzureType';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     root: {
@@ -15,6 +17,9 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       backgroundColor: semanticColors.buttonBackgroundDisabled,
       color: semanticColors.buttonTextDisabled,
       border: `0px`
+    },
+    rootFocused: {
+      outline: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.controlOutline}`
     },
     rootHovered: {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`
