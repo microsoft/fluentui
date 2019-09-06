@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Update change type for nuking fluent theme to \"none\"",
+  "packageName": "@uifabric/fluent-theme",
+  "email": "pejahn@microsoft.com",
+  "commit": "a5337979a304ea2c340f61546bcb661d684c97d9",
+  "date": "2019-09-06T19:51:45.742Z"
+}
