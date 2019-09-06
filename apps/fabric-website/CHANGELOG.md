@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Sep 2019 12:34:51 GMT and should not be manually modified.
 
+## 7.4.5
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Patches
+
+- Hacked an examplecard msicon override for a specific DetailsList Drag and Drop page in fabric website (kchau@microsoft.com)
 ## 7.4.4
 Wed, 04 Sep 2019 04:09:58 GMT
 
