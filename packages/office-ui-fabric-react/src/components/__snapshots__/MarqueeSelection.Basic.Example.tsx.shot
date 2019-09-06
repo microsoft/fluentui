@@ -20,6 +20,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
         }
   >
     <input
+      aria-label="Is marquee enabled"
       className=
 
           {
@@ -141,6 +142,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
         </i>
       </div>
       <span
+        aria-hidden="true"
         className=
             ms-Checkbox-text
             {
