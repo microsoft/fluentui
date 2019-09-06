@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Cherry pick of a commit from Fabric 7 master branch to Fabric 6. The commit id is a1d5d4e1fd0a7ecd854a43ab46273db36e063d02. The commit is used to fix the bug Checkbox: Fix for an accessibility bug where checkbox labels were read at two different locations in Narrator's scan mode ",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "lilijing@microsoft.com"
+}
