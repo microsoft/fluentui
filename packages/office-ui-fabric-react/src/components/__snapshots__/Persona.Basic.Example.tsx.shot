@@ -1,91 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
-<div
-  className=
-      ms-Stack
-      {
-        box-sizing: border-box;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        height: auto;
-        width: auto;
-      }
-      & > * {
-        text-overflow: ellipsis;
-      }
-      & > *:not(:first-child) {
-        margin-top: 10px;
-      }
-      & > *:not(.ms-StackItem) {
-        flex-shrink: 1;
-      }
->
-  <div
-    className=
-        ms-Checkbox
-        is-checked
-        is-enabled
-        {
-          display: flex;
-          position: relative;
-        }
-        &:hover .ms-Checkbox-checkbox {
-          background: #005a9e;
-          border-color: #005a9e;
-        }
-        &:focus .ms-Checkbox-checkbox {
-          background: #005a9e;
-          border-color: #005a9e;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-          background: Window;
-          border-color: Highlight;
-        }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
-          background: Highlight;
-        }
-        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
-          background: Highlight;
-        }
-        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
-          color: Window;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-          color: Highlight;
-        }
-        &:hover .ms-Checkbox-text {
-          color: #201f1e;
-        }
-        &:focus .ms-Checkbox-text {
-          color: #201f1e;
-        }
-  >
-    <input
-      aria-label="Include persona details"
-      checked={true}
-      className=
-
-          {
-            background: none;
-            opacity: 0;
-            position: absolute;
-          }
-          .ms-Fabric--isFocusVisible &:focus + label::before {
-            outline-offset: 2px;
-            outline: 1px solid #605e5c;
-          }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-            outline: 1px solid ActiveBorder;
-          }
-      id="checkbox-0"
-      onBlur={[Function]}
-      onChange={[Function]}
-      onFocus={[Function]}
-      type="checkbox"
-    />
-    <label
+<div>
+  <div>
+    <div
       className=
           ms-Checkbox
           is-checked
@@ -96,6 +14,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           }
     >
       <input
+        aria-label="Include persona details"
         checked={true}
         className=
 
@@ -191,23 +110,45 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 border-color: Highlight;
               }
         >
-          
-        </i>
-      </div>
-      <span
-        aria-hidden="true"
-        className=
-            ms-Checkbox-text
-            {
-              color: #323130;
-              font-size: 14px;
-              line-height: 20px;
-              margin-left: 4px;
-            }
-      >
-        Include persona details
-      </span>
-    </label>
+          <i
+            className=
+                ms-Checkbox-checkmark
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #ffffff;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-style: normal;
+                  font-weight: normal;
+                  opacity: 1;
+                  speak: none;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  color: Window;
+                }
+            data-icon-name="CheckMark"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+        <span
+          aria-hidden="true"
+          className=
+              ms-Checkbox-text
+              {
+                color: #333333;
+                font-size: 14px;
+                line-height: 20px;
+                margin-left: 4px;
+              }
+        >
+          Include persona details
+        </span>
+      </label>
+    </div>
   </div>
   <label
     className=
@@ -1893,7 +1834,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           word-wrap: break-word;
         }
   >
-    Size 48 Persona (default)
+    Size 48 Persona (default) 
   </label>
   <div
     className=
