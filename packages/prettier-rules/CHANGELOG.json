@@ -2,6 +2,20 @@
   "name": "@uifabric/prettier-rules",
   "entries": [
     {
+      "date": "Fri, 06 Sep 2019 12:24:17 GMT",
+      "tag": "@uifabric/prettier-rules_v1.0.2",
+      "version": "1.0.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.2",
       "tag": "@uifabric/prettier-rules_v1.0.2",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

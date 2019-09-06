@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 06 Sep 2019 12:24:17 GMT",
+      "tag": "office-ui-fabric-react_v6.203.3",
+      "version": "6.203.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Checkbox: Fix for an accessibility bug where checkbox labels were read at two different locations in Narrator's scan mode",
+            "author": "kisiebel@microsoft.com",
+            "commit": "7f603fcee030101df5460919af34b01c19ac6421"
+          },
+          {
+            "comment": "Cherry pick of a commit from Fabric 7 master branch to Fabric 6. The commit is used to fix the bug Checkbox: Fix for an accessibility bug where checkbox labels were read at two different locations in Narrator's scan mode",
+            "author": "lilijing@microsoft.com",
+            "commit": "178bb423d16415b106e8068382e470a6a9a43f2f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 12:24:13 GMT",
       "tag": "office-ui-fabric-react_v6.203.2",
       "version": "6.203.2",

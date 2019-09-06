@@ -2,6 +2,20 @@
   "name": "@uifabric/icons",
   "entries": [
     {
+      "date": "Fri, 06 Sep 2019 12:24:17 GMT",
+      "tag": "@uifabric/icons_v6.5.5",
+      "version": "6.5.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 12:24:13 GMT",
       "tag": "@uifabric/icons_v6.5.5",
       "version": "6.5.5",

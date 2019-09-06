@@ -2,6 +2,20 @@
   "name": "@uifabric/migration",
   "entries": [
     {
+      "date": "Fri, 06 Sep 2019 12:24:17 GMT",
+      "tag": "@uifabric/migration_v0.3.2",
+      "version": "0.3.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.2",
       "tag": "@uifabric/migration_v0.3.2",
       "date": "Mon, 22 Jul 2019 12:21:49 GMT",

@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 04 Sep 2019 12:24:13 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Sep 2019 12:24:17 GMT and should not be manually modified.
 
+## 6.203.3
+Fri, 06 Sep 2019 12:24:17 GMT
+
+### Patches
+
+- Checkbox: Fix for an accessibility bug where checkbox labels were read at two different locations in Narrator's scan mode (kisiebel@microsoft.com)
+- Cherry pick of a commit from Fabric 7 master branch to Fabric 6. The commit is used to fix the bug Checkbox: Fix for an accessibility bug where checkbox labels were read at two different locations in Narrator's scan mode (lilijing@microsoft.com)
 ## 6.203.2
 Wed, 04 Sep 2019 12:24:13 GMT
 

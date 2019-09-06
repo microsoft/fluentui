@@ -2,6 +2,20 @@
   "name": "@uifabric/test-utilities",
   "entries": [
     {
+      "date": "Fri, 06 Sep 2019 12:24:17 GMT",
+      "tag": "@uifabric/test-utilities_v6.0.8",
+      "version": "6.0.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "No comment",
+            "author": "elcraig@microsoft.com",
+            "commit": "12e6c0b16ca155792d4bfa8c968119d5efd3cd2b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 12:24:13 GMT",
       "tag": "@uifabric/test-utilities_v6.0.8",
       "version": "6.0.8",
