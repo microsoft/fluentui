@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "none",
   "comment": "Remove redundant references to Fluent theme in experiments webpack config.",
   "packageName": "@uifabric/experiments",
   "email": "pejahn@microsoft.com",
