@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Button focus outline fix and DetailsList checkbox alignment / bugfix",
+  "packageName": "@uifabric/azure-themes",
+  "email": "rykelly@microsoft.com",
+  "commit": "b1dd3924390842cbc9b17a4c9e69897c2fab0e7f",
+  "date": "2019-09-06T22:24:45.214Z"
+}
