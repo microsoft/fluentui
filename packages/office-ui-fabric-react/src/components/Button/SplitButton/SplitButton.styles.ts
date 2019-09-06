@@ -148,9 +148,8 @@ export const getStyles = memoizeFunction(
             }
           },
           [HighContrastSelector]: {
-            border: `1px solid ${palette.neutralSecondaryAlt}`,
+            border: `1px solid GrayText`,
             color: 'GrayText',
-            borderColor: 'GrayText',
             backgroundColor: 'Window'
           }
         }
@@ -167,7 +166,6 @@ export const getStyles = memoizeFunction(
       splitButtonContainerDisabled: {
         outline: 'none',
         border: 'none',
-
         selectors: {
           [HighContrastSelector]: {
             color: 'GrayText',
