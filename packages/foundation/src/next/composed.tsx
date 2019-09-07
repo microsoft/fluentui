@@ -2,11 +2,11 @@ import * as React from 'react';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { concatStyleSets, IStyleSet, ITheme } from '@uifabric/styling';
 import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric/utilities';
-import { createFactory, getSlots } from '../slots';
+import { createFactory, translateShorthand } from '../slots';
 import { assign } from '../utilities';
 import { ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken, ITokenFunction } from '../IComponent';
 import { IComponentOptions, IPartialSlotComponent, IRecompositionComponentOptions, ISlotComponent } from './IComponent';
-import { IDefaultSlotProps, ValidProps, ISlottableProps, ISlotCreator, ISlotDefinition } from '../ISlots';
+import { IDefaultSlotProps, ISlots, ISlottableProps, ISlotCreator, ISlotDefinition, ValidProps } from '../ISlots';
 import { IFoundationComponent } from './ISlots';
 
 interface IClassNamesMapNode {
@@ -229,7 +229,21 @@ export function composed<
       throw new Error(`Component ${options.displayName || (view && view.name) || ''} is missing slot definitions.`);
     }
 
-    const Slots = typeof options.slots === 'function' ? getSlots(viewProps, options.slots(viewProps)) : getSlots(viewProps, options.slots);
+    const Slots = resolveSlots(options.slots, viewProps) as ISlots<Required<TComponentSlots>>;
+
+    // Translate slot default props into their corresponding prop objects.
+
+    for (const key in Slots) {
+      if (Slots.hasOwnProperty(key)) {
+        if (viewProps.hasOwnProperty(key)) {
+          if ((Slots as any)[key].defaultProp) {
+            (viewProps as any)[key] = translateShorthand((Slots as any)[key].defaultProp, (viewProps as any)[key]);
+          } else {
+            (viewProps as any)[key] = translateShorthand('children', (viewProps as any)[key]);
+          }
+        }
+      }
+    }
 
     return view ? view(viewProps, Slots) : null;
   };

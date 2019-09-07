@@ -84,7 +84,7 @@ export function createFactory<TProps extends ValidProps, TShorthandProp extends 
       return userProps;
     }
 
-    const flattenedUserProps: TProps | undefined = _translateShorthand(defaultProp as string, userProps);
+    const flattenedUserProps: TProps | undefined = translateShorthand(defaultProp as string, userProps);
     const finalProps = _constructFinalProps(defaultStyles, componentProps, flattenedUserProps);
 
     if (userSlotOptions) {
@@ -162,7 +162,7 @@ export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots
  * @param defaultProp
  * @param slotProps
  */
-function _translateShorthand<TProps extends ValidProps, TShorthandProp extends ValidShorthand>(
+export function translateShorthand<TProps extends ValidProps, TShorthandProp extends ValidShorthand>(
   defaultProp: string,
   slotProps: ISlotProp<TProps, TShorthandProp>
 ): TProps | undefined {

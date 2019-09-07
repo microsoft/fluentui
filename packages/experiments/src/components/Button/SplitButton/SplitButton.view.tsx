@@ -22,6 +22,12 @@ export const SplitButtonSlots: ISplitButtonComponent['slots'] = props => ({
 
 export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => {
   const {
+    root,
+    button,
+    menuButton,
+    menu,
+    splitDividerContainer,
+    splitDivider,
     styles,
     tokens,
     children,
@@ -39,9 +45,6 @@ export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => 
     primaryActionDisabled,
     secondaryAriaLabel,
     onSecondaryActionClick,
-    root,
-    button,
-    menu,
     buttonRef,
     menuButtonRef,
     ...rest
@@ -81,7 +84,7 @@ export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => 
   const menuButtonTokens = { contentPadding: secondaryPadding, ...splitButtonTokens };
 
   return (
-    <slots.root>
+    <slots.root {...root}>
       <slots.button
         primary={primary}
         disabled={primaryActionDisabled || disabled}
@@ -93,12 +96,13 @@ export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => 
         onKeyDown={onKeyDown}
         tokens={buttonTokens}
         {...rest}
+        {...button}
       >
         {children}
       </slots.button>
 
-      <slots.splitDividerContainer>
-        <slots.splitDivider />
+      <slots.splitDividerContainer {...splitDividerContainer}>
+        <slots.splitDivider {...splitDivider} />
       </slots.splitDividerContainer>
 
       <slots.menuButton
@@ -111,10 +115,11 @@ export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => 
         onClick={onSecondaryActionClick}
         componentRef={menuButtonRef}
         keytipProps={keytipProps}
-        menu={menu}
         onKeyDown={onKeyDown}
         onMenuDismiss={onMenuDismiss}
         tokens={menuButtonTokens}
+        menu={menu}
+        {...menuButton}
       />
     </slots.root>
   );

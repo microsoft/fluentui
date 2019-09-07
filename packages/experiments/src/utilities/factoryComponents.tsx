@@ -11,6 +11,7 @@ import {
 // PersonaPresence is not exported by OUFR, so we have to import it directly.
 import { PersonaPresence as FabricPersonaPresence } from 'office-ui-fabric-react/lib/PersonaPresence';
 import { createFactory, ISlottableComponentType, ISlotFactory } from '../Foundation';
+import { ISlottableComponentType as INewSlottableComponentType } from '@uifabric/foundation/lib/next/ISlots';
 
 // TODO: All contents of this file should be moved to each respective component as they are converted to use slots.
 // TODO: createFactory should no longer have to be explicitly called with component options containing defaultProp.
@@ -26,7 +27,9 @@ import { createFactory, ISlottableComponentType, ISlotFactory } from '../Foundat
 
 // These wrappers will temporarily add a layer to the hierarchy (identified with displayName) until their functionality
 // can be absorbed into their respective OUFR components.
-export const FontIcon: ISlottableComponentType<IFontIconProps, string> = props => (props.iconName ? <FabricFontIcon {...props} /> : null);
+export const FontIcon: INewSlottableComponentType<IFontIconProps, string> = props =>
+  props.iconName ? <FabricFontIcon {...props} /> : null;
+FontIcon.defaultProp = 'iconName' as keyof IFontIconProps;
 FontIcon.displayName = 'FontIcon';
 const fontIconFactory: ISlotFactory<IFontIconProps, string> = createFactory(FontIcon, { defaultProp: 'iconName' });
 FontIcon.create = fontIconFactory;

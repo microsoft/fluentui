@@ -18,12 +18,16 @@ export const MenuButtonSlots: IMenuButtonComponent['slots'] = props => ({
 
 export const MenuButtonView: IMenuButtonComponent['view'] = (props, slots) => {
   const {
+    root,
+    button,
+    menuArea,
+    menu,
+    menuIcon,
     children,
     disabled,
     onClick,
     allowDisabledFocus,
     keytipProps: keytips,
-    menu,
     expanded,
     onMenuDismiss,
     menuButtonRef,
@@ -40,7 +44,7 @@ export const MenuButtonView: IMenuButtonComponent['view'] = (props, slots) => {
   }
 
   return (
-    <slots.root ref={menuButtonRef}>
+    <slots.root ref={menuButtonRef} {...root as any}>
       <slots.button
         aria-expanded={expanded}
         onClick={onClick}
@@ -48,10 +52,11 @@ export const MenuButtonView: IMenuButtonComponent['view'] = (props, slots) => {
         allowDisabledFocus={allowDisabledFocus}
         keytipProps={keytipProps}
         {...rest}
+        {...button}
       >
         {children}
-        <slots.menuArea>
-          <slots.menuIcon iconName="ChevronDown" />
+        <slots.menuArea {...menuArea}>
+          <slots.menuIcon iconName="ChevronDown" {...menuIcon} />
         </slots.menuArea>
       </slots.button>
       {expanded && (
@@ -60,6 +65,7 @@ export const MenuButtonView: IMenuButtonComponent['view'] = (props, slots) => {
           onDismiss={onMenuDismiss}
           items={[]}
           directionalHint={DirectionalHint.bottomRightEdge}
+          {...menu}
         />
       )}
     </slots.root>
