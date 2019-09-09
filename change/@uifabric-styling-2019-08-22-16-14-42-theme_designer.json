@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "Theme Designer: update Semantic Slots table to use mapping of semantic slots to palette colors from theme.",
   "packageName": "@uifabric/styling",
   "email": "aneeshak@microsoft.com",
