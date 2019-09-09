@@ -181,15 +181,18 @@ const secondaryTextStyles: ITextStyles = {
 const CompoundButtonView: ICompoundButtonComponent['view'] = (props, slots) => {
   const { children, secondaryText, ...rest } = props;
 
-  const secondaryTextChild = (
-    <Text variant="small" styles={secondaryTextStyles}>
-      {secondaryText}
-    </Text>
+  const compoundButtonChildren = (
+    <>
+      <Text variant="small" styles={secondaryTextStyles}>
+        {secondaryText}
+      </Text>
+      {children}
+    </>
   );
 
   const compoundButtonProps = {
     ...rest,
-    children: [secondaryTextChild, children]
+    children: compoundButtonChildren
   };
 
   return ButtonView(compoundButtonProps, slots);

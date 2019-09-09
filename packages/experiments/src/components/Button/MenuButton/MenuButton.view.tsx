@@ -1,6 +1,5 @@
-/** @jsx withSlots */
+import * as React from 'react';
 import { ContextualMenu, DirectionalHint, Text } from 'office-ui-fabric-react';
-import { withSlots } from '../../../Foundation';
 import { FontIcon } from '../../../utilities/factoryComponents';
 
 import { Button } from '../Button';

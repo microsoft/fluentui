@@ -231,8 +231,8 @@ export function composed<
 
     const Slots = resolveSlots(options.slots, viewProps) as ISlots<Required<TComponentSlots>>;
 
-    // Translate slot default props into their corresponding prop objects.
-
+    // Translate slot default props into their corresponding prop objects and apply styles to them.
+    const classNameKey = 'className';
     for (const key in Slots) {
       if (Slots.hasOwnProperty(key)) {
         if (viewProps.hasOwnProperty(key)) {
@@ -241,7 +241,11 @@ export function composed<
           } else {
             (viewProps as any)[key] = translateShorthand('children', (viewProps as any)[key]);
           }
+        } else {
+          (viewProps as any)[key] = {};
         }
+
+        (viewProps as any)[key][classNameKey] = finalStyles[key];
       }
     }
 

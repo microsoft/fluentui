@@ -14,7 +14,7 @@ const SpinnerButton: React.StatelessComponent<IButtonProps> = composed<IButtonPr
 });
 
 const IconAtEndButtonView: IButtonComponent['view'] = (props, slots) => {
-  const { icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
+  const { root, icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
 
   const buttonProps = getNativeProps<React.HTMLAttributes<HTMLButtonElement>>(rest, buttonProperties);
 
@@ -39,10 +39,11 @@ const IconAtEndButtonView: IButtonComponent['view'] = (props, slots) => {
       tabIndex={!disabled || allowDisabledFocus ? 0 : undefined}
       aria-label={ariaLabel}
       ref={buttonRef}
+      {...root as any}
     >
-      {content && <slots.content />}
+      {content && <slots.content {...content as any} />}
       {children}
-      {icon && <slots.icon />}
+      {icon && <slots.icon {...icon as any} />}
     </slots.root>
   );
 };
