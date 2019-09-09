@@ -5,6 +5,7 @@ export const NavNestedExample: React.FunctionComponent = () => {
   return (
     <Nav
       expandButtonAriaLabel="Expand or collapse"
+      ariaLabel="Nav example with nested links"
       groups={[
         {
           links: [

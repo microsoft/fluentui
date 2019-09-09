@@ -1,7 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Sep 2019 12:34:51 GMT and should not be manually modified.
 
+## 7.4.0
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Minor changes
+
+- Foundation: Allowing recomposition in composed. (humbertomakotomorimoto@gmail.com)
 ## 7.3.1
 Wed, 04 Sep 2019 04:09:58 GMT
 

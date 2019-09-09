@@ -21,6 +21,10 @@ module.exports = resources.createServeConfig(
       'react-dom': 'ReactDOM'
     },
 
+    optimization: {
+      removeAvailableModules: false
+    },
+
     resolve: {
       alias: {
         '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
