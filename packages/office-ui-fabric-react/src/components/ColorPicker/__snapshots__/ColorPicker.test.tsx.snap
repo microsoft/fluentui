@@ -104,114 +104,130 @@ exports[`ColorPicker renders correctly 1`] = `
     </div>
     <div
       className=
-          ms-ColorPicker-slider
-          is-hue
+
           {
-            border-radius: 2px;
-            border: 1px solid #edebe9;
-            box-sizing: border-box;
-            height: 20px;
-            margin-bottom: 8px;
-            position: relative;
+            display: flex;
           }
-      onMouseDown={[Function]}
-      style={
-        Object {
-          "background": "linear-gradient(to left,red 0,#f09 10%,#cd00ff 20%,#3200ff 30%,#06f 40%,#00fffd 50%,#0f6 60%,#35ff00 70%,#cdff00 80%,#f90 90%,red 100%)",
-        }
-      }
     >
       <div
         className=
-            ms-ColorPicker-sliderOverlay
+
             {
-              bottom: 0px;
-              content: ;
-              left: 0px;
-              position: absolute;
-              right: 0px;
-              top: 0px;
+              flex-grow: 1;
             }
-      />
-      <div
-        className=
-            ms-ColorPicker-thumb
-            is-slider
-            {
-              background: white;
-              border-radius: 50%;
-              border: 1px solid #8a8886;
-              box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
-              height: 20px;
-              position: absolute;
-              top: 50%;
-              transform: translate(-50%, -50%);
-              width: 20px;
+      >
+        <div
+          className=
+              ms-ColorPicker-slider
+              is-hue
+              {
+                border-radius: 2px;
+                border: 1px solid #edebe9;
+                box-sizing: border-box;
+                height: 20px;
+                margin-bottom: 8px;
+                position: relative;
+              }
+          onMouseDown={[Function]}
+          style={
+            Object {
+              "background": "linear-gradient(to left,red 0,#f09 10%,#cd00ff 20%,#3200ff 30%,#06f 40%,#00fffd 50%,#0f6 60%,#35ff00 70%,#cdff00 80%,#f90 90%,red 100%)",
             }
-        style={
-          Object {
-            "left": "58.4958217270195%",
           }
-        }
-      />
-    </div>
-    <div
-      className=
-          ms-ColorPicker-slider
-          is-alpha
-          {
-            border-radius: 2px;
-            border: 1px solid #edebe9;
-            box-sizing: border-box;
-            height: 20px;
-            margin-bottom: 8px;
-            position: relative;
-          }
-      onMouseDown={[Function]}
-      style={
-        Object {
-          "backgroundImage": "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==)",
-        }
-      }
-    >
-      <div
-        className=
-            ms-ColorPicker-sliderOverlay
-            {
-              bottom: 0px;
-              content: ;
-              left: 0px;
-              position: absolute;
-              right: 0px;
-              top: 0px;
+        >
+          <div
+            className=
+                ms-ColorPicker-sliderOverlay
+                {
+                  bottom: 0px;
+                  content: ;
+                  left: 0px;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                }
+          />
+          <div
+            className=
+                ms-ColorPicker-thumb
+                is-slider
+                {
+                  background: white;
+                  border-radius: 50%;
+                  border: 1px solid #8a8886;
+                  box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+                  height: 20px;
+                  position: absolute;
+                  top: 50%;
+                  transform: translate(-50%, -50%);
+                  width: 20px;
+                }
+            style={
+              Object {
+                "left": "58.4958217270195%",
+              }
             }
-        style={
-          Object {
-            "background": "linear-gradient(to right, transparent 0, #abcdef 100%)",
-          }
-        }
-      />
-      <div
-        className=
-            ms-ColorPicker-thumb
-            is-slider
-            {
-              background: white;
-              border-radius: 50%;
-              border: 1px solid #8a8886;
-              box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
-              height: 20px;
-              position: absolute;
-              top: 50%;
-              transform: translate(-50%, -50%);
-              width: 20px;
+          />
+        </div>
+        <div
+          className=
+              ms-ColorPicker-slider
+              is-alpha
+              {
+                border-radius: 2px;
+                border: 1px solid #edebe9;
+                box-sizing: border-box;
+                height: 20px;
+                margin-bottom: 8px;
+                position: relative;
+              }
+          onMouseDown={[Function]}
+          style={
+            Object {
+              "backgroundImage": "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJUlEQVQYV2N89erVfwY0ICYmxoguxjgUFKI7GsTH5m4M3w1ChQC1/Ca8i2n1WgAAAABJRU5ErkJggg==)",
             }
-        style={
-          Object {
-            "left": "100%",
           }
-        }
-      />
+        >
+          <div
+            className=
+                ms-ColorPicker-sliderOverlay
+                {
+                  bottom: 0px;
+                  content: ;
+                  left: 0px;
+                  position: absolute;
+                  right: 0px;
+                  top: 0px;
+                }
+            style={
+              Object {
+                "background": "linear-gradient(to right, transparent 0, #abcdef 100%)",
+              }
+            }
+          />
+          <div
+            className=
+                ms-ColorPicker-thumb
+                is-slider
+                {
+                  background: white;
+                  border-radius: 50%;
+                  border: 1px solid #8a8886;
+                  box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+                  height: 20px;
+                  position: absolute;
+                  top: 50%;
+                  transform: translate(-50%, -50%);
+                  width: 20px;
+                }
+            style={
+              Object {
+                "left": "100%",
+              }
+            }
+          />
+        </div>
+      </div>
     </div>
     <table
       cellPadding="0"

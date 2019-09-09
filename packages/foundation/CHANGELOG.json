@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "date": "Fri, 06 Sep 2019 12:34:51 GMT",
+      "tag": "@uifabric/foundation_v7.4.0",
+      "version": "7.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Foundation: Allowing recomposition in composed.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "09f5eec64d1270f1294208cacfa07a1da757effe"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 04:09:58 GMT",
       "tag": "@uifabric/foundation_v7.3.1",
       "version": "7.3.1",

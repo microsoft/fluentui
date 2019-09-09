@@ -1,7 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 04 Sep 2019 12:32:15 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Sep 2019 12:34:51 GMT and should not be manually modified.
 
+## 7.16.1
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Patches
+
+- added isSelectable prop for Tile.types; unshow checkbox if item is not selectable (huaxi@microsoft.com)
+- Foundation: Allowing recomposition in composed. (humbertomakotomorimoto@gmail.com)
+## 7.16.0
+Thu, 05 Sep 2019 12:34:51 GMT
+
+### Minor changes
+
+- slider: added dos and don'ts to the documentation (sneharoy321@gmail.com)
 ## 7.15.0
 Wed, 04 Sep 2019 12:32:15 GMT
 
