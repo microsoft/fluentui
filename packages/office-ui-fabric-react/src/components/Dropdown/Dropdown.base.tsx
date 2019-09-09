@@ -303,7 +303,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   }
 
   public focus(shouldOpenOnFocus?: boolean): void {
-    if (this._dropDown.current && this._dropDown.current.tabIndex !== -1) {
+    if (this._dropDown.current) {
       this._dropDown.current.focus();
 
       if (shouldOpenOnFocus) {

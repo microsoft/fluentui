@@ -1,3 +1,6 @@
+import { IStyleFunctionOrObject } from '../Utilities';
+import { ITheme, IStyle } from '../Styling';
+
 export interface IExample {
   /** Title of the example */
   title: string;
@@ -12,6 +15,9 @@ export interface IExample {
 
   /** JS String for codepen of the example */
   codepenJS?: string;
+
+  /** Custom styles. Partial version of `IExampleCardProps['styles']`. */
+  styles?: IStyleFunctionOrObject<{ theme?: ITheme }, { root: IStyle }>;
 }
 
 export interface IDocPageProps {

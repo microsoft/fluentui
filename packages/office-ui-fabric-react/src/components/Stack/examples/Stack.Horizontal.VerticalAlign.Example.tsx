@@ -21,31 +21,29 @@ const itemStyles: React.CSSProperties = {
 // Tokens definition
 const stackTokens: IStackTokens = { childrenGap: 5 };
 
-export class HorizontalStackVerticalAlignExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    return (
-      <Stack tokens={stackTokens}>
-        <span>Top-aligned</span>
-        <Stack horizontal verticalAlign="start" styles={stackStyles}>
-          <span style={itemStyles}>1</span>
-          <span style={itemStyles}>2</span>
-          <span style={itemStyles}>3</span>
-        </Stack>
-
-        <span>Vertically centered</span>
-        <Stack horizontal verticalAlign="center" styles={stackStyles}>
-          <span style={itemStyles}>1</span>
-          <span style={itemStyles}>2</span>
-          <span style={itemStyles}>3</span>
-        </Stack>
-
-        <span>Bottom-aligned</span>
-        <Stack horizontal verticalAlign="end" styles={stackStyles}>
-          <span style={itemStyles}>1</span>
-          <span style={itemStyles}>2</span>
-          <span style={itemStyles}>3</span>
-        </Stack>
+export const HorizontalStackVerticalAlignExample: React.FunctionComponent = () => {
+  return (
+    <Stack tokens={stackTokens}>
+      <span>Top-aligned</span>
+      <Stack horizontal verticalAlign="start" styles={stackStyles}>
+        <span style={itemStyles}>1</span>
+        <span style={itemStyles}>2</span>
+        <span style={itemStyles}>3</span>
       </Stack>
-    );
-  }
-}
+
+      <span>Vertically centered</span>
+      <Stack horizontal verticalAlign="center" styles={stackStyles}>
+        <span style={itemStyles}>1</span>
+        <span style={itemStyles}>2</span>
+        <span style={itemStyles}>3</span>
+      </Stack>
+
+      <span>Bottom-aligned</span>
+      <Stack horizontal verticalAlign="end" styles={stackStyles}>
+        <span style={itemStyles}>1</span>
+        <span style={itemStyles}>2</span>
+        <span style={itemStyles}>3</span>
+      </Stack>
+    </Stack>
+  );
+};

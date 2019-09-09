@@ -1,27 +1,34 @@
 import * as monaco from 'monaco-editor';
 import { TypeScriptWorker, EmitOutput } from './monacoTypescriptWorker.d';
-import { ITextModel } from '../components/Editor.types';
 import { transformExample } from './exampleTransform';
 
 export interface ITranspiledOutput {
   outputString?: string;
-  error?: string;
+  error?: string | string[];
 }
 
-export async function transpile(model: ITextModel): Promise<ITranspiledOutput> {
+// This is intentionally not an async function, because debugging within transpiled async functions
+// is next to impossible.
+export function transpile(model: monaco.editor.ITextModel): Promise<ITranspiledOutput> {
   const transpiledOutput: ITranspiledOutput = { error: undefined, outputString: undefined };
-  try {
-    const makeWorker = await monaco.languages.typescript.getTypeScriptWorker();
-    const worker: TypeScriptWorker = await makeWorker(model.uri);
-    const output: EmitOutput = await worker.getEmitOutput(model.uri.toString());
-
-    transpiledOutput.outputString = output.outputFiles[0].text;
-
-    return transpiledOutput;
-  } catch (ex) {
-    transpiledOutput.error = ex.message;
-    return transpiledOutput;
-  }
+  const filename = model.uri.toString();
+  return monaco.languages.typescript
+    .getTypeScriptWorker()
+    .then(makeWorker => makeWorker(model.uri))
+    .then((worker: TypeScriptWorker) => {
+      return worker.getEmitOutput(filename).then((output: EmitOutput) => {
+        if (output.emitSkipped) {
+          transpiledOutput.error = 'Error transpiling code';
+        } else {
+          transpiledOutput.outputString = output.outputFiles[0].text;
+        }
+        return transpiledOutput;
+      });
+    })
+    .catch(ex => {
+      transpiledOutput.error = ex.message;
+      return transpiledOutput;
+    });
 }
 
 /**
@@ -41,6 +48,8 @@ export function evalCode(code: string, divId: string): string | undefined {
       return transfromedExample.error;
     }
   } catch (ex) {
+    // Log the error to the console so people can see the full stack/etc if they want
+    console.error(ex);
     return ex.message;
   }
   return undefined;

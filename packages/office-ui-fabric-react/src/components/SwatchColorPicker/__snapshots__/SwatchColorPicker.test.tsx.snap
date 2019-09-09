@@ -125,16 +125,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
-                &:hover, &:active, &:focus {
+                &:hover {
                   background-color: #ffffff;
                   border: 2px solid #edebe9;
+                  color: #0078d4;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
+                }
+                &:active {
+                  background-color: #ffffff;
+                  border: 2px solid #edebe9;
+                  color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
                   padding-right: 2px;
                   padding-top: 2px;
                 }
                 &:focus {
+                  background-color: #ffffff;
                   border-color: #ffffff;
+                  border: 2px solid #edebe9;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -147,15 +159,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                &:hover {
-                  color: #0078d4;
-                }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
-                }
-                &:active {
-                  color: #000000;
                 }
             data-index={0}
             data-is-focusable={true}
@@ -174,7 +180,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="green"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -184,6 +190,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -202,7 +209,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -288,16 +295,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
-                &:hover, &:active, &:focus {
+                &:hover {
                   background-color: #ffffff;
                   border: 2px solid #edebe9;
+                  color: #0078d4;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
+                }
+                &:active {
+                  background-color: #ffffff;
+                  border: 2px solid #edebe9;
+                  color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
                   padding-right: 2px;
                   padding-top: 2px;
                 }
                 &:focus {
+                  background-color: #ffffff;
                   border-color: #ffffff;
+                  border: 2px solid #edebe9;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -310,15 +329,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                &:hover {
-                  color: #0078d4;
-                }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
-                }
-                &:active {
-                  color: #000000;
                 }
             data-index={1}
             data-is-focusable={true}
@@ -337,7 +350,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="orange"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -347,6 +360,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -365,7 +379,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -451,16 +465,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
-                &:hover, &:active, &:focus {
+                &:hover {
                   background-color: #ffffff;
                   border: 2px solid #edebe9;
+                  color: #0078d4;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
+                }
+                &:active {
+                  background-color: #ffffff;
+                  border: 2px solid #edebe9;
+                  color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
                   padding-right: 2px;
                   padding-top: 2px;
                 }
                 &:focus {
+                  background-color: #ffffff;
                   border-color: #ffffff;
+                  border: 2px solid #edebe9;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -473,15 +499,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                &:hover {
-                  color: #0078d4;
-                }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
-                }
-                &:active {
-                  color: #000000;
                 }
             data-index={2}
             data-is-focusable={true}
@@ -500,7 +520,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="blue"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -510,6 +530,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -528,7 +549,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -614,16 +635,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
-                &:hover, &:active, &:focus {
+                &:hover {
                   background-color: #ffffff;
                   border: 2px solid #edebe9;
+                  color: #0078d4;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
+                }
+                &:active {
+                  background-color: #ffffff;
+                  border: 2px solid #edebe9;
+                  color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
                   padding-right: 2px;
                   padding-top: 2px;
                 }
                 &:focus {
+                  background-color: #ffffff;
                   border-color: #ffffff;
+                  border: 2px solid #edebe9;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -636,15 +669,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                &:hover {
-                  color: #0078d4;
-                }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
-                }
-                &:active {
-                  color: #000000;
                 }
             data-index={3}
             data-is-focusable={true}
@@ -663,7 +690,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="red"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -673,6 +700,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -691,7 +719,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
       </tr>
@@ -781,16 +809,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
-                &:hover, &:active, &:focus {
+                &:hover {
                   background-color: #ffffff;
                   border: 2px solid #edebe9;
+                  color: #0078d4;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
+                }
+                &:active {
+                  background-color: #ffffff;
+                  border: 2px solid #edebe9;
+                  color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
                   padding-right: 2px;
                   padding-top: 2px;
                 }
                 &:focus {
+                  background-color: #ffffff;
                   border-color: #ffffff;
+                  border: 2px solid #edebe9;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -803,15 +843,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                &:hover {
-                  color: #0078d4;
-                }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
-                }
-                &:active {
-                  color: #000000;
                 }
             data-index={4}
             data-is-focusable={true}
@@ -830,7 +864,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="green"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -840,6 +874,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -858,7 +893,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -944,16 +979,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
-                &:hover, &:active, &:focus {
+                &:hover {
                   background-color: #ffffff;
                   border: 2px solid #edebe9;
+                  color: #0078d4;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
+                }
+                &:active {
+                  background-color: #ffffff;
+                  border: 2px solid #edebe9;
+                  color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
                   padding-right: 2px;
                   padding-top: 2px;
                 }
                 &:focus {
+                  background-color: #ffffff;
                   border-color: #ffffff;
+                  border: 2px solid #edebe9;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -966,15 +1013,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                &:hover {
-                  color: #0078d4;
-                }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
-                }
-                &:active {
-                  color: #000000;
                 }
             data-index={5}
             data-is-focusable={true}
@@ -993,7 +1034,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="orange"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -1003,6 +1044,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1021,7 +1063,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -1107,16 +1149,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
-                &:hover, &:active, &:focus {
+                &:hover {
                   background-color: #ffffff;
                   border: 2px solid #edebe9;
+                  color: #0078d4;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
+                }
+                &:active {
+                  background-color: #ffffff;
+                  border: 2px solid #edebe9;
+                  color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
                   padding-right: 2px;
                   padding-top: 2px;
                 }
                 &:focus {
+                  background-color: #ffffff;
                   border-color: #ffffff;
+                  border: 2px solid #edebe9;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1129,15 +1183,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                &:hover {
-                  color: #0078d4;
-                }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
-                }
-                &:active {
-                  color: #000000;
                 }
             data-index={6}
             data-is-focusable={true}
@@ -1156,7 +1204,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="blue"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -1166,6 +1214,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1184,7 +1233,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -1270,16 +1319,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
-                &:hover, &:active, &:focus {
+                &:hover {
                   background-color: #ffffff;
                   border: 2px solid #edebe9;
+                  color: #0078d4;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
+                }
+                &:active {
+                  background-color: #ffffff;
+                  border: 2px solid #edebe9;
+                  color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
                   padding-right: 2px;
                   padding-top: 2px;
                 }
                 &:focus {
+                  background-color: #ffffff;
                   border-color: #ffffff;
+                  border: 2px solid #edebe9;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1292,15 +1353,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                &:hover {
-                  color: #0078d4;
-                }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
-                }
-                &:active {
-                  color: #000000;
                 }
             data-index={7}
             data-is-focusable={true}
@@ -1319,7 +1374,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="red"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -1329,6 +1384,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1347,7 +1403,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
       </tr>
@@ -1437,16 +1493,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
-                &:hover, &:active, &:focus {
+                &:hover {
                   background-color: #ffffff;
                   border: 2px solid #edebe9;
+                  color: #0078d4;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
+                }
+                &:active {
+                  background-color: #ffffff;
+                  border: 2px solid #edebe9;
+                  color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
                   padding-right: 2px;
                   padding-top: 2px;
                 }
                 &:focus {
+                  background-color: #ffffff;
                   border-color: #ffffff;
+                  border: 2px solid #edebe9;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1459,15 +1527,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                &:hover {
-                  color: #0078d4;
-                }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
-                }
-                &:active {
-                  color: #000000;
                 }
             data-index={8}
             data-is-focusable={true}
@@ -1486,7 +1548,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="black"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -1496,6 +1558,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1514,7 +1577,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -1600,16 +1663,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
-                &:hover, &:active, &:focus {
+                &:hover {
                   background-color: #ffffff;
                   border: 2px solid #edebe9;
+                  color: #0078d4;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
+                }
+                &:active {
+                  background-color: #ffffff;
+                  border: 2px solid #edebe9;
+                  color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
                   padding-right: 2px;
                   padding-top: 2px;
                 }
                 &:focus {
+                  background-color: #ffffff;
                   border-color: #ffffff;
+                  border: 2px solid #edebe9;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1622,15 +1697,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                &:hover {
-                  color: #0078d4;
-                }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
-                }
-                &:active {
-                  color: #000000;
                 }
             data-index={9}
             data-is-focusable={true}
@@ -1649,7 +1718,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="grey"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -1659,6 +1728,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1677,7 +1747,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -1763,16 +1833,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
-                &:hover, &:active, &:focus {
+                &:hover {
                   background-color: #ffffff;
                   border: 2px solid #edebe9;
+                  color: #0078d4;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
+                }
+                &:active {
+                  background-color: #ffffff;
+                  border: 2px solid #edebe9;
+                  color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
                   padding-right: 2px;
                   padding-top: 2px;
                 }
                 &:focus {
+                  background-color: #ffffff;
                   border-color: #ffffff;
+                  border: 2px solid #edebe9;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1785,15 +1867,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                &:hover {
-                  color: #0078d4;
-                }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
-                }
-                &:active {
-                  color: #000000;
                 }
             data-index={10}
             data-is-focusable={true}
@@ -1812,7 +1888,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="white"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -1822,6 +1898,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -1840,7 +1917,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
         <td
@@ -1926,16 +2003,28 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
-                &:hover, &:active, &:focus {
+                &:hover {
                   background-color: #ffffff;
                   border: 2px solid #edebe9;
+                  color: #0078d4;
+                  padding-bottom: 2px;
+                  padding-left: 2px;
+                  padding-right: 2px;
+                  padding-top: 2px;
+                }
+                &:active {
+                  background-color: #ffffff;
+                  border: 2px solid #edebe9;
+                  color: #000000;
                   padding-bottom: 2px;
                   padding-left: 2px;
                   padding-right: 2px;
                   padding-top: 2px;
                 }
                 &:focus {
+                  background-color: #ffffff;
                   border-color: #ffffff;
+                  border: 2px solid #edebe9;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1948,15 +2037,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                &:hover {
-                  color: #0078d4;
-                }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
-                }
-                &:active {
-                  color: #000000;
                 }
             data-index={11}
             data-is-focusable={true}
@@ -1975,7 +2058,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             title="something"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -1985,6 +2068,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                     height: 100%;
                     justify-content: flex-start;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <svg
                 className=
@@ -2003,7 +2087,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   r="50%"
                 />
               </svg>
-            </div>
+            </span>
           </button>
         </td>
       </tr>

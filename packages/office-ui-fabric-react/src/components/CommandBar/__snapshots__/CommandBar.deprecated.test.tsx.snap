@@ -163,7 +163,7 @@ exports[`CommandBar renders commands correctly 1`] = `
               role="menuitem"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -173,18 +173,21 @@ exports[`CommandBar renders commands correctly 1`] = `
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -196,9 +199,9 @@ exports[`CommandBar renders commands correctly 1`] = `
                     id="id__1"
                   >
                     asdf
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
           <div
@@ -304,7 +307,7 @@ exports[`CommandBar renders commands correctly 1`] = `
               role="menuitem"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -314,18 +317,21 @@ exports[`CommandBar renders commands correctly 1`] = `
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -337,9 +343,9 @@ exports[`CommandBar renders commands correctly 1`] = `
                     id="id__4"
                   >
                     asdf
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
         </div>

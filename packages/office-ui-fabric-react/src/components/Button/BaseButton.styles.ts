@@ -100,9 +100,13 @@ export const getStyles = memoizeFunction(
         justifyContent: 'center',
         alignItems: 'center'
       },
+      description: {
+        display: 'block'
+      },
 
       textContainer: {
-        flexGrow: 1
+        flexGrow: 1,
+        display: 'block'
       },
 
       icon: iconStyle(fonts.mediumPlus.fontSize),
@@ -111,7 +115,8 @@ export const getStyles = memoizeFunction(
 
       label: {
         margin: '0 4px',
-        lineHeight: '100%'
+        lineHeight: '100%',
+        display: 'block'
       },
 
       screenReaderText: hiddenContentStyle

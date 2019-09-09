@@ -81,7 +81,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
     onMouseUp={[Function]}
     type="button"
   >
-    <div
+    <span
       className=
           ms-Button-flexContainer
           {
@@ -91,18 +91,21 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             height: 100%;
             justify-content: center;
           }
+      data-automationid="splitbuttonprimary"
     >
-      <div
+      <span
         className=
             ms-Button-textContainer
             {
+              display: block;
               flex-grow: 1;
             }
       >
-        <div
+        <span
           className=
               ms-Button-label
               {
+                display: block;
                 font-weight: 600;
                 line-height: 100%;
                 margin-bottom: 0;
@@ -113,9 +116,9 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           id="id__0"
         >
           Randomize
-        </div>
-      </div>
-    </div>
+        </span>
+      </span>
+    </span>
   </button>
   <div
     onBlur={[Function]}
@@ -407,7 +410,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -417,18 +420,21 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
-          <div
+          <span
             className=
                 ms-Button-textContainer
                 {
+                  display: block;
                   flex-grow: 1;
                 }
           >
-            <div
+            <span
               className=
                   ms-Button-label
                   {
+                    display: block;
                     font-weight: 600;
                     line-height: 100%;
                     margin-bottom: 0;
@@ -439,9 +445,9 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               id="id__4"
             >
               Zone 1 button
-            </div>
-          </div>
-        </div>
+            </span>
+          </span>
+        </span>
       </button>
       <div
         onBlur={[Function]}
@@ -734,7 +740,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             onMouseUp={[Function]}
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -744,18 +750,21 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
-              <div
+              <span
                 className=
                     ms-Button-textContainer
                     {
+                      display: block;
                       flex-grow: 1;
                     }
               >
-                <div
+                <span
                   className=
                       ms-Button-label
                       {
+                        display: block;
                         font-weight: 600;
                         line-height: 100%;
                         margin-bottom: 0;
@@ -766,9 +775,9 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   id="id__8"
                 >
                   Zone 2 button
-                </div>
-              </div>
-            </div>
+                </span>
+              </span>
+            </span>
           </button>
           <div
             onBlur={[Function]}
@@ -1061,7 +1070,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 onMouseUp={[Function]}
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1071,18 +1080,21 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: 600;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -1093,9 +1105,9 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                       id="id__12"
                     >
                       Zone 3 button
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
             </div>
             <div
@@ -1401,7 +1413,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 onMouseUp={[Function]}
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1411,18 +1423,21 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: 600;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -1433,9 +1448,9 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                       id="id__16"
                     >
                       Zone 4 button
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
             </div>
             <div
@@ -1753,7 +1768,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
             onMouseUp={[Function]}
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -1763,18 +1778,21 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
-              <div
+              <span
                 className=
                     ms-Button-textContainer
                     {
+                      display: block;
                       flex-grow: 1;
                     }
               >
-                <div
+                <span
                   className=
                       ms-Button-label
                       {
+                        display: block;
                         font-weight: 600;
                         line-height: 100%;
                         margin-bottom: 0;
@@ -1785,9 +1803,9 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   id="id__20"
                 >
                   Zone 5 button
-                </div>
-              </div>
-            </div>
+                </span>
+              </span>
+            </span>
           </button>
         </div>
         <div

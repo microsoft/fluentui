@@ -36,11 +36,9 @@ steps:
       yarn
     displayName: yarn
 
-  # TODO: disable this step until a proper fix to this is found
-  #       root cause: this step is generating a set of changes that are not checked in and not accounted for in the change files
-  # - script: |
-  #     npm run generate-version-files
-  #   displayName: npm run generate-version-files
+  - script: |
+      yarn generate-version-files
+    displayName: yarn generate-version-files
 
   - script: |
       yarn build --production

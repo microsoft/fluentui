@@ -10,6 +10,118 @@
   },
   "glyphs": [
     {
+      "name": "CaretBottomRightSolid8",
+      "unicode": "F122"
+    },
+    {
+      "name": "FolderHorizontal",
+      "unicode": "F12B"
+    },
+    {
+      "name": "MicrosoftStaffhubLogo",
+      "unicode": "F130"
+    },
+    {
+      "name": "GiftboxOpen",
+      "unicode": "F133"
+    },
+    {
+      "name": "StatusCircleOuter",
+      "unicode": "F136"
+    },
+    {
+      "name": "StatusCircleInner",
+      "unicode": "F137"
+    },
+    {
+      "name": "StatusCircleRing",
+      "unicode": "F138"
+    },
+    {
+      "name": "StatusTriangleOuter",
+      "unicode": "F139"
+    },
+    {
+      "name": "StatusTriangleInner",
+      "unicode": "F13A"
+    },
+    {
+      "name": "StatusTriangleExclamation",
+      "unicode": "F13B"
+    },
+    {
+      "name": "StatusCircleExclamation",
+      "unicode": "F13C"
+    },
+    {
+      "name": "StatusCircleErrorX",
+      "unicode": "F13D"
+    },
+    {
+      "name": "StatusCircleInfo",
+      "unicode": "F13F"
+    },
+    {
+      "name": "StatusCircleBlock",
+      "unicode": "F140"
+    },
+    {
+      "name": "StatusCircleBlock2",
+      "unicode": "F141"
+    },
+    {
+      "name": "StatusCircleQuestionMark",
+      "unicode": "F142"
+    },
+    {
+      "name": "StatusCircleSync",
+      "unicode": "F143"
+    },
+    {
+      "name": "Toll",
+      "unicode": "F160"
+    },
+    {
+      "name": "ExploreContentSingle",
+      "unicode": "F164"
+    },
+    {
+      "name": "CollapseContent",
+      "unicode": "F165"
+    },
+    {
+      "name": "CollapseContentSingle",
+      "unicode": "F166"
+    },
+    {
+      "name": "InfoSolid",
+      "unicode": "F167"
+    },
+    {
+      "name": "GroupList",
+      "unicode": "F168"
+    },
+    {
+      "name": "ProgressRingDots",
+      "unicode": "F16A"
+    },
+    {
+      "name": "CaloriesAdd",
+      "unicode": "F172"
+    },
+    {
+      "name": "BranchFork",
+      "unicode": "F173"
+    },
+    {
+      "name": "AddHome",
+      "unicode": "F17B"
+    },
+    {
+      "name": "AddWork",
+      "unicode": "F17C"
+    },
+    {
       "name": "MobileReport",
       "unicode": "F18A"
     },
@@ -296,118 +408,6 @@
     {
       "name": "FiveTileGrid",
       "unicode": "F274"
-    },
-    {
-      "name": "FocalPoint",
-      "unicode": "F277"
-    },
-    {
-      "name": "RingerRemove",
-      "unicode": "F279"
-    },
-    {
-      "name": "TeamsLogoInverse",
-      "unicode": "F27A"
-    },
-    {
-      "name": "TeamsLogo",
-      "unicode": "F27B"
-    },
-    {
-      "name": "TeamsLogoFill",
-      "unicode": "F27C"
-    },
-    {
-      "name": "SkypeForBusinessLogoFill",
-      "unicode": "F27D"
-    },
-    {
-      "name": "SharepointLogo",
-      "unicode": "F27E"
-    },
-    {
-      "name": "SharepointLogoFill",
-      "unicode": "F27F"
-    },
-    {
-      "name": "DelveLogo",
-      "unicode": "F280"
-    },
-    {
-      "name": "DelveLogoFill",
-      "unicode": "F281"
-    },
-    {
-      "name": "OfficeVideoLogo",
-      "unicode": "F282"
-    },
-    {
-      "name": "OfficeVideoLogoFill",
-      "unicode": "F283"
-    },
-    {
-      "name": "ExchangeLogo",
-      "unicode": "F284"
-    },
-    {
-      "name": "ExchangeLogoFill",
-      "unicode": "F285"
-    },
-    {
-      "name": "Signin",
-      "unicode": "F286"
-    },
-    {
-      "name": "DocumentApproval",
-      "unicode": "F28B"
-    },
-    {
-      "name": "CloneToDesktop",
-      "unicode": "F28C"
-    },
-    {
-      "name": "InstallToDrive",
-      "unicode": "F28D"
-    },
-    {
-      "name": "Blur",
-      "unicode": "F28E"
-    },
-    {
-      "name": "Build",
-      "unicode": "F28F"
-    },
-    {
-      "name": "ProcessMetaTask",
-      "unicode": "F290"
-    },
-    {
-      "name": "BranchFork2",
-      "unicode": "F291"
-    },
-    {
-      "name": "BranchLocked",
-      "unicode": "F292"
-    },
-    {
-      "name": "BranchCommit",
-      "unicode": "F293"
-    },
-    {
-      "name": "BranchCompare",
-      "unicode": "F294"
-    },
-    {
-      "name": "BranchMerge",
-      "unicode": "F295"
-    },
-    {
-      "name": "BranchPullRequest",
-      "unicode": "F296"
-    },
-    {
-      "name": "BranchSearch",
-      "unicode": "F297"
     }
   ]
 }

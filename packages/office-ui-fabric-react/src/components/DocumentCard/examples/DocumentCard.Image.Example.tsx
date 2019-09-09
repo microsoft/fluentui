@@ -9,7 +9,7 @@ import {
   IDocumentCardActivityPerson
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
-import { TestImages } from '../../../common/TestImages';
+import { TestImages } from '@uifabric/example-data';
 
 const people: IDocumentCardActivityPerson[] = [
   { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },

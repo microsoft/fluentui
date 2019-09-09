@@ -160,7 +160,7 @@ exports[`Button renders a Button inside a CommandBar correctly 1`] = `
               role="menuitem"
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -170,6 +170,7 @@ exports[`Button renders a Button inside a CommandBar correctly 1`] = `
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -205,17 +206,19 @@ exports[`Button renders a Button inside a CommandBar correctly 1`] = `
                 >
                   
                 </i>
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: normal;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -227,9 +230,9 @@ exports[`Button renders a Button inside a CommandBar correctly 1`] = `
                     id="id__2"
                   >
                     Button 1
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
         </div>
@@ -994,7 +997,7 @@ exports[`Button renders a default circular checked Button correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          font-family: "FabricMDL2Icons-2";
+          font-family: "FabricMDL2Icons-3";
           font-style: normal;
           font-weight: normal;
           speak: none;
@@ -1126,7 +1129,7 @@ exports[`Button renders a default circular disabled checked Button correctly 1`]
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          font-family: "FabricMDL2Icons-2";
+          font-family: "FabricMDL2Icons-3";
           font-style: normal;
           font-weight: normal;
           speak: none;
@@ -2595,7 +2598,7 @@ exports[`Button renders a primary circular checked Button correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          font-family: "FabricMDL2Icons-2";
+          font-family: "FabricMDL2Icons-3";
           font-style: normal;
           font-weight: normal;
           speak: none;
@@ -2731,7 +2734,7 @@ exports[`Button renders a primary circular disabled checked Button correctly 1`]
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          font-family: "FabricMDL2Icons-2";
+          font-family: "FabricMDL2Icons-3";
           font-style: normal;
           font-weight: normal;
           speak: none;

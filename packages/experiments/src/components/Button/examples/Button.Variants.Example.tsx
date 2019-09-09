@@ -49,8 +49,8 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
       <Stack tokens={tokens.sectionStack}>
         <Stack tokens={tokens.buttonStack}>
           <ButtonStack>
-            <Actionable content="Actionable" />
-            <Actionable disabled content="Disabled Actionable" />
+            <Actionable>Actionable</Actionable>
+            <Actionable disabled>Disabled Actionable</Actionable>
           </ButtonStack>
           <ButtonStack>
             <DefaultButton content="Default button" />

@@ -22,9 +22,27 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-2"`,
-      src: `url('${baseUrl}fabric-icons-2-0351a4f5.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-2-19094ccc.woff') format('woff')`
     },
     icons: {
+      'Important': '\uE8C9',
+      'MailReply': '\uE8CA',
+      'GotoToday': '\uE8D1',
+      'Font': '\uE8D2',
+      'FontColor': '\uE8D3',
+      'FolderFill': '\uE8D5',
+      'Permissions': '\uE8D7',
+      'DisableUpdates': '\uE8D8',
+      'Unfavorite': '\uE8D9',
+      'Italic': '\uE8DB',
+      'Underline': '\uE8DC',
+      'Bold': '\uE8DD',
+      'MoveToFolder': '\uE8DE',
+      'Dislike': '\uE8E0',
+      'Like': '\uE8E1',
+      'AlignCenter': '\uE8E3',
+      'OpenFile': '\uE8E5',
+      'ClearSelection': '\uE8E6',
       'FontDecrease': '\uE8E7',
       'FontIncrease': '\uE8E8',
       'FontSize': '\uE8E9',
@@ -106,25 +124,7 @@ export function initializeIcons(
       'PC1': '\uE977',
       'PresenceChickletVideo': '\uE979',
       'Reply': '\uE97A',
-      'HalfAlpha': '\uE97E',
-      'ConstructionCone': '\uE98F',
-      'DoubleChevronLeftMed': '\uE991',
-      'Volume0': '\uE992',
-      'Volume1': '\uE993',
-      'Volume2': '\uE994',
-      'Volume3': '\uE995',
-      'Chart': '\uE999',
-      'Robot': '\uE99A',
-      'Manufacturing': '\uE99C',
-      'LockSolid': '\uE9A2',
-      'FitPage': '\uE9A6',
-      'FitWidth': '\uE9A7',
-      'BidiLtr': '\uE9AA',
-      'BidiRtl': '\uE9AB',
-      'RightDoubleQuote': '\uE9B1',
-      'Sunny': '\uE9BD',
-      'CloudWeather': '\uE9BE',
-      'Cloudy': '\uE9BF'
+      'HalfAlpha': '\uE97E'
     }
   };
 

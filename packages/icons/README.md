@@ -1,10 +1,10 @@
-# [Office UI Fabric - Icons](http://dev.office.com/fabric)
+# @uifabric/icons
 
-##### The React-based front-end framework for building experiences for Office and Office 365.
+**Icons for [Office UI Fabric React](https://dev.microsoft.com/fabric)**
 
 Fabric Icons includes a collection of 1100+ icons which you can use in your application.
 
-# Getting started
+## Getting started
 
 If you are using Fabric React components, you can make all icons available by calling the `initializeIcons` function from the `@uifabric/icons` package:
 
@@ -20,9 +20,9 @@ initializeIcons('https://my.cdn.com/path/to/icons/');
 
 This will make ALL icons in the collection available, but will download them on demand when referenced using the `@uifabric/styling` APIs `getIcon` or `getIconClassName`.
 
-# Usage in code
+## Usage in code
 
-## getIcon API
+### getIcon API
 
 If you are using Fabric React, you can use the `Icon` component and pass in the corresponding iconName property to render a given icon.
 
@@ -40,6 +40,6 @@ import { getIconClassName } from '@uifabric/styling';
 return `<i class="${getIconClassName('Snow')}" />`;
 ```
 
-# Notes
+## Notes
 
-See [Office UI Fabric React](http://github.com/OfficeDev/office-ui-fabric-react) for more details on the UI Fabric project and packages within.
+See [Office UI Fabric React](https://github.com/OfficeDev/office-ui-fabric-react) for more details on the UI Fabric project and packages within.

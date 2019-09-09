@@ -82,6 +82,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/sidebar'
         },
         {
+          component: require<any>('../components/Slider/SliderPage').SliderPage,
+          key: 'Slider',
+          name: 'Slider',
+          url: '#/examples/slider'
+        },
+        {
           component: require<any>('../slots/SlotsPage').SlotsPage,
           key: 'Slots',
           name: 'Slots',
@@ -146,11 +152,11 @@ export const AppDefinition: IAppDefinition = {
     },
     {
       name: 'Fabric',
-      url: 'http://dev.office.com/fabric'
+      url: 'https://dev.microsoft.com/fabric'
     },
     {
-      name: 'Github',
-      url: 'http://www.github.com/officedev'
+      name: 'GitHub',
+      url: 'https://github.com/OfficeDev/office-ui-fabric-react'
     }
   ]
 };

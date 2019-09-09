@@ -6,12 +6,11 @@ import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { List, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { createListItems, IExampleItem } from '@uifabric/example-data';
 import * as styles from './List.Scrolling.Example.scss';
 
-export type IExampleItem = { name: string };
-
 export interface IListScrollingExampleProps {
-  items: IExampleItem[];
+  items?: IExampleItem[];
 }
 
 export interface IListScrollingExampleState {
@@ -26,10 +25,12 @@ const numberOfItemsOnPage = 10;
 
 export class ListScrollingExample extends React.Component<IListScrollingExampleProps, IListScrollingExampleState> {
   private _list: List<IExampleItem>;
+  private _items: IExampleItem[];
 
   constructor(props: IListScrollingExampleProps) {
     super(props);
 
+    this._items = props.items || createListItems(5000);
     this.state = {
       selectedIndex: 0,
       scrollToMode: ScrollToMode.auto,
@@ -38,8 +39,6 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
   }
 
   public render() {
-    const { items } = this.props;
-
     return (
       <FocusZone direction={FocusZoneDirection.vertical}>
         <div>
@@ -73,7 +72,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
           />
         </div>
         <div className={styles.container} data-is-scrollable={true}>
-          <List ref={this._resolveList} items={items} getPageHeight={this._getPageHeight} onRenderCell={this._onRenderCell} />
+          <List ref={this._resolveList} items={this._items} getPageHeight={this._getPageHeight} onRenderCell={this._onRenderCell} />
         </div>
       </FocusZone>
     );
@@ -138,7 +137,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
   };
 
   private _scroll = (index: number, scrollToMode: ScrollToMode): void => {
-    const updatedSelectedIndex = Math.min(Math.max(index, 0), this.props.items.length - 1);
+    const updatedSelectedIndex = Math.min(Math.max(index, 0), this._items.length - 1);
 
     this.setState(
       {

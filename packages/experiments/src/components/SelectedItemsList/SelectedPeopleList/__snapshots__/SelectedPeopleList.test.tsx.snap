@@ -120,7 +120,7 @@ Array [
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -130,6 +130,7 @@ Array [
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -173,7 +174,7 @@ Array [
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
     <div
@@ -455,7 +456,7 @@ Array [
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -465,6 +466,7 @@ Array [
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -508,7 +510,7 @@ Array [
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
   </div>,
@@ -630,7 +632,7 @@ Array [
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -640,6 +642,7 @@ Array [
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -683,7 +686,7 @@ Array [
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
     <div
@@ -965,7 +968,7 @@ Array [
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -975,6 +978,7 @@ Array [
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -1018,7 +1022,7 @@ Array [
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
   </div>,

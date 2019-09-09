@@ -1,6 +1,32 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Thu, 15 Aug 2019 12:30:43 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+
+## 7.4.4
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.4.3
+Thu, 29 Aug 2019 12:30:00 GMT
+
+### Patches
+
+- small bug fixes. Fix overflow issue in firefox, fix mouse hover issue in all, fix perf issue in month view rendering of Calendar (jolore@microsoft.com)
+## 7.4.2
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Patches
+
+- Updating snapshots. (dzearing@hotmail.com)
+## 7.4.1
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.4.0
 Thu, 15 Aug 2019 12:30:43 GMT
@@ -36,7 +62,7 @@ Mon, 22 Jul 2019 12:28:42 GMT
 ### Patches
 
 - fixing issue where buttons don't hide if they have focus, adding touch for navigation (jolore@microsoft.com)
-,- Improve how to get the min query string (elcraig@microsoft.com)
+- Improve how to get the min query string (elcraig@microsoft.com)
 
 ## 7.1.6
 Wed, 17 Jul 2019 18:58:57 GMT

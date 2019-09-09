@@ -332,7 +332,13 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                   text-overflow: ellipsis;
                   width: 100%;
                 }
-                &:active, &:focus, &:hover {
+                &:active {
+                  outline: 0px;
+                }
+                &:focus {
+                  outline: 0px;
+                }
+                &:hover {
                   outline: 0px;
                 }
                 &::-ms-clear {
@@ -398,7 +404,15 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
           @media screen and (-ms-high-contrast: active){& {
             border-bottom: none;
           }
-          &:active, &:hover, &:active:hover {
+          &:active {
+            color: #004578;
+            text-decoration: underline;
+          }
+          &:hover {
+            color: #004578;
+            text-decoration: underline;
+          }
+          &:active:hover {
             color: #004578;
             text-decoration: underline;
           }
