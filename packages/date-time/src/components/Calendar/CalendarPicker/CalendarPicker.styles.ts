@@ -23,7 +23,8 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
       {
         width: 196,
         padding: 12,
-        boxSizing: 'content-box'
+        boxSizing: 'content-box',
+        overflow: 'hidden'
       },
       className
     ],

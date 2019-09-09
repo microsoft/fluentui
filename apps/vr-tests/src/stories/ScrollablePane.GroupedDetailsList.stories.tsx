@@ -23,7 +23,7 @@ import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
-import { createGroups } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createGroups } from '@uifabric/example-data';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const columnMidWidth = 200;

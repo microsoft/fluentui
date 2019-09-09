@@ -6,6 +6,35 @@ const flamegrill = require('flamegrill');
 const scenarioNames = require('../src/scenarioNames');
 const { argv } = require('@uifabric/build').just;
 
+// Flamegrill Types
+/**
+ * @typedef {{
+ *   outDir?: string;
+ *   tempDir?: string;
+ * }} ScenarioConfig
+ *
+ * @typedef {{
+ *   dataFile?: string;
+ *   errorFile?: string;
+ *   flamegraphFile?: string;
+ *   regressionFile?: string;
+ * }} OutputFiles
+ *
+ * @typedef {{
+ *   numTicks?: number;
+ *   files?: OutputFiles;
+ *   isRegression?: boolean;
+ *   reference?: {
+ *     files?: OutputFiles;
+ *     numTicks?: number;
+ *   }
+ * }} Analysis
+ *
+ * @typedef {{
+ *   [key: string]: Analysis;
+ * }} Analyses
+ */
+
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
 // Wiki: https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing
 const iterationsDefault = 5000;
@@ -136,11 +165,15 @@ module.exports = async function getPerfRegressions() {
     if (!scenariosAvailable.includes(scenario)) {
       throw new Error(`Invalid scenario: ${scenario}.`);
     }
+    // These lines can be used to check for consistency.
+    // Array.from({ length: 20 }, (entry, index) => {
     scenarios.push({
+      // name: scenario + index,
       name: scenario,
       reference: `${urlForMaster}?scenario=${scenario}&iterations=${iterations}`,
       scenario: `${urlForDeploy}?scenario=${scenario}&iterations=${iterations}`
     });
+    // });
   });
 
   console.log(`\nRunning ${iterations} iterations for each of these scenarios: ${scenarioList}\n`);
@@ -150,21 +183,23 @@ module.exports = async function getPerfRegressions() {
     fs.mkdirSync(tempDir);
   }
 
-  const logfileContents = fs.readdirSync(tempDir);
+  const tempContents = fs.readdirSync(tempDir);
 
-  if (logfileContents.length > 0) {
+  if (tempContents.length > 0) {
     console.log(`Unexpected files already present in ${tempDir}`);
-    logfileContents.forEach(logFile => {
+    tempContents.forEach(logFile => {
       const logFilePath = path.join(tempDir, logFile);
       console.log(`Deleting ${logFilePath}`);
       fs.unlinkSync(logFilePath);
     });
   }
 
+  /** @type {ScenarioConfig} */
   const scenarioConfig = { outDir, tempDir };
+  /** @type {Analyses} */
   const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
 
-  const comment = createTestSummary(scenarioResults);
+  const comment = createReport(scenarioResults);
 
   // TODO: determine status according to perf numbers
   const status = 'success';
@@ -181,34 +216,63 @@ module.exports = async function getPerfRegressions() {
 
 /**
  * Create test summary based on test results.
+ *
+ * @param {Analyses} testResults
+ * @returns {string}
  */
-function createTestSummary(testResults) {
-  testResults.forEach(testResult => {
-    testResult.numTicksReference = getTicks(testResult.outfileReference);
-    testResult.numTicks = getTicks(testResult.outfile);
-  });
+function createReport(testResults) {
+  const report = '### [Component Perf Analysis](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing)\n'
 
-  const result = `Component Perf Analysis:
+    // Show only significant changes by default.
+    .concat(createScenarioTable(testResults, false))
+
+    // Show all results in a collapsible table.
+    .concat('<details><summary>All results</summary><p>')
+    .concat(createScenarioTable(testResults, true))
+    .concat('</p></details>');
+
+  return report;
+}
+
+/**
+ * Create a table of scenario results.
+ *
+ * @param {Analyses} testResults
+ * @param {boolean} showAll Show only significant results by default.
+ * @returns {string}
+ */
+function createScenarioTable(testResults, showAll) {
+  const resultsToDisplay = Object.keys(testResults).filter(key => showAll || testResults[key].isRegression);
+
+  if (resultsToDisplay.length === 0) {
+    return '<p>No significant results to display.</p>';
+  }
+
+  const result = `
   <table>
   <tr>
     <th>Scenario</th>
-    <th>Master Samples *</th>
-    <th>PR Samples *</th>
+    <th>
+      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
+    </th>
+    <th>
+      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
+    </th>
+    <th>Status</th>
   </tr>`.concat(
-    testResults
-      .map(
-        testResult =>
-          `<tr>
-            <td>${scenarioNames[testResult.name] || testResult.name}</td>
-            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfileReference)}">${testResult.numTicksReference}</a></td>
-            <td><a href="${urlForDeployPath}/${path.basename(testResult.outfile)}">${testResult.numTicks}</a></td>
-           </tr>`
-      )
+    resultsToDisplay
+      .map(key => {
+        const testResult = testResults[key];
+
+        return `<tr>
+            <td>${scenarioNames[key] || key}</td>
+            ${getCell(testResult.reference)}
+            ${getCell(testResult)}
+            ${getRegression(testResult)}
+           </tr>`;
+      })
       .join('\n')
       .concat(`</table>`)
-      .concat("* Sample counts can vary by up to 30% and shouldn't be used solely for determining regression.  ")
-      .concat('For more information please see the ')
-      .concat('<a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing">Perf Testing wiki</a>.')
   );
 
   console.log('result: ' + result);
@@ -217,20 +281,33 @@ function createTestSummary(testResults) {
 }
 
 /**
- * Get ticks from flamegraph file.
+ * Helper that renders an output cell based on a test result.
  *
- * @param {*} resultsFile
+ * @param {Analysis} testResult
+ * @returns {string}
  */
-function getTicks(resultsFile) {
-  const numTicks = fs
-    .readFileSync(resultsFile, 'utf8')
-    .toString()
-    .match(/numTicks\s?\=\s?([0-9]+)/);
+function getCell(testResult) {
+  const cell = testResult.files
+    ? testResult.files.errorFile
+      ? `<a href="${urlForDeployPath}/${path.basename(testResult.files.errorFile)}">err</a>`
+      : `<a href="${urlForDeployPath}/${path.basename(testResult.files.flamegraphFile)}">${testResult.numTicks}</a>`
+    : `n/a`;
 
-  if (numTicks && numTicks[1]) {
-    return numTicks[1];
-  } else {
-    console.log('Could not read numTicks from ' + resultsFile);
-    return 'n/a';
-  }
+  return `<td>${cell}</td>`;
+}
+
+/**
+ * Helper that renders an output cell based on a test result.
+ *
+ * @param {Analysis} testResult
+ * @returns {string}
+ */
+function getRegression(testResult) {
+  const cell = testResult.isRegression
+    ? testResult.files.regressionFile
+      ? `<a href="${urlForDeployPath}/${path.basename(testResult.files.regressionFile)}">Possible regression</a>`
+      : ''
+    : '';
+
+  return `<td>${cell}</td>`;
 }

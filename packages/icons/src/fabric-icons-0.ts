@@ -22,9 +22,26 @@ export function initializeIcons(
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-0"`,
-      src: `url('${baseUrl}fabric-icons-0-2a8db1f5.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-0-3d691a77.woff') format('woff')`
     },
     icons: {
+      'PageLink': '\uE302',
+      'CommentSolid': '\uE30E',
+      'ChangeEntitlements': '\uE310',
+      'Installation': '\uE311',
+      'WebAppBuilderModule': '\uE313',
+      'WebAppBuilderFragment': '\uE314',
+      'WebAppBuilderSlot': '\uE315',
+      'BullseyeTargetEdit': '\uE319',
+      'WebAppBuilderFragmentCreate': '\uE31B',
+      'PageData': '\uE31C',
+      'PageHeaderEdit': '\uE31D',
+      'ProductList': '\uE31E',
+      'UnpublishContent': '\uE31F',
+      'DependencyAdd': '\uE344',
+      'DependencyRemove': '\uE345',
+      'EntitlementPolicy': '\uE346',
+      'EntitlementRedemption': '\uE347',
       'InternetSharing': '\uE704',
       'Brightness': '\uE706',
       'MapPin': '\uE707',
@@ -107,24 +124,7 @@ export function initializeIcons(
       'Slideshow': '\uE786',
       'AutoEnhanceOn': '\uE78D',
       'AutoEnhanceOff': '\uE78E',
-      'Color': '\uE790',
-      'SaveAs': '\uE792',
-      'Light': '\uE793',
-      'Filters': '\uE795',
-      'AspectRatio': '\uE799',
-      'Contrast': '\uE7A1',
-      'Redo': '\uE7A6',
-      'Crop': '\uE7A8',
-      'PhotoCollection': '\uE7AA',
-      'Album': '\uE7AB',
-      'Rotate': '\uE7AD',
-      'PanoIndicator': '\uE7B0',
-      'Translate': '\uE7B2',
-      'RedEye': '\uE7B3',
-      'ThumbnailView': '\uE7B6',
-      'Package': '\uE7B8',
-      'Telemarketer': '\uE7B9',
-      'Warning': '\uE7BA'
+      'Color': '\uE790'
     }
   };
 

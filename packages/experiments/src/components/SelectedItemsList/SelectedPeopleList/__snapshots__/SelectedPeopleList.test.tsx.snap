@@ -59,6 +59,7 @@ Array [
               font-weight: 400;
               height: 33px;
               margin-right: -17px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -119,7 +120,7 @@ Array [
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -129,6 +130,7 @@ Array [
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -172,7 +174,7 @@ Array [
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
     <div
@@ -393,6 +395,7 @@ Array [
               font-size: 14px;
               font-weight: 400;
               height: 33px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -453,7 +456,7 @@ Array [
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -463,6 +466,7 @@ Array [
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -506,7 +510,7 @@ Array [
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
   </div>,
@@ -567,6 +571,7 @@ Array [
               font-weight: 400;
               height: 33px;
               margin-right: -17px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -627,7 +632,7 @@ Array [
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -637,6 +642,7 @@ Array [
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -680,7 +686,7 @@ Array [
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
     <div
@@ -901,6 +907,7 @@ Array [
               font-size: 14px;
               font-weight: 400;
               height: 33px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -961,7 +968,7 @@ Array [
         onMouseUp={[Function]}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -971,6 +978,7 @@ Array [
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
@@ -1014,7 +1022,7 @@ Array [
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
   </div>,

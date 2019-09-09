@@ -121,7 +121,13 @@ exports[`TextField snapshots renders correctly 1`] = `
               text-overflow: ellipsis;
               width: 100%;
             }
-            &:active, &:focus, &:hover {
+            &:active {
+              outline: 0px;
+            }
+            &:focus {
+              outline: 0px;
+            }
+            &:hover {
               outline: 0px;
             }
             &::-ms-clear {
@@ -267,12 +273,12 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
             text-align: left;
           }
           &:hover {
-            border-color: #323130;
+            border-color: #a4262c;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
-          &:focus, &:hover {
+          &:focus {
             border-color: #a4262c;
           }
     >
@@ -336,7 +342,13 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
               text-overflow: ellipsis;
               width: 100%;
             }
-            &:active, &:focus, &:hover {
+            &:active {
+              outline: 0px;
+            }
+            &:focus {
+              outline: 0px;
+            }
+            &:hover {
               outline: 0px;
             }
             &::-ms-clear {
@@ -516,12 +528,12 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
             text-align: left;
           }
           &:hover {
-            border-color: #323130;
+            border-color: #a4262c;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
-          &:focus, &:hover {
+          &:focus {
             border-color: #a4262c;
           }
     >
@@ -585,7 +597,13 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               text-overflow: ellipsis;
               width: 100%;
             }
-            &:active, &:focus, &:hover {
+            &:active {
+              outline: 0px;
+            }
+            &:focus {
+              outline: 0px;
+            }
+            &:hover {
               outline: 0px;
             }
             &::-ms-clear {
@@ -789,7 +807,13 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
               text-overflow: ellipsis;
               width: 100%;
             }
-            &:active, &:focus, &:hover {
+            &:active {
+              outline: 0px;
+            }
+            &:focus {
+              outline: 0px;
+            }
+            &:hover {
               outline: 0px;
             }
             &::-ms-clear {
@@ -960,7 +984,13 @@ exports[`TextField snapshots renders multiline unresizable correctly 1`] = `
               text-overflow: ellipsis;
               width: 100%;
             }
-            &:active, &:focus, &:hover {
+            &:active {
+              outline: 0px;
+            }
+            &:focus {
+              outline: 0px;
+            }
+            &:hover {
               outline: 0px;
             }
             &::-ms-clear {
@@ -1129,7 +1159,13 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
               text-overflow: ellipsis;
               width: 100%;
             }
-            &:active, &:focus, &:hover {
+            &:active {
+              outline: 0px;
+            }
+            &:focus {
+              outline: 0px;
+            }
+            &:hover {
               outline: 0px;
             }
             &::-ms-clear {
@@ -1277,12 +1313,12 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
             text-align: left;
           }
           &:hover {
-            border-color: #323130;
+            border-color: #a4262c;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
           }
-          &:focus, &:hover {
+          &:focus {
             border-color: #a4262c;
           }
     >
@@ -1346,7 +1382,13 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
               text-overflow: ellipsis;
               width: 100%;
             }
-            &:active, &:focus, &:hover {
+            &:active {
+              outline: 0px;
+            }
+            &:focus {
+              outline: 0px;
+            }
+            &:hover {
               outline: 0px;
             }
             &::-ms-clear {

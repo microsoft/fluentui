@@ -386,6 +386,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
+                    min-width: 32px;
                     outline: transparent;
                     padding-bottom: 8px;
                     padding-left: 12px;
@@ -416,7 +417,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: Window;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -456,7 +458,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -466,6 +468,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -500,7 +503,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
         </div>
@@ -703,6 +706,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
+                    min-width: 32px;
                     outline: transparent;
                     padding-bottom: 8px;
                     padding-left: 12px;
@@ -733,7 +737,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: Window;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -773,7 +778,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -783,6 +788,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -817,7 +823,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
           <div
@@ -846,6 +852,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
+                    min-width: 32px;
                     outline: transparent;
                     padding-bottom: 8px;
                     padding-left: 12px;
@@ -876,7 +883,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: Window;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -916,7 +924,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -926,6 +934,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -960,7 +969,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
         </div>
@@ -1081,7 +1090,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     -webkit-font-smoothing: antialiased;
                     color: #a4262c;
                     display: inline-block;
-                    font-family: "FabricMDL2Icons-0";
+                    font-family: "FabricMDL2Icons-1";
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
@@ -1201,7 +1210,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -1231,7 +1241,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1241,18 +1251,21 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: 600;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -1263,9 +1276,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     id="id__13"
                   >
                     Yes
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
             <button
               className=
@@ -1316,7 +1329,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -1346,7 +1360,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -1356,18 +1370,21 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: 600;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -1378,9 +1395,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     id="id__16"
                   >
                     No
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
         </div>
@@ -1626,7 +1643,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       border: none;
                       bottom: -2px;
                       left: -2px;
-                      outline-color: ButtonText;
+                      outline-color: ActiveBorder;
+                      outline-offset: -4px;
                       right: -2px;
                       top: -2px;
                     }
@@ -1656,7 +1674,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 onMouseUp={[Function]}
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1666,18 +1684,21 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: 600;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -1688,9 +1709,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       id="id__20"
                     >
                       Yes
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
               <button
                 className=
@@ -1741,7 +1762,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       border: none;
                       bottom: -2px;
                       left: -2px;
-                      outline-color: ButtonText;
+                      outline-color: ActiveBorder;
+                      outline-offset: -4px;
                       right: -2px;
                       top: -2px;
                     }
@@ -1771,7 +1793,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 onMouseUp={[Function]}
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1781,18 +1803,21 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: 600;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -1803,9 +1828,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       id="id__23"
                     >
                       No
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
             </div>
           </div>
@@ -2053,7 +2078,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       border: none;
                       bottom: -2px;
                       left: -2px;
-                      outline-color: ButtonText;
+                      outline-color: ActiveBorder;
+                      outline-offset: -4px;
                       right: -2px;
                       top: -2px;
                     }
@@ -2083,7 +2109,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 onMouseUp={[Function]}
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -2093,18 +2119,21 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                         height: 100%;
                         justify-content: center;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-textContainer
                         {
+                          display: block;
                           flex-grow: 1;
                         }
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-label
                           {
+                            display: block;
                             font-weight: 600;
                             line-height: 100%;
                             margin-bottom: 0;
@@ -2115,9 +2144,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       id="id__27"
                     >
                       Action
-                    </div>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </span>
               </button>
             </div>
           </div>
@@ -2147,6 +2176,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
+                    min-width: 32px;
                     outline: transparent;
                     padding-bottom: 8px;
                     padding-left: 12px;
@@ -2177,7 +2207,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: Window;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -2217,7 +2248,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2227,6 +2258,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
                 <i
                   aria-hidden={true}
@@ -2261,7 +2293,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                 >
                   
                 </i>
-              </div>
+              </span>
             </button>
           </div>
         </div>
@@ -2453,6 +2485,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                   font-size: 14px;
                   font-weight: 400;
                   height: 32px;
+                  min-width: 32px;
                   outline: transparent;
                   padding-bottom: 8px;
                   padding-left: 12px;
@@ -2483,7 +2516,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                   border: none;
                   bottom: -2px;
                   left: -2px;
-                  outline-color: ButtonText;
+                  outline-color: Window;
+                  outline-offset: -4px;
                   right: -2px;
                   top: -2px;
                 }
@@ -2523,7 +2557,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
             onMouseUp={[Function]}
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -2533,6 +2567,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <i
                 aria-hidden={true}
@@ -2567,7 +2602,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               >
                 
               </i>
-            </div>
+            </span>
           </button>
         </div>
         <div
@@ -2639,7 +2674,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -2669,7 +2705,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2679,18 +2715,21 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: 600;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -2701,9 +2740,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     id="id__37"
                   >
                     Yes
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
             <button
               className=
@@ -2754,7 +2793,8 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     border: none;
                     bottom: -2px;
                     left: -2px;
-                    outline-color: ButtonText;
+                    outline-color: ActiveBorder;
+                    outline-offset: -4px;
                     right: -2px;
                     top: -2px;
                   }
@@ -2784,7 +2824,7 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
               onMouseUp={[Function]}
               type="button"
             >
-              <div
+              <span
                 className=
                     ms-Button-flexContainer
                     {
@@ -2794,18 +2834,21 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                       height: 100%;
                       justify-content: center;
                     }
+                data-automationid="splitbuttonprimary"
               >
-                <div
+                <span
                   className=
                       ms-Button-textContainer
                       {
+                        display: block;
                         flex-grow: 1;
                       }
                 >
-                  <div
+                  <span
                     className=
                         ms-Button-label
                         {
+                          display: block;
                           font-weight: 600;
                           line-height: 100%;
                           margin-bottom: 0;
@@ -2816,9 +2859,9 @@ exports[`Component Examples renders MessageBar.Basic.Example.tsx correctly 1`] =
                     id="id__40"
                   >
                     No
-                  </div>
-                </div>
-              </div>
+                  </span>
+                </span>
+              </span>
             </button>
           </div>
         </div>

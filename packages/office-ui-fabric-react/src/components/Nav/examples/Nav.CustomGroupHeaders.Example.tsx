@@ -5,6 +5,7 @@ export const NavCustomGroupHeadersExample: React.FunctionComponent = () => {
   return (
     <Nav
       onRenderGroupHeader={_onRenderGroupHeader}
+      ariaLabel="Nav example with custom group headers"
       groups={[
         {
           name: 'Pages',

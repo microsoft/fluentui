@@ -1,6 +1,44 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Wed, 17 Jul 2019 18:58:57 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Sep 2019 12:34:51 GMT and should not be manually modified.
+
+## 7.4.0
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Minor changes
+
+- Foundation: Allowing recomposition in composed. (humbertomakotomorimoto@gmail.com)
+## 7.3.1
+Wed, 04 Sep 2019 04:09:58 GMT
+
+### Patches
+
+- fix version file (kchau@microsoft.com)
+## 7.3.0
+Mon, 02 Sep 2019 12:33:56 GMT
+
+### Minor changes
+
+- Foundation: Moving slots inside composed options. (humbertomakotomorimoto@gmail.com)
+## 7.2.0
+Thu, 29 Aug 2019 12:30:00 GMT
+
+### Minor changes
+
+- Renaming createComponent to compose and moving View inside component options object. (humbertomakotomorimoto@gmail.com)
+## 7.1.0
+Mon, 26 Aug 2019 12:30:49 GMT
+
+### Minor changes
+
+- Memoizing styling in createComponent for components that have their default styling determined entirely by tokens. (Humberto.Morimoto@microsoft.com)
+## 7.0.4
+Fri, 23 Aug 2019 12:35:28 GMT
+
+### Patches
+
+- Update npmignores, delete unused jest setup files (elcraig@microsoft.com)
+- Fix up readme and package.json descriptions (elcraig@microsoft.com)
 
 ## 7.0.3
 Wed, 17 Jul 2019 18:58:57 GMT
@@ -135,7 +173,7 @@ Mon, 08 Oct 2018 12:24:15 GMT
 
 ### Patches
 
-- Moving tslint/prettier dependencies 
+- Moving tslint/prettier dependencies
 
 ## 0.5.4
 Tue, 02 Oct 2018 12:28:04 GMT

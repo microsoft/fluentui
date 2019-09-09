@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Stack } from '../Stack';
-import { IStackStyles, IStackTokens } from '../Stack.types';
+import { Stack, IStackStyles, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 // Styles definition
@@ -22,28 +21,26 @@ const itemStyles: React.CSSProperties = {
 // Tokens definition
 const stackTokens: IStackTokens = { childrenGap: 5 };
 
-export class VerticalStackHorizontalAlignExample extends React.Component<{}, {}> {
-  public render(): JSX.Element {
-    return (
-      <Stack tokens={stackTokens}>
-        <span>Left-aligned</span>
-        <Stack horizontalAlign="start" styles={stackStyles}>
-          <span style={itemStyles}>1</span>
-          <span style={itemStyles}>2</span>
-        </Stack>
-
-        <span>Horizontally centered</span>
-        <Stack horizontalAlign="center" styles={stackStyles}>
-          <span style={itemStyles}>1</span>
-          <span style={itemStyles}>2</span>
-        </Stack>
-
-        <span>Right-aligned</span>
-        <Stack horizontalAlign="end" styles={stackStyles}>
-          <span style={itemStyles}>1</span>
-          <span style={itemStyles}>2</span>
-        </Stack>
+export const VerticalStackHorizontalAlignExample: React.FunctionComponent = () => {
+  return (
+    <Stack tokens={stackTokens}>
+      <span>Left-aligned</span>
+      <Stack horizontalAlign="start" styles={stackStyles}>
+        <span style={itemStyles}>1</span>
+        <span style={itemStyles}>2</span>
       </Stack>
-    );
-  }
-}
+
+      <span>Horizontally centered</span>
+      <Stack horizontalAlign="center" styles={stackStyles}>
+        <span style={itemStyles}>1</span>
+        <span style={itemStyles}>2</span>
+      </Stack>
+
+      <span>Right-aligned</span>
+      <Stack horizontalAlign="end" styles={stackStyles}>
+        <span style={itemStyles}>1</span>
+        <span style={itemStyles}>2</span>
+      </Stack>
+    </Stack>
+  );
+};

@@ -78,7 +78,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                   line-height: 42px;
                   min-width: 100%;
                   padding-bottom: 1px;
-                  padding-top: 1px;
+                  padding-top: 16px;
                   position: relative;
                   user-select: none;
                   vertical-align: top;
@@ -245,7 +245,16 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           right: 1px;
                           top: 1px;
                         }
-                        .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                        .ms-Check-checkHost:hover & {
+                          opacity: 1;
+                        }
+                        .ms-Check-checkHost:focus & {
+                          opacity: 1;
+                        }
+                        &:hover {
+                          opacity: 1;
+                        }
+                        &:focus {
                           opacity: 1;
                         }
                   >
@@ -1380,7 +1389,16 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover & {
+                                    opacity: 1;
+                                  }
+                                  .ms-Check-checkHost:focus & {
+                                    opacity: 1;
+                                  }
+                                  &:hover {
+                                    opacity: 1;
+                                  }
+                                  &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -1550,6 +1568,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -1560,7 +1579,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -1611,7 +1629,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -1621,6 +1639,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -1655,7 +1674,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -2070,7 +2089,16 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover & {
+                                    opacity: 1;
+                                  }
+                                  .ms-Check-checkHost:focus & {
+                                    opacity: 1;
+                                  }
+                                  &:hover {
+                                    opacity: 1;
+                                  }
+                                  &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -2240,6 +2268,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -2250,7 +2279,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -2301,7 +2329,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -2311,6 +2339,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -2345,7 +2374,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -2760,7 +2789,16 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover & {
+                                    opacity: 1;
+                                  }
+                                  .ms-Check-checkHost:focus & {
+                                    opacity: 1;
+                                  }
+                                  &:hover {
+                                    opacity: 1;
+                                  }
+                                  &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -2930,6 +2968,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -2940,7 +2979,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -2991,7 +3029,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -3001,6 +3039,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -3035,7 +3074,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -3450,7 +3489,16 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover & {
+                                    opacity: 1;
+                                  }
+                                  .ms-Check-checkHost:focus & {
+                                    opacity: 1;
+                                  }
+                                  &:hover {
+                                    opacity: 1;
+                                  }
+                                  &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -3620,6 +3668,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -3630,7 +3679,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -3681,7 +3729,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -3691,6 +3739,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -3725,7 +3774,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -4140,7 +4189,16 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover & {
+                                    opacity: 1;
+                                  }
+                                  .ms-Check-checkHost:focus & {
+                                    opacity: 1;
+                                  }
+                                  &:hover {
+                                    opacity: 1;
+                                  }
+                                  &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -4310,6 +4368,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -4320,7 +4379,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -4371,7 +4429,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -4381,6 +4439,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -4415,7 +4474,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -4830,7 +4889,16 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover & {
+                                    opacity: 1;
+                                  }
+                                  .ms-Check-checkHost:focus & {
+                                    opacity: 1;
+                                  }
+                                  &:hover {
+                                    opacity: 1;
+                                  }
+                                  &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -5000,6 +5068,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -5010,7 +5079,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -5061,7 +5129,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -5071,6 +5139,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -5105,7 +5174,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -5520,7 +5589,16 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover & {
+                                    opacity: 1;
+                                  }
+                                  .ms-Check-checkHost:focus & {
+                                    opacity: 1;
+                                  }
+                                  &:hover {
+                                    opacity: 1;
+                                  }
+                                  &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -5690,6 +5768,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -5700,7 +5779,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -5751,7 +5829,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -5761,6 +5839,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -5795,7 +5874,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -6210,7 +6289,16 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover & {
+                                    opacity: 1;
+                                  }
+                                  .ms-Check-checkHost:focus & {
+                                    opacity: 1;
+                                  }
+                                  &:hover {
+                                    opacity: 1;
+                                  }
+                                  &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -6380,6 +6468,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -6390,7 +6479,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -6441,7 +6529,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -6451,6 +6539,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -6485,7 +6574,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -6900,7 +6989,16 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover & {
+                                    opacity: 1;
+                                  }
+                                  .ms-Check-checkHost:focus & {
+                                    opacity: 1;
+                                  }
+                                  &:hover {
+                                    opacity: 1;
+                                  }
+                                  &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -7070,6 +7168,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -7080,7 +7179,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -7131,7 +7229,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -7141,6 +7239,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -7175,7 +7274,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>
@@ -7590,7 +7689,16 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     right: 1px;
                                     top: 1px;
                                   }
-                                  .ms-Check-checkHost:hover &, .ms-Check-checkHost:focus &, &:hover, &:focus {
+                                  .ms-Check-checkHost:hover & {
+                                    opacity: 1;
+                                  }
+                                  .ms-Check-checkHost:focus & {
+                                    opacity: 1;
+                                  }
+                                  &:hover {
+                                    opacity: 1;
+                                  }
+                                  &:focus {
                                     opacity: 1;
                                   }
                             >
@@ -7760,6 +7868,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       font-size: 14px;
                                       font-weight: 400;
                                       height: inherit;
+                                      min-width: 32px;
                                       outline: transparent;
                                       padding-bottom: 0;
                                       padding-left: 4px;
@@ -7770,7 +7879,6 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                       text-decoration: none;
                                       user-select: none;
                                       vertical-align: top;
-                                      width: 32px;
                                     }
                                     &::-moz-focus-inner {
                                       border: 0;
@@ -7821,7 +7929,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                 role="button"
                                 type="button"
                               >
-                                <div
+                                <span
                                   className=
                                       ms-Button-flexContainer
                                       {
@@ -7831,6 +7939,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                         height: 100%;
                                         justify-content: center;
                                       }
+                                  data-automationid="splitbuttonprimary"
                                 >
                                   <i
                                     aria-hidden={true}
@@ -7865,7 +7974,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   >
                                     
                                   </i>
-                                </div>
+                                </span>
                               </button>
                             </div>
                           </div>

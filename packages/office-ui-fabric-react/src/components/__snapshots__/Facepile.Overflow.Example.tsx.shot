@@ -396,7 +396,7 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
             title="Alex Lundberg"
             type="button"
           >
-            <div
+            <span
               className=
                   ms-Button-flexContainer
                   {
@@ -406,6 +406,7 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
                     height: 100%;
                     justify-content: center;
                   }
+              data-automationid="splitbuttonprimary"
             >
               <div
                 className=
@@ -460,7 +461,7 @@ exports[`Component Examples renders Facepile.Overflow.Example.tsx correctly 1`] 
                   </div>
                 </div>
               </div>
-            </div>
+            </span>
           </button>
         </li>
         <li

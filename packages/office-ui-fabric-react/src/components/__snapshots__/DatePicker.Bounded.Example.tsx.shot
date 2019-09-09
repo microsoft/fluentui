@@ -129,7 +129,13 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
                     text-overflow: ellipsis;
                     width: 100%;
                   }
-                  &:active, &:focus, &:hover {
+                  &:active {
+                    outline: 0px;
+                  }
+                  &:focus {
+                    outline: 0px;
+                  }
+                  &:hover {
                     outline: 0px;
                   }
                   &::-ms-clear {

@@ -1,24 +1,23 @@
 /** @jsx withSlots */
 import { Text, KeytipData } from 'office-ui-fabric-react';
-import { withSlots, getSlots } from '../../Foundation';
+import { withSlots } from '../../Foundation';
 import { getNativeProps, anchorProperties, buttonProperties } from '../../Utilities';
 import { FontIcon } from '../../utilities/factoryComponents';
 
-import { IButtonComponent, IButtonProps, IButtonSlots, IButtonViewProps } from './Button.types';
-import { IActionableRootElements } from './Actionable/Actionable.types';
+import { IButtonComponent, IButtonViewProps } from './Button.types';
 
-export const ButtonView: IButtonComponent['view'] = props => {
+export const ButtonSlots: IButtonComponent['slots'] = props => ({
+  root: !!props.href ? 'a' : 'button',
+  icon: FontIcon,
+  content: Text
+});
+
+export const ButtonView: IButtonComponent['view'] = (props, slots) => {
   const { icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
 
-  const { slotType, htmlType, propertiesType } = _deriveRootType(props);
+  const { htmlType, propertiesType } = _deriveRootType(props);
 
   const buttonProps = { ...getNativeProps(rest, propertiesType) };
-
-  const Slots = getSlots<IButtonProps, IButtonSlots>(props, {
-    root: slotType,
-    icon: FontIcon,
-    content: Text
-  });
 
   const _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
     if (!disabled && onClick) {
@@ -31,7 +30,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
   };
 
   const Button = (keytipAttributes?: any): JSX.Element => (
-    <Slots.root
+    <slots.root
       type={htmlType}
       role="button"
       onClick={_onClick}
@@ -43,10 +42,10 @@ export const ButtonView: IButtonComponent['view'] = props => {
       aria-label={ariaLabel}
       ref={buttonRef}
     >
-      {icon && <Slots.icon />}
-      {content && <Slots.content />}
+      {icon && <slots.icon />}
+      {content && <slots.content />}
       {children}
-    </Slots.root>
+    </slots.root>
   );
 
   return keytipProps ? (
@@ -59,13 +58,10 @@ export const ButtonView: IButtonComponent['view'] = props => {
 };
 
 interface IButtonRootType {
-  slotType: IActionableRootElements;
   htmlType: 'link' | 'button';
   propertiesType: string[];
 }
 
 function _deriveRootType(props: IButtonViewProps): IButtonRootType {
-  return !!props.href
-    ? { slotType: 'a', htmlType: 'link', propertiesType: anchorProperties }
-    : { slotType: 'button', htmlType: 'button', propertiesType: buttonProperties };
+  return !!props.href ? { htmlType: 'link', propertiesType: anchorProperties } : { htmlType: 'button', propertiesType: buttonProperties };
 }

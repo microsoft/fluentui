@@ -13,6 +13,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
   onMouseDownCapture={[Function]}
 >
   <nav
+    aria-label="Nav basic example"
     className=
         ms-Nav
         {
@@ -277,7 +278,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 onMouseUp={[Function]}
                 title="Home"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -287,6 +288,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         height: 100%;
                         justify-content: flex-start;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <div
                     className=
@@ -304,7 +306,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   >
                     Home
                   </div>
-                </div>
+                </span>
               </a>
             </div>
             <ul
@@ -444,7 +446,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                     target="_blank"
                     title="Activity"
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-flexContainer
                           {
@@ -454,6 +456,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                             height: 100%;
                             justify-content: flex-start;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                       <div
                         className=
@@ -471,7 +474,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       >
                         Activity
                       </div>
-                    </div>
+                    </span>
                   </a>
                 </div>
               </li>
@@ -588,7 +591,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                     title="MSN"
                     type="button"
                   >
-                    <div
+                    <span
                       className=
                           ms-Button-flexContainer
                           {
@@ -598,6 +601,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                             height: 100%;
                             justify-content: flex-start;
                           }
+                      data-automationid="splitbuttonprimary"
                     >
                       <div
                         className=
@@ -615,7 +619,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       >
                         MSN
                       </div>
-                    </div>
+                    </span>
                   </button>
                 </div>
               </li>
@@ -755,7 +759,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 target="_blank"
                 title="Documents"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -765,6 +769,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         height: 100%;
                         justify-content: flex-start;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <div
                     className=
@@ -782,7 +787,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   >
                     Documents
                   </div>
-                </div>
+                </span>
               </a>
             </div>
           </li>
@@ -907,7 +912,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 target="_blank"
                 title="Pages"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -917,6 +922,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         height: 100%;
                         justify-content: flex-start;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <div
                     className=
@@ -934,7 +940,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   >
                     Pages
                   </div>
-                </div>
+                </span>
               </a>
             </div>
           </li>
@@ -1051,7 +1057,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 title="Notebook"
                 type="button"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1061,6 +1067,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         height: 100%;
                         justify-content: flex-start;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <div
                     className=
@@ -1078,7 +1085,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   >
                     Notebook
                   </div>
-                </div>
+                </span>
               </button>
             </div>
           </li>
@@ -1203,7 +1210,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 target="_blank"
                 title="Communication and Media"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1213,6 +1220,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         height: 100%;
                         justify-content: flex-start;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <div
                     className=
@@ -1230,7 +1238,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   >
                     Communication and Media
                   </div>
-                </div>
+                </span>
               </a>
             </div>
           </li>
@@ -1355,7 +1363,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 target="_blank"
                 title="News"
               >
-                <div
+                <span
                   className=
                       ms-Button-flexContainer
                       {
@@ -1365,6 +1373,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         height: 100%;
                         justify-content: flex-start;
                       }
+                  data-automationid="splitbuttonprimary"
                 >
                   <i
                     aria-hidden={true}
@@ -1416,7 +1425,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                   >
                     News
                   </div>
-                </div>
+                </span>
               </a>
             </div>
           </li>

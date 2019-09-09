@@ -4,7 +4,7 @@ import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import './ContextualMenuExample.scss';
 import { IContextualMenuListProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { IRenderFunction } from '@uifabric/utilities';
+import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const ITEMS: IContextualMenuItem[] = [
   {

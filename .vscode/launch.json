@@ -155,6 +155,24 @@
       "sourceMaps": true
     },
     {
+      "name": "Debug update release notes",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/scripts/updateReleaseNotes/index.js",
+      "cwd": "${workspaceRoot}",
+      "stopOnEntry": false,
+      // For local testing, generate a personal access token (https://github.com/settings/tokens)
+      // and replace "your token here" with the token. DO NOT COMMIT YOUR TOKEN!
+      "args": ["--token", "your token here", "--patch", "--age", "20"],
+      "runtimeExecutable": null,
+      "runtimeArgs": ["--nolazy", "--debug"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true,
+      "console": "integratedTerminal"
+    },
+    {
       "name": "Debug page json generator",
       "type": "node",
       "request": "launch",

@@ -36,8 +36,8 @@ export class DialogModelessExample extends React.Component<{}, IDialogModelessEx
           onDismiss={this._closeDialog}
           dialogContentProps={{
             type: DialogType.normal,
-            title: 'All emails together',
-            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+            title: 'Missing Subject',
+            subText: 'Do you want to send this message without a subject?'
           }}
           modalProps={{
             styles: { main: { maxWidth: 450 } },
@@ -47,8 +47,8 @@ export class DialogModelessExample extends React.Component<{}, IDialogModelessEx
           }}
         >
           <DialogFooter>
-            <PrimaryButton onClick={this._closeDialog} text="Save" />
-            <DefaultButton onClick={this._closeDialog} text="Cancel" />
+            <PrimaryButton onClick={this._closeDialog} text="Send" />
+            <DefaultButton onClick={this._closeDialog} text="Don't send" />
           </DialogFooter>
         </Dialog>
       </div>

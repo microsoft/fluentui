@@ -126,7 +126,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -136,13 +136,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               black
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -259,7 +260,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -269,13 +270,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               blue
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -392,7 +394,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -402,13 +404,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               brown
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -525,7 +528,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -535,13 +538,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               cyan
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -658,7 +662,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -668,13 +672,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               green
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -791,7 +796,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -801,13 +806,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               magenta
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -924,7 +930,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -934,13 +940,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               mauve
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1057,7 +1064,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1067,13 +1074,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               orange
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1190,7 +1198,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1200,13 +1208,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               pink
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1323,7 +1332,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1333,13 +1342,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               purple
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1456,7 +1466,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1466,13 +1476,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               red
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1589,7 +1600,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1599,13 +1610,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               rose
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1722,7 +1734,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1732,13 +1744,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               violet
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1855,7 +1868,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1865,13 +1878,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               white
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -1988,7 +2002,7 @@ exports[`Suggestions renders a list properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -1998,13 +2012,14 @@ exports[`Suggestions renders a list properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               yellow
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2153,7 +2168,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2163,13 +2178,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               black
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2286,7 +2302,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2296,13 +2312,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               blue
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2419,7 +2436,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2429,13 +2446,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               brown
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2552,7 +2570,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2562,13 +2580,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               cyan
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2685,7 +2704,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2695,13 +2714,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               green
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2818,7 +2838,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2828,13 +2848,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               magenta
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -2951,7 +2972,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -2961,13 +2982,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               mauve
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3084,7 +3106,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3094,13 +3116,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               orange
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3217,7 +3240,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3227,13 +3250,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               pink
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3350,7 +3374,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3360,13 +3384,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               purple
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3483,7 +3508,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3493,13 +3518,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               red
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3616,7 +3642,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3626,13 +3652,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               rose
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3749,7 +3776,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3759,13 +3786,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               violet
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -3882,7 +3910,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -3892,13 +3920,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               white
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4015,7 +4044,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4025,13 +4054,14 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               yellow
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4181,7 +4211,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4191,13 +4221,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               black
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4314,7 +4345,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4324,13 +4355,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               blue
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4447,7 +4479,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4457,13 +4489,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               brown
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4580,7 +4613,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4590,13 +4623,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               cyan
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4713,7 +4747,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4723,13 +4757,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               green
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4846,7 +4881,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4856,13 +4891,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               magenta
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -4979,7 +5015,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -4989,13 +5025,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               mauve
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5112,7 +5149,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5122,13 +5159,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               orange
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5250,7 +5288,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5260,13 +5298,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               pink
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5383,7 +5422,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5393,13 +5432,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               purple
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5516,7 +5556,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5526,13 +5566,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               red
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5649,7 +5690,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5659,13 +5700,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               rose
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5782,7 +5824,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5792,13 +5834,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               violet
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -5915,7 +5958,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -5925,13 +5968,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               white
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>
@@ -6048,7 +6092,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
           onMouseUp={[Function]}
           type="button"
         >
-          <div
+          <span
             className=
                 ms-Button-flexContainer
                 {
@@ -6058,13 +6102,14 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                   height: 100%;
                   justify-content: flex-start;
                 }
+            data-automationid="splitbuttonprimary"
           >
             <div>
                
               yellow
                
             </div>
-          </div>
+          </span>
         </button>
       </div>
     </div>

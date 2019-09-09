@@ -56,4 +56,4 @@ jobs:
         inputs:
           connectedServiceName: lowimpact
           sourceVersionMessage: '$(Build.SourceVersionMessage)'
-          sizeTolerance: 1024
+          sourceRepositoryUrl: 'https://github.com/OfficeDev/office-ui-fabric-react'
