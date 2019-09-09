@@ -8,6 +8,7 @@ export const NavBasicExample: React.FunctionComponent = () => {
       selectedKey="key3"
       expandButtonAriaLabel="Expand or collapse"
       selectedAriaLabel="Selected"
+      ariaLabel="Nav basic example"
       styles={{
         root: {
           width: 208,

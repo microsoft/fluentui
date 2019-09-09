@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Foundation: Allowing recomposition in composed.",
-  "packageName": "@uifabric/experiments",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "09f5eec64d1270f1294208cacfa07a1da757effe",
-  "date": "2019-09-03T23:53:37.883Z"
-}

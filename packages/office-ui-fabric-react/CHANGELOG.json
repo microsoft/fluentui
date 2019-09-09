@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 06 Sep 2019 12:34:51 GMT",
+      "tag": "office-ui-fabric-react_v7.31.1",
+      "version": "7.31.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Nav: Added aria-labels to Nav examples per issue request",
+            "author": "v-mare@microsoft.com",
+            "commit": "c5d5cc8b5b364741292b783319842ebea49963ab"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Sep 2019 12:34:51 GMT",
       "tag": "office-ui-fabric-react_v7.31.0",
       "version": "7.31.0",
