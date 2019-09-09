@@ -192,6 +192,19 @@ describe('ComboBox', () => {
     expect(inputElement.value).toEqual('2');
   });
 
+  it('Does not automatically change items in controlled case', () => {
+    domNode = renderIntoDocument(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} />);
+
+    const buttonElement = domNode.querySelector('.ms-ComboBox button')!;
+    ReactTestUtils.Simulate.click(buttonElement);
+
+    const secondItemElement = document.querySelector('.ms-ComboBox-option[data-index="1"]')!;
+    ReactTestUtils.Simulate.click(secondItemElement);
+
+    const inputElement = domNode.querySelector('.ms-ComboBox input') as HTMLInputElement;
+    expect(inputElement.value).toEqual('1');
+  });
+
   it('Can insert text in uncontrolled case with autoComplete and allowFreeform on', () => {
     wrapper = mount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={true} />);
 
