@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "updated docs for BottomSheet and Drawer",
-  "packageName": "@uifabric/fabric-website",
-  "email": "willdo@microsoft.com",
-  "commit": "07dff065fcd5b67559080e838627481af411c059",
-  "date": "2019-09-07T00:49:55.640Z"
-}

@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Mon, 09 Sep 2019 21:43:18 GMT",
+      "tag": "@uifabric/fabric-website_v7.4.6",
+      "version": "7.4.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "updated docs for BottomSheet and Drawer",
+            "author": "willdo@microsoft.com",
+            "commit": "07dff065fcd5b67559080e838627481af411c059"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Sep 2019 12:34:51 GMT",
       "tag": "@uifabric/fabric-website_v7.4.5",
       "version": "7.4.5",

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 06 Sep 2019 12:34:51 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Sep 2019 21:43:18 GMT and should not be manually modified.
 
+## 7.4.6
+Mon, 09 Sep 2019 21:43:18 GMT
+
+### Patches
+
+- updated docs for BottomSheet and Drawer (willdo@microsoft.com)
 ## 7.4.5
 Fri, 06 Sep 2019 12:34:51 GMT
 
