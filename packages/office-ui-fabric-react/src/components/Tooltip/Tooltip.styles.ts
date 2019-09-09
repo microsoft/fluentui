@@ -25,7 +25,8 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
             bottom: tooltipGapSpace,
             left: tooltipGapSpace,
             right: tooltipGapSpace,
-            top: tooltipGapSpace
+            top: tooltipGapSpace,
+            zIndex: 0
           }
         }
       },
@@ -35,6 +36,8 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
       'ms-Tooltip-content',
       fonts.small,
       {
+        position: 'relative',
+        zIndex: 1,
         color: palette.neutralPrimary,
         wordWrap: 'break-word',
         overflowWrap: 'break-word',

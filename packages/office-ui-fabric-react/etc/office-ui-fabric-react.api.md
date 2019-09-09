@@ -2531,6 +2531,7 @@ export interface IColorPickerProps {
     hexLabel?: string;
     onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
     redLabel?: string;
+    showPreview?: boolean;
     styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
     theme?: ITheme;
 }
@@ -2554,6 +2555,11 @@ export interface IColorPickerStyleProps {
 
 // @public (undocumented)
 export interface IColorPickerStyles {
+    colorRectangle?: IStyle;
+    colorSquare?: IStyle;
+    flexContainer?: IStyle;
+    flexPreviewBox?: IStyle;
+    flexSlider?: IStyle;
     input?: IStyle;
     panel?: IStyle;
     root?: IStyle;

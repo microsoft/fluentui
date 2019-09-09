@@ -1,7 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 04 Sep 2019 12:32:15 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Sep 2019 12:34:51 GMT and should not be manually modified.
 
+## 7.31.1
+Fri, 06 Sep 2019 12:34:51 GMT
+
+### Patches
+
+- Nav: Added aria-labels to Nav examples per issue request (v-mare@microsoft.com)
+## 7.31.0
+Thu, 05 Sep 2019 12:34:51 GMT
+
+### Minor changes
+
+- Adding Preview pan to the color picker component, increasing the width and height of the color rectangle and css changes (navkuma@microsoft.com)
+### Patches
+
+- give tooltip hoverable area an index lower than the content (mgodbolt@microsoft.com)
 ## 7.30.0
 Wed, 04 Sep 2019 12:32:15 GMT
 
