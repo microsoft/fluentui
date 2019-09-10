@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 09 Sep 2019 21:43:18 GMT",
+      "tag": "office-ui-fabric-react_v7.31.2",
+      "version": "7.31.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Nav.base.tsx",
+            "author": "michael.david.lauria@gmail.com",
+            "commit": "da9ced2bfd38fc3dac875901cd540a87d23e1a7e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Sep 2019 12:34:51 GMT",
       "tag": "office-ui-fabric-react_v7.31.1",
       "version": "7.31.1",

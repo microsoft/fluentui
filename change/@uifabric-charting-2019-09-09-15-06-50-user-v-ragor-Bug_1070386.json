@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Expose hideLegend prop for stacked bar chart",
+  "packageName": "@uifabric/charting",
+  "email": "v-ragor@microsoft.com",
+  "commit": "21d5f3be8e206956a48b9c15ea15e55c7ffe36c8",
+  "date": "2019-09-09T09:36:50.928Z"
+}
