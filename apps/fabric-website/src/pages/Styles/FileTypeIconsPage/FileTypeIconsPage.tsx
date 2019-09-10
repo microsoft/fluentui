@@ -150,12 +150,6 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               <ul className={styles.iconList}>
                 {documentIcons.map((icon, iconIndex) => (
                   <li key={iconIndex}>
-                    {/* <Image
-                      src={`${fabricCDN}/item-types-fluent/48/${icon.name}.svg`}
-                      width="48"
-                      height="48"
-                      alt={icon.name + ' file type icon'}
-                    /> */}
                     <Icon
                       {...getFileTypeIconProps({ extension: icon.name, size: 48, imageFileType: 'svg' })}
                       className={styles.icon}
