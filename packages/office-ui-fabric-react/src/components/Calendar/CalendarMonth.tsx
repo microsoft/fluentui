@@ -54,7 +54,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
 
   private _selectMonthCallbacks: (() => void)[];
   private _calendarYearRef: CalendarYear;
-  private _navigatedMonthRef: React.RefObject<HTMLButtonElement>;
+  private _navigatedMonthRef: React.RefObject<HTMLButtonElement> = React.createRef<HTMLButtonElement>();
   private _focusOnUpdate: boolean;
 
   public constructor(props: ICalendarMonthProps) {
