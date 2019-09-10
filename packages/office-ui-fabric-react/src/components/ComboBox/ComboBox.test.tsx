@@ -700,8 +700,7 @@ describe('ComboBox', () => {
     _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
 
     // this should toggle the checkbox
-    const buttonElement: any = wrapper.find('.ms-ComboBox button')! as any;
-    buttonElement.simulate('click');
+    wrapper.find('.ms-ComboBox button').simulate('click');
     const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
     ReactTestUtils.Simulate.change(buttons[3]);
 

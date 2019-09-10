@@ -1065,7 +1065,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         if (this.props.multiSelect) {
           newOption.selected = true;
         }
-        const newOptions: IComboBoxOption[] = [...currentOptions, newOption];
+        const newOptions: IComboBoxOption[] = currentOptions.concat([newOption]);
         if (selectedIndices) {
           if (!this.props.multiSelect) {
             selectedIndices = [];
