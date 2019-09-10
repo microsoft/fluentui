@@ -13,7 +13,7 @@ const GlobalClassNames = {
 const TAG_HEIGHT = 26;
 
 export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
-  const { className, theme, selected, disabled, readOnly } = props;
+  const { className, theme, selected, disabled } = props;
 
   const { palette, effects } = theme;
 
@@ -79,8 +79,7 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
         minWidth: 30,
-        margin: '0 8px',
-        textAlign: readOnly ? 'center' : 'start'
+        margin: '0 8px'
       },
       disabled && {
         selectors: {
