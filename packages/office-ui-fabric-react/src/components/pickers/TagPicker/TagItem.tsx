@@ -22,16 +22,14 @@ export const TagItemBase = (props: ITagItemProps) => {
     className,
     index,
     onRemoveItem,
-    removeButtonAriaLabel,
-    readOnly
+    removeButtonAriaLabel
   } = props;
 
   const classNames = getClassNames(styles, {
     theme: theme!,
     className,
     selected,
-    disabled,
-    readOnly
+    disabled
   });
 
   return (
@@ -45,15 +43,13 @@ export const TagItemBase = (props: ITagItemProps) => {
       <span className={classNames.text} aria-label={children as string}>
         {children}
       </span>
-      {readOnly ? null : (
-        <IconButton
-          onClick={onRemoveItem}
-          disabled={disabled}
-          iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
-          className={classNames.close}
-          ariaLabel={removeButtonAriaLabel}
-        />
-      )}
+      <IconButton
+        onClick={onRemoveItem}
+        disabled={disabled}
+        iconProps={{ iconName: 'Cancel', styles: { root: { fontSize: '12px' } } }}
+        className={classNames.close}
+        ariaLabel={removeButtonAriaLabel}
+      />
     </div>
   );
 };
