@@ -1,10 +1,6 @@
-To use the file type icons, select the format and size that best meets your needs. The following code shows you how to reference the file. Be sure to use the right resolution for the pixel density of the screen you’re targeting.
+The most durable and future-proof way to get the right icon for a file or item is to use the [file-type-icons package from Fabric](https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/file-type-icons) (`@uifabric/file-type-icons` on npm).
 
-Office file type icons come in predefined dimensions at 16px, 48px, and 96px. Although you may overwrite icon sizes with your custom styles, we recommend using our icons at the predefined sizes so the images appear as intended. Fabric includes custom media queries that will display our PNG brand icons in a different resolution depending on the device's pixel density. See the code sample below for an example:
-
-The most durable and future-proof way to get the right icon for a file or item is to use the [file-type-icons package from Fabric](https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/file-type-icons) (`@uifabric/file-type-icons` on npm).  Here's a [simple demo](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/experiments/src/components/FileTypeIcon/examples/FileTypeIcon.Basic.Example.tsx) of how to use the package.  The code for the main method you'll use ([`getFileTypeIconProps`](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/file-type-icons/src/getFileTypeIconProps.ts)) is also well-commented. The icons are served up from Fabric CDN, but you should not directly clone or reference these.
-
-Using the new file type icons looks something like this:
+The following code shows you how to specify a file type icon by extension, item type, icon size, and image type using the `file-type-icons` package along with Fabric's `<Icon>` component:
 
 ```jsx
 // Done by the app.
@@ -19,6 +15,12 @@ import { getFileTypeIconProps, FileIconType } from '@uifabric/file-type-icons';
 <Icon {...getFileTypeIconProps({ type: FileIconType.folder, size: 20, imageFileType: 'svg' }) } />
 ```
 
+File type icons come in predefined dimensions at 16px, 48px, and 96px. When specifying `size`, stick to these default sizes so the images appear as intended. When specifying image file format (`imageFileType`) and `size`, consider the screen size and pixel density of the screen you're targeting. Note that Fabric Core includes custom media queries that will automatically display the PNG icons in a different resolution depending on the device's pixel density.
+
+#### References
+
+Here's a [simple demo](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/experiments/src/components/FileTypeIcon/examples/FileTypeIcon.Basic.Example.tsx) of how to use the package.  The code for the main method you'll use ([`getFileTypeIconProps`](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/file-type-icons/src/getFileTypeIconProps.ts)) is also well-commented. The icons are kept up-to-date on Fabric's CDN, so we recommend not copying or reference these assets directly.
+
 #### Map icons to extensions - [TypeScript mapping file](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/file-type-icons/src/FileTypeIconMap.ts)
 
-This file describes the relationship between file extensions and the right icon PNG or SVG. We've done the work to minimize the number of required icons while maximizing the number of files that get a non-generic icon. To support non-filesystem objects which may not have file extensions, you will want to add them to [getFileTypeIconProps.ts](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/file-type-icons/src/getFileTypeIconProps.ts) and [FileIconType.ts](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/file-type-icons/src/FileIconType.ts).
+This file maps file extensions to the right PNG or SVG icon. The mapping minimizes the number of required icons while maximizing the number of files that get a non-generic icon. Support for non-file system objects which may not have file extensions can be added in [getFileTypeIconProps.ts](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/file-type-icons/src/getFileTypeIconProps.ts) and [FileIconType.ts](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/file-type-icons/src/FileIconType.ts).

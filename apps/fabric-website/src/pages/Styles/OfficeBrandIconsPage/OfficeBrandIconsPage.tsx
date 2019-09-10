@@ -45,8 +45,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                       Use product icons to help your users transition between Microsoft products. Product icons should only be used when the
                       behavior of the command (app icon) is to launch the application. Do not use a product icon to create a new file of
                       that type. For example, do not create a Word file from a Word product icon.
-                      <br />
-                      <br />
+                    </p>
+                    <p>
                       If you are looking for icons for command bars, navigation, status indicators, or similar, go to the{' '}
                       <Link href="#/styles/web/icons">Fabric icons page</Link>. Alternatively, if you're looking for file type icons to
                       indicate to users that they are creating a new file of that type, go to the{' '}
