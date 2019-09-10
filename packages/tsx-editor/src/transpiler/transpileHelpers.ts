@@ -1,3 +1,6 @@
+// Helper methods for transpile(). They're in a separate file that doesn't import Monaco so they
+// can be tested with Jest (which doesn't like Monaco's ES modules).
+
 /** Partial ts.Diagnostic @internal */
 export interface IDiagnostic {
   category: number;

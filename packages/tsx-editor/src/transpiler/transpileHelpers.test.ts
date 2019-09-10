@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { IDiagnostic, _getLineStarts, _getErrorLineInfo, _getErrorMessages } from './helpers';
+import { IDiagnostic, _getLineStarts, _getErrorLineInfo, _getErrorMessages } from './transpileHelpers';
 
 // Real diagnostics copied from loading ./examples/class.txt in the editor while type checking wasn't set up
 const example = fs.readFileSync(path.join(__dirname, 'examples/class.txt')).toString();
