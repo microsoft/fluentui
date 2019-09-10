@@ -101,7 +101,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #0078d4;
+            border-color: #8a8886;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -124,13 +124,13 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -157,6 +157,9 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           }
           &:focus {
             border-color: #0078d4;
+          }
+          &:focus .ms-ComboBox-Input {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:focus {
             -ms-high-contrast-adjust: none;
@@ -249,6 +252,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               font-weight: 400;
               height: 32px;
               line-height: 30px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -321,7 +325,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         tabIndex={-1}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -331,27 +335,33 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons";
-                  font-size: 12px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 12px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0;
                   margin-left: 4px;
                   margin-right: 4px;
                   margin-top: 0;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -360,7 +370,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
   </div>
@@ -433,7 +443,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             margin-bottom: 8px;
           }
           &.is-open {
-            border-color: #0078d4;
+            border-color: #8a8886;
           }
           @media screen and (-ms-high-contrast: active){&.is-open {
             -ms-high-contrast-adjust: none;
@@ -456,13 +466,13 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -489,6 +499,9 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           }
           &:focus {
             border-color: #0078d4;
+          }
+          &:focus .ms-ComboBox-Input {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:focus {
             -ms-high-contrast-adjust: none;
@@ -581,6 +594,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               font-weight: 400;
               height: 32px;
               line-height: 30px;
+              min-width: 32px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -653,7 +667,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
         tabIndex={-1}
         type="button"
       >
-        <div
+        <span
           className=
               ms-Button-flexContainer
               {
@@ -663,27 +677,33 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
                 height: 100%;
                 justify-content: center;
               }
+          data-automationid="splitbuttonprimary"
         >
           <i
             aria-hidden={true}
             className=
+                ms-Icon
                 ms-Button-icon
+                {
+                  display: inline-block;
+                }
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  display: inline-block;
-                  flex-shrink: 0;
                   font-family: "FabricMDL2Icons";
-                  font-size: 12px;
                   font-style: normal;
                   font-weight: normal;
+                  speak: none;
+                }
+                {
+                  flex-shrink: 0;
+                  font-size: 12px;
                   height: 16px;
                   line-height: 16px;
                   margin-bottom: 0;
                   margin-left: 4px;
                   margin-right: 4px;
                   margin-top: 0;
-                  speak: none;
                   text-align: center;
                   vertical-align: middle;
                 }
@@ -692,7 +712,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
           >
             
           </i>
-        </div>
+        </span>
       </button>
     </div>
   </div>

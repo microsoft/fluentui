@@ -35,7 +35,7 @@ export const TooltipPageProps: IDocPageProps = {
       view: <TooltipDisplayExample />
     },
     {
-      title: 'Tooltip with list',
+      title: 'Tooltip with list of links',
       code: TooltipCustomExampleCode,
       view: <TooltipCustomExample />
     },

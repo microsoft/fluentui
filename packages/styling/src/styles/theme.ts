@@ -182,6 +182,8 @@ function _expandFrom<TRetVal, TMapType>(propertyName: string | TRetVal | undefin
 function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depComments: boolean): ISemanticColors {
   let toReturn: ISemanticColors = {
     bodyBackground: p.white,
+    bodyBackgroundHovered: p.neutralLighter,
+    bodyBackgroundChecked: p.neutralLight,
     bodyStandoutBackground: p.neutralLighterAlt,
     bodyFrameBackground: p.white,
     bodyFrameDivider: p.neutralLight,

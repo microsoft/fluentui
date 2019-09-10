@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix generation of font size theming variables for legacy",
-  "packageName": "@uifabric/styling",
-  "email": "phkuo@microsoft.com",
-  "commit": "19e9d72b86050048c0361ca1caba0aca898ca642",
-  "date": "2019-08-16T22:38:54.092Z"
-}

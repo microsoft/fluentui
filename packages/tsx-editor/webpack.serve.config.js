@@ -2,37 +2,40 @@ const path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
 const webpack = resources.webpack;
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const { addMonacoConfig } = require('./scripts/monaco-webpack');
 
+const BUNDLE_NAME = 'demo-app';
 const PACKAGE_NAME = require('./package.json').name;
 
-module.exports = resources.createServeConfig({
-  entry: './src/demo/index.tsx',
+module.exports = resources.createServeConfig(
+  addMonacoConfig({
+    entry: {
+      [BUNDLE_NAME]: './src/demo/index.tsx'
+    },
 
-  output: {
-    filename: 'demo-app.js'
-  },
+    output: {
+      chunkFilename: `${BUNDLE_NAME}-[name].js`
+    },
 
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM'
-  },
+    devServer: {
+      writeToDisk: true // for debugging
+    },
 
-  plugins: [
-    new MonacoWebpackPlugin({
-      // available options are documented at https://github.com/Microsoft/monaco-editor-webpack-plugin#options
-      languages: ['typescript']
-    }),
-    new BundleAnalyzerPlugin()
-  ],
+    externals: {
+      react: 'React',
+      'react-dom': 'ReactDOM'
+    },
 
-  resolve: {
-    alias: {
-      '@uifabric/tsx-editor/src': path.join(__dirname, 'src'),
-      '@uifabric/tsx-editor/lib': path.join(__dirname, 'lib'),
-      '@uifabric/tsx-editor': path.join(__dirname, 'lib'),
-      'Props.ts.js': 'Props',
-      'Example.tsx.js': 'Example'
+    plugins: [new BundleAnalyzerPlugin()],
+
+    resolve: {
+      alias: {
+        '@uifabric/tsx-editor/src': path.join(__dirname, 'src'),
+        '@uifabric/tsx-editor/lib': path.join(__dirname, 'lib'),
+        '@uifabric/tsx-editor': path.join(__dirname, 'lib'),
+        'Props.ts.js': 'Props',
+        'Example.tsx.js': 'Example'
+      }
     }
-  }
-});
+  })
+);

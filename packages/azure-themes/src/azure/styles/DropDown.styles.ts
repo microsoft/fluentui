@@ -109,13 +109,11 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       color: semanticColors.bodyText,
       fontSize: FontSizes.size12,
       selectors: {
-        '&:hover': {
-          borderColor: 'transparent'
-        },
-        '&:hover:focus': {
+        // active: Mouse down on the item, then drag outside.
+        '&:hover, &:active, &:hover:focus': {
           backgroundColor: semanticColors.listItemBackgroundHovered,
-          color: semanticColors.bodyText,
-          borderColor: 'transparent'
+          borderColor: 'transparent',
+          color: semanticColors.bodyText
         }
       }
     },
@@ -129,11 +127,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       color: semanticColors.bodyText,
       fontWeight: 'bold',
       selectors: {
-        '&:hover': {
-          backgroundColor: semanticColors.listItemBackgroundChecked,
-          borderColor: 'transparent'
-        },
-        '&:hover:focus': {
+        '&:hover, &:focus, &:active, &:hover:focus': {
           backgroundColor: semanticColors.listItemBackgroundChecked,
           borderColor: 'transparent',
           color: semanticColors.bodyText

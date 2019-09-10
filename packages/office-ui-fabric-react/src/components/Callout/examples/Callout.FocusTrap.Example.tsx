@@ -5,15 +5,11 @@ import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/Com
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import './CalloutExample.scss';
 
-export interface ICalloutFocusTrapExampleProps {
-  items: ICommandBarItemProps[];
-}
-
 export interface ICalloutFocusTrapExampleState {
   isCalloutVisible: boolean;
 }
 
-export class CalloutFocusTrapExample extends React.Component<ICalloutFocusTrapExampleProps, ICalloutFocusTrapExampleState> {
+export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTrapExampleState> {
   public state: ICalloutFocusTrapExampleState = {
     isCalloutVisible: false
   };
@@ -54,7 +50,7 @@ export class CalloutFocusTrapExample extends React.Component<ICalloutFocusTrapEx
                   </p>
                 </div>
               </div>
-              <CommandBar items={this.props.items} />
+              <CommandBar items={/* tslint:disable-line:no-use-before-declare */ items} />
             </FocusTrapCallout>
           </div>
         ) : null}
@@ -68,3 +64,22 @@ export class CalloutFocusTrapExample extends React.Component<ICalloutFocusTrapEx
     });
   };
 }
+
+const onCommandClick = (ev: any, item?: ICommandBarItemProps) => console.log(item && item.name);
+const items: ICommandBarItemProps[] = [
+  {
+    key: 'newItem',
+    name: 'New',
+    iconProps: { iconName: 'Add' },
+    ariaLabel: 'New. Use left and right arrow keys to navigate',
+    subMenuProps: {
+      items: [
+        { key: 'emailMessage', name: 'Email message', iconProps: { iconName: 'Mail' } },
+        { key: 'calendarEvent', name: 'Calendar event', iconProps: { iconName: 'Calendar' } }
+      ]
+    }
+  },
+  { key: 'upload', name: 'Upload', iconProps: { iconName: 'Upload' }, href: 'https://dev.office.com/fabric', target: '_blank' },
+  { key: 'share', name: 'Share', iconProps: { iconName: 'Share' }, onClick: onCommandClick },
+  { key: 'download', name: 'Download', iconProps: { iconName: 'Download' }, onClick: onCommandClick }
+];

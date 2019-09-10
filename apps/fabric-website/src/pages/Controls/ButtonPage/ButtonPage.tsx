@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
-import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { ButtonPageProps } from './ButtonPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 
-const checkboxStyles: Partial<IStyleSet<ICheckboxStyles>> = {
+const toggleStyles: Partial<IToggleStyles> = {
   root: { margin: '10px 0' }
 };
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/ButtonPage/';
@@ -30,8 +29,8 @@ export class ButtonPage extends React.Component<
     const { areButtonsDisabled, areButtonsChecked } = this.state;
     return (
       <>
-        <Checkbox styles={checkboxStyles} label="Disable buttons" checked={areButtonsDisabled} onChange={this._onDisabledChanged} />
-        <Checkbox styles={checkboxStyles} label="Mark as checked" checked={areButtonsChecked} onChange={this._onToggledChanged} />
+        <Toggle styles={toggleStyles} label="Disable buttons" inlineLabel checked={areButtonsDisabled} onChange={this._onDisabledChanged} />
+        <Toggle styles={toggleStyles} label="Mark as checked" inlineLabel checked={areButtonsChecked} onChange={this._onToggledChanged} />
       </>
     );
   }

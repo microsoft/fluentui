@@ -1,4 +1,4 @@
-import { KeyCodes } from '@uifabric/utilities';
+import { KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';

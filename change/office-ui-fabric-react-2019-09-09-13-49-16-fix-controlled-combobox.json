@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Combobox: ensure that state doesn't mutate in controlled scenario",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "194aa66c1cfd4aa517b686383c01508403a229e4",
+  "date": "2019-09-09T20:49:16.490Z"
+}

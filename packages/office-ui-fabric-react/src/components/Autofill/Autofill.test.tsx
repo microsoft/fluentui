@@ -85,4 +85,18 @@ describe('Autofill', () => {
     expect(autofill.value).toBe('hel');
     expect(autofill.inputElement!.value).toBe('hello');
   });
+
+  it('value changes when updateValueInWillReceiveProps is passed in', () => {
+    const propsString = 'Updated';
+    const receivePropsUpdater = () => {
+      return propsString;
+    };
+    component = mount(<Autofill componentRef={autofillRef} suggestedDisplayValue="" updateValueInWillReceiveProps={receivePropsUpdater} />);
+
+    ReactTestUtils.Simulate.input(autofill.inputElement!, mockEvent('hel'));
+    component.setProps({ suggestedDisplayValue: 'hello' });
+
+    expect(autofill.value).toBe('Updated');
+    expect(autofill.inputElement!.value).toBe('Updated');
+  });
 });

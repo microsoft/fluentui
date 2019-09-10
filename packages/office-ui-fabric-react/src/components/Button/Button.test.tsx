@@ -371,7 +371,6 @@ describe('Button', () => {
     it('Providing onClick and menuProps does not render a SplitButton', () => {
       const button = render(
         <DefaultButton
-          data-automation-id="test"
           text="Create account"
           onClick={alertClicked}
           menuProps={{
@@ -398,7 +397,6 @@ describe('Button', () => {
 
       const button = render(
         <DefaultButton
-          data-automation-id="test"
           text="Create account"
           onKeyDown={keyDownSpy}
           menuProps={{
@@ -428,7 +426,6 @@ describe('Button', () => {
 
       const button = render(
         <DefaultButton
-          data-automation-id="test"
           text="Create account"
           onKeyDown={keyDownSpy}
           split={true}
@@ -449,17 +446,48 @@ describe('Button', () => {
           }}
         />
       );
-      const primaryButtonDOM: HTMLDivElement = button.getElementsByTagName('div')[0] as HTMLDivElement;
+      const primaryButtonDOM: HTMLElement = button.querySelector("[data-automationid='splitbuttonprimary']") as HTMLElement;
 
       ReactTestUtils.Simulate.keyDown(primaryButtonDOM, { which: KeyCodes.enter });
 
       expect(keyDownSpy).toHaveBeenCalled();
     });
 
-    it('Providing onClick, menuProps and setting splitButton to true renders a SplitButton', () => {
+    it('Space keydown in a splitButton will fire onClick', () => {
+      const onClickSpy = jest.fn();
+
       const button = render(
         <DefaultButton
           data-automation-id="test"
+          text="Create account"
+          split={true}
+          onClick={onClickSpy}
+          menuProps={{
+            items: [
+              {
+                key: 'emailMessage',
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
+              },
+              {
+                key: 'calendarEvent',
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
+              }
+            ]
+          }}
+        />
+      );
+      const buttonContainer: HTMLDivElement = button.getElementsByTagName('span')[0] as HTMLDivElement;
+
+      ReactTestUtils.Simulate.keyDown(buttonContainer, { which: KeyCodes.space });
+
+      expect(onClickSpy).toHaveBeenCalled();
+    });
+
+    it('Providing onClick, menuProps and setting splitButton to true renders a SplitButton', () => {
+      const button = render(
+        <DefaultButton
           text="Create account"
           split={true}
           onClick={alertClicked}
@@ -485,7 +513,6 @@ describe('Button', () => {
     it('Tapping menu button of SplitButton expands menu', () => {
       const button = render(
         <DefaultButton
-          data-automation-id="test"
           text="Create account"
           split={true}
           onClick={alertClicked}
@@ -513,7 +540,6 @@ describe('Button', () => {
     it('Touch Start on primary button of SplitButton expands menu', () => {
       const button = render(
         <DefaultButton
-          data-automation-id="test"
           text="Create account"
           split={true}
           onClick={alertClicked}
@@ -546,7 +572,6 @@ describe('Button', () => {
     it('If menu trigger is disabled, pressing down does not trigger menu', () => {
       const button = render(
         <DefaultButton
-          data-automation-id="test"
           text="Create account"
           menuTriggerKeyCode={null}
           menuProps={{
@@ -575,7 +600,6 @@ describe('Button', () => {
     it('If menu trigger is specified, default key is overridden', () => {
       const button = render(
         <DefaultButton
-          data-automation-id="test"
           text="Create account"
           menuTriggerKeyCode={KeyCodes.right}
           menuProps={{
@@ -619,7 +643,6 @@ describe('Button', () => {
       function buildRenderButtonWithMenu(callbackMock?: jest.Mock<unknown>, persistMenu?: boolean): HTMLElement {
         const button: HTMLElement = renderIntoDocument(
           <DefaultButton
-            data-automation-id="test"
             text="Create account"
             split={true}
             onClick={setTrue}
@@ -695,7 +718,6 @@ describe('Button', () => {
         const button: HTMLElement = renderIntoDocument(
           <DefaultButton
             disabled={true}
-            data-automation-id="test"
             text="Create account"
             split={true}
             onClick={setTrue}
@@ -752,7 +774,6 @@ describe('Button', () => {
         const button: HTMLElement = renderIntoDocument(
           <DefaultButton
             disabled={true}
-            data-automation-id="test"
             text="Create account"
             split={false}
             onClick={setTrue}
@@ -795,7 +816,6 @@ describe('Button', () => {
           <DefaultButton
             disabled={true}
             allowDisabledFocus={true}
-            data-automation-id="test"
             text="Create account"
             split={false}
             onClick={setTrue}
@@ -838,7 +858,6 @@ describe('Button', () => {
           <DefaultButton
             disabled={true}
             allowDisabledFocus={true}
-            data-automation-id="test"
             text="Create account"
             split={false}
             onClick={setTrue}

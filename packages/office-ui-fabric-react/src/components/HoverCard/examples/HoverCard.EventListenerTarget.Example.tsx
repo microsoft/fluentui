@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { HoverCard, IPlainCardProps, HoverCardType } from 'office-ui-fabric-react/lib/HoverCard';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { HoverCard, IPlainCardProps, HoverCardType, DirectionalHint } from 'office-ui-fabric-react/lib/HoverCard';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { IconButton } from 'office-ui-fabric-react';
