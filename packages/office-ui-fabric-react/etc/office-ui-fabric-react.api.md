@@ -1698,7 +1698,6 @@ export interface IBasePickerProps<T> extends React.Props<any> {
     onValidateInput?: (input: string) => ValidationState;
     pickerCalloutProps?: ICalloutProps;
     pickerSuggestionsProps?: IBasePickerSuggestionsProps;
-    readOnly?: boolean;
     removeButtonAriaLabel?: string;
     resolveDelay?: number;
     searchingText?: ((props: {
@@ -7363,7 +7362,7 @@ export interface ITagItemProps extends IPickerItemProps<ITag> {
 }
 
 // @public
-export type ITagItemStyleProps = Required<Pick<ITagItemProps, 'theme'>> & Pick<ITagItemProps, 'className' | 'selected' | 'disabled' | 'readOnly'> & {};
+export type ITagItemStyleProps = Required<Pick<ITagItemProps, 'theme'>> & Pick<ITagItemProps, 'className' | 'selected' | 'disabled'> & {};
 
 // @public
 export interface ITagItemStyles {
