@@ -84,35 +84,6 @@ storiesOf('TagItem', module)
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-TagItem')
         .snapshot('Tag Item Hover', { cropTo: '.testWrapper' })
-        .click('.ms-TagItem')
-        .snapshot('Tag Item Select', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
-  ))
-  .addStory('Read Only', () => (
-    <Fabric>
-      <TagPicker
-        readOnly
-        defaultSelectedItems={[testTags[4]]}
-        onResolveSuggestions={getList}
-        onEmptyInputFocus={getList}
-        getTextFromItem={getTextFromItem}
-        pickerSuggestionsProps={{
-          suggestionsHeaderText: 'Suggested Tags',
-          noResultsFoundText: 'No Color Tags Found'
-        }}
-        itemLimit={2}
-      />
-    </Fabric>
-  ))
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-TagItem')
-        .snapshot('Tag Item Hover', { cropTo: '.testWrapper' })
         .hover('.ms-TagItem-close')
         .snapshot('Tag Item Clear Button Hover', { cropTo: '.testWrapper' })
         .click('.ms-TagItem')
