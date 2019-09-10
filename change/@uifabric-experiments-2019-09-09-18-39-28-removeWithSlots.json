@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Foundation/next: Remove withSlots usage.",
+  "packageName": "@uifabric/experiments",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "commit": "db3c5657530ff6c2839302a0d03d0472ab945424",
+  "date": "2019-09-10T01:39:24.693Z"
+}
