@@ -17,11 +17,7 @@ export const MenuButtonSlots: IMenuButtonComponent['slots'] = props => ({
 
 export const MenuButtonView: IMenuButtonComponent['view'] = (props, slots) => {
   const {
-    root,
-    button,
-    menuArea,
-    menu,
-    menuIcon,
+    slotProps,
     children,
     disabled,
     onClick,
@@ -34,6 +30,7 @@ export const MenuButtonView: IMenuButtonComponent['view'] = (props, slots) => {
     ...rest
   } = props;
   let { keytipProps } = props;
+  const { root, button, menuArea, menu, menuIcon, ...buttonSlotProps } = slotProps;
 
   if (keytipProps && menu) {
     keytipProps = {
@@ -51,6 +48,7 @@ export const MenuButtonView: IMenuButtonComponent['view'] = (props, slots) => {
         allowDisabledFocus={allowDisabledFocus}
         keytipProps={keytipProps}
         {...rest}
+        {...buttonSlotProps}
         {...button}
       >
         {children}

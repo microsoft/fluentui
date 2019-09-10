@@ -1,6 +1,7 @@
 // Temporary import file to experiment with next version of foundation.
 import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
-import { IComponentStyles, IHTMLSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
+import { ISlottableProps } from '@uifabric/foundation/lib/next/ISlots';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 import { IBaseProps } from '../../../Utilities';
 import { INativeButtonProps } from '../Button.types';
 import {
@@ -19,8 +20,8 @@ export type ISplitButtonComponent = IComponent<
   ISplitButtonProps,
   ISplitButtonTokens,
   ISplitButtonStyles,
-  ISplitButtonViewProps,
-  ISplitButtonSlots
+  ISplitButtonSlots,
+  ISplitButtonViewProps
 >;
 
 // These types are redundant with IButtonComponent but are needed until TS function return widening issue is resolved:
@@ -75,7 +76,7 @@ export interface ISplitButton extends IMenuButton {}
  * {@docCategory Button}
  */
 export interface ISplitButtonProps
-  extends ISlottableProps<ISplitButtonSlots>,
+  extends ISplitButtonSlots,
     Pick<
       IMenuButtonProps,
       | 'href'
@@ -115,7 +116,10 @@ export interface ISplitButtonProps
 /**
  * {@docCategory Button}
  */
-export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'buttonRef' | 'menuButtonRef'>, ISplitButtonProps {}
+export interface ISplitButtonViewProps
+  extends Pick<IMenuButtonViewProps, 'buttonRef' | 'menuButtonRef'>,
+    ISlottableProps<ISplitButtonSlots>,
+    Omit<ISplitButtonProps, keyof ISplitButtonSlots> {}
 
 /**
  * {@docCategory Button}

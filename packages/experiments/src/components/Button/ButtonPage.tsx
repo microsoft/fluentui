@@ -6,7 +6,6 @@ import { ButtonExample } from './examples/Button.Example';
 import { MenuButtonExample } from './MenuButton/examples/MenuButton.Example';
 import { SplitButtonExample } from './SplitButton/examples/SplitButton.Example';
 import { ButtonKeytipsExample } from './examples/Button.Keytips.Example';
-import { ButtonSlotsExample } from './examples/Button.Slots.Example';
 import { ButtonStylesExample } from './examples/Button.Styles.Example';
 import { ButtonToggleExample } from './examples/Button.Toggle.Example';
 import { ButtonTokensExample } from './examples/Button.Tokens.Example';
@@ -16,7 +15,6 @@ const ButtonExampleCode = require('!raw-loader!@uifabric/experiments/src/compone
 const MenuButtonExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/MenuButton/examples/MenuButton.Example.tsx') as string;
 const SplitButtonExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/SplitButton/examples/SplitButton.Example.tsx') as string;
 const ButtonKeytipsExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Keytips.Example.tsx') as string;
-const ButtonSlotsExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Slots.Example.tsx') as string;
 const ButtonStylesExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Styles.Example.tsx') as string;
 const ButtonToggleExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Toggle.Example.tsx') as string;
 const ButtonTokensExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Tokens.Example.tsx') as string;
@@ -47,9 +45,6 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title="Buttons with Keytips" code={ButtonKeytipsExampleCode}>
               <ButtonKeytipsExample />
-            </ExampleCard>
-            <ExampleCard title="Button Slots Customization" code={ButtonSlotsExampleCode}>
-              <ButtonSlotsExample />
             </ExampleCard>
             <ExampleCard title="Button Styles Customization" code={ButtonStylesExampleCode}>
               <ButtonStylesExample />

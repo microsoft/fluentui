@@ -21,16 +21,10 @@ export const SplitButtonSlots: ISplitButtonComponent['slots'] = props => ({
 
 export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => {
   const {
-    root,
-    button,
-    menuButton,
-    menu,
-    splitDividerContainer,
-    splitDivider,
+    slotProps,
     styles,
     tokens,
     children,
-    content,
     primary,
     disabled,
     onClick,
@@ -48,6 +42,7 @@ export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => 
     menuButtonRef,
     ...rest
   } = props;
+  const { root, content, button, menuButton, menu, splitDividerContainer, splitDivider, ...buttonSlotProps } = slotProps;
 
   const menuButtonAriaLabel = secondaryAriaLabel ? secondaryAriaLabel : ariaLabel ? ariaLabel : (content as string);
 
@@ -95,6 +90,7 @@ export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => 
         onKeyDown={onKeyDown}
         tokens={buttonTokens}
         {...rest}
+        {...buttonSlotProps}
         {...button}
       >
         {children}

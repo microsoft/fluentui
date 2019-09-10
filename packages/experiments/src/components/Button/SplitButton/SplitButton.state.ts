@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { ISplitButtonComponent, ISplitButtonViewProps } from './SplitButton.types';
+import { ISplitButtonComponent } from './SplitButton.types';
 import { KeyCodes } from '../../../Utilities';
 
 export const useSplitButtonState: ISplitButtonComponent['state'] = props => {
@@ -37,7 +37,7 @@ export const useSplitButtonState: ISplitButtonComponent['state'] = props => {
     [disabled, expanded]
   );
 
-  const viewProps: ISplitButtonViewProps = {
+  const viewProps = {
     ...props,
     expanded,
     onKeyDown: _onKeyDown,

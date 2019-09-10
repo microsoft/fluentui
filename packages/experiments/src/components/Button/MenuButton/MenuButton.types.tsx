@@ -1,6 +1,7 @@
 // Temporary import file to experiment with next version of foundation.
 import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
-import { IComponentStyles, IHTMLSlot, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
+import { ISlottableProps } from '@uifabric/foundation/lib/next/ISlots';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 import { IContextualMenuSlot, IFontIconSlot } from '../../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../../Utilities';
 import { IButton, IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps, INativeButtonProps } from '../Button.types';
@@ -12,8 +13,8 @@ export type IMenuButtonComponent = IComponent<
   IMenuButtonProps,
   IMenuButtonTokens,
   IMenuButtonStyles,
-  IMenuButtonViewProps,
-  IMenuButtonSlots
+  IMenuButtonSlots,
+  IMenuButtonViewProps
 >;
 
 // These types are redundant with IButtonComponent but are needed until TS function return widening issue is resolved:
@@ -67,7 +68,7 @@ export interface IMenuButton extends IButton {}
  * {@docCategory Button}
  */
 export interface IMenuButtonProps
-  extends ISlottableProps<IMenuButtonSlots>,
+  extends IMenuButtonSlots,
     Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps' | 'uniqueId'>,
     IStyleableComponentProps<IMenuButtonProps, IMenuButtonTokens, IMenuButtonStyles>,
     IBaseProps<IMenuButton>,
@@ -94,7 +95,10 @@ export interface IMenuButtonProps
 /**
  * {@docCategory Button}
  */
-export interface IMenuButtonViewProps extends Pick<IButtonViewProps, 'buttonRef'>, IMenuButtonProps {
+export interface IMenuButtonViewProps
+  extends Pick<IButtonViewProps, 'buttonRef'>,
+    ISlottableProps<IMenuButtonSlots>,
+    Omit<IMenuButtonProps, keyof IMenuButtonSlots> {
   /**
    * Defines a reference to the MenuButton.
    */

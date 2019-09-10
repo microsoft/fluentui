@@ -1,8 +1,9 @@
 // Temporary import file to experiment with next version of foundation.
 import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
+import { ISlottableProps } from '@uifabric/foundation/lib/next/ISlots';
 import { IRawFontStyle, IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { ITextSlot } from 'office-ui-fabric-react';
-import { IComponentStyles, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { IFontIconSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
 import { IActionable, IActionableProps, IActionableSlots, IActionableTokens, IActionableViewProps } from './Actionable/Actionable.types';
@@ -10,7 +11,7 @@ import { IActionable, IActionableProps, IActionableSlots, IActionableTokens, IAc
 /**
  * {@docCategory Button}
  */
-export type IButtonComponent = IComponent<IButtonProps, IButtonTokens, IButtonStyles, IButtonViewProps, IButtonSlots>;
+export type IButtonComponent = IComponent<IButtonProps, IButtonTokens, IButtonStyles, IButtonSlots, IButtonViewProps>;
 
 // These types are redundant with IButtonComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241
@@ -55,7 +56,7 @@ export type INativeButtonProps = Omit<React.AllHTMLAttributes<HTMLAnchorElement 
  * {@docCategory Button}
  */
 export interface IButtonProps
-  extends ISlottableProps<IButtonSlots>,
+  extends IButtonSlots,
     Pick<IActionableProps, 'href' | 'disabled' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps' | 'uniqueId'>,
     IStyleableComponentProps<IButtonProps, IButtonTokens, IButtonStyles>,
     IBaseProps<IButton>,
@@ -77,7 +78,10 @@ export interface IButtonProps
 /**
  * {@docCategory Button}
  */
-export interface IButtonViewProps extends Pick<IActionableViewProps, 'buttonRef'>, IButtonProps {}
+export interface IButtonViewProps
+  extends Pick<IActionableViewProps, 'buttonRef'>,
+    ISlottableProps<IButtonSlots>,
+    Omit<IButtonProps, keyof IButtonSlots> {}
 
 /**
  * {@docCategory Button}

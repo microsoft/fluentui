@@ -1,11 +1,12 @@
 import { IStyleSet } from '@uifabric/styling';
-import { IComponentOptions as IOldComponentOptions, IPropsWithChildren } from '../IComponent';
-import { ISlots, ISlotDefinition, ISlottableProps } from '../ISlots';
+import { IComponentOptions as IOldComponentOptions, IPropsWithChildren, IStateComponentType } from '../IComponent';
+import { ISlots, ISlotDefinition } from '../ISlots';
+import { ISlottableProps } from './ISlots';
 
 /**
  * Defines the contract for view components.
  */
-export type IViewComponent<TViewProps, TComponentSlots = {}> = (
+export type IViewComponent<TViewProps extends ISlottableProps<TComponentSlots>, TComponentSlots = {}> = (
   props: IPropsWithChildren<TViewProps>,
   slots: ISlots<Required<TComponentSlots>>
 ) => ReturnType<React.FunctionComponent>;
@@ -13,14 +14,14 @@ export type IViewComponent<TViewProps, TComponentSlots = {}> = (
 /**
  * Defines the contract for slot components.
  */
-export type ISlotComponent<TComponentProps extends ISlottableProps<TComponentSlots>, TComponentSlots> =
+export type ISlotComponent<TComponentProps extends TComponentSlots, TComponentSlots> =
   | ISlotDefinition<Required<TComponentSlots>>
   | ((props: TComponentProps) => ISlotDefinition<Required<TComponentSlots>>);
 
 /**
  * Defines the contract for partial slot components used in recomposition.
  */
-export type IPartialSlotComponent<TComponentProps extends ISlottableProps<TComponentSlots>, TComponentSlots> =
+export type IPartialSlotComponent<TComponentProps extends TComponentSlots, TComponentSlots> =
   | ISlotDefinition<TComponentSlots>
   | ((props: TComponentProps) => ISlotDefinition<TComponentSlots>);
 
@@ -36,17 +37,25 @@ export type IPartialSlotComponent<TComponentProps extends ISlottableProps<TCompo
  * * TStatics: Static type for statics applied to created component object.
  */
 export interface IComponentOptions<
-  TComponentProps extends ISlottableProps<TComponentSlots>,
+  TComponentProps extends TComponentSlots,
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
-  TViewProps = TComponentProps,
   TComponentSlots = {},
+  TViewProps extends Omit<TComponentProps, keyof TComponentSlots> & ISlottableProps<TComponentSlots> = Omit<
+    TComponentProps,
+    keyof TComponentSlots
+  > &
+    ISlottableProps<TComponentSlots>,
   TStatics = {}
-> extends IOldComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics> {
+> extends Omit<IOldComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>, 'state'> {
   /**
    * Slot definition object defining the slot component for each slot.
    */
   slots?: ISlotComponent<TComponentProps, TComponentSlots>;
+  /**
+   * Optional state component that processes TComponentProps into TViewProps.
+   */
+  state?: IStateComponentType<TComponentProps, Omit<TViewProps, 'slotProps'>>;
   /**
    * Stateless pure function that receives props to render the output of the component.
    */
@@ -54,17 +63,25 @@ export interface IComponentOptions<
 }
 
 export interface IRecompositionComponentOptions<
-  TComponentProps extends ISlottableProps<TComponentSlots>,
+  TComponentProps extends TComponentSlots,
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
-  TViewProps = TComponentProps,
   TComponentSlots = {},
+  TViewProps extends Omit<TComponentProps, keyof TComponentSlots> & ISlottableProps<TComponentSlots> = Omit<
+    TComponentProps,
+    keyof TComponentSlots
+  > &
+    ISlottableProps<TComponentSlots>,
   TStatics = {}
-> extends IOldComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics> {
+> extends Omit<IOldComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>, 'state'> {
   /**
    * Slot definition object defining the slot component for each slot.
    */
   slots?: IPartialSlotComponent<TComponentProps, TComponentSlots>;
+  /**
+   * Optional state component that processes TComponentProps into TViewProps.
+   */
+  state?: IStateComponentType<TComponentProps, Omit<TViewProps, 'slotProps'>>;
   /**
    * Stateless pure function that receives props to render the output of the component.
    */
@@ -75,10 +92,14 @@ export interface IRecompositionComponentOptions<
  * Component helper that defines options as required for ease of use by component consumers.
  */
 export type IComponent<
-  TComponentProps extends ISlottableProps<TComponentSlots>,
+  TComponentProps extends TComponentSlots,
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
-  TViewProps = TComponentProps,
   TComponentSlots = {},
+  TViewProps extends Omit<TComponentProps, keyof TComponentSlots> & ISlottableProps<TComponentSlots> = Omit<
+    TComponentProps,
+    keyof TComponentSlots
+  > &
+    ISlottableProps<TComponentSlots>,
   TStatics = {}
-> = Required<IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>>;
+> = Required<IComponentOptions<TComponentProps, TTokens, TStyleSet, TComponentSlots, TViewProps, TStatics>>;

@@ -1,6 +1,7 @@
 import { IStyleSet } from '@uifabric/styling';
-import { ISlotCreator as IOldSlotCreator, ISlottableProps, ValidProps, ValidShorthand } from '../ISlots';
 import { IComponentOptions } from './IComponent';
+import { ExtractProps, ISlotCreator as IOldSlotCreator, ValidProps, ValidShorthand } from '../ISlots';
+import { ISlottableProps } from './ISlots';
 
 /**
  * Signature of components that have component factories.
@@ -20,12 +21,23 @@ export type ISlottableComponentType<TProps extends ValidProps, TShorthandProp ex
  * Signature of components created using composed.
  */
 export interface IFoundationComponent<
-  TComponentProps extends ValidProps & ISlottableProps<TComponentSlots>,
+  TComponentProps extends ValidProps & TComponentSlots,
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
-  TViewProps extends TComponentProps = TComponentProps,
   TComponentSlots = {},
+  TViewProps extends Omit<TComponentProps, keyof TComponentSlots> & ISlottableProps<TComponentSlots> = Omit<
+    TComponentProps,
+    keyof TComponentSlots
+  > &
+    ISlottableProps<TComponentSlots>,
   TStatics = {}
 > extends React.FunctionComponent {
-  __options?: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>;
+  __options?: IComponentOptions<TComponentProps, TTokens, TStyleSet, TComponentSlots, TViewProps, TStatics>;
 }
+
+/**
+ * Automatically defines 'slotProps' prop based on TSlots props.
+ */
+export type ISlottableProps<TSlots> = {
+  slotProps: { [key in keyof TSlots]+?: ExtractProps<TSlots[key]> };
+};

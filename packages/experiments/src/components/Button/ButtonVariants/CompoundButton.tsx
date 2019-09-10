@@ -2,6 +2,7 @@ import * as React from 'react';
 // Temporary import file to experiment with next version of foundation.
 import { composed } from '@uifabric/foundation/lib/next/composed';
 import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
+import { ISlottableProps } from '@uifabric/foundation/lib/next/ISlots';
 import { IComponentStyles, IStylesFunction, ITokenFunction } from '@uifabric/foundation';
 import { Text, ITextStyles } from 'office-ui-fabric-react';
 import { parseGap } from 'office-ui-fabric-react/lib/components/Stack/StackUtils';
@@ -23,7 +24,7 @@ export interface ICompoundButtonProps extends IButtonProps {
   secondaryText?: string;
 }
 
-export interface ICompoundButtonViewProps extends ICompoundButtonProps {}
+export interface ICompoundButtonViewProps extends ISlottableProps<IButtonSlots>, Omit<ICompoundButtonProps, keyof IButtonSlots> {}
 
 export interface ICompountButtonTokens extends IButtonTokens {
   secondaryColor?: string;
@@ -35,8 +36,8 @@ export type ICompoundButtonComponent = IComponent<
   ICompoundButtonProps,
   ICompountButtonTokens,
   IButtonStyles,
-  ICompoundButtonViewProps,
-  IButtonSlots
+  IButtonSlots,
+  ICompoundButtonViewProps
 >;
 
 const baseTokens: ICompoundButtonComponent['tokens'] = (props, theme) => {

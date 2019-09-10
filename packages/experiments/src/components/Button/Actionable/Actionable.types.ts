@@ -1,7 +1,8 @@
 // Temporary import file to experiment with next version of foundation.
 import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
+import { ISlottableProps } from '@uifabric/foundation/lib/next/ISlots';
 import { IFontWeight, IKeytipProps } from 'office-ui-fabric-react';
-import { IComponentStyles, IHTMLElementSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
+import { IComponentStyles, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 import { IBaseProps } from '../../../Utilities';
 
 /**
@@ -11,8 +12,8 @@ export type IActionableComponent = IComponent<
   IActionableProps,
   IActionableTokens,
   IActionableStyles,
-  IActionableViewProps,
-  IActionableSlots
+  IActionableSlots,
+  IActionableViewProps
 >;
 
 // These types are redundant with IActionableComponent but are needed until TS function return widening issue is resolved:
@@ -61,7 +62,7 @@ export interface IActionable {
  * {@docCategory Actionable}
  */
 export interface IActionableProps
-  extends ISlottableProps<IActionableSlots>,
+  extends IActionableSlots,
     IStyleableComponentProps<IActionableProps, IActionableTokens, IActionableStyles>,
     IBaseProps<IActionable>,
     React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement> {
@@ -107,7 +108,7 @@ export interface IActionableProps
 /**
  * {@docCategory Actionable}
  */
-export interface IActionableViewProps extends IActionableProps {
+export interface IActionableViewProps extends ISlottableProps<IActionableSlots>, Omit<IActionableProps, keyof IActionableSlots> {
   /**
    * Defines a reference to the inner Button.
    */

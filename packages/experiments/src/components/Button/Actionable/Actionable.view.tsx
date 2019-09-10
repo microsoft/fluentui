@@ -9,7 +9,8 @@ export const ActionableSlots: IActionableComponent['slots'] = props => ({
 });
 
 export const ActionableView: IActionableComponent['view'] = (props, slots) => {
-  const { root, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
+  const { slotProps, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
+  const { root } = slotProps;
 
   const { htmlType, propertiesType } = _deriveRootType(props);
 

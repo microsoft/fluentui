@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from '@uifabric/experiments';
-import { Spinner, Stack, IStackProps } from 'office-ui-fabric-react';
+import { Stack, IStackProps } from 'office-ui-fabric-react';
 
 const stackProps: IStackProps = { tokens: { childrenGap: 16 }, padding: 8, maxWidth: 400 };
 
@@ -15,22 +15,6 @@ export class SlotsContentExample extends React.Component<{}, {}> {
         </Button>
         <Button content="Content: String" />
         <Button content={{ children: 'Content: Props' }} />
-        <Button slots={{ content: { render: () => <Spinner /> } }}>
-          <p>Content: Function, Spinner</p>
-        </Button>
-        <Button
-          slots={{
-            content: {
-              render: (contentProps, DefaultComponent) => (
-                <b>
-                  Wrapper Content Text: <DefaultComponent {...contentProps}>TextType</DefaultComponent>
-                </b>
-              )
-            }
-          }}
-        >
-          <p>Content: Function, Text + ContentType</p>
-        </Button>
         <Button content={{ children: 'Content: Child String' }} />
         <Button content={{ children: ['Content: Child 1,', ' Child 2'] }} />
         {/* // TODO: add 'element' option with JSX? */}

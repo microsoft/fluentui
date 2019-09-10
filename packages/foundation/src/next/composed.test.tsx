@@ -4,20 +4,22 @@ import { IComponentStyles } from '../IComponent';
 import { IComponent, IComponentOptions, IRecompositionComponentOptions } from './IComponent';
 import { IHTMLElementSlot, IHTMLSlot } from '../IHTMLSlots';
 import { ISlotDefinition } from '../ISlots';
+import { ISlottableProps } from './ISlots';
 
 describe('composed', () => {
-  type ITestComponent = IComponent<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots>;
+  type ITestComponent = IComponent<ITestProps, ITestTokens, ITestStyles, ITestSlots, ITestViewProps>;
   interface ITestSlots {
     root?: IHTMLElementSlot<'div'>;
     content?: IHTMLSlot;
   }
   interface ITestProps extends ITestSlots {}
-  interface ITestViewProps extends ITestProps {}
+  interface ITestViewProps extends ISlottableProps<ITestSlots>, Omit<ITestProps, keyof ITestSlots> {}
   interface ITestTokens {}
   type ITestStyles = IComponentStyles<ITestSlots>;
 
   const TestView: ITestComponent['view'] = (props, slots) => {
-    const { children, content } = props;
+    const { slotProps, children } = props;
+    const { content } = slotProps;
     return (
       <slots.root>
         {content && <slots.content />}
@@ -31,7 +33,7 @@ describe('composed', () => {
       root: 'div',
       content: 'span'
     };
-    const options: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
+    const options: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestSlots, ITestViewProps> = {
       displayName: 'TestComponent',
       slots: baseSlots,
       view: TestView
@@ -45,12 +47,12 @@ describe('composed', () => {
     const recompositionSlots: ISlotDefinition<ITestSlots> = {
       content: 'a'
     };
-    const recompositionOptions: IRecompositionComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
+    const recompositionOptions: IRecompositionComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestSlots, ITestViewProps> = {
       displayName: 'TestComponent2',
       slots: recompositionSlots
     };
 
-    const recomposedOptions: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
+    const recomposedOptions: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestSlots, ITestViewProps> = {
       displayName: 'TestComponent2',
       slots: props => ({
         ...resolveSlots(baseSlots, props),
@@ -76,7 +78,7 @@ describe('composed', () => {
       root: 'div',
       content: 'span'
     };
-    const options: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
+    const options: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestSlots, ITestViewProps> = {
       displayName: 'TestComponent',
       slots: baseSlots,
       view: TestView
@@ -88,7 +90,8 @@ describe('composed', () => {
     expect(TestComponent.__options).toEqual(options);
 
     const TestView2: ITestComponent['view'] = (props, slots) => {
-      const { children, content } = props;
+      const { slotProps, children } = props;
+      const { content } = slotProps;
       return (
         <slots.root>
           {children}
@@ -97,12 +100,12 @@ describe('composed', () => {
       );
     };
 
-    const recompositionOptions: IRecompositionComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
+    const recompositionOptions: IRecompositionComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestSlots, ITestViewProps> = {
       displayName: 'TestComponent2',
       view: TestView2
     };
 
-    const recomposedOptions: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
+    const recomposedOptions: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestSlots, ITestViewProps> = {
       displayName: 'TestComponent2',
       slots: props => ({
         ...resolveSlots(baseSlots, props)

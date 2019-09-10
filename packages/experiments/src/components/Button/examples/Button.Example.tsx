@@ -51,7 +51,6 @@ export class ButtonExample extends React.Component<{}, {}> {
             <ButtonStack>
               <Button icon="Upload" content="Button with string icon" />
               <Button icon={{ iconName: 'Share' }} content="Button with iconProps" />
-              <Button content="Button with icon render function" slots={{ icon: { render: () => <Icon iconName="Download" /> } }} />
             </ButtonStack>
             <ButtonStack>
               <Button>

@@ -12,7 +12,8 @@ export const ButtonSlots: IButtonComponent['slots'] = props => ({
 });
 
 export const ButtonView: IButtonComponent['view'] = (props, slots) => {
-  const { root, icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
+  const { slotProps, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
+  const { root, icon, content } = slotProps;
 
   const { htmlType, propertiesType } = _deriveRootType(props);
 
@@ -42,9 +43,8 @@ export const ButtonView: IButtonComponent['view'] = (props, slots) => {
       ref={buttonRef}
       {...root}
     >
-      {/* TODO: Fix typings so that we don't have to use any here. */}
-      {icon && <slots.icon {...icon as any} />}
-      {content && <slots.content {...content as any} />}
+      {icon && <slots.icon {...icon} />}
+      {content && <slots.content {...content} />}
       {children}
     </slots.root>
   );

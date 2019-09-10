@@ -1,7 +1,7 @@
 import { useCallback, useRef } from 'react';
 import { useControlledState } from '../../../Foundation';
 import { KeyCodes } from '../../../Utilities';
-import { IMenuButtonComponent, IMenuButtonViewProps } from './MenuButton.types';
+import { IMenuButtonComponent } from './MenuButton.types';
 
 export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
   const menuButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -52,7 +52,7 @@ export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
     [disabled, expanded, onKeyDown]
   );
 
-  const viewProps: IMenuButtonViewProps = {
+  const viewProps = {
     ...props,
     expanded,
     onClick: _onClick,

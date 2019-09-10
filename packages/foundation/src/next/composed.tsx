@@ -6,8 +6,8 @@ import { createFactory, translateShorthand } from '../slots';
 import { assign } from '../utilities';
 import { ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken, ITokenFunction } from '../IComponent';
 import { IComponentOptions, IPartialSlotComponent, IRecompositionComponentOptions, ISlotComponent } from './IComponent';
-import { IDefaultSlotProps, ISlots, ISlottableProps, ISlotCreator, ISlotDefinition, ValidProps } from '../ISlots';
-import { IFoundationComponent } from './ISlots';
+import { ISlots, ISlotCreator, ISlotDefinition, ValidProps } from '../ISlots';
+import { IFoundationComponent, ISlottableProps } from './ISlots';
 
 interface IClassNamesMapNode {
   className?: string;
@@ -36,15 +36,19 @@ const memoizedClassNamesMap: IClassNamesMap = {};
  * @param options - component Component options. See IComponentOptions for more detail.
  */
 export function composed<
-  TComponentProps extends ValidProps & ISlottableProps<TComponentSlots>,
+  TComponentProps extends ValidProps & TComponentSlots,
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
-  TViewProps extends TComponentProps = TComponentProps,
   TComponentSlots = {},
+  TViewProps extends Omit<TComponentProps, keyof TComponentSlots> & ISlottableProps<TComponentSlots> = Omit<
+    TComponentProps,
+    keyof TComponentSlots
+  > &
+    ISlottableProps<TComponentSlots>,
   TStatics = {}
 >(
-  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
-): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics;
+  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TComponentSlots, TViewProps, TStatics>
+): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TComponentSlots, TViewProps, TStatics> & TStatics;
 
 /**
  * Recomposes a functional component based on a base component and the following set of options: styles, theme, view, and state.
@@ -63,16 +67,20 @@ export function composed<
  * @param options - component Component recomposition options. See IComponentOptions for more detail.
  */
 export function composed<
-  TComponentProps extends ValidProps & ISlottableProps<TComponentSlots>,
+  TComponentProps extends ValidProps & TComponentSlots,
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
-  TViewProps extends TComponentProps = TComponentProps,
   TComponentSlots = {},
+  TViewProps extends Omit<TComponentProps, keyof TComponentSlots> & ISlottableProps<TComponentSlots> = Omit<
+    TComponentProps,
+    keyof TComponentSlots
+  > &
+    ISlottableProps<TComponentSlots>,
   TStatics = {}
 >(
   baseComponent: React.FunctionComponent,
-  options: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
-): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics;
+  options: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TComponentSlots, TViewProps, TStatics>
+): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TComponentSlots, TViewProps, TStatics> & TStatics;
 
 /**
  * Assembles a higher order component based on a set of options or recomposes a functional component based on a base component
@@ -94,20 +102,24 @@ export function composed<
  * @param recompositionOptions - component Component recomposition options. See IComponentOptions for more detail.
  */
 export function composed<
-  TComponentProps extends ValidProps & ISlottableProps<TComponentSlots>,
+  TComponentProps extends ValidProps & TComponentSlots,
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
-  TViewProps extends TComponentProps = TComponentProps,
   TComponentSlots = {},
+  TViewProps extends Omit<TComponentProps, keyof TComponentSlots> & ISlottableProps<TComponentSlots> = Omit<
+    TComponentProps,
+    keyof TComponentSlots
+  > &
+    ISlottableProps<TComponentSlots>,
   TStatics = {}
 >(
   baseComponentOrOptions:
-    | IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
-    | IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> = {},
-  recompositionOptions?: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
-): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics {
+    | IFoundationComponent<TComponentProps, TTokens, TStyleSet, TComponentSlots, TViewProps, TStatics>
+    | IComponentOptions<TComponentProps, TTokens, TStyleSet, TComponentSlots, TViewProps, TStatics> = {},
+  recompositionOptions?: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TComponentSlots, TViewProps, TStatics>
+): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TComponentSlots, TViewProps, TStatics> & TStatics {
   // Check if we are composing or recomposing.
-  let options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>;
+  let options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TComponentSlots, TViewProps, TStatics>;
   if (typeof baseComponentOrOptions === 'function' && baseComponentOrOptions.__options) {
     const baseComponentOptions = baseComponentOrOptions.__options;
     const recompositionSlots = recompositionOptions ? recompositionOptions.slots : undefined;
@@ -127,8 +139,8 @@ export function composed<
   const { factoryOptions = {}, view } = options;
   const { defaultProp } = factoryOptions;
 
-  const result: IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> = (
-    componentProps: TViewProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet> & { children?: React.ReactNode }
+  const result: IFoundationComponent<TComponentProps, TTokens, TStyleSet, TComponentSlots, TViewProps, TStatics> = (
+    componentProps: TComponentProps & TViewProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet> & { children?: React.ReactNode }
   ) => {
     const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
       options.displayName,
@@ -202,7 +214,7 @@ export function composed<
           typeof componentProps.styles === 'function'
             ? componentProps.styles(componentProps as TViewProps, theme, tokens)
             : componentProps.styles;
-        styles = concatStyleSets(styles, userStyles);
+        styles = concatStyleSets(defaultStyles, userStyles);
         if (userStyles) {
           const userStyleKeys = Object.keys(userStyles);
           for (const key of userStyleKeys) {
@@ -220,10 +232,10 @@ export function composed<
 
     const viewProps = {
       ...componentProps,
+      slotProps: {},
       styles,
-      tokens,
-      _defaultStyles: displayName ? finalStyles : styles
-    } as TViewProps & IDefaultSlotProps<any>;
+      tokens
+    } as TComponentProps & TViewProps;
 
     if (!options.slots) {
       throw new Error(`Component ${options.displayName || (view && view.name) || ''} is missing slot definitions.`);
@@ -232,20 +244,21 @@ export function composed<
     const Slots = resolveSlots(options.slots, viewProps) as ISlots<Required<TComponentSlots>>;
 
     // Translate slot default props into their corresponding prop objects and apply styles to them.
-    const classNameKey = 'className';
     for (const key in Slots) {
       if (Slots.hasOwnProperty(key)) {
+        // Translate slot default props into their corresponding prop objects.
         if (viewProps.hasOwnProperty(key)) {
-          if ((Slots as any)[key].defaultProp) {
-            (viewProps as any)[key] = translateShorthand((Slots as any)[key].defaultProp, (viewProps as any)[key]);
+          if ((Slots[key] as any).defaultProp) {
+            viewProps.slotProps[key] = translateShorthand((Slots[key] as any).defaultProp, (viewProps as any)[key] as any);
           } else {
-            (viewProps as any)[key] = translateShorthand('children', (viewProps as any)[key]);
+            viewProps.slotProps[key] = translateShorthand('children', (viewProps as any)[key] as any);
           }
         } else {
-          (viewProps as any)[key] = {};
+          (viewProps.slotProps as any)[key] = {};
         }
 
-        (viewProps as any)[key][classNameKey] = finalStyles[key];
+        // Apply corresponding styles to each slot.
+        (viewProps.slotProps as any)[key].className = finalStyles[key];
       }
     }
 
@@ -266,7 +279,7 @@ export function composed<
   assign(result, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
-  return result as IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics;
+  return result as IFoundationComponent<TComponentProps, TTokens, TStyleSet, TComponentSlots, TViewProps, TStatics> & TStatics;
 }
 
 /**
@@ -275,7 +288,7 @@ export function composed<
  * @param slots - Slots that need to be resolved as a function or an object.
  * @param data - Data to pass to resolve if the first argument was a function.
  */
-export function resolveSlots<TComponentProps extends ISlottableProps<TComponentSlots>, TComponentSlots>(
+export function resolveSlots<TComponentProps extends TComponentSlots, TComponentSlots>(
   slots: IPartialSlotComponent<TComponentProps, TComponentSlots> | ISlotComponent<TComponentProps, TComponentSlots> | undefined,
   data: TComponentProps
 ): ISlotDefinition<Required<TComponentSlots>> {

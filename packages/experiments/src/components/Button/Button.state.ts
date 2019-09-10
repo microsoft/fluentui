@@ -1,5 +1,5 @@
 import { useImperativeHandle, useRef } from 'react';
-import { IButtonComponent, IButtonViewProps } from './Button.types';
+import { IButtonComponent } from './Button.types';
 
 export const useButtonState: IButtonComponent['state'] = props => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -10,7 +10,7 @@ export const useButtonState: IButtonComponent['state'] = props => {
     }
   }));
 
-  const viewProps: IButtonViewProps = {
+  const viewProps = {
     ...props,
     buttonRef
   };

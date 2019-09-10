@@ -1,5 +1,5 @@
 import { useImperativeHandle, useRef } from 'react';
-import { IActionableComponent, IActionableViewProps } from './Actionable.types';
+import { IActionableComponent } from './Actionable.types';
 
 export const useActionableState: IActionableComponent['state'] = props => {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -10,7 +10,7 @@ export const useActionableState: IActionableComponent['state'] = props => {
     }
   }));
 
-  const viewProps: IActionableViewProps = {
+  const viewProps = {
     ...props,
     buttonRef
   };
