@@ -835,11 +835,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   ): void {
     const { onChange, onPendingValueChanged } = this.props;
     const { currentOptions } = this.state;
-    let { selectedIndices } = this.state;
+    const { selectedIndices: initialIndices } = this.state;
 
-    if (!selectedIndices) {
-      selectedIndices = [];
-    }
+    // Clone selectedIndices so we don't mutate state
+    let selectedIndices = initialIndices ? initialIndices.slice() : [];
 
     // Find the next selectable index, if searchDirection is none
     // we will get our starting index back
@@ -870,23 +869,31 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       }
 
       submitPendingValueEvent.persist();
-      // Call onChange after state is updated
-      this.setState(
-        {
-          selectedIndices: selectedIndices
-        },
-        () => {
-          // If ComboBox value is changed, revert preview first
-          if (this._hasPendingValue && onPendingValueChanged) {
-            onPendingValueChanged();
-            this._hasPendingValue = false;
-          }
 
-          if (onChange) {
-            onChange(submitPendingValueEvent, option, index, undefined);
-          }
+      // Only setstate if combobox is uncontrolled.
+      if (this.props.selectedKey || this.props.selectedKey === null) {
+        if (onChange) {
+          onChange(submitPendingValueEvent, option, index, undefined);
         }
-      );
+      } else {
+        // Call onChange after state is updated
+        this.setState(
+          {
+            selectedIndices: selectedIndices
+          },
+          () => {
+            // If ComboBox value is changed, revert preview first
+            if (this._hasPendingValue && onPendingValueChanged) {
+              onPendingValueChanged();
+              this._hasPendingValue = false;
+            }
+
+            if (onChange) {
+              onChange(submitPendingValueEvent, option, index, undefined);
+            }
+          }
+        );
+      }
     }
 
     // clear all of the pending info
