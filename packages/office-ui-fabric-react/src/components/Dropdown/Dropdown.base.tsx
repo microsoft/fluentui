@@ -206,7 +206,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
 
     const selectedOptions = getAllSelectedOptions(options, selectedIndices);
-    const selectedOptionsAriaLabel = this._joinMultiSelectedOptions(selectedOptions);
+    const selectedOptionsAriaLabel = this._joinSelectedOptions(selectedOptions);
     const divProps = getNativeProps(props, divProperties);
 
     const disabled = this._isDisabled();
@@ -455,7 +455,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   /**
    * Returns the array of dropdown options as its text property values in a single string separated by commas
    */
-  private _joinMultiSelectedOptions(items: IDropdownOption[]): string {
+  private _joinSelectedOptions(items: IDropdownOption[]): string {
     const { multiSelectDelimiter = ', ' } = this.props;
 
     return items.map(i => i.text).join(multiSelectDelimiter);
@@ -463,7 +463,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   /** Render text in dropdown input */
   private _onRenderTitle = (items: IDropdownOption[]): JSX.Element => {
-    return <span>{this._joinMultiSelectedOptions(items)}</span>;
+    return <span>{this._joinSelectedOptions(items)}</span>;
   };
 
   /** Render placeholder text in dropdown input */
