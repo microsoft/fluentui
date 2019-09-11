@@ -106,21 +106,21 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
       const currVariantSemanticSlots = currThemeVariant.semanticColors;
       // "trimming" to get rid of the seamantic color slots & palette slots we don't use for theme designer app
       const trimmedSemanticSlots = trimSemanticSlotsOrNames(currVariantSemanticSlots);
-      console.log(trimmedSemanticSlots);
       const currVariantPaletteSlots = currThemeVariant.palette;
       const trimmedPaletteSlots = trimPaletteSlots(currVariantPaletteSlots);
-      console.log(trimmedPaletteSlots);
       const mapping = {};
       // Iterate through the list of semantic colors
       // for each semantic color, check if it's hex color string is in the list of palette colors
       // if it is, add it to the mapping
       for (let semanticColor in trimmedSemanticSlots) {
-        const paletteColorHexStr = (trimmedSemanticSlots as any)[semanticColor];
-        for (let palette in trimmedPaletteSlots) {
-          if ((trimmedPaletteSlots as any)[palette] === paletteColorHexStr) {
-            (mapping as any)[semanticColor] = palette;
-          } else if (paletteColorHexStr === 'transparent') {
-            (mapping as any)[semanticColor] = 'transparent';
+        if (semanticColor) {
+          const paletteColorHexStr = (trimmedSemanticSlots as any)[semanticColor];
+          for (let palette in trimmedPaletteSlots) {
+            if ((trimmedPaletteSlots as any)[palette] === paletteColorHexStr) {
+              (mapping as any)[semanticColor] = palette;
+            } else if (paletteColorHexStr === 'transparent') {
+              (mapping as any)[semanticColor] = 'transparent';
+            }
           }
         }
       }
