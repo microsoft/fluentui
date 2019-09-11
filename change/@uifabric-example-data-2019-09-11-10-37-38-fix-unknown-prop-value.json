@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Added explicit param types instead of unknown to onClick",
+  "packageName": "@uifabric/example-data",
+  "email": "kkj@intranote.dk",
+  "commit": "2978e80883624c24fa1847b193571174dacaf155",
+  "date": "2019-09-11T08:37:38.864Z"
+}
