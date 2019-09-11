@@ -239,7 +239,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         <input
           aria-describedby="TextFieldDescription3"
           aria-invalid={false}
-          aria-labelledby="TextFieldLabel4"
           className=
               ms-TextField-field
               {
