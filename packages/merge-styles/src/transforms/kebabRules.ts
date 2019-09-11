@@ -3,7 +3,9 @@ function makeKebabMap(): { [key: string]: string } {
   const elementStyles = document.createElement('div').style;
   let key: string;
   for (key in elementStyles) {
-    kebabMap[key] = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+    if (key) {
+      kebabMap[key] = key.replace(/([A-Z])/g, '-$1').toLowerCase();
+    }
   }
   return kebabMap;
 }
