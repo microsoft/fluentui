@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Dropdown: improve multiselect accessibility",
+  "packageName": "office-ui-fabric-react",
+  "email": "naethell@microsoft.com",
+  "commit": "0a7a542339a2898b96befe40c468ad9c04c1aa77",
+  "date": "2019-09-11T00:01:08.915Z"
+}
