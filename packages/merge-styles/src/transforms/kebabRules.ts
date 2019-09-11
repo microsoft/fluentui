@@ -1,6 +1,6 @@
 function makeKebabMap(): { [key: string]: string } {
   const kebabMap: { [key: string]: string } = {};
-  const elementStyles = document.createElement('div').style;
+  const elementStyles = (typeof document !== 'undefined' && document.createElement('div').style) || {};
   let key: string;
   for (key in elementStyles) {
     if (key) {
