@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Slider: Cherrypicked ability to log event object from onChanged prop",
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com",
+  "commit": "1732ef0611c8a8fb2931d00219571c08b9e656af",
+  "date": "2019-09-05T20:49:23.495Z"
+}

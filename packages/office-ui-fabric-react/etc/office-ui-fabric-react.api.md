@@ -6876,7 +6876,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     max?: number;
     min?: number;
     onChange?: (value: number) => void;
-    onChanged?: (event: MouseEvent | TouchEvent, value: number) => void;
+    onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
     originFromZero?: boolean;
     showValue?: boolean;
     step?: number;
@@ -8128,6 +8128,9 @@ export type OnChangeCallback = (evt?: React.FormEvent<HTMLElement | HTMLInputEle
 
 // @public (undocumented)
 export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
+
+// @public (undocumented)
+export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
 // @public (undocumented)
 export enum OpenCardMode {
