@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 11 Sep 2019 12:35:47 GMT",
+      "tag": "@uifabric/charting_v0.135.0",
+      "version": "0.135.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Expose hideLegend prop for stacked bar chart",
+            "author": "v-ragor@microsoft.com",
+            "commit": "21d5f3be8e206956a48b9c15ea15e55c7ffe36c8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 04:09:58 GMT",
       "tag": "@uifabric/charting_v0.134.4",
       "version": "0.134.4",

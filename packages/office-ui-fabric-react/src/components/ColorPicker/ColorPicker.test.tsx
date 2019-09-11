@@ -111,6 +111,24 @@ describe('ColorPicker', () => {
     expect(inputs).toHaveLength(4);
   });
 
+  it('show preview box', () => {
+    wrapper = mount(<ColorPicker color="#FFFFFF" showPreview={true} />);
+
+    const previewBox = wrapper.find('.is-preview');
+
+    // There should be one preview box
+    expect(previewBox.exists()).toBe(true);
+  });
+
+  it('hide preview box', () => {
+    wrapper = mount(<ColorPicker color="#FFFFFF" showPreview={false} />);
+
+    const previewBox = wrapper.find('.is-preview');
+
+    // There should be one preview box
+    expect(previewBox.exists()).toBe(false);
+  });
+
   it('renders default RGBA/Hex strings', () => {
     wrapper = mount(<ColorPicker color="#FFFFFF" />);
 

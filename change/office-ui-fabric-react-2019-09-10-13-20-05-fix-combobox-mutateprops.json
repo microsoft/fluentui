@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Combobox: Fix issue where it would mutate props",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "d8d84c26efff001fa1e0c58f50d5c12982d964a7",
+  "date": "2019-09-10T20:20:05.570Z"
+}

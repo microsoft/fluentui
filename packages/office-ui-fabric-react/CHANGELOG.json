@@ -2,6 +2,69 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 11 Sep 2019 12:35:47 GMT",
+      "tag": "office-ui-fabric-react_v7.31.3",
+      "version": "7.31.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Combobox: ensure that state doesn't mutate in controlled scenario",
+            "author": "joschect@microsoft.com",
+            "commit": "194aa66c1cfd4aa517b686383c01508403a229e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Sep 2019 21:43:18 GMT",
+      "tag": "office-ui-fabric-react_v7.31.2",
+      "version": "7.31.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Nav.base.tsx",
+            "author": "michael.david.lauria@gmail.com",
+            "commit": "da9ced2bfd38fc3dac875901cd540a87d23e1a7e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Sep 2019 12:34:51 GMT",
+      "tag": "office-ui-fabric-react_v7.31.1",
+      "version": "7.31.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Nav: Added aria-labels to Nav examples per issue request",
+            "author": "v-mare@microsoft.com",
+            "commit": "c5d5cc8b5b364741292b783319842ebea49963ab"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Sep 2019 12:34:51 GMT",
+      "tag": "office-ui-fabric-react_v7.31.0",
+      "version": "7.31.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding Preview pan to the color picker component, increasing the width and height of the color rectangle and css changes",
+            "author": "navkuma@microsoft.com",
+            "commit": "d541ebf70b7734c45fa1ccf120783b8a28b40738"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "give tooltip hoverable area an index lower than the content",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "555cf61228750ecabaad6b250b563fcff757e9c8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2019 12:32:15 GMT",
       "tag": "office-ui-fabric-react_v7.30.0",
       "version": "7.30.0",
