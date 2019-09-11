@@ -19,7 +19,7 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
         padding: '8px',
         maxWidth: maxWidth,
         selectors: {
-          ':before': {
+          ':after': {
             content: `''`,
             position: 'absolute',
             bottom: tooltipGapSpace,
