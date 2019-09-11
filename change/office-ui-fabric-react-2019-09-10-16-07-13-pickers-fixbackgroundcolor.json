@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "make background color of input transparent so it doesn't clip border",
+  "comment": "Pickers: make background color of input transparent so it doesn't clip border",
   "packageName": "office-ui-fabric-react",
   "email": "joschect@microsoft.com",
   "commit": "32f0b9cc893c0d33c423143da95ce6c5710172fc",
