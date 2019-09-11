@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Cherry pick PRs #9110 and #10344 from Fabric 7 master branch to Fabric 6, used to show focus indicator in checkbox",
-  "packageName": "office-ui-fabric-react",
-  "email": "lilijing@microsoft.com",
-  "commit": "2982ec1e0efa10561c4444ed512f37262167894b",
-  "date": "2019-09-10T06:32:57.276Z"
-}
