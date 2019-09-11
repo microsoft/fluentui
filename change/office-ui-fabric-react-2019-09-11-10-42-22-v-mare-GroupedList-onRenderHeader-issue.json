@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "ChoiceGroup: Fixed selected prop value not being set. ",
+  "comment": "GroupedList: Fixed selected prop value not being set. ",
   "packageName": "office-ui-fabric-react",
   "email": "v-mare@microsoft.com",
   "commit": "2d760955d88add839a016f830580f922d07b4abd",
