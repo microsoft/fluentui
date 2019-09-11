@@ -1,7 +1,8 @@
 function makeKebabMap(): { [key: string]: string } {
   const kebabMap: { [key: string]: string } = {};
   const elementStyles = document.createElement('div').style;
-  for (let key in elementStyles) {
+  let key: string;
+  for (key in elementStyles) {
     kebabMap[key] = key.replace(/([A-Z])/g, '-$1').toLowerCase();
   }
   return kebabMap;
