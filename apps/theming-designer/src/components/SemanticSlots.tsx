@@ -44,9 +44,9 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     );
   };
 
-  const trimPaletteColors = (paletteColors: {}): {} => {
-    let trimmedPaletteColors = {};
-    for (let palette in paletteColors) {
+  const trimPaletteSlots = (paletteSlots: {}): {} => {
+    let trimmedPaletteSlots = {};
+    for (let palette in paletteSlots) {
       if (
         palette.startsWith('theme') ||
         palette.startsWith('neutral') ||
@@ -55,91 +55,79 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
         palette === 'redDark' ||
         palette === 'accent'
       ) {
-        (trimmedPaletteColors as any)[palette] = (paletteColors as any)[palette];
+        (trimmedPaletteSlots as any)[palette] = (paletteSlots as any)[palette];
       }
     }
-    return trimmedPaletteColors;
+    return trimmedPaletteSlots;
   };
 
-  const trimSemanticColors = (semanticColors: {}): {} => {
-    let trimmedSemanticColors = {};
-    for (let semanticColor in semanticColors) {
-      if (
-        semanticColor.startsWith('body') ||
-        semanticColor.startsWith('disabled') ||
-        semanticColor.startsWith('focus') ||
-        semanticColor.startsWith('variant') ||
-        semanticColor.startsWith('default') ||
-        semanticColor.includes('action') ||
-        semanticColor.includes('link') ||
-        semanticColor.startsWith('accent') ||
-        semanticColor.startsWith('list') ||
-        semanticColor.startsWith('button') ||
-        semanticColor.startsWith('menu') ||
-        semanticColor.startsWith('input')
-      ) {
-        (trimmedSemanticColors as any)[semanticColor] = (semanticColors as any)[semanticColor];
-      }
-    }
-    return trimmedSemanticColors;
+  const isASemanticColor = (semanticString: string): boolean => {
+    return (
+      semanticString.startsWith('body') ||
+      semanticString.startsWith('disabled') ||
+      semanticString.startsWith('focus') ||
+      semanticString.startsWith('variant') ||
+      semanticString.startsWith('default') ||
+      semanticString.includes('action') ||
+      semanticString.includes('link') ||
+      semanticString.startsWith('accent') ||
+      semanticString.startsWith('list') ||
+      semanticString.startsWith('button') ||
+      semanticString.startsWith('menu') ||
+      semanticString.startsWith('input')
+    );
   };
 
-  const trimSemanticSlotNames = (semanticSlotNames: string[]): any => {
-    let trimmedSemanticSlotNames = [];
-    for (let i = 0; i < semanticSlotNames.length; i++) {
-      let slotName = (semanticSlotNames as any)[i];
-      if (
-        slotName.includes('body') ||
-        slotName.includes('disabled') ||
-        slotName.includes('focus') ||
-        slotName.includes('variant') ||
-        slotName.includes('default') ||
-        slotName.includes('action') ||
-        slotName.includes('link') ||
-        slotName.includes('accent') ||
-        slotName.includes('list') ||
-        slotName.includes('button') ||
-        slotName.includes('menu') ||
-        slotName.includes('input')
-      ) {
-        trimmedSemanticSlotNames.push(slotName);
+  const trimSemanticSlotsOrNames = (semanticSlots: {} | string[]): {} | string[] => {
+    if (semanticSlots instanceof Array) {
+      let trimmedSemanticSlotNames = [];
+      for (let i = 0; i < semanticSlots.length; i++) {
+        let slotName = (semanticSlots as any)[i];
+        if (isASemanticColor(slotName)) {
+          trimmedSemanticSlotNames.push(slotName);
+        }
       }
+      return trimmedSemanticSlotNames;
+    } else {
+      let trimmedSemanticSlots = {};
+      for (let semanticColor in semanticSlots) {
+        if (isASemanticColor(semanticColor)) {
+          (trimmedSemanticSlots as any)[semanticColor] = (semanticSlots as any)[semanticColor];
+        }
+      }
+      return trimmedSemanticSlots;
     }
-    return trimmedSemanticSlotNames;
   };
 
   const fillVariantSlotsList = (variantType: VariantThemeType): JSX.Element[] => {
     let currThemeVariant: ITheme;
     if (props.theme) {
       currThemeVariant = getVariant(props.theme, variantType);
-      let currVariantSemanticColors = currThemeVariant.semanticColors;
+      const currVariantSemanticSlots = currThemeVariant.semanticColors;
       // "trimming" to get rid of the seamantic color slots & palette slots we don't use for theme designer app
-      const trimmedSemanticColors = trimSemanticColors(currVariantSemanticColors);
-      console.log('semantic colors', trimmedSemanticColors);
-      let currVariantPaletteColors = currThemeVariant.palette;
-      const onlyPaletteColors = trimPaletteColors(currVariantPaletteColors);
-      console.log('palette colors: ', onlyPaletteColors);
+      const trimmedSemanticSlots = trimSemanticSlotsOrNames(currVariantSemanticSlots);
+      console.log(trimmedSemanticSlots);
+      const currVariantPaletteSlots = currThemeVariant.palette;
+      const trimmedPaletteSlots = trimPaletteSlots(currVariantPaletteSlots);
+      console.log(trimmedPaletteSlots);
       const mapping = {};
       // Iterate through the list of semantic colors
       // for each semantic color, check if it's hex color string is in the list of palette colors
       // if it is, add it to the mapping
-      for (let semanticColor in trimmedSemanticColors) {
-        if (semanticColor) {
-          const paletteColorHexStr = (trimmedSemanticColors as any)[semanticColor];
-          for (let palette in props.theme.palette) {
-            if ((onlyPaletteColors as any)[palette] === paletteColorHexStr) {
-              (mapping as any)[semanticColor] = palette;
-            } else if (paletteColorHexStr === 'transparent') {
-              (mapping as any)[semanticColor] = 'transparent';
-            }
+      for (let semanticColor in trimmedSemanticSlots) {
+        const paletteColorHexStr = (trimmedSemanticSlots as any)[semanticColor];
+        for (let palette in trimmedPaletteSlots) {
+          if ((trimmedPaletteSlots as any)[palette] === paletteColorHexStr) {
+            (mapping as any)[semanticColor] = palette;
+          } else if (paletteColorHexStr === 'transparent') {
+            (mapping as any)[semanticColor] = 'transparent';
           }
         }
       }
-      let tempJSXList: JSX.Element[];
-      tempJSXList = [];
+      const tempJSXList: JSX.Element[] = [];
       for (let i = 0; i < slotNames.length; i++) {
         let slot = slotNames[i];
-        let currSlotJSX = semanticSlotWidget((currVariantSemanticColors as any)[slot], (mapping as any)[slot]);
+        let currSlotJSX = semanticSlotWidget((currVariantSemanticSlots as any)[slot], (mapping as any)[slot]);
         tempJSXList.push(currSlotJSX);
       }
       return tempJSXList;
@@ -148,8 +136,8 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     }
   };
 
-  let semanticColorsNone = props.theme.semanticColors;
-  slotNames = trimSemanticSlotNames(Object.keys(semanticColorsNone));
+  let semanticSlotsNone = props.theme.semanticColors;
+  (slotNames as any) = trimSemanticSlotsOrNames(Object.keys(semanticSlotsNone));
   noneSlots = fillVariantSlotsList(VariantThemeType.None);
   neutralSlots = fillVariantSlotsList(VariantThemeType.Neutral);
   softSlots = fillVariantSlotsList(VariantThemeType.Soft);
