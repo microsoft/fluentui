@@ -161,7 +161,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       });
     }
 
-    if (newProps.options !== this.props.options) {
+    if (didOptionsChange) {
+      // preexisting code assumes purity of the options...
       this._sizePosCache.updateOptions(newProps.options);
     }
   }
